@@ -1,0 +1,4 @@
+# Task 006.1 engineering approximation; NOT measured APEX tires or drivetrain.
+# mu comes only from the separately supplied vehicle parameters (synthetic mu=1).
+model: smooth_combined_grip
+longitudinal_allocation: normal_load_proportional

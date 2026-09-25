@@ -1,0 +1,3 @@
+# Preserve unlimited linear lateral force for explicit reference comparisons only.
+model: linear
+longitudinal_allocation: normal_load_proportional

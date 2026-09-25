@@ -1,0 +1,7 @@
+# NOT experimentally identified and NOT representative of the final APEX vehicle.
+# Arbitrary, internally consistent geometry for reproducible tests/demonstrations only.
+name: synthetic_test_vehicle
+wheelbase: 0.30  # m, SYNTHETIC
+lf: 0.15        # m, SYNTHETIC
+lr: 0.15        # m, SYNTHETIC
+# All other physical properties/limits intentionally unspecified.

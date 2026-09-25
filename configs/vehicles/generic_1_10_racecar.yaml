@@ -1,0 +1,18 @@
+# Template only: not simulation-ready. No physical values have been assumed.
+name: generic_1_10_racecar
+mass: null  # kg
+yaw_inertia: null  # kg m^2
+wheelbase: null  # m
+lf: null  # m; CG to front axle
+lr: null  # m; CG to rear axle
+cg_height: null  # m
+vehicle_width: null  # m
+vehicle_length: null  # m
+front_cornering_stiffness: null  # N/rad; AXLE AGGREGATE, not per tire
+rear_cornering_stiffness: null  # N/rad; AXLE AGGREGATE, not per tire
+tire_road_friction_coefficient: null  # dimensionless
+maximum_steering_angle: null  # rad; positive magnitude
+maximum_steering_rate: null  # rad/s; positive magnitude
+maximum_acceleration: null  # m/s^2; positive magnitude
+maximum_braking_deceleration: null  # m/s^2; positive magnitude
+maximum_speed: null  # m/s

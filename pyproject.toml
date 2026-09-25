@@ -1,0 +1,32 @@
+[build-system]
+requires = ["hatchling>=1.27,<2"]
+build-backend = "hatchling.build"
+
+[project]
+name = "defensive-racing-ai"
+version = "0.1.0"
+description = "APEX autonomous racing research architecture"
+readme = "README.md"
+requires-python = ">=3.12,<3.15"
+dependencies = [
+  "numpy>=2.2,<3", "scipy>=1.15,<2", "pandas>=2.2,<4",
+  "matplotlib>=3.10,<4", "casadi>=3.7,<4", "PyYAML>=6.0,<7",
+]
+
+[dependency-groups]
+dev = ["pytest>=8.3,<10", "ruff>=0.11,<1"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/apex"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+extend-exclude = [".uv-cache", ".venv"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I"]
