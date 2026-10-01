@@ -142,4 +142,29 @@ selectable reference. See [grip specification](docs/GRIP_LIMITED_TIRE_SPEC.md) a
 ```
 
 New results use `results/tire_model` and `results/mpc_grip`, preserving Task006 logs.
-Task006.2 computation/latency optimization is next; no racing objective is implemented.
+Task006.2 synchronous NMPC characterization is complete; see
+[parameter study](docs/NMPC_PARAMETER_STUDY.md),
+[measured tables](docs/NMPC_PARAMETER_STUDY_RESULTS.md) and
+[selected configurations](results/mpc_parameter_study/selected_candidates.json).
+
+## Task 006.3 — asynchronous planner and 100 Hz codriver
+
+Candidate C now supplies timestamped trajectories to an independent TVLQR/P codriver.
+The physical plant keeps moving under high-rate feedback while the next plan is computed.
+See the [architecture specification](docs/ASYNC_PLANNER_CODRIVER_SPEC.md),
+[measured results](docs/ASYNC_PLANNER_CODRIVER_RESULTS.md), and
+[experiment artifacts](results/asynchronous_planner_tracker).
+
+```sh
+.venv/bin/python scripts/run_async_planner_tracker.py run --name my_async_run
+.venv/bin/python scripts/run_async_planner_tracker.py suite --output /private/tmp/apex-async-new
+.venv/bin/python scripts/run_async_planner_tracker.py audit
+.venv/bin/python scripts/run_async_planner_tracker.py analyze
+```
+
+Run timing experiments sequentially, without tests or analysis competing for CPU.
+Use fresh names/output directories: existing measurements are retained.
+Task 006.4 is complete: 26 cases compare small lateral MPC with TVLQR; retain TVLQR.
+See [study](docs/LINEAR_MPC_CODRIVER_STUDY.md), [results](docs/LINEAR_MPC_CODRIVER_RESULTS.md)
+and [reproduction commands](docs/LINEAR_MPC_REPRODUCTION.md).
+Task007 racing remains deferred.

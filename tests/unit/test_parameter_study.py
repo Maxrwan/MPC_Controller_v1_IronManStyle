@@ -107,11 +107,13 @@ def test_pareto_preserves_tradeoffs_and_ties(monkeypatch):
 
     monkeypatch.syspath_prepend(str(Path(__file__).resolve().parents[2] / "scripts"))
     from parameter_study.analysis import nondominated
-    from parameter_study.common import canonical
+    from parameter_study.common import canonical, semantic_hash
 
     assert nondominated([[1, 2], [2, 1], [2, 2], [1, 2]]) == [0, 1, 3]
     assert canonical({"b": 2, "a": 1}) == canonical({"a": 1, "b": 2})
     assert canonical({"n": 8}) != canonical({"n": 10})
+    assert semantic_hash({"weight": 1}) == semantic_hash({"weight": 1.0})
+    assert semantic_hash({"enabled": True}) != semantic_hash({"enabled": 1})
 
 
 def test_terminal_multiplier_scales_complete_term(dynamic_vehicle, circle):

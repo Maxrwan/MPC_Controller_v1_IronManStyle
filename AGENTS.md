@@ -24,7 +24,17 @@ Generic physical values remain unknown; synthetic grip is not measured APEX data
 the baseline: separate linear design and nonlinear plant, perfect state, 100/200 Hz rates.
 Follow NMPC_BASELINE_SPEC.md for Task 006. Keep symbolic prediction separate from the NumPy
 plant. ALL future computational controllers must test zero/injected/measured latency, physical
-plant motion under held prior control during solving, application-state staleness and skipped
-fixed deadlines. Never pause physics or silently remove latency; measured timing is not an
-exact CI pass/fail assertion. Task006.2 solver optimization and Task007 racing are not implemented. Further tire/suspension physics, estimation,
+plant motion during solving, application-state staleness and skipped fixed deadlines.
+Synchronous controllers hold the prior command; Task006.3 asynchronous planners keep the
+100 Hz codriver tracking the active valid trajectory. Distinguish planner misses from
+codriver/actuator misses. Never pause physics or silently remove latency; measured timing is not an
+exact CI pass/fail assertion. Task006.2 synchronous tuning is documented in NMPC_PARAMETER_STUDY.md; preserve its reference and explicit candidate configurations. Task006.3 asynchronous planning is implemented; follow ASYNC_PLANNER_CODRIVER_SPEC.md.
+Task 006.4 comparison is complete; retain TVLQR as default. See LINEAR_MPC_CODRIVER_STUDY.md.
+Task 007 racing is not implemented; next is the pre-Task-007 review gate. Further tire/suspension physics, estimation,
 identification, energy, opponent and tactics require later specifications.
+
+Threading experiments must retain an explicit deterministic single-thread mode. Inspect the
+active backend, configure its supported controls before initialization in fresh subprocesses,
+and verify actual CPU/thread behavior; environment variable values alone are not evidence
+of parallel execution. Serialize latency benchmarks and preserve frozen controller mathematics.
+See docs/NMPC_MULTITHREADING_STUDY.md; the current Mac study recommends one native thread.

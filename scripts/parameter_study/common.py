@@ -39,6 +39,21 @@ def canonical(config):
     return json.dumps(config, sort_keys=True, separators=(",", ":"), allow_nan=False)
 
 
+def semantic_config(config):
+    """Treat JSON 1 and 1.0 as the same numeric setting, preserving booleans."""
+    if isinstance(config, dict):
+        return {k: semantic_config(v) for k, v in config.items()}
+    if isinstance(config, list):
+        return [semantic_config(v) for v in config]
+    if isinstance(config, (int, float)) and not isinstance(config, bool):
+        return float(config)
+    return config
+
+
+def semantic_hash(config):
+    return hashlib.sha256(canonical(semantic_config(config)).encode()).hexdigest()
+
+
 def records():
     return [json.loads(p.read_text()) for p in sorted((OUT / "runs").glob("*/experiment.json"))]
 
@@ -51,7 +66,7 @@ def run(stage, label, **changes):
     digest = hashlib.sha256(serialized.encode()).hexdigest()
     OUT.mkdir(parents=True, exist_ok=True)
     for old in records():
-        if old["configuration_hash"] == digest:
+        if semantic_hash(old["configuration"]) == semantic_hash(spec):
             if stage not in old["stages"]:
                 old["stages"].append(stage)
                 (OUT / "runs" / old["id"] / "experiment.json").write_text(
@@ -168,6 +183,7 @@ def database():
             "stages": ",".join(r["stages"]),
             "configuration_hash": r["configuration_hash"],
             "configuration_json": canonical(c),
+            "semantic_configuration_hash": semantic_hash(c),
             "frequency_hz": c["hz"],
             "period": 1 / c["hz"],
             "horizon": c["n"],

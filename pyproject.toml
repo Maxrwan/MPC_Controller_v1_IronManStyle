@@ -9,12 +9,22 @@ description = "APEX autonomous racing research architecture"
 readme = "README.md"
 requires-python = ">=3.12,<3.15"
 dependencies = [
-  "numpy>=2.2,<3", "scipy>=1.15,<2", "pandas>=2.2,<4",
-  "matplotlib>=3.10,<4", "casadi>=3.7,<4", "PyYAML>=6.0,<7",
+  "numpy>=2.2,<3",
+  "scipy>=1.15,<2",
+  "pandas>=2.2,<4",
+  "matplotlib>=3.10,<4",
+  "casadi>=3.7,<4",
+  "PyYAML>=6.0,<7",
+  "osqp>=1.0,<2",
 ]
 
 [dependency-groups]
-dev = ["pytest>=8.3,<10", "ruff>=0.11,<1"]
+dev = [
+    "psutil>=7.2.2",
+    "pytest>=8.3,<10",
+    "ruff>=0.11,<1",
+    "threadpoolctl>=3.7.0",
+]
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/apex"]

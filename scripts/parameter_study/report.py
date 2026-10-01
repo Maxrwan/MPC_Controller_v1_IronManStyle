@@ -27,6 +27,11 @@ def markdown(frame):
 
 def generate():
     frame = database()
+    groups = {
+        digest: {"count": len(group), "experiment_ids": group.experiment_id.tolist()}
+        for digest, group in frame.groupby("semantic_configuration_hash")
+    }
+    (OUT / "equivalent_configuration_groups.json").write_text(json.dumps(groups, indent=2) + "\n")
     selected = json.loads((OUT / "selected_candidates.json").read_text())
     pareto = json.loads((OUT / "pareto.json").read_text())
     lines = [

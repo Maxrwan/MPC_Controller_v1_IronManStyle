@@ -89,6 +89,9 @@ def analyze():
             "experiment_id": r["id"],
             "configuration": r["configuration"],
             "configuration_hash": r["configuration_hash"],
+            "effective_solver_options": r["summary"]["solver_options"],
+            "mpc_config": r["summary"]["mpc_config"],
+            "nlp_dimensions": r["summary"]["nlp_dimensions"],
             "compute_ratio_p95": r["compute_ratio_p95"],
             "quality_pass": r["quality_pass"],
         }
@@ -219,6 +222,8 @@ def analyze():
                 marker="x" if status == "rejected" else "o",
             )
         ax.set(xlabel=xlabel, ylabel=ylabel, title=name.replace("_", " "))
+        if name in ("frequency_vs_tracking", "control_vs_deadlines"):
+            ax.set_yscale("log")
         ax.grid(alpha=0.25)
         ax.legend(fontsize=8)
         if "deadlines" in name or "frequency" in name:
@@ -239,11 +244,33 @@ def analyze():
             r["summary"]["full_run"]["rms_e_y"],
             color="tab:blue" if r["id"] in ids else "lightgray",
         )
-    for offset, (label, r) in enumerate(selected.items()):
+    selected_groups = {}
+    for label, r in selected.items():
+        selected_groups.setdefault(r["id"], {"record": r, "labels": []})["labels"].append(label)
+    for group in selected_groups.values():
+        r = group["record"]
         x = r["summary"]["solve_time"]["p95"] * 1000
         y = r["summary"]["full_run"]["rms_e_y"]
-        ax.scatter(x, y, s=100, marker="*")
-        ax.annotate(label, (x, y), xytext=(6, 6 + 12 * offset), textcoords="offset points")
+        ax.scatter(x, y, s=130, marker="*", color="tab:red", zorder=5)
+        ax.annotate("/".join(group["labels"]), (x, y), xytext=(8, 8), textcoords="offset points")
+    from matplotlib.lines import Line2D
+
+    ax.legend(
+        handles=[
+            Line2D([], [], marker="o", linestyle="", color="tab:blue", label="Nondominated"),
+            Line2D([], [], marker="o", linestyle="", color="lightgray", label="Dominated"),
+            Line2D([], [], marker="*", linestyle="", color="tab:red", label="Selected roles"),
+        ],
+        loc="upper right",
+    )
+    ax.text(
+        0.99,
+        0.80,
+        "Screening: one lap; D reference: two laps",
+        ha="right",
+        transform=ax.transAxes,
+        fontsize=8,
+    )
     ax.set(
         xlabel="p95 solve [ms]",
         ylabel="Full-run RMS lateral [m]",

@@ -443,3 +443,211 @@ Candidate C is chosen after measured-latency confirmation, with explicit quality
 missed-release gates; if no candidate qualifies, state that limitation. Export exact
 configuration, trajectory timing/reserve and baseline workload data for Task006.3.
 Do not implement asynchronous buffers or Task006.4 linear MPC in this study.
+
+The completed study selects `ipopt_warm_flag_d5e0d799d8`: 10 Hz, N=4, four RK4 substeps,
+lateral/heading scale2, other scales1, current terminal term, exact Hessian and the ordinary
+warm-start flag. Two-lap measured oval RMS lateral error was4.147mm with15.848ms solver
+p95,19.898ms total p95 and no missed releases. Preserve the20Hz,N20 reference separately.
+This is a synthetic host-specific starting point, not a real-time or safety guarantee.
+
+## ADR-101 — Retain a verified single-thread baseline
+
+Task006.2.2 retains deterministic native single-thread execution for debugging, comparisons
+and tests. The Mac Accelerate SINGLE mode is set before numerical imports and read back.
+Fresh-process repeated C solutions match bitwise. This is a benchmark control, not a change
+to controller equations or an unconditional cross-platform backend API.
+
+## ADR-102 — Configure the detected numerical backend explicitly
+
+Inspect active BLAS/LAPACK, IPOPT and its linear solver before choosing thread controls.
+The installed stack uses Accelerate; record native mode and requested ceilings separately
+from measured active cores. Do not claim that OMP/OPENBLAS variables activate parallelism.
+Do not add an OpenMP/solver thread knob without evidence the active build supports it.
+
+## ADR-103 — Isolate timing conditions in fresh serial subprocesses
+
+Apply startup environment controls before native initialization. Each benchmark condition
+uses a fresh worker and one serially invoked optimizer. Warm up, use deterministic frozen
+inputs, randomize condition order, repeat and retain raw data. Never overlap latency
+benchmarks with one another or tests. Cache settings must match and failed runs remain
+visible. psutil/threadpoolctl are development-only observation dependencies.
+
+## ADR-104 — Distinguish intra-solve latency from task concurrency
+
+Independent simultaneous solves are throughput experiments, not evidence of reduced
+latency for one optimization. No manual optimizer worker pool, mapped-stage redesign,
+asynchronous planner or codriver is adopted in Task006.2.2. Later task-level concurrency
+must measure contention and latency semantics explicitly.
+
+## ADR-105 — Recommend one native thread for current development evidence
+
+Across 24 conditions / 2,880 solves, C/D do not meet the predeclared 10% p95 improvement
+gate at higher ceilings. Measured effective core use remains approximately one.
+T1, Tbest-latency, Tbest-efficiency and Trecommended are all one. Keep C frozen at 10 Hz,
+N=4 with four RK4 substeps and the selected Task006.2 costs/solver policy. Retain the
+4-ceiling closed-loop missed release and total-compute spikes as evidence, not discarded
+outliers. This decision can be revisited only with a verified different execution path.
+
+## ADR-106 — No unsupported target CPU or deadline claims
+
+Export workload dimensions, sparsity, callback counts, CPU/core-time, memory and deadlines
+for Pi benchmarking. Mac measurements establish neither Pi utilization percentages nor
+transferred thread scaling. Any relative-performance sensitivity relation is analytical.
+Measure target libraries, thermals, sustained timing tails and joint subsystem contention.
+Desktop p95 margin is not a hard-real-time guarantee; solver-only simulated latency also
+does not certify total-compute deadline compliance.
+
+## ADR-107 — NMPC owns trajectories, not runtime actuator commands
+
+Task006.3 wraps the existing constrained optimizer as a nominal trajectory planner.
+The buffer owns accepted immutable packets, the codriver owns local feedback and the
+independent NumPy plant owns actual state. Synchronous control remains a comparison path.
+
+## ADR-108 — Preserve Candidate C at 10 Hz
+
+Keep N4,0.4 s horizon,four RK4 substeps, selected Q/R/W and terminal cost, exact Hessian
+and shifted-primal/IPOPT warm-start policy. No timing-motivated retuning. The explicit
+tracker margin in ADR119 is the sole requested planner-bound change.
+
+## ADR-109 — Retain one native planner thread
+
+Apply and verify Accelerate SINGLE mode before numerical imports in isolated experiment
+workers. Task006.2.2 found no useful intra-solve scaling. Do not call one optimizer concurrently.
+
+## ADR-110 — Begin with a 100 Hz codriver
+
+Use a fixed10 ms release grid, independent of the100 ms planner grid. Count missed planner
+and codriver releases separately. Measure the full update and kernel costs plus modeled physical application
+latency; ordinary planner overruns must not skip otherwise available codriver events.
+
+## ADR-111 — Use nominal feedforward plus trajectory-aware TVLQR
+
+Linearize the approved grip model at nominal X/U, discretize at10 ms and prepare finite-horizon
+four-state/one-steering-input Riccati gains on the planner side. Reuse Task005 design weights.
+Runtime work is interpolation and local feedback. Longitudinal correction is proportional
+speed feedback plus nominal acceleration, common to the future Task006.4 comparison.
+
+## ADR-112 — Use explicit physical-time packets and buffer
+
+Packets own timestamped X/U, curvature/gain schedules, source/forecast state and computation
+metadata. Interpolate unwrapped heading and absolute progress; hold nominal inputs/gains.
+Reject stale, invalid or insufficient-reserve packets. Trim expired prefixes at handoff.
+
+## ADR-113 — Emulate asynchronous physical chronology deterministically
+
+Actual OS concurrency is unnecessary for this development task. Compute the candidate,
+withhold availability until its physical completion, and advance the real plant under the
+old trajectory and continuing codriver. Measured planner latency includes state forecasting
+and gain preparation. Never pause moving physics during runtime computation.
+
+## ADR-114 — Predict the intended actuation-time state
+
+Use a replaceable rolling-median delay estimate initialized at17 ms, plus an independent
+symbolic-model forecast driven by a clone of the active local tracker. Log delay and
+state-prediction errors. Refuse forecasts that require extrapolating an exhausted trajectory.
+
+## ADR-115 — Never overlap planner solves or grow an urgent queue
+
+Fixed releases during a pending solve are missed and counted. Urgent requests retain one
+pending bit and execute only when idle. A completed early packet waits for its nominal
+start. All optimizer work remains serial.
+
+## ADR-116 — Make trajectory reserve a first-class quantity
+
+Reserve=end−physical time. Healthy≥0.20 s; warning[0.05,0.20); critical(0,0.05); exhausted≤0.
+Require50 ms reserve for new acceptance. Log active reserve continuously and at completions;
+do not count completion under fallback as uninterrupted trajectory operation.
+
+## ADR-117 — Planner failure does not remove valid real-time control
+
+Reject failed optimization/forecast/gain output while continuing the previous valid packet.
+Retain failure evidence and retry at future eligible releases. No stale optimizer command is
+substituted for current-state feedback.
+
+## ADR-118 — No indefinite extrapolation; explicit development fallback
+
+At exhaustion use existing Task005 LQR/PI only within its1–3 m/s and in-track domain;
+otherwise terminate cleanly. Fallback is latched for the run, with no automatic planner re-entry.
+Before launch, hold the vehicle unreleased, prepare and preposition the first plan/command,
+then begin the validated2 m/s dynamic state. No standstill dynamics are invented.
+
+## ADR-119 — Apply the provisional tracker margin explicitly
+
+Add MPCConfig.tracker_margin with backward-compatible zero default; async experiments
+explicitly request0.08 m per side. Preserve original physical track widths and slack costs.
+Measure the tracking envelope before making any robust-margin claim.
+
+## ADR-120 — Trigger one urgent replan after sustained tracking deviation
+
+Two consecutive codriver samples above0.05 m lateral or0.10 rad heading trajectory error
+request an early replan if idle, otherwise set one pending bit. Log the request, busy state
+and eventual release. Retain fixed10 Hz planning as the normal mechanism.
+
+## ADR-121 — Separate algorithm CPU accounting and future comparison boundaries
+
+Report planner preparation, codriver update including command validation, and their summed
+core-seconds/s separately from simulation integration/logging and periodic plant diagnostics. Export full timing distributions,
+memory and matrix dimensions. Task006.4 may replace only lateral correction while retaining
+the same planner, buffer, longitudinal policy, actuator semantics and experiments. No Pi
+percentage or real-time deployment guarantee follows from M1 measurements.
+
+## ADR-122 — Small MPC only owns local lateral correction
+
+Task006.4 adds a four-error-state, one-steering-correction controller. The high-level Candidate C
+trajectory remains authoritative. No speed profile, racing line or global planner is added.
+The selection thresholds are written before experimental selection in LINEAR_MPC_CODRIVER_STUDY.md.
+
+## ADR-123 — Use approved discrete Jacobians and retain the nominal affine defect
+
+Linearize the existing grip-model RK4 map at the100Hz nominal trajectory. Retain the residual
+between a nonlinear nominal step and the next interpolated reference. Condense the four-state
+recursion into N corrective inputs; use the same Q/R priorities and local DARE terminal cost.
+Compare frozen and varying Jacobians without changing the physical plant or packet reference.
+
+## ADR-124 — Persistent OSQP workspace with independent residual validation
+
+Use OSQP1.1.3 behind a small solver protocol, fixed CSC structure and online numerical updates.
+Shift the primal solution; measure against zero-start operation. Main workspace construction
+occurs before launch, shortened-horizon workspaces are cached. Adaptive rho every25 iterations
+resolved a fixed-rho convergence problem without relaxing physical residual checks.
+
+## ADR-125 — Local failure replaces only the current correction
+
+QP status, nonfinite output, unacceptable residual or a postvalidation deadline overrun
+selects the exact TVLQR replacement for this update. Log it; preserve elapsed physical latency.
+This never independently requests global Task005 fallback. The predictor clones the active
+tracker, including an independent local solver, so its forecast reflects the new control law.
+
+## ADR-126 — Freeze the longitudinal controller
+
+Both codrivers use a_star+1.0*(vx_star−vx) with identical physical clipping. No extra longitudinal
+states, integrator, optimization or retuning are introduced.
+
+## ADR-127 — Use paired packet replay before closed-loop planning
+
+Replay the exact saved Task006.3 packet arrays and availability, retaining validation gates.
+Suppress new high-level replan scheduling only in this explicitly frozen replay phase.
+Then run full unchanged planning; differences in actual state legitimately change new plans.
+Controlled planner-delay comparisons retain zero simulated codriver latency, with measured
+callback overruns and local QP replacements separately visible; primary runs use measured delay.
+
+## ADR-128 — Export portability requirements instead of Pi utilization claims
+
+Report full-update time, core-seconds/s, QP dimensions/nonzeros and memory separately.
+Use T_target≈T_M1/rho for10ms/5ms throughput requirements. Pi4/Pi5 hardware timing, thermal
+policy, scheduling and native solver/backend behavior remain unmeasured; no Pi percentage.
+
+## ADR-129 — Select N=8 LTV as the experimental MPC candidate
+
+N=8 is the smallest horizon within 5% of the best MPC fixed-packet RMS. Larger horizons,
+rate penalties and LTI approximation did not earn a tracking/cost advantage. Freeze W=0,
+Q/R and DARE settings; shifted warm start is measured, not assumed beneficial. The fixed-input
+warm benchmark was slightly slower than cold; no post-hoc retuning changes published runs.
+
+## ADR-130 — Retain TVLQR for the pre-Task-007 review
+
+MPC improves nominal full-loop steering variation 20.2% but worsens identical-packet tracking,
+adds 55.2% total architecture CPU demand and offers no material disturbance/stress recovery
+benefit. Retain TVLQR, longitudinal P and 0.08 m margin. Keep local MPC experimental; do not
+implement a hybrid or Task 007. Planning supplies the offline racing reference per
+PRE_TASK007_CONTROL_REQUIREMENTS.md; Control consumes and validates it.

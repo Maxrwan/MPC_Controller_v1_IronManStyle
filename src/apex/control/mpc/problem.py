@@ -31,8 +31,11 @@ class MPCConfig:
     minimum_speed: float = 0.5
     denominator_margin: float = 0.01
     minimum_axle_load: float = 1e-6
+    tracker_margin: float = 0.0
 
     def __post_init__(self):
+        if not np.isfinite(self.tracker_margin) or self.tracker_margin < 0:
+            raise ValueError("Tracker margin must be finite nonnegative")
         if not isinstance(self.horizon, int) or self.horizon < 1:
             raise ValueError("Positive integer horizon required")
         if not isinstance(self.substeps, int) or self.substeps < 1:
@@ -91,8 +94,8 @@ class MPCProblem:
 
         objective = 0
         for k in range(n + 1):
-            bound_left = x[S.E_Y, k] - preview[1, k] - slack[0, k]
-            bound_right = -x[S.E_Y, k] - preview[2, k] - slack[1, k]
+            bound_left = x[S.E_Y, k] - preview[1, k] + config.tracker_margin - slack[0, k]
+            bound_right = -x[S.E_Y, k] - preview[2, k] + config.tracker_margin - slack[1, k]
             bounded(ca.vertcat(bound_left, bound_right), -np.inf, 0)
             domain(x[:, k], preview[0, k])
             objective += SLACK_LINEAR * ca.sum1(slack[:, k]) + SLACK_QUADRATIC * ca.sumsqr(
@@ -216,6 +219,12 @@ class MPCProblem:
                 x[:, k + 1] = x[:, k]
             last = u[:, k]
         e = np.maximum(
-            np.vstack((x[S.E_Y, :] - preview.values[1, :], -x[S.E_Y, :] - preview.values[2, :])), 0
+            np.vstack(
+                (
+                    x[S.E_Y, :] - preview.values[1, :] + self.config.tracker_margin,
+                    -x[S.E_Y, :] - preview.values[2, :] + self.config.tracker_margin,
+                )
+            ),
+            0,
         )
         return x, u, e
