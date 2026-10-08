@@ -32,11 +32,17 @@ class MPCController:
         speed_reference=ConstantSpeed(),
         *,
         warm_start=True,
+        racing_reference=None,
     ):
         self.parameters, self.track = parameters, track
         self.problem, self.solver, self.config = problem, solver, problem.config
         self.speed_reference = speed_reference
-        self.terminal = TerminalSchedule(parameters)
+        self.racing_reference = racing_reference
+        if problem.config.racing_reference != (racing_reference is not None):
+            raise ValueError("Racing preview configuration/reference mismatch")
+        self.terminal = TerminalSchedule(
+            parameters, alpha_vy=self.config.costs.alpha_vy, alpha_r=self.config.costs.alpha_r
+        )
         self.use_warm_start = warm_start
         self.fallback = BaselineController(
             replace(parameters, maximum_steering_rate=self.config.steering_rate),
@@ -69,6 +75,7 @@ class MPCController:
             self.config.horizon,
             self.config.dt,
             timing=timing,
+            racing_reference=self.racing_reference,
         )
         timing["preview_time"] = perf_counter() - phase
         phase = perf_counter()
@@ -140,6 +147,14 @@ class MPCController:
                         states=states.tolist(), controls=controls.tolist(), slacks=slacks.tolist()
                     )
                     self.last_diagnostics.update(
+                        objective_components=dict(
+                            zip(
+                                self.problem.component_names,
+                                np.asarray(self.problem.evaluate_components(z, request.parameters))
+                                .ravel()
+                                .tolist(),
+                            )
+                        ),
                         max_slack=float(slacks.max()),
                         slack_sum=float(slacks.sum()),
                         nonzero_slack=bool(np.any(slacks > 0)),

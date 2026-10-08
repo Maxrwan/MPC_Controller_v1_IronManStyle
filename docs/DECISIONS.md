@@ -651,3 +651,196 @@ adds 55.2% total architecture CPU demand and offers no material disturbance/stre
 benefit. Retain TVLQR, longitudinal P and 0.08 m margin. Keep local MPC experimental; do not
 implement a hybrid or Task 007. Planning supplies the offline racing reference per
 PRE_TASK007_CONTROL_REQUIREMENTS.md; Control consumes and validates it.
+
+## ADR-131 — Planning owns the offline racing line and velocity profile
+
+Both global products belong to Planning and are generated before vehicle motion. APEX consumes
+serialized versions and may reject them; it does not become an online global Planning optimizer.
+
+## ADR-132 — Temporary synthetic Planning is independent test infrastructure
+
+scripts/task007a/generate.py produces deterministic fixture files under configs/planning.
+It is never imported by the runtime controller. Future department files use the same schema.
+
+## ADR-133 — Versioned centerline-progress Planning interface
+
+Schema 1 supplies s_track_m, e_y_ref_m, e_psi_ref_rad, kappa_ref_1pm and v_ref_mps with
+explicit SI/frame/speed/heading semantics, track hash, period and interpolation convention.
+Optional a_ref means Fx_total/m. Loader rejects malformed or infeasible inputs before launch.
+
+## ADR-134 — Purpose-built synthetic Grand Prix validation circuit
+
+Use documented periodic control points scaled to the synthetic 0.30 m vehicle, with hairpin,
+medium corner, large sweeper, direction change, two straights and technical/return sections.
+The 154.76 m lap retains feature separation rather than forcing literal real-circuit scaling.
+
+## ADR-135 — Distinguish centerline dynamics from racing geometry
+
+Frenet dynamics, domain checks and trajectory packet curvature retain centerline curvature.
+Racing-reference curvature schedules nominal yaw and geometric steering. Extend preview only
+in explicit racing-reference mode; preserve the original seven-row Task 006 representation.
+
+## ADR-136 — Explicit conservative reference-state approximation
+
+Use vx=v_ref, vy=0, r=v_ref*kappa_ref, supplied ey/epsi and atan(L*kappa_ref) steering.
+This zero-sideslip geometric construction is not exact steady nonlinear tire equilibrium.
+APEX solves the local dynamics; document residual limitations before near-limit work.
+
+## ADR-137 — APEX always active, TVLQR fixed for Task 007A
+
+Keep Candidate C 10 Hz N4, four substeps, exact Hessian, native SINGLE, warm start and all
+original costs/limits/policies. Keep 100 Hz TVLQR and longitudinal gain 1. Preserve measured
+physical-time chronology and 0.08 m margin. Do not bypass APEX in the primary baseline.
+
+## ADR-138 — Observe difficulty; defer adaptive codriver and architecture-value experiments
+
+Log errors, curvature, tire/actuator use, age/reserve and timing. No signals switch controllers.
+Future cached-feedback/TVLQR/MPC supervision requires evidence and hysteresis design. A future
+direct-reference versus APEX-mediated comparison can share the loader API but is not run now.
+
+## ADR-139 — Conservative interface baseline precedes Task 007B
+
+Use synthetic offline curvature/acceleration feasibility passes, not near-limit tuning. Separate
+startup from two complete comparable measured laps. Review reference-state approximations,
+sector evidence and timing before progressively increasing difficulty in Task 007B.
+
+## ADR-140 — Planning supplies nominal intent; APEX owns local feasibility adaptation
+
+Task007B is explicitly authorized after acceptance of007A. Planning still owns the offline
+line and speed profile, which need not form a dynamically exact six-state trajectory.
+Always-active APEX finds a constrained short-horizon realization; TVLQR tracks its valid packet.
+
+## ADR-141 — Optional terminal progress on existing unwrapped state
+
+Use -lambda_s*(s_N-s_0)/(v_max*N*dt), with lambda_s default0. No new variable and no wrapped
+progress. Normalization is a scale, not a hard upper bound. Do not reward tire utilization
+or constraint activity. Preserve Q/R/W, terminal/slack terms and all existing hard constraints.
+
+## ADR-142 — Separate hard reference validity from feasibility diagnostics
+
+The default007A loader remains strict. Explicit007B advisory mode still rejects malformed
+schema/geometry, wrong identity, corridor/margin violations and invalid speed domain. It reports
+conservative lateral, steering/rate and acceleration/braking conflicts without repairing them.
+Offline cap-crossing polynomial serialization preserves exact capped nominal speed intent.
+
+## ADR-143 — Controlled aggression and experimental progress-weight selection
+
+Scale only the accepted speed profile, preserve line/heading/curvature and freeze the geometric
+nominal-state construction pending evidence. Run B0–B4 in order, retain failures, and select
+Pareto-efficient candidates rather than one aggregate score. Prefer the smallest safe weight
+with meaningful repeatable benefit. No silent slack, reference-state or codriver retuning.
+
+## ADR-144 — Two first-class error layers and required telemetry
+
+Evaluate Planning→APEX deviation at each predicted node's own unwrapped progress. Keep it
+separate from logged vehicle-minus-active-packet errors. Export all objective groups, sideslip,
+model defects, domain/constraint margins, timing and reserve. Required full-trend and cross-case
+PNG dashboards support review; summary RMS alone is insufficient.
+
+## ADR-145 — Frozen TVLQR and deferred supervisor through Task007B
+
+Keep TVLQR100Hz and APEX10Hz always active. Log prospective supervisory observations without
+an index or switching. Measured physics/latency chronology and supported native SINGLE workers
+remain mandatory, with serialized benchmarks and separate zero/injected supporting evidence.
+
+## ADR-146 — Scope the progress-weight recommendation to demonstrated behavior
+
+The complete conservative laps confirm lambda=2 as the smallest screened weight exceeding
+the predeclared 0.2% benefit criterion; lambda=1 does not. This is a gamma=1 synthetic-case
+selection, not a universal progress setting. At gamma=2 neither weight improves the complete-lap
+mean. At gamma=2.5, lambda=1 produces planned oscillation and lambda=2 material margin slack.
+Retain and reject those cases without changing costs, physics, reference states or TVLQR.
+Progress remains disabled by default. Review planner/reference quality before authorizing any
+future supervisor or nominal-state redesign; local tracking alone does not explain the rejection.
+
+## ADR-147 — Diagnose APEX before changing the codriver
+
+Task007C explicitly accepts Task007B and first requires reproduction of six anchors, including
+rejected high-demand behavior. Failure to reproduce blocks formulation experiments. TVLQR,
+Planning and physical plant remain frozen. Adaptive codriver and Task007D remain deferred.
+
+## ADR-148 — Question Control-owned dynamic pseudo-reference penalties
+
+Planning supplies geometric and velocity intent; Control constructs vy_ref=0 and r_ref=v*kappa.
+After the reproduction gate, isolate their reference-tracking penalties with nonnegative
+alpha_vy/alpha_r multipliers, default one. States, nonlinear dynamics, physical constraints and
+logging remain present. Regenerate the separate terminal DARE Q/P consistently while preserving
+its geometric priorities and construction method; never zero arbitrary P rows or columns.
+
+## ADR-149 — Sideslip and oscillation are first-class diagnostic outputs
+
+Report planned/actual beta distributions and relationships to demand, tires and cost multipliers.
+Report variation, reversals, rate activity and peak-to-peak motion individually, without a scalar
+difficulty score. Distinguish within-prediction activity from successive active-plan handoffs.
+Use common physical sectors and a common 0.4 s prediction prefix for horizon comparisons.
+
+## ADR-150 — Isolate horizon and static progress hypotheses
+
+Test N4/N6/N8 with dt=0.1 s and integration substeps fixed, independently of dynamic-state
+cost ablation. Compare behavioral gain against measured solver, preparation, deadline and CPU
+costs. Map static progress weights separately; do not freeze a production scheduling function.
+Any optional temporary gate requires clear static-map evidence and remains diagnostic only.
+
+## ADR-151 — Separate region and failure-source interpretations
+
+Hairpin, rapid direction changes and fast sweeper receive separate zooms and analyses.
+Distinguish excessive Planning demand, undesirable APEX formulation behavior, local codriver
+tracking limitations and unresolved interactions. Neither nonzero sideslip nor a nominal-intent
+deviation alone is a failure. Do not infer codriver failure from accurately tracked bad plans.
+
+## ADR-152 — Stop Task007C at a failed reproduction prerequisite
+
+All six unchanged anchors and one extra measured repeat of each rejected E/F were retained.
+Neither E run reproduced the original severe sweeper heading variation and persistent rate
+activity. Neither F run reproduced the original material slack and physical-margin shortfall.
+Stop C1–C4 before any runtime formulation modification, as required by the Task007C brief.
+Retain offline diagnostics, quantitative comparisons, sector plots and chronology verification.
+Matching E/F source, fixtures, configurations and startup does not prove a timing-only cause;
+measured latency is an unresolved candidate for a separate controlled reproducibility study.
+Do not relax the gate retrospectively or select only a convenient run. TVLQR remains frozen,
+adaptive codriver and Task007D remain deferred. The study is incomplete, not a successful
+formulation ablation or evidence that the original pathology has disappeared.
+
+## ADR-153 — Resolve reproducibility before Task007C formulation ablation
+
+Task007C-R is authorized to isolate timing, exact-NLP, warm-start and state sensitivity.
+Physical computation delays are part of closed-loop state history. Add opt-in recorded/fixed
+availability schedules while preserving default measured behavior and all mathematical choices.
+Startup remains gated; trace exhaustion stops explicitly without extrapolating missing history.
+Capture exact numeric requests and serialized NLP graphs for solver repeatability, keeping
+instrumentation overhead visible. No retuning, adaptive codriver or C1–C4 before this gate resolves.
+
+## ADR-154 — Task007C-R resolves reproduction with controlled physical timing
+
+Original E/F availability-history replay reproduces original states, optimized predictions,
+commands and handoffs exactly. Fixed histories are deterministic; selected identical NLPs and
+fresh solver reconstructions agree exactly. Measured timing varies physical outcomes, including
+unsafe F outcomes. Single ready-delay interventions alter subsequent history with unchanged
+pre-intervention states and unchanged selected-update solution. Treat timing history as an
+experimental input, distinct from solver nondeterminism. Sampled warm/state probes do not find
+alternative local branches; this does not prove global uniqueness or absence of sensitivity.
+
+Task007C's reproducibility gate is scientifically resolved. C1–C4 may resume under their
+original intent, with controlled timing comparisons and serialized measured repetitions. They
+are not part of Task007C-R and remain unexecuted. Always-active APEX/fixed TVLQR remain frozen;
+adaptive switching is deferred. No physical safety acceptance follows from this gate: deterministic
+fixed-history F and some measured/cross-history F cases cross the boundary.
+
+Retain finite-trace censoring and distinguish ready time from accepted handoff. Availability
+events also partition the unchanged RK4 integrator and update the delay estimator; R7 is a
+causal intervention on the implemented availability history, not a proof isolating all
+continuous-time effects. Record exact NLP inputs before attributing differences to a solver.
+
+## ADR-155 — Resume C1–C4 with independent pseudo-reference weights and robustness priority
+
+The user authorizes original C1–C4 after Task007C-R, with matched deterministic histories,
+representative retained histories and sequential measured repetitions. Preserve all prior evidence
+and keep a separate resumed result directory. Add alpha_vy/alpha_r, default1, only to NMPC stage
+tracking importance and its independently generated compatible DARE terminal schedule. Nonlinear
+states/constraints and TVLQR are unchanged. Validate zero-weight DARE cases and exact default
+compatibility. No simultaneous horizon/cost retuning or production default change.
+
+Physical safety and model/solver validity precede smoothness, timing robustness, tracking and
+lap performance. Finite replay histories remain censored without fabricated tails. Future
+committed-prefix/fixed-handoff timing changes and the post-identification workbench/real-time
+checkpoint are documented, not implemented. Stop after C1–C4 recommendations for review.

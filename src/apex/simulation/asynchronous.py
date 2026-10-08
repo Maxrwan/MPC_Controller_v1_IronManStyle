@@ -10,6 +10,7 @@ from apex.control.trajectory.packet import TrajectoryBuffer
 from apex.control.trajectory.prediction import RollingDelay, UrgentReplan
 from apex.coordinates.angles import wrap_angle
 from apex.models.errors import ModelValidationError
+from apex.simulation.diagnostic_timing import ReplayExhausted
 from apex.state import STATE_NAMES
 from apex.state import StateIndex as S
 
@@ -71,9 +72,12 @@ class AsyncConfig:
 class AsyncRunner:
     """One pending solve and one completed future-dated packet, never a solver queue."""
 
-    def __init__(self, plant, planner, tracker, track, config=AsyncConfig(), estimator=None):
+    def __init__(
+        self, plant, planner, tracker, track, config=AsyncConfig(), estimator=None, *, timing=None
+    ):
         self.plant, self.planner, self.tracker, self.track = plant, planner, tracker, track
         self.config = config
+        self.timing = timing
         if not np.isclose(config.tracker_dt, tracker.config.dt, atol=1e-12, rtol=0):
             raise ValueError("Scheduler and tracker periods must match")
         self.estimator = estimator or RollingDelay()
@@ -165,7 +169,11 @@ class AsyncRunner:
             tracker.previous = command.copy()
             estimate = self.estimator.estimate()
             packet, event = self.planner.prepare(plan_id, x, t, estimate, buffer, tracker)
-            delay = c.delay(plan_id, event["planner_total_time"])
+            delay = (
+                c.delay(plan_id, event["planner_total_time"])
+                if self.timing is None
+                else self.timing.planner_delay(plan_id)
+            )
             if plan_id in c.failed_plan_ids:
                 packet = None
                 event.update(success=False, status="Injected_planner_failure")
@@ -348,6 +356,8 @@ class AsyncRunner:
                     latency = (
                         diagnostics["total_time"] if c.codriver_delay is None else c.codriver_delay
                     )
+                    if self.timing is not None:
+                        latency = self.timing.codriver_delay(len(controls))
                     row["physical_latency"] = latency
                     actuator_pending = (t + latency, proposed, row)
                     tracker_index += 1
@@ -420,6 +430,8 @@ class AsyncRunner:
                         stop, t = "target_laps", next_time
                         break
                 t = next_time
+        except ReplayExhausted as exception:
+            failure, stop = str(exception), "diagnostic_trace_exhausted"
         except (ModelValidationError, ValueError) as exception:
             failure, stop = str(exception), "model_or_control_validity_failure"
         return dict(

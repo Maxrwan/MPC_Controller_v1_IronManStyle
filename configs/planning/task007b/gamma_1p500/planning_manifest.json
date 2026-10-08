@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "reference_version": "task007b-gamma-1.5",
+  "track_name": "synthetic_grand_prix_v1",
+  "track_sha256": "5f4d1734d7fec7de56d346e8f90bf272a3de9c05ac42f76cd49004e7f9183e55",
+  "closed_track_length_m": 154.76345492731022,
+  "generator_revision": "task007b-speed-scaling-v2",
+  "synthetic_test_only": true,
+  "units": "SI",
+  "frame": "world_xy_m; Frenet left-positive; radians CCW",
+  "progress": "centerline_arc_length_m",
+  "interpolation": "periodic_cubic_channels",
+  "heading_semantics": "body heading approximated by racing-line tangent; zero nominal sideslip",
+  "speed_semantics": "body_longitudinal_mps",
+  "acceleration_semantics": "omitted",
+  "tracker_margin_m": 0.08,
+  "minimum_speed_mps": 0.5,
+  "maximum_speed_mps": 6.0,
+  "generation": {
+    "sample_spacing_max_m": 0.05,
+    "lateral_acceleration_limit_mps2": 1.5,
+    "acceleration_limit_mps2": 0.4,
+    "braking_limit_mps2": 0.6,
+    "speed_cap_mps": 3.0,
+    "offline_only": true
+  },
+  "sectors": [
+    {
+      "start_s_m": 0.0,
+      "name": "long_straight"
+    },
+    {
+      "start_s_m": 21.023586308047943,
+      "name": "hairpin"
+    },
+    {
+      "start_s_m": 27.78530681910763,
+      "name": "acceleration_zone"
+    },
+    {
+      "start_s_m": 31.79663300547292,
+      "name": "medium_corner"
+    },
+    {
+      "start_s_m": 41.07079866745727,
+      "name": "fast_sweeper"
+    },
+    {
+      "start_s_m": 66.19665359010386,
+      "name": "direction_change"
+    },
+    {
+      "start_s_m": 81.04324569067502,
+      "name": "second_straight"
+    },
+    {
+      "start_s_m": 97.27700976544726,
+      "name": "technical_section"
+    },
+    {
+      "start_s_m": 123.38300452685894,
+      "name": "return_complex"
+    }
+  ],
+  "aggression_factor": 1.5,
+  "aggression_policy": "scale_base_speed_then_global_cap",
+  "base_reference_sha256": "f1c582bb0667ae7aa8393c66eb0b811ad45ae9cdd9e496634f7c06015fdd27c4"
+}

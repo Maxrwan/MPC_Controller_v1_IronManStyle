@@ -30,7 +30,11 @@ Synchronous controllers hold the prior command; Task006.3 asynchronous planners 
 codriver/actuator misses. Never pause physics or silently remove latency; measured timing is not an
 exact CI pass/fail assertion. Task006.2 synchronous tuning is documented in NMPC_PARAMETER_STUDY.md; preserve its reference and explicit candidate configurations. Task006.3 asynchronous planning is implemented; follow ASYNC_PLANNER_CODRIVER_SPEC.md.
 Task 006.4 comparison is complete; retain TVLQR as default. See LINEAR_MPC_CODRIVER_STUDY.md.
-Task 007 racing is not implemented; next is the pre-Task-007 review gate. Further tire/suspension physics, estimation,
+Task 007A offline racing-reference integration is complete; follow TASK007A_RACING_REFERENCE_INTERFACE.md.
+Planning owns the offline racing line and velocity profile. Keep APEX always active and TVLQR fixed.
+Task 007B progress/aggression study is implemented; follow TASK007B_PROGRESS_SEEKING_RACING.md.
+Progress defaults disabled; lambda=2 is selected only for the conservative synthetic gamma=1 case.
+Retain rejected high-demand cases and keep adaptive switching deferred pending separate review. Further tire/suspension physics, estimation,
 identification, energy, opponent and tactics require later specifications.
 
 Threading experiments must retain an explicit deterministic single-thread mode. Inspect the

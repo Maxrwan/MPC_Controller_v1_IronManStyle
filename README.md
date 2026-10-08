@@ -167,4 +167,23 @@ Use fresh names/output directories: existing measurements are retained.
 Task 006.4 is complete: 26 cases compare small lateral MPC with TVLQR; retain TVLQR.
 See [study](docs/LINEAR_MPC_CODRIVER_STUDY.md), [results](docs/LINEAR_MPC_CODRIVER_RESULTS.md)
 and [reproduction commands](docs/LINEAR_MPC_REPRODUCTION.md).
-Task007 racing remains deferred.
+Task 007B adds optional terminal progress; adaptive codriver switching remains deferred.
+
+## Task 007A — offline racing-reference integration
+
+Planning owns the offline racing line and velocity profile. A separate temporary synthetic
+generator creates the Grand Prix fixture under `configs/planning/synthetic_grand_prix_v1`.
+Runtime APEX loads and validates that serialized reference, remains active at 10 Hz and supplies
+the unchanged 100 Hz TVLQR codriver. No adaptive switching or near-limit tuning is included.
+See [interface specification](docs/TASK007A_RACING_REFERENCE_INTERFACE.md).
+
+## Task 007B — progress seeking and aggressive nominal references
+
+The offline line remains unchanged. Separate packages scale only nominal speed, while APEX
+may adapt the request through its existing constrained dynamics. Progress reward defaults to
+zero. The study selects lambda=2 only for the conservative gamma=1 experiment; aggressive
+progress cases expose oscillation and margin-slack limitations. TVLQR remains unchanged.
+
+See the [study specification](docs/TASK007B_PROGRESS_SEEKING_RACING.md),
+[measured results](docs/TASK007B_RESULTS.md), [reproduction](docs/TASK007B_REPRODUCTION.md),
+and [review artifacts](results/task007b).

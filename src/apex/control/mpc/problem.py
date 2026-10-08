@@ -10,6 +10,7 @@ from apex.control.mpc.cost import (
     SLACK_LINEAR,
     SLACK_QUADRATIC,
     CostScales,
+    stage_components,
     stage_cost,
     terminal_cost,
 )
@@ -32,8 +33,12 @@ class MPCConfig:
     denominator_margin: float = 0.01
     minimum_axle_load: float = 1e-6
     tracker_margin: float = 0.0
+    racing_reference: bool = False
+    progress_weight: float = 0.0
 
     def __post_init__(self):
+        if not np.isfinite(self.progress_weight) or self.progress_weight < 0:
+            raise ValueError("Progress weight must be finite nonnegative")
         if not np.isfinite(self.tracker_margin) or self.tracker_margin < 0:
             raise ValueError("Tracker margin must be finite nonnegative")
         if not isinstance(self.horizon, int) or self.horizon < 1:
@@ -71,9 +76,10 @@ class MPCProblem:
         x = ca.MX.sym("X", 6, n + 1)
         u = ca.MX.sym("U", 2, n)
         slack = ca.MX.sym("slack", 2, n + 1)
-        p = ca.MX.sym("parameters", 6 + 2 + 7 * (n + 1) + 16)
+        preview_dim = 11 if config.racing_reference else 7
+        p = ca.MX.sym("parameters", 6 + 2 + preview_dim * (n + 1) + 16)
         sampled, previous = p[:6], p[6:8]
-        preview = ca.reshape(p[8 : 8 + 7 * (n + 1)], 7, n + 1)
+        preview = ca.reshape(p[8 : 8 + preview_dim * (n + 1)], preview_dim, n + 1)
         terminal_p = ca.reshape(p[-16:], 4, 4)
         equalities = [x[:, 0] - sampled]
         inequalities, lower, upper = [], [], []
@@ -93,6 +99,17 @@ class MPCProblem:
             )
 
         objective = 0
+        components = dict.fromkeys(
+            [
+                "state_tracking",
+                "input_reference",
+                "input_increment",
+                "terminal_tracking",
+                "slack_linear",
+                "slack_quadratic",
+            ],
+            0,
+        )
         for k in range(n + 1):
             bound_left = x[S.E_Y, k] - preview[1, k] + config.tracker_margin - slack[0, k]
             bound_right = -x[S.E_Y, k] - preview[2, k] + config.tracker_margin - slack[1, k]
@@ -101,13 +118,23 @@ class MPCProblem:
             objective += SLACK_LINEAR * ca.sum1(slack[:, k]) + SLACK_QUADRATIC * ca.sumsqr(
                 slack[:, k]
             )
+            components["slack_linear"] += SLACK_LINEAR * ca.sum1(slack[:, k])
+            components["slack_quadratic"] += SLACK_QUADRATIC * ca.sumsqr(slack[:, k])
             if k == n:
+                components["terminal_tracking"] = config.costs.terminal * terminal_cost(
+                    x[:, k], preview[:, k], terminal_p
+                )
                 objective += config.costs.terminal * terminal_cost(
                     x[:, k], preview[:, k], terminal_p
                 )
                 continue
             prior = previous if k == 0 else u[:, k - 1]
             objective += stage_cost(x[:, k], u[:, k], prior, preview[:, k], config.costs)
+            for name, term in zip(
+                ["state_tracking", "input_reference", "input_increment"],
+                stage_components(x[:, k], u[:, k], prior, preview[:, k], config.costs),
+            ):
+                components[name] += term
             bounded(
                 u[0, k] - prior[0],
                 -config.steering_rate * config.dt,
@@ -124,6 +151,11 @@ class MPCProblem:
             equalities.append(x[:, k + 1] - next_state)
             for j in range(stages.shape[1]):
                 domain(stages[:, j], preview[0, k])
+        progress = (x[S.S_ABS, n] - x[S.S_ABS, 0]) / (parameters.maximum_speed * n * config.dt)
+        components["progress_reward"] = -config.progress_weight * progress
+        if config.progress_weight:
+            objective += components["progress_reward"]
+        components["total"] = objective
         decision = ca.vertcat(ca.vec(x), ca.vec(u), ca.vec(slack))
         eq = ca.vertcat(*equalities)
         constraints = ca.vertcat(eq, *inequalities)
@@ -170,6 +202,10 @@ class MPCProblem:
         self.ubx = self.pack(xu, uu, np.full((2, n + 1), np.inf))
         self.nlp = {"x": decision, "p": p, "f": objective, "g": constraints}
         self.evaluate = ca.Function("evaluate_nlp", [decision, p], [objective, constraints])
+        self.component_names = tuple(components)
+        self.evaluate_components = ca.Function(
+            "objective_components", [decision, p], [ca.vertcat(*components.values())]
+        )
         self.construction_seconds = perf_counter() - construction_start
 
     def pack(self, states, controls, slacks):

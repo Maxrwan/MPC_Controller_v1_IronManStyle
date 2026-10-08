@@ -29,6 +29,7 @@ def make_preview(
     horizon: int = 20,
     dt: float = 0.05,
     timing: dict | None = None,
+    racing_reference=None,
 ) -> Preview:
     samples, positions = [], []
     s = float(progress)
@@ -38,6 +39,30 @@ def make_preview(
         g = track.sample(wrap_progress(s, track.length))
         geometry_seconds += perf_counter() - start
         start = perf_counter()
+        if racing_reference is not None:
+            ref = racing_reference.sample(s)
+            speed = ref["v_ref_mps"]
+            ey, epsi, kr = ref["e_y_ref_m"], ref["e_psi_ref_rad"], ref["kappa_ref_1pm"]
+            # Explicit zero-sideslip geometric baseline, not steady dynamic force balance.
+            positions.append(s)
+            samples.append(
+                [
+                    g.curvature,
+                    g.left_width,
+                    g.right_width,
+                    speed,
+                    0.0,
+                    speed * kr,
+                    np.arctan(parameters.wheelbase * kr),
+                    ey,
+                    epsi,
+                    kr,
+                    ref["a_ref_mps2"],
+                ]
+            )
+            reference_seconds += perf_counter() - start
+            s += dt * speed * np.cos(epsi) / (1 - g.curvature * ey)
+            continue
         speed = validate_reference_speed(speed_reference(g.track_s))
         ref = cornering_reference(parameters, speed, g.curvature)
         reference_seconds += perf_counter() - start

@@ -1,0 +1,10 @@
+{
+  "name": "synthetic_grand_prix_v1",
+  "revision": "1",
+  "method": "periodic cubic spline through ordered SI control points; chord parameter, numerical arc length",
+  "wheelbase_scale_m": 0.30,
+  "left_width_m": 0.55,
+  "right_width_m": 0.55,
+  "control_points_m": [[3,0],[8,0],[16,0],[22,0],[24,0],[24.849,-0.351],[25.2,-1.2],[24.849,-2.049],[24,-2.4],[21,-2.4],[17,-2.4],[14.879,-3.279],[14,-5.4],[14,-10],[13.391,-13.061],[11.657,-15.657],[9.061,-17.391],[6,-18],[2.939,-17.391],[0.343,-15.657],[-1.391,-13.061],[-2,-10],[-2.2,-7],[-4,-4],[-5,0],[-4,4],[-4,10],[-4,17],[-3,20],[0,22],[4,22],[7,20],[10,22],[14,22],[17,20],[18,17],[17,14],[14,12],[8,12],[3,10],[0,7],[0,3],[0.879,0.879]],
+  "sector_anchor_indices": [[0,"long_straight"],[4,"hairpin"],[9,"acceleration_zone"],[10,"medium_corner"],[13,"fast_sweeper"],[21,"direction_change"],[25,"second_straight"],[28,"technical_section"],[35,"return_complex"]]
+}

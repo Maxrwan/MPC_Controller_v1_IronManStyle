@@ -60,3 +60,18 @@ reference plus schema, track/vehicle calibration status, validation tolerances a
 policy. Decide ownership of reference repair, speed conventions, seam interpolation and
 low-speed handling. Then specify the controller-side reference adapter and tests. No racing-line
 generator, velocity-profile optimizer, ROS integration or target deployment is included here.
+
+## Implemented Task 007A schema clarification
+
+Schema 1 is implemented by apex/planning_reference. Planning provides the five required
+CSV channels s_track_m, e_y_ref_m, e_psi_ref_rad, kappa_ref_1pm, v_ref_mps, with one repeated
+closed endpoint, <=0.1m sampling, explicit centerline-arc index and periodic cubic channels.
+The current baseline interprets speed as body-longitudinal and heading as geometric tangent
+with zero nominal sideslip. Optional a_ref_mps2 is Fx_total/m and must declare that convention.
+
+The manifest includes schema/reference versions, exact track-source SHA256, track length/name,
+source revision, SI/frame/progress/interpolation conventions, speed/heading/acceleration meaning,
+0.08m tracker margin and approved speed domain. See TASK007A_RACING_REFERENCE_INTERFACE.md
+for exact strings, conservative validation thresholds and reference-state approximations.
+The runtime never regenerates or silently repairs the supplied files. Planning must provide
+replacements that pass validation; revisions of semantics require an explicit schema review.

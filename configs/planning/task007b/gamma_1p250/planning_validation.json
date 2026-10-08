@@ -1,0 +1,31 @@
+{
+  "accepted": true,
+  "feasibility_policy": "advisory",
+  "feasibility_warnings": [
+    "Initial baseline lateral grip reserve exceeded",
+    "Acceleration/braking infeasible"
+  ],
+  "samples": 6193,
+  "lap_length_m": 154.76345492731022,
+  "centerline_curvature_min": -1.0928787489838756,
+  "centerline_curvature_max": 1.027464325752735,
+  "reference_curvature_min": -1.2109620993318344,
+  "reference_curvature_max": 0.918513236536,
+  "speed_min": 1.393293299225,
+  "speed_max": 3.7509885702554007,
+  "minimum_boundary_clearance_m": 0.32964605491150056,
+  "minimum_frenet_denominator": 0.7766972330567921,
+  "maximum_lateral_demand_mps2": 2.356698155377439,
+  "maximum_steering_rad": 0.3484638467041977,
+  "maximum_steering_rate_rad_s": 0.7507626270587795,
+  "acceleration_max": 0.8728696290012411,
+  "braking_min": -1.1858480009904047,
+  "geometric_heading_error_max": 0.00015562391620793647,
+  "geometric_curvature_error_max": 0.017931073606127335,
+  "sampled_self_intersections": 0,
+  "reference_self_intersections": 0,
+  "seam_position_gap_m": 1.0000001719455091e-07,
+  "seam_heading_gap_rad": 9.780421361682556e-09,
+  "seam_curvature_gap": 8.835655165850831e-09,
+  "caveat": "Conservative synthetic gates and dense polyline intersection checks; not a global dynamic feasibility proof"
+}
