@@ -1,3 +1,47 @@
+# APEX handoff — Task007D-D5 offline forensics complete; stop for review
+
+Read TASK007D_D5_CAUSAL_REVIEW.md and compact docs/task007d/d5/. D5 analyzes retained D4
+records only: no new forecast, solver/plant execution, campaign or controller/runtime edit.
+Started on clean main feb7c706f3f4b16d2a50240f151070b57e9cf50e. Delivery SHA/URL is in the
+final report and Git history under the standing commit-and-push workflow.
+
+R4 minima reproduce exactly: A 0.22866129128417373 m at 1.865 s, s=11.454454794338089 m;
+B 0.10218470460178081 m at 1.890 s, s=11.537880251173657 m. Both are right-limited in the
+synthetic long_straight, with constant 0.55 m half-widths. B leaves 0.022184704601780805 m
+beyond the unchanged 0.08 m margin. At B's minimum time the gap is -0.129529941 m; nominal
+position contributes -0.129652013 m, tracking difference +0.000122072 m. At matched progress
+the gap remains approximately -0.127621029 m. Width/progress alone do not explain the loss.
+Nominal starts inherit the diverging physical states: this algebra does not prove a unique
+upstream cause or a newly unsafe packet. Plan 18 inherits an already large lateral gap.
+
+First chain verified: identical release context at 0.100 s, differing predicted x0/previous
+input and optimized packet 1, acceptance at 0.160 s, acceleration split at 0.175 s, state
+split at 0.180 s. Steering stays identical until the packet-6 request at 0.700 s applies at
+0.715 s; subsequent heading/lateral separation grows. Full NLP/warm-start/internal forecast
+traces are unavailable, so causal attribution to a single release remains unresolved.
+
+Low-latency release 2 dominates aggregate A squared errors. Later B heading/lateral RMS
+worsens in R1/R2/R3 on both host histories. Worst added absolute errors across those histories:
+0.00229321 rad/s yaw, 0.000140944 rad heading, 0.0000128980 m lateral. These are above roundoff
+but small absolute errors; ratios alone do not justify predictor changes. Unknown future
+latency cannot explain zero-latency R1; held-curvature approximation/error cancellation is
+a hypothesis, not an established cause. The large R4 clearance loss is a separate risk.
+
+Verification: 15 focused offline tests pass; scoped Ruff lint/format pass. Export is byte-
+reproducible. All 1,400 driver references, 152 handoff residuals and 152 retained active
+forecast inputs match exactly; no chronology issue. All 40 D4 files retain SHA-256, all
+10,913 prior results retain size/mtime, all other 417 prior tracked files are unchanged.
+No raw archives committed. Existing D4 scientific gates remain clear; synthetic recorded
+clearance does not certify continuous-time body safety or physical vehicle validity.
+
+Recommendation: retain A default and B experimental. A separately authorized bounded C
+investigation is scientifically reasonable, including legacy A to isolate fixed-handoff
+effects. Do not select B automatically. A common-release checkpoint with full optimizer and
+tracker traces is the minimum next diagnostic for causal attribution; it was not executed.
+**STOP AFTER D5. Task007D remains incomplete. Await Engineering Orchestrator review.**
+
+---
+
 # APEX handoff — Task007D-D4 complete; stop for review
 
 D4 ran exactly eight sequential SINGLE synthetic N8/gamma2 pilots, two seconds each:
