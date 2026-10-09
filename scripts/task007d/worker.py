@@ -82,12 +82,12 @@ def run(args, native):
         p, problem.lbx[problem.nx : problem.nx + 2], problem.ubx[problem.nx : problem.nx + 2]
     )
     plant = DynamicBicycle(p, track, tire_physics=RACING_TIRE_PHYSICS)
-    timing = DiagnosticTiming("fixed", (0.035,), (0.015,))
+    timing = DiagnosticTiming("fixed", (args.planner_delay,), (args.codriver_delay,))
     simulation = AsyncConfig(
         duration=args.duration,
         latency_mode="injected",
-        injected_delay=0.035,
-        codriver_delay=0.015,
+        injected_delay=args.planner_delay,
+        codriver_delay=args.codriver_delay,
         committed_prefix_prediction=args.architecture == "B",
     )
     ref = reference.sample(1.0)

@@ -1,3 +1,45 @@
+# APEX handoff — Task007D-D4 complete; stop for review
+
+D4 ran exactly eight sequential SINGLE synthetic N8/gamma2 pilots, two seconds each:
+A/B at planner/codriver delays 35/0, 35/5, 60/5 and 60/15 ms. Reused D3 35/15 ms evidence
+without rerunning it. Read TASK007D_AB_TIMING_SENSITIVITY.md and docs/task007d/d4/.
+Only pilot CLI/worker delay plumbing and offline analysis/tests were extended; all src/
+modules, controller mathematics, estimator, scheduler and production defaults are unchanged.
+
+There are 152 new comparable release contexts: 38 pending due-now, 114 future-pending,
+zero no-pending. All active shadow forecasts exactly reproduce runtime NMPC inputs;
+no forecast failures or missing targets. Existing isolated no-pending tests still pass.
+All six aggregate RMS errors improve in every regime and both host histories, including
+when the first runtime release is excluded. Thus aggregate benefit is not restricted to
+15 ms driver latency or skipped ticks. This does not establish per-release superiority.
+
+Important adverse findings: low-latency heading/lateral errors worsen on most later releases;
+release 2 dominates their aggregate A squared error. An explicitly post hoc releases 3–19
+check reveals RMS deterioration in several low-latency channels. R4-B minimum center
+clearance falls to 0.102185 m from A's 0.228661 m, leaving only 0.022185 m above the frozen
+0.08 m tracking margin, despite improved tracking RMS. No gate triggered, but this material
+clearance loss must not be hidden by the favorable prediction averages.
+
+All runs have common recorded coverage 0–1.995 s, 19 accepted handoffs, zero rejected packets,
+boundary observations, solver/model failures, exhaustion or fallback; slack <9.1e-11 m.
+Planner misses are zero; driver busy ticks are 0 for 0/5 ms and 100 for 15 ms. Readiness/target
+mismatch is 18 ms (35 ms planner) or 43 ms (60 ms planner) initially, then zero. Accepted
+handoff continuity and aligned prediction errors remain separate. First state divergences
+occur at 0.145/0.150/0.170/0.180 s for R1–R4, after accepted packet authority and application.
+
+Verification: 133 focused tests passed in 7.94 s (17 new plus 116 retained), scoped Ruff checks
+passed, and repeat export is byte-identical. Raw evidence (~10 MiB) stays ignored under
+results/task007d/d4; compact per-state/phase/timestamp data and source hashes are committed.
+D3 and all historical evidence remain preserved. Started on clean main
+784e86ff0aceb5f779b475fdfb6cf7d0d94912ec; delivery SHA is in the final report/Git history.
+
+Recommendation: keep B as a research candidate, not yet the selected Architecture C predictor.
+Authorize a separate bounded causal audit of low-latency release 2/3 regressions and R4-B
+clearance loss before any refinement or adoption. **STOP AFTER D4.** Task007D is incomplete;
+no Architecture C, production-default change, full lap or measured campaign is authorized.
+
+---
+
 # APEX handoff — Task007D-D3 complete; stop for review
 
 D3 adds opt-in detached release capture and offline same-target A/B scoring. Architecture A
