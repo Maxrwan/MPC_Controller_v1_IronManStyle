@@ -1,0 +1,1697 @@
+{
+  "runs": {
+    "gamma1.8_A": {
+      "architecture": "A",
+      "gamma": 1.8,
+      "requested_duration": 2.0,
+      "configuration": {
+        "tire_physics": {
+          "model": "smooth_combined_grip",
+          "longitudinal_allocation": "normal_load_proportional"
+        },
+        "costs": {
+          "lateral": 2,
+          "dynamic": 1.0,
+          "speed": 1.0,
+          "control": 1.0,
+          "rate": 1.0,
+          "terminal": 1.0,
+          "alpha_vy": 1.0,
+          "alpha_r": 1.0
+        },
+        "horizon": 8,
+        "dt": 0.1,
+        "substeps": 4,
+        "steering_rate": 1.0,
+        "minimum_speed": 0.5,
+        "denominator_margin": 0.01,
+        "minimum_axle_load": 1e-06,
+        "tracker_margin": 0.08,
+        "racing_reference": true,
+        "progress_weight": 0
+      },
+      "timing": {
+        "mode": "fixed",
+        "planner": [
+          0.035
+        ],
+        "codriver": [
+          0.015
+        ]
+      },
+      "simulation": {
+        "planner_dt": 0.1,
+        "tracker_dt": 0.01,
+        "plant_dt": 0.005,
+        "duration": 2.0,
+        "laps": 2,
+        "latency_mode": "injected",
+        "injected_delay": 0.035,
+        "spike_plan_id": -1,
+        "spike_delay": 0.15,
+        "failed_plan_ids": [],
+        "disturbance_time": null,
+        "disturbance_ey": 0.08,
+        "disturbance_heading": -0.04,
+        "urgent": true,
+        "codriver_delay": 0.015,
+        "committed_prefix_prediction": false
+      },
+      "initial_state": [
+        4.728461924554803,
+        0.0,
+        0.896991901012942,
+        0.034598592705642695,
+        1.0,
+        -0.11268618155631815
+      ],
+      "fixture": "configs/planning/task007c_resume/gamma_1p800",
+      "fixture_sha256": {
+        "configs/planning/task007c_resume/gamma_1p800/planning_manifest.json": "fc40799fa5fe53117f71470db5d4a02661b50fae795c8bdf23f8bb4bb549e033",
+        "configs/planning/task007c_resume/gamma_1p800/planning_reference.csv": "56076cd54756bfea4919e66149e049ffaf291ea265cdf9706d72525fb077caff",
+        "configs/planning/task007c_resume/gamma_1p800/planning_validation.json": "49525256c78921e5d9d5cad8320a4471ce162feeafe4627d9f5906dd85f2f95e",
+        "configs/planning/task007c_resume/gamma_1p800/track_source.json": "5f4d1734d7fec7de56d346e8f90bf272a3de9c05ac42f76cd49004e7f9183e55"
+      },
+      "vehicle_sha256": "df1b853d21a1d3efaf858f7e58401151f2c5237793c40e16bb4189ed651f9cf3",
+      "base_commit": "b27c0465f3cb1a13ad20152c17bcfadb37c2a8c4",
+      "native": {
+        "requested_ceiling": 1,
+        "set_status": 0,
+        "blas_threading_mode": 1,
+        "mode_name": "single",
+        "exact_active_thread_count_available": false
+      },
+      "threadpools": [],
+      "observed_process_thread_counts": [
+        1
+      ],
+      "runtime_wall_seconds": 3.265370042063296,
+      "runtime_cpu_seconds": 3.257199999999999,
+      "runtime_cpu_wall_ratio": 0.9974979735962377,
+      "python": "3.12.14 (main, Sep  1 2026, 14:09:38) [Clang 22.1.3 ]",
+      "platform": "macOS-26.5.1-arm64-arm-64bit",
+      "matched": {
+        "releases": 19,
+        "comparable": 19,
+        "pending": 19,
+        "excluded": 0,
+        "forecast_failures": {
+          "A": 0,
+          "B": 0
+        },
+        "missing_targets": 0,
+        "per_state": {
+          "A": {
+            "vx": {
+              "mean_signed": 0.00018155268566024207,
+              "rms": 0.0003410640829983928,
+              "max_abs": 0.0007840032151262832,
+              "p95_abs": null
+            },
+            "vy": {
+              "mean_signed": -0.00015334888071077933,
+              "rms": 0.002036701653153293,
+              "max_abs": 0.0025405558215852997,
+              "p95_abs": null
+            },
+            "r": {
+              "mean_signed": -0.0037018449653721617,
+              "rms": 0.04946792115506102,
+              "max_abs": 0.058766016141252875,
+              "p95_abs": null
+            },
+            "e_psi": {
+              "mean_signed": -5.369249131299313e-05,
+              "rms": 0.00048332927526121617,
+              "max_abs": 0.0006046538353046138,
+              "p95_abs": null
+            },
+            "s_abs": {
+              "mean_signed": 6.50033326181281e-06,
+              "rms": 9.087242167470577e-06,
+              "max_abs": 2.0568062314652025e-05,
+              "p95_abs": null
+            },
+            "e_y": {
+              "mean_signed": -4.521238342535482e-06,
+              "rms": 4.2251235292782876e-05,
+              "max_abs": 5.393818585370733e-05,
+              "p95_abs": null
+            }
+          },
+          "B": {
+            "vx": {
+              "mean_signed": 4.542467682430571e-05,
+              "rms": 0.000235677961637752,
+              "max_abs": 0.0008743300910598606,
+              "p95_abs": null
+            },
+            "vy": {
+              "mean_signed": -0.00010109036273395914,
+              "rms": 0.0015201216650334338,
+              "max_abs": 0.0018307168404443075,
+              "p95_abs": null
+            },
+            "r": {
+              "mean_signed": -0.0017410182749121692,
+              "rms": 0.02605342390385205,
+              "max_abs": 0.031108823910887207,
+              "p95_abs": null
+            },
+            "e_psi": {
+              "mean_signed": -2.7586538896457196e-05,
+              "rms": 0.00014962556428883147,
+              "max_abs": 0.00022935353580688655,
+              "p95_abs": null
+            },
+            "s_abs": {
+              "mean_signed": 1.5303991108769753e-06,
+              "rms": 3.544117715485537e-06,
+              "max_abs": 7.822258214496003e-06,
+              "p95_abs": null
+            },
+            "e_y": {
+              "mean_signed": -2.346143706725654e-06,
+              "rms": 1.2732859501237509e-05,
+              "max_abs": 1.9722747222256087e-05,
+              "p95_abs": null
+            }
+          }
+        },
+        "rms_improvement_percent": {
+          "vx": 30.89921414009971,
+          "vy": 25.363557167053496,
+          "r": 47.332688951723725,
+          "e_psi": 69.04272678124741,
+          "s_abs": 60.99897361410322,
+          "e_y": 69.8639355441225
+        }
+      },
+      "physical": {
+        "observed_end": 1.9949999999999788,
+        "simulated_end": 1.9999999999999787,
+        "stop_reason": "duration",
+        "failure": null,
+        "progress_reached": 11.103122877818624,
+        "progress_gain": 10.103122877818624,
+        "physical_boundary_crossings": 0,
+        "minimum_center_clearance": 0.25107382460499583,
+        "minimum_tracking_margin_clearance": 0.17107382460499582,
+        "solver_failures": 0,
+        "max_predicted_slack": 9.091751115318635e-11,
+        "plans_slack_above_1e6": 0,
+        "handoff_rejections": 0,
+        "accepted_handoffs": 19,
+        "planner_busy_misses": 0,
+        "codriver_busy_misses": 100,
+        "planner_delays_over_period": 0,
+        "applied_codriver_delays_over_period": 100,
+        "minimum_reserve": 0.67,
+        "actual_steering_tv": 0.9310274078144469,
+        "actual_heading_tv": 1.6497173702144088,
+        "actual_frenet_heading_tv": 1.6223313635825343,
+        "apex_vehicle_tracking": {
+          "vx": {
+            "rms": 0.015402255993498344,
+            "max_abs": 0.052242006018654585
+          },
+          "vy": {
+            "rms": 0.08471501628653905,
+            "max_abs": 0.19422806577270718
+          },
+          "r": {
+            "rms": 0.4463120585216173,
+            "max_abs": 1.020257962247688
+          },
+          "e_psi": {
+            "rms": 0.03497553596711322,
+            "max_abs": 0.07922764723186537
+          },
+          "s_abs": {
+            "rms": 0.0008216834922522387,
+            "max_abs": 0.0018572824470908245
+          },
+          "e_y": {
+            "rms": 0.003501601005654541,
+            "max_abs": 0.009655880182908722
+          }
+        },
+        "handoff_continuity": {
+          "vx": {
+            "rms": 0.0007606222899986681,
+            "max_abs": 0.002978357552722244
+          },
+          "vy": {
+            "rms": 0.00550077379293766,
+            "max_abs": 0.022285059590063577
+          },
+          "r": {
+            "rms": 0.05457466497440277,
+            "max_abs": 0.10114584005712535
+          },
+          "e_psi": {
+            "rms": 0.0021085237939410867,
+            "max_abs": 0.008946423872948639
+          },
+          "s_abs": {
+            "rms": 0.00013497019086194668,
+            "max_abs": 0.0005869864821124171
+          },
+          "e_y": {
+            "rms": 4.444569974073411e-05,
+            "max_abs": 6.034220368339449e-05
+          }
+        }
+      },
+      "chronology_issues": [],
+      "active_forecast_exact_matches": 19,
+      "stop_gate": [],
+      "raw_sha256": "42a577a2a47c408b75e267616ee6f2632287dad0357785273bed89f5146f610d",
+      "retained_directory": "results/task007d/d3/gamma1p8_A_retry",
+      "raw.json_sha256": "42a577a2a47c408b75e267616ee6f2632287dad0357785273bed89f5146f610d",
+      "release_contexts.json_sha256": "fcead81b678031787e9c7d7b35a494fff734461d4427d9645dd2dae0bf00465d",
+      "scores.json_sha256": "71a62ad069db665b41e528e1b36bdd74051091a8730e891c1bdbde282b850a13",
+      "summary.json_sha256": "e3e8ee0143ec1eb057fb2959f88c0f9f2f1f1be86148a1424b989b261ae9abb0",
+      "reconstruction": {
+        "kinds": {
+          "reconstructed_rk4": 1,
+          "recorded_event": 18
+        },
+        "max_event_timestamp_offset": 6.661338147750939e-16,
+        "max_abs_interval_closure": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "max_abs_step_doubling_difference": [
+          2.291500322826323e-13,
+          3.258404657202618e-11,
+          4.2360892571480235e-11,
+          3.3861802251067274e-12,
+          3.04867242562068e-13,
+          1.0426659535767158e-12
+        ]
+      }
+    },
+    "gamma1.8_B": {
+      "architecture": "B",
+      "gamma": 1.8,
+      "requested_duration": 2.0,
+      "configuration": {
+        "tire_physics": {
+          "model": "smooth_combined_grip",
+          "longitudinal_allocation": "normal_load_proportional"
+        },
+        "costs": {
+          "lateral": 2,
+          "dynamic": 1.0,
+          "speed": 1.0,
+          "control": 1.0,
+          "rate": 1.0,
+          "terminal": 1.0,
+          "alpha_vy": 1.0,
+          "alpha_r": 1.0
+        },
+        "horizon": 8,
+        "dt": 0.1,
+        "substeps": 4,
+        "steering_rate": 1.0,
+        "minimum_speed": 0.5,
+        "denominator_margin": 0.01,
+        "minimum_axle_load": 1e-06,
+        "tracker_margin": 0.08,
+        "racing_reference": true,
+        "progress_weight": 0
+      },
+      "timing": {
+        "mode": "fixed",
+        "planner": [
+          0.035
+        ],
+        "codriver": [
+          0.015
+        ]
+      },
+      "simulation": {
+        "planner_dt": 0.1,
+        "tracker_dt": 0.01,
+        "plant_dt": 0.005,
+        "duration": 2.0,
+        "laps": 2,
+        "latency_mode": "injected",
+        "injected_delay": 0.035,
+        "spike_plan_id": -1,
+        "spike_delay": 0.15,
+        "failed_plan_ids": [],
+        "disturbance_time": null,
+        "disturbance_ey": 0.08,
+        "disturbance_heading": -0.04,
+        "urgent": true,
+        "codriver_delay": 0.015,
+        "committed_prefix_prediction": true
+      },
+      "initial_state": [
+        4.728461924554803,
+        0.0,
+        0.896991901012942,
+        0.034598592705642695,
+        1.0,
+        -0.11268618155631815
+      ],
+      "fixture": "configs/planning/task007c_resume/gamma_1p800",
+      "fixture_sha256": {
+        "configs/planning/task007c_resume/gamma_1p800/planning_manifest.json": "fc40799fa5fe53117f71470db5d4a02661b50fae795c8bdf23f8bb4bb549e033",
+        "configs/planning/task007c_resume/gamma_1p800/planning_reference.csv": "56076cd54756bfea4919e66149e049ffaf291ea265cdf9706d72525fb077caff",
+        "configs/planning/task007c_resume/gamma_1p800/planning_validation.json": "49525256c78921e5d9d5cad8320a4471ce162feeafe4627d9f5906dd85f2f95e",
+        "configs/planning/task007c_resume/gamma_1p800/track_source.json": "5f4d1734d7fec7de56d346e8f90bf272a3de9c05ac42f76cd49004e7f9183e55"
+      },
+      "vehicle_sha256": "df1b853d21a1d3efaf858f7e58401151f2c5237793c40e16bb4189ed651f9cf3",
+      "base_commit": "b27c0465f3cb1a13ad20152c17bcfadb37c2a8c4",
+      "native": {
+        "requested_ceiling": 1,
+        "set_status": 0,
+        "blas_threading_mode": 1,
+        "mode_name": "single",
+        "exact_active_thread_count_available": false
+      },
+      "threadpools": [],
+      "observed_process_thread_counts": [
+        1
+      ],
+      "runtime_wall_seconds": 3.3662648329045624,
+      "runtime_cpu_seconds": 3.3445089999999995,
+      "runtime_cpu_wall_ratio": 0.9935371000249582,
+      "python": "3.12.14 (main, Sep  1 2026, 14:09:38) [Clang 22.1.3 ]",
+      "platform": "macOS-26.5.1-arm64-arm-64bit",
+      "matched": {
+        "releases": 19,
+        "comparable": 19,
+        "pending": 19,
+        "excluded": 0,
+        "forecast_failures": {
+          "A": 0,
+          "B": 0
+        },
+        "missing_targets": 0,
+        "per_state": {
+          "A": {
+            "vx": {
+              "mean_signed": 0.00017823010488178013,
+              "rms": 0.000336533106983115,
+              "max_abs": 0.0007848690171794459,
+              "p95_abs": null
+            },
+            "vy": {
+              "mean_signed": -0.00014879027895869804,
+              "rms": 0.002033697137289721,
+              "max_abs": 0.00254057189620438,
+              "p95_abs": null
+            },
+            "r": {
+              "mean_signed": -0.003643423414496142,
+              "rms": 0.04940924486115314,
+              "max_abs": 0.058789360734779805,
+              "p95_abs": null
+            },
+            "e_psi": {
+              "mean_signed": -5.350495879987237e-05,
+              "rms": 0.0004830155566929276,
+              "max_abs": 0.0006046563436186148,
+              "p95_abs": null
+            },
+            "s_abs": {
+              "mean_signed": 6.448955224713197e-06,
+              "rms": 9.005159128800207e-06,
+              "max_abs": 2.0461946149907817e-05,
+              "p95_abs": null
+            },
+            "e_y": {
+              "mean_signed": -4.503126755183229e-06,
+              "rms": 4.2242254254228016e-05,
+              "max_abs": 5.393836268707472e-05,
+              "p95_abs": null
+            }
+          },
+          "B": {
+            "vx": {
+              "mean_signed": 4.3241790017742165e-05,
+              "rms": 0.00023411996281592963,
+              "max_abs": 0.0008751712701968728,
+              "p95_abs": null
+            },
+            "vy": {
+              "mean_signed": -9.884366002025963e-05,
+              "rms": 0.0015182506215528622,
+              "max_abs": 0.0018307354186294922,
+              "p95_abs": null
+            },
+            "r": {
+              "mean_signed": -0.0017016937511731241,
+              "rms": 0.026018136238821633,
+              "max_abs": 0.031120619839911434,
+              "p95_abs": null
+            },
+            "e_psi": {
+              "mean_signed": -2.7327767246080502e-05,
+              "rms": 0.00014941852206500512,
+              "max_abs": 0.00022935281196412305,
+              "p95_abs": null
+            },
+            "s_abs": {
+              "mean_signed": 1.5120770397885882e-06,
+              "rms": 3.520785810912865e-06,
+              "max_abs": 7.82864985282572e-06,
+              "p95_abs": null
+            },
+            "e_y": {
+              "mean_signed": -2.3235536353459254e-06,
+              "rms": 1.2721738478251288e-05,
+              "max_abs": 1.9722428019182392e-05,
+              "p95_abs": null
+            }
+          }
+        },
+        "rms_improvement_percent": {
+          "vx": 30.43181845770787,
+          "vy": 25.345293863361917,
+          "r": 47.34156267326849,
+          "e_psi": 69.06548453883516,
+          "s_abs": 60.902569731913744,
+          "e_y": 69.88385515202951
+        }
+      },
+      "physical": {
+        "observed_end": 1.9949999999999788,
+        "simulated_end": 1.9999999999999787,
+        "stop_reason": "duration",
+        "failure": null,
+        "progress_reached": 11.104775253107096,
+        "progress_gain": 10.104775253107096,
+        "physical_boundary_crossings": 0,
+        "minimum_center_clearance": 0.2513747924692842,
+        "minimum_tracking_margin_clearance": 0.17137479246928417,
+        "solver_failures": 0,
+        "max_predicted_slack": 9.091750562615079e-11,
+        "plans_slack_above_1e6": 0,
+        "handoff_rejections": 0,
+        "accepted_handoffs": 19,
+        "planner_busy_misses": 0,
+        "codriver_busy_misses": 100,
+        "planner_delays_over_period": 0,
+        "applied_codriver_delays_over_period": 100,
+        "minimum_reserve": 0.67,
+        "actual_steering_tv": 0.9248121145584542,
+        "actual_heading_tv": 1.6516689904670825,
+        "actual_frenet_heading_tv": 1.6246334995335063,
+        "apex_vehicle_tracking": {
+          "vx": {
+            "rms": 0.01516093957189805,
+            "max_abs": 0.051923108530702144
+          },
+          "vy": {
+            "rms": 0.08148022301221332,
+            "max_abs": 0.18192402624472803
+          },
+          "r": {
+            "rms": 0.42488358548601063,
+            "max_abs": 0.951168424347659
+          },
+          "e_psi": {
+            "rms": 0.03342005540509446,
+            "max_abs": 0.07417198912230782
+          },
+          "s_abs": {
+            "rms": 0.0008304922402700192,
+            "max_abs": 0.002142568244980936
+          },
+          "e_y": {
+            "rms": 0.003361254491219021,
+            "max_abs": 0.009084652912941055
+          }
+        },
+        "handoff_continuity": {
+          "vx": {
+            "rms": 0.0006581986099226543,
+            "max_abs": 0.002681389902492448
+          },
+          "vy": {
+            "rms": 0.00544428377766528,
+            "max_abs": 0.022789639688599067
+          },
+          "r": {
+            "rms": 0.033575918775123,
+            "max_abs": 0.09250718489276222
+          },
+          "e_psi": {
+            "rms": 0.0020406212084095664,
+            "max_abs": 0.00887100670824692
+          },
+          "s_abs": {
+            "rms": 0.00013303843588339875,
+            "max_abs": 0.0005797007946173327
+          },
+          "e_y": {
+            "rms": 2.1359352454913857e-05,
+            "max_abs": 7.479178879925275e-05
+          }
+        }
+      },
+      "chronology_issues": [],
+      "active_forecast_exact_matches": 19,
+      "stop_gate": [],
+      "raw_sha256": "82e8241067f292572fdd3a89d40b92378fb6c0dc51446ffd65d48dc67540acbb",
+      "retained_directory": "results/task007d/d3/gamma1p8_B",
+      "raw.json_sha256": "82e8241067f292572fdd3a89d40b92378fb6c0dc51446ffd65d48dc67540acbb",
+      "release_contexts.json_sha256": "a413633a225b1f75ac681b4ffdec244cac9f6c26b7e5de1855d88d4724f9a736",
+      "scores.json_sha256": "0588e8a254daed9ce37aae24e88aae396f635e70bfc3c0a71946c8426e8164b0",
+      "summary.json_sha256": "c52c7d7e393569bafce1b9e3f4d7fc9541484be7779389e32491037f39f7b324",
+      "reconstruction": {
+        "kinds": {
+          "reconstructed_rk4": 1,
+          "recorded_event": 18
+        },
+        "max_event_timestamp_offset": 6.661338147750939e-16,
+        "max_abs_interval_closure": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "max_abs_step_doubling_difference": [
+          2.291500322826323e-13,
+          3.258404657202618e-11,
+          4.2360892571480235e-11,
+          3.3861802251067274e-12,
+          3.04867242562068e-13,
+          1.0426659535767158e-12
+        ]
+      }
+    },
+    "gamma2_A": {
+      "architecture": "A",
+      "gamma": 2.0,
+      "requested_duration": 2.0,
+      "configuration": {
+        "tire_physics": {
+          "model": "smooth_combined_grip",
+          "longitudinal_allocation": "normal_load_proportional"
+        },
+        "costs": {
+          "lateral": 2,
+          "dynamic": 1.0,
+          "speed": 1.0,
+          "control": 1.0,
+          "rate": 1.0,
+          "terminal": 1.0,
+          "alpha_vy": 1.0,
+          "alpha_r": 1.0
+        },
+        "horizon": 8,
+        "dt": 0.1,
+        "substeps": 4,
+        "steering_rate": 1.0,
+        "minimum_speed": 0.5,
+        "denominator_margin": 0.01,
+        "minimum_axle_load": 1e-06,
+        "tracker_margin": 0.08,
+        "racing_reference": true,
+        "progress_weight": 0
+      },
+      "timing": {
+        "mode": "fixed",
+        "planner": [
+          0.035
+        ],
+        "codriver": [
+          0.015
+        ]
+      },
+      "simulation": {
+        "planner_dt": 0.1,
+        "tracker_dt": 0.01,
+        "plant_dt": 0.005,
+        "duration": 2.0,
+        "laps": 2,
+        "latency_mode": "injected",
+        "injected_delay": 0.035,
+        "spike_plan_id": -1,
+        "spike_delay": 0.15,
+        "failed_plan_ids": [],
+        "disturbance_time": null,
+        "disturbance_ey": 0.08,
+        "disturbance_heading": -0.04,
+        "urgent": true,
+        "codriver_delay": 0.015,
+        "committed_prefix_prediction": false
+      },
+      "initial_state": [
+        5.253846582838669,
+        0.0,
+        0.9966576677921577,
+        0.034598592705642695,
+        1.0,
+        -0.11268618155631815
+      ],
+      "fixture": "configs/planning/task007b/gamma_2p000",
+      "fixture_sha256": {
+        "configs/planning/task007b/gamma_2p000/planning_manifest.json": "5e7bccf1a300fb6737fc6b6b6e0c9aa921c110b11ffc5762a73f57f830a8660c",
+        "configs/planning/task007b/gamma_2p000/planning_reference.csv": "6206e18ce3cb105d58d0923564336e28c00ec44aee3fd8a06ff7a37bcf84e2df",
+        "configs/planning/task007b/gamma_2p000/planning_validation.json": "279582d2dcf37fdf4008ddc7f926109ef3d730a0e64c188d7003755d08871fa7",
+        "configs/planning/task007b/gamma_2p000/speed_polynomial.json": "f335e78fc6c735c952f49078077a573ee989dd2be71497e90451e34a79f2c7ea",
+        "configs/planning/task007b/gamma_2p000/track_source.json": "5f4d1734d7fec7de56d346e8f90bf272a3de9c05ac42f76cd49004e7f9183e55"
+      },
+      "vehicle_sha256": "df1b853d21a1d3efaf858f7e58401151f2c5237793c40e16bb4189ed651f9cf3",
+      "base_commit": "b27c0465f3cb1a13ad20152c17bcfadb37c2a8c4",
+      "native": {
+        "requested_ceiling": 1,
+        "set_status": 0,
+        "blas_threading_mode": 1,
+        "mode_name": "single",
+        "exact_active_thread_count_available": false
+      },
+      "threadpools": [],
+      "observed_process_thread_counts": [
+        1
+      ],
+      "runtime_wall_seconds": 3.4169912500074133,
+      "runtime_cpu_seconds": 3.4137840000000006,
+      "runtime_cpu_wall_ratio": 0.9990613818494836,
+      "python": "3.12.14 (main, Sep  1 2026, 14:09:38) [Clang 22.1.3 ]",
+      "platform": "macOS-26.5.1-arm64-arm-64bit",
+      "matched": {
+        "releases": 19,
+        "comparable": 19,
+        "pending": 19,
+        "excluded": 0,
+        "forecast_failures": {
+          "A": 0,
+          "B": 0
+        },
+        "missing_targets": 0,
+        "per_state": {
+          "A": {
+            "vx": {
+              "mean_signed": 0.00024016579290402,
+              "rms": 0.0004503346622954833,
+              "max_abs": 0.0010701718458232534,
+              "p95_abs": null
+            },
+            "vy": {
+              "mean_signed": -0.00017149823312718224,
+              "rms": 0.0016740952234104223,
+              "max_abs": 0.0022325669131919024,
+              "p95_abs": null
+            },
+            "r": {
+              "mean_signed": -0.004047406728567166,
+              "rms": 0.04785987990973545,
+              "max_abs": 0.059603859466401676,
+              "p95_abs": null
+            },
+            "e_psi": {
+              "mean_signed": -5.43316502267419e-05,
+              "rms": 0.0004688744472312826,
+              "max_abs": 0.0006264895178706986,
+              "p95_abs": null
+            },
+            "s_abs": {
+              "mean_signed": 6.8229256187569755e-06,
+              "rms": 9.363297321218562e-06,
+              "max_abs": 1.9452233868122448e-05,
+              "p95_abs": null
+            },
+            "e_y": {
+              "mean_signed": -4.805965745805599e-06,
+              "rms": 4.0692493164247235e-05,
+              "max_abs": 5.612916152904733e-05,
+              "p95_abs": null
+            }
+          },
+          "B": {
+            "vx": {
+              "mean_signed": 5.924495734551496e-05,
+              "rms": 0.00032026170173781143,
+              "max_abs": 0.0012027439456439026,
+              "p95_abs": null
+            },
+            "vy": {
+              "mean_signed": -8.95724057991192e-05,
+              "rms": 0.0013938685075134277,
+              "max_abs": 0.0017361771956160843,
+              "p95_abs": null
+            },
+            "r": {
+              "mean_signed": -0.0015638284081549976,
+              "rms": 0.025337489266472293,
+              "max_abs": 0.03142159289834845,
+              "p95_abs": null
+            },
+            "e_psi": {
+              "mean_signed": -2.8621125156114147e-05,
+              "rms": 0.00014476844609299355,
+              "max_abs": 0.0002385604231016636,
+              "p95_abs": null
+            },
+            "s_abs": {
+              "mean_signed": 1.6101183256853495e-06,
+              "rms": 4.013622959826194e-06,
+              "max_abs": 1.0838102162402663e-05,
+              "p95_abs": null
+            },
+            "e_y": {
+              "mean_signed": -2.645483512880451e-06,
+              "rms": 1.2410145835028073e-05,
+              "max_abs": 2.155558867515152e-05,
+              "p95_abs": null
+            }
+          }
+        },
+        "rms_improvement_percent": {
+          "vx": 28.883621770230427,
+          "vy": 16.738995009263824,
+          "r": 47.05902038563566,
+          "e_psi": 69.1242619537372,
+          "s_abs": 57.13451338631794,
+          "e_y": 69.50261615837357
+        }
+      },
+      "physical": {
+        "observed_end": 1.9949999999999788,
+        "simulated_end": 1.9999999999999787,
+        "stop_reason": "duration",
+        "failure": null,
+        "progress_reached": 12.204273534279658,
+        "progress_gain": 11.204273534279658,
+        "physical_boundary_crossings": 0,
+        "minimum_center_clearance": 0.2466621495500107,
+        "minimum_tracking_margin_clearance": 0.16666214955001069,
+        "solver_failures": 0,
+        "max_predicted_slack": 9.091537159523992e-11,
+        "plans_slack_above_1e6": 0,
+        "handoff_rejections": 0,
+        "accepted_handoffs": 19,
+        "planner_busy_misses": 0,
+        "codriver_busy_misses": 100,
+        "planner_delays_over_period": 0,
+        "applied_codriver_delays_over_period": 100,
+        "minimum_reserve": 0.67,
+        "actual_steering_tv": 0.9434319833462907,
+        "actual_heading_tv": 1.7885898330740084,
+        "actual_frenet_heading_tv": 1.757699480756572,
+        "apex_vehicle_tracking": {
+          "vx": {
+            "rms": 0.021623359278472514,
+            "max_abs": 0.07175609577517683
+          },
+          "vy": {
+            "rms": 0.10821365843244768,
+            "max_abs": 0.23937565200882205
+          },
+          "r": {
+            "rms": 0.4676313681982692,
+            "max_abs": 1.0841318364195103
+          },
+          "e_psi": {
+            "rms": 0.0357248769358555,
+            "max_abs": 0.08174200544832066
+          },
+          "s_abs": {
+            "rms": 0.0009313618321404196,
+            "max_abs": 0.0022806668408374975
+          },
+          "e_y": {
+            "rms": 0.003607407140710689,
+            "max_abs": 0.009572114344893717
+          }
+        },
+        "handoff_continuity": {
+          "vx": {
+            "rms": 0.0010765500224911167,
+            "max_abs": 0.0042793123158606505
+          },
+          "vy": {
+            "rms": 0.007647570335803955,
+            "max_abs": 0.032533524137158376
+          },
+          "r": {
+            "rms": 0.055883060849426534,
+            "max_abs": 0.1262813377024462
+          },
+          "e_psi": {
+            "rms": 0.0024715094536921778,
+            "max_abs": 0.010577707562177352
+          },
+          "s_abs": {
+            "rms": 0.0001537139971871198,
+            "max_abs": 0.0006687795989408496
+          },
+          "e_y": {
+            "rms": 4.0674920652310075e-05,
+            "max_abs": 5.612916152904733e-05
+          }
+        }
+      },
+      "chronology_issues": [],
+      "active_forecast_exact_matches": 19,
+      "stop_gate": [],
+      "raw_sha256": "6be60a183e5c2c27c7e5261fb17c4d35ca3190a5eb5214af875b597bec903fc7",
+      "retained_directory": "results/task007d/d3/gamma2_A",
+      "raw.json_sha256": "6be60a183e5c2c27c7e5261fb17c4d35ca3190a5eb5214af875b597bec903fc7",
+      "release_contexts.json_sha256": "16b10e7d81fffd25d651c53c1afffe364fa4b166f155020d0f487f78a4307154",
+      "scores.json_sha256": "bf1ba7c2c097402b34ea7a132544890453e21acc723dca883dcc4fdfae62fa0c",
+      "summary.json_sha256": "005ab90f2c71677efe0ee1f626b66f91ecf9701df0b9491986e1c1d8ec134bb7",
+      "reconstruction": {
+        "kinds": {
+          "reconstructed_rk4": 1,
+          "recorded_event": 18
+        },
+        "max_event_timestamp_offset": 6.661338147750939e-16,
+        "max_abs_interval_closure": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "max_abs_step_doubling_difference": [
+          3.730349362740526e-13,
+          2.490713191249938e-11,
+          2.300670765009727e-11,
+          2.41051623106614e-12,
+          3.339550858072471e-13,
+          9.360984210005086e-13
+        ]
+      }
+    },
+    "gamma2_B": {
+      "architecture": "B",
+      "gamma": 2.0,
+      "requested_duration": 2.0,
+      "configuration": {
+        "tire_physics": {
+          "model": "smooth_combined_grip",
+          "longitudinal_allocation": "normal_load_proportional"
+        },
+        "costs": {
+          "lateral": 2,
+          "dynamic": 1.0,
+          "speed": 1.0,
+          "control": 1.0,
+          "rate": 1.0,
+          "terminal": 1.0,
+          "alpha_vy": 1.0,
+          "alpha_r": 1.0
+        },
+        "horizon": 8,
+        "dt": 0.1,
+        "substeps": 4,
+        "steering_rate": 1.0,
+        "minimum_speed": 0.5,
+        "denominator_margin": 0.01,
+        "minimum_axle_load": 1e-06,
+        "tracker_margin": 0.08,
+        "racing_reference": true,
+        "progress_weight": 0
+      },
+      "timing": {
+        "mode": "fixed",
+        "planner": [
+          0.035
+        ],
+        "codriver": [
+          0.015
+        ]
+      },
+      "simulation": {
+        "planner_dt": 0.1,
+        "tracker_dt": 0.01,
+        "plant_dt": 0.005,
+        "duration": 2.0,
+        "laps": 2,
+        "latency_mode": "injected",
+        "injected_delay": 0.035,
+        "spike_plan_id": -1,
+        "spike_delay": 0.15,
+        "failed_plan_ids": [],
+        "disturbance_time": null,
+        "disturbance_ey": 0.08,
+        "disturbance_heading": -0.04,
+        "urgent": true,
+        "codriver_delay": 0.015,
+        "committed_prefix_prediction": true
+      },
+      "initial_state": [
+        5.253846582838669,
+        0.0,
+        0.9966576677921577,
+        0.034598592705642695,
+        1.0,
+        -0.11268618155631815
+      ],
+      "fixture": "configs/planning/task007b/gamma_2p000",
+      "fixture_sha256": {
+        "configs/planning/task007b/gamma_2p000/planning_manifest.json": "5e7bccf1a300fb6737fc6b6b6e0c9aa921c110b11ffc5762a73f57f830a8660c",
+        "configs/planning/task007b/gamma_2p000/planning_reference.csv": "6206e18ce3cb105d58d0923564336e28c00ec44aee3fd8a06ff7a37bcf84e2df",
+        "configs/planning/task007b/gamma_2p000/planning_validation.json": "279582d2dcf37fdf4008ddc7f926109ef3d730a0e64c188d7003755d08871fa7",
+        "configs/planning/task007b/gamma_2p000/speed_polynomial.json": "f335e78fc6c735c952f49078077a573ee989dd2be71497e90451e34a79f2c7ea",
+        "configs/planning/task007b/gamma_2p000/track_source.json": "5f4d1734d7fec7de56d346e8f90bf272a3de9c05ac42f76cd49004e7f9183e55"
+      },
+      "vehicle_sha256": "df1b853d21a1d3efaf858f7e58401151f2c5237793c40e16bb4189ed651f9cf3",
+      "base_commit": "b27c0465f3cb1a13ad20152c17bcfadb37c2a8c4",
+      "native": {
+        "requested_ceiling": 1,
+        "set_status": 0,
+        "blas_threading_mode": 1,
+        "mode_name": "single",
+        "exact_active_thread_count_available": false
+      },
+      "threadpools": [],
+      "observed_process_thread_counts": [
+        1
+      ],
+      "runtime_wall_seconds": 3.403007832937874,
+      "runtime_cpu_seconds": 3.3935009999999997,
+      "runtime_cpu_wall_ratio": 0.9972063440918775,
+      "python": "3.12.14 (main, Sep  1 2026, 14:09:38) [Clang 22.1.3 ]",
+      "platform": "macOS-26.5.1-arm64-arm-64bit",
+      "matched": {
+        "releases": 19,
+        "comparable": 19,
+        "pending": 19,
+        "excluded": 0,
+        "forecast_failures": {
+          "A": 0,
+          "B": 0
+        },
+        "missing_targets": 0,
+        "per_state": {
+          "A": {
+            "vx": {
+              "mean_signed": 0.00023263277642418095,
+              "rms": 0.00044130666231841233,
+              "max_abs": 0.0010710279878480833,
+              "p95_abs": null
+            },
+            "vy": {
+              "mean_signed": -0.0001497849157738811,
+              "rms": 0.0016781090853661006,
+              "max_abs": 0.0022325885913591637,
+              "p95_abs": null
+            },
+            "r": {
+              "mean_signed": -0.0036484202729897947,
+              "rms": 0.047846170557428125,
+              "max_abs": 0.059627720761456615,
+              "p95_abs": null
+            },
+            "e_psi": {
+              "mean_signed": -5.20964242793675e-05,
+              "rms": 0.00046795994002550784,
+              "max_abs": 0.0006264929721235823,
+              "p95_abs": null
+            },
+            "s_abs": {
+              "mean_signed": 6.73692412228296e-06,
+              "rms": 9.232236050172292e-06,
+              "max_abs": 1.914858347973336e-05,
+              "p95_abs": null
+            },
+            "e_y": {
+              "mean_signed": -4.619972468259725e-06,
+              "rms": 4.064894991783661e-05,
+              "max_abs": 5.612933988467794e-05,
+              "p95_abs": null
+            }
+          },
+          "B": {
+            "vx": {
+              "mean_signed": 5.5140545772515205e-05,
+              "rms": 0.0003173812888515825,
+              "max_abs": 0.00120356357119622,
+              "p95_abs": null
+            },
+            "vy": {
+              "mean_signed": -8.221410448027134e-05,
+              "rms": 0.001390417355718313,
+              "max_abs": 0.0017362003769541001,
+              "p95_abs": null
+            },
+            "r": {
+              "mean_signed": -0.001455839969812832,
+              "rms": 0.02527388111867619,
+              "max_abs": 0.03143258321402698,
+              "p95_abs": null
+            },
+            "e_psi": {
+              "mean_signed": -2.8301004780409567e-05,
+              "rms": 0.00014456057913849292,
+              "max_abs": 0.00023856148385315024,
+              "p95_abs": null
+            },
+            "s_abs": {
+              "mean_signed": 1.5791098991921764e-06,
+              "rms": 3.9790347530339555e-06,
+              "max_abs": 1.0844376237884035e-05,
+              "p95_abs": null
+            },
+            "e_y": {
+              "mean_signed": -2.6194757346278928e-06,
+              "rms": 1.2404095446112578e-05,
+              "max_abs": 2.1555344933506596e-05,
+              "p95_abs": null
+            }
+          }
+        },
+        "rms_improvement_percent": {
+          "vx": 28.081464443746597,
+          "vy": 17.143803829953285,
+          "r": 47.17679424659323,
+          "e_psi": 69.10834309222855,
+          "s_abs": 56.90063889820387,
+          "e_y": 69.48483178240798
+        }
+      },
+      "physical": {
+        "observed_end": 1.9949999999999788,
+        "simulated_end": 1.9999999999999787,
+        "stop_reason": "duration",
+        "failure": null,
+        "progress_reached": 12.207765482545655,
+        "progress_gain": 11.207765482545655,
+        "physical_boundary_crossings": 0,
+        "minimum_center_clearance": 0.2479049064428417,
+        "minimum_tracking_margin_clearance": 0.16790490644284167,
+        "solver_failures": 0,
+        "max_predicted_slack": 9.091537857815969e-11,
+        "plans_slack_above_1e6": 0,
+        "handoff_rejections": 0,
+        "accepted_handoffs": 19,
+        "planner_busy_misses": 0,
+        "codriver_busy_misses": 100,
+        "planner_delays_over_period": 0,
+        "applied_codriver_delays_over_period": 100,
+        "minimum_reserve": 0.67,
+        "actual_steering_tv": 0.9320445833456477,
+        "actual_heading_tv": 1.785701655518392,
+        "actual_frenet_heading_tv": 1.754894918053386,
+        "apex_vehicle_tracking": {
+          "vx": {
+            "rms": 0.020809264626161728,
+            "max_abs": 0.0691605566541229
+          },
+          "vy": {
+            "rms": 0.10337203805437382,
+            "max_abs": 0.22350983833221516
+          },
+          "r": {
+            "rms": 0.4418390256255245,
+            "max_abs": 1.0137959090203301
+          },
+          "e_psi": {
+            "rms": 0.033969747501304486,
+            "max_abs": 0.07637099990529173
+          },
+          "s_abs": {
+            "rms": 0.0009278680284040449,
+            "max_abs": 0.002598027574002515
+          },
+          "e_y": {
+            "rms": 0.0034861848138863995,
+            "max_abs": 0.009255981726152412
+          }
+        },
+        "handoff_continuity": {
+          "vx": {
+            "rms": 0.0009488696789904766,
+            "max_abs": 0.0038977984707644353
+          },
+          "vy": {
+            "rms": 0.0076932916136353766,
+            "max_abs": 0.03298205622998124
+          },
+          "r": {
+            "rms": 0.03700158775754004,
+            "max_abs": 0.11779906691388198
+          },
+          "e_psi": {
+            "rms": 0.00241381866286547,
+            "max_abs": 0.010502735094932714
+          },
+          "s_abs": {
+            "rms": 0.00015140142086341623,
+            "max_abs": 0.0006597193703583581
+          },
+          "e_y": {
+            "rms": 1.2863558468375705e-05,
+            "max_abs": 2.1555344933506596e-05
+          }
+        }
+      },
+      "chronology_issues": [],
+      "active_forecast_exact_matches": 19,
+      "stop_gate": [],
+      "raw_sha256": "450fd48f291e3bc231149365aa677c8bc38a7fb99e5f56640011548cf1d16dc4",
+      "retained_directory": "results/task007d/d3/gamma2_B",
+      "raw.json_sha256": "450fd48f291e3bc231149365aa677c8bc38a7fb99e5f56640011548cf1d16dc4",
+      "release_contexts.json_sha256": "be211ba667b2769f9f79a75678342233572e6c15a6e2215433520c268c4fff13",
+      "scores.json_sha256": "d6a68e384bd3638c4e34522c47c7a1df00980eb37946bee0d9713c33724043fa",
+      "summary.json_sha256": "18991afe49fed7fc52fd55a5eb164781cab685b1f8550f4347180f4e218e437e",
+      "reconstruction": {
+        "kinds": {
+          "reconstructed_rk4": 1,
+          "recorded_event": 18
+        },
+        "max_event_timestamp_offset": 6.661338147750939e-16,
+        "max_abs_interval_closure": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "max_abs_step_doubling_difference": [
+          3.730349362740526e-13,
+          2.490713191249938e-11,
+          2.300670765009727e-11,
+          2.41051623106614e-12,
+          3.339550858072471e-13,
+          9.360984210005086e-13
+        ]
+      }
+    }
+  },
+  "pairs": {
+    "2.0": {
+      "coverage": {
+        "start": 0.0,
+        "end": 1.9949999999999788,
+        "unequal": false,
+        "common_recorded_end": 1.995
+      },
+      "metrics": {
+        "A": {
+          "observed_end": 1.9949999999999788,
+          "simulated_end": 1.9999999999999787,
+          "stop_reason": "duration",
+          "failure": null,
+          "progress_reached": 12.204273534279658,
+          "progress_gain": 11.204273534279658,
+          "physical_boundary_crossings": 0,
+          "minimum_center_clearance": 0.2466621495500107,
+          "minimum_tracking_margin_clearance": 0.16666214955001069,
+          "solver_failures": 0,
+          "max_predicted_slack": 9.091537159523992e-11,
+          "plans_slack_above_1e6": 0,
+          "handoff_rejections": 0,
+          "accepted_handoffs": 19,
+          "planner_busy_misses": 0,
+          "codriver_busy_misses": 100,
+          "planner_delays_over_period": 0,
+          "applied_codriver_delays_over_period": 100,
+          "minimum_reserve": 0.67,
+          "actual_steering_tv": 0.9434319833462907,
+          "actual_heading_tv": 1.7885898330740084,
+          "actual_frenet_heading_tv": 1.757699480756572,
+          "apex_vehicle_tracking": {
+            "vx": {
+              "rms": 0.021623359278472514,
+              "max_abs": 0.07175609577517683
+            },
+            "vy": {
+              "rms": 0.10821365843244768,
+              "max_abs": 0.23937565200882205
+            },
+            "r": {
+              "rms": 0.4676313681982692,
+              "max_abs": 1.0841318364195103
+            },
+            "e_psi": {
+              "rms": 0.0357248769358555,
+              "max_abs": 0.08174200544832066
+            },
+            "s_abs": {
+              "rms": 0.0009313618321404196,
+              "max_abs": 0.0022806668408374975
+            },
+            "e_y": {
+              "rms": 0.003607407140710689,
+              "max_abs": 0.009572114344893717
+            }
+          },
+          "handoff_continuity": {
+            "vx": {
+              "rms": 0.0010765500224911167,
+              "max_abs": 0.0042793123158606505
+            },
+            "vy": {
+              "rms": 0.007647570335803955,
+              "max_abs": 0.032533524137158376
+            },
+            "r": {
+              "rms": 0.055883060849426534,
+              "max_abs": 0.1262813377024462
+            },
+            "e_psi": {
+              "rms": 0.0024715094536921778,
+              "max_abs": 0.010577707562177352
+            },
+            "s_abs": {
+              "rms": 0.0001537139971871198,
+              "max_abs": 0.0006687795989408496
+            },
+            "e_y": {
+              "rms": 4.0674920652310075e-05,
+              "max_abs": 5.612916152904733e-05
+            }
+          }
+        },
+        "B": {
+          "observed_end": 1.9949999999999788,
+          "simulated_end": 1.9999999999999787,
+          "stop_reason": "duration",
+          "failure": null,
+          "progress_reached": 12.207765482545655,
+          "progress_gain": 11.207765482545655,
+          "physical_boundary_crossings": 0,
+          "minimum_center_clearance": 0.2479049064428417,
+          "minimum_tracking_margin_clearance": 0.16790490644284167,
+          "solver_failures": 0,
+          "max_predicted_slack": 9.091537857815969e-11,
+          "plans_slack_above_1e6": 0,
+          "handoff_rejections": 0,
+          "accepted_handoffs": 19,
+          "planner_busy_misses": 0,
+          "codriver_busy_misses": 100,
+          "planner_delays_over_period": 0,
+          "applied_codriver_delays_over_period": 100,
+          "minimum_reserve": 0.67,
+          "actual_steering_tv": 0.9320445833456477,
+          "actual_heading_tv": 1.785701655518392,
+          "actual_frenet_heading_tv": 1.754894918053386,
+          "apex_vehicle_tracking": {
+            "vx": {
+              "rms": 0.020809264626161728,
+              "max_abs": 0.0691605566541229
+            },
+            "vy": {
+              "rms": 0.10337203805437382,
+              "max_abs": 0.22350983833221516
+            },
+            "r": {
+              "rms": 0.4418390256255245,
+              "max_abs": 1.0137959090203301
+            },
+            "e_psi": {
+              "rms": 0.033969747501304486,
+              "max_abs": 0.07637099990529173
+            },
+            "s_abs": {
+              "rms": 0.0009278680284040449,
+              "max_abs": 0.002598027574002515
+            },
+            "e_y": {
+              "rms": 0.0034861848138863995,
+              "max_abs": 0.009255981726152412
+            }
+          },
+          "handoff_continuity": {
+            "vx": {
+              "rms": 0.0009488696789904766,
+              "max_abs": 0.0038977984707644353
+            },
+            "vy": {
+              "rms": 0.0076932916136353766,
+              "max_abs": 0.03298205622998124
+            },
+            "r": {
+              "rms": 0.03700158775754004,
+              "max_abs": 0.11779906691388198
+            },
+            "e_psi": {
+              "rms": 0.00241381866286547,
+              "max_abs": 0.010502735094932714
+            },
+            "s_abs": {
+              "rms": 0.00015140142086341623,
+              "max_abs": 0.0006597193703583581
+            },
+            "e_y": {
+              "rms": 1.2863558468375705e-05,
+              "max_abs": 2.1555344933506596e-05
+            }
+          }
+        }
+      },
+      "planner_launches_and_estimates_identical": true,
+      "first_forecast_divergence": {
+        "release_time": 0.09999999999999999,
+        "a_minus_b": [
+          0.00038144420603902773,
+          -0.0006768940290986514,
+          -0.011504648552539853,
+          -5.335884180013295e-05,
+          2.044151413027606e-06,
+          -4.190248253654882e-06
+        ]
+      },
+      "first_divergence": {
+        "time": 0.155,
+        "a_minus_b_state": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "a_minus_b_control": [
+          0.0,
+          -0.00017772350853217933
+        ],
+        "preceding_events": {
+          "A": {
+            "last_handoff": {
+              "time": 0.135,
+              "plan_id": 1,
+              "accepted": true,
+              "reason": "accepted",
+              "reserve": 0.782,
+              "error_vx": -0.0042793123158606505,
+              "error_vy": -0.032533524137158376,
+              "error_r": 0.1262813377024462,
+              "error_e_psi": 0.010577707562177352,
+              "error_s_abs": -0.0006687795989408496,
+              "error_e_y": -8.117302128241022e-07,
+              "nominal_delta_jump": -0.047791012854586784,
+              "nominal_acceleration_jump": 0.04156683945241513
+            },
+            "last_application": {
+              "time": 0.14,
+              "application_time": 0.155,
+              "plan_id": 1,
+              "delta": 0.019130867574559014,
+              "a_cmd": 0.9347953607643052
+            }
+          },
+          "B": {
+            "last_handoff": {
+              "time": 0.135,
+              "plan_id": 1,
+              "accepted": true,
+              "reason": "accepted",
+              "reserve": 0.782,
+              "error_vx": -0.0038977984707644353,
+              "error_vy": -0.03298205622998124,
+              "error_r": 0.11779906691388198,
+              "error_e_psi": 0.010502735094932714,
+              "error_s_abs": -0.0006597193703583581,
+              "error_e_y": -1.48915478131173e-05,
+              "nominal_delta_jump": -0.04837746161421515,
+              "nominal_acceleration_jump": 0.042126096150226666
+            },
+            "last_application": {
+              "time": 0.14,
+              "application_time": 0.155,
+              "plan_id": 1,
+              "delta": 0.019130867574559014,
+              "a_cmd": 0.9349730842728374
+            }
+          }
+        }
+      },
+      "exact_common_event_count": 400,
+      "first_state_difference_over_1e-12": {
+        "time": 0.16,
+        "a_minus_b": [
+          -8.893878158389157e-07,
+          -1.7396680040970836e-08,
+          8.676149245712139e-07,
+          2.334707538409475e-09,
+          -2.1927750726291606e-09,
+          -2.7936547519757937e-10
+        ]
+      }
+    },
+    "1.8": {
+      "coverage": {
+        "start": 0.0,
+        "end": 1.9949999999999788,
+        "unequal": false,
+        "common_recorded_end": 1.995
+      },
+      "metrics": {
+        "A": {
+          "observed_end": 1.9949999999999788,
+          "simulated_end": 1.9999999999999787,
+          "stop_reason": "duration",
+          "failure": null,
+          "progress_reached": 11.103122877818624,
+          "progress_gain": 10.103122877818624,
+          "physical_boundary_crossings": 0,
+          "minimum_center_clearance": 0.25107382460499583,
+          "minimum_tracking_margin_clearance": 0.17107382460499582,
+          "solver_failures": 0,
+          "max_predicted_slack": 9.091751115318635e-11,
+          "plans_slack_above_1e6": 0,
+          "handoff_rejections": 0,
+          "accepted_handoffs": 19,
+          "planner_busy_misses": 0,
+          "codriver_busy_misses": 100,
+          "planner_delays_over_period": 0,
+          "applied_codriver_delays_over_period": 100,
+          "minimum_reserve": 0.67,
+          "actual_steering_tv": 0.9310274078144469,
+          "actual_heading_tv": 1.6497173702144088,
+          "actual_frenet_heading_tv": 1.6223313635825343,
+          "apex_vehicle_tracking": {
+            "vx": {
+              "rms": 0.015402255993498344,
+              "max_abs": 0.052242006018654585
+            },
+            "vy": {
+              "rms": 0.08471501628653905,
+              "max_abs": 0.19422806577270718
+            },
+            "r": {
+              "rms": 0.4463120585216173,
+              "max_abs": 1.020257962247688
+            },
+            "e_psi": {
+              "rms": 0.03497553596711322,
+              "max_abs": 0.07922764723186537
+            },
+            "s_abs": {
+              "rms": 0.0008216834922522387,
+              "max_abs": 0.0018572824470908245
+            },
+            "e_y": {
+              "rms": 0.003501601005654541,
+              "max_abs": 0.009655880182908722
+            }
+          },
+          "handoff_continuity": {
+            "vx": {
+              "rms": 0.0007606222899986681,
+              "max_abs": 0.002978357552722244
+            },
+            "vy": {
+              "rms": 0.00550077379293766,
+              "max_abs": 0.022285059590063577
+            },
+            "r": {
+              "rms": 0.05457466497440277,
+              "max_abs": 0.10114584005712535
+            },
+            "e_psi": {
+              "rms": 0.0021085237939410867,
+              "max_abs": 0.008946423872948639
+            },
+            "s_abs": {
+              "rms": 0.00013497019086194668,
+              "max_abs": 0.0005869864821124171
+            },
+            "e_y": {
+              "rms": 4.444569974073411e-05,
+              "max_abs": 6.034220368339449e-05
+            }
+          }
+        },
+        "B": {
+          "observed_end": 1.9949999999999788,
+          "simulated_end": 1.9999999999999787,
+          "stop_reason": "duration",
+          "failure": null,
+          "progress_reached": 11.104775253107096,
+          "progress_gain": 10.104775253107096,
+          "physical_boundary_crossings": 0,
+          "minimum_center_clearance": 0.2513747924692842,
+          "minimum_tracking_margin_clearance": 0.17137479246928417,
+          "solver_failures": 0,
+          "max_predicted_slack": 9.091750562615079e-11,
+          "plans_slack_above_1e6": 0,
+          "handoff_rejections": 0,
+          "accepted_handoffs": 19,
+          "planner_busy_misses": 0,
+          "codriver_busy_misses": 100,
+          "planner_delays_over_period": 0,
+          "applied_codriver_delays_over_period": 100,
+          "minimum_reserve": 0.67,
+          "actual_steering_tv": 0.9248121145584542,
+          "actual_heading_tv": 1.6516689904670825,
+          "actual_frenet_heading_tv": 1.6246334995335063,
+          "apex_vehicle_tracking": {
+            "vx": {
+              "rms": 0.01516093957189805,
+              "max_abs": 0.051923108530702144
+            },
+            "vy": {
+              "rms": 0.08148022301221332,
+              "max_abs": 0.18192402624472803
+            },
+            "r": {
+              "rms": 0.42488358548601063,
+              "max_abs": 0.951168424347659
+            },
+            "e_psi": {
+              "rms": 0.03342005540509446,
+              "max_abs": 0.07417198912230782
+            },
+            "s_abs": {
+              "rms": 0.0008304922402700192,
+              "max_abs": 0.002142568244980936
+            },
+            "e_y": {
+              "rms": 0.003361254491219021,
+              "max_abs": 0.009084652912941055
+            }
+          },
+          "handoff_continuity": {
+            "vx": {
+              "rms": 0.0006581986099226543,
+              "max_abs": 0.002681389902492448
+            },
+            "vy": {
+              "rms": 0.00544428377766528,
+              "max_abs": 0.022789639688599067
+            },
+            "r": {
+              "rms": 0.033575918775123,
+              "max_abs": 0.09250718489276222
+            },
+            "e_psi": {
+              "rms": 0.0020406212084095664,
+              "max_abs": 0.00887100670824692
+            },
+            "s_abs": {
+              "rms": 0.00013303843588339875,
+              "max_abs": 0.0005797007946173327
+            },
+            "e_y": {
+              "rms": 2.1359352454913857e-05,
+              "max_abs": 7.479178879925275e-05
+            }
+          }
+        }
+      },
+      "planner_launches_and_estimates_identical": true,
+      "first_forecast_divergence": {
+        "release_time": 0.09999999999999999,
+        "a_minus_b": [
+          0.000297328243803463,
+          -0.0007259928977262908,
+          -0.01163714403224192,
+          -5.416163915050731e-05,
+          1.6780996494603073e-06,
+          -4.357274169961012e-06
+        ]
+      },
+      "first_divergence": {
+        "time": 0.155,
+        "a_minus_b_state": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "a_minus_b_control": [
+          0.0,
+          -0.00014350815349040147
+        ],
+        "preceding_events": {
+          "A": {
+            "last_handoff": {
+              "time": 0.135,
+              "plan_id": 1,
+              "accepted": true,
+              "reason": "accepted",
+              "reserve": 0.782,
+              "error_vx": -0.002978357552722244,
+              "error_vy": -0.022285059590063577,
+              "error_r": 0.10114584005712535,
+              "error_e_psi": 0.008946423872948639,
+              "error_s_abs": -0.0005869864821124171,
+              "error_e_y": -6.034220368339449e-05,
+              "nominal_delta_jump": -0.039959642828582734,
+              "nominal_acceleration_jump": 0.04262201491951867
+            },
+            "last_application": {
+              "time": 0.14,
+              "application_time": 0.155,
+              "plan_id": 1,
+              "delta": 0.020340836834666372,
+              "a_cmd": 0.7979887394161655
+            }
+          },
+          "B": {
+            "last_handoff": {
+              "time": 0.135,
+              "plan_id": 1,
+              "accepted": true,
+              "reason": "accepted",
+              "reserve": 0.782,
+              "error_vx": -0.002681389902492448,
+              "error_vy": -0.022789639688599067,
+              "error_r": 0.09250718489276222,
+              "error_e_psi": 0.00887100670824692,
+              "error_s_abs": -0.0005797007946173327,
+              "error_e_y": -7.479178879925275e-05,
+              "nominal_delta_jump": -0.04052728515414353,
+              "nominal_acceleration_jump": 0.043062390558357144
+            },
+            "last_application": {
+              "time": 0.14,
+              "application_time": 0.155,
+              "plan_id": 1,
+              "delta": 0.020340836834666372,
+              "a_cmd": 0.798132247569656
+            }
+          }
+        }
+      },
+      "exact_common_event_count": 400,
+      "first_state_difference_over_1e-12": {
+        "time": 0.16,
+        "a_minus_b": [
+          -7.179234353671404e-07,
+          -1.2740047156123424e-08,
+          5.890630053739798e-07,
+          1.6104446665110572e-09,
+          -1.7717165512465272e-09,
+          -2.137827137538295e-10
+        ]
+      }
+    }
+  },
+  "failed_launches": {
+    "results/task007d/d3/gamma1p8_A": "Traceback (most recent call last):\n  File \"/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/scripts/run_task007d_pilot.py\", line 68, in <module>\n    raise SystemExit(main())\n                     ^^^^^^\n  File \"/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/scripts/run_task007d_pilot.py\", line 30, in main\n    return 2 if run(args, native) else 0\n                ^^^^^^^^^^^^^^^^^\n  File \"/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/scripts/task007d/worker.py\", line 44, in run\n    track, _, identity = load_track(fixture / \"track_source.json\")\n                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/src/apex/planning_reference/track.py\", line 12, in load_track\n    data = json.loads(path.read_text())\n                      ^^^^^^^^^^^^^^^^\n  File \"/Users/marwansaber/.local/share/uv/python/cpython-3.12.14-macos-aarch64-none/lib/python3.12/pathlib.py\", line 1027, in read_text\n    with self.open(mode='r', encoding=encoding, errors=errors) as f:\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/marwansaber/.local/share/uv/python/cpython-3.12.14-macos-aarch64-none/lib/python3.12/pathlib.py\", line 1013, in open\n    return io.open(self, mode, buffering, encoding, errors, newline)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nFileNotFoundError: [Errno 2] No such file or directory: 'configs/planning/task007b/gamma_1p800/track_source.json'\n"
+  }
+}

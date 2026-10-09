@@ -1,3 +1,37 @@
+# APEX handoff — Task007D-D3 complete; stop for review
+
+D3 adds opt-in detached release capture and offline same-target A/B scoring. Architecture A
+remains the default. No predictor, controller, plant, event scheduling or packet-authority
+policy changed. Read `TASK007D_AB_PILOT.md` and compact `docs/task007d/d3` evidence.
+
+Four sequential SINGLE imposed-delay pilots (gamma 2.0 and 1.8, A/B, 2s each) passed the
+scientific stop gate. Fixed planner 35 ms/driver 15 ms gives 19 comparable pending releases per
+run (76 total); no forecast failures or excluded targets. Offline active forecasts exactly
+match runtime NMPC inputs. B reduces all per-state RMS values on each separate host history,
+including about 47% yaw rate and 69% heading/lateral-offset error. Worst vx error can increase;
+this is short synthetic pending-heavy evidence, not a universal or physical-validation claim.
+
+Common physical coverage is 0–1.995 s. Zero observed boundary crossings, solver/model failures,
+handoff rejections or authority issues; max slack <9.1e-11 m, reserve >=0.67 s. Imposed driver
+latency causes 100 busy ticks per run; planner busy misses are zero. First forecast difference
+is at 0.1 s, handoff 0.135 s, applied acceleration split 0.155 s, first state split 0.16 s. Timing and
+per-state handoff-continuity diagnostics are separate from aligned target prediction errors.
+Each run has 18 recorded targets and one labelled RK4 reconstruction, with zero bracket closure.
+
+Verification: 116 focused tests passed in 7.40 s; scoped Ruff check/format passed. Capture on/off
+preserves exact physical/solver/event/RK4 channels; old default-A fingerprints remain valid.
+An initial gamma 1.8 fixture-path failure occurred before simulation and is preserved separately
+from the successful retry. Raw ~4.8MiB is retained under results/task007d/d3; only compact
+review evidence is committed. No prior B/C/C-R evidence was modified.
+
+D3 started from clean main b27c0465f3cb1a13ad20152c17bcfadb37c2a8c4. Delivery SHA/URL is in
+the final report and Git history under the standing commit-and-push workflow.
+Recommend review followed by a separately authorized short A/B timing/coverage matrix,
+including no-pending cases. **STOP: Task007D is not complete. Do not start Architecture C,
+full racing or measured repetitions without the next Engineering Orchestrator instruction.**
+
+---
+
 # APEX handoff — Task007D-D2 complete; stop for review
 
 Updated 2026-10-09. D2 integrates the existing committed-prefix predictor into

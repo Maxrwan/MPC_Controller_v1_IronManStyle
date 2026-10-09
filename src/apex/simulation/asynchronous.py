@@ -12,6 +12,7 @@ from apex.control.trajectory.prediction import CommittedControlPrefix, RollingDe
 from apex.coordinates.angles import wrap_angle
 from apex.models.errors import ModelValidationError
 from apex.simulation.diagnostic_timing import ReplayExhausted
+from apex.simulation.prediction_capture import PredictionRelease
 from apex.state import STATE_NAMES
 from apex.state import StateIndex as S
 
@@ -77,11 +78,21 @@ class AsyncRunner:
     """One pending solve and one completed future-dated packet, never a solver queue."""
 
     def __init__(
-        self, plant, planner, tracker, track, config=AsyncConfig(), estimator=None, *, timing=None
+        self,
+        plant,
+        planner,
+        tracker,
+        track,
+        config=AsyncConfig(),
+        estimator=None,
+        *,
+        timing=None,
+        release_observer=None,
     ):
         self.plant, self.planner, self.tracker, self.track = plant, planner, tracker, track
         self.config = config
         self.timing = timing
+        self.release_observer = release_observer
         if config.committed_prefix_prediction:
             try:
                 signature(planner.prepare).bind(
@@ -187,7 +198,7 @@ class AsyncRunner:
             plan_id += 1
             tracker.previous = command.copy()
             estimate = self.estimator.estimate()
-            if c.committed_prefix_prediction:
+            if c.committed_prefix_prediction or self.release_observer is not None:
                 # Capture after this timestamp's application/codriver processing. The
                 # requested value is still pending, including new zero-latency work.
                 prefix = CommittedControlPrefix(
@@ -199,6 +210,13 @@ class AsyncRunner:
                         None if actuator_pending is None else actuator_pending[0]
                     ),
                 )
+            if self.release_observer is not None:
+                # Diagnostic capture only: detached release-known data, before any
+                # preparation or future readiness lookup. No new physical event.
+                self.release_observer(
+                    PredictionRelease.capture(plan_id, x, estimate, prefix, buffer, tracker)
+                )
+            if c.committed_prefix_prediction:
                 packet, event = self.planner.prepare(
                     plan_id, x, t, estimate, buffer, tracker, committed_prefix=prefix
                 )

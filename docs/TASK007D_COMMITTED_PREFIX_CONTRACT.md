@@ -211,3 +211,16 @@ that absolute tolerance with zero relative tolerance.
 
 Runtime tests: [test_committed_prefix_runtime.py](/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/tests/unit/test_committed_prefix_runtime.py:1).
 No D3, fixed-handoff architecture or timing campaign is authorized by this result.
+
+## D3 diagnostic scoring (opt-in, independent of architecture selection)
+
+`AsyncRunner(..., release_observer=None)` optionally exports a detached `PredictionRelease`
+after the same release-phase processing used by D2, before preparation or future readiness
+lookup. It captures the active packet, state, prefix and TVLQR configuration for offline A/B
+forecasts; it adds no events, changes no RK4 partitions and grants no packet authority.
+The pilot scores each forecast against the same physical history at the estimated target.
+Off-event targets use explicitly labelled independent-plant RK4 reconstruction, with closure
+and step-doubling checks. Missing coverage/failures have null residuals. The old readiness
+`prediction_error` remains untouched and is still not an aligned target error. See
+TASK007D_AB_PILOT.md for results, limits and reproduction. Architecture A stays the default;
+Task007D and any future Architecture C work remain gated by Engineering Orchestrator review.

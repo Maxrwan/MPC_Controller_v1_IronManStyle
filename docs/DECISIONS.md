@@ -896,3 +896,26 @@ pass; 101 focused tests and scoped Ruff checks pass. No racing/timing improvemen
 The user also establishes the permanent scoped commit-and-push workflow in AGENTS.md,
 superseding old handoff notes requiring separate commit permission. Complete and push D2,
 then stop for Engineering Orchestrator review. No Architecture C or next subtask is included.
+
+## ADR-159 — D3 matches prediction targets using offline causal release snapshots
+
+Add an optional AsyncRunner release observer (default None) after existing same-timestamp
+codriver processing and before preparation/readiness lookup. Pass detached frozen release
+state, active packet, prefix and TVLQR parameters/configuration; never pass future timing,
+future measured controls or plant history into either predictor. Evaluate A/B offline with
+private buffers/trackers; the active architecture alone controls NMPC preparation. No scheduler,
+plant partition, predictor mathematics or authority changes. Keep the default A path unchanged.
+
+Score forecast-minus-physical state at release+estimated delay, wrapping heading residuals.
+Use recorded event states when available; otherwise reconstruct a held-command partial RK4
+step with the existing independent plant and explicitly label it. Check full-bracket closure,
+report step-doubling differences, reject discontinuities and censor missing coverage. Keep
+readiness and accepted-handoff time mismatch, and same-time handoff continuity, separate.
+Never reinterpret the old readiness-state mismatch as aligned prediction error.
+
+The bounded fixed 35 ms planner / 15 ms driver synthetic pilot (gamma 2.0/1.8, two seconds each A/B)
+clears all gates and improves per-state matched RMS in all four host histories. It does not
+justify changing production defaults. Fifteen new focused cases plus 101 existing tests pass;
+exact physical and RK4 capture parity is retained. See TASK007D_AB_PILOT.md for numerical
+limits, preserved fixture-path launch failure, compact evidence and reproduction. Wider short
+A/B coverage requires a new assignment; fixed handoffs and measured campaigns remain excluded.
