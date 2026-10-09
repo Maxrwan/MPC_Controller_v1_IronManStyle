@@ -187,3 +187,15 @@ progress cases expose oscillation and margin-slack limitations. TVLQR remains un
 See the [study specification](docs/TASK007B_PROGRESS_SEEKING_RACING.md),
 [measured results](docs/TASK007B_RESULTS.md), [reproduction](docs/TASK007B_REPRODUCTION.md),
 and [review artifacts](results/task007b).
+
+## Task 007C — near-limit formulation diagnosis
+
+The reproducibility gate and resumed C1–C4 study are complete. Controlled histories,
+retained timing traces, sustained laps and twenty measured repetitions support a horizon-only
+review candidate (N8 at synthetic gamma2), with baseline dynamic-state costs and lambda0.
+N6's measured trajectory-exhaustion failure and residual steering corrections remain explicit.
+Production defaults and TVLQR are unchanged; further controller/timing work awaits review.
+
+Start with the [48-section results](docs/TASK007C_RESUMED_RESULTS.md),
+[current handoff](docs/CODEX_HANDOFF.md), [artifact index](docs/TASK007C_ARTIFACT_INDEX.md)
+and [reproduction commands](docs/TASK007C_RESUMED_REPRODUCTION.md).

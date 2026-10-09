@@ -109,6 +109,29 @@ def dashboard(folder, sector=None):
         for field in fields:
             ax[index].plot(t.s_abs, t[field], label=field, lw=0.6)
         ax[index].set(title=title, xlabel="Unwrapped progress [m]")
+    # Active-reference telemetry alone can hide a late pending solve that never hands off.
+    # Overlay preparation events at their measured source progress, including pending work.
+    prepared = [p for p in events["plans"] if not p.get("startup") and p.get("source_state")]
+    for completed, label, marker in [
+        (True, "Prepared wall time at release (completed)", "."),
+        (False, "Prepared wall time at release (pending at stop)", "x"),
+    ]:
+        selected = [
+            p
+            for p in prepared
+            if p.get("completed", False) == completed
+            and t.s_abs.min() <= p["source_state"][4] <= t.s_abs.max()
+        ]
+        if selected:
+            ax[18].scatter(
+                [p["source_state"][4] for p in selected],
+                [p["planner_total_time"] for p in selected],
+                marker=marker,
+                s=18 if completed else 60,
+                alpha=0.7,
+                label=label,
+                color="tab:purple" if completed else "tab:red",
+            )
     for index, fields, title in [
         (11, ["alpha_f", "alpha_r"], "Slip angles [rad]"),
         (12, ["fx_front", "fx_rear", "fyf", "fyr"], "Axle longitudinal / lateral forces [N]"),

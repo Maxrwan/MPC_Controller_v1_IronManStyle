@@ -14,8 +14,8 @@
 - Phase 6 — Task 007 RACING-REFERENCE INTEGRATION AND NEAR-LIMIT APEX TRACKING.
 - Task 007A — offline Planning-reference interface and synthetic Grand Prix baseline (complete; 479 tests passed, three chronology cases audited).
 - Task 007B — progress-seeking APEX and progressively aggressive offline references (complete; 500 regression tests passed; conservative-case progress selection, high-demand limitations retained).
-- Task 007C — near-limit APEX formulation diagnosis (stopped at mandatory anchor reproduction gate; rejected E/F behavior not reproduced).
-- Task 007C-R — near-limit reproducibility and timing-causality gate (complete; exact historical replay, fixed-timing determinism, timing-history sensitivity; 518 tests passed; C1–C4 scientifically cleared but not executed).
+- Task 007C — near-limit APEX formulation diagnosis (initial gate stop retained historically; resumed C1–C4 study and final audits complete; stopped for review; see TASK007C_RESUMED_RESULTS.md).
+- Task 007C-R — near-limit reproducibility and timing-causality gate (complete; exact historical replay, fixed-timing determinism, timing-history sensitivity; 518 tests passed; C1–C4 scientifically cleared and subsequently executed in the resumed study).
 - Phase 7 — LMPC + system identification.
 - Phase 8 — battery/energy model.
 - Phase 9 — energy-aware racing MPC.
@@ -42,6 +42,6 @@ HIL/bench execution where available, sensor/actuator latency injection, missed i
 updates and uncertainty-aware control response. This is a future mandatory review checkpoint;
 none of this is implemented or authorized as part of Task007C.
 
-C1–C4 resumed 2026-10-07 under `TASK007C_RESUMPTION.md`. Review these before adaptive codriver,
+C1–C4 resumed 2026-10-07 and experiments/reporting completed2026-10-08 under `TASK007C_RESUMPTION.md`. Review `TASK007C_RESUMED_RESULTS.md` before adaptive codriver,
 LMPC, online identification, energy management or opponent racing. The later timing-architecture
 comparison is documented there and is not part of the current implementation.

@@ -27,6 +27,8 @@ def run():
             assert sha(path) == digest, path
         historical[task] = len(provenance["result_sha256"])
     baseline = json.loads((ROOT / "g2_w0_vy1_r1_n4_fixed_l1/summary.json").read_text())
+    for name, digest in baseline["source_sha256"].items():
+        assert sha(name) == digest, f"Current runtime differs from retained case: {name}"
     histories = json.loads((ROOT / "histories.json").read_text())
     cases = []
     for path in sorted(ROOT.glob("g*/summary.json")):

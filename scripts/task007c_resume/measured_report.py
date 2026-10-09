@@ -130,22 +130,28 @@ def main():
         prefix_rows = []
         for case in common["cases"]:
             laps = case["lap_prefixes"]
-            prefix_rows.append(dict(
-                case=case["case"],
-                native_end_m=case["sampled_end_m"],
-                heading_tv=sum(lap["planned_heading_total_variation"] for lap in laps),
-                steering_tv=sum(lap["planned_steering_total_variation"] for lap in laps),
-                actual_steering_tv=sum(lap["actual_steering_total_variation"] for lap in laps),
-                rate_limit_s=sum(lap["actual_rate_limit_s"] for lap in laps),
-                tracking_ey_rms=case["tracking_ey_rms"],
-                clearance=case["clearance_min"],
-            ))
-        common_by_gamma.append(dict(
-            gamma=gamma,
-            shared_progress=[common["cases"][0]["shared_start_m"],
-                             common["cases"][0]["shared_end_m"]],
-            rows=prefix_rows,
-        ))
+            prefix_rows.append(
+                dict(
+                    case=case["case"],
+                    native_end_m=case["sampled_end_m"],
+                    heading_tv=sum(lap["planned_heading_total_variation"] for lap in laps),
+                    steering_tv=sum(lap["planned_steering_total_variation"] for lap in laps),
+                    actual_steering_tv=sum(lap["actual_steering_total_variation"] for lap in laps),
+                    rate_limit_s=sum(lap["actual_rate_limit_s"] for lap in laps),
+                    tracking_ey_rms=case["tracking_ey_rms"],
+                    clearance=case["clearance_min"],
+                )
+            )
+        common_by_gamma.append(
+            dict(
+                gamma=gamma,
+                shared_progress=[
+                    common["cases"][0]["shared_start_m"],
+                    common["cases"][0]["shared_end_m"],
+                ],
+                rows=prefix_rows,
+            )
+        )
     for (gamma, horizon), members in sorted(groups.items()):
         tag = f"g{gamma:g}_n{horizon}".replace(".", "p")
         common = compare(
@@ -164,18 +170,18 @@ def main():
                 cases=[r["case"] for r in members],
                 completed=sum(r["completed_laps"] >= 1 for r in members),
                 boundary_runs=sum(r["boundary_count"] > 0 for r in members),
-                invalid_runs=sum(
+                solver_model_failure_runs=sum(
                     any(
                         r[k] > 0
                         for k in [
                             "solver_failures",
                             "planner_failures",
                             "forecast_or_gain_failures",
-                            "fallback_events",
                         ]
                     )
                     for r in members
                 ),
+                fallback_runs=sum(r["fallback_events"] > 0 for r in members),
                 common_progress=[
                     common["cases"][0]["shared_start_m"],
                     common["cases"][0]["shared_end_m"],
@@ -200,17 +206,30 @@ def main():
     outcomes = [
         {
             k: g[k]
-            for k in ["gamma", "horizon", "count", "completed", "boundary_runs", "invalid_runs"]
+            for k in [
+                "gamma",
+                "horizon",
+                "count",
+                "completed",
+                "boundary_runs",
+                "solver_model_failure_runs",
+                "fallback_runs",
+            ]
         }
         for g in reports
     ]
     lines += [table(outcomes, [(k, k) for k in outcomes[0]]), ""]
     for common in common_by_gamma:
-        lines += [f"## Comparable observed progress, gamma {common['gamma']:g}", "",
-                  f"Shared interval {common['shared_progress'][0]:.6f}–"
-                  f"{common['shared_progress'][1]:.6f}m. A failure may shorten this interval; "
-                  "full-run failure counts remain above. No tail is invented.", "",
-                  table(common["rows"], [(k, k) for k in common["rows"][0]]), ""]
+        lines += [
+            f"## Comparable observed progress, gamma {common['gamma']:g}",
+            "",
+            f"Shared interval {common['shared_progress'][0]:.6f}–"
+            f"{common['shared_progress'][1]:.6f}m. A failure may shorten this interval; "
+            "full-run failure counts remain above. No tail is invented.",
+            "",
+            table(common["rows"], [(k, k) for k in common["rows"][0]]),
+            "",
+        ]
     for g in reports:
         lines += [
             f"## gamma {g['gamma']:g}, N={g['horizon']}",

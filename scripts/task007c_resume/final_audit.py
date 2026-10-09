@@ -35,11 +35,27 @@ def main():
     inventory = dict(
         status="Evidence inventory; acceptance is documented separately in the scientific report.",
         diagnostic_cases_verified=diagnostic_cases,
-        source_sha256={str(p): sha(p) for base in ["src", "scripts/task007c_resume"]
-                       for p in sorted(Path(base).rglob("*.py"))},
-        document_sha256={str(p): sha(p) for p in sorted(Path("docs").glob("TASK007C*.md"))},
-        result_sha256={str(p.relative_to(ROOT)): sha(p) for p in sorted(ROOT.rglob("*"))
-                       if p.is_file() and p.name != "provenance.json"},
+        source_sha256={
+            str(p): sha(p)
+            for base in ["src", "scripts/task007c_resume"]
+            for p in sorted(Path(base).rglob("*.py"))
+        },
+        document_sha256={
+            str(p): sha(p)
+            for p in sorted(
+                [
+                    *Path("docs").glob("TASK007C*.md"),
+                    Path("docs/CODEX_HANDOFF.md"),
+                    Path("docs/DECISIONS.md"),
+                    Path("docs/PROJECT_ROADMAP.md"),
+                ]
+            )
+        },
+        result_sha256={
+            str(p.relative_to(ROOT)): sha(p)
+            for p in sorted(ROOT.rglob("*"))
+            if p.is_file() and p.name != "provenance.json"
+        },
     )
     (ROOT / "provenance.json").write_text(json.dumps(inventory, indent=2) + "\n")
     print("Final inventory:", len(inventory["result_sha256"]), "result files", flush=True)

@@ -1,151 +1,133 @@
-# APEX handoff — Task007C C1–C4 robustness validation
+# APEX handoff — Task007D-D1 complete; stop for review
 
-Updated2026-10-08. Task remains in progress. User repeatedly authorizes continuation.
-Current brief: `/Users/marwansaber/.codex/attachments/6fa32293-b32a-4ccb-9110-ac5a34e1787d/Pasted text.txt`.
-Original detailed request: attachment `f3aef931-588b-4af1-be06-3450fc5a54cf/Pasted text.txt`;
-protocol: `TASK007C_NEAR_LIMIT_APEX_DIAGNOSIS.md`, superseded gate status clarified in
-`TASK007C_RESUMPTION.md`. Original end-of-task response requires48 numbered sections.
-Prior completed reproducibility-gate handoff: `TASK007C_R_HANDOFF.md`.
+Updated 2026-10-09. Only D1 is implemented and verified. Task007D is not complete.
+`ActuationPredictor.predict` now accepts optional immutable `CommittedControlPrefix`
+release-known actuator state. It replays the one already-pending application with the
+existing elapsed-time steering clamp, skips busy forecast ticks, then resumes causal
+ideal-timing TVLQR forecasting on the release-active packet. At the target, due committed
+applications precede return; same-time new feedback follows handoff and is excluded.
 
-## Active work and immediate continuation
+Read `TASK007D_COMMITTED_PREFIX_CONTRACT.md` for fields, capture phase, endpoint semantics,
+causal limits and proposed later integration. `TASK007D_CURRENT_TIMING_AUDIT.md` remains
+the pre-D1 audit. No AsyncRunner/planner wiring, Architecture B/C activation, fixed handoff,
+model, cost, horizon, solver, packet, buffer, default or prior-result change was made.
 
-The controlled queue finished (`upper_region_campaign_after_review.log`, former session2722).
-No numerical project jobs remained when inspected before backend benchmarking. N6/N8 backend
-thread audits passed: each sampled max1 thread, CPU/wall0.9970/0.9993. Measured repetitions
-are active in session54522 after reviewing the first N6 failure. The same immutable plan
-resumes by reusing completed cases, never replacing a failed run. Tail `measured_g2_campaign.log`.
-The completed follow-up includes all gamma2.1 histories, gamma2.2 N6 median/E/F, both exact
-fixed-history repeats, four zero/injected latency checks, and eight sustained confirmations.
+Verified: 85 focused tests passed (37 new committed-prefix cases plus existing tracker,
+async chronology and diagnostic timing cases); scoped Ruff check/format passed. Exact
+pre-D1 golden outputs pass; four short comparisons against unchanged AsyncRunner pass.
+No active measured campaign was found before testing; no laps or benchmarks were run.
+Preexisting work remains in this dirty tree. Do not commit unrelated changes.
 
-Both N6/N8 repeat checks PASS with zero numerical differences across physical state/control,
-availability, references, predictions and NLP inputs/solutions. The horizon-specific control
-offset is explicitly corrected in `confirmation_report.py` without changing the archived CR
-helper. Artifacts: `n6_fixed_repeat_parity.json`, `n8_fixed_repeat_parity.json`.
+Next: Engineering Orchestrator review, then a separately authorized D2 opt-in integration
+capturing applied/pending command state at planner release. Do not implement it automatically.
+The accepted review candidate remains N8/dt0.1s/lambda0/gamma2 with frozen weights and TVLQR;
+production defaults remain unchanged. Earlier C1–C4 handoff is retained verbatim below.
 
-All eight sustained cases completed three crossings with no boundary, solver, forecast,
-fallback or deadline failures: gamma2 N4/N6/N8 and gamma2.2 N6 under fixed/smooth histories.
-The first crossing starts at s_abs=1m; only the next TWO laps are full geometric laps.
-`TASK007C_SUSTAINED_CONFIRMATION.md` and `sustained_per_lap.csv` report each separately.
-N6 is not uniformly smoother on every sustained lap: gamma2 smooth lap3 heading TV is
-9.992 versus baseline9.855rad; at gamma2.2 smooth lap3 it grows to11.530rad versus8.957 on lap2.
-These caveats must enter the envelope decision. N8 improves both full gamma2 smooth laps.
+---
 
-Zero/injected diagnostic checks passed for N6/N8 (`candidate_latency_checks.json`). With
-150ms planner/25ms driver injection, physics advances0.841/0.848m during solves, application
-progress staleness reaches0.140/0.142m, codriver executes during preparation, and4 planner/53
-codriver misses are counted separately in each0.8s record. Zero-delay checks have no misses.
+# APEX handoff — Task007C C1–C4 ready for final review
 
-Next measured plan: gamma2 N4/N6/N8, five repetitions each in rotated order, then five N6
-repetitions at the upper gamma2.2 point. Do not run analysis/rendering/tests concurrently.
-Review every new failure before resuming. No formulation or envelope is accepted yet.
+Updated2026-10-08. Task007C C1–C4 is COMPLETE and stopped for user review. Scientific experiments, reports,
+physical-chronology checks and the inventory are complete. No experiment worker or measured
+campaign remains active. No further implementation is authorized before this review.
 
-## Completed scientific work
+## Start here
 
-C1:16 baseline cells gamma1.5–2.2 plus6 informative lambda2 cells. Transition sensitivity starts
-around1.9–2.0, is nonmonotonic across histories, and worsens sharply at baseline2.2. Fixed2.2
-crosses the boundary; smooth2.2 is highly oscillatory. See `TASK007C_C1_FIXED_SCREEN.md`.
+- `TASK007C_RESUMED_RESULTS.md`: original48-section scientific report, four-axis comparison,
+  recommendation and bounded provisional operating-point evidence.
+- `TASK007C_ARTIFACT_INDEX.md`: verified absolute links to reports, dashboards, sector zooms,
+  physics plots, measured distributions, failures and raw evidence.
+- `TASK007C_RESUMED_REPRODUCTION.md`: exact executable commands and finite-history rules.
+- `TASK007C_MEASURED_RESULTS.md`: every measured run, outcome, coverage and distribution.
+- `TASK007C_SUSTAINED_CONFIRMATION.md`: exact N6/N8 parity and24 separately reported lap segments.
 
-C2:36 initial grid cells (four reused C1 baselines), plus4 follow-ups, all analyzed. Weakening
-yaw tracking is poor. Half-vy improves only gamma2 in the initial two histories, then FAILS
-pathological E; it is rejected as a robust finalist. See `TASK007C_C2_GRID_RESULTS.md`.
+Current user brief: attachment `6fa32293-b32a-4ccb-9110-ac5a34e1787d/Pasted text.txt`.
+Original detailed brief/48-section requirement: `f3aef931-588b-4af1-be06-3450fc5a54cf/Pasted text.txt`.
+Original Task007C gate-stop reports are historical; Task007C-R passed, and C1–C4 have now run.
+Do not restart the grids or reopen the old gate as if this work were still unexecuted.
 
-C3:all18 primary horizon cells complete and analyzed, baseline weights/lambda0. N6 improves
-heading variation and rate-limit activity at1.8/2.0/2.1 under fixed and smooth histories. N8
-improves2.0 further but is worse than N6 at2.1 in these two histories. Supplemental1.9 N6/N8
-fixed/smooth all safe and smoother than baseline. N6 gamma2.2 fixed/smooth both safe with
-negligible slack; fixed heading TV24.807→9.278rad and clearance−0.01974→0.31563m. This is not
-an accepted envelope. See `TASK007C_C3_GRID_RESULTS.md`, `TASK007C_GRID_INTERPRETATION.md`.
+## Recommendation for review, not a production change
 
-C4:all30 static-weight cells complete and analyzed at1.9/2.0/2.1. Responses are nonmonotonic
-and history-dependent. N4/lambda4 improves initial gamma2 smoothness but FAILS pathological F;
-reject it as a robust finalist. No adaptive gate or schedule is justified. Exact table:
-`TASK007C_C4_GRID_RESULTS.md`;270 bounded sector traversals in `c4_paired_sector_feasibility.csv`.
+Retain alpha_vy=alpha_r=1, lambda0, dt0.1s and frozen100Hz TVLQR. Extend horizon only.
+N8/gamma2 is the stronger current end-to-end review candidate: five measured completions,
+heading TV8.179–8.417rad, tracking ey RMS1.261–1.307mm, measured planner mean55.52–56.47ms,
+p95 68.15–69.57ms, planner demand0.554–0.560core-s/s. Minimum measured reserve0.570s.
+No observed boundary/solver/fallback failure in those five runs. Occasional deadline misses
+and frequent smaller steering corrections remain; do not claim perfect smoothness or a
+hard-real-time guarantee. The demonstrated gamma2 point is not a certified continuous envelope.
+Adjacent controlled N8 gamma1.8/1.9 results support review; N8 gamma2.1/2.2 lacks measured evidence.
 
-Gamma2 retained-history matrix is complete: five formulations ×five histories. Half-vy and
-lambda4 are rejected; N6/N8 remain. On the same approximately1–145.94m progress interval:
-baseline heading TV10.278–28.651rad, N6 8.214–8.495rad, N8 6.916–7.496rad. Median trace ends
-at30.45s before the gamma2 lap end for every formulation; each retains two codriver misses.
-N6/N8 reach their requested E/F lap ends safely. These screens start at s_abs=1m, not a complete
-geometric lap. Gamma2.1 retained-history matrix is also complete:15 records, no boundary/solver failure;
-see `TASK007C_G2P1_HISTORY_RESULTS.md`. Gamma2.2 N6 completes all five histories safely;
-`TASK007C_G2P2_HISTORY_RESULTS.md` reports seven records including the rejected N4 fixed stress case. Exact gamma2 coverage/ranges: `TASK007C_G2_HISTORY_RESULTS.md` and
-`TASK007C_REPRESENTATIVE_HISTORY_REVIEW.md`; native-progress JSONs remain in the result root.
+N6 is the smaller broadly promising mathematical extension, but one of five measured gamma2
+runs exhausted its trajectory. Its five gamma2.2 completions cannot erase that failure.
+Gamma2.2 N6 also worsens on the third smooth sustained lap. Keep it as upper stress evidence,
+not the fastest automatic envelope selection. All production defaults remain unchanged.
 
-## Rejections and evidence preservation
+## Completed evidence
 
-`results/task007c_resume/reviewed_failures.json` binds each review to the exact summary hash.
-Never discard unfavorable runs or waive an unreviewed new failure.
-- Baseline gamma2.2 fixed:44 boundary samples, max ey0.569740m.
-- Gamma2 alpha(.25,.25) fixed:159 samples, max ey0.814420m, technical entry.
-- Gamma2 alpha(1,0) smooth:62 samples, max ey0.590392m, hairpin approach.
-- Half-vy gamma2 pathological E:59 samples, max ey0.583446m, clearance−0.033446m, fast sweeper.
-  Slack0.111458m, active nominal ey0.581448m, local ey error below0.010m; no solver/deadline
-  failure. `c2_pathological_e_boundary_review.json`. F was retained and did not add a crossing.
-- N4/lambda4 gamma2 pathological F:100 samples, max abs ey0.637804m, clearance−0.087804m,
-  return complex. Slack0.162558m, active nominal abs ey0.631948m, local ey error below0.010m;
-  no solver/deadline failure. `c4_pathological_f_boundary_review.json`.
-Do NOT run measured finalist repetitions for half-vy or lambda4. Their physics and failure
-sector dashboards are exported. Half-vy fast-sweeper and lambda4 return-complex dashboards were both visually inspected
-(`c2_pathological_e_failure_render.log`, `c4_pathological_f_failure_render.log`).
+- C1:16 baseline fixed/smooth cells at gamma1.5–2.2 plus6 informative lambda2 screens.
+- C2:36 initial grid cells plus4 follow-ups. Half-vy and weakened yaw costs are not robust.
+- C3:18 primary horizon cells plus gamma1.9 and gamma2.2 supplemental coverage.
+- C4:30 static-weight cells; nonmonotonic, chronology-dependent effects; no justified gate.
+- Gamma2 retained-history matrix:25 records, including the rejected half-vy and lambda4 cases.
+- Gamma2.1 matrix:15 records; gamma2.2:7 records (N6 five histories, N4 fixed/smooth stress).
+- Fresh measured:20 records, five per gamma2 N4/N6/N8 and gamma2.2 N6. N4/N8 gamma2 and N6
+  gamma2.2 each complete5/5; N6 gamma2 completes4/5. No unfavorable run is discarded.
+- Eight sustained cases all complete three crossings without boundary/solver/fallback/deadline
+  failures. First crossing starts at s_abs=1m; only the next TWO are complete geometric laps.
+- Exact fixed N6/N8 repeats pass across physical/NLP channels; candidate control offsets use6(N+1).
+- Four0.8s zero/injected checks pass physical chronology. Injection150ms planner/25ms driver
+  yields4 planner/53 driver misses each, moving physics and application staleness.
+- Native backend audits observe max1 process thread, N6/N8 CPU/wall0.9970/0.9993.
+- Internal physics and measured worst-case dashboards/phase portraits exported and inspected.
+- 533 full regression tests passed before later diagnostics;13 ablation tests,27 DARE checks,
+  three current physics/extraction tests and Ruff checks passed. Runtime mathematics unchanged
+  since those checks. `regression.log`, `focused_tests.log`, `physics_tests.log` retain evidence.
 
-## Validation and artifacts
+The measured all-formulation common prefix is1–97.042m because N6 failed before technical
+entry. Do not compare its shorter whole-record TV with completed rolling segments. Common
+progress tables and whole-record failure counts are separate. No finite trace is extended.
 
-Runtime changes relative to resumption are only independent nonnegative alpha_vy/alpha_r
-(default1) and compatible DARE construction in cost.py/controller.py. Nonlinear states,
-constraints, TVLQR, plant, solver and timing architecture remain unchanged. Defaults retain
-exact full rolling-screen parity with the archived CR case: `full_lap_default_parity.json`.
-27 DARE checks and533 full regression tests passed before diagnostic-only additions. The three
-current physics/extraction tests passed, including shared-prefix endpoint handling. Ruff passes.
+## Retained failures and causal check
 
-Principal baseline/N6/N8 and former alpha/lambda candidates have schema2 physics exports,
-large dashboards and hairpin/technical/sweeper zooms. Primary horizon errors use accepted
-packets only; tagged rejected/pending/all-prepared evidence remains. No state extrapolation.
-`TASK007C_PHYSICS_REVIEW.md` documents derivative, force-balance, finite-difference and realized
-horizon errors. These are internal synthetic checks, never physical-vehicle validation.
-`TASK007C_SECTOR_DIAGNOSIS.md` preserves increased actual reversal counts where planned TV falls;
-interpret counts with their magnitude/deadband and sector context. Heading TV here is Frenet
-unwrapped epsi. C3 phase portraits and comparison figures were visually checked.
+Five formulation boundary rejections remain: baseline2.2 fixed (44 samples), combined(.25,.25)
+fixed (159), zero-yaw smooth (62), half-vy E (59), lambda4 F (100). The latter two have unsafe
+nominals, material slack and local position error below0.010m; no solver/deadline failure.
+All are hash-bound in `reviewed_failures.json`; do not measure the rejected alpha/lambda variants.
 
-Original B/C/CR artifact hashes are preserved:675/293/1907 files verified at the90-cell audit.
-Chronology passed91 cases including baseline parity. Rerun final audits after all new cases.
-Disk was previously exhausted during a derived export; user freed space, raw evidence verified,
-exports regenerated. Current free space about5.1GiB. Launch/analysis stop below1GiB. Do not
-remove prior evidence. `disk_capacity_pause_record.txt` preserves that interruption record.
+Measured N6 gamma2 repetition00 stops at18.756621s outside the baseline fallback domain.
+Pending plan182 succeeds in13 iterations but uses593.021ms wall versus118.649ms CPU; its
+availability18.793021s exceeds the old trajectory end. Physics advances3.1085m during the
+observed pending interval.5 planner/6 driver misses, no boundary or solver failure.
+The wall/CPU gap's OS cause is unresolved; never discard it as a presumed external outlier.
 
-## Measured phase — first failure reviewed, repetitions active
+Replaying that exact recorded history reproduces N6's physical and NLP channels exactly.
+Transferred N8 remains valid until driver trace exhaustion18.760s, with0.196621s reserve and
+no fallback. It is censored before the replacement completes, not a completed recovery test.
+`measured_n6_failure_replay_parity.json` and `trace_measured_n6_exhaustion.json` retain evidence.
+No invented driver tail or new fixed-handoff architecture was introduced.
 
-`measured_campaign.py --gamma 2 --horizons 4 6 8 --repeats 5` prepares immutable rotated-order
-plans and runs sequential fresh measured workers, preserving every outcome and UTC journal.
-The MEASURED_ACTIVE guard blocks new analysis/rendering/bulk audits/backend benchmarks and
-admits only that harness's workers. It does NOT stop preexisting jobs: verify no preexisting
-analysis/render/test workers before starting measurements; the controlled queue has finished.
+## Preservation and finalization
 
-First run isolated `backend_audit.py --case` for N6/N8 to verify actual threads and CPU/wall,
-then measured repetitions. Baseline audit observed one thread and CPU/wall0.9949. Environment
-variables alone are not evidence. Decide upper-point N6 measured repeats from completed histories
-and sustained confirmations; do not claim an envelope from the largest completed screen alone.
-Five repeats support descriptive distributions, not population guarantees or exact timing CI.
-No bulk analysis, plots or tests may compete with measured workers. The guard/harness worked: the first measured N6
-failed at18.756621s, trajectory exhaustion outside fallback domain, no boundary or solver
-failure. Pending plan182 used593.021ms wall versus118.649ms CPU,13 successful iterations.
-Physics advanced3.1085m during the observed pending interval.5 planner/6 driver misses.
-Cause of the large wall/CPU gap is unresolved; do not discard the result as an OS outlier.
-`measured_n6_rep00_exhaustion_review.json` and hash-bound review retain the failure. Complete
-the predeclared five repetitions to characterize outcome spread; no acceptance yet. No production defaults are changed.
+155 formulation records, baseline parity and four latency cases total160 raw cases. The final
+auditor PASSED and verified current runtime against case hashes, configurations/fixtures/native mode,
+original B/C/CR hashes (675/293/1907 files), and event-level held commands, nonoverlap,
+timestamped references and rate constraints. `provenance.json` inventories results/source/docs.
+The previous disk interruption affected derived exports; raw evidence was verified and exports
+regenerated. No prior results were deleted. Last checked free space was about7GiB.
 
-## Remaining deliverables and stop condition
+Only approved alpha weights and compatible terminal construction change runtime mathematics
+relative to resumption. Earlier task changes were already present in this dirty checkout.
+Do not revert preexisting changes or commit without a new request.
 
-Controlled histories, exact fixed repeats, latency checks and sustained confirmation are done.
-Complete isolated backend/measurement work, per-run
-outcome/compute distributions and principal finalist/worst-case visuals. Assemble four-axis
-reproducibility/accuracy/precision/smoothness table BEFORE performance, provisional envelope,
-final preservation/config/chronology audits and source/result manifest. Complete the original
-48-section response plus updated brief products. Stop for review; no final selection yet.
+## Deferred work: stop here
 
-After C1–C4 formulation review, document-only timing comparison remains current variable
-availability versus committed prefix versus fixed future30/40/50ms on the10ms codriver grid.
-After online SI is implemented AND accepted, mandatory workbench updates must show identified
-parameters, spatial maps, uncertainty, residuals, nominal/identified predictions, grip trends
-and lap comparisons. Then study estimator cost/scheduling/update rate, async adoption/delay,
-HIL/bench work where available, sensor/actuator latency, missed updates and uncertainty response.
-See `PROJECT_ROADMAP.md`. Do not implement these, adaptive codriver, LMPC, energy or opponents now.
+Review the48-section report and the horizon-only recommendation before further implementation.
+No adaptive codriver, LMPC, Planning redesign, online SI, energy or opponents are authorized.
+After formulation review, compare current variable availability, committed-control-prefix MPC
+and fixed future30/40/50ms handoffs on the10ms codriver grid; document-only so far.
+
+AFTER ONLINE SI IS IMPLEMENTED AND ACCEPTED: update the workbench for identified parameters,
+spatial maps, uncertainty, residuals, nominal/identified predictions, learned grip and lap
+comparisons. Then study estimation cost/scheduling/rate, asynchronous model adoption delay,
+HIL/bench execution where available, sensor/actuator latency, missed updates and uncertainty
+response. This mandatory future checkpoint remains in `PROJECT_ROADMAP.md`; do not implement it now.

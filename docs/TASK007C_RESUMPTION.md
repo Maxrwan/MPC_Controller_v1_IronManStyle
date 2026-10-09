@@ -1,5 +1,7 @@
 # Task007C C1–C4 resumption — robustness first
 
+Completed2026-10-08. This document retains the protocol and staged experimental decisions. Final conclusions, measured failures and operating-point limits are in `TASK007C_RESUMED_RESULTS.md`; current status is `CODEX_HANDOFF.md`.
+
 Authorized 2026-10-07 by the new user brief in attachment
 `6fa32293-b32a-4ccb-9110-ac5a34e1787d/Pasted text.txt`.
 The original C1–C4 intent and approved alpha pairs in
@@ -163,7 +165,7 @@ The prepared measured harness rotates configuration order across repetitions, di
 fresh worker at a time, journals UTC events, preserves per-cell outputs and stops on new failures
 for review. `MEASURED_ACTIVE` blocks new analysis/rendering/bulk preservation audits/backend
 benchmarks and admits only measured workers carrying that harness's owner token. This guard does
-not stop preexisting jobs: verify those have finished before starting measurements. The gamma2 measured campaign is active. The first N6
+not stop preexisting jobs: verify those have finished before starting measurements. Both measured plans are complete, with20 retained records. The first N6
 repetition exhausted its trajectory during a593ms preparation interval (119ms CPU), despite
 a successful13-iteration solve; its failed outcome is retained. See
 `measured_n6_rep00_exhaustion_review.json`. Reviewing this failure authorizes completion of

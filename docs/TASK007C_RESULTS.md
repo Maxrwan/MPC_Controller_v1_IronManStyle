@@ -1,5 +1,7 @@
 # Task007C results — reproduction gate not passed
 
+> Historical gate-stop record. Task007C-R subsequently passed; resumed C1–C4 results are in [TASK007C_RESUMED_RESULTS.md](TASK007C_RESUMED_RESULTS.md), with current status in [CODEX_HANDOFF.md](CODEX_HANDOFF.md).
+
 Task007C is **incomplete and stopped before C1–C4**. All six anchor runs and one additional
 unchanged measured repeat each of E/F completed. The original rejected behaviors did not
 reproduce. The brief explicitly requires stopping here. No formulation change is recommended.

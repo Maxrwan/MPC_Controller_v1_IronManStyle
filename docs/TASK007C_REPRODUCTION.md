@@ -1,5 +1,7 @@
 # Task007C reproduction
 
+> Historical gate-stop record. Task007C-R subsequently passed; resumed C1–C4 results are in [TASK007C_RESUMED_RESULTS.md](TASK007C_RESUMED_RESULTS.md), with current status in [CODEX_HANDOFF.md](CODEX_HANDOFF.md).
+
 **Status: stopped at the mandatory reproduction gate.** E/F each have an initial and one
 additional measured run, neither reproducing the original specific rejected behavior. Do not
 start C1–C4 or modify the runtime to force agreement. See `TASK007C_RESULTS.md`.

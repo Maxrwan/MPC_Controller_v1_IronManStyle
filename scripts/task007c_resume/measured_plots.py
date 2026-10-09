@@ -36,17 +36,23 @@ def main():
             good = float(row["completed_laps"]) >= 1 and float(row["boundary_count"]) == 0
             color, marker = ("#167a73", "o") if good else ("#c63d47", "X")
             p = prefix[row["case"]]
-            for ax, value in zip(axes[:3], [p["heading_tv"], p["steering_tv"],
-                                          1000 * p["tracking_ey_rms"]]):
+            for ax, value in zip(
+                axes[:3], [p["heading_tv"], p["steering_tv"], 1000 * p["tracking_ey_rms"]]
+            ):
                 ax.scatter(x, value, c=color, marker=marker, s=55, zorder=3)
             p95, maximum = [1000 * float(row["preparation_" + key]) for key in ["p95", "max"]]
             axes[3].plot([x, x], [p95, maximum], color=color, alpha=0.5)
             axes[3].scatter(x, p95, c=color, marker="o", s=25)
             axes[3].scatter(x, maximum, c=color, marker=marker, s=55)
             axes[4].scatter(x, float(row["reserve_min"]), c=color, marker=marker, s=55)
-    titles = ["Shared-prefix planned epsi TV [rad]", "Shared-prefix nominal steering TV [rad]",
-              "Shared-prefix tracking ey RMS [mm]", "Preparation p95 and max per run [ms]",
-              "Whole-record minimum trajectory reserve [s]", "Rolling segment completions / attempts"]
+    titles = [
+        "Shared-prefix planned epsi TV [rad]",
+        "Shared-prefix nominal steering TV [rad]",
+        "Shared-prefix tracking ey RMS [mm]",
+        "Preparation p95 and max per run [ms]",
+        "Whole-record minimum trajectory reserve [s]",
+        "Rolling segment completions / attempts",
+    ]
     for ax, title in zip(axes, titles):
         ax.set(title=title, xticks=[0, 1, 2], xticklabels=["N4", "N6", "N8"])
         ax.grid(axis="y", alpha=0.2)

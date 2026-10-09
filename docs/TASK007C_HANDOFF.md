@@ -1,5 +1,7 @@
 # APEX handoff — Task 007C stopped at mandatory reproduction gate
 
+> Historical gate-stop record. Task007C-R subsequently passed; resumed C1–C4 results are in [TASK007C_RESUMED_RESULTS.md](TASK007C_RESUMED_RESULTS.md), with current status in [CODEX_HANDOFF.md](CODEX_HANDOFF.md).
+
 Task007B is accepted. The Task007C source brief is
 `/Users/marwansaber/.codex/attachments/f3aef931-588b-4af1-be06-3450fc5a54cf/Pasted text.txt`.
 Prior completed handoff: `docs/TASK007B_HANDOFF.md`.

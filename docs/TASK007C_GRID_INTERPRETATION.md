@@ -1,7 +1,8 @@
 # Task007C controlled-grid interpretation
 
-Initial C1–C4 grids are complete. Representative-history and fresh-measured acceptance is
-still in progress. This document is not the final selection or robust operating envelope.
+This document retains the initial controlled-grid interpretation. Representative histories and
+fresh measured repetitions are now complete; final selection limits and the provisional
+operating-point recommendation are in `TASK007C_RESUMED_RESULTS.md`.
 All statements concern synthetic data and unchanged TVLQR/physical plant/timing architecture.
 
 ## C3: N6 is the smallest consistently promising horizon extension

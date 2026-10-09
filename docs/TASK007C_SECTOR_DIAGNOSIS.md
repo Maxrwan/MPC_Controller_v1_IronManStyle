@@ -29,4 +29,4 @@ Actual steering reversal counts do not uniformly decrease with planned variation
 
 The phase portraits retain loops through changing corner demand; they are not autonomous limit-cycle proofs. Compare growing excursion size, repeated turns, steering activity and spatial context. Separate sector and lap boundaries avoid drawing lines between unrelated traversals.
 
-Figure: `results/task007c_resume/c3_gamma2_phase_portraits.png`. The four N6/N8 fixed/smooth case folders include primary dashboards and hairpin/technical/sweeper zooms. Baseline N4 dashboards are retained alongside them. These are synthetic diagnostics; final timing-robustness and compute acceptance remain pending.
+Figure: `results/task007c_resume/c3_gamma2_phase_portraits.png`. The four N6/N8 fixed/smooth case folders include primary dashboards and hairpin/technical/sweeper zooms. Baseline N4 dashboards are retained alongside them. These are synthetic diagnostics; completed measured timing and the bounded review recommendation are in `TASK007C_RESUMED_RESULTS.md`.

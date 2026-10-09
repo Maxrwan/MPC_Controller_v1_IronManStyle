@@ -1,6 +1,6 @@
 # Task007C representative-history review
 
-Gamma2 is complete across fixed, smooth, median, pathological E and pathological F. This is a deliberately selected five-history diagnostic set; ranges below are descriptive and are not population confidence intervals. Gamma2.1/2.2 validation is in progress; fresh measured repetitions have not started.
+Gamma2 is complete across fixed, smooth, median, pathological E and pathological F. This is a deliberately selected five-history diagnostic set; ranges below are descriptive and are not population confidence intervals. Gamma2.1/2.2 recorded-history validation is complete (see their separate history reports). Gamma2 measured repetitions are complete and gamma2.2 measured repetitions are active; final acceptance remains pending.
 
 The five formulations are compared on the same observed progress interval, approximately1–145.94m. Native endpoints differ slightly and are disclosed in the JSON. Whole-record safety failures are included even if outside that prefix. Each single screen starts at s_abs=1m, so its first counted lap end closes a rolling segment.
 
@@ -22,7 +22,7 @@ Exact reviewed failures are hash-bound in `reviewed_failures.json`; individual r
 
 ## Remaining horizon candidates
 
-N6 and N8 retain baseline dynamic-state weights and lambda0. Both complete the E/F rolling screens safely, while the median history ends after30.45s before the gamma2 lap end. The two codriver misses in median remain recorded. N6/N8 are still candidates, not accepted production configurations: higher-demand histories, deterministic repeats, zero/injected support, sustained two-complete-lap confirmation and isolated measured compute/outcome distributions remain necessary.
+N6 and N8 retain baseline dynamic-state weights and lambda0. Both complete the E/F rolling screens safely, while the median history ends after30.45s before the gamma2 lap end. The two codriver misses in median remain recorded. N6/N8 are still candidates, not accepted production configurations: higher-demand histories, exact deterministic repeats, zero/injected support and sustained two-complete-lap confirmations are now complete. See `TASK007C_SUSTAINED_CONFIRMATION.md` for nonuniform sustained smoothness and `TASK007C_MEASURED_RESULTS.md` for measured outcome distributions as they are analyzed.
 
 No adaptive progress gate is supported. The new failures strengthen the need to judge timing robustness and softened-track slack before lap speed, and to distinguish an unsafe APEX path from local vehicle tracking error.
 

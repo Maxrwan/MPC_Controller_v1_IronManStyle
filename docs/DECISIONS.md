@@ -844,3 +844,35 @@ Physical safety and model/solver validity precede smoothness, timing robustness,
 lap performance. Finite replay histories remain censored without fabricated tails. Future
 committed-prefix/fixed-handoff timing changes and the post-identification workbench/real-time
 checkpoint are documented, not implemented. Stop after C1–C4 recommendations for review.
+
+## ADR-156 — C1–C4 review recommendation retains costs and changes only horizon
+
+The resumed study rejects global vy/yaw cost weakening and static positive progress pressure
+near the limit. N6 is the smallest broadly beneficial mathematical extension, but its measured
+gamma2 trajectory-exhaustion failure remains in the five-run outcome record. Recommend N8,
+dt0.1s, baseline alpha1/lambda0 at the demonstrated synthetic gamma2 point for engineering
+review. Do not change production defaults or infer a continuous operating envelope. N8's
+higher compute cost is measured, while residual steering reversals and rare deadline misses
+remain explicit limits. N6 gamma2.2 performance does not override its failed gamma2 outcome.
+
+The exact measured-failure replay reproduces N6's failure. N8 retains positive reserve only
+through the finite transferred trace; no completed recovery or arbitrary stall tolerance is
+claimed. This supports a separate later timing-architecture review, not an implementation now.
+Keep TVLQR fixed. Complete C1–C4 review before adaptive codriver, LMPC, SI, energy or opponents.
+
+## ADR-157 — Optional release-known actuator prefix, without timing-architecture activation
+
+Task007D-D1 specifies a frozen actuator snapshot: release time, applied command, last actual
+application time and an optional already-computed pending request/application time. Extend
+the existing predictor loop and RK4 map; preserve legacy arithmetic when the snapshot is
+absent. Pin the release-active trajectory, replay the known application with elapsed-time
+steering limiting, skip busy codriver ticks, then predict future TVLQR under the existing
+ideal-latency assumption. Predicted feedback is not a known committed actuator sequence.
+
+At the target, a due committed application precedes handoff; new feedback on that tick
+follows handoff and is excluded from the returned preceding command. Capture occurs after
+the release-time codriver tick/skip. No future measured durations or physical truth enter
+prediction. The explicit duration supports later estimated (B) or scheduled (C) targets,
+but neither integration is activated. No AsyncRunner, planner, packet, model, NMPC or default
+changes. See TASK007D_COMMITTED_PREFIX_CONTRACT.md. D1 passed 85 focused tests and scoped
+Ruff checks; stop for Engineering Orchestrator review before any D2 integration.

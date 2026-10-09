@@ -47,4 +47,18 @@ Principal folders:
 - `results/task007c_resume/g2_w0_vy1_r1_n8_fixed_l1/`
 - `results/task007c_resume/g2_w0_vy1_r1_n8_smooth_l1/`
 
-Representative histories and measured finalist validation remain pending; these initial six cells cannot establish the final operating envelope.
+Representative histories and measured validation are now complete. The initial six cells above are the controlled comparison; measured worst cases are listed below. Final limitations and the review recommendation are in `TASK007C_RESUMED_RESULTS.md`.
+
+## Measured worst-heading and failed-case consistency
+
+Selection is the largest completed heading TV in each of four measured groups, plus the incomplete N6 record. The incomplete record has shorter coverage and is not ranked as a full-lap accuracy improvement.
+
+| Case | Derivative max abs (SI/channel) | Smooth ay FD RMS m/s² | One-step ey RMS m | Accepted step4 ey RMS m | Accepted step4 r RMS rad/s |
+|---|---:|---:|---:|---:|---:|
+| g2_w0_vy1_r1_n4_measured_l1_rep02 | 2.664535e-14 | 0.002306449 | 1.379371e-07 | 0.0369515 | 0.721315 |
+| g2_w0_vy1_r1_n6_measured_l1_rep02 | 2.664535e-14 | 0.001215844 | 1.343007e-07 | 0.02492261 | 0.31731 |
+| g2_w0_vy1_r1_n8_measured_l1_rep04 | 2.220446e-14 | 0.001107607 | 1.31606e-07 | 0.0192426 | 0.2496894 |
+| g2p2_w0_vy1_r1_n6_measured_l1_rep03 | 2.664535e-14 | 0.001465053 | 1.582655e-07 | 0.02563347 | 0.3580114 |
+| g2_w0_vy1_r1_n6_measured_l1_rep00 | 2.131628e-14 | 0.001144206 | 1.164519e-07 | 0.01999539 | 0.2651835 |
+
+The measured comparison figure, N8 primary/technical and physics panels, failed N6 primary dashboard and measured phase portraits were visually inspected. Smooth saturation, bounded friction-plane clouds and matched lateral-acceleration traces are visible. Repeated loops and steering corrections remain; no claim of perfectly smooth behavior follows. Pending preparation is marked at its source progress even when it never becomes an active packet.

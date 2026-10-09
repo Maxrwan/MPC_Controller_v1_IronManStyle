@@ -53,7 +53,11 @@ def main():
         pathological_e=dict(mode="replay", path="results/task007cr/trace_e.json"),
         pathological_f=dict(mode="replay", path="results/task007cr/trace_f.json"),
     )
-    (ROOT / "histories.json").write_text(json.dumps(histories, indent=2) + "\n")
+    history_path = ROOT / "histories.json"
+    # Retain separately documented post-hoc histories such as measured-failure replay.
+    existing = json.loads(history_path.read_text()) if history_path.exists() else {}
+    existing.update(histories)
+    history_path.write_text(json.dumps(existing, indent=2) + "\n")
     print("Prepared histories", histories, flush=True)
 
 
