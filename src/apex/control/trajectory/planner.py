@@ -16,19 +16,34 @@ class TrajectoryPlanner:
         self.predictor = ActuationPredictor(controller.problem.model, track)
         self.gain_builder = TVLQR(controller.problem.model, track, tracker_dt)
 
-    def prepare(self, plan_id, state, time, estimate, buffer, tracker, *, startup=False):
+    def prepare(
+        self,
+        plan_id,
+        state,
+        time,
+        estimate,
+        buffer,
+        tracker,
+        *,
+        startup=False,
+        committed_prefix=None,
+    ):
         wall, cpu = perf_counter(), process_time()
         prediction_time, gain_time = 0.0, 0.0
         solver_attempted = False
         packet, reason = None, "planner_failure"
         predicted = np.array(state, copy=True)
+        previous = None
         try:
             phase = perf_counter()
-            predicted, previous = (
-                (predicted, tracker.previous.copy())
-                if startup
-                else self.predictor.predict(state, time, estimate, buffer, tracker)
-            )
+            if startup:
+                previous = tracker.previous.copy()
+            elif committed_prefix is None:
+                predicted, previous = self.predictor.predict(state, time, estimate, buffer, tracker)
+            else:
+                predicted, previous = self.predictor.predict(
+                    state, time, estimate, buffer, tracker, committed_prefix=committed_prefix
+                )
             prediction_time = perf_counter() - phase
             solver_attempted = True
             self.controller.compute_control(
@@ -84,4 +99,12 @@ class TrajectoryPlanner:
             "preparation": reason,
             "source_state": np.asarray(state).tolist(),
             "predicted_state": predicted.tolist(),
+            "predicted_previous_control": None if previous is None else previous.tolist(),
+            "prediction_mode": (
+                "startup"
+                if startup
+                else "legacy"
+                if committed_prefix is None
+                else "committed_prefix"
+            ),
         }

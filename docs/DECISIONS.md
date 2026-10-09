@@ -876,3 +876,23 @@ prediction. The explicit duration supports later estimated (B) or scheduled (C) 
 but neither integration is activated. No AsyncRunner, planner, packet, model, NMPC or default
 changes. See TASK007D_COMMITTED_PREFIX_CONTRACT.md. D1 passed 85 focused tests and scoped
 Ruff checks; stop for Engineering Orchestrator review before any D2 integration.
+
+## ADR-158 — Opt-in committed-prefix runtime integration retains variable handoffs
+
+Task007D-D2 authorizes `AsyncConfig.committed_prefix_prediction`, a strict boolean defaulting
+to False. A retains the existing planner/predictor calls. B captures immutable release-known
+actuator state in the shared normal/urgent release function after the current event pass's
+codriver processing. Preserve a new zero-latency request as pending at that same timestamp;
+do not apply it early. Forward the snapshot through an optional planner keyword, retaining
+release plus estimated delay as the target. Startup is unchanged and receives no snapshot.
+Reject incompatible B planner signatures explicitly rather than silently using A.
+
+Add architecture/mode, pending-command timing and predicted preceding input diagnostics;
+reuse state/target/readiness/preparation fields. Readiness mismatch is not aligned handoff
+error. Scheduler ordering, rates, RK4, packet authority/reserve/fallback, D1 predictor and
+NMPC/controller mathematics are frozen. Exact default-A parity and deterministic B tests
+pass; 101 focused tests and scoped Ruff checks pass. No racing/timing improvement claim.
+
+The user also establishes the permanent scoped commit-and-push workflow in AGENTS.md,
+superseding old handoff notes requiring separate commit permission. Complete and push D2,
+then stop for Engineering Orchestrator review. No Architecture C or next subtask is included.

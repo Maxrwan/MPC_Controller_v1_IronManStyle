@@ -1,13 +1,14 @@
 """Deterministic asynchronous chronology: codriver events continue during planner work."""
 
 from dataclasses import dataclass, replace
+from inspect import signature
 from time import perf_counter, process_time
 
 import numpy as np
 
 from apex.control.baseline import BaselineController
 from apex.control.trajectory.packet import TrajectoryBuffer
-from apex.control.trajectory.prediction import RollingDelay, UrgentReplan
+from apex.control.trajectory.prediction import CommittedControlPrefix, RollingDelay, UrgentReplan
 from apex.coordinates.angles import wrap_angle
 from apex.models.errors import ModelValidationError
 from apex.simulation.diagnostic_timing import ReplayExhausted
@@ -32,8 +33,11 @@ class AsyncConfig:
     disturbance_heading: float = -0.04
     urgent: bool = True
     codriver_delay: float | None = 0.0
+    committed_prefix_prediction: bool = False
 
     def __post_init__(self):
+        if type(self.committed_prefix_prediction) is not bool:
+            raise ValueError("committed_prefix_prediction must be a boolean")
         if not isinstance(self.laps, int) or self.laps < 1:
             raise ValueError("Positive integer lap count required")
         if self.codriver_delay is not None and (
@@ -78,6 +82,15 @@ class AsyncRunner:
         self.plant, self.planner, self.tracker, self.track = plant, planner, tracker, track
         self.config = config
         self.timing = timing
+        if config.committed_prefix_prediction:
+            try:
+                signature(planner.prepare).bind(
+                    0, None, 0.0, 0.0, None, None, committed_prefix=None
+                )
+            except (TypeError, ValueError) as error:
+                raise TypeError(
+                    "Architecture B requires planner.prepare(..., committed_prefix=...)"
+                ) from error
         if not np.isclose(config.tracker_dt, tracker.config.dt, atol=1e-12, rtol=0):
             raise ValueError("Scheduler and tracker periods must match")
         self.estimator = estimator or RollingDelay()
@@ -103,7 +116,13 @@ class AsyncRunner:
         lap_times, last_lap_time = [], 0.0
         next_lap = (int(x[S.S_ABS] / self.track.length) + 1) * self.track.length
         startup, startup_event = self.planner.prepare(0, x, 0, 0, buffer, tracker, startup=True)
-        startup_event.update(completion_time=0.0, startup=True)
+        startup_event.update(
+            completion_time=0.0,
+            startup=True,
+            prediction_architecture="B" if c.committed_prefix_prediction else "A",
+            release_command_pending=False,
+            pending_application_time=None,
+        )
         if startup is None:
             return dict(
                 states=[],
@@ -168,7 +187,23 @@ class AsyncRunner:
             plan_id += 1
             tracker.previous = command.copy()
             estimate = self.estimator.estimate()
-            packet, event = self.planner.prepare(plan_id, x, t, estimate, buffer, tracker)
+            if c.committed_prefix_prediction:
+                # Capture after this timestamp's application/codriver processing. The
+                # requested value is still pending, including new zero-latency work.
+                prefix = CommittedControlPrefix(
+                    release_time=t,
+                    applied_control=command,
+                    last_application_time=last_application,
+                    pending_control=None if actuator_pending is None else actuator_pending[1],
+                    pending_application_time=(
+                        None if actuator_pending is None else actuator_pending[0]
+                    ),
+                )
+                packet, event = self.planner.prepare(
+                    plan_id, x, t, estimate, buffer, tracker, committed_prefix=prefix
+                )
+            else:
+                packet, event = self.planner.prepare(plan_id, x, t, estimate, buffer, tracker)
             delay = (
                 c.delay(plan_id, event["planner_total_time"])
                 if self.timing is None
@@ -184,6 +219,9 @@ class AsyncRunner:
                 startup=False,
                 urgent=urgent,
                 delay_estimation_error=delay - estimate,
+                prediction_architecture="B" if c.committed_prefix_prediction else "A",
+                release_command_pending=actuator_pending is not None,
+                pending_application_time=None if actuator_pending is None else actuator_pending[0],
             )
             if packet is not None:
                 packet = replace(packet, actual_completion_time=completion)

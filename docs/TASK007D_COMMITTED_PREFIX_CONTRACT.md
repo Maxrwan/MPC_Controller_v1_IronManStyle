@@ -1,7 +1,9 @@
 # Task007D-D1 — committed-control-prefix predictor contract
 
-Status: implemented and verified in isolation, 2026-10-09. Architecture B/C are not
-activated. No AsyncRunner, planner, packet, buffer, physical model or NMPC changes.
+Status: D1 capability and D2 opt-in runtime integration verified, 2026-10-09.
+Architecture A remains the default. Architecture B is available through explicit
+`AsyncConfig(committed_prefix_prediction=True)`. Architecture C is not implemented.
+No packet, buffer, physical model, NMPC or production-default change.
 
 ## Interface and information boundary
 
@@ -37,7 +39,7 @@ clones the tracker. It never follows a later replacement of the caller's active 
 No future solver duration, driver duration, latency trace, measured command history or
 physical plant state is accepted or queried. The caller must not populate the snapshot
 from information unavailable at release. The API cannot verify an external caller's
-provenance claims; D1 does not wire it into the runtime.
+provenance claims. D2 supplies these fields directly from the runner's release context.
 
 ## Propagation and event ordering
 
@@ -93,14 +95,60 @@ outside this task. Predictor curvature remains held within each RK4 step as befo
 the physical plant refreshes it at derivative stages. No general plant/forecast identity
 or hard-real-time guarantee is claimed.
 
-Architecture B may later pass the snapshot with the existing estimated duration.
+Architecture B now passes the snapshot with the existing estimated duration.
 Architecture C may later pass `scheduled_target - release_time` through the same `duration`
-argument. D1 neither chooses that target nor implements fixed handoffs. D2 should capture
-these fields atomically from the existing release context behind an explicit opt-in path,
-without exposing future measured timing to the predictor or changing default behavior.
-Do not activate that integration before review.
+argument, but D2 does not choose a fixed target or implement its scheduling/authority policy.
 
-## Focused verification
+## D2 runtime integration
+
+`AsyncConfig.committed_prefix_prediction` defaults to `False` and requires a Python `bool`;
+integers, strings, `None` and NumPy booleans are rejected. Disabled runs call the original
+planner interface and legacy predictor path. Enabled runs check that `planner.prepare`
+accepts the `committed_prefix` keyword before startup; an incompatible signature raises
+an explicit `TypeError`. Wrappers accepting `**kwargs` remain responsible for forwarding
+the snapshot; the standard `TrajectoryPlanner` does so.
+
+The shared `AsyncRunner.run.release` function captures the immutable snapshot for both
+normal and urgent releases. Capture occurs after the current event pass's due actuator
+application, planner/waiting handoff, disturbance/fallback handling and codriver tick/skip.
+It reads only `t`, applied `command`, `last_application` and the optional
+`actuator_pending=(scheduled_time, requested_command, telemetry_row)`. The requested
+command is copied without premature application clamping. A new zero-latency command
+created on the current tick remains pending with `scheduled_time == t`; the predictor
+handles that case without changing the runtime's same-time continuation.
+
+`TrajectoryPlanner.prepare(..., *, startup=False, committed_prefix=None)` forwards the
+snapshot only for a nonstartup prediction. Without it, the old positional predictor call
+is used. The target stays `release_time + estimated_delay`, independent of the actual
+future preparation duration or imposed readiness delay. Startup still uses the unpredicted
+initial state, zero estimate and gated prepositioning, with no snapshot argument.
+
+Only the forecast inputs change under B. Planner/codriver periods, event ordering, plant
+RK4 partitions, readiness scheduling, waiting, late trimming, continuity/reserve checks and
+fallback rules are unchanged. A packet becomes authoritative only through the existing
+buffer acceptance path. Different forecast states can change later optimized packets and
+their physical consequences; B is not a promise of equal A/B trajectories or better racing.
+
+### Planner event telemetry
+
+| Field | Meaning |
+|---|---|
+| `prediction_architecture` | Runner configuration: `A` or `B`, including startup. |
+| `prediction_mode` | Actual standard-planner path: `startup`, `legacy`, or `committed_prefix`. |
+| `release_time`, `predicted_completion_time` | Existing release and estimated target timestamps. The latter is a forecast target, not measured completion. |
+| `release_command_pending` | A release-known command is pending, even if its scheduled time equals release. Logged in A too, without affecting A prediction. Startup is false. |
+| `pending_application_time` | That command's scheduled time, or null. Startup is null. |
+| `predicted_state` | Existing forecast initial state passed to NMPC. On forecast failure the legacy source-state placeholder remains; inspect preparation status and the following field. |
+| `predicted_previous_control` | Forecast preceding applied command passed to NMPC; null if forecasting did not produce it. Startup records its unchanged preceding input. |
+| `completion_time`, `physical_delay`, `planner_total_time` | Existing readiness and preparation timing; accepted handoff stays in the separate handoff log. |
+
+The existing completion `prediction_error` still compares actual state **at readiness**
+with predicted state **at the estimated target**. It is not an aligned handoff prediction
+error. Same-time candidate-reference mismatch remains in `handoffs`. Telemetry additions
+are diagnostic only and occur outside the recorded preparation total; added Python work
+can still change host timing, so parity checks use imposed physical delays.
+
+## D1 focused verification (retained)
 
 No active measured campaign marker or numerical experiment process was found before
 verification. Tests ran in a fresh process with the existing Accelerate SINGLE configuration;
@@ -130,4 +178,36 @@ the predictor, new tests, this contract, handoff and required ADR-157.
 Implementation: [prediction.py](/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/src/apex/control/trajectory/prediction.py:14).
 Tests: [test_committed_prefix.py](/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/tests/unit/test_committed_prefix.py:1).
 Prior baseline: [D0 audit](/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/docs/TASK007D_CURRENT_TIMING_AUDIT.md:1), retained as the pre-D1 record.
-Runtime ordering reference: [AsyncRunner](/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/src/apex/simulation/asynchronous.py:197), unchanged.
+Runtime ordering reference: [AsyncRunner](/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/src/apex/simulation/asynchronous.py:236); the event-loop ordering remains unchanged in D2.
+
+## D2 focused verification
+
+Started from clean main `4a7026eac13e2a5d976a0dfb2a6756dfa5de6afb`, matching GitHub main.
+No active measurement marker or numerical experiment process was present. A fresh
+Accelerate SINGLE process ran only the five relevant suites: committed-prefix runtime,
+D1 prefix, trajectory tracker, asynchronous chronology and diagnostic timing.
+**101 tests passed in 4.51 s**, including 16 new D2 cases and all 85 prior focused cases.
+Scoped Ruff check/format passed. No full laps, measured repetitions or historical result
+exports ran. The straight synthetic 2 m/s fixtures use N8/dt0.1 and frozen review weights;
+they are not gamma2 racing validation.
+
+Pre-edit channel fingerprints retained in the runtime tests match both default and
+explicitly disabled A exactly: states, requested/applied commands and their timestamps,
+handoffs/IDs, releases, misses, reserve, triggers/fallbacks, termination, predicted inputs,
+and every solver initial guess and parameter vector. Wall/CPU timing, the wall-based
+deadline-exceeded diagnostic, and additive telemetry are excluded from that numerical
+comparison. The golden fingerprints document this backend's deterministic baseline;
+they are not a cross-platform bitwise guarantee or wall-clock CI threshold.
+
+Other cases verify actual snapshot capture/forwarding, applied/requested distinction,
+completed and newly zero-latency command ordering, urgent capture, immutable copies,
+future-readiness independence, a direct expected D1 prediction, exact B repeatability,
+unchanged startup inputs, and unchanged early-wait/late-accept policies. Existing tests
+also retain zero/injected/measured dispatch, busy deadlines and moving-plant checks.
+New timestamp assertions allow only the existing 1e-10 s event tolerance; physical and
+solver parity use exact equality. No existing tolerance was enlarged.
+All 16 D2 cases also passed after explicitly tightening their timestamp assertions to
+that absolute tolerance with zero relative tolerance.
+
+Runtime tests: [test_committed_prefix_runtime.py](/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/tests/unit/test_committed_prefix_runtime.py:1).
+No D3, fixed-handoff architecture or timing campaign is authorized by this result.

@@ -42,3 +42,18 @@ active backend, configure its supported controls before initialization in fresh 
 and verify actual CPU/thread behavior; environment variable values alone are not evidence
 of parallel execution. Serialize latency benchmarks and preserve frozen controller mathematics.
 See docs/NMPC_MULTITHREADING_STUDY.md; the current Mac study recommends one native thread.
+
+## Standing GitHub workflow
+
+Complete only the currently authorized subtask, then stop for Engineering Orchestrator review.
+For work producing reviewable repository changes, verify, commit and push before reporting
+completion. Inspect status and branch first; verify the GitHub remote is
+`Maxrwan/MPC_Controller_v1_IronManStyle`. Preserve preexisting/unrelated changes and large
+historical or ignored experiment artifacts. Stage only authorized files/hunks; never use
+blanket `git add .` in a dirty tree. Use the appropriate existing branch when safe; a normal
+push to main is authorized when already working on main. Never force-push or rewrite shared
+history. If a push is rejected, preserve the local commit and report the blocker. Do not
+create empty commits. Verify successful push/remote visibility before claiming GitHub
+availability, and report the exact SHA, branch and commit URL. This standing authorization
+supersedes older handoff notes requiring separate commit permission; it does not authorize
+the next subtask or override safety/review gates.

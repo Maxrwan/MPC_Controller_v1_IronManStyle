@@ -1,3 +1,35 @@
+# APEX handoff — Task007D-D2 complete; stop for review
+
+Updated 2026-10-09. D2 integrates the existing committed-prefix predictor into
+`AsyncRunner`/`TrajectoryPlanner` behind `AsyncConfig.committed_prefix_prediction=False`.
+Only a real boolean is accepted. Explicit True enables Architecture B with the same
+estimated target and variable-availability handoff; Architecture A remains the default.
+Normal/urgent releases capture applied input, last application and any pending request/time
+after the current codriver tick/skip. New same-time zero-latency work stays pending.
+Startup, event ordering, model/RK4, packet acceptance, fallback and NMPC remain unchanged.
+
+Read `TASK007D_COMMITTED_PREFIX_CONTRACT.md` for the D2 interface, telemetry and verification.
+The existing readiness-state mismatch is not an aligned handoff error. Incompatible B
+planner signatures fail explicitly; legacy planners still work when B is disabled.
+
+Verification: 101 focused tests passed in 4.51s (16 D2 plus all 85 D1/related tests).
+Default/explicitly disabled A exactly match the pre-D2 physical/chronology/solver-input
+fingerprints. B capture, pending/zero-latency/urgent order, causal inputs, repeatability,
+startup and buffer-authority cases pass. Scoped Ruff check/format passed. No measured
+campaign was active before testing; no laps, benchmark repetitions or old-result exports ran.
+
+Standing GitHub workflow is now in AGENTS.md: commit and push authorized verified work,
+preserving unrelated changes; report SHA/branch/URL only after successful push verification.
+This supersedes older commit-permission notes below. D2 started on clean main at
+`4a7026eac13e2a5d976a0dfb2a6756dfa5de6afb`; delivery commit identity is in the final D2 report
+and Git history. No force push or history rewrite is authorized.
+
+STOP for Engineering Orchestrator review. Task007D is not complete; Architecture C and major
+timing experiments remain excluded. Recommend a separately bounded review/validation plan
+for A/B before any fixed-handoff implementation. Prior handoffs are retained below.
+
+---
+
 # APEX handoff — Task007D-D1 complete; stop for review
 
 Updated 2026-10-09. Only D1 is implemented and verified. Task007D is not complete.
