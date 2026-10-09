@@ -1,0 +1,45 @@
+{
+  "baseline_head": "b1ab2205b1de0ff7a425de7adf68f7a1a376fbc3",
+  "tracked_count": 431,
+  "unchanged_tracked": 430,
+  "authorized_changed_tracked": [
+    "docs/CODEX_HANDOFF.md"
+  ],
+  "prior_result_count": 10913,
+  "unchanged_prior_result_size_mtime": 10912,
+  "metadata_exceptions": [
+    {
+      "path": "results/.DS_Store",
+      "before": [
+        8196,
+        1791478212471495249
+      ],
+      "after": [
+        8196,
+        1791568499912033453
+      ]
+    }
+  ],
+  "unchanged_d3_d4_sha256_count": 61,
+  "measurement_logic_unchanged": true,
+  "premeasurement_protocol_hash_verified": true,
+  "generated_artifact_inventory_verified": true,
+  "tests": {
+    "passed": 89,
+    "new": 27,
+    "retained": 62,
+    "seconds": 3.01
+  },
+  "ruff": {
+    "lint": "passed",
+    "format": "9 files already formatted"
+  },
+  "reproduction": {
+    "numerical_exports": "byte-identical",
+    "figures": "two renders byte-identical in same environment",
+    "visual_review": "three figures inspected"
+  },
+  "d5_figure_source_sha256": {
+    "docs/task007d/d5/same_progress.csv": "4b603612d04ca1f7eeb52e8f8d0687d592cf725a0f77799b5f50f53c5ce5d359"
+  }
+}

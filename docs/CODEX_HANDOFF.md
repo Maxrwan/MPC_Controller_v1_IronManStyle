@@ -1,3 +1,52 @@
+# APEX handoff — Task007D-P offline prediction study complete; stop for review
+
+Read TASK007D_LIGHTWEIGHT_PREDICTION_STUDY.md and compact docs/task007d/p/ (three figures,
+per-state/input tables, benchmarks and provenance). Started on clean main
+b1ab2205b1de0ff7a425de7adf68f7a1a376fbc3. Delivery SHA/URL is in the final report and Git
+history under the standing commit-and-push workflow. No production code or old study changed.
+
+A/P0/P1a/P1b/P2 were evaluated on 190 retained release contexts: 152 D4 and 38 supplementary
+D3 gamma2, keeping A/B-controlled histories separate. All 950 forecasts are comparable; zero
+failures, target exclusions or predicted center-boundary crossings. A/P2 reproduce 380/380
+retained state/control outputs exactly. There are 170 node targets and 20 interior targets
+(the first two releases per history); truth remains 180 recorded events and 10 labeled RK4
+reconstructions. No new physical simulation or solver run occurred.
+
+P1b uses existing TVLQR RK4 Jacobians and stored four-state gains in [e_y,e_psi,vy,r] order,
+with constant speed/progress errors. It is an ideal unsaturated error approximation, omitting
+nominal-flow defect, known-input forcing and delay/cross-coupling; it is not a validated
+six-state predictor. All lightweight methods include causal committed-input replay and feasible
+ideal future feedback, but their state/input pair is not guaranteed jointly dynamics-consistent.
+
+Five fresh sequential SINGLE predictor-only workers measured 960 warm calls per method.
+Median wall ms: A 7.394, P0 4.319, P1a 4.303, P1b 4.607, P2 8.986. Complete costs include
+preceding-input preview and domain checks. P1b also needs 10.838 ms cold Jacobian compilation;
+context matrix evaluation remains in each warm call. Observed worker threads [1], batch
+CPU/wall about 0.999. Historical total preparation is about 61–67 ms; the 2.8–4.7 ms savings
+are modest, not a controlled measurement of total preparation improvement.
+
+Lightweight accuracy is substantially worse. R4_A lateral RMS A/P0/P1a/P1b/P2 is
+0.000245/0.009417/0.009621/0.007084/0.000129 m. P1b yaw RMS is 1.26042 rad/s, versus
+0.125324 A and 0.086552 P2. P1a sometimes improves P0 but does not dominate; later releases
+remain weak. Near R4_B's clearance excursion, P1a/P1b lateral errors reach centimetre scale.
+D5's retained B minimum clearance 0.102185 m and 0.022185 m remaining synthetic margin are
+unchanged. Offline prediction accuracy does not establish closed-loop safety.
+
+Verification: 89 focused tests (27 new, 62 retained) passed; scoped Ruff lint/format passed.
+Three PNGs regenerate identically within the same environment and were visually reviewed.
+Numerical exports reproduce byte-for-byte. All 430 other preexisting tracked files are
+unchanged, as are all 61 D3/D4 file hashes and 10,912 prior result size/mtime records. Only
+ignored results/.DS_Store metadata changed during the task; it is neither evidence nor staged.
+Raw D-P results stay ignored; compact review artifacts only are committed.
+
+Recommendation: none of P0/P1a/P1b for immediate closed-loop testing or Architecture C
+integration. P1a is the simplest candidate for a separately authorized offline consistency
+investigation if desired; do not silently invent missing dynamics. Keep A default and B
+experimental. **STOP AFTER D-P. Task007D remains incomplete. Await Engineering Orchestrator
+review. No Architecture C, production integration or further campaign is authorized.**
+
+---
+
 # APEX handoff — Task007D-D5 offline forensics complete; stop for review
 
 Read TASK007D_D5_CAUSAL_REVIEW.md and compact docs/task007d/d5/. D5 analyzes retained D4

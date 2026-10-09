@@ -1,0 +1,1050 @@
+{
+  "audit": {
+    "audit": {
+      "D4-R1_A": {
+        "reference_exact_matches": 38,
+        "targets_on_nodes": 17,
+        "interior_targets": 2,
+        "optional_60ms_uncontaminated": 0,
+        "optional_80ms_uncontaminated": 0
+      },
+      "D4-R1_B": {
+        "reference_exact_matches": 38,
+        "targets_on_nodes": 17,
+        "interior_targets": 2,
+        "optional_60ms_uncontaminated": 0,
+        "optional_80ms_uncontaminated": 0
+      },
+      "D4-R2_A": {
+        "reference_exact_matches": 38,
+        "targets_on_nodes": 17,
+        "interior_targets": 2,
+        "optional_60ms_uncontaminated": 0,
+        "optional_80ms_uncontaminated": 0
+      },
+      "D4-R2_B": {
+        "reference_exact_matches": 38,
+        "targets_on_nodes": 17,
+        "interior_targets": 2,
+        "optional_60ms_uncontaminated": 0,
+        "optional_80ms_uncontaminated": 0
+      },
+      "D4-R3_A": {
+        "reference_exact_matches": 38,
+        "targets_on_nodes": 17,
+        "interior_targets": 2,
+        "optional_60ms_uncontaminated": 19,
+        "optional_80ms_uncontaminated": 0
+      },
+      "D4-R3_B": {
+        "reference_exact_matches": 38,
+        "targets_on_nodes": 17,
+        "interior_targets": 2,
+        "optional_60ms_uncontaminated": 19,
+        "optional_80ms_uncontaminated": 0
+      },
+      "D4-R4_A": {
+        "reference_exact_matches": 38,
+        "targets_on_nodes": 17,
+        "interior_targets": 2,
+        "optional_60ms_uncontaminated": 19,
+        "optional_80ms_uncontaminated": 0
+      },
+      "D4-R4_B": {
+        "reference_exact_matches": 38,
+        "targets_on_nodes": 17,
+        "interior_targets": 2,
+        "optional_60ms_uncontaminated": 19,
+        "optional_80ms_uncontaminated": 0
+      },
+      "D3-ref_A": {
+        "reference_exact_matches": 38,
+        "targets_on_nodes": 17,
+        "interior_targets": 2,
+        "optional_60ms_uncontaminated": 0,
+        "optional_80ms_uncontaminated": 0
+      },
+      "D3-ref_B": {
+        "reference_exact_matches": 38,
+        "targets_on_nodes": 17,
+        "interior_targets": 2,
+        "optional_60ms_uncontaminated": 0,
+        "optional_80ms_uncontaminated": 0
+      }
+    },
+    "source_sha256": {
+      "scripts/task007dp/benchmark.py": "2aa1e24c905deaba130d46094777fe43be91d8b804f5b32908a6960396f597b9",
+      "scripts/task007dp/evaluation.py": "81dbe11abbf8e14bd04403cfe7021b58c6b7e16e8f0d1683362d011205a16997",
+      "scripts/task007dp/__init__.py": "52ce53162acb78ad2ba425dbbdc8e4c1e5d09d621fc0394b8831371d404a6164",
+      "scripts/task007dp/candidates.py": "17191282b51392dec200531089005ce413c8c4a3b279f9b5893b7425d13f4aae",
+      "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/scripts/run_task007dp.py": "530cd71e9b9832823ce0a2bad38dbfb37df264c6244a53f0562e261b89e44de5",
+      "docs/TASK007D_LIGHTWEIGHT_PREDICTION_STUDY.md": "47782c71199fe8627aefdaefde8573f8456c29f960d2e8cd2e9f1bee12a50560"
+    },
+    "evidence_sha256": {
+      "D4-R1_A": {
+        "raw.json": "a747ad6bc57641740126497d09a29afdf960426c37526280155b48ccb3682b80",
+        "summary.json": "e55940727ebfa75eee6f0c0888058ecea6b53567681307bff8a81ce589d56203",
+        "scores.json": "cc60502f5b0a3690ffb304fbc9fa9947a06f685f7bf9c400d3930db22d39bd58",
+        "release_contexts.json": "fdb5f9c36f6615122ac36e712e910df528c3f727882eb165556aa39a67e16276"
+      },
+      "D4-R1_B": {
+        "raw.json": "bf624275931c9e1a6e8707fed2d4f804c2704333ca05a201b436598f8c8705ab",
+        "summary.json": "6e4f7fe225dd739cf63d44301e0e961942e871b69b566fab2a5a83585357a04c",
+        "scores.json": "b08b7666290dd2d4c33cb60d548cc35ac0abd505282781fe66b96e806e42c7a6",
+        "release_contexts.json": "b9acd579c807a3f13eb7b231994d070127bc45fd6301c8cd7baa2f5151a15c02"
+      },
+      "D4-R2_A": {
+        "raw.json": "81646741d9e0a73f94362fb51c5e08e0d819e4d8d157a4291bdc79d6f76ba782",
+        "summary.json": "c66cd71cddd158a6fd6addbce08c3a93207e63db1553dae767f601bfeede1d50",
+        "scores.json": "0eeb7cb4e9e644930771bd7c63b19f07b3a73acf9c6ff951feb74eb4756811d9",
+        "release_contexts.json": "2ffee3b3e6f6afae8def40f88dee46af7528eecc494f173258354d41e0929d34"
+      },
+      "D4-R2_B": {
+        "raw.json": "72229c2ab5d72c1d10e92b426abee6a29463cf36d2fd326e3d75ef7353df7e8b",
+        "summary.json": "44ce60de80b2a88eb44f520fb07c669b8a4ffb33d7d4afbe3c8503bd8d484f9f",
+        "scores.json": "d401ec92817cdc828fce74d818d7b65bbe6818b6f138aecadcde4be47f449121",
+        "release_contexts.json": "f8d65bfaa67ea9f7a9720cda47658169d8893172d92ba225872da145a9ada88f"
+      },
+      "D4-R3_A": {
+        "raw.json": "c2043a1be3cea23f99f4b10333938ad9156b76775c980c5f30b2b92754fdae35",
+        "summary.json": "2816118c697febcc9460e32bf73fff744ee40891049ae206fd1f35e8bb054c3a",
+        "scores.json": "e095ac1ca4ffe8a1ff8c259ed508e95a75fb3ae5718de3abe82590f0ba7dd9d6",
+        "release_contexts.json": "a20544680d3cf8195f1e351a212b3e98741f6c4516824c97b9e9117bc60f0a4f"
+      },
+      "D4-R3_B": {
+        "raw.json": "f520d4f523f49e8a06ae3a1ebbb20e9cc9334b0aca63207ca737203b6d6f4889",
+        "summary.json": "506e1b22f99dad3002ab26a9a1a84f3baa8a3b521fe2dabe36ca8f6ace3d2c7f",
+        "scores.json": "c596a110fa5cc7a107bbe4a7b29dcb062cfc1d5890d5237377630eb413ffedcc",
+        "release_contexts.json": "d12af16be43da7436b265cecae859ce785d2d8a88a8b0aaade96a001768a955e"
+      },
+      "D4-R4_A": {
+        "raw.json": "f0e0fbbb18f4e846fac8ca3487d514e59a54d17425d7786ed1ed3232df604ab3",
+        "summary.json": "bbf8be227e6d445c9f12f5c9fd1e13e82767df99e97d291946fd05311460ab5d",
+        "scores.json": "b5ec282a21ddce7832790eb2327af48681039eaa5c8a04b928773f6b4ebef3a4",
+        "release_contexts.json": "e0a9c1209418d2dff66c8d97d0a107d46edee28aab410538f55e3745a683ef51"
+      },
+      "D4-R4_B": {
+        "raw.json": "bdb501cbf32c04855db3ae3fe47ded80e546f19db9426c452dcaf3ef55db20db",
+        "summary.json": "8b0f300ebbca15d45fe9091e580104664a0501dba823099d9b72285b7071e271",
+        "scores.json": "9e0c5d2354339e7b22fdf810fdf1135d6cf9f4d573845f336b61314eda807a15",
+        "release_contexts.json": "86b5834a4f2653bfac875b2805ab3509ff92056b66b811e66036659806318393"
+      },
+      "D3-ref_A": {
+        "raw.json": "6be60a183e5c2c27c7e5261fb17c4d35ca3190a5eb5214af875b597bec903fc7",
+        "summary.json": "005ab90f2c71677efe0ee1f626b66f91ecf9701df0b9491986e1c1d8ec134bb7",
+        "scores.json": "bf1ba7c2c097402b34ea7a132544890453e21acc723dca883dcc4fdfae62fa0c",
+        "release_contexts.json": "16b10e7d81fffd25d651c53c1afffe364fa4b166f155020d0f487f78a4307154"
+      },
+      "D3-ref_B": {
+        "raw.json": "450fd48f291e3bc231149365aa677c8bc38a7fb99e5f56640011548cf1d16dc4",
+        "summary.json": "18991afe49fed7fc52fd55a5eb164781cab685b1f8550f4347180f4e218e437e",
+        "scores.json": "d6a68e384bd3638c4e34522c47c7a1df00980eb37946bee0d9713c33724043fa",
+        "release_contexts.json": "be211ba667b2769f9f79a75678342233572e6c15a6e2215433520c268c4fff13"
+      }
+    },
+    "native": {
+      "requested_ceiling": 1,
+      "set_status": 0,
+      "blas_threading_mode": 1,
+      "mode_name": "single",
+      "exact_active_thread_count_available": false
+    }
+  },
+  "benchmarks": {
+    "A": {
+      "method": "A",
+      "selected_contexts": [
+        {
+          "case": "D4-R1_A",
+          "plan_id": 1
+        },
+        {
+          "case": "D4-R1_A",
+          "plan_id": 2
+        },
+        {
+          "case": "D4-R1_A",
+          "plan_id": 10
+        },
+        {
+          "case": "D4-R1_A",
+          "plan_id": 18
+        },
+        {
+          "case": "D4-R1_B",
+          "plan_id": 1
+        },
+        {
+          "case": "D4-R1_B",
+          "plan_id": 2
+        },
+        {
+          "case": "D4-R1_B",
+          "plan_id": 10
+        },
+        {
+          "case": "D4-R1_B",
+          "plan_id": 18
+        },
+        {
+          "case": "D4-R2_A",
+          "plan_id": 1
+        },
+        {
+          "case": "D4-R2_A",
+          "plan_id": 2
+        },
+        {
+          "case": "D4-R2_A",
+          "plan_id": 10
+        },
+        {
+          "case": "D4-R2_A",
+          "plan_id": 18
+        },
+        {
+          "case": "D4-R2_B",
+          "plan_id": 1
+        },
+        {
+          "case": "D4-R2_B",
+          "plan_id": 2
+        },
+        {
+          "case": "D4-R2_B",
+          "plan_id": 10
+        },
+        {
+          "case": "D4-R2_B",
+          "plan_id": 18
+        },
+        {
+          "case": "D4-R3_A",
+          "plan_id": 1
+        },
+        {
+          "case": "D4-R3_A",
+          "plan_id": 2
+        },
+        {
+          "case": "D4-R3_A",
+          "plan_id": 10
+        },
+        {
+          "case": "D4-R3_A",
+          "plan_id": 18
+        },
+        {
+          "case": "D4-R3_B",
+          "plan_id": 1
+        },
+        {
+          "case": "D4-R3_B",
+          "plan_id": 2
+        },
+        {
+          "case": "D4-R3_B",
+          "plan_id": 10
+        },
+        {
+          "case": "D4-R3_B",
+          "plan_id": 18
+        },
+        {
+          "case": "D4-R4_A",
+          "plan_id": 1
+        },
+        {
+          "case": "D4-R4_A",
+          "plan_id": 2
+        },
+        {
+          "case": "D4-R4_A",
+          "plan_id": 10
+        },
+        {
+          "case": "D4-R4_A",
+          "plan_id": 18
+        },
+        {
+          "case": "D4-R4_B",
+          "plan_id": 1
+        },
+        {
+          "case": "D4-R4_B",
+          "plan_id": 2
+        },
+        {
+          "case": "D4-R4_B",
+          "plan_id": 10
+        },
+        {
+          "case": "D4-R4_B",
+          "plan_id": 18
+        }
+      ],
+      "repetitions": 30,
+      "warmup_sweeps": 3,
+      "initialization": {
+        "wall_ms": 1.656292,
+        "cpu_ms": 1.653
+      },
+      "precomputation": {
+        "wall_ms": 0.002375,
+        "cpu_ms": 0.002,
+        "jacobian_durations": [],
+        "context_matrices_cached": false
+      },
+      "native": {
+        "requested_ceiling": 1,
+        "set_status": 0,
+        "blas_threading_mode": 1,
+        "mode_name": "single",
+        "exact_active_thread_count_available": false
+      },
+      "threadpools": [],
+      "observed_process_threads": [
+        1
+      ],
+      "batch": {
+        "wall_ms": 7852.942125,
+        "cpu_ms": 7843.95
+      },
+      "wall_ms": {
+        "count": 960,
+        "median": 7.394458,
+        "p95": 11.5699622,
+        "maximum": 25.671958
+      },
+      "cpu_ms": {
+        "count": 960,
+        "median": 7.3925,
+        "p95": 11.56705,
+        "maximum": 25.622
+      }
+    },
+    "P0": {
+      "method": "P0",
+      "selected_contexts": [
+        {
+          "case": "D4-R1_A",
+          "plan_id": 1
+        },
+        {
+          "case": "D4-R1_A",
+          "plan_id": 2
+        },
+        {
+          "case": "D4-R1_A",
+          "plan_id": 10
+        },
+        {
+          "case": "D4-R1_A",
+          "plan_id": 18
+        },
+        {
+          "case": "D4-R1_B",
+          "plan_id": 1
+        },
+        {
+          "case": "D4-R1_B",
+          "plan_id": 2
+        },
+        {
+          "case": "D4-R1_B",
+          "plan_id": 10
+        },
+        {
+          "case": "D4-R1_B",
+          "plan_id": 18
+        },
+        {
+          "case": "D4-R2_A",
+          "plan_id": 1
+        },
+        {
+          "case": "D4-R2_A",
+          "plan_id": 2
+        },
+        {
+          "case": "D4-R2_A",
+          "plan_id": 10
+        },
+        {
+          "case": "D4-R2_A",
+          "plan_id": 18
+        },
+        {
+          "case": "D4-R2_B",
+          "plan_id": 1
+        },
+        {
+          "case": "D4-R2_B",
+          "plan_id": 2
+        },
+        {
+          "case": "D4-R2_B",
+          "plan_id": 10
+        },
+        {
+          "case": "D4-R2_B",
+          "plan_id": 18
+        },
+        {
+          "case": "D4-R3_A",
+          "plan_id": 1
+        },
+        {
+          "case": "D4-R3_A",
+          "plan_id": 2
+        },
+        {
+          "case": "D4-R3_A",
+          "plan_id": 10
+        },
+        {
+          "case": "D4-R3_A",
+          "plan_id": 18
+        },
+        {
+          "case": "D4-R3_B",
+          "plan_id": 1
+        },
+        {
+          "case": "D4-R3_B",
+          "plan_id": 2
+        },
+        {
+          "case": "D4-R3_B",
+          "plan_id": 10
+        },
+        {
+          "case": "D4-R3_B",
+          "plan_id": 18
+        },
+        {
+          "case": "D4-R4_A",
+          "plan_id": 1
+        },
+        {
+          "case": "D4-R4_A",
+          "plan_id": 2
+        },
+        {
+          "case": "D4-R4_A",
+          "plan_id": 10
+        },
+        {
+          "case": "D4-R4_A",
+          "plan_id": 18
+        },
+        {
+          "case": "D4-R4_B",
+          "plan_id": 1
+        },
+        {
+          "case": "D4-R4_B",
+          "plan_id": 2
+        },
+        {
+          "case": "D4-R4_B",
+          "plan_id": 10
+        },
+        {
+          "case": "D4-R4_B",
+          "plan_id": 18
+        }
+      ],
+      "repetitions": 30,
+      "warmup_sweeps": 3,
+      "initialization": {
+        "wall_ms": 1.256667,
+        "cpu_ms": 1.256
+      },
+      "precomputation": {
+        "wall_ms": 0.002583,
+        "cpu_ms": 0.003,
+        "jacobian_durations": [],
+        "context_matrices_cached": false
+      },
+      "native": {
+        "requested_ceiling": 1,
+        "set_status": 0,
+        "blas_threading_mode": 1,
+        "mode_name": "single",
+        "exact_active_thread_count_available": false
+      },
+      "threadpools": [],
+      "observed_process_threads": [
+        1
+      ],
+      "batch": {
+        "wall_ms": 4057.5605,
+        "cpu_ms": 4056.299
+      },
+      "wall_ms": {
+        "count": 960,
+        "median": 4.3191880000000005,
+        "p95": 6.06040175,
+        "maximum": 6.377125
+      },
+      "cpu_ms": {
+        "count": 960,
+        "median": 4.318,
+        "p95": 6.05805,
+        "maximum": 6.373
+      }
+    },
+    "P1a": {
+      "method": "P1a",
+      "selected_contexts": [
+        {
+          "case": "D4-R1_A",
+          "plan_id": 1
+        },
+        {
+          "case": "D4-R1_A",
+          "plan_id": 2
+        },
+        {
+          "case": "D4-R1_A",
+          "plan_id": 10
+        },
+        {
+          "case": "D4-R1_A",
+          "plan_id": 18
+        },
+        {
+          "case": "D4-R1_B",
+          "plan_id": 1
+        },
+        {
+          "case": "D4-R1_B",
+          "plan_id": 2
+        },
+        {
+          "case": "D4-R1_B",
+          "plan_id": 10
+        },
+        {
+          "case": "D4-R1_B",
+          "plan_id": 18
+        },
+        {
+          "case": "D4-R2_A",
+          "plan_id": 1
+        },
+        {
+          "case": "D4-R2_A",
+          "plan_id": 2
+        },
+        {
+          "case": "D4-R2_A",
+          "plan_id": 10
+        },
+        {
+          "case": "D4-R2_A",
+          "plan_id": 18
+        },
+        {
+          "case": "D4-R2_B",
+          "plan_id": 1
+        },
+        {
+          "case": "D4-R2_B",
+          "plan_id": 2
+        },
+        {
+          "case": "D4-R2_B",
+          "plan_id": 10
+        },
+        {
+          "case": "D4-R2_B",
+          "plan_id": 18
+        },
+        {
+          "case": "D4-R3_A",
+          "plan_id": 1
+        },
+        {
+          "case": "D4-R3_A",
+          "plan_id": 2
+        },
+        {
+          "case": "D4-R3_A",
+          "plan_id": 10
+        },
+        {
+          "case": "D4-R3_A",
+          "plan_id": 18
+        },
+        {
+          "case": "D4-R3_B",
+          "plan_id": 1
+        },
+        {
+          "case": "D4-R3_B",
+          "plan_id": 2
+        },
+        {
+          "case": "D4-R3_B",
+          "plan_id": 10
+        },
+        {
+          "case": "D4-R3_B",
+          "plan_id": 18
+        },
+        {
+          "case": "D4-R4_A",
+          "plan_id": 1
+        },
+        {
+          "case": "D4-R4_A",
+          "plan_id": 2
+        },
+        {
+          "case": "D4-R4_A",
+          "plan_id": 10
+        },
+        {
+          "case": "D4-R4_A",
+          "plan_id": 18
+        },
+        {
+          "case": "D4-R4_B",
+          "plan_id": 1
+        },
+        {
+          "case": "D4-R4_B",
+          "plan_id": 2
+        },
+        {
+          "case": "D4-R4_B",
+          "plan_id": 10
+        },
+        {
+          "case": "D4-R4_B",
+          "plan_id": 18
+        }
+      ],
+      "repetitions": 30,
+      "warmup_sweeps": 3,
+      "initialization": {
+        "wall_ms": 1.137041,
+        "cpu_ms": 1.138
+      },
+      "precomputation": {
+        "wall_ms": 0.003791,
+        "cpu_ms": 0.005,
+        "jacobian_durations": [],
+        "context_matrices_cached": false
+      },
+      "native": {
+        "requested_ceiling": 1,
+        "set_status": 0,
+        "blas_threading_mode": 1,
+        "mode_name": "single",
+        "exact_active_thread_count_available": false
+      },
+      "threadpools": [],
+      "observed_process_threads": [
+        1
+      ],
+      "batch": {
+        "wall_ms": 4041.985792,
+        "cpu_ms": 4038.587
+      },
+      "wall_ms": {
+        "count": 960,
+        "median": 4.303042,
+        "p95": 6.05585385,
+        "maximum": 8.142667
+      },
+      "cpu_ms": {
+        "count": 960,
+        "median": 4.3025,
+        "p95": 6.055,
+        "maximum": 6.525
+      }
+    },
+    "P1b": {
+      "method": "P1b",
+      "selected_contexts": [
+        {
+          "case": "D4-R1_A",
+          "plan_id": 1
+        },
+        {
+          "case": "D4-R1_A",
+          "plan_id": 2
+        },
+        {
+          "case": "D4-R1_A",
+          "plan_id": 10
+        },
+        {
+          "case": "D4-R1_A",
+          "plan_id": 18
+        },
+        {
+          "case": "D4-R1_B",
+          "plan_id": 1
+        },
+        {
+          "case": "D4-R1_B",
+          "plan_id": 2
+        },
+        {
+          "case": "D4-R1_B",
+          "plan_id": 10
+        },
+        {
+          "case": "D4-R1_B",
+          "plan_id": 18
+        },
+        {
+          "case": "D4-R2_A",
+          "plan_id": 1
+        },
+        {
+          "case": "D4-R2_A",
+          "plan_id": 2
+        },
+        {
+          "case": "D4-R2_A",
+          "plan_id": 10
+        },
+        {
+          "case": "D4-R2_A",
+          "plan_id": 18
+        },
+        {
+          "case": "D4-R2_B",
+          "plan_id": 1
+        },
+        {
+          "case": "D4-R2_B",
+          "plan_id": 2
+        },
+        {
+          "case": "D4-R2_B",
+          "plan_id": 10
+        },
+        {
+          "case": "D4-R2_B",
+          "plan_id": 18
+        },
+        {
+          "case": "D4-R3_A",
+          "plan_id": 1
+        },
+        {
+          "case": "D4-R3_A",
+          "plan_id": 2
+        },
+        {
+          "case": "D4-R3_A",
+          "plan_id": 10
+        },
+        {
+          "case": "D4-R3_A",
+          "plan_id": 18
+        },
+        {
+          "case": "D4-R3_B",
+          "plan_id": 1
+        },
+        {
+          "case": "D4-R3_B",
+          "plan_id": 2
+        },
+        {
+          "case": "D4-R3_B",
+          "plan_id": 10
+        },
+        {
+          "case": "D4-R3_B",
+          "plan_id": 18
+        },
+        {
+          "case": "D4-R4_A",
+          "plan_id": 1
+        },
+        {
+          "case": "D4-R4_A",
+          "plan_id": 2
+        },
+        {
+          "case": "D4-R4_A",
+          "plan_id": 10
+        },
+        {
+          "case": "D4-R4_A",
+          "plan_id": 18
+        },
+        {
+          "case": "D4-R4_B",
+          "plan_id": 1
+        },
+        {
+          "case": "D4-R4_B",
+          "plan_id": 2
+        },
+        {
+          "case": "D4-R4_B",
+          "plan_id": 10
+        },
+        {
+          "case": "D4-R4_B",
+          "plan_id": 18
+        }
+      ],
+      "repetitions": 30,
+      "warmup_sweeps": 3,
+      "initialization": {
+        "wall_ms": 1.118292,
+        "cpu_ms": 1.119
+      },
+      "precomputation": {
+        "wall_ms": 10.838459,
+        "cpu_ms": 8.548,
+        "jacobian_durations": [
+          0.01,
+          0.007,
+          0.005
+        ],
+        "context_matrices_cached": false
+      },
+      "native": {
+        "requested_ceiling": 1,
+        "set_status": 0,
+        "blas_threading_mode": 1,
+        "mode_name": "single",
+        "exact_active_thread_count_available": false
+      },
+      "threadpools": [],
+      "observed_process_threads": [
+        1
+      ],
+      "batch": {
+        "wall_ms": 4359.211167,
+        "cpu_ms": 4355.249
+      },
+      "wall_ms": {
+        "count": 960,
+        "median": 4.6066665,
+        "p95": 6.50219375,
+        "maximum": 8.703917
+      },
+      "cpu_ms": {
+        "count": 960,
+        "median": 4.606,
+        "p95": 6.501,
+        "maximum": 8.285
+      }
+    },
+    "P2": {
+      "method": "P2",
+      "selected_contexts": [
+        {
+          "case": "D4-R1_A",
+          "plan_id": 1
+        },
+        {
+          "case": "D4-R1_A",
+          "plan_id": 2
+        },
+        {
+          "case": "D4-R1_A",
+          "plan_id": 10
+        },
+        {
+          "case": "D4-R1_A",
+          "plan_id": 18
+        },
+        {
+          "case": "D4-R1_B",
+          "plan_id": 1
+        },
+        {
+          "case": "D4-R1_B",
+          "plan_id": 2
+        },
+        {
+          "case": "D4-R1_B",
+          "plan_id": 10
+        },
+        {
+          "case": "D4-R1_B",
+          "plan_id": 18
+        },
+        {
+          "case": "D4-R2_A",
+          "plan_id": 1
+        },
+        {
+          "case": "D4-R2_A",
+          "plan_id": 2
+        },
+        {
+          "case": "D4-R2_A",
+          "plan_id": 10
+        },
+        {
+          "case": "D4-R2_A",
+          "plan_id": 18
+        },
+        {
+          "case": "D4-R2_B",
+          "plan_id": 1
+        },
+        {
+          "case": "D4-R2_B",
+          "plan_id": 2
+        },
+        {
+          "case": "D4-R2_B",
+          "plan_id": 10
+        },
+        {
+          "case": "D4-R2_B",
+          "plan_id": 18
+        },
+        {
+          "case": "D4-R3_A",
+          "plan_id": 1
+        },
+        {
+          "case": "D4-R3_A",
+          "plan_id": 2
+        },
+        {
+          "case": "D4-R3_A",
+          "plan_id": 10
+        },
+        {
+          "case": "D4-R3_A",
+          "plan_id": 18
+        },
+        {
+          "case": "D4-R3_B",
+          "plan_id": 1
+        },
+        {
+          "case": "D4-R3_B",
+          "plan_id": 2
+        },
+        {
+          "case": "D4-R3_B",
+          "plan_id": 10
+        },
+        {
+          "case": "D4-R3_B",
+          "plan_id": 18
+        },
+        {
+          "case": "D4-R4_A",
+          "plan_id": 1
+        },
+        {
+          "case": "D4-R4_A",
+          "plan_id": 2
+        },
+        {
+          "case": "D4-R4_A",
+          "plan_id": 10
+        },
+        {
+          "case": "D4-R4_A",
+          "plan_id": 18
+        },
+        {
+          "case": "D4-R4_B",
+          "plan_id": 1
+        },
+        {
+          "case": "D4-R4_B",
+          "plan_id": 2
+        },
+        {
+          "case": "D4-R4_B",
+          "plan_id": 10
+        },
+        {
+          "case": "D4-R4_B",
+          "plan_id": 18
+        }
+      ],
+      "repetitions": 30,
+      "warmup_sweeps": 3,
+      "initialization": {
+        "wall_ms": 1.524542,
+        "cpu_ms": 1.525
+      },
+      "precomputation": {
+        "wall_ms": 0.002125,
+        "cpu_ms": 0.003,
+        "jacobian_durations": [],
+        "context_matrices_cached": false
+      },
+      "native": {
+        "requested_ceiling": 1,
+        "set_status": 0,
+        "blas_threading_mode": 1,
+        "mode_name": "single",
+        "exact_active_thread_count_available": false
+      },
+      "threadpools": [],
+      "observed_process_threads": [
+        1
+      ],
+      "batch": {
+        "wall_ms": 9308.243125,
+        "cpu_ms": 9302.548
+      },
+      "wall_ms": {
+        "count": 960,
+        "median": 8.985688,
+        "p95": 13.09767705,
+        "maximum": 30.952709
+      },
+      "cpu_ms": {
+        "count": 960,
+        "median": 8.984,
+        "p95": 13.0921,
+        "maximum": 30.03
+      }
+    }
+  },
+  "predicted_boundary_crossings": {
+    "A": 0,
+    "P0": 0,
+    "P1a": 0,
+    "P1b": 0,
+    "P2": 0
+  },
+  "failures": {
+    "A": 0,
+    "P0": 0,
+    "P1a": 0,
+    "P1b": 0,
+    "P2": 0
+  },
+  "contexts": 190,
+  "methods": [
+    "A",
+    "P0",
+    "P1a",
+    "P1b",
+    "P2"
+  ],
+  "input_sha256": {
+    "results/task007d/p/study/audit.json": "bd9aef34db92b849de20896667dc85157be63870a3ce7bff5beef455e4c46440",
+    "results/task007d/p/study/benchmark_A.json": "b41487fe7f42e915dcffecd2b4e3414751877098f182ed67ebeb8c5e6da3b661",
+    "results/task007d/p/study/benchmark_P0.json": "b2ae1b08f028b27ccfac4fd1acc80835982801d85f04507a6e94c82ea2951fa9",
+    "results/task007d/p/study/benchmark_P1a.json": "e71069dcd4715885a3e9b3b12c5ca2e33f25fdb3e0277815656266d56ab5bf83",
+    "results/task007d/p/study/benchmark_P1b.json": "9fe9c5abd46ecff3adb1e1ed71a41b3af72f22a2966a8cd442b11f234fa37640",
+    "results/task007d/p/study/benchmark_P2.json": "acb795023cde052e980e006566580111926e03b1c34c98d4df6c92bfedcb067c",
+    "results/task007d/p/study/predictions.json": "07b8f9dee7185893a3c40b6b3bf005c4200a3b59344915a3482c74ddc9b6a145"
+  }
+}

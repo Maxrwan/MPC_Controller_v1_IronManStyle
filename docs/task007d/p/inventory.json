@@ -1,0 +1,22 @@
+{
+  "figures": [
+    "figure1_clearance.png",
+    "figure2_accuracy.png",
+    "figure3_cost_accuracy.png"
+  ],
+  "files": {
+    "accuracy.csv": "5550205503711bf8ee8b8790e84875ee52c0fcb9be7e7dfe1398322d5d0facdf",
+    "benchmark_summary.csv": "5352941ed63d8a9d0e3e21b7d063c309a047e21b2045772697f7e5b65eb6a41c",
+    "figure1_clearance.png": "a543e7b98c8bb5e16b3a748e62c8942a3369131799e526063d6e051966ce9038",
+    "figure1_data.csv": "92b4ad7e15b108f40905cb8aaf793d85d8544b38e6162b573fde1bf452fb501a",
+    "figure2_accuracy.png": "b3024d95223b86dcc75a53166c7515596afb8476a915dd61d2aeb939435bbb5e",
+    "figure3_cost_accuracy.png": "c082366d867577f8682ff88b5fe84611ece9201ea93d9d7ab98bb675db041d8e",
+    "historical_preparation.csv": "e45058eacbc6c8d7236b7d619716bf45bac72cb1fe09bc7017ed4f3ed19139d1",
+    "release_errors.csv": "71622f626ad4eb89f7ee9627039d3d525cc9a791d577e33c72f82d2d3d8e0a59",
+    "summary.json": "d09f8ce228ff4ea6b8969f6cbdc3b1285dc276c0c5655379ce0d31c9d87dd277"
+  },
+  "report_sources": {
+    "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/scripts/report_task007dp.py": "08cedb834b0a7c4a47f9e2dae99214177901251e1cfe6643e752066c131fc6db",
+    "scripts/task007dp/figures.py": "c5eb997aca770e4c8ac4fd1ee9cee50586b2bd7bd8e79f8fddd8cb898eec1bf4"
+  }
+}
