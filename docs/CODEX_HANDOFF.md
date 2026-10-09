@@ -1,3 +1,44 @@
+# APEX handoff — Task007D-C BLOCKED at C0 urgent-grid contract; stop for review
+
+Read TASK007D_C_FIXED_HANDOFF.md, the 36-section TASK007D_C_RESULTS.md and
+TASK007D_C_REPRODUCTION.md. Started on clean main
+3564bb394c7f49cf430d6f0f976bea153a5da822. No runtime source, predictor, packet schema,
+controller mathematics or production defaults changed. Delivery SHA/URL is in Git history and
+the final response under the standing commit-and-push workflow.
+
+C0 reproduced an explicit assignment stop gate with the existing isolated StraightPlanner,
+straight chart and real NumPy plant: plan 1 releases at 0.100 s, an urgent request latches at
+0.160 s while busy, and completion at 0.255 s immediately launches urgent plan 2. Every eligible
+10–100 ms grid-aligned offset retains the 5 ms phase error; +70 ms gives target 0.325 s.
+Existing immediate urgent release, exact release-plus-offset takeover and global 10 ms alignment
+cannot all hold. A late fixed deadline would not cancel the running solve, so discarding its
+result at completion does not remove the urgent-release conflict.
+
+No workaround was applied: no rounding, deferred/suppressed urgent work, cancellation or parallel
+solve. C0 fixed-mode implementation/tests remain incomplete; ECDF selection, C1 jitter, C2 miss,
+C3 racing comparisons and all nine figures are NOT EXECUTED. Full regression is deferred because
+it includes NMPC/multilap integration and C0 must clear before those simulations. This is not a
+negative finding about fixed scheduling's physical performance; no such comparison occurred.
+
+Verification: 68 focused tests passed (4 new conflict tests plus 64 retained), including the
+unchanged pre-D2 default-A fingerprints. Scoped Ruff lint/format passed. Compact C0 provenance,
+all-offset grid arithmetic and preservation evidence are under docs/task007d/c/. Ignored raw
+unit-fixture chronology is under results/task007d/c/c0_urgent_grid/. All 451 other preexisting
+tracked files, all 10,926 prior result size/mtime records and all 74 D3/D4/D5/D-P raw hashes
+remain unchanged. Existing negative outcomes and figures remain preserved.
+
+Required Engineering Orchestrator decision: revise the off-grid urgent contract. One candidate
+for explicit approval is fixed-mode-only queued urgent release on the next global driver tick,
+with pending solve/busy rules preserved. This changes urgent latency by up to one tick and was
+NOT selected or implemented. Alternatively revise the exact-offset or grid-alignment condition.
+After that review, resume C0 before C1–C3; no deadline candidate is selected yet.
+
+A remains default; B experimental; P0/P1a/P1b not selected. C is not implemented in this blocked
+delivery. No System Identification, LMPC, adaptive codriver, opponent/energy work or final profile
+freeze began. **STOP AT C0. Task007D-C remains BLOCKED. Await Engineering Orchestrator review.**
+
+---
+
 # APEX handoff — Task007D-P offline prediction study complete; stop for review
 
 Read TASK007D_LIGHTWEIGHT_PREDICTION_STUDY.md and compact docs/task007d/p/ (three figures,

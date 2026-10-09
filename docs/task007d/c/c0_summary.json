@@ -1,0 +1,180 @@
+{
+  "status": "BLOCKED_C0_URGENT_GRID_CONFLICT",
+  "implementation": "unchanged legacy variable-handoff scheduler",
+  "baseline_sha": "3564bb394c7f49cf430d6f0f976bea153a5da822",
+  "config": {
+    "planner_dt": 0.1,
+    "tracker_dt": 0.01,
+    "plant_dt": 0.005,
+    "duration": 0.8,
+    "laps": 2,
+    "latency_mode": "injected",
+    "injected_delay": 0.155,
+    "spike_plan_id": -1,
+    "spike_delay": 0.15,
+    "failed_plan_ids": [],
+    "disturbance_time": 0.15,
+    "disturbance_ey": 0.08,
+    "disturbance_heading": -0.04,
+    "urgent": true,
+    "codriver_delay": 0.0,
+    "committed_prefix_prediction": false
+  },
+  "parameters": {
+    "name": "synthetic_dynamic_test_vehicle",
+    "mass": 2.0,
+    "yaw_inertia": 0.025,
+    "wheelbase": 0.3,
+    "lf": 0.15,
+    "lr": 0.15,
+    "cg_height": 0.04,
+    "vehicle_width": null,
+    "vehicle_length": null,
+    "front_cornering_stiffness": 45.0,
+    "rear_cornering_stiffness": 45.0,
+    "tire_road_friction_coefficient": 1.0,
+    "maximum_steering_angle": 0.4,
+    "maximum_steering_rate": null,
+    "maximum_acceleration": 2.0,
+    "maximum_braking_deceleration": 3.0,
+    "maximum_speed": 6.0
+  },
+  "native": {
+    "requested_ceiling": 1,
+    "set_status": 0,
+    "blas_threading_mode": 1,
+    "mode_name": "single",
+    "exact_active_thread_count_available": false
+  },
+  "seed": null,
+  "fixture": "Existing StraightPlanner and analytical straight_geometry pytest fixtures",
+  "trigger": [
+    {
+      "time": 0.15,
+      "kind": "approved_state_perturbation"
+    },
+    {
+      "time": 0.16,
+      "kind": "urgent_replan",
+      "busy": true
+    }
+  ],
+  "releases": [
+    {
+      "time": 0.1,
+      "plan_id": 1,
+      "urgent": false
+    },
+    {
+      "time": 0.255,
+      "plan_id": 2,
+      "urgent": true
+    },
+    {
+      "time": 0.5,
+      "plan_id": 3,
+      "urgent": false
+    },
+    {
+      "time": 0.7000000000000001,
+      "plan_id": 4,
+      "urgent": false
+    }
+  ],
+  "planner_busy_misses": [
+    {
+      "time": 0.2,
+      "reason": "planner_busy"
+    },
+    {
+      "time": 0.3,
+      "reason": "planner_busy"
+    },
+    {
+      "time": 0.4,
+      "reason": "planner_busy"
+    },
+    {
+      "time": 0.6,
+      "reason": "planner_busy"
+    }
+  ],
+  "failure": null,
+  "stop_reason": "duration",
+  "source_sha256": {
+    "AGENTS.md": "238ee56a6c59ce22f5f96b55acdfc9f25ed824736bd9197b9f91628304b64681",
+    "src/apex/simulation/asynchronous.py": "2d718dae323b2cf9123e4ee39423f3eae8ddada363452b128b67c1a2d4f3e8d5",
+    "src/apex/simulation/diagnostic_timing.py": "373c20d762328880c7fa25856f474f49d534b50c176a72f0df97a2f3838bf23f",
+    "src/apex/control/trajectory/packet.py": "d08c1e1761c48b080456027ac4698f5fa3c324509fb63822f2a5336152bd81db",
+    "src/apex/control/trajectory/planner.py": "6dcc8abe959fa65d7036f90379179703f54091c55a54bedee4db9a47d4622e44",
+    "src/apex/control/trajectory/prediction.py": "0013fd74299a68993dabbc381ca384837f09b862011956a94fd1d3b138b839ab",
+    "src/apex/control/trajectory/tracker.py": "ffa5d9968650c97411121ba3dedd89a5de04a1a9ce832c50efa351763567ef27",
+    "tests/conftest.py": "33f0ce8f7ddf2645c3fccac0da666c07a6a81e4185b5793324f160a057d5efe4",
+    "tests/unit/test_async_chronology.py": "e06e33ed3b0ee3e2185a196e4a3e6b1fd2ab36b0d6b98f043451cf3050719f4b",
+    "tests/unit/test_fixed_handoff_contract.py": "275a73150a676f82739ea061522e1d4cd9134a806ed7fb813a87b0be03e4e929",
+    "configs/vehicles/synthetic_dynamic_test_vehicle.yaml": "df1b853d21a1d3efaf858f7e58401151f2c5237793c40e16bb4189ed651f9cf3",
+    "scripts/audit_task007dc_c0.py": "053883d915b1b1ec9144c42f934ffa56059fdc415ae25b7b23d834df1c63c6f2"
+  },
+  "targets": [
+    {
+      "offset": 0.01,
+      "release": 0.255,
+      "exact_target": 0.265,
+      "distance_to_grid": 0.0050000000000000044
+    },
+    {
+      "offset": 0.02,
+      "release": 0.255,
+      "exact_target": 0.275,
+      "distance_to_grid": 0.0050000000000000044
+    },
+    {
+      "offset": 0.03,
+      "release": 0.255,
+      "exact_target": 0.28500000000000003,
+      "distance_to_grid": 0.004999999999999949
+    },
+    {
+      "offset": 0.04,
+      "release": 0.255,
+      "exact_target": 0.295,
+      "distance_to_grid": 0.0050000000000000044
+    },
+    {
+      "offset": 0.05,
+      "release": 0.255,
+      "exact_target": 0.305,
+      "distance_to_grid": 0.0050000000000000044
+    },
+    {
+      "offset": 0.06,
+      "release": 0.255,
+      "exact_target": 0.315,
+      "distance_to_grid": 0.0050000000000000044
+    },
+    {
+      "offset": 0.07,
+      "release": 0.255,
+      "exact_target": 0.325,
+      "distance_to_grid": 0.0050000000000000044
+    },
+    {
+      "offset": 0.08,
+      "release": 0.255,
+      "exact_target": 0.335,
+      "distance_to_grid": 0.0050000000000000044
+    },
+    {
+      "offset": 0.09,
+      "release": 0.255,
+      "exact_target": 0.345,
+      "distance_to_grid": 0.004999999999999949
+    },
+    {
+      "offset": 0.1,
+      "release": 0.255,
+      "exact_target": 0.355,
+      "distance_to_grid": 0.0050000000000000044
+    }
+  ]
+}
