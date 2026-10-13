@@ -11,7 +11,12 @@ from apex.state import STATE_NAMES
 
 
 def packet_from_record(record):
-    values = {f.name: record[f.name] for f in fields(TrajectoryPacket)}
+    # Fixed-mode metadata is absent from historical variable-mode serialization.
+    values = {
+        f.name: record[f.name]
+        for f in fields(TrajectoryPacket)
+        if f.name != "valid_from" or f.name in record
+    }
     # JSON loses the second dimension of an empty (0, 4) gain schedule.
     if not len(values["gains"]):
         values["gains"] = np.empty((0, 4))

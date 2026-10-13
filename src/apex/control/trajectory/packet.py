@@ -27,6 +27,7 @@ class TrajectoryPacket:
     curvatures: np.ndarray = field(default_factory=lambda: np.empty(0))
     valid: bool = True
     validation_reason: str = "solver_and_model_valid"
+    valid_from: float | None = None
 
     def __post_init__(self):
         for name in (
@@ -79,6 +80,14 @@ class TrajectoryPacket:
             raise ValueError("Invalid packet timing metadata")
         if self.actual_completion_time < self.planner_release_time:
             raise ValueError("Completion precedes release")
+        if self.valid_from is not None:
+            if (
+                not np.isfinite(self.valid_from)
+                or self.valid_from < self.planner_release_time
+                or abs(self.valid_from - self.intended_handoff_time) > 1e-10
+                or abs(self.valid_from - self.timestamps[0]) > 1e-10
+            ):
+                raise ValueError("Fixed commitment must match the original nominal start")
 
     @property
     def horizon_end_time(self):
@@ -158,7 +167,11 @@ class TrajectoryPacket:
 
     def as_dict(self):
         return {
-            **{k: v.tolist() if isinstance(v, np.ndarray) else v for k, v in vars(self).items()},
+            **{
+                k: v.tolist() if isinstance(v, np.ndarray) else v
+                for k, v in vars(self).items()
+                if k != "valid_from" or v is not None
+            },
             "horizon_end_time": self.horizon_end_time,
             "remaining_reserve_at_completion": self.remaining_reserve_at_completion,
         }
@@ -193,6 +206,11 @@ class TrajectoryBuffer:
             return False, packet.validation_reason
         if self.active is not None and packet.plan_id <= self.active.plan_id:
             return False, "stale_plan"
+        if packet.valid_from is not None:
+            if packet.actual_completion_time > packet.valid_from + 1e-10:
+                return False, "fixed_deadline_missed"
+            if abs(time - packet.valid_from) > 1e-10:
+                return False, "outside_fixed_handoff"
         if time < packet.actual_completion_time - 1e-10 or time < packet.timestamps[0] - 1e-10:
             return False, "not_available_yet"
         if packet.horizon_end_time - time < self.minimum_handoff_reserve:

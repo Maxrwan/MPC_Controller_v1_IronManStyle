@@ -1,3 +1,96 @@
+# Task007D-C — approved fixed-handoff contract (amended C0)
+
+Status: implemented as an opt-in research scheduler; C0 and bounded C1–C3 executed.
+This supersedes the original unresolved contract below, preserving it as historical evidence.
+Primary APEX explicitly approved deferring fixed-mode urgent release to the next global 10 ms
+codriver-grid tick after the planner becomes idle. No existing release or target is rounded.
+
+## Configuration and prediction
+
+`AsyncConfig.fixed_handoff_offset=None` retains variable availability and the legacy path.
+A finite numeric grid multiple from 10 through 100 ms enables fixed commitments. Boolean,
+nonfinite, off-grid and out-of-range values are rejected. Fixed mode requires 10 ms TVLQR and
+a planner period on that grid, and rejects `committed_prefix_prediction=True`. Default A,
+experimental B, and every original physical/controller setting remain unchanged.
+
+For each actual runtime release, `valid_from = t_release + fixed_handoff_offset`. The existing
+planner receives that offset through its existing estimated-duration argument. It therefore
+runs unchanged predictor A and anchors the unchanged N8 nominal timeline at the scheduled
+handoff. The rolling estimator still observes completed durations and its estimate is logged,
+but does not choose the fixed target. No actual future duration enters the forecast. Startup
+still prepares synchronously before physical launch, with time zero and no fixed metadata.
+
+`TrajectoryPacket.valid_from` is optional and omitted by `as_dict()` when absent. Old serialized
+packets load without it; the shared offline packet reader explicitly permits the omitted field. Fixed metadata must agree with `intended_handoff_time` and the original
+first nominal timestamp. Historical `intended_handoff_time` retains its existing meaning;
+readiness is not renamed as acceptance. Existing reserve, validity, continuity and stale-plan
+checks remain in force. No packet timeline is shifted to actual finish time.
+
+## Event order and authority
+
+At a physical timestamp the existing loop applies a previously due actuator request first,
+then completes planner preparation and updates readiness, then handles eligible handoffs.
+Fixed mode resolves scheduled deadlines in this handoff phase, before disturbance/fallback
+checks, codriver busy handling/reference sampling, nominal or urgent release, and propagation.
+A newly created zero-latency command follows the existing same-timestamp continuation rule.
+The existing physical steering-rate clamp and RK4 implementation are unchanged.
+
+An early result waits without authority. Exact-deadline readiness precedes acceptance. A result
+not ready at its deadline is marked missed there, while its computation remains pending and
+busy until actual completion; that late result is permanently discarded. No cancellation,
+parallel launch or retrospective authority reassignment occurs. Old commands already in flight
+survive a new handoff and retain their source plan ID. Existing exhaustion and fallback latch
+semantics apply even after misses. Simulation-end events are censored if the loop ends before
+processing them; missing timestamps remain null.
+
+Fixed mode retains each already-completed commitment until its own deadline. This can hold
+more than one ready packet when an urgent release occurs while another completed packet waits.
+The old variable path retains its single waiting slot. This bookkeeping is necessary to honor
+each fixed commitment without suppressing authorized urgent/nominal releases; it is not a queue
+of solver launches. The isolated overlapping-wait test verifies both acceptances and correct
+urgent-demand attribution. This implementation choice is explicit for architecture review.
+
+## Urgent amendment and latency accounting
+
+Urgent threshold detection/latching is unchanged. While busy, the latch remains pending.
+Off-grid completion clears busy status but cannot release fixed work. On the next eligible
+global tick an urgent solve launches unless a coincident nominal opportunity services it;
+nominal priority is retained with explicit coalescing, without duplicate solves. Repeated
+threshold triggers while already latched are retained as coalesced trigger timestamps and do
+not replace the earliest demand/wait. A request serviced by a new solve is not attributed to
+an older waiting packet's acceptance.
+
+Telemetry separates trigger-to-idle planner-busy wait, idle-to-release grid wait, release-to-target
+fixed offset, and trigger-to-eventually-accepted authority. Eligible grid wait is in [0,10) ms
+(up to floating event tolerance); continued computation is never counted as grid wait. Failed
+or censored acceptance remains null, with fallback status where applicable.
+
+Both mandatory fixtures are retained under `results/task007d/c/amended/c0_export/` and compact
+`docs/task007d/c/amended/c0_summary.json`. Original sequence: .100 release, .160 trigger,
+.255 ready, .260 urgent release, .330 missed target, .415 ready/discard. Busy wait is 95 ms and
+grid wait 5 ms. Two misses exhaust startup at .400 and enter the existing baseline fallback;
+no fictitious trigger-to-accept latency is assigned. With the next delay changed explicitly to
+35 ms, the same .260 release is ready .295, waits until .330, then accepts with 170 ms total
+urgent latency (95+5+70), 70 ms packet age and 400 ms remaining fixture reserve.
+
+## Verification and limits
+
+C0 covered original conflict, early/exact/late readiness, grid alignment, busy continuation,
+consecutive misses, stale/reserve/missing/exhausted packets, pending old commands, nominal priority,
+no overlap, startup, deterministic replay and retained legacy fingerprints. Additional offline
+tests cover wrapped residuals and common coverage. See the current results/reproduction documents
+for final counts, complete regression evidence, figures and delivery.
+
+A remains the default predictor. B remains experimental. P0/P1a/P1b were not selected. C is
+strictly an opt-in research scheduling mode, with no production promotion. No NMPC, prediction
+model, TVLQR, IPOPT, warm-start, tire, integration, cost, horizon or physical-limit change occurred.
+No System Identification, LMPC, adaptive codriver, opponent handling, energy optimization or
+Performance/Efficiency profile freezing has begun. Stop after this pilot for review.
+
+---
+
+# Historical original C0 contract audit (retained verbatim)
+
 # Task007D-C — fixed-handoff contract audit (C0 blocked)
 
 **Status: BLOCKED at the C0 urgent-release alignment gate.** Baseline/main:

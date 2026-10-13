@@ -1,0 +1,72 @@
+{
+  "baseline": "c56e5095105cd1c70649127e246c48ee70c26428",
+  "prior_tracked_count": 460,
+  "prior_tracked_changed": [
+    "docs/DECISIONS.md",
+    "docs/TASK007D_C_FIXED_HANDOFF.md",
+    "docs/TASK007D_C_REPRODUCTION.md",
+    "docs/TASK007D_C_RESULTS.md",
+    "scripts/task007d/forensics.py",
+    "src/apex/control/trajectory/packet.py",
+    "src/apex/simulation/asynchronous.py",
+    "docs/CODEX_HANDOFF.md"
+  ],
+  "prior_tracked_unchanged_count": 452,
+  "prior_raw_sha256_count": 76,
+  "prior_raw_sha256_mismatches": [],
+  "prior_result_metadata_count": 10928,
+  "prior_result_metadata_mismatches": [],
+  "original_C0_documents_preserved_verbatim": true,
+  "focused": "140 passed in 5.17 s",
+  "full_regression": "696 passed in 649.73 s",
+  "initial_regression": "693 passed, 2 failed (optional metadata deserialization; repaired)",
+  "ruff": "check and format passed, 16 files",
+  "pilot_runs": 9,
+  "pilot_stop_gates": [],
+  "runtime_forecast_matches": 171,
+  "figures_reviewed": 9,
+  "minimum_experiment_free_bytes": 1073741824,
+  "free_bytes_at_delivery_audit": 1034186752,
+  "initial_working_tree": "Only authorized in-progress C amendment changes on main",
+  "notes": [
+    "Old/new packet deserialization repair is the only historical research-script change.",
+    "Source hashes in pilot provenance identify the exact pre-delivery code; later changes add analysis/docs and urgent coalescing telemetry.",
+    "No experiment rerun or unfavorable case replacement. No new experiments below disk threshold.",
+    "Final CSV line endings normalized to LF; numerical cells unchanged."
+  ],
+  "docs_historical_findings_preserved": true,
+  "final_source_sha256": {
+    "scripts/run_task007dc.py": "ad9ee59c5231e5789d4c5f87af66f381055d02eb3b672459b28223bfcf2d22bc",
+    "scripts/task007d/forensics.py": "3a12c1c19d84461eb39d9c853900695efdfcb8ccb1ed9280f885aee56d5f5f4e",
+    "scripts/task007dc/__init__.py": "0cd3e223075d120f3e4c14f8bd7995b894c43cc04df2209325f6c8f905e836cb",
+    "scripts/task007dc/analysis.py": "ffed88f6d746606891983c99cb21441df9c21a72c76e7e9172cc5a80e1ea03ba",
+    "scripts/task007dc/c0.py": "6fc96c19922eb9601a1428bfd9635d37159fc42df7904151f9e94f7997f18f82",
+    "scripts/task007dc/ecdf.py": "e8eb5510f41a7eec35048b5aa46909c1e21b5cf01b0c92ff89b5595ce691dbb8",
+    "scripts/task007dc/export.py": "7ebd98d9ab653f1095068bd029abf3652ae7aa314ba0213d8bda8c903864cc79",
+    "scripts/task007dc/figures.py": "8c912b263a8d031d9dd352acdb63a61e6c9fe528691865ef8659086bbfa0e49a",
+    "scripts/task007dc/metric_tables.py": "30a0675b0d7985e9743631145ba82558b047c6268f9509864db5dcd83d7cbb2d",
+    "scripts/task007dc/partition_check.py": "47b015bf58c592864b5e708e4eb757c3321cb6e588b7b4959a4ce3ba75d9c277",
+    "scripts/task007dc/worker.py": "f330280b7564cea715841e9e8fbd7bd4699fc98ba033359c44e5a0b4241c1f30",
+    "src/apex/control/trajectory/packet.py": "00830d2ced67321547add91a4e241664689cdeed57d57f0b9b2d95552b9fd704",
+    "src/apex/simulation/asynchronous.py": "7d14395aa27707f2561bf6bdb32cd613bc2508ab12d6fe617bf45855d378f018",
+    "src/apex/simulation/fixed_handoff.py": "8f0bc766b6a7c446f36b6a49f6214864906acbb067c57c977469b54e3ff07c12",
+    "tests/unit/test_fixed_handoff_analysis.py": "257f12b5f504e290e27283f8abd6d36dc5685df45dc216fb1fc2cbc650d9f4bb",
+    "tests/unit/test_fixed_handoff_scheduler.py": "ac50fff996f4b24e620e90ad1a04f8ba64e410f197b16e99d22ab010f3ab2b89"
+  },
+  "figure_sha256": {
+    "task007dc_jitter_decoupling.png": "6925e1d50aca2d49de8c0b990747b058cf733a8afae67db4d365eff2d100d9e8",
+    "task007dc_deadline_ecdf.png": "b8abfc69af509f191a239599a4a915493de198cf9e289f4d5bfad143b727b337",
+    "task007dc_deadline_miss.png": "bc1b5ccc1083717dbff2c4b14d1743f7bbf8f778080fa5c3fa8095cc5b511b61",
+    "task007dc_reserve.png": "698919efa6ae1640a61d3e7434947a66b3c42e695f322ecae3ef7d6f6b180d99",
+    "task007dc_variable_vs_fixed_handoff.png": "2f05a6590513f0696c99eac2a6240545e1f61c2a003a8f9a6c29b940d264f923",
+    "task007dc_smoothness.png": "e271ba91fd197b3ffa27470fc55166390def2b9d4d579cb36b4203f96ebdb28b",
+    "task007dc_responsiveness_tradeoff.png": "6e5a26857d4cdba961edafc7ff91c80a4f0404ef13c4a1ed60331f8f3f513587",
+    "task007dc_fixed_handoff_timeline.png": "9b12b7048b32ccd93cb5af0ed817efe60f78c944b0f2767a24126a626dd0b083",
+    "task007dc_track_clearance.png": "4e393913baba5ed60e377c30a317b32f240832c9c2a13fc67a2c295d813faa0d"
+  },
+  "verification_log_sha256": {
+    "regression_initial.log": "fb26efd7c31f7f6008a297f234e77896339a338afb2775cd723c3a49f08e5850",
+    "focused_final.log": "c572b686f2dbded81a0046aceb8545d99d0c55e249c01ed6b60673ea7d29f609",
+    "regression_final.log": "67e40fed63ca364ca42dd2740cd647cbfdcdd30bba5efeca62749bea24a7d580"
+  }
+}

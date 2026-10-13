@@ -12,6 +12,7 @@ from apex.control.trajectory.prediction import CommittedControlPrefix, RollingDe
 from apex.coordinates.angles import wrap_angle
 from apex.models.errors import ModelValidationError
 from apex.simulation.diagnostic_timing import ReplayExhausted
+from apex.simulation.fixed_handoff import FixedHandoffs, on_grid
 from apex.simulation.prediction_capture import PredictionRelease
 from apex.state import STATE_NAMES
 from apex.state import StateIndex as S
@@ -35,8 +36,23 @@ class AsyncConfig:
     urgent: bool = True
     codriver_delay: float | None = 0.0
     committed_prefix_prediction: bool = False
+    fixed_handoff_offset: float | None = None
 
     def __post_init__(self):
+        if self.fixed_handoff_offset is not None:
+            offset = self.fixed_handoff_offset
+            if (
+                isinstance(offset, (bool, np.bool_))
+                or not isinstance(offset, (int, float))
+                or not np.isfinite(offset)
+                or not 0.01 <= offset <= 0.1
+                or not on_grid(offset)
+                or abs(self.tracker_dt - 0.01) > 1e-12
+                or not on_grid(self.planner_dt)
+                or self.planner_dt < 0.01
+                or self.committed_prefix_prediction
+            ):
+                raise ValueError("Fixed handoff requires A, a 10 ms grid and offset in (0, 100] ms")
         if type(self.committed_prefix_prediction) is not bool:
             raise ValueError("committed_prefix_prediction must be a boolean")
         if not isinstance(self.laps, int) or self.laps < 1:
@@ -75,7 +91,7 @@ class AsyncConfig:
 
 
 class AsyncRunner:
-    """One pending solve and one completed future-dated packet, never a solver queue."""
+    """One pending solve; fixed mode retains each completed commitment until its deadline."""
 
     def __init__(
         self,
@@ -124,6 +140,7 @@ class AsyncRunner:
         disturbed = False
         actuator_pending, last_application = None, 0.0
         codriver_misses = []
+        fixed = None if c.fixed_handoff_offset is None else FixedHandoffs(c.fixed_handoff_offset)
         lap_times, last_lap_time = [], 0.0
         next_lap = (int(x[S.S_ABS] / self.track.length) + 1) * self.track.length
         startup, startup_event = self.planner.prepare(0, x, 0, 0, buffer, tracker, startup=True)
@@ -190,6 +207,7 @@ class AsyncRunner:
                 }
             )
             waiting = None
+            return ok, why
 
         def release(urgent=False):
             nonlocal plan_id, pending
@@ -197,7 +215,10 @@ class AsyncRunner:
                 raise RuntimeError("Overlapping planner solve requested")
             plan_id += 1
             tracker.previous = command.copy()
-            estimate = self.estimator.estimate()
+            rolling_estimate = self.estimator.estimate()
+            estimate = rolling_estimate if fixed is None else c.fixed_handoff_offset
+            if fixed is not None and not on_grid(t):
+                raise ValueError("Fixed release must be on the global codriver grid")
             if c.committed_prefix_prediction or self.release_observer is not None:
                 # Capture after this timestamp's application/codriver processing. The
                 # requested value is still pending, including new zero-latency work.
@@ -243,7 +264,17 @@ class AsyncRunner:
             )
             if packet is not None:
                 packet = replace(packet, actual_completion_time=completion)
+                if fixed is not None:
+                    packet = replace(packet, valid_from=t + estimate)
                 packets.append(packet.as_dict())
+            if fixed is not None:
+                fixed.release(plan_id, t, urgent, packet)
+                event.update(
+                    fixed_handoff_offset=c.fixed_handoff_offset,
+                    valid_from=t + estimate,
+                    rolling_delay_estimate=rolling_estimate,
+                    forecast_duration=estimate,
+                )
             event["completed"] = False
             events.append(event)
             pending = (completion, packet, event)
@@ -283,6 +314,9 @@ class AsyncRunner:
                     )
                     event["completed"] = True
                     self.estimator.observe(event["physical_delay"])
+                    if fixed is not None:
+                        fixed.complete(event["plan_id"], t, packet)
+                        packet = None  # Fixed commitments resolve only in the deadline phase.
                     if packet is not None and mode != "trajectory":
                         handoffs.append(
                             {
@@ -309,6 +343,24 @@ class AsyncRunner:
                             handoff(packet)
                 if waiting is not None and t >= waiting.timestamps[0] - 1e-10:
                     handoff(waiting)
+                if fixed is not None:
+                    for cycle in fixed.due(t):
+                        packet_id = cycle["plan_id"]
+                        if packet_id not in fixed.ready:
+                            fixed.resolve(cycle, t, "missed")
+                            continue  # The actual pending solve remains busy until completion.
+                        packet = fixed.ready.pop(packet_id)
+                        if packet is None or mode != "trajectory":
+                            why = "preparation_failed" if packet is None else "fallback_latched"
+                            handoffs.append(
+                                dict(time=t, plan_id=packet_id, accepted=False, reason=why)
+                            )
+                            fixed.resolve(cycle, t, "rejected")
+                        else:
+                            ok, _ = handoff(packet)
+                            fixed.resolve(cycle, t, "accepted" if ok else "rejected")
+                            if ok:
+                                cycle["reserve_at_acceptance"] = buffer.reserve(t)
                 if (
                     c.disturbance_time is not None
                     and not disturbed
@@ -331,6 +383,10 @@ class AsyncRunner:
                         stop = "exhausted_outside_baseline_domain"
                         break
                     mode = "baseline_fallback"
+                    if fixed is not None:
+                        for demand in fixed.demands:
+                            if demand["accepted_time"] is None:
+                                demand["status"] = "fallback"
                     self.fallback.previous_delta = float(command[0])
                 if t >= tracker_index * c.tracker_dt - 1e-10 and actuator_pending is not None:
                     codriver_misses.append({"time": t, "reason": "codriver_busy"})
@@ -340,7 +396,11 @@ class AsyncRunner:
                     start, cpu = perf_counter(), process_time()
                     if mode == "trajectory":
                         proposed, diagnostics = tracker.update(x, buffer, t)
+                        if fixed is not None:
+                            fixed.sample(buffer.active_plan_id, t)
                         if self.urgent.observe(diagnostics["error"]):
+                            if fixed is not None:
+                                fixed.trigger(t, pending is not None)
                             triggers.append(
                                 {"time": t, "kind": "urgent_replan", "busy": pending is not None}
                             )
@@ -424,7 +484,12 @@ class AsyncRunner:
                     elif mode == "trajectory":
                         release()
                     planner_index += 1
-                elif self.urgent.pending and pending is None and mode == "trajectory":
+                elif (
+                    self.urgent.pending
+                    and pending is None
+                    and mode == "trajectory"
+                    and (fixed is None or on_grid(t))
+                ):
                     release(urgent=True)
                 # A zero-duration solve becomes visible at this same physical timestamp.
                 if (pending is not None and pending[0] <= t + 1e-10) or (
@@ -468,6 +533,8 @@ class AsyncRunner:
                     candidates.append(actuator_pending[0])
                 if waiting is not None:
                     candidates.append(float(waiting.timestamps[0]))
+                if fixed is not None:
+                    candidates.extend(fixed.next_deadlines())
                 if buffer.active is not None and buffer.active.horizon_end_time > t + 1e-10:
                     candidates.append(buffer.active.horizon_end_time)
                 if c.disturbance_time is not None and not disturbed:
@@ -491,6 +558,11 @@ class AsyncRunner:
         except (ModelValidationError, ValueError) as exception:
             failure, stop = str(exception), "model_or_control_validity_failure"
         return dict(
+            **(
+                {}
+                if fixed is None
+                else dict(fixed_handoffs=fixed.cycles, urgent_demands=fixed.demands)
+            ),
             states=states,
             controls=controls,
             plans=events,

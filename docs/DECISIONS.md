@@ -919,3 +919,28 @@ justify changing production defaults. Fifteen new focused cases plus 101 existin
 exact physical and RK4 capture parity is retained. See TASK007D_AB_PILOT.md for numerical
 limits, preserved fixture-path launch failure, compact evidence and reproduction. Wider short
 A/B coverage requires a new assignment; fixed handoffs and measured campaigns remain excluded.
+
+
+## ADR-160 — Opt-in fixed commitments with approved urgent grid gating
+
+Task007D-C's original .255 s urgent-release conflict is preserved. Primary APEX approved fixed-mode
+urgent latching until an eligible global 10 ms tick after planner completion. Nominal releases
+retain priority and explicitly service pending demand. Separate busy, grid and fixed-offset waits;
+never round an already launched release/target, cancel a late solve or launch overlapping solves.
+
+`AsyncConfig.fixed_handoff_offset=None` preserves variable defaults and legacy serialized packets.
+Fixed mode uses only unchanged predictor A with the prescribed release-plus-offset target. Optional
+`valid_from` agrees with the packet's nominal start/intended handoff and is omitted in legacy
+serialization. Ready packets wait; completion at the deadline precedes eligibility; late work misses
+at the deadline and is discarded at actual completion while busy rules persist. Apply already due
+old commands before handoff, preserve pending old-command authority, and retain validity/reserve/
+fallback policies. Completed fixed commitments are held individually until their own deadlines so
+an urgent completion cannot overwrite an earlier waiting commitment; computation remains single-pending.
+
+C0 plus bounded C1–C3 authorize research only. The 70/80 ms pilot jointly changes forecast target and
+handoff timing relative to variable A. Readiness can still split RK4 without changing authority;
+record numerical divergence rather than altering integration. A remains default, B experimental,
+P0/P1a/P1b unselected. No production choice or later campaign is authorized by this decision.
+
+Legacy offline deserialization permits absent optional `valid_from` metadata; required historical
+fields remain required. This minimal shared-reader compatibility repair changes no historical evidence.

@@ -1,3 +1,70 @@
+# APEX handoff — Task007D-C amended fixed-handoff pilot complete; stop for review
+
+Read TASK007D_C_FIXED_HANDOFF.md, the current 36-section TASK007D_C_RESULTS.md and
+TASK007D_C_REPRODUCTION.md. Original blocked C0 findings remain verbatim beneath the amended
+documents and below this handoff. Baseline main c56e5095105cd1c70649127e246c48ee70c26428.
+Final delivery SHA/URL is in Git history and the final response; normal commit/push is authorized.
+
+Primary-approved fixed-only urgent gating is implemented. An off-grid completion at .255 s
+leaves urgent demand latched until .260, targeting .330 at +70 ms. Original 155 ms delay means
+.330 MISS and .415 late discard, with no cancellation/overlap; startup exhaustion at .400 retains
+baseline fallback. The separate 35 ms urgent solve is ready .295 and accepts .330. Latency is
+95 ms planner-busy +5 ms grid wait +70 ms offset =170 ms trigger-to-accepted authority. Nominal
+priority and repeated-demand coalescing are explicit. Every fixed release/acceptance is on the
+global 10 ms grid. Previously pending old-packet commands retain their own application/authority.
+
+`AsyncConfig.fixed_handoff_offset=None` preserves variable default A and old serialized packets.
+Fixed mode requires A only, finite 10–100 ms grid-aligned offset, original 100 Hz TVLQR. It uses
+unchanged A prediction with the prescribed offset and starts the nominal packet at that target.
+Early completed commitments are retained individually until deadline, including overlap of ready
+packets caused by urgent release; this does not permit overlapping solves. Late work stays busy,
+misses permanently, then discards at completion. The rolling estimator still observes readiness.
+
+C0 initially passed 92 focused tests before racing; expanded final focused set passes 140.
+Full regression: **696 passed in 649.73 s (10 min 49.73 s)**. Ruff check/format passes (16 files). First full run's 2/695 failures exposed
+legacy offline-reader compatibility with the optional metadata; minimal parser repair and explicit
+old/new round-trip coverage resolve it. Initial failure log is retained. Legacy variable physical
+fingerprints and all mathematical assertions remain unchanged.
+
+Predeclared nine fresh sequential SINGLE two-second runs completed, all pilot gates clear.
+Observed worker threads [1], CPU/wall 0.989–0.997. Every offline release forecast matches the
+runtime NMPC state and preceding input exactly (171/171). No new measured repetition campaign.
+Historical N8 ECDF n=1543: mean 55.950 ms, p95 = 68.836, max 184.045; exceedance at 50/60/70/80 ms
+80.493/22.100/2.787/.324%. This is descriptive Mac evidence, not a real-time guarantee.
+
+C1: 30 ms steady versus 23/47/61/39 ms jitter, all before 70 ms. Accepted times/IDs match, but
+physical states do not match bitwise. Offline unchanged-plant replay proves the first .123 s
+readiness splits the .120–.125 RK4 interval; first state difference .125, feedback .130,
+forecast/packet2 .200. Max yaw-rate difference 6.93e-9 rad/s; common-grid differences remain.
+C2: packet 4 missed .470, discarded .475, never used; old plan 3 continues until plan 5 .570.
+Reserve min 0.605 s; lateral tracking RMS/steering TV worsen modestly, retained in the report.
+
+C3 gamma 2.0/1.8: variable versus fixed 70/80 under identical 35/55/45/25 ms readiness and 5 ms driver.
+All 76 fixed C3 commitments accepted; no unexpected misses, boundary/slack/model/solver/fallback
+or chronology gate. All six tracking RMS values improve, but peak heading error worsens. At 70 ms,
+steering TV falls 22.2%/6.36%; 80 ms increases gamma 1.8 steering TV 2.45%. Actual heading TV rises
+for both offsets/demands. Minimum recorded clearance stays 0.437314 m at the common initial state;
+no clearance improvement or swept-body guarantee. Minimum reserve variable/70/80 is 0.667/0.635/0.625 s.
+Variable authority latency 35–55 ms versus 70/80 ms; TVLQR continues throughout waiting.
+C3 changes forecast target AND scheduler, so scheduling alone cannot explain the differences.
+
+Recommend 70 ms as leading bounded-test candidate with 80 ms reliability comparator, not a
+production choice. Review completed-commitment storage and mixed outcomes, then separately
+authorize bounded measured deadline feasibility / matched variable C1 jitter control if useful.
+No larger campaign or B comparison is launched. A remains default; B experimental;
+P0/P1a/P1b unselected; C opt-in research only. No controller freeze, identification, LMPC,
+adaptive codriver, opponent or energy work began.
+
+Nine reviewed scientific figures, per-state metrics, protocol, ECDF, cycle/segment CSV and
+provenance: docs/task007d/c/amended/. Raw archives remain ignored in results/task007d/c/amended/.
+All 10,928 prior result size/mtime records and all 76 prior Task007D raw SHA256 values are unchanged; 452 of 460 old tracked files remain byte-identical, with only the eight authorized existing source/document files changed.
+
+**STOP AFTER TASK007D-C. Await Secondary APEX / Engineering Orchestrator review.**
+
+---
+
+# Historical original C0 handoff (retained verbatim)
+
 # APEX handoff — Task007D-C BLOCKED at C0 urgent-grid contract; stop for review
 
 Read TASK007D_C_FIXED_HANDOFF.md, the 36-section TASK007D_C_RESULTS.md and

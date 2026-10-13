@@ -1,0 +1,241 @@
+{
+  "original155": {
+    "fixed_handoffs": [
+      {
+        "plan_id": 1,
+        "t_release": 0.1,
+        "t_ready": 0.255,
+        "valid_from": 0.17,
+        "t_accept": null,
+        "first_TVLQR_use": null,
+        "expiry": 0.5700000000000001,
+        "preparation_duration": 0.155,
+        "wait_duration": 0.0,
+        "deadline_margin": -0.08499999999999999,
+        "status": "missed",
+        "miss_time": 0.17,
+        "late_discard_time": 0.255,
+        "packet_age": null,
+        "reserve_at_acceptance": null,
+        "consecutive_misses": 1
+      },
+      {
+        "plan_id": 2,
+        "t_release": 0.26,
+        "t_ready": 0.41500000000000004,
+        "valid_from": 0.33,
+        "t_accept": null,
+        "first_TVLQR_use": null,
+        "expiry": 0.73,
+        "preparation_duration": 0.15500000000000003,
+        "wait_duration": 0.0,
+        "deadline_margin": -0.08500000000000002,
+        "status": "missed",
+        "miss_time": 0.33,
+        "late_discard_time": 0.41500000000000004,
+        "packet_age": null,
+        "reserve_at_acceptance": null,
+        "consecutive_misses": 2
+      }
+    ],
+    "urgent_demands": [
+      {
+        "trigger_time": 0.16,
+        "coalesced_trigger_times": [],
+        "eligible_time": 0.255,
+        "release_time": 0.26,
+        "planner_busy_wait": 0.095,
+        "grid_alignment_wait": 0.0050000000000000044,
+        "fixed_offset": 0.07,
+        "serviced_by_plan_id": 2,
+        "coalesced_nominal": false,
+        "accepted_plan_id": null,
+        "accepted_time": null,
+        "trigger_to_authority": null,
+        "status": "fallback"
+      }
+    ],
+    "releases": [
+      {
+        "time": 0.1,
+        "plan_id": 1,
+        "urgent": false
+      },
+      {
+        "time": 0.26,
+        "plan_id": 2,
+        "urgent": true
+      }
+    ],
+    "misses": [
+      {
+        "time": 0.2,
+        "reason": "planner_busy"
+      },
+      {
+        "time": 0.3,
+        "reason": "planner_busy"
+      },
+      {
+        "time": 0.4,
+        "reason": "planner_busy"
+      }
+    ],
+    "fallbacks": [
+      {
+        "time": 0.4,
+        "reason": "trajectory_exhausted",
+        "valid_domain": true
+      }
+    ],
+    "failure": null,
+    "end_time": 0.6
+  },
+  "recovery35": {
+    "fixed_handoffs": [
+      {
+        "plan_id": 1,
+        "t_release": 0.1,
+        "t_ready": 0.255,
+        "valid_from": 0.17,
+        "t_accept": null,
+        "first_TVLQR_use": null,
+        "expiry": 0.5700000000000001,
+        "preparation_duration": 0.155,
+        "wait_duration": 0.0,
+        "deadline_margin": -0.08499999999999999,
+        "status": "missed",
+        "miss_time": 0.17,
+        "late_discard_time": 0.255,
+        "packet_age": null,
+        "reserve_at_acceptance": null,
+        "consecutive_misses": 1
+      },
+      {
+        "plan_id": 2,
+        "t_release": 0.26,
+        "t_ready": 0.295,
+        "valid_from": 0.33,
+        "t_accept": 0.33,
+        "first_TVLQR_use": 0.33,
+        "expiry": 0.73,
+        "preparation_duration": 0.034999999999999976,
+        "wait_duration": 0.03500000000000003,
+        "deadline_margin": 0.03500000000000003,
+        "status": "accepted",
+        "miss_time": null,
+        "late_discard_time": null,
+        "packet_age": 0.07,
+        "reserve_at_acceptance": 0.39999999999999997,
+        "consecutive_misses": 0
+      },
+      {
+        "plan_id": 3,
+        "t_release": 0.3,
+        "t_ready": 0.33499999999999996,
+        "valid_from": 0.37,
+        "t_accept": 0.37,
+        "first_TVLQR_use": 0.37,
+        "expiry": 0.77,
+        "preparation_duration": 0.034999999999999976,
+        "wait_duration": 0.03500000000000003,
+        "deadline_margin": 0.03500000000000003,
+        "status": "accepted",
+        "miss_time": null,
+        "late_discard_time": null,
+        "packet_age": 0.07,
+        "reserve_at_acceptance": 0.4,
+        "consecutive_misses": 0
+      },
+      {
+        "plan_id": 4,
+        "t_release": 0.4,
+        "t_ready": 0.435,
+        "valid_from": 0.47000000000000003,
+        "t_accept": 0.47000000000000003,
+        "first_TVLQR_use": 0.47000000000000003,
+        "expiry": 0.8700000000000001,
+        "preparation_duration": 0.034999999999999976,
+        "wait_duration": 0.03500000000000003,
+        "deadline_margin": 0.03500000000000003,
+        "status": "accepted",
+        "miss_time": null,
+        "late_discard_time": null,
+        "packet_age": 0.07,
+        "reserve_at_acceptance": 0.4000000000000001,
+        "consecutive_misses": 0
+      },
+      {
+        "plan_id": 5,
+        "t_release": 0.5,
+        "t_ready": 0.535,
+        "valid_from": 0.5700000000000001,
+        "t_accept": 0.5700000000000001,
+        "first_TVLQR_use": 0.5700000000000001,
+        "expiry": 0.9700000000000001,
+        "preparation_duration": 0.03500000000000003,
+        "wait_duration": 0.03500000000000003,
+        "deadline_margin": 0.03500000000000003,
+        "status": "accepted",
+        "miss_time": null,
+        "late_discard_time": null,
+        "packet_age": 0.07000000000000006,
+        "reserve_at_acceptance": 0.4,
+        "consecutive_misses": 0
+      }
+    ],
+    "urgent_demands": [
+      {
+        "trigger_time": 0.16,
+        "coalesced_trigger_times": [],
+        "eligible_time": 0.255,
+        "release_time": 0.26,
+        "planner_busy_wait": 0.095,
+        "grid_alignment_wait": 0.0050000000000000044,
+        "fixed_offset": 0.07,
+        "serviced_by_plan_id": 2,
+        "coalesced_nominal": false,
+        "accepted_plan_id": 2,
+        "accepted_time": 0.33,
+        "trigger_to_authority": 0.17,
+        "status": "accepted"
+      }
+    ],
+    "releases": [
+      {
+        "time": 0.1,
+        "plan_id": 1,
+        "urgent": false
+      },
+      {
+        "time": 0.26,
+        "plan_id": 2,
+        "urgent": true
+      },
+      {
+        "time": 0.3,
+        "plan_id": 3,
+        "urgent": false
+      },
+      {
+        "time": 0.4,
+        "plan_id": 4,
+        "urgent": false
+      },
+      {
+        "time": 0.5,
+        "plan_id": 5,
+        "urgent": false
+      }
+    ],
+    "misses": [
+      {
+        "time": 0.2,
+        "reason": "planner_busy"
+      }
+    ],
+    "fallbacks": [],
+    "failure": null,
+    "end_time": 0.6
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "count": 1543,
+  "runs": 5,
+  "sources": {
+    "results/task007c_resume/g2_w0_vy1_r1_n8_measured_l1_rep00/events.json": "2f2126881bbc0074aa13fccd6adec08777c6679995120c79511b0af04b600f4c",
+    "results/task007c_resume/g2_w0_vy1_r1_n8_measured_l1_rep01/events.json": "164e975fa4d8ee2f991a127d336f2b19956d588d38135953eda4f032eae7e4c7",
+    "results/task007c_resume/g2_w0_vy1_r1_n8_measured_l1_rep02/events.json": "e459f37d3d48f6a9ddd155f0b5c2742ab03ce3ed4871b528b6cc836cf8315fef",
+    "results/task007c_resume/g2_w0_vy1_r1_n8_measured_l1_rep03/events.json": "8645b9530854503d544a6da281f910f39831f679785aeaeff1965d1c2fc6984b",
+    "results/task007c_resume/g2_w0_vy1_r1_n8_measured_l1_rep04/events.json": "d5bc13ca6f7816da2b4343518b0ad6303dab6690a1244f771ed08f4c1eee646a"
+  },
+  "startup_excluded": true,
+  "includes_final_launched_preparation": true,
+  "failed_preparations": 0,
+  "mean_ms": 55.95044504470244,
+  "minimum_ms": 43.39870798867196,
+  "maximum_ms": 184.04537497553974,
+  "quantiles_ms": {
+    "25": 50.72339600883424,
+    "50": 54.80358295608312,
+    "75": 59.16302098194137,
+    "90": 66.26556636765599,
+    "95": 68.83571274811402,
+    "99": 72.42690201848743
+  },
+  "deadlines": [
+    {
+      "offset_ms": 50,
+      "exceedances": 1242,
+      "exceedance_fraction": 0.8049254698639015
+    },
+    {
+      "offset_ms": 60,
+      "exceedances": 341,
+      "exceedance_fraction": 0.22099805573558004
+    },
+    {
+      "offset_ms": 70,
+      "exceedances": 43,
+      "exceedance_fraction": 0.027867790019442645
+    },
+    {
+      "offset_ms": 80,
+      "exceedances": 5,
+      "exceedance_fraction": 0.0032404406999351912
+    }
+  ]
+}
