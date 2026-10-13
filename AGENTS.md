@@ -43,6 +43,25 @@ and verify actual CPU/thread behavior; environment variable values alone are not
 of parallel execution. Serialize latency benchmarks and preserve frozen controller mathematics.
 See docs/NMPC_MULTITHREADING_STUDY.md; the current Mac study recommends one native thread.
 
+## Staged work and verification
+
+- **WORK:** Implement only authorized changes, write necessary tests and run focused correctness
+  checks. Pass all required prerequisite gates before authorized experiments; deliver a reviewable
+  handoff with status `WORK_COMPLETE_PENDING_REVIEW` and explicit deferred checks.
+- **ENGINEERING REVIEW:** The user and Engineering Orchestrator inspect the work and decide on
+  corrections, formal verification or additional experiments. Review is not automatic authorization
+  for another task or experiment.
+- **VERIFICATION:** At an explicitly authorized acceptance gate, run the complete required regression
+  and acceptance checks on the exact reviewed revision, audit artifacts and publish
+  `VERIFIED_AWAITING_ACCEPTANCE`. Do not unnecessarily repeat unchanged, applicable checks.
+- Small documentation-only tasks may combine these stages with scoped documentation checks.
+  All hard scientific stop gates, mathematical assertions, reproducibility requirements and explicit
+  task-specific verification requirements remain binding; efficiency never weakens them.
+
+See [workflow and evidence rules](docs/CODEX_VERIFICATION_WORKFLOW.md) and the
+[focused test guide](docs/CODEX_TEST_GUIDE.md). The standing commit/push requirement below applies
+to both WORK and VERIFICATION deliveries; a pushed WORK result is not formal acceptance.
+
 ## Standing GitHub workflow
 
 Complete only the currently authorized subtask, then stop for Engineering Orchestrator review.

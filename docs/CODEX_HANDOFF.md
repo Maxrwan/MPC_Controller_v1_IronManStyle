@@ -1,3 +1,49 @@
+# Current handoff — workflow efficiency update
+
+**Stage/status:** `VERIFIED_AWAITING_ACCEPTANCE` — documentation-only single-stage delivery.
+**Base revision:** `44e0471680bb22ea1ee790173d1f2481a905f386` on `main`.
+The checked documentation diff belongs to the delivery commit; its exact SHA and verified GitHub
+URL are reported after commit/push. No numerical implementation revision has changed.
+
+**Files:** `AGENTS.md`, `README.md`, this handoff, [workflow guide](CODEX_VERIFICATION_WORKFLOW.md)
+and [test guide](CODEX_TEST_GUIDE.md).
+**Gates/checks passed:** Documentation consistency, 17 local links, 45 referenced test files and
+example node, Markdown formatting, exact five-file scope and `git diff --check`. All 543 other
+tracked files retain their SHA256; all 11,046 prior raw-evidence size/mtime records are unchanged.
+Original scientific/Git instructions and the historical handoff are retained verbatim.
+**Not executed:** pytest, Ruff (no Python changes), NMPC simulations or scientific experiments;
+none is required for this documentation-only assignment. Prior Task007D-C numerical verification
+remains historical evidence, not a new pass. See its [verification record](task007d/c/amended/verification.json).
+**Experiments/failures:** No new experiments; no scientific finding or failed case altered.
+**Artifacts:** The two guides above; local check log `/private/tmp/apex-workflow-doc-checks.log`.
+**Next decision:** Engineering Orchestrator acceptance of the workflow policy. No subsequent
+controller task, experiment or formal numerical verification is authorized by this delivery.
+
+## Compact convention for future handoffs
+
+Prepend one compact current entry; preserve previous entries as history. Use these fields and
+link detailed reports instead of copying logs or full scientific conclusions:
+
+| Field | Required content |
+|---|---|
+| Stage/status | WORK / ENGINEERING REVIEW / VERIFICATION; `WORK_COMPLETE_PENDING_REVIEW` or `VERIFIED_AWAITING_ACCEPTANCE` when applicable, with explicit scope. Report incomplete/blocked gates honestly. |
+| Revision | Exact reviewed/tested Git SHA; for precommit WORK checks, base SHA and tested diff/source hashes. Supply delivery SHA, branch and verified commit URL in the final handoff after push. |
+| Files | Authorized modified files and separately identified preexisting changes. |
+| Scientific gates | Required gates passed, failed or pending; documentation-only scope when applicable. |
+| Tests | Commands, counts and log links for executed checks; applicable inherited results with provenance; checks not executed and why. |
+| Experiments | Completed, failed, censored or blocked runs and coverage; execution is not scientific acceptance. |
+| Failures | Known failures, blockers and stop-gate dispositions; never omit unfavorable outcomes. |
+| Artifacts | Compact report/evidence paths and retained raw/log locations. |
+| Next review | The exact decision/instruction needed; no automatic next-stage or next-task authorization. |
+
+See the [workflow guide](CODEX_VERIFICATION_WORKFLOW.md) for revision/reuse rules and
+the [test guide](CODEX_TEST_GUIDE.md) for focused selections. Standing commit/push and all
+scientific stop rules remain binding.
+
+---
+
+# Historical handoffs (retained verbatim)
+
 # APEX handoff — Task007D-C amended fixed-handoff pilot complete; stop for review
 
 Read TASK007D_C_FIXED_HANDOFF.md, the current 36-section TASK007D_C_RESULTS.md and

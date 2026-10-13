@@ -20,6 +20,14 @@ uv run --locked python -c "import apex, casadi; print(apex.__file__); print(casa
 `.python-version` selects Python 3.12; uv can provision it. `pyproject.toml` permits
 Python 3.12–3.14. `uv run` uses the environment without shell activation.
 
+## Codex work and verification
+
+Follow [AGENTS.md](AGENTS.md) and the [WORK → Engineering Review → Verification
+workflow](docs/CODEX_VERIFICATION_WORKFLOW.md). Use the [focused test guide](docs/CODEX_TEST_GUIDE.md)
+during implementation; full regression runs belong at authorized acceptance gates, with all
+experimental prerequisites and scientific stop gates preserved. Documentation-only work may use
+one stage with scoped checks. The standing scoped commit/push workflow remains unchanged.
+
 ## Layout
 
 - `src/apex`: independent model, track, estimation, identification, planning,
