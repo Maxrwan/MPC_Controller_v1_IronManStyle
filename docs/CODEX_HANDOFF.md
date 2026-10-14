@@ -1,3 +1,36 @@
+# Current handoff — Task007D-CX formal VERIFICATION
+
+**Stage/status:** `VERIFIED_AWAITING_ACCEPTANCE` — Studies 1 and 2 only.
+**Reviewed scientific revision:** `935e98b7af6c2fda8458551f1fbcbddb3bf8932d`, clean main at start.
+This delivery changes verification documentation only; exact delivery SHA and verified GitHub URL
+are supplied after push. The reviewed executable code, assertions, fixtures and scientific evidence
+remain unchanged. See [formal report](TASK007D_CX_VERIFICATION.md) and
+[manifest](task007d/cx/formal/verification.json).
+
+**Tests:** Full suite once: **709 passed, 0 failed/errors/skipped, 597.59 s**; 31 integration,
+3 regression and 675 unit cases. Includes **226 focused cases across 13 relevant modules**, all
+13 CX tests. Ruff check/format pass on eight CX Python files. Full verbose log, all phase durations
+and JUnit retained at results/task007d/cx/formal_935e98b/; compact per-test totals committed.
+**Evidence:** Current-source retained C1 packet replay matches the reviewed reuse audit exactly.
+All **51 rebuilt table files and ten figures are byte-identical**. Independent raw audit reproduces
+all timing distributions/counts, 602 causal-match records, 13 misses/recoveries and retained
+120.735/337.787 ms tails. No new measured experiment or scientific run was launched.
+**Preservation:** All 627 reviewed tracked files unchanged through testing/audit; all 11,283 prior
+raw size/mtime records preserved, with relevant raw SHA256 matches. Core/configuration/fixtures
+also match pre-WORK revision 77ba86f. Historical handoff/evidence remain intact.
+**Discrepancies:** Historical WORK metadata counted 14 focused files; its command lists 13.
+A temporary audit reader assumed a fixed-only field existed in variable A; optional-schema reading
+was corrected in a separate local reader. Original reader/error log preserved. Sandbox font-cache
+warnings produced no figure difference. No reviewed test/scientific failure or code remediation.
+**Files:** This handoff; TASK007D_CX_VERIFICATION.md; docs/task007d/cx/formal/verification.json
+and test_durations.csv. No modifications to the reviewed results, scripts, tests or historical data.
+**Conclusion/next decision:** WORK conclusions reproduce; no production winner or Performance
+freeze is established. Primary APEX acceptance remains pending. Study 3, full-lap research,
+Efficiency, B/lightweight reinvestigation and later phases remain unexecuted and unauthorized.
+Stop after this documentation commit/push; no outstanding Studies 1–2 verification check remains.
+
+---
+
 # Current handoff — Task007D-CX Studies 1–2
 
 **Stage/status:** `WORK_COMPLETE_PENDING_REVIEW`. Studies 1–2 only; no Study 3, final

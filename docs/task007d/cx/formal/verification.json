@@ -1,0 +1,541 @@
+{
+  "status": "VERIFIED_AWAITING_ACCEPTANCE",
+  "reviewed_revision": "935e98b7af6c2fda8458551f1fbcbddb3bf8932d",
+  "reviewed_tree": "8241629b1aceac7b870728a88c59ea8bd289e30e",
+  "documentation_delivery_revision": "Containing documentation-only commit; exact SHA/URL supplied after push.",
+  "environment": {
+    "python": "3.12.14 (main, Sep  1 2026, 14:09:38) [Clang 22.1.3 ]",
+    "platform": "macOS-26.5.1-arm64-arm-64bit",
+    "packages": {
+      "numpy": "2.5.3",
+      "scipy": "1.18.1",
+      "casadi": "3.8.1",
+      "pytest": "9.1.1",
+      "matplotlib": "3.11.2",
+      "psutil": "7.2.2",
+      "threadpoolctl": "3.7.0"
+    }
+  },
+  "suite": {
+    "passed": 709,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "pytest_seconds": 597.59,
+    "junit_seconds": 597.562,
+    "wrapper_wall_seconds": 598.5974239169154,
+    "exit_code": 0,
+    "counts_by_directory": {
+      "unit": 675,
+      "integration": 31,
+      "regression": 3
+    },
+    "invocation": {
+      "reviewed_revision": "935e98b7af6c2fda8458551f1fbcbddb3bf8932d",
+      "arguments": [
+        "-vv",
+        "-x",
+        "tests",
+        "--durations=0",
+        "--durations-min=0",
+        "--junitxml=results/task007d/cx/formal_935e98b/full_suite.xml"
+      ],
+      "bootstrap": "VECLIB_MAXIMUM_THREADS=1 PYTHONPATH=scripts:src; configure_accelerate(1) before pytest import",
+      "native": {
+        "requested_ceiling": 1,
+        "set_status": 0,
+        "blas_threading_mode": 1,
+        "mode_name": "single",
+        "exact_active_thread_count_available": false
+      },
+      "python": "3.12.14 (main, Sep  1 2026, 14:09:38) [Clang 22.1.3 ]",
+      "platform": "macOS-26.5.1-arm64-arm-64bit"
+    },
+    "reruns": 0
+  },
+  "focused_from_same_full_suite": {
+    "test_cx_closure": {
+      "tests": 13,
+      "seconds": 0.085,
+      "failures": 0
+    },
+    "test_fixed_handoff_scheduler": {
+      "tests": 26,
+      "seconds": 0.45200000000000007,
+      "failures": 0
+    },
+    "test_fixed_handoff_contract": {
+      "tests": 4,
+      "seconds": 0.219,
+      "failures": 0
+    },
+    "test_fixed_handoff_analysis": {
+      "tests": 5,
+      "seconds": 0.02,
+      "failures": 0
+    },
+    "test_async_chronology": {
+      "tests": 11,
+      "seconds": 0.384,
+      "failures": 0
+    },
+    "test_diagnostic_timing": {
+      "tests": 12,
+      "seconds": 0.083,
+      "failures": 0
+    },
+    "test_prediction_diagnostics": {
+      "tests": 15,
+      "seconds": 2.9,
+      "failures": 0
+    },
+    "test_trajectory_tracker": {
+      "tests": 25,
+      "seconds": 0.138,
+      "failures": 0
+    },
+    "test_mpc": {
+      "tests": 23,
+      "seconds": 0.9980000000000001,
+      "failures": 0
+    },
+    "test_dynamic_bicycle": {
+      "tests": 50,
+      "seconds": 0.05000000000000004,
+      "failures": 0
+    },
+    "test_grip_tire": {
+      "tests": 20,
+      "seconds": 0.21799999999999997,
+      "failures": 0
+    },
+    "test_task007c_physics": {
+      "tests": 3,
+      "seconds": 0.02,
+      "failures": 0
+    },
+    "test_threading_study": {
+      "tests": 19,
+      "seconds": 4.056000000000001,
+      "failures": 0
+    }
+  },
+  "focused_total": 226,
+  "focused_modules": 13,
+  "lint": {
+    "check": "PASS",
+    "format": "PASS",
+    "files": 8
+  },
+  "evidence": {
+    "reviewed_revision": "935e98b7af6c2fda8458551f1fbcbddb3bf8932d",
+    "all_reviewed_tracked_files_unchanged": 627,
+    "all_prior_raw_metadata_unchanged": 11283,
+    "reviewed_core_vs_work_base_diff": [],
+    "core_fixture_manifest": {
+      "configs/controllers/README.md": "56d6b69e8515b8d45203f22fc455d33e73bdf999b7f63673fe0787a189464a96",
+      "configs/models/linear_reference_tires.yaml": "c8bb4eea32298f4ac18be3c795272b4d033faec06d340bc90cef43b0cd33ee2b",
+      "configs/models/synthetic_racing_tires.yaml": "ccc64807f2a52cdbacb2365f3d4922dc15fddf7ba393405318d236b0bfbeae63",
+      "configs/planning/synthetic_grand_prix_v1/planning_manifest.json": "6da4a33f8e05f48e0044379f9f367a159e1aff3d72fba2efea6c028150bb6cc3",
+      "configs/planning/synthetic_grand_prix_v1/planning_reference.csv": "f1c582bb0667ae7aa8393c66eb0b811ad45ae9cdd9e496634f7c06015fdd27c4",
+      "configs/planning/synthetic_grand_prix_v1/planning_validation.json": "8ba92583f6d60abbd7f0df5ca07eb3399c820f62b193ca817e863c082823c7f6",
+      "configs/planning/synthetic_grand_prix_v1/track_source.json": "5f4d1734d7fec7de56d346e8f90bf272a3de9c05ac42f76cd49004e7f9183e55",
+      "configs/planning/task007b/gamma_1p000/planning_manifest.json": "a809397d3c9f89a588bf4ef1f054197ade4820222d22d91550145fb619e688ee",
+      "configs/planning/task007b/gamma_1p000/planning_reference.csv": "f1c582bb0667ae7aa8393c66eb0b811ad45ae9cdd9e496634f7c06015fdd27c4",
+      "configs/planning/task007b/gamma_1p000/planning_validation.json": "224d7d3d10609ba0c6b35df54b3eadda7d70099e87ed0aebd745db0f7c585bb3",
+      "configs/planning/task007b/gamma_1p000/track_source.json": "5f4d1734d7fec7de56d346e8f90bf272a3de9c05ac42f76cd49004e7f9183e55",
+      "configs/planning/task007b/gamma_1p250/planning_manifest.json": "799399712504ac7f4588312c68a6ecb750ae48bb70151f56f9fa488c4e2ebb00",
+      "configs/planning/task007b/gamma_1p250/planning_reference.csv": "67d3f5850f6e8057018d14fa518fa9cb14efdd616621ff6498239aae1491b1c6",
+      "configs/planning/task007b/gamma_1p250/planning_validation.json": "0f03dd64a55632e5ffdd73c5c952c557d7ec5d3b336aee14bbd8becd7b550a08",
+      "configs/planning/task007b/gamma_1p250/track_source.json": "5f4d1734d7fec7de56d346e8f90bf272a3de9c05ac42f76cd49004e7f9183e55",
+      "configs/planning/task007b/gamma_1p500/planning_manifest.json": "24a5609e793b24aa4c1eab84afafe9d7f4d739fffde0c8c363d14345ed196f0c",
+      "configs/planning/task007b/gamma_1p500/planning_reference.csv": "652d768e8181c0d7b65e6d6ca3196b3087a2a22614d4dd1a5a3254ea8d2ff640",
+      "configs/planning/task007b/gamma_1p500/planning_validation.json": "4c8a74b7e439f72e560bda87687e9c80761b0a9931aa4cac8fe0c6723ff21d82",
+      "configs/planning/task007b/gamma_1p500/track_source.json": "5f4d1734d7fec7de56d346e8f90bf272a3de9c05ac42f76cd49004e7f9183e55",
+      "configs/planning/task007b/gamma_1p750/planning_manifest.json": "be0b2be56846cceb2b76f9aab357ae7bde0473b8f0d5b696c11722b3c034ff5a",
+      "configs/planning/task007b/gamma_1p750/planning_reference.csv": "957d5f901fcebed76ddf5524e90115a7fb1fff9cbccd47197896928c8aa62087",
+      "configs/planning/task007b/gamma_1p750/planning_validation.json": "57e64a4dd0a5116a77c27860b03b7789deccd90be309379acb14fb7ef547ef35",
+      "configs/planning/task007b/gamma_1p750/track_source.json": "5f4d1734d7fec7de56d346e8f90bf272a3de9c05ac42f76cd49004e7f9183e55",
+      "configs/planning/task007b/gamma_2p000/planning_manifest.json": "5e7bccf1a300fb6737fc6b6b6e0c9aa921c110b11ffc5762a73f57f830a8660c",
+      "configs/planning/task007b/gamma_2p000/planning_reference.csv": "6206e18ce3cb105d58d0923564336e28c00ec44aee3fd8a06ff7a37bcf84e2df",
+      "configs/planning/task007b/gamma_2p000/planning_validation.json": "279582d2dcf37fdf4008ddc7f926109ef3d730a0e64c188d7003755d08871fa7",
+      "configs/planning/task007b/gamma_2p000/speed_polynomial.json": "f335e78fc6c735c952f49078077a573ee989dd2be71497e90451e34a79f2c7ea",
+      "configs/planning/task007b/gamma_2p000/track_source.json": "5f4d1734d7fec7de56d346e8f90bf272a3de9c05ac42f76cd49004e7f9183e55",
+      "configs/planning/task007b/gamma_2p250/planning_manifest.json": "a8b1e5ec59bd5bc686d0fd861b42ee4e1233d5d45dbbd5ead787b9d8a47430f9",
+      "configs/planning/task007b/gamma_2p250/planning_reference.csv": "53ffd20b3849ecd8001b7b25611775c117f6a4e8773774776cbdbc45ccc547d0",
+      "configs/planning/task007b/gamma_2p250/planning_validation.json": "e5b411c69766bd3caa274ed96ed34d447d5ab04b0b6f2b230cfd9fcd19e10027",
+      "configs/planning/task007b/gamma_2p250/speed_polynomial.json": "a207c675ef42707e76c6d35fec64c489c46798143988b900e1b90479f67290f2",
+      "configs/planning/task007b/gamma_2p250/track_source.json": "5f4d1734d7fec7de56d346e8f90bf272a3de9c05ac42f76cd49004e7f9183e55",
+      "configs/planning/task007b/gamma_2p500/planning_manifest.json": "08ef5f1a8f21a6387f9400782c0eba9e8d652ea6303cff144cbf8ae9c334fc6e",
+      "configs/planning/task007b/gamma_2p500/planning_reference.csv": "6d67cb6217cd76ea0a2d33a6e58e2fac33d3aa2c8049a817bacfa4199844bb92",
+      "configs/planning/task007b/gamma_2p500/planning_validation.json": "0e47ed678ffd89501d32d6dc2be1822fcff79618a6a0bfa8336615350d88f2fe",
+      "configs/planning/task007b/gamma_2p500/speed_polynomial.json": "5f741b3f6610adbf679e737e0158d81bf5acbc9afd92f270dc67efac1edff702",
+      "configs/planning/task007b/gamma_2p500/track_source.json": "5f4d1734d7fec7de56d346e8f90bf272a3de9c05ac42f76cd49004e7f9183e55",
+      "configs/planning/task007c_resume/gamma_1p500/planning_manifest.json": "24a5609e793b24aa4c1eab84afafe9d7f4d739fffde0c8c363d14345ed196f0c",
+      "configs/planning/task007c_resume/gamma_1p500/planning_reference.csv": "652d768e8181c0d7b65e6d6ca3196b3087a2a22614d4dd1a5a3254ea8d2ff640",
+      "configs/planning/task007c_resume/gamma_1p500/planning_validation.json": "4c8a74b7e439f72e560bda87687e9c80761b0a9931aa4cac8fe0c6723ff21d82",
+      "configs/planning/task007c_resume/gamma_1p500/track_source.json": "5f4d1734d7fec7de56d346e8f90bf272a3de9c05ac42f76cd49004e7f9183e55",
+      "configs/planning/task007c_resume/gamma_1p600/planning_manifest.json": "b675188e246c1e7c64d34f08b183c5554a6fd486e48e1c0ba2cfd08ba56eecfe",
+      "configs/planning/task007c_resume/gamma_1p600/planning_reference.csv": "281bb22f817db5cb5106a0ebc7b15aad686e4b98afc0b9c213f3e1c770d1611a",
+      "configs/planning/task007c_resume/gamma_1p600/planning_validation.json": "7744b9f307016ba8120e79e39a867e76cd6a44ca49f53e061098083aaed28f59",
+      "configs/planning/task007c_resume/gamma_1p600/track_source.json": "5f4d1734d7fec7de56d346e8f90bf272a3de9c05ac42f76cd49004e7f9183e55",
+      "configs/planning/task007c_resume/gamma_1p700/planning_manifest.json": "67b9646dc2cea6c3ec2f4878b8a00f43232fdcf026e2f5fd15854636bd46d17b",
+      "configs/planning/task007c_resume/gamma_1p700/planning_reference.csv": "a342f68405c24559248ff312f6855ad113f80c44db7b79a0b8fc018224e02157",
+      "configs/planning/task007c_resume/gamma_1p700/planning_validation.json": "d00e0f1ba83d57488868c9aed1a9ab9980e2546644171ce1d5efe53d5c242041",
+      "configs/planning/task007c_resume/gamma_1p700/track_source.json": "5f4d1734d7fec7de56d346e8f90bf272a3de9c05ac42f76cd49004e7f9183e55",
+      "configs/planning/task007c_resume/gamma_1p800/planning_manifest.json": "fc40799fa5fe53117f71470db5d4a02661b50fae795c8bdf23f8bb4bb549e033",
+      "configs/planning/task007c_resume/gamma_1p800/planning_reference.csv": "56076cd54756bfea4919e66149e049ffaf291ea265cdf9706d72525fb077caff",
+      "configs/planning/task007c_resume/gamma_1p800/planning_validation.json": "49525256c78921e5d9d5cad8320a4471ce162feeafe4627d9f5906dd85f2f95e",
+      "configs/planning/task007c_resume/gamma_1p800/track_source.json": "5f4d1734d7fec7de56d346e8f90bf272a3de9c05ac42f76cd49004e7f9183e55",
+      "configs/planning/task007c_resume/gamma_1p900/planning_manifest.json": "d0e2bb45f51c28f79334732222a539670015ac32ccfbec64f56777139dd27994",
+      "configs/planning/task007c_resume/gamma_1p900/planning_reference.csv": "4e5c31ed0786355b080374e636c44206552c2ff88df9df04bc5b7f3288ca72e9",
+      "configs/planning/task007c_resume/gamma_1p900/planning_validation.json": "152a0fe2794536ee8725c3707d61b0b5e701c7c111613edc9ca11b5aab708afc",
+      "configs/planning/task007c_resume/gamma_1p900/track_source.json": "5f4d1734d7fec7de56d346e8f90bf272a3de9c05ac42f76cd49004e7f9183e55",
+      "configs/planning/task007c_resume/gamma_2p000/planning_manifest.json": "7c988cf68901d74dd5c2f2e3eb7e75b4db7beafe971524d6d08c75e498d06b56",
+      "configs/planning/task007c_resume/gamma_2p000/planning_reference.csv": "6206e18ce3cb105d58d0923564336e28c00ec44aee3fd8a06ff7a37bcf84e2df",
+      "configs/planning/task007c_resume/gamma_2p000/planning_validation.json": "279582d2dcf37fdf4008ddc7f926109ef3d730a0e64c188d7003755d08871fa7",
+      "configs/planning/task007c_resume/gamma_2p000/speed_polynomial.json": "f335e78fc6c735c952f49078077a573ee989dd2be71497e90451e34a79f2c7ea",
+      "configs/planning/task007c_resume/gamma_2p000/track_source.json": "5f4d1734d7fec7de56d346e8f90bf272a3de9c05ac42f76cd49004e7f9183e55",
+      "configs/planning/task007c_resume/gamma_2p100/planning_manifest.json": "08f5370e980b8a51d776d913f265096879f0a7dcc4408da98ffc1e2ced405c8e",
+      "configs/planning/task007c_resume/gamma_2p100/planning_reference.csv": "3dea252210cc08405d22312ca5c5185bfe3c949dd9f0f52a9d91d86887479046",
+      "configs/planning/task007c_resume/gamma_2p100/planning_validation.json": "99b4937845f74639bdc9ffa45ff2c83fd9d49c067a4647c102870839379764fd",
+      "configs/planning/task007c_resume/gamma_2p100/speed_polynomial.json": "c0cf50c798b0b6eea0db045b58345d321ffdd29ad879757810abde2abeb2a77c",
+      "configs/planning/task007c_resume/gamma_2p100/track_source.json": "5f4d1734d7fec7de56d346e8f90bf272a3de9c05ac42f76cd49004e7f9183e55",
+      "configs/planning/task007c_resume/gamma_2p200/planning_manifest.json": "615d6899d579f069e8a0d98a96f0d625bd5c30b4a08162dadf8edff2a8485b95",
+      "configs/planning/task007c_resume/gamma_2p200/planning_reference.csv": "22b24612333eaa029947cc595f6a278e444f322300e49798e02a1126b95c6c3a",
+      "configs/planning/task007c_resume/gamma_2p200/planning_validation.json": "44e3c7a5f5054eb19832be4cef1c8d1bf1b07991cd687be33ea186b6cc1a8500",
+      "configs/planning/task007c_resume/gamma_2p200/speed_polynomial.json": "305926a60f7f3a714342494fe25e2817397348c6e73507e4b093aa49984310ce",
+      "configs/planning/task007c_resume/gamma_2p200/track_source.json": "5f4d1734d7fec7de56d346e8f90bf272a3de9c05ac42f76cd49004e7f9183e55",
+      "configs/planning/task007c_resume/gamma_2p500/planning_manifest.json": "08ef5f1a8f21a6387f9400782c0eba9e8d652ea6303cff144cbf8ae9c334fc6e",
+      "configs/planning/task007c_resume/gamma_2p500/planning_reference.csv": "6d67cb6217cd76ea0a2d33a6e58e2fac33d3aa2c8049a817bacfa4199844bb92",
+      "configs/planning/task007c_resume/gamma_2p500/planning_validation.json": "0e47ed678ffd89501d32d6dc2be1822fcff79618a6a0bfa8336615350d88f2fe",
+      "configs/planning/task007c_resume/gamma_2p500/speed_polynomial.json": "5f741b3f6610adbf679e737e0158d81bf5acbc9afd92f270dc67efac1edff702",
+      "configs/planning/task007c_resume/gamma_2p500/track_source.json": "5f4d1734d7fec7de56d346e8f90bf272a3de9c05ac42f76cd49004e7f9183e55",
+      "configs/simulation/README.md": "ea7a4fedfcadae11152dd428ce22517ae3d85e853a4ae08382f989721422f947",
+      "configs/tracks/README.md": "3e72e2154d1fc226275e8625d17d08f922fc0813739f7f08761afbd41f4dd164",
+      "configs/vehicles/generic_1_10_racecar.yaml": "c68bf6a0fc198d7f4e430b824d3929d8756617dc7491c5bdb8482ba51855178a",
+      "configs/vehicles/synthetic_dynamic_test_vehicle.yaml": "df1b853d21a1d3efaf858f7e58401151f2c5237793c40e16bb4189ed651f9cf3",
+      "configs/vehicles/synthetic_test_vehicle.yaml": "870f36cd2b31cdb65cb8a63eae5abebb6dd5a756911ced931b995b2c296e785f",
+      "pyproject.toml": "c8ea69a3a486c9794b6cf88ac26566211c6f1bb7b7286d86dbaa36a191353d41",
+      "src/apex/__init__.py": "2dd176027291d40716c8c828e8a9994afbf247d22bea1426fac52c259cbbc33b",
+      "src/apex/config.py": "40227b4ed2a38e30ecfb9acc7f308cf9db31b54dc813bb28850b25800877e0ad",
+      "src/apex/control/__init__.py": "12878dbd9e38ae415462ea0eccbfc315387856736233a7ea4b2f840b1a53e96a",
+      "src/apex/control/base.py": "119b6cb4235421b9728838b47e4913158402997957956a473009c43435acb870",
+      "src/apex/control/baseline/__init__.py": "2759255fac566e141a1632b0ba734ef840ae4462054f20246ca958c175ea4398",
+      "src/apex/control/baseline/controller.py": "1d738265c24e8ff6fc557ff8d4f82669978fe12e212dcd70dc45eb94cf438ec4",
+      "src/apex/control/baseline/lqr.py": "68e191235e03dda744cc9894ca0981a8df8bd9f1bd0e6331f7872148014cf818",
+      "src/apex/control/baseline/references.py": "9fa0f4c67d8fdd4a535bca5fa43854cf85660d70b6246632ec711f469ad2b081",
+      "src/apex/control/baseline/speed.py": "5a41c32eaa491f5bf8fdec49827bac3d9aafd78924f10786fd4000d3a0ec941f",
+      "src/apex/control/energy_mpc/__init__.py": "cec4f88e8acf04bc142121502f6a42b48282b65721f57de686f9fdcbfeefa373",
+      "src/apex/control/lmpc/__init__.py": "4c555b6b894a36c984d88962b1580781f1deac5b13d0825f447fcdc0b569159c",
+      "src/apex/control/local_mpc/__init__.py": "49bb57475674229e15dc5785b68010bb8f7fc60bb452b70f25b9e727e4e3c6f8",
+      "src/apex/control/local_mpc/model.py": "5eab52bbedfd5c725a8a11348078e3cd111195b83bb98e4f14ea8ecce37108d2",
+      "src/apex/control/local_mpc/qp.py": "745f0a56e22d92cb9ec0b6bcb63d24cc36269c698426a1fb95b7f5010da051ec",
+      "src/apex/control/local_mpc/tracker.py": "96d79fbb62b92dd96b6f69da2c803db96c5cee8a13d1d30a0d9e62174a951761",
+      "src/apex/control/mpc/__init__.py": "d91fd708ea7a53f7a8a23f558b5724832304b8508dd57828e4bfcaa946bac124",
+      "src/apex/control/mpc/controller.py": "63e17bd863dcd8d649d9f382a545f5c004e982fd87e837aa6b283ec1b1206b82",
+      "src/apex/control/mpc/cost.py": "1b8367af3a41c72fc24573a92d9dba526100e53985e33d2626084b1222c5623b",
+      "src/apex/control/mpc/preview.py": "c3e74f7c197ed42961f3494b6be8061570d294d790214e2e27401a2771a418cf",
+      "src/apex/control/mpc/problem.py": "b0560718155ff04074633aa92c4374a15ec975f21f5e3a022f4e94d52636087e",
+      "src/apex/control/mpc/symbolic_model.py": "99b82ead0f7fae2c1451f8e938853fa25a8b74f040b0b22df5225fba5b5e0a6d",
+      "src/apex/control/mpc/warm_start.py": "0faab03574394c3ecebe071a7c5f4e9e01d704a7d9b625fb6d0c122cc4cb34ed",
+      "src/apex/control/trajectory/__init__.py": "cea577e6cbeb9df27efdf9b96497e94b61c6e135717bdbbe2704312072b2a238",
+      "src/apex/control/trajectory/packet.py": "00830d2ced67321547add91a4e241664689cdeed57d57f0b9b2d95552b9fd704",
+      "src/apex/control/trajectory/planner.py": "6dcc8abe959fa65d7036f90379179703f54091c55a54bedee4db9a47d4622e44",
+      "src/apex/control/trajectory/prediction.py": "0013fd74299a68993dabbc381ca384837f09b862011956a94fd1d3b138b839ab",
+      "src/apex/control/trajectory/tracker.py": "ffa5d9968650c97411121ba3dedd89a5de04a1a9ce832c50efa351763567ef27",
+      "src/apex/coordinates/__init__.py": "1c443357b2a8e949a157c09b6fb3b50c170d98c908da8c0e8ebbd7e25f919555",
+      "src/apex/coordinates/angles.py": "2ed31ef5153e42083e727efc10b7875277f7f2641a5e16e9790e3f6073b33d05",
+      "src/apex/coordinates/frenet.py": "5fd10e1648847071561086f394914f6812422b0ad04f81ef2a517968334e17bd",
+      "src/apex/estimation/__init__.py": "573850f2b308a7d68c3b18e4ee52976ea90b5b32d0de74f496bf577c6ac3ac56",
+      "src/apex/identification/__init__.py": "ec7b3bcadc6b095509dc3d4bec8c34f46614de839a4f8b1784152c6c328eb573",
+      "src/apex/logging/__init__.py": "f4fdf259c2599736e46e06188a3a50849a1cc5dac9ade77f083e9534442fe24a",
+      "src/apex/models/__init__.py": "d530a05e192b5d6c8b815c3edb2599a88bc35acac91c83280cd8e22d31a1d0d2",
+      "src/apex/models/base.py": "3bd8085e89978410bbe8581903b6280bd84f1a1ca956f1bb62f974462df7c525",
+      "src/apex/models/battery/__init__.py": "87bd243ef11e6df4eff89e2e84d97bfe7a6fd3f59b98b2c70270734f933584b4",
+      "src/apex/models/constants.py": "1b485d45ad2d74aaa256c1aab00157d7c610db0bea9f744d75376b8e816534be",
+      "src/apex/models/errors.py": "81baff4659f36bb6aea91e6a27327260b4d69e23de22963de6832199e7f1f916",
+      "src/apex/models/frenet.py": "a8c6190bd6be9f2a284c83b5c31e5d6cb2d8ef1f791b49bbebdd3c110a36ee96",
+      "src/apex/models/integration.py": "02009193fb2d25e83560a2da37f216048dfa3ededcb3de8616b90e411473ad51",
+      "src/apex/models/opponent/__init__.py": "530ec276bca389d02a37a451422c8e1c0504f46874a6ff13da3cd058b07b98cb",
+      "src/apex/models/tire/__init__.py": "000e7ac305a2f5bb610e6ee9e066a6f8d82a0ac335c2b9253d292a2c3c96907f",
+      "src/apex/models/tire/base.py": "da1b635a6da1de465ac7af61dcf3cad8d23ef406eb6dd7f45dad825bc3f60ccf",
+      "src/apex/models/tire/config.py": "73f7e47ae5768a6961a8ca65aa40a5da7ecd77e412ac6995a459e969daa83877",
+      "src/apex/models/tire/grip.py": "e91bab930ee0650578ede2964ef680f77663cfd34d26ab1682c232b34c6d8c90",
+      "src/apex/models/tire/linear.py": "6ae5888b0000cd57a88788463977be1a90fa8e1f6a332f131c66623192ce9cf3",
+      "src/apex/models/vehicle/__init__.py": "ab6dddf29c21f198a84b17e28f3dcb8b4b1e6543e0ce5533d4166a062d549a9f",
+      "src/apex/models/vehicle/dynamic_bicycle.py": "c93b674924eed24f9641ebe263863b3422cba5eb1665c0d93dd6cd00bdfd462f",
+      "src/apex/models/vehicle/force_allocation.py": "e77d8c87efdaa9c008ec45385ad4dad326cfa2e003798c08e29a5fb9a17647f8",
+      "src/apex/models/vehicle/kinematic.py": "29eb7cb86d02660e477c95506967d62940a306b95ef3ae76b5162af9370dde55",
+      "src/apex/models/vehicle/load_transfer.py": "e96c74199a7d8147866529cb4ecfffbfce74815cb57accb52ea54b407b873be1",
+      "src/apex/models/vehicle/parameters.py": "5cfce45b4a87577b17193b44cfa24f11c8e29c93082564a596f7ddf4e797fbb2",
+      "src/apex/optimization/__init__.py": "3af529201789579819dc40831ba819d7651a18d5df5b905928aa3ebf9dc09a55",
+      "src/apex/optimization/base.py": "f4b2368f5055cc9283ed9eab481a8667f4152a751162a22d72f2ed44e87b942b",
+      "src/apex/optimization/solvers/README.md": "5e574935aebf07b06713c5b84b245d12a397cb4f35aa9f42491ace1b03f48cd2",
+      "src/apex/optimization/solvers/__init__.py": "10e2109b93a14616b4c0f083fc40b374c4ad77cd73150e090b8c95f891d3e7a0",
+      "src/apex/optimization/solvers/ipopt.py": "3897eb4e5c2cf55b33b96e361e0c83e43ce783172e7095f59daf72785473c728",
+      "src/apex/planning/__init__.py": "2d3659e2d00a8107236f801619ef4573ae0da65ebcd5415746cab8853722e018",
+      "src/apex/planning/defensive/__init__.py": "145d70d1913b8e2169b7d4414d8c2ea3fd9cf5a21675e881ffd60124c525cb06",
+      "src/apex/planning/racing/__init__.py": "99ab7b8a2865a988c1cee93a6d86661f751b7555645488a8bb3a64a3397d3f48",
+      "src/apex/planning_reference/__init__.py": "a0bd2fea9b52abc64271cd57e2b26857c67b148246b2f6ce1baa988349b0899f",
+      "src/apex/planning_reference/reference.py": "d147a6eb193b37e3c7773261d19550c1383528b7aad6f204818f432325b327e3",
+      "src/apex/planning_reference/speed_polynomial.py": "a11d69b8dae53b62b4841ac522843decd7f54f5d78a63f4613c2d29478106ade",
+      "src/apex/planning_reference/track.py": "a80943d00203e83b11557bf254df66394db466969462ec22a3ae370780a6543d",
+      "src/apex/simulation/__init__.py": "84069322b2562012fcfd863d27f6fc88a0f2d5eaba3a4040f10e896cffc4a513",
+      "src/apex/simulation/asynchronous.py": "7d14395aa27707f2561bf6bdb32cd613bc2508ab12d6fe617bf45855d378f018",
+      "src/apex/simulation/base.py": "1797e513e022eefc1b45b162115de08011d04f82e0fa7e6ce188ab255e0a7b9d",
+      "src/apex/simulation/diagnostic_timing.py": "373c20d762328880c7fa25856f474f49d534b50c176a72f0df97a2f3838bf23f",
+      "src/apex/simulation/fixed_handoff.py": "8f0bc766b6a7c446f36b6a49f6214864906acbb067c57c977469b54e3ff07c12",
+      "src/apex/simulation/latency_metrics.py": "b91bbbecbeaeae61178d0f544addf048c063b22e0c3e6cec86ed25871fc5cc86",
+      "src/apex/simulation/metrics.py": "515f4c4cd3454c353ec8242fece393847fdbcbc37239c0ba08deb306593fecea",
+      "src/apex/simulation/prediction_capture.py": "f8f4d7d840a73744aebbe85dc09d817b79e839022bd7298bbde792ee061d4a29",
+      "src/apex/simulation/runner.py": "99dd44020405dd121433637ccf43d53639451a2b7b595bed255555144802cb34",
+      "src/apex/simulation/timing.py": "1bcd5ac042dc761ff8ed83028d0dde372a1569a9549f84e7f92061e109fa968f",
+      "src/apex/state.py": "b2b16555f8ae83f041ee821906305accc56010b643bb3fa514f90a8a17e66862",
+      "src/apex/track/__init__.py": "95dd539a129d605aa979952c68c75d633738d520fa66e06a491b5bfb2ef7907c",
+      "src/apex/track/base.py": "c15e48dfa2a08bfd57040c80b1280a6f56234503361a38cb3cda6cb35e93cca1",
+      "src/apex/track/centerline.py": "caf28a32f24198fbfd57a7d6a987822f9b4df88ff6b5f1bca5c1f57e2b79429f",
+      "src/apex/track/closed_track.py": "c14fb27c1a1182dec564a5a679832e67c6480fb382a15c05dd2c998b138a350e",
+      "src/apex/track/io.py": "ee2f5a27740684ddba2f1907c88e8893c6cf0c59150352d35845914d5fd30b65",
+      "src/apex/track/progress.py": "fef18ea7fe610cca1ff80f32acdecf5f756b6d26c1a47e47f0eb23b7ae8dc0d8",
+      "src/apex/track/synthetic.py": "1e7ed0900af9971d6c68ca810570b9177a97eb830361c580724870752f4744c0",
+      "src/apex/utils/__init__.py": "ffac589a01b9e73689442a43e9060e85ebc90f34f2c9bd91631256d4e7c86e21",
+      "uv.lock": "8cf85868a456415a898643dbb226d146b0b90e5c98982136cf2abf2465fa16ec"
+    },
+    "raw_hash_checks": 128,
+    "measured_core_checks": 2784,
+    "fixture_checks": 160,
+    "forecast_matches": 602,
+    "per_architecture": {
+      "A": {
+        "runs": 10,
+        "releases": 190,
+        "accepted": 190,
+        "misses": null,
+        "hits": null,
+        "busy": 0,
+        "preparation": {
+          "n": 190,
+          "mean": 0.0642858200424694,
+          "median": 0.06586204143241048,
+          "p95": 0.07073459203820676,
+          "p99": 0.07544485755264756,
+          "maximum": 0.0799344580154866,
+          "minimum": 0.04790808307006955
+        }
+      },
+      "C70": {
+        "runs": 10,
+        "releases": 189,
+        "accepted": 179,
+        "misses": 10,
+        "hits": 179,
+        "busy": 1,
+        "preparation": {
+          "n": 189,
+          "mean": 0.0659313042347551,
+          "median": 0.0667510419152677,
+          "p95": 0.07003385005518793,
+          "p99": 0.0711613831203431,
+          "maximum": 0.12073545902967453,
+          "minimum": 0.05629562493413687
+        }
+      },
+      "C80": {
+        "runs": 10,
+        "releases": 185,
+        "accepted": 182,
+        "misses": 3,
+        "hits": 182,
+        "busy": 5,
+        "preparation": {
+          "n": 185,
+          "mean": 0.06936814524359196,
+          "median": 0.0676814999897033,
+          "p95": 0.07308432492427527,
+          "p99": 0.11514902051538227,
+          "maximum": 0.33778708311729133,
+          "minimum": 0.05957412510178983
+        }
+      }
+    },
+    "miss_ids": [
+      [
+        "S2_C70_02",
+        5
+      ],
+      [
+        "S2_C70_02",
+        12
+      ],
+      [
+        "S2_C70_03",
+        12
+      ],
+      [
+        "S2_C70_04",
+        12
+      ],
+      [
+        "S2_C70_04",
+        13
+      ],
+      [
+        "S2_C70_05",
+        13
+      ],
+      [
+        "S2_C70_06",
+        16
+      ],
+      [
+        "S2_C70_06",
+        17
+      ],
+      [
+        "S2_C70_09",
+        10
+      ],
+      [
+        "S2_C70_09",
+        18
+      ],
+      [
+        "S2_C80_01",
+        11
+      ],
+      [
+        "S2_C80_02",
+        9
+      ],
+      [
+        "S2_C80_05",
+        17
+      ]
+    ],
+    "rebuilt_tables_exact": {
+      "architecture_selection.csv": true,
+      "jitter_C70_controls_references.csv": true,
+      "summary.json": true,
+      "S2_A_06_segments.csv": true,
+      "S2_A_01_segments.csv": true,
+      "jitter_A_samples.csv": true,
+      "provenance.json": true,
+      "miss_consequences.csv": true,
+      "S2_A_07_segments.csv": true,
+      "jitter_A_steady_segments.csv": true,
+      "S2_C70_07_segments.csv": true,
+      "S2_C80_01_segments.csv": true,
+      "S2_C80_06_segments.csv": true,
+      "jitter_C70_samples.csv": true,
+      "S1_A_jitter_segments.csv": true,
+      "S1_A_steady_segments.csv": true,
+      "S2_C70_06_segments.csv": true,
+      "S2_C70_01_segments.csv": true,
+      "jitter_A_jitter_segments.csv": true,
+      "S2_C80_07_segments.csv": true,
+      "jitter_C70_jitter_cycles.csv": true,
+      "S2_A_09_segments.csv": true,
+      "S2_C80_10_segments.csv": true,
+      "S2_C80_02_segments.csv": true,
+      "S2_C80_05_segments.csv": true,
+      "jitter_C70_steady_segments.csv": true,
+      "S2_C70_03_segments.csv": true,
+      "S2_C70_04_segments.csv": true,
+      "S2_A_08_segments.csv": true,
+      "jitter_C70_jitter_segments.csv": true,
+      "S2_C80_04_segments.csv": true,
+      "cycles.csv": true,
+      "S2_C80_03_segments.csv": true,
+      "S2_C70_05_segments.csv": true,
+      "S2_C70_02_segments.csv": true,
+      "jitter_A_jitter_cycles.csv": true,
+      "S2_C70_10_segments.csv": true,
+      "S2_C80_09_segments.csv": true,
+      "S2_C70_08_segments.csv": true,
+      "jitter_A_steady_cycles.csv": true,
+      "architecture_selection.md": true,
+      "S2_A_10_segments.csv": true,
+      "S2_A_05_segments.csv": true,
+      "S2_A_02_segments.csv": true,
+      "S2_C80_08_segments.csv": true,
+      "S2_C70_09_segments.csv": true,
+      "jitter_A_controls_references.csv": true,
+      "S2_A_03_segments.csv": true,
+      "jitter_C70_steady_cycles.csv": true,
+      "S2_A_04_segments.csv": true,
+      "per_run.csv": true
+    },
+    "rebuilt_figures_exact": {
+      "task007dcx_deadline_miss_consequences.png": true,
+      "task007dcx_smoothness_comparison.png": true,
+      "task007dcx_matched_jitter_C.png": true,
+      "task007dcx_reserve_comparison.png": true,
+      "task007dcx_matched_jitter_A.png": true,
+      "task007dcx_jitter_sensitivity_comparison.png": true,
+      "task007dcx_measured_deadline_distribution.png": true,
+      "task007dcx_tracking_comparison.png": true,
+      "task007dcx_physical_validity.png": true,
+      "task007dcx_c70_vs_c80_deadline_margin.png": true
+    },
+    "retained_C1_replay_exact": true,
+    "work_study1_snapshots_exact": true,
+    "new_measured_runs": 0,
+    "study3_executed": false,
+    "performance_frozen": false,
+    "efficiency_started": false,
+    "audit_float_comparison": "1e-12 absolute/relative solely for independent export arithmetic; original mathematical assertions unchanged"
+  },
+  "preserved_WORK_metadata_note": "WORK verification.json scope says 14 focused unit files; its documented command lists 13. Current full-suite extraction finds 226 tests across those 13 modules, including 13 CX cases. The historical WORK files are preserved.",
+  "audit_reader_note": "First ad hoc audit invocation raised KeyError for fixed-only urgent_demands in variable-A raw data. Existing asynchronous.py conditionally omits fixed_handoffs/urgent_demands. A separate reader uses empty absent optional collections; no reviewed code/data/fixtures/assertions changed. Both local scripts/logs preserved.",
+  "render_note": "Sandbox font-cache warning used temporary cache. All ten regenerated PNGs match original SHA256 exactly; no rendering failure.",
+  "reviewed_work_failure_preserved": "The WORK stage fixture-diagnostic failure log remains byte-identical; full suite at reviewed revision passes without repair.",
+  "new_measured_experiments": 0,
+  "scientific_conclusions_changed": false,
+  "scope_unchanged": [
+    "Studies 1 and 2 only",
+    "No Study 3/full-lap research campaign",
+    "No Performance freeze",
+    "No Efficiency work",
+    "No production/default or experimental core changes"
+  ],
+  "local_log_sha256": {
+    "results/task007d/cx/formal_935e98b/audit_evidence.py": "3114b21f684c67457dbe0c014e9073045b2fa3374e1192391eb1e59d34794ac7",
+    "results/task007d/cx/formal_935e98b/audit_evidence_schema.py": "821eebdb4c8e16fc6dfba9f4f75da8db990da5e651997546dd229a8d933042f1",
+    "results/task007d/cx/formal_935e98b/before.json": "7037afc4a7fa0585807862c37eb43badde8edc1f6c81d3d24761919b72f67143",
+    "results/task007d/cx/formal_935e98b/evidence_audit.json": "f865e051310bc638e77c50bc8cd23a4ff06f3c826684d65f192d3b337dbfb6df",
+    "results/task007d/cx/formal_935e98b/evidence_audit.log": "b497a5c9750d0c68d3241d14abbc96f8fb9855e0057a2cfb8b2bd910a0b891ce",
+    "results/task007d/cx/formal_935e98b/evidence_audit_schema.log": "488a73c2fa1c81d0966dca6d2c689042775d8c31478c9cc89ef481aeee740a70",
+    "results/task007d/cx/formal_935e98b/figure_rebuild.log": "4d388d2e9913743388cd1cdfb9fb47009508e87f0e7e35c4d4f390765632270e",
+    "results/task007d/cx/formal_935e98b/focused_from_full_suite.json": "1632eafd5e0f62dc653e75acc8dd3c6337263bab7f3fbfceb43b61c9cb054222",
+    "results/task007d/cx/formal_935e98b/full_suite.log": "5d9fecbd25db1aeddbef128cc5f49216bd936d92173cbf0451f7c2d11c1e527d",
+    "results/task007d/cx/formal_935e98b/full_suite.xml": "3a17626902499b64f68c6bbcb2446cf9b81972069038ffaee3fd248012fa4a27",
+    "results/task007d/cx/formal_935e98b/processes_before.txt": "f7b12a08e93f9c641999ce71e34a1cc0ac2a9e245338084a6a50cdd4ce3c0761",
+    "results/task007d/cx/formal_935e98b/reuse_audit.json": "20399f3528331c20b4901ed8d0b8c952bcbae47639e14b54c0efcb60ecffe65b",
+    "results/task007d/cx/formal_935e98b/reuse_audit.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "results/task007d/cx/formal_935e98b/ruff.log": "b2a588b384f6be753eae1fb893b49b0d33c4931e8a39c6576453bcf908d6e1ed",
+    "results/task007d/cx/formal_935e98b/suite_exit.json": "1fe3c8dd9f4d522e0d0c1eb9ee758ca7dd9906fb96182865a8533ba299481fa5",
+    "results/task007d/cx/formal_935e98b/suite_invocation.json": "de9ac337c4253ca5e4cefc481df6f9048fd7d248aadb0318ec1e22e3f4d29cb0",
+    "results/task007d/cx/formal_935e98b/table_rebuild.log": "d5b6903c11eee5f581e7fd25583e9fbf4746f1357cd84689c1d7a8833afdfa8c",
+    "results/task007d/cx/formal_935e98b/documentation_check_initial.log": "f2d47d3c2b70a2c9b6deb4114bb85d2116ed359d47df0a00ad88733b5d0b94ee"
+  },
+  "test_durations_sha256": "9d8cde6d4ce208a3c5df48330281864241625cca3910acba44326b1fa326e7d6",
+  "deferred": [
+    "Primary APEX scientific acceptance",
+    "Any separately authorized Study 3",
+    "Performance freeze and Efficiency; not authorized"
+  ],
+  "documentation_delivery_preservation": {
+    "unchanged_reviewed_files": 626,
+    "sole_modified_reviewed_file": "docs/CODEX_HANDOFF.md",
+    "historical_handoff_exact_suffix": true,
+    "prior_raw_metadata_unchanged": 11283,
+    "executable_tests_fixtures_scientific_data_diff": [],
+    "new_files": [
+      "docs/TASK007D_CX_VERIFICATION.md",
+      "docs/task007d/cx/formal/verification.json",
+      "docs/task007d/cx/formal/test_durations.csv"
+    ]
+  },
+  "documentation_format_note": "New verification CSV normalized from CSV writer CRLF to repository LF; parsed test records unchanged. Initial whitespace-check log retained locally."
+}
