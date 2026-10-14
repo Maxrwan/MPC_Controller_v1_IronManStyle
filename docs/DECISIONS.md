@@ -944,3 +944,29 @@ P0/P1a/P1b unselected. No production choice or later campaign is authorized by t
 
 Legacy offline deserialization permits absent optional `valid_from` metadata; required historical
 fields remain required. This minimal shared-reader compatibility repair changes no historical evidence.
+
+
+## ADR-161 — CX WORK separates matched jitter reuse from fresh measured feasibility
+
+Primary's Task007D-CX specification is retained verbatim; the later WORK authorization limits
+execution to Studies 1–2 and defers full regression to Engineering Review → VERIFICATION.
+No runtime architecture changes. Reuse accepted C70 C1 evidence only after fixture/source audit
+and exact current-source recorded-packet replay checks causal release inputs, states, controls,
+chronology and RK4 segments. The two accepted urgent-bookkeeping differences are inactive in
+these histories. Fresh variable A uses identical imposed histories; fixed-target and authority
+changes remain distinct from numerical readiness partition effects.
+
+Fresh ten-repetition A/C70/C80 comparison uses actual complete measured preparation availability,
+matched imposed 5 ms codriver delay, two seconds gamma2, frozen N8 mathematics and sequential
+fresh SINGLE workers. Preserve every measured tail/miss and compare common observed coverage,
+per-state errors, nominal/applied smoothness, deadline reliability, reserve and responsiveness
+without a composite score. Predeclare gates and criteria before outcomes.
+
+All physical/chronology gates pass; fixed C70 greatly suppresses matched sub-deadline jitter.
+C70 misses 10/189 and C80 3/185; all recover, with max preparations 120.735/337.787 ms and minimum
+recorded reserves 0.501/0.304 s. Mean steering TV/tracking improve but heading variation/peaks
+and individual tail cases expose tradeoffs. Recommendation for review is insufficient evidence
+to freeze an architecture. A remains production reference; C70/C80 remain challengers. Study 3,
+final selection, Performance freeze and all Efficiency/B/lightweight work remain unexecuted.
+See TASK007D_CX_RESULTS.md and TASK007D_CX_REPRODUCTION.md. A pushed WORK delivery is not
+formal verification or acceptance and authorizes no next study.

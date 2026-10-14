@@ -1,3 +1,39 @@
+# Current handoff — Task007D-CX Studies 1–2
+
+**Stage/status:** `WORK_COMPLETE_PENDING_REVIEW`. Studies 1–2 only; no Study 3, final
+architecture selection, Performance freeze or Efficiency work.
+**Revision:** Experimental core/base `77ba86f28e24d2780d01b5b0058e5405dde3d6ec` on main;
+existing runtime/fixtures remain unchanged. Per-worker source/environment hashes and final WORK
+hashes are in [provenance](task007d/cx/tables/provenance.json) and
+[verification](task007d/cx/verification.json). Delivery SHA/verified GitHub URL follow commit/push.
+
+**Files:** New scripts/task007dcx/, launcher and focused test; supplied specification preserved
+as TASK007D_CX_SPEC.txt; [protocol](TASK007D_CX_CLOSURE.md),
+[39-section results](TASK007D_CX_RESULTS.md), [reproduction](TASK007D_CX_REPRODUCTION.md),
+compact tables/ten figures; this handoff, ADR-161 and roadmap. No controller/scheduler edits.
+**Gates/tests:** 225 prerequisite focused passes before experiments; final 13 CX analysis cases
+pass; Ruff check/format pass on eight new Python files. All 32 fresh runs pass scientific gates,
+602/602 causal runtime A forecasts match NMPC inputs, observed process threads [1]. Complete
+regression/acceptance intentionally deferred to formal VERIFICATION on the reviewed revision.
+**Experiments:** Two fresh variable-A jitter histories; two retained C70 histories reused after
+exact causal replay (85/87 source hashes match; accepted urgent-bookkeeping differences inactive).
+Ten fresh 2 s gamma2 measured repetitions EACH A/C70/C80, sequential SINGLE; codriver delay
+imposed 5 ms. All outliers retained. No rejected/censored handoff or physical/model/solver failure.
+**Findings/failures:** Fixed C70 suppresses matched jitter to numerical scale. Actual fixed misses:
+C70 10/189 (5.29%), C80 3/185 (1.62%); max preparation 120.735/337.787 ms. All 13 recover;
+minimum recorded reserve 0.501/0.304 s versus A 0.655 s. Mean steering TV and all six tracking
+RMS improve, but heading TV/peak worsen and C70 has a worse lateral outlier. Intermediate
+portable test setup failed on a missing fixture diagnostic; original log retained, fixture
+corrected, no runtime/scientific repair or experiment rerun.
+**Artifacts:** docs/task007d/cx/ compact evidence; ignored raw/logs results/task007d/cx/.
+Prior historical tracked evidence and raw files preserved; user spec renamed without byte changes.
+**Next review:** Recommend D, INSUFFICIENT EVIDENCE — DO NOT FREEZE TIMING ARCHITECTURE.
+Review C70 quality/response versus C80 miss reliability/tail cost; strict unique-winner Study 3
+trigger is not decisively met. Decide formal verification and any separately authorized Study 3.
+No automatic next work; A remains reference/default, C experimental, B unused.
+
+---
+
 # Current handoff — workflow efficiency update
 
 **Stage/status:** `VERIFIED_AWAITING_ACCEPTANCE` — documentation-only single-stage delivery.

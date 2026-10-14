@@ -1,0 +1,720 @@
+TASK 007D-CX — ARCHITECTURE C CLOSURE AND APEX PERFORMANCE FREEZE PREPARATION
+
+Project:
+APEX / Defensive Racing AI — Control Department
+
+Purpose:
+Close the remaining Architecture C evidence gaps and determine whether
+fixed-handoff Architecture C should replace variable-handoff Architecture A
+as the timing architecture for the future APEX Performance baseline.
+
+This is a bounded closure task.
+
+Do NOT start APEX Efficiency optimization yet.
+
+======================================================================
+1. CURRENT ACCEPTED BASELINE
+======================================================================
+
+Freeze the Task 007C control formulation:
+
+    N = 8
+    dt = 0.1 s
+    H = 0.8 s
+
+    Q = diag(4,4,1,200,200)
+    R = diag(25,1)
+    W = diag(1,0.1)
+
+    lambda_s = 0
+
+Keep unchanged:
+
+- Architecture A future-state predictor
+- nonlinear vehicle model
+- tire model
+- TVLQR
+- constraints
+- warm-start policy
+- IPOPT settings
+- native SINGLE threading
+- Planning reference
+- gamma definition
+
+Primary synthetic operating point:
+
+    gamma = 2.0
+
+Use gamma = 1.8 only where useful as a lower-demand no-regression point.
+
+Architecture B remains experimental and is NOT part of the primary comparison.
+
+P0/P1a/P1b remain rejected.
+
+======================================================================
+2. CURRENT ARCHITECTURE STATUS
+======================================================================
+
+Current reference:
+
+    Architecture A
+    variable trajectory handoff
+
+Current challengers:
+
+    Architecture C70
+    fixed 70 ms future handoff
+
+    Architecture C80
+    fixed 80 ms future handoff
+
+Task 007D-C established that:
+
+- fixed handoff can decouple accepted trajectory authority timing from
+  sub-deadline solver-ready jitter
+- C70 showed the strongest bounded responsiveness/smoothness/tracking tradeoff
+- C80 provides more deadline margin
+- C3 results were promising but short-duration
+- the previous C1 jitter experiment lacked an exact variable-handoff control
+- historical preparation-time ECDFs are not equivalent to fresh measured
+  fixed-mode deadline reliability
+- no production architecture has yet been selected
+
+The purpose of this task is to close those remaining evidence gaps.
+
+======================================================================
+3. SCIENTIFIC QUESTIONS
+======================================================================
+
+Answer:
+
+Q1.
+Under the EXACT SAME solver-ready-time jitter histories, how sensitive is
+variable Architecture A compared with fixed Architecture C?
+
+Q2.
+Under fresh measured computation timing, how often do C70 and C80 actually
+meet their fixed deadlines?
+
+Q3.
+What are the consequences of any misses?
+
+Q4.
+Does C70 or C80 preserve or improve:
+
+- physical validity
+- smoothness
+- APEX→vehicle tracking
+- trajectory reserve
+- timing robustness
+- racing performance
+
+relative to A?
+
+Q5.
+If one Architecture C candidate wins the bounded comparisons, does that
+advantage survive a full-lap / multi-lap confirmation?
+
+Q6.
+Is the evidence strong enough to select the timing architecture for
+APEX Performance?
+
+======================================================================
+4. STUDY 1 — MATCHED VARIABLE-HANDOFF JITTER CONTROL
+======================================================================
+
+This experiment is mandatory.
+
+Reuse the exact preparation-ready histories used in the successful
+Architecture C jitter-decoupling experiment.
+
+Run those SAME histories under variable Architecture A.
+
+The histories must differ materially in solver/preparation-ready times but
+otherwise use identical:
+
+- initial state
+- Planning reference
+- control formulation
+- plant
+- TVLQR
+- solver configuration
+- random seeds / deterministic environment
+- physical simulation settings
+
+Do NOT invent a new jitter pair unless the retained C1 histories are unusable.
+
+Compare:
+
+A-history-1 vs A-history-2
+
+and directly against:
+
+C-history-1 vs C-history-2
+
+Report sample-by-sample differences in:
+
+- vx
+- vy
+- yaw rate
+- epsi
+- s_abs
+- ey
+- steering
+- acceleration
+- accepted trajectory IDs
+- accepted handoff timestamps
+- TVLQR reference
+- trajectory reserve
+
+Report:
+
+    max absolute difference
+    RMS difference
+    first meaningful divergence
+    divergence growth versus time/progress
+
+Primary conclusion required:
+
+Does fixed handoff materially reduce physical-history sensitivity relative to
+variable handoff under matched jitter?
+
+======================================================================
+5. RK4 / EVENT-PARTITION CONTROL
+======================================================================
+
+Task 007D-C found tiny residual fixed-mode differences because off-grid
+preparation-ready events alter event-driven RK4 interval partitioning.
+
+Preserve this behavior.
+
+Do NOT modify the integrator.
+
+For Study 1:
+
+- report event timestamps
+- report RK4 partition differences
+- separate numerical partitioning effects from actual authority-time effects
+
+Do not demand bitwise equality.
+
+The relevant question is whether differences are physically meaningful.
+
+======================================================================
+6. STUDY 2 — FRESH MEASURED C70 / C80 DEADLINE FEASIBILITY
+======================================================================
+
+This experiment is mandatory.
+
+Use fresh sequential SINGLE workers.
+
+No concurrent:
+
+- tests
+- rendering
+- analysis
+- compression
+- benchmarks
+- other simulation workers
+
+Primary configurations:
+
+    C70
+    C80
+
+Also retain Architecture A measured data as the comparison reference.
+
+Use gamma = 2.0.
+
+Run at least:
+
+    10 measured repetitions per fixed-handoff candidate
+
+If runtime/storage is prohibitive:
+
+    minimum 5
+
+but preserve every run and state the limitation explicitly.
+
+Do not discard timing outliers.
+
+======================================================================
+7. MEASURED DEADLINE METRICS
+======================================================================
+
+For every fixed-mode planner release record:
+
+    planner release
+    preparation start
+    preparation finish
+    ready time
+    valid_from
+    accepted handoff
+    first TVLQR use
+    packet expiry
+
+Report:
+
+- preparation-time distribution
+- deadline margin
+- deadline-hit count
+- deadline-miss count
+- miss fraction
+- consecutive misses
+- deliberate wait after early completion
+- trajectory reserve at handoff
+- trajectory reserve after misses
+- packet age/staleness
+
+For C70 and C80 report:
+
+    mean
+    median
+    p95
+    p99 where meaningful
+    maximum
+
+Do not call observed miss fractions hard-real-time guarantees.
+
+======================================================================
+8. CONSEQUENCE OF DEADLINE MISSES
+======================================================================
+
+For every actual measured miss preserve and analyze:
+
+- track sector
+- speed
+- curvature
+- tire utilization
+- beta
+- old trajectory age
+- remaining trajectory reserve
+- tracking error
+- steering variation
+- clearance
+- slack
+- recovery timing
+
+Determine whether misses are:
+
+- benign
+- performance-degrading
+- reserve-threatening
+- physically invalid
+
+Do not combine them into one opaque score.
+
+======================================================================
+9. CONTROL-QUALITY COMPARISON
+======================================================================
+
+Compare Architecture A, C70 and C80 using:
+
+PHYSICAL VALIDITY
+- boundary crossings
+- predicted slack
+- minimum physical clearance
+- tire utilization
+- max abs(beta)
+- Frenet denominator margin
+
+SMOOTHNESS
+- planned heading TV
+- actual heading TV
+- planned steering TV
+- applied steering TV
+- steering-rate reversals
+- reversal magnitude
+- time at steering-rate limit
+- acceleration variation
+
+TRACKING
+- APEX→vehicle lateral RMS
+- APEX→vehicle heading RMS
+- maximum errors
+- vy/r errors
+
+TIMING
+- preparation time
+- handoff delay
+- wait time
+- deadline misses
+- reserve
+- trajectory age
+
+PERFORMANCE
+- lap/progress time where coverage supports it
+- progress rate
+- speed deviation from nominal Planning
+
+Do NOT select the winner from lap time alone.
+
+======================================================================
+10. ARCHITECTURE SELECTION PRIORITY
+======================================================================
+
+Rank candidates in this order:
+
+1. physical validity
+2. chronology correctness
+3. deadline reliability
+4. trajectory reserve
+5. timing-history robustness
+6. smoothness
+7. local tracking
+8. responsiveness
+9. racing performance
+10. computational cost
+
+No architecture may win by being faster if it introduces physical-invalidity
+or reserve problems.
+
+======================================================================
+11. CONDITIONAL STUDY 3 — LONGER CONFIRMATION
+======================================================================
+
+Do NOT automatically run this.
+
+Run Study 3 only if Study 1 and Study 2 support one Architecture C candidate
+as meaningfully better overall than Architecture A.
+
+Select only ONE fixed candidate:
+
+    C70
+or
+    C80
+
+Then compare:
+
+    Architecture A
+vs
+    selected Architecture C
+
+using matched conditions over:
+
+    at least one complete geometric lap
+
+Prefer:
+
+    three complete laps
+
+if runtime, reserve and artifact storage remain practical.
+
+The first partial rolling segment must not be mislabeled as a full lap.
+
+Preserve per-lap metrics separately.
+
+Do not sum multi-lap variation and compare it to single-lap values.
+
+======================================================================
+12. LONGER-CONFIRMATION ACCEPTANCE QUESTIONS
+======================================================================
+
+Determine whether the selected C candidate preserves its advantage through:
+
+- hairpin
+- technical section
+- fast sweeper
+- straights
+- repeated trajectory handoffs
+- naturally occurring timing tails
+
+Report whether:
+
+- steering smoothness advantage persists
+- tracking advantage persists
+- clearance remains valid
+- reserve remains healthy
+- deadline misses accumulate
+- any new sector-specific pathology appears
+
+If the advantage disappears over the full lap, do not promote C.
+
+======================================================================
+13. APEX PERFORMANCE FREEZE DECISION
+======================================================================
+
+At completion recommend ONE of:
+
+A.
+KEEP VARIABLE ARCHITECTURE A
+
+B.
+PROMOTE FIXED C70
+
+C.
+PROMOTE FIXED C80
+
+D.
+INSUFFICIENT EVIDENCE — DO NOT FREEZE TIMING ARCHITECTURE
+
+Do NOT modify production defaults automatically.
+
+The recommendation is for review only.
+
+======================================================================
+14. PERFORMANCE PROFILE DEFINITION
+======================================================================
+
+If the evidence supports a freeze candidate, provide an exact proposed
+APEX Performance manifest containing:
+
+- timing architecture
+- handoff offset if applicable
+- N
+- dt
+- prediction horizon
+- control parameterization
+- Q/R/W
+- lambda_s
+- terminal-cost policy
+- predictor
+- TVLQR configuration
+- solver options
+- thread policy
+- constraints
+- timing/deadline policy
+- fallback/reserve behavior
+- software revision
+
+Do not yet label it physically validated.
+
+Use wording:
+
+    synthetic APEX Performance candidate
+
+until review approval.
+
+======================================================================
+15. DO NOT START APEX EFFICIENCY YET
+======================================================================
+
+Do NOT implement:
+
+- reduced control horizon
+- move blocking
+- early IPOPT stopping
+- suboptimal-solution budgets
+- reduced prediction horizon
+- solver tolerance relaxation
+- explicit MPC
+- alternative sampling time
+- JIT/codegen changes
+- controller switching
+- adaptive supervisor
+
+These belong to the NEXT phase after APEX Performance is frozen.
+
+Document them only as future Efficiency candidates.
+
+======================================================================
+16. PRESERVE FUTURE EFFICIENCY IDEAS
+======================================================================
+
+Record the following as future APEX Efficiency research candidates:
+
+1. Reduced control horizon while retaining Np=8
+2. Move blocking:
+       e.g. [1,1,1,1,2,2]
+       [1,1,2,2,2]
+       [1,1,2,4]
+3. Bounded-suboptimal / early-stopped IPOPT
+4. Iteration caps / real-time solution budgets
+5. Solver tolerance study
+6. Warm-start improvements
+7. JIT / compiled CasADi/code generation
+8. Prediction/gain-preparation optimization
+9. Sampling-time / plant-bandwidth study
+10. Alternative discretization
+11. Reduced/local explicit MPC feasibility
+12. Hardware-dependent Performance-vs-Efficiency evaluation
+
+Do not implement any here.
+
+======================================================================
+17. REQUIRED FIGURES
+======================================================================
+
+Generate at minimum:
+
+1. task007dcx_matched_jitter_A.png
+2. task007dcx_matched_jitter_C.png
+3. task007dcx_jitter_sensitivity_comparison.png
+4. task007dcx_measured_deadline_distribution.png
+5. task007dcx_c70_vs_c80_deadline_margin.png
+6. task007dcx_deadline_miss_consequences.png
+7. task007dcx_smoothness_comparison.png
+8. task007dcx_tracking_comparison.png
+9. task007dcx_reserve_comparison.png
+10. task007dcx_physical_validity.png
+
+If Study 3 runs:
+
+11. task007dcx_full_lap_comparison.png
+12. task007dcx_per_lap_metrics.png
+
+All figures must be reproducible.
+
+======================================================================
+18. REQUIRED TABLES
+======================================================================
+
+Produce one final Architecture Selection Table:
+
+Columns:
+
+    A
+    C70
+    C80
+
+Rows:
+
+    physical validity
+    deadline miss fraction
+    p95 preparation time
+    p99 preparation time
+    minimum reserve
+    minimum clearance
+    max slack
+    max beta
+    steering TV
+    heading TV
+    steering-rate saturation
+    lateral RMS tracking
+    heading RMS tracking
+    response delay
+    timing-history sensitivity
+    progress/lap performance
+
+Use exact numeric values where available.
+
+Do not replace missing values with guesses.
+
+======================================================================
+19. TESTING / VERIFICATION WORKFLOW
+======================================================================
+
+Follow the new staged verification philosophy where repository instructions
+permit:
+
+STAGE A — WORK
+- implementation
+- focused chronology/math/safety tests
+- prerequisite scientific gates
+- experiments
+
+STAGE B — ENGINEERING REVIEW
+- preserve exact commit/hash
+- inspect evidence
+- decide whether corrections are needed
+
+STAGE C — VERIFICATION
+- broad regression/parity/evidence-preservation audits against the reviewed
+  source revision
+
+If repository workflow documentation has not yet been updated, preserve the
+same intent manually.
+
+Do not skip prerequisite tests merely to save Codex usage.
+
+======================================================================
+20. SCIENTIFIC STOP CONDITIONS
+======================================================================
+
+Stop the affected branch for review on any new:
+
+- boundary crossing
+- material persistent slack
+- solver failure
+- timestamp inversion
+- invalid early packet use
+- unexplained trajectory exhaustion
+- reserve exhaustion
+- model-domain violation
+- failure of variable-mode regression parity
+- failure of fixed-mode scheduling semantics
+
+Preserve all evidence.
+
+Do not silently repair and continue.
+
+======================================================================
+21. DOCUMENTATION
+======================================================================
+
+Create/update:
+
+    docs/TASK007D_CX_CLOSURE.md
+    docs/TASK007D_CX_RESULTS.md
+    docs/TASK007D_CX_REPRODUCTION.md
+
+Update:
+
+    docs/CODEX_HANDOFF.md
+    docs/DECISIONS.md
+    docs/PROJECT_ROADMAP.md
+
+Preserve all Task007B/C/CR/D/P/C artifacts.
+
+======================================================================
+22. REQUIRED HANDOFF
+======================================================================
+
+Respond with:
+
+## 1. Task Completed
+## 2. Exact Source Revision
+## 3. Architecture A Reference
+## 4. Architecture C70 Reference
+## 5. Architecture C80 Reference
+## 6. Matched Jitter Histories
+## 7. Variable-A Jitter Sensitivity
+## 8. Fixed-C Jitter Sensitivity
+## 9. Direct Jitter Sensitivity Comparison
+## 10. C70 Fresh Measured Timing
+## 11. C80 Fresh Measured Timing
+## 12. Deadline Hit/Miss Results
+## 13. Deadline Miss Consequences
+## 14. Trajectory Reserve
+## 15. Track Clearance / Slack
+## 16. Tire Utilization / Sideslip
+## 17. Steering / Rate Smoothness
+## 18. Heading Smoothness
+## 19. APEX→Vehicle Tracking
+## 20. Planning→APEX Adaptation
+## 21. Responsiveness
+## 22. Computational Timing
+## 23. Physical Validity
+## 24. Architecture Selection Table
+## 25. Study 3 Trigger Decision
+## 26. Long-Lap Confirmation Results
+## 27. Per-Lap Results
+## 28. Remaining Architecture C Limitations
+## 29. Recommended Timing Architecture
+## 30. Proposed APEX Performance Manifest
+## 31. Is APEX Performance Ready to Freeze?
+## 32. Future APEX Efficiency Candidates
+## 33. Required Figures
+## 34. Regression / Verification Status
+## 35. Generated Artifacts
+## 36. Known Limitations
+## 37. Architecture Deviations
+## 38. Recommended Next Step
+## 39. Reproduction Commands
+
+======================================================================
+FINAL PRINCIPLE
+======================================================================
+
+This task is not asking whether Architecture C is interesting.
+
+That has already been established.
+
+It is asking whether Architecture C is sufficiently better and sufficiently
+reliable to become part of the frozen APEX Performance configuration.
+
+The comparison must therefore be direct, matched, measured and long enough
+to support an architecture decision.
+
+Only after APEX Performance is frozen should the project begin deliberately
+trading optimality and control freedom for computational efficiency.

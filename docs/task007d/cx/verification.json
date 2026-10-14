@@ -1,0 +1,106 @@
+{
+  "status": "WORK_COMPLETE_PENDING_REVIEW",
+  "experimental_base": "77ba86f28e24d2780d01b5b0058e5405dde3d6ec",
+  "delivery_revision": "Containing Git commit; exact SHA and remote URL supplied after push.",
+  "python": "3.12.14 (main, Sep  1 2026, 14:09:38) [Clang 22.1.3 ]",
+  "prerequisite_tests": {
+    "passed": 225,
+    "seconds": 27.66,
+    "log": "results/task007d/cx/prerequisites.log",
+    "scope": "14 focused unit files listed in TASK007D_CX_REPRODUCTION.md; before experiments"
+  },
+  "final_affected_tests": {
+    "passed": 13,
+    "seconds": 0.83,
+    "log": "results/task007d/cx/cx_tests_verified.log",
+    "scope": "tests/unit/test_cx_closure.py; final portable and censoring fixtures"
+  },
+  "retained_intermediate_failure": {
+    "passed": 11,
+    "failed": 1,
+    "log": "results/task007d/cx/cx_tests_final.log",
+    "cause": "StraightPlanner isolated fixture omits predicted_completion_time diagnostic; supplied release+estimate in test setup, no runtime fix"
+  },
+  "lint": {
+    "ruff_check": "PASS",
+    "ruff_format": "PASS",
+    "python_files": 8
+  },
+  "fresh_runs": 32,
+  "measured_repetitions_per_architecture": 10,
+  "scientific_stop_gate_failures": 0,
+  "exact_causal_forecast_matches": 602,
+  "process_thread_counts": [
+    1
+  ],
+  "all_measured_core_hashes_still_match": true,
+  "matched_core_file_checks": 2624,
+  "postmeasurement_source_changes": [
+    "scripts/task007dcx/analysis.py"
+  ],
+  "postmeasurement_change_note": "Offline analysis gained authority-gap/pre-recovery reserve fields; current focused tests pass. Worker, launcher, core and fixtures unchanged since measurement. New report/figures are postmeasurement outputs.",
+  "historical_preservation": {
+    "prior_tracked_files": 548,
+    "unchanged_prior_tracked": 545,
+    "authorized_document_updates": [
+      "docs/CODEX_HANDOFF.md",
+      "docs/DECISIONS.md",
+      "docs/PROJECT_ROADMAP.md"
+    ],
+    "prior_raw_files_size_mtime_unchanged": 11056,
+    "historical_handoff_exact_suffix": true,
+    "predeclared_protocol_unchanged": true,
+    "spec_bytes_preserved": true
+  },
+  "spec_sha256": "b741f45e38555b3b8f330d40abde9765541ff267995bad9f643cfbbb0345a0c7",
+  "final_python_sha256": {
+    "scripts/run_task007dcx.py": "b580a7b26c0ddd27bbb92ff2e388a993ef24be5ddfef9e4082f9b33c0560cfa1",
+    "tests/unit/test_cx_closure.py": "3bb50d17a065bc1c42c6feb9ca08a9ab77f5f96f99261f6f938a1f2227cd2c13",
+    "scripts/task007dcx/__init__.py": "cca3d32e5477d5a97fbbd60cbfa5c2a7b5e13f274542d990ebfaa99d939ea015",
+    "scripts/task007dcx/analysis.py": "0e353da201344b3c36af33b1c61e76745d09461def44c4d77e12e65441caf089",
+    "scripts/task007dcx/figures.py": "e12108d8aa2c59410bb4e4021111dc90100faa141a9ef0474919f7c714155b35",
+    "scripts/task007dcx/report.py": "abae6639524900d8a3fb88ba87b4b3f2dd16181d0d45e37bd84fdcec2fc689a1",
+    "scripts/task007dcx/reuse.py": "2c456225927f3fc61736f8fe4ebdd34c759bc6e343cedc506408ab289688f563",
+    "scripts/task007dcx/worker.py": "7e581738fe4102fb002fec2cfdf2f586d3a8f0f6c5f6e98bfeb3831bcf72e71b"
+  },
+  "log_sha256": {
+    "results/task007d/cx/prerequisites.log": "89d14d53de8905cc9fc6114053e5e7528244e3429e92134461322efc9401ea03",
+    "results/task007d/cx/cx_tests_final.log": "90432d7fc04913fb69b7d923a867f88b5abc8bfd0921ee24395a005ce518349c",
+    "results/task007d/cx/cx_tests_verified.log": "71797afb08cd62dfbefc56ad7a9745c9ca34640204b111cf263942e54f73d48a",
+    "results/task007d/cx/ruff_final.log": "b2a588b384f6be753eae1fb893b49b0d33c4931e8a39c6576453bcf908d6e1ed",
+    "results/task007d/cx/reuse_audit.log": "4f325e5c621770d3f898df00d22bda5d395ad7afc9f70682a9795c21763449dd",
+    "results/task007d/cx/premeasurement_processes.txt": "8b7306b99f749dcf3a2cf740fa7609b77506e552dc10433a799269124b2f3f1c",
+    "results/task007d/cx/study1_launcher.log": "a3ca1b92e0097e4eb0794738cc082431879efc4735fd97fcaa4cf5a612d41ebb",
+    "results/task007d/cx/study2_launcher.log": "6e939aeb905a880bb12357ea026c12377b87546e112897f8f1757e527341787e"
+  },
+  "figures_visually_reviewed": [
+    "task007dcx_c70_vs_c80_deadline_margin.png",
+    "task007dcx_deadline_miss_consequences.png",
+    "task007dcx_jitter_sensitivity_comparison.png",
+    "task007dcx_matched_jitter_A.png",
+    "task007dcx_matched_jitter_C.png",
+    "task007dcx_measured_deadline_distribution.png",
+    "task007dcx_physical_validity.png",
+    "task007dcx_reserve_comparison.png",
+    "task007dcx_smoothness_comparison.png",
+    "task007dcx_tracking_comparison.png"
+  ],
+  "figure_sha256": {
+    "docs/task007d/cx/figures/task007dcx_c70_vs_c80_deadline_margin.png": "44633ea6441987a1f2bf35815d52948d857de4041d05b697d4f37ebaf577e803",
+    "docs/task007d/cx/figures/task007dcx_deadline_miss_consequences.png": "2631be4c468ace04e04cd9d99e7ea869f4ed596c658baf4e5d14eecddbabc2d0",
+    "docs/task007d/cx/figures/task007dcx_jitter_sensitivity_comparison.png": "fac9e219dce2a76d5b0c26d0ad92d8c97532e4d2de2d71ffd6f73ff576b8a03b",
+    "docs/task007d/cx/figures/task007dcx_matched_jitter_A.png": "504ac16fcbb3e2c091bb45018a438ffed73f644379c6d18ef6cd0e04f3640937",
+    "docs/task007d/cx/figures/task007dcx_matched_jitter_C.png": "c08e3eea92c5ae6db712d07fe77c66bd2bbdcd30bab9219cb309b4800f551aa9",
+    "docs/task007d/cx/figures/task007dcx_measured_deadline_distribution.png": "e3cce6cde3113222ff31310b3240f145264cb8db6eefc33f8ba0f43c7caf0a76",
+    "docs/task007d/cx/figures/task007dcx_physical_validity.png": "631c4c3458bb85c7501776d9bdf9caf59a754cffd31321c27fccdd2979ffd40e",
+    "docs/task007d/cx/figures/task007dcx_reserve_comparison.png": "e3e84c58f851bacf510e83b549a663085b9db6d98a0478c310a257eba9d53c73",
+    "docs/task007d/cx/figures/task007dcx_smoothness_comparison.png": "a8a0e991b60f7ad8db4f6c741b618f8492d8138626851dcb3a4b4b229ebbc543",
+    "docs/task007d/cx/figures/task007dcx_tracking_comparison.png": "46b8c2459c02053dfdee98a9db711f312b2c614aee4ec0fcef4635adb784cd08"
+  },
+  "deferred": [
+    "Complete tests/ and formal acceptance/parity checks on exact reviewed revision",
+    "Study 3 and full-lap/per-lap evidence: NOT EXECUTED \u2014 AWAITING ENGINEERING REVIEW",
+    "Final architecture selection, Performance freeze and Efficiency work"
+  ],
+  "no_new_runtime_or_historical_evidence_changes": true
+}

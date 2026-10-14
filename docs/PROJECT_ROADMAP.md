@@ -45,3 +45,16 @@ none of this is implemented or authorized as part of Task007C.
 C1–C4 resumed 2026-10-07 and experiments/reporting completed2026-10-08 under `TASK007C_RESUMPTION.md`. Review `TASK007C_RESUMED_RESULTS.md` before adaptive codriver,
 LMPC, online identification, energy management or opponent racing. The later timing-architecture
 comparison is documented there and is not part of the current implementation.
+
+
+## Task007D-CX review checkpoint
+
+Studies 1–2 WORK completed pending Engineering Review; see
+[TASK007D_CX_RESULTS.md](TASK007D_CX_RESULTS.md). Matched variable-A jitter is compared with
+audited retained C70 evidence; fresh measured A/C70/C80 each have ten short repetitions.
+The proposed conclusion is insufficient evidence to freeze timing architecture: fixed jitter
+robustness and average control-quality gains coexist with deadline/reserve/response tradeoffs.
+A remains the default/reference; C70/C80 remain experimental. Study 3/full laps, final architecture
+selection, APEX Performance freeze and APEX Efficiency are NOT EXECUTED — AWAITING ENGINEERING REVIEW.
+Formal complete regression is deferred to the authorized VERIFICATION stage. No System
+Identification, LMPC, adaptive codriver, energy or opponent-control work has begun.
