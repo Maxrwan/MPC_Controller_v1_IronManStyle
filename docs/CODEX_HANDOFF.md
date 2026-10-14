@@ -1,3 +1,34 @@
+# Current handoff — Task007D-VIS / VIS-0
+
+**Stage/status:** `WORK_COMPLETE_PENDING_REVIEW` — planning/documentation only. VIS-1–4 remain
+unstarted; no controller, scheduler, predictor, fixture, test or UI implementation is authorized
+by this delivery. A remains the reference/intended synthetic Performance direction; C70 is experimental.
+**Revision:** Audited clean main `f072052cd4481df6d987deb6d8d721f1b1b99cb2`; underlying scientific
+source `935e98b7af6c2fda8458551f1fbcbddb3bf8932d`. Exact delivery SHA/URL follow commit and push.
+**Files:** [Protocol](TASK007D_VIS_PROTOCOL.md), [reuse audit](TASK007D_VIS_REUSE_AUDIT.md),
+[Workbench schema proposal](TASK007D_VIS_WORKBENCH_CONTRACT_PROPOSAL.md) and this prepend only.
+**Proposal:** Per authorized track, two 2 s parity runs plus six long runs: one controlled A/C70
+pair and two fresh measured pairs with opposite orders; 5 ms imposed codriver throughout.
+Two seam crossings obtain one complete lap after the initial rolling partial traversal; 80 s cap.
+Controlled planner pattern 35/55/45/25 ms is inherited from C3, explicitly synthetic. Estimate
+18–30 minutes of long runs and 1.5 GiB allocated disk per track; these are extrapolations.
+**Reuse/gaps:** Runtime already supports A/C70 and laps. Need later research-only worker, lap-aware
+gate/window/export adapters; current short gate accepts duration only, final crossing state may be
+available only in recorded step brackets. Holdout needs fixture-specific GP anchor/path adaptation
+and independent corridor/intersection checks. No core repair or new track was made.
+**Checks:** Source/API/CLI/test paths, local Markdown links/structure, fixture/source hashes,
+diff/changed-file scope and preservation audit. All 629 other baseline tracked files and all
+11,362 prior raw-result size/mtime entries remain unchanged; old handoff retained verbatim below.
+**Deferred:** All pytest/Ruff execution, simulations, measured runs, fixture generation, plots/video
+and broad verification. Existing CX 709-pass verification is inherited, not a VIS test run.
+**Open decisions:** Review matrix/resources and measurement policy, then authorize a bounded VIS-1
+implementation. Workbench schema remains proposed: request-tail coverage and optional channels
+need its separate review; no UI work or inter-chat messaging occurred. External five-document
+package links are not established. Holdout generation/racing requires successful VIS-1 review and
+separate VIS-2 authorization. No architecture promotion, Performance freeze or Efficiency work.
+
+---
+
 # Current handoff — Task007D-CX formal VERIFICATION
 
 **Stage/status:** `VERIFIED_AWAITING_ACCEPTANCE` — Studies 1 and 2 only.
