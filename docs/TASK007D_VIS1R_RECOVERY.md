@@ -20,6 +20,10 @@ delivery source. Fresh tests exercise actual detached release snapshots, NumPy a
 nonfinite rejection, immutability and exclusive file creation. No new fix or relaxed assertion
 was needed during recovery.
 
+The delivery diff check flagged CRLF endings in the three-line compact CSV. They were normalized
+to LF with parsed rows verified identical; no raw/export evidence changed. This documentation-only
+correction is retained as a followup commit, with no history rewrite or experiment rerun.
+
 The original failed worker, raw/segments, traceback and exact parity evidence remain unchanged at
 `results/task007d/vis/vis1_execution/parity_A/`. The earlier pre-simulation JSON tuple/list
 comparison failure also remains intact. The [original VIS-1 report](TASK007D_VIS1_RESULTS.md)

@@ -2,5 +2,10 @@
   "documentation_links": 15,
   "source_matches_tested_and_worker_revision": true,
   "historical_preservation": "PASS",
-  "scoped_changes_only": true
+  "scoped_changes_only": true,
+  "csv_line_ending_check": {
+    "initial_result": "git diff --cached --check flagged 3 CRLF lines in compact parity_summary.csv",
+    "correction": "Normalize to LF; parsed CSV rows exactly unchanged. Initial local commit retained; followup correction commit before push.",
+    "scientific_artifacts_modified": false
+  }
 }
