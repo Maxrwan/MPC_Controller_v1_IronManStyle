@@ -1,3 +1,36 @@
+# Current handoff — Task007D-VIS / VIS-1L scientific stop
+
+**Stage/status:** **BLOCKED — partial WORK; Engineering Review required.** Four of six authorized
+long runs executed in order; controlled A/C70 and measured A1 complete their pipelines and one
+full lap each. Measured C70/1 stops at 48.670 s after eight consecutive missed handoffs exhaust
+packet 477. Initial partial traversal only; no full-lap time. Remaining C70/2 and A2 NOT EXECUTED.
+**Scientific source:** clean main `8dbd1c5fbc09781411fc762e04f9c2c5cf2d99ae`, executable-identical to
+`c6990572045e61ee443dc715de9e8c44396e5b41`. All 294 prior source/test/dependency hashes preserved.
+No existing runtime, export, research script, fixture, controller mathematics or default changed.
+**Outcomes:** controlled full laps A 31.171900 s / C70 31.172038 s; measured A 31.317756 s.
+C70 measured: 30/485 missed deadlines, 22 followed by observed recovery and eight unresolved
+recoveries; 455 accepted. Packet 485 completion/discard remains unobserved at the physical stop.
+Zero recorded boundary/solver/model/chronology failures, slack about 9.092e-11 m, but terminal
+native reserve is zero. Last raw reserve event was 5 ms; these different endpoints are explicit.
+**Export failure:** fallback-event nested NumPy boolean raises TypeError in CSV JSON-cell writing.
+Raw/segments/485 release contexts/analysis preserved; summary and complete package missing.
+Three valid apex-run packages, three observed thread lists [1], forecasts 622/622,620/620,620/620.
+Failed worker's actual thread list, exact forecast count and wall/RSS summary remain unavailable.
+No repair, replacement export or additional worker launched. Workbench ingestion still pending.
+**Checks:** accepted 414 prerequisite cases reused with source/fixture/environment applicability;
+30 fresh existing export tests plus 11 new offline-report tests pass. Initial new-test pandas
+setup failure corrected, log retained; no assertion relaxation. Ruff passes three added files.
+Seven numerical report outputs reproduce exactly; eight figures reviewed. Full suite deferred to VIS-4.
+**Delivery:** new offline report/figures modules, focused tests, [results](TASK007D_VIS1L_RESULTS.md),
+[reproduction](TASK007D_VIS1L_REPRODUCTION.md), [compact evidence](task007d/vis/vis1l/verification.json)
+and this prepend. Raw evidence remains in `results/task007d/vis/vis1r_c699057/`.
+Exact delivery SHA and verified GitHub URL follow commit/push; scientific and report revisions differ.
+**Next review:** assess C70 reserve failure and separately authorize bounded exporter recovery if
+appropriate. VIS-2 not ready; no automatic remaining runs, retuning, UI, B/C80, Efficiency,
+production promotion or Performance freeze. Historical VIS-1/1R and Task007 evidence preserved.
+
+---
+
 # Current handoff — Task007D-VIS / VIS-1R prerequisite recovery
 
 **Stage/status:** `WORK_COMPLETE_PENDING_REVIEW` — bounded recovery only. Exactly one fresh

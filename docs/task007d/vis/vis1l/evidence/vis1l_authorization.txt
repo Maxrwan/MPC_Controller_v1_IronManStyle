@@ -1,0 +1,183 @@
+# APEX — Task 007D-VIS / VIS-1L
+## Existing-Track Full-Lap Execution Authorization
+
+**Stage:** WORK — six previously approved long runs  
+**Current delivery revision:** `8dbd1c5fbc09781411fc762e04f9c2c5cf2d99ae`  
+**Frozen scientific executable revision:** `c6990572045e61ee443dc715de9e8c44396e5b41`  
+**Expected outcome:** `WORK_COMPLETE_PENDING_REVIEW`, or a documented scientific stop.
+
+### 1. Engineering Review decision
+
+VIS-1R prerequisite recovery is accepted.
+
+Both Architecture A and C70 completed their short parity workers successfully:
+
+- 19/19 exact historical comparison groups per architecture.
+- 19/19 release forecasts matching NMPC inputs per architecture.
+- 19/19 independent serialized forecast checks per architecture.
+- SINGLE process-thread observations.
+- Zero unexpected scientific or chronology failures.
+- Complete validated `apex-run/0.1.0` exports.
+
+The earlier serialization defect is resolved.
+
+The previous failed attempt and the accepted VIS-1R recovery evidence must remain preserved.
+
+**You are authorized to execute the remaining six VIS-1 long runs under the unchanged reviewed protocol.**
+
+### 2. Source and prerequisite preservation
+
+Before execution:
+
+- Confirm the exact tested executable, test, configuration and fixture hashes remain identical to the accepted VIS-1R revision.
+- Confirm the documentation-only delivery changes introduce no executable differences.
+- Revalidate the previously accepted A/C70 parity-worker summaries and source-bound prerequisite gates.
+- Reuse the valid prerequisite evidence rather than automatically repeating the 410-test selection.
+- Inspect measurement guards, competing processes, memory and free disk space.
+
+Continue using the accepted recovery evidence root:
+
+`results/task007d/vis/vis1r_c699057/`
+
+It contains both completed parity predecessor cases and their applicable source-bound prerequisites.
+
+Do not overwrite either parity case or construct an unrelated root to circumvent predecessor checks.
+
+If existing guards cannot legitimately recognize the recovered predecessors, stop and explain the mismatch rather than bypassing them.
+
+### 3. Frozen scientific configuration
+
+Both architectures must retain the accepted synthetic setup:
+
+- N8, dt=0.1 s, horizon 0.8 s.
+- Q=diag(4,4,1,200,200).
+- R=diag(25,1).
+- W=diag(1,0.1).
+- lambda_s=0 and gamma=2.0.
+- Predictor A in both architectures.
+- Original TVLQR at 100 Hz.
+- Existing synthetic vehicle, combined-grip tires, actuator constraints and physical safety margins.
+- Existing IPOPT options and warm starts.
+- Native SINGLE execution.
+- Architecture A variable handoff.
+- Architecture C70 fixed 70 ms handoff, including deadline-miss, urgent-release, old-authority and reserve behavior.
+
+Do not force identical A/C70 prediction targets.
+
+Do not introduce any controller or physical-model optimization.
+
+### 4. Execute the six cases
+
+Use the existing immutable `task007dvis.protocol.CASES` sequence:
+
+1. `controlled_A`
+2. `controlled_C70`
+3. `measured_A_1`
+4. `measured_C70_1`
+5. `measured_C70_2`
+6. `measured_A_2`
+
+Each long run must request two seam crossings with an 80-second simulated-time cap.
+
+The first rolling-start partial traversal must not count as a complete lap.
+
+Use the approved 35/55/45/25 ms imposed planner pattern for controlled runs and fresh measured planner preparation for measured runs.
+
+Maintain the imposed 5 ms codriver delay in both modes.
+
+Execute workers sequentially. No concurrent measurement, analysis, testing or rendering.
+
+Before each subsequent worker, evaluate the previous run's full scientific stop gates. An adverse but valid deadline-miss history is evidence to preserve, not an automatic stop.
+
+If a prerequisite, physical-validity, chronology or other predeclared stop gate fires, stop the affected campaign and return for Engineering Review.
+
+Do not rerun unfavorable outcomes to obtain a better result.
+
+### 5. Scientific evidence
+
+Retain complete raw histories, integration segments, release-context snapshots, timing records and provenance.
+
+Report:
+
+- Actual complete-lap times and sector times.
+- Full physical vehicle trajectories.
+- Nominal Planning and accepted APEX reference trajectories.
+- Steering and acceleration behavior.
+- Heading, yaw rate, sideslip and tire utilization.
+- Six-state tracking RMS and peak errors.
+- Physical corridor clearance and predicted slack.
+- Applied versus planned control smoothness.
+- Solver timing distributions and timing outliers.
+- C70 fixed deadline misses and recoveries.
+- Accepted authority delay and packet age.
+- Trajectory reserve and fallback behavior.
+- Complete, incomplete and censored coverage.
+
+Keep measured and controlled comparisons separate.
+
+Do not infer a completed lap, recovered packet, control application or physical sample that was never observed.
+
+### 6. Scientific exports and visualization
+
+Validate all completed run packages against the candidate `apex-run/0.1.0` contract.
+
+Retain original raw precision and event ordering.
+
+Produce the VIS-1 preliminary figures supported by actual data, prioritizing:
+
+- Top-down trajectory comparison.
+- Speed versus track progress.
+- Steering/heading comparisons.
+- Tracking error and tire utilization.
+- Timing, misses, handoffs and reserve.
+- Complete-lap and sector comparisons.
+
+Use distinct labels for Planning, active APEX reference and actual vehicle paths.
+
+Plotting interpolation is for visualization only, never scientific validity or extrema.
+
+If one architecture fails to complete the lap, show its recorded partial trajectory and censor the comparison correctly.
+
+No video renderer or Workbench UI development is required.
+
+### 7. Resource limits
+
+Honor the previously reviewed execution budget:
+
+- Six long runs.
+- 80-second simulated-time maximum per run.
+- Approximately 18–30 minutes estimated total worker time, not a hard completion promise.
+- Approximately 1.5 GiB planned storage headroom.
+- Existing minimum 1 GiB remaining-free-space rule.
+
+Stop for review if available resources make the approved matrix infeasible.
+
+Do not alter the repetition count, timing pattern or simulated-time cap after observing outcomes.
+
+### 8. Verification and handoff
+
+Run focused affected scientific-analysis/export checks where necessary.
+
+Do not repeat the full numerical regression during WORK unless a specific new prerequisite demands it. The formal broad suite belongs to VIS-4.
+
+Produce:
+
+- VIS-1 full-lap results and comparison tables.
+- Per-run/per-lap/per-sector evidence.
+- Scientific-validity and chronology audit.
+- Reproducible preliminary figures.
+- Workbench-ready scientific export packages.
+- Provenance, hashes and preservation report.
+- Reproduction instructions.
+- Explicit negative findings and limitations.
+- Clear recommendation about VIS-2 readiness.
+
+Commit and push the authorized documentation and compact evidence.
+
+Preserve historical Task 007A–D results and all failed-run artifacts.
+
+**Do not authorize VIS-2, a new track, Efficiency, Architecture C promotion, Performance freeze or production changes.**
+
+Stop for Engineering Review after VIS-1.
+
+**Expected status: `WORK_COMPLETE_PENDING_REVIEW`**, assuming the scientific execution and evidence gates pass.

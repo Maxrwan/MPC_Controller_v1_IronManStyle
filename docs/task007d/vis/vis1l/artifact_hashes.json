@@ -1,0 +1,17 @@
+{
+  "docs/task007d/vis/vis1l/summary.json": "c672afadd3c52f28578ef545ab869cd1feb26bf65f01aa3aff8c72a45d7790cc",
+  "docs/task007d/vis/vis1l/timing_authority.png": "217c003c4f8420fc8008bdff6c6253512155d4dd63e41fdde413817852bc51c2",
+  "docs/task007d/vis/vis1l/terminal_misses.png": "5f5b49d01402b4999674e9298151facf74eacd485f85c450e5fd06361cf168c7",
+  "docs/task007d/vis/vis1l/provenance.json": "929faf084526288d0b6a7577fa2c8df9da2951ed94e0bac0eefff821ae255b09",
+  "docs/task007d/vis/vis1l/lap_sectors.png": "29a91d96371f8d543df9842b49e046a9659815bd79bd246c993fb637a279fb9b",
+  "docs/task007d/vis/vis1l/comparison.json": "8f865d28980e82e5046f6f37d1516402edb6ceba99ecc267c5f0a46532fab339",
+  "docs/task007d/vis/vis1l/trajectory_overlay.png": "8973948065f6b6c050eaca517b03afbf04df321ff165b556464ec9bdee039d3f",
+  "docs/task007d/vis/vis1l/physical_validity.png": "1bc57ccb16e6c5f600e99158d9a41e453a4c189f32833ce84913ff9e6484fc09",
+  "docs/task007d/vis/vis1l/speed_progress.png": "7b2be55e517c2c9cb882df89ac18dda32ffabb294daeb71c5b9f956ca5639980",
+  "docs/task007d/vis/vis1l/common_coverage_metrics.csv": "1bf28e6c1b98f24aef9676cf3f5a3c668da620fb982ab0bb14a85c03c6a453c4",
+  "docs/task007d/vis/vis1l/cycles.csv": "9cdff829e52b2736eafe5427ef5c5814a199c4e9502b2141bc8072cb105b3e31",
+  "docs/task007d/vis/vis1l/tracking_errors.png": "4e6a0189a9384bd706d9f5c3f47fe4bdb284adde9d58305f7d1cc65f329bd0bc",
+  "docs/task007d/vis/vis1l/misses.csv": "7a130a9db7c84adb9d4e1ead7614b372a408151ca634899d6757544e6515fcf8",
+  "docs/task007d/vis/vis1l/controls_heading.png": "132a95b06fbe0007c9825d44c8af2287d2b8446fd1574c3389bf5d96b0092240",
+  "docs/task007d/vis/vis1l/lap_sector_metrics.csv": "f8e4e97a365aac845a39132ec0e9bfe9e5ce40fe2365969c13608bb4a50bc671"
+}

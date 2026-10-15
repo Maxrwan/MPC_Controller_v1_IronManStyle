@@ -1,0 +1,26 @@
+{
+  "controlled_A": {
+    "max_abs_steering": 0.4,
+    "steering_limit": 0.4,
+    "max_steering_utilization": 1.0,
+    "native_end": 62.23500000000001
+  },
+  "controlled_C70": {
+    "max_abs_steering": 0.4,
+    "steering_limit": 0.4,
+    "max_steering_utilization": 1.0,
+    "native_end": 62.075
+  },
+  "measured_A_1": {
+    "max_abs_steering": 0.3708153464532452,
+    "steering_limit": 0.4,
+    "max_steering_utilization": 0.927038366133113,
+    "native_end": 62.285000000000004
+  },
+  "measured_C70_1": {
+    "max_abs_steering": 0.38332244787302505,
+    "steering_limit": 0.4,
+    "max_steering_utilization": 0.9583061196825626,
+    "native_end": 48.67
+  }
+}

@@ -1,0 +1,220 @@
+{
+  "case": "controlled_A",
+  "passed": true,
+  "checks": {
+    "required_files": true,
+    "worker_exit_zero": true,
+    "no_scientific_stop": true,
+    "no_chronology_issue": true,
+    "source_unchanged": true,
+    "native_single_observed": true,
+    "all_release_forecasts_exact": true,
+    "all_runtime_releases_captured": true,
+    "two_crossings": true,
+    "complete_lap": true,
+    "bounded_physical_time": true,
+    "valid_export": true
+  },
+  "stop_gate": [],
+  "coverage": {
+    "crossings": [
+      {
+        "s_abs": 154.76345492731022,
+        "time": 31.061572635639408,
+        "bracket_start": 31.059999999997004,
+        "bracket_end": 31.064999999997003,
+        "segment_id": 6212,
+        "method": "linear_progress_in_recorded_RK4_bracket"
+      },
+      {
+        "s_abs": 309.52690985462044,
+        "time": 62.23347303324871,
+        "bracket_start": 62.230000000000004,
+        "bracket_end": 62.23500000000001,
+        "segment_id": 12446,
+        "method": "linear_progress_in_recorded_RK4_bracket"
+      }
+    ],
+    "crossing_count": 2,
+    "complete_laps": 1,
+    "windows": [
+      {
+        "kind": "lap",
+        "index": 0,
+        "start": 0.0,
+        "end": 31.061572635639408,
+        "start_s": 1.0,
+        "end_s": 154.76345492731022,
+        "complete": false,
+        "status": "initial_partial"
+      },
+      {
+        "kind": "lap",
+        "index": 1,
+        "start": 31.061572635639408,
+        "end": 62.23347303324871,
+        "start_s": 154.76345492731022,
+        "end_s": 309.52690985462044,
+        "complete": true,
+        "status": "complete"
+      }
+    ]
+  },
+  "physical": {
+    "observed_end": 62.23500000000001,
+    "simulated_end": 62.23500000000001,
+    "stop_reason": "target_laps",
+    "failure": null,
+    "progress_reached": 309.53405411247064,
+    "progress_gain": 308.53405411247064,
+    "physical_boundary_crossings": 0,
+    "minimum_center_clearance": 0.3287955046438407,
+    "minimum_tracking_margin_clearance": 0.2487955046438407,
+    "solver_failures": 0,
+    "max_predicted_slack": 9.091836835408585e-11,
+    "plans_slack_above_1e6": 0,
+    "handoff_rejections": 0,
+    "accepted_handoffs": 621,
+    "planner_busy_misses": 0,
+    "codriver_busy_misses": 0,
+    "planner_delays_over_period": 0,
+    "applied_codriver_delays_over_period": 0,
+    "minimum_reserve": 0.667,
+    "actual_steering_tv": 17.424009302652056,
+    "actual_heading_tv": 45.66209297389769,
+    "actual_frenet_heading_tv": 13.579624042165229,
+    "apex_vehicle_tracking": {
+      "vx": {
+        "rms": 0.0027964418850695287,
+        "max_abs": 0.02172661098481843
+      },
+      "vy": {
+        "rms": 0.0096038448466993,
+        "max_abs": 0.07322267292372253
+      },
+      "r": {
+        "rms": 0.06600842251504883,
+        "max_abs": 0.3984684364014437
+      },
+      "e_psi": {
+        "rms": 0.010883966525043951,
+        "max_abs": 0.09057279201885526
+      },
+      "s_abs": {
+        "rms": 0.0011397405287597627,
+        "max_abs": 0.015422392802406648
+      },
+      "e_y": {
+        "rms": 0.0014011756405516453,
+        "max_abs": 0.010193247416628942
+      }
+    },
+    "handoff_continuity": {
+      "vx": {
+        "rms": 0.0015617624702915175,
+        "max_abs": 0.013391596514436888
+      },
+      "vy": {
+        "rms": 0.0029241987993153264,
+        "max_abs": 0.033848584122538994
+      },
+      "r": {
+        "rms": 0.02408854532539304,
+        "max_abs": 0.20880316438948
+      },
+      "e_psi": {
+        "rms": 0.0023916580562981507,
+        "max_abs": 0.017519770461147388
+      },
+      "s_abs": {
+        "rms": 0.0003881860347234514,
+        "max_abs": 0.0029727499868243967
+      },
+      "e_y": {
+        "rms": 0.0003855457711801207,
+        "max_abs": 0.00271028438752155
+      }
+    }
+  },
+  "timing": {
+    "attempts": 622,
+    "resolved": 621,
+    "censored": 1,
+    "accepted": 621,
+    "rejected": 0,
+    "hits": null,
+    "misses": null,
+    "miss_fraction": null,
+    "miss_fraction_wilson95": null,
+    "maximum_consecutive_misses": 0,
+    "preparation": {
+      "n": 622,
+      "mean": 0.05332594081142564,
+      "median": 0.0528292499948293,
+      "p95": 0.06464214394800365,
+      "p99": 0.06753870003391058,
+      "maximum": 0.08723366702906787,
+      "minimum": 0.041941083036363125
+    },
+    "deadline_margin": {
+      "n": 0,
+      "mean": null,
+      "median": null,
+      "p95": null,
+      "p99": null,
+      "maximum": null,
+      "minimum": null
+    },
+    "wait": {
+      "n": 621,
+      "mean": 0.0062399355877598315,
+      "median": 0.0,
+      "p95": 0.020000000000003126,
+      "p99": 0.020000000000003126,
+      "maximum": 0.020000000000003126,
+      "minimum": -1.0658141036401503e-14
+    },
+    "accepted_latency": {
+      "n": 621,
+      "mean": 0.04623188405796877,
+      "median": 0.04499999999999993,
+      "p95": 0.054999999999999716,
+      "p99": 0.054999999999999716,
+      "maximum": 0.05500000000000005,
+      "minimum": 0.035
+    }
+  },
+  "export_validation": {
+    "passed": true,
+    "rows": {
+      "states": 12448,
+      "segments": 12447,
+      "controls": 6223,
+      "planning": 3097,
+      "cycles": 622,
+      "events": 14310,
+      "boundaries": 2,
+      "metrics": 22
+    },
+    "artifacts": 15,
+    "acceptance": "adapter_checks_only; Workbench_ingestion_pending"
+  },
+  "release_count": 622,
+  "observed_threads": [
+    1
+  ],
+  "worker_git_revision": "8dbd1c5fbc09781411fc762e04f9c2c5cf2d99ae",
+  "worker_dirty_status": "",
+  "wall_seconds": 110.80577945895493,
+  "peak_rss_bytes": 284475392,
+  "file_sha256": {
+    "raw.json": "369ebcc2433ad6476ba9d379db521317eecae31fd0e0de35866000ac6027a189",
+    "segments.json": "3b9f7e92e2cf8d313711a8d7b70647b128838d11fc127dd74ac3d512aeea0704",
+    "release_contexts.json": "331f41c76d18c56b9f675c3babdda6dc10c043f20c40631c0d96f008c7486843",
+    "summary.json": "4840934ea4d425bdccd17b18cbd254f4372ba5275b655189010c223c2be72d71",
+    "analysis.json": "d23d74c124b2808ef0a03ff3de04e3fdc7d38e38f5ca9e26d23a16a23dfbf231",
+    "input_configuration.json": "0ad9739d8d4dddfb17451759724c7336751b30cafd06bbf65208b09ee901b0c9",
+    "exit.json": "5b7b861465da499a63527018066ac5cccba3530733feaf4652e59424996523bc",
+    "scientific/manifest.json": "5375580236b5e4b9305babe5d25e6459f91f80e31bb3fdb937e3e4c054d85a10"
+  }
+}

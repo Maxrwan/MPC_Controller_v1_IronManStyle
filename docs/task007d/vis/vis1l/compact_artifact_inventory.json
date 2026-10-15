@@ -1,0 +1,202 @@
+{
+  "summary.json": {
+    "sha256": "c672afadd3c52f28578ef545ab869cd1feb26bf65f01aa3aff8c72a45d7790cc",
+    "bytes": 62072,
+    "rows": null
+  },
+  "timing_authority.png": {
+    "sha256": "217c003c4f8420fc8008bdff6c6253512155d4dd63e41fdde413817852bc51c2",
+    "bytes": 283943,
+    "rows": null
+  },
+  "terminal_misses.png": {
+    "sha256": "5f5b49d01402b4999674e9298151facf74eacd485f85c450e5fd06361cf168c7",
+    "bytes": 162954,
+    "rows": null
+  },
+  "provenance.json": {
+    "sha256": "929faf084526288d0b6a7577fa2c8df9da2951ed94e0bac0eefff821ae255b09",
+    "bytes": 47828,
+    "rows": null
+  },
+  "steering_limits.json": {
+    "sha256": "38de9f5e46a57f277f8bd78fb6ae3abc0346aaa70f4fd0d77454a216fdbcd2aa",
+    "bytes": 661,
+    "rows": null
+  },
+  "lap_sectors.png": {
+    "sha256": "29a91d96371f8d543df9842b49e046a9659815bd79bd246c993fb637a279fb9b",
+    "bytes": 101981,
+    "rows": null
+  },
+  "comparison.json": {
+    "sha256": "8f865d28980e82e5046f6f37d1516402edb6ceba99ecc267c5f0a46532fab339",
+    "bytes": 4297,
+    "rows": null
+  },
+  "trajectory_overlay.png": {
+    "sha256": "8973948065f6b6c050eaca517b03afbf04df321ff165b556464ec9bdee039d3f",
+    "bytes": 157770,
+    "rows": null
+  },
+  "physical_validity.png": {
+    "sha256": "1bc57ccb16e6c5f600e99158d9a41e453a4c189f32833ce84913ff9e6484fc09",
+    "bytes": 542860,
+    "rows": null
+  },
+  "speed_progress.png": {
+    "sha256": "7b2be55e517c2c9cb882df89ac18dda32ffabb294daeb71c5b9f956ca5639980",
+    "bytes": 246400,
+    "rows": null
+  },
+  "common_coverage_metrics.csv": {
+    "sha256": "1bf28e6c1b98f24aef9676cf3f5a3c668da620fb982ab0bb14a85c03c6a453c4",
+    "bytes": 26513,
+    "rows": 8
+  },
+  "cycles.csv": {
+    "sha256": "9cdff829e52b2736eafe5427ef5c5814a199c4e9502b2141bc8072cb105b3e31",
+    "bytes": 887850,
+    "rows": 2347
+  },
+  "tracking_errors.png": {
+    "sha256": "4e6a0189a9384bd706d9f5c3f47fe4bdb284adde9d58305f7d1cc65f329bd0bc",
+    "bytes": 544629,
+    "rows": null
+  },
+  "verification.json": {
+    "sha256": "8055a017dbbbf19b0d0143311a8299d97c0c860583f233685270a4980a9d9a67",
+    "bytes": 21620,
+    "rows": null
+  },
+  "misses.csv": {
+    "sha256": "7a130a9db7c84adb9d4e1ead7614b372a408151ca634899d6757544e6515fcf8",
+    "bytes": 8767,
+    "rows": 30
+  },
+  "controls_heading.png": {
+    "sha256": "132a95b06fbe0007c9825d44c8af2287d2b8446fd1574c3389bf5d96b0092240",
+    "bytes": 570517,
+    "rows": null
+  },
+  "lap_sector_metrics.csv": {
+    "sha256": "f8e4e97a365aac845a39132ec0e9bfe9e5ce40fe2365969c13608bb4a50bc671",
+    "bytes": 239094,
+    "rows": 85
+  },
+  "artifact_hashes.json": {
+    "sha256": "c3466226e8896bda4799655f5a97acab1e4266a0d67398cfc687aade86fd3fce",
+    "bytes": 1738,
+    "rows": null
+  },
+  "evidence/vis1l_focused_recheck.xml": {
+    "sha256": "21659c67e9086a9f2508fac02c3960178a3d284f43bec98a600b1f65c9342371",
+    "bytes": 1753,
+    "rows": null
+  },
+  "evidence/vis1l_preflight.json": {
+    "sha256": "aac817413274672b2768e808e673e703500ce45357057f6f997f9f1d8f358923",
+    "bytes": 33536,
+    "rows": null
+  },
+  "evidence/vis1l_focused.log": {
+    "sha256": "bf54c195fbb28b364e526a4e39072fd3d806d6c0a0ec2784aeb6df545d2c9911",
+    "bytes": 11489,
+    "rows": null
+  },
+  "evidence/vis1l_authorization.txt": {
+    "sha256": "364982aa200860100991f74ce5c42ec4d3822a1211386f51b3d382b9701576a6",
+    "bytes": 7206,
+    "rows": null
+  },
+  "evidence/vis1l_focused.xml": {
+    "sha256": "e2c7cd6f7ff547b77cff198fe8f92111c71e29db0ca321f67dc498db527c0869",
+    "bytes": 15467,
+    "rows": null
+  },
+  "evidence/vis1l_focused_recheck.log": {
+    "sha256": "53b898882b299f682b966e5a23288298fa65194dafc0fbbe53412da34e795b7b",
+    "bytes": 247,
+    "rows": null
+  },
+  "evidence/measured_C70_1/exit.json": {
+    "sha256": "c3032b1582b8429cc1f34ebe21c1f8d88d30fe9013d1b171ae217b79f3e8ae13",
+    "bytes": 132,
+    "rows": null
+  },
+  "evidence/measured_C70_1/input_configuration.json": {
+    "sha256": "d67d4ab11b4a63d4072b390417ee55f20c4321ef0637012fee0014e92acf4dc5",
+    "bytes": 33082,
+    "rows": null
+  },
+  "evidence/measured_C70_1/worker.log": {
+    "sha256": "d49fb4327d608089dbb9bd87e9a4ecc15867b42310c47db4a96ab15e6f1c4b83",
+    "bytes": 2546,
+    "rows": null
+  },
+  "evidence/measured_C70_1/analysis.json": {
+    "sha256": "9586d82a789a17df868ef9048bbca41060584846c25ca8c48c2f95b6475bb9d0",
+    "bytes": 140552,
+    "rows": null
+  },
+  "evidence/controlled_A/summary.json": {
+    "sha256": "4840934ea4d425bdccd17b18cbd254f4372ba5275b655189010c223c2be72d71",
+    "bytes": 37437,
+    "rows": null
+  },
+  "evidence/controlled_A/exit.json": {
+    "sha256": "5b7b861465da499a63527018066ac5cccba3530733feaf4652e59424996523bc",
+    "bytes": 130,
+    "rows": null
+  },
+  "evidence/controlled_A/acceptance.json": {
+    "sha256": "f1ac51bda55e1335729551574414ab83b64c2761ae1b4bbed5d1e32065d85159",
+    "bytes": 6282,
+    "rows": null
+  },
+  "evidence/controlled_A/input_configuration.json": {
+    "sha256": "0ad9739d8d4dddfb17451759724c7336751b30cafd06bbf65208b09ee901b0c9",
+    "bytes": 241175,
+    "rows": null
+  },
+  "evidence/controlled_C70/summary.json": {
+    "sha256": "d3d56bcfa0b32503361016ec43e13941ac723ac4eb0a64728c56057ebe764819",
+    "bytes": 37428,
+    "rows": null
+  },
+  "evidence/controlled_C70/exit.json": {
+    "sha256": "7c2811e37a6d84dd0c15a4ed77ea74ed488ee2ca63bd936b3f8d3edbba5c298b",
+    "bytes": 134,
+    "rows": null
+  },
+  "evidence/controlled_C70/acceptance.json": {
+    "sha256": "b15a2687ab0776fe4d8ca634623c9fa17e147bb7f0c21402bce15d7037dea19a",
+    "bytes": 6392,
+    "rows": null
+  },
+  "evidence/controlled_C70/input_configuration.json": {
+    "sha256": "2314898bcee57c993c8d0fd626d1c5e14356e52ec991b84677461cbb0dc7d9e2",
+    "bytes": 241179,
+    "rows": null
+  },
+  "evidence/measured_A_1/summary.json": {
+    "sha256": "a75d8a216a1ff0313800dc50869af0e2787b7c6c0a1e06c640803570ac038177",
+    "bytes": 37463,
+    "rows": null
+  },
+  "evidence/measured_A_1/exit.json": {
+    "sha256": "db26fe4b006ec03df3ca372ab7203f23eadfee32dd7acc6f3f284288d43652e2",
+    "bytes": 128,
+    "rows": null
+  },
+  "evidence/measured_A_1/acceptance.json": {
+    "sha256": "702bac54e38d7a4ce98756028fb16bec335a02206a9afa69451d5d7b4e8165bf",
+    "bytes": 6277,
+    "rows": null
+  },
+  "evidence/measured_A_1/input_configuration.json": {
+    "sha256": "7a8eaf33eed56333a8eb7091f462b712e6061368f63f49b5747d6a3a70184b3a",
+    "bytes": 33078,
+    "rows": null
+  }
+}

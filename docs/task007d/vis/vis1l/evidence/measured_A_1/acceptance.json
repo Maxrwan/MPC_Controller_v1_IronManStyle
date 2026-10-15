@@ -1,0 +1,220 @@
+{
+  "case": "measured_A_1",
+  "passed": true,
+  "checks": {
+    "required_files": true,
+    "worker_exit_zero": true,
+    "no_scientific_stop": true,
+    "no_chronology_issue": true,
+    "source_unchanged": true,
+    "native_single_observed": true,
+    "all_release_forecasts_exact": true,
+    "all_runtime_releases_captured": true,
+    "two_crossings": true,
+    "complete_lap": true,
+    "bounded_physical_time": true,
+    "valid_export": true
+  },
+  "stop_gate": [],
+  "coverage": {
+    "crossings": [
+      {
+        "s_abs": 154.76345492731022,
+        "time": 30.966305037833887,
+        "bracket_start": 30.96499999999994,
+        "bracket_end": 30.96999999999994,
+        "segment_id": 6638,
+        "method": "linear_progress_in_recorded_RK4_bracket"
+      },
+      {
+        "s_abs": 309.52690985462044,
+        "time": 62.28406081712217,
+        "bracket_start": 62.28,
+        "bracket_end": 62.285000000000004,
+        "segment_id": 13360,
+        "method": "linear_progress_in_recorded_RK4_bracket"
+      }
+    ],
+    "crossing_count": 2,
+    "complete_laps": 1,
+    "windows": [
+      {
+        "kind": "lap",
+        "index": 0,
+        "start": 0.0,
+        "end": 30.966305037833887,
+        "start_s": 1.0,
+        "end_s": 154.76345492731022,
+        "complete": false,
+        "status": "initial_partial"
+      },
+      {
+        "kind": "lap",
+        "index": 1,
+        "start": 30.966305037833887,
+        "end": 62.28406081712217,
+        "start_s": 154.76345492731022,
+        "end_s": 309.52690985462044,
+        "complete": true,
+        "status": "complete"
+      }
+    ]
+  },
+  "physical": {
+    "observed_end": 62.285000000000004,
+    "simulated_end": 62.285000000000004,
+    "stop_reason": "target_laps",
+    "failure": null,
+    "progress_reached": 309.531302748057,
+    "progress_gain": 308.531302748057,
+    "physical_boundary_crossings": 0,
+    "minimum_center_clearance": 0.32942374549219783,
+    "minimum_tracking_margin_clearance": 0.2494237454921978,
+    "solver_failures": 0,
+    "max_predicted_slack": 9.091836275654472e-11,
+    "plans_slack_above_1e6": 0,
+    "handoff_rejections": 0,
+    "accepted_handoffs": 620,
+    "planner_busy_misses": 2,
+    "codriver_busy_misses": 0,
+    "planner_delays_over_period": 2,
+    "applied_codriver_delays_over_period": 0,
+    "minimum_reserve": 0.5651708125276507,
+    "actual_steering_tv": 17.760724161959658,
+    "actual_heading_tv": 46.0927909894924,
+    "actual_frenet_heading_tv": 15.176361852071008,
+    "apex_vehicle_tracking": {
+      "vx": {
+        "rms": 0.0037169701648577724,
+        "max_abs": 0.033396984322996204
+      },
+      "vy": {
+        "rms": 0.01511285679824229,
+        "max_abs": 0.1269566107468716
+      },
+      "r": {
+        "rms": 0.08472542028457845,
+        "max_abs": 0.5604882221736199
+      },
+      "e_psi": {
+        "rms": 0.011641864745154417,
+        "max_abs": 0.0816120194665495
+      },
+      "s_abs": {
+        "rms": 0.0010955840794339288,
+        "max_abs": 0.013637753137970776
+      },
+      "e_y": {
+        "rms": 0.0013813122166779221,
+        "max_abs": 0.008388658721163983
+      }
+    },
+    "handoff_continuity": {
+      "vx": {
+        "rms": 0.0007603394608962325,
+        "max_abs": 0.008470671857275569
+      },
+      "vy": {
+        "rms": 0.0026387652413905646,
+        "max_abs": 0.056279967234521944
+      },
+      "r": {
+        "rms": 0.016731168003487118,
+        "max_abs": 0.10592246433570907
+      },
+      "e_psi": {
+        "rms": 0.0010996721632199158,
+        "max_abs": 0.015926604221390583
+      },
+      "s_abs": {
+        "rms": 0.00016529362635969014,
+        "max_abs": 0.0012933321664831965
+      },
+      "e_y": {
+        "rms": 0.00015608144145346615,
+        "max_abs": 0.0012729455999167041
+      }
+    }
+  },
+  "timing": {
+    "attempts": 620,
+    "resolved": 620,
+    "censored": 0,
+    "accepted": 620,
+    "rejected": 0,
+    "hits": null,
+    "misses": null,
+    "miss_fraction": null,
+    "miss_fraction_wilson95": null,
+    "maximum_consecutive_misses": 0,
+    "preparation": {
+      "n": 620,
+      "mean": 0.0576292569452386,
+      "median": 0.056036604568362236,
+      "p95": 0.0702529979753308,
+      "p99": 0.0733374670986086,
+      "maximum": 0.19332445808686316,
+      "minimum": 0.044507459038868546
+    },
+    "deadline_margin": {
+      "n": 0,
+      "mean": null,
+      "median": null,
+      "p95": null,
+      "p99": null,
+      "maximum": null,
+      "minimum": null
+    },
+    "wait": {
+      "n": 620,
+      "mean": 0.001675830308851155,
+      "median": 0.0,
+      "p95": 0.007629944308428091,
+      "p99": 0.010991886992705953,
+      "maximum": 0.012701896135695279,
+      "minimum": 0.0
+    },
+    "accepted_latency": {
+      "n": 620,
+      "mean": 0.059305087254089756,
+      "median": 0.05793084396282211,
+      "p95": 0.07061470790649763,
+      "p99": 0.0733374670986086,
+      "maximum": 0.19332445808686316,
+      "minimum": 0.04733900004066527
+    }
+  },
+  "export_validation": {
+    "passed": true,
+    "rows": {
+      "states": 13362,
+      "segments": 13361,
+      "controls": 6228,
+      "planning": 3097,
+      "cycles": 620,
+      "events": 14318,
+      "boundaries": 2,
+      "metrics": 22
+    },
+    "artifacts": 15,
+    "acceptance": "adapter_checks_only; Workbench_ingestion_pending"
+  },
+  "release_count": 620,
+  "observed_threads": [
+    1
+  ],
+  "worker_git_revision": "8dbd1c5fbc09781411fc762e04f9c2c5cf2d99ae",
+  "worker_dirty_status": "",
+  "wall_seconds": 118.82920158305205,
+  "peak_rss_bytes": 267059200,
+  "file_sha256": {
+    "raw.json": "2562bd1e4cbd195bfbc951c36f4979421f6636bb1a4aba92dcf914fea2322412",
+    "segments.json": "d938610add217ea519d398b4d48c41bdbf856e0434b651132d087ad5dfb01ea7",
+    "release_contexts.json": "9956c08015cd91ae453e1fdb1a25d9796a470976d23c7ba872d6afa8dd3f80fa",
+    "summary.json": "a75d8a216a1ff0313800dc50869af0e2787b7c6c0a1e06c640803570ac038177",
+    "analysis.json": "f366eeca75f744230df6832d1f01ff6fb1a14e45ab1388ee9abf58d5f9a7390e",
+    "input_configuration.json": "7a8eaf33eed56333a8eb7091f462b712e6061368f63f49b5747d6a3a70184b3a",
+    "exit.json": "db26fe4b006ec03df3ca372ab7203f23eadfee32dd7acc6f3f284288d43652e2",
+    "scientific/manifest.json": "a7fe3684965e8ed8d5aeac6808277db7f37bce66d7fb168ac3fa90e75dab7ef3"
+  }
+}

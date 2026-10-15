@@ -1,0 +1,33 @@
+Traceback (most recent call last):
+  File "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/scripts/run_task007dvis.py", line 81, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/scripts/run_task007dvis.py", line 46, in main
+    return 2 if run(case, folder, native) else 0
+                ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/scripts/task007dvis/worker.py", line 155, in run
+    export(folder, raw, plant.segments, rows, cycles, report, summary, FIXTURE)
+  File "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/scripts/task007dvis/export.py", line 137, in export
+    emit(
+  File "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/scripts/task007dvis/export.py", line 84, in emit
+    csv_rows(
+  File "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/scripts/task007dvis/export.py", line 47, in csv_rows
+    writer.writerows(
+  File "/Users/marwansaber/.local/share/uv/python/cpython-3.12.14-macos-aarch64-none/lib/python3.12/csv.py", line 167, in writerows
+    return self.writer.writerows(map(self._dict_to_list, rowdicts))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/scripts/task007dvis/export.py", line 48, in <genexpr>
+    {k: json.dumps(v) if isinstance(v, (dict, list, tuple)) else v for k, v in r.items()}
+        ^^^^^^^^^^^^^
+  File "/Users/marwansaber/.local/share/uv/python/cpython-3.12.14-macos-aarch64-none/lib/python3.12/json/__init__.py", line 231, in dumps
+    return _default_encoder.encode(obj)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/marwansaber/.local/share/uv/python/cpython-3.12.14-macos-aarch64-none/lib/python3.12/json/encoder.py", line 200, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/marwansaber/.local/share/uv/python/cpython-3.12.14-macos-aarch64-none/lib/python3.12/json/encoder.py", line 258, in iterencode
+    return _iterencode(o, 0)
+           ^^^^^^^^^^^^^^^^^
+  File "/Users/marwansaber/.local/share/uv/python/cpython-3.12.14-macos-aarch64-none/lib/python3.12/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type bool is not JSON serializable
