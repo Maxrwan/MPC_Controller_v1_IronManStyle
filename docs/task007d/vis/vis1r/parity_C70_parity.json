@@ -1,0 +1,24 @@
+{
+  "passed": true,
+  "exact": {
+    "states": true,
+    "handoffs": true,
+    "reserves": true,
+    "releases": true,
+    "misses": true,
+    "codriver_misses": true,
+    "triggers": true,
+    "fallbacks": true,
+    "lap_times": true,
+    "stop_reason": true,
+    "failure": true,
+    "end_time": true,
+    "pending_at_end": true,
+    "fixed_handoffs": true,
+    "urgent_demands": true,
+    "RK4_segments": true,
+    "physical_controls": true,
+    "packet_contents": true,
+    "NMPC_inputs": true
+  }
+}

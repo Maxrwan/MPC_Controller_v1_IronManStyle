@@ -1,3 +1,33 @@
+# Current handoff — Task007D-VIS / VIS-1R prerequisite recovery
+
+**Stage/status:** `WORK_COMPLETE_PENDING_REVIEW` — bounded recovery only. Exactly one fresh
+2 s A recovery and one fresh 2 s C70 completed; no long run, VIS-2/3/4 or Efficiency work.
+**Tested revision:** clean main `c6990572045e61ee443dc715de9e8c44396e5b41` for both workers.
+No executable, test, fixture or core changes. Delivery adds this prepend, the
+[recovery report](TASK007D_VIS1R_RECOVERY.md) and [compact evidence](task007d/vis/vis1r/verification.json);
+its exact commit SHA/verified URL follow push.
+**Prerequisites:** 30 fresh adapter/serialization tests pass (15.41 s); 384 unaffected earlier
+cases reused after source/dependency/environment/fixture audit. All 13 VIS Python files pass
+Ruff lint/format. Full regression remains deferred to separately authorized VIS-4.
+**Complete workers:** A and C70 exit 0, each passes all 19 exact C3 comparison groups,
+19/19 release forecasts to NMPC inputs and independent 19/19 saved-JSON forecast checks.
+Actual observed process thread counts [1], Accelerate SINGLE configured. Raw, segments,
+release contexts, summary, analysis and complete apex-run packages are present and validated.
+Source unchanged during both workers; no scientific/chronology gate issue. Minimum center
+clearance 0.437314 m both; minimum reserve A 0.667 s / C70 0.635 s; C70 imposed-history misses 0/19.
+**Correction/preservation:** Original failed A attempt and all historical evidence remain intact.
+Previous prose counted 20 comparison groups; retained/current JSON contain 19, all passing.
+No physical outcome changed. An audit setup inventory oversight was resolved before launch;
+no new scientific/test failure or runtime repair. Full hash and preservation records retained.
+**Limitations:** No complete lap or new measured campaign; no performance superiority claim.
+Host durations do not control this imposed-delay run. Native observations are bounded samples,
+not embedded real-time certification. Workbench ingestion/final interface acceptance is pending.
+**Next review:** Recommend resuming the previously specified six-run VIS-1 campaign after explicit
+Engineering Review authorization under the unchanged protocol. This recovery does not launch it.
+No automatic VIS-2/3/4, new track, UI, retuning, production promotion or Performance freeze.
+
+---
+
 # Current handoff — Task007D-VIS / VIS-1 WORK and Workbench addendum
 
 **Stage/status:** **BLOCKED — partial WORK, Engineering Review required.** The requested

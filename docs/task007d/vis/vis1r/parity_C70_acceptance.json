@@ -1,0 +1,152 @@
+{
+  "passed": true,
+  "case": "parity_C70",
+  "revision": "c6990572045e61ee443dc715de9e8c44396e5b41",
+  "checks": {
+    "worker_exit_zero": true,
+    "required_files_complete": true,
+    "historical_C3_exact": {
+      "passed": true,
+      "exact": {
+        "states": true,
+        "handoffs": true,
+        "reserves": true,
+        "releases": true,
+        "misses": true,
+        "codriver_misses": true,
+        "triggers": true,
+        "fallbacks": true,
+        "lap_times": true,
+        "stop_reason": true,
+        "failure": true,
+        "end_time": true,
+        "pending_at_end": true,
+        "fixed_handoffs": true,
+        "urgent_demands": true,
+        "RK4_segments": true,
+        "physical_controls": true,
+        "packet_contents": true,
+        "NMPC_inputs": true
+      }
+    },
+    "release_context_matches": 19,
+    "release_context_count": 19,
+    "observed_native_threads": [
+      1
+    ],
+    "native": {
+      "requested_ceiling": 1,
+      "set_status": 0,
+      "blas_threading_mode": 1,
+      "mode_name": "single",
+      "exact_active_thread_count_available": false
+    },
+    "threadpools": [],
+    "export_validation": {
+      "passed": true,
+      "rows": {
+        "states": 401,
+        "segments": 400,
+        "controls": 200,
+        "planning": 3097,
+        "cycles": 19,
+        "events": 457,
+        "boundaries": 0,
+        "metrics": 3
+      },
+      "artifacts": 15,
+      "acceptance": "adapter_checks_only; Workbench_ingestion_pending"
+    },
+    "source_unchanged": true,
+    "scientific_stop_gates": [],
+    "chronology_issues": []
+  },
+  "files": {
+    "raw.json": "45b5d22b205733f73488d786dbd691563e350d33883a1577d3d8e5415fd7824b",
+    "segments.json": "1b5dba10cfbd7ef6028ccbc16e4f4a62003a72b9b041d497a3eb3237734cd32f",
+    "release_contexts.json": "5543049cdfa7c737cc4e986d31f7af512ac0724e06ced69879f12669895ff139",
+    "summary.json": "a141ebeeb6186be41179039f97ed4000a69a2155954e456cbd65d60fdf8fbaf4",
+    "analysis.json": "bbcb8a84cc7de3a46bf4e1c1bfe013cadcb5e1b3893d37b92e30ecdd2ae9ffd8",
+    "parity.json": "0962600b0c15149d6bf7df6d82046b2fe5adb421df2bf9a182210bf50174d198",
+    "applicability.json": "bcffdf6c86d724adf3a63ea24a6be7d667544510d83f0d8814b0fe6edde8dc13",
+    "input_configuration.json": "3b508ce3bbf39ba10adb4251cc3952d39a9edddd0ce4dd700f092cb3b7598619",
+    "exit.json": "75f2e4230c7d9f7c6345f28bdbc1c1a8dd9c78438f0e2a72e72c36ca6f001df2",
+    "scientific/manifest.json": "8c95c0e16b58f28409a84a212d2a460eb9636b8e9e3f071d0f250ed9325c4247"
+  },
+  "physical": {
+    "observed_end": 1.9999999999999787,
+    "simulated_end": 1.9999999999999787,
+    "stop_reason": "duration",
+    "failure": null,
+    "progress_reached": 12.525190061696014,
+    "progress_gain": 11.525190061696014,
+    "physical_boundary_crossings": 0,
+    "minimum_center_clearance": 0.4373138184436819,
+    "minimum_tracking_margin_clearance": 0.3573138184436819,
+    "solver_failures": 0,
+    "max_predicted_slack": 9.091525285379717e-11,
+    "plans_slack_above_1e6": 0,
+    "handoff_rejections": 0,
+    "accepted_handoffs": 19,
+    "planner_busy_misses": 0,
+    "codriver_busy_misses": 0,
+    "planner_delays_over_period": 0,
+    "applied_codriver_delays_over_period": 0,
+    "minimum_reserve": 0.635,
+    "actual_steering_tv": 0.21400652414986024,
+    "actual_heading_tv": 0.3051591787890051,
+    "actual_frenet_heading_tv": 0.2234248531600933,
+    "apex_vehicle_tracking": {
+      "vx": {
+        "rms": 0.001044031597287435,
+        "max_abs": 0.0064816175502011575
+      },
+      "vy": {
+        "rms": 0.014124391745082296,
+        "max_abs": 0.07052462725708514
+      },
+      "r": {
+        "rms": 0.03238797754639437,
+        "max_abs": 0.14309024912149906
+      },
+      "e_psi": {
+        "rms": 0.0037105233262890776,
+        "max_abs": 0.02353095558473539
+      },
+      "s_abs": {
+        "rms": 0.0004058249993409215,
+        "max_abs": 0.0010951021062326483
+      },
+      "e_y": {
+        "rms": 0.0004936871329864399,
+        "max_abs": 0.002168311005147222
+      }
+    },
+    "handoff_continuity": {
+      "vx": {
+        "rms": 0.0002265037770407196,
+        "max_abs": 0.0009867473418205819
+      },
+      "vy": {
+        "rms": 0.0012682196780536613,
+        "max_abs": 0.004085403862340804
+      },
+      "r": {
+        "rms": 0.013344068170550503,
+        "max_abs": 0.05805276822323274
+      },
+      "e_psi": {
+        "rms": 0.0005363953522041823,
+        "max_abs": 0.0019901948161367145
+      },
+      "s_abs": {
+        "rms": 1.1892809226616835e-05,
+        "max_abs": 5.117873705873244e-05
+      },
+      "e_y": {
+        "rms": 6.202601420098646e-05,
+        "max_abs": 0.00020590988257014609
+      }
+    }
+  }
+}

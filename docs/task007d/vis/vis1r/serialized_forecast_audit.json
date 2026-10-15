@@ -1,0 +1,436 @@
+{
+  "parity_A": {
+    "passed": true,
+    "count": 19,
+    "exact": [
+      {
+        "plan_id": 1,
+        "checks": {
+          "release_state": true,
+          "release_time": true,
+          "duration": true,
+          "predicted_state": true,
+          "previous_control": true
+        },
+        "target": 0.117
+      },
+      {
+        "plan_id": 2,
+        "checks": {
+          "release_state": true,
+          "release_time": true,
+          "duration": true,
+          "predicted_state": true,
+          "previous_control": true
+        },
+        "target": 0.23500000000000001
+      },
+      {
+        "plan_id": 3,
+        "checks": {
+          "release_state": true,
+          "release_time": true,
+          "duration": true,
+          "predicted_state": true,
+          "previous_control": true
+        },
+        "target": 0.345
+      },
+      {
+        "plan_id": 4,
+        "checks": {
+          "release_state": true,
+          "release_time": true,
+          "duration": true,
+          "predicted_state": true,
+          "previous_control": true
+        },
+        "target": 0.445
+      },
+      {
+        "plan_id": 5,
+        "checks": {
+          "release_state": true,
+          "release_time": true,
+          "duration": true,
+          "predicted_state": true,
+          "previous_control": true
+        },
+        "target": 0.54
+      },
+      {
+        "plan_id": 6,
+        "checks": {
+          "release_state": true,
+          "release_time": true,
+          "duration": true,
+          "predicted_state": true,
+          "previous_control": true
+        },
+        "target": 0.635
+      },
+      {
+        "plan_id": 7,
+        "checks": {
+          "release_state": true,
+          "release_time": true,
+          "duration": true,
+          "predicted_state": true,
+          "previous_control": true
+        },
+        "target": 0.7400000000000001
+      },
+      {
+        "plan_id": 8,
+        "checks": {
+          "release_state": true,
+          "release_time": true,
+          "duration": true,
+          "predicted_state": true,
+          "previous_control": true
+        },
+        "target": 0.8450000000000001
+      },
+      {
+        "plan_id": 9,
+        "checks": {
+          "release_state": true,
+          "release_time": true,
+          "duration": true,
+          "predicted_state": true,
+          "previous_control": true
+        },
+        "target": 0.9400000000000001
+      },
+      {
+        "plan_id": 10,
+        "checks": {
+          "release_state": true,
+          "release_time": true,
+          "duration": true,
+          "predicted_state": true,
+          "previous_control": true
+        },
+        "target": 1.035
+      },
+      {
+        "plan_id": 11,
+        "checks": {
+          "release_state": true,
+          "release_time": true,
+          "duration": true,
+          "predicted_state": true,
+          "previous_control": true
+        },
+        "target": 1.139999999999998
+      },
+      {
+        "plan_id": 12,
+        "checks": {
+          "release_state": true,
+          "release_time": true,
+          "duration": true,
+          "predicted_state": true,
+          "previous_control": true
+        },
+        "target": 1.2449999999999957
+      },
+      {
+        "plan_id": 13,
+        "checks": {
+          "release_state": true,
+          "release_time": true,
+          "duration": true,
+          "predicted_state": true,
+          "previous_control": true
+        },
+        "target": 1.3399999999999936
+      },
+      {
+        "plan_id": 14,
+        "checks": {
+          "release_state": true,
+          "release_time": true,
+          "duration": true,
+          "predicted_state": true,
+          "previous_control": true
+        },
+        "target": 1.4349999999999914
+      },
+      {
+        "plan_id": 15,
+        "checks": {
+          "release_state": true,
+          "release_time": true,
+          "duration": true,
+          "predicted_state": true,
+          "previous_control": true
+        },
+        "target": 1.5399999999999894
+      },
+      {
+        "plan_id": 16,
+        "checks": {
+          "release_state": true,
+          "release_time": true,
+          "duration": true,
+          "predicted_state": true,
+          "previous_control": true
+        },
+        "target": 1.6449999999999871
+      },
+      {
+        "plan_id": 17,
+        "checks": {
+          "release_state": true,
+          "release_time": true,
+          "duration": true,
+          "predicted_state": true,
+          "previous_control": true
+        },
+        "target": 1.7399999999999851
+      },
+      {
+        "plan_id": 18,
+        "checks": {
+          "release_state": true,
+          "release_time": true,
+          "duration": true,
+          "predicted_state": true,
+          "previous_control": true
+        },
+        "target": 1.8349999999999829
+      },
+      {
+        "plan_id": 19,
+        "checks": {
+          "release_state": true,
+          "release_time": true,
+          "duration": true,
+          "predicted_state": true,
+          "previous_control": true
+        },
+        "target": 1.9399999999999809
+      }
+    ],
+    "release_contexts_sha256": "335f5f36d7f8178bb8a5c91e2887a5a7702a71fe83bfd63a5bf570797b17c40f",
+    "method": "Deserialize saved release-only fields, forecast A with original model/tracker; load actual plan outputs only afterward for comparison. No solver or physical simulation."
+  },
+  "parity_C70": {
+    "passed": true,
+    "count": 19,
+    "exact": [
+      {
+        "plan_id": 1,
+        "checks": {
+          "release_state": true,
+          "release_time": true,
+          "duration": true,
+          "predicted_state": true,
+          "previous_control": true
+        },
+        "target": 0.17
+      },
+      {
+        "plan_id": 2,
+        "checks": {
+          "release_state": true,
+          "release_time": true,
+          "duration": true,
+          "predicted_state": true,
+          "previous_control": true
+        },
+        "target": 0.27
+      },
+      {
+        "plan_id": 3,
+        "checks": {
+          "release_state": true,
+          "release_time": true,
+          "duration": true,
+          "predicted_state": true,
+          "previous_control": true
+        },
+        "target": 0.37
+      },
+      {
+        "plan_id": 4,
+        "checks": {
+          "release_state": true,
+          "release_time": true,
+          "duration": true,
+          "predicted_state": true,
+          "previous_control": true
+        },
+        "target": 0.47000000000000003
+      },
+      {
+        "plan_id": 5,
+        "checks": {
+          "release_state": true,
+          "release_time": true,
+          "duration": true,
+          "predicted_state": true,
+          "previous_control": true
+        },
+        "target": 0.5700000000000001
+      },
+      {
+        "plan_id": 6,
+        "checks": {
+          "release_state": true,
+          "release_time": true,
+          "duration": true,
+          "predicted_state": true,
+          "previous_control": true
+        },
+        "target": 0.6699999999999999
+      },
+      {
+        "plan_id": 7,
+        "checks": {
+          "release_state": true,
+          "release_time": true,
+          "duration": true,
+          "predicted_state": true,
+          "previous_control": true
+        },
+        "target": 0.77
+      },
+      {
+        "plan_id": 8,
+        "checks": {
+          "release_state": true,
+          "release_time": true,
+          "duration": true,
+          "predicted_state": true,
+          "previous_control": true
+        },
+        "target": 0.8700000000000001
+      },
+      {
+        "plan_id": 9,
+        "checks": {
+          "release_state": true,
+          "release_time": true,
+          "duration": true,
+          "predicted_state": true,
+          "previous_control": true
+        },
+        "target": 0.97
+      },
+      {
+        "plan_id": 10,
+        "checks": {
+          "release_state": true,
+          "release_time": true,
+          "duration": true,
+          "predicted_state": true,
+          "previous_control": true
+        },
+        "target": 1.07
+      },
+      {
+        "plan_id": 11,
+        "checks": {
+          "release_state": true,
+          "release_time": true,
+          "duration": true,
+          "predicted_state": true,
+          "previous_control": true
+        },
+        "target": 1.169999999999998
+      },
+      {
+        "plan_id": 12,
+        "checks": {
+          "release_state": true,
+          "release_time": true,
+          "duration": true,
+          "predicted_state": true,
+          "previous_control": true
+        },
+        "target": 1.2699999999999958
+      },
+      {
+        "plan_id": 13,
+        "checks": {
+          "release_state": true,
+          "release_time": true,
+          "duration": true,
+          "predicted_state": true,
+          "previous_control": true
+        },
+        "target": 1.3699999999999937
+      },
+      {
+        "plan_id": 14,
+        "checks": {
+          "release_state": true,
+          "release_time": true,
+          "duration": true,
+          "predicted_state": true,
+          "previous_control": true
+        },
+        "target": 1.4699999999999915
+      },
+      {
+        "plan_id": 15,
+        "checks": {
+          "release_state": true,
+          "release_time": true,
+          "duration": true,
+          "predicted_state": true,
+          "previous_control": true
+        },
+        "target": 1.5699999999999894
+      },
+      {
+        "plan_id": 16,
+        "checks": {
+          "release_state": true,
+          "release_time": true,
+          "duration": true,
+          "predicted_state": true,
+          "previous_control": true
+        },
+        "target": 1.6699999999999873
+      },
+      {
+        "plan_id": 17,
+        "checks": {
+          "release_state": true,
+          "release_time": true,
+          "duration": true,
+          "predicted_state": true,
+          "previous_control": true
+        },
+        "target": 1.7699999999999851
+      },
+      {
+        "plan_id": 18,
+        "checks": {
+          "release_state": true,
+          "release_time": true,
+          "duration": true,
+          "predicted_state": true,
+          "previous_control": true
+        },
+        "target": 1.869999999999983
+      },
+      {
+        "plan_id": 19,
+        "checks": {
+          "release_state": true,
+          "release_time": true,
+          "duration": true,
+          "predicted_state": true,
+          "previous_control": true
+        },
+        "target": 1.9699999999999809
+      }
+    ],
+    "release_contexts_sha256": "5543049cdfa7c737cc4e986d31f7af512ac0724e06ced69879f12669895ff139",
+    "method": "Deserialize saved release-only fields, forecast A with original model/tracker; load actual plan outputs only afterward for comparison. No solver or physical simulation."
+  }
+}

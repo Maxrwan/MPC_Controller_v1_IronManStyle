@@ -1,0 +1,22 @@
+{
+  "baseline": "c6990572045e61ee443dc715de9e8c44396e5b41",
+  "tracked_before": 740,
+  "unchanged_tracked": 739,
+  "permitted_documentation_change": [
+    "docs/CODEX_HANDOFF.md"
+  ],
+  "old_handoff_verbatim": true,
+  "prior_raw_files": 11394,
+  "prior_raw_size_mtime_changes": [],
+  "original_failed_A_file_hashes_unchanged": true,
+  "source_test_and_fixture_changes": [],
+  "frozen_timing_matrix_byte_identical": true,
+  "actual_runtime_configs_match_unchanged_protocol": true,
+  "new_worker_directories": [
+    "parity_A",
+    "parity_C70"
+  ],
+  "all_saved_recovery_artifact_hashes_valid": true,
+  "active_guards": [],
+  "free_bytes": 8712146944
+}

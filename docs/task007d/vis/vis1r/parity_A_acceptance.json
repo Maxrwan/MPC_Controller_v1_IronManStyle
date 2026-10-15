@@ -1,0 +1,152 @@
+{
+  "passed": true,
+  "case": "parity_A",
+  "revision": "c6990572045e61ee443dc715de9e8c44396e5b41",
+  "checks": {
+    "worker_exit_zero": true,
+    "required_files_complete": true,
+    "historical_C3_exact": {
+      "passed": true,
+      "exact": {
+        "states": true,
+        "handoffs": true,
+        "reserves": true,
+        "releases": true,
+        "misses": true,
+        "codriver_misses": true,
+        "triggers": true,
+        "fallbacks": true,
+        "lap_times": true,
+        "stop_reason": true,
+        "failure": true,
+        "end_time": true,
+        "pending_at_end": true,
+        "fixed_handoffs": true,
+        "urgent_demands": true,
+        "RK4_segments": true,
+        "physical_controls": true,
+        "packet_contents": true,
+        "NMPC_inputs": true
+      }
+    },
+    "release_context_matches": 19,
+    "release_context_count": 19,
+    "observed_native_threads": [
+      1
+    ],
+    "native": {
+      "requested_ceiling": 1,
+      "set_status": 0,
+      "blas_threading_mode": 1,
+      "mode_name": "single",
+      "exact_active_thread_count_available": false
+    },
+    "threadpools": [],
+    "export_validation": {
+      "passed": true,
+      "rows": {
+        "states": 401,
+        "segments": 400,
+        "controls": 200,
+        "planning": 3097,
+        "cycles": 19,
+        "events": 457,
+        "boundaries": 0,
+        "metrics": 3
+      },
+      "artifacts": 15,
+      "acceptance": "adapter_checks_only; Workbench_ingestion_pending"
+    },
+    "source_unchanged": true,
+    "scientific_stop_gates": [],
+    "chronology_issues": []
+  },
+  "files": {
+    "raw.json": "f21338f3ad60b092c0807d4084199f038782b159bb59ad12006df506ebcfc03c",
+    "segments.json": "d351ed775b080d80fcf9de84040a571128c977229a624287e2aa166041d82daa",
+    "release_contexts.json": "335f5f36d7f8178bb8a5c91e2887a5a7702a71fe83bfd63a5bf570797b17c40f",
+    "summary.json": "26563d7504358d513eface89f2be0ef842b9695f6e71096217baf7f076a1095a",
+    "analysis.json": "4edb9a24aba7c45e71530bc6521b2ae5861ef019794616b11055fd999196416d",
+    "parity.json": "0962600b0c15149d6bf7df6d82046b2fe5adb421df2bf9a182210bf50174d198",
+    "applicability.json": "e303a6ff8af1c23d14795aeeb2dcd810fe56bea8b84aa91f025e7283b3ba693e",
+    "input_configuration.json": "4109dfd3e5a927b8dea51fadf2a8b2d906975e25203871406e7a488a29c0510e",
+    "exit.json": "a6f4b616969be6c85845553f14964118ce2909ac8dc330af88f237ac8b5358fc",
+    "scientific/manifest.json": "efa877d003f0bf4af329ad3f8fb73a363584078fc1be0cb055874d7f5737b959"
+  },
+  "physical": {
+    "observed_end": 1.9999999999999787,
+    "simulated_end": 1.9999999999999787,
+    "stop_reason": "duration",
+    "failure": null,
+    "progress_reached": 12.523826641088764,
+    "progress_gain": 11.523826641088764,
+    "physical_boundary_crossings": 0,
+    "minimum_center_clearance": 0.4373138184436819,
+    "minimum_tracking_margin_clearance": 0.3573138184436819,
+    "solver_failures": 0,
+    "max_predicted_slack": 9.091525285379717e-11,
+    "plans_slack_above_1e6": 0,
+    "handoff_rejections": 0,
+    "accepted_handoffs": 19,
+    "planner_busy_misses": 0,
+    "codriver_busy_misses": 0,
+    "planner_delays_over_period": 0,
+    "applied_codriver_delays_over_period": 0,
+    "minimum_reserve": 0.667,
+    "actual_steering_tv": 0.2751498302328905,
+    "actual_heading_tv": 0.3024475009730345,
+    "actual_frenet_heading_tv": 0.22293121806873195,
+    "apex_vehicle_tracking": {
+      "vx": {
+        "rms": 0.0015125979913525457,
+        "max_abs": 0.007217141855370812
+      },
+      "vy": {
+        "rms": 0.01664532632244422,
+        "max_abs": 0.07322267292372253
+      },
+      "r": {
+        "rms": 0.04290562888368592,
+        "max_abs": 0.31147412800458496
+      },
+      "e_psi": {
+        "rms": 0.004477961375947072,
+        "max_abs": 0.021660569617978798
+      },
+      "s_abs": {
+        "rms": 0.00041981278594454044,
+        "max_abs": 0.0011332360471756342
+      },
+      "e_y": {
+        "rms": 0.0006746883273349105,
+        "max_abs": 0.0038598564960227386
+      }
+    },
+    "handoff_continuity": {
+      "vx": {
+        "rms": 0.0008631126052217973,
+        "max_abs": 0.0031838779298514197
+      },
+      "vy": {
+        "rms": 0.009397855466462551,
+        "max_abs": 0.033848584122538994
+      },
+      "r": {
+        "rms": 0.025490974383130218,
+        "max_abs": 0.09907571920610408
+      },
+      "e_psi": {
+        "rms": 0.0023105046424955473,
+        "max_abs": 0.0093822264503447
+      },
+      "s_abs": {
+        "rms": 0.000240073605040931,
+        "max_abs": 0.0007111126370062948
+      },
+      "e_y": {
+        "rms": 8.22218878299362e-05,
+        "max_abs": 0.0002599355530342809
+      }
+    }
+  }
+}
