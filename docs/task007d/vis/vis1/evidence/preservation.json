@@ -1,0 +1,23 @@
+{
+  "baseline": "d55d7b299217d6b62efc90cb525c2493224a7cca",
+  "tracked_before": 633,
+  "unchanged_tracked": 631,
+  "permitted_tracked_changes": [
+    "docs/CODEX_HANDOFF.md",
+    "docs/DECISIONS.md"
+  ],
+  "historical_raw_files": 11362,
+  "raw_size_mtime_changes": [],
+  "old_handoff_verbatim": true,
+  "old_decisions_verbatim": true,
+  "all_core_config_fixtures_historical_scripts_unchanged": true,
+  "post_physical_run_source_changes": [
+    "scripts/task007dvis/export.py",
+    "scripts/task007dvis/report.py",
+    "tests/unit/test_vis_exports.py"
+  ],
+  "doc_links_checked": 19,
+  "free_bytes": 7217184768,
+  "measurement_guards": [],
+  "documentation_audit_note": "Initial link audit ran before this generated record existed; repeated after correcting generation order. No scientific data or executable correction."
+}

@@ -1,0 +1,23 @@
+{
+  "passed": true,
+  "checks": {
+    "configuration": true,
+    "simulation": true,
+    "fixture": true,
+    "vehicle": true,
+    "source": true,
+    "no_urgent": true
+  },
+  "source_mismatches": [
+    "src/apex/simulation/asynchronous.py",
+    "src/apex/simulation/fixed_handoff.py"
+  ],
+  "source_change_reason": "Previously reviewed urgent-demand bookkeeping; no trigger in C3",
+  "old_revision": "c56e5095105cd1c70649127e246c48ee70c26428",
+  "retained_hashes": {
+    "results/task007d/c/amended/C3_g2.0_variable/summary.json": "e1aebf71ca2b81ea2e1e67b2fdda85b8b9d7b3bda22cc94ec5ebea762180fe7e",
+    "results/task007d/c/amended/C3_g2.0_variable/raw.json": "2bc29e1e20f84041d94741eb89d6c646f17a7c2d181403a805b0fb54da4652e3",
+    "results/task007d/c/amended/C3_g2.0_variable/segments.json": "d351ed775b080d80fcf9de84040a571128c977229a624287e2aa166041d82daa",
+    "results/task007d/c/amended/C3_g2.0_variable/release_contexts.json": "8a03cbd1c121e142338589f1fb6c6f845c7870e16a48929205930f52bba048f8"
+  }
+}

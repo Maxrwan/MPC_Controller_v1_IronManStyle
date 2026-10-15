@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/scripts/run_task007dvis.py", line 81, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/scripts/run_task007dvis.py", line 46, in main
+    return 2 if run(case, folder, native) else 0
+                ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/scripts/task007dvis/worker.py", line 44, in run
+    raise ValueError("Historical C3 applicability gate failed")
+ValueError: Historical C3 applicability gate failed

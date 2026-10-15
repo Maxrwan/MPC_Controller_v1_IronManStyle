@@ -970,3 +970,20 @@ to freeze an architecture. A remains production reference; C70/C80 remain challe
 final selection, Performance freeze and all Efficiency/B/lightweight work remain unexecuted.
 See TASK007D_CX_RESULTS.md and TASK007D_CX_REPRODUCTION.md. A pushed WORK delivery is not
 formal verification or acceptance and authorizes no next study.
+
+## ADR-162 — VIS-1 candidate scientific export is independent of Workbench and runtime
+
+The VIS-1 Workbench acceptance addendum conditionally accepts apex-run/0.1.0. Control owns
+the research-only export adapter; the separately supervised Workbench owns ingestion and UI.
+Required native histories, partial event phases/source identity, explicit missing/censored data,
+accepted authority intervals and physical command applications remain distinct. Preserve canonical
+SI ordering, immutable fixture/source hashes, native RK4 endpoints and separate scientific/export
+revisions. No runtime observer, scheduler or controller change is needed. An unobserved terminal
+request stays unknown under applied_records_plus_available_release_snapshots with an incomplete
+unapplied tail. The first seam crossing from s_abs=1 m is partial, never a completed lap.
+
+Four retained-evidence packages pass adapter validation; final contract acceptance awaits
+Workbench ingestion. A first VIS parity physical run exactly matches C3, but its offline snapshot
+writer failed. Retain the failed attempt and missing metadata, test the bounded export correction
+and stop before C70 parity or long runs for Engineering Review. No scientific architecture
+conclusion or production change follows. See TASK007D_VIS1_RESULTS.md and APEX_RUN_INTERFACE_0_1_0.md.

@@ -1,0 +1,368 @@
+{
+  "schema": "apex-run/0.1.0",
+  "review_status": "candidate_pending_representative_Workbench_ingestion",
+  "run_id": "nominal_A",
+  "architecture": "A",
+  "status": "incomplete_duration",
+  "termination": {
+    "reason": "duration",
+    "failure": null,
+    "stop_gate": [],
+    "simulated_end": 0.21,
+    "native_start": 0.0,
+    "native_end": 0.21,
+    "intended_duration": 2.0,
+    "requested_crossings": 2
+  },
+  "coverage": {
+    "crossings": [],
+    "crossing_count": 0,
+    "complete_laps": 0,
+    "windows": [
+      {
+        "kind": "lap",
+        "index": 0,
+        "start": 0.0,
+        "end": 0.21,
+        "start_s": 1.0,
+        "end_s": 2.1112358509850684,
+        "complete": false,
+        "status": "censored_partial"
+      }
+    ]
+  },
+  "canonical_state": [
+    "vx",
+    "vy",
+    "r",
+    "e_psi",
+    "s_abs",
+    "e_y"
+  ],
+  "state_units": [
+    "m/s",
+    "m/s",
+    "rad/s",
+    "rad",
+    "m",
+    "m"
+  ],
+  "controls": [
+    "delta",
+    "a_cmd"
+  ],
+  "control_units": [
+    "rad",
+    "m/s^2"
+  ],
+  "clock": "simulated physical seconds; host timings separate",
+  "a_cmd": "Fx/m, not dvx/dt",
+  "geometry": {
+    "position": "x=c_x(s)-e_y*sin(psi_c); y=c_y(s)+e_y*cos(psi_c)",
+    "heading": "psi_world=psi_c(s)+e_psi",
+    "s": "unwrapped centerline arc length; geometry uses s modulo L",
+    "frame": "world XY metres, CCW radians, Frenet left positive",
+    "source": "hashed fixture/track_source.json; existing periodic centerline"
+  },
+  "request_coverage": {
+    "mode": "applied_records_plus_available_release_snapshots",
+    "unapplied_tail_complete": false,
+    "terminal_unobserved_request": "unknown"
+  },
+  "accepted_authority_intervals": [
+    {
+      "plan_id": 0,
+      "start": 0.0,
+      "end": 0.135,
+      "origin": "startup",
+      "expiry": 0.8,
+      "superseded_at": 0.135,
+      "fallback_at": null,
+      "right_censored": false,
+      "interval_rule": "left_inclusive; end_exclusive_except_observation_endpoint",
+      "sample_provenance": "reconstructed",
+      "reconstruction": "recorded_acceptance_and_expiry; no_packet_id_interpolation"
+    },
+    {
+      "plan_id": 1,
+      "start": 0.135,
+      "end": 0.21,
+      "origin": "accepted_handoff",
+      "expiry": 0.917,
+      "superseded_at": null,
+      "fallback_at": null,
+      "right_censored": true,
+      "interval_rule": "left_inclusive; end_exclusive_except_observation_endpoint",
+      "sample_provenance": "reconstructed",
+      "reconstruction": "recorded_acceptance_and_expiry; no_packet_id_interpolation"
+    }
+  ],
+  "packet_status": {
+    "0": "startup",
+    "1": "accepted",
+    "2": "pending"
+  },
+  "provenance": {
+    "scientific_revision": "c56e5095105cd1c70649127e246c48ee70c26428",
+    "scientific_source_sha256": {
+      "src/apex/__init__.py": "2dd176027291d40716c8c828e8a9994afbf247d22bea1426fac52c259cbbc33b",
+      "src/apex/config.py": "40227b4ed2a38e30ecfb9acc7f308cf9db31b54dc813bb28850b25800877e0ad",
+      "src/apex/control/__init__.py": "12878dbd9e38ae415462ea0eccbfc315387856736233a7ea4b2f840b1a53e96a",
+      "src/apex/control/base.py": "119b6cb4235421b9728838b47e4913158402997957956a473009c43435acb870",
+      "src/apex/control/baseline/__init__.py": "2759255fac566e141a1632b0ba734ef840ae4462054f20246ca958c175ea4398",
+      "src/apex/control/baseline/controller.py": "1d738265c24e8ff6fc557ff8d4f82669978fe12e212dcd70dc45eb94cf438ec4",
+      "src/apex/control/baseline/lqr.py": "68e191235e03dda744cc9894ca0981a8df8bd9f1bd0e6331f7872148014cf818",
+      "src/apex/control/baseline/references.py": "9fa0f4c67d8fdd4a535bca5fa43854cf85660d70b6246632ec711f469ad2b081",
+      "src/apex/control/baseline/speed.py": "5a41c32eaa491f5bf8fdec49827bac3d9aafd78924f10786fd4000d3a0ec941f",
+      "src/apex/control/energy_mpc/__init__.py": "cec4f88e8acf04bc142121502f6a42b48282b65721f57de686f9fdcbfeefa373",
+      "src/apex/control/lmpc/__init__.py": "4c555b6b894a36c984d88962b1580781f1deac5b13d0825f447fcdc0b569159c",
+      "src/apex/control/local_mpc/__init__.py": "49bb57475674229e15dc5785b68010bb8f7fc60bb452b70f25b9e727e4e3c6f8",
+      "src/apex/control/local_mpc/model.py": "5eab52bbedfd5c725a8a11348078e3cd111195b83bb98e4f14ea8ecce37108d2",
+      "src/apex/control/local_mpc/qp.py": "745f0a56e22d92cb9ec0b6bcb63d24cc36269c698426a1fb95b7f5010da051ec",
+      "src/apex/control/local_mpc/tracker.py": "96d79fbb62b92dd96b6f69da2c803db96c5cee8a13d1d30a0d9e62174a951761",
+      "src/apex/control/mpc/__init__.py": "d91fd708ea7a53f7a8a23f558b5724832304b8508dd57828e4bfcaa946bac124",
+      "src/apex/control/mpc/controller.py": "63e17bd863dcd8d649d9f382a545f5c004e982fd87e837aa6b283ec1b1206b82",
+      "src/apex/control/mpc/cost.py": "1b8367af3a41c72fc24573a92d9dba526100e53985e33d2626084b1222c5623b",
+      "src/apex/control/mpc/preview.py": "c3e74f7c197ed42961f3494b6be8061570d294d790214e2e27401a2771a418cf",
+      "src/apex/control/mpc/problem.py": "b0560718155ff04074633aa92c4374a15ec975f21f5e3a022f4e94d52636087e",
+      "src/apex/control/mpc/symbolic_model.py": "99b82ead0f7fae2c1451f8e938853fa25a8b74f040b0b22df5225fba5b5e0a6d",
+      "src/apex/control/mpc/warm_start.py": "0faab03574394c3ecebe071a7c5f4e9e01d704a7d9b625fb6d0c122cc4cb34ed",
+      "src/apex/control/trajectory/__init__.py": "cea577e6cbeb9df27efdf9b96497e94b61c6e135717bdbbe2704312072b2a238",
+      "src/apex/control/trajectory/packet.py": "00830d2ced67321547add91a4e241664689cdeed57d57f0b9b2d95552b9fd704",
+      "src/apex/control/trajectory/planner.py": "6dcc8abe959fa65d7036f90379179703f54091c55a54bedee4db9a47d4622e44",
+      "src/apex/control/trajectory/prediction.py": "0013fd74299a68993dabbc381ca384837f09b862011956a94fd1d3b138b839ab",
+      "src/apex/control/trajectory/tracker.py": "ffa5d9968650c97411121ba3dedd89a5de04a1a9ce832c50efa351763567ef27",
+      "src/apex/coordinates/__init__.py": "1c443357b2a8e949a157c09b6fb3b50c170d98c908da8c0e8ebbd7e25f919555",
+      "src/apex/coordinates/angles.py": "2ed31ef5153e42083e727efc10b7875277f7f2641a5e16e9790e3f6073b33d05",
+      "src/apex/coordinates/frenet.py": "5fd10e1648847071561086f394914f6812422b0ad04f81ef2a517968334e17bd",
+      "src/apex/estimation/__init__.py": "573850f2b308a7d68c3b18e4ee52976ea90b5b32d0de74f496bf577c6ac3ac56",
+      "src/apex/identification/__init__.py": "ec7b3bcadc6b095509dc3d4bec8c34f46614de839a4f8b1784152c6c328eb573",
+      "src/apex/logging/__init__.py": "f4fdf259c2599736e46e06188a3a50849a1cc5dac9ade77f083e9534442fe24a",
+      "src/apex/models/__init__.py": "d530a05e192b5d6c8b815c3edb2599a88bc35acac91c83280cd8e22d31a1d0d2",
+      "src/apex/models/base.py": "3bd8085e89978410bbe8581903b6280bd84f1a1ca956f1bb62f974462df7c525",
+      "src/apex/models/battery/__init__.py": "87bd243ef11e6df4eff89e2e84d97bfe7a6fd3f59b98b2c70270734f933584b4",
+      "src/apex/models/constants.py": "1b485d45ad2d74aaa256c1aab00157d7c610db0bea9f744d75376b8e816534be",
+      "src/apex/models/errors.py": "81baff4659f36bb6aea91e6a27327260b4d69e23de22963de6832199e7f1f916",
+      "src/apex/models/frenet.py": "a8c6190bd6be9f2a284c83b5c31e5d6cb2d8ef1f791b49bbebdd3c110a36ee96",
+      "src/apex/models/integration.py": "02009193fb2d25e83560a2da37f216048dfa3ededcb3de8616b90e411473ad51",
+      "src/apex/models/opponent/__init__.py": "530ec276bca389d02a37a451422c8e1c0504f46874a6ff13da3cd058b07b98cb",
+      "src/apex/models/tire/__init__.py": "000e7ac305a2f5bb610e6ee9e066a6f8d82a0ac335c2b9253d292a2c3c96907f",
+      "src/apex/models/tire/base.py": "da1b635a6da1de465ac7af61dcf3cad8d23ef406eb6dd7f45dad825bc3f60ccf",
+      "src/apex/models/tire/config.py": "73f7e47ae5768a6961a8ca65aa40a5da7ecd77e412ac6995a459e969daa83877",
+      "src/apex/models/tire/grip.py": "e91bab930ee0650578ede2964ef680f77663cfd34d26ab1682c232b34c6d8c90",
+      "src/apex/models/tire/linear.py": "6ae5888b0000cd57a88788463977be1a90fa8e1f6a332f131c66623192ce9cf3",
+      "src/apex/models/vehicle/__init__.py": "ab6dddf29c21f198a84b17e28f3dcb8b4b1e6543e0ce5533d4166a062d549a9f",
+      "src/apex/models/vehicle/dynamic_bicycle.py": "c93b674924eed24f9641ebe263863b3422cba5eb1665c0d93dd6cd00bdfd462f",
+      "src/apex/models/vehicle/force_allocation.py": "e77d8c87efdaa9c008ec45385ad4dad326cfa2e003798c08e29a5fb9a17647f8",
+      "src/apex/models/vehicle/kinematic.py": "29eb7cb86d02660e477c95506967d62940a306b95ef3ae76b5162af9370dde55",
+      "src/apex/models/vehicle/load_transfer.py": "e96c74199a7d8147866529cb4ecfffbfce74815cb57accb52ea54b407b873be1",
+      "src/apex/models/vehicle/parameters.py": "5cfce45b4a87577b17193b44cfa24f11c8e29c93082564a596f7ddf4e797fbb2",
+      "src/apex/optimization/__init__.py": "3af529201789579819dc40831ba819d7651a18d5df5b905928aa3ebf9dc09a55",
+      "src/apex/optimization/base.py": "f4b2368f5055cc9283ed9eab481a8667f4152a751162a22d72f2ed44e87b942b",
+      "src/apex/optimization/solvers/__init__.py": "10e2109b93a14616b4c0f083fc40b374c4ad77cd73150e090b8c95f891d3e7a0",
+      "src/apex/optimization/solvers/ipopt.py": "3897eb4e5c2cf55b33b96e361e0c83e43ce783172e7095f59daf72785473c728",
+      "src/apex/planning/__init__.py": "2d3659e2d00a8107236f801619ef4573ae0da65ebcd5415746cab8853722e018",
+      "src/apex/planning/defensive/__init__.py": "145d70d1913b8e2169b7d4414d8c2ea3fd9cf5a21675e881ffd60124c525cb06",
+      "src/apex/planning/racing/__init__.py": "99ab7b8a2865a988c1cee93a6d86661f751b7555645488a8bb3a64a3397d3f48",
+      "src/apex/planning_reference/__init__.py": "a0bd2fea9b52abc64271cd57e2b26857c67b148246b2f6ce1baa988349b0899f",
+      "src/apex/planning_reference/reference.py": "d147a6eb193b37e3c7773261d19550c1383528b7aad6f204818f432325b327e3",
+      "src/apex/planning_reference/speed_polynomial.py": "a11d69b8dae53b62b4841ac522843decd7f54f5d78a63f4613c2d29478106ade",
+      "src/apex/planning_reference/track.py": "a80943d00203e83b11557bf254df66394db466969462ec22a3ae370780a6543d",
+      "src/apex/simulation/__init__.py": "84069322b2562012fcfd863d27f6fc88a0f2d5eaba3a4040f10e896cffc4a513",
+      "src/apex/simulation/asynchronous.py": "38b6e352684a5fbe63117b2698c905e58af99ce268baa62e36c96dd9eb358175",
+      "src/apex/simulation/base.py": "1797e513e022eefc1b45b162115de08011d04f82e0fa7e6ce188ab255e0a7b9d",
+      "src/apex/simulation/diagnostic_timing.py": "373c20d762328880c7fa25856f474f49d534b50c176a72f0df97a2f3838bf23f",
+      "src/apex/simulation/fixed_handoff.py": "84c607589882f630e74cfcc5326a55f2da0a1d0476c669097e593674e174f4a9",
+      "src/apex/simulation/latency_metrics.py": "b91bbbecbeaeae61178d0f544addf048c063b22e0c3e6cec86ed25871fc5cc86",
+      "src/apex/simulation/metrics.py": "515f4c4cd3454c353ec8242fece393847fdbcbc37239c0ba08deb306593fecea",
+      "src/apex/simulation/prediction_capture.py": "f8f4d7d840a73744aebbe85dc09d817b79e839022bd7298bbde792ee061d4a29",
+      "src/apex/simulation/runner.py": "99dd44020405dd121433637ccf43d53639451a2b7b595bed255555144802cb34",
+      "src/apex/simulation/timing.py": "1bcd5ac042dc761ff8ed83028d0dde372a1569a9549f84e7f92061e109fa968f",
+      "src/apex/state.py": "b2b16555f8ae83f041ee821906305accc56010b643bb3fa514f90a8a17e66862",
+      "src/apex/track/__init__.py": "95dd539a129d605aa979952c68c75d633738d520fa66e06a491b5bfb2ef7907c",
+      "src/apex/track/base.py": "c15e48dfa2a08bfd57040c80b1280a6f56234503361a38cb3cda6cb35e93cca1",
+      "src/apex/track/centerline.py": "caf28a32f24198fbfd57a7d6a987822f9b4df88ff6b5f1bca5c1f57e2b79429f",
+      "src/apex/track/closed_track.py": "c14fb27c1a1182dec564a5a679832e67c6480fb382a15c05dd2c998b138a350e",
+      "src/apex/track/io.py": "ee2f5a27740684ddba2f1907c88e8893c6cf0c59150352d35845914d5fd30b65",
+      "src/apex/track/progress.py": "fef18ea7fe610cca1ff80f32acdecf5f756b6d26c1a47e47f0eb23b7ae8dc0d8",
+      "src/apex/track/synthetic.py": "1e7ed0900af9971d6c68ca810570b9177a97eb830361c580724870752f4744c0",
+      "src/apex/utils/__init__.py": "ffac589a01b9e73689442a43e9060e85ebc90f34f2c9bd91631256d4e7c86e21",
+      "scripts/task007dc/__init__.py": "0cd3e223075d120f3e4c14f8bd7995b894c43cc04df2209325f6c8f905e836cb",
+      "scripts/task007dc/ecdf.py": "e8eb5510f41a7eec35048b5aa46909c1e21b5cf01b0c92ff89b5595ce691dbb8",
+      "scripts/task007dc/worker.py": "f330280b7564cea715841e9e8fbd7bd4699fc98ba033359c44e5a0b4241c1f30",
+      "scripts/run_task007dc.py": "ad9ee59c5231e5789d4c5f87af66f381055d02eb3b672459b28223bfcf2d22bc",
+      "docs/task007d/c/amended/protocol.json": "7926330609c2c706e8b8229a70eb2ef291cd1d39537aeb7dae75dbc54b989497"
+    },
+    "export_revision": "d55d7b299217d6b62efc90cb525c2493224a7cca",
+    "export_source_sha256": {
+      "scripts/task007dvis/worker.py": "fd6dedd1caace418d4f3b60ef973f387d3e240a5ce8fa87c774450500f89bd5a",
+      "scripts/task007dvis/analysis.py": "6c294b8f17dd035daf91fac83a6bf427bf2d74b3eeeb5bd07d65556e09d3517a",
+      "scripts/task007dvis/parity.py": "80123c2bf4b0489af5a9f5406eeacd4d54a58b1bf232f22b09450e5b6e426456",
+      "scripts/task007dvis/protocol.py": "47a2cea6b2d0a95e690a8d266c937905820276ccb68d62f7759f94d51861eb37",
+      "scripts/task007dvis/interface.py": "4750700fce4972defaef7a605cb47339988905facce5ae43edeb60361c37ca5f",
+      "scripts/task007dvis/__init__.py": "199ff07f148d179902903c563bb19558a2aa599b8c0ebbdc85b39f61a96dae5c",
+      "scripts/task007dvis/coverage.py": "9c8bc10bfccd269d25ba8257b7a7209998b2dda320073bda4f5967e3c0ea25db",
+      "scripts/task007dvis/export.py": "97925ae6abd74480511ac763ee216525e0afae08a7ccb8ea9882530c9facb59c",
+      "scripts/task007dvis/report.py": "d051d4d449bfdfe83c166e5de731277ecda375002530aae6c51e80264e414788",
+      "scripts/task007dvis/fixtures.py": "e70ddf70bf7b5647cbbf8e05d677aeac1d2b0cf01b853590b271fa2ec7688f74",
+      "scripts/task007dvis/validation.py": "52016c6439aed01456b38069d213a149796ab9c7b1155eae46cd9141233bcc8d"
+    },
+    "dirty_status": "?? docs/APEX_RUN_INTERFACE_0_1_0.md\n?? docs/task007d/vis/\n?? scripts/run_task007dvis.py\n?? scripts/task007dvis/\n?? tests/unit/test_vis_exports.py\n",
+    "evidence_kind": "retained_evidence_censored_view; not_new_experiment"
+  },
+  "fixture_sha256": {
+    "configs/planning/task007b/gamma_2p000/planning_reference.csv": "6206e18ce3cb105d58d0923564336e28c00ec44aee3fd8a06ff7a37bcf84e2df",
+    "configs/planning/task007b/gamma_2p000/planning_manifest.json": "5e7bccf1a300fb6737fc6b6b6e0c9aa921c110b11ffc5762a73f57f830a8660c",
+    "configs/planning/task007b/gamma_2p000/speed_polynomial.json": "f335e78fc6c735c952f49078077a573ee989dd2be71497e90451e34a79f2c7ea",
+    "configs/planning/task007b/gamma_2p000/track_source.json": "5f4d1734d7fec7de56d346e8f90bf272a3de9c05ac42f76cd49004e7f9183e55",
+    "configs/planning/task007b/gamma_2p000/planning_validation.json": "279582d2dcf37fdf4008ddc7f926109ef3d730a0e64c188d7003755d08871fa7"
+  },
+  "raw_sha256": {
+    "results/task007d/c/amended/C3_g2.0_variable/summary.json": "e1aebf71ca2b81ea2e1e67b2fdda85b8b9d7b3bda22cc94ec5ebea762180fe7e",
+    "results/task007d/c/amended/C3_g2.0_variable/raw.json": "2bc29e1e20f84041d94741eb89d6c646f17a7c2d181403a805b0fb54da4652e3",
+    "results/task007d/c/amended/C3_g2.0_variable/segments.json": "d351ed775b080d80fcf9de84040a571128c977229a624287e2aa166041d82daa",
+    "results/task007d/c/amended/C3_g2.0_variable/release_contexts.json": "8a03cbd1c121e142338589f1fb6c6f845c7870e16a48929205930f52bba048f8"
+  },
+  "artifacts": {
+    "boundaries.csv": {
+      "sha256": "f16bd9e57f0077288c3228315cf145cc280e80fdf5c34449ba4a15d12277b99c",
+      "bytes": 96,
+      "rows": 0
+    },
+    "controls.csv": {
+      "sha256": "e9d1adb30cbc42dc11753021e2d1b788e5ccd8d62989d0d87a03e77c4e4acc8d",
+      "bytes": 13404,
+      "rows": 21
+    },
+    "cycles.csv": {
+      "sha256": "3c2baac90596150a5876240085cd171a10ffd93817c55be3bf4c88418f67dbd6",
+      "bytes": 1609,
+      "rows": 2
+    },
+    "events.csv": {
+      "sha256": "d42ec5b6627b811b3a6b51105a296f8f08f3c92308852826867bf4962f357311",
+      "bytes": 62405,
+      "rows": 46
+    },
+    "fixture/planning_manifest.json": {
+      "sha256": "5e7bccf1a300fb6737fc6b6b6e0c9aa921c110b11ffc5762a73f57f830a8660c",
+      "bytes": 1921,
+      "rows": null
+    },
+    "fixture/planning_reference.csv": {
+      "sha256": "6206e18ce3cb105d58d0923564336e28c00ec44aee3fd8a06ff7a37bcf84e2df",
+      "bytes": 415410,
+      "rows": 3097
+    },
+    "fixture/planning_validation.json": {
+      "sha256": "279582d2dcf37fdf4008ddc7f926109ef3d730a0e64c188d7003755d08871fa7",
+      "bytes": 1306,
+      "rows": null
+    },
+    "fixture/speed_polynomial.json": {
+      "sha256": "f335e78fc6c735c952f49078077a573ee989dd2be71497e90451e34a79f2c7ea",
+      "bytes": 308696,
+      "rows": null
+    },
+    "fixture/track_source.json": {
+      "sha256": "5f4d1734d7fec7de56d346e8f90bf272a3de9c05ac42f76cd49004e7f9183e55",
+      "bytes": 918,
+      "rows": null
+    },
+    "metrics.csv": {
+      "sha256": "05fdeefa6f0ed609faf8dc60d0b2f563d3d2924e20847892041974bab4790412",
+      "bytes": 6383,
+      "rows": 1
+    },
+    "packets.json": {
+      "sha256": "6443de71c49aa6449abf5c6cb5bfb0a7baf21d26c83e6d8f4bfe633cdece2762",
+      "bytes": 47104,
+      "rows": null
+    },
+    "planning.csv": {
+      "sha256": "6206e18ce3cb105d58d0923564336e28c00ec44aee3fd8a06ff7a37bcf84e2df",
+      "bytes": 415410,
+      "rows": 3097
+    },
+    "reserves.csv": {
+      "sha256": "b4c47d9f8c0051103ec49f9953295cb6936e69e20bd83dcd38c32fa2a03333bb",
+      "bytes": 2357,
+      "rows": 43
+    },
+    "segments.csv": {
+      "sha256": "c989bd5c7a644500bfd1dafd0bd67b1725b5f3e4aada4bcee756523f544e1907",
+      "bytes": 15186,
+      "rows": 42
+    },
+    "states.csv": {
+      "sha256": "42ab8c2f8056fd4facd3172fd6c0689c5d8181ee19f0d4d4adac72a630d705bb",
+      "bytes": 50157,
+      "rows": 43
+    }
+  },
+  "channel_availability": {
+    "states": {
+      "status": "available",
+      "reason": null
+    },
+    "segments": {
+      "status": "available",
+      "reason": null
+    },
+    "controls": {
+      "status": "available",
+      "reason": null
+    },
+    "cycles": {
+      "status": "available",
+      "reason": null
+    },
+    "reserves": {
+      "status": "available",
+      "reason": null
+    },
+    "boundaries": {
+      "status": "empty",
+      "reason": "no_events_in_coverage"
+    },
+    "metrics": {
+      "status": "available",
+      "reason": null
+    },
+    "events": {
+      "status": "available",
+      "reason": null
+    }
+  },
+  "field_provenance": {
+    "physical_state": "native",
+    "recorded_step_endpoints": "native",
+    "world_coordinates": "reconstructed",
+    "reference_sampling": "reconstructed",
+    "planning": "native_offline_reference",
+    "display_interpolated": "not_used_in_acceptance_metrics"
+  },
+  "metric_definitions": {
+    "vis1.native_window.v1": {
+      "source": "analysis.window_metrics",
+      "extrema": "native physical evidence including recorded terminal endpoint",
+      "rms": "left-held time weights over native sample intervals; angular residual wrapped",
+      "variation": "native adjacent differences within scope; heading wrapped",
+      "crossing_duration": "linear progress in recorded step bracket"
+    }
+  },
+  "null_policy": "JSON null / empty CSV cell; row missing_reasons and channel_availability; absent event-type fields not_applicable",
+  "unavailable_channels": [
+    "exhaustive_unapplied_command_tail",
+    "independent_world_position_truth"
+  ],
+  "phase_semantics": {
+    "1": "due actuator application",
+    "2": "completion and immediate variable handoff",
+    "3": "waiting/fixed handoff eligibility and miss",
+    "4": "disturbance/fallback",
+    "5": "codriver sampling/busy/urgent trigger",
+    "6": "planner release/busy"
+  },
+  "ordering": "partial order only; same-time loop continuations cannot be globally ranked from these logs"
+}

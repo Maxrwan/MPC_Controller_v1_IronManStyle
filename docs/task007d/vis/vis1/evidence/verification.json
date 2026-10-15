@@ -1,0 +1,132 @@
+{
+  "base_revision": "d55d7b299217d6b62efc90cb525c2493224a7cca",
+  "initial_prerequisite_command": [
+    ".venv/bin/python",
+    "-c",
+    "from threading_study.config import configure_accelerate; configure_accelerate(1); import sys,pytest; raise SystemExit(pytest.main(sys.argv[1:]))",
+    "-q",
+    "tests/unit/test_state.py",
+    "tests/unit/test_config.py",
+    "tests/unit/test_dynamic_components.py",
+    "tests/unit/test_dynamic_bicycle.py",
+    "tests/unit/test_grip_tire.py",
+    "tests/unit/test_mpc.py",
+    "tests/unit/test_progress_objective.py",
+    "tests/unit/test_trajectory_tracker.py",
+    "tests/unit/test_cx_closure.py",
+    "tests/unit/test_async_chronology.py",
+    "tests/unit/test_diagnostic_timing.py",
+    "tests/unit/test_fixed_handoff_contract.py",
+    "tests/unit/test_fixed_handoff_scheduler.py",
+    "tests/unit/test_prediction_diagnostics.py",
+    "tests/unit/test_task007c_physics.py",
+    "tests/unit/test_track_geometry.py",
+    "tests/unit/test_track_io.py",
+    "tests/unit/test_frenet.py",
+    "tests/unit/test_planning_reference.py",
+    "tests/unit/test_aggressive_reference.py",
+    "tests/unit/test_task007b_export.py",
+    "tests/unit/test_task007c_metrics.py",
+    "tests/unit/test_fixed_handoff_analysis.py",
+    "tests/unit/test_threading_study.py",
+    "tests/unit/test_vis_exports.py",
+    "tests/integration/test_dynamic_track.py",
+    "tests/integration/test_grip_tracking.py",
+    "tests/regression/test_geometry_accuracy.py",
+    "--durations=20",
+    "--junitxml=results/task007d/vis/vis1/prerequisites.xml"
+  ],
+  "test_runs": [
+    {
+      "junit": "results/task007d/vis/vis1/prerequisites.xml",
+      "suites": [
+        {
+          "name": "pytest",
+          "errors": "0",
+          "failures": "0",
+          "skipped": "0",
+          "tests": "410",
+          "time": "165.426",
+          "timestamp": "2026-10-15T00:16:43.580172+03:00",
+          "hostname": "Marwans-MacBook-Air.local"
+        }
+      ],
+      "sha256": "b127b28e2fd7b9be0a54be38ff240ee3cfe698a582a0cd7f996d70eff7a1ba29"
+    },
+    {
+      "junit": "results/task007d/vis/vis1/vis_followup.xml",
+      "suites": [
+        {
+          "name": "pytest",
+          "errors": "0",
+          "failures": "0",
+          "skipped": "0",
+          "tests": "27",
+          "time": "1.043",
+          "timestamp": "2026-10-15T00:20:31.336785+03:00",
+          "hostname": "Marwans-MacBook-Air.local"
+        }
+      ],
+      "sha256": "ec909e7618fd22f1b97df96b52fd97460f9205cce9f0e6c4fe5df0c42bc1b822"
+    },
+    {
+      "junit": "results/task007d/vis/vis1/serialization_fix.xml",
+      "suites": [
+        {
+          "name": "pytest",
+          "errors": "0",
+          "failures": "0",
+          "skipped": "0",
+          "tests": "28",
+          "time": "1.189",
+          "timestamp": "2026-10-15T10:59:42.023163+03:00",
+          "hostname": "Marwans-MacBook-Air.local"
+        }
+      ],
+      "sha256": "b057609ffea9d267f973650a877effe514e0521de19e25681c4202a4d265deba"
+    },
+    {
+      "junit": "results/task007d/vis/vis1_execution/export_fix.xml",
+      "suites": [
+        {
+          "name": "pytest",
+          "errors": "0",
+          "failures": "0",
+          "skipped": "0",
+          "tests": "29",
+          "time": "1.026",
+          "timestamp": "2026-10-15T11:03:05.576896+03:00",
+          "hostname": "Marwans-MacBook-Air.local"
+        }
+      ],
+      "sha256": "083c0f7b8e3b8b6bc7a23bf36668d455f2881b6aa02ae76243f30de518e7699d"
+    },
+    {
+      "junit": "results/task007d/vis/vis1_execution/final_adapter.xml",
+      "suites": [
+        {
+          "name": "pytest",
+          "errors": "0",
+          "failures": "0",
+          "skipped": "0",
+          "tests": "30",
+          "time": "15.405",
+          "timestamp": "2026-10-15T11:05:13.906564+03:00",
+          "hostname": "Marwans-MacBook-Air.local"
+        }
+      ],
+      "sha256": "ae719936fa7e93d949d256cd39e8b7400bfeb8f6d8449025825c6d57961e5019"
+    }
+  ],
+  "initial_passed": 410,
+  "final_adapter_passed": 30,
+  "distinct_current_prerequisites": 414,
+  "full_regression": "DEFERRED to authorized VIS-4 formal VERIFICATION",
+  "ruff": "check and format: passed 13 Python files",
+  "core_change": "none",
+  "post_run_corrections": [
+    "JSON ndarray and numpy scalar conversion; exclusive output creation",
+    "report failed worker separately from unexecuted cases; omit unsupported paired figures"
+  ],
+  "rerun_scientific_experiment": false
+}

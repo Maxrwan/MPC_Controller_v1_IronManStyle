@@ -1,3 +1,35 @@
+# Current handoff — Task007D-VIS / VIS-1 WORK and Workbench addendum
+
+**Stage/status:** **BLOCKED — partial WORK, Engineering Review required.** The requested
+`WORK_COMPLETE_PENDING_REVIEW` exit is not achieved. No long run or new measured campaign began.
+**Revision:** Base main `d55d7b299217d6b62efc90cb525c2493224a7cca`; run source and corrected
+export delivery source are separately hashed in [evidence](task007d/vis/vis1/evidence/verification.json).
+Exact delivery SHA/URL follow commit and push. Core, fixtures and historical research scripts are unchanged.
+**Files:** New scripts/task007dvis/, strict launcher, test_vis_exports.py;
+[results](TASK007D_VIS1_RESULTS.md), [reproduction](TASK007D_VIS1_REPRODUCTION.md),
+[apex-run/0.1.0](APEX_RUN_INTERFACE_0_1_0.md), compact evidence/four packages, ADR-162 and this prepend.
+**Tests:** 410 prerequisite passes before simulation; final affected adapter suite 30 passes
+(414 distinct applicable cases including unchanged prerequisites), zero test failures/skips.
+Scoped Ruff lint/format pass on 13 files. Full numerical regression remains deferred to VIS-4.
+**Execution:** Initial pre-simulation comparison rejected JSON [] versus live (); corrected and
+focused-tested without changing values. Sole physical parity_A run completed 2 s and matches all
+20 retained C3 comparisons exactly, including states, controls, packets, NMPC inputs and RK4 segments.
+It then failed exporting NumPy arrays in detached release contexts. Raw/segments and failure logs retained.
+**Stop/missing evidence:** Writer corrected and tested, but no racing rerun. Release contexts,
+observed native thread counts and worker timer/summary were not saved; do not invent them or claim a
+complete worker pass. C70 parity and all six long runs are NOT EXECUTED. Launcher remains blocked.
+Saved A trace has zero boundary/solver/chronology failures, minimum center clearance 0.437314 m,
+slack 9.09e-11 m and reserve 0.667 s; no full lap or A/C70 performance conclusion.
+**Addendum:** Four retained-evidence candidate packages pass adapter validation, including C70
+miss/old authority, censored request tail and empty channels. Source identity/partial event ordering,
+provenance, nulls, coverage and hashes are explicit. Workbench ingestion/final acceptance pending;
+no UI or request observer. No paired figures generated without paired scientific evidence.
+**Next review:** Review failed prerequisite/export correction and authorize its continuation if
+appropriate; do not bypass source/predecessor gates or silently add a parity rerun. No VIS-2/3,
+new track, B/C80, retuning, production promotion, Performance freeze or Efficiency work.
+
+---
+
 # Current handoff — Task007D-VIS / VIS-0
 
 **Stage/status:** `WORK_COMPLETE_PENDING_REVIEW` — planning/documentation only. VIS-1–4 remain

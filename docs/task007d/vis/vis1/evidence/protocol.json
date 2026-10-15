@@ -1,0 +1,17 @@
+{
+  "base_revision": "d55d7b299217d6b62efc90cb525c2493224a7cca",
+  "frozen_matrix_file": "results/task007d/vis/vis1_execution/frozen_matrix.json",
+  "frozen_matrix_sha256": "fd1eb1c439e02b08ec49592f88fdecabe3384ba766fbbc418c4d42ba99e84532",
+  "controlled_planner_pattern_s": [
+    0.035,
+    0.055,
+    0.045,
+    0.025
+  ],
+  "planner_and_codriver_history_entries": 8001,
+  "codriver_delay_s": 0.005,
+  "native_policy": "SINGLE fresh worker",
+  "original_prerequisite_record": "results/task007d/vis/vis1/prerequisites_initial.json",
+  "execution_prerequisite_record": "results/task007d/vis/vis1_execution/prerequisites.json",
+  "execution_config_sha256": "a6bf5fb11b9e1feebb02dfac1d1afe46eafc655e63dbd5da85492f35310dd2c2"
+}

@@ -1,0 +1,74 @@
+{
+  "nominal_A": {
+    "passed": true,
+    "rows": {
+      "states": 43,
+      "segments": 42,
+      "controls": 21,
+      "planning": 3097,
+      "cycles": 2,
+      "events": 46,
+      "boundaries": 0,
+      "metrics": 1
+    },
+    "artifacts": 15,
+    "acceptance": "adapter_checks_only; Workbench_ingestion_pending",
+    "source": "results/task007d/c/amended/C3_g2.0_variable",
+    "cutoff": 0.21,
+    "source_hashes_unchanged": true
+  },
+  "C70_miss": {
+    "passed": true,
+    "rows": {
+      "states": 101,
+      "segments": 100,
+      "controls": 50,
+      "planning": 3097,
+      "cycles": 5,
+      "events": 114,
+      "boundaries": 0,
+      "metrics": 1
+    },
+    "artifacts": 15,
+    "acceptance": "adapter_checks_only; Workbench_ingestion_pending",
+    "source": "results/task007d/c/amended/C2_miss",
+    "cutoff": 0.5,
+    "source_hashes_unchanged": true
+  },
+  "censored_A": {
+    "passed": true,
+    "rows": {
+      "states": 39,
+      "segments": 38,
+      "controls": 19,
+      "planning": 3097,
+      "cycles": 1,
+      "events": 41,
+      "boundaries": 0,
+      "metrics": 1
+    },
+    "artifacts": 15,
+    "acceptance": "adapter_checks_only; Workbench_ingestion_pending",
+    "source": "results/task007d/c/amended/C3_g2.0_variable",
+    "cutoff": 0.19,
+    "source_hashes_unchanged": true
+  },
+  "empty_optional_A": {
+    "passed": true,
+    "rows": {
+      "states": 1,
+      "segments": 0,
+      "controls": 0,
+      "planning": 3097,
+      "cycles": 0,
+      "events": 0,
+      "boundaries": 0,
+      "metrics": 0
+    },
+    "artifacts": 14,
+    "acceptance": "adapter_checks_only; Workbench_ingestion_pending",
+    "source": "results/task007d/c/amended/C3_g2.0_variable",
+    "cutoff": 0.0,
+    "source_hashes_unchanged": true
+  }
+}

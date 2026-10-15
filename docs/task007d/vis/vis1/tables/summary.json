@@ -1,0 +1,59 @@
+{
+  "parity_A": {
+    "status": "WORKER_FAILED_AFTER_PHYSICAL_RUN",
+    "exit": {
+      "case": {
+        "name": "parity_A",
+        "architecture": "A",
+        "phase": "parity",
+        "duration": 2.0,
+        "repetition": 0
+      },
+      "exit_code": 1
+    },
+    "retained_artifacts": {
+      "results/task007d/vis/vis1_execution/parity_A/exit.json": "606e6ddd19809db6d4534e1d0120a14a15028191b3948adffc61b0f18aadf6e2",
+      "results/task007d/vis/vis1_execution/parity_A/raw.json": "0cf389d4c00a0b7e92adf49f33b2377d77d6998b20433f2b2a4c415297513b35",
+      "results/task007d/vis/vis1_execution/parity_A/input_configuration.json": "a6bf5fb11b9e1feebb02dfac1d1afe46eafc655e63dbd5da85492f35310dd2c2",
+      "results/task007d/vis/vis1_execution/parity_A/worker.log": "7c6866f7cee145551fa8002c036739b2b9d8d681d7c8edac83d6e2ab443c4f39",
+      "results/task007d/vis/vis1_execution/parity_A/segments.json": "d351ed775b080d80fcf9de84040a571128c977229a624287e2aa166041d82daa",
+      "results/task007d/vis/vis1_execution/parity_A/applicability.json": "e303a6ff8af1c23d14795aeeb2dcd810fe56bea8b84aa91f025e7283b3ba693e",
+      "results/task007d/vis/vis1_execution/parity_A/offline_parity_audit.json": "0962600b0c15149d6bf7df6d82046b2fe5adb421df2bf9a182210bf50174d198"
+    }
+  },
+  "parity_C70": {
+    "status": "NOT_EXECUTED",
+    "exit": null,
+    "retained_artifacts": {}
+  },
+  "controlled_A": {
+    "status": "NOT_EXECUTED",
+    "exit": null,
+    "retained_artifacts": {}
+  },
+  "controlled_C70": {
+    "status": "NOT_EXECUTED",
+    "exit": null,
+    "retained_artifacts": {}
+  },
+  "measured_A_1": {
+    "status": "NOT_EXECUTED",
+    "exit": null,
+    "retained_artifacts": {}
+  },
+  "measured_C70_1": {
+    "status": "NOT_EXECUTED",
+    "exit": null,
+    "retained_artifacts": {}
+  },
+  "measured_C70_2": {
+    "status": "NOT_EXECUTED",
+    "exit": null,
+    "retained_artifacts": {}
+  },
+  "measured_A_2": {
+    "status": "NOT_EXECUTED",
+    "exit": null,
+    "retained_artifacts": {}
+  }
+}
