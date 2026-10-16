@@ -1,0 +1,110 @@
+{
+  "passed": true,
+  "source_inventory_hashes": 294,
+  "artifact_references": 31,
+  "exact_source_comparisons": [
+    {
+      "earlier": "c6990572045e61ee443dc715de9e8c44396e5b41",
+      "later": "8dbd1c5fbc09781411fc762e04f9c2c5cf2d99ae",
+      "offline_additions": []
+    },
+    {
+      "earlier": "8dbd1c5fbc09781411fc762e04f9c2c5cf2d99ae",
+      "later": "835eefb0aafe2f982a0ba05847d4e731079ff52d",
+      "offline_additions": [
+        "scripts/task007dvis/long_figures.py",
+        "scripts/task007dvis/long_report.py"
+      ]
+    }
+  ],
+  "schema": "apex-performance-profile/1.0.0",
+  "audited_source_revision": "835eefb0aafe2f982a0ba05847d4e731079ff52d",
+  "manifest_sha256": "5299adca29d5c5bd383252cd2c299a392dd6872dc6bb72d1a4dd7ecfb8dd1ebf",
+  "evidence_index_sha256": "5e788c428bd706f20792b1852b3400bf0eeb7fe11d93285bbc5bc7accec8fced",
+  "schema_sha256": "6566c62aaff47ff01f031c4a9b8885f370888457ee078f488522d041bcb84179",
+  "validator_sha256": "351a390266b8b37fea2de89a7bf4d7f01b6174734c18f73abd3557106df7d56c",
+  "negative_checks": [
+    "N",
+    "Q",
+    "order",
+    "freeze",
+    "B",
+    "fallback",
+    "solver",
+    "fixture",
+    "thread observation",
+    "evidence hash"
+  ],
+  "validation_method": "profile schema vocabulary, static AST, exact JSON, hashes; no numerical constructors",
+  "new_pytest_executions": 0,
+  "new_simulations": 0,
+  "new_solver_calls": 0,
+  "environment": {
+    "python": "3.12.14",
+    "platform": "macOS-26.5.1-arm64-arm-64bit"
+  },
+  "task": "007E-2",
+  "stage": "WORK",
+  "status": "WORK_COMPLETE_PENDING_REVIEW",
+  "scientific_verification": "PENDING_SEPARATE_E3_AUTHORIZATION",
+  "schema_validation_scope": "Only the JSON Schema vocabulary used in the supplied schema, fail-closed on other keywords; semantic source checks separately enforce profile values",
+  "checks_executed": [
+    "strict JSON parsing: duplicate/nonfinite rejection",
+    "companion schema required fields/types/constant proposal flags",
+    "static AST and retained-summary configuration equality",
+    "effective Q/R/W/scales, terminal design weight literals, full decision dimensions, primal warm start and explicit IPOPT options",
+    "tracker, constraints/slack, variable handoff, delay estimator, protocol separation",
+    "exact vehicle/Planning hashes and physical/fallback-domain register binding",
+    "dependency lock/version and observed native-policy records",
+    "retained scientific evidence values/censored outcomes",
+    "294 existing scientific-source SHA256 values and scoped revision comparisons",
+    "10 deliberately corrupted manifest/evidence inputs rejected",
+    "Ruff lint and format",
+    "Markdown references and scoped preservation; git diff --check"
+  ],
+  "checks_not_executed": [
+    "pytest, full regression or E3 formal verification",
+    "numerical constructors, dynamics evaluation, forecasts, solvers, physical simulations",
+    "measured benchmark or scientific reruns",
+    "hardware validation"
+  ],
+  "preservation": {
+    "passed": true,
+    "tracked_unchanged": 812,
+    "handoff_prepend_only": true,
+    "historical_result_metadata_unchanged": 11609,
+    "historical_preservation_method": "tracked SHA256; historical results size/mtime only, not archive-wide content rehash",
+    "markdown_links_checked": 14,
+    "source_or_existing_config_test_changes": 0,
+    "scientific_executions": 0
+  },
+  "ruff": "PASS lint and format; one new validation script",
+  "historical_evidence_reuse": "CX709, VIS1R414, VIS1L41 and parity19 groups are inherited overlapping scopes, not new executions or a summed count",
+  "unresolved": [
+    "Independent IPOPT plugin/linear-solver build identity not recorded; locked CasADi and explicit options supplied",
+    "Vehicle footprint/identification and pre-hardware gates remain unavailable/pending",
+    "Formal exact-reviewed E3 checks and Primary acceptance pending"
+  ],
+  "offline_logs": [
+    {
+      "path": "results/task007e/e2/835eefb_manifest/validation_initial.log",
+      "sha256": "e9205a8a2f39f310ddc794a7597926abd5389c651b52983f657085760ff8132a"
+    },
+    {
+      "path": "results/task007e/e2/835eefb_manifest/validation_scoped.log",
+      "sha256": "ad5a22b5482e93ced413dc2924584bbe1fe8b518a80689a6f80d1907cce11f89"
+    },
+    {
+      "path": "results/task007e/e2/835eefb_manifest/ruff.log",
+      "sha256": "ce04ce92b16073000b77c97a42c00b98b96305692d9d5ed4dcfa5a9ca9ea62d6"
+    },
+    {
+      "path": "results/task007e/e2/835eefb_manifest/preservation.json",
+      "sha256": "2bad2e4b12168c6397fe8ef837eeba4c94d1bca47ca8c7d6bf0acf13fb66979d"
+    }
+  ],
+  "review_report": {
+    "path": "docs/TASK007E2_PERFORMANCE_MANIFEST.md",
+    "sha256": "38928184d2dcd3c5f6f32441595e573ff43e40b35eab49657bead39dfd54e19f"
+  }
+}

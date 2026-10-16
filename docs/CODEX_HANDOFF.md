@@ -1,3 +1,38 @@
+# Current handoff — Task007E-2 proposed synthetic Performance manifest
+
+**WORK_COMPLETE_PENDING_REVIEW.**
+**PROPOSED SYNTHETIC APEX PERFORMANCE PROFILE — AWAITING PRIMARY ACCEPTANCE.**
+Preparation base `835eefb0aafe2f982a0ba05847d4e731079ff52d`; scientific worker
+`8dbd1c5fbc09781411fc762e04f9c2c5cf2d99ae`, executable ancestor `c699057`, remain
+separate from this delivery. No new controller/model run, solver call or numerical constructor.
+
+[Manifest](../configs/performance/apex_performance_synthetic_v1.json), schema
+`apex-performance-profile/1.0.0`, binds Architecture A, original predictor/variable handoff,
+N8/dt0.1/four substeps, exact Q/R/W/scales, terminal schedule, primal warm start, IPOPT options,
+TVLQR, limits, vehicle/Planning/dependency hashes and E-1 fallback restrictions. It is inert;
+no runtime loader/default or profile freeze. VIS delay pattern, 5 ms codriver delay and two-crossing
+80 s protocol are evaluation conditions, not promoted defaults.
+
+**Evidence:** controlled A full lap 31.171900 s; measured A1 31.317756 s, no observed fallback.
+C70 controlled 31.172038 s; measured censored at 48.670 s, 30 misses/eight terminal, no full lap,
+incomplete export preserved. Two remaining measured cases remain unexecuted.
+**Checks:** static source/recorded-configuration equality, 294 scientific source hashes,
+31 artifact references, schema/status/type checks and ten negative manifest/evidence checks;
+Ruff and scoped documentation/preservation checks. Zero pytest/simulation executions.
+Prior CX/VIS checks are inherited with applicability limits, not newly executed or summed.
+**Limits:** no availability/recovery/deadline/swept-body/hardware guarantee. Fallback [1,3] and
+center corridor admission is sampled, not a continuously invariant safety domain. Separate
+IPOPT/linear-solver build identity was not recorded; locked CasADi and explicit options are bound.
+Vehicle footprint/identification remain unavailable. Versioned hardware gates are future work.
+
+[Report](TASK007E2_PERFORMANCE_MANIFEST.md), [validation](task007e/e2/manifest_validation.json),
+[evidence](task007e/e2/evidence_links.json). Delivery SHA/verified URL follow commit and push.
+Recommend Engineering Review for authorization of E-3 exact-revision formal checks and limitation
+acceptance. No E-3 execution, Performance freeze, Efficiency or new racing work authorized here.
+ADR-163 unchanged. Stop for review.
+
+---
+
 # Current handoff — Task007E-1 shared fallback/availability audit
 
 **Stage/status:** `WORK_COMPLETE_PENDING_REVIEW`; source/evidence audit only, starting

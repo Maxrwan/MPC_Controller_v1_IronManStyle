@@ -1,0 +1,120 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:apex:performance-profile:1.0.0",
+  "title": "Proposed synthetic Performance profile 1.0.0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "schema_file",
+    "profile_id",
+    "designation",
+    "status",
+    "flags",
+    "profile",
+    "evaluation_protocol",
+    "provenance",
+    "environment",
+    "evidence_index",
+    "verification",
+    "exclusions",
+    "hardware_gates",
+    "unresolved"
+  ],
+  "properties": {
+    "schema": {
+      "type": "string",
+      "const": "apex-performance-profile/1.0.0"
+    },
+    "schema_file": {
+      "type": "string"
+    },
+    "profile_id": {
+      "type": "string",
+      "const": "apex_performance_synthetic_v1"
+    },
+    "designation": {
+      "type": "string",
+      "const": "PROPOSED SYNTHETIC APEX PERFORMANCE PROFILE \u2014 AWAITING PRIMARY ACCEPTANCE"
+    },
+    "status": {
+      "type": "string",
+      "const": "WORK_COMPLETE_PENDING_REVIEW"
+    },
+    "flags": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "tested_synthetic_formulation",
+        "proposed_performance_designation",
+        "formal_verification_pending",
+        "primary_acceptance_pending",
+        "hardware_certification_available",
+        "frozen",
+        "runtime_auto_load",
+        "production_default_changed"
+      ],
+      "properties": {
+        "tested_synthetic_formulation": {
+          "type": "boolean",
+          "const": true
+        },
+        "proposed_performance_designation": {
+          "type": "boolean",
+          "const": true
+        },
+        "formal_verification_pending": {
+          "type": "boolean",
+          "const": true
+        },
+        "primary_acceptance_pending": {
+          "type": "boolean",
+          "const": true
+        },
+        "hardware_certification_available": {
+          "type": "boolean",
+          "const": false
+        },
+        "frozen": {
+          "type": "boolean",
+          "const": false
+        },
+        "runtime_auto_load": {
+          "type": "boolean",
+          "const": false
+        },
+        "production_default_changed": {
+          "type": "boolean",
+          "const": false
+        }
+      }
+    },
+    "profile": {
+      "type": "object"
+    },
+    "evaluation_protocol": {
+      "type": "object"
+    },
+    "provenance": {
+      "type": "object"
+    },
+    "environment": {
+      "type": "object"
+    },
+    "evidence_index": {
+      "type": "string"
+    },
+    "verification": {
+      "type": "object"
+    },
+    "exclusions": {
+      "type": "array"
+    },
+    "hardware_gates": {
+      "type": "object"
+    },
+    "unresolved": {
+      "type": "array"
+    }
+  }
+}
