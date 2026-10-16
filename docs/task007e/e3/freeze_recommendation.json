@@ -1,0 +1,32 @@
+{
+  "schema": "apex-performance-freeze-recommendation/1.0.0",
+  "task": "007E-3",
+  "reviewed_revision": "e603672b209985f11ed26b6f44d3949ffd5675c5",
+  "status": "VERIFIED_AWAITING_ACCEPTANCE",
+  "recommendation": "B",
+  "recommendation_label": "Recommend freeze with documented nonblocking synthetic limitations",
+  "scope": "Architecture A bounded synthetic Performance research baseline only; original predictor/variable handoff; exact proposed manifest",
+  "basis": [
+    "750 current tests passed once on exact reviewed implementation; no unexpected failure",
+    "Manifest validator and independent configuration/hash review passed unchanged",
+    "Three successful long scientific packages validated; native evidence, chronology and numerical exports reconciled",
+    "Known fallback/availability/hardware limits excluded explicitly; no newly demonstrated correctness blocker"
+  ],
+  "manifest": {
+    "path": "configs/performance/apex_performance_synthetic_v1.json",
+    "sha256": "5299adca29d5c5bd383252cd2c299a392dd6872dc6bb72d1a4dd7ecfb8dd1ebf",
+    "bytes": 29740
+  },
+  "limitations_register": "docs/task007e/e3/remaining_limitations.json",
+  "verification_record": "docs/task007e/e3/verification.json",
+  "blocking_for_bounded_A": [],
+  "blocks_broader_claims": [
+    "Incomplete measured C70 final package and unavailable observations prevent complete VIS package acceptance",
+    "Unimplemented pre-hardware safety/identification/timing/recovery gates prevent hardware readiness claims"
+  ],
+  "required_next_decision": "Engineering handoff to Primary APEX for explicit scientific acceptance and any separately authorized manifest status revision",
+  "freeze_executed": false,
+  "production_defaults_changed": false,
+  "hardware_authorized": false,
+  "next_stage_authorized": false
+}

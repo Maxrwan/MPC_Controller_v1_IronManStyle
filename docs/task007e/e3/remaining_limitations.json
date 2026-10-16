@@ -1,0 +1,685 @@
+{
+  "schema": "apex-performance-verification-limitations/1.0.0",
+  "task": "007E-3",
+  "reviewed_revision": "e603672b209985f11ed26b6f44d3949ffd5675c5",
+  "classification_legend": {
+    "A": "Verified existing safeguard behavior, within listed assertions only",
+    "B": "Known nonblocking limitation for bounded synthetic Architecture A; may block broader claims",
+    "C": "Concrete correctness blocker"
+  },
+  "concrete_correctness_blockers": [],
+  "safeguard_applicability": [
+    {
+      "e1_id": "F01",
+      "safeguard": "Fallback admission",
+      "classification": "A",
+      "original_classification": "implemented_supported",
+      "source": [
+        {
+          "path": "src/apex/simulation/asynchronous.py",
+          "start": 373,
+          "end": 415
+        }
+      ],
+      "verified_behavior": "Speed [1,3] and corridor; invalid exhaustion breaks before baseline invocation.",
+      "fresh_test_matches": [
+        "tests/unit/test_async_chronology.py::test_exhaustion_fallback_and_no_extrapolation",
+        "tests/unit/test_mpc.py::test_fallback_rejects_outside_domain[0.6]",
+        "tests/unit/test_mpc.py::test_fallback_rejects_outside_domain[3.1]"
+      ],
+      "coverage_limit": "C70 retained high-speed stop supports async invalid branch; MPC rejection tests cover separate synchronous finalize path, not all async boundary cases.",
+      "scope_note": "Fresh pass applies only to the asserted behavior; references may exercise a separate synchronous path. No recovery or continuous-safety claim."
+    },
+    {
+      "e1_id": "F02",
+      "safeguard": "Finite/dynamic/tire validity",
+      "classification": "A",
+      "original_classification": "implemented_supported",
+      "source": [
+        {
+          "path": "src/apex/models/vehicle/dynamic_bicycle.py",
+          "start": 127,
+          "end": 190
+        },
+        {
+          "path": "src/apex/models/vehicle/dynamic_bicycle.py",
+          "start": 233,
+          "end": 268
+        }
+      ],
+      "verified_behavior": "Finite vectors, speed floor/ceiling, input limits, loads, Frenet denominator, longitudinal grip; RK4 stages/final checked.",
+      "fresh_test_matches": [
+        "tests/unit/test_dynamic_bicycle.py::test_braking_stage_rejects_without_switch_or_mutation",
+        "tests/unit/test_dynamic_bicycle.py::test_configured_control_limits[control0-steering]",
+        "tests/unit/test_dynamic_bicycle.py::test_configured_control_limits[control1-steering]",
+        "tests/unit/test_dynamic_bicycle.py::test_configured_control_limits[control2-acceleration]",
+        "tests/unit/test_dynamic_bicycle.py::test_configured_control_limits[control3-braking]",
+        "tests/unit/test_dynamic_bicycle.py::test_speed_limits_and_undefined_limits",
+        "tests/unit/test_grip_tire.py::test_invalid_longitudinal[10]",
+        "tests/unit/test_grip_tire.py::test_invalid_longitudinal[-10]",
+        "tests/unit/test_grip_tire.py::test_invalid_longitudinal[11]",
+        "tests/unit/test_grip_tire.py::test_invalid_longitudinal[-11]",
+        "tests/unit/test_grip_tire.py::test_invalid_longitudinal[nan]",
+        "tests/unit/test_grip_tire.py::test_invalid_longitudinal[9.999995]"
+      ],
+      "coverage_limit": "Does not certify continuous trajectory, corridor invariance, beta limits or physical model fidelity.",
+      "scope_note": "Fresh pass applies only to the asserted behavior; references may exercise a separate synchronous path. No recovery or continuous-safety claim."
+    },
+    {
+      "e1_id": "F03",
+      "safeguard": "Actuator clipping and steering slew",
+      "classification": "A",
+      "original_classification": "implemented_supported",
+      "source": [
+        {
+          "path": "src/apex/control/baseline/controller.py",
+          "start": 71,
+          "end": 85
+        },
+        {
+          "path": "src/apex/simulation/asynchronous.py",
+          "start": 287,
+          "end": 300
+        },
+        {
+          "path": "src/apex/simulation/asynchronous.py",
+          "start": 415,
+          "end": 435
+        }
+      ],
+      "verified_behavior": "Baseline rate/angle and acceleration clipping; tracker box; actual elapsed-application steering clamp.",
+      "fresh_test_matches": [
+        "tests/unit/test_baseline.py::test_command_saturation_and_reset",
+        "tests/unit/test_baseline.py::test_configured_rate_limit",
+        "tests/unit/test_trajectory_tracker.py::test_feedback_sign_saturation_rate_and_determinism"
+      ],
+      "coverage_limit": "Not actuator dynamics; coupled tire feasibility still checked by plant. Delayed fallback integral/gain transient combinations incompletely tested.",
+      "scope_note": "Fresh pass applies only to the asserted behavior; references may exercise a separate synchronous path. No recovery or continuous-safety claim."
+    },
+    {
+      "e1_id": "F04",
+      "safeguard": "LQR scheduling",
+      "classification": "A",
+      "original_classification": "implemented_supported",
+      "source": [
+        {
+          "path": "src/apex/control/baseline/lqr.py",
+          "start": 27,
+          "end": 81
+        }
+      ],
+      "verified_behavior": "DARE at 1,2,3 and interpolation; clamp scheduling variable only.",
+      "fresh_test_matches": [
+        "tests/unit/test_baseline.py::test_matrices_and_stability[1.0]",
+        "tests/unit/test_baseline.py::test_matrices_and_stability[2.0]",
+        "tests/unit/test_baseline.py::test_matrices_and_stability[3.0]",
+        "tests/unit/test_baseline.py::test_interpolated_stability",
+        "tests/unit/test_baseline.py::test_schedule_clamps_only_variable[0.8-1]",
+        "tests/unit/test_baseline.py::test_schedule_clamps_only_variable[3.2-3]"
+      ],
+      "coverage_limit": "Frozen linear pole tests do not prove nonlinear recovery or arbitrary time-varying stability.",
+      "scope_note": "Fresh pass applies only to the asserted behavior; references may exercise a separate synchronous path. No recovery or continuous-safety claim."
+    },
+    {
+      "e1_id": "F05",
+      "safeguard": "Small-slip/static-load design assumptions",
+      "classification": "B",
+      "original_classification": "documented_assumption",
+      "source": [
+        {
+          "path": "src/apex/control/baseline/references.py",
+          "start": 17,
+          "end": 30
+        },
+        {
+          "path": "src/apex/control/baseline/controller.py",
+          "start": 65,
+          "end": 70
+        }
+      ],
+      "verified_behavior": "Finite curvature/positive speed checked; no small-error, slip or curvature-magnitude admission envelope.",
+      "fresh_test_matches": [],
+      "coverage_limit": "Baseline integration evidence uses linear tires on circle/oval; not all racing combined-grip fallback states.",
+      "scope_note": "Fresh pass applies only to the asserted behavior; references may exercise a separate synchronous path. No recovery or continuous-safety claim."
+    },
+    {
+      "e1_id": "F06",
+      "safeguard": "PI anti-windup",
+      "classification": "A",
+      "original_classification": "implemented_supported",
+      "source": [
+        {
+          "path": "src/apex/control/baseline/speed.py",
+          "start": 19,
+          "end": 49
+        }
+      ],
+      "verified_behavior": "Finite inputs and nominal dt; conditional integral, command clipping; default target 2 m/s.",
+      "fresh_test_matches": [
+        "tests/unit/test_baseline.py::test_pi_antiwindup_and_limits[0-10-2]",
+        "tests/unit/test_baseline.py::test_pi_antiwindup_and_limits[10-0--3]",
+        "tests/unit/test_baseline.py::test_pi_can_unwind"
+      ],
+      "coverage_limit": "No stop-to-zero policy; busy intervals do not update integral and elapsed time is not substituted.",
+      "scope_note": "Fresh pass applies only to the asserted behavior; references may exercise a separate synchronous path. No recovery or continuous-safety claim."
+    },
+    {
+      "e1_id": "F07",
+      "safeguard": "Baseline domain at delayed application",
+      "classification": "B",
+      "original_classification": "implemented_insufficiently_tested",
+      "source": [
+        {
+          "path": "src/apex/simulation/asynchronous.py",
+          "start": 287,
+          "end": 300
+        },
+        {
+          "path": "src/apex/simulation/asynchronous.py",
+          "start": 391,
+          "end": 435
+        },
+        {
+          "path": "src/apex/simulation/asynchronous.py",
+          "start": 499,
+          "end": 544
+        }
+      ],
+      "verified_behavior": "Generation guarded; due applications precede domain checks; held-pair plant validity checked before propagation.",
+      "fresh_test_matches": [
+        "tests/unit/test_mpc.py::test_delayed_failure_checks_application_state"
+      ],
+      "coverage_limit": "Named test covers synchronous MPC, not asynchronous fallback. No invariant [1,3]/corridor guarantee between ticks or at delayed application; no new counterfactual executed.",
+      "scope_note": "Fresh pass applies only to the asserted behavior; references may exercise a separate synchronous path. No recovery or continuous-safety claim."
+    },
+    {
+      "e1_id": "F08",
+      "safeguard": "Packet dimensions/validity/no extrapolation",
+      "classification": "A",
+      "original_classification": "implemented_supported",
+      "source": [
+        {
+          "path": "src/apex/control/trajectory/packet.py",
+          "start": 32,
+          "end": 90
+        },
+        {
+          "path": "src/apex/control/trajectory/packet.py",
+          "start": 100,
+          "end": 124
+        },
+        {
+          "path": "src/apex/control/trajectory/packet.py",
+          "start": 204,
+          "end": 224
+        }
+      ],
+      "verified_behavior": "Immutable finite arrays, ordered times/progress; buffer refuses expired authority, direct packet endpoint allowed only for evaluation.",
+      "fresh_test_matches": [
+        "tests/unit/test_trajectory_tracker.py::test_reject_future_expired_and_failed",
+        "tests/unit/test_trajectory_tracker.py::test_trim_reserve_and_newer_handoff"
+      ],
+      "coverage_limit": "Buffer trusts valid flag and producer contract; does not itself re-solve nonlinear feasibility.",
+      "scope_note": "Fresh pass applies only to the asserted behavior; references may exercise a separate synchronous path. No recovery or continuous-safety claim."
+    },
+    {
+      "e1_id": "F09",
+      "safeguard": "Continuity/stale/minimum reserve acceptance",
+      "classification": "A",
+      "original_classification": "implemented_supported",
+      "source": [
+        {
+          "path": "src/apex/simulation/asynchronous.py",
+          "start": 182,
+          "end": 210
+        },
+        {
+          "path": "src/apex/control/trajectory/packet.py",
+          "start": 204,
+          "end": 219
+        }
+      ],
+      "verified_behavior": "Newer packet, available time, >=50 ms reserve plus wrapped six-state mismatch and nominal plant validation.",
+      "fresh_test_matches": [
+        "tests/unit/test_async_chronology.py::test_large_handoff_mismatch_is_rejected",
+        "tests/unit/test_fixed_handoff_scheduler.py::test_packet_eligibility_staleness_and_reserve"
+      ],
+      "coverage_limit": "Envelope is synthetic; not invariant-tube or safety proof.",
+      "scope_note": "Fresh pass applies only to the asserted behavior; references may exercise a separate synchronous path. No recovery or continuous-safety claim."
+    },
+    {
+      "e1_id": "F10",
+      "safeguard": "Reserve warnings/critical labels",
+      "classification": "A",
+      "original_classification": "implemented_supported",
+      "source": [
+        {
+          "path": "src/apex/control/trajectory/packet.py",
+          "start": 189,
+          "end": 202
+        },
+        {
+          "path": "src/apex/simulation/asynchronous.py",
+          "start": 516,
+          "end": 522
+        }
+      ],
+      "verified_behavior": "Thresholds classified/logged; active critical trajectory remains usable until exhaustion.",
+      "fresh_test_matches": [
+        "tests/unit/test_trajectory_tracker.py::test_trim_reserve_and_newer_handoff"
+      ],
+      "coverage_limit": "No reserve-triggered urgent solve, braking, deadline guarantee or adaptive reserve policy.",
+      "scope_note": "Fresh pass applies only to the asserted behavior; references may exercise a separate synchronous path. No recovery or continuous-safety claim."
+    },
+    {
+      "e1_id": "F11",
+      "safeguard": "Preparation validation/failure isolation",
+      "classification": "A",
+      "original_classification": "implemented_supported",
+      "source": [
+        {
+          "path": "src/apex/control/mpc/controller.py",
+          "start": 127,
+          "end": 170
+        },
+        {
+          "path": "src/apex/control/trajectory/planner.py",
+          "start": 37,
+          "end": 83
+        }
+      ],
+      "verified_behavior": "Invalid solver output is rejected, failed prediction/gains yield no packet; old accepted plan remains.",
+      "fresh_test_matches": [
+        "tests/unit/test_mpc.py::test_invalid_optimizer_success_rejected",
+        "tests/unit/test_trajectory_tracker.py::test_gain_failure_discards_successful_nominal_packet",
+        "tests/unit/test_async_chronology.py::test_failure_keeps_old_plan_and_recovers"
+      ],
+      "coverage_limit": "Preserves prior authority only while it has reserve; no guaranteed replacement.",
+      "scope_note": "Fresh pass applies only to the asserted behavior; references may exercise a separate synchronous path. No recovery or continuous-safety claim."
+    },
+    {
+      "e1_id": "F12",
+      "safeguard": "One pending solve and urgent latch",
+      "classification": "A",
+      "original_classification": "implemented_supported",
+      "source": [
+        {
+          "path": "src/apex/simulation/asynchronous.py",
+          "start": 212,
+          "end": 282
+        },
+        {
+          "path": "src/apex/simulation/asynchronous.py",
+          "start": 480,
+          "end": 498
+        },
+        {
+          "path": "src/apex/control/trajectory/prediction.py",
+          "start": 188,
+          "end": 202
+        }
+      ],
+      "verified_behavior": "Busy misses logged; physics/codriver continue; one error-trigger latch, nominal priority; fixed-mode grid rule.",
+      "fresh_test_matches": [
+        "tests/unit/test_async_chronology.py::test_busy_planner_does_not_pause_codriver_or_plant",
+        "tests/unit/test_async_chronology.py::test_disturbance_requests_one_pending_urgent_replan",
+        "tests/unit/test_fixed_handoff_scheduler.py::test_on_grid_urgent_and_nominal_priority[0.035-0.05-False]",
+        "tests/unit/test_fixed_handoff_scheduler.py::test_on_grid_urgent_and_nominal_priority[0.085-0.1-True]"
+      ],
+      "coverage_limit": "No cancellation/parallel rescue; persistent error does not repeatedly retrigger without clearing.",
+      "scope_note": "Fresh pass applies only to the asserted behavior; references may exercise a separate synchronous path. No recovery or continuous-safety claim."
+    },
+    {
+      "e1_id": "F13",
+      "safeguard": "Pending old-command provenance",
+      "classification": "A",
+      "original_classification": "implemented_supported",
+      "source": [
+        {
+          "path": "src/apex/simulation/asynchronous.py",
+          "start": 287,
+          "end": 300
+        },
+        {
+          "path": "src/apex/simulation/asynchronous.py",
+          "start": 440,
+          "end": 478
+        }
+      ],
+      "verified_behavior": "Application before handoff; request source plan ID and mode retained across new authority.",
+      "fresh_test_matches": [
+        "tests/unit/test_fixed_handoff_scheduler.py::test_pending_old_command_survives_handoff",
+        "tests/unit/test_fixed_handoff_scheduler.py::test_due_old_application_precedes_fixed_handoff_and_new_sampling"
+      ],
+      "coverage_limit": "Direct old-command-to-fallback plus nonzero latency coverage is missing; preservation is not a new sample of expired authority.",
+      "scope_note": "Fresh pass applies only to the asserted behavior; references may exercise a separate synchronous path. No recovery or continuous-safety claim."
+    },
+    {
+      "e1_id": "F14",
+      "safeguard": "Latched fallback and late rejection",
+      "classification": "B",
+      "original_classification": "implemented_insufficiently_tested",
+      "source": [
+        {
+          "path": "src/apex/simulation/asynchronous.py",
+          "start": 320,
+          "end": 345
+        },
+        {
+          "path": "src/apex/simulation/asynchronous.py",
+          "start": 353,
+          "end": 358
+        },
+        {
+          "path": "src/apex/simulation/asynchronous.py",
+          "start": 480,
+          "end": 493
+        }
+      ],
+      "verified_behavior": "No reentry; late completion rejected as fallback_latched; nominal/urgent planning disabled.",
+      "fresh_test_matches": [
+        "tests/unit/test_async_chronology.py::test_exhaustion_fallback_and_no_extrapolation",
+        "tests/unit/test_fixed_handoff_scheduler.py::test_original_155ms_case_defers_and_misses_without_cancellation"
+      ],
+      "coverage_limit": "Dedicated fallback-exit/domain-edge/zero-latency and early-waiting combinations not comprehensively asserted.",
+      "scope_note": "Fresh pass applies only to the asserted behavior; references may exercise a separate synchronous path. No recovery or continuous-safety claim."
+    },
+    {
+      "e1_id": "F15",
+      "safeguard": "C fixed late-result exclusion",
+      "classification": "A",
+      "original_classification": "implemented_supported",
+      "source": [
+        {
+          "path": "src/apex/simulation/fixed_handoff.py",
+          "start": 91,
+          "end": 103
+        },
+        {
+          "path": "src/apex/simulation/asynchronous.py",
+          "start": 346,
+          "end": 363
+        }
+      ],
+      "verified_behavior": "Miss at deadline does not cancel busy work; late packet discarded, never active.",
+      "fresh_test_matches": [
+        "tests/unit/test_fixed_handoff_scheduler.py::test_early_exact_late_and_startup[0.0]",
+        "tests/unit/test_fixed_handoff_scheduler.py::test_early_exact_late_and_startup[0.035]",
+        "tests/unit/test_fixed_handoff_scheduler.py::test_early_exact_late_and_startup[0.07]",
+        "tests/unit/test_fixed_handoff_scheduler.py::test_early_exact_late_and_startup[0.075]",
+        "tests/unit/test_fixed_handoff_scheduler.py::test_original_155ms_case_defers_and_misses_without_cancellation"
+      ],
+      "coverage_limit": "VIS measured 478-484 discard observed; 485 completion censored. A has no fixed-deadline count.",
+      "scope_note": "Fresh pass applies only to the asserted behavior; references may exercise a separate synchronous path. No recovery or continuous-safety claim."
+    },
+    {
+      "e1_id": "F16",
+      "safeguard": "Continuous boundary/swept-body safety",
+      "classification": "B",
+      "original_classification": "absent_or_deferred",
+      "source": [
+        {
+          "path": "src/apex/simulation/asynchronous.py",
+          "start": 499,
+          "end": 514
+        },
+        {
+          "path": "scripts/task007dvis/worker.py",
+          "start": 91,
+          "end": 98
+        },
+        {
+          "path": "scripts/task007dvis/worker.py",
+          "start": 147,
+          "end": 166
+        },
+        {
+          "path": "scripts/task007d/metrics.py",
+          "start": 107,
+          "end": 122
+        }
+      ],
+      "verified_behavior": "Runtime trajectory-mode boundary flag and offline campaign gate only; fallback generation checks center corridor.",
+      "fresh_test_matches": [],
+      "coverage_limit": "No continuous collision prevention, footprint model, invariant tube or within-run boundary emergency stop.",
+      "scope_note": "Fresh pass applies only to the asserted behavior; references may exercise a separate synchronous path. No recovery or continuous-safety claim."
+    },
+    {
+      "e1_id": "F17",
+      "safeguard": "Termination versus safe braking",
+      "classification": "B",
+      "original_classification": "absent_or_deferred",
+      "source": [
+        {
+          "path": "src/apex/simulation/asynchronous.py",
+          "start": 382,
+          "end": 384
+        },
+        {
+          "path": "src/apex/simulation/asynchronous.py",
+          "start": 409,
+          "end": 415
+        },
+        {
+          "path": "src/apex/simulation/asynchronous.py",
+          "start": 556,
+          "end": 559
+        }
+      ],
+      "verified_behavior": "Invalid domain breaks loop or catches model error; no brake command or zero-speed dynamics.",
+      "fresh_test_matches": [],
+      "coverage_limit": "Synthetic stop is failure evidence, not a hardware fail-safe.",
+      "scope_note": "Fresh pass applies only to the asserted behavior; references may exercise a separate synchronous path. No recovery or continuous-safety claim."
+    },
+    {
+      "e1_id": "F18",
+      "safeguard": "Fallback success/metric interpretation",
+      "classification": "B",
+      "original_classification": "implemented_insufficiently_tested",
+      "source": [
+        {
+          "path": "src/apex/simulation/asynchronous.py",
+          "start": 418,
+          "end": 467
+        },
+        {
+          "path": "scripts/task007d/metrics.py",
+          "start": 118,
+          "end": 119
+        }
+      ],
+      "verified_behavior": "mode identifies fallback; controls retain last packet ID and zero-error/current-state placeholders; campaign flags any fallback.",
+      "fresh_test_matches": [
+        "tests/unit/test_async_chronology.py::test_exhaustion_fallback_and_no_extrapolation"
+      ],
+      "coverage_limit": "Do not score placeholders as APEX tracking. Direct packet endpoint may be sampled offline despite zero buffer reserve; not executable authority. No generic successful-fallback export coverage claimed.",
+      "scope_note": "Fresh pass applies only to the asserted behavior; references may exercise a separate synchronous path. No recovery or continuous-safety claim."
+    },
+    {
+      "e1_id": "F19",
+      "safeguard": "State estimation, uncertainty and hardware execution",
+      "classification": "B",
+      "original_classification": "not_applicable_synthetic_scope",
+      "source": [
+        {
+          "path": "src/apex/simulation/asynchronous.py",
+          "start": 397,
+          "end": 430
+        }
+      ],
+      "verified_behavior": "Perfect state supplied by synthetic plant; no hardware command transport.",
+      "fresh_test_matches": [],
+      "coverage_limit": "Mandatory separate work before hardware; this classification does not excuse missing hardware safety.",
+      "scope_note": "Fresh pass applies only to the asserted behavior; references may exercise a separate synchronous path. No recovery or continuous-safety claim."
+    },
+    {
+      "e1_id": "F20",
+      "safeguard": "Failure export integrity",
+      "classification": "B",
+      "original_classification": "implemented_insufficiently_tested",
+      "source": [
+        {
+          "path": "scripts/task007dvis/worker.py",
+          "start": 95,
+          "end": 98
+        },
+        {
+          "path": "scripts/task007dvis/worker.py",
+          "start": 147,
+          "end": 164
+        }
+      ],
+      "verified_behavior": "Raw capture precedes export; known nested NumPy boolean error preserves physical evidence but loses final package/summary.",
+      "fresh_test_matches": [
+        "tests/unit/test_vis_long_report.py::test_retained_nested_numpy_bool_export_defect_is_reproducible"
+      ],
+      "coverage_limit": "Inherited known defect; expected exception is not an export-success test; no fix authorized.",
+      "scope_note": "Fresh pass applies only to the asserted behavior; references may exercise a separate synchronous path. No recovery or continuous-safety claim."
+    }
+  ],
+  "limitations": [
+    {
+      "id": "L01",
+      "title": "Trajectory availability is not guaranteed",
+      "classification": "B",
+      "finding": "Reserve warning/critical thresholds are diagnostics; A can exhaust after sustained delays, failures, busy releases or rejection. Retained VIS A runs did not exhaust.",
+      "evidence_scope": "F10,F11,F12",
+      "required_disposition": "Additional fault/recovery and reserve-policy work needs separate review."
+    },
+    {
+      "id": "L02",
+      "title": "Fallback admission is not a nonlinear recovery region",
+      "classification": "B",
+      "finding": "Admission and idle fallback computation require vx in [1,3] m/s and center corridor containment. Baseline targets centerline/2 m/s; scheduled linear LQR/PI evidence is not racing combined-grip recovery proof.",
+      "evidence_scope": "F01,F04,F05,F06",
+      "required_disposition": "Define and verify the intended recovery envelope before extending claims."
+    },
+    {
+      "id": "L03",
+      "title": "Delayed asynchronous fallback coverage is incomplete",
+      "classification": "B",
+      "finding": "No independent baseline-domain recheck at each delayed application. Application precedes fallback checks; plant diagnostics and RK4 guards still check held-pair propagation. Synchronous delayed-failure tests do not close async fallback coverage. Old-command/fallback, busy-tick, domain-edge and waiting/late combinations remain incompletely tested.",
+      "evidence_scope": "F07,F13,F14,F18",
+      "required_disposition": "Separate reviewed tests and application-time safety design are mandatory before hardware."
+    },
+    {
+      "id": "L04",
+      "title": "Recorded center clearance is not continuous collision safety",
+      "classification": "B",
+      "finding": "Soft 0.08 m NMPC margin, sampled center clearance and integration endpoints do not certify swept-body/obstacle containment or continuous corridor invariance.",
+      "evidence_scope": "F16",
+      "required_disposition": "Footprint, stopping distance and continuous safety validation remain future gates."
+    },
+    {
+      "id": "L05",
+      "title": "Synthetic termination is not an emergency stop",
+      "classification": "B",
+      "finding": "No braking-to-standstill model/policy or independent hardware watchdog/safety supervisor. A simulation break is not physical fail-safe actuation.",
+      "evidence_scope": "F17",
+      "required_disposition": "Require HW02/HW04/HW06 before deployment."
+    },
+    {
+      "id": "L06",
+      "title": "Scientific operating coverage is narrow",
+      "classification": "B",
+      "finding": "One synthetic circuit, one controlled A lap and one measured A lap; C70 measured run censored and two remaining cases unexecuted. No unseen-track or worst-case latency guarantee.",
+      "evidence_scope": "VIS1L",
+      "required_disposition": "Preserve incomplete comparison; no further experiment authorized here."
+    },
+    {
+      "id": "L07",
+      "title": "Known C70 export defect remains open",
+      "classification": "B",
+      "finding": "Nested NumPy boolean serialization after recorded exhaustion prevents final package/summary. Failed-worker thread observations, forecast match result, wall/CPU/RSS summary are unavailable. An expected-exception pass is not export success.",
+      "evidence_scope": "F20",
+      "required_disposition": "Nonblocking for bounded A baseline; blocks complete formal VIS package acceptance. Repair and missing-channel acceptance require separate review; no evidence fabrication."
+    },
+    {
+      "id": "L08",
+      "title": "Independent solver-build provenance is unavailable",
+      "classification": "B",
+      "finding": "Locked CasADi3.8.1 and explicit IPOPT options are bound; no independently retained IPOPT plugin/linear-solver build identity. Same-host reproducibility is stronger than portable binary/timing equivalence.",
+      "evidence_scope": "E2 provenance",
+      "required_disposition": "Archive independent backend/build provenance in a separately authorized future environment qualification; do not infer historical defaults."
+    },
+    {
+      "id": "L09",
+      "title": "Synthetic model and perfect-state assumptions",
+      "classification": "B",
+      "finding": "Vehicle/tire parameters are synthetic, not identified hardware. Width/length remain unknown; estimator/actuator uncertainty and communications are absent.",
+      "evidence_scope": "F19",
+      "required_disposition": "Complete versioned pre-hardware gates."
+    },
+    {
+      "id": "L10",
+      "title": "Predictor and host timing assumptions",
+      "classification": "B",
+      "finding": "Original A predicts to release plus estimated delay with ideal future feedback timing and no committed prefix. Estimate cap is not a solver bound; readiness residual can compare different timestamps. Mac observations are not embedded hard-real-time certification.",
+      "evidence_scope": "A policy",
+      "required_disposition": "Keep target-state prediction, readiness and accepted-handoff metrics distinct; no new architecture selected."
+    },
+    {
+      "id": "L11",
+      "title": "Launch and evaluation protocols are bounded",
+      "classification": "B",
+      "finding": "Gated startup/preposition excludes prelaunch motion; VIS 5 ms codriver delay, replay pattern, two-crossing/80 s cap are evaluation conditions, not general profile capabilities.",
+      "evidence_scope": "E2 evaluation_protocol",
+      "required_disposition": "No arbitrary latency/startup robustness claim."
+    },
+    {
+      "id": "L12",
+      "title": "Acceptance and broader interface work remain separate",
+      "classification": "B",
+      "finding": "E3 verifies exact reviewed source and audits retained evidence; Primary acceptance/freeze, Workbench ingestion, broader failed-package acceptance and hardware gates remain pending.",
+      "evidence_scope": "workflow",
+      "required_disposition": "No automatic next stage or status mutation of the proposed manifest."
+    }
+  ],
+  "mandatory_prehardware_gates": {
+    "version": "apex-prehardware-gates/1.0.0",
+    "implemented_in_E2": false,
+    "items": [
+      {
+        "id": "HW01",
+        "status": "REQUIRED_FUTURE_REVIEW_NOT_IMPLEMENTED",
+        "requirement": "Identify vehicle, tire, actuator and estimator uncertainty across intended envelope"
+      },
+      {
+        "id": "HW02",
+        "status": "REQUIRED_FUTURE_REVIEW_NOT_IMPLEMENTED",
+        "requirement": "Define and verify recovery or safe-stop domain, including braking to standstill"
+      },
+      {
+        "id": "HW03",
+        "status": "REQUIRED_FUTURE_REVIEW_NOT_IMPLEMENTED",
+        "requirement": "Application-time freshness, state/control validity and held-input reachability; expiry/pending-command ownership"
+      },
+      {
+        "id": "HW04",
+        "status": "REQUIRED_FUTURE_REVIEW_NOT_IMPLEMENTED",
+        "requirement": "Independent watchdog, communication/solver fault handling and fail-safe actuation"
+      },
+      {
+        "id": "HW05",
+        "status": "REQUIRED_FUTURE_REVIEW_NOT_IMPLEMENTED",
+        "requirement": "Continuous swept-body/obstacle clearance and stopping-distance validation"
+      },
+      {
+        "id": "HW06",
+        "status": "REQUIRED_FUTURE_REVIEW_NOT_IMPLEMENTED",
+        "requirement": "Target hardware timing, overrun/fault injection and end-to-end physical safety tests"
+      },
+      {
+        "id": "HW07",
+        "status": "REQUIRED_FUTURE_REVIEW_NOT_IMPLEMENTED",
+        "requirement": "Review E1 missing asynchronous fallback transitions, domain edges, busy ticks and honest fallback telemetry"
+      }
+    ]
+  },
+  "hardware_gates_executed_in_E3": false,
+  "e1_matrix": {
+    "path": "docs/task007e/e1/safeguard_verification_matrix.json",
+    "sha256": "e016f175f6cd8997541432ea98aab5e85c0035bab5a4ad887a77342d09fe9d7c",
+    "bytes": 24098
+  }
+}

@@ -1,3 +1,43 @@
+# Current handoff — Task007E-3 formal synthetic Performance verification
+
+**VERIFIED_AWAITING_ACCEPTANCE. Recommendation B:** recommend freeze with documented
+nonblocking synthetic limitations. Primary acceptance/freeze remains pending and was not executed.
+Exact reviewed/tested revision `e603672b209985f11ed26b6f44d3949ffd5675c5`;
+this containing delivery is verification documentation only. Scientific worker remains `8dbd1c5`,
+with frozen executable ancestor `c699057` and later offline VIS report `d55f203`.
+
+**Fresh checks:** one full suite, **750 passed / 0 failed/error/skipped**, 633.76 s;
+716 unit + 31 integration + 3 regression. SINGLE initialized before imports; sampled process
+thread counts [1]. Existing E2 validator passed: 294 source hashes, 31 references, ten rejection
+checks, plus independent source/configuration review. Ruff lint/format passed. All proposal flags
+and manifest SHA256 remain unchanged; formal verification is recorded separately.
+
+**Evidence:** three valid long packages, two recovered parity packages and four contract fixtures
+revalidated; 90 long-run, 54 parity and seven original failed-parity files content-hash checked.
+All 85 run/lap/sector metrics and eight common-window rows reproduced exactly; eight figures
+preserved. No new scientific run, replay or measurement. Full logs are local under
+`results/task007e/e3/formal_e603672/`, hashes in the committed verification record.
+
+**C70:** retained 485 releases / 455 accepts / 30 misses, eight terminal; packet 477 expires
+48.670 s at vx=5.960492971 m/s, zero reserve, invalid fallback. Export subsequently failed;
+final package/summary and some runtime observations remain absent. Nonblocking for bounded A,
+but complete VIS package acceptance remains blocked. No exporter repair or invented telemetry.
+
+**Limits:** no guaranteed trajectory availability/recovery, incomplete asynchronous delayed
+fallback coverage, no continuous swept-body safety, standstill braking or hardware watchdog.
+Independent historical IPOPT/linear-solver build identity remains unavailable. Architecture A's
+observed laps do not prove fallback recovery or hard-real-time capability. No new correctness
+blocker demonstrated. Historical failures and evidence are preserved.
+
+[Report](TASK007E3_PERFORMANCE_VERIFICATION.md), [verification](task007e/e3/verification.json),
+[recommendation](task007e/e3/freeze_recommendation.json),
+[limitations and hardware gates](task007e/e3/remaining_limitations.json).
+Delivery SHA/verified GitHub URL supplied after commit/push; no self-embedded commit hash.
+**Next:** Engineering handoff to Primary APEX for explicit acceptance decision. No profile freeze,
+production change, exporter repair, Efficiency, Workbench or next task authorized. Stop after E3.
+
+---
+
 # Current handoff — Task007E-2 proposed synthetic Performance manifest
 
 **WORK_COMPLETE_PENDING_REVIEW.**

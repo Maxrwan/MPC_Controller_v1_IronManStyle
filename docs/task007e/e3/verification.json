@@ -1,0 +1,1784 @@
+{
+  "schema": "apex-performance-verification/1.0.0",
+  "task": "007E-3",
+  "stage": "VERIFICATION",
+  "status": "VERIFIED_AWAITING_ACCEPTANCE",
+  "reviewed_revision": "e603672b209985f11ed26b6f44d3949ffd5675c5",
+  "reviewed_tree": "81441f292d255a053ae97e263bf9483e002262dd",
+  "delivery_revision": "Containing documentation-only commit; exact SHA supplied after push, not self-embedded",
+  "scientific_worker_revision": "8dbd1c5fbc09781411fc762e04f9c2c5cf2d99ae",
+  "frozen_executable_ancestor": "c6990572045e61ee443dc715de9e8c44396e5b41",
+  "offline_VIS_report_revision": "d55f203aac1a04be598ebce4c38be51a4883e0ba",
+  "manifest_preparation_base_revision": "835eefb0aafe2f982a0ba05847d4e731079ff52d",
+  "preflight": {
+    "python": "3.12.14",
+    "platform": "macOS-26.5.1-arm64-arm-64bit",
+    "packages": {
+      "numpy": "2.5.3",
+      "scipy": "1.18.1",
+      "casadi": "3.8.1",
+      "pandas": "3.0.6",
+      "pytest": "9.1.1",
+      "psutil": "7.2.2",
+      "threadpoolctl": "3.7.0",
+      "ruff": "0.16.8",
+      "PyYAML": "6.0.3"
+    },
+    "disk_free_bytes": 7579922432,
+    "memory": {
+      "total": 8589934592,
+      "available": 1507016704,
+      "percent": 82.5,
+      "used": 3033251840,
+      "free": 62193664,
+      "active": 1455751168,
+      "inactive": 1390247936,
+      "wired": 1577500672
+    },
+    "guards": [],
+    "head": "e603672b209985f11ed26b6f44d3949ffd5675c5"
+  },
+  "process_inventory": {
+    "path": "results/task007e/e3/formal_e603672/processes.txt",
+    "sha256": "59aa8a3a4928a9f81cadd009c27d725caaf256c287e49e5629b7db2ff586d7b1",
+    "bytes": 52813
+  },
+  "suite": {
+    "reviewed_sha": "e603672b209985f11ed26b6f44d3949ffd5675c5",
+    "python": "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/.venv/bin/python",
+    "pytest_args": [
+      "-ra",
+      "-vv",
+      "-x",
+      "tests",
+      "--durations=0",
+      "--durations-min=0",
+      "--junitxml=results/task007e/e3/formal_e603672/full_suite.xml"
+    ],
+    "native": {
+      "requested_ceiling": 1,
+      "set_status": 0,
+      "blas_threading_mode": 1,
+      "mode_name": "single",
+      "exact_active_thread_count_available": false
+    },
+    "process_threads_before_pytest": 1,
+    "environment": {
+      "VECLIB_MAXIMUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": null,
+      "OMP_NUM_THREADS": null,
+      "MKL_NUM_THREADS": null,
+      "BLIS_NUM_THREADS": null,
+      "NUMEXPR_NUM_THREADS": null,
+      "PYTHONHASHSEED": "0",
+      "PYTHONPATH": "scripts:src"
+    },
+    "exit_code": 0,
+    "wrapper_wall_seconds": 634.995367666008,
+    "process_threads_after_pytest": 1,
+    "observed_test_boundary_thread_counts": [
+      1
+    ],
+    "passed": 750,
+    "failed": 0,
+    "errored": 0,
+    "skipped": 0,
+    "pytest_summary_seconds": 633.76,
+    "junit_seconds": 633.651,
+    "groups": {
+      "unit": 716,
+      "integration": 31,
+      "regression": 3
+    },
+    "invocations": 1,
+    "modules": {
+      "tests.integration.test_baseline_tracking": 14,
+      "tests.integration.test_dynamic_track": 2,
+      "tests.integration.test_grip_tracking": 4,
+      "tests.integration.test_kinematic_track": 2,
+      "tests.integration.test_mpc_tracking": 9,
+      "tests.regression.test_dynamic_accuracy": 1,
+      "tests.regression.test_geometry_accuracy": 1,
+      "tests.regression.test_kinematic_accuracy": 1,
+      "tests.unit.test_aggressive_reference": 13,
+      "tests.unit.test_async_chronology": 11,
+      "tests.unit.test_baseline": 47,
+      "tests.unit.test_committed_prefix": 37,
+      "tests.unit.test_committed_prefix_runtime": 16,
+      "tests.unit.test_config": 20,
+      "tests.unit.test_cx_closure": 13,
+      "tests.unit.test_diagnostic_timing": 12,
+      "tests.unit.test_dynamic_bicycle": 50,
+      "tests.unit.test_dynamic_components": 25,
+      "tests.unit.test_fixed_handoff_analysis": 5,
+      "tests.unit.test_fixed_handoff_contract": 4,
+      "tests.unit.test_fixed_handoff_scheduler": 26,
+      "tests.unit.test_frenet": 11,
+      "tests.unit.test_grip_tire": 20,
+      "tests.unit.test_imports": 2,
+      "tests.unit.test_kinematic": 41,
+      "tests.unit.test_latency": 18,
+      "tests.unit.test_lightweight_figures": 1,
+      "tests.unit.test_lightweight_prediction": 26,
+      "tests.unit.test_local_mpc": 21,
+      "tests.unit.test_mpc": 23,
+      "tests.unit.test_nlp_snapshot": 1,
+      "tests.unit.test_parameter_study": 6,
+      "tests.unit.test_planning_reference": 23,
+      "tests.unit.test_prediction_diagnostics": 15,
+      "tests.unit.test_prediction_forensics": 15,
+      "tests.unit.test_progress": 27,
+      "tests.unit.test_progress_objective": 7,
+      "tests.unit.test_pseudo_reference_ablation": 13,
+      "tests.unit.test_runner": 10,
+      "tests.unit.test_state": 10,
+      "tests.unit.test_task007b_export": 1,
+      "tests.unit.test_task007c_metrics": 5,
+      "tests.unit.test_task007c_physics": 3,
+      "tests.unit.test_threading_study": 19,
+      "tests.unit.test_timing_sensitivity": 17,
+      "tests.unit.test_track_geometry": 23,
+      "tests.unit.test_track_io": 13,
+      "tests.unit.test_trajectory_tracker": 25,
+      "tests.unit.test_vis_exports": 30,
+      "tests.unit.test_vis_long_report": 11
+    },
+    "slowest_testcase_seconds": [
+      {
+        "node_id": "tests/integration/test_mpc_tracking.py::test_nmpc_two_laps[oval]",
+        "seconds": 72.265
+      },
+      {
+        "node_id": "tests/integration/test_mpc_tracking.py::test_nmpc_two_laps[circle]",
+        "seconds": 68.128
+      },
+      {
+        "node_id": "tests/unit/test_aggressive_reference.py::test_scaling_geometry_and_cap",
+        "seconds": 58.357
+      },
+      {
+        "node_id": "tests/integration/test_baseline_tracking.py::test_two_laps_all_schedule_nodes[1.0-oval]",
+        "seconds": 49.932
+      },
+      {
+        "node_id": "tests/integration/test_baseline_tracking.py::test_two_laps_all_schedule_nodes[1.0-circle]",
+        "seconds": 43.914
+      },
+      {
+        "node_id": "tests/integration/test_baseline_tracking.py::test_two_laps_all_schedule_nodes[2.0-oval]",
+        "seconds": 24.914
+      },
+      {
+        "node_id": "tests/integration/test_baseline_tracking.py::test_two_laps_all_schedule_nodes[2.0-circle]",
+        "seconds": 22.008
+      },
+      {
+        "node_id": "tests/integration/test_baseline_tracking.py::test_two_laps_all_schedule_nodes[3.0-oval]",
+        "seconds": 19.516
+      },
+      {
+        "node_id": "tests/unit/test_task007b_export.py::test_progress_export_and_delayed_physical_chronology",
+        "seconds": 19.357
+      },
+      {
+        "node_id": "tests/integration/test_mpc_tracking.py::test_nmpc_recovery[0.08--0.04]",
+        "seconds": 17.602
+      }
+    ],
+    "logs": [
+      {
+        "path": "results/task007e/e3/formal_e603672/full_suite.log",
+        "sha256": "2bb7ac05c8721835e538b8bf3ebcd3598eab51557a7d7cdb8e5eac5b94da915e",
+        "bytes": 278786
+      },
+      {
+        "path": "results/task007e/e3/formal_e603672/full_suite.xml",
+        "sha256": "7e2e144ed61e6948b347679162dbf672afd2938e68dbb025d6cce2c781e58e63",
+        "bytes": 87842
+      },
+      {
+        "path": "results/task007e/e3/formal_e603672/invocation.json",
+        "sha256": "cf623f36733eab322a4b494bb130916ca86a8acd5b26e827170c9f564a3e7469",
+        "bytes": 830
+      },
+      {
+        "path": "results/task007e/e3/formal_e603672/thread_observations.json",
+        "sha256": "574c411898fc9f997a18d3d3e02bb08d4103620ecc032bb8706e74047c58b928",
+        "bytes": 225447
+      },
+      {
+        "path": "results/task007e/e3/formal_e603672/exit.json",
+        "sha256": "9bd7a6b15fe249b30498b482607e82b3f1b93931e96d5ceddc2998dc64187571",
+        "bytes": 995
+      },
+      {
+        "path": "results/task007e/e3/formal_e603672/run_verification.py",
+        "sha256": "0e4c310bc64fdf95b8c87973d6b88bfe99bdc60b3bace72d71cc85a902db86d0",
+        "bytes": 2213
+      }
+    ],
+    "observation_limit": "Process thread count sampled at test boundaries, not continuous BLAS activity; thread-policy tests may use their own isolated explicit subprocess cases."
+  },
+  "focused_from_same_suite": {
+    "VIS_export": 30,
+    "VIS_long_report": 11,
+    "not_additional_executions": true,
+    "safeguard_node_applicability": "remaining_limitations.json"
+  },
+  "manifest": {
+    "passed": true,
+    "source_inventory_hashes": 294,
+    "artifact_references": 31,
+    "exact_source_comparisons": [
+      {
+        "earlier": "c6990572045e61ee443dc715de9e8c44396e5b41",
+        "later": "8dbd1c5fbc09781411fc762e04f9c2c5cf2d99ae",
+        "offline_additions": []
+      },
+      {
+        "earlier": "8dbd1c5fbc09781411fc762e04f9c2c5cf2d99ae",
+        "later": "835eefb0aafe2f982a0ba05847d4e731079ff52d",
+        "offline_additions": [
+          "scripts/task007dvis/long_figures.py",
+          "scripts/task007dvis/long_report.py"
+        ]
+      }
+    ],
+    "schema": "apex-performance-profile/1.0.0",
+    "audited_source_revision": "835eefb0aafe2f982a0ba05847d4e731079ff52d",
+    "manifest_sha256": "5299adca29d5c5bd383252cd2c299a392dd6872dc6bb72d1a4dd7ecfb8dd1ebf",
+    "evidence_index_sha256": "5e788c428bd706f20792b1852b3400bf0eeb7fe11d93285bbc5bc7accec8fced",
+    "schema_sha256": "6566c62aaff47ff01f031c4a9b8885f370888457ee078f488522d041bcb84179",
+    "validator_sha256": "351a390266b8b37fea2de89a7bf4d7f01b6174734c18f73abd3557106df7d56c",
+    "negative_checks": [
+      "N",
+      "Q",
+      "order",
+      "freeze",
+      "B",
+      "fallback",
+      "solver",
+      "fixture",
+      "thread observation",
+      "evidence hash"
+    ],
+    "validation_method": "profile schema vocabulary, static AST, exact JSON, hashes; no numerical constructors",
+    "new_pytest_executions": 0,
+    "new_simulations": 0,
+    "new_solver_calls": 0,
+    "environment": {
+      "python": "3.12.14",
+      "platform": "macOS-26.5.1-arm64-arm-64bit"
+    },
+    "E3_execution_revision": "e603672b209985f11ed26b6f44d3949ffd5675c5",
+    "E2_audited_source_label_note": "Validator reports original E2 preparation base; E3 ran unchanged validator and independently bound current exact SHA and file inventory.",
+    "manifest_path": "configs/performance/apex_performance_synthetic_v1.json",
+    "flags_unchanged": {
+      "tested_synthetic_formulation": true,
+      "proposed_performance_designation": true,
+      "formal_verification_pending": true,
+      "primary_acceptance_pending": true,
+      "hardware_certification_available": false,
+      "frozen": false,
+      "runtime_auto_load": false,
+      "production_default_changed": false
+    },
+    "independent_identity_audit": [
+      {
+        "topic": "Coordinates / models",
+        "paths": [
+          "src/apex/state.py",
+          "src/apex/models/vehicle/dynamic_bicycle.py",
+          "src/apex/control/mpc/symbolic_model.py",
+          "src/apex/models/tire/config.py"
+        ],
+        "sha256": {
+          "src/apex/state.py": "b2b16555f8ae83f041ee821906305accc56010b643bb3fa514f90a8a17e66862",
+          "src/apex/models/vehicle/dynamic_bicycle.py": "c93b674924eed24f9641ebe263863b3422cba5eb1665c0d93dd6cd00bdfd462f",
+          "src/apex/control/mpc/symbolic_model.py": "99b82ead0f7fae2c1451f8e938853fa25a8b74f040b0b22df5225fba5b5e0a6d",
+          "src/apex/models/tire/config.py": "73f7e47ae5768a6961a8ca65aa40a5da7ecd77e412ac6995a459e969daa83877"
+        },
+        "conclusion": "Canonical SI six-state/two-input order; a_cmd=Fx/m; separate NumPy/CasADi models and matched combined grip.",
+        "passed": true,
+        "method": "independent source inspection plus retained configuration comparison; no constructor/solver"
+      },
+      {
+        "topic": "NLP / costs / terminal",
+        "paths": [
+          "scripts/task007dcx/worker.py",
+          "src/apex/control/mpc/problem.py",
+          "src/apex/control/mpc/cost.py"
+        ],
+        "sha256": {
+          "scripts/task007dcx/worker.py": "7e581738fe4102fb002fec2cfdf2f586d3a8f0f6c5f6e98bfeb3831bcf72e71b",
+          "src/apex/control/mpc/problem.py": "b0560718155ff04074633aa92c4374a15ec975f21f5e3a022f4e94d52636087e",
+          "src/apex/control/mpc/cost.py": "1b8367af3a41c72fc24573a92d9dba526100e53985e33d2626084b1222c5623b"
+        },
+        "conclusion": "N8 dt0.1 4 substeps; lateral2 gives Q[4,4,1,200,200], R[25,1], W[1,0.1]; other scales/alpha1; full eight-stage sequence 88 decision values; terminal DARE speed1/2/3 at 100Hz plus speed weight4; lambda0.",
+        "passed": true,
+        "method": "independent source inspection plus retained configuration comparison; no constructor/solver"
+      },
+      {
+        "topic": "Solver / warm start",
+        "paths": [
+          "src/apex/optimization/solvers/ipopt.py",
+          "src/apex/control/mpc/controller.py",
+          "src/apex/control/mpc/warm_start.py",
+          "scripts/task007dvis/worker.py"
+        ],
+        "sha256": {
+          "src/apex/optimization/solvers/ipopt.py": "3897eb4e5c2cf55b33b96e361e0c83e43ce783172e7095f59daf72785473c728",
+          "src/apex/control/mpc/controller.py": "63e17bd863dcd8d649d9f382a545f5c004e982fd87e837aa6b283ec1b1206b82",
+          "src/apex/control/mpc/warm_start.py": "0faab03574394c3ecebe071a7c5f4e9e01d704a7d9b625fb6d0c122cc4cb34ed",
+          "scripts/task007dvis/worker.py": "fd6dedd1caace418d4f3b60ef973f387d3e240a5ce8fa87c774450500f89bd5a"
+        },
+        "conclusion": "Explicit IPOPT options and independent acceptance checks; primal shift/duplicate/initial replacement, no supplied dual warm start, no new early termination.",
+        "passed": true,
+        "method": "independent source inspection plus retained configuration comparison; no constructor/solver"
+      },
+      {
+        "topic": "Prediction / scheduling",
+        "paths": [
+          "src/apex/control/trajectory/prediction.py",
+          "src/apex/control/trajectory/planner.py",
+          "src/apex/control/trajectory/packet.py",
+          "src/apex/simulation/asynchronous.py"
+        ],
+        "sha256": {
+          "src/apex/control/trajectory/prediction.py": "0013fd74299a68993dabbc381ca384837f09b862011956a94fd1d3b138b839ab",
+          "src/apex/control/trajectory/planner.py": "6dcc8abe959fa65d7036f90379179703f54091c55a54bedee4db9a47d4622e44",
+          "src/apex/control/trajectory/packet.py": "00830d2ced67321547add91a4e241664689cdeed57d57f0b9b2d95552b9fd704",
+          "src/apex/simulation/asynchronous.py": "7d14395aa27707f2561bf6bdb32cd613bc2508ab12d6fe617bf45855d378f018"
+        },
+        "conclusion": "A legacy release+estimate, median10 initial0.017 cap0.30, one pending solve, variable waiting/late handoff with continuity/minimum0.05 reserve; event ordering and no expired active sampling unchanged.",
+        "passed": true,
+        "method": "independent source inspection plus retained configuration comparison; no constructor/solver"
+      },
+      {
+        "topic": "Tracking / fallback / application",
+        "paths": [
+          "src/apex/control/trajectory/tracker.py",
+          "src/apex/control/baseline/controller.py",
+          "src/apex/control/baseline/lqr.py",
+          "src/apex/control/baseline/speed.py"
+        ],
+        "sha256": {
+          "src/apex/control/trajectory/tracker.py": "ffa5d9968650c97411121ba3dedd89a5de04a1a9ce832c50efa351763567ef27",
+          "src/apex/control/baseline/controller.py": "1d738265c24e8ff6fc557ff8d4f82669978fe12e212dcd70dc45eb94cf438ec4",
+          "src/apex/control/baseline/lqr.py": "68e191235e03dda744cc9894ca0981a8df8bd9f1bd0e6331f7872148014cf818",
+          "src/apex/control/baseline/speed.py": "5a41c32eaa491f5bf8fdec49827bac3d9aafd78924f10786fd4000d3a0ec941f"
+        },
+        "conclusion": "100Hz TVLQR + proportional speed kp1; 1rad/s application clamp and box bounds. Baseline LQR/PI distinct, sampled speed/corridor admission; no expanded recovery/safety claim.",
+        "passed": true,
+        "method": "independent source inspection plus retained configuration comparison; no constructor/solver"
+      },
+      {
+        "topic": "Fixtures / evaluation / native",
+        "paths": [
+          "scripts/task007dvis/protocol.py",
+          "scripts/threading_study/config.py"
+        ],
+        "sha256": {
+          "scripts/task007dvis/protocol.py": "47a2cea6b2d0a95e690a8d266c937905820276ccb68d62f7759f94d51861eb37",
+          "scripts/threading_study/config.py": "a50a73015c3ab739c35aa1fd715840364974213bf1c12666269b250264556fc3"
+        },
+        "conclusion": "Synthetic gamma2 fixture and vehicle hashes, VIS timing protocol and startup separated from controller profile; SINGLE setup with actual sampled process-count evidence.",
+        "passed": true,
+        "method": "independent source inspection plus retained configuration comparison; no constructor/solver"
+      }
+    ],
+    "logs": [
+      {
+        "path": "results/task007e/e3/formal_e603672/manifest_validation.json",
+        "sha256": "ad5a22b5482e93ced413dc2924584bbe1fe8b518a80689a6f80d1907cce11f89",
+        "bytes": 1484
+      },
+      {
+        "path": "results/task007e/e3/formal_e603672/manifest_validation.log",
+        "sha256": "ad5a22b5482e93ced413dc2924584bbe1fe8b518a80689a6f80d1907cce11f89",
+        "bytes": 1484
+      }
+    ]
+  },
+  "environment_identity": {
+    "recorded_package_versions_match_current": true,
+    "python_and_platform_match_retained": true,
+    "dependency_files": [
+      {
+        "path": "uv.lock",
+        "sha256": "8cf85868a456415a898643dbb226d146b0b90e5c98982136cf2abf2465fa16ec",
+        "bytes": 176924
+      },
+      {
+        "path": "pyproject.toml",
+        "sha256": "c8ea69a3a486c9794b6cf88ac26566211c6f1bb7b7286d86dbaa36a191353d41",
+        "bytes": 803
+      }
+    ],
+    "IPOPT_linear_solver_build": "Independently recorded build identity unavailable; explicit options and locked CasADi distribution retained. No reconstructed historical build claim."
+  },
+  "scientific_evidence": {
+    "new_racing_or_measured_runs": 0,
+    "raw_root": "results/task007d/vis/vis1r_c699057",
+    "raw_visibility": "Ignored local raw archives; compact evidence, manifests and figures on GitHub",
+    "cases": {
+      "controlled_A": {
+        "status": "COMPLETE_PIPELINE",
+        "worker_exit": 0,
+        "physical_end": 62.23500000000001,
+        "runtime_releases": 622,
+        "accepted_handoffs": 621,
+        "deadline_misses": null,
+        "misses_with_accepted_recovery": 0,
+        "coverage": {
+          "crossings": [
+            {
+              "s_abs": 154.76345492731022,
+              "time": 31.061572635639408,
+              "bracket_start": 31.059999999997004,
+              "bracket_end": 31.064999999997003,
+              "segment_id": 6212,
+              "method": "linear_progress_in_recorded_RK4_bracket"
+            },
+            {
+              "s_abs": 309.52690985462044,
+              "time": 62.23347303324871,
+              "bracket_start": 62.230000000000004,
+              "bracket_end": 62.23500000000001,
+              "segment_id": 12446,
+              "method": "linear_progress_in_recorded_RK4_bracket"
+            }
+          ],
+          "crossing_count": 2,
+          "complete_laps": 1,
+          "windows": [
+            {
+              "kind": "lap",
+              "index": 0,
+              "start": 0.0,
+              "end": 31.061572635639408,
+              "start_s": 1.0,
+              "end_s": 154.76345492731022,
+              "complete": false,
+              "status": "initial_partial"
+            },
+            {
+              "kind": "lap",
+              "index": 1,
+              "start": 31.061572635639408,
+              "end": 62.23347303324871,
+              "start_s": 154.76345492731022,
+              "end_s": 309.52690985462044,
+              "complete": true,
+              "status": "complete"
+            }
+          ]
+        },
+        "stop_reason": "target_laps",
+        "stop_gate": [],
+        "failure": null,
+        "chronology_issues": [],
+        "boundary_violations": 0,
+        "minimum_native_center_clearance": 0.3287955046438407,
+        "max_predicted_slack": 9.091836835408585e-11,
+        "solver_failures": 0,
+        "planner_busy_misses": 0,
+        "codriver_busy_ticks": 0,
+        "terminal_endpoint": {
+          "time": 62.23500000000001,
+          "vx": 4.717972425694449,
+          "s_abs": 309.53405411247064,
+          "reserve": 0.7049999999999912,
+          "plan_id": 621,
+          "applied_source_plan_id": 621
+        },
+        "preparation_seconds": {
+          "n": 622,
+          "mean": 0.05332594081142564,
+          "p95": 0.06464214394800365,
+          "maximum": 0.08723366702906787
+        },
+        "export_validated": {
+          "passed": true,
+          "rows": {
+            "states": 12448,
+            "segments": 12447,
+            "controls": 6223,
+            "planning": 3097,
+            "cycles": 622,
+            "events": 14310,
+            "boundaries": 2,
+            "metrics": 22
+          },
+          "artifacts": 15,
+          "acceptance": "adapter_checks_only; Workbench_ingestion_pending"
+        },
+        "summary_present": true,
+        "observed_process_thread_counts": [
+          1
+        ],
+        "forecast_matches": 622,
+        "worker_revision_direct_record": "8dbd1c5fbc09781411fc762e04f9c2c5cf2d99ae",
+        "complete_lap_seconds": 31.1719003976093,
+        "partial_sectors": [
+          {
+            "index": "0",
+            "sector": "long_straight",
+            "start": "0.0",
+            "end": "3.669979981979444",
+            "duration": "3.669979981979444",
+            "complete": "False",
+            "status": "partial"
+          },
+          {
+            "index": "18",
+            "sector": "long_straight",
+            "start": "62.23347303324871",
+            "end": "62.23500000000001",
+            "duration": "",
+            "complete": "False",
+            "status": "partial"
+          }
+        ]
+      },
+      "controlled_C70": {
+        "status": "COMPLETE_PIPELINE",
+        "worker_exit": 0,
+        "physical_end": 62.075,
+        "runtime_releases": 620,
+        "accepted_handoffs": 620,
+        "deadline_misses": 0,
+        "misses_with_accepted_recovery": 0,
+        "coverage": {
+          "crossings": [
+            {
+              "s_abs": 154.76345492731022,
+              "time": 30.9001942001147,
+              "bracket_start": 30.899999999997036,
+              "bracket_end": 30.904999999997035,
+              "segment_id": 6180,
+              "method": "linear_progress_in_recorded_RK4_bracket"
+            },
+            {
+              "s_abs": 309.52690985462044,
+              "time": 62.07223246633067,
+              "bracket_start": 62.07,
+              "bracket_end": 62.075,
+              "segment_id": 12414,
+              "method": "linear_progress_in_recorded_RK4_bracket"
+            }
+          ],
+          "crossing_count": 2,
+          "complete_laps": 1,
+          "windows": [
+            {
+              "kind": "lap",
+              "index": 0,
+              "start": 0.0,
+              "end": 30.9001942001147,
+              "start_s": 1.0,
+              "end_s": 154.76345492731022,
+              "complete": false,
+              "status": "initial_partial"
+            },
+            {
+              "kind": "lap",
+              "index": 1,
+              "start": 30.9001942001147,
+              "end": 62.07223246633067,
+              "start_s": 154.76345492731022,
+              "end_s": 309.52690985462044,
+              "complete": true,
+              "status": "complete"
+            }
+          ]
+        },
+        "stop_reason": "target_laps",
+        "stop_gate": [],
+        "failure": null,
+        "chronology_issues": [],
+        "boundary_violations": 0,
+        "minimum_native_center_clearance": 0.32927729965736713,
+        "max_predicted_slack": 9.091848545404492e-11,
+        "solver_failures": 0,
+        "planner_busy_misses": 0,
+        "codriver_busy_ticks": 0,
+        "terminal_endpoint": {
+          "time": 62.075,
+          "vx": 4.720997737983511,
+          "s_abs": 309.5398671383131,
+          "reserve": 0.7949999999999946,
+          "plan_id": 620,
+          "applied_source_plan_id": 619
+        },
+        "preparation_seconds": {
+          "n": 620,
+          "mean": 0.058156263657034406,
+          "p95": 0.06936584319919348,
+          "maximum": 0.08278387505561113
+        },
+        "export_validated": {
+          "passed": true,
+          "rows": {
+            "states": 12416,
+            "segments": 12415,
+            "controls": 6207,
+            "planning": 3097,
+            "cycles": 620,
+            "events": 14274,
+            "boundaries": 2,
+            "metrics": 22
+          },
+          "artifacts": 15,
+          "acceptance": "adapter_checks_only; Workbench_ingestion_pending"
+        },
+        "summary_present": true,
+        "observed_process_thread_counts": [
+          1
+        ],
+        "forecast_matches": 620,
+        "worker_revision_direct_record": "8dbd1c5fbc09781411fc762e04f9c2c5cf2d99ae",
+        "complete_lap_seconds": 31.172038266215967,
+        "partial_sectors": [
+          {
+            "index": "0",
+            "sector": "long_straight",
+            "start": "0.0",
+            "end": "3.671837161561083",
+            "duration": "3.671837161561083",
+            "complete": "False",
+            "status": "partial"
+          },
+          {
+            "index": "18",
+            "sector": "long_straight",
+            "start": "62.07223246633067",
+            "end": "62.075",
+            "duration": "",
+            "complete": "False",
+            "status": "partial"
+          }
+        ]
+      },
+      "measured_A_1": {
+        "status": "COMPLETE_PIPELINE",
+        "worker_exit": 0,
+        "physical_end": 62.285000000000004,
+        "runtime_releases": 620,
+        "accepted_handoffs": 620,
+        "deadline_misses": null,
+        "misses_with_accepted_recovery": 0,
+        "coverage": {
+          "crossings": [
+            {
+              "s_abs": 154.76345492731022,
+              "time": 30.966305037833887,
+              "bracket_start": 30.96499999999994,
+              "bracket_end": 30.96999999999994,
+              "segment_id": 6638,
+              "method": "linear_progress_in_recorded_RK4_bracket"
+            },
+            {
+              "s_abs": 309.52690985462044,
+              "time": 62.28406081712217,
+              "bracket_start": 62.28,
+              "bracket_end": 62.285000000000004,
+              "segment_id": 13360,
+              "method": "linear_progress_in_recorded_RK4_bracket"
+            }
+          ],
+          "crossing_count": 2,
+          "complete_laps": 1,
+          "windows": [
+            {
+              "kind": "lap",
+              "index": 0,
+              "start": 0.0,
+              "end": 30.966305037833887,
+              "start_s": 1.0,
+              "end_s": 154.76345492731022,
+              "complete": false,
+              "status": "initial_partial"
+            },
+            {
+              "kind": "lap",
+              "index": 1,
+              "start": 30.966305037833887,
+              "end": 62.28406081712217,
+              "start_s": 154.76345492731022,
+              "end_s": 309.52690985462044,
+              "complete": true,
+              "status": "complete"
+            }
+          ]
+        },
+        "stop_reason": "target_laps",
+        "stop_gate": [],
+        "failure": null,
+        "chronology_issues": [],
+        "boundary_violations": 0,
+        "minimum_native_center_clearance": 0.32942374549219783,
+        "max_predicted_slack": 9.091836275654472e-11,
+        "solver_failures": 0,
+        "planner_busy_misses": 2,
+        "codriver_busy_ticks": 0,
+        "terminal_endpoint": {
+          "time": 62.285000000000004,
+          "vx": 4.71762851927589,
+          "s_abs": 309.531302748057,
+          "reserve": 0.7661413543717899,
+          "plan_id": 620,
+          "applied_source_plan_id": 620
+        },
+        "preparation_seconds": {
+          "n": 620,
+          "mean": 0.0576292569452386,
+          "p95": 0.0702529979753308,
+          "maximum": 0.19332445808686316
+        },
+        "export_validated": {
+          "passed": true,
+          "rows": {
+            "states": 13362,
+            "segments": 13361,
+            "controls": 6228,
+            "planning": 3097,
+            "cycles": 620,
+            "events": 14318,
+            "boundaries": 2,
+            "metrics": 22
+          },
+          "artifacts": 15,
+          "acceptance": "adapter_checks_only; Workbench_ingestion_pending"
+        },
+        "summary_present": true,
+        "observed_process_thread_counts": [
+          1
+        ],
+        "forecast_matches": 620,
+        "worker_revision_direct_record": "8dbd1c5fbc09781411fc762e04f9c2c5cf2d99ae",
+        "complete_lap_seconds": 31.31775577928828,
+        "partial_sectors": [
+          {
+            "index": "0",
+            "sector": "long_straight",
+            "start": "0.0",
+            "end": "3.6703780421574046",
+            "duration": "3.6703780421574046",
+            "complete": "False",
+            "status": "partial"
+          },
+          {
+            "index": "18",
+            "sector": "long_straight",
+            "start": "62.28406081712217",
+            "end": "62.285000000000004",
+            "duration": "",
+            "complete": "False",
+            "status": "partial"
+          }
+        ]
+      },
+      "measured_C70_1": {
+        "status": "SCIENTIFIC_STOP_AND_EXPORT_FAILURE",
+        "worker_exit": 1,
+        "physical_end": 48.67,
+        "runtime_releases": 485,
+        "accepted_handoffs": 455,
+        "deadline_misses": 30,
+        "misses_with_accepted_recovery": 22,
+        "coverage": {
+          "crossings": [
+            {
+              "s_abs": 154.76345492731022,
+              "time": 30.950956602045693,
+              "bracket_start": 30.949999999997893,
+              "bracket_end": 30.954532874839146,
+              "segment_id": 6498,
+              "method": "linear_progress_in_recorded_RK4_bracket"
+            }
+          ],
+          "crossing_count": 1,
+          "complete_laps": 0,
+          "windows": [
+            {
+              "kind": "lap",
+              "index": 0,
+              "start": 0.0,
+              "end": 30.950956602045693,
+              "start_s": 1.0,
+              "end_s": 154.76345492731022,
+              "complete": false,
+              "status": "initial_partial"
+            },
+            {
+              "kind": "lap",
+              "index": 1,
+              "start": 30.950956602045693,
+              "end": 48.67,
+              "start_s": 154.76345492731022,
+              "end_s": 244.48730414935804,
+              "complete": false,
+              "status": "censored_partial"
+            }
+          ]
+        },
+        "stop_reason": "exhausted_outside_baseline_domain",
+        "stop_gate": [
+          "runtime_failure_or_early_stop",
+          "trajectory_exhaustion",
+          "incomplete_requested_coverage"
+        ],
+        "failure": null,
+        "chronology_issues": [],
+        "boundary_violations": 0,
+        "minimum_native_center_clearance": 0.3292019321321997,
+        "max_predicted_slack": 9.09185429829312e-11,
+        "solver_failures": 0,
+        "planner_busy_misses": 1,
+        "codriver_busy_ticks": 0,
+        "terminal_endpoint": {
+          "time": 48.67,
+          "vx": 5.960492971116675,
+          "s_abs": 244.48730414935804,
+          "reserve": 0.0,
+          "plan_id": 477,
+          "applied_source_plan_id": 477
+        },
+        "preparation_seconds": {
+          "n": 485,
+          "mean": 0.058812388775332534,
+          "p95": 0.07037050807848573,
+          "maximum": 0.11722187488339841
+        },
+        "export_validated": null,
+        "summary_present": false,
+        "observed_process_thread_counts": null,
+        "forecast_matches": null,
+        "worker_revision_direct_record": null,
+        "complete_lap_seconds": null,
+        "partial_sectors": [
+          {
+            "index": "0",
+            "sector": "long_straight",
+            "start": "0.0",
+            "end": "3.673512980769923",
+            "duration": "3.673512980769923",
+            "complete": "False",
+            "status": "partial"
+          },
+          {
+            "index": "15",
+            "sector": "second_straight",
+            "start": "47.19835787677958",
+            "end": "48.67",
+            "duration": "1.4716421232204198",
+            "complete": "False",
+            "status": "partial"
+          }
+        ]
+      },
+      "measured_C70_2": {
+        "status": "NOT_EXECUTED_CAMPAIGN_STOP",
+        "worker_exit": null,
+        "physical_end": null,
+        "runtime_releases": null,
+        "accepted_handoffs": null,
+        "deadline_misses": null,
+        "misses_with_accepted_recovery": null,
+        "coverage": null,
+        "stop_reason": null,
+        "stop_gate": null,
+        "failure": null,
+        "chronology_issues": null,
+        "boundary_violations": null,
+        "minimum_native_center_clearance": null,
+        "max_predicted_slack": null,
+        "solver_failures": null,
+        "planner_busy_misses": null,
+        "codriver_busy_ticks": null,
+        "terminal_endpoint": null,
+        "preparation_seconds": null,
+        "export_validated": null,
+        "summary_present": null,
+        "observed_process_thread_counts": null,
+        "forecast_matches": null,
+        "worker_revision_direct_record": null,
+        "complete_lap_seconds": null,
+        "partial_sectors": []
+      },
+      "measured_A_2": {
+        "status": "NOT_EXECUTED_CAMPAIGN_STOP",
+        "worker_exit": null,
+        "physical_end": null,
+        "runtime_releases": null,
+        "accepted_handoffs": null,
+        "deadline_misses": null,
+        "misses_with_accepted_recovery": null,
+        "coverage": null,
+        "stop_reason": null,
+        "stop_gate": null,
+        "failure": null,
+        "chronology_issues": null,
+        "boundary_violations": null,
+        "minimum_native_center_clearance": null,
+        "max_predicted_slack": null,
+        "solver_failures": null,
+        "planner_busy_misses": null,
+        "codriver_busy_ticks": null,
+        "terminal_endpoint": null,
+        "preparation_seconds": null,
+        "export_validated": null,
+        "summary_present": null,
+        "observed_process_thread_counts": null,
+        "forecast_matches": null,
+        "worker_revision_direct_record": null,
+        "complete_lap_seconds": null,
+        "partial_sectors": []
+      }
+    },
+    "C70_terminal": {
+      "terminal_misses": [
+        {
+          "plan_id": 478,
+          "t_release": 47.9,
+          "t_ready": 47.97132108299993,
+          "valid_from": 47.97,
+          "t_accept": null,
+          "first_TVLQR_use": null,
+          "expiry": 48.769999999999996,
+          "preparation_duration": 0.07132108299992979,
+          "wait_duration": 0.0,
+          "deadline_margin": -0.0013210829999295015,
+          "status": "missed",
+          "miss_time": 47.97,
+          "late_discard_time": 47.97132108299993,
+          "packet_age": null,
+          "reserve_at_acceptance": null,
+          "consecutive_misses": 1,
+          "old_plan_id": 477,
+          "old_authority_start": 47.870000000000005,
+          "old_expiry": 48.67,
+          "recovery_time": null,
+          "recovery_plan_id": null,
+          "recovery_censored": true,
+          "observed_until": 48.67,
+          "minimum_native_reserve": 0.0,
+          "observed_without_replacement": 0.7000000000000028,
+          "completion_observed": true
+        },
+        {
+          "plan_id": 479,
+          "t_release": 48.0,
+          "t_ready": 48.0706102498807,
+          "valid_from": 48.07,
+          "t_accept": null,
+          "first_TVLQR_use": null,
+          "expiry": 48.87,
+          "preparation_duration": 0.0706102498807013,
+          "wait_duration": 0.0,
+          "deadline_margin": -0.0006102498807010193,
+          "status": "missed",
+          "miss_time": 48.07,
+          "late_discard_time": 48.0706102498807,
+          "packet_age": null,
+          "reserve_at_acceptance": null,
+          "consecutive_misses": 2,
+          "old_plan_id": 477,
+          "old_authority_start": 47.870000000000005,
+          "old_expiry": 48.67,
+          "recovery_time": null,
+          "recovery_plan_id": null,
+          "recovery_censored": true,
+          "observed_until": 48.67,
+          "minimum_native_reserve": 0.0,
+          "observed_without_replacement": 0.6000000000000014,
+          "completion_observed": true
+        },
+        {
+          "plan_id": 480,
+          "t_release": 48.1,
+          "t_ready": 48.17117937505245,
+          "valid_from": 48.17,
+          "t_accept": null,
+          "first_TVLQR_use": null,
+          "expiry": 48.97,
+          "preparation_duration": 0.07117937505245209,
+          "wait_duration": 0.0,
+          "deadline_margin": -0.0011793750524518032,
+          "status": "missed",
+          "miss_time": 48.17,
+          "late_discard_time": 48.17117937505245,
+          "packet_age": null,
+          "reserve_at_acceptance": null,
+          "consecutive_misses": 3,
+          "old_plan_id": 477,
+          "old_authority_start": 47.870000000000005,
+          "old_expiry": 48.67,
+          "recovery_time": null,
+          "recovery_plan_id": null,
+          "recovery_censored": true,
+          "observed_until": 48.67,
+          "minimum_native_reserve": 0.0,
+          "observed_without_replacement": 0.5,
+          "completion_observed": true
+        },
+        {
+          "plan_id": 481,
+          "t_release": 48.2,
+          "t_ready": 48.27026908406988,
+          "valid_from": 48.27,
+          "t_accept": null,
+          "first_TVLQR_use": null,
+          "expiry": 49.07,
+          "preparation_duration": 0.07026908406987786,
+          "wait_duration": 0.0,
+          "deadline_margin": -0.0002690840698775787,
+          "status": "missed",
+          "miss_time": 48.27,
+          "late_discard_time": 48.27026908406988,
+          "packet_age": null,
+          "reserve_at_acceptance": null,
+          "consecutive_misses": 4,
+          "old_plan_id": 477,
+          "old_authority_start": 47.870000000000005,
+          "old_expiry": 48.67,
+          "recovery_time": null,
+          "recovery_plan_id": null,
+          "recovery_censored": true,
+          "observed_until": 48.67,
+          "minimum_native_reserve": 0.0,
+          "observed_without_replacement": 0.3999999999999986,
+          "completion_observed": true
+        },
+        {
+          "plan_id": 482,
+          "t_release": 48.300000000000004,
+          "t_ready": 48.37148037501611,
+          "valid_from": 48.370000000000005,
+          "t_accept": null,
+          "first_TVLQR_use": null,
+          "expiry": 49.17,
+          "preparation_duration": 0.07148037501610816,
+          "wait_duration": 0.0,
+          "deadline_margin": -0.001480375016107871,
+          "status": "missed",
+          "miss_time": 48.370000000000005,
+          "late_discard_time": 48.37148037501611,
+          "packet_age": null,
+          "reserve_at_acceptance": null,
+          "consecutive_misses": 5,
+          "old_plan_id": 477,
+          "old_authority_start": 47.870000000000005,
+          "old_expiry": 48.67,
+          "recovery_time": null,
+          "recovery_plan_id": null,
+          "recovery_censored": true,
+          "observed_until": 48.67,
+          "minimum_native_reserve": 0.0,
+          "observed_without_replacement": 0.29999999999999716,
+          "completion_observed": true
+        },
+        {
+          "plan_id": 483,
+          "t_release": 48.4,
+          "t_ready": 48.4707831250038,
+          "valid_from": 48.47,
+          "t_accept": null,
+          "first_TVLQR_use": null,
+          "expiry": 49.269999999999996,
+          "preparation_duration": 0.0707831250037998,
+          "wait_duration": 0.0,
+          "deadline_margin": -0.0007831250037995119,
+          "status": "missed",
+          "miss_time": 48.47,
+          "late_discard_time": 48.4707831250038,
+          "packet_age": null,
+          "reserve_at_acceptance": null,
+          "consecutive_misses": 6,
+          "old_plan_id": 477,
+          "old_authority_start": 47.870000000000005,
+          "old_expiry": 48.67,
+          "recovery_time": null,
+          "recovery_plan_id": null,
+          "recovery_censored": true,
+          "observed_until": 48.67,
+          "minimum_native_reserve": 0.0,
+          "observed_without_replacement": 0.20000000000000284,
+          "completion_observed": true
+        },
+        {
+          "plan_id": 484,
+          "t_release": 48.5,
+          "t_ready": 48.572101457975805,
+          "valid_from": 48.57,
+          "t_accept": null,
+          "first_TVLQR_use": null,
+          "expiry": 49.37,
+          "preparation_duration": 0.0721014579758048,
+          "wait_duration": 0.0,
+          "deadline_margin": -0.0021014579758045215,
+          "status": "missed",
+          "miss_time": 48.57,
+          "late_discard_time": 48.572101457975805,
+          "packet_age": null,
+          "reserve_at_acceptance": null,
+          "consecutive_misses": 7,
+          "old_plan_id": 477,
+          "old_authority_start": 47.870000000000005,
+          "old_expiry": 48.67,
+          "recovery_time": null,
+          "recovery_plan_id": null,
+          "recovery_censored": true,
+          "observed_until": 48.67,
+          "minimum_native_reserve": 0.0,
+          "observed_without_replacement": 0.10000000000000142,
+          "completion_observed": true
+        },
+        {
+          "plan_id": 485,
+          "t_release": 48.6,
+          "t_ready": null,
+          "valid_from": 48.67,
+          "t_accept": null,
+          "first_TVLQR_use": null,
+          "expiry": 49.47,
+          "preparation_duration": null,
+          "wait_duration": null,
+          "deadline_margin": null,
+          "status": "missed",
+          "miss_time": 48.67,
+          "late_discard_time": null,
+          "packet_age": null,
+          "reserve_at_acceptance": null,
+          "consecutive_misses": 8,
+          "old_plan_id": 477,
+          "old_authority_start": 47.870000000000005,
+          "old_expiry": 48.67,
+          "recovery_time": null,
+          "recovery_plan_id": null,
+          "recovery_censored": true,
+          "observed_until": 48.67,
+          "minimum_native_reserve": 0.0,
+          "observed_without_replacement": 0.0,
+          "completion_observed": false
+        }
+      ],
+      "last_accepted": {
+        "time": 47.870000000000005,
+        "plan_id": 477,
+        "accepted": true,
+        "reason": "accepted",
+        "reserve": 0.7999999999999972,
+        "error_vx": 1.320480629729559e-06,
+        "error_vy": -4.504237758626295e-05,
+        "error_r": -0.0006853639356933783,
+        "error_e_psi": 0.00011748465611916004,
+        "error_s_abs": 7.545842493072996e-07,
+        "error_e_y": 2.4003313355561856e-05,
+        "nominal_delta_jump": 0.0003019413061382584,
+        "nominal_acceleration_jump": -0.033350172319264765
+      },
+      "last_active_packet_expiry": 48.67,
+      "last_reserve_event": {
+        "time": 48.665000000000006,
+        "reserve": 0.0049999999999954525,
+        "category": "critical",
+        "plan_id": 477
+      },
+      "terminal_endpoint": {
+        "time": 48.67,
+        "vx": 5.960492971116675,
+        "s_abs": 244.48730414935804,
+        "reserve": 0.0,
+        "plan_id": 477,
+        "applied_source_plan_id": 477
+      },
+      "fallbacks": [
+        {
+          "time": 48.67,
+          "reason": "trajectory_exhausted",
+          "valid_domain": false
+        }
+      ],
+      "last_plan": {
+        "plan_id": 485,
+        "release_time": 48.6,
+        "completion_time": 48.672029625065626,
+        "completed": false,
+        "physical_delay": 0.07202962506562471
+      },
+      "missing_finalization": [
+        "summary.json",
+        "scientific/manifest.json",
+        "scientific/packets.json",
+        "scientific/planning.csv"
+      ],
+      "unfinalized_export_present": [
+        "boundaries.csv",
+        "controls.csv",
+        "cycles.csv",
+        "events.csv",
+        "metrics.csv",
+        "reserves.csv",
+        "segments.csv",
+        "states.csv"
+      ]
+    },
+    "hash_groups": {
+      "CX_core_fixture_manifest": {
+        "files": 168,
+        "bytes": 9497758,
+        "mismatches": []
+      },
+      "CX_local_verification_logs": {
+        "files": 18,
+        "bytes": 2051508,
+        "mismatches": []
+      },
+      "VIS1R_source": {
+        "files": 294,
+        "bytes": 1567538,
+        "mismatches": []
+      },
+      "VIS1L_report_source": {
+        "files": 3,
+        "bytes": 24314,
+        "mismatches": []
+      },
+      "VIS1L_compact_artifacts": {
+        "files": 40,
+        "bytes": 4804607,
+        "mismatches": []
+      },
+      "original_failed_parity_evidence": {
+        "files": 7,
+        "bytes": 1422177,
+        "mismatches": []
+      },
+      "VIS1R_parity_A": {
+        "files": 27,
+        "bytes": 4803854,
+        "mismatches": []
+      },
+      "VIS1R_parity_C70": {
+        "files": 27,
+        "bytes": 4823396,
+        "mismatches": []
+      },
+      "VIS1L_controlled_A": {
+        "files": 25,
+        "bytes": 105331884,
+        "mismatches": []
+      },
+      "VIS1L_controlled_C70": {
+        "files": 25,
+        "bytes": 106091277,
+        "mismatches": []
+      },
+      "VIS1L_measured_A_1": {
+        "files": 25,
+        "bytes": 107500574,
+        "mismatches": []
+      },
+      "VIS1L_measured_C70_1": {
+        "files": 15,
+        "bytes": 75410233,
+        "mismatches": []
+      },
+      "VIS1L_fixtures": {
+        "files": 5,
+        "bytes": 728251,
+        "mismatches": []
+      },
+      "VIS1L_vehicle": {
+        "files": 1,
+        "bytes": 1044,
+        "mismatches": []
+      },
+      "XML_prerequisites.xml": {
+        "files": 1,
+        "bytes": 47637,
+        "mismatches": []
+      },
+      "XML_vis_followup.xml": {
+        "files": 1,
+        "bytes": 3646,
+        "mismatches": []
+      },
+      "XML_serialization_fix.xml": {
+        "files": 1,
+        "bytes": 3772,
+        "mismatches": []
+      },
+      "XML_export_fix.xml": {
+        "files": 1,
+        "bytes": 3916,
+        "mismatches": []
+      },
+      "XML_final_adapter.xml": {
+        "files": 1,
+        "bytes": 4051,
+        "mismatches": []
+      },
+      "controlled_A_source": {
+        "files": 294,
+        "bytes": 1567538,
+        "mismatches": []
+      },
+      "controlled_C70_source": {
+        "files": 294,
+        "bytes": 1567538,
+        "mismatches": []
+      },
+      "measured_A_1_source": {
+        "files": 294,
+        "bytes": 1567538,
+        "mismatches": []
+      },
+      "measured_C70_1_source": {
+        "files": 294,
+        "bytes": 1567538,
+        "mismatches": []
+      }
+    },
+    "group_counts_overlap": true,
+    "contract_packages": {
+      "nominal_A": {
+        "passed": true,
+        "rows": {
+          "states": 43,
+          "segments": 42,
+          "controls": 21,
+          "planning": 3097,
+          "cycles": 2,
+          "events": 46,
+          "boundaries": 0,
+          "metrics": 1
+        },
+        "artifacts": 15,
+        "acceptance": "adapter_checks_only; Workbench_ingestion_pending"
+      },
+      "C70_miss": {
+        "passed": true,
+        "rows": {
+          "states": 101,
+          "segments": 100,
+          "controls": 50,
+          "planning": 3097,
+          "cycles": 5,
+          "events": 114,
+          "boundaries": 0,
+          "metrics": 1
+        },
+        "artifacts": 15,
+        "acceptance": "adapter_checks_only; Workbench_ingestion_pending"
+      },
+      "censored_A": {
+        "passed": true,
+        "rows": {
+          "states": 39,
+          "segments": 38,
+          "controls": 19,
+          "planning": 3097,
+          "cycles": 1,
+          "events": 41,
+          "boundaries": 0,
+          "metrics": 1
+        },
+        "artifacts": 15,
+        "acceptance": "adapter_checks_only; Workbench_ingestion_pending"
+      },
+      "empty_optional_A": {
+        "passed": true,
+        "rows": {
+          "states": 1,
+          "segments": 0,
+          "controls": 0,
+          "planning": 3097,
+          "cycles": 0,
+          "events": 0,
+          "boundaries": 0,
+          "metrics": 0
+        },
+        "artifacts": 14,
+        "acceptance": "adapter_checks_only; Workbench_ingestion_pending"
+      }
+    },
+    "parity_packages": {
+      "parity_A": {
+        "passed": true,
+        "rows": {
+          "states": 401,
+          "segments": 400,
+          "controls": 200,
+          "planning": 3097,
+          "cycles": 19,
+          "events": 457,
+          "boundaries": 0,
+          "metrics": 3
+        },
+        "artifacts": 15,
+        "acceptance": "adapter_checks_only; Workbench_ingestion_pending"
+      },
+      "parity_C70": {
+        "passed": true,
+        "rows": {
+          "states": 401,
+          "segments": 400,
+          "controls": 200,
+          "planning": 3097,
+          "cycles": 19,
+          "events": 457,
+          "boundaries": 0,
+          "metrics": 3
+        },
+        "artifacts": 15,
+        "acceptance": "adapter_checks_only; Workbench_ingestion_pending"
+      }
+    },
+    "historical_forecast_and_parity": "Recovered A/C70 each retain 19 exact groups and 19 release forecast matches; historical saved results reused, not newly forecast. Original failed parity seven-file evidence retained.",
+    "numerical_recheck": {
+      "passed": true,
+      "method": "Fresh arithmetic on retained native CSV plus raw/segments; no simulation, prediction, solver or rendering",
+      "cases": {
+        "controlled_A": {
+          "exact_recomputed_windows": 22,
+          "exact_recomputed_sectors": 19,
+          "native_rows": 12448,
+          "endpoint_matches_recorded_RK4": true,
+          "numerical_versions_equal": true
+        },
+        "controlled_C70": {
+          "exact_recomputed_windows": 22,
+          "exact_recomputed_sectors": 19,
+          "native_rows": 12416,
+          "endpoint_matches_recorded_RK4": true
+        },
+        "measured_A_1": {
+          "exact_recomputed_windows": 22,
+          "exact_recomputed_sectors": 19,
+          "native_rows": 13362,
+          "endpoint_matches_recorded_RK4": true,
+          "numerical_versions_equal": true
+        },
+        "measured_C70_1": {
+          "exact_recomputed_windows": 19,
+          "exact_recomputed_sectors": 16,
+          "native_rows": 10219,
+          "endpoint_matches_recorded_RK4": true
+        }
+      },
+      "figures": [
+        {
+          "path": "docs/task007d/vis/vis1l/controls_heading.png",
+          "sha256": "132a95b06fbe0007c9825d44c8af2287d2b8446fd1574c3389bf5d96b0092240",
+          "bytes": 570517,
+          "width": 1950,
+          "height": 1650
+        },
+        {
+          "path": "docs/task007d/vis/vis1l/lap_sectors.png",
+          "sha256": "29a91d96371f8d543df9842b49e046a9659815bd79bd246c993fb637a279fb9b",
+          "bytes": 101981,
+          "width": 2100,
+          "height": 750
+        },
+        {
+          "path": "docs/task007d/vis/vis1l/physical_validity.png",
+          "sha256": "1bc57ccb16e6c5f600e99158d9a41e453a4c189f32833ce84913ff9e6484fc09",
+          "bytes": 542860,
+          "width": 1950,
+          "height": 1500
+        },
+        {
+          "path": "docs/task007d/vis/vis1l/speed_progress.png",
+          "sha256": "7b2be55e517c2c9cb882df89ac18dda32ffabb294daeb71c5b9f956ca5639980",
+          "bytes": 246400,
+          "width": 1950,
+          "height": 600
+        },
+        {
+          "path": "docs/task007d/vis/vis1l/terminal_misses.png",
+          "sha256": "5f5b49d01402b4999674e9298151facf74eacd485f85c450e5fd06361cf168c7",
+          "bytes": 162954,
+          "width": 1800,
+          "height": 1200
+        },
+        {
+          "path": "docs/task007d/vis/vis1l/timing_authority.png",
+          "sha256": "217c003c4f8420fc8008bdff6c6253512155d4dd63e41fdde413817852bc51c2",
+          "bytes": 283943,
+          "width": 1950,
+          "height": 1500
+        },
+        {
+          "path": "docs/task007d/vis/vis1l/tracking_errors.png",
+          "sha256": "4e6a0189a9384bd706d9f5c3f47fe4bdb284adde9d58305f7d1cc65f329bd0bc",
+          "bytes": 544629,
+          "width": 1950,
+          "height": 1950
+        },
+        {
+          "path": "docs/task007d/vis/vis1l/trajectory_overlay.png",
+          "sha256": "8973948065f6b6c050eaca517b03afbf04df321ff165b556464ec9bdee039d3f",
+          "bytes": 157770,
+          "width": 1950,
+          "height": 900
+        }
+      ],
+      "lap_sector_metrics.csv": {
+        "sha256": "f8e4e97a365aac845a39132ec0e9bfe9e5ce40fe2365969c13608bb4a50bc671",
+        "rows": 85,
+        "byte_identical": true
+      },
+      "common_coverage_metrics.csv": {
+        "sha256": "1bf28e6c1b98f24aef9676cf3f5a3c668da620fb982ab0bb14a85c03c6a453c4",
+        "rows": 8,
+        "byte_identical": true
+      },
+      "comparison_exact": true
+    },
+    "existing_seven_file_reproduction": {
+      "summary.json": true,
+      "comparison.json": true,
+      "provenance.json": true,
+      "lap_sector_metrics.csv": true,
+      "common_coverage_metrics.csv": true,
+      "cycles.csv": true,
+      "misses.csv": true
+    },
+    "csv_counts": {
+      "cycles": 2347,
+      "misses": 30,
+      "lap_sector_rows": 85
+    },
+    "native_vs_derived": "State CSV identity equals raw plus recorded terminal RK4 endpoint. Crossing times use linear progress in recorded brackets, initial rolling partial excluded; derived fields/extrema never use visualization interpolation.",
+    "C70_export_disposition": "Nonblocking for bounded A candidate; complete formal VIS scientific-package acceptance blocked. No repair; no missing runtime observation inferred.",
+    "known_reporting_erratum": {
+      "source": "docs/TASK007D_VIS1L_RESULTS.md",
+      "reported_terminal_vx": 5.960447590659563,
+      "actual_sample_time": 48.665000000000006,
+      "recorded_terminal_time": 48.67,
+      "recorded_terminal_vx": 5.960492971116675,
+      "effect": "Last runtime event was mislabeled as endpoint in prose; no numerical evidence changed and fallback-domain conclusion unchanged."
+    },
+    "logs": [
+      {
+        "path": "results/task007e/e3/formal_e603672/audit.json",
+        "sha256": "b41600bd22513439c6ee4d5f99ef5035fc06efd03669b416298366aeb70347c1",
+        "bytes": 36871
+      },
+      {
+        "path": "results/task007e/e3/formal_e603672/evidence_audit.log",
+        "sha256": "7b1ca955e006a01e2a36e70eb92c07218db62032867542363e88ae307d47696e",
+        "bytes": 282
+      },
+      {
+        "path": "results/task007e/e3/formal_e603672/audit_retained.py",
+        "sha256": "ffbf476ac644c9cdf324bd7dd18a2a0c4e20bcb796b1d45fc9dde0b630786469",
+        "bytes": 12244
+      },
+      {
+        "path": "results/task007e/e3/formal_e603672/audit_supplement.py",
+        "sha256": "cba771904f1e108245f6845501fa513a9f1661dd205a917b1d86574b2b31a891",
+        "bytes": 3085
+      },
+      {
+        "path": "results/task007e/e3/formal_e603672/metric_checks.json",
+        "sha256": "ac1e7e4dc964e7b58fa7d6437c1bb4b98d09a518a2f7dc2d445d0e142b37f9cd",
+        "bytes": 3105
+      },
+      {
+        "path": "results/task007e/e3/formal_e603672/metric_checks.log",
+        "sha256": "ac1e7e4dc964e7b58fa7d6437c1bb4b98d09a518a2f7dc2d445d0e142b37f9cd",
+        "bytes": 3105
+      },
+      {
+        "path": "results/task007e/e3/formal_e603672/audit_metrics.py",
+        "sha256": "d3f826c06f15088be4c6d387b0d21acc833ceb2e4cf9c929a1c5f17e5f0e197c",
+        "bytes": 3696
+      }
+    ]
+  },
+  "prior_verification_applicability": [
+    {
+      "id": "CX_formal",
+      "original_tested_revision": "935e98b7af6c2fda8458551f1fbcbddb3bf8932d",
+      "historical_scope": "Full tests/ suite: 709 passed, 0 failed/error/skipped; 597.59 s pytest. 226 relevant cases in 13 modules are a subset, not additional tests.",
+      "evidence": [
+        "docs/TASK007D_CX_VERIFICATION.md",
+        "docs/task007d/cx/formal/verification.json",
+        "docs/task007d/cx/formal/test_durations.csv",
+        "results/task007d/cx/formal_935e98b/full_suite.xml",
+        "results/task007d/cx/formal_935e98b/full_suite.log"
+      ],
+      "applicability_basis": "168 core/fixture manifest hashes match; old src/config/dependency/tests unchanged. Same recorded Python/OS/numerical package versions. 18 original log/artifact hashes match.",
+      "E3_disposition": "Historical 709 remains unchanged-source evidence; current 750 fresh full-suite result independently covers present code. No count addition."
+    },
+    {
+      "id": "VIS1_prerequisite_and_original_parity",
+      "original_tested_revision": "d55d7b299217d6b62efc90cb525c2493224a7cca + recorded dirty source inventories",
+      "historical_scope": "410 initial passes (384 unaffected + 26 initial VIS); successive 27/28/29/30 adapter runs overlap. Original 2 s A physical parity: 19 groups; pipeline failed.",
+      "evidence": [
+        "docs/TASK007D_VIS1_RESULTS.md",
+        "docs/task007d/vis/vis1/evidence/verification.json",
+        "docs/task007d/vis/vis1/evidence/execution_source.json",
+        "docs/task007d/vis/vis1/evidence/delivery_source.json",
+        "docs/task007d/vis/vis1/evidence/parity_A_exact_comparison.json",
+        "docs/task007d/vis/vis1/evidence/preserved_run_files.json"
+      ],
+      "applicability_basis": "Initial adapter/launcher evolved before c699057; unaffected transitive code/config/dependencies unchanged; final 294 source inventory matches. Initial five JUnit hashes and seven failed-attempt artifact hashes checked.",
+      "E3_disposition": "Original physical parity retained, original pipeline still failed. Applicable final assertions rerun in current suite, not used to invent missing original observations."
+    },
+    {
+      "id": "VIS1R_recovery",
+      "original_tested_revision": "c6990572045e61ee443dc715de9e8c44396e5b41",
+      "historical_scope": "30 fresh export/serialization/chronology/lap/observer tests passed, 15.41 s; 384 inherited unaffected => 414 applicable distinct prerequisites. Two complete 2 s parity workers, each 19 exact C3 groups and 19 forecast matches.",
+      "evidence": [
+        "docs/TASK007D_VIS1R_RECOVERY.md",
+        "docs/task007d/vis/vis1r/prerequisites.json",
+        "docs/task007d/vis/vis1r/verification.json",
+        "docs/task007d/vis/vis1r/run_artifacts.json",
+        "docs/task007d/vis/vis1r/parity_A_acceptance.json",
+        "docs/task007d/vis/vis1r/parity_C70_acceptance.json",
+        "docs/task007d/vis/vis1r/serialized_forecast_audit.json",
+        "results/task007d/vis/vis1r_c699057/focused.xml"
+      ],
+      "applicability_basis": "All 294 source hashes and 54 raw/package hashes match; two packages revalidated. Fresh log/XML hashes match. C3 reuse retained two reviewed urgent-bookkeeping differences inactive in these histories.",
+      "E3_disposition": "Historical two complete workers reused; 54 hashes checked and two packages revalidated. Existing 30 tests freshly passed inside full suite; no worker or forecast rerun."
+    },
+    {
+      "id": "VIS1L_analysis_export",
+      "original_tested_revision": "8dbd1c5fbc09781411fc762e04f9c2c5cf2d99ae + three added files hash-bound to d55f203aac1a04be598ebce4c38be51a4883e0ba",
+      "historical_scope": "30 existing export tests + 11 new report tests = 41 unique final passes. First invocation 40 pass/1 test-container setup failure; 11 report tests then passed (0.26 s).",
+      "evidence": [
+        "docs/task007d/vis/vis1l/verification.json",
+        "docs/task007d/vis/vis1l/evidence/vis1l_focused.log",
+        "docs/task007d/vis/vis1l/evidence/vis1l_focused.xml",
+        "docs/task007d/vis/vis1l/evidence/vis1l_focused_recheck.log",
+        "docs/task007d/vis/vis1l/evidence/vis1l_focused_recheck.xml",
+        "tests/unit/test_vis_exports.py",
+        "tests/unit/test_vis_long_report.py"
+      ],
+      "applicability_basis": "Three final report/test hashes match; 294 earlier files unchanged. XML and overlap parsed: 11 rechecked cases overlap initial 41; 30 also overlap recovery.",
+      "E3_disposition": "All 41 existing tests freshly passed within full suite; known nested-bool expected failure remains documented defect. Three packages revalidated; failed package not accepted."
+    },
+    {
+      "id": "scientific_artifact_reproduction",
+      "original_tested_revision": "d55f203aac1a04be598ebce4c38be51a4883e0ba",
+      "historical_scope": "Four native traces, 2347 cycles, 30 misses, 85 lap/sector/run windows; retained seven-file exact numerical reproduction and eight figures.",
+      "evidence": [
+        "docs/task007d/vis/vis1l/summary.json",
+        "docs/task007d/vis/vis1l/cycles.csv",
+        "docs/task007d/vis/vis1l/misses.csv",
+        "docs/task007d/vis/vis1l/lap_sector_metrics.csv",
+        "docs/task007d/vis/vis1l/common_coverage_metrics.csv",
+        "docs/task007d/vis/vis1l/compact_artifact_inventory.json",
+        "docs/task007d/vis/vis1l/verification.json",
+        "results/task007e/e0/d55f203_audit/audit.json"
+      ],
+      "applicability_basis": "90 long-run file hashes match stored manifests; 40 compact artifacts hash/size/row checks pass; existing seven reproduction copies still byte-identical.",
+      "E3_disposition": "Fresh source/hash/coverage/chronology/miss audit; 85 window metrics and 8 common-window rows recomputed exactly; existing 7-file reproduction unchanged; eight figures hash-verified without redraw."
+    },
+    {
+      "id": "source_configuration_fixture",
+      "original_tested_revision": "c6990572045e61ee443dc715de9e8c44396e5b41 / 8dbd1c5fbc09781411fc762e04f9c2c5cf2d99ae",
+      "historical_scope": "Controller/solver/predictor/scheduler, vehicle/tires, N8 gamma2 Planning, timing policies, environment and native evidence.",
+      "evidence": [
+        "docs/task007d/vis/vis1l/evidence/vis1l_preflight.json",
+        "docs/task007d/vis/vis1l/provenance.json",
+        "docs/task007d/vis/vis1l/verification.json",
+        "docs/task007d/vis/vis1r/prerequisites.json"
+      ],
+      "applicability_basis": "168 CX manifest paths, 294 VIS paths, 3 added report paths, 5 fixture hashes and vehicle hash verified; per-case source maps match. Core executable diff CX\u2192VIS contains only VIS additions.",
+      "E3_disposition": "Fresh hashes and exact reviewed source/environment audit; failed-worker missing observations remain null."
+    },
+    {
+      "id": "outstanding_formal_VIS_verification",
+      "original_tested_revision": null,
+      "historical_scope": "Exact reviewed current tests/ regression; mathematical/chronology/physical validity, export/censoring, artifact reproducibility and provenance acceptance.",
+      "evidence": [
+        "docs/CODEX_VERIFICATION_WORKFLOW.md",
+        "docs/CODEX_TEST_GUIDE.md",
+        "docs/TASK007D_VIS1L_RESULTS.md"
+      ],
+      "applicability_basis": "Exact future reviewed SHA/environment and applicability inventory must be fixed before verification.",
+      "E3_disposition": "E3 completes current tests and bounded evidence audit on exact reviewed source. Complete VIS package acceptance remains blocked by incomplete C70 export and missing observations."
+    },
+    {
+      "id": "future_Performance_manifest_verification",
+      "original_tested_revision": null,
+      "historical_scope": "Review intended Architecture A exact profile and validity/claim boundaries; no manifest authored or profile frozen by E0.",
+      "evidence": [
+        "docs/TASK007E0_VIS1_CLOSURE.md",
+        "docs/CODEX_HANDOFF.md"
+      ],
+      "applicability_basis": "Future manifest must bind exact source, solver/dependency environment, controller/TVLQR/config, fixtures/vehicle, timing/native policy, constraints and fallback validity domain.",
+      "E3_disposition": "E2 manifest independently reviewed and existing validator freshly passed on E3 reviewed source. Primary acceptance and status revision remain pending."
+    }
+  ],
+  "new_unexpected_failures": [],
+  "known_failures_preserved": [
+    "Original A parity export/observer pipeline failure",
+    "VIS1L first test-container setup failure then reviewed correction",
+    "Measured C70 trajectory exhaustion and subsequent nested NumPy bool export failure"
+  ],
+  "lint": {
+    "scope": [
+      "scripts/task007e2/validate_manifest.py"
+    ],
+    "check": "PASS",
+    "format": "PASS",
+    "log": {
+      "path": "results/task007e/e3/formal_e603672/ruff.log",
+      "sha256": "ce04ce92b16073000b77c97a42c00b98b96305692d9d5ed4dcfa5a9ca9ea62d6",
+      "bytes": 44
+    }
+  },
+  "preservation_before_documentation": {
+    "tracked_sha256_unchanged": 819,
+    "historical_results_size_mtime_unchanged": 11617,
+    "whole_archive_content_hash_claim": false,
+    "targeted_content_hash_checks": "scientific_evidence.hash_groups",
+    "before_inventory": {
+      "path": "results/task007e/e3/formal_e603672/before.json",
+      "sha256": "d0d0c9c2bbc32af07e54a60d5f2e62f0d278502b6a87edcdb6bad8256940c7cf",
+      "bytes": 1461284
+    }
+  },
+  "recommendation": "B",
+  "primary_acceptance_pending": true,
+  "profile_frozen": false,
+  "unexecuted": [
+    "New scientific workers, racing, measured timing, counterfactual replay",
+    "Exporter repair or new runtime/tests/assertions",
+    "New async fallback coverage test development",
+    "Workbench ingestion, unseen-track validation, hardware safety",
+    "Profile acceptance/freeze, Efficiency or any next stage"
+  ],
+  "documentation_checks": {
+    "passed": true,
+    "json_records": 3,
+    "markdown_links_checked": 13,
+    "local_hash_references_checked": 28,
+    "tracked_files_unchanged": 818,
+    "handoff_prepend_only": true,
+    "authorized_new_files": [
+      "docs/TASK007E3_PERFORMANCE_VERIFICATION.md",
+      "docs/task007e/e3/freeze_recommendation.json",
+      "docs/task007e/e3/remaining_limitations.json",
+      "docs/task007e/e3/verification.json"
+    ],
+    "historical_result_metadata_unchanged": 11617,
+    "metadata_is_not_full_content_hash": true,
+    "source_config_fixture_test_changes": 0,
+    "git_diff_check": "PASS",
+    "unrelated_staged_files": 0,
+    "historical_source_and_artifact_content_checks": "verification.json scientific_evidence.hash_groups; overlapping inventories not summed",
+    "local_record": {
+      "path": "results/task007e/e3/formal_e603672/documentation_checks.json",
+      "sha256": "90ae6512aec730b4887bf3c7ad63f570b4bee941f695b639e8b815c9a501181c"
+    }
+  }
+}
