@@ -1,3 +1,37 @@
+# Current handoff — Task007E-1 shared fallback/availability audit
+
+**Stage/status:** `WORK_COMPLETE_PENDING_REVIEW`; source/evidence audit only, starting
+`529459090021d06a869378e72e4abec6e7f00d3d`. No new tests, model/controller execution,
+simulation, replay, source/default/fixture change or exporter repair.
+**Finding:** async fallback admission and each idle fallback computation require vx in [1,3] m/s
+and center inside the local corridor. Default baseline targets centerline/2 m/s with scheduled
+linear LQR and PI. Independent command/model/RK4 checks add physical validity guards.
+The admission rectangle is not a nonlinear recovery or continuous-invariance guarantee.
+**Availability:** warning/critical reserve labels are diagnostic; no reserve-triggered rescue.
+A can exhaust after delay/failure/rejection/busy episodes, although retained VIS A runs completed
+without fallback. Prior 2 m/s straight-fixture exhaustion test is not a racing A failure.
+Pending old commands retain provenance; no separate application-time baseline eligibility gate.
+Plant checks precede subsequent motion, but no continuous corridor or safe-stop guarantee exists.
+**C70 reconciliation:** 485 releases, 455 accepted, 30 misses; eight terminal misses exhaust
+packet 477 at 48.670 s, reserve zero, vx=5.960492971 m/s. Invalid admission breaks before baseline
+invocation; no baseline-mode state/control or post-stop motion recorded. Packet 485 completion
+remains censored. Later NumPy-bool export failure is separate, preserved and unrepaired.
+**Coverage:** 284 selected historical cases in 13 modules are a subset of CX's 709 prior passes,
+not new executions. Exact source/test/dependency/fixture applicability checked; four retained
+VIS traces reconciled. Delayed async fallback transitions, full nonlinear recovery and hardware
+safety remain unverified. No new demonstrated invalid-model propagation or packet-authority
+defect established; no proof of all-fault correctness is claimed.
+**Delivery:** [audit](TASK007E1_FALLBACK_DOMAIN_AUDIT.md),
+[domain register](task007e/e1/fallback_domain_register.json),
+[safeguards/verification](task007e/e1/safeguard_verification_matrix.json), this prepend only.
+Exact delivery SHA and verified GitHub URL follow commit/push. ADR-163 remains unchanged.
+**Recommendation:** Engineering Review may authorize E-2 exact synthetic A manifest preparation
+with explicit availability/fallback/safety limitations. No E-2/E-3 work or freeze occurred.
+Formal verification, Primary acceptance, hardware safeguards, Efficiency and Workbench remain
+separate gates. Stop here.
+
+---
+
 # Current handoff — Task007E-0 VIS-1 closure audit
 
 **Stage/status:** `WORK_COMPLETE_PENDING_REVIEW`. Primary-directed campaign closure preserves

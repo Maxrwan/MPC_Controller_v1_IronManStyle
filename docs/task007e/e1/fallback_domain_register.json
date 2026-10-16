@@ -1,0 +1,705 @@
+{
+  "task": "007E-1",
+  "stage": "WORK",
+  "status": "WORK_COMPLETE_PENDING_REVIEW",
+  "audited_revision": "529459090021d06a869378e72e4abec6e7f00d3d",
+  "scope": "Read-only source/evidence audit; no runtime, test, fixture, controller or default changes",
+  "canonical_state": [
+    "vx",
+    "vy",
+    "r",
+    "e_psi",
+    "s_abs",
+    "e_y"
+  ],
+  "controls": [
+    "delta",
+    "a_cmd"
+  ],
+  "units": "SI",
+  "domain": {
+    "entry_guard": {
+      "predicate": "1 <= vx <= 3 and -right_width <= e_y <= left_width",
+      "speed_unit": "m/s",
+      "position_unit": "m",
+      "geometry": "track.sample(s_abs % track.length); CG point only; no 0.08 m margin or footprint shrink",
+      "checked_at": [
+        "trajectory exhaustion after same-time handoffs",
+        "each idle fallback computation tick"
+      ],
+      "not_checked_at": [
+        "every actuator application as a separate fallback eligibility check",
+        "every RK4 stage against baseline speed/corridor domain"
+      ],
+      "source": [
+        {
+          "path": "src/apex/simulation/asynchronous.py",
+          "start": 373,
+          "end": 415
+        }
+      ]
+    },
+    "controller": {
+      "reference": "centerline, ConstantSpeed 2.0 m/s; does not follow racing Planning line",
+      "reference_speed_allowed_m_s": [
+        1,
+        3
+      ],
+      "lqr_nodes_m_s": [
+        1,
+        2,
+        3
+      ],
+      "dt_s": 0.01,
+      "lqr_design": "static-load small-slip linear lateral model, exact ZOH, discrete DARE at nodes, linear gain interpolation; scheduling speed only is clamped",
+      "standalone_note": "BaselineController itself allows positive actual speeds outside [1,3] and clamps scheduling speed; AsyncRunner is the entry guard.",
+      "PI": {
+        "kp": 1.0,
+        "ki": 0.5,
+        "antiwindup": "conditional integration",
+        "reference_m_s": 2.0,
+        "input_semantics": "a_cmd=Fx/m; dvx/dt=a_cmd+r*vy",
+        "busy_ticks": "No PI update on skipped ticks; each actual computation uses nominal dt, not elapsed busy time."
+      },
+      "source": [
+        {
+          "path": "src/apex/control/baseline/controller.py",
+          "start": 22,
+          "end": 105
+        },
+        {
+          "path": "src/apex/control/baseline/lqr.py",
+          "start": 27,
+          "end": 81
+        },
+        {
+          "path": "src/apex/control/baseline/references.py",
+          "start": 17,
+          "end": 47
+        },
+        {
+          "path": "src/apex/control/baseline/speed.py",
+          "start": 19,
+          "end": 49
+        }
+      ]
+    },
+    "limits": {
+      "steering_rad": [
+        -0.4,
+        0.4
+      ],
+      "acceleration_command_m_s2": [
+        -3,
+        2
+      ],
+      "application_steering_slew_rad_s": 1.0,
+      "layers": "Baseline saturation/rate limit, tracker box (from grip/load-aware MPC bounds), then elapsed physical-application steering clamp",
+      "no_braking_to_rest": "PI targets 2 m/s; low-speed model floor 0.5 m/s. No stop-to-rest capability.",
+      "source": [
+        {
+          "path": "src/apex/control/baseline/controller.py",
+          "start": 71,
+          "end": 85
+        },
+        {
+          "path": "src/apex/simulation/asynchronous.py",
+          "start": 126,
+          "end": 130
+        },
+        {
+          "path": "src/apex/simulation/asynchronous.py",
+          "start": 287,
+          "end": 300
+        },
+        {
+          "path": "src/apex/simulation/asynchronous.py",
+          "start": 415,
+          "end": 435
+        },
+        {
+          "path": "src/apex/control/mpc/problem.py",
+          "start": 173,
+          "end": 202
+        }
+      ]
+    },
+    "model_guards": {
+      "finite_state_input": true,
+      "nonnegative_progress": true,
+      "plant_vx_m_s": [
+        0.5,
+        6.0
+      ],
+      "plant_speed_roundoff_tolerance_m_s": 1e-10,
+      "plant_frenet_denominator_strict_min": 0.001,
+      "predictor_frenet_denominator_min": 0.01,
+      "plant_axle_load_strict_min_N": 1e-09,
+      "MPC_axle_load_constraint_N": 1e-06,
+      "longitudinal_fraction_max": "1 - 1e-6 of mu*Fz",
+      "tire": "smooth combined grip; proportional allocation; hard longitudinal validity, smooth lateral envelope",
+      "source": [
+        {
+          "path": "src/apex/models/vehicle/dynamic_bicycle.py",
+          "start": 127,
+          "end": 190
+        },
+        {
+          "path": "src/apex/models/vehicle/dynamic_bicycle.py",
+          "start": 233,
+          "end": 268
+        },
+        {
+          "path": "src/apex/models/frenet.py",
+          "start": 7,
+          "end": 19
+        },
+        {
+          "path": "src/apex/models/vehicle/load_transfer.py",
+          "start": 56,
+          "end": 63
+        },
+        {
+          "path": "src/apex/models/tire/grip.py",
+          "start": 32,
+          "end": 43
+        },
+        {
+          "path": "src/apex/control/trajectory/prediction.py",
+          "start": 172,
+          "end": 185
+        }
+      ]
+    },
+    "not_enforced_as_fallback_recovery_domain": [
+      "curvature magnitude/slew envelope",
+      "lateral/yaw/heading/sideslip limits for LQR approximation",
+      "positive forward Frenet progress",
+      "controlled-invariant set or guaranteed recovery",
+      "continuous corridor or swept-body clearance",
+      "state uncertainty, identified tire/vehicle parameters",
+      "continuous [1,3] m/s invariant during sample-and-hold"
+    ],
+    "judgment": "The speed/corridor guard is necessary admission gating, not a sufficient proof of model validity or safe recovery; independent model checks reject explicit invalid states/inputs. No claim of safe operation throughout its nominal rectangle."
+  },
+  "event_order": [
+    {
+      "phase": 1,
+      "action": "Apply due old actuator request, elapsed steering clamp; preserve request plan_id/mode"
+    },
+    {
+      "phase": 2,
+      "action": "Resolve due planner completion and observe elapsed delay; A accept/wait/reject; C readiness only"
+    },
+    {
+      "phase": 3,
+      "action": "A waiting nominal start; C deadline acceptance/miss"
+    },
+    {
+      "phase": 4,
+      "action": "Optional disturbance, then exhaustion eligibility/termination or fallback latch"
+    },
+    {
+      "phase": 5,
+      "action": "Busy-tick handling or trajectory/fallback control computation and request validation"
+    },
+    {
+      "phase": 6,
+      "action": "Nominal release priority, then eligible latched urgent release; no overlapping solve"
+    },
+    {
+      "phase": 7,
+      "action": "Same-time zero-duration continuation, otherwise applied-pair diagnostics, recording and held-input RK4"
+    }
+  ],
+  "transitions": [
+    {
+      "state": "startup",
+      "condition": "prepare fails",
+      "action": "No vehicle launch; empty physical/control history; startup_failed",
+      "source": [
+        {
+          "path": "src/apex/simulation/asynchronous.py",
+          "start": 146,
+          "end": 178
+        }
+      ]
+    },
+    {
+      "state": "healthy",
+      "condition": "reserve >= 0.20 s",
+      "action": "Continue ordinary tracker/release schedule",
+      "source": [
+        {
+          "path": "src/apex/control/trajectory/packet.py",
+          "start": 189,
+          "end": 202
+        }
+      ]
+    },
+    {
+      "state": "warning",
+      "condition": "0.05 <= reserve < 0.20 s",
+      "action": "Log category; no reserve-triggered control/replan change",
+      "source": [
+        {
+          "path": "src/apex/control/trajectory/packet.py",
+          "start": 192,
+          "end": 202
+        },
+        {
+          "path": "src/apex/simulation/asynchronous.py",
+          "start": 516,
+          "end": 522
+        }
+      ]
+    },
+    {
+      "state": "critical",
+      "condition": "1e-10 < reserve < 0.05 s",
+      "action": "Already-active packet remains usable; incoming packet still needs >=0.05 s",
+      "source": [
+        {
+          "path": "src/apex/control/trajectory/packet.py",
+          "start": 192,
+          "end": 223
+        }
+      ]
+    },
+    {
+      "state": "completion_or_waiting",
+      "condition": "A ready and nominal start reached",
+      "action": "Check continuity/model and insert; rejection retains old active; early packet waits",
+      "source": [
+        {
+          "path": "src/apex/simulation/asynchronous.py",
+          "start": 182,
+          "end": 210
+        },
+        {
+          "path": "src/apex/simulation/asynchronous.py",
+          "start": 302,
+          "end": 345
+        }
+      ]
+    },
+    {
+      "state": "fixed_deadline",
+      "condition": "C packet not ready at valid_from",
+      "action": "Record miss, retain busy solve; eventual late completion discarded",
+      "source": [
+        {
+          "path": "src/apex/simulation/asynchronous.py",
+          "start": 346,
+          "end": 363
+        },
+        {
+          "path": "src/apex/simulation/fixed_handoff.py",
+          "start": 91,
+          "end": 103
+        }
+      ]
+    },
+    {
+      "state": "exhaustion",
+      "condition": "reserve <=1e-10, trajectory mode, after due handoffs",
+      "action": "Check vx in [1,3] and center in corridor",
+      "source": [
+        {
+          "path": "src/apex/simulation/asynchronous.py",
+          "start": 373,
+          "end": 390
+        }
+      ]
+    },
+    {
+      "state": "ineligible_fallback",
+      "condition": "entry gate false",
+      "action": "Record valid_domain=false; break before baseline invocation/next propagation; exhausted_outside_baseline_domain",
+      "source": [
+        {
+          "path": "src/apex/simulation/asynchronous.py",
+          "start": 379,
+          "end": 384
+        }
+      ]
+    },
+    {
+      "state": "eligible_fallback",
+      "condition": "entry gate true",
+      "action": "Latch baseline_fallback; initialize previous_delta from applied command; no emergency command and no cancellation of pending command",
+      "source": [
+        {
+          "path": "src/apex/simulation/asynchronous.py",
+          "start": 385,
+          "end": 390
+        },
+        {
+          "path": "src/apex/simulation/asynchronous.py",
+          "start": 391,
+          "end": 478
+        }
+      ]
+    },
+    {
+      "state": "fallback_busy",
+      "condition": "codriver tick while actuator work pending",
+      "action": "Record busy miss; keep old held command; no new fallback evaluation",
+      "source": [
+        {
+          "path": "src/apex/simulation/asynchronous.py",
+          "start": 391,
+          "end": 393
+        }
+      ]
+    },
+    {
+      "state": "fallback_tick",
+      "condition": "codriver idle and next tick due",
+      "action": "Recheck speed/corridor; fail => fallback_outside_validity_domain; otherwise compute baseline and clip/validate candidate",
+      "source": [
+        {
+          "path": "src/apex/simulation/asynchronous.py",
+          "start": 407,
+          "end": 478
+        }
+      ]
+    },
+    {
+      "state": "fallback_latched",
+      "condition": "later planner result / nominal release",
+      "action": "Reject later result as fallback_latched; no new planning launches; no automatic trajectory reentry",
+      "source": [
+        {
+          "path": "src/apex/simulation/asynchronous.py",
+          "start": 320,
+          "end": 329
+        },
+        {
+          "path": "src/apex/simulation/asynchronous.py",
+          "start": 353,
+          "end": 358
+        },
+        {
+          "path": "src/apex/simulation/asynchronous.py",
+          "start": 480,
+          "end": 493
+        }
+      ]
+    },
+    {
+      "state": "held_motion",
+      "condition": "no earlier termination",
+      "action": "Validate current applied pair then propagate to next event; RK4 stages/final model checked; ModelValidationError/ValueError stops",
+      "source": [
+        {
+          "path": "src/apex/simulation/asynchronous.py",
+          "start": 499,
+          "end": 559
+        },
+        {
+          "path": "src/apex/models/vehicle/dynamic_bicycle.py",
+          "start": 261,
+          "end": 268
+        }
+      ]
+    }
+  ],
+  "availability": {
+    "minimum_new_handoff_reserve_s": 0.05,
+    "existing_packet_usable_in_critical": true,
+    "handoff_mismatch_limits_canonical_SI": [
+      0.5,
+      0.5,
+      1.0,
+      0.2,
+      0.75,
+      0.15
+    ],
+    "rolling_delay": {
+      "initial_s": 0.017,
+      "window": 10,
+      "statistic": "median",
+      "cap_s": 0.3,
+      "observation": "physical completion only; cap is not a solver-duration bound"
+    },
+    "urgent": {
+      "condition": "two consecutive updates with abs(e_y)>0.05 m OR abs(e_psi)>0.10 rad",
+      "one_latch": true,
+      "reserve_trigger": false,
+      "cancellation": false,
+      "parallel_solves": false,
+      "A": "may release off-grid once idle",
+      "C70": "next eligible global 10 ms tick",
+      "persistent_error": "requires a cleared threshold episode to retrigger after consume"
+    },
+    "command_validation_semantics": "Candidate checked at generation; application updates command/log before current-pair diagnostics. Every subsequent physical step is guarded, but no separate current-state baseline eligibility check precedes each application. A terminal application row is not evidence of a subsequent motion interval.",
+    "pending_command": "Retained across handoff/fallback entry; source packet identity belongs to request, not current authority. Expired source does not imply new sampling of expired packet.",
+    "fallback_telemetry": "mode=baseline_fallback with last packet ID; reference=current state and error=zeros are placeholders, not valid APEX tracking evidence.",
+    "boundary_stop": "AsyncRunner logs corridor violations in trajectory mode; VIS campaign gates are evaluated offline. No continuous collision or immediate hardware stop supervisor."
+  },
+  "Architecture_A": {
+    "demonstrated": {
+      "source_hashes": {
+        "raw.json": "369ebcc2433ad6476ba9d379db521317eecae31fd0e0de35866000ac6027a189",
+        "segments.json": "3b9f7e92e2cf8d313711a8d7b70647b128838d11fc127dd74ac3d512aeea0704",
+        "analysis.json": "d23d74c124b2808ef0a03ff3de04e3fdc7d38e38f5ca9e26d23a16a23dfbf231",
+        "input_configuration.json": "0ad9739d8d4dddfb17451759724c7336751b30cafd06bbf65208b09ee901b0c9",
+        "exit.json": "5b7b861465da499a63527018066ac5cccba3530733feaf4652e59424996523bc",
+        "summary.json": "4840934ea4d425bdccd17b18cbd254f4372ba5275b655189010c223c2be72d71"
+      },
+      "runtime_releases": 622,
+      "accepted": 621,
+      "fixed_misses": null,
+      "planner_busy": 0,
+      "fallback_events": [],
+      "stop_reason": "target_laps",
+      "end_time": 62.23500000000001,
+      "terminal_vx": 4.717972425694449,
+      "terminal_s_abs": 309.53405411247064,
+      "complete_lap_times_s": 31.1719003976093,
+      "state_modes": [
+        "trajectory"
+      ],
+      "control_modes": [
+        "trajectory"
+      ],
+      "failure": null,
+      "scientific_stop_gate": [],
+      "case": "controlled_A"
+    },
+    "measured_demonstrated": {
+      "source_hashes": {
+        "raw.json": "2562bd1e4cbd195bfbc951c36f4979421f6636bb1a4aba92dcf914fea2322412",
+        "segments.json": "d938610add217ea519d398b4d48c41bdbf856e0434b651132d087ad5dfb01ea7",
+        "analysis.json": "f366eeca75f744230df6832d1f01ff6fb1a14e45ab1388ee9abf58d5f9a7390e",
+        "input_configuration.json": "7a8eaf33eed56333a8eb7091f462b712e6061368f63f49b5747d6a3a70184b3a",
+        "exit.json": "db26fe4b006ec03df3ca372ab7203f23eadfee32dd7acc6f3f284288d43652e2",
+        "summary.json": "a75d8a216a1ff0313800dc50869af0e2787b7c6c0a1e06c640803570ac038177"
+      },
+      "runtime_releases": 620,
+      "accepted": 620,
+      "fixed_misses": null,
+      "planner_busy": 2,
+      "fallback_events": [],
+      "stop_reason": "target_laps",
+      "end_time": 62.285000000000004,
+      "terminal_vx": 4.71762851927589,
+      "terminal_s_abs": 309.531302748057,
+      "complete_lap_times_s": 31.31775577928828,
+      "state_modes": [
+        "trajectory"
+      ],
+      "control_modes": [
+        "trajectory"
+      ],
+      "failure": null,
+      "scientific_stop_gate": [],
+      "case": "measured_A_1"
+    },
+    "inherited_isolated_test": "test_async_chronology.py::test_exhaustion_fallback_and_no_extrapolation: 450 ms injected delay, 400 ms straight fixture horizon, 2 m/s; not a new racing experiment or observed VIS A failure",
+    "mechanisms": [
+      "sustained delay/planner busy",
+      "preparation/solver/gain/forecast failure",
+      "mismatch/model/stale/insufficient-reserve rejection",
+      "no replacement by expiry"
+    ],
+    "safeguards_not_guarantees": "Variable availability admits valid late packets within their remaining horizon; it does not guarantee an unexpired replacement. Predictor refuses forecast beyond active horizon.",
+    "untested": [
+      "N8 gamma2 racing A exhaustion/failure-tail counterfactual",
+      "fallback transitions across full speed/curvature/lateral-state region",
+      "domain departure during delayed fallback command application"
+    ]
+  },
+  "C70_reconciliation": {
+    "terminal_misses": 8,
+    "recovered_misses": 22,
+    "last_accepted": {
+      "time": 47.870000000000005,
+      "plan_id": 477,
+      "accepted": true,
+      "reason": "accepted",
+      "reserve": 0.7999999999999972,
+      "error_vx": 1.320480629729559e-06,
+      "error_vy": -4.504237758626295e-05,
+      "error_r": -0.0006853639356933783,
+      "error_e_psi": 0.00011748465611916004,
+      "error_s_abs": 7.545842493072996e-07,
+      "error_e_y": 2.4003313355561856e-05,
+      "nominal_delta_jump": 0.0003019413061382584,
+      "nominal_acceleration_jump": -0.033350172319264765
+    },
+    "last_reserve_event": {
+      "time": 48.665000000000006,
+      "reserve": 0.0049999999999954525,
+      "category": "critical",
+      "plan_id": 477
+    },
+    "expiry_s": 48.67,
+    "terminal_reserve_s": 0.0,
+    "terminal_state": [
+      5.960492971116675,
+      0.066602325295661,
+      -0.12181338462898113,
+      -0.002547432432523866,
+      244.48730414935804,
+      0.0029770483260846137
+    ],
+    "observed_baseline_mode_states": 0,
+    "observed_baseline_mode_controls": 0,
+    "ineligible_fallback_never_called_in_this_branch": "Source break at asynchronous.py:382-384 precedes mode change and compute_control at 415.",
+    "final_completed": false,
+    "final_scheduled_completion": 48.672029625065626,
+    "final_actual_readiness": null,
+    "final_discard": null,
+    "missing_summary": true,
+    "missing_manifest": true
+  },
+  "export_failure": "Existing nested NumPy bool CSV JSON-cell serialization defect follows physical stop. Missing failed package/summary remains unmodified; cannot infer absent runtime observations.",
+  "correctness_disposition": {
+    "new_concrete_invalid_command_or_packet_authority_defect_demonstrated": false,
+    "known_research_tool_defect": "Unresolved offline NumPy bool exporter defect inherited from E0, not a physical fallback cause.",
+    "limitations_do_not_prove_safety": true,
+    "no_new_counterfactual_executed": true
+  },
+  "readiness": {
+    "synthetic_reproducibility": "Supports preparing an exact research manifest with explicit exclusions, subject to review and formal verification.",
+    "simulation_correctness": "No new blocker established within audited source/retained evidence; sampled domain and reporting gaps remain explicit.",
+    "timing_failure_robustness": "Not guaranteed; A can lose authority, and no valid racing-speed fallback exists.",
+    "physical_safety": "Not established; simulator termination is not braking or an independent safety mechanism.",
+    "hardware": "Not ready.",
+    "007E2": "Recommend Engineering Review authorization for manifest preparation only; not executed here.",
+    "freeze": "Not accepted or frozen; E3 formal verification and Primary acceptance still required."
+  },
+  "pre_hardware_obligations": [
+    "Reviewed recovery/stop policy over intended speeds, curvature, slips and uncertainty; no reliance on 1-3 m/s gain clamp as safety proof.",
+    "Independent watchdog/actuator fail-safe, safe braking to standstill and appropriate low-speed model; authority/command ownership and cancel/retain policy explicitly specified.",
+    "Application-time freshness/domain and held-input reachability checks; tests spanning latency, busy ticks, exact expiry and already-pending requests.",
+    "Identified/validated vehicle, tires, loads, steering/braking dynamics and estimator uncertainty.",
+    "Swept-body/continuous boundary and obstacle safety with validated stopping distance; no CG-clearance substitution.",
+    "Fault tests for rejected/stale/failed packets, repeated failures, unavailable predictors, timer/worker/process/communications failures; no overlapped solves or silent successful-control reports.",
+    "Hardware-specific timing deadlines, jitter/load and starvation validation plus independent safety supervision.",
+    "Robust failure telemetry/export and explicit missing/censored channels; final interface/hardware acceptance separately reviewed."
+  ],
+  "provenance": {
+    "audit_revision": "529459090021d06a869378e72e4abec6e7f00d3d",
+    "scientific_revision": "8dbd1c5fbc09781411fc762e04f9c2c5cf2d99ae",
+    "formal_test_revision": "935e98b7af6c2fda8458551f1fbcbddb3bf8932d",
+    "hash_checks": {
+      "CX_core_fixture": {
+        "count": 168,
+        "mismatches": []
+      },
+      "VIS_source": {
+        "count": 294,
+        "mismatches": []
+      },
+      "VIS1L_report_source": {
+        "count": 3,
+        "mismatches": []
+      }
+    },
+    "source_sha256": {
+      "src/apex/simulation/asynchronous.py": "7d14395aa27707f2561bf6bdb32cd613bc2508ab12d6fe617bf45855d378f018",
+      "src/apex/simulation/fixed_handoff.py": "8f0bc766b6a7c446f36b6a49f6214864906acbb067c57c977469b54e3ff07c12",
+      "src/apex/control/trajectory/packet.py": "00830d2ced67321547add91a4e241664689cdeed57d57f0b9b2d95552b9fd704",
+      "src/apex/control/trajectory/planner.py": "6dcc8abe959fa65d7036f90379179703f54091c55a54bedee4db9a47d4622e44",
+      "src/apex/control/trajectory/prediction.py": "0013fd74299a68993dabbc381ca384837f09b862011956a94fd1d3b138b839ab",
+      "src/apex/control/trajectory/tracker.py": "ffa5d9968650c97411121ba3dedd89a5de04a1a9ce832c50efa351763567ef27",
+      "src/apex/control/baseline/controller.py": "1d738265c24e8ff6fc557ff8d4f82669978fe12e212dcd70dc45eb94cf438ec4",
+      "src/apex/control/baseline/lqr.py": "68e191235e03dda744cc9894ca0981a8df8bd9f1bd0e6331f7872148014cf818",
+      "src/apex/control/baseline/speed.py": "5a41c32eaa491f5bf8fdec49827bac3d9aafd78924f10786fd4000d3a0ec941f",
+      "src/apex/control/baseline/references.py": "9fa0f4c67d8fdd4a535bca5fa43854cf85660d70b6246632ec711f469ad2b081",
+      "src/apex/control/mpc/controller.py": "63e17bd863dcd8d649d9f382a545f5c004e982fd87e837aa6b283ec1b1206b82",
+      "src/apex/control/mpc/problem.py": "b0560718155ff04074633aa92c4374a15ec975f21f5e3a022f4e94d52636087e",
+      "src/apex/models/vehicle/dynamic_bicycle.py": "c93b674924eed24f9641ebe263863b3422cba5eb1665c0d93dd6cd00bdfd462f",
+      "src/apex/models/vehicle/parameters.py": "5cfce45b4a87577b17193b44cfa24f11c8e29c93082564a596f7ddf4e797fbb2",
+      "src/apex/models/vehicle/load_transfer.py": "e96c74199a7d8147866529cb4ecfffbfce74815cb57accb52ea54b407b873be1",
+      "src/apex/models/vehicle/force_allocation.py": "e77d8c87efdaa9c008ec45385ad4dad326cfa2e003798c08e29a5fb9a17647f8",
+      "src/apex/models/tire/grip.py": "e91bab930ee0650578ede2964ef680f77663cfd34d26ab1682c232b34c6d8c90",
+      "src/apex/models/tire/linear.py": "6ae5888b0000cd57a88788463977be1a90fa8e1f6a332f131c66623192ce9cf3",
+      "src/apex/models/frenet.py": "a8c6190bd6be9f2a284c83b5c31e5d6cb2d8ef1f791b49bbebdd3c110a36ee96",
+      "src/apex/models/integration.py": "02009193fb2d25e83560a2da37f216048dfa3ededcb3de8616b90e411473ad51",
+      "src/apex/models/errors.py": "81baff4659f36bb6aea91e6a27327260b4d69e23de22963de6832199e7f1f916",
+      "src/apex/state.py": "b2b16555f8ae83f041ee821906305accc56010b643bb3fa514f90a8a17e66862",
+      "scripts/task007dvis/worker.py": "fd6dedd1caace418d4f3b60ef973f387d3e240a5ce8fa87c774450500f89bd5a",
+      "scripts/task007dvis/analysis.py": "6c294b8f17dd035daf91fac83a6bf427bf2d74b3eeeb5bd07d65556e09d3517a",
+      "scripts/task007dvis/coverage.py": "9c8bc10bfccd269d25ba8257b7a7209998b2dda320073bda4f5967e3c0ea25db",
+      "scripts/task007dvis/export.py": "152a29b4de3f8ff1ecfd4647749aab3c8a85fc3839de97cea4be22be7e2fdb82",
+      "scripts/task007dcx/worker.py": "7e581738fe4102fb002fec2cfdf2f586d3a8f0f6c5f6e98bfeb3831bcf72e71b",
+      "scripts/task007d/metrics.py": "d4d8bc3c260f3e3701348da330b87cbe2172dc2d5d20882fb21bf480cdf56992",
+      "tests/conftest.py": "33f0ce8f7ddf2645c3fccac0da666c07a6a81e4185b5793324f160a057d5efe4",
+      "pyproject.toml": "c8ea69a3a486c9794b6cf88ac26566211c6f1bb7b7286d86dbaa36a191353d41",
+      "uv.lock": "8cf85868a456415a898643dbb226d146b0b90e5c98982136cf2abf2465fa16ec",
+      "configs/vehicles/synthetic_dynamic_test_vehicle.yaml": "df1b853d21a1d3efaf858f7e58401151f2c5237793c40e16bb4189ed651f9cf3",
+      "tests/unit/test_baseline.py": "4ab989982e48f063c61852ac901069287f68d95637378b4086fdd24df513dd9b",
+      "tests/unit/test_async_chronology.py": "e06e33ed3b0ee3e2185a196e4a3e6b1fd2ab36b0d6b98f043451cf3050719f4b",
+      "tests/unit/test_trajectory_tracker.py": "eaef4cbb6bd8f115a9844dd1b73e874d46bba76809dbfc9c6caa8ec4a7e55ecd",
+      "tests/unit/test_fixed_handoff_scheduler.py": "ac50fff996f4b24e620e90ad1a04f8ba64e410f197b16e99d22ab010f3ab2b89",
+      "tests/unit/test_fixed_handoff_contract.py": "275a73150a676f82739ea061522e1d4cd9134a806ed7fb813a87b0be03e4e929",
+      "tests/unit/test_dynamic_bicycle.py": "f8d8cd3a078e38c988a727150440af0aef47ec618e27e8d57201ecd67ae2b985",
+      "tests/unit/test_dynamic_components.py": "c1044b6b3fe874ef14a84156197a895cdd0b10117a03385ee15c7cc346be4d58",
+      "tests/unit/test_grip_tire.py": "fcb55ec6f8d00f36634167855784591141432f3b04374fc2cf89ee756023cefe",
+      "tests/unit/test_state.py": "d4157b6671a482dd9c1ead423231e52b76adff42a105f88048bbd7fcc1902b6f",
+      "tests/unit/test_frenet.py": "7386f77d9db6750eedd939bd3b6291012d525dc1ecf72a877b8cc5175165adc6",
+      "tests/unit/test_mpc.py": "0486d4daa818e0176f52fd1a214776c76fa2caea96555dba66b88b3226fc176f",
+      "tests/unit/test_latency.py": "a357ab1b3ded160904c9d6d66a9795a087a28abac9ce024dd3a49f356f8b65e5",
+      "tests/integration/test_baseline_tracking.py": "ae1475ac6ff52744472a4e6d010ea02a672f26a1e16a0246b28f1ecfcc1d09b4",
+      "tests/unit/test_vis_exports.py": "9c7ea40d9ae70814e0863093fa89a1fb6d25725b980f98f3a8398f5e7c1ceaa5",
+      "tests/unit/test_vis_long_report.py": "ec6efe747eff52f2e4ef0011d80e9a08fad21ba593f9bcfc768d669aaaeb6c09"
+    },
+    "fixture_sha256": {
+      "configs/planning/task007b/gamma_2p000/planning_reference.csv": "6206e18ce3cb105d58d0923564336e28c00ec44aee3fd8a06ff7a37bcf84e2df",
+      "configs/planning/task007b/gamma_2p000/planning_manifest.json": "5e7bccf1a300fb6737fc6b6b6e0c9aa921c110b11ffc5762a73f57f830a8660c",
+      "configs/planning/task007b/gamma_2p000/speed_polynomial.json": "f335e78fc6c735c952f49078077a573ee989dd2be71497e90451e34a79f2c7ea",
+      "configs/planning/task007b/gamma_2p000/track_source.json": "5f4d1734d7fec7de56d346e8f90bf272a3de9c05ac42f76cd49004e7f9183e55",
+      "configs/planning/task007b/gamma_2p000/planning_validation.json": "279582d2dcf37fdf4008ddc7f926109ef3d730a0e64c188d7003755d08871fa7"
+    },
+    "environment": {
+      "python": "3.12.14 (main, Sep  1 2026, 14:09:38) [Clang 22.1.3 ]",
+      "platform": "macOS-26.5.1-arm64-arm-64bit",
+      "packages": {
+        "numpy": "2.5.3",
+        "scipy": "1.18.1",
+        "casadi": "3.8.1",
+        "pytest": "9.1.1",
+        "psutil": "7.2.2",
+        "threadpoolctl": "3.7.0"
+      }
+    },
+    "original_test_log": {
+      "path": "results/task007d/cx/formal_935e98b/full_suite.xml",
+      "sha256": "3a17626902499b64f68c6bbcb2446cf9b81972069038ffaee3fd248012fa4a27",
+      "full_suite_count": 709,
+      "subset_not_additional": true
+    },
+    "local_audit": {
+      "results/task007e/e1/5294590_audit/audit.py": "0f6b6a734b087fa04031026871756679501ce1d32566fe8b8ca02fc8afd3a7f7",
+      "results/task007e/e1/5294590_audit/audit.log": "f0b7a1b866dc39c9505a1da92c12fcee727167274c8f5216bbdb352694ca79ac",
+      "results/task007e/e1/5294590_audit/audit.json": "50da93965acd824826b0665b565ce88d2002a714c744008dae27c55794fbce84"
+    }
+  },
+  "checks": {
+    "new_tests": 0,
+    "new_experiments": 0,
+    "read_only_case_reconciliations": 4,
+    "inherited_selected_cases": 284,
+    "selected_modules": 13,
+    "inherited_scope": "284 are a subset of prior CX 709, not new executions; no sum with overlapping VIS tests.",
+    "source_config_dependency_diff_since_CX": "empty for src/configs/pyproject/uv.lock",
+    "preservation": {
+      "initial_tracked": 810,
+      "unchanged_tracked": 809,
+      "only_changed_historical_file": "docs/CODEX_HANDOFF.md; exact historical suffix preserved",
+      "historical_result_metadata_pairs_unchanged": 11603,
+      "method": "All tracked contents hashed; global historical results size/mtime only, not a full-content rehash.",
+      "specific_evidence_hash_method": "Raw/segment/analysis/input/exit files and successful summaries content-rehashed against original VIS1L inventory."
+    },
+    "documentation": {
+      "markdown_links_valid": 28,
+      "source_line_ranges_valid": 80,
+      "json_semantics": "PASS",
+      "new_pytest_runs": 0
+    }
+  }
+}

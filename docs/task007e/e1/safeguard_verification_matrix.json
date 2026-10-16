@@ -1,0 +1,594 @@
+{
+  "task": "007E-1",
+  "status": "WORK_COMPLETE_PENDING_REVIEW",
+  "audited_revision": "529459090021d06a869378e72e4abec6e7f00d3d",
+  "classification_legend": {
+    "implemented_supported": "Implemented and supported by the cited test/evidence, only to its stated scope",
+    "implemented_insufficiently_tested": "Implemented path or partial safeguard; direct combination/domain coverage insufficient",
+    "documented_assumption": "Documented approximation/assumption without a demonstrated runtime enforcement envelope",
+    "absent_or_deferred": "Absent or deliberately deferred capability",
+    "not_applicable_synthetic_scope": "Not applicable to present synthetic execution; future hardware obligation remains"
+  },
+  "safeguards": [
+    {
+      "id": "F01",
+      "safeguard": "Fallback admission",
+      "classification": "implemented_supported",
+      "implemented_behavior": "Speed [1,3] and corridor; invalid exhaustion breaks before baseline invocation.",
+      "source": [
+        {
+          "path": "src/apex/simulation/asynchronous.py",
+          "start": 373,
+          "end": 415
+        }
+      ],
+      "relevant_existing_tests": [
+        "tests/unit/test_async_chronology.py::test_exhaustion_fallback_and_no_extrapolation",
+        "tests/unit/test_mpc.py::test_fallback_rejects_outside_domain"
+      ],
+      "coverage_limit": "C70 retained high-speed stop supports async invalid branch; MPC rejection tests cover separate synchronous finalize path, not all async boundary cases."
+    },
+    {
+      "id": "F02",
+      "safeguard": "Finite/dynamic/tire validity",
+      "classification": "implemented_supported",
+      "implemented_behavior": "Finite vectors, speed floor/ceiling, input limits, loads, Frenet denominator, longitudinal grip; RK4 stages/final checked.",
+      "source": [
+        {
+          "path": "src/apex/models/vehicle/dynamic_bicycle.py",
+          "start": 127,
+          "end": 190
+        },
+        {
+          "path": "src/apex/models/vehicle/dynamic_bicycle.py",
+          "start": 233,
+          "end": 268
+        }
+      ],
+      "relevant_existing_tests": [
+        "tests/unit/test_dynamic_bicycle.py::test_braking_stage_rejects_without_switch_or_mutation",
+        "tests/unit/test_dynamic_bicycle.py::test_configured_control_limits",
+        "tests/unit/test_dynamic_bicycle.py::test_speed_limits_and_undefined_limits",
+        "tests/unit/test_grip_tire.py::test_invalid_longitudinal"
+      ],
+      "coverage_limit": "Does not certify continuous trajectory, corridor invariance, beta limits or physical model fidelity."
+    },
+    {
+      "id": "F03",
+      "safeguard": "Actuator clipping and steering slew",
+      "classification": "implemented_supported",
+      "implemented_behavior": "Baseline rate/angle and acceleration clipping; tracker box; actual elapsed-application steering clamp.",
+      "source": [
+        {
+          "path": "src/apex/control/baseline/controller.py",
+          "start": 71,
+          "end": 85
+        },
+        {
+          "path": "src/apex/simulation/asynchronous.py",
+          "start": 287,
+          "end": 300
+        },
+        {
+          "path": "src/apex/simulation/asynchronous.py",
+          "start": 415,
+          "end": 435
+        }
+      ],
+      "relevant_existing_tests": [
+        "tests/unit/test_baseline.py::test_command_saturation_and_reset",
+        "tests/unit/test_baseline.py::test_configured_rate_limit",
+        "tests/unit/test_trajectory_tracker.py::test_feedback_sign_saturation_rate_and_determinism"
+      ],
+      "coverage_limit": "Not actuator dynamics; coupled tire feasibility still checked by plant. Delayed fallback integral/gain transient combinations incompletely tested."
+    },
+    {
+      "id": "F04",
+      "safeguard": "LQR scheduling",
+      "classification": "implemented_supported",
+      "implemented_behavior": "DARE at 1,2,3 and interpolation; clamp scheduling variable only.",
+      "source": [
+        {
+          "path": "src/apex/control/baseline/lqr.py",
+          "start": 27,
+          "end": 81
+        }
+      ],
+      "relevant_existing_tests": [
+        "tests/unit/test_baseline.py::test_matrices_and_stability",
+        "tests/unit/test_baseline.py::test_interpolated_stability",
+        "tests/unit/test_baseline.py::test_schedule_clamps_only_variable"
+      ],
+      "coverage_limit": "Frozen linear pole tests do not prove nonlinear recovery or arbitrary time-varying stability."
+    },
+    {
+      "id": "F05",
+      "safeguard": "Small-slip/static-load design assumptions",
+      "classification": "documented_assumption",
+      "implemented_behavior": "Finite curvature/positive speed checked; no small-error, slip or curvature-magnitude admission envelope.",
+      "source": [
+        {
+          "path": "src/apex/control/baseline/references.py",
+          "start": 17,
+          "end": 30
+        },
+        {
+          "path": "src/apex/control/baseline/controller.py",
+          "start": 65,
+          "end": 70
+        }
+      ],
+      "relevant_existing_tests": [],
+      "coverage_limit": "Baseline integration evidence uses linear tires on circle/oval; not all racing combined-grip fallback states."
+    },
+    {
+      "id": "F06",
+      "safeguard": "PI anti-windup",
+      "classification": "implemented_supported",
+      "implemented_behavior": "Finite inputs and nominal dt; conditional integral, command clipping; default target 2 m/s.",
+      "source": [
+        {
+          "path": "src/apex/control/baseline/speed.py",
+          "start": 19,
+          "end": 49
+        }
+      ],
+      "relevant_existing_tests": [
+        "tests/unit/test_baseline.py::test_pi_antiwindup_and_limits",
+        "tests/unit/test_baseline.py::test_pi_can_unwind"
+      ],
+      "coverage_limit": "No stop-to-zero policy; busy intervals do not update integral and elapsed time is not substituted."
+    },
+    {
+      "id": "F07",
+      "safeguard": "Baseline domain at delayed application",
+      "classification": "implemented_insufficiently_tested",
+      "implemented_behavior": "Generation guarded; due applications precede domain checks; held-pair plant validity checked before propagation.",
+      "source": [
+        {
+          "path": "src/apex/simulation/asynchronous.py",
+          "start": 287,
+          "end": 300
+        },
+        {
+          "path": "src/apex/simulation/asynchronous.py",
+          "start": 391,
+          "end": 435
+        },
+        {
+          "path": "src/apex/simulation/asynchronous.py",
+          "start": 499,
+          "end": 544
+        }
+      ],
+      "relevant_existing_tests": [
+        "tests/unit/test_mpc.py::test_delayed_failure_checks_application_state"
+      ],
+      "coverage_limit": "Named test covers synchronous MPC, not asynchronous fallback. No invariant [1,3]/corridor guarantee between ticks or at delayed application; no new counterfactual executed."
+    },
+    {
+      "id": "F08",
+      "safeguard": "Packet dimensions/validity/no extrapolation",
+      "classification": "implemented_supported",
+      "implemented_behavior": "Immutable finite arrays, ordered times/progress; buffer refuses expired authority, direct packet endpoint allowed only for evaluation.",
+      "source": [
+        {
+          "path": "src/apex/control/trajectory/packet.py",
+          "start": 32,
+          "end": 90
+        },
+        {
+          "path": "src/apex/control/trajectory/packet.py",
+          "start": 100,
+          "end": 124
+        },
+        {
+          "path": "src/apex/control/trajectory/packet.py",
+          "start": 204,
+          "end": 224
+        }
+      ],
+      "relevant_existing_tests": [
+        "tests/unit/test_trajectory_tracker.py::test_reject_future_expired_and_failed",
+        "tests/unit/test_trajectory_tracker.py::test_trim_reserve_and_newer_handoff"
+      ],
+      "coverage_limit": "Buffer trusts valid flag and producer contract; does not itself re-solve nonlinear feasibility."
+    },
+    {
+      "id": "F09",
+      "safeguard": "Continuity/stale/minimum reserve acceptance",
+      "classification": "implemented_supported",
+      "implemented_behavior": "Newer packet, available time, >=50 ms reserve plus wrapped six-state mismatch and nominal plant validation.",
+      "source": [
+        {
+          "path": "src/apex/simulation/asynchronous.py",
+          "start": 182,
+          "end": 210
+        },
+        {
+          "path": "src/apex/control/trajectory/packet.py",
+          "start": 204,
+          "end": 219
+        }
+      ],
+      "relevant_existing_tests": [
+        "tests/unit/test_async_chronology.py::test_large_handoff_mismatch_is_rejected",
+        "tests/unit/test_fixed_handoff_scheduler.py::test_packet_eligibility_staleness_and_reserve"
+      ],
+      "coverage_limit": "Envelope is synthetic; not invariant-tube or safety proof."
+    },
+    {
+      "id": "F10",
+      "safeguard": "Reserve warnings/critical labels",
+      "classification": "implemented_supported",
+      "implemented_behavior": "Thresholds classified/logged; active critical trajectory remains usable until exhaustion.",
+      "source": [
+        {
+          "path": "src/apex/control/trajectory/packet.py",
+          "start": 189,
+          "end": 202
+        },
+        {
+          "path": "src/apex/simulation/asynchronous.py",
+          "start": 516,
+          "end": 522
+        }
+      ],
+      "relevant_existing_tests": [
+        "tests/unit/test_trajectory_tracker.py::test_trim_reserve_and_newer_handoff"
+      ],
+      "coverage_limit": "No reserve-triggered urgent solve, braking, deadline guarantee or adaptive reserve policy."
+    },
+    {
+      "id": "F11",
+      "safeguard": "Preparation validation/failure isolation",
+      "classification": "implemented_supported",
+      "implemented_behavior": "Invalid solver output is rejected, failed prediction/gains yield no packet; old accepted plan remains.",
+      "source": [
+        {
+          "path": "src/apex/control/mpc/controller.py",
+          "start": 127,
+          "end": 170
+        },
+        {
+          "path": "src/apex/control/trajectory/planner.py",
+          "start": 37,
+          "end": 83
+        }
+      ],
+      "relevant_existing_tests": [
+        "tests/unit/test_mpc.py::test_invalid_optimizer_success_rejected",
+        "tests/unit/test_trajectory_tracker.py::test_gain_failure_discards_successful_nominal_packet",
+        "tests/unit/test_async_chronology.py::test_failure_keeps_old_plan_and_recovers"
+      ],
+      "coverage_limit": "Preserves prior authority only while it has reserve; no guaranteed replacement."
+    },
+    {
+      "id": "F12",
+      "safeguard": "One pending solve and urgent latch",
+      "classification": "implemented_supported",
+      "implemented_behavior": "Busy misses logged; physics/codriver continue; one error-trigger latch, nominal priority; fixed-mode grid rule.",
+      "source": [
+        {
+          "path": "src/apex/simulation/asynchronous.py",
+          "start": 212,
+          "end": 282
+        },
+        {
+          "path": "src/apex/simulation/asynchronous.py",
+          "start": 480,
+          "end": 498
+        },
+        {
+          "path": "src/apex/control/trajectory/prediction.py",
+          "start": 188,
+          "end": 202
+        }
+      ],
+      "relevant_existing_tests": [
+        "tests/unit/test_async_chronology.py::test_busy_planner_does_not_pause_codriver_or_plant",
+        "tests/unit/test_async_chronology.py::test_disturbance_requests_one_pending_urgent_replan",
+        "tests/unit/test_fixed_handoff_scheduler.py::test_on_grid_urgent_and_nominal_priority"
+      ],
+      "coverage_limit": "No cancellation/parallel rescue; persistent error does not repeatedly retrigger without clearing."
+    },
+    {
+      "id": "F13",
+      "safeguard": "Pending old-command provenance",
+      "classification": "implemented_supported",
+      "implemented_behavior": "Application before handoff; request source plan ID and mode retained across new authority.",
+      "source": [
+        {
+          "path": "src/apex/simulation/asynchronous.py",
+          "start": 287,
+          "end": 300
+        },
+        {
+          "path": "src/apex/simulation/asynchronous.py",
+          "start": 440,
+          "end": 478
+        }
+      ],
+      "relevant_existing_tests": [
+        "tests/unit/test_fixed_handoff_scheduler.py::test_pending_old_command_survives_handoff",
+        "tests/unit/test_fixed_handoff_scheduler.py::test_due_old_application_precedes_fixed_handoff_and_new_sampling"
+      ],
+      "coverage_limit": "Direct old-command-to-fallback plus nonzero latency coverage is missing; preservation is not a new sample of expired authority."
+    },
+    {
+      "id": "F14",
+      "safeguard": "Latched fallback and late rejection",
+      "classification": "implemented_insufficiently_tested",
+      "implemented_behavior": "No reentry; late completion rejected as fallback_latched; nominal/urgent planning disabled.",
+      "source": [
+        {
+          "path": "src/apex/simulation/asynchronous.py",
+          "start": 320,
+          "end": 345
+        },
+        {
+          "path": "src/apex/simulation/asynchronous.py",
+          "start": 353,
+          "end": 358
+        },
+        {
+          "path": "src/apex/simulation/asynchronous.py",
+          "start": 480,
+          "end": 493
+        }
+      ],
+      "relevant_existing_tests": [
+        "tests/unit/test_async_chronology.py::test_exhaustion_fallback_and_no_extrapolation",
+        "tests/unit/test_fixed_handoff_scheduler.py::test_original_155ms_case_defers_and_misses_without_cancellation"
+      ],
+      "coverage_limit": "Dedicated fallback-exit/domain-edge/zero-latency and early-waiting combinations not comprehensively asserted."
+    },
+    {
+      "id": "F15",
+      "safeguard": "C fixed late-result exclusion",
+      "classification": "implemented_supported",
+      "implemented_behavior": "Miss at deadline does not cancel busy work; late packet discarded, never active.",
+      "source": [
+        {
+          "path": "src/apex/simulation/fixed_handoff.py",
+          "start": 91,
+          "end": 103
+        },
+        {
+          "path": "src/apex/simulation/asynchronous.py",
+          "start": 346,
+          "end": 363
+        }
+      ],
+      "relevant_existing_tests": [
+        "tests/unit/test_fixed_handoff_scheduler.py::test_early_exact_late_and_startup",
+        "tests/unit/test_fixed_handoff_scheduler.py::test_original_155ms_case_defers_and_misses_without_cancellation"
+      ],
+      "coverage_limit": "VIS measured 478-484 discard observed; 485 completion censored. A has no fixed-deadline count."
+    },
+    {
+      "id": "F16",
+      "safeguard": "Continuous boundary/swept-body safety",
+      "classification": "absent_or_deferred",
+      "implemented_behavior": "Runtime trajectory-mode boundary flag and offline campaign gate only; fallback generation checks center corridor.",
+      "source": [
+        {
+          "path": "src/apex/simulation/asynchronous.py",
+          "start": 499,
+          "end": 514
+        },
+        {
+          "path": "scripts/task007dvis/worker.py",
+          "start": 91,
+          "end": 98
+        },
+        {
+          "path": "scripts/task007dvis/worker.py",
+          "start": 147,
+          "end": 166
+        },
+        {
+          "path": "scripts/task007d/metrics.py",
+          "start": 107,
+          "end": 122
+        }
+      ],
+      "relevant_existing_tests": [],
+      "coverage_limit": "No continuous collision prevention, footprint model, invariant tube or within-run boundary emergency stop."
+    },
+    {
+      "id": "F17",
+      "safeguard": "Termination versus safe braking",
+      "classification": "absent_or_deferred",
+      "implemented_behavior": "Invalid domain breaks loop or catches model error; no brake command or zero-speed dynamics.",
+      "source": [
+        {
+          "path": "src/apex/simulation/asynchronous.py",
+          "start": 382,
+          "end": 384
+        },
+        {
+          "path": "src/apex/simulation/asynchronous.py",
+          "start": 409,
+          "end": 415
+        },
+        {
+          "path": "src/apex/simulation/asynchronous.py",
+          "start": 556,
+          "end": 559
+        }
+      ],
+      "relevant_existing_tests": [],
+      "coverage_limit": "Synthetic stop is failure evidence, not a hardware fail-safe."
+    },
+    {
+      "id": "F18",
+      "safeguard": "Fallback success/metric interpretation",
+      "classification": "implemented_insufficiently_tested",
+      "implemented_behavior": "mode identifies fallback; controls retain last packet ID and zero-error/current-state placeholders; campaign flags any fallback.",
+      "source": [
+        {
+          "path": "src/apex/simulation/asynchronous.py",
+          "start": 418,
+          "end": 467
+        },
+        {
+          "path": "scripts/task007d/metrics.py",
+          "start": 118,
+          "end": 119
+        }
+      ],
+      "relevant_existing_tests": [
+        "tests/unit/test_async_chronology.py::test_exhaustion_fallback_and_no_extrapolation"
+      ],
+      "coverage_limit": "Do not score placeholders as APEX tracking. Direct packet endpoint may be sampled offline despite zero buffer reserve; not executable authority. No generic successful-fallback export coverage claimed."
+    },
+    {
+      "id": "F19",
+      "safeguard": "State estimation, uncertainty and hardware execution",
+      "classification": "not_applicable_synthetic_scope",
+      "implemented_behavior": "Perfect state supplied by synthetic plant; no hardware command transport.",
+      "source": [
+        {
+          "path": "src/apex/simulation/asynchronous.py",
+          "start": 397,
+          "end": 430
+        }
+      ],
+      "relevant_existing_tests": [],
+      "coverage_limit": "Mandatory separate work before hardware; this classification does not excuse missing hardware safety."
+    },
+    {
+      "id": "F20",
+      "safeguard": "Failure export integrity",
+      "classification": "implemented_insufficiently_tested",
+      "implemented_behavior": "Raw capture precedes export; known nested NumPy boolean error preserves physical evidence but loses final package/summary.",
+      "source": [
+        {
+          "path": "scripts/task007dvis/worker.py",
+          "start": 95,
+          "end": 98
+        },
+        {
+          "path": "scripts/task007dvis/worker.py",
+          "start": 147,
+          "end": 164
+        }
+      ],
+      "relevant_existing_tests": [
+        "tests/unit/test_vis_long_report.py::test_retained_nested_numpy_bool_export_defect_is_reproducible"
+      ],
+      "coverage_limit": "Inherited known defect; expected exception is not an export-success test; no fix authorized."
+    }
+  ],
+  "inherited_test_provenance": {
+    "reviewed_revision": "935e98b7af6c2fda8458551f1fbcbddb3bf8932d",
+    "full_suite_previous_passes": 709,
+    "selected_subset_cases": 284,
+    "selected_modules": {
+      "tests/unit/test_baseline.py": {
+        "count": 47,
+        "all_passed": true,
+        "revision": "935e98b7af6c2fda8458551f1fbcbddb3bf8932d",
+        "source_sha256": "4ab989982e48f063c61852ac901069287f68d95637378b4086fdd24df513dd9b"
+      },
+      "tests/unit/test_async_chronology.py": {
+        "count": 11,
+        "all_passed": true,
+        "revision": "935e98b7af6c2fda8458551f1fbcbddb3bf8932d",
+        "source_sha256": "e06e33ed3b0ee3e2185a196e4a3e6b1fd2ab36b0d6b98f043451cf3050719f4b"
+      },
+      "tests/unit/test_trajectory_tracker.py": {
+        "count": 25,
+        "all_passed": true,
+        "revision": "935e98b7af6c2fda8458551f1fbcbddb3bf8932d",
+        "source_sha256": "eaef4cbb6bd8f115a9844dd1b73e874d46bba76809dbfc9c6caa8ec4a7e55ecd"
+      },
+      "tests/unit/test_fixed_handoff_scheduler.py": {
+        "count": 26,
+        "all_passed": true,
+        "revision": "935e98b7af6c2fda8458551f1fbcbddb3bf8932d",
+        "source_sha256": "ac50fff996f4b24e620e90ad1a04f8ba64e410f197b16e99d22ab010f3ab2b89"
+      },
+      "tests/unit/test_fixed_handoff_contract.py": {
+        "count": 4,
+        "all_passed": true,
+        "revision": "935e98b7af6c2fda8458551f1fbcbddb3bf8932d",
+        "source_sha256": "275a73150a676f82739ea061522e1d4cd9134a806ed7fb813a87b0be03e4e929"
+      },
+      "tests/unit/test_dynamic_bicycle.py": {
+        "count": 50,
+        "all_passed": true,
+        "revision": "935e98b7af6c2fda8458551f1fbcbddb3bf8932d",
+        "source_sha256": "f8d8cd3a078e38c988a727150440af0aef47ec618e27e8d57201ecd67ae2b985"
+      },
+      "tests/unit/test_dynamic_components.py": {
+        "count": 25,
+        "all_passed": true,
+        "revision": "935e98b7af6c2fda8458551f1fbcbddb3bf8932d",
+        "source_sha256": "c1044b6b3fe874ef14a84156197a895cdd0b10117a03385ee15c7cc346be4d58"
+      },
+      "tests/unit/test_grip_tire.py": {
+        "count": 20,
+        "all_passed": true,
+        "revision": "935e98b7af6c2fda8458551f1fbcbddb3bf8932d",
+        "source_sha256": "fcb55ec6f8d00f36634167855784591141432f3b04374fc2cf89ee756023cefe"
+      },
+      "tests/unit/test_state.py": {
+        "count": 10,
+        "all_passed": true,
+        "revision": "935e98b7af6c2fda8458551f1fbcbddb3bf8932d",
+        "source_sha256": "d4157b6671a482dd9c1ead423231e52b76adff42a105f88048bbd7fcc1902b6f"
+      },
+      "tests/unit/test_frenet.py": {
+        "count": 11,
+        "all_passed": true,
+        "revision": "935e98b7af6c2fda8458551f1fbcbddb3bf8932d",
+        "source_sha256": "7386f77d9db6750eedd939bd3b6291012d525dc1ecf72a877b8cc5175165adc6"
+      },
+      "tests/unit/test_mpc.py": {
+        "count": 23,
+        "all_passed": true,
+        "revision": "935e98b7af6c2fda8458551f1fbcbddb3bf8932d",
+        "source_sha256": "0486d4daa818e0176f52fd1a214776c76fa2caea96555dba66b88b3226fc176f"
+      },
+      "tests/unit/test_latency.py": {
+        "count": 18,
+        "all_passed": true,
+        "revision": "935e98b7af6c2fda8458551f1fbcbddb3bf8932d",
+        "source_sha256": "a357ab1b3ded160904c9d6d66a9795a087a28abac9ce024dd3a49f356f8b65e5"
+      },
+      "tests/integration/test_baseline_tracking.py": {
+        "count": 14,
+        "all_passed": true,
+        "revision": "935e98b7af6c2fda8458551f1fbcbddb3bf8932d",
+        "source_sha256": "ae1475ac6ff52744472a4e6d010ea02a672f26a1e16a0246b28f1ecfcc1d09b4"
+      }
+    },
+    "log": {
+      "path": "results/task007d/cx/formal_935e98b/full_suite.xml",
+      "sha256": "3a17626902499b64f68c6bbcb2446cf9b81972069038ffaee3fd248012fa4a27",
+      "full_suite_count": 709,
+      "subset_not_additional": true
+    },
+    "applicability": "Exact selected tests, src/configs/dependencies and retained fixture hashes unchanged since CX; same recorded numerical versions. Does not constitute formal verification of newer VIS tools.",
+    "VIS_report_test": "Existing d55f203 report test with preserved passing recheck; separate from CX 284 subset.",
+    "new_executions": 0
+  },
+  "new_checks": [
+    "Source and transitive configuration/fixture hash identity",
+    "Source transition/order inspection",
+    "Four retained physical histories and C70 exhaustion/absence-of-fallback-mode reconciliation",
+    "Historical JUnit node/status applicability audit",
+    "Documentation links/line ranges/JSON consistency/preservation/git diff checks"
+  ],
+  "mandatory_future_tests": [
+    "Async ineligible entry/continuation at all speed/corridor edges, invalid finite-state/curvature and model exceptions",
+    "Delayed fallback domain exit and held-command validity, old requests across expiry/handoff/fallback, exact simultaneous events",
+    "Repeated preparation/predictor/gain failures, mismatch/stale/reserve rejection and pending/waiting combinations without expiry extrapolation",
+    "Fallback nonlinear recovery envelope using approved identified physics and uncertainty, PI busy-tick behavior, no misleading tracking-success metrics",
+    "Hardware watchdog/stop-to-rest/communication and timing faults after separate design authorization"
+  ],
+  "no_new_tests_or_experiments": true,
+  "remaining_gate": "Engineering Review, then separately authorized E2 manifest and E3 formal verification; no freeze implied"
+}
