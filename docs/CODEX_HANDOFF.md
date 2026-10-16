@@ -1,3 +1,39 @@
+# Current handoff — Task007E-0 VIS-1 closure audit
+
+**Stage/status:** `WORK_COMPLETE_PENDING_REVIEW`. Primary-directed campaign closure preserves
+the VIS-1L scientific stop; no formal acceptance or Performance freeze. Architecture A remains
+the intended synthetic Performance configuration; C70 remains experimental for future Efficiency.
+**Audited revision:** `d55f203aac1a04be598ebce4c38be51a4883e0ba`. Scientific workers used
+`8dbd1c5fbc09781411fc762e04f9c2c5cf2d99ae`, executable-identical to `c699057`; later offline
+report tools belong to d55f203. E0 changes documentation/audit records only.
+**Case accounting:** controlled A/C70 and measured A1 complete one lap each
+(31.171900/31.172038/31.317756 s); measured C70 is censored at 48.670 s with no complete lap.
+C70/2 and A2 remain unexecuted. Controlled lap difference is below crossing-bracket resolution.
+**C70:** 485 releases, 455 accepted, 30 misses; 22 recoveries and eight terminal misses.
+Packet 477 expires at 48.670 s with zero native endpoint reserve; 478–484 are discarded late,
+485 completion remains unobserved. Existing fallback domain excludes terminal vx=5.960493 m/s.
+Prior prose used the 48.665 s speed as endpoint; the new report records this small timestamp
+erratum without rewriting evidence. Underlying host cause remains undetermined.
+**Separate defect:** nested NumPy bool in offline event export; raw/segments/contexts/analysis
+preserved, package/summary incomplete, actual thread and exact forecast observations unavailable.
+No repair or failed-package certification.
+**Audit:** existing source/fixture hashes match; four trace/chronology/lap/count audits, three
+complete long packages, two parity packages and four contract fixtures pass read-only checks.
+90 long-run, 54 recovered parity, seven original failed-parity files and compact inventories
+rehash correctly; seven existing numerical reproductions match. No new tests or simulations.
+**Applicability:** CX 709 prior passes support unchanged components only; VIS 414 prerequisites
+and VIS-1L 41 unique focused passes are inherited with overlap explicit. Formal VIS/current
+acceptance regression, failed-export disposition and exact Performance-manifest checks remain.
+**Delivery:** [closure](TASK007E0_VIS1_CLOSURE.md),
+[evidence](task007e/e0/evidence_matrix.json),
+[verification applicability](task007e/e0/verification_applicability.json), ADR-163 and this prepend.
+Exact delivery SHA/URL follow successful commit/push; this is not a scientific-source revision.
+**Next boundary:** Engineering Review, then only separately authorized E-1 fallback-domain
+audit. No E-1/E-2/E-3 execution, exporter fix, further campaign, Efficiency, Workbench work or
+Performance freeze. All historical reports/raw evidence remain preserved.
+
+---
+
 # Current handoff — Task007D-VIS / VIS-1L scientific stop
 
 **Stage/status:** **BLOCKED — partial WORK; Engineering Review required.** Four of six authorized

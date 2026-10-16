@@ -987,3 +987,20 @@ Workbench ingestion. A first VIS parity physical run exactly matches C3, but its
 writer failed. Retain the failed attempt and missing metadata, test the bounded export correction
 and stop before C70 parity or long runs for Engineering Review. No scientific architecture
 conclusion or production change follows. See TASK007D_VIS1_RESULTS.md and APEX_RUN_INTERFACE_0_1_0.md.
+
+## ADR-163 — Close VIS-1 execution with its scientific stop; retain acceptance gates
+
+Primary APEX authorizes Task007E-0 to close the VIS-1 experimental campaign, preserving three
+completed long pipelines, one measured C70 trajectory-exhaustion stop followed by a separate
+offline export failure, and two unexecuted cases. Closure does not certify evidence or freeze
+APEX Performance. Architecture A remains the intended synthetic Performance configuration;
+C70 remains an experimental candidate for future Efficiency research, without new execution
+authorization. Preserve incomplete coverage, null observations, all misses/outliers and prior
+negative findings; do not infer full-lap success or host root cause from censored evidence.
+
+Existing controller mathematics, defaults, scheduling, models and research executables remain
+unchanged. E-0 only reconciles provenance, evidence and verification applicability. Fallback-domain
+audit, exact Performance manifest, formal current verification, Primary acceptance, hardware/safety
+gates, Efficiency research and Workbench ingestion remain separate authorized stages. The
+[closure report](TASK007E0_VIS1_CLOSURE.md) records the native endpoint speed timestamp erratum
+without rewriting the historical report. Earlier CX formal passes do not verify newer VIS code.

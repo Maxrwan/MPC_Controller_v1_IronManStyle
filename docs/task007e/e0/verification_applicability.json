@@ -1,0 +1,178 @@
+{
+  "schema": "apex-verification-applicability/007e0-1",
+  "status": "WORK_COMPLETE_PENDING_REVIEW",
+  "audited_revision": "d55f203aac1a04be598ebce4c38be51a4883e0ba",
+  "new_test_executions": 0,
+  "count_policy": "Do not sum overlapping historical executions, subsets, parity comparisons or E0 offline checks as distinct unit tests.",
+  "groups": [
+    {
+      "id": "CX_formal",
+      "original_tested_revision": "935e98b7af6c2fda8458551f1fbcbddb3bf8932d",
+      "scope": "Full tests/ suite: 709 passed, 0 failed/error/skipped; 597.59 s pytest. 226 relevant cases in 13 modules are a subset, not additional tests.",
+      "execution_status": "INHERITED_PASS_NOT_RERUN",
+      "evidence_references": [
+        "docs/TASK007D_CX_VERIFICATION.md",
+        "docs/task007d/cx/formal/verification.json",
+        "docs/task007d/cx/formal/test_durations.csv",
+        "results/task007d/cx/formal_935e98b/full_suite.xml",
+        "results/task007d/cx/formal_935e98b/full_suite.log"
+      ],
+      "relevant_identity": "168 core/fixture manifest hashes match; old src/config/dependency/tests unchanged. Same recorded Python/OS/numerical package versions. 18 original log/artifact hashes match.",
+      "reuse_applicability": "APPLICABLE_TO_UNCHANGED_COMPONENTS_ONLY",
+      "reuse_reason": "CX suite predates all VIS adapter/report additions; cannot formally certify those. CX verification delivery f072052 was documentation-only.",
+      "further_checks_mandatory": [
+        "At separately authorized exact-reviewed VIS/Performance verification gate, complete required current regression and acceptance checks; do not infer current full-suite pass."
+      ]
+    },
+    {
+      "id": "VIS1_prerequisite_and_original_parity",
+      "original_tested_revision": "d55d7b299217d6b62efc90cb525c2493224a7cca + recorded dirty source inventories",
+      "scope": "410 initial passes (384 unaffected + 26 initial VIS); successive 27/28/29/30 adapter runs overlap. Original 2 s A physical parity: 19 groups; pipeline failed.",
+      "execution_status": "INHERITED_TEST_PASSES_WITH_PRESERVED_FAILED_PIPELINE",
+      "evidence_references": [
+        "docs/TASK007D_VIS1_RESULTS.md",
+        "docs/task007d/vis/vis1/evidence/verification.json",
+        "docs/task007d/vis/vis1/evidence/execution_source.json",
+        "docs/task007d/vis/vis1/evidence/delivery_source.json",
+        "docs/task007d/vis/vis1/evidence/parity_A_exact_comparison.json",
+        "docs/task007d/vis/vis1/evidence/preserved_run_files.json"
+      ],
+      "relevant_identity": "Initial adapter/launcher evolved before c699057; unaffected transitive code/config/dependencies unchanged; final 294 source inventory matches. Initial five JUnit hashes and seven failed-attempt artifact hashes checked.",
+      "reuse_applicability": "384_UNAFFECTED_TESTS_REUSABLE_ORIGINAL_PIPELINE_NOT_ACCEPTED",
+      "reuse_reason": "26 initial VIS tests are superseded by 30 source-bound recovery tests; missing original observer/export data cannot be inferred. Historical prose count 20 was corrected to actual 19 in VIS1R.",
+      "further_checks_mandatory": [
+        "Use recovered parity evidence for pipeline acceptance; retain original failure. Formal acceptance still pending."
+      ]
+    },
+    {
+      "id": "VIS1R_recovery",
+      "original_tested_revision": "c6990572045e61ee443dc715de9e8c44396e5b41",
+      "scope": "30 fresh export/serialization/chronology/lap/observer tests passed, 15.41 s; 384 inherited unaffected => 414 applicable distinct prerequisites. Two complete 2 s parity workers, each 19 exact C3 groups and 19 forecast matches.",
+      "execution_status": "INHERITED_PASS_WITH_CURRENT_HASH_AND_PACKAGE_RECHECK",
+      "evidence_references": [
+        "docs/TASK007D_VIS1R_RECOVERY.md",
+        "docs/task007d/vis/vis1r/prerequisites.json",
+        "docs/task007d/vis/vis1r/verification.json",
+        "docs/task007d/vis/vis1r/run_artifacts.json",
+        "docs/task007d/vis/vis1r/parity_A_acceptance.json",
+        "docs/task007d/vis/vis1r/parity_C70_acceptance.json",
+        "docs/task007d/vis/vis1r/serialized_forecast_audit.json",
+        "results/task007d/vis/vis1r_c699057/focused.xml"
+      ],
+      "relevant_identity": "All 294 source hashes and 54 raw/package hashes match; two packages revalidated. Fresh log/XML hashes match. C3 reuse retained two reviewed urgent-bookkeeping differences inactive in these histories.",
+      "reuse_applicability": "APPLICABLE_TO_FROZEN_SHORT_RUN_PREREQUISITES",
+      "reuse_reason": "No runtime/export change since exact c699057; source/fixture/numerical environment identity verified. Short success does not cover measured terminal fallback serialization.",
+      "further_checks_mandatory": [
+        "Formal current regression and missing-channel/failed-export acceptance disposition; Workbench ingestion separately."
+      ]
+    },
+    {
+      "id": "VIS1L_analysis_export",
+      "original_tested_revision": "8dbd1c5fbc09781411fc762e04f9c2c5cf2d99ae + three added files hash-bound to d55f203aac1a04be598ebce4c38be51a4883e0ba",
+      "scope": "30 existing export tests + 11 new report tests = 41 unique final passes. First invocation 40 pass/1 test-container setup failure; 11 report tests then passed (0.26 s).",
+      "execution_status": "INHERITED_PASS_WITH_PRESERVED_SETUP_FAILURE_AND_KNOWN_EXPORT_DEFECT",
+      "evidence_references": [
+        "docs/task007d/vis/vis1l/verification.json",
+        "docs/task007d/vis/vis1l/evidence/vis1l_focused.log",
+        "docs/task007d/vis/vis1l/evidence/vis1l_focused.xml",
+        "docs/task007d/vis/vis1l/evidence/vis1l_focused_recheck.log",
+        "docs/task007d/vis/vis1l/evidence/vis1l_focused_recheck.xml",
+        "tests/unit/test_vis_exports.py",
+        "tests/unit/test_vis_long_report.py"
+      ],
+      "relevant_identity": "Three final report/test hashes match; 294 earlier files unchanged. XML and overlap parsed: 11 rechecked cases overlap initial 41; 30 also overlap recovery.",
+      "reuse_applicability": "APPLICABLE_FOCUSED_EVIDENCE_NOT_FORMAL_VIS_ACCEPTANCE",
+      "reuse_reason": "Expected TypeError test documents unresolved nested NumPy-bool CSV defect; it does not validate failed package. Test setup dtype correction retained unchanged assertions; no new tests executed in E0.",
+      "further_checks_mandatory": [
+        "Formal verification of reviewed VIS analysis/export plus accepted disposition of incomplete measured C70 package; any repair needs separate Engineering Review."
+      ]
+    },
+    {
+      "id": "scientific_artifact_reproduction",
+      "original_tested_revision": "d55f203aac1a04be598ebce4c38be51a4883e0ba",
+      "scope": "Four native traces, 2347 cycles, 30 misses, 85 lap/sector/run windows; retained seven-file exact numerical reproduction and eight figures.",
+      "execution_status": "READ_ONLY_E0_RECONCILED",
+      "evidence_references": [
+        "docs/task007d/vis/vis1l/summary.json",
+        "docs/task007d/vis/vis1l/cycles.csv",
+        "docs/task007d/vis/vis1l/misses.csv",
+        "docs/task007d/vis/vis1l/lap_sector_metrics.csv",
+        "docs/task007d/vis/vis1l/common_coverage_metrics.csv",
+        "docs/task007d/vis/vis1l/compact_artifact_inventory.json",
+        "docs/task007d/vis/vis1l/verification.json",
+        "results/task007e/e0/d55f203_audit/audit.json"
+      ],
+      "relevant_identity": "90 long-run file hashes match stored manifests; 40 compact artifacts hash/size/row checks pass; existing seven reproduction copies still byte-identical.",
+      "reuse_applicability": "APPLICABLE_WITH_CENSORING_AND_ERRATUM",
+      "reuse_reason": "Recomputed lap coverage, chronology, misses/recovery, native endpoints and host extrema from retained data. No redraw, integration, forecast, export repair or experimental rerun. Terminal speed prose erratum explicitly recorded.",
+      "further_checks_mandatory": [
+        "Formal evidence acceptance and archival availability; cannot replace absent failed-worker summary/native observations with another run."
+      ]
+    },
+    {
+      "id": "source_configuration_fixture",
+      "original_tested_revision": "c6990572045e61ee443dc715de9e8c44396e5b41 / 8dbd1c5fbc09781411fc762e04f9c2c5cf2d99ae",
+      "scope": "Controller/solver/predictor/scheduler, vehicle/tires, N8 gamma2 Planning, timing policies, environment and native evidence.",
+      "execution_status": "READ_ONLY_E0_IDENTITY_CONFIRMED",
+      "evidence_references": [
+        "docs/task007d/vis/vis1l/evidence/vis1l_preflight.json",
+        "docs/task007d/vis/vis1l/provenance.json",
+        "docs/task007d/vis/vis1l/verification.json",
+        "docs/task007d/vis/vis1r/prerequisites.json"
+      ],
+      "relevant_identity": "168 CX manifest paths, 294 VIS paths, 3 added report paths, 5 fixture hashes and vehicle hash verified; per-case source maps match. Core executable diff CX\u2192VIS contains only VIS additions.",
+      "reuse_applicability": "APPLICABLE_WITH_MISSING_FAILED_WORKER_OBSERVATIONS",
+      "reuse_reason": "Successful summaries directly record 8dbd1c5 and sampled process counts [1]; failed case source attributed via preflight/input hashes, no surviving independent summary or observed thread list.",
+      "further_checks_mandatory": [
+        "Review sufficiency of failed-worker provenance for any later acceptance claim; preserve null observations and avoid hardware real-time claims."
+      ]
+    },
+    {
+      "id": "outstanding_formal_VIS_verification",
+      "original_tested_revision": null,
+      "scope": "Exact reviewed current tests/ regression; mathematical/chronology/physical validity, export/censoring, artifact reproducibility and provenance acceptance.",
+      "execution_status": "NOT_EXECUTED_IN_E0",
+      "evidence_references": [
+        "docs/CODEX_VERIFICATION_WORKFLOW.md",
+        "docs/CODEX_TEST_GUIDE.md",
+        "docs/TASK007D_VIS1L_RESULTS.md"
+      ],
+      "relevant_identity": "Exact future reviewed SHA/environment and applicability inventory must be fixed before verification.",
+      "reuse_applicability": "NOT_SATISFIED_BY_CX_OR_WORK_TESTS",
+      "reuse_reason": "Full current VIS verification was deferred; closure of experiments does not execute or waive it.",
+      "further_checks_mandatory": [
+        "Separately authorize 007E-3; run full required suite once, retain failures/durations; audit source/dependency/fixture identity and numerical evidence; obtain explicit incomplete-export disposition."
+      ]
+    },
+    {
+      "id": "future_Performance_manifest_verification",
+      "original_tested_revision": null,
+      "scope": "Review intended Architecture A exact profile and validity/claim boundaries; no manifest authored or profile frozen by E0.",
+      "execution_status": "DEFERRED_NOT_EXECUTED",
+      "evidence_references": [
+        "docs/TASK007E0_VIS1_CLOSURE.md",
+        "docs/CODEX_HANDOFF.md"
+      ],
+      "relevant_identity": "Future manifest must bind exact source, solver/dependency environment, controller/TVLQR/config, fixtures/vehicle, timing/native policy, constraints and fallback validity domain.",
+      "reuse_applicability": "NOT_YET_AVAILABLE",
+      "reuse_reason": "Primary scientific acceptance, exact manifest and fallback-domain review are separate prerequisites; intended A selection is not an accepted freeze.",
+      "further_checks_mandatory": [
+        "Separate E-1 bounded fallback-domain audit, E-2 exact manifest, E-3 reviewed verification and Primary acceptance; hardware/safety and Efficiency/Workbench work remain independently gated."
+      ]
+    }
+  ],
+  "environment": {
+    "python": "3.12.14 (main, Sep  1 2026, 14:09:38) [Clang 22.1.3 ]",
+    "platform": "macOS-26.5.1-arm64-arm-64bit",
+    "packages": {
+      "numpy": "2.5.3",
+      "scipy": "1.18.1",
+      "casadi": "3.8.1",
+      "pytest": "9.1.1",
+      "psutil": "7.2.2",
+      "threadpoolctl": "3.7.0",
+      "pandas": "3.0.6"
+    }
+  },
+  "fresh_E0_checks_reference": "docs/task007e/e0/evidence_matrix.json#/audit_checks"
+}
