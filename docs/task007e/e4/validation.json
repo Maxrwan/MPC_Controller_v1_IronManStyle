@@ -1,0 +1,101 @@
+{
+  "schema": "apex-primary-acceptance-validation/1.0.0",
+  "task": "007E-4",
+  "status": "WORK_COMPLETE_PENDING_REVIEW",
+  "passed": true,
+  "starting_revision": "ecbbc5cdb6d182557dfdd0bca7caa215cc1355c9",
+  "reviewed_revision": "e603672b209985f11ed26b6f44d3949ffd5675c5",
+  "record": {
+    "path": "docs/task007e/e4/primary_acceptance.json",
+    "sha256": "5bcdaeecd342ed758b3907e2ff17dcb05d9ac1aa4ba777f0d44298911002de76"
+  },
+  "record_schema": {
+    "path": "docs/task007e/e4/primary_acceptance.schema.json",
+    "sha256": "980ef534e538b6172c75bfae270dd127705df410dd6a5ca8dfc57af365a27b4b"
+  },
+  "schema_validation": "Unchanged E2 standard-library closed-schema checker; only supported type/const/required/properties/additionalProperties vocabulary. Immutable reference resolution checked independently. No dependencies installed.",
+  "schema_checker": {
+    "path": "scripts/task007e2/validate_manifest.py",
+    "sha256": "351a390266b8b37fea2de89a7bf4d7f01b6174734c18f73abd3557106df7d56c"
+  },
+  "negative_record_checks_rejected": [
+    "hardware authorization",
+    "C70 acceptance",
+    "acceptance date",
+    "suite count",
+    "missing decision",
+    "unknown field",
+    "incorrect immutable manifest hash"
+  ],
+  "commit_qualified_artifact_references_checked": 17,
+  "source_inventory_hashes_checked": 294,
+  "manifest_sha256": "5299adca29d5c5bd383252cd2c299a392dd6872dc6bb72d1a4dd7ecfb8dd1ebf",
+  "manifest_reviewed_start_current_bytes_equal": true,
+  "proposal_flags_unchanged": true,
+  "inherited_suite": {
+    "passed": 750,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "reviewed_revision": "e603672b209985f11ed26b6f44d3949ffd5675c5",
+    "verification_delivery": "ecbbc5cdb6d182557dfdd0bca7caa215cc1355c9",
+    "record": {
+      "path": "docs/task007e/e3/verification.json",
+      "sha256": "f018caa6adb4acc5bf050184953234efa5a6e45359057ce96dda908f7b858c80"
+    },
+    "retained_log_hashes_checked": 6,
+    "junit_counts_reconciled": true,
+    "new_test_executions": 0,
+    "applicability": "No source, dependency, fixture, test or runtime configuration change; E3 exact-revision results remain applicable without repetition."
+  },
+  "checks": [
+    "Strict JSON and closed schema",
+    "Authority/date/status and Recommendation B",
+    "Commit-qualified artifact/source/dependency/fixture identities",
+    "Reviewed/start/current manifest bytes and historical proposal flags",
+    "Inherited E3 suite record and retained JUnit/log hashes",
+    "Local documentation links, pinned Git links and ADR anchor",
+    "Changed-file scope, append/prepend-only history preservation",
+    "git diff --check"
+  ],
+  "documentation_links_checked": 16,
+  "preservation": {
+    "prior_tracked_files_unchanged": 820,
+    "authorized_existing_changes": [
+      "docs/CODEX_HANDOFF.md",
+      "docs/DECISIONS.md",
+      "docs/PROJECT_ROADMAP.md"
+    ],
+    "historical_results_size_mtime_unchanged": 11642,
+    "whole_raw_archive_content_rehash": false,
+    "method": "SHA256 for all other tracked files; size/mtime for ignored historical results; exact historical prefixes/suffixes in three updated current-status documents."
+  },
+  "zero_changes": [
+    "controller",
+    "configuration",
+    "dependency",
+    "fixture",
+    "test/assertion",
+    "production defaults",
+    "runtime loading",
+    "historical reports/evidence",
+    "Git tags"
+  ],
+  "not_executed": [
+    "750-test numerical suite repeat",
+    "simulation/solver experiment/benchmark",
+    "exporter repair",
+    "Efficiency/Safety implementation",
+    "Workbench/VIS-2",
+    "independent external raw-archive backup"
+  ],
+  "local_audit_reader": {
+    "path": "results/task007e/e4/ecbbc5c_acceptance/validate_acceptance.py",
+    "sha256": "e663fcadaf3759d340bedcf7eeb719a7ef0fab7e407ec390f8e98e54c94d2551"
+  },
+  "preservation_inventory": {
+    "path": "results/task007e/e4/ecbbc5c_acceptance/before.json",
+    "sha256": "44154387595b34fcfbd50a3de911901988940a5edba5507a28aef62bddfc33aa"
+  },
+  "delivery_revision": "Containing documentation commit; exact SHA returned after push, no circular self-identity."
+}

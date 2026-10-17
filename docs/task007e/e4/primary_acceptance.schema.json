@@ -1,0 +1,880 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "APEX Primary acceptance decision 1.0.0",
+  "type": "object",
+  "required": [
+    "schema",
+    "schema_file",
+    "task",
+    "stage",
+    "delivery_status",
+    "decision",
+    "identities",
+    "historical_proposal",
+    "verified_suite",
+    "provenance",
+    "frozen_scientific_scope",
+    "limitations",
+    "authorizations",
+    "deferred",
+    "archival"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema": {
+      "type": "string",
+      "const": "apex-primary-acceptance/1.0.0"
+    },
+    "schema_file": {
+      "type": "string",
+      "const": "docs/task007e/e4/primary_acceptance.schema.json"
+    },
+    "task": {
+      "type": "string",
+      "const": "007E-4"
+    },
+    "stage": {
+      "type": "string",
+      "const": "WORK_DOCUMENTATION_STATUS_ONLY"
+    },
+    "delivery_status": {
+      "type": "string",
+      "const": "WORK_COMPLETE_PENDING_REVIEW"
+    },
+    "decision": {
+      "type": "object",
+      "required": [
+        "authority",
+        "acceptance_date",
+        "primary_acceptance_status",
+        "accepted_designation",
+        "accepted_recommendation",
+        "bounded_scientific_reference_frozen"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "authority": {
+          "type": "string",
+          "const": "Primary APEX"
+        },
+        "acceptance_date": {
+          "type": "string",
+          "const": "2026-10-17"
+        },
+        "primary_acceptance_status": {
+          "type": "string",
+          "const": "ACCEPTED_WITH_DOCUMENTED_NONBLOCKING_SYNTHETIC_LIMITATIONS"
+        },
+        "accepted_designation": {
+          "type": "string",
+          "const": "APEX Performance Synthetic v1"
+        },
+        "accepted_recommendation": {
+          "type": "string",
+          "const": "B"
+        },
+        "bounded_scientific_reference_frozen": {
+          "type": "boolean",
+          "const": true
+        }
+      }
+    },
+    "identities": {
+      "type": "object",
+      "required": [
+        "manifest",
+        "manifest_schema",
+        "formally_verified_revision",
+        "verification_delivery_revision",
+        "acceptance_delivery_revision"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "manifest": {
+          "type": "object",
+          "required": [
+            "path",
+            "revision",
+            "sha256",
+            "git_url"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "type": "string"
+            },
+            "revision": {
+              "type": "string"
+            },
+            "sha256": {
+              "type": "string"
+            },
+            "git_url": {
+              "type": "string"
+            }
+          }
+        },
+        "manifest_schema": {
+          "type": "string",
+          "const": "apex-performance-profile/1.0.0"
+        },
+        "formally_verified_revision": {
+          "type": "string",
+          "const": "e603672b209985f11ed26b6f44d3949ffd5675c5"
+        },
+        "verification_delivery_revision": {
+          "type": "string",
+          "const": "ecbbc5cdb6d182557dfdd0bca7caa215cc1355c9"
+        },
+        "acceptance_delivery_revision": {
+          "type": "string",
+          "const": "Containing Git commit; exact SHA supplied in delivery handoff, not self-embedded"
+        }
+      }
+    },
+    "historical_proposal": {
+      "type": "object",
+      "required": [
+        "unchanged_flags",
+        "interpretation",
+        "historical_reports_preserved"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "unchanged_flags": {
+          "type": "object",
+          "required": [
+            "frozen",
+            "formal_verification_pending",
+            "primary_acceptance_pending"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "frozen": {
+              "type": "boolean",
+              "const": false
+            },
+            "formal_verification_pending": {
+              "type": "boolean",
+              "const": true
+            },
+            "primary_acceptance_pending": {
+              "type": "boolean",
+              "const": true
+            }
+          }
+        },
+        "interpretation": {
+          "type": "string",
+          "const": "These flags describe the immutable reviewed proposal, not current Primary decision status. E3 is the formal verification record; this E4 overlay is the authoritative subsequent Synthetic v1 acceptance decision. No original bytes, schema or runtime-loading behavior change."
+        },
+        "historical_reports_preserved": {
+          "type": "boolean",
+          "const": true
+        }
+      }
+    },
+    "verified_suite": {
+      "type": "object",
+      "required": [
+        "reference",
+        "json_pointer",
+        "passed",
+        "failed",
+        "errored",
+        "skipped",
+        "result_origin"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "reference": {
+          "type": "object",
+          "required": [
+            "path",
+            "revision",
+            "sha256",
+            "git_url"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "type": "string"
+            },
+            "revision": {
+              "type": "string"
+            },
+            "sha256": {
+              "type": "string"
+            },
+            "git_url": {
+              "type": "string"
+            }
+          }
+        },
+        "json_pointer": {
+          "type": "string",
+          "const": "/suite"
+        },
+        "passed": {
+          "const": 750
+        },
+        "failed": {
+          "const": 0
+        },
+        "errored": {
+          "const": 0
+        },
+        "skipped": {
+          "const": 0
+        },
+        "result_origin": {
+          "type": "string",
+          "const": "INHERITED_EXACT_REVIEWED_E3_EXECUTION_NOT_RERUN_IN_E4"
+        }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "required": [
+        "scientific_worker_revision",
+        "frozen_executable_ancestor",
+        "offline_VIS_report_revision",
+        "manifest_preparation_base_revision",
+        "scientific_source_inventory",
+        "scientific_source_inventory_pointer",
+        "scientific_source_inventory_entries",
+        "dependency_lock",
+        "project_dependencies",
+        "vehicle",
+        "planning_files",
+        "environment_pointer_in_manifest",
+        "solver_options_pointer_in_manifest",
+        "evidence_index",
+        "verification_report",
+        "recommendation"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "scientific_worker_revision": {
+          "type": "string",
+          "const": "8dbd1c5fbc09781411fc762e04f9c2c5cf2d99ae"
+        },
+        "frozen_executable_ancestor": {
+          "type": "string",
+          "const": "c6990572045e61ee443dc715de9e8c44396e5b41"
+        },
+        "offline_VIS_report_revision": {
+          "type": "string",
+          "const": "d55f203aac1a04be598ebce4c38be51a4883e0ba"
+        },
+        "manifest_preparation_base_revision": {
+          "type": "string",
+          "const": "835eefb0aafe2f982a0ba05847d4e731079ff52d"
+        },
+        "scientific_source_inventory": {
+          "type": "object",
+          "required": [
+            "path",
+            "revision",
+            "sha256",
+            "git_url"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "type": "string"
+            },
+            "revision": {
+              "type": "string"
+            },
+            "sha256": {
+              "type": "string"
+            },
+            "git_url": {
+              "type": "string"
+            }
+          }
+        },
+        "scientific_source_inventory_pointer": {
+          "type": "string",
+          "const": "/source_sha256"
+        },
+        "scientific_source_inventory_entries": {
+          "const": 294
+        },
+        "dependency_lock": {
+          "type": "object",
+          "required": [
+            "path",
+            "revision",
+            "sha256",
+            "git_url"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "type": "string"
+            },
+            "revision": {
+              "type": "string"
+            },
+            "sha256": {
+              "type": "string"
+            },
+            "git_url": {
+              "type": "string"
+            }
+          }
+        },
+        "project_dependencies": {
+          "type": "object",
+          "required": [
+            "path",
+            "revision",
+            "sha256",
+            "git_url"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "type": "string"
+            },
+            "revision": {
+              "type": "string"
+            },
+            "sha256": {
+              "type": "string"
+            },
+            "git_url": {
+              "type": "string"
+            }
+          }
+        },
+        "vehicle": {
+          "type": "object",
+          "required": [
+            "path",
+            "revision",
+            "sha256",
+            "git_url"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "type": "string"
+            },
+            "revision": {
+              "type": "string"
+            },
+            "sha256": {
+              "type": "string"
+            },
+            "git_url": {
+              "type": "string"
+            }
+          }
+        },
+        "planning_files": {
+          "type": "object",
+          "required": [
+            "planning_manifest.json",
+            "planning_reference.csv",
+            "planning_validation.json",
+            "speed_polynomial.json",
+            "track_source.json"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "planning_manifest.json": {
+              "type": "object",
+              "required": [
+                "path",
+                "revision",
+                "sha256",
+                "git_url"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "path": {
+                  "type": "string"
+                },
+                "revision": {
+                  "type": "string"
+                },
+                "sha256": {
+                  "type": "string"
+                },
+                "git_url": {
+                  "type": "string"
+                }
+              }
+            },
+            "planning_reference.csv": {
+              "type": "object",
+              "required": [
+                "path",
+                "revision",
+                "sha256",
+                "git_url"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "path": {
+                  "type": "string"
+                },
+                "revision": {
+                  "type": "string"
+                },
+                "sha256": {
+                  "type": "string"
+                },
+                "git_url": {
+                  "type": "string"
+                }
+              }
+            },
+            "planning_validation.json": {
+              "type": "object",
+              "required": [
+                "path",
+                "revision",
+                "sha256",
+                "git_url"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "path": {
+                  "type": "string"
+                },
+                "revision": {
+                  "type": "string"
+                },
+                "sha256": {
+                  "type": "string"
+                },
+                "git_url": {
+                  "type": "string"
+                }
+              }
+            },
+            "speed_polynomial.json": {
+              "type": "object",
+              "required": [
+                "path",
+                "revision",
+                "sha256",
+                "git_url"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "path": {
+                  "type": "string"
+                },
+                "revision": {
+                  "type": "string"
+                },
+                "sha256": {
+                  "type": "string"
+                },
+                "git_url": {
+                  "type": "string"
+                }
+              }
+            },
+            "track_source.json": {
+              "type": "object",
+              "required": [
+                "path",
+                "revision",
+                "sha256",
+                "git_url"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "path": {
+                  "type": "string"
+                },
+                "revision": {
+                  "type": "string"
+                },
+                "sha256": {
+                  "type": "string"
+                },
+                "git_url": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "environment_pointer_in_manifest": {
+          "type": "string",
+          "const": "/environment"
+        },
+        "solver_options_pointer_in_manifest": {
+          "type": "string",
+          "const": "/profile/nmpc"
+        },
+        "evidence_index": {
+          "type": "object",
+          "required": [
+            "path",
+            "revision",
+            "sha256",
+            "git_url"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "type": "string"
+            },
+            "revision": {
+              "type": "string"
+            },
+            "sha256": {
+              "type": "string"
+            },
+            "git_url": {
+              "type": "string"
+            }
+          }
+        },
+        "verification_report": {
+          "type": "object",
+          "required": [
+            "path",
+            "revision",
+            "sha256",
+            "git_url"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "type": "string"
+            },
+            "revision": {
+              "type": "string"
+            },
+            "sha256": {
+              "type": "string"
+            },
+            "git_url": {
+              "type": "string"
+            }
+          }
+        },
+        "recommendation": {
+          "type": "object",
+          "required": [
+            "path",
+            "revision",
+            "sha256",
+            "git_url"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "type": "string"
+            },
+            "revision": {
+              "type": "string"
+            },
+            "sha256": {
+              "type": "string"
+            },
+            "git_url": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "frozen_scientific_scope": {
+      "type": "object",
+      "required": [
+        "classification",
+        "architecture",
+        "predictor",
+        "handoff",
+        "binding",
+        "formulation_summary",
+        "demonstrated_scope",
+        "evaluation_boundary"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "classification": {
+          "type": "string",
+          "const": "BOUNDED_SYNTHETIC_RESEARCH_BASELINE"
+        },
+        "architecture": {
+          "type": "string",
+          "const": "A"
+        },
+        "predictor": {
+          "type": "string",
+          "const": "A_legacy"
+        },
+        "handoff": {
+          "type": "string",
+          "const": "variable_availability"
+        },
+        "binding": {
+          "type": "string",
+          "const": "The complete hash-bound manifest profile and its source/fixture/dependency identities; no derivative profile or runtime configuration is created."
+        },
+        "formulation_summary": {
+          "type": "string",
+          "const": "N8, dt=0.1 s, H=0.8 s, four RK4 substeps; original Q/R/W and scales, lambda_s=0, gamma2 Planning, full control sequence, terminal DARE/IPOPT/warm starts, 100 Hz TVLQR, original plant/tires and native SINGLE."
+        },
+        "demonstrated_scope": {
+          "type": "string",
+          "const": "Retained synthetic_grand_prix_v1 controlled and particular measured Architecture A runs, with complete parity and E3 verification evidence; no arbitrary vehicle, track, latency or platform guarantee."
+        },
+        "evaluation_boundary": {
+          "type": "string",
+          "const": "VIS 35/55/45/25 ms replay, imposed 5 ms codriver delay, rolling initial state and two-crossing/80-second cap are evaluation conditions; acceptance does not promote them to production defaults."
+        }
+      }
+    },
+    "limitations": {
+      "type": "object",
+      "required": [
+        "E3_register",
+        "E1_safeguard_matrix",
+        "E1_domain_register",
+        "mandatory_hardware_gates_pointer",
+        "hardware_gate_version",
+        "administrative_status_resolution",
+        "prominent",
+        "scope_disposition"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "E3_register": {
+          "type": "object",
+          "required": [
+            "path",
+            "revision",
+            "sha256",
+            "git_url"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "type": "string"
+            },
+            "revision": {
+              "type": "string"
+            },
+            "sha256": {
+              "type": "string"
+            },
+            "git_url": {
+              "type": "string"
+            }
+          }
+        },
+        "E1_safeguard_matrix": {
+          "type": "object",
+          "required": [
+            "path",
+            "revision",
+            "sha256",
+            "git_url"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "type": "string"
+            },
+            "revision": {
+              "type": "string"
+            },
+            "sha256": {
+              "type": "string"
+            },
+            "git_url": {
+              "type": "string"
+            }
+          }
+        },
+        "E1_domain_register": {
+          "type": "object",
+          "required": [
+            "path",
+            "revision",
+            "sha256",
+            "git_url"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "type": "string"
+            },
+            "revision": {
+              "type": "string"
+            },
+            "sha256": {
+              "type": "string"
+            },
+            "git_url": {
+              "type": "string"
+            }
+          }
+        },
+        "mandatory_hardware_gates_pointer": {
+          "type": "string",
+          "const": "/mandatory_prehardware_gates"
+        },
+        "hardware_gate_version": {
+          "type": "string",
+          "const": "apex-prehardware-gates/1.0.0"
+        },
+        "administrative_status_resolution": {
+          "type": "string",
+          "const": "The Primary-acceptance-pending statement in historical E3 L12 is resolved only by this decision. Technical limitations L01-L11, remaining L12 interface/deployment obligations and HW01-HW07 remain in force."
+        },
+        "prominent": {
+          "type": "array",
+          "const": [
+            "No guaranteed trajectory availability or recovery.",
+            "Fallback admission requires vx in [1,3] m/s and vehicle-center corridor containment; this is not a verified nonlinear recovery region.",
+            "Reserve warnings and critical thresholds do not provide proactive reserve-triggered rescue.",
+            "No independently verified application-time fallback-domain eligibility; delayed asynchronous fallback-transition coverage remains incomplete.",
+            "No emergency braking-to-standstill capability.",
+            "No independent hardware watchdog or safety supervisor.",
+            "No continuous swept-body, collision-safety or corridor-invariance guarantee.",
+            "Synthetic vehicle/tire parameters are not physically identified; footprint and hardware uncertainty remain unresolved.",
+            "Measured C70 retains its exhaustion stop and incomplete scientific export; no completed measured C70 lap or complete VIS package acceptance.",
+            "No unseen-track generalization or embedded timing certification.",
+            "Independent historical IPOPT/linear-solver build identity remains unavailable; locked CasADi and explicit options do not establish portable binary/timing equivalence."
+          ]
+        },
+        "scope_disposition": {
+          "type": "string",
+          "const": "Nonblocking for the accepted bounded synthetic research baseline; mandatory safety/recovery gates remain before physical deployment."
+        }
+      }
+    },
+    "authorizations": {
+      "type": "object",
+      "required": [
+        "hardware_deployment",
+        "production_default_changes",
+        "runtime_auto_load_or_selection",
+        "efficiency_acceptance",
+        "C70_acceptance",
+        "new_scientific_experiments",
+        "safety_implementation",
+        "exporter_repair",
+        "next_task_execution"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "hardware_deployment": {
+          "type": "boolean",
+          "const": false
+        },
+        "production_default_changes": {
+          "type": "boolean",
+          "const": false
+        },
+        "runtime_auto_load_or_selection": {
+          "type": "boolean",
+          "const": false
+        },
+        "efficiency_acceptance": {
+          "type": "boolean",
+          "const": false
+        },
+        "C70_acceptance": {
+          "type": "boolean",
+          "const": false
+        },
+        "new_scientific_experiments": {
+          "type": "boolean",
+          "const": false
+        },
+        "safety_implementation": {
+          "type": "boolean",
+          "const": false
+        },
+        "exporter_repair": {
+          "type": "boolean",
+          "const": false
+        },
+        "next_task_execution": {
+          "type": "boolean",
+          "const": false
+        }
+      }
+    },
+    "deferred": {
+      "type": "object",
+      "required": [
+        "efficiency_specification",
+        "shared_safety_milestone",
+        "workbench",
+        "VIS2",
+        "C70"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "efficiency_specification": {
+          "type": "string",
+          "const": "NEXT_SEPARATE_SPECIFICATION_AND_AUTHORIZATION_REQUIRED"
+        },
+        "shared_safety_milestone": {
+          "type": "string",
+          "const": "PENDING_SEPARATE_SPECIFICATION_AND_AUTHORIZATION"
+        },
+        "workbench": {
+          "type": "string",
+          "const": "DEFERRED"
+        },
+        "VIS2": {
+          "type": "string",
+          "const": "DEFERRED"
+        },
+        "C70": {
+          "type": "string",
+          "const": "EXPERIMENTAL_FUTURE_EFFICIENCY_CANDIDATE_NOT_PERFORMANCE_REPLACEMENT"
+        }
+      }
+    },
+    "archival": {
+      "type": "object",
+      "required": [
+        "reference_recovery",
+        "raw_evidence",
+        "obligation",
+        "git_tags_created_or_moved",
+        "delivery_identity_policy"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "reference_recovery": {
+          "type": "string",
+          "const": "Use exact full Git commits and SHA256 references above, independently of future main. Preserve this acceptance overlay by its delivery commit."
+        },
+        "raw_evidence": {
+          "type": "string",
+          "const": "Full scientific archives and complete verification logs remain ignored local results; committed compact evidence and hash inventories are not copies of all raw data."
+        },
+        "obligation": {
+          "type": "string",
+          "const": "Retain raw archives/logs and their inventories; independent durable backup and future retrieval qualification remain archival obligations. No new external backup is claimed."
+        },
+        "git_tags_created_or_moved": {
+          "type": "boolean",
+          "const": false
+        },
+        "delivery_identity_policy": {
+          "type": "string",
+          "const": "No circular self-hash or self-embedded commit SHA; final delivery handoff supplies the containing commit."
+        }
+      }
+    }
+  }
+}

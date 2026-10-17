@@ -1,0 +1,206 @@
+{
+  "schema": "apex-primary-acceptance/1.0.0",
+  "schema_file": "docs/task007e/e4/primary_acceptance.schema.json",
+  "task": "007E-4",
+  "stage": "WORK_DOCUMENTATION_STATUS_ONLY",
+  "delivery_status": "WORK_COMPLETE_PENDING_REVIEW",
+  "decision": {
+    "authority": "Primary APEX",
+    "acceptance_date": "2026-10-17",
+    "primary_acceptance_status": "ACCEPTED_WITH_DOCUMENTED_NONBLOCKING_SYNTHETIC_LIMITATIONS",
+    "accepted_designation": "APEX Performance Synthetic v1",
+    "accepted_recommendation": "B",
+    "bounded_scientific_reference_frozen": true
+  },
+  "identities": {
+    "manifest": {
+      "path": "configs/performance/apex_performance_synthetic_v1.json",
+      "revision": "e603672b209985f11ed26b6f44d3949ffd5675c5",
+      "sha256": "5299adca29d5c5bd383252cd2c299a392dd6872dc6bb72d1a4dd7ecfb8dd1ebf",
+      "git_url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/e603672b209985f11ed26b6f44d3949ffd5675c5/configs/performance/apex_performance_synthetic_v1.json"
+    },
+    "manifest_schema": "apex-performance-profile/1.0.0",
+    "formally_verified_revision": "e603672b209985f11ed26b6f44d3949ffd5675c5",
+    "verification_delivery_revision": "ecbbc5cdb6d182557dfdd0bca7caa215cc1355c9",
+    "acceptance_delivery_revision": "Containing Git commit; exact SHA supplied in delivery handoff, not self-embedded"
+  },
+  "historical_proposal": {
+    "unchanged_flags": {
+      "frozen": false,
+      "formal_verification_pending": true,
+      "primary_acceptance_pending": true
+    },
+    "interpretation": "These flags describe the immutable reviewed proposal, not current Primary decision status. E3 is the formal verification record; this E4 overlay is the authoritative subsequent Synthetic v1 acceptance decision. No original bytes, schema or runtime-loading behavior change.",
+    "historical_reports_preserved": true
+  },
+  "verified_suite": {
+    "reference": {
+      "path": "docs/task007e/e3/verification.json",
+      "revision": "ecbbc5cdb6d182557dfdd0bca7caa215cc1355c9",
+      "sha256": "f018caa6adb4acc5bf050184953234efa5a6e45359057ce96dda908f7b858c80",
+      "git_url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/ecbbc5cdb6d182557dfdd0bca7caa215cc1355c9/docs/task007e/e3/verification.json"
+    },
+    "json_pointer": "/suite",
+    "passed": 750,
+    "failed": 0,
+    "errored": 0,
+    "skipped": 0,
+    "result_origin": "INHERITED_EXACT_REVIEWED_E3_EXECUTION_NOT_RERUN_IN_E4"
+  },
+  "provenance": {
+    "scientific_worker_revision": "8dbd1c5fbc09781411fc762e04f9c2c5cf2d99ae",
+    "frozen_executable_ancestor": "c6990572045e61ee443dc715de9e8c44396e5b41",
+    "offline_VIS_report_revision": "d55f203aac1a04be598ebce4c38be51a4883e0ba",
+    "manifest_preparation_base_revision": "835eefb0aafe2f982a0ba05847d4e731079ff52d",
+    "scientific_source_inventory": {
+      "path": "docs/task007d/vis/vis1l/evidence/controlled_A/summary.json",
+      "revision": "ecbbc5cdb6d182557dfdd0bca7caa215cc1355c9",
+      "sha256": "4840934ea4d425bdccd17b18cbd254f4372ba5275b655189010c223c2be72d71",
+      "git_url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/ecbbc5cdb6d182557dfdd0bca7caa215cc1355c9/docs/task007d/vis/vis1l/evidence/controlled_A/summary.json"
+    },
+    "scientific_source_inventory_pointer": "/source_sha256",
+    "scientific_source_inventory_entries": 294,
+    "dependency_lock": {
+      "path": "uv.lock",
+      "revision": "e603672b209985f11ed26b6f44d3949ffd5675c5",
+      "sha256": "8cf85868a456415a898643dbb226d146b0b90e5c98982136cf2abf2465fa16ec",
+      "git_url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/e603672b209985f11ed26b6f44d3949ffd5675c5/uv.lock"
+    },
+    "project_dependencies": {
+      "path": "pyproject.toml",
+      "revision": "e603672b209985f11ed26b6f44d3949ffd5675c5",
+      "sha256": "c8ea69a3a486c9794b6cf88ac26566211c6f1bb7b7286d86dbaa36a191353d41",
+      "git_url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/e603672b209985f11ed26b6f44d3949ffd5675c5/pyproject.toml"
+    },
+    "vehicle": {
+      "path": "configs/vehicles/synthetic_dynamic_test_vehicle.yaml",
+      "revision": "e603672b209985f11ed26b6f44d3949ffd5675c5",
+      "sha256": "df1b853d21a1d3efaf858f7e58401151f2c5237793c40e16bb4189ed651f9cf3",
+      "git_url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/e603672b209985f11ed26b6f44d3949ffd5675c5/configs/vehicles/synthetic_dynamic_test_vehicle.yaml"
+    },
+    "planning_files": {
+      "planning_manifest.json": {
+        "path": "configs/planning/task007b/gamma_2p000/planning_manifest.json",
+        "revision": "e603672b209985f11ed26b6f44d3949ffd5675c5",
+        "sha256": "5e7bccf1a300fb6737fc6b6b6e0c9aa921c110b11ffc5762a73f57f830a8660c",
+        "git_url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/e603672b209985f11ed26b6f44d3949ffd5675c5/configs/planning/task007b/gamma_2p000/planning_manifest.json"
+      },
+      "planning_reference.csv": {
+        "path": "configs/planning/task007b/gamma_2p000/planning_reference.csv",
+        "revision": "e603672b209985f11ed26b6f44d3949ffd5675c5",
+        "sha256": "6206e18ce3cb105d58d0923564336e28c00ec44aee3fd8a06ff7a37bcf84e2df",
+        "git_url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/e603672b209985f11ed26b6f44d3949ffd5675c5/configs/planning/task007b/gamma_2p000/planning_reference.csv"
+      },
+      "planning_validation.json": {
+        "path": "configs/planning/task007b/gamma_2p000/planning_validation.json",
+        "revision": "e603672b209985f11ed26b6f44d3949ffd5675c5",
+        "sha256": "279582d2dcf37fdf4008ddc7f926109ef3d730a0e64c188d7003755d08871fa7",
+        "git_url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/e603672b209985f11ed26b6f44d3949ffd5675c5/configs/planning/task007b/gamma_2p000/planning_validation.json"
+      },
+      "speed_polynomial.json": {
+        "path": "configs/planning/task007b/gamma_2p000/speed_polynomial.json",
+        "revision": "e603672b209985f11ed26b6f44d3949ffd5675c5",
+        "sha256": "f335e78fc6c735c952f49078077a573ee989dd2be71497e90451e34a79f2c7ea",
+        "git_url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/e603672b209985f11ed26b6f44d3949ffd5675c5/configs/planning/task007b/gamma_2p000/speed_polynomial.json"
+      },
+      "track_source.json": {
+        "path": "configs/planning/task007b/gamma_2p000/track_source.json",
+        "revision": "e603672b209985f11ed26b6f44d3949ffd5675c5",
+        "sha256": "5f4d1734d7fec7de56d346e8f90bf272a3de9c05ac42f76cd49004e7f9183e55",
+        "git_url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/e603672b209985f11ed26b6f44d3949ffd5675c5/configs/planning/task007b/gamma_2p000/track_source.json"
+      }
+    },
+    "environment_pointer_in_manifest": "/environment",
+    "solver_options_pointer_in_manifest": "/profile/nmpc",
+    "evidence_index": {
+      "path": "docs/task007e/e2/evidence_links.json",
+      "revision": "ecbbc5cdb6d182557dfdd0bca7caa215cc1355c9",
+      "sha256": "5e788c428bd706f20792b1852b3400bf0eeb7fe11d93285bbc5bc7accec8fced",
+      "git_url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/ecbbc5cdb6d182557dfdd0bca7caa215cc1355c9/docs/task007e/e2/evidence_links.json"
+    },
+    "verification_report": {
+      "path": "docs/TASK007E3_PERFORMANCE_VERIFICATION.md",
+      "revision": "ecbbc5cdb6d182557dfdd0bca7caa215cc1355c9",
+      "sha256": "aebbaa35279085df2cd28b0fd14a8319000f8a2000fa425e4d9aaf9cc0e1fa3a",
+      "git_url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/ecbbc5cdb6d182557dfdd0bca7caa215cc1355c9/docs/TASK007E3_PERFORMANCE_VERIFICATION.md"
+    },
+    "recommendation": {
+      "path": "docs/task007e/e3/freeze_recommendation.json",
+      "revision": "ecbbc5cdb6d182557dfdd0bca7caa215cc1355c9",
+      "sha256": "28e213564acc3d0cbc9f52cf1d35bec35409225ebc1179ca1217211527a5fee5",
+      "git_url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/ecbbc5cdb6d182557dfdd0bca7caa215cc1355c9/docs/task007e/e3/freeze_recommendation.json"
+    }
+  },
+  "frozen_scientific_scope": {
+    "classification": "BOUNDED_SYNTHETIC_RESEARCH_BASELINE",
+    "architecture": "A",
+    "predictor": "A_legacy",
+    "handoff": "variable_availability",
+    "binding": "The complete hash-bound manifest profile and its source/fixture/dependency identities; no derivative profile or runtime configuration is created.",
+    "formulation_summary": "N8, dt=0.1 s, H=0.8 s, four RK4 substeps; original Q/R/W and scales, lambda_s=0, gamma2 Planning, full control sequence, terminal DARE/IPOPT/warm starts, 100 Hz TVLQR, original plant/tires and native SINGLE.",
+    "demonstrated_scope": "Retained synthetic_grand_prix_v1 controlled and particular measured Architecture A runs, with complete parity and E3 verification evidence; no arbitrary vehicle, track, latency or platform guarantee.",
+    "evaluation_boundary": "VIS 35/55/45/25 ms replay, imposed 5 ms codriver delay, rolling initial state and two-crossing/80-second cap are evaluation conditions; acceptance does not promote them to production defaults."
+  },
+  "limitations": {
+    "E3_register": {
+      "path": "docs/task007e/e3/remaining_limitations.json",
+      "revision": "ecbbc5cdb6d182557dfdd0bca7caa215cc1355c9",
+      "sha256": "07ff41e520f5e3babfa21698fb0389bda287bbc3c4336e56cb2830742e843e3b",
+      "git_url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/ecbbc5cdb6d182557dfdd0bca7caa215cc1355c9/docs/task007e/e3/remaining_limitations.json"
+    },
+    "E1_safeguard_matrix": {
+      "path": "docs/task007e/e1/safeguard_verification_matrix.json",
+      "revision": "ecbbc5cdb6d182557dfdd0bca7caa215cc1355c9",
+      "sha256": "e016f175f6cd8997541432ea98aab5e85c0035bab5a4ad887a77342d09fe9d7c",
+      "git_url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/ecbbc5cdb6d182557dfdd0bca7caa215cc1355c9/docs/task007e/e1/safeguard_verification_matrix.json"
+    },
+    "E1_domain_register": {
+      "path": "docs/task007e/e1/fallback_domain_register.json",
+      "revision": "ecbbc5cdb6d182557dfdd0bca7caa215cc1355c9",
+      "sha256": "b7dd930df236c6081ee461a5d1e68535ada9ffe172aaa2dabccd3dc588214f4a",
+      "git_url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/ecbbc5cdb6d182557dfdd0bca7caa215cc1355c9/docs/task007e/e1/fallback_domain_register.json"
+    },
+    "mandatory_hardware_gates_pointer": "/mandatory_prehardware_gates",
+    "hardware_gate_version": "apex-prehardware-gates/1.0.0",
+    "administrative_status_resolution": "The Primary-acceptance-pending statement in historical E3 L12 is resolved only by this decision. Technical limitations L01-L11, remaining L12 interface/deployment obligations and HW01-HW07 remain in force.",
+    "prominent": [
+      "No guaranteed trajectory availability or recovery.",
+      "Fallback admission requires vx in [1,3] m/s and vehicle-center corridor containment; this is not a verified nonlinear recovery region.",
+      "Reserve warnings and critical thresholds do not provide proactive reserve-triggered rescue.",
+      "No independently verified application-time fallback-domain eligibility; delayed asynchronous fallback-transition coverage remains incomplete.",
+      "No emergency braking-to-standstill capability.",
+      "No independent hardware watchdog or safety supervisor.",
+      "No continuous swept-body, collision-safety or corridor-invariance guarantee.",
+      "Synthetic vehicle/tire parameters are not physically identified; footprint and hardware uncertainty remain unresolved.",
+      "Measured C70 retains its exhaustion stop and incomplete scientific export; no completed measured C70 lap or complete VIS package acceptance.",
+      "No unseen-track generalization or embedded timing certification.",
+      "Independent historical IPOPT/linear-solver build identity remains unavailable; locked CasADi and explicit options do not establish portable binary/timing equivalence."
+    ],
+    "scope_disposition": "Nonblocking for the accepted bounded synthetic research baseline; mandatory safety/recovery gates remain before physical deployment."
+  },
+  "authorizations": {
+    "hardware_deployment": false,
+    "production_default_changes": false,
+    "runtime_auto_load_or_selection": false,
+    "efficiency_acceptance": false,
+    "C70_acceptance": false,
+    "new_scientific_experiments": false,
+    "safety_implementation": false,
+    "exporter_repair": false,
+    "next_task_execution": false
+  },
+  "deferred": {
+    "efficiency_specification": "NEXT_SEPARATE_SPECIFICATION_AND_AUTHORIZATION_REQUIRED",
+    "shared_safety_milestone": "PENDING_SEPARATE_SPECIFICATION_AND_AUTHORIZATION",
+    "workbench": "DEFERRED",
+    "VIS2": "DEFERRED",
+    "C70": "EXPERIMENTAL_FUTURE_EFFICIENCY_CANDIDATE_NOT_PERFORMANCE_REPLACEMENT"
+  },
+  "archival": {
+    "reference_recovery": "Use exact full Git commits and SHA256 references above, independently of future main. Preserve this acceptance overlay by its delivery commit.",
+    "raw_evidence": "Full scientific archives and complete verification logs remain ignored local results; committed compact evidence and hash inventories are not copies of all raw data.",
+    "obligation": "Retain raw archives/logs and their inventories; independent durable backup and future retrieval qualification remain archival obligations. No new external backup is claimed.",
+    "git_tags_created_or_moved": false,
+    "delivery_identity_policy": "No circular self-hash or self-embedded commit SHA; final delivery handoff supplies the containing commit."
+  }
+}

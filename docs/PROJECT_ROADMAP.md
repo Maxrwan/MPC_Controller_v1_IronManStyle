@@ -1,5 +1,24 @@
 # Project roadmap
 
+## Current accepted baseline — 17 October 2026
+
+**APEX Performance Synthetic v1 is accepted by Primary APEX under Recommendation B.**
+Architecture A, original predictor and variable handoff form the bounded synthetic research
+reference. The [immutable acceptance overlay](task007e/e4/primary_acceptance.json) binds verified
+revision `e603672b209985f11ed26b6f44d3949ffd5675c5` and E3 delivery
+`ecbbc5cdb6d182557dfdd0bca7caa215cc1355c9`; the original manifest remains unchanged.
+
+- **Next planning step:** APEX Efficiency specification, requiring separate authorization.
+  C70 remains an experimental candidate; neither C70 nor Efficiency is accepted or implemented here.
+- **Shared Safety milestone:** pending. Availability/recovery, delayed fallback-domain validation,
+  braking, watchdog and continuous safety limitations remain explicit mandatory pre-hardware work.
+- **Workbench and VIS-2:** deferred; no ingestion/UI or unseen-track execution authorized.
+- **Production/hardware:** no default changes or deployment authorization.
+
+See [ADR-164](DECISIONS.md#adr-164--primary-accepts-apex-performance-synthetic-v1-with-limitations)
+and the [acceptance report](TASK007E4_PERFORMANCE_ACCEPTANCE.md). Earlier checkpoint entries below
+retain their historical status; they do not override this subsequent Primary decision.
+
 - Phase 0 — repository/simulation architecture (Task 001: architecture only; no simulation physics).
 - Phase 1 — track geometry + Frenet transformations (Task 002 implemented and validated).
 - Phase 2 — CG kinematic bicycle model (Task 003 implemented and validated).

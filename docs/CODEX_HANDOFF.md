@@ -1,3 +1,34 @@
+# Current handoff — Task007E-4 Primary acceptance record
+
+**WORK_COMPLETE_PENDING_REVIEW — documentation/status delivery.** Primary APEX already accepted
+**APEX Performance Synthetic v1**, Architecture A, on **2026-10-17**, under **Recommendation B**.
+This delivery records the granted bounded synthetic acceptance; it does not reconsider it.
+
+[Acceptance overlay](task007e/e4/primary_acceptance.json), schema `apex-primary-acceptance/1.0.0`,
+is authoritative for the subsequent decision. Exact verified revision
+`e603672b209985f11ed26b6f44d3949ffd5675c5`; E3 delivery/start
+`ecbbc5cdb6d182557dfdd0bca7caa215cc1355c9`. Original manifest SHA256 remains
+`5299adca29d5c5bd383252cd2c299a392dd6872dc6bb72d1a4dd7ecfb8dd1ebf`.
+Its historical frozen/pending flags remain untouched. No controller, configuration, dependency,
+fixture, test, runtime-loading, production-default or Git-tag change.
+
+**Checks:** JSON/schema, immutable Git/reference/hash identity, inherited 750-pass E3 suite
+identity, preservation, links, changed-file scope and whitespace. No numerical-suite repeat,
+simulation, measurement or exporter repair. [Validation](task007e/e4/validation.json).
+**Limits retained:** no guaranteed availability/recovery or reserve rescue; fallback [1,3] m/s
+and center corridor with incomplete application-time/domain-transition coverage; no standstill
+braking, independent watchdog or continuous swept-body safety. Synthetic parameters, incomplete
+measured C70 package, no unseen-track or embedded certification. Durable raw-archive retention
+and versioned pre-hardware gates remain obligations.
+
+[Report](TASK007E4_PERFORMANCE_ACCEPTANCE.md); ADR-164 records acceptance, roadmap marks
+Efficiency specification next only with separate authorization, shared Safety pending, and
+Workbench/VIS-2 deferred. C70 remains experimental, not a Performance replacement. Full immutable
+provenance references are in the overlay; delivery SHA/verified URL follow commit/push.
+Stop after E4 for Engineering Review. No subsequent implementation or experiment authorized.
+
+---
+
 # Current handoff — Task007E-3 formal synthetic Performance verification
 
 **VERIFIED_AWAITING_ACCEPTANCE. Recommendation B:** recommend freeze with documented

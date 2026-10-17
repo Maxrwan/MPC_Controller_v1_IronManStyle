@@ -1004,3 +1004,31 @@ audit, exact Performance manifest, formal current verification, Primary acceptan
 gates, Efficiency research and Workbench ingestion remain separate authorized stages. The
 [closure report](TASK007E0_VIS1_CLOSURE.md) records the native endpoint speed timestamp erratum
 without rewriting the historical report. Earlier CX formal passes do not verify newer VIS code.
+
+## ADR-164 — Primary accepts APEX Performance Synthetic v1 with limitations
+
+On **2026-10-17**, Primary APEX accepted E3 **Recommendation B**: Architecture A is the accepted
+**APEX Performance Synthetic v1** bounded scientific research baseline. Verified source/profile
+`e603672b209985f11ed26b6f44d3949ffd5675c5` and E3 delivery
+`ecbbc5cdb6d182557dfdd0bca7caa215cc1355c9` remain the exact acceptance basis (750 tests passed,
+zero failed/errors/skipped). This decision records scientific scope, not hardware readiness or
+production-default selection.
+
+The [separate acceptance overlay](task007e/e4/primary_acceptance.json) binds the original
+manifest SHA256 `5299adca29d5c5bd383252cd2c299a392dd6872dc6bb72d1a4dd7ecfb8dd1ebf`.
+That immutable proposal and its historical pending/frozen flags remain unchanged. The overlay
+is the authoritative subsequent decision; earlier reports/ADRs preserve their historical status.
+No derivative profile, runtime loader, controller/configuration change or Git tag is introduced.
+
+Recommendation B retains all technical limitations: no guaranteed availability/recovery or proactive
+reserve rescue; fallback admission at 1–3 m/s and center-corridor containment without independently
+verified eligibility at every delayed application; no standstill braking, independent watchdog or
+continuous swept-body/collision-safety guarantee. Parameters remain synthetic/non-identified,
+measured C70 export incomplete, unseen-track generalization and embedded certification absent.
+The exact limitations register and mandatory pre-hardware gates remain bound by the overlay.
+
+C70 remains an experimental future Efficiency candidate, not a Performance replacement.
+Efficiency specification is next only under separate authorization; shared Safety is pending;
+Workbench and VIS-2 remain deferred. See [acceptance report](TASK007E4_PERFORMANCE_ACCEPTANCE.md).
+This resolves Primary acceptance for Synthetic v1 without accepting broader VIS package completeness
+or authorizing a new execution stage.
