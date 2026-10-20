@@ -1,0 +1,88 @@
+{
+  "schema": "apex-safety-s0/validation/0.1.0",
+  "status": "PASS_DOCUMENTATION_CHECKS_ONLY",
+  "task_status": "WORK_COMPLETE_PENDING_REVIEW",
+  "base_revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+  "branch": "research/safety-s0",
+  "scope": "Static documentation/JSON/reference/hash/preservation checks; not scientific execution or formal Safety verification.",
+  "checks": {
+    "structural_register_schemas": 7,
+    "schema_negative_checks_rejected": 25,
+    "hazards": 14,
+    "states": 9,
+    "transitions": 14,
+    "future_synthetic_scenarios": 19,
+    "hardware_dependencies": 10,
+    "cross_record_ids": "PASS",
+    "state_graph_reachability": "PASS_STRUCTURAL_ONLY",
+    "immutable_source_document_hashes": 23,
+    "retained_scientific_source_hashes": 294,
+    "referenced_existing_test_nodes": 6,
+    "authored_markdown_links_checked": 37,
+    "whitespace": "PASS",
+    "changed_scope": "PASS",
+    "strict_json_documents_including_this_record": 9
+  },
+  "preservation": {
+    "e4_tracked_files": 827,
+    "e4_unchanged_tracked_files": 824,
+    "allowed_historical_doc_updates": [
+      "docs/CODEX_HANDOFF.md",
+      "docs/DECISIONS.md",
+      "docs/PROJECT_ROADMAP.md"
+    ],
+    "original_efficiency_head": "eaa0a3398515a21f30a850de59a0b44c775fad4d",
+    "original_efficiency_tracked_sha256_matches": 836,
+    "original_efficiency_checkout_clean": true,
+    "historical_raw_size_mtime_matches": 11646,
+    "historical_raw_full_content_rehashed": false,
+    "frozen_manifest_sha256": "5299adca29d5c5bd383252cd2c299a392dd6872dc6bb72d1a4dd7ecfb8dd1ebf"
+  },
+  "inherited_verification": {
+    "reviewed_revision": "e603672b209985f11ed26b6f44d3949ffd5675c5",
+    "delivery": "ecbbc5cdb6d182557dfdd0bca7caa215cc1355c9",
+    "passed": 750,
+    "seconds": 633.76,
+    "new_execution": false,
+    "source_dependency_test_fixture_identity": "UNCHANGED",
+    "environment_claim": "Historical recorded environment only; no numerical runtime initialized or present hardware timing certified.",
+    "evidence": "docs/task007e/e3/verification.json"
+  },
+  "unexecuted": [
+    "Numerical tests and collection",
+    "Simulation and fault injection",
+    "Hardware/HIL/device selection",
+    "Efficiency profiling or campaign",
+    "Raw archive full-content backup"
+  ],
+  "checker": {
+    "path": "/tmp/apex-s0-checks/validate.py",
+    "sha256": "3e67211da445017ed7fdf387ab9d3d36442c0cdd80924eab07300bb3e215d2a8",
+    "command": "/usr/bin/python3 /tmp/apex-s0-checks/validate.py",
+    "limitations": "Limited JSON Schema vocabulary: type, const, required, additionalProperties, properties and items; rejects unknown keywords. Static structure is not a proof of proposed safety behavior."
+  },
+  "delivery_identity": "Containing commit and final remote SHA; no circular self-hash.",
+  "authored_files_sha256": {
+    "docs/S0_SHARED_SAFETY_SPEC.md": "5dc23236866b645a12f94bb4c67c480a67223e0dad8ac652b08fbf5848863bf3",
+    "docs/CODEX_HANDOFF.md": "03352c10198f2403efc0d21fc15b98285964ac55c8cd2e0ea2006876f69812c1",
+    "docs/DECISIONS.md": "baa2be94226116a7b3e2c9b0a6dd91df25c1d82a64a1df1a37cd1c0507169de8",
+    "docs/PROJECT_ROADMAP.md": "8936d061eaa6446f25c00efac4128960d3ac946bae888f41d294dad4222a723b",
+    "docs/safety/s0/authority_interface.json": "60a95f2cb3320b63723c774ec996fd420aeba0d316c429afa7e0b09751ea58bc",
+    "docs/safety/s0/dependency_matrix.json": "97297cb61eab5e61e2aaee70bf112b1090db16907c3e659c8f54e60d12b43d61",
+    "docs/safety/s0/hardware_dependencies.json": "15d22b6caf8ab1c2cd7967fbe92dfcfee6526ca431495e1964dd860209a1e34a",
+    "docs/safety/s0/hazard_register.json": "4cfea69bb5547fa3a165aad65776a59caf2dd79e395e6689118624abe13b914f",
+    "docs/safety/s0/provenance.json": "5291c1c3b34044b5195d3f141a6fa9d3d1370011f483849d8b221618e5ccfff7",
+    "docs/safety/s0/record_schemas.json": "40effebb8bf458d543e7f84d8ba4649b2e2e4ab547f000d3c5c01eac8d768269",
+    "docs/safety/s0/supervisor_states.json": "3e0be131e3696a628ddd63ea44bb01e649c30a3b562200435d9a569b3783366a",
+    "docs/safety/s0/verification_requirements.json": "c9cbc6d513abad222fd62acdb1f6d9c89f9e0e69a7f30ee460cbd9108bc737db"
+  },
+  "git_ref_preflight": {
+    "main": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+    "release/performance-synthetic-v1": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+    "research/efficiency": "eaa0a3398515a21f30a850de59a0b44c775fad4d",
+    "tag_object": "76d9eaa65af02efb0263916adc75d5247a0e778f",
+    "tag_peeled": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+    "research/safety-s0_remote": "absent before delivery",
+    "verification": "git ls-remote; no protection-setting mutations or ref rewrite; final push/remote identity reported in handoff"
+  }
+}

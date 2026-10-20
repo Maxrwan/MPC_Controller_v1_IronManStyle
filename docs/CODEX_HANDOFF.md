@@ -1,3 +1,26 @@
+# Current handoff — S0 shared Safety specification
+
+**WORK_COMPLETE_PENDING_REVIEW — specification/hazard analysis only.** Isolated
+`research/safety-s0` from accepted E4 `48adbdf64d492592d15e23c917aca71fa58aa8a5`.
+[Specification](S0_SHARED_SAFETY_SPEC.md), [hazards](safety/s0/hazard_register.json),
+[interface](safety/s0/authority_interface.json), [states](safety/s0/supervisor_states.json),
+[verification plan](safety/s0/verification_requirements.json),
+[hardware dependencies](safety/s0/hardware_dependencies.json) and
+[dependency matrix](safety/s0/dependency_matrix.json) are proposed future contracts.
+Fourteen hazards, nine states, fourteen transitions, nineteen future synthetic scenarios;
+no implemented Safety capability or physical stop guarantee. Primary decisions on domains,
+uncertainty/risk, endpoint arbitration, response budgets and hardware fail-state remain open.
+
+**Checks:** [validation](safety/s0/validation.json) and [immutable provenance](safety/s0/provenance.json).
+JSON/structure/reference/hash/preservation/whitespace only. E3's 750 passes remain historical;
+no numerical suite, simulation, fault injection, hardware work or Efficiency execution.
+Frozen Performance, main and independent Efficiency refs and source/config/test/dependency bytes
+are preserved. Raw result metadata preservation does not mean a full archive content rehash.
+Next gate is Engineering Review of S0, not implementation or a controller merge. Delivery SHA/URL
+are the containing commit and final handoff. Prior handoff below remains historical.
+
+---
+
 # Current handoff — Task007E-4 Primary acceptance record
 
 **WORK_COMPLETE_PENDING_REVIEW — documentation/status delivery.** Primary APEX already accepted

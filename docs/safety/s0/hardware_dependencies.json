@@ -1,0 +1,138 @@
+{
+  "schema": "apex-safety-s0/hardware/0.1.0",
+  "stage": "WORK_SPECIFICATION_ONLY",
+  "status": "WORK_COMPLETE_PENDING_REVIEW",
+  "implemented": false,
+  "selection_policy": "No hardware selected, parameter identified or device integrated in S0.",
+  "dependencies": [
+    {
+      "id": "HW01",
+      "topic": "Geometry, mass and inertia",
+      "missing_information": "Identified dimensions, CG, mass/inertia and load ranges; bounded errors",
+      "current_limit": "Synthetic parameters and center corridor do not identify the hardware.",
+      "required_evidence": "Independent measurement/calibration with configurations and uncertainty",
+      "domain_ids": [
+        "D_NOMINAL",
+        "D_RECOVERY",
+        "D_STOP"
+      ],
+      "status": "UNRESOLVED_REQUIRES_CHARACTERIZATION"
+    },
+    {
+      "id": "HW02",
+      "topic": "Tire and grip envelope",
+      "missing_information": "Axle forces, combined grip, load/temperature/surface dependence and uncertainty",
+      "current_limit": "Synthetic smooth grip law is not hardware validation.",
+      "required_evidence": "Bench and controlled-envelope identification, including lateral/longitudinal coupling",
+      "domain_ids": [
+        "D_NOMINAL",
+        "D_RECOVERY",
+        "D_DECEL",
+        "D_STOP"
+      ],
+      "status": "UNRESOLVED_REQUIRES_CHARACTERIZATION"
+    },
+    {
+      "id": "HW03",
+      "topic": "Steering, motor and braking dynamics",
+      "missing_information": "Force/torque/steering limits, lag, slew, deadband, actual wheel allocation and feedback",
+      "current_limit": "Synthetic a_cmd=-3 is not measured deceleration; rear-wheel motor drag differs from normal-load-proportional allocation.",
+      "required_evidence": "Actuator/subsystem characterization under load, saturation, reverse energy and faults",
+      "domain_ids": [
+        "D_RECOVERY",
+        "D_DECEL",
+        "D_STOP"
+      ],
+      "status": "UNRESOLVED_REQUIRES_CHARACTERIZATION"
+    },
+    {
+      "id": "HW04",
+      "topic": "State sensing and localization",
+      "missing_information": "IMU/wheel/localization capture timing, bias, uncertainty sets, dropout and frame consistency",
+      "current_limit": "Perfect-state simulation supplies no fault-tolerant estimation.",
+      "required_evidence": "Calibrated independent reference and dropout/common-mode fault trials",
+      "domain_ids": [
+        "D_NOMINAL",
+        "D_RECOVERY",
+        "D_STOP"
+      ],
+      "status": "UNRESOLVED_REQUIRES_CHARACTERIZATION"
+    },
+    {
+      "id": "HW05",
+      "topic": "Computer/MCU time and execution",
+      "missing_information": "Clock relation, drift/reset bounds, scheduling and worst-case detection/decision/actuation timing within declared conditions",
+      "current_limit": "Mac SINGLE averages/tails are not target real-time bounds.",
+      "required_evidence": "Timestamped target instrumentation and overload/clock reset tests",
+      "domain_ids": [
+        "D_PACKET",
+        "D_RECOVERY",
+        "D_STOP"
+      ],
+      "status": "UNRESOLVED_REQUIRES_CHARACTERIZATION"
+    },
+    {
+      "id": "HW06",
+      "topic": "Communication and protocol",
+      "missing_information": "Integrity, sequencing, cancellation/ack behavior, queue bounds, one-way loss and timeout semantics",
+      "current_limit": "No validated host/MCU command transport exists here.",
+      "required_evidence": "HIL delay/reorder/drop/corruption and stale-session injection",
+      "domain_ids": [
+        "D_PACKET",
+        "D_DECEL",
+        "D_STOP"
+      ],
+      "status": "UNRESOLVED_REQUIRES_CHARACTERIZATION"
+    },
+    {
+      "id": "HW07",
+      "topic": "Independent watchdog and e-stop",
+      "missing_information": "Independence from supervised CPU, clocks, software and relevant power faults; local enforcement",
+      "current_limit": "A host loop or logging heartbeat alone is not an independent watchdog.",
+      "required_evidence": "Fault tree, crash/deadlock/false-heartbeat tests, independent e-stop tests",
+      "domain_ids": [
+        "D_PACKET",
+        "D_STOP"
+      ],
+      "status": "UNRESOLVED_REQUIRES_CHARACTERIZATION"
+    },
+    {
+      "id": "HW08",
+      "topic": "Power loss and actuator fail-state",
+      "missing_information": "Battery range, brownout, residual energy, motor/brake/steering state on power loss and reboot",
+      "current_limit": "Power-off is not automatically braking or safe steering.",
+      "required_evidence": "Controlled fault/power tests and mechanical/electrical review",
+      "domain_ids": [
+        "D_RECOVERY",
+        "D_DECEL",
+        "D_STOP"
+      ],
+      "status": "UNRESOLVED_REQUIRES_CHARACTERIZATION"
+    },
+    {
+      "id": "HW09",
+      "topic": "Environment and swept geometry",
+      "missing_information": "Footprint, obstacles, corridor/map registration, surface and slope envelope",
+      "current_limit": "Recorded center clearance is not continuous collision certification.",
+      "required_evidence": "Independent geometry validation and swept-envelope experiments",
+      "domain_ids": [
+        "D_RECOVERY",
+        "D_DECEL",
+        "D_STOP"
+      ],
+      "status": "UNRESOLVED_REQUIRES_CHARACTERIZATION"
+    },
+    {
+      "id": "HW10",
+      "topic": "Low-speed and rest validation",
+      "missing_information": "Validated transition below dynamic vx=0.5 m/s, standstill/rest detection, stopping distance/time and holding behavior",
+      "current_limit": "Current dynamic model has no valid stop-to-zero transition.",
+      "required_evidence": "Separately reviewed model and subsystem/HIL then physical stop tests",
+      "domain_ids": [
+        "D_DECEL",
+        "D_STOP"
+      ],
+      "status": "UNRESOLVED_REQUIRES_CHARACTERIZATION"
+    }
+  ]
+}

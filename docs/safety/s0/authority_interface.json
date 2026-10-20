@@ -1,0 +1,293 @@
+{
+  "schema": "apex-safety-s0/authority-interface/0.1.0",
+  "stage": "WORK_SPECIFICATION_ONLY",
+  "status": "WORK_COMPLETE_PENDING_REVIEW",
+  "implemented": false,
+  "interface_version": "apex-safety-authority/0.1.0",
+  "scope": "Normative proposal for future implementation; no runtime packet format or historical serializer change.",
+  "canonical_state_order": [
+    "vx",
+    "vy",
+    "r",
+    "e_psi",
+    "s_abs",
+    "e_y"
+  ],
+  "canonical_state_units": [
+    "m/s",
+    "m/s",
+    "rad/s",
+    "rad",
+    "m",
+    "m"
+  ],
+  "canonical_input_order": [
+    "delta",
+    "a_cmd"
+  ],
+  "canonical_input_units": [
+    "rad",
+    "m/s^2"
+  ],
+  "domains": [
+    {
+      "id": "D_NOMINAL",
+      "requirement": "Validated nominal-controller/model operating envelope with state, parameter, actuator and timing uncertainty."
+    },
+    {
+      "id": "D_PACKET",
+      "requirement": "Accepted available packet with monotonic actual timestamps, independent validation and currently eligible authority; not a physical safety certificate."
+    },
+    {
+      "id": "D_RECOVERY",
+      "requirement": "Reachable states admit a separately validated recovery policy with constraints throughout and a defined terminal safe region or feasible transfer."
+    },
+    {
+      "id": "D_DECEL",
+      "requirement": "A separately validated joint lateral/longitudinal policy reduces speed within available grip/actuation and corridor until a verified destination/stop transfer."
+    },
+    {
+      "id": "D_STOP",
+      "requirement": "A validated policy reaches and maintains confirmed rest within available swept free space, including delays, low-speed transition and fault-dependent actuation."
+    }
+  ],
+  "fields": [
+    {
+      "name": "interface_version",
+      "type": "string",
+      "units": "none",
+      "meaning": "Candidate apex-safety-authority/0.1.0; future negotiated implementation revision",
+      "missing_policy": "Required; unsupported version rejects permission"
+    },
+    {
+      "name": "session_id",
+      "type": "string",
+      "units": "none",
+      "meaning": "Unique boot/arming session shared with enforcement endpoint",
+      "missing_policy": "Required; previous-session replay rejected"
+    },
+    {
+      "name": "command_id",
+      "type": "string",
+      "units": "none",
+      "meaning": "Immutable request identity",
+      "missing_policy": "Required"
+    },
+    {
+      "name": "sequence",
+      "type": "integer",
+      "units": "none",
+      "meaning": "Strictly increasing per session/producer; duplicates may be acknowledged idempotently but never reapplied",
+      "missing_policy": "Required"
+    },
+    {
+      "name": "source_controller_id",
+      "type": "string",
+      "units": "none",
+      "meaning": "Original generating controller or verified recovery/stop policy",
+      "missing_policy": "Required"
+    },
+    {
+      "name": "source_packet_id",
+      "type": "string or null",
+      "units": "none",
+      "meaning": "Original packet identity; null only for a named non-packet policy",
+      "missing_policy": "Null reason required for non-packet policy; not inferred"
+    },
+    {
+      "name": "source_manifest_sha256",
+      "type": "string",
+      "units": "none",
+      "meaning": "Exact controller/model/configuration identity",
+      "missing_policy": "Required"
+    },
+    {
+      "name": "generated_at",
+      "type": "finite number",
+      "units": "s",
+      "meaning": "Original computation/request generation in identified clock domain",
+      "missing_policy": "Required"
+    },
+    {
+      "name": "clock_domain",
+      "type": "string",
+      "units": "none",
+      "meaning": "Monotonic source clock with mapping to authoritative physical/control time",
+      "missing_policy": "Required; unresolved mapping denies permission"
+    },
+    {
+      "name": "clock_mapping_and_error",
+      "type": "object",
+      "units": "s",
+      "meaning": "Mapping revision, offset/drift/error bounds, synchronization health",
+      "missing_policy": "Required; unknown is not zero"
+    },
+    {
+      "name": "state_estimate",
+      "type": "object",
+      "units": "SI",
+      "meaning": "Canonical [vx,vy,r,e_psi,s_abs,e_y], capture/receive timestamps, frame/map IDs and uncertainty set identity/bounds",
+      "missing_policy": "Required for state-dependent policy; unknown triggers eligibility failure"
+    },
+    {
+      "name": "packet_interval",
+      "type": "object or null",
+      "units": "s",
+      "meaning": "Original packet first/last actual timestamps; [start,expiry) for proposed authority; null for non-packet policy",
+      "missing_policy": "Packet source requires interval; timestamp list/digest must be retrievable"
+    },
+    {
+      "name": "generation_epoch",
+      "type": "integer",
+      "units": "none",
+      "meaning": "Authority epoch when original request was generated",
+      "missing_policy": "Required; immutable"
+    },
+    {
+      "name": "permission_epoch",
+      "type": "integer",
+      "units": "none",
+      "meaning": "Current supervisor epoch authorizing this application; differs only through explicit reauthorization",
+      "missing_policy": "Required; endpoint checks current epoch"
+    },
+    {
+      "name": "permission_id",
+      "type": "string",
+      "units": "none",
+      "meaning": "Supervisor grant bound to request, epoch, scope, validated domain and evidence revision",
+      "missing_policy": "Required; solver success never substitutes"
+    },
+    {
+      "name": "permission_interval",
+      "type": "object",
+      "units": "s",
+      "meaning": "Valid start and exclusive end; includes allowable held-input interval",
+      "missing_policy": "Required; bound conservatively including clock uncertainty"
+    },
+    {
+      "name": "requested_application_time",
+      "type": "finite number",
+      "units": "s",
+      "meaning": "Requested physical application; scheduling intention, not acknowledgement",
+      "missing_policy": "Required"
+    },
+    {
+      "name": "latest_application_time",
+      "type": "finite number",
+      "units": "s",
+      "meaning": "Deadline after which this request cannot be applied",
+      "missing_policy": "Required and within permission interval"
+    },
+    {
+      "name": "requested_control",
+      "type": "array of two finite numbers",
+      "units": "rad; m/s^2",
+      "meaning": "[delta,a_cmd]; a_cmd=Fx_total/m for dynamic model; device adapter requires validated allocation/calibration",
+      "missing_policy": "Required; no invented emergency control"
+    },
+    {
+      "name": "held_until_limit",
+      "type": "finite number",
+      "units": "s",
+      "meaning": "End of validated held-input permission; never an indefinite implicit hold",
+      "missing_policy": "Required; bounded by domain/authority and independent enforcement capacity"
+    },
+    {
+      "name": "validation_context",
+      "type": "object",
+      "units": "none",
+      "meaning": "Domain/policy revision, estimator and actuator health, uncertainty/delay bounds, checks and validity reasons",
+      "missing_policy": "Required; unknown mandatory check denies permission"
+    },
+    {
+      "name": "transition_id",
+      "type": "string or null",
+      "units": "none",
+      "meaning": "Mode/authority change linking revocation and any explicit reauthorization",
+      "missing_policy": "Null only if no transition applies"
+    },
+    {
+      "name": "cancellation",
+      "type": "object or null",
+      "units": "s",
+      "meaning": "Request, affected IDs, endpoint receipt/commit/ack times and outcome; cancellation is not instantaneous",
+      "missing_policy": "Unknown outcome remains pending/unknown; no fabricated ack"
+    },
+    {
+      "name": "application_record",
+      "type": "object or null",
+      "units": "s; rad; m/s^2",
+      "meaning": "Endpoint receipt/decision/application times, actual applied control, previous control/time, current epoch, reason and actuator feedback provenance",
+      "missing_policy": "Null until observed; requested or commanded value is not measured actuator position"
+    },
+    {
+      "name": "lifecycle",
+      "type": "string",
+      "units": "none",
+      "meaning": "generated / queued / permitted / rejected / cancelled / applied / held / expired / superseded / unknown",
+      "missing_policy": "Required; transitions logged with causal identity, never interpolated"
+    }
+  ],
+  "rules": [
+    {
+      "id": "I01",
+      "title": "Three gates",
+      "requirement": "Separate proposal feasibility, accepted trajectory authority and physical application permission; none implies the next."
+    },
+    {
+      "id": "I02",
+      "title": "Temporal authority",
+      "requirement": "Use actual timestamp intervals, monotonic clock mapping/error and independent expiry. Reject unknown/nonfinite/nonmonotonic values. No N*dt inference; no extrapolation. Required ordering: capture <= generation <= requested application; requested <= actual <= latest application < permission end, with actual application >= permission start and held-until <= permission end. For packet-derived work permission end <= original packet expiry, even after reauthorization. Account conservatively for all clock uncertainty. Acknowledgement observation may occur later and is recorded separately."
+    },
+    {
+      "id": "I03",
+      "title": "Application validation",
+      "requirement": "Immediately before actuator commit validate current epoch, freshness, domain/uncertainty, actual prior application, limits and permitted hold interval. Include motion during all delay; clipping cannot substitute for domain validation."
+    },
+    {
+      "id": "I04",
+      "title": "Held command",
+      "requirement": "Monitor/revalidate held permission and health independently of arrival of a new command; before expiry invoke an eligible response. No valid response means NO_VALID_POLICY, not an invented safe hold."
+    },
+    {
+      "id": "I05",
+      "title": "Ordering and revocation",
+      "requirement": "At the arbiter, known emergency/revocation and expiry precede grant and physical commit. Linearize epoch changes with commit; late cancellation cannot undo an application. This is a future endpoint requirement, not an edit of frozen simulator chronology."
+    },
+    {
+      "id": "I06",
+      "title": "Old command provenance",
+      "requirement": "A source packet handoff does not rewrite or erase old command history. Pending old-source requests need an explicit current grant after revalidation; no implicit renewal at mode change; cancellation outcome requires acknowledgement."
+    },
+    {
+      "id": "I07",
+      "title": "Fixed and variable handoffs",
+      "requirement": "Fixed readiness at deadline precedes eligibility/acceptance; late fixed result remains ineligible. Variable readiness still requires acceptance. Maintain one active owner; no interpolated IDs or activation from solver status."
+    },
+    {
+      "id": "I08",
+      "title": "Invalid request response",
+      "requirement": "Reject stale, expired, replayed, unauthorized or invalid requests with reason; supersede only under validated higher/current authority. Rejection alone does not stop motion: resolve held input through a verified recovery/stop policy or NO_VALID_POLICY."
+    },
+    {
+      "id": "I09",
+      "title": "Watchdog and communication",
+      "requirement": "Endpoint expires permissions independently of host progress. Missing acknowledgement means unknown application, not absent input. Independent watchdog response and timing require hardware validation."
+    },
+    {
+      "id": "I10",
+      "title": "No-policy emergency",
+      "requirement": "Revoke unsupported software permissions and request the characterized physical emergency response if available. Do not command universal zero, maximum brake or power removal. If no response is validated, report uncontrolled hazard; synthetic termination preserves evidence, not a stop claim."
+    },
+    {
+      "id": "I11",
+      "title": "Continuity and physical validity",
+      "requirement": "Validate actual rate since previous application and joint actuator/model constraints; accepted packet continuity is separate from reachable-set safety. Sampling validity is not continuous swept-footprint certification."
+    },
+    {
+      "id": "I12",
+      "title": "Telemetry and information boundary",
+      "requirement": "Retain source/request/decision/application/ack/expiry times, queue, held value, state capture and uncertainty, domain results, fault causes and transitions. Unknown/censored values are null with reasons. Forecasts use only information available at their decision time."
+    }
+  ]
+}

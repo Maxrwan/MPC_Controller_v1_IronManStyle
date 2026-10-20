@@ -1,0 +1,407 @@
+{
+  "schema": "apex-safety-s0/hazards/0.1.0",
+  "stage": "WORK_SPECIFICATION_ONLY",
+  "status": "WORK_COMPLETE_PENDING_REVIEW",
+  "implemented": false,
+  "signal_availability": "Simulator has perfect state, packet/timing/held-input records. Sensor, MCU, physical actuator, power and watchdog signals below are proposed and not implemented.",
+  "timing_policy": "All latency budgets are requirements to establish, not guaranteed values. No probabilities or stopping distances are assigned.",
+  "hazards": [
+    {
+      "id": "H01",
+      "title": "High-speed or low-speed trajectory exhaustion",
+      "initiating_condition": "No accepted unexpired trajectory; speed may be outside current 1..3 m/s fallback admission or below the dynamic model minimum.",
+      "potential_consequence": "Loss of authorized tracking; unsupported fallback or continued held actuation.",
+      "detection_signals": [
+        "Native expiry and reserve",
+        "Fresh state and uncertainty",
+        "Applied/held command acknowledgement"
+      ],
+      "proposed_response": "Predict authority loss before expiry; use valid remaining authority only within its domain; admit independently verified recovery or stopping policy; otherwise latch NO_VALID_POLICY.",
+      "domain_requirements": [
+        "D_PACKET",
+        "D_RECOVERY",
+        "D_STOP"
+      ],
+      "timing_requirement": "Establish intervention lead time from end-to-end response bounds and viability loss; do not wait for reserve=0.",
+      "residual_risk": "Availability is not guaranteed; current simulator termination does not stop hardware.",
+      "synthetic_requirement_ids": [
+        "V01"
+      ],
+      "hardware_dependency_ids": [
+        "HW01",
+        "HW02",
+        "HW03",
+        "HW05",
+        "HW06",
+        "HW10"
+      ]
+    },
+    {
+      "id": "H02",
+      "title": "Consecutive fixed-deadline misses",
+      "initiating_condition": "One or more prepared packets miss their prescribed activation deadlines.",
+      "potential_consequence": "Old trajectory expires while late results are mistaken for replacements.",
+      "detection_signals": [
+        "Scheduled deadlines and readiness",
+        "Miss streak and accepted packet IDs",
+        "Actual reserve"
+      ],
+      "proposed_response": "Permanently exclude each missed commitment; escalate based on remaining feasible response time, not a miss count alone; keep still-running solve busy.",
+      "domain_requirements": [
+        "D_PACKET",
+        "D_RECOVERY",
+        "D_STOP"
+      ],
+      "timing_requirement": "Evaluate every deadline and reserve/viability decision; allowed miss count and response bounds need review.",
+      "residual_risk": "Subsequent accepted recovery is possible, not guaranteed; variable mode fixed misses are not applicable.",
+      "synthetic_requirement_ids": [
+        "V02"
+      ],
+      "hardware_dependency_ids": [
+        "HW05",
+        "HW06",
+        "HW07"
+      ]
+    },
+    {
+      "id": "H03",
+      "title": "Planner busy through authority expiry",
+      "initiating_condition": "Long solve or repeated busy releases prevent timely renewal.",
+      "potential_consequence": "No replacement despite planner being alive.",
+      "detection_signals": [
+        "Planner busy start/completion",
+        "Missed release opportunities",
+        "Active expiry and pending readiness status"
+      ],
+      "proposed_response": "Do not assume cancellation or parallel solve availability; warn and select a feasible alternate policy before authority ends.",
+      "domain_requirements": [
+        "D_PACKET",
+        "D_RECOVERY",
+        "D_STOP"
+      ],
+      "timing_requirement": "Budget remaining response independently of unknown future solver finish; a pending solve is not available reserve.",
+      "residual_risk": "A solver duration estimate is not a worst-case bound.",
+      "synthetic_requirement_ids": [
+        "V03"
+      ],
+      "hardware_dependency_ids": [
+        "HW05",
+        "HW06",
+        "HW07"
+      ]
+    },
+    {
+      "id": "H04",
+      "title": "Solver failure or infeasible trajectory",
+      "initiating_condition": "Backend failure, invalid iterate, failed gains/prediction or constraint validation.",
+      "potential_consequence": "Invalid proposal gains authority or renewal is delayed.",
+      "detection_signals": [
+        "Explicit solve/preparation status",
+        "Finite/domain/constraint checks",
+        "Independent packet acceptance result"
+      ],
+      "proposed_response": "Reject failed proposal; retain existing valid authority only if permitted; escalate if renewal feasibility is lost.",
+      "domain_requirements": [
+        "D_NOMINAL",
+        "D_PACKET",
+        "D_RECOVERY"
+      ],
+      "timing_requirement": "Validation must finish before grant; failure detection plus alternate response must precede viability loss.",
+      "residual_risk": "Successful termination and finite nodes alone do not certify a safe physical trajectory.",
+      "synthetic_requirement_ids": [
+        "V04"
+      ],
+      "hardware_dependency_ids": [
+        "HW01",
+        "HW02",
+        "HW05"
+      ]
+    },
+    {
+      "id": "H05",
+      "title": "Stale, missing or inconsistent localization",
+      "initiating_condition": "Old, missing, reordered, frame-inconsistent or implausible state estimate.",
+      "potential_consequence": "Controller/authority decision uses a state the vehicle no longer occupies.",
+      "detection_signals": [
+        "Capture/receive times and clock bounds",
+        "Frame and map identity",
+        "Innovation/consistency diagnostics and uncertainty"
+      ],
+      "proposed_response": "Invalidate decisions that cannot conservatively bound application state; use only independently eligible response or latch NO_VALID_POLICY.",
+      "domain_requirements": [
+        "D_NOMINAL",
+        "D_RECOVERY",
+        "D_STOP"
+      ],
+      "timing_requirement": "Bound age through physical application and held interval, including clock error; numerical freshness threshold unresolved.",
+      "residual_risk": "Perfect simulator state does not validate an estimator or a fallback under missing state.",
+      "synthetic_requirement_ids": [
+        "V05"
+      ],
+      "hardware_dependency_ids": [
+        "HW01",
+        "HW04",
+        "HW05",
+        "HW06"
+      ]
+    },
+    {
+      "id": "H06",
+      "title": "Delayed, duplicated or out-of-order commands",
+      "initiating_condition": "Command arrives late or is replayed across sequence, boot session or clock reset.",
+      "potential_consequence": "Stale actuation, steering slew violation or unauthorized overwrite.",
+      "detection_signals": [
+        "Command/session/sequence IDs",
+        "Request/receipt/application times",
+        "Current epoch and actuator acknowledgements"
+      ],
+      "proposed_response": "Reject invalid lease/sequence/epoch at the actuator boundary; re-evaluate held policy and escalate if no valid replacement; never infer application from send.",
+      "domain_requirements": [
+        "D_PACKET",
+        "D_DECEL",
+        "D_STOP"
+      ],
+      "timing_requirement": "Checks must complete before actuator commit; watchdog/lease expiry must not depend on the stalled host.",
+      "residual_risk": "Dropping a request does not remove the already applied command or undo transport delay.",
+      "synthetic_requirement_ids": [
+        "V06"
+      ],
+      "hardware_dependency_ids": [
+        "HW03",
+        "HW05",
+        "HW06",
+        "HW07"
+      ]
+    },
+    {
+      "id": "H07",
+      "title": "Pending command crosses mode transition",
+      "initiating_condition": "A command from old trajectory/recovery authority is still in flight when ownership changes.",
+      "potential_consequence": "Old intent overwrites new recovery or emergency intent.",
+      "detection_signals": [
+        "Original command source and generation epoch",
+        "Pending/applied acknowledgements",
+        "Transition and cancellation acknowledgements"
+      ],
+      "proposed_response": "Revoke obsolete permissions atomically; permit old-source pending work only via an explicit current-epoch reauthorization after fresh validation; preserve original provenance.",
+      "domain_requirements": [
+        "D_PACKET",
+        "D_RECOVERY",
+        "D_STOP"
+      ],
+      "timing_requirement": "Arbitration must resolve transition versus application before commit; include cancellation propagation and acknowledgement in bounds.",
+      "residual_risk": "A cancellation request is not proof of cancellation; current simulator deliberately preserves pending old commands.",
+      "synthetic_requirement_ids": [
+        "V07"
+      ],
+      "hardware_dependency_ids": [
+        "HW03",
+        "HW05",
+        "HW06",
+        "HW07"
+      ]
+    },
+    {
+      "id": "H08",
+      "title": "Sensor dropout or uncertain state",
+      "initiating_condition": "Sensor loss, disagreement or growing uncertainty beyond a validated envelope.",
+      "potential_consequence": "Undetected domain exit or inaccurate stopping feasibility.",
+      "detection_signals": [
+        "Sensor health and sample age",
+        "Calibrated uncertainty bounds",
+        "Cross-sensor consistency"
+      ],
+      "proposed_response": "Expand uncertainty conservatively only within validated propagation; restrict authority or escalate; unknown uncertainty cannot be treated as zero.",
+      "domain_requirements": [
+        "D_NOMINAL",
+        "D_RECOVERY",
+        "D_STOP"
+      ],
+      "timing_requirement": "Detection plus response before reachable uncertainty crosses allowable domain; dropout budgets require characterization.",
+      "residual_risk": "Common-mode faults and unbounded uncertainty may defeat all state-dependent responses.",
+      "synthetic_requirement_ids": [
+        "V08"
+      ],
+      "hardware_dependency_ids": [
+        "HW04",
+        "HW05",
+        "HW06",
+        "HW07"
+      ]
+    },
+    {
+      "id": "H09",
+      "title": "Computer-to-MCU communication loss",
+      "initiating_condition": "Dropped, corrupted, delayed or one-way messages/acknowledgements.",
+      "potential_consequence": "Indefinite held input or disagreement about active authority.",
+      "detection_signals": [
+        "Bidirectional sequence/ack age",
+        "Integrity checks",
+        "Local MCU lease/watchdog state"
+      ],
+      "proposed_response": "MCU independently expires permissions and invokes only a characterized local fault response; host marks actuation unknown when acknowledgements are absent.",
+      "domain_requirements": [
+        "D_DECEL",
+        "D_STOP"
+      ],
+      "timing_requirement": "Independent local timeout and actuation response bounds must fit the declared safety envelope.",
+      "residual_risk": "Communication failure may also remove host recovery commands; fail-safe behavior is uncharacterized.",
+      "synthetic_requirement_ids": [
+        "V09"
+      ],
+      "hardware_dependency_ids": [
+        "HW03",
+        "HW05",
+        "HW06",
+        "HW07",
+        "HW08"
+      ]
+    },
+    {
+      "id": "H10",
+      "title": "Compute overload, watchdog timeout or crash",
+      "initiating_condition": "Planner or supervisor stalls, process dies or heartbeat is falsely healthy.",
+      "potential_consequence": "Fault detection and actuation permissions stop updating.",
+      "detection_signals": [
+        "Independent watchdog progress/heartbeat",
+        "Queue age and deadline budget",
+        "Host/MCU reset reason"
+      ],
+      "proposed_response": "Use an independent progress-aware watchdog and local permission expiry; do not let a heartbeat thread alone certify functioning supervision.",
+      "domain_requirements": [
+        "D_PACKET",
+        "D_DECEL",
+        "D_STOP"
+      ],
+      "timing_requirement": "Validate watchdog detection plus hardware response under overload and common-mode faults, not average host timing.",
+      "residual_risk": "Shared power/clock/software can defeat nominal independence.",
+      "synthetic_requirement_ids": [
+        "V10"
+      ],
+      "hardware_dependency_ids": [
+        "HW05",
+        "HW06",
+        "HW07",
+        "HW08"
+      ]
+    },
+    {
+      "id": "H11",
+      "title": "Actuation saturation or reduced grip",
+      "initiating_condition": "Requested steering/braking exceeds available actuation or tire capacity.",
+      "potential_consequence": "Loss of path control or rear-axle stability during deceleration.",
+      "detection_signals": [
+        "Requested versus measured actuator response",
+        "Saturation and rate occupancy",
+        "Validated grip/slip uncertainty indicators"
+      ],
+      "proposed_response": "Reduce admissible envelope; select a feasible joint lateral/longitudinal response rather than maximum braking by default.",
+      "domain_requirements": [
+        "D_NOMINAL",
+        "D_RECOVERY",
+        "D_DECEL",
+        "D_STOP"
+      ],
+      "timing_requirement": "Detect loss of margin early enough for available steering/braking response; bounds depend on tire/actuator tests.",
+      "residual_risk": "Synthetic clamps and mu are not identified physical capabilities; rear-only drag may saturate first.",
+      "synthetic_requirement_ids": [
+        "V11"
+      ],
+      "hardware_dependency_ids": [
+        "HW01",
+        "HW02",
+        "HW03",
+        "HW09"
+      ]
+    },
+    {
+      "id": "H12",
+      "title": "Cornering or boundary-adjacent fault",
+      "initiating_condition": "Authority/state/actuator fault occurs with high curvature or low footprint clearance.",
+      "potential_consequence": "Recovery or braking leaves available corridor even without a center crossing.",
+      "detection_signals": [
+        "Curvature and six-state estimate",
+        "Footprint/obstacle geometry and uncertainty",
+        "Reachable swept envelope"
+      ],
+      "proposed_response": "Compare admissible recovery and stop tubes; prefer the feasible lower-risk policy, not automatic centerline recovery; otherwise NO_VALID_POLICY.",
+      "domain_requirements": [
+        "D_RECOVERY",
+        "D_DECEL",
+        "D_STOP"
+      ],
+      "timing_requirement": "Intervention budget is limited by earliest boundary/domain contact of the reachable set.",
+      "residual_risk": "Native center clearance does not establish continuous swept-body safety.",
+      "synthetic_requirement_ids": [
+        "V12"
+      ],
+      "hardware_dependency_ids": [
+        "HW01",
+        "HW02",
+        "HW03",
+        "HW04",
+        "HW09",
+        "HW10"
+      ]
+    },
+    {
+      "id": "H13",
+      "title": "Actuator or battery/power fault",
+      "initiating_condition": "Steering/motor/brake unavailable, stuck, degraded or supply collapses.",
+      "potential_consequence": "Requested response cannot physically execute; restart may replay commands.",
+      "detection_signals": [
+        "Power and actuator health/feedback",
+        "Brownout/reset identity",
+        "Independent watchdog status"
+      ],
+      "proposed_response": "Recompute feasible policy using available actuators; latch fault; invalidate prior session on reset; use only characterized physical fail-state.",
+      "domain_requirements": [
+        "D_RECOVERY",
+        "D_DECEL",
+        "D_STOP"
+      ],
+      "timing_requirement": "Fault detection, residual energy and actuation response must be bounded over the operating envelope.",
+      "residual_risk": "Power removal may remove braking or steering; cannot assume de-energization is safe.",
+      "synthetic_requirement_ids": [
+        "V13"
+      ],
+      "hardware_dependency_ids": [
+        "HW03",
+        "HW05",
+        "HW06",
+        "HW07",
+        "HW08"
+      ]
+    },
+    {
+      "id": "H14",
+      "title": "Emergency request or inability to stop",
+      "initiating_condition": "Emergency-stop demand, infeasible recovery/stop or failure to confirm rest.",
+      "potential_consequence": "Uncontrolled motion despite a software stop label.",
+      "detection_signals": [
+        "Independent e-stop channel",
+        "Brake/steering feedback and state confidence",
+        "Stop-progress and rest confirmation"
+      ],
+      "proposed_response": "Emergency demand overrides racing permissions; latch response request; execute only validated hardware emergency policy; report NO_VALID_POLICY or unconfirmed stop when no guarantee is available.",
+      "domain_requirements": [
+        "D_STOP"
+      ],
+      "timing_requirement": "Characterize end-to-end e-stop and stopping envelopes including low-speed transition; no numerical guarantee in S0.",
+      "residual_risk": "No present stop-to-zero model or hardware brake guarantee; a stop request is not achieved rest.",
+      "synthetic_requirement_ids": [
+        "V14"
+      ],
+      "hardware_dependency_ids": [
+        "HW01",
+        "HW02",
+        "HW03",
+        "HW04",
+        "HW07",
+        "HW08",
+        "HW09",
+        "HW10"
+      ]
+    }
+  ]
+}

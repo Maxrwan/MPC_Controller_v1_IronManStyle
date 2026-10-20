@@ -1,0 +1,787 @@
+{
+  "schema": "apex-safety-s0/documentation-schemas/0.1.0",
+  "scope": "Closed structural schemas for the seven registers, including array item fields. Cross-record IDs, source hashes and scientific meaning require separate checks/review. These are not runtime message validators.",
+  "schemas": {
+    "authority_interface.json": {
+      "type": "object",
+      "required": [
+        "schema",
+        "stage",
+        "status",
+        "implemented",
+        "interface_version",
+        "scope",
+        "canonical_state_order",
+        "canonical_state_units",
+        "canonical_input_order",
+        "canonical_input_units",
+        "domains",
+        "fields",
+        "rules"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "schema": {
+          "const": "apex-safety-s0/authority-interface/0.1.0",
+          "type": "string"
+        },
+        "stage": {
+          "const": "WORK_SPECIFICATION_ONLY",
+          "type": "string"
+        },
+        "status": {
+          "const": "WORK_COMPLETE_PENDING_REVIEW",
+          "type": "string"
+        },
+        "implemented": {
+          "const": false,
+          "type": "boolean"
+        },
+        "interface_version": {
+          "type": "string"
+        },
+        "scope": {
+          "type": "string"
+        },
+        "canonical_state_order": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "canonical_state_units": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "canonical_input_order": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "canonical_input_units": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "domains": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "id",
+              "requirement"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "requirement": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "fields": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "name",
+              "type",
+              "units",
+              "meaning",
+              "missing_policy"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string"
+              },
+              "units": {
+                "type": "string"
+              },
+              "meaning": {
+                "type": "string"
+              },
+              "missing_policy": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "rules": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "id",
+              "title",
+              "requirement"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              },
+              "requirement": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "title": "S0 authority_interface documentation structure; no runtime safety validation"
+    },
+    "dependency_matrix.json": {
+      "type": "object",
+      "required": [
+        "schema",
+        "stage",
+        "status",
+        "implemented",
+        "rows"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "schema": {
+          "const": "apex-safety-s0/dependencies/0.1.0",
+          "type": "string"
+        },
+        "stage": {
+          "const": "WORK_SPECIFICATION_ONLY",
+          "type": "string"
+        },
+        "status": {
+          "const": "WORK_COMPLETE_PENDING_REVIEW",
+          "type": "string"
+        },
+        "implemented": {
+          "const": false,
+          "type": "boolean"
+        },
+        "rows": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "id",
+              "topic",
+              "synthetic_prerequisite",
+              "efficiency_interface",
+              "hardware_dependency_ids",
+              "gate"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "topic": {
+                "type": "string"
+              },
+              "synthetic_prerequisite": {
+                "type": "string"
+              },
+              "efficiency_interface": {
+                "type": "string"
+              },
+              "hardware_dependency_ids": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "gate": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "title": "S0 dependency_matrix documentation structure; no runtime safety validation"
+    },
+    "hardware_dependencies.json": {
+      "type": "object",
+      "required": [
+        "schema",
+        "stage",
+        "status",
+        "implemented",
+        "selection_policy",
+        "dependencies"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "schema": {
+          "const": "apex-safety-s0/hardware/0.1.0",
+          "type": "string"
+        },
+        "stage": {
+          "const": "WORK_SPECIFICATION_ONLY",
+          "type": "string"
+        },
+        "status": {
+          "const": "WORK_COMPLETE_PENDING_REVIEW",
+          "type": "string"
+        },
+        "implemented": {
+          "const": false,
+          "type": "boolean"
+        },
+        "selection_policy": {
+          "type": "string"
+        },
+        "dependencies": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "id",
+              "topic",
+              "missing_information",
+              "current_limit",
+              "required_evidence",
+              "domain_ids",
+              "status"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "topic": {
+                "type": "string"
+              },
+              "missing_information": {
+                "type": "string"
+              },
+              "current_limit": {
+                "type": "string"
+              },
+              "required_evidence": {
+                "type": "string"
+              },
+              "domain_ids": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "status": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "title": "S0 hardware_dependencies documentation structure; no runtime safety validation"
+    },
+    "hazard_register.json": {
+      "type": "object",
+      "required": [
+        "schema",
+        "stage",
+        "status",
+        "implemented",
+        "signal_availability",
+        "timing_policy",
+        "hazards"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "schema": {
+          "const": "apex-safety-s0/hazards/0.1.0",
+          "type": "string"
+        },
+        "stage": {
+          "const": "WORK_SPECIFICATION_ONLY",
+          "type": "string"
+        },
+        "status": {
+          "const": "WORK_COMPLETE_PENDING_REVIEW",
+          "type": "string"
+        },
+        "implemented": {
+          "const": false,
+          "type": "boolean"
+        },
+        "signal_availability": {
+          "type": "string"
+        },
+        "timing_policy": {
+          "type": "string"
+        },
+        "hazards": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "id",
+              "title",
+              "initiating_condition",
+              "potential_consequence",
+              "detection_signals",
+              "proposed_response",
+              "domain_requirements",
+              "timing_requirement",
+              "residual_risk",
+              "synthetic_requirement_ids",
+              "hardware_dependency_ids"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              },
+              "initiating_condition": {
+                "type": "string"
+              },
+              "potential_consequence": {
+                "type": "string"
+              },
+              "detection_signals": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "proposed_response": {
+                "type": "string"
+              },
+              "domain_requirements": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "timing_requirement": {
+                "type": "string"
+              },
+              "residual_risk": {
+                "type": "string"
+              },
+              "synthetic_requirement_ids": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "hardware_dependency_ids": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "title": "S0 hazard_register documentation structure; no runtime safety validation"
+    },
+    "provenance.json": {
+      "type": "object",
+      "required": [
+        "schema",
+        "stage",
+        "status",
+        "implemented",
+        "base_revision",
+        "branch",
+        "efficiency_reference",
+        "scientific_worker",
+        "records",
+        "identity_limits"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "schema": {
+          "const": "apex-safety-s0/provenance/0.1.0",
+          "type": "string"
+        },
+        "stage": {
+          "const": "WORK_SPECIFICATION_ONLY",
+          "type": "string"
+        },
+        "status": {
+          "const": "WORK_COMPLETE_PENDING_REVIEW",
+          "type": "string"
+        },
+        "implemented": {
+          "const": false,
+          "type": "boolean"
+        },
+        "base_revision": {
+          "type": "string"
+        },
+        "branch": {
+          "type": "string"
+        },
+        "efficiency_reference": {
+          "type": "string"
+        },
+        "scientific_worker": {
+          "type": "string"
+        },
+        "records": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "role",
+              "revision",
+              "path",
+              "sha256",
+              "url"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "role": {
+                "type": "string"
+              },
+              "revision": {
+                "type": "string"
+              },
+              "path": {
+                "type": "string"
+              },
+              "sha256": {
+                "type": "string"
+              },
+              "url": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "identity_limits": {
+          "type": "string"
+        }
+      },
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "title": "S0 provenance documentation structure; no runtime safety validation"
+    },
+    "supervisor_states.json": {
+      "type": "object",
+      "required": [
+        "schema",
+        "stage",
+        "status",
+        "implemented",
+        "owner",
+        "priority",
+        "latch_policy",
+        "parameters_unresolved",
+        "states",
+        "transitions",
+        "required_telemetry"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "schema": {
+          "const": "apex-safety-s0/supervisor-states/0.1.0",
+          "type": "string"
+        },
+        "stage": {
+          "const": "WORK_SPECIFICATION_ONLY",
+          "type": "string"
+        },
+        "status": {
+          "const": "WORK_COMPLETE_PENDING_REVIEW",
+          "type": "string"
+        },
+        "implemented": {
+          "const": false,
+          "type": "boolean"
+        },
+        "owner": {
+          "type": "string"
+        },
+        "priority": {
+          "type": "string"
+        },
+        "latch_policy": {
+          "type": "string"
+        },
+        "parameters_unresolved": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "states": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "id",
+              "meaning",
+              "ownership",
+              "restriction"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "meaning": {
+                "type": "string"
+              },
+              "ownership": {
+                "type": "string"
+              },
+              "restriction": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "transitions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "id",
+              "from_states",
+              "to_state",
+              "predicate",
+              "action"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "from_states": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "to_state": {
+                "type": "string"
+              },
+              "predicate": {
+                "type": "string"
+              },
+              "action": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "required_telemetry": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "title": "S0 supervisor_states documentation structure; no runtime safety validation"
+    },
+    "verification_requirements.json": {
+      "type": "object",
+      "required": [
+        "schema",
+        "stage",
+        "status",
+        "implemented",
+        "stages",
+        "synthetic_scenarios",
+        "inherited_evidence",
+        "existing_test_references",
+        "deferred"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "schema": {
+          "const": "apex-safety-s0/verification/0.1.0",
+          "type": "string"
+        },
+        "stage": {
+          "const": "WORK_SPECIFICATION_ONLY",
+          "type": "string"
+        },
+        "status": {
+          "const": "WORK_COMPLETE_PENDING_REVIEW",
+          "type": "string"
+        },
+        "implemented": {
+          "const": false,
+          "type": "boolean"
+        },
+        "stages": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "id",
+              "title",
+              "required_evidence",
+              "success",
+              "failure",
+              "dependencies",
+              "review_gate",
+              "execution"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              },
+              "required_evidence": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "success": {
+                "type": "string"
+              },
+              "failure": {
+                "type": "string"
+              },
+              "dependencies": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "review_gate": {
+                "type": "string"
+              },
+              "execution": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "synthetic_scenarios": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "id",
+              "hazard_ids",
+              "stage",
+              "scenario",
+              "required_evidence",
+              "pass_condition",
+              "fail_condition",
+              "dependencies",
+              "execution"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "hazard_ids": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "stage": {
+                "type": "string"
+              },
+              "scenario": {
+                "type": "string"
+              },
+              "required_evidence": {
+                "type": "string"
+              },
+              "pass_condition": {
+                "type": "string"
+              },
+              "fail_condition": {
+                "type": "string"
+              },
+              "dependencies": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "execution": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "inherited_evidence": {
+          "type": "object",
+          "required": [
+            "revision",
+            "delivery",
+            "suite",
+            "passed",
+            "seconds",
+            "reexecuted_in_s0",
+            "applicability",
+            "record"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "revision": {
+              "type": "string"
+            },
+            "delivery": {
+              "type": "string"
+            },
+            "suite": {
+              "type": "string"
+            },
+            "passed": {
+              "type": "integer"
+            },
+            "seconds": {
+              "type": "number"
+            },
+            "reexecuted_in_s0": {
+              "type": "boolean"
+            },
+            "applicability": {
+              "type": "string"
+            },
+            "record": {
+              "type": "string"
+            }
+          }
+        },
+        "existing_test_references": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "deferred": {
+          "type": "string"
+        }
+      },
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "title": "S0 verification_requirements documentation structure; no runtime safety validation"
+    }
+  }
+}

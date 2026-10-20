@@ -1,0 +1,525 @@
+{
+  "schema": "apex-safety-s0/verification/0.1.0",
+  "stage": "WORK_SPECIFICATION_ONLY",
+  "status": "WORK_COMPLETE_PENDING_REVIEW",
+  "implemented": false,
+  "stages": [
+    {
+      "id": "A",
+      "title": "Requirements and synthetic fault design",
+      "required_evidence": [
+        "Reviewed hazards and domain definitions",
+        "Timing/uncertainty budgets with explicit unresolved fields",
+        "Transition/authority contracts and observability design",
+        "Requirement-to-scenario/hardware traceability"
+      ],
+      "success": "Every hazard has signals, response, timing requirement, domain, residual risk and verification links; unknowns remain explicit. S0 prepares this package only.",
+      "failure": "Ambiguous authority, invented domain/physical response, untraceable hazard, missing stop limitation or undocumented scope change.",
+      "dependencies": [
+        "Primary risk/operating-envelope decisions",
+        "Engineering acceptance of interface, arbitration and staged plan"
+      ],
+      "review_gate": "Engineering reviews S0 before authorizing any implementation. Stage A acceptance is not asserted by WORK delivery.",
+      "execution": "SPECIFICATION_PREPARED_PENDING_REVIEW"
+    },
+    {
+      "id": "B",
+      "title": "Future synthetic implementation verification",
+      "required_evidence": [
+        "V01-V19 deterministic traces and assertions",
+        "Source/config/test/fixture hashes; numerical plant/predictor separation",
+        "Zero/injected/measured timing and noninterference evidence",
+        "Complete failed/censored outcomes and changed-source regression"
+      ],
+      "success": "All applicable assertions pass on exact reviewed implementation; each unsupported physical capability remains unavailable rather than mocked as validated.",
+      "failure": "Invalid state/control propagation, stale/unauthorized command, incorrect packet authority, hidden latency, unvalidated domain entry or changed assertions.",
+      "dependencies": [
+        "Accepted Stage A",
+        "Separate implementation authorization",
+        "Explicit synthetic policy/domain designs and independent test oracle"
+      ],
+      "review_gate": "Engineering reviews implementation then explicitly authorizes formal regression; synthetic results cannot release hardware.",
+      "execution": "NOT_EXECUTED_S0"
+    },
+    {
+      "id": "C",
+      "title": "HIL and subsystem validation",
+      "required_evidence": [
+        "Clock/communications/cancellation fault traces",
+        "Independent watchdog, overload, process death and power tests",
+        "Measured steering/braking/low-speed and sensor behavior",
+        "Worst-case response claims tied to declared hardware/workload bounds"
+      ],
+      "success": "Declared bounds and fail-states demonstrated with independent instrumentation; response mechanisms work without the host where required.",
+      "failure": "Missing/late enforcement, false healthy heartbeat, unavailable braking, command replay or unexplained boundary violation; invalidates affected domain.",
+      "dependencies": [
+        "HW01",
+        "HW02",
+        "HW03",
+        "HW04",
+        "HW05",
+        "HW06",
+        "HW07",
+        "HW08",
+        "HW09",
+        "HW10"
+      ],
+      "review_gate": "Separate hardware risk assessment and controlled-test authorization; no physical driving release from software tests alone.",
+      "execution": "NOT_EXECUTED_S0"
+    },
+    {
+      "id": "D",
+      "title": "Physical operating-domain validation",
+      "required_evidence": [
+        "Identified model and uncertainty envelope",
+        "Recovery/deceleration/stop reachable sets or defensible bounded validation",
+        "Footprint/obstacle and stopping-distance evidence",
+        "Fault trials within approved envelope with independent stop facilities and retained failures"
+      ],
+      "success": "Only explicitly demonstrated operating domains and timing bounds may be claimed; rest, holding, recovery and continuous safety claims each need their own evidence.",
+      "failure": "Uncontained reachable tube, failed stop, unavailable recovery or uncertainty outside approved domain; reduce claim and stop for review.",
+      "dependencies": [
+        "Accepted B and C for deployed revisions",
+        "HW01-HW10 resolved for declared envelope",
+        "Primary approval of residual-risk policy and physical testing"
+      ],
+      "review_gate": "Primary and Engineering acceptance of declared operating limits; no universal certification implied.",
+      "execution": "NOT_EXECUTED_S0"
+    }
+  ],
+  "synthetic_scenarios": [
+    {
+      "id": "V01",
+      "hazard_ids": [
+        "H01"
+      ],
+      "stage": "B",
+      "scenario": "High-speed or low-speed trajectory exhaustion",
+      "required_evidence": "Exhaustion below/at/above baseline admission speed and dynamic lower boundary, with and without an admissible alternate policy; include loss of uncertainty containment before packet expiry. Retain native chronology, held/pending commands, uncertainty, grants, acknowledgements and failure/censoring records.",
+      "pass_condition": "No trajectory extrapolation or unvalidated baseline call; intervene within the declared response budget or explicitly enter NO_VALID_POLICY. Never propagate a stop through an unsupported low-speed model.",
+      "fail_condition": "Any chronology/authority/domain violation, concealed uncertainty, unaccounted held/pending input, or unsafe result relabeled successful.",
+      "dependencies": [
+        "HW01",
+        "HW02",
+        "HW03",
+        "HW05",
+        "HW06",
+        "HW10"
+      ],
+      "execution": "NOT_EXECUTED_S0"
+    },
+    {
+      "id": "V02",
+      "hazard_ids": [
+        "H02"
+      ],
+      "stage": "B",
+      "scenario": "Consecutive fixed-deadline misses",
+      "required_evidence": "Early/exact/late fixed readiness, consecutive misses, pending completion beyond deadline and recovery by a later valid packet. Retain native chronology, held/pending commands, uncertainty, grants, acknowledgements and failure/censoring records.",
+      "pass_condition": "Miss recorded at each deadline; late result never activates; busy solve not fictionalized as cancelled; count misses, recoveries and remaining reserve separately.",
+      "fail_condition": "Any chronology/authority/domain violation, concealed uncertainty, unaccounted held/pending input, or unsafe result relabeled successful.",
+      "dependencies": [
+        "HW05",
+        "HW06",
+        "HW07"
+      ],
+      "execution": "NOT_EXECUTED_S0"
+    },
+    {
+      "id": "V03",
+      "hazard_ids": [
+        "H03"
+      ],
+      "stage": "B",
+      "scenario": "Planner busy through authority expiry",
+      "required_evidence": "Long preparation spans nominal and urgent release opportunities and passes active expiry; no alternate solve slot. Retain native chronology, held/pending commands, uncertainty, grants, acknowledgements and failure/censoring records.",
+      "pass_condition": "No overlapping solve or paused plant; busy opportunities and urgent latch remain causal; response feasibility declines despite live process; authority cannot depend on guessed future completion.",
+      "fail_condition": "Any chronology/authority/domain violation, concealed uncertainty, unaccounted held/pending input, or unsafe result relabeled successful.",
+      "dependencies": [
+        "HW05",
+        "HW06",
+        "HW07"
+      ],
+      "execution": "NOT_EXECUTED_S0"
+    },
+    {
+      "id": "V04",
+      "hazard_ids": [
+        "H04"
+      ],
+      "stage": "B",
+      "scenario": "Solver failure or infeasible trajectory",
+      "required_evidence": "Inject explicit solver rejection, infeasibility, nonfinite proposal, failed predictor/model stage and failed gain preparation. Retain native chronology, held/pending commands, uncertainty, grants, acknowledgements and failure/censoring records.",
+      "pass_condition": "Rejected proposal never owns authority; old packet retained only while valid; failures distinct from empty/missing observability; response evaluated before availability loss.",
+      "fail_condition": "Any chronology/authority/domain violation, concealed uncertainty, unaccounted held/pending input, or unsafe result relabeled successful.",
+      "dependencies": [
+        "HW01",
+        "HW02",
+        "HW05"
+      ],
+      "execution": "NOT_EXECUTED_S0"
+    },
+    {
+      "id": "V05",
+      "hazard_ids": [
+        "H05"
+      ],
+      "stage": "B",
+      "scenario": "Stale, missing or inconsistent localization",
+      "required_evidence": "Missing estimate, old capture/new receive stamp, reordered localization, wrong frame/map and clock reset/uncertainty straddling expiry. Retain native chronology, held/pending commands, uncertainty, grants, acknowledgements and failure/censoring records.",
+      "pass_condition": "No stale snapshot reused as fresh; no grant with unresolved clock/frame; application and hold use conservative state uncertainty, not future physical truth.",
+      "fail_condition": "Any chronology/authority/domain violation, concealed uncertainty, unaccounted held/pending input, or unsafe result relabeled successful.",
+      "dependencies": [
+        "HW01",
+        "HW04",
+        "HW05",
+        "HW06"
+      ],
+      "execution": "NOT_EXECUTED_S0"
+    },
+    {
+      "id": "V06",
+      "hazard_ids": [
+        "H06"
+      ],
+      "stage": "B",
+      "scenario": "Delayed, duplicated or out-of-order commands",
+      "required_evidence": "Delayed/replayed/duplicated request, reversed sequences, previous boot session, actual application after latest time or held permission expiry. Retain native chronology, held/pending commands, uncertainty, grants, acknowledgements and failure/censoring records.",
+      "pass_condition": "Endpoint rejects replay/late request; idempotent duplicate ack does not reapply; prior held input and its expiry remain accounted; actual elapsed steering-rate budget checked.",
+      "fail_condition": "Any chronology/authority/domain violation, concealed uncertainty, unaccounted held/pending input, or unsafe result relabeled successful.",
+      "dependencies": [
+        "HW03",
+        "HW05",
+        "HW06",
+        "HW07"
+      ],
+      "execution": "NOT_EXECUTED_S0"
+    },
+    {
+      "id": "V07",
+      "hazard_ids": [
+        "H07"
+      ],
+      "stage": "B",
+      "scenario": "Pending command crosses mode transition",
+      "required_evidence": "Old pending request crosses packet handoff, recovery epoch or emergency revoke; cancellation arrives before, at or after physical commit. Retain native chronology, held/pending commands, uncertainty, grants, acknowledgements and failure/censoring records.",
+      "pass_condition": "No retrospective source rewrite; only validated explicit current-epoch reauthorization permits old work; acknowledged cancellation prevents later commit; unknown/censored outcome stays unknown.",
+      "fail_condition": "Any chronology/authority/domain violation, concealed uncertainty, unaccounted held/pending input, or unsafe result relabeled successful.",
+      "dependencies": [
+        "HW03",
+        "HW05",
+        "HW06",
+        "HW07"
+      ],
+      "execution": "NOT_EXECUTED_S0"
+    },
+    {
+      "id": "V08",
+      "hazard_ids": [
+        "H08"
+      ],
+      "stage": "B",
+      "scenario": "Sensor dropout or uncertain state",
+      "required_evidence": "Drop one or multiple sensors, widen calibrated uncertainty and inject mutually inconsistent measurements; include common-mode errors in approved fault model. Retain native chronology, held/pending commands, uncertainty, grants, acknowledgements and failure/censoring records.",
+      "pass_condition": "Domain checks quantify uncertainty growth; no zero covariance substitution; only validated degraded policy continues; outside declared envelope escalates explicitly.",
+      "fail_condition": "Any chronology/authority/domain violation, concealed uncertainty, unaccounted held/pending input, or unsafe result relabeled successful.",
+      "dependencies": [
+        "HW04",
+        "HW05",
+        "HW06",
+        "HW07"
+      ],
+      "execution": "NOT_EXECUTED_S0"
+    },
+    {
+      "id": "V09",
+      "hazard_ids": [
+        "H09"
+      ],
+      "stage": "B",
+      "scenario": "Computer-to-MCU communication loss",
+      "required_evidence": "Host-to-MCU and MCU-to-host loss separately, corruption, reordered acknowledgements and loss during a held command. Retain native chronology, held/pending commands, uncertainty, grants, acknowledgements and failure/censoring records.",
+      "pass_condition": "Endpoint expires local lease independently; host never equates missing acknowledgement with no application; independent response and unknown held history remain visible.",
+      "fail_condition": "Any chronology/authority/domain violation, concealed uncertainty, unaccounted held/pending input, or unsafe result relabeled successful.",
+      "dependencies": [
+        "HW03",
+        "HW05",
+        "HW06",
+        "HW07",
+        "HW08"
+      ],
+      "execution": "NOT_EXECUTED_S0"
+    },
+    {
+      "id": "V10",
+      "hazard_ids": [
+        "H10"
+      ],
+      "stage": "B",
+      "scenario": "Compute overload, watchdog timeout or crash",
+      "required_evidence": "Planner stall, supervisor deadlock/crash, healthy heartbeat with stalled control work, CPU overload, watchdog reset and shared clock/power failure assumptions. Retain native chronology, held/pending commands, uncertainty, grants, acknowledgements and failure/censoring records.",
+      "pass_condition": "No endless renewed racing lease without valid progress; independent watchdog acts under declared fault model; unavailable physical response is not reported successful.",
+      "fail_condition": "Any chronology/authority/domain violation, concealed uncertainty, unaccounted held/pending input, or unsafe result relabeled successful.",
+      "dependencies": [
+        "HW05",
+        "HW06",
+        "HW07",
+        "HW08"
+      ],
+      "execution": "NOT_EXECUTED_S0"
+    },
+    {
+      "id": "V11",
+      "hazard_ids": [
+        "H11"
+      ],
+      "stage": "B",
+      "scenario": "Actuation saturation or reduced grip",
+      "required_evidence": "Reduced grip/axle load and steering or braking saturation during combined cornering/deceleration, with delayed actuator response. Retain native chronology, held/pending commands, uncertainty, grants, acknowledgements and failure/censoring records.",
+      "pass_condition": "Only joint admissible inputs; detect lost margin, preserve model checks and distinguish saturation from tracking success; no maximum-brake or synthetic-mu safety assumption.",
+      "fail_condition": "Any chronology/authority/domain violation, concealed uncertainty, unaccounted held/pending input, or unsafe result relabeled successful.",
+      "dependencies": [
+        "HW01",
+        "HW02",
+        "HW03",
+        "HW09"
+      ],
+      "execution": "NOT_EXECUTED_S0"
+    },
+    {
+      "id": "V12",
+      "hazard_ids": [
+        "H12"
+      ],
+      "stage": "B",
+      "scenario": "Cornering or boundary-adjacent fault",
+      "required_evidence": "Fault at low footprint clearance or high curvature, including center inside while body envelope exits; compare admissible recovery versus stopping. Retain native chronology, held/pending commands, uncertainty, grants, acknowledgements and failure/censoring records.",
+      "pass_condition": "Response respects full declared swept tube and uncertainty; center-only success cannot pass physical safety; record NO_VALID_POLICY when both responses infeasible.",
+      "fail_condition": "Any chronology/authority/domain violation, concealed uncertainty, unaccounted held/pending input, or unsafe result relabeled successful.",
+      "dependencies": [
+        "HW01",
+        "HW02",
+        "HW03",
+        "HW04",
+        "HW09",
+        "HW10"
+      ],
+      "execution": "NOT_EXECUTED_S0"
+    },
+    {
+      "id": "V13",
+      "hazard_ids": [
+        "H13"
+      ],
+      "stage": "B",
+      "scenario": "Actuator or battery/power fault",
+      "required_evidence": "Stuck/degraded/unavailable steering or braking, brownout, reboot with queued commands and power loss during a response. Retain native chronology, held/pending commands, uncertainty, grants, acknowledgements and failure/censoring records.",
+      "pass_condition": "Invalidate old session; recompute admissible actuation; no assumed safe power-off/braking; preserve unobserved application and incomplete recovery.",
+      "fail_condition": "Any chronology/authority/domain violation, concealed uncertainty, unaccounted held/pending input, or unsafe result relabeled successful.",
+      "dependencies": [
+        "HW03",
+        "HW05",
+        "HW06",
+        "HW07",
+        "HW08"
+      ],
+      "execution": "NOT_EXECUTED_S0"
+    },
+    {
+      "id": "V14",
+      "hazard_ids": [
+        "H14"
+      ],
+      "stage": "B",
+      "scenario": "Emergency request or inability to stop",
+      "required_evidence": "E-stop while disarmed/moving, normal, warning or recovery; infeasible stopping, missing stop acknowledgement, loss of rest confidence and reset without cleared faults. Retain native chronology, held/pending commands, uncertainty, grants, acknowledgements and failure/censoring records.",
+      "pass_condition": "Emergency takes priority; stop request, actual stopping and confirmed held rest distinct; no automatic rearm or false stop-to-zero proof; invalid response enters NO_VALID_POLICY.",
+      "fail_condition": "Any chronology/authority/domain violation, concealed uncertainty, unaccounted held/pending input, or unsafe result relabeled successful.",
+      "dependencies": [
+        "HW01",
+        "HW02",
+        "HW03",
+        "HW04",
+        "HW07",
+        "HW08",
+        "HW09",
+        "HW10"
+      ],
+      "execution": "NOT_EXECUTED_S0"
+    },
+    {
+      "id": "V15",
+      "hazard_ids": [
+        "H01",
+        "H02",
+        "H03",
+        "H04",
+        "H05",
+        "H06",
+        "H07",
+        "H08",
+        "H09",
+        "H10",
+        "H11",
+        "H12",
+        "H13",
+        "H14"
+      ],
+      "stage": "B",
+      "scenario": "All policy transitions and same-time arbitration",
+      "required_evidence": "Enumerate transitions T01-T14, simultaneous revocation/expiry/application/handoff, cancellation races, actuator acknowledgement loss and terminal censored requests.",
+      "pass_condition": "One causal owner per grant/commit; original source identity retained; no resurrection or fictional cancellation.",
+      "fail_condition": "Any violated invariant or required channel absent; stop for Engineering Review and preserve result.",
+      "dependencies": [
+        "HW01",
+        "HW02",
+        "HW03",
+        "HW04",
+        "HW05",
+        "HW06",
+        "HW07",
+        "HW08",
+        "HW09",
+        "HW10"
+      ],
+      "execution": "NOT_EXECUTED_S0"
+    },
+    {
+      "id": "V16",
+      "hazard_ids": [
+        "H01",
+        "H02",
+        "H06",
+        "H07"
+      ],
+      "stage": "B",
+      "scenario": "Time grids and controller independence",
+      "required_evidence": "Variable and fixed handoffs; nonuniform packet times; different stage counts/horizons; delayed readiness and already-running solve.",
+      "pass_condition": "Use actual intervals/expiry, not N*dt; miss never cancels a running solve by assumption; old valid authority only.",
+      "fail_condition": "Any violated invariant or required channel absent; stop for Engineering Review and preserve result.",
+      "dependencies": [
+        "HW01",
+        "HW02",
+        "HW03",
+        "HW04",
+        "HW05",
+        "HW06",
+        "HW07",
+        "HW08",
+        "HW09",
+        "HW10"
+      ],
+      "execution": "NOT_EXECUTED_S0"
+    },
+    {
+      "id": "V17",
+      "hazard_ids": [
+        "H01",
+        "H02",
+        "H06",
+        "H07"
+      ],
+      "stage": "B",
+      "scenario": "Physical motion and domain boundaries",
+      "required_evidence": "Zero/injected/measured latency with plant motion, skipped deadlines, held inputs; state uncertainty reaches envelope edge before application; deceleration approaches low-speed limit.",
+      "pass_condition": "Reject unsupported propagation/policy; no frozen plant or low-speed regularization; numerical assertions unchanged; physical success not inferred from test termination.",
+      "fail_condition": "Any violated invariant or required channel absent; stop for Engineering Review and preserve result.",
+      "dependencies": [
+        "HW01",
+        "HW02",
+        "HW03",
+        "HW04",
+        "HW05",
+        "HW06",
+        "HW07",
+        "HW08",
+        "HW09",
+        "HW10"
+      ],
+      "execution": "NOT_EXECUTED_S0"
+    },
+    {
+      "id": "V18",
+      "hazard_ids": [
+        "H01",
+        "H02",
+        "H06",
+        "H07"
+      ],
+      "stage": "B",
+      "scenario": "Noninterference and independent validation",
+      "required_evidence": "Controller adapter with layer inactive under separately authorized future implementation; observer/telemetry and legacy packet readers.",
+      "pass_condition": "Historical frozen fingerprints remain byte-bound; deterministic disabled behavior unchanged; enabled differences explicitly justified, not hidden.",
+      "fail_condition": "Any violated invariant or required channel absent; stop for Engineering Review and preserve result.",
+      "dependencies": [
+        "HW01",
+        "HW02",
+        "HW03",
+        "HW04",
+        "HW05",
+        "HW06",
+        "HW07",
+        "HW08",
+        "HW09",
+        "HW10"
+      ],
+      "execution": "NOT_EXECUTED_S0"
+    },
+    {
+      "id": "V19",
+      "hazard_ids": [
+        "H01",
+        "H02",
+        "H03",
+        "H04",
+        "H05",
+        "H06",
+        "H07",
+        "H08",
+        "H09",
+        "H10",
+        "H11",
+        "H12",
+        "H13",
+        "H14"
+      ],
+      "stage": "B",
+      "scenario": "No acceptable policy and reentry",
+      "required_evidence": "Simultaneous state, actuator and authority loss; reset without health evidence; loss of rest confidence.",
+      "pass_condition": "No invalid software permission; explicit uncontrolled interval; no claimed safe zero/hold; reentry only via reviewed admission and new session.",
+      "fail_condition": "Any violated invariant or required channel absent; stop for Engineering Review and preserve result.",
+      "dependencies": [
+        "HW01",
+        "HW02",
+        "HW03",
+        "HW04",
+        "HW05",
+        "HW06",
+        "HW07",
+        "HW08",
+        "HW09",
+        "HW10"
+      ],
+      "execution": "NOT_EXECUTED_S0"
+    }
+  ],
+  "inherited_evidence": {
+    "revision": "e603672b209985f11ed26b6f44d3949ffd5675c5",
+    "delivery": "ecbbc5cdb6d182557dfdd0bca7caa215cc1355c9",
+    "suite": "tests/",
+    "passed": 750,
+    "seconds": 633.76,
+    "reexecuted_in_s0": false,
+    "applicability": "Historical exact-revision behavior only; unchanged source/test/config/dependency/fixture hashes checked. Not evidence for proposed S0 behavior or current hardware/environment.",
+    "record": "docs/task007e/e3/verification.json"
+  },
+  "existing_test_references": [
+    "tests/unit/test_async_chronology.py::test_exhaustion_fallback_and_no_extrapolation",
+    "tests/unit/test_async_chronology.py::test_busy_planner_does_not_pause_codriver_or_plant",
+    "tests/unit/test_async_chronology.py::test_failure_keeps_old_plan_and_recovers",
+    "tests/unit/test_trajectory_tracker.py::test_reject_future_expired_and_failed",
+    "tests/unit/test_dynamic_bicycle.py::test_braking_stage_rejects_without_switch_or_mutation",
+    "tests/unit/test_baseline.py::test_schedule_clamps_only_variable"
+  ],
+  "deferred": "All numerical tests, new fault fixtures, simulations, HIL and physical trials. No test collection or numeric imports in S0."
+}

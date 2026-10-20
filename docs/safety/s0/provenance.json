@@ -1,0 +1,174 @@
+{
+  "schema": "apex-safety-s0/provenance/0.1.0",
+  "stage": "WORK_SPECIFICATION_ONLY",
+  "status": "WORK_COMPLETE_PENDING_REVIEW",
+  "implemented": false,
+  "base_revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+  "branch": "research/safety-s0",
+  "efficiency_reference": "eaa0a3398515a21f30a850de59a0b44c775fad4d",
+  "scientific_worker": "8dbd1c5fbc09781411fc762e04f9c2c5cf2d99ae",
+  "records": [
+    {
+      "role": "E1",
+      "revision": "835eefb0aafe2f982a0ba05847d4e731079ff52d",
+      "path": "docs/TASK007E1_FALLBACK_DOMAIN_AUDIT.md",
+      "sha256": "13c7ad35762574ac3a2ffc372abdc9b45dcc8b18b437ad7eda99b2c8d2450a09",
+      "url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/835eefb0aafe2f982a0ba05847d4e731079ff52d/docs/TASK007E1_FALLBACK_DOMAIN_AUDIT.md"
+    },
+    {
+      "role": "E1-domains",
+      "revision": "835eefb0aafe2f982a0ba05847d4e731079ff52d",
+      "path": "docs/task007e/e1/fallback_domain_register.json",
+      "sha256": "b7dd930df236c6081ee461a5d1e68535ada9ffe172aaa2dabccd3dc588214f4a",
+      "url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/835eefb0aafe2f982a0ba05847d4e731079ff52d/docs/task007e/e1/fallback_domain_register.json"
+    },
+    {
+      "role": "E3",
+      "revision": "ecbbc5cdb6d182557dfdd0bca7caa215cc1355c9",
+      "path": "docs/TASK007E3_PERFORMANCE_VERIFICATION.md",
+      "sha256": "aebbaa35279085df2cd28b0fd14a8319000f8a2000fa425e4d9aaf9cc0e1fa3a",
+      "url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/ecbbc5cdb6d182557dfdd0bca7caa215cc1355c9/docs/TASK007E3_PERFORMANCE_VERIFICATION.md"
+    },
+    {
+      "role": "E3-tests",
+      "revision": "ecbbc5cdb6d182557dfdd0bca7caa215cc1355c9",
+      "path": "docs/task007e/e3/verification.json",
+      "sha256": "f018caa6adb4acc5bf050184953234efa5a6e45359057ce96dda908f7b858c80",
+      "url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/ecbbc5cdb6d182557dfdd0bca7caa215cc1355c9/docs/task007e/e3/verification.json"
+    },
+    {
+      "role": "E4",
+      "revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "path": "docs/TASK007E4_PERFORMANCE_ACCEPTANCE.md",
+      "sha256": "cc2fb4091ec490b63674e5f1957ff49220db330a7184d54c3f636af4db709216",
+      "url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/48adbdf64d492592d15e23c917aca71fa58aa8a5/docs/TASK007E4_PERFORMANCE_ACCEPTANCE.md"
+    },
+    {
+      "role": "E4-decision",
+      "revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "path": "docs/task007e/e4/primary_acceptance.json",
+      "sha256": "5bcdaeecd342ed758b3907e2ff17dcb05d9ac1aa4ba777f0d44298911002de76",
+      "url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/48adbdf64d492592d15e23c917aca71fa58aa8a5/docs/task007e/e4/primary_acceptance.json"
+    },
+    {
+      "role": "F0",
+      "revision": "eaa0a3398515a21f30a850de59a0b44c775fad4d",
+      "path": "docs/TASK007F0_EFFICIENCY_SPEC.md",
+      "sha256": "94fdbab17b0f0be99527c224168839a189b5d4095e30ba90df9e5f6c08e7c45c",
+      "url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/eaa0a3398515a21f30a850de59a0b44c775fad4d/docs/TASK007F0_EFFICIENCY_SPEC.md"
+    },
+    {
+      "role": "F0-grid",
+      "revision": "eaa0a3398515a21f30a850de59a0b44c775fad4d",
+      "path": "docs/task007f/f0/temporal_grid_audit.md",
+      "sha256": "de653c8a8846295d3792886e73afcfe71a164e205b51f2665d26f5c1c68f60c9",
+      "url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/eaa0a3398515a21f30a850de59a0b44c775fad4d/docs/task007f/f0/temporal_grid_audit.md"
+    },
+    {
+      "role": "current-implementation",
+      "revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "path": "src/apex/simulation/asynchronous.py",
+      "sha256": "7d14395aa27707f2561bf6bdb32cd613bc2508ab12d6fe617bf45855d378f018",
+      "url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/48adbdf64d492592d15e23c917aca71fa58aa8a5/src/apex/simulation/asynchronous.py"
+    },
+    {
+      "role": "current-implementation",
+      "revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "path": "src/apex/control/trajectory/packet.py",
+      "sha256": "00830d2ced67321547add91a4e241664689cdeed57d57f0b9b2d95552b9fd704",
+      "url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/48adbdf64d492592d15e23c917aca71fa58aa8a5/src/apex/control/trajectory/packet.py"
+    },
+    {
+      "role": "current-implementation",
+      "revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "path": "src/apex/control/trajectory/prediction.py",
+      "sha256": "0013fd74299a68993dabbc381ca384837f09b862011956a94fd1d3b138b839ab",
+      "url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/48adbdf64d492592d15e23c917aca71fa58aa8a5/src/apex/control/trajectory/prediction.py"
+    },
+    {
+      "role": "current-implementation",
+      "revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "path": "src/apex/control/trajectory/tracker.py",
+      "sha256": "ffa5d9968650c97411121ba3dedd89a5de04a1a9ce832c50efa351763567ef27",
+      "url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/48adbdf64d492592d15e23c917aca71fa58aa8a5/src/apex/control/trajectory/tracker.py"
+    },
+    {
+      "role": "current-implementation",
+      "revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "path": "src/apex/control/baseline/controller.py",
+      "sha256": "1d738265c24e8ff6fc557ff8d4f82669978fe12e212dcd70dc45eb94cf438ec4",
+      "url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/48adbdf64d492592d15e23c917aca71fa58aa8a5/src/apex/control/baseline/controller.py"
+    },
+    {
+      "role": "current-implementation",
+      "revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "path": "src/apex/control/baseline/lqr.py",
+      "sha256": "68e191235e03dda744cc9894ca0981a8df8bd9f1bd0e6331f7872148014cf818",
+      "url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/48adbdf64d492592d15e23c917aca71fa58aa8a5/src/apex/control/baseline/lqr.py"
+    },
+    {
+      "role": "current-implementation",
+      "revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "path": "src/apex/control/baseline/speed.py",
+      "sha256": "5a41c32eaa491f5bf8fdec49827bac3d9aafd78924f10786fd4000d3a0ec941f",
+      "url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/48adbdf64d492592d15e23c917aca71fa58aa8a5/src/apex/control/baseline/speed.py"
+    },
+    {
+      "role": "current-implementation",
+      "revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "path": "src/apex/models/vehicle/dynamic_bicycle.py",
+      "sha256": "c93b674924eed24f9641ebe263863b3422cba5eb1665c0d93dd6cd00bdfd462f",
+      "url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/48adbdf64d492592d15e23c917aca71fa58aa8a5/src/apex/models/vehicle/dynamic_bicycle.py"
+    },
+    {
+      "role": "current-implementation",
+      "revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "path": "src/apex/models/vehicle/force_allocation.py",
+      "sha256": "e77d8c87efdaa9c008ec45385ad4dad326cfa2e003798c08e29a5fb9a17647f8",
+      "url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/48adbdf64d492592d15e23c917aca71fa58aa8a5/src/apex/models/vehicle/force_allocation.py"
+    },
+    {
+      "role": "current-implementation",
+      "revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "path": "src/apex/models/tire/grip.py",
+      "sha256": "e91bab930ee0650578ede2964ef680f77663cfd34d26ab1682c232b34c6d8c90",
+      "url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/48adbdf64d492592d15e23c917aca71fa58aa8a5/src/apex/models/tire/grip.py"
+    },
+    {
+      "role": "current-implementation",
+      "revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "path": "src/apex/state.py",
+      "sha256": "b2b16555f8ae83f041ee821906305accc56010b643bb3fa514f90a8a17e66862",
+      "url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/48adbdf64d492592d15e23c917aca71fa58aa8a5/src/apex/state.py"
+    },
+    {
+      "role": "current-implementation",
+      "revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "path": "configs/performance/apex_performance_synthetic_v1.json",
+      "sha256": "5299adca29d5c5bd383252cd2c299a392dd6872dc6bb72d1a4dd7ecfb8dd1ebf",
+      "url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/48adbdf64d492592d15e23c917aca71fa58aa8a5/configs/performance/apex_performance_synthetic_v1.json"
+    },
+    {
+      "role": "current-implementation",
+      "revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "path": "configs/vehicles/synthetic_dynamic_test_vehicle.yaml",
+      "sha256": "df1b853d21a1d3efaf858f7e58401151f2c5237793c40e16bb4189ed651f9cf3",
+      "url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/48adbdf64d492592d15e23c917aca71fa58aa8a5/configs/vehicles/synthetic_dynamic_test_vehicle.yaml"
+    },
+    {
+      "role": "current-implementation",
+      "revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "path": "uv.lock",
+      "sha256": "8cf85868a456415a898643dbb226d146b0b90e5c98982136cf2abf2465fa16ec",
+      "url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/48adbdf64d492592d15e23c917aca71fa58aa8a5/uv.lock"
+    },
+    {
+      "role": "current-implementation",
+      "revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "path": "pyproject.toml",
+      "sha256": "c8ea69a3a486c9794b6cf88ac26566211c6f1bb7b7286d86dbaa36a191353d41",
+      "url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/48adbdf64d492592d15e23c917aca71fa58aa8a5/pyproject.toml"
+    }
+  ],
+  "identity_limits": "Git and listed file SHA256 identity; no new scientific execution, numerical environment certification, raw archive backup or full archive content hash. Delivery identity is the containing commit, avoiding circular hashes."
+}

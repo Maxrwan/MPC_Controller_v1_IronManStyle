@@ -1,0 +1,225 @@
+{
+  "schema": "apex-safety-s0/supervisor-states/0.1.0",
+  "stage": "WORK_SPECIFICATION_ONLY",
+  "status": "WORK_COMPLETE_PENDING_REVIEW",
+  "implemented": false,
+  "owner": "Safety supervisor owns grants and state transitions; actuator endpoint owns physical enforcement/acknowledgement; independent watchdog/e-stop may revoke. Planner cannot self-authorize.",
+  "priority": "Emergency/fault and expiry checks precede permissive transitions. Evaluate NO_VALID_POLICY when no validated response exists; never await an impossible stop acknowledgement indefinitely.",
+  "latch_policy": "STOP_REQUESTED, STOPPING, STOPPED_LATCHED and NO_VALID_POLICY carry a persistent fault latch. Recovery reentry needs explicit reviewed policy; no automatic restart after emergency.",
+  "parameters_unresolved": [
+    "Intervention and freshness bounds",
+    "Warning hysteresis and reentry dwell",
+    "Independent watchdog timeout",
+    "Validated recovery/deceleration/stop domain",
+    "Emergency hardware response and acknowledgement bounds"
+  ],
+  "states": [
+    {
+      "id": "DISARMED",
+      "meaning": "No racing permission; admission checks and operator authorization outstanding.",
+      "ownership": "Supervisor refuses racing grants; actuator endpoint enforces characterized disarmed behavior.",
+      "restriction": "Startup/reboot enters here; physical disarming behavior unresolved."
+    },
+    {
+      "id": "NORMAL",
+      "meaning": "Fresh state, valid nominal domain and active authority; response feasibility adequate.",
+      "ownership": "Supervisor grants bounded permissions; controller proposes, endpoint validates/applies.",
+      "restriction": "Normal operation is conditional, not a safety guarantee."
+    },
+    {
+      "id": "WARNING",
+      "meaning": "Renewal/response feasibility is degrading but existing authority remains permitted.",
+      "ownership": "Supervisor retains eligible trajectory, requests renewal and evaluates verified alternatives.",
+      "restriction": "Not a fixed reserve threshold; no blind wait until expiry."
+    },
+    {
+      "id": "RECOVERY",
+      "meaning": "A separately verified recovery policy is admissible and preferable to immediate stop.",
+      "ownership": "Supervisor changes owner with epoch handshake; verified recovery generates requests.",
+      "restriction": "No current LQR basin is asserted; loss of eligibility escalates."
+    },
+    {
+      "id": "DECELERATING",
+      "meaning": "A verified conservative deceleration policy is feasible.",
+      "ownership": "Supervisor authorizes verified joint steering/braking policy; endpoint enforces bounds.",
+      "restriction": "Not raw -3 m/s^2 or guaranteed monotone vx; must transfer before model-domain loss."
+    },
+    {
+      "id": "STOP_REQUESTED",
+      "meaning": "Emergency demand or recovery unavailable; stop feasibility and physical response assessed.",
+      "ownership": "Supervisor revokes racing grants and requests validated stop; independent e-stop may also trigger.",
+      "restriction": "Latched; request does not prove execution or safety."
+    },
+    {
+      "id": "STOPPING",
+      "meaning": "Validated stop accepted by endpoint and execution acknowledged.",
+      "ownership": "Verified stop policy and independent endpoint enforce motion-to-rest and monitor progress.",
+      "restriction": "Latched; lost feasibility/ack enters NO_VALID_POLICY."
+    },
+    {
+      "id": "STOPPED_LATCHED",
+      "meaning": "Rest confirmed by validated sensing and holding mechanism within declared envelope.",
+      "ownership": "Endpoint maintains characterized holding/disarmed state; supervisor blocks automatic restart.",
+      "restriction": "Operator reset alone cannot prove eligibility; new session and checks required."
+    },
+    {
+      "id": "NO_VALID_POLICY",
+      "meaning": "Authority/estimate/actuation invalid and no validated continuation, recovery or stop policy available; or application state unknown beyond permitted bound.",
+      "ownership": "Revoke unsupported grants, invoke characterized independent emergency response if available, report uncontrolled hazard.",
+      "restriction": "Latched; no universal zero/hold/power-off action and no claim vehicle has stopped."
+    }
+  ],
+  "transitions": [
+    {
+      "id": "T01",
+      "from_states": [
+        "DISARMED"
+      ],
+      "to_state": "NORMAL",
+      "predicate": "Fresh validated state, valid accepted packet, healthy enforcement/clock/actuators, confirmed queue/session reset, adequate response margin and explicit authorized arming.",
+      "action": "Grant new session/epoch; record all admission evidence."
+    },
+    {
+      "id": "T02",
+      "from_states": [
+        "NORMAL"
+      ],
+      "to_state": "WARNING",
+      "predicate": "Current authority still admissible but renewal/response budget, uncertainty or fault indication approaches its reviewed intervention boundary.",
+      "action": "Request renewal; assess alternatives; log reserve and timing components."
+    },
+    {
+      "id": "T03",
+      "from_states": [
+        "WARNING"
+      ],
+      "to_state": "NORMAL",
+      "predicate": "Renewal accepted, domain/health restored and approved hysteresis/stability evidence satisfied; no latched emergency.",
+      "action": "Clear warning with causal evidence; hysteresis values remain unresolved."
+    },
+    {
+      "id": "T04",
+      "from_states": [
+        "NORMAL",
+        "WARNING"
+      ],
+      "to_state": "RECOVERY",
+      "predicate": "Recovery eligibility holds for reachable uncertainty and actuators; risk assessment favors recovery over stop.",
+      "action": "Change owner through current-epoch grant and acknowledged queue handling."
+    },
+    {
+      "id": "T05",
+      "from_states": [
+        "NORMAL",
+        "WARNING",
+        "RECOVERY"
+      ],
+      "to_state": "DECELERATING",
+      "predicate": "Verified conservative policy remains feasible and its destination/stop transfer is assured within declared bounds.",
+      "action": "Authorize that policy and validate every application/hold."
+    },
+    {
+      "id": "T06",
+      "from_states": [
+        "DISARMED",
+        "NORMAL",
+        "WARNING",
+        "RECOVERY",
+        "DECELERATING"
+      ],
+      "to_state": "STOP_REQUESTED",
+      "predicate": "Emergency demand, recovery not preferable/available, or intervention boundary requires stopping.",
+      "action": "Latch stop request; assess D_STOP; do not delay emergency demand awaiting an optimizer."
+    },
+    {
+      "id": "T07",
+      "from_states": [
+        "STOP_REQUESTED"
+      ],
+      "to_state": "STOPPING",
+      "predicate": "Validated D_STOP and independent endpoint acknowledgement for the correct session/epoch.",
+      "action": "Record actual stop-policy activation; monitor progress and deadlines."
+    },
+    {
+      "id": "T08",
+      "from_states": [
+        "STOPPING"
+      ],
+      "to_state": "STOPPED_LATCHED",
+      "predicate": "Validated rest and hold confirmed; no unresolved actuation/communication ambiguity.",
+      "action": "Latch achieved rest with evidence; preserve fault history."
+    },
+    {
+      "id": "T09",
+      "from_states": [
+        "DISARMED",
+        "NORMAL",
+        "WARNING",
+        "RECOVERY",
+        "DECELERATING",
+        "STOP_REQUESTED",
+        "STOPPING"
+      ],
+      "to_state": "NO_VALID_POLICY",
+      "predicate": "No eligible policy exists, critical uncertainty is unbounded, or response/ack bounds violated.",
+      "action": "Revoke software permission; request only characterized emergency response; declare residual uncontrolled hazard."
+    },
+    {
+      "id": "T10",
+      "from_states": [
+        "NO_VALID_POLICY"
+      ],
+      "to_state": "STOPPING",
+      "predicate": "Independently validated emergency response is now available, domain and endpoint acknowledgement confirmed.",
+      "action": "Remain fault-latched; execute response without relabeling prior uncontrolled interval."
+    },
+    {
+      "id": "T11",
+      "from_states": [
+        "NO_VALID_POLICY"
+      ],
+      "to_state": "STOPPED_LATCHED",
+      "predicate": "Independent valid rest/hold evidence obtained even if stop action history is incomplete.",
+      "action": "Preserve unknown prior application data; do not invent successful braking."
+    },
+    {
+      "id": "T12",
+      "from_states": [
+        "RECOVERY",
+        "DECELERATING"
+      ],
+      "to_state": "WARNING",
+      "predicate": "Verified terminal recovery set reached, new nominal authority accepted, transition feasible and separately approved reentry policy permits.",
+      "action": "No automatic racing reentry until hysteresis/dwell and epoch checks are approved."
+    },
+    {
+      "id": "T13",
+      "from_states": [
+        "STOPPED_LATCHED"
+      ],
+      "to_state": "DISARMED",
+      "predicate": "Authorized reset, faults cleared, inspected actuator/state/clock health and invalidated old session/queue.",
+      "action": "Re-arm only via T01; reset is not a direct racing grant."
+    },
+    {
+      "id": "T14",
+      "from_states": [
+        "STOPPED_LATCHED"
+      ],
+      "to_state": "NO_VALID_POLICY",
+      "predicate": "Rest/holding confidence lost or unexpected motion/power/actuator fault.",
+      "action": "Revoke rest claim; report fault and invoke eligible independent response."
+    }
+  ],
+  "required_telemetry": [
+    "Trigger and detection time",
+    "State/uncertainty/clock snapshot",
+    "Prior and new state/epoch/owner",
+    "Active packet and reserve",
+    "Held and pending command identities",
+    "Application/cancellation acknowledgements",
+    "Domain check results and reasons",
+    "Latency components and deadline",
+    "Latched fault causes and recovery outcome"
+  ]
+}

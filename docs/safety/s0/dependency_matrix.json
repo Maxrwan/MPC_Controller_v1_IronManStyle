@@ -1,0 +1,100 @@
+{
+  "schema": "apex-safety-s0/dependencies/0.1.0",
+  "stage": "WORK_SPECIFICATION_ONLY",
+  "status": "WORK_COMPLETE_PENDING_REVIEW",
+  "implemented": false,
+  "rows": [
+    {
+      "id": "DEP01",
+      "topic": "Canonical state/model identity",
+      "synthetic_prerequisite": "Preserve six-state/two-input SI conventions, separate prediction/plant; declare validated policy/model domain.",
+      "efficiency_interface": "Versioned model/config identity, independent of optimizer backend.",
+      "hardware_dependency_ids": [
+        "HW01",
+        "HW02",
+        "HW03",
+        "HW04"
+      ],
+      "gate": "New model/actuator claims need review; frozen A unchanged."
+    },
+    {
+      "id": "DEP02",
+      "topic": "Temporal availability",
+      "synthetic_prerequisite": "Actual monotonic packet times, acceptance, expiry, reserve and pending/held provenance.",
+      "efficiency_interface": "Nonuniform duration vectors, any horizon and variable/fixed handoff accepted only through actual timestamps; no automatic reserve credit for longer H.",
+      "hardware_dependency_ids": [
+        "HW05",
+        "HW06"
+      ],
+      "gate": "Adapter design review before implementation; no F0 scope change."
+    },
+    {
+      "id": "DEP03",
+      "topic": "Intervention feasibility",
+      "synthetic_prerequisite": "Proposed uncertainty/reachability sets and timing-budget assertions; no present certified response domain.",
+      "efficiency_interface": "Preparation variance and release policy feed availability, not proof of safety.",
+      "hardware_dependency_ids": [
+        "HW01",
+        "HW02",
+        "HW03",
+        "HW04",
+        "HW09",
+        "HW10"
+      ],
+      "gate": "Unknown feasibility denies hardware claims; separately authorized synthetic work may proceed under existing hard gates."
+    },
+    {
+      "id": "DEP04",
+      "topic": "Application authority",
+      "synthetic_prerequisite": "Epoch, lease, cancellation/ack races and endpoint validation designed/tested synthetically in future Stage B.",
+      "efficiency_interface": "Readiness and optimized feasible iterate remain separate from authority/application permissions.",
+      "hardware_dependency_ids": [
+        "HW03",
+        "HW05",
+        "HW06",
+        "HW07"
+      ],
+      "gate": "Stronger pending-command policy changes enabled runtime semantics and needs explicit review, never frozen-history rewrite."
+    },
+    {
+      "id": "DEP05",
+      "topic": "Independent emergency response",
+      "synthetic_prerequisite": "Failure state remains explicit; no standstill propagation using current dynamic model.",
+      "efficiency_interface": "No dependence on IPOPT convergence or host heartbeat alone.",
+      "hardware_dependency_ids": [
+        "HW03",
+        "HW07",
+        "HW08",
+        "HW10"
+      ],
+      "gate": "Hardware response/timeout must be characterized before deployment."
+    },
+    {
+      "id": "DEP06",
+      "topic": "Timing evidence",
+      "synthetic_prerequisite": "Retain native physical-time causal logs and unknown/censored acknowledgements.",
+      "efficiency_interface": "New supervision/telemetry overhead requires deterministic parity then separately approved measured timing; no inherited cost equivalence.",
+      "hardware_dependency_ids": [
+        "HW05",
+        "HW06",
+        "HW07"
+      ],
+      "gate": "No timing experiment or F0 profiling authorization from S0."
+    },
+    {
+      "id": "DEP07",
+      "topic": "Recovery and reentry",
+      "synthetic_prerequisite": "Validated domain/terminal set, hysteresis and latching requirements.",
+      "efficiency_interface": "Same layer serves any accepted controller; no implicit online controller switching or adaptive feature.",
+      "hardware_dependency_ids": [
+        "HW01",
+        "HW02",
+        "HW03",
+        "HW04",
+        "HW09",
+        "HW10"
+      ],
+      "gate": "Primary must choose recovery-versus-stop objectives and admissible residual risk."
+    }
+  ]
+}

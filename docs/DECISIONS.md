@@ -1032,3 +1032,19 @@ Efficiency specification is next only under separate authorization; shared Safet
 Workbench and VIS-2 remain deferred. See [acceptance report](TASK007E4_PERFORMANCE_ACCEPTANCE.md).
 This resolves Primary acceptance for Synthetic v1 without accepting broader VIS package completeness
 or authorizing a new execution stage.
+
+## ADR-166 — Proposed shared Safety and Authority boundary (S0)
+
+Status: **proposed, WORK_COMPLETE_PENDING_REVIEW; specification only**. Primary authorized S0
+hazard/domain/interface design on an isolated branch from E4, with no controller, configuration,
+physics, scheduler or test changes. One optimizer-independent supervisory layer is proposed between
+Performance/Efficiency producers and a separately validated actuator enforcement endpoint.
+Feasible proposal, accepted packet and permitted physical application remain distinct. Unknown
+recovery/stop feasibility must remain explicit; a simulation stop is not emergency braking.
+
+The [S0 specification](S0_SHARED_SAFETY_SPEC.md) records authority leases/epochs, application and
+held-input validation, fault latches, fourteen hazards, staged verification and unresolved hardware
+domains. Stronger arbitration is a future integration decision, not an alteration of frozen A.
+No safety guarantee, implementation stage, Efficiency experiment or merge is authorized by this ADR.
+E4 acceptance remains unchanged; [F0/ADR-165 on the independent Efficiency branch](https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/eaa0a3398515a21f30a850de59a0b44c775fad4d/docs/DECISIONS.md#adr-165--preserve-accepted-performance-refs-specify-independent-efficiency-research)
+is not merged here. Number 165 is reserved to that existing branch decision.
