@@ -1,0 +1,124 @@
+{
+  "schema": "apex-git-preservation/1.0.0",
+  "task": "007F-0",
+  "observed_date": "2026-10-19",
+  "repository": "Maxrwan/MPC_Controller_v1_IronManStyle",
+  "default_branch": "main",
+  "automatic_merge_enabled": false,
+  "accepted_checkpoint": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+  "verified_source_profile_revision": "e603672b209985f11ed26b6f44d3949ffd5675c5",
+  "E3_verification_delivery": "ecbbc5cdb6d182557dfdd0bca7caa215cc1355c9",
+  "refs": {
+    "frozen_branch": {
+      "name": "release/performance-synthetic-v1",
+      "remote_target": "48adbdf64d492592d15e23c917aca71fa58aa8a5"
+    },
+    "annotated_tag": {
+      "name": "performance-synthetic-v1",
+      "object_sha": "76d9eaa65af02efb0263916adc75d5247a0e778f",
+      "peeled_commit": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "object_type": "tag"
+    },
+    "efficiency": {
+      "name": "research/efficiency",
+      "created_from": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "initial_remote_target": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "delivery": "containing specification commit after normal push; not a frozen branch"
+    },
+    "main": {
+      "unchanged_at_creation": "48adbdf64d492592d15e23c917aca71fa58aa8a5"
+    }
+  },
+  "verification": {
+    "refs": "git ls-remote; annotated tag peeled identity plus local cat-file type",
+    "protection": "Authenticated GitHub settings creation and successful GET of both ruleset objects: active, exact includes, no exclusions/bypasses, current_user_can_bypass never",
+    "branch_extra_effective_rule_lookup": "Connector rejected /rules/branches/release%2Fperformance-synthetic-v1 with INVALID_ARGUMENT; not used as evidence. Successful full ruleset GETs and UI one-target confirmation provide configuration verification.",
+    "destructive_probe_performed": false
+  },
+  "protection_rulesets": [
+    {
+      "id": 25418055,
+      "name": "Freeze Performance Synthetic v1 branch",
+      "target": "branch",
+      "source_type": "Repository",
+      "source": "Maxrwan/MPC_Controller_v1_IronManStyle",
+      "enforcement": "active",
+      "conditions": {
+        "ref_name": {
+          "exclude": [],
+          "include": [
+            "refs/heads/release/performance-synthetic-v1"
+          ]
+        }
+      },
+      "rules": [
+        {
+          "type": "deletion"
+        },
+        {
+          "type": "non_fast_forward"
+        },
+        {
+          "type": "update"
+        }
+      ],
+      "node_id": "RRS_lACqUmVwb3NpdG9yec5StIH0zgGD2Uc",
+      "created_at": "2026-10-19T19:25:08.542+03:00",
+      "updated_at": "2026-10-19T19:25:08.588+03:00",
+      "bypass_actors": [],
+      "current_user_can_bypass": "never",
+      "_links": {
+        "self": {
+          "href": "https://api.github.com/repos/Maxrwan/MPC_Controller_v1_IronManStyle/rulesets/25418055"
+        },
+        "html": {
+          "href": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/rules/25418055"
+        }
+      }
+    },
+    {
+      "id": 25418590,
+      "name": "Freeze Performance Synthetic v1 tag",
+      "target": "tag",
+      "source_type": "Repository",
+      "source": "Maxrwan/MPC_Controller_v1_IronManStyle",
+      "enforcement": "active",
+      "conditions": {
+        "ref_name": {
+          "exclude": [],
+          "include": [
+            "refs/tags/performance-synthetic-v1"
+          ]
+        }
+      },
+      "rules": [
+        {
+          "type": "deletion"
+        },
+        {
+          "type": "non_fast_forward"
+        },
+        {
+          "type": "update"
+        }
+      ],
+      "node_id": "RRS_lACqUmVwb3NpdG9yec5StIH0zgGD214",
+      "created_at": "2026-10-19T19:39:58.355+03:00",
+      "updated_at": "2026-10-19T19:39:58.383+03:00",
+      "bypass_actors": [],
+      "current_user_can_bypass": "never",
+      "_links": {
+        "self": {
+          "href": "https://api.github.com/repos/Maxrwan/MPC_Controller_v1_IronManStyle/rulesets/25418590"
+        },
+        "html": {
+          "href": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/rules/25418590"
+        }
+      }
+    }
+  ],
+  "protection_blockers": [],
+  "authentication": "User completed GitHub Confirm access; both ruleset saves succeeded thereafter.",
+  "limitation": "Rulesets are active server-side controls, not cryptographic immutability against an authorized administrator editing rules; no destructive update/delete probe performed.",
+  "raw_archive": "Not preserved by Git; independent content-hashed backup still separate authorization; untouched."
+}

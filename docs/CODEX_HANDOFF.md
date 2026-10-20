@@ -1,3 +1,37 @@
+# Current handoff — Task007F-0 revised preservation and Efficiency specification
+
+**WORK_COMPLETE_PENDING_REVIEW.** Base/E4 acceptance `48adbdf64d492592d15e23c917aca71fa58aa8a5`.
+Frozen remote branch `release/performance-synthetic-v1` and annotated tag `performance-synthetic-v1`
+resolve exactly to E4. Active exact-ref GitHub rulesets 25418055/25418590 restrict updates, deletion
+and force pushes with empty bypass lists. Tag object `76d9eaa65af02efb0263916adc75d5247a0e778f`.
+Development branch `research/efficiency` created from E4; main remains integration/default.
+Specification delivery SHA/URL follow normal commit/push; no circular self-hash.
+
+[Spec](TASK007F0_EFFICIENCY_SPEC.md), [Git restoration guide](TASK007F0_GIT_REFERENCES.md),
+[metrics](task007f/f0/metrics_and_gates.json), [profiling plan](task007f/f0/profiling_protocol.json),
+[grid audit](task007f/f0/temporal_grid_audit.md), [matrix](task007f/f0/experiment_matrix.json),
+[resource/review gates](task007f/f0/resource_and_review_gates.json),
+[Git evidence](task007f/f0/git_preservation.json), [checks](task007f/f0/validation.json).
+
+Lexicographic validity → authority/reliability → compute → acceptable performance; Pareto metrics.
+Primary metrics: preparation CPU seconds per simulated second and p95 full-preparation wall latency. Research
+thresholds remain provisional. G1 first proposed grid after profiling: 88→68 variables; matched
+25 ms RK4 work remains 32 substeps and gain work follows H, not N. Uniform scalar dt, time-aligned
+warm starts, cost/slack weighting, first/inter-stage slew timing and intermediate validity need
+review before coding. Error floors, peak thresholds and exact profiling contexts remain explicit
+approval prerequisites. No C70 scheduling/grid combination in the first grid experiment.
+
+**Checks only:** static JSON/links/source/hash, candidate arithmetic, Git refs/protections, historical
+preservation and whitespace. All 294 scientific hashes and eight vehicle/Planning/dependency
+bindings match; manifest remains `5299adca29d5c5bd383252cd2c299a392dd6872dc6bb72d1a4dd7ecfb8dd1ebf`.
+E3's 750 passes are inherited, not rerun. No controller/default/fixture/test changes, numerical tests,
+profiling, simulation, exporter repair or Safety implementation. Raw histories untouched; 11,646
+size/mtime records are not a full-content archive backup. Independent content-hashed backup remains
+separate authorization. Recommend isolated worktree/checkout for future Efficiency. Stop after F0;
+Engineering Review must authorize any implementation or experiment.
+
+---
+
 # Current handoff — Task007E-4 Primary acceptance record
 
 **WORK_COMPLETE_PENDING_REVIEW — documentation/status delivery.** Primary APEX already accepted

@@ -1,0 +1,93 @@
+{
+  "schema_version": "1.0.0",
+  "task": "007F-0",
+  "stage": "WORK",
+  "status": "PROPOSED_SPECIFICATION_PENDING_ENGINEERING_REVIEW",
+  "execution_authorized": false,
+  "acceptance_checkpoint": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+  "verified_source_profile_revision": "e603672b209985f11ed26b6f44d3949ffd5675c5",
+  "schema": "apex-efficiency-resource-review/1.0.0",
+  "current_F0_allowed": [
+    "read-only source/evidence inspection",
+    "authorized Git reference creation/protection",
+    "documentation/JSON/hash/reference/preservation checks",
+    "normal scoped commit and push"
+  ],
+  "current_F0_forbidden": [
+    "numeric tests",
+    "solver calls",
+    "profiling",
+    "physical simulation",
+    "new experiments",
+    "runtime/controller/configuration changes",
+    "raw archive modification",
+    "Safety implementation",
+    "exporter repair"
+  ],
+  "future_resource_policy": {
+    "workers": "fresh sequential SINGLE only; inspect actual process list and measurement guards before each; no parallel tests/analysis/rendering",
+    "guards": [
+      "results/**/MEASURED_ACTIVE",
+      "results/task007d/D3_ACTIVE",
+      "other live task guards and actual computational processes"
+    ],
+    "guard_rule": "unknown/stale guard requires owner review; never delete it to proceed",
+    "minimum_remaining_free_disk_GiB": 1.0,
+    "initial_profile_reserved_output_GiB": 1.0,
+    "initial_profile_min_free_GiB": 2.0,
+    "disk_rule": "check before campaign and each worker; at least 1 GiB plus remaining planned output headroom; increase reservation after small export-size check, never delete historical data",
+    "profile_host_wall_budget_minutes": 20,
+    "profile_worker_peak_RSS_budget_GiB": 1.0,
+    "budget_semantics": "proposed allocation ceilings, not measured runtime guarantees. Do not launch next worker if depleted; preserve current attempt and report resource censoring. No outcome-dependent reduction/replacement. Any expansion requires review.",
+    "future_two_arm_screening_cap": {
+      "fresh_runs_per_arm": 10,
+      "simulated_seconds_per_run": 2,
+      "reserved_disk_GiB": 1.0,
+      "host_wall_minutes": 20,
+      "scope": "one separately authorized candidate contrast; mandatory zero/injected correctness fixtures before measured cases; budget excludes later full-lap validation",
+      "total_simulated_seconds": 40
+    },
+    "later_lap_or_reliability_campaign": "separate authorization/resource estimate; pilot budget cannot establish lap criteria or long-run 0.5% commitment reliability; no full-lap budget implicitly granted",
+    "evidence_root": "future fresh exclusive results/task007f/<approved-study>/<unique-run>; compact docs/task007f/...; never overwrite results/task007d or earlier evidence"
+  },
+  "review_gates": [
+    {
+      "id": "R0",
+      "before": "Efficiency implementation",
+      "requires": "F0 Engineering Review; verified frozen refs and protection status recorded; independent raw archive obligation acknowledged"
+    },
+    {
+      "id": "R1",
+      "before": "profiling",
+      "requires": "exact causal contexts, measurement boundaries, prerequisite scope and instrumentation parity; proposed resource allocation approved"
+    },
+    {
+      "id": "R2",
+      "before": "candidate code",
+      "requires": "profile-based choice, independent candidate ID, explicit scope; unresolved cost/rate/warm-start/grid decisions resolved"
+    },
+    {
+      "id": "R3",
+      "before": "candidate experiment",
+      "requires": "focused mathematical/chronology/physical/export/reference tests, exact A parity, native-thread/resource guards, predeclared protocol and acceptance floors"
+    },
+    {
+      "id": "R4",
+      "before": "promotion or larger study",
+      "requires": "hard gates, separate metrics and uncertainty, negative/censored accounting, formal reviewed-revision verification when authorized; Primary scientific acceptance for any profile change"
+    }
+  ],
+  "safety_S0": "shared future work on authority, loss of valid trajectory, timing, reserve and recovery; no automatic implementation or bypass",
+  "hardware": "Mac performance is algorithmic host evidence only. Device execution/latency bounds, identified model, sensing, actuator/application supervision, watchdog/emergency-stop and continuous safety require separate validation.",
+  "raw_archive": "Git preserves tracked files only. Content-hashed independent raw-results backup remains separately authorized and unperformed; size/mtime inventory is not a full-content backup.",
+  "unresolved_before_dependent_studies": [
+    "absolute error/TV floors and peak thresholds",
+    "offline context/warm-start recoverability",
+    "duration-weighted cost/slack quadrature and increment semantics",
+    "first-input and inter-stage steering slew timing",
+    "curvature/intermediate corridor acceptance policy",
+    "candidate-specific ablation/resource approvals",
+    "separate durable raw-archive backup",
+    "target hardware and physical safety acceptance"
+  ]
+}

@@ -1,0 +1,137 @@
+{
+  "schema": "apex-f0-spec-validation/1.0.0",
+  "task": "007F-0",
+  "stage": "WORK",
+  "status": "WORK_COMPLETE_PENDING_REVIEW",
+  "checked_at_utc": "2026-10-20T11:08:23.097561+00:00",
+  "base_revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+  "delivery_revision": "containing documentation commit; not self-hashed",
+  "branch": "research/efficiency",
+  "checks": {
+    "strict_JSON_records": 5,
+    "five_candidate_dimensions_and_substeps": "pass",
+    "version_status_scope_and_gate_consistency": "pass",
+    "relative_documentation_links_checked": 26,
+    "immutable_commit_file_line_links_checked": 18,
+    "markdown_fences_whitespace": "pass",
+    "git_diff_check": "pass",
+    "allowed_file_scope": "pass",
+    "historic_handoff_retained_as_suffix": "pass",
+    "historic_decisions_retained_as_prefix": "pass",
+    "remote_ref_and_active_ruleset_checks": "see git_preservation.json and post-push final handoff"
+  },
+  "manifest_sha256": "5299adca29d5c5bd383252cd2c299a392dd6872dc6bb72d1a4dd7ecfb8dd1ebf",
+  "scientific_source_inventory": {
+    "path": "docs/task007d/vis/vis1l/evidence/controlled_A/summary.json",
+    "sha256": "4840934ea4d425bdccd17b18cbd254f4372ba5275b655189010c223c2be72d71",
+    "json_pointer": "/source_sha256",
+    "entries_checked": 294,
+    "mismatches": 0
+  },
+  "source_and_configuration_equivalence": {
+    "verified_revision": "e603672b209985f11ed26b6f44d3949ffd5675c5",
+    "paths": [
+      "src",
+      "scripts",
+      "tests",
+      "configs",
+      "uv.lock",
+      "pyproject.toml"
+    ],
+    "verified_to_E4_diff": "empty",
+    "E4_to_working_tree_diff": "empty"
+  },
+  "vehicle_fixture_dependency_bindings": [
+    {
+      "path": "configs/vehicles/synthetic_dynamic_test_vehicle.yaml",
+      "sha256": "df1b853d21a1d3efaf858f7e58401151f2c5237793c40e16bb4189ed651f9cf3"
+    },
+    {
+      "path": "configs/planning/task007b/gamma_2p000/planning_manifest.json",
+      "sha256": "5e7bccf1a300fb6737fc6b6b6e0c9aa921c110b11ffc5762a73f57f830a8660c"
+    },
+    {
+      "path": "configs/planning/task007b/gamma_2p000/planning_reference.csv",
+      "sha256": "6206e18ce3cb105d58d0923564336e28c00ec44aee3fd8a06ff7a37bcf84e2df"
+    },
+    {
+      "path": "configs/planning/task007b/gamma_2p000/planning_validation.json",
+      "sha256": "279582d2dcf37fdf4008ddc7f926109ef3d730a0e64c188d7003755d08871fa7"
+    },
+    {
+      "path": "configs/planning/task007b/gamma_2p000/speed_polynomial.json",
+      "sha256": "f335e78fc6c735c952f49078077a573ee989dd2be71497e90451e34a79f2c7ea"
+    },
+    {
+      "path": "configs/planning/task007b/gamma_2p000/track_source.json",
+      "sha256": "5f4d1734d7fec7de56d346e8f90bf272a3de9c05ac42f76cd49004e7f9183e55"
+    },
+    {
+      "path": "uv.lock",
+      "sha256": "8cf85868a456415a898643dbb226d146b0b90e5c98982136cf2abf2465fa16ec"
+    },
+    {
+      "path": "pyproject.toml",
+      "sha256": "c8ea69a3a486c9794b6cf88ac26566211c6f1bb7b7286d86dbaa36a191353d41"
+    }
+  ],
+  "preservation": {
+    "preexisting_tracked_files": 827,
+    "content_hash_unchanged": 824,
+    "only_authorized_document_updates": [
+      "docs/CODEX_HANDOFF.md",
+      "docs/DECISIONS.md",
+      "docs/PROJECT_ROADMAP.md"
+    ],
+    "all_historical_scientific_evidence_unchanged": true,
+    "results_files_metadata_checked": 11646,
+    "results_added_removed_or_metadata_changed": 0,
+    "results_check_is_full_content_hash": false,
+    "raw_archive_backup_performed": false,
+    "snapshot_local_path": "/tmp/apex-f0-preservation-before.json",
+    "snapshot_sha256": "573290293058a34869fed073c72ed057575af0393c073217752f73e2a1acf517"
+  },
+  "inherited_verification": {
+    "record": "docs/task007e/e3/verification.json",
+    "sha256": "f018caa6adb4acc5bf050184953234efa5a6e45359057ce96dda908f7b858c80",
+    "tested_revision": "e603672b209985f11ed26b6f44d3949ffd5675c5",
+    "passed": 750,
+    "duration_s": 633.76,
+    "reexecuted": false,
+    "applicability": "Existing executable/configuration/dependency/fixture/test bytes unchanged. Applies to accepted baseline, not to proposed Efficiency mathematics or nonexistent candidate implementations."
+  },
+  "performed_only": [
+    "stdlib JSON/structural/analytical arithmetic checks",
+    "source/configuration/fixture/manifest hash checks",
+    "Git local/remote reference and ruleset readback",
+    "documentation source/reference/fence/whitespace checks",
+    "tracked content and ignored-results metadata preservation"
+  ],
+  "not_executed": [
+    "numerical tests",
+    "pytest collection",
+    "solver construction/calls",
+    "profiling",
+    "simulation",
+    "benchmark",
+    "new racing campaign",
+    "archive backup",
+    "future candidate or Safety implementation"
+  ],
+  "proposed_thresholds_are_not_runtime_changes": true,
+  "outstanding_decisions_record": "docs/task007f/f0/resource_and_review_gates.json",
+  "scoped_file_sha256": {
+    "docs/CODEX_HANDOFF.md": "8e10898fac7a952f3061b9adda10357f06912ae3269b653882e95d49c02ccd3e",
+    "docs/DECISIONS.md": "0e9c640c040b738b79aca80c52bc0a641b3e568f973a155fb7633ce232034a72",
+    "docs/PROJECT_ROADMAP.md": "2189e11772dbb630c637abc0ed8693138bc73feb4bd9f36f333f7adf87d238bd",
+    "docs/TASK007F0_EFFICIENCY_SPEC.md": "94fdbab17b0f0be99527c224168839a189b5d4095e30ba90df9e5f6c08e7c45c",
+    "docs/TASK007F0_GIT_REFERENCES.md": "fcf05bfaea2b0f2509930b41341198113b317c20b5e80856c73675ee79180737",
+    "docs/task007f/f0/experiment_matrix.json": "d42ac2d3059359352d4142789e4ea3c770c69a707b780b8a393ba13953d4ae8e",
+    "docs/task007f/f0/git_preservation.json": "080608b79c5b5a995cfe6ad26e4896c02f933378ba14edfaa17b42edeccd0d09",
+    "docs/task007f/f0/metrics_and_gates.json": "79d03e72c262c7e7d3387026ff275ba48c574f6c61124ad188a056d6e647d207",
+    "docs/task007f/f0/profiling_protocol.json": "6514a0b202d42ec7d11c695911515587a482abd5d11f735bc5fe99bec9b7bd15",
+    "docs/task007f/f0/resource_and_review_gates.json": "e1fa05ff7efc03b275d016de7adb54273e8c8faf19f9e8cfa5fbd215d602d3cd",
+    "docs/task007f/f0/temporal_grid_audit.md": "de653c8a8846295d3792886e73afcfe71a164e205b51f2665d26f5c1c68f60c9"
+  },
+  "delivery_check": "Normal scoped commit and push on research/efficiency; verify remote SHA after commit. No self-referential delivery hash inside this file."
+}

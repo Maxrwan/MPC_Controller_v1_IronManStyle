@@ -1032,3 +1032,27 @@ Efficiency specification is next only under separate authorization; shared Safet
 Workbench and VIS-2 remain deferred. See [acceptance report](TASK007E4_PERFORMANCE_ACCEPTANCE.md).
 This resolves Primary acceptance for Synthetic v1 without accepting broader VIS package completeness
 or authorizing a new execution stage.
+
+
+## ADR-165 — Preserve accepted Performance refs; specify independent Efficiency research
+
+Primary's revised Task007F-0 authorizes Git preservation and specification only. The frozen
+`release/performance-synthetic-v1` branch and annotated `performance-synthetic-v1` tag point to
+E4 `48adbdf64d492592d15e23c917aca71fa58aa8a5`; E2 remains the scientifically verified source/profile.
+Active exact-ref GitHub rulesets restrict updates, deletions and force pushes without bypass actors.
+`research/efficiency` begins at E4; main remains integration/default. No research commit goes to the
+frozen release. Git does not back up ignored scientific archives or the installed environment.
+
+Efficiency decisions follow physical/numerical validity, authority/reliability, compute, then
+acceptable racing/tracking; use Pareto evidence, no composite score. Complete preparation CPU
+per simulated second and p95 wall latency are primary. Numerical performance/operational targets
+remain provisional. Profiling precedes separately reviewed overhead/grid/control-horizon/solver
+studies. E-G1 is the first proposed nonuniform grid: 68 versus 88 variables, but 32 RK4 substeps
+at matched 25 ms resolution and unchanged 0.8 s gain horizon. Scalar timing, cost/slack quadrature,
+steering increment timing, warm starts, interpolation and domain coverage require explicit design
+and tests; no runtime saving or compatibility is assumed. Accepted A mathematics/defaults remain
+unchanged. C70 negative evidence and shared Safety obligations remain intact.
+
+See [specification](TASK007F0_EFFICIENCY_SPEC.md), [Git guide](TASK007F0_GIT_REFERENCES.md) and
+[grid audit](task007f/f0/temporal_grid_audit.md). No implementation, profiling, numerical run, Safety
+change or next stage is authorized by this specification delivery. Stop for Engineering Review.

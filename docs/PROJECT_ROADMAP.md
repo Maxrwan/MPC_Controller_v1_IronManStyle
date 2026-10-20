@@ -8,8 +8,10 @@ reference. The [immutable acceptance overlay](task007e/e4/primary_acceptance.jso
 revision `e603672b209985f11ed26b6f44d3949ffd5675c5` and E3 delivery
 `ecbbc5cdb6d182557dfdd0bca7caa215cc1355c9`; the original manifest remains unchanged.
 
-- **Next planning step:** APEX Efficiency specification, requiring separate authorization.
-  C70 remains an experimental candidate; neither C70 nor Efficiency is accepted or implemented here.
+- **Efficiency specification:** [Task007F-0](TASK007F0_EFFICIENCY_SPEC.md) prepared for Engineering
+  Review, with accepted Performance refs protected and independent `research/efficiency` branch.
+  Profiling and all implementation/experiments still require separate authorization. C70 remains
+  an experimental candidate; no Efficiency profile is implemented or accepted.
 - **Shared Safety milestone:** pending. Availability/recovery, delayed fallback-domain validation,
   braking, watchdog and continuous safety limitations remain explicit mandatory pre-hardware work.
 - **Workbench and VIS-2:** deferred; no ingestion/UI or unseen-track execution authorized.

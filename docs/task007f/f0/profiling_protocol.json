@@ -1,0 +1,118 @@
+{
+  "schema_version": "1.0.0",
+  "task": "007F-0",
+  "stage": "WORK",
+  "status": "PROPOSED_SPECIFICATION_PENDING_ENGINEERING_REVIEW",
+  "execution_authorized": false,
+  "acceptance_checkpoint": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+  "verified_source_profile_revision": "e603672b209985f11ed26b6f44d3949ffd5675c5",
+  "schema": "apex-efficiency-profiling-protocol/1.0.0",
+  "experiment_id": "F-PROFILE-1",
+  "state": "PROPOSED_NOT_EXECUTED",
+  "reference_manifest": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/48adbdf64d492592d15e23c917aca71fa58aa8a5/configs/performance/apex_performance_synthetic_v1.json",
+  "reference_architecture": "A, predictor A, unchanged variable scheduler; C70 and grid changes excluded from first profile",
+  "clocks": {
+    "wall": "monotonic perf_counter_ns",
+    "cpu": "process_time_ns for worker process; fresh SINGLE",
+    "units": "stored integer ns plus derived seconds",
+    "host_vs_simulation": "host duration never substitutes for simulated physical time"
+  },
+  "boundaries": [
+    {
+      "phase": "one_time_construction",
+      "scope": "separately time symbolic NLP graph, CasADi/IPOPT backend creation, predictor and TVLQR Jacobian construction, fixture load and terminal schedule initialization; no amortization hidden in runtime",
+      "source": [
+        "src/apex/control/mpc/problem.py:63",
+        "src/apex/optimization/solvers/ipopt.py:29",
+        "src/apex/control/mpc/controller.py:222",
+        "src/apex/control/trajectory/planner.py:14"
+      ]
+    },
+    {
+      "phase": "prediction",
+      "scope": "TrajectoryPlanner.prepare prediction block including tracker clone; causal release context only",
+      "source": [
+        "src/apex/control/trajectory/planner.py:38"
+      ]
+    },
+    {
+      "phase": "reference",
+      "scope": "preview outer total; geometry/reference children explicitly nested, never added twice",
+      "source": [
+        "src/apex/control/mpc/controller.py:69",
+        "src/apex/control/mpc/preview.py:37"
+      ]
+    },
+    {
+      "phase": "warm_start",
+      "scope": "shift or cold start and terminal lookup reported separately if measured; retain which path occurred",
+      "source": [
+        "src/apex/control/mpc/controller.py:82"
+      ]
+    },
+    {
+      "phase": "parameter_preparation",
+      "scope": "request packing, parameter vector, preparation overhead outside backend solve",
+      "source": [
+        "src/apex/control/mpc/controller.py:90"
+      ]
+    },
+    {
+      "phase": "solve",
+      "scope": "actual IPOPT backend call wall/CPU; solver adapter wrapper, statistics extraction, finite/feasibility evaluation separated as children/residual overhead",
+      "source": [
+        "src/apex/optimization/solvers/ipopt.py:35",
+        "src/apex/control/mpc/controller.py:97"
+      ]
+    },
+    {
+      "phase": "validation",
+      "scope": "controller shape/bounds/constraints and outcome processing; packet validation separately; failure path must retain partial phase coverage",
+      "source": [
+        "src/apex/control/mpc/controller.py:126"
+      ]
+    },
+    {
+      "phase": "gains",
+      "scope": "100 Hz TVLQR Jacobians, terminal DARE and backward recursion; optional subphase clocks only after noninterference gate",
+      "source": [
+        "src/apex/control/trajectory/planner.py:74",
+        "src/apex/control/trajectory/tracker.py:28"
+      ]
+    },
+    {
+      "phase": "packet_and_other",
+      "scope": "packet creation/replacement and residual overhead; reconcile exclusive child sums against full outer total; negative/unaccounted residuals investigated",
+      "source": [
+        "src/apex/control/trajectory/planner.py:55",
+        "src/apex/control/trajectory/planner.py:84"
+      ]
+    }
+  ],
+  "existing_timer_limit": "Existing phase clocks are mainly wall-only, total prepare also has CPU. Existing total stops before final packet replacement/return assembly; a new full-call outer timer must retain original planner_total_time and explicitly report its additional boundary overhead. No silent renaming of historical times.",
+  "instrumentation_gate": {
+    "implementation": "separate research wrapper/opt-in profiling only after approval; no scheduler event insertion; record serialization/export outside timed kernel",
+    "parity": "prerequisite exact controlled zero and imposed-delay state/input/packet/reference/authority/RK4 parity versus uninstrumented A; source and fixture hashes match. Measured instrumentation overhead can affect availability: report rather than claim wall-time equality. Future phase-clock insertion requires a reviewable source diff.",
+    "observer_effect": "paired instrumented/uninstrumented calls in fresh processes; retain all timings and numerical outputs; report clock overhead and full-call delta; no subtraction of an optimistic assumed overhead"
+  },
+  "proposed_samples": {
+    "closed_loop_reference": "10 fresh A workers x 2 s, same accepted short initial state and frozen gamma2 fixture; measured planner availability, imposed 5 ms codriver; one launch cohort per worker. Provides preparation CPU/simulated-s metric; no full lap claim.",
+    "representative_context_panel": "Separate offline diagnostic panel: 12 release-known contexts (4 low |curvature| straight, 4 sustained high |curvature| corner, 4 entry/exit) drawn by predeclared Planning-curvature quantiles and progress ordering from retained valid A evidence, never chosen by solver timing. 10 fresh workers x 12 calls; report CPU/wall per call, NOT CPU/simulated-s because this panel has no physical execution.",
+    "context_gate": "Before approval, freeze exact IDs, hashes and selection algorithm; require actual release state, active packet, tracker state, previous input, target/estimate and warm-start state. If warm-start state cannot be faithfully recovered, explicitly label cold-start panel and seek review; never claim representative warm starts from guessed state. Do not regenerate old evidence.",
+    "warmup": "one-time construction/startup separately retained; first recurring call and subsequent calls reported separately; no deletion of cold or slow samples",
+    "total_proposed_workers": 20,
+    "closed_loop_simulated_seconds": 20,
+    "offline_preparation_calls": 120,
+    "missing_strata": "report if retained evidence cannot supply meaningful straight/corner strata; no fabricated curvature or vehicle parameters"
+  },
+  "execution": "fresh sequential SINGLE processes; configure supported native backend before numerical imports; retain actual thread observations/backend/version/OS/CPU provenance; no tests/rendering/analysis during measurement",
+  "record": "source/config/fixture hashes; full per-call nested wall/CPU boundaries and failure paths; solver iterations/status/feasibility; predictor/gain/node counts; RSS; imposed vs measured availability; complete timestamps and stop reasons",
+  "stops": [
+    "hard gate in metrics_and_gates.json",
+    "native-thread or process-isolation failure",
+    "disk/headroom failure",
+    "instrumentation parity failure",
+    "missing causal context or unexpected timer reconciliation failure"
+  ],
+  "next": "Engineering Review of decomposition before selecting overhead/grid/control-horizon/solver experiments; no automatic follow-on"
+}

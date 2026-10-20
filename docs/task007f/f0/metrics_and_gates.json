@@ -1,0 +1,122 @@
+{
+  "schema_version": "1.0.0",
+  "task": "007F-0",
+  "stage": "WORK",
+  "status": "PROPOSED_SPECIFICATION_PENDING_ENGINEERING_REVIEW",
+  "execution_authorized": false,
+  "acceptance_checkpoint": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+  "verified_source_profile_revision": "e603672b209985f11ed26b6f44d3949ffd5675c5",
+  "schema": "apex-efficiency-metrics/1.0.0",
+  "priority_order": [
+    "physical_and_numerical_validity",
+    "authority_and_deadline_reliability",
+    "compute_and_resources",
+    "acceptable_racing_and_tracking"
+  ],
+  "comparison": "Pareto comparisons only after hard gates; no weighted composite score",
+  "primary_metrics": {
+    "preparation_cpu_per_simulated_second": {
+      "units": "CPU s / simulated s",
+      "definition": "Sum full observed CPU cost of every runtime preparation launched in common [t0,t1), including failed/rejected/late calls, divided by t1-t0. Startup and one-time construction separate. Charge terminal pending calls in full when observed on host; mark physical completion censored and report completed-within-window subset separately. Missing CPU observations yield incomplete metric, never zero.",
+      "clock": "process_time_ns differences",
+      "cohort": "launch cohort; never silently omit an expensive rejected or physically unfinished call"
+    },
+    "preparation_wall_p95": {
+      "units": "s",
+      "definition": "Nearest-rank p95 of complete prepare-call wall durations in the same launch cohort; include all outcomes; startup separate.",
+      "clock": "perf_counter_ns differences"
+    }
+  },
+  "secondary_metrics": [
+    "preparation wall and CPU mean, median, p99, maximum and sample counts",
+    "preparation CPU / host wall elapsed (duty), whole-worker CPU / host wall elapsed; neither is CPU / simulated second",
+    "process peak RSS bytes and sampling cadence; initialization and runtime separately",
+    "IPOPT iterations, status, primal infeasibility and independent acceptance failures",
+    "nominal planner busy opportunities, codriver busy ticks, commitment misses and rejected handoffs separately",
+    "accepted authority intervals, reserve minimum/time below thresholds, exhaustion/fallback, censored tails",
+    "six-state wrapped-heading tracking RMS/max, planned vs actual steering/heading TV, input rate/reversals, acceleration variation",
+    "recorded center clearance/limiting side, tire utilization each axle, beta, steering/rate utilization and Frenet denominator",
+    "complete-lap time, sector time, progress rate and actual trigger/release-to-authority latency"
+  ],
+  "hard_gates": [
+    {
+      "id": "H01",
+      "rule": "No accepted nonfinite solution or invalid physical state/control; all existing solver, model, actuator, load and longitudinal grip checks remain binding."
+    },
+    {
+      "id": "H02",
+      "rule": "No hard-constraint, chronology, causal-information, expired/rejected authority or overlapping-solve violation."
+    },
+    {
+      "id": "H03",
+      "rule": "No recorded boundary crossing; maximum predicted corridor slack <= 1e-6 m; numerical-domain failure stops branch. Center clearance is not swept-body certification."
+    },
+    {
+      "id": "H04",
+      "rule": "No unexplained solver/model/preparation failure or unapproved fallback; preserve and stop on a newly observed failure."
+    },
+    {
+      "id": "H05",
+      "rule": "No trajectory exhaustion in a successful run. Preserve all unsuccessful and censored cases."
+    },
+    {
+      "id": "H06",
+      "rule": "Exact default/reference parity, complete source/fixture provenance, valid export, SINGLE observations and measurement isolation before dependent measurements."
+    }
+  ],
+  "provisional_performance_thresholds": {
+    "complete_lap_relative_change": {
+      "target_max": 0.01,
+      "provisional_max": 0.03,
+      "requires": "same complete-lap definition and matched conditions; not evaluable for incomplete lap"
+    },
+    "lateral_heading_rms": {
+      "relative_increase_max": 0.2,
+      "absolute_floors": {
+        "lateral_m": null,
+        "heading_rad": null,
+        "status": "Engineering Review must approve SI floors before dependent acceptance comparisons",
+        "method": "Choose from independently assessed native sampling/reconstruction error bound and smallest scientifically material error, not the candidate result. Record evidence/units first. If reference RMS >= approved floor use C <= 1.2*A; otherwise report absolute RMS/difference and apply C-A <= 0.2*floor. No relative claim below floor. Null floor means unresolved, not zero."
+      }
+    },
+    "applied_steering_total_variation": {
+      "relative_increase_max": 0.15,
+      "near_zero_reference": "ratio undefined below predeclared numerical-resolution floor; report absolute variation, require independent absolute tolerance approval"
+    },
+    "peak_tire_utilization_each_axle": {
+      "absolute_increase_max": 0.05,
+      "requires": "physical validity independently passes"
+    },
+    "sector_relative_degradation_investigate_above": 0.05,
+    "peak_beta_and_tracking_error_thresholds": {
+      "values": null,
+      "status": "independently justify and approve before candidate acceptance; no invented vehicle-safety thresholds"
+    }
+  },
+  "provisional_operational_targets": {
+    "normal_reserve_min_s": 0.2,
+    "normal_reserve_critical_floor_s": 0.05,
+    "sampling": "all available native trajectory-mode observations AND integration endpoints after gated startup, plus acceptance events; report warning/critical time. Do not reclassify a low-reserve interval as abnormal to hide it.",
+    "fixed_commitment_miss_fraction_max": 0.005,
+    "max_consecutive_fixed_misses": 2,
+    "C70_preparation_p95_max_s": 0.06,
+    "C70_preparation_p99_max_s": 0.07,
+    "architecture_A_fixed_miss_rate": null,
+    "architecture_A_fixed_miss_rate_reason": "not applicable: variable availability, no C70 commitment deadline",
+    "classification": "research targets, not installed safeguards or safety guarantees; failing a target prevents promotion and requires review, not evidence removal"
+  },
+  "statistical_plan": {
+    "matched": "same immutable fixture, gamma, starting state, timing policy, physical duration, native resource policy and control mathematics except declared candidate factor; fresh concurrent-workload-free A control for host comparisons",
+    "exploratory_min_fresh_runs_per_arm": 10,
+    "order": "paired balanced AB/BA blocks predeclared before outcomes; no early stopping for favorable performance",
+    "quantile": "nearest rank ceil(p*n), sorted observations; retain raw full distribution and all outliers, including failed calls; no trimming",
+    "p99_interpretation_min_completed_calls": 1000,
+    "fixed_reliability_interpretation_min_due_deadlines": 1000,
+    "tail_caveat": "These are proposed minimum interpretability counts (about ten observations in upper 1%); not sufficient proof of a bound. Extend only with review. Short pilots report descriptive tails and counts without claiming 0.5% reliability.",
+    "uncertainty": "per-run estimates and paired differences; 95% intervals from whole-run/paired-block resampling, preserving within-run correlation; list per-run miss clusters and longest streak. Do not treat launches as independent trials. Insufficient repetitions => descriptive only.",
+    "fixed_miss_denominator": "all released fixed commitments whose deadlines fall within observed physical coverage; unfinished-at-stop deadlines remain censored. Ready-but-rejected packets are separate authority failures, not successful handoffs.",
+    "censoring": "all attempts and early stops retained; null missing values with reasons; no extrapolated lap/sector, imputed timing or successful replacement run; surviving common-window summaries never erase failure rates",
+    "coverage": "publish full per-run coverage plus matched common physical-time and observed-progress windows; progress-aligned comparison is separate from time-aligned comparison. Initial seam is partial; lap is between two crossings; own-reference tracking is not racing superiority.",
+    "improvement": "report A-C and (A-C)/A per metric with units and uncertainty; ratios unavailable at zero or below approved floor; a tradeoff remains a tradeoff"
+  }
+}
