@@ -1,3 +1,35 @@
+# Current handoff — S0 acceptance record and S1 standalone specification
+
+**WORK_COMPLETE_PENDING_REVIEW — documentation/specification only.**
+Primary's [S0 architecture acceptance](safety/s0/primary_acceptance.json) binds exact delivery
+`3747e0d9a7e834a5df34c4b089a5292c0a749fa4` and all original S0 artifact SHA-256 hashes.
+No acceptance date was supplied: null plus reason is retained. Original S0 WORK evidence,
+ADR-166 and V01–V19 NOT_EXECUTED records below remain historical and unchanged.
+
+[S1 specification](S1_STANDALONE_AUTHORITY_SPEC.md), [contracts](safety/s1/interface_contract.json),
+[state/event invariants](safety/s1/state_and_event_invariants.json),
+[initial scenario oracles](safety/s1/initial_scenario_oracles.json),
+[staged plan](safety/s1/staged_implementation_plan.json) and [review gates](safety/s1/review_gates.json)
+propose S1-A logical authority, later S1-B synthetic endpoint, and separately authorized S1-C
+extensions/integration. All nine S0 states remain; V01/V05/V06/V07 are protocol projections and
+V15/V19 bounded subsets. No scenario is executed or fully accepted. Perception v0.3 adapter is
+pending; approximately 50 ms is an unvalidated hypothesis. All HW01–HW10 remain unresolved.
+
+**Checks:** [validation](safety/s1/validation.json), [documentation schemas](safety/s1/documentation_schemas.json)
+and [provenance](safety/s1/provenance.json): static schema/reference/source-hash/preservation/whitespace only.
+No supervisor/endpoint code, tests or collection, numerical verification, simulation, fault injection,
+profiling, hardware or archive restoration. Frozen Performance/tag/main refs and runtime/config/
+test/dependency bytes remain unchanged; no merge. Independent Efficiency advanced during temporary
+drafting to documentation-only `ff34bd36897c4ed00b850a2d0255132bdebac5fd`; it is retained as
+concurrent work, not a Safety edit. Ignored result metadata checks do not constitute raw-content
+rehash/backup qualification.
+
+**Next required decision:** Engineering Review of this exact specification delivery and explicit
+scoped authorization before S1-A code/tests. S1 acceptance is pending; A review grants no B/C work.
+Delivery SHA/URL is supplied in final remote handoff, without circular self-embedded SHA.
+
+---
+
 # Current handoff — S0 shared Safety specification
 
 **WORK_COMPLETE_PENDING_REVIEW — specification/hazard analysis only.** Isolated

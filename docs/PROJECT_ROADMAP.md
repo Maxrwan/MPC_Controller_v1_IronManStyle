@@ -10,9 +10,11 @@ revision `e603672b209985f11ed26b6f44d3949ffd5675c5` and E3 delivery
 
 - **Independent Efficiency work:** [F0 specification](https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/eaa0a3398515a21f30a850de59a0b44c775fad4d/docs/TASK007F0_EFFICIENCY_SPEC.md)
   is on `research/efficiency`; no merge or execution authorization here. C70 remains experimental.
-- **Shared Safety milestone:** S0 specification prepared on isolated `research/safety-s0`, pending
-  Engineering Review; see [S0](S0_SHARED_SAFETY_SPEC.md). No Safety implementation. Availability,
-  recovery, application-time validation, braking, watchdog and continuous safety remain pre-hardware gaps.
+- **Shared Safety milestone:** Primary accepted the exact S0 architecture; the [acceptance overlay](safety/s0/primary_acceptance.json)
+  records the supplied decision without inventing an acceptance date or rewriting original WORK evidence.
+  [S1 standalone specification](S1_STANDALONE_AUTHORITY_SPEC.md) is WORK_COMPLETE_PENDING_REVIEW.
+  No S1 acceptance, implementation, tests or automatic A/B/C progression. Physical recovery,
+  application enforcement, braking, watchdog and continuous safety remain unresolved.
 - **Workbench and VIS-2:** deferred; no ingestion/UI or unseen-track execution authorized.
 - **Production/hardware:** no default changes or deployment authorization.
 

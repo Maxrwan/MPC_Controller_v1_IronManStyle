@@ -1048,3 +1048,28 @@ domains. Stronger arbitration is a future integration decision, not an alteratio
 No safety guarantee, implementation stage, Efficiency experiment or merge is authorized by this ADR.
 E4 acceptance remains unchanged; [F0/ADR-165 on the independent Efficiency branch](https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/eaa0a3398515a21f30a850de59a0b44c775fad4d/docs/DECISIONS.md#adr-165--preserve-accepted-performance-refs-specify-independent-efficiency-research)
 is not merged here. Number 165 is reserved to that existing branch decision.
+
+
+## ADR-167 — Record S0 architecture acceptance; specify staged standalone S1
+
+Primary accepts exact S0 delivery `3747e0d9a7e834a5df34c4b089a5292c0a749fa4` as the shared
+Safety/Recovery/Fault Supervision scientific architecture. The [versioned acceptance overlay](safety/s0/primary_acceptance.json)
+records the supplied authority statement, exact artifact hashes and a null acceptance date because
+none was supplied. Original S0 WORK records and ADR-166 remain historical; their bytes/status are
+not rewritten. Accepted principles include explicit domains and uncertainty/risk, feasibility-based
+response choice, three authority gates, application/held-input checks, epochs/cancellation,
+causal freshness/intervention, latching, controlled reentry and NO_VALID_POLICY.
+
+The [S1 specification](S1_STANDALONE_AUTHORITY_SPEC.md) proposes pure deterministic S1-A authority,
+separately reviewed S1-B synthetic endpoint, then explicitly scoped S1-C extension/integration.
+All nine states are retained. Initial V01/V05/V06/V07 protocol projections and bounded V15/V19
+oracles are specified, not executed. Logical grants, simulated application and physical actuation
+remain separate; undelivered revocation and unknown acknowledgements are explicit.
+
+Primary conditionally approves this strategy/design basis only. S1 specification acceptance,
+implementation/tests, fault injection, physical policy validation and runtime integration are not
+authorized by this delivery. Perception v0.3 and its proposed approximately 50 ms freshness
+hypothesis remain pending. HW01–HW10, numerical domains and physical stopping/enforcement
+guarantees remain unresolved. Safety changes neither architecture. Independent Efficiency's
+concurrent documentation-only `ff34bd36897c4ed00b850a2d0255132bdebac5fd` is retained separately.
+Exit **WORK_COMPLETE_PENDING_REVIEW** for Engineering Review; no automatic A/B/C progression.

@@ -1,0 +1,2747 @@
+{
+  "schema": "apex-s1/interface-contract/0.1.0",
+  "stage": "WORK_DOCUMENTATION_SPECIFICATION_ONLY",
+  "status": "WORK_COMPLETE_PENDING_REVIEW",
+  "implemented": false,
+  "execution": "NOT_EXECUTED",
+  "interface_version": "apex-s1-authority/0.1.0",
+  "s0_interface_reference": {
+    "path": "docs/safety/s0/authority_interface.json",
+    "revision": "3747e0d9a7e834a5df34c4b089a5292c0a749fa4",
+    "sha256": "60a95f2cb3320b63723c774ec996fd420aeba0d316c429afa7e0b09751ea58bc",
+    "git_url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/3747e0d9a7e834a5df34c4b089a5292c0a749fa4/docs/safety/s0/authority_interface.json"
+  },
+  "scope": "Proposed standalone synthetic contracts. JSON schemas are design artifacts, not an implemented supervisor, endpoint or runtime validator.",
+  "units": {
+    "state_order": [
+      "vx",
+      "vy",
+      "r",
+      "e_psi",
+      "s_abs",
+      "e_y"
+    ],
+    "state_si": [
+      "m/s",
+      "m/s",
+      "rad/s",
+      "rad",
+      "m",
+      "m"
+    ],
+    "input_order": [
+      "delta",
+      "a_cmd"
+    ],
+    "input_si": [
+      "rad",
+      "m/s^2"
+    ],
+    "a_cmd": "Dynamic Fx_total/m; no dynamics or actuator conversion is implemented by S1.",
+    "time": "Control ticks times exact rational tick_period_s in seconds. Preserve source SI timestamps; no N*dt inference."
+  },
+  "clock_rules": [
+    "Scheduler time never decreases. Complete externally scheduled input batches are sealed before timestamp processing.",
+    "ClockStamp mappings yield conservative inclusive integer bounds. Unknown mapping has null bounds plus reason and denies dependent permission.",
+    "Source SI times not exactly on the configured tick grid are mapped outward; never round start earlier or expiry later.",
+    "Packet source timestamps must strictly increase; corresponding bounds must have matching lengths and each previous upper bound < next lower bound. Unresolved order denies acceptance.",
+    "authority_start_tick equals the upper bound of the first timestamp; authority_end_tick equals the lower bound of the last timestamp. Require start < end.",
+    "Permission and packet authority use [start,end). Application upper bound < end; held_until <= end. No command may stay logically authorized at end.",
+    "Conservative order uses max(capture) <= min(generation) <= requested <= min(application), with max(application) <= latest < permission end.",
+    "For every application/hold instant, age upper bound is instant upper bound minus capture lower bound. It must remain within the explicitly configured policy bound.",
+    "Unknown or absent configured freshness bound denies nominal grants; no default is inferred from the proposed 50 ms Perception hypothesis."
+  ],
+  "semantic_rules": [
+    "All JSON numbers must be finite; reject NaN, Infinity, booleans-as-numbers and malformed or unknown fields/versions.",
+    "Required null values carry a nonempty reason in their record or Trace. Unknown never becomes zero, false rest or a successful acknowledgement.",
+    "Evidence is supplied named synthetic assumption data, bound to current context, state/packet and [valid_from,valid_until). It proves no physical domain.",
+    "VALID estimate requires finite six-state data, capture/publication/receipt ordering, configured map/frame, reviewed uncertainty interpretation and nonexpired health evidence.",
+    "COVARIANCE alone never satisfies bounded-set containment; covariance may be recorded while eligibility remains UNKNOWN.",
+    "DEGRADED, INVALID, MISSING, stale or unresolved estimates deny new nominal grants. Existing continuation needs separate named eligible evidence or enters NO_VALID_POLICY.",
+    "A PROPOSAL_READY record never changes active authority. AUTHORITY_ACCEPT requires causal acceptance evidence and ready <= accepted; FIXED mode additionally needs ready <= fixed deadline and accepted == deadline.",
+    "At most one active nominal owner. Replacing authority revokes affected grants and requires a matching new-epoch barrier; a matching preacknowledged barrier may be consumed in the same timestamp batch. No new-epoch grant/commit before installation is acknowledged.",
+    "Packet-derived permissions cannot end after original packet expiry, including explicit reauthorization; generations and source identities remain immutable.",
+    "NOMINAL commands require a source packet. Non-packet commands require a named policy, nonpacket_reason and eligible matching evidence; no default braking command exists.",
+    "payload_utf8 contains the immutable original UTF-8 JSON command object excluding payload_utf8 and payload_sha256. Reject duplicate JSON keys; parse finite numbers as exact decimals and require equality with all other command fields. payload_sha256 hashes those exact UTF-8 bytes without reserialization. Different encodings have different digests and cannot masquerade as an exact duplicate.",
+    "First authenticated well-formed command in a recognized session consumes its producer sequence even if denied. Exact duplicate ID/digest returns original outcome without a new grant or application. Conflicting ID/digest latches IDENTITY_CONFLICT; older unseen sequence is rejected.",
+    "Reauthorization creates a new permission ID in current epoch, preserving command ID, original packet and generation epoch. Only a still-unapplied, uncancelled command may be reauthorized.",
+    "A permission is a conditional logical lease, not an application observation. APPLICATION_CHECK reads current state again and grants no indefinite hold.",
+    "S1-B ENDPOINT_COMMIT checks endpoint-local epoch/session, cancellation ledger, freshness, current locally received evidence, previous simulated application and independently supplied synthetic constraint evidence immediately before commit. Missing prior-input/constraint evidence denies commit; no physical rate limit is invented.",
+    "Endpoint cannot know undelivered host revocations. Host request, endpoint installation, acknowledgement and application are distinct events. Snapshot endpoint epoch is last acknowledged knowledge; EndpointSnapshot installed epoch is endpoint-local truth in B.",
+    "BarrierAck is separate from application feedback: accept only matching target session, epoch, barrier ID and known queue-cleared installation; delivery <= installation <= acknowledgement observation. UNKNOWN cannot complete a barrier. A fixture EPOCH_INSTALL fact alone never updates acknowledged host knowledge.",
+    "Cancellation acknowledgement before commit prevents future commit. TOO_LATE preserves prior application; absent acknowledgement remains UNKNOWN.",
+    "Rejecting/revoking permission does not erase or neutralize a held input. Expiry without an eligible continuation/response latches NO_VALID_POLICY and retains unknown/held observations.",
+    "S1-A must reject endpoint delivery and ENDPOINT_COMMIT operations as STAGE_NOT_ENABLED. EndpointObservation, BarrierAck and EPOCH_INSTALL facts in A are supplied fixture evidence, not endpoint execution. No stage produces physical feedback.",
+    "S1-B COMMAND_DELIVER/PERMISSION_DELIVER/ENDPOINT_ESTIMATE_DELIVER/ENDPOINT_EVIDENCE_DELIVER mutate only local received state. Late grants cannot resurrect an obsolete epoch or a cancelled/applied command."
+  ],
+  "perception_adapter": {
+    "status": "PENDING_V0_3_CONTRACT_NOT_ADOPTED",
+    "preserve": [
+      "capture",
+      "publication",
+      "receipt",
+      "source clock/session/mapping bounds",
+      "estimate age",
+      "covariance or bounded-error interpretation",
+      "DEGRADED quality",
+      "frame/map identity",
+      "missing inputs",
+      "measured publication latency"
+    ],
+    "publication_latency": "Map source capture/publication intervals first; conservatively compute [publication_min-capture_max, publication_max-capture_min]. Negative/inconsistent chronology is invalid; unavailable measurement stays null with reason. Receipt latency is separate.",
+    "proposed_age_hypothesis_s": 0.05,
+    "age_hypothesis_status": "UNVALIDATED_NOT_A_DEFAULT_OR_CERTIFIED_LIMIT",
+    "adoption_gate": "Obtain versioned producer contract, units/frame/map and uncertainty semantics; separate Control/Perception review and integration authorization."
+  },
+  "schemas": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "urn:apex:s1:authority:0.1.0",
+    "$defs": {
+      "ClockStamp": {
+        "type": "object",
+        "required": [
+          "clock_id",
+          "clock_session_id",
+          "source_tick",
+          "mapping_id",
+          "control_tick_bounds",
+          "unknown_reason"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "clock_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "clock_session_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "source_tick": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "mapping_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "control_tick_bounds": {
+            "anyOf": [
+              {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "minItems": 2,
+                "maxItems": 2
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "unknown_reason": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        }
+      },
+      "Uncertainty": {
+        "type": "object",
+        "required": [
+          "representation",
+          "bounded_set_ref",
+          "covariance_si",
+          "interpretation_ref",
+          "reason"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "representation": {
+            "type": "string",
+            "enum": [
+              "BOUNDED_SET",
+              "COVARIANCE",
+              "UNKNOWN"
+            ]
+          },
+          "bounded_set_ref": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "covariance_si": {
+            "anyOf": [
+              {
+                "type": "array",
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "type": "number"
+                  },
+                  "minItems": 6,
+                  "maxItems": 6
+                },
+                "minItems": 6,
+                "maxItems": 6
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "interpretation_ref": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "reason": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        }
+      },
+      "Estimate": {
+        "type": "object",
+        "required": [
+          "estimate_id",
+          "state_si",
+          "capture",
+          "publication",
+          "receipt",
+          "quality",
+          "frame_id",
+          "map_id",
+          "uncertainty",
+          "health_evidence_id",
+          "publication_latency_tick_bounds",
+          "unknown_reason"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "estimate_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "state_si": {
+            "anyOf": [
+              {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                },
+                "minItems": 6,
+                "maxItems": 6
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "capture": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/ClockStamp"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "publication": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/ClockStamp"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "receipt": {
+            "$ref": "#/$defs/ClockStamp"
+          },
+          "quality": {
+            "type": "string",
+            "enum": [
+              "VALID",
+              "DEGRADED",
+              "INVALID",
+              "MISSING"
+            ]
+          },
+          "frame_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "map_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "uncertainty": {
+            "$ref": "#/$defs/Uncertainty"
+          },
+          "health_evidence_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "publication_latency_tick_bounds": {
+            "anyOf": [
+              {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "minItems": 2,
+                "maxItems": 2
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "unknown_reason": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        }
+      },
+      "Evidence": {
+        "type": "object",
+        "required": [
+          "evidence_id",
+          "kind",
+          "result",
+          "claim_scope",
+          "policy_id",
+          "estimate_id",
+          "source_packet_id",
+          "context_revision",
+          "domain_ids",
+          "assumption_set_ref",
+          "terminal_or_transfer_ref",
+          "uncertainty_interpretation_ref",
+          "fault_model_ref",
+          "valid_from_tick",
+          "valid_until_tick",
+          "reason"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "evidence_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "NOMINAL",
+              "CONTINUATION",
+              "RECOVERY",
+              "DECELERATION",
+              "STOP",
+              "REST_HOLD",
+              "HEALTH",
+              "REENTRY",
+              "QUEUE_BARRIER",
+              "FEASIBILITY",
+              "ACCEPTANCE",
+              "ACTUATOR_CONSTRAINTS",
+              "SELECTION",
+              "TRANSFER",
+              "FAULT_CLEARANCE",
+              "REAUTHORIZATION"
+            ]
+          },
+          "result": {
+            "type": "string",
+            "enum": [
+              "SATISFIED",
+              "VIOLATED",
+              "UNKNOWN"
+            ]
+          },
+          "claim_scope": {
+            "type": "string",
+            "enum": [
+              "SYNTHETIC_ASSUMPTION"
+            ]
+          },
+          "policy_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "estimate_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "source_packet_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "context_revision": {
+            "type": "string",
+            "minLength": 1
+          },
+          "domain_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "D_NOMINAL",
+                "D_PACKET",
+                "D_RECOVERY",
+                "D_DECEL",
+                "D_STOP"
+              ]
+            },
+            "minItems": 0
+          },
+          "assumption_set_ref": {
+            "type": "string",
+            "minLength": 1
+          },
+          "terminal_or_transfer_ref": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "uncertainty_interpretation_ref": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "fault_model_ref": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "valid_from_tick": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "valid_until_tick": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "Packet": {
+        "type": "object",
+        "required": [
+          "packet_id",
+          "source_controller_id",
+          "source_manifest_sha256",
+          "timestamps_s",
+          "timestamp_control_tick_bounds",
+          "clock_mapping_id",
+          "ready_tick",
+          "accepted_tick",
+          "acceptance_id",
+          "acceptance_evidence_id",
+          "authority_start_tick",
+          "authority_end_tick",
+          "handoff_mode",
+          "fixed_deadline_tick",
+          "frame_id",
+          "map_id"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "packet_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "source_controller_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "source_manifest_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "timestamps_s": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 2
+          },
+          "timestamp_control_tick_bounds": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "minItems": 2,
+              "maxItems": 2
+            },
+            "minItems": 2
+          },
+          "clock_mapping_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "ready_tick": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "accepted_tick": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "acceptance_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "acceptance_evidence_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "authority_start_tick": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "authority_end_tick": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "handoff_mode": {
+            "type": "string",
+            "enum": [
+              "VARIABLE",
+              "FIXED"
+            ]
+          },
+          "fixed_deadline_tick": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 0
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "frame_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "map_id": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "Command": {
+        "type": "object",
+        "required": [
+          "command_id",
+          "session_id",
+          "producer_id",
+          "sequence",
+          "payload_sha256",
+          "payload_utf8",
+          "source_controller_id",
+          "source_manifest_sha256",
+          "source_packet_id",
+          "nonpacket_reason",
+          "policy_id",
+          "mode",
+          "generation_epoch",
+          "generated",
+          "estimate_id",
+          "requested_application_tick",
+          "latest_application_tick",
+          "held_until_tick",
+          "requested_control_si"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "command_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "session_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "producer_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sequence": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "payload_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "payload_utf8": {
+            "type": "string",
+            "minLength": 1
+          },
+          "source_controller_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "source_manifest_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "source_packet_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "nonpacket_reason": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "policy_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "mode": {
+            "type": "string",
+            "enum": [
+              "NOMINAL",
+              "RECOVERY",
+              "DECELERATION",
+              "STOP"
+            ]
+          },
+          "generation_epoch": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "generated": {
+            "$ref": "#/$defs/ClockStamp"
+          },
+          "estimate_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "requested_application_tick": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "latest_application_tick": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "held_until_tick": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "requested_control_si": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 2,
+            "maxItems": 2
+          }
+        }
+      },
+      "Permission": {
+        "type": "object",
+        "required": [
+          "permission_id",
+          "command_id",
+          "session_id",
+          "source_controller_id",
+          "source_packet_id",
+          "policy_id",
+          "generation_epoch",
+          "permission_epoch",
+          "valid_from_tick",
+          "valid_until_tick",
+          "latest_application_tick",
+          "held_until_tick",
+          "estimate_id",
+          "evidence_ids",
+          "reauthorization_of_permission_id",
+          "transition_id",
+          "claim_scope"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "permission_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "command_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "session_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "source_controller_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "source_packet_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "policy_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "generation_epoch": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "permission_epoch": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "valid_from_tick": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "valid_until_tick": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "latest_application_tick": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "held_until_tick": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "estimate_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "evidence_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1
+          },
+          "reauthorization_of_permission_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "transition_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "claim_scope": {
+            "type": "string",
+            "enum": [
+              "LOGICAL_PERMISSION_ONLY"
+            ]
+          }
+        }
+      },
+      "Cancellation": {
+        "type": "object",
+        "required": [
+          "cancellation_id",
+          "session_id",
+          "command_id",
+          "permission_id",
+          "requested_tick",
+          "endpoint_delivery_tick",
+          "ack_id",
+          "outcome",
+          "unknown_reason"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "cancellation_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "session_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "command_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "permission_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "requested_tick": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "endpoint_delivery_tick": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 0
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "ack_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "outcome": {
+            "type": "string",
+            "enum": [
+              "REQUESTED",
+              "SIMULATED_CANCELLED",
+              "TOO_LATE",
+              "UNKNOWN"
+            ]
+          },
+          "unknown_reason": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        }
+      },
+      "EndpointObservation": {
+        "type": "object",
+        "required": [
+          "ack_id",
+          "endpoint_session_id",
+          "command_id",
+          "permission_id",
+          "installed_epoch",
+          "endpoint_sequence",
+          "receipt_tick",
+          "decision_tick",
+          "commit_tick",
+          "ack_observed_tick",
+          "outcome",
+          "applied_control_si",
+          "held_until_tick",
+          "physical_feedback",
+          "reason"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "ack_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "endpoint_session_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "command_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "permission_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "installed_epoch": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "endpoint_sequence": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "receipt_tick": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "decision_tick": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "commit_tick": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 0
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "ack_observed_tick": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 0
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "outcome": {
+            "type": "string",
+            "enum": [
+              "SIMULATED_APPLIED",
+              "SIMULATED_CANCELLED",
+              "REJECTED",
+              "TOO_LATE",
+              "UNKNOWN"
+            ]
+          },
+          "applied_control_si": {
+            "anyOf": [
+              {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                },
+                "minItems": 2,
+                "maxItems": 2
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "held_until_tick": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 0
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "physical_feedback": {
+            "type": "null"
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "BarrierAck": {
+        "type": "object",
+        "required": [
+          "ack_id",
+          "barrier_id",
+          "endpoint_session_id",
+          "control_session_id",
+          "installed_epoch",
+          "endpoint_delivery_tick",
+          "installation_tick",
+          "ack_observed_tick",
+          "queue_cleared",
+          "outcome",
+          "unknown_reason"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "ack_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "barrier_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "endpoint_session_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "control_session_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "installed_epoch": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "endpoint_delivery_tick": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "installation_tick": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 0
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "ack_observed_tick": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "queue_cleared": {
+            "type": "boolean"
+          },
+          "outcome": {
+            "type": "string",
+            "enum": [
+              "INSTALLED",
+              "REJECTED",
+              "UNKNOWN"
+            ]
+          },
+          "unknown_reason": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        }
+      },
+      "FaultLatch": {
+        "type": "object",
+        "required": [
+          "fault_id",
+          "reason",
+          "first_detected_tick",
+          "last_observed_tick",
+          "latched",
+          "cleared_tick",
+          "clearance_evidence_ids"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "fault_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1
+          },
+          "first_detected_tick": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "last_observed_tick": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "latched": {
+            "const": true
+          },
+          "cleared_tick": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 0
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "clearance_evidence_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          }
+        }
+      },
+      "Snapshot": {
+        "type": "object",
+        "required": [
+          "schema_version",
+          "state",
+          "control_session_id",
+          "current_tick",
+          "desired_epoch",
+          "endpoint_installed_epoch",
+          "endpoint_session_id",
+          "epoch_barrier_ack_id",
+          "active_packet",
+          "active_policy_id",
+          "proposals",
+          "accepted_packet_history",
+          "cancellation_history",
+          "acknowledgement_ledger",
+          "barrier_acknowledgement_ledger",
+          "latest_estimate",
+          "evidence",
+          "permissions",
+          "revoked_permission_ids",
+          "commands",
+          "pending_command_ids",
+          "held_observation",
+          "held_unknown_reason",
+          "fault_latches",
+          "sequence_floors",
+          "command_ledger",
+          "event_high_watermarks",
+          "last_trace_sequence",
+          "persistence_revision"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "schema_version": {
+            "const": "apex-s1-authority/0.1.0"
+          },
+          "state": {
+            "type": "string",
+            "enum": [
+              "DISARMED",
+              "NORMAL",
+              "WARNING",
+              "RECOVERY",
+              "DECELERATING",
+              "STOP_REQUESTED",
+              "STOPPING",
+              "STOPPED_LATCHED",
+              "NO_VALID_POLICY"
+            ]
+          },
+          "control_session_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "current_tick": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "desired_epoch": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "endpoint_installed_epoch": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 0
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "endpoint_session_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "epoch_barrier_ack_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "active_packet": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/Packet"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "active_policy_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "proposals": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/Proposal"
+            },
+            "minItems": 0
+          },
+          "accepted_packet_history": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/Packet"
+            },
+            "minItems": 0
+          },
+          "cancellation_history": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/Cancellation"
+            },
+            "minItems": 0
+          },
+          "acknowledgement_ledger": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/EndpointObservation"
+            },
+            "minItems": 0
+          },
+          "barrier_acknowledgement_ledger": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/BarrierAck"
+            },
+            "minItems": 0
+          },
+          "latest_estimate": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/Estimate"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/Evidence"
+            },
+            "minItems": 0
+          },
+          "permissions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/Permission"
+            },
+            "minItems": 0
+          },
+          "revoked_permission_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "commands": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/Command"
+            },
+            "minItems": 0
+          },
+          "pending_command_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "held_observation": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/EndpointObservation"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "held_unknown_reason": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "fault_latches": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/FaultLatch"
+            },
+            "minItems": 0
+          },
+          "sequence_floors": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "producer_id",
+                "sequence"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "producer_id": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "sequence": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              }
+            },
+            "minItems": 0
+          },
+          "command_ledger": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "command_id",
+                "producer_id",
+                "sequence",
+                "payload_sha256",
+                "first_decision_id"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "command_id": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "producer_id": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "sequence": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "payload_sha256": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$"
+                },
+                "first_decision_id": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "minItems": 0
+          },
+          "event_high_watermarks": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "producer_id",
+                "sequence"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "producer_id": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "sequence": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              }
+            },
+            "minItems": 0
+          },
+          "last_trace_sequence": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "persistence_revision": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "Proposal": {
+        "type": "object",
+        "required": [
+          "packet_id",
+          "source_controller_id",
+          "source_manifest_sha256",
+          "timestamps_s",
+          "timestamp_control_tick_bounds",
+          "clock_mapping_id",
+          "ready_tick",
+          "authority_start_tick",
+          "authority_end_tick",
+          "handoff_mode",
+          "fixed_deadline_tick",
+          "frame_id",
+          "map_id",
+          "feasibility_evidence_id"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "packet_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "source_controller_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "source_manifest_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "timestamps_s": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 2
+          },
+          "timestamp_control_tick_bounds": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "minItems": 2,
+              "maxItems": 2
+            },
+            "minItems": 2
+          },
+          "clock_mapping_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "ready_tick": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "authority_start_tick": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "authority_end_tick": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "handoff_mode": {
+            "type": "string",
+            "enum": [
+              "VARIABLE",
+              "FIXED"
+            ]
+          },
+          "fixed_deadline_tick": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 0
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "frame_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "map_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "feasibility_evidence_id": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "EndpointSnapshot": {
+        "type": "object",
+        "required": [
+          "endpoint_session_id",
+          "control_session_id",
+          "installed_epoch",
+          "current_tick",
+          "delivered_commands",
+          "delivered_permissions",
+          "cancelled_command_ids",
+          "applied_command_ids",
+          "application_ledger",
+          "locally_received_estimate",
+          "locally_received_evidence",
+          "held_observation",
+          "held_unknown_reason",
+          "last_endpoint_sequence"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "endpoint_session_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "control_session_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "installed_epoch": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "current_tick": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "delivered_commands": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/Command"
+            },
+            "minItems": 0
+          },
+          "delivered_permissions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/Permission"
+            },
+            "minItems": 0
+          },
+          "cancelled_command_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "applied_command_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "application_ledger": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/EndpointObservation"
+            },
+            "minItems": 0
+          },
+          "locally_received_estimate": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/Estimate"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "locally_received_evidence": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/Evidence"
+            },
+            "minItems": 0
+          },
+          "held_observation": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/EndpointObservation"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "held_unknown_reason": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "last_endpoint_sequence": {
+            "type": "integer",
+            "minimum": 0
+          }
+        }
+      },
+      "EventEnvelope": {
+        "type": "object",
+        "required": [
+          "event_id",
+          "producer_id",
+          "producer_sequence",
+          "at_tick",
+          "causal_parent_ids",
+          "kind",
+          "payload"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "event_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "producer_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "producer_sequence": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "at_tick": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "causal_parent_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "ESTIMATE_OBSERVED",
+              "EVIDENCE_OBSERVED",
+              "PROPOSAL_READY",
+              "AUTHORITY_ACCEPT",
+              "COMMAND_SUBMIT",
+              "PERMISSION_REQUEST",
+              "ENDPOINT_OBSERVATION",
+              "BARRIER_ACK_OBSERVED",
+              "COMMAND_DELIVER",
+              "PERMISSION_DELIVER",
+              "ENDPOINT_ESTIMATE_DELIVER",
+              "ENDPOINT_EVIDENCE_DELIVER",
+              "ADVANCE",
+              "EMERGENCY",
+              "REVOKE_REQUEST",
+              "EPOCH_INSTALL",
+              "CANCEL_REQUEST",
+              "CANCEL_DELIVER",
+              "ARM_REQUEST",
+              "RENEWAL_WARNING",
+              "REENTRY_REQUEST",
+              "RESET_REQUEST",
+              "POLICY_SELECT",
+              "APPLICATION_CHECK",
+              "ENDPOINT_COMMIT",
+              "REAUTHORIZE",
+              "RESTART"
+            ]
+          },
+          "payload": {
+            "type": "object"
+          }
+        }
+      },
+      "Event": {
+        "allOf": [
+          {
+            "$ref": "#/$defs/EventEnvelope"
+          },
+          {
+            "oneOf": [
+              {
+                "properties": {
+                  "kind": {
+                    "const": "ESTIMATE_OBSERVED"
+                  },
+                  "payload": {
+                    "$ref": "#/$defs/Estimate"
+                  }
+                }
+              },
+              {
+                "properties": {
+                  "kind": {
+                    "const": "EVIDENCE_OBSERVED"
+                  },
+                  "payload": {
+                    "$ref": "#/$defs/Evidence"
+                  }
+                }
+              },
+              {
+                "properties": {
+                  "kind": {
+                    "const": "PROPOSAL_READY"
+                  },
+                  "payload": {
+                    "$ref": "#/$defs/Proposal"
+                  }
+                }
+              },
+              {
+                "properties": {
+                  "kind": {
+                    "const": "AUTHORITY_ACCEPT"
+                  },
+                  "payload": {
+                    "$ref": "#/$defs/Packet"
+                  }
+                }
+              },
+              {
+                "properties": {
+                  "kind": {
+                    "const": "COMMAND_SUBMIT"
+                  },
+                  "payload": {
+                    "$ref": "#/$defs/Command"
+                  }
+                }
+              },
+              {
+                "properties": {
+                  "kind": {
+                    "const": "PERMISSION_REQUEST"
+                  },
+                  "payload": {
+                    "$ref": "#/$defs/Command"
+                  }
+                }
+              },
+              {
+                "properties": {
+                  "kind": {
+                    "const": "ENDPOINT_OBSERVATION"
+                  },
+                  "payload": {
+                    "$ref": "#/$defs/EndpointObservation"
+                  }
+                }
+              },
+              {
+                "properties": {
+                  "kind": {
+                    "const": "BARRIER_ACK_OBSERVED"
+                  },
+                  "payload": {
+                    "$ref": "#/$defs/BarrierAck"
+                  }
+                }
+              },
+              {
+                "properties": {
+                  "kind": {
+                    "const": "COMMAND_DELIVER"
+                  },
+                  "payload": {
+                    "$ref": "#/$defs/Command"
+                  }
+                }
+              },
+              {
+                "properties": {
+                  "kind": {
+                    "const": "PERMISSION_DELIVER"
+                  },
+                  "payload": {
+                    "$ref": "#/$defs/Permission"
+                  }
+                }
+              },
+              {
+                "properties": {
+                  "kind": {
+                    "const": "ENDPOINT_ESTIMATE_DELIVER"
+                  },
+                  "payload": {
+                    "$ref": "#/$defs/Estimate"
+                  }
+                }
+              },
+              {
+                "properties": {
+                  "kind": {
+                    "const": "ENDPOINT_EVIDENCE_DELIVER"
+                  },
+                  "payload": {
+                    "$ref": "#/$defs/Evidence"
+                  }
+                }
+              },
+              {
+                "properties": {
+                  "kind": {
+                    "const": "ADVANCE"
+                  },
+                  "payload": {
+                    "type": "object",
+                    "required": [
+                      "target_tick"
+                    ],
+                    "additionalProperties": false,
+                    "properties": {
+                      "target_tick": {
+                        "type": "integer",
+                        "minimum": 0
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "properties": {
+                  "kind": {
+                    "const": "EMERGENCY"
+                  },
+                  "payload": {
+                    "type": "object",
+                    "required": [
+                      "fault_id",
+                      "reason"
+                    ],
+                    "additionalProperties": false,
+                    "properties": {
+                      "fault_id": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "reason": {
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "properties": {
+                  "kind": {
+                    "const": "REVOKE_REQUEST"
+                  },
+                  "payload": {
+                    "type": "object",
+                    "required": [
+                      "new_epoch",
+                      "reason"
+                    ],
+                    "additionalProperties": false,
+                    "properties": {
+                      "new_epoch": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "reason": {
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "properties": {
+                  "kind": {
+                    "const": "EPOCH_INSTALL"
+                  },
+                  "payload": {
+                    "type": "object",
+                    "required": [
+                      "new_epoch",
+                      "target_control_session_id",
+                      "endpoint_session_id",
+                      "barrier_id"
+                    ],
+                    "additionalProperties": false,
+                    "properties": {
+                      "new_epoch": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "target_control_session_id": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "endpoint_session_id": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "barrier_id": {
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "properties": {
+                  "kind": {
+                    "const": "CANCEL_REQUEST"
+                  },
+                  "payload": {
+                    "$ref": "#/$defs/Cancellation"
+                  }
+                }
+              },
+              {
+                "properties": {
+                  "kind": {
+                    "const": "CANCEL_DELIVER"
+                  },
+                  "payload": {
+                    "$ref": "#/$defs/Cancellation"
+                  }
+                }
+              },
+              {
+                "properties": {
+                  "kind": {
+                    "const": "ARM_REQUEST"
+                  },
+                  "payload": {
+                    "type": "object",
+                    "required": [
+                      "operator_authorization_id",
+                      "evidence_ids"
+                    ],
+                    "additionalProperties": false,
+                    "properties": {
+                      "operator_authorization_id": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "evidence_ids": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "minItems": 1
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "properties": {
+                  "kind": {
+                    "const": "RENEWAL_WARNING"
+                  },
+                  "payload": {
+                    "type": "object",
+                    "required": [
+                      "evidence_id"
+                    ],
+                    "additionalProperties": false,
+                    "properties": {
+                      "evidence_id": {
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "properties": {
+                  "kind": {
+                    "const": "REENTRY_REQUEST"
+                  },
+                  "payload": {
+                    "type": "object",
+                    "required": [
+                      "evidence_ids"
+                    ],
+                    "additionalProperties": false,
+                    "properties": {
+                      "evidence_ids": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "minItems": 1
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "properties": {
+                  "kind": {
+                    "const": "RESET_REQUEST"
+                  },
+                  "payload": {
+                    "type": "object",
+                    "required": [
+                      "operator_authorization_id",
+                      "new_session_id",
+                      "queue_barrier_evidence_id",
+                      "clearance_evidence_ids"
+                    ],
+                    "additionalProperties": false,
+                    "properties": {
+                      "operator_authorization_id": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "new_session_id": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "queue_barrier_evidence_id": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "clearance_evidence_ids": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "minItems": 1
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "properties": {
+                  "kind": {
+                    "const": "POLICY_SELECT"
+                  },
+                  "payload": {
+                    "type": "object",
+                    "required": [
+                      "policy_id",
+                      "evidence_ids"
+                    ],
+                    "additionalProperties": false,
+                    "properties": {
+                      "policy_id": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "evidence_ids": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "minItems": 1
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "properties": {
+                  "kind": {
+                    "const": "APPLICATION_CHECK"
+                  },
+                  "payload": {
+                    "type": "object",
+                    "required": [
+                      "permission_id",
+                      "command_id",
+                      "application_tick_bounds",
+                      "hold_end_tick"
+                    ],
+                    "additionalProperties": false,
+                    "properties": {
+                      "permission_id": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "command_id": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "application_tick_bounds": {
+                        "type": "array",
+                        "items": {
+                          "type": "integer",
+                          "minimum": 0
+                        },
+                        "minItems": 2,
+                        "maxItems": 2
+                      },
+                      "hold_end_tick": {
+                        "type": "integer",
+                        "minimum": 0
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "properties": {
+                  "kind": {
+                    "const": "ENDPOINT_COMMIT"
+                  },
+                  "payload": {
+                    "type": "object",
+                    "required": [
+                      "permission_id",
+                      "command_id",
+                      "application_tick_bounds",
+                      "hold_end_tick"
+                    ],
+                    "additionalProperties": false,
+                    "properties": {
+                      "permission_id": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "command_id": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "application_tick_bounds": {
+                        "type": "array",
+                        "items": {
+                          "type": "integer",
+                          "minimum": 0
+                        },
+                        "minItems": 2,
+                        "maxItems": 2
+                      },
+                      "hold_end_tick": {
+                        "type": "integer",
+                        "minimum": 0
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "properties": {
+                  "kind": {
+                    "const": "REAUTHORIZE"
+                  },
+                  "payload": {
+                    "type": "object",
+                    "required": [
+                      "command_id",
+                      "prior_permission_id",
+                      "new_permission_id",
+                      "transition_id",
+                      "evidence_ids"
+                    ],
+                    "additionalProperties": false,
+                    "properties": {
+                      "command_id": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "prior_permission_id": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "new_permission_id": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "transition_id": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "evidence_ids": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "minItems": 1
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "properties": {
+                  "kind": {
+                    "const": "RESTART"
+                  },
+                  "payload": {
+                    "type": "object",
+                    "required": [
+                      "snapshot_revision",
+                      "endpoint_session_id",
+                      "restored_latch_ids",
+                      "integrity_evidence_id"
+                    ],
+                    "additionalProperties": false,
+                    "properties": {
+                      "snapshot_revision": {
+                        "anyOf": [
+                          {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "endpoint_session_id": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "restored_latch_ids": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "minItems": 0
+                      },
+                      "integrity_evidence_id": {
+                        "anyOf": [
+                          {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "Trace": {
+        "type": "object",
+        "required": [
+          "trace_sequence",
+          "at_tick",
+          "phase",
+          "microstep",
+          "event_id",
+          "causal_parent_ids",
+          "stage",
+          "state_before",
+          "state_after",
+          "transition_path",
+          "control_session_id",
+          "desired_epoch",
+          "endpoint_installed_epoch",
+          "source_packet_id",
+          "command_id",
+          "permission_id",
+          "estimate_id",
+          "evidence_ids",
+          "decision",
+          "reason_codes",
+          "granted_permission_ids",
+          "revoked_permission_ids",
+          "fault_ids",
+          "endpoint_observation",
+          "unknowns",
+          "physical_actuation_claim"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "trace_sequence": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "at_tick": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "phase": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "microstep": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "event_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "causal_parent_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "stage": {
+            "type": "string",
+            "enum": [
+              "S1-A",
+              "S1-B",
+              "S1-C"
+            ]
+          },
+          "state_before": {
+            "type": "string",
+            "minLength": 1
+          },
+          "state_after": {
+            "type": "string",
+            "minLength": 1
+          },
+          "transition_path": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "control_session_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "desired_epoch": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "endpoint_installed_epoch": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 0
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "source_packet_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "command_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "permission_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "estimate_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "evidence_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "decision": {
+            "type": "string",
+            "enum": [
+              "ACCEPT",
+              "REJECT",
+              "REPLAY_PRIOR_OUTCOME",
+              "REVOKE",
+              "REQUEST_CANCEL",
+              "OBSERVE",
+              "NO_CHANGE"
+            ]
+          },
+          "reason_codes": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1
+          },
+          "granted_permission_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "revoked_permission_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "fault_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "endpoint_observation": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/EndpointObservation"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "unknowns": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "field",
+                "reason"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "field": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "reason": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "minItems": 0
+          },
+          "physical_actuation_claim": {
+            "const": "NOT_OBSERVED_NOT_VALIDATED"
+          }
+        }
+      },
+      "Configuration": {
+        "type": "object",
+        "required": [
+          "configuration_id",
+          "tick_period_s",
+          "control_clock_id",
+          "expected_frame_id",
+          "expected_map_id",
+          "nominal_max_estimate_age_ticks",
+          "continuation_policy_id",
+          "warning_policy_evidence_id",
+          "reentry_policy_evidence_id",
+          "claim_scope"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "configuration_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "tick_period_s": {
+            "type": "object",
+            "required": [
+              "numerator",
+              "denominator"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "numerator": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "denominator": {
+                "type": "integer",
+                "minimum": 1
+              }
+            }
+          },
+          "control_clock_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "expected_frame_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "expected_map_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "nominal_max_estimate_age_ticks": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 0
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "continuation_policy_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "warning_policy_evidence_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "reentry_policy_evidence_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "claim_scope": {
+            "type": "string",
+            "enum": [
+              "SYNTHETIC_PROTOCOL_ONLY"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "schema_limit": "Structural schemas alone do not check cross-record identity, chronology, uncertainty containment or safety; semantic rules and independent oracles are mandatory design obligations."
+}

@@ -1,0 +1,167 @@
+{
+  "schema": "apex-s0-primary-acceptance/1.0.0",
+  "stage": "WORK_DOCUMENTATION_STATUS_ONLY",
+  "delivery_status": "WORK_COMPLETE_PENDING_REVIEW",
+  "decision": {
+    "authority": "Primary APEX",
+    "acceptance_status": "ACCEPTED_SCIENTIFIC_ARCHITECTURE_ONLY",
+    "acceptance_date": null,
+    "acceptance_date_reason": "The supplied Primary decision gives no acceptance date; recording time and Git commit time are not substituted.",
+    "accepted_designation": "S0 Shared Safety, Recovery and Fault Supervision architecture",
+    "authority_evidence": {
+      "source": "Project owner supplied scoped assignment: APEX - S0 Acceptance Record + S1 First-Implementation Specification",
+      "assertion": "Primary APEX formally accepts S0 as the scientific architecture for Shared Safety, Recovery & Fault Supervision.",
+      "instruction_attachment_sha256": "9f437ebba1e64adf0507e2abfd29cf916c77685d93d29d88a36055a33b29693d",
+      "source_date": null,
+      "source_date_reason": "Not supplied."
+    }
+  },
+  "accepted_delivery": {
+    "revision": "3747e0d9a7e834a5df34c4b089a5292c0a749fa4",
+    "branch": "research/safety-s0",
+    "commit_url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/commit/3747e0d9a7e834a5df34c4b089a5292c0a749fa4",
+    "artifacts": [
+      {
+        "path": "docs/S0_SHARED_SAFETY_SPEC.md",
+        "revision": "3747e0d9a7e834a5df34c4b089a5292c0a749fa4",
+        "sha256": "5dc23236866b645a12f94bb4c67c480a67223e0dad8ac652b08fbf5848863bf3",
+        "git_url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/3747e0d9a7e834a5df34c4b089a5292c0a749fa4/docs/S0_SHARED_SAFETY_SPEC.md"
+      },
+      {
+        "path": "docs/safety/s0/authority_interface.json",
+        "revision": "3747e0d9a7e834a5df34c4b089a5292c0a749fa4",
+        "sha256": "60a95f2cb3320b63723c774ec996fd420aeba0d316c429afa7e0b09751ea58bc",
+        "git_url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/3747e0d9a7e834a5df34c4b089a5292c0a749fa4/docs/safety/s0/authority_interface.json"
+      },
+      {
+        "path": "docs/safety/s0/dependency_matrix.json",
+        "revision": "3747e0d9a7e834a5df34c4b089a5292c0a749fa4",
+        "sha256": "97297cb61eab5e61e2aaee70bf112b1090db16907c3e659c8f54e60d12b43d61",
+        "git_url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/3747e0d9a7e834a5df34c4b089a5292c0a749fa4/docs/safety/s0/dependency_matrix.json"
+      },
+      {
+        "path": "docs/safety/s0/hardware_dependencies.json",
+        "revision": "3747e0d9a7e834a5df34c4b089a5292c0a749fa4",
+        "sha256": "15d22b6caf8ab1c2cd7967fbe92dfcfee6526ca431495e1964dd860209a1e34a",
+        "git_url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/3747e0d9a7e834a5df34c4b089a5292c0a749fa4/docs/safety/s0/hardware_dependencies.json"
+      },
+      {
+        "path": "docs/safety/s0/hazard_register.json",
+        "revision": "3747e0d9a7e834a5df34c4b089a5292c0a749fa4",
+        "sha256": "4cfea69bb5547fa3a165aad65776a59caf2dd79e395e6689118624abe13b914f",
+        "git_url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/3747e0d9a7e834a5df34c4b089a5292c0a749fa4/docs/safety/s0/hazard_register.json"
+      },
+      {
+        "path": "docs/safety/s0/provenance.json",
+        "revision": "3747e0d9a7e834a5df34c4b089a5292c0a749fa4",
+        "sha256": "5291c1c3b34044b5195d3f141a6fa9d3d1370011f483849d8b221618e5ccfff7",
+        "git_url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/3747e0d9a7e834a5df34c4b089a5292c0a749fa4/docs/safety/s0/provenance.json"
+      },
+      {
+        "path": "docs/safety/s0/record_schemas.json",
+        "revision": "3747e0d9a7e834a5df34c4b089a5292c0a749fa4",
+        "sha256": "40effebb8bf458d543e7f84d8ba4649b2e2e4ab547f000d3c5c01eac8d768269",
+        "git_url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/3747e0d9a7e834a5df34c4b089a5292c0a749fa4/docs/safety/s0/record_schemas.json"
+      },
+      {
+        "path": "docs/safety/s0/supervisor_states.json",
+        "revision": "3747e0d9a7e834a5df34c4b089a5292c0a749fa4",
+        "sha256": "3e0be131e3696a628ddd63ea44bb01e649c30a3b562200435d9a569b3783366a",
+        "git_url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/3747e0d9a7e834a5df34c4b089a5292c0a749fa4/docs/safety/s0/supervisor_states.json"
+      },
+      {
+        "path": "docs/safety/s0/validation.json",
+        "revision": "3747e0d9a7e834a5df34c4b089a5292c0a749fa4",
+        "sha256": "1a7a65e158b0b83e26b3545ab8070ff0d424dfd23304810f8b60a0c89df6359c",
+        "git_url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/3747e0d9a7e834a5df34c4b089a5292c0a749fa4/docs/safety/s0/validation.json"
+      },
+      {
+        "path": "docs/safety/s0/verification_requirements.json",
+        "revision": "3747e0d9a7e834a5df34c4b089a5292c0a749fa4",
+        "sha256": "c9cbc6d513abad222fd62acdb1f6d9c89f9e0e69a7f30ee460cbd9108bc737db",
+        "git_url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/3747e0d9a7e834a5df34c4b089a5292c0a749fa4/docs/safety/s0/verification_requirements.json"
+      }
+    ],
+    "scope_counts": {
+      "hazards": 14,
+      "states": 9,
+      "transitions": 14,
+      "proposed_synthetic_scenarios": 19,
+      "verification_levels": 4,
+      "unresolved_hardware_dependencies": 10
+    }
+  },
+  "accepted_principles": [
+    "Explicit D_NOMINAL, D_PACKET, D_RECOVERY, D_DECEL and D_STOP domains; architecture acceptance does not numerically establish them.",
+    "Conservative application-state uncertainty with explicit set/confidence interpretation and documented residual risk; covariance alone is not a robust bound.",
+    "Continuation, renewal, recovery, conservative deceleration and stopping depend on verified feasibility; recovery has no arbitrary preference over stopping.",
+    "Controller feasibility, accepted trajectory authority and physical application permission are three separate gates.",
+    "Application-time and held-command checks, session/epoch identity, immutable source provenance, and cancellation acknowledgements.",
+    "Causal intervention timing, mapped clocks and freshness through application and the permitted held interval.",
+    "Critical fault latching, controlled reentry and explicit NO_VALID_POLICY without a false stopping claim.",
+    "Numerical domains, physical response guarantees and HW01-HW10 remain subject to later characterization and review."
+  ],
+  "historical_evidence": {
+    "original_work_status": "WORK_COMPLETE_PENDING_REVIEW",
+    "rewrite_original_s0_records": false,
+    "interpretation": "This overlay records the subsequent Primary architecture decision. Original S0 WORK status, structural validation and NOT_EXECUTED scenarios remain historical and unchanged.",
+    "s0_documentation_schemas_are_runtime_validators": false,
+    "s0_or_s1_physical_safety_demonstrated": false
+  },
+  "s1_strategy_decision": {
+    "status": "APPROVED_WITH_CONDITIONS_AS_DESIGN_BASIS_ONLY",
+    "stages": [
+      "S1-A",
+      "S1-B",
+      "S1-C"
+    ],
+    "initial_s0_scenario_ids": [
+      "V01",
+      "V05",
+      "V06",
+      "V07",
+      "V15",
+      "V19"
+    ],
+    "bounded_coverage": "V15/V19 are explicit subsets; the other four are authority/protocol projections, not full physical S0 verification.",
+    "s1_specification_accepted": false,
+    "s1_implementation_authorized": false
+  },
+  "authorization": {
+    "current": "Record this decision and prepare S1 specifications; documentation/schema/source-hash/preservation checks; commit and push documentation on research/safety-s0.",
+    "supervisor_implementation": false,
+    "tests_or_fault_injection": false,
+    "simulation_or_numerical_verification": false,
+    "hardware_work": false,
+    "performance_or_efficiency_changes": false,
+    "merge_to_main": false,
+    "automatic_stage_progression": false
+  },
+  "unresolved_hardware": {
+    "reference": {
+      "path": "docs/safety/s0/hardware_dependencies.json",
+      "revision": "3747e0d9a7e834a5df34c4b089a5292c0a749fa4",
+      "sha256": "15d22b6caf8ab1c2cd7967fbe92dfcfee6526ca431495e1964dd860209a1e34a",
+      "git_url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/3747e0d9a7e834a5df34c4b089a5292c0a749fa4/docs/safety/s0/hardware_dependencies.json"
+    },
+    "ids": [
+      "HW01",
+      "HW02",
+      "HW03",
+      "HW04",
+      "HW05",
+      "HW06",
+      "HW07",
+      "HW08",
+      "HW09",
+      "HW10"
+    ],
+    "status": "ALL_UNRESOLVED_REQUIRES_CHARACTERIZATION"
+  },
+  "archive_obligation": {
+    "owner_report": "Two external-drive historical scientific ZIP copies with recorded SHA-256 hashes; copying reported complete.",
+    "independently_verified_here": false,
+    "remaining": "Restoration and archive coverage qualification remain separate obligations; Git/protocol checks do not discharge them."
+  },
+  "delivery_identity": "Containing Git commit and final remote SHA; no circular self-hash."
+}

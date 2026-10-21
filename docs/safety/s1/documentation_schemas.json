@@ -1,0 +1,1256 @@
+{
+  "schema": "apex-s1/documentation-schemas/0.1.0",
+  "scope": "Closed top-level documentation structures and shallow primitive/container fields; not full nested document semantics or runtime message validation. Separate checks bind versions/statuses, cross-record IDs, schema definition structure, literal expectations and immutable hashes.",
+  "schemas": {
+    "docs/safety/s0/primary_acceptance.json": {
+      "type": "object",
+      "required": [
+        "schema",
+        "stage",
+        "delivery_status",
+        "decision",
+        "accepted_delivery",
+        "accepted_principles",
+        "historical_evidence",
+        "s1_strategy_decision",
+        "authorization",
+        "unresolved_hardware",
+        "archive_obligation",
+        "delivery_identity"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "schema": {
+          "type": "string",
+          "const": "apex-s0-primary-acceptance/1.0.0"
+        },
+        "stage": {
+          "type": "string",
+          "const": "WORK_DOCUMENTATION_STATUS_ONLY"
+        },
+        "delivery_status": {
+          "type": "string",
+          "const": "WORK_COMPLETE_PENDING_REVIEW"
+        },
+        "decision": {
+          "type": "object",
+          "required": [
+            "authority",
+            "acceptance_status",
+            "acceptance_date",
+            "acceptance_date_reason",
+            "accepted_designation",
+            "authority_evidence"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "authority": {
+              "type": "string"
+            },
+            "acceptance_status": {
+              "type": "string"
+            },
+            "acceptance_date": {
+              "type": "null"
+            },
+            "acceptance_date_reason": {
+              "type": "string"
+            },
+            "accepted_designation": {
+              "type": "string"
+            },
+            "authority_evidence": {
+              "type": "object"
+            }
+          }
+        },
+        "accepted_delivery": {
+          "type": "object",
+          "required": [
+            "revision",
+            "branch",
+            "commit_url",
+            "artifacts",
+            "scope_counts"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "revision": {
+              "type": "string"
+            },
+            "branch": {
+              "type": "string"
+            },
+            "commit_url": {
+              "type": "string"
+            },
+            "artifacts": {
+              "type": "array",
+              "items": {
+                "type": "object"
+              },
+              "minItems": 0
+            },
+            "scope_counts": {
+              "type": "object"
+            }
+          }
+        },
+        "accepted_principles": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 0
+        },
+        "historical_evidence": {
+          "type": "object",
+          "required": [
+            "original_work_status",
+            "rewrite_original_s0_records",
+            "interpretation",
+            "s0_documentation_schemas_are_runtime_validators",
+            "s0_or_s1_physical_safety_demonstrated"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "original_work_status": {
+              "type": "string"
+            },
+            "rewrite_original_s0_records": {
+              "type": "boolean"
+            },
+            "interpretation": {
+              "type": "string"
+            },
+            "s0_documentation_schemas_are_runtime_validators": {
+              "type": "boolean"
+            },
+            "s0_or_s1_physical_safety_demonstrated": {
+              "type": "boolean"
+            }
+          }
+        },
+        "s1_strategy_decision": {
+          "type": "object",
+          "required": [
+            "status",
+            "stages",
+            "initial_s0_scenario_ids",
+            "bounded_coverage",
+            "s1_specification_accepted",
+            "s1_implementation_authorized"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "status": {
+              "type": "string"
+            },
+            "stages": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "minItems": 0
+            },
+            "initial_s0_scenario_ids": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "minItems": 0
+            },
+            "bounded_coverage": {
+              "type": "string"
+            },
+            "s1_specification_accepted": {
+              "type": "boolean"
+            },
+            "s1_implementation_authorized": {
+              "type": "boolean"
+            }
+          }
+        },
+        "authorization": {
+          "type": "object",
+          "required": [
+            "current",
+            "supervisor_implementation",
+            "tests_or_fault_injection",
+            "simulation_or_numerical_verification",
+            "hardware_work",
+            "performance_or_efficiency_changes",
+            "merge_to_main",
+            "automatic_stage_progression"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "current": {
+              "type": "string"
+            },
+            "supervisor_implementation": {
+              "type": "boolean"
+            },
+            "tests_or_fault_injection": {
+              "type": "boolean"
+            },
+            "simulation_or_numerical_verification": {
+              "type": "boolean"
+            },
+            "hardware_work": {
+              "type": "boolean"
+            },
+            "performance_or_efficiency_changes": {
+              "type": "boolean"
+            },
+            "merge_to_main": {
+              "type": "boolean"
+            },
+            "automatic_stage_progression": {
+              "type": "boolean"
+            }
+          }
+        },
+        "unresolved_hardware": {
+          "type": "object",
+          "required": [
+            "reference",
+            "ids",
+            "status"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "reference": {
+              "type": "object"
+            },
+            "ids": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "minItems": 0
+            },
+            "status": {
+              "type": "string"
+            }
+          }
+        },
+        "archive_obligation": {
+          "type": "object",
+          "required": [
+            "owner_report",
+            "independently_verified_here",
+            "remaining"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "owner_report": {
+              "type": "string"
+            },
+            "independently_verified_here": {
+              "type": "boolean"
+            },
+            "remaining": {
+              "type": "string"
+            }
+          }
+        },
+        "delivery_identity": {
+          "type": "string"
+        }
+      },
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "docs/safety/s1/initial_scenario_oracles.json": {
+      "type": "object",
+      "required": [
+        "schema",
+        "stage",
+        "status",
+        "implemented",
+        "execution",
+        "interpretation",
+        "fixture_configuration",
+        "initial_profile",
+        "catalog",
+        "table_expansion",
+        "oracle_pass_fail",
+        "scenarios",
+        "wider_s0_register"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "schema": {
+          "type": "string",
+          "const": "apex-s1/initial-scenario-oracles/0.1.0"
+        },
+        "stage": {
+          "type": "string",
+          "const": "WORK_DOCUMENTATION_SPECIFICATION_ONLY"
+        },
+        "status": {
+          "type": "string",
+          "const": "WORK_COMPLETE_PENDING_REVIEW"
+        },
+        "implemented": {
+          "type": "boolean",
+          "const": false
+        },
+        "execution": {
+          "type": "string",
+          "const": "NOT_EXECUTED"
+        },
+        "interpretation": {
+          "type": "string"
+        },
+        "fixture_configuration": {
+          "type": "object",
+          "required": [
+            "configuration_id",
+            "tick_period_s",
+            "control_clock_id",
+            "expected_frame_id",
+            "expected_map_id",
+            "nominal_max_estimate_age_ticks",
+            "continuation_policy_id",
+            "warning_policy_evidence_id",
+            "reentry_policy_evidence_id",
+            "claim_scope"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "configuration_id": {
+              "type": "string"
+            },
+            "tick_period_s": {
+              "type": "object"
+            },
+            "control_clock_id": {
+              "type": "string"
+            },
+            "expected_frame_id": {
+              "type": "string"
+            },
+            "expected_map_id": {
+              "type": "string"
+            },
+            "nominal_max_estimate_age_ticks": {
+              "type": "integer"
+            },
+            "continuation_policy_id": {
+              "type": "null"
+            },
+            "warning_policy_evidence_id": {
+              "type": "null"
+            },
+            "reentry_policy_evidence_id": {
+              "type": "null"
+            },
+            "claim_scope": {
+              "type": "string"
+            }
+          }
+        },
+        "initial_profile": {
+          "type": "object",
+          "required": [
+            "state",
+            "current_tick",
+            "control_session_id",
+            "desired_epoch",
+            "endpoint_installed_epoch",
+            "endpoint_session_id",
+            "epoch_barrier_ack_id",
+            "active_packet_id",
+            "active_policy_id",
+            "latest_estimate_id",
+            "evidence_ids",
+            "permissions",
+            "fault_latches",
+            "pending_command_ids",
+            "command_ledger",
+            "sequence_floors",
+            "event_high_watermarks",
+            "held_observation",
+            "held_unknown_reason",
+            "persistence_revision",
+            "last_trace_sequence"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "state": {
+              "type": "string"
+            },
+            "current_tick": {
+              "type": "integer"
+            },
+            "control_session_id": {
+              "type": "string"
+            },
+            "desired_epoch": {
+              "type": "integer"
+            },
+            "endpoint_installed_epoch": {
+              "type": "integer"
+            },
+            "endpoint_session_id": {
+              "type": "string"
+            },
+            "epoch_barrier_ack_id": {
+              "type": "string"
+            },
+            "active_packet_id": {
+              "type": "string"
+            },
+            "active_policy_id": {
+              "type": "string"
+            },
+            "latest_estimate_id": {
+              "type": "string"
+            },
+            "evidence_ids": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "minItems": 0
+            },
+            "permissions": {
+              "type": "array",
+              "items": {},
+              "minItems": 0
+            },
+            "fault_latches": {
+              "type": "array",
+              "items": {},
+              "minItems": 0
+            },
+            "pending_command_ids": {
+              "type": "array",
+              "items": {},
+              "minItems": 0
+            },
+            "command_ledger": {
+              "type": "array",
+              "items": {},
+              "minItems": 0
+            },
+            "sequence_floors": {
+              "type": "array",
+              "items": {},
+              "minItems": 0
+            },
+            "event_high_watermarks": {
+              "type": "array",
+              "items": {},
+              "minItems": 0
+            },
+            "held_observation": {
+              "type": "null"
+            },
+            "held_unknown_reason": {
+              "type": "string"
+            },
+            "persistence_revision": {
+              "type": "string"
+            },
+            "last_trace_sequence": {
+              "type": "integer"
+            }
+          }
+        },
+        "catalog": {
+          "type": "object",
+          "required": [
+            "identity",
+            "clock_stamp_template",
+            "E0",
+            "fresh_estimate_template",
+            "P1",
+            "P2",
+            "evidence_template",
+            "c1",
+            "p1",
+            "synthetic_endpoint_profile"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "identity": {
+              "type": "string"
+            },
+            "clock_stamp_template": {
+              "type": "string"
+            },
+            "E0": {
+              "type": "string"
+            },
+            "fresh_estimate_template": {
+              "type": "string"
+            },
+            "P1": {
+              "type": "object"
+            },
+            "P2": {
+              "type": "object"
+            },
+            "evidence_template": {
+              "type": "string"
+            },
+            "c1": {
+              "type": "object"
+            },
+            "p1": {
+              "type": "object"
+            },
+            "synthetic_endpoint_profile": {
+              "type": "string"
+            }
+          }
+        },
+        "table_expansion": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 0
+        },
+        "oracle_pass_fail": {
+          "type": "object",
+          "required": [
+            "pass",
+            "fail",
+            "current"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "pass": {
+              "type": "string"
+            },
+            "fail": {
+              "type": "string"
+            },
+            "current": {
+              "type": "string"
+            }
+          }
+        },
+        "scenarios": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          },
+          "minItems": 0
+        },
+        "wider_s0_register": {
+          "type": "object",
+          "required": [
+            "reference",
+            "ids",
+            "execution",
+            "no_full_case_acceptance_claim"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "reference": {
+              "type": "object"
+            },
+            "ids": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "minItems": 0
+            },
+            "execution": {
+              "type": "string"
+            },
+            "no_full_case_acceptance_claim": {
+              "type": "boolean"
+            }
+          }
+        }
+      },
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "docs/safety/s1/interface_contract.json": {
+      "type": "object",
+      "required": [
+        "schema",
+        "stage",
+        "status",
+        "implemented",
+        "execution",
+        "interface_version",
+        "s0_interface_reference",
+        "scope",
+        "units",
+        "clock_rules",
+        "semantic_rules",
+        "perception_adapter",
+        "schemas",
+        "schema_limit"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "schema": {
+          "type": "string",
+          "const": "apex-s1/interface-contract/0.1.0"
+        },
+        "stage": {
+          "type": "string",
+          "const": "WORK_DOCUMENTATION_SPECIFICATION_ONLY"
+        },
+        "status": {
+          "type": "string",
+          "const": "WORK_COMPLETE_PENDING_REVIEW"
+        },
+        "implemented": {
+          "type": "boolean",
+          "const": false
+        },
+        "execution": {
+          "type": "string",
+          "const": "NOT_EXECUTED"
+        },
+        "interface_version": {
+          "type": "string"
+        },
+        "s0_interface_reference": {
+          "type": "object",
+          "required": [
+            "path",
+            "revision",
+            "sha256",
+            "git_url"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "type": "string"
+            },
+            "revision": {
+              "type": "string"
+            },
+            "sha256": {
+              "type": "string"
+            },
+            "git_url": {
+              "type": "string"
+            }
+          }
+        },
+        "scope": {
+          "type": "string"
+        },
+        "units": {
+          "type": "object",
+          "required": [
+            "state_order",
+            "state_si",
+            "input_order",
+            "input_si",
+            "a_cmd",
+            "time"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "state_order": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "minItems": 0
+            },
+            "state_si": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "minItems": 0
+            },
+            "input_order": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "minItems": 0
+            },
+            "input_si": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "minItems": 0
+            },
+            "a_cmd": {
+              "type": "string"
+            },
+            "time": {
+              "type": "string"
+            }
+          }
+        },
+        "clock_rules": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 0
+        },
+        "semantic_rules": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 0
+        },
+        "perception_adapter": {
+          "type": "object",
+          "required": [
+            "status",
+            "preserve",
+            "publication_latency",
+            "proposed_age_hypothesis_s",
+            "age_hypothesis_status",
+            "adoption_gate"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "status": {
+              "type": "string"
+            },
+            "preserve": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "minItems": 0
+            },
+            "publication_latency": {
+              "type": "string"
+            },
+            "proposed_age_hypothesis_s": {
+              "type": "number"
+            },
+            "age_hypothesis_status": {
+              "type": "string"
+            },
+            "adoption_gate": {
+              "type": "string"
+            }
+          }
+        },
+        "schemas": {
+          "type": "object",
+          "required": [
+            "$schema",
+            "$id",
+            "$defs"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "$schema": {
+              "type": "string"
+            },
+            "$id": {
+              "type": "string"
+            },
+            "$defs": {
+              "type": "object"
+            }
+          }
+        },
+        "schema_limit": {
+          "type": "string"
+        }
+      },
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "docs/safety/s1/provenance.json": {
+      "type": "object",
+      "required": [
+        "schema",
+        "stage",
+        "status",
+        "implemented",
+        "execution",
+        "base_revision",
+        "branch",
+        "s0_artifacts",
+        "immutable_references",
+        "scientific_inventory",
+        "inventory_pointer",
+        "inventory_entries",
+        "new_safety_test_evidence",
+        "historical_results",
+        "external_archive",
+        "delivery_identity"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "schema": {
+          "type": "string",
+          "const": "apex-s1/provenance/0.1.0"
+        },
+        "stage": {
+          "type": "string",
+          "const": "WORK_DOCUMENTATION_SPECIFICATION_ONLY"
+        },
+        "status": {
+          "type": "string",
+          "const": "WORK_COMPLETE_PENDING_REVIEW"
+        },
+        "implemented": {
+          "type": "boolean",
+          "const": false
+        },
+        "execution": {
+          "type": "string",
+          "const": "NOT_EXECUTED"
+        },
+        "base_revision": {
+          "type": "string"
+        },
+        "branch": {
+          "type": "string"
+        },
+        "s0_artifacts": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          },
+          "minItems": 0
+        },
+        "immutable_references": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          },
+          "minItems": 0
+        },
+        "scientific_inventory": {
+          "type": "object",
+          "required": [
+            "path",
+            "revision",
+            "sha256",
+            "git_url"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "type": "string"
+            },
+            "revision": {
+              "type": "string"
+            },
+            "sha256": {
+              "type": "string"
+            },
+            "git_url": {
+              "type": "string"
+            }
+          }
+        },
+        "inventory_pointer": {
+          "type": "string"
+        },
+        "inventory_entries": {
+          "type": "integer"
+        },
+        "new_safety_test_evidence": {
+          "type": "boolean"
+        },
+        "historical_results": {
+          "type": "string"
+        },
+        "external_archive": {
+          "type": "string"
+        },
+        "delivery_identity": {
+          "type": "string"
+        }
+      },
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "docs/safety/s1/review_gates.json": {
+      "type": "object",
+      "required": [
+        "schema",
+        "stage",
+        "status",
+        "implemented",
+        "execution",
+        "s0_acceptance",
+        "s1_specification_acceptance",
+        "s1_code_authorization",
+        "gates",
+        "blockers",
+        "hardware_dependencies",
+        "hardware_reference",
+        "current_delivery_exit",
+        "unexecuted"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "schema": {
+          "type": "string",
+          "const": "apex-s1/review-gates/0.1.0"
+        },
+        "stage": {
+          "type": "string",
+          "const": "WORK_DOCUMENTATION_SPECIFICATION_ONLY"
+        },
+        "status": {
+          "type": "string",
+          "const": "WORK_COMPLETE_PENDING_REVIEW"
+        },
+        "implemented": {
+          "type": "boolean",
+          "const": false
+        },
+        "execution": {
+          "type": "string",
+          "const": "NOT_EXECUTED"
+        },
+        "s0_acceptance": {
+          "type": "string"
+        },
+        "s1_specification_acceptance": {
+          "type": "string"
+        },
+        "s1_code_authorization": {
+          "type": "boolean"
+        },
+        "gates": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          },
+          "minItems": 0
+        },
+        "blockers": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          },
+          "minItems": 0
+        },
+        "hardware_dependencies": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          },
+          "minItems": 0
+        },
+        "hardware_reference": {
+          "type": "object",
+          "required": [
+            "path",
+            "revision",
+            "sha256",
+            "git_url"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "type": "string"
+            },
+            "revision": {
+              "type": "string"
+            },
+            "sha256": {
+              "type": "string"
+            },
+            "git_url": {
+              "type": "string"
+            }
+          }
+        },
+        "current_delivery_exit": {
+          "type": "string"
+        },
+        "unexecuted": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 0
+        }
+      },
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "docs/safety/s1/staged_implementation_plan.json": {
+      "type": "object",
+      "required": [
+        "schema",
+        "stage",
+        "status",
+        "implemented",
+        "execution",
+        "current_authorization",
+        "automatic_progression",
+        "stages",
+        "acceptance_claim",
+        "review_sequence"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "schema": {
+          "type": "string",
+          "const": "apex-s1/staged-implementation-plan/0.1.0"
+        },
+        "stage": {
+          "type": "string",
+          "const": "WORK_DOCUMENTATION_SPECIFICATION_ONLY"
+        },
+        "status": {
+          "type": "string",
+          "const": "WORK_COMPLETE_PENDING_REVIEW"
+        },
+        "implemented": {
+          "type": "boolean",
+          "const": false
+        },
+        "execution": {
+          "type": "string",
+          "const": "NOT_EXECUTED"
+        },
+        "current_authorization": {
+          "type": "string"
+        },
+        "automatic_progression": {
+          "type": "boolean"
+        },
+        "stages": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          },
+          "minItems": 0
+        },
+        "acceptance_claim": {
+          "type": "string"
+        },
+        "review_sequence": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 0
+        }
+      },
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "docs/safety/s1/state_and_event_invariants.json": {
+      "type": "object",
+      "required": [
+        "schema",
+        "stage",
+        "status",
+        "implemented",
+        "execution",
+        "state_ids",
+        "transitions",
+        "state_contract",
+        "transition_rules",
+        "common_guards",
+        "ordering",
+        "invariants",
+        "persistence",
+        "reason_codes",
+        "decision_precedence",
+        "oracle_independence"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "schema": {
+          "type": "string",
+          "const": "apex-s1/state-event-invariants/0.1.0"
+        },
+        "stage": {
+          "type": "string",
+          "const": "WORK_DOCUMENTATION_SPECIFICATION_ONLY"
+        },
+        "status": {
+          "type": "string",
+          "const": "WORK_COMPLETE_PENDING_REVIEW"
+        },
+        "implemented": {
+          "type": "boolean",
+          "const": false
+        },
+        "execution": {
+          "type": "string",
+          "const": "NOT_EXECUTED"
+        },
+        "state_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 0
+        },
+        "transitions": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          },
+          "minItems": 0
+        },
+        "state_contract": {
+          "type": "string"
+        },
+        "transition_rules": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 0
+        },
+        "common_guards": {
+          "type": "object",
+          "required": [
+            "G_NOMINAL",
+            "G_CONTINUE",
+            "G_ALTERNATE",
+            "G_REST",
+            "G_RESET"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "G_NOMINAL": {
+              "type": "string"
+            },
+            "G_CONTINUE": {
+              "type": "string"
+            },
+            "G_ALTERNATE": {
+              "type": "string"
+            },
+            "G_REST": {
+              "type": "string"
+            },
+            "G_RESET": {
+              "type": "string"
+            }
+          }
+        },
+        "ordering": {
+          "type": "object",
+          "required": [
+            "external_batch_key",
+            "phases",
+            "same_producer",
+            "cross_producer",
+            "generated_events",
+            "unexpected_late_event",
+            "boundary_processing"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "external_batch_key": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "minItems": 0
+            },
+            "phases": {
+              "type": "array",
+              "items": {
+                "type": "object"
+              },
+              "minItems": 0
+            },
+            "same_producer": {
+              "type": "string"
+            },
+            "cross_producer": {
+              "type": "string"
+            },
+            "generated_events": {
+              "type": "string"
+            },
+            "unexpected_late_event": {
+              "type": "string"
+            },
+            "boundary_processing": {
+              "type": "string"
+            }
+          }
+        },
+        "invariants": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          },
+          "minItems": 0
+        },
+        "persistence": {
+          "type": "object",
+          "required": [
+            "S1_A",
+            "missing_or_corrupt_snapshot",
+            "new_session",
+            "hardware"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "S1_A": {
+              "type": "string"
+            },
+            "missing_or_corrupt_snapshot": {
+              "type": "string"
+            },
+            "new_session": {
+              "type": "string"
+            },
+            "hardware": {
+              "type": "string"
+            }
+          }
+        },
+        "reason_codes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 0
+        },
+        "decision_precedence": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 0
+        },
+        "oracle_independence": {
+          "type": "object",
+          "required": [
+            "required",
+            "evidence",
+            "anti_tautology",
+            "scope"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "required": {
+              "type": "string"
+            },
+            "evidence": {
+              "type": "string"
+            },
+            "anti_tautology": {
+              "type": "string"
+            },
+            "scope": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    }
+  }
+}

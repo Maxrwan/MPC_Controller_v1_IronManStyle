@@ -1,0 +1,205 @@
+{
+  "schema": "apex-s1/review-gates/0.1.0",
+  "stage": "WORK_DOCUMENTATION_SPECIFICATION_ONLY",
+  "status": "WORK_COMPLETE_PENDING_REVIEW",
+  "implemented": false,
+  "execution": "NOT_EXECUTED",
+  "s0_acceptance": "ACCEPTED_ARCHITECTURE_PER_SEPARATE_OVERLAY",
+  "s1_specification_acceptance": "PENDING_ENGINEERING_REVIEW_AND_PRIMARY_DECISION",
+  "s1_code_authorization": false,
+  "gates": [
+    {
+      "id": "GATE_SPEC",
+      "owner": "Secondary Engineering review then Primary scientific decision",
+      "requires": [
+        "S0 overlay exact revision/hashes and undated decision provenance",
+        "Exact contracts, guards, phase order, authority/endpoint knowledge separation and latch/reentry design reviewed",
+        "Independent literal scenario oracles and explicit partial S0 coverage approved",
+        "No physical-domain or implementation claim; documentation checks/preservation and remote delivery verified"
+      ],
+      "authorizes_automatically": "Nothing; review alone grants no implementation or experiment."
+    },
+    {
+      "id": "GATE_A_CODE",
+      "owner": "Explicit scoped project-owner/Engineering instruction under Primary decisions",
+      "requires": [
+        "Reviewed S1-A spec revision",
+        "Reviewed interface/semantic error precedence and literal oracle expansion",
+        "Explicit code and focused test authorization",
+        "Pure dependency boundary and retained snapshot persistence scope"
+      ],
+      "authorizes_automatically": "Only the explicitly named S1-A work; never B/C."
+    },
+    {
+      "id": "GATE_A_REVIEW",
+      "owner": "Engineering",
+      "requires": [
+        "Exact S1-A implementation revision and focused results",
+        "Independent oracle review, failures and deferred checks",
+        "Separate formal verification authorization if requested"
+      ],
+      "authorizes_automatically": "No next-stage code or endpoint implementation."
+    },
+    {
+      "id": "GATE_B_CODE",
+      "owner": "Explicit scoped instruction after S1-A review",
+      "requires": [
+        "Reviewed S1-A outcome",
+        "Endpoint/local-state, queue, acknowledgement and cancellation semantics reviewed",
+        "Separate B code/test authorization and exact oracle tables"
+      ],
+      "authorizes_automatically": "Only authorized synthetic B work; never hardware/integration."
+    },
+    {
+      "id": "GATE_B_REVIEW",
+      "owner": "Engineering",
+      "requires": [
+        "Exact B source/trace evidence",
+        "Protocol claim limits, adverse/censored outcomes and independent oracles audited"
+      ],
+      "authorizes_automatically": "No C, HIL, runtime or physical work."
+    },
+    {
+      "id": "GATE_C_SCOPE",
+      "owner": "Primary scientific direction and explicit Engineering assignment",
+      "requires": [
+        "Named extended scenarios and exact integration scope",
+        "Actual versioned producer/Perception and endpoint contracts",
+        "Review enabled arbitration differences from frozen runtime",
+        "Preservation and required noninterference/latency gates"
+      ],
+      "authorizes_automatically": "No Performance/Efficiency merge or physical release."
+    },
+    {
+      "id": "GATE_C_REVIEW",
+      "owner": "Engineering then Primary",
+      "requires": [
+        "Exact reviewed revision",
+        "Explicitly authorized complete applicable regression/acceptance evidence",
+        "Unresolved domains/hardware risks and claims clearly bounded"
+      ],
+      "authorizes_automatically": "No HIL/physical stage; S0 C/D need separate approval."
+    }
+  ],
+  "blockers": [
+    {
+      "id": "B01",
+      "blocks": "All S1 implementation now",
+      "condition": "No implementation or test execution authorization has been granted; specification review remains pending."
+    },
+    {
+      "id": "B02",
+      "blocks": "S1-A interoperability and test execution until review",
+      "condition": "Review exact contract/schema version, semantic reason precedence, time-grid conversion and the table-to-Event expansion; static design tables are not executable fixtures."
+    },
+    {
+      "id": "B03",
+      "blocks": "Actual Perception integration, not standalone synthetic logic",
+      "condition": "Perception v0.3 producer contract, clocks, frame/map conventions, uncertainty semantics and measured publication latency evidence are pending; 50 ms is unvalidated."
+    },
+    {
+      "id": "B04",
+      "blocks": "Validated degraded continuation/recovery/deceleration/stop and permissive physical reentry",
+      "condition": "Operating envelopes, bounded uncertainty/risk interpretation, response/terminal sets, dwell/hysteresis and timing budgets unresolved. Synthetic tokens do not resolve them."
+    },
+    {
+      "id": "B05",
+      "blocks": "Racing-controller adapter or enabled runtime integration",
+      "condition": "Frozen application-before-fallback/pending-command behavior differs from future stronger arbitration; reader/noninterference and computational-latency review required."
+    },
+    {
+      "id": "B06",
+      "blocks": "Physical enforcement/independence/durability claims",
+      "condition": "Clock, communications, cancellations, actuator feedback, durable latches, watchdog, power and MCU behavior uncharacterized."
+    },
+    {
+      "id": "B07",
+      "blocks": "Physical recovery/stop/HIL release",
+      "condition": "All HW01-HW10 unresolved; dynamic lower speed 0.5 m/s does not cover standstill, existing LQR/PI is not a validated high-speed recovery policy."
+    },
+    {
+      "id": "B08",
+      "blocks": "Archive restoration/coverage qualification claim",
+      "condition": "Owner reports two copied external ZIPs with SHA-256; restoration and complete coverage were not checked in this task."
+    }
+  ],
+  "hardware_dependencies": [
+    {
+      "id": "HW01",
+      "topic": "Geometry, mass and inertia",
+      "status": "UNRESOLVED_REQUIRES_CHARACTERIZATION",
+      "required_evidence": "Independent measurement/calibration with configurations and uncertainty"
+    },
+    {
+      "id": "HW02",
+      "topic": "Tire and grip envelope",
+      "status": "UNRESOLVED_REQUIRES_CHARACTERIZATION",
+      "required_evidence": "Bench and controlled-envelope identification, including lateral/longitudinal coupling"
+    },
+    {
+      "id": "HW03",
+      "topic": "Steering, motor and braking dynamics",
+      "status": "UNRESOLVED_REQUIRES_CHARACTERIZATION",
+      "required_evidence": "Actuator/subsystem characterization under load, saturation, reverse energy and faults"
+    },
+    {
+      "id": "HW04",
+      "topic": "State sensing and localization",
+      "status": "UNRESOLVED_REQUIRES_CHARACTERIZATION",
+      "required_evidence": "Calibrated independent reference and dropout/common-mode fault trials"
+    },
+    {
+      "id": "HW05",
+      "topic": "Computer/MCU time and execution",
+      "status": "UNRESOLVED_REQUIRES_CHARACTERIZATION",
+      "required_evidence": "Timestamped target instrumentation and overload/clock reset tests"
+    },
+    {
+      "id": "HW06",
+      "topic": "Communication and protocol",
+      "status": "UNRESOLVED_REQUIRES_CHARACTERIZATION",
+      "required_evidence": "HIL delay/reorder/drop/corruption and stale-session injection"
+    },
+    {
+      "id": "HW07",
+      "topic": "Independent watchdog and e-stop",
+      "status": "UNRESOLVED_REQUIRES_CHARACTERIZATION",
+      "required_evidence": "Fault tree, crash/deadlock/false-heartbeat tests, independent e-stop tests"
+    },
+    {
+      "id": "HW08",
+      "topic": "Power loss and actuator fail-state",
+      "status": "UNRESOLVED_REQUIRES_CHARACTERIZATION",
+      "required_evidence": "Controlled fault/power tests and mechanical/electrical review"
+    },
+    {
+      "id": "HW09",
+      "topic": "Environment and swept geometry",
+      "status": "UNRESOLVED_REQUIRES_CHARACTERIZATION",
+      "required_evidence": "Independent geometry validation and swept-envelope experiments"
+    },
+    {
+      "id": "HW10",
+      "topic": "Low-speed and rest validation",
+      "status": "UNRESOLVED_REQUIRES_CHARACTERIZATION",
+      "required_evidence": "Separately reviewed model and subsystem/HIL then physical stop tests"
+    }
+  ],
+  "hardware_reference": {
+    "path": "docs/safety/s0/hardware_dependencies.json",
+    "revision": "3747e0d9a7e834a5df34c4b089a5292c0a749fa4",
+    "sha256": "15d22b6caf8ab1c2cd7967fbe92dfcfee6526ca431495e1964dd860209a1e34a",
+    "git_url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/3747e0d9a7e834a5df34c4b089a5292c0a749fa4/docs/safety/s0/hardware_dependencies.json"
+  },
+  "current_delivery_exit": "WORK_COMPLETE_PENDING_REVIEW",
+  "unexecuted": [
+    "Supervisor/endpoint code",
+    "Test collection and execution",
+    "Fault injection",
+    "Simulation/numerical verification",
+    "Measured timing/profiling",
+    "Perception implementation",
+    "Hardware/HIL/physical trials",
+    "Archive restoration/coverage qualification"
+  ]
+}

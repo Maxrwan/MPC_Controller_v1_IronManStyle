@@ -1,0 +1,105 @@
+{
+  "schema": "apex-s1/provenance/0.1.0",
+  "stage": "WORK_DOCUMENTATION_SPECIFICATION_ONLY",
+  "status": "WORK_COMPLETE_PENDING_REVIEW",
+  "implemented": false,
+  "execution": "NOT_EXECUTED",
+  "base_revision": "3747e0d9a7e834a5df34c4b089a5292c0a749fa4",
+  "branch": "research/safety-s0",
+  "s0_artifacts": [
+    {
+      "path": "docs/S0_SHARED_SAFETY_SPEC.md",
+      "revision": "3747e0d9a7e834a5df34c4b089a5292c0a749fa4",
+      "sha256": "5dc23236866b645a12f94bb4c67c480a67223e0dad8ac652b08fbf5848863bf3",
+      "git_url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/3747e0d9a7e834a5df34c4b089a5292c0a749fa4/docs/S0_SHARED_SAFETY_SPEC.md"
+    },
+    {
+      "path": "docs/safety/s0/authority_interface.json",
+      "revision": "3747e0d9a7e834a5df34c4b089a5292c0a749fa4",
+      "sha256": "60a95f2cb3320b63723c774ec996fd420aeba0d316c429afa7e0b09751ea58bc",
+      "git_url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/3747e0d9a7e834a5df34c4b089a5292c0a749fa4/docs/safety/s0/authority_interface.json"
+    },
+    {
+      "path": "docs/safety/s0/dependency_matrix.json",
+      "revision": "3747e0d9a7e834a5df34c4b089a5292c0a749fa4",
+      "sha256": "97297cb61eab5e61e2aaee70bf112b1090db16907c3e659c8f54e60d12b43d61",
+      "git_url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/3747e0d9a7e834a5df34c4b089a5292c0a749fa4/docs/safety/s0/dependency_matrix.json"
+    },
+    {
+      "path": "docs/safety/s0/hardware_dependencies.json",
+      "revision": "3747e0d9a7e834a5df34c4b089a5292c0a749fa4",
+      "sha256": "15d22b6caf8ab1c2cd7967fbe92dfcfee6526ca431495e1964dd860209a1e34a",
+      "git_url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/3747e0d9a7e834a5df34c4b089a5292c0a749fa4/docs/safety/s0/hardware_dependencies.json"
+    },
+    {
+      "path": "docs/safety/s0/hazard_register.json",
+      "revision": "3747e0d9a7e834a5df34c4b089a5292c0a749fa4",
+      "sha256": "4cfea69bb5547fa3a165aad65776a59caf2dd79e395e6689118624abe13b914f",
+      "git_url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/3747e0d9a7e834a5df34c4b089a5292c0a749fa4/docs/safety/s0/hazard_register.json"
+    },
+    {
+      "path": "docs/safety/s0/provenance.json",
+      "revision": "3747e0d9a7e834a5df34c4b089a5292c0a749fa4",
+      "sha256": "5291c1c3b34044b5195d3f141a6fa9d3d1370011f483849d8b221618e5ccfff7",
+      "git_url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/3747e0d9a7e834a5df34c4b089a5292c0a749fa4/docs/safety/s0/provenance.json"
+    },
+    {
+      "path": "docs/safety/s0/record_schemas.json",
+      "revision": "3747e0d9a7e834a5df34c4b089a5292c0a749fa4",
+      "sha256": "40effebb8bf458d543e7f84d8ba4649b2e2e4ab547f000d3c5c01eac8d768269",
+      "git_url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/3747e0d9a7e834a5df34c4b089a5292c0a749fa4/docs/safety/s0/record_schemas.json"
+    },
+    {
+      "path": "docs/safety/s0/supervisor_states.json",
+      "revision": "3747e0d9a7e834a5df34c4b089a5292c0a749fa4",
+      "sha256": "3e0be131e3696a628ddd63ea44bb01e649c30a3b562200435d9a569b3783366a",
+      "git_url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/3747e0d9a7e834a5df34c4b089a5292c0a749fa4/docs/safety/s0/supervisor_states.json"
+    },
+    {
+      "path": "docs/safety/s0/validation.json",
+      "revision": "3747e0d9a7e834a5df34c4b089a5292c0a749fa4",
+      "sha256": "1a7a65e158b0b83e26b3545ab8070ff0d424dfd23304810f8b60a0c89df6359c",
+      "git_url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/3747e0d9a7e834a5df34c4b089a5292c0a749fa4/docs/safety/s0/validation.json"
+    },
+    {
+      "path": "docs/safety/s0/verification_requirements.json",
+      "revision": "3747e0d9a7e834a5df34c4b089a5292c0a749fa4",
+      "sha256": "c9cbc6d513abad222fd62acdb1f6d9c89f9e0e69a7f30ee460cbd9108bc737db",
+      "git_url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/3747e0d9a7e834a5df34c4b089a5292c0a749fa4/docs/safety/s0/verification_requirements.json"
+    }
+  ],
+  "immutable_references": [
+    {
+      "role": "Performance release and peeled tag",
+      "revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5"
+    },
+    {
+      "role": "Independent Efficiency F0",
+      "revision": "eaa0a3398515a21f30a850de59a0b44c775fad4d"
+    },
+    {
+      "role": "Exact historically verified scientific profile",
+      "revision": "e603672b209985f11ed26b6f44d3949ffd5675c5"
+    },
+    {
+      "role": "E3 verification delivery",
+      "revision": "ecbbc5cdb6d182557dfdd0bca7caa215cc1355c9"
+    },
+    {
+      "role": "Scientific worker",
+      "revision": "8dbd1c5fbc09781411fc762e04f9c2c5cf2d99ae"
+    }
+  ],
+  "scientific_inventory": {
+    "path": "docs/task007d/vis/vis1l/evidence/controlled_A/summary.json",
+    "revision": "3747e0d9a7e834a5df34c4b089a5292c0a749fa4",
+    "sha256": "4840934ea4d425bdccd17b18cbd254f4372ba5275b655189010c223c2be72d71",
+    "git_url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/3747e0d9a7e834a5df34c4b089a5292c0a749fa4/docs/task007d/vis/vis1l/evidence/controlled_A/summary.json"
+  },
+  "inventory_pointer": "/source_sha256",
+  "inventory_entries": 294,
+  "new_safety_test_evidence": false,
+  "historical_results": "Historical E3 750-pass result remains historical; no present test execution or S1 applicability is claimed.",
+  "external_archive": "Two ZIP copies/hashes are owner-reported; no restoration/coverage qualification here.",
+  "delivery_identity": "Containing commit and final remote SHA. Source/fixture identities do not certify hardware or numerical environment."
+}

@@ -1,0 +1,441 @@
+{
+  "schema": "apex-s1/state-event-invariants/0.1.0",
+  "stage": "WORK_DOCUMENTATION_SPECIFICATION_ONLY",
+  "status": "WORK_COMPLETE_PENDING_REVIEW",
+  "implemented": false,
+  "execution": "NOT_EXECUTED",
+  "state_ids": [
+    "DISARMED",
+    "NORMAL",
+    "WARNING",
+    "RECOVERY",
+    "DECELERATING",
+    "STOP_REQUESTED",
+    "STOPPING",
+    "STOPPED_LATCHED",
+    "NO_VALID_POLICY"
+  ],
+  "transitions": [
+    {
+      "id": "T01",
+      "from_states": [
+        "DISARMED"
+      ],
+      "to_state": "NORMAL",
+      "predicate": "Fresh validated state, valid accepted packet, healthy enforcement/clock/actuators, confirmed queue/session reset, adequate response margin and explicit authorized arming.",
+      "action": "Grant new session/epoch; record all admission evidence.",
+      "s1_guard": "DISARMED; no uncleared critical latch; explicit operator arming; G_NOMINAL and acknowledged new-session queue/epoch barrier.",
+      "positive_fixture_coverage": "Deferred unless explicitly named in initial_scenario_oracles.json; retained in design for all nine states."
+    },
+    {
+      "id": "T02",
+      "from_states": [
+        "NORMAL"
+      ],
+      "to_state": "WARNING",
+      "predicate": "Current authority still admissible but renewal/response budget, uncertainty or fault indication approaches its reviewed intervention boundary.",
+      "action": "Request renewal; assess alternatives; log reserve and timing components.",
+      "s1_guard": "NORMAL; current nominal authority remains eligible; named warning policy evidence indicates renewal/response concern.",
+      "positive_fixture_coverage": "Deferred unless explicitly named in initial_scenario_oracles.json; retained in design for all nine states."
+    },
+    {
+      "id": "T03",
+      "from_states": [
+        "WARNING"
+      ],
+      "to_state": "NORMAL",
+      "predicate": "Renewal accepted, domain/health restored and approved hysteresis/stability evidence satisfied; no latched emergency.",
+      "action": "Clear warning with causal evidence; hysteresis values remain unresolved.",
+      "s1_guard": "WARNING; fresh accepted renewal and eligible nominal evidence; approved warning-clear/hysteresis evidence; no critical latch.",
+      "positive_fixture_coverage": "Deferred unless explicitly named in initial_scenario_oracles.json; retained in design for all nine states."
+    },
+    {
+      "id": "T04",
+      "from_states": [
+        "NORMAL",
+        "WARNING"
+      ],
+      "to_state": "RECOVERY",
+      "predicate": "Recovery eligibility holds for reachable uncertainty and actuators; risk assessment favors recovery over stop.",
+      "action": "Change owner through current-epoch grant and acknowledged queue handling.",
+      "s1_guard": "NORMAL/WARNING; named RECOVERY evidence SATISFIED for entire declared fixture context and independently supplied selection evidence favors it.",
+      "positive_fixture_coverage": "Deferred unless explicitly named in initial_scenario_oracles.json; retained in design for all nine states."
+    },
+    {
+      "id": "T05",
+      "from_states": [
+        "NORMAL",
+        "WARNING",
+        "RECOVERY"
+      ],
+      "to_state": "DECELERATING",
+      "predicate": "Verified conservative policy remains feasible and its destination/stop transfer is assured within declared bounds.",
+      "action": "Authorize that policy and validate every application/hold.",
+      "s1_guard": "NORMAL/WARNING/RECOVERY; named DECELERATION and destination/transfer evidence SATISFIED.",
+      "positive_fixture_coverage": "Deferred unless explicitly named in initial_scenario_oracles.json; retained in design for all nine states."
+    },
+    {
+      "id": "T06",
+      "from_states": [
+        "DISARMED",
+        "NORMAL",
+        "WARNING",
+        "RECOVERY",
+        "DECELERATING"
+      ],
+      "to_state": "STOP_REQUESTED",
+      "predicate": "Emergency demand, recovery not preferable/available, or intervention boundary requires stopping.",
+      "action": "Latch stop request; assess D_STOP; do not delay emergency demand awaiting an optimizer.",
+      "s1_guard": "DISARMED/NORMAL/WARNING/RECOVERY/DECELERATING; emergency demand or selected stop response; latch and revoke nominal grants immediately.",
+      "positive_fixture_coverage": "Deferred unless explicitly named in initial_scenario_oracles.json; retained in design for all nine states."
+    },
+    {
+      "id": "T07",
+      "from_states": [
+        "STOP_REQUESTED"
+      ],
+      "to_state": "STOPPING",
+      "predicate": "Validated D_STOP and independent endpoint acknowledgement for the correct session/epoch.",
+      "action": "Record actual stop-policy activation; monitor progress and deadlines.",
+      "s1_guard": "STOP_REQUESTED; named STOP evidence SATISFIED and matching endpoint activation acknowledgement observed; request alone fails.",
+      "positive_fixture_coverage": "Deferred unless explicitly named in initial_scenario_oracles.json; retained in design for all nine states."
+    },
+    {
+      "id": "T08",
+      "from_states": [
+        "STOPPING"
+      ],
+      "to_state": "STOPPED_LATCHED",
+      "predicate": "Validated rest and hold confirmed; no unresolved actuation/communication ambiguity.",
+      "action": "Latch achieved rest with evidence; preserve fault history.",
+      "s1_guard": "STOPPING; independent named REST_HOLD evidence SATISFIED; no unresolved endpoint/session ambiguity.",
+      "positive_fixture_coverage": "Deferred unless explicitly named in initial_scenario_oracles.json; retained in design for all nine states."
+    },
+    {
+      "id": "T09",
+      "from_states": [
+        "DISARMED",
+        "NORMAL",
+        "WARNING",
+        "RECOVERY",
+        "DECELERATING",
+        "STOP_REQUESTED",
+        "STOPPING"
+      ],
+      "to_state": "NO_VALID_POLICY",
+      "predicate": "No eligible policy exists, critical uncertainty is unbounded, or response/ack bounds violated.",
+      "action": "Revoke software permission; request only characterized emergency response; declare residual uncontrolled hazard.",
+      "s1_guard": "Any listed S0 source state; continuation and all alternate policy evidence absent, UNKNOWN or VIOLATED; or required application-state/response knowledge lost.",
+      "positive_fixture_coverage": "Deferred unless explicitly named in initial_scenario_oracles.json; retained in design for all nine states."
+    },
+    {
+      "id": "T10",
+      "from_states": [
+        "NO_VALID_POLICY"
+      ],
+      "to_state": "STOPPING",
+      "predicate": "Independently validated emergency response is now available, domain and endpoint acknowledgement confirmed.",
+      "action": "Remain fault-latched; execute response without relabeling prior uncontrolled interval.",
+      "s1_guard": "NO_VALID_POLICY; named STOP evidence now SATISFIED and matching endpoint acknowledgement observed; preserve all fault history and uncontrolled interval.",
+      "positive_fixture_coverage": "Deferred unless explicitly named in initial_scenario_oracles.json; retained in design for all nine states."
+    },
+    {
+      "id": "T11",
+      "from_states": [
+        "NO_VALID_POLICY"
+      ],
+      "to_state": "STOPPED_LATCHED",
+      "predicate": "Independent valid rest/hold evidence obtained even if stop action history is incomplete.",
+      "action": "Preserve unknown prior application data; do not invent successful braking.",
+      "s1_guard": "NO_VALID_POLICY; independent named REST_HOLD evidence SATISFIED, even if past actuation is unknown; preserve unknown history.",
+      "positive_fixture_coverage": "Deferred unless explicitly named in initial_scenario_oracles.json; retained in design for all nine states."
+    },
+    {
+      "id": "T12",
+      "from_states": [
+        "RECOVERY",
+        "DECELERATING"
+      ],
+      "to_state": "WARNING",
+      "predicate": "Verified terminal recovery set reached, new nominal authority accepted, transition feasible and separately approved reentry policy permits.",
+      "action": "No automatic racing reentry until hysteresis/dwell and epoch checks are approved.",
+      "s1_guard": "RECOVERY/DECELERATING; named terminal/transfer, new nominal authority, reentry/dwell and epoch-barrier evidence SATISFIED; enter WARNING, not direct NORMAL.",
+      "positive_fixture_coverage": "Deferred unless explicitly named in initial_scenario_oracles.json; retained in design for all nine states."
+    },
+    {
+      "id": "T13",
+      "from_states": [
+        "STOPPED_LATCHED"
+      ],
+      "to_state": "DISARMED",
+      "predicate": "Authorized reset, faults cleared, inspected actuator/state/clock health and invalidated old session/queue.",
+      "action": "Re-arm only via T01; reset is not a direct racing grant.",
+      "s1_guard": "STOPPED_LATCHED; explicit authorized reset, cleared fault causes, independent rest/health evidence and acknowledged invalidation of old session/queues; enter DISARMED.",
+      "positive_fixture_coverage": "Deferred unless explicitly named in initial_scenario_oracles.json; retained in design for all nine states."
+    },
+    {
+      "id": "T14",
+      "from_states": [
+        "STOPPED_LATCHED"
+      ],
+      "to_state": "NO_VALID_POLICY",
+      "predicate": "Rest/holding confidence lost or unexpected motion/power/actuator fault.",
+      "action": "Revoke rest claim; report fault and invoke eligible independent response.",
+      "s1_guard": "STOPPED_LATCHED; lost rest/holding confidence or unexpected motion/power/actuator fault; revoke rest claim and latch NO_VALID_POLICY.",
+      "positive_fixture_coverage": "Deferred unless explicitly named in initial_scenario_oracles.json; retained in design for all nine states."
+    }
+  ],
+  "state_contract": "interface_contract.json#/schemas/$defs/Snapshot",
+  "transition_rules": [
+    "Evaluate emergency before permissive transitions. If stop feasibility is unknown, record T06 then T09 in the same transaction; no grant may occur between them.",
+    "A rejection need not itself change supervisor state when current authority remains eligible; if authority/estimate/evidence is invalid and no alternate exists, take T09.",
+    "Malformed untrusted proposal is rejected without corrupting valid active authority; identity conflict in a recognized session is a critical latched fault.",
+    "No eligible transition means NO_CHANGE with reason, not an invented edge. Permissive simultaneous guards require explicit named selection evidence; ambiguity denies grant.",
+    "Each transaction records its complete transition path. Fault history remains append-only even after approved clearance.",
+    "For planned authority changes, a sealed timestamp batch may install/ack a matching barrier before accepting replacement authority. Evaluate the no-policy closure after phase2 and before any phase4 permission/phase5 commit. If a barrier remains unacknowledged without separately eligible continuation/response, latch T09. A critical fault never waits for this closure."
+  ],
+  "common_guards": {
+    "G_NOMINAL": "Current accepted packet interval contains entire requested/held permission; current state VALID and fresh through hold; frame/map, uncertainty interpretation, named NOMINAL and HEALTH evidence SATISFIED; no critical latch; acknowledged queue/session/epoch barrier.",
+    "G_CONTINUE": "All live permission conditions remain eligible; a DEGRADED/stale estimate requires a separate named CONTINUATION policy with reviewed bounded evidence. Otherwise no continuation.",
+    "G_ALTERNATE": "Named RECOVERY/DECELERATION/STOP policy evidence is SATISFIED for current state/uncertainty, actuator, timing, terminal/transfer context; UNKNOWN is ineligible. These remain synthetic assumptions in S1.",
+    "G_REST": "Independent REST_HOLD fixture evidence in current context and valid interval; not an application acknowledgement, zero command, loop termination or missing motion sample.",
+    "G_RESET": "T13 only: explicit operator authorization, cleared initiating causes, current health/rest and acknowledged old-session/queue invalidation; no direct nominal grant."
+  },
+  "ordering": {
+    "external_batch_key": [
+      "at_tick",
+      "phase",
+      "producer_id UTF-8 lexical",
+      "producer_sequence",
+      "event_id UTF-8 lexical"
+    ],
+    "phases": [
+      {
+        "phase": 0,
+        "events": [
+          "ADVANCE boundaries",
+          "EMERGENCY",
+          "REVOKE_REQUEST",
+          "EPOCH_INSTALL",
+          "CANCEL_DELIVER",
+          "invalid/stale/degraded evidence",
+          "RESTART failure"
+        ],
+        "effect": "Invalidate elapsed grants, install delivered revocation/cancellation, latch faults before permissive work. Expiry applies even without a message."
+      },
+      {
+        "phase": 1,
+        "events": [
+          "ENDPOINT_OBSERVATION",
+          "BARRIER_ACK_OBSERVED"
+        ],
+        "effect": "Record observed synthetic outcome/barrier delivery; never rewrite original commit time or source. Unknown acknowledgement is not a negative application result."
+      },
+      {
+        "phase": 2,
+        "events": [
+          "VALID ESTIMATE_OBSERVED",
+          "EVIDENCE_OBSERVED",
+          "PROPOSAL_READY",
+          "AUTHORITY_ACCEPT",
+          "COMMAND_DELIVER",
+          "PERMISSION_DELIVER",
+          "ENDPOINT_ESTIMATE_DELIVER",
+          "ENDPOINT_EVIDENCE_DELIVER"
+        ],
+        "effect": "Incorporate available positive evidence, delivered messages and independently accepted authority; no latch is cleared implicitly. Invalid endpoint estimate/evidence delivery is phase0."
+      },
+      {
+        "phase": 3,
+        "events": [
+          "ARM_REQUEST",
+          "POLICY_SELECT",
+          "RENEWAL_WARNING",
+          "REENTRY_REQUEST",
+          "RESET_REQUEST",
+          "CANCEL_REQUEST"
+        ],
+        "effect": "Evaluate guarded state transitions and requested protocol work. Requesting cancellation alone has no endpoint effect."
+      },
+      {
+        "phase": 4,
+        "events": [
+          "COMMAND_SUBMIT",
+          "PERMISSION_REQUEST",
+          "REAUTHORIZE",
+          "APPLICATION_CHECK"
+        ],
+        "effect": "Check current identities, uncertainty, evidence and bounded lease; decisions are logical only."
+      },
+      {
+        "phase": 5,
+        "events": [
+          "ENDPOINT_COMMIT"
+        ],
+        "effect": "S1-B only: recheck endpoint-local state immediately before atomic simulated application."
+      },
+      {
+        "phase": 6,
+        "events": [
+          "new zero-delay acknowledgement observations"
+        ],
+        "effect": "Observe outcomes generated by this batch; causal acknowledgement never precedes its decision/commit."
+      }
+    ],
+    "same_producer": "Producer sequences strictly increase; duplicate exact event returns prior trace; conflicting event identity is rejected.",
+    "cross_producer": "Lexical tie-break applies only within a phase; phase/fault priority wins over arrival enumeration. Fault and healthy input at the same tick cannot clear a latch.",
+    "generated_events": "Outputs cannot be backdated. Same-tick causal outputs use increasing microstep and retain parent IDs. Newly discovered critical failure updates the latch/deny gate synchronously before any remaining permission/commit; it cannot wait behind a permissive event.",
+    "unexpected_late_event": "A newly received message about an earlier remote occurrence is recorded at current receipt time with the earlier source stamp; it cannot reorder completed commits or erase history.",
+    "boundary_processing": "ADVANCE visits every known lease/evidence/freshness boundary crossed; invalidate at earliest boundary before processing later input. No wall-clock polling or missed message can extend a lease."
+  },
+  "invariants": [
+    {
+      "id": "A01",
+      "title": "Three gates",
+      "assertion": "Proposal readiness, accepted packet authority and a live application permission are distinct records and decisions."
+    },
+    {
+      "id": "A02",
+      "title": "One owner",
+      "assertion": "No timestamp/linearization point has two active authority owners or conflicting live grants for the same endpoint scope."
+    },
+    {
+      "id": "A03",
+      "title": "Conservative time",
+      "assertion": "All required mapped bounds and causal orders hold; start <= application_min <= application_max <= latest < end; hold_end <= end."
+    },
+    {
+      "id": "A04",
+      "title": "No extension",
+      "assertion": "Permission end never exceeds original source expiry or applicable evidence validity; reauthorization cannot extend the packet."
+    },
+    {
+      "id": "A05",
+      "title": "Freshness and quality",
+      "assertion": "Nominal grant requires VALID, finite, correctly framed/mapped state and interpreted uncertainty through application/hold. Unknown/DEGRADED denies new nominal authority."
+    },
+    {
+      "id": "A06",
+      "title": "Epoch/session",
+      "assertion": "Grant uses desired current epoch; application requires matching locally installed epoch/session and acknowledged barrier. Old command generation epoch/source remains unchanged."
+    },
+    {
+      "id": "A07",
+      "title": "At-most-once",
+      "assertion": "Duplicate command or acknowledgement never causes a second grant/commit; ID/payload conflict is rejected and critically latched."
+    },
+    {
+      "id": "A08",
+      "title": "Cancellation knowledge",
+      "assertion": "Request, endpoint delivery, cancellation acknowledgement and TOO_LATE are distinct. No retroactive cancellation of an applied input."
+    },
+    {
+      "id": "A09",
+      "title": "Held knowledge",
+      "assertion": "Grant rejection, expiry or revocation never erases held input or proves removal. Missing feedback remains unknown with reason."
+    },
+    {
+      "id": "A10",
+      "title": "Priority",
+      "assertion": "Known emergency, invalid evidence, expiry and installed revocation/cancellation precede every permissive decision/commit in the sealed time batch."
+    },
+    {
+      "id": "A11",
+      "title": "No-policy truth",
+      "assertion": "Absent eligible continuation/recovery/deceleration/stop or bounded knowledge enters NO_VALID_POLICY; no default zero/brake/off or stopping claim."
+    },
+    {
+      "id": "A12",
+      "title": "Latching",
+      "assertion": "Emergency/critical latches survive supervisor object restart via explicit snapshot input; no healthy sample or operator reset alone clears them."
+    },
+    {
+      "id": "A13",
+      "title": "Controlled reentry",
+      "assertion": "No direct NO_VALID_POLICY-to-NORMAL or STOPPED_LATCHED-to-NORMAL path; T11/T13/T01 or separately reviewed S0 path and new session/barrier required."
+    },
+    {
+      "id": "A14",
+      "title": "Causal evidence",
+      "assertion": "Decisions use only received evidence by that time; parents precede children; future endpoint/plant truth cannot enter the reducer."
+    },
+    {
+      "id": "A15",
+      "title": "Claim separation",
+      "assertion": "A emits logical decisions only; B records SIMULATED_* outcomes only; physical feedback is always null in this contract."
+    },
+    {
+      "id": "A16",
+      "title": "Architecture independence",
+      "assertion": "Actual source timestamps and acceptance evidence determine authority, independent of optimizer, stage count, grid shape or preparation duration."
+    },
+    {
+      "id": "A17",
+      "title": "No resurrection",
+      "assertion": "Expired, acknowledged-cancelled, previously applied or superseded work never regains application eligibility by replay/reset."
+    },
+    {
+      "id": "A18",
+      "title": "Evidence scope",
+      "assertion": "Synthetic SATISFIED assumptions are labelled; they neither validate physical domains nor establish measured timing or braking."
+    }
+  ],
+  "persistence": {
+    "S1_A": "Pure reducer consumes/returns Snapshot. Restart scenarios supply a retained snapshot explicitly; no disk, MCU or power-failure durability is implemented.",
+    "missing_or_corrupt_snapshot": "Boot into DISARMED with arming denied; latch PERSISTENCE_UNKNOWN and take T09. Do not interpret absent fault history as cleared.",
+    "new_session": "Invalidate old endpoint session/queue via acknowledged barrier; preserve historical latches and ledgers. Old session requests remain rejected after rearming.",
+    "hardware": "Durable storage, atomic writes, independent enforcement and behavior during power loss require HW05-HW08 characterization and later authorization."
+  },
+  "reason_codes": [
+    "OK",
+    "PROPOSAL_ONLY",
+    "STAGE_NOT_ENABLED",
+    "EXPIRED",
+    "NOT_YET_VALID",
+    "STALE_ESTIMATE",
+    "ESTIMATE_MISSING",
+    "ESTIMATE_INVALID",
+    "ESTIMATE_DEGRADED",
+    "MAP_MISMATCH",
+    "FRAME_MISMATCH",
+    "CLOCK_UNKNOWN",
+    "UNCERTAINTY_UNKNOWN",
+    "NO_NOMINAL_FRESHNESS_BOUND",
+    "DOMAIN_UNKNOWN",
+    "HEALTH_INVALID",
+    "SESSION_MISMATCH",
+    "EPOCH_MISMATCH",
+    "BARRIER_UNACKNOWLEDGED",
+    "SEQUENCE_REORDERED",
+    "DUPLICATE_PRIOR_OUTCOME",
+    "IDENTITY_CONFLICT",
+    "CANCELLED",
+    "CANCEL_PENDING",
+    "TOO_LATE",
+    "APPLICATION_UNKNOWN",
+    "NO_VALID_POLICY",
+    "FAULT_LATCHED",
+    "RESET_NOT_ADMISSIBLE",
+    "PERSISTENCE_UNKNOWN",
+    "FIXED_DEADLINE_MISSED",
+    "SOURCE_CHANGED",
+    "CAUSALITY_INVALID",
+    "TIME_INVALID",
+    "REVOKED",
+    "APPLICATION_DEADLINE_MISSED"
+  ],
+  "decision_precedence": [
+    "Reject malformed/version/nonfinite/causality-invalid records first; do not mutate valid authority from an unauthenticated malformed proposal.",
+    "For recognized session/identity conflicts, record/latch the critical fault before any permissive handling.",
+    "For permission, application and endpoint-commit operations: current session and effective local epoch/revocation/cancellation checks precede lease/latest-time, fault/quality/domain and duplicate outcome checks. Record all applicable reason codes in this group order.",
+    "COMMAND_SUBMIT exact duplicate may replay historical receipt outcome without any live authorization meaning. Repeated PERMISSION_REQUEST replays only if current guards remain admissible; never issues a second grant.",
+    "ENDPOINT_COMMIT after epoch change/cancellation/expiry is rejected with that cause, even if an earlier application exists; retain the earlier application in history. Under unchanged admissible local conditions an exact duplicate returns the prior outcome without a new commit.",
+    "A command newly submitted and its first distinct permission request are not duplicate operations. REAUTHORIZE is separately keyed by new permission/transition identity."
+  ],
+  "oracle_independence": {
+    "required": "Expected outcomes are literal reviewed tables and independently computed interval/identity/at-most-once assertions; future checker must not call the reducer, endpoint or their guard/order helpers to obtain expected results.",
+    "evidence": "Retain initial configuration, input event list, expected table, actual complete trace, schema/version/source/config hashes and failed/censored outcomes in new task evidence directories.",
+    "anti_tautology": "No regenerated golden traces from the system under test. Any expected-table change requires review with the changed predicate and rationale.",
+    "scope": "No oracle executed in this specification delivery."
+  }
+}

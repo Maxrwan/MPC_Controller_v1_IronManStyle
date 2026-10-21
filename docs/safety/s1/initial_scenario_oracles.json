@@ -1,0 +1,1839 @@
+{
+  "schema": "apex-s1/initial-scenario-oracles/0.1.0",
+  "stage": "WORK_DOCUMENTATION_SPECIFICATION_ONLY",
+  "status": "WORK_COMPLETE_PENDING_REVIEW",
+  "implemented": false,
+  "execution": "NOT_EXECUTED",
+  "interpretation": "Literal reviewed design tables, not executable fault fixtures or generated passing traces. All numerical times/ages below are arbitrary toy protocol inputs, not vehicle limits, response guarantees or adopted Perception thresholds.",
+  "fixture_configuration": {
+    "configuration_id": "TOY_PROTOCOL_1",
+    "tick_period_s": {
+      "numerator": 1,
+      "denominator": 1000
+    },
+    "control_clock_id": "TOY_CLOCK",
+    "expected_frame_id": "FRAME_A",
+    "expected_map_id": "MAP_A",
+    "nominal_max_estimate_age_ticks": 100,
+    "continuation_policy_id": null,
+    "warning_policy_evidence_id": null,
+    "reentry_policy_evidence_id": null,
+    "claim_scope": "SYNTHETIC_PROTOCOL_ONLY"
+  },
+  "initial_profile": {
+    "state": "NORMAL",
+    "current_tick": 0,
+    "control_session_id": "SESSION_A",
+    "desired_epoch": 1,
+    "endpoint_installed_epoch": 1,
+    "endpoint_session_id": "ENDPOINT_A",
+    "epoch_barrier_ack_id": "BOOT_BARRIER_A",
+    "active_packet_id": "P1",
+    "active_policy_id": "NOMINAL_A",
+    "latest_estimate_id": "E0",
+    "evidence_ids": [
+      "NOMINAL_OK",
+      "HEALTH_OK",
+      "BARRIER_OK"
+    ],
+    "permissions": [],
+    "fault_latches": [],
+    "pending_command_ids": [],
+    "command_ledger": [],
+    "sequence_floors": [],
+    "event_high_watermarks": [],
+    "held_observation": null,
+    "held_unknown_reason": "No endpoint or physical application observed in S1-A.",
+    "persistence_revision": "SNAPSHOT_0",
+    "last_trace_sequence": 0
+  },
+  "catalog": {
+    "identity": "All source-manifest digests in these logical examples are 64 ASCII zero characters, explicitly synthetic identities, never the Performance manifest.",
+    "clock_stamp_template": "clock_id=TOY_CLOCK, clock_session_id=CLOCK_A, source_tick=t, mapping_id=EXACT_TOY, control_tick_bounds=[t,t], unknown_reason=null.",
+    "E0": "Estimate E0: state_si=[2,0,0,0,0,0], capture/publication/receipt at tick 0, quality VALID, FRAME_A/MAP_A, BOUNDED_SET reference TOY_BOUND with interpretation TOY_ONLY, HEALTH_OK, publication latency [0,0]. No vehicle is propagated.",
+    "fresh_estimate_template": "E<t>: same labelled synthetic state/uncertainty as E0, with capture=publication=receipt=t. A variant explicitly overrides only its named fields.",
+    "P1": {
+      "packet_id": "P1",
+      "source_controller_id": "CTRL_A",
+      "policy_id": "NOMINAL_A",
+      "timestamps_s": [
+        0,
+        0.3,
+        1
+      ],
+      "timestamp_control_tick_bounds": [
+        [
+          0,
+          0
+        ],
+        [
+          300,
+          300
+        ],
+        [
+          1000,
+          1000
+        ]
+      ],
+      "ready_tick": 0,
+      "accepted_tick": 0,
+      "acceptance_id": "ACCEPT_P1",
+      "acceptance_evidence_id": "NOMINAL_OK",
+      "authority_start_tick": 0,
+      "authority_end_tick": 1000,
+      "handoff_mode": "VARIABLE",
+      "fixed_deadline_tick": null
+    },
+    "P2": {
+      "packet_id": "P2",
+      "source_controller_id": "CTRL_B",
+      "policy_id": "NOMINAL_B",
+      "timestamps_s": [
+        0.02,
+        0.2,
+        0.9
+      ],
+      "timestamp_control_tick_bounds": [
+        [
+          20,
+          20
+        ],
+        [
+          200,
+          200
+        ],
+        [
+          900,
+          900
+        ]
+      ],
+      "ready_tick": 20,
+      "accepted_tick": 20,
+      "acceptance_id": "ACCEPT_P2",
+      "acceptance_evidence_id": "NOMINAL_B_OK",
+      "authority_start_tick": 20,
+      "authority_end_tick": 900,
+      "handoff_mode": "VARIABLE",
+      "fixed_deadline_tick": null
+    },
+    "evidence_template": "Evidence aliases ending OK refer to named SYNTHETIC_ASSUMPTION SATISFIED tokens in current estimate/packet/context, valid [0,1000), unless overridden. Concrete immutable ID is alias@estimate_id@packet_id@context_revision; null references use NONE. New contexts require new IDs, never mutation. assumption_set_ref=TOY_ONLY; domain_ids follow token kind; unsupported terminal/uncertainty/fault interpretation is null plus reason. No RECOVERY/DECELERATION/STOP/CONTINUATION/REST_HOLD/REENTRY or REAUTHORIZATION token exists by default.",
+    "c1": {
+      "command_id": "c1",
+      "session_id": "SESSION_A",
+      "producer_id": "CTRL_A",
+      "sequence": 1,
+      "source_controller_id": "CTRL_A",
+      "source_packet_id": "P1",
+      "policy_id": "NOMINAL_A",
+      "mode": "NOMINAL",
+      "generation_epoch": 1,
+      "generated_tick": 0,
+      "estimate_id": "E0",
+      "requested_application_tick": 20,
+      "latest_application_tick": 30,
+      "held_until_tick": 60,
+      "requested_control_si": [
+        0,
+        0
+      ]
+    },
+    "p1": {
+      "permission_id": "p1",
+      "command_id": "c1",
+      "session_id": "SESSION_A",
+      "source_controller_id": "CTRL_A",
+      "source_packet_id": "P1",
+      "policy_id": "NOMINAL_A",
+      "generation_epoch": 1,
+      "permission_epoch": 1,
+      "valid_from_tick": 20,
+      "valid_until_tick": 60,
+      "latest_application_tick": 30,
+      "held_until_tick": 60,
+      "estimate_id": "E0",
+      "evidence_ids": [
+        "NOMINAL_OK",
+        "HEALTH_OK",
+        "BARRIER_OK"
+      ],
+      "reauthorization_of_permission_id": null,
+      "transition_id": null,
+      "claim_scope": "LOGICAL_PERMISSION_ONLY"
+    },
+    "synthetic_endpoint_profile": "S1-B only: ENDPOINT_A has installed SESSION_A/epoch1, c1 and p1 delivered before tick20, no prior commit/cancel, and a separately labelled initial simulated input [0,0] with matching toy constraint/health evidence valid through tick1000. This value carries no safe-zero or vehicle-motion meaning."
+  },
+  "table_expansion": [
+    "These are specification tables, not runnable Event JSON. At an implementation gate, materialize them against the exact Event/Configuration/Snapshot schemas and review the expansion before running.",
+    "Every case is independent and starts from initial_profile plus initial_overrides. All unlisted mutable collections are empty. Packet frame/map and source digests follow catalog defaults.",
+    "A permission listed in initial_overrides means its immutable command and ledger record already exist with matching identities. live_permission_ids includes granted unrevoked leases whose end has not passed, including not-yet-started grants.",
+    "Same-tick rows are processed by normative phase order; within phase use listed row order as producer_sequence under producer TOY_INPUT. Event IDs are case_id plus 1-based row index; causal parents are referenced prior row IDs when the row depends on them.",
+    "Compound event names in a row denote that listed ordered input batch, not an atomic shortcut. expected is the batch final outcome; transition_path retains all intermediate S0 edges.",
+    "A request supplies current labelled evidence only when facts explicitly name it. Missing fields cannot be silently materialized as physically validated evidence.",
+    "S1-B rows are future endpoint obligations after its separate gate; S1-A logical decisions never satisfy those application assertions.",
+    "No case may borrow a permission, latch clearance or rest token from a preceding case."
+  ],
+  "oracle_pass_fail": {
+    "pass": "Only at a later authorized execution: every literal expected decision/state/permission/path and independent assertion matches, no invariant violated, required channels present and unknowns retained.",
+    "fail": "Any mismatch, unauthorized grant/commit, altered provenance, missing required observation, hidden/censored failure or unsupported physical claim fails the affected case and stops for review.",
+    "current": "No timeline, state reducer, fault injection or oracle is executed in this document delivery."
+  },
+  "scenarios": [
+    {
+      "s0_id": "V01",
+      "title": "Trajectory expiration",
+      "execution": "NOT_EXECUTED",
+      "coverage_claim": "Authority-expiry projection only; S0 V01 is not fully verified.",
+      "invariant_ids": [
+        "A01",
+        "A03",
+        "A04",
+        "A09",
+        "A11",
+        "A15",
+        "A16"
+      ],
+      "cases": [
+        {
+          "case_id": "V01-A-expiry",
+          "initial_overrides": {
+            "nominal_max_estimate_age_ticks": 2000,
+            "permissions": [
+              "p-exp: c-exp/P1/epoch1 valid [0,1000), latest999, hold1000, captured/generated0"
+            ],
+            "p-exp_command": "c-exp is c1 with ID c-exp, requested0/latest999/hold1000; already recorded, never physically observed."
+          },
+          "timeline": [
+            {
+              "at_tick": 900,
+              "event": "PROPOSAL_READY",
+              "facts": "P-next is feasible/ready at900, timestamps [1.0,1.1,1.4] s; no acceptance event.",
+              "expected": {
+                "state": "NORMAL",
+                "decision": "OBSERVE",
+                "reason_codes": [
+                  "PROPOSAL_ONLY"
+                ],
+                "live_permission_ids": [
+                  "p-exp"
+                ],
+                "transition_path": [],
+                "stage": "S1-A",
+                "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+              }
+            },
+            {
+              "at_tick": 999,
+              "event": "APPLICATION_CHECK",
+              "facts": "p-exp at[999,999], hold_end1000.",
+              "expected": {
+                "state": "NORMAL",
+                "decision": "ACCEPT",
+                "reason_codes": [
+                  "OK"
+                ],
+                "live_permission_ids": [
+                  "p-exp"
+                ],
+                "transition_path": [],
+                "stage": "S1-A",
+                "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+              }
+            },
+            {
+              "at_tick": 1000,
+              "event": "ADVANCE",
+              "facts": "P1 and p-exp expire; P-next remains a proposal; all alternative evidence UNKNOWN.",
+              "expected": {
+                "state": "NO_VALID_POLICY",
+                "decision": "REVOKE",
+                "reason_codes": [
+                  "EXPIRED",
+                  "NO_VALID_POLICY"
+                ],
+                "live_permission_ids": [],
+                "transition_path": [
+                  "T09"
+                ],
+                "stage": "S1-A",
+                "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+              }
+            },
+            {
+              "at_tick": 1000,
+              "event": "APPLICATION_CHECK",
+              "facts": "Attempt p-exp at original expiry.",
+              "expected": {
+                "state": "NO_VALID_POLICY",
+                "decision": "REJECT",
+                "reason_codes": [
+                  "EXPIRED",
+                  "FAULT_LATCHED"
+                ],
+                "live_permission_ids": [],
+                "transition_path": [],
+                "stage": "S1-A",
+                "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+              }
+            }
+          ],
+          "independent_assertions": [
+            "Compute P1 end directly from final timestamp lower bound 1000; ready P-next contributes zero reserve.",
+            "At999 strict latest999 < end1000 and hold1000 <= end1000 hold; at1000 application < end fails.",
+            "No fallback call, extrapolation, confirmed stop or physical input removal is inferred."
+          ],
+          "deferred": []
+        },
+        {
+          "case_id": "V01-B-endpoint-expiry",
+          "initial_overrides": {
+            "stage": "S1-B",
+            "nominal_max_estimate_age_ticks": 2000,
+            "endpoint_profile": "p-exp delivered, synthetic prior input known; no valid response policy."
+          },
+          "timeline": [
+            {
+              "at_tick": 1000,
+              "event": "ENDPOINT_COMMIT",
+              "facts": "Attempt expired p-exp; local lease boundary processed first.",
+              "expected": {
+                "state": "NO_VALID_POLICY",
+                "decision": "REJECT",
+                "reason_codes": [
+                  "EXPIRED",
+                  "NO_VALID_POLICY"
+                ],
+                "live_permission_ids": [],
+                "transition_path": [
+                  "T09"
+                ],
+                "stage": "S1-B",
+                "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+              }
+            }
+          ],
+          "independent_assertions": [
+            "Zero simulated commits at/end after1000, even if host is silent.",
+            "Prior held/unknown outcome remains logged; endpoint rejection is not a braking result."
+          ],
+          "deferred": []
+        }
+      ],
+      "deferred_s0_assertions": [
+        "Physical high/low-speed domain edges and dynamic minimum-speed propagation.",
+        "Reachability containment, intervention feasibility, alternate controller behavior and physical stopping."
+      ]
+    },
+    {
+      "s0_id": "V05",
+      "title": "Stale, missing, invalid or degraded localization",
+      "execution": "NOT_EXECUTED",
+      "coverage_claim": "Logical quality/freshness/identity projection; no Perception implementation or estimator validation.",
+      "invariant_ids": [
+        "A03",
+        "A05",
+        "A11",
+        "A12",
+        "A14",
+        "A18"
+      ],
+      "cases": [
+        {
+          "case_id": "V05-A-missing",
+          "initial_overrides": {},
+          "timeline": [
+            {
+              "at_tick": 20,
+              "event": "ESTIMATE_OBSERVED",
+              "facts": "Authoritative estimate reports MISSING; state/capture/publication null with reasons.",
+              "expected": {
+                "state": "NO_VALID_POLICY",
+                "decision": "REVOKE",
+                "reason_codes": [
+                  "ESTIMATE_MISSING",
+                  "NO_VALID_POLICY"
+                ],
+                "live_permission_ids": [],
+                "transition_path": [
+                  "T09"
+                ],
+                "stage": "S1-A",
+                "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+              }
+            },
+            {
+              "at_tick": 21,
+              "event": "PERMISSION_REQUEST",
+              "facts": "c1; invalid estimate is not replaced with E0.",
+              "expected": {
+                "state": "NO_VALID_POLICY",
+                "decision": "REJECT",
+                "reason_codes": [
+                  "FAULT_LATCHED"
+                ],
+                "live_permission_ids": [],
+                "transition_path": [],
+                "stage": "S1-A",
+                "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+              }
+            },
+            {
+              "at_tick": 22,
+              "event": "ESTIMATE_OBSERVED",
+              "facts": "Fresh VALID E22 arrives.",
+              "expected": {
+                "state": "NO_VALID_POLICY",
+                "decision": "OBSERVE",
+                "reason_codes": [
+                  "FAULT_LATCHED"
+                ],
+                "live_permission_ids": [],
+                "transition_path": [],
+                "stage": "S1-A",
+                "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+              }
+            }
+          ],
+          "independent_assertions": [
+            "No new nominal grant; fresh later input cannot clear the critical latch.",
+            "No zero covariance, fabricated map transform or freshened receive timestamp substitutes for valid capture evidence."
+          ],
+          "deferred": []
+        },
+        {
+          "case_id": "V05-A-invalid",
+          "initial_overrides": {},
+          "timeline": [
+            {
+              "at_tick": 20,
+              "event": "ESTIMATE_OBSERVED",
+              "facts": "E20 has INVALID quality.",
+              "expected": {
+                "state": "NO_VALID_POLICY",
+                "decision": "REVOKE",
+                "reason_codes": [
+                  "ESTIMATE_INVALID",
+                  "NO_VALID_POLICY"
+                ],
+                "live_permission_ids": [],
+                "transition_path": [
+                  "T09"
+                ],
+                "stage": "S1-A",
+                "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+              }
+            },
+            {
+              "at_tick": 21,
+              "event": "PERMISSION_REQUEST",
+              "facts": "c1; invalid estimate is not replaced with E0.",
+              "expected": {
+                "state": "NO_VALID_POLICY",
+                "decision": "REJECT",
+                "reason_codes": [
+                  "FAULT_LATCHED"
+                ],
+                "live_permission_ids": [],
+                "transition_path": [],
+                "stage": "S1-A",
+                "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+              }
+            },
+            {
+              "at_tick": 22,
+              "event": "ESTIMATE_OBSERVED",
+              "facts": "Fresh VALID E22 arrives.",
+              "expected": {
+                "state": "NO_VALID_POLICY",
+                "decision": "OBSERVE",
+                "reason_codes": [
+                  "FAULT_LATCHED"
+                ],
+                "live_permission_ids": [],
+                "transition_path": [],
+                "stage": "S1-A",
+                "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+              }
+            }
+          ],
+          "independent_assertions": [
+            "No new nominal grant; fresh later input cannot clear the critical latch.",
+            "No zero covariance, fabricated map transform or freshened receive timestamp substitutes for valid capture evidence."
+          ],
+          "deferred": []
+        },
+        {
+          "case_id": "V05-A-degraded",
+          "initial_overrides": {},
+          "timeline": [
+            {
+              "at_tick": 20,
+              "event": "ESTIMATE_OBSERVED",
+              "facts": "E20 has DEGRADED quality; no validated continuation token.",
+              "expected": {
+                "state": "NO_VALID_POLICY",
+                "decision": "REVOKE",
+                "reason_codes": [
+                  "ESTIMATE_DEGRADED",
+                  "NO_VALID_POLICY"
+                ],
+                "live_permission_ids": [],
+                "transition_path": [
+                  "T09"
+                ],
+                "stage": "S1-A",
+                "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+              }
+            },
+            {
+              "at_tick": 21,
+              "event": "PERMISSION_REQUEST",
+              "facts": "c1; invalid estimate is not replaced with E0.",
+              "expected": {
+                "state": "NO_VALID_POLICY",
+                "decision": "REJECT",
+                "reason_codes": [
+                  "FAULT_LATCHED"
+                ],
+                "live_permission_ids": [],
+                "transition_path": [],
+                "stage": "S1-A",
+                "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+              }
+            },
+            {
+              "at_tick": 22,
+              "event": "ESTIMATE_OBSERVED",
+              "facts": "Fresh VALID E22 arrives.",
+              "expected": {
+                "state": "NO_VALID_POLICY",
+                "decision": "OBSERVE",
+                "reason_codes": [
+                  "FAULT_LATCHED"
+                ],
+                "live_permission_ids": [],
+                "transition_path": [],
+                "stage": "S1-A",
+                "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+              }
+            }
+          ],
+          "independent_assertions": [
+            "No new nominal grant; fresh later input cannot clear the critical latch.",
+            "No zero covariance, fabricated map transform or freshened receive timestamp substitutes for valid capture evidence."
+          ],
+          "deferred": []
+        },
+        {
+          "case_id": "V05-A-map",
+          "initial_overrides": {},
+          "timeline": [
+            {
+              "at_tick": 20,
+              "event": "ESTIMATE_OBSERVED",
+              "facts": "E20 map_id=MAP_B.",
+              "expected": {
+                "state": "NO_VALID_POLICY",
+                "decision": "REVOKE",
+                "reason_codes": [
+                  "MAP_MISMATCH",
+                  "NO_VALID_POLICY"
+                ],
+                "live_permission_ids": [],
+                "transition_path": [
+                  "T09"
+                ],
+                "stage": "S1-A",
+                "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+              }
+            },
+            {
+              "at_tick": 21,
+              "event": "PERMISSION_REQUEST",
+              "facts": "c1; invalid estimate is not replaced with E0.",
+              "expected": {
+                "state": "NO_VALID_POLICY",
+                "decision": "REJECT",
+                "reason_codes": [
+                  "FAULT_LATCHED"
+                ],
+                "live_permission_ids": [],
+                "transition_path": [],
+                "stage": "S1-A",
+                "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+              }
+            },
+            {
+              "at_tick": 22,
+              "event": "ESTIMATE_OBSERVED",
+              "facts": "Fresh VALID E22 arrives.",
+              "expected": {
+                "state": "NO_VALID_POLICY",
+                "decision": "OBSERVE",
+                "reason_codes": [
+                  "FAULT_LATCHED"
+                ],
+                "live_permission_ids": [],
+                "transition_path": [],
+                "stage": "S1-A",
+                "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+              }
+            }
+          ],
+          "independent_assertions": [
+            "No new nominal grant; fresh later input cannot clear the critical latch.",
+            "No zero covariance, fabricated map transform or freshened receive timestamp substitutes for valid capture evidence."
+          ],
+          "deferred": []
+        },
+        {
+          "case_id": "V05-A-frame",
+          "initial_overrides": {},
+          "timeline": [
+            {
+              "at_tick": 20,
+              "event": "ESTIMATE_OBSERVED",
+              "facts": "E20 frame_id=FRAME_B.",
+              "expected": {
+                "state": "NO_VALID_POLICY",
+                "decision": "REVOKE",
+                "reason_codes": [
+                  "FRAME_MISMATCH",
+                  "NO_VALID_POLICY"
+                ],
+                "live_permission_ids": [],
+                "transition_path": [
+                  "T09"
+                ],
+                "stage": "S1-A",
+                "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+              }
+            },
+            {
+              "at_tick": 21,
+              "event": "PERMISSION_REQUEST",
+              "facts": "c1; invalid estimate is not replaced with E0.",
+              "expected": {
+                "state": "NO_VALID_POLICY",
+                "decision": "REJECT",
+                "reason_codes": [
+                  "FAULT_LATCHED"
+                ],
+                "live_permission_ids": [],
+                "transition_path": [],
+                "stage": "S1-A",
+                "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+              }
+            },
+            {
+              "at_tick": 22,
+              "event": "ESTIMATE_OBSERVED",
+              "facts": "Fresh VALID E22 arrives.",
+              "expected": {
+                "state": "NO_VALID_POLICY",
+                "decision": "OBSERVE",
+                "reason_codes": [
+                  "FAULT_LATCHED"
+                ],
+                "live_permission_ids": [],
+                "transition_path": [],
+                "stage": "S1-A",
+                "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+              }
+            }
+          ],
+          "independent_assertions": [
+            "No new nominal grant; fresh later input cannot clear the critical latch.",
+            "No zero covariance, fabricated map transform or freshened receive timestamp substitutes for valid capture evidence."
+          ],
+          "deferred": []
+        },
+        {
+          "case_id": "V05-A-clock",
+          "initial_overrides": {},
+          "timeline": [
+            {
+              "at_tick": 20,
+              "event": "ESTIMATE_OBSERVED",
+              "facts": "E20 capture mapping/bounds null with reason.",
+              "expected": {
+                "state": "NO_VALID_POLICY",
+                "decision": "REVOKE",
+                "reason_codes": [
+                  "CLOCK_UNKNOWN",
+                  "NO_VALID_POLICY"
+                ],
+                "live_permission_ids": [],
+                "transition_path": [
+                  "T09"
+                ],
+                "stage": "S1-A",
+                "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+              }
+            },
+            {
+              "at_tick": 21,
+              "event": "PERMISSION_REQUEST",
+              "facts": "c1; invalid estimate is not replaced with E0.",
+              "expected": {
+                "state": "NO_VALID_POLICY",
+                "decision": "REJECT",
+                "reason_codes": [
+                  "FAULT_LATCHED"
+                ],
+                "live_permission_ids": [],
+                "transition_path": [],
+                "stage": "S1-A",
+                "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+              }
+            },
+            {
+              "at_tick": 22,
+              "event": "ESTIMATE_OBSERVED",
+              "facts": "Fresh VALID E22 arrives.",
+              "expected": {
+                "state": "NO_VALID_POLICY",
+                "decision": "OBSERVE",
+                "reason_codes": [
+                  "FAULT_LATCHED"
+                ],
+                "live_permission_ids": [],
+                "transition_path": [],
+                "stage": "S1-A",
+                "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+              }
+            }
+          ],
+          "independent_assertions": [
+            "No new nominal grant; fresh later input cannot clear the critical latch.",
+            "No zero covariance, fabricated map transform or freshened receive timestamp substitutes for valid capture evidence."
+          ],
+          "deferred": []
+        },
+        {
+          "case_id": "V05-A-uncertainty",
+          "initial_overrides": {},
+          "timeline": [
+            {
+              "at_tick": 20,
+              "event": "ESTIMATE_OBSERVED",
+              "facts": "E20 carries only covariance, no bounded-set interpretation.",
+              "expected": {
+                "state": "NO_VALID_POLICY",
+                "decision": "REVOKE",
+                "reason_codes": [
+                  "UNCERTAINTY_UNKNOWN",
+                  "NO_VALID_POLICY"
+                ],
+                "live_permission_ids": [],
+                "transition_path": [
+                  "T09"
+                ],
+                "stage": "S1-A",
+                "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+              }
+            },
+            {
+              "at_tick": 21,
+              "event": "PERMISSION_REQUEST",
+              "facts": "c1; invalid estimate is not replaced with E0.",
+              "expected": {
+                "state": "NO_VALID_POLICY",
+                "decision": "REJECT",
+                "reason_codes": [
+                  "FAULT_LATCHED"
+                ],
+                "live_permission_ids": [],
+                "transition_path": [],
+                "stage": "S1-A",
+                "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+              }
+            },
+            {
+              "at_tick": 22,
+              "event": "ESTIMATE_OBSERVED",
+              "facts": "Fresh VALID E22 arrives.",
+              "expected": {
+                "state": "NO_VALID_POLICY",
+                "decision": "OBSERVE",
+                "reason_codes": [
+                  "FAULT_LATCHED"
+                ],
+                "live_permission_ids": [],
+                "transition_path": [],
+                "stage": "S1-A",
+                "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+              }
+            }
+          ],
+          "independent_assertions": [
+            "No new nominal grant; fresh later input cannot clear the critical latch.",
+            "No zero covariance, fabricated map transform or freshened receive timestamp substitutes for valid capture evidence."
+          ],
+          "deferred": []
+        },
+        {
+          "case_id": "V05-A-stale-capture",
+          "initial_overrides": {},
+          "timeline": [
+            {
+              "at_tick": 100,
+              "event": "ADVANCE",
+              "facts": "E0 age exactly100 ticks, no requested hold beyond100.",
+              "expected": {
+                "state": "NORMAL",
+                "decision": "NO_CHANGE",
+                "reason_codes": [
+                  "OK"
+                ],
+                "live_permission_ids": [],
+                "transition_path": [],
+                "stage": "S1-A",
+                "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+              }
+            },
+            {
+              "at_tick": 101,
+              "event": "ADVANCE",
+              "facts": "First integer tick with age>100; no continuation/alternate token.",
+              "expected": {
+                "state": "NO_VALID_POLICY",
+                "decision": "REVOKE",
+                "reason_codes": [
+                  "STALE_ESTIMATE",
+                  "NO_VALID_POLICY"
+                ],
+                "live_permission_ids": [],
+                "transition_path": [
+                  "T09"
+                ],
+                "stage": "S1-A",
+                "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+              }
+            },
+            {
+              "at_tick": 120,
+              "event": "ESTIMATE_OBSERVED",
+              "facts": "Capture0, publication5, receipt120; publication latency[5,5], receipt delay115.",
+              "expected": {
+                "state": "NO_VALID_POLICY",
+                "decision": "REJECT",
+                "reason_codes": [
+                  "STALE_ESTIMATE",
+                  "FAULT_LATCHED"
+                ],
+                "live_permission_ids": [],
+                "transition_path": [],
+                "stage": "S1-A",
+                "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+              }
+            }
+          ],
+          "independent_assertions": [
+            "Age uses capture0, not publication5 or receipt120. Boundary100 is admissible only until a requested application/hold would exceed it.",
+            "An application at100 with hold_end101 is rejected even if current age is exactly100."
+          ],
+          "deferred": []
+        }
+      ],
+      "deferred_s0_assertions": [
+        "Actual estimator uncertainty calibration and map transforms.",
+        "Validated degraded continuation and sensor/common-mode fault models."
+      ]
+    },
+    {
+      "s0_id": "V06",
+      "title": "Delayed, duplicated and reordered commands",
+      "execution": "NOT_EXECUTED",
+      "coverage_claim": "Command-identity and time-bound protocol projection.",
+      "invariant_ids": [
+        "A03",
+        "A06",
+        "A07",
+        "A09",
+        "A15",
+        "A17"
+      ],
+      "cases": [
+        {
+          "case_id": "V06-A-identities",
+          "initial_overrides": {},
+          "timeline": [
+            {
+              "at_tick": 10,
+              "event": "COMMAND_SUBMIT",
+              "facts": "c1 recorded once; no permission yet.",
+              "expected": {
+                "state": "NORMAL",
+                "decision": "ACCEPT",
+                "reason_codes": [
+                  "OK"
+                ],
+                "live_permission_ids": [],
+                "transition_path": [],
+                "stage": "S1-A",
+                "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+              }
+            },
+            {
+              "at_tick": 10,
+              "event": "PERMISSION_REQUEST",
+              "facts": "First explicit grant request for c1 -> p1.",
+              "expected": {
+                "state": "NORMAL",
+                "decision": "ACCEPT",
+                "reason_codes": [
+                  "OK"
+                ],
+                "live_permission_ids": [
+                  "p1"
+                ],
+                "transition_path": [],
+                "stage": "S1-A",
+                "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+              }
+            },
+            {
+              "at_tick": 20,
+              "event": "APPLICATION_CHECK",
+              "facts": "p1 at[20,20], hold60.",
+              "expected": {
+                "state": "NORMAL",
+                "decision": "ACCEPT",
+                "reason_codes": [
+                  "OK"
+                ],
+                "live_permission_ids": [
+                  "p1"
+                ],
+                "transition_path": [],
+                "stage": "S1-A",
+                "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+              }
+            },
+            {
+              "at_tick": 21,
+              "event": "COMMAND_SUBMIT",
+              "facts": "Exact c1 ID, sequence and original payload bytes.",
+              "expected": {
+                "state": "NORMAL",
+                "decision": "REPLAY_PRIOR_OUTCOME",
+                "reason_codes": [
+                  "DUPLICATE_PRIOR_OUTCOME"
+                ],
+                "live_permission_ids": [
+                  "p1"
+                ],
+                "transition_path": [],
+                "stage": "S1-A",
+                "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+              }
+            },
+            {
+              "at_tick": 22,
+              "event": "COMMAND_SUBMIT",
+              "facts": "New ID c0/sequence0 from CTRL_A.",
+              "expected": {
+                "state": "NORMAL",
+                "decision": "REJECT",
+                "reason_codes": [
+                  "SEQUENCE_REORDERED"
+                ],
+                "live_permission_ids": [
+                  "p1"
+                ],
+                "transition_path": [],
+                "stage": "S1-A",
+                "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+              }
+            },
+            {
+              "at_tick": 50,
+              "event": "PERMISSION_REQUEST",
+              "facts": "c2/sequence2: generated0, requested40/latest45/hold60; arrival50.",
+              "expected": {
+                "state": "NORMAL",
+                "decision": "REJECT",
+                "reason_codes": [
+                  "APPLICATION_DEADLINE_MISSED"
+                ],
+                "live_permission_ids": [
+                  "p1"
+                ],
+                "transition_path": [],
+                "stage": "S1-A",
+                "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+              }
+            }
+          ],
+          "independent_assertions": [
+            "Exactly one p1 exists; submission and permission-request are distinct first operations; only repeated operations replay prior outcomes.",
+            "Use application time50 > latest45; delayed request does not extend p1.",
+            "Initial held input remains unobserved in A; no application count may be claimed."
+          ],
+          "deferred": []
+        },
+        {
+          "case_id": "V06-A-conflicting-payload",
+          "initial_overrides": {
+            "commands": [
+              "c1"
+            ],
+            "permissions": [
+              "p1"
+            ]
+          },
+          "timeline": [
+            {
+              "at_tick": 20,
+              "event": "COMMAND_SUBMIT",
+              "facts": "Reuse c1 ID with different payload bytes/control.",
+              "expected": {
+                "state": "NO_VALID_POLICY",
+                "decision": "REJECT",
+                "reason_codes": [
+                  "IDENTITY_CONFLICT",
+                  "NO_VALID_POLICY"
+                ],
+                "live_permission_ids": [],
+                "transition_path": [
+                  "T09"
+                ],
+                "stage": "S1-A",
+                "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+              }
+            }
+          ],
+          "independent_assertions": [
+            "Conflict cannot overwrite immutable c1, p1 or prior outcome; latch and revoke."
+          ],
+          "deferred": []
+        },
+        {
+          "case_id": "V06-B-at-most-once",
+          "initial_overrides": {
+            "stage": "S1-B",
+            "endpoint_profile": "synthetic_endpoint_profile"
+          },
+          "timeline": [
+            {
+              "at_tick": 20,
+              "event": "ENDPOINT_COMMIT",
+              "facts": "c1/p1 first local commit; all toy evidence valid.",
+              "expected": {
+                "state": "NORMAL",
+                "decision": "ACCEPT",
+                "reason_codes": [
+                  "OK"
+                ],
+                "live_permission_ids": [
+                  "p1"
+                ],
+                "transition_path": [],
+                "stage": "S1-B",
+                "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+              }
+            },
+            {
+              "at_tick": 21,
+              "event": "ENDPOINT_COMMIT",
+              "facts": "Exact duplicate c1/p1.",
+              "expected": {
+                "state": "NORMAL",
+                "decision": "REPLAY_PRIOR_OUTCOME",
+                "reason_codes": [
+                  "DUPLICATE_PRIOR_OUTCOME"
+                ],
+                "live_permission_ids": [
+                  "p1"
+                ],
+                "transition_path": [],
+                "stage": "S1-B",
+                "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+              }
+            },
+            {
+              "at_tick": 22,
+              "event": "ENDPOINT_OBSERVATION",
+              "facts": "Deliver duplicate ack for commit20.",
+              "expected": {
+                "state": "NORMAL",
+                "decision": "OBSERVE",
+                "reason_codes": [
+                  "DUPLICATE_PRIOR_OUTCOME"
+                ],
+                "live_permission_ids": [
+                  "p1"
+                ],
+                "transition_path": [],
+                "stage": "S1-B",
+                "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+              }
+            }
+          ],
+          "independent_assertions": [
+            "Endpoint ledger contains one SIMULATED_APPLIED at20; duplicate acknowledgement does not produce a second commit."
+          ],
+          "deferred": []
+        }
+      ],
+      "deferred_s0_assertions": [
+        "Physical steering slew, actuator dynamics, motor conversion and real communication replay resilience.",
+        "Independent watchdog enforcement and characterized queue bounds."
+      ]
+    },
+    {
+      "s0_id": "V07",
+      "title": "Old commands across authority or mode transitions",
+      "execution": "NOT_EXECUTED",
+      "coverage_claim": "Explicit reauthorization and unsupported-mode rejection; no recovery controller is exercised.",
+      "invariant_ids": [
+        "A04",
+        "A06",
+        "A08",
+        "A09",
+        "A11",
+        "A17"
+      ],
+      "cases": [
+        {
+          "case_id": "V07-A-explicit-reauthorization",
+          "initial_overrides": {
+            "commands": [
+              "c-old is c1 with ID c-old and hold80"
+            ],
+            "permissions": [
+              "p-old is p1 for c-old with valid_until/hold80"
+            ]
+          },
+          "timeline": [
+            {
+              "at_tick": 20,
+              "event": "EPOCH_INSTALL + BARRIER_ACK_OBSERVED + AUTHORITY_ACCEPT",
+              "facts": "Same sealed batch: install epoch2/SESSION_A, observe matching barrier ack, then accept P2 with NOMINAL_B_OK and desired_epoch2; revoke p-old atomically before permissive work.",
+              "expected": {
+                "state": "NORMAL",
+                "decision": "REVOKE",
+                "reason_codes": [
+                  "OK"
+                ],
+                "live_permission_ids": [],
+                "transition_path": [],
+                "stage": "S1-A",
+                "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+              }
+            },
+            {
+              "at_tick": 21,
+              "event": "APPLICATION_CHECK",
+              "facts": "Attempt p-old after the acknowledged epoch2 handoff.",
+              "expected": {
+                "state": "NORMAL",
+                "decision": "REJECT",
+                "reason_codes": [
+                  "REVOKED",
+                  "EPOCH_MISMATCH"
+                ],
+                "live_permission_ids": [],
+                "transition_path": [],
+                "stage": "S1-A",
+                "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+              }
+            },
+            {
+              "at_tick": 22,
+              "event": "APPLICATION_CHECK",
+              "facts": "Attempt p-old/epoch1.",
+              "expected": {
+                "state": "NORMAL",
+                "decision": "REJECT",
+                "reason_codes": [
+                  "REVOKED",
+                  "EPOCH_MISMATCH"
+                ],
+                "live_permission_ids": [],
+                "transition_path": [],
+                "stage": "S1-A",
+                "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+              }
+            },
+            {
+              "at_tick": 23,
+              "event": "EVIDENCE_OBSERVED + REAUTHORIZE",
+              "facts": "REAUTH_OLD_OK explicitly validates still-unapplied c-old/P1 for current CTRL_B mode/epoch2 and original interval; grant p-new valid[24,80), latest30, hold80.",
+              "expected": {
+                "state": "NORMAL",
+                "decision": "ACCEPT",
+                "reason_codes": [
+                  "OK"
+                ],
+                "live_permission_ids": [
+                  "p-new"
+                ],
+                "transition_path": [],
+                "stage": "S1-A",
+                "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+              }
+            },
+            {
+              "at_tick": 24,
+              "event": "APPLICATION_CHECK",
+              "facts": "p-new with original c-old/CTRL_A/P1/generation_epoch1 and permission_epoch2.",
+              "expected": {
+                "state": "NORMAL",
+                "decision": "ACCEPT",
+                "reason_codes": [
+                  "OK"
+                ],
+                "live_permission_ids": [
+                  "p-new"
+                ],
+                "transition_path": [],
+                "stage": "S1-A",
+                "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+              }
+            }
+          ],
+          "independent_assertions": [
+            "Owner becomes CTRL_B but original command source CTRL_A/P1 and generation_epoch1 never change.",
+            "Same-batch barrier acknowledgement precedes acceptance/permissive work; explicit REAUTHORIZE creates a distinct p-new, not a duplicate grant operation.",
+            "p-new end80 <= original P1 expiry1000; a hypothetical permission extending beyond1000 must fail independently."
+          ],
+          "deferred": []
+        },
+        {
+          "case_id": "V07-A-unacknowledged-handoff",
+          "initial_overrides": {
+            "commands": [
+              "c1"
+            ],
+            "permissions": [
+              "p1"
+            ]
+          },
+          "timeline": [
+            {
+              "at_tick": 20,
+              "event": "AUTHORITY_ACCEPT",
+              "facts": "P2 candidate acceptance cannot complete: epoch2 barrier unacknowledged and no separate continuation/response evidence. Revoke affected grants at closure.",
+              "expected": {
+                "state": "NO_VALID_POLICY",
+                "decision": "REJECT",
+                "reason_codes": [
+                  "BARRIER_UNACKNOWLEDGED",
+                  "NO_VALID_POLICY"
+                ],
+                "live_permission_ids": [],
+                "transition_path": [
+                  "T09"
+                ],
+                "stage": "S1-A",
+                "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+              }
+            },
+            {
+              "at_tick": 21,
+              "event": "APPLICATION_CHECK",
+              "facts": "No inferred barrier acknowledgement.",
+              "expected": {
+                "state": "NO_VALID_POLICY",
+                "decision": "REJECT",
+                "reason_codes": [
+                  "FAULT_LATCHED"
+                ],
+                "live_permission_ids": [],
+                "transition_path": [],
+                "stage": "S1-A",
+                "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+              }
+            }
+          ],
+          "independent_assertions": [
+            "No successful handoff or new grant is inferred from packet readiness or an unacknowledged endpoint install."
+          ],
+          "deferred": []
+        },
+        {
+          "case_id": "V07-A-mode-fault",
+          "initial_overrides": {
+            "commands": [
+              "c1"
+            ],
+            "permissions": [
+              "p1"
+            ]
+          },
+          "timeline": [
+            {
+              "at_tick": 20,
+              "event": "EMERGENCY + CANCEL_REQUEST",
+              "facts": "Stop/recovery evidence UNKNOWN; revoke p1, request cancellation; endpoint delivery/ack absent.",
+              "expected": {
+                "state": "NO_VALID_POLICY",
+                "decision": "REQUEST_CANCEL",
+                "reason_codes": [
+                  "NO_VALID_POLICY",
+                  "CANCEL_PENDING"
+                ],
+                "live_permission_ids": [],
+                "transition_path": [
+                  "T06",
+                  "T09"
+                ],
+                "stage": "S1-A",
+                "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+              }
+            },
+            {
+              "at_tick": 21,
+              "event": "APPLICATION_CHECK",
+              "facts": "Old nominal p1 after mode/epoch transition.",
+              "expected": {
+                "state": "NO_VALID_POLICY",
+                "decision": "REJECT",
+                "reason_codes": [
+                  "REVOKED",
+                  "FAULT_LATCHED"
+                ],
+                "live_permission_ids": [],
+                "transition_path": [],
+                "stage": "S1-A",
+                "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+              }
+            }
+          ],
+          "independent_assertions": [
+            "Cancellation remains REQUESTED/UNKNOWN, never cancelled by inference; unknown held/application history retained."
+          ],
+          "deferred": []
+        }
+      ],
+      "deferred_s0_assertions": [
+        "Physical recovery/deceleration handover, continuous control validity and actual endpoint cancellation latency."
+      ]
+    },
+    {
+      "s0_id": "V15",
+      "title": "Bounded simultaneous-event and cancellation arbitration",
+      "execution": "NOT_EXECUTED",
+      "coverage_claim": "Initial subset: fault-versus-permission priority; expiry boundary via V01; cancellation before/equal/after commit; explicit undelivered revocation and acknowledgement knowledge.",
+      "invariant_ids": [
+        "A06",
+        "A07",
+        "A08",
+        "A09",
+        "A10",
+        "A14",
+        "A15"
+      ],
+      "cases": [
+        {
+          "case_id": "V15-A-same-tick-fault",
+          "initial_overrides": {
+            "commands": [
+              "c1"
+            ],
+            "permissions": [
+              "p1"
+            ]
+          },
+          "timeline": [
+            {
+              "at_tick": 20,
+              "event": "EMERGENCY + ESTIMATE_OBSERVED + PERMISSION_REQUEST + APPLICATION_CHECK",
+              "facts": "All at20: emergency; healthy E20; new nominal request; old p1 application check. Phase0 fault wins over phases2/4.",
+              "expected": {
+                "state": "NO_VALID_POLICY",
+                "decision": "REJECT",
+                "reason_codes": [
+                  "FAULT_LATCHED",
+                  "NO_VALID_POLICY"
+                ],
+                "live_permission_ids": [],
+                "transition_path": [
+                  "T06",
+                  "T09"
+                ],
+                "stage": "S1-A",
+                "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+              }
+            }
+          ],
+          "independent_assertions": [
+            "Permuting external input enumeration does not change fault-before-grant outcome.",
+            "The same-tick fresh estimate cannot clear the latch; zero new permissions."
+          ],
+          "deferred": []
+        },
+        {
+          "case_id": "V15-B-cancel-at-commit",
+          "initial_overrides": {
+            "stage": "S1-B",
+            "endpoint_profile": "synthetic_endpoint_profile"
+          },
+          "timeline": [
+            {
+              "at_tick": 20,
+              "event": "CANCEL_DELIVER + ENDPOINT_COMMIT",
+              "facts": "Cancellation for c1/p1 delivered at the exact commit tick; delivery phase0 precedes commit phase5.",
+              "expected": {
+                "state": "NORMAL",
+                "decision": "REJECT",
+                "reason_codes": [
+                  "CANCELLED"
+                ],
+                "live_permission_ids": [
+                  "p1"
+                ],
+                "transition_path": [],
+                "stage": "S1-B",
+                "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+              }
+            },
+            {
+              "at_tick": 21,
+              "event": "ENDPOINT_OBSERVATION",
+              "facts": "Observe SIMULATED_CANCELLED ack; p1 removed from live grants.",
+              "expected": {
+                "state": "NORMAL",
+                "decision": "OBSERVE",
+                "reason_codes": [
+                  "CANCELLED"
+                ],
+                "live_permission_ids": [],
+                "transition_path": [],
+                "stage": "S1-B",
+                "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+              }
+            }
+          ],
+          "independent_assertions": [
+            "Zero commits for c1; cancellation ack proves only simulated endpoint behavior."
+          ],
+          "deferred": []
+        },
+        {
+          "case_id": "V15-B-cancel-too-late",
+          "initial_overrides": {
+            "stage": "S1-B",
+            "endpoint_profile": "synthetic_endpoint_profile"
+          },
+          "timeline": [
+            {
+              "at_tick": 20,
+              "event": "ENDPOINT_COMMIT",
+              "facts": "c1/p1 commits before cancellation reaches endpoint.",
+              "expected": {
+                "state": "NORMAL",
+                "decision": "ACCEPT",
+                "reason_codes": [
+                  "OK"
+                ],
+                "live_permission_ids": [
+                  "p1"
+                ],
+                "transition_path": [],
+                "stage": "S1-B",
+                "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+              }
+            },
+            {
+              "at_tick": 21,
+              "event": "CANCEL_DELIVER",
+              "facts": "Delivery after known simulated commit20.",
+              "expected": {
+                "state": "NORMAL",
+                "decision": "REJECT",
+                "reason_codes": [
+                  "TOO_LATE"
+                ],
+                "live_permission_ids": [
+                  "p1"
+                ],
+                "transition_path": [],
+                "stage": "S1-B",
+                "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+              }
+            },
+            {
+              "at_tick": 22,
+              "event": "ENDPOINT_OBSERVATION",
+              "facts": "Observe TOO_LATE, retaining commit20 and held record.",
+              "expected": {
+                "state": "NORMAL",
+                "decision": "OBSERVE",
+                "reason_codes": [
+                  "TOO_LATE"
+                ],
+                "live_permission_ids": [
+                  "p1"
+                ],
+                "transition_path": [],
+                "stage": "S1-B",
+                "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+              }
+            }
+          ],
+          "independent_assertions": [
+            "Commit count remains one; no retrospective SIMULATED_CANCELLED record."
+          ],
+          "deferred": []
+        },
+        {
+          "case_id": "V15-B-undelivered-revocation",
+          "initial_overrides": {
+            "stage": "S1-B",
+            "endpoint_profile": "synthetic_endpoint_profile"
+          },
+          "timeline": [
+            {
+              "at_tick": 20,
+              "event": "REVOKE_REQUEST",
+              "facts": "Host desired_epoch2; p1 revoked at host; endpoint still installed1; no independent alternate response.",
+              "expected": {
+                "state": "NO_VALID_POLICY",
+                "decision": "REVOKE",
+                "reason_codes": [
+                  "BARRIER_UNACKNOWLEDGED",
+                  "APPLICATION_UNKNOWN",
+                  "NO_VALID_POLICY"
+                ],
+                "live_permission_ids": [],
+                "transition_path": [
+                  "T09"
+                ],
+                "stage": "S1-B",
+                "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+              }
+            },
+            {
+              "at_tick": 25,
+              "event": "ENDPOINT_COMMIT",
+              "facts": "Endpoint-local delivered p1/epoch1 remains unexpired; no revoke received and local evidence valid.",
+              "expected": {
+                "state": "NO_VALID_POLICY",
+                "decision": "ACCEPT",
+                "reason_codes": [
+                  "OK",
+                  "APPLICATION_UNKNOWN"
+                ],
+                "live_permission_ids": [],
+                "transition_path": [],
+                "stage": "S1-B",
+                "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+              }
+            },
+            {
+              "at_tick": 30,
+              "event": "EPOCH_INSTALL",
+              "facts": "Endpoint finally installs epoch2, invalidating old local permission.",
+              "expected": {
+                "state": "NO_VALID_POLICY",
+                "decision": "REVOKE",
+                "reason_codes": [
+                  "EPOCH_MISMATCH"
+                ],
+                "live_permission_ids": [],
+                "transition_path": [],
+                "stage": "S1-B",
+                "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+              }
+            },
+            {
+              "at_tick": 31,
+              "event": "ENDPOINT_OBSERVATION + BARRIER_ACK_OBSERVED",
+              "facts": "Host learns SIMULATED_APPLIED at25 and barrier at30.",
+              "expected": {
+                "state": "NO_VALID_POLICY",
+                "decision": "OBSERVE",
+                "reason_codes": [
+                  "FAULT_LATCHED"
+                ],
+                "live_permission_ids": [],
+                "transition_path": [],
+                "stage": "S1-B",
+                "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+              }
+            },
+            {
+              "at_tick": 32,
+              "event": "ENDPOINT_COMMIT",
+              "facts": "Replay old c1 after installation.",
+              "expected": {
+                "state": "NO_VALID_POLICY",
+                "decision": "REJECT",
+                "reason_codes": [
+                  "EPOCH_MISMATCH"
+                ],
+                "live_permission_ids": [],
+                "transition_path": [],
+                "stage": "S1-B",
+                "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+              }
+            }
+          ],
+          "independent_assertions": [
+            "Host logical rejection at20 is not instant endpoint enforcement. Preserve interval[20,31) as application knowledge unknown.",
+            "At25 ACCEPT names endpoint-local simulated outcome only; supervisor remains NO_VALID_POLICY with zero live host grants.",
+            "At32 mismatch rejection takes precedence over duplicate replay; prior applied record remains visible."
+          ],
+          "deferred": []
+        }
+      ],
+      "deferred_s0_assertions": [
+        "All T01-T14 positive policy transitions, full event cross-product and every fixed/variable-handoff collision.",
+        "Arbitrary transport/clock reset/skew, queue capacity, acknowledged stop/rest loss, hardware arbitration and end-to-end timing bounds.",
+        "Full S0 V15 acceptance remains deferred."
+      ]
+    },
+    {
+      "s0_id": "V19",
+      "title": "Bounded no-policy, latching and controlled reentry",
+      "execution": "NOT_EXECUTED",
+      "coverage_claim": "Initial subset: unavailable response, latch retention across logical restart, rejected reset, synthetic rest-evidence route T11/T13/T01 and stale-session rejection.",
+      "invariant_ids": [
+        "A06",
+        "A09",
+        "A11",
+        "A12",
+        "A13",
+        "A15",
+        "A18"
+      ],
+      "cases": [
+        {
+          "case_id": "V19-A-latch-restart-reentry",
+          "initial_overrides": {},
+          "timeline": [
+            {
+              "at_tick": 20,
+              "event": "ESTIMATE_OBSERVED",
+              "facts": "E20 INVALID; all continuation/recovery/deceleration/stop evidence UNKNOWN.",
+              "expected": {
+                "state": "NO_VALID_POLICY",
+                "decision": "REVOKE",
+                "reason_codes": [
+                  "ESTIMATE_INVALID",
+                  "NO_VALID_POLICY"
+                ],
+                "live_permission_ids": [],
+                "transition_path": [
+                  "T09"
+                ],
+                "stage": "S1-A",
+                "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+              }
+            },
+            {
+              "at_tick": 21,
+              "event": "ESTIMATE_OBSERVED + PERMISSION_REQUEST",
+              "facts": "VALID E21 plus nominal request; no clearance.",
+              "expected": {
+                "state": "NO_VALID_POLICY",
+                "decision": "REJECT",
+                "reason_codes": [
+                  "FAULT_LATCHED"
+                ],
+                "live_permission_ids": [],
+                "transition_path": [],
+                "stage": "S1-A",
+                "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+              }
+            },
+            {
+              "at_tick": 22,
+              "event": "RESET_REQUEST",
+              "facts": "Operator reset without rest/health/queue-clearance evidence.",
+              "expected": {
+                "state": "NO_VALID_POLICY",
+                "decision": "REJECT",
+                "reason_codes": [
+                  "RESET_NOT_ADMISSIBLE"
+                ],
+                "live_permission_ids": [],
+                "transition_path": [],
+                "stage": "S1-A",
+                "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+              }
+            },
+            {
+              "at_tick": 23,
+              "event": "RESTART",
+              "facts": "Restore current snapshot and critical latch; use new supervisor instance only.",
+              "expected": {
+                "state": "NO_VALID_POLICY",
+                "decision": "OBSERVE",
+                "reason_codes": [
+                  "FAULT_LATCHED"
+                ],
+                "live_permission_ids": [],
+                "transition_path": [],
+                "stage": "S1-A",
+                "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+              }
+            },
+            {
+              "at_tick": 25,
+              "event": "EVIDENCE_OBSERVED",
+              "facts": "Independent REST_HOLD_TOY_OK supplied as explicit SYNTHETIC_ASSUMPTION [25,1000); prior actuation remains unknown.",
+              "expected": {
+                "state": "STOPPED_LATCHED",
+                "decision": "OBSERVE",
+                "reason_codes": [
+                  "OK"
+                ],
+                "live_permission_ids": [],
+                "transition_path": [
+                  "T11"
+                ],
+                "stage": "S1-A",
+                "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+              }
+            },
+            {
+              "at_tick": 26,
+              "event": "EPOCH_INSTALL + BARRIER_ACK_OBSERVED + RESET_REQUEST",
+              "facts": "Install new SESSION_B/ENDPOINT_B epoch2; ack cleared old queue; named health/fault-clearance evidence and authorized reset. Retain cleared latch history.",
+              "expected": {
+                "state": "DISARMED",
+                "decision": "ACCEPT",
+                "reason_codes": [
+                  "OK"
+                ],
+                "live_permission_ids": [],
+                "transition_path": [
+                  "T13"
+                ],
+                "stage": "S1-A",
+                "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+              }
+            },
+            {
+              "at_tick": 27,
+              "event": "ESTIMATE_OBSERVED + AUTHORITY_ACCEPT + ARM_REQUEST",
+              "facts": "VALID E27; new P3 from CTRL_A timestamps[.027,.2,1] s, accepted27 in SESSION_B with current NOMINAL_OK; explicit arm and barrier evidence, same installed epoch2.",
+              "expected": {
+                "state": "NORMAL",
+                "decision": "ACCEPT",
+                "reason_codes": [
+                  "OK"
+                ],
+                "live_permission_ids": [],
+                "transition_path": [
+                  "T01"
+                ],
+                "stage": "S1-A",
+                "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+              }
+            },
+            {
+              "at_tick": 28,
+              "event": "COMMAND_SUBMIT",
+              "facts": "Old c1 from SESSION_A.",
+              "expected": {
+                "state": "NORMAL",
+                "decision": "REJECT",
+                "reason_codes": [
+                  "SESSION_MISMATCH"
+                ],
+                "live_permission_ids": [],
+                "transition_path": [],
+                "stage": "S1-A",
+                "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+              }
+            }
+          ],
+          "independent_assertions": [
+            "No direct NO_VALID_POLICY->NORMAL or STOPPED_LATCHED->NORMAL edge.",
+            "REST_HOLD_TOY_OK is a logical fixture assertion, never proof that a vehicle stopped.",
+            "New session/barrier plus explicit arm required; historical unknowns/latches/old identities are not erased."
+          ],
+          "deferred": []
+        },
+        {
+          "case_id": "V19-A-missing-persistence",
+          "initial_overrides": {
+            "state": "DISARMED",
+            "restored_snapshot": null
+          },
+          "timeline": [
+            {
+              "at_tick": 0,
+              "event": "RESTART",
+              "facts": "Snapshot absent/corrupt; integrity evidence absent.",
+              "expected": {
+                "state": "NO_VALID_POLICY",
+                "decision": "REVOKE",
+                "reason_codes": [
+                  "PERSISTENCE_UNKNOWN",
+                  "NO_VALID_POLICY"
+                ],
+                "live_permission_ids": [],
+                "transition_path": [
+                  "T09"
+                ],
+                "stage": "S1-A",
+                "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+              }
+            },
+            {
+              "at_tick": 1,
+              "event": "ARM_REQUEST",
+              "facts": "Operator authorization only.",
+              "expected": {
+                "state": "NO_VALID_POLICY",
+                "decision": "REJECT",
+                "reason_codes": [
+                  "FAULT_LATCHED"
+                ],
+                "live_permission_ids": [],
+                "transition_path": [],
+                "stage": "S1-A",
+                "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+              }
+            }
+          ],
+          "independent_assertions": [
+            "No empty-store assumption clears faults or grants racing authority."
+          ],
+          "deferred": []
+        }
+      ],
+      "deferred_s0_assertions": [
+        "Recovery/deceleration terminal sets, dwell/hysteresis values and T12 positive reentry.",
+        "T10 physical emergency response, validated stop-to-zero, T14 physical loss of rest and simultaneous actuator/power failures.",
+        "Durable storage/power failure, independent rest sensing and full S0 V19 acceptance."
+      ]
+    }
+  ],
+  "wider_s0_register": {
+    "reference": {
+      "path": "docs/safety/s0/verification_requirements.json",
+      "revision": "3747e0d9a7e834a5df34c4b089a5292c0a749fa4",
+      "sha256": "c9cbc6d513abad222fd62acdb1f6d9c89f9e0e69a7f30ee460cbd9108bc737db",
+      "git_url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/3747e0d9a7e834a5df34c4b089a5292c0a749fa4/docs/safety/s0/verification_requirements.json"
+    },
+    "ids": [
+      "V01",
+      "V02",
+      "V03",
+      "V04",
+      "V05",
+      "V06",
+      "V07",
+      "V08",
+      "V09",
+      "V10",
+      "V11",
+      "V12",
+      "V13",
+      "V14",
+      "V15",
+      "V16",
+      "V17",
+      "V18",
+      "V19"
+    ],
+    "execution": "ALL_NOT_EXECUTED_FOR_SAFETY",
+    "no_full_case_acceptance_claim": true
+  }
+}

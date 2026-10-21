@@ -1,0 +1,92 @@
+{
+  "schema": "apex-s1/staged-implementation-plan/0.1.0",
+  "stage": "WORK_DOCUMENTATION_SPECIFICATION_ONLY",
+  "status": "WORK_COMPLETE_PENDING_REVIEW",
+  "implemented": false,
+  "execution": "NOT_EXECUTED",
+  "current_authorization": "SPECIFICATION_PREPARATION_AND_DOCUMENTATION_DELIVERY_ONLY",
+  "automatic_progression": false,
+  "stages": [
+    {
+      "id": "S1-A",
+      "status": "PROPOSED_NOT_AUTHORIZED",
+      "entry_gate": "GATE_A_CODE",
+      "scope": [
+        "Pure deterministic reducer over explicit Configuration, Snapshot and Event values.",
+        "All nine states and fourteen reviewed S0 transitions, explicit unknowns, bounded logical permissions and retained latches.",
+        "Literal independent oracle checks for the six bounded scenario projections; externally supplied acknowledgement/rest fixture evidence is labelled synthetic."
+      ],
+      "excluded": [
+        "Endpoint implementation or commits",
+        "Vehicle propagation",
+        "CasADi/IPOPT/controller imports",
+        "Real clocks, threads, transport, disk persistence or hardware",
+        "Recovery/braking laws"
+      ],
+      "expected_evidence": [
+        "Exact reviewed source/config/fixture hashes",
+        "Complete logical traces and independent invariant checks",
+        "Schema/malformed-input checks",
+        "Failed/censored cases retained",
+        "No physical application claim"
+      ],
+      "exit_gate": "GATE_A_REVIEW",
+      "next_stage_authorized_on_exit": false
+    },
+    {
+      "id": "S1-B",
+      "status": "PROPOSED_NOT_AUTHORIZED",
+      "entry_gate": "GATE_B_CODE",
+      "scope": [
+        "Synthetic endpoint using its own EndpointSnapshot, installed epoch/session and delivered messages.",
+        "Command lifecycle, simulated application, cancellation and acknowledgement delivery/loss/reordering.",
+        "S1-B rows of the six scenarios, local expiry under host silence and independent at-most-once/ordering oracles."
+      ],
+      "excluded": [
+        "Actual MCU/actuator behavior",
+        "Physical stopping",
+        "Racing runtime integration",
+        "Measured latency benchmarks"
+      ],
+      "expected_evidence": [
+        "Host and endpoint traces kept distinct",
+        "Command, permission, original source and epoch histories",
+        "Observed/unknown/TOO_LATE outcomes",
+        "No hidden instantaneous distributed revocation",
+        "Exact revised source and independent expected-table review"
+      ],
+      "exit_gate": "GATE_B_REVIEW",
+      "next_stage_authorized_on_exit": false
+    },
+    {
+      "id": "S1-C",
+      "status": "PROPOSED_NOT_AUTHORIZED",
+      "entry_gate": "GATE_C_SCOPE",
+      "scope": [
+        "Separately scoped extended S0 scenarios and adapter design/implementation review.",
+        "Perception v0.3 adoption after its actual contract is supplied.",
+        "Controller-independent packet/clock/health adapters; any runtime integration must be individually authorized."
+      ],
+      "excluded": [
+        "Automatic Performance or Efficiency merge",
+        "Automatic hardware/HIL release",
+        "Unspecified controller/model changes"
+      ],
+      "expected_evidence": [
+        "Requirement-by-requirement coverage and deferred assertions",
+        "Legacy reader and disabled-mode noninterference where applicable",
+        "Zero/injected/measured computational latency, continued physical motion, staleness and skipped deadlines when a computational runtime is actually integrated",
+        "Serialized measured timing only under separate experiment authorization"
+      ],
+      "exit_gate": "GATE_C_REVIEW",
+      "next_stage_authorized_on_exit": false
+    }
+  ],
+  "acceptance_claim": "Any later protocol acceptance is restricted to demonstrated logical/synthetic authority properties. It neither proves a physical domain nor releases hardware.",
+  "review_sequence": [
+    "WORK",
+    "ENGINEERING REVIEW",
+    "explicitly authorized VERIFICATION",
+    "PRIMARY SCIENTIFIC ACCEPTANCE"
+  ]
+}
