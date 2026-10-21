@@ -1,3 +1,28 @@
+# Current Efficiency coordination — 22 October 2026
+
+Primary APEX has accepted F0 **APPROVED WITH CONDITIONS**; the separate
+[acceptance overlay](task007f/f0/primary_acceptance.json) binds delivery
+`eaa0a3398515a21f30a850de59a0b44c775fad4d`. Original F0 statuses below are historical.
+The [F-PROFILE-1 Phase A execution specification](F_PROFILE_1_PHASE_A_SPEC.md) is
+**WORK_COMPLETE_PENDING_REVIEW**, with no implementation or numerical execution authorized.
+
+- First proposed workstream: preparation profiling, split into separately reviewed Phase A
+  instrumentation/parity/observer assessment and separately authorized Phase B measurements.
+- Conditional Phase B basis: ten 2-second A workers and ten twelve-context diagnostic workers;
+  sequential native SINGLE, existing RAM/disk/measurement guards and proposed 20-minute ceiling.
+- Before execution: approve exact recorder/API/exclusion map, Phase A fixtures/budget/observer
+  protocol, clock reconciliation and causal readiness accounting. Exact panel IDs and full pre-call
+  optimizer warm-state recovery remain blocked; a cold diagnostic alternative needs explicit amendment.
+- RMS/TV floors, peak thresholds and grid-cost policies remain deferred until dependent scientific
+  comparisons. No Efficiency profile exists; frozen A and C70 negative evidence remain intact.
+- Safety S0/S1 proceed independently; no interface merge, emergency policy or application permission
+  is implemented here. Historical archive coverage and restore qualification remain separate.
+
+Next action is Secondary Engineering Review, followed only by the next explicitly scoped assignment.
+No automatic implementation, profiling, experiment, promotion or merge to main is authorized.
+
+---
+
 # Project roadmap
 
 ## Current accepted baseline — 17 October 2026

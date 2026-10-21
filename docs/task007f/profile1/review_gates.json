@@ -1,0 +1,119 @@
+{
+  "schema": "apex-profile1-review-gates/1.0.0",
+  "schema_version": "1.0.0",
+  "experiment_id": "F-PROFILE-1",
+  "stage": "WORK_DOCUMENTATION_SPECIFICATION_ONLY",
+  "status": "WORK_COMPLETE_PENDING_REVIEW",
+  "inspected_source_revision": "eaa0a3398515a21f30a850de59a0b44c775fad4d",
+  "phase_a_implementation_authorized": false,
+  "numerical_execution_authorized": false,
+  "phase_b_authorized": false,
+  "workflow": [
+    "WORK",
+    "ENGINEERING_REVIEW",
+    "VERIFICATION",
+    "PRIMARY_SCIENTIFIC_ACCEPTANCE"
+  ],
+  "gates": [
+    {
+      "id": "G0",
+      "before": "accept current specification delivery",
+      "requires": "Review separate F0 acceptance overlay, source anchors, recording boundaries, unresolved decisions and static preservation checks. This does not authorize implementation.",
+      "current": "PENDING_ENGINEERING_REVIEW"
+    },
+    {
+      "id": "G1",
+      "before": "Phase A implementation",
+      "requires": "Explicit scoped authorization; reviewed recorder injection/API and allowed source diff; approved exact semantic/timing exclusion map and failure contract. Preserve source/profile identity and frozen refs.",
+      "current": "NOT_AUTHORIZED"
+    },
+    {
+      "id": "G2",
+      "before": "Phase A numerical checks / observer probes",
+      "requires": "Explicit execution authorization, frozen fixtures/replays, exact paired observer counts/order and independent Phase A RAM/disk/time cap, SINGLE/backend/process observations; focused prerequisites first.",
+      "current": "NOT_AUTHORIZED"
+    },
+    {
+      "id": "G3",
+      "before": "Phase A engineering acceptance",
+      "requires": "Exact controlled B0/B1/B2 numerical/packet/RK4/authority parity; complete negative/partial/censored accounting; reviewed clock reconciliation, disabled/enabled observer cost and readiness deltas on exact implementation revision.",
+      "current": "NO_IMPLEMENTATION_OR_EVIDENCE"
+    },
+    {
+      "id": "G4",
+      "before": "formal implementation verification",
+      "requires": "Separate authorization; complete required regression/acceptance and artifact audit on exact reviewed SHA, with applicable prior evidence clearly distinguished. No blanket inherited numerical acceptance of instrumentation.",
+      "current": "DEFERRED"
+    },
+    {
+      "id": "G5",
+      "before": "Phase B",
+      "requires": "Reviewed Phase A evidence, exact panel/recovery or approved cold-panel amendment, explicit full-versus-legacy readiness policy, resource approval and separate Phase B authorization. Current 20-worker basis remains conditional.",
+      "current": "BLOCKED_NOT_AUTHORIZED"
+    },
+    {
+      "id": "G6",
+      "before": "Efficiency candidate/promotion/larger study",
+      "requires": "New scoped task and versioned candidate; relevant deferred floors/thresholds/math policies resolved; hard gates and uncertainty; Primary scientific acceptance for profile changes.",
+      "current": "NOT_AUTHORIZED"
+    }
+  ],
+  "unresolved_decisions": [
+    {
+      "id": "D1",
+      "gate": "G1",
+      "decision": "Approve exact recorder injection/API and complete semantic/timing field-path allowlist; source-linked proposal is defined but unimplemented."
+    },
+    {
+      "id": "D2",
+      "gate": "G2",
+      "decision": "Freeze actual zero/injected fixtures, observer paired repetitions/order and Phase A resource cap; Phase B budget does not authorize these probes."
+    },
+    {
+      "id": "D3",
+      "gate": "G3",
+      "decision": "Approve empirical clock-resolution/skew reconciliation allowance and observer evidence; no numerical overhead pass threshold invented."
+    },
+    {
+      "id": "D4",
+      "gate": "G5",
+      "decision": "Settle explicit legacy vs full-dispatch readiness accounting before measured availability claims; a scheduler mapping change is separately versioned/reviewed."
+    },
+    {
+      "id": "D5",
+      "gate": "G5",
+      "decision": "Freeze exact context IDs, causal digests and geometry quantile/dwell criteria; recover full optimizer warm state or approve a labelled cold panel."
+    },
+    {
+      "id": "D6",
+      "gate": "G6",
+      "decision": "RMS/TV absolute floors, peak thresholds and nonuniform-grid cost/rate/warm-start policies are deferred until scientifically required, not prerequisites for writing passive instrumentation."
+    }
+  ],
+  "hard_stops": [
+    "Any unexplained B0/B1/B2 numerical, packet, controller-mutation or controlled chronology/RK4 discrepancy",
+    "Nonfinite or invalid model/actuator/grip state, numerical-domain failure, recorded boundary crossing or predicted slack >1e-6 m",
+    "Unexplained solver/prediction/preparation/gain failure, unexpected fallback, lost/expired authority or exhaustion in a run described as successful",
+    "Future-truth leakage, overlapping solve, changed event order, concealed missed deadline or erased old-command provenance",
+    "Timer double counting, unreconciled/negative residual beyond reviewed clock allowance, missing spans silently replaced by zero, recorder overflow or lost outcomes",
+    "Missing context/recoverability, provenance mismatch, unexpected resource/backend/thread behavior or conflicting measurement guard",
+    "Budget/headroom exhausted: stop starting new workers; retain partial attempt and censoring, never delete evidence or rerun for a favorable result"
+  ],
+  "negative_fixture_rule": "Predeclared test injections intentionally exercise failure/late/expiry paths and must match the uninstrumented oracle. A new unexplained scientific failure stops the affected branch; review, not an automatic repair/retune/replacement, decides next work.",
+  "scope_limits": [
+    "No Phase A implementation or execution in this delivery",
+    "No Phase B measurement",
+    "No controllers/solver/simulation/tests/fixtures/dependency edits",
+    "No Safety S0/S1 implementation",
+    "No frozen ref/history change",
+    "No merge into main"
+  ],
+  "safety_reference": {
+    "revision": "3747e0d9a7e834a5df34c4b089a5292c0a749fa4",
+    "interface_path": "docs/safety/s0/authority_interface.json",
+    "sha256": "60a95f2cb3320b63723c774ec996fd420aeba0d316c429afa7e0b09751ea58bc",
+    "url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/3747e0d9a7e834a5df34c4b089a5292c0a749fa4/docs/safety/s0/authority_interface.json",
+    "rule": "Three distinct gates: feasible proposal, accepted trajectory authority, application permission. S0 is a proposed specification, not installed recovery or endpoint enforcement; S1 remains independent."
+  },
+  "delivery": "Documentation-only scoped checks then normal commit/push to research/efficiency; final exact delivery SHA/URL outside tracked self-hash. Stop at WORK_COMPLETE_PENDING_REVIEW."
+}

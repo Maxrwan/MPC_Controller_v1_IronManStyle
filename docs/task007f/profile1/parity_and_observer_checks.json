@@ -1,0 +1,164 @@
+{
+  "schema": "apex-profile1-parity-observer-checks/1.0.0",
+  "schema_version": "1.0.0",
+  "experiment_id": "F-PROFILE-1",
+  "stage": "WORK_DOCUMENTATION_SPECIFICATION_ONLY",
+  "status": "WORK_COMPLETE_PENDING_REVIEW",
+  "inspected_source_revision": "eaa0a3398515a21f30a850de59a0b44c775fad4d",
+  "phase_a_implementation_authorized": false,
+  "numerical_execution_authorized": false,
+  "phase_b_authorized": false,
+  "state_order": [
+    "vx",
+    "vy",
+    "r",
+    "e_psi",
+    "s_abs",
+    "e_y"
+  ],
+  "state_units": [
+    "m/s",
+    "m/s",
+    "rad/s",
+    "rad",
+    "m",
+    "m"
+  ],
+  "input_order": [
+    "delta",
+    "a_cmd"
+  ],
+  "input_units": [
+    "rad",
+    "m/s^2"
+  ],
+  "dynamic_command_meaning": "a_cmd=Fx_total/m",
+  "builds": [
+    {
+      "id": "B0",
+      "meaning": "Pristine frozen scientific implementation/configuration; exact accepted source inventory and dependencies"
+    },
+    {
+      "id": "B1",
+      "meaning": "Future instrumentation implementation, explicit instrumentation OFF"
+    },
+    {
+      "id": "B2",
+      "meaning": "Same future implementation, explicit profile1-v1 ON"
+    }
+  ],
+  "controlled_oracle": "Compare B0/B1 and B1/B2 using identical zero and predeclared injected planner/codriver delay traces. Freeze the trace, fixtures, source diff, seed and SINGLE environment before results. Never require legacy wall/CPU timing values to be equal.",
+  "exact_channels": [
+    "release sampled state; estimator history/value and target; tracker.previous and applied/pending command provenance",
+    "predicted handoff state and predicted previous control; predictor model/RK4 call sequence",
+    "preview values/progress; terminal matrix; warm/cold branch; complete pre-call X/U/slack state and packed NLP request",
+    "solver status/success, iteration count, objective/components, primal infeasibility, complete X/U/slacks and independent validity decisions",
+    "controller mutable solution/previous_control state before and after; rejected-solution reset",
+    "packet ID, source/release/sample/target/completion timestamps, valid_from, nominal nodes/states/controls, curvatures, gain times/gains, validity/reason",
+    "all physical integration intervals, inputs, internal stage/end states and native diagnostic decisions; no extra integration or validation calls",
+    "releases, busy opportunities, ready/waiting/accept/reject ownership, reserve/expiry, missed fixed deadlines, codriver requests/applications and original packet IDs",
+    "startup gating/prepositioning, failure/stop/censoring and fallback decisions"
+  ],
+  "comparison": "On the same locked backend require exact finite values, shapes, dtypes and serialized semantic values; where binary arrays are available compare bytes too. Do not wrap headings, interpolate traces or loosen model tolerances to conceal a difference. Any unexplained difference blocks progression.",
+  "volatile_exclusions": {
+    "packet_fields": [
+      "solve_duration",
+      "total_computation_duration"
+    ],
+    "legacy_event_keys": [
+      "prediction_time",
+      "gain_time",
+      "planner_total_time",
+      "planner_cpu_time",
+      "preview_time",
+      "preview_geometry_time",
+      "reference_generation_time",
+      "warm_start_preparation_time",
+      "parameter_update_time",
+      "solver_adapter_time",
+      "postprocessing_time",
+      "total_compute_time",
+      "solve_time"
+    ],
+    "other_clock_metadata": "Explicit enumerated codriver wall/CPU keys and new timing sidecar fields; resolve the complete field-path allowlist in the reviewed implementation test manifest. Record each exclusion and reason, never exclude an entire diagnostics/stats object.",
+    "IPOPT": "Only enumerated returned t_wall_*/t_proc_* statistic paths are timing exclusions; call counts, status, iterations, objective and feasibility remain compared.",
+    "authority_timestamps": "Never excluded under controlled timing. Measured observer probes have a separate comparison policy and cannot be used to waive controlled parity."
+  },
+  "required_cases": [
+    {
+      "id": "P01",
+      "case": "OFF path",
+      "assertion": "B0/B1 exact semantic parity; no added recorder imports/allocations/clock calls when off; default CLI/profile/solver behavior unchanged."
+    },
+    {
+      "id": "P02",
+      "case": "zero latency",
+      "assertion": "B1/B2 cold startup and recurring warm preparations; exact solver requests, outputs, packets, chronology and RK4 sequence."
+    },
+    {
+      "id": "P03",
+      "case": "injected latency",
+      "assertion": "Fixed replay identical across builds; plant moves during pending solve, old valid packet continues 100 Hz tracking; compare stale application state, busy releases and skipped deadlines."
+    },
+    {
+      "id": "P04",
+      "case": "coincident and pending events",
+      "assertion": "Due application before completion, then acceptance/expiry and codriver/release; old-source pending request identity survives handoff; no events added."
+    },
+    {
+      "id": "P05",
+      "case": "negative/partial paths",
+      "assertion": "Approved test injections: prediction exception, solver exception/rejection, invalid optimizer output, packet validation and gain failure; original failure/exception unchanged and reached spans retained."
+    },
+    {
+      "id": "P06",
+      "case": "authority failures and tails",
+      "assertion": "Late result, early waiting, insufficient reserve, stale/expired/rejected packet, fixed late miss, loss of authority and physically pending call at stop; none relabeled success."
+    },
+    {
+      "id": "P07",
+      "case": "recorder integrity",
+      "assertion": "Nested-tree reconciliation on each clock; monotonic endpoints, explicit not-reached/nulls, overflow/recorder failure, original exception not masked; sidecar cannot feed controller or authority."
+    },
+    {
+      "id": "P08",
+      "case": "export and provenance",
+      "assertion": "Existing historical readers still work; new sidecar roundtrip preserves raw integer clocks, version/IDs/units and partial/censored reasons; all attempts retained."
+    },
+    {
+      "id": "P09",
+      "case": "measured observer probes",
+      "assertion": "Fresh process B0/B1/B2 comparisons report cold/warm cost, dispatch readiness deltas and any availability changes; no claim of measured trace or wall equality."
+    }
+  ],
+  "observer_assessment": {
+    "separate_from_Phase_B": true,
+    "predeclare": "Exact fixtures, paired repetitions/order, resource cap and full duration/clock allowlist before Phase A execution authorization. Counts/budget remain unresolved; the 20-worker Phase B allocation is not borrowed.",
+    "comparisons": [
+      "B0 vs B1 disabled-hook cost",
+      "B1 vs B2 enabled-observer cost",
+      "empty clock/span/append path vs actual instrumentation",
+      "detailed snapshots off vs on, if proposed; distinguish memory copies from clock-only tracing"
+    ],
+    "isolation": "Fresh sequential SINGLE workers; identical declared construction and causal context, cold/warm paths separate. No reset to guessed warm state, order chosen by timing, parallel tests/rendering, new full-lap run or outcome-selected replacement.",
+    "clock_calibration": "Record monotonic implementation/resolution and empirical empty-span/skew distribution on the same backend before real probes; report raw paired deltas, maximum, sample count and run-level uncertainty. Do not subtract an optimistic calibration from reported costs.",
+    "report": "Retain all raw/negative paired deltas and statuses; report CPU/wall, exclusive residuals, full-call and dispatch-envelope changes, RSS and any changed readiness/ownership. Historical timings are not contemporaneous controls.",
+    "acceptance": "No invented negligible-overhead threshold. Engineering reviews complete observer evidence, attribution and exact source diff; unresolved tolerance/budget prevents execution or progression."
+  },
+  "existing_test_paths_to_review_and_run_only_when_authorized": [
+    "tests/unit/test_mpc.py",
+    "tests/unit/test_nlp_snapshot.py",
+    "tests/unit/test_trajectory_tracker.py",
+    "tests/unit/test_async_chronology.py",
+    "tests/unit/test_latency.py",
+    "tests/unit/test_diagnostic_timing.py",
+    "tests/unit/test_prediction_diagnostics.py",
+    "tests/unit/test_fixed_handoff_contract.py",
+    "tests/unit/test_fixed_handoff_scheduler.py",
+    "tests/unit/test_committed_prefix_runtime.py",
+    "tests/unit/test_threading_study.py",
+    "tests/unit/test_task007c_physics.py"
+  ],
+  "future_new_tests": "Add focused recorder/default-off/real-solver/authority/partial-censoring tests in the separately authorized implementation. Expected injected negative cases are explicit fixtures; any new unexplained scientific failure stops the affected branch.",
+  "formal_verification": "After Engineering Review and explicit authorization, run complete required regression/acceptance on the exact reviewed implementation SHA, audit artifacts and report VERIFIED_AWAITING_ACCEPTANCE only if required checks pass. Current static checks are not those passes."
+}

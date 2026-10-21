@@ -1,0 +1,149 @@
+{
+  "schema": "apex-efficiency-f0-primary-acceptance/1.0.0",
+  "schema_version": "1.0.0",
+  "task": "007F-0",
+  "recorded_date": "2026-10-22",
+  "stage": "WORK_DOCUMENTATION_STATUS_ONLY",
+  "delivery_status": "WORK_COMPLETE_PENDING_REVIEW",
+  "decision": {
+    "authority": "Primary APEX",
+    "status": "APPROVED_WITH_CONDITIONS",
+    "accepted_delivery_revision": "eaa0a3398515a21f30a850de59a0b44c775fad4d",
+    "acceptance_date": null,
+    "acceptance_date_reason": "Exact Primary decision date was not supplied; recorded_date is the documentation date.",
+    "authority_evidence": {
+      "kind": "USER_SUPPLIED_PRIMARY_DECISION_AND_SECONDARY_SCOPED_ASSIGNMENT",
+      "title": "APEX \u2014 F0 Acceptance Record + F-PROFILE-1 Phase A Specification",
+      "assignment_sha256": "bc67352c08a7135f9e91c0f69419eee07b3cba0582fd784ae03b326dea8e1471",
+      "independent_primary_transcript_present": false,
+      "interpretation": "Records the human-supplied Primary decision; does not invent a separate Primary transcript or execution approval."
+    },
+    "accepted_scope": "F0 research specification and coordination structure; no implemented Efficiency profile",
+    "priority_order": [
+      "physical_and_numerical_validity",
+      "authority_and_deadline_reliability",
+      "computational_and_resource_efficiency",
+      "acceptable_racing_and_tracking_performance"
+    ],
+    "comparison": "Pareto metrics after hard gates; no composite trade of validity for speed",
+    "research_order": [
+      "F-PROFILE-1",
+      "isolated_overhead_cache_solver_configuration_compilation",
+      "E-G1_nonuniform_grid",
+      "control_horizon_and_move_blocking",
+      "independently_validated_bounded_suboptimal_optimization",
+      "combinations_after_isolated_scientific_verification"
+    ],
+    "two_phase_structure": {
+      "A": "Separately reviewed opt-in instrumentation, numerical/authority parity, causal timing and observer assessment",
+      "B": "Bounded computational campaign only after Phase A review and separate authorization"
+    },
+    "conditional_plan": {
+      "closed_loop_workers": 10,
+      "simulated_seconds_per_closed_loop_worker": 2,
+      "diagnostic_workers": 10,
+      "contexts_per_diagnostic_worker": 12,
+      "strata": {
+        "straight": 4,
+        "sustained_corner": 4,
+        "transition": 4
+      },
+      "execution_authorized": false,
+      "conditions": [
+        "reviewed Phase A implementation and parity/observer evidence",
+        "frozen exact diagnostic contexts and faithful warm-start evidence or explicit cold-panel amendment",
+        "approved causal readiness accounting and resources",
+        "explicit Phase B authorization"
+      ]
+    },
+    "deferred_until_dependent_scientific_gate": [
+      "RMS absolute floors",
+      "peak beta/tracking thresholds",
+      "nonuniform-grid objective and slack policies"
+    ],
+    "deferral_rule": "Not required to write passive instrumentation; must be approved before comparisons that depend on them. Null values never mean zero."
+  },
+  "immutable_F0_records": [
+    {
+      "path": "docs/TASK007F0_EFFICIENCY_SPEC.md",
+      "revision": "eaa0a3398515a21f30a850de59a0b44c775fad4d",
+      "sha256": "94fdbab17b0f0be99527c224168839a189b5d4095e30ba90df9e5f6c08e7c45c"
+    },
+    {
+      "path": "docs/TASK007F0_GIT_REFERENCES.md",
+      "revision": "eaa0a3398515a21f30a850de59a0b44c775fad4d",
+      "sha256": "fcf05bfaea2b0f2509930b41341198113b317c20b5e80856c73675ee79180737"
+    },
+    {
+      "path": "docs/task007f/f0/experiment_matrix.json",
+      "revision": "eaa0a3398515a21f30a850de59a0b44c775fad4d",
+      "sha256": "d42ac2d3059359352d4142789e4ea3c770c69a707b780b8a393ba13953d4ae8e"
+    },
+    {
+      "path": "docs/task007f/f0/git_preservation.json",
+      "revision": "eaa0a3398515a21f30a850de59a0b44c775fad4d",
+      "sha256": "080608b79c5b5a995cfe6ad26e4896c02f933378ba14edfaa17b42edeccd0d09"
+    },
+    {
+      "path": "docs/task007f/f0/metrics_and_gates.json",
+      "revision": "eaa0a3398515a21f30a850de59a0b44c775fad4d",
+      "sha256": "79d03e72c262c7e7d3387026ff275ba48c574f6c61124ad188a056d6e647d207"
+    },
+    {
+      "path": "docs/task007f/f0/profiling_protocol.json",
+      "revision": "eaa0a3398515a21f30a850de59a0b44c775fad4d",
+      "sha256": "6514a0b202d42ec7d11c695911515587a482abd5d11f735bc5fe99bec9b7bd15"
+    },
+    {
+      "path": "docs/task007f/f0/resource_and_review_gates.json",
+      "revision": "eaa0a3398515a21f30a850de59a0b44c775fad4d",
+      "sha256": "e1fa05ff7efc03b275d016de7adb54273e8c8faf19f9e8cfa5fbd215d602d3cd"
+    },
+    {
+      "path": "docs/task007f/f0/temporal_grid_audit.md",
+      "revision": "eaa0a3398515a21f30a850de59a0b44c775fad4d",
+      "sha256": "de653c8a8846295d3792886e73afcfe71a164e205b51f2665d26f5c1c68f60c9"
+    },
+    {
+      "path": "docs/task007f/f0/validation.json",
+      "revision": "eaa0a3398515a21f30a850de59a0b44c775fad4d",
+      "sha256": "902705ffb16aec609999c8aadc73030b3fbd034ff6b60570824eaaab05dc4980"
+    }
+  ],
+  "historical_status_policy": "Original F0 pending-review labels describe its original delivery and remain byte-for-byte intact. This separate overlay records later Primary acceptance; the new Phase A specification still awaits Engineering Review.",
+  "frozen_reference": {
+    "architecture": "A",
+    "branch": "release/performance-synthetic-v1",
+    "tag": "performance-synthetic-v1",
+    "tag_object": "76d9eaa65af02efb0263916adc75d5247a0e778f",
+    "accepted_checkpoint": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+    "scientific_revision": "e603672b209985f11ed26b6f44d3949ffd5675c5",
+    "manifest_path": "configs/performance/apex_performance_synthetic_v1.json",
+    "manifest_sha256": "5299adca29d5c5bd383252cd2c299a392dd6872dc6bb72d1a4dd7ecfb8dd1ebf",
+    "must_remain_unchanged": true,
+    "native_policy": "SINGLE",
+    "automatic_merge_to_main": false
+  },
+  "safety": {
+    "workstreams": [
+      "S0",
+      "S1"
+    ],
+    "independent": true,
+    "S0_inspected_revision": "3747e0d9a7e834a5df34c4b089a5292c0a749fa4",
+    "S1_implementation_status": "NOT_ESTABLISHED_BY_THIS_ASSIGNMENT",
+    "rule": "Feasible proposal, accepted trajectory authority and application permission are distinct. No Safety interface or recovery behavior is implemented or modified."
+  },
+  "authorizations": {
+    "this_documentation_delivery": true,
+    "phase_a_execution_specification": true,
+    "phase_a_implementation": false,
+    "profiling_or_numerical_tests": false,
+    "phase_b_measurements": false,
+    "efficiency_profile_promotion": false,
+    "controller_or_solver_changes": false,
+    "safety_implementation": false
+  },
+  "archive_status": "Human handoff reports ZIP copies on two external drives with hashes. Not inspected or qualified here; coverage and restore qualification remain separate. Historical F0 backup statements are preserved as historical.",
+  "delivery_identity": "Containing commit supplied by final delivery handoff; no self-referential commit hash."
+}

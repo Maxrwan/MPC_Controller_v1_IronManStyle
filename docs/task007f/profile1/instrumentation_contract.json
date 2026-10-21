@@ -1,0 +1,530 @@
+{
+  "schema": "apex-profile1-instrumentation-contract/1.0.0",
+  "schema_version": "1.0.0",
+  "experiment_id": "F-PROFILE-1",
+  "stage": "WORK_DOCUMENTATION_SPECIFICATION_ONLY",
+  "status": "WORK_COMPLETE_PENDING_REVIEW",
+  "inspected_source_revision": "eaa0a3398515a21f30a850de59a0b44c775fad4d",
+  "phase_a_implementation_authorized": false,
+  "numerical_execution_authorized": false,
+  "phase_b_authorized": false,
+  "source_anchors": [
+    {
+      "path": "src/apex/control/trajectory/planner.py",
+      "function": "TrajectoryPlanner.__init__",
+      "line": 14,
+      "revision": "eaa0a3398515a21f30a850de59a0b44c775fad4d",
+      "sha256": "6dcc8abe959fa65d7036f90379179703f54091c55a54bedee4db9a47d4622e44",
+      "url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/eaa0a3398515a21f30a850de59a0b44c775fad4d/src/apex/control/trajectory/planner.py#L14"
+    },
+    {
+      "path": "src/apex/control/trajectory/planner.py",
+      "function": "TrajectoryPlanner.prepare",
+      "line": 19,
+      "revision": "eaa0a3398515a21f30a850de59a0b44c775fad4d",
+      "sha256": "6dcc8abe959fa65d7036f90379179703f54091c55a54bedee4db9a47d4622e44",
+      "url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/eaa0a3398515a21f30a850de59a0b44c775fad4d/src/apex/control/trajectory/planner.py#L19"
+    },
+    {
+      "path": "src/apex/control/mpc/controller.py",
+      "function": "MPCController.__init__",
+      "line": 26,
+      "revision": "eaa0a3398515a21f30a850de59a0b44c775fad4d",
+      "sha256": "63e17bd863dcd8d649d9f382a545f5c004e982fd87e837aa6b283ec1b1206b82",
+      "url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/eaa0a3398515a21f30a850de59a0b44c775fad4d/src/apex/control/mpc/controller.py#L26"
+    },
+    {
+      "path": "src/apex/control/mpc/controller.py",
+      "function": "MPCController.compute_control",
+      "line": 62,
+      "revision": "eaa0a3398515a21f30a850de59a0b44c775fad4d",
+      "sha256": "63e17bd863dcd8d649d9f382a545f5c004e982fd87e837aa6b283ec1b1206b82",
+      "url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/eaa0a3398515a21f30a850de59a0b44c775fad4d/src/apex/control/mpc/controller.py#L62"
+    },
+    {
+      "path": "src/apex/control/mpc/controller.py",
+      "function": "make_mpc",
+      "line": 221,
+      "revision": "eaa0a3398515a21f30a850de59a0b44c775fad4d",
+      "sha256": "63e17bd863dcd8d649d9f382a545f5c004e982fd87e837aa6b283ec1b1206b82",
+      "url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/eaa0a3398515a21f30a850de59a0b44c775fad4d/src/apex/control/mpc/controller.py#L221"
+    },
+    {
+      "path": "src/apex/control/mpc/problem.py",
+      "function": "MPCProblem.__init__",
+      "line": 62,
+      "revision": "eaa0a3398515a21f30a850de59a0b44c775fad4d",
+      "sha256": "b0560718155ff04074633aa92c4374a15ec975f21f5e3a022f4e94d52636087e",
+      "url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/eaa0a3398515a21f30a850de59a0b44c775fad4d/src/apex/control/mpc/problem.py#L62"
+    },
+    {
+      "path": "src/apex/control/mpc/preview.py",
+      "function": "make_preview",
+      "line": 24,
+      "revision": "eaa0a3398515a21f30a850de59a0b44c775fad4d",
+      "sha256": "c3e74f7c197ed42961f3494b6be8061570d294d790214e2e27401a2771a418cf",
+      "url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/eaa0a3398515a21f30a850de59a0b44c775fad4d/src/apex/control/mpc/preview.py#L24"
+    },
+    {
+      "path": "src/apex/control/mpc/warm_start.py",
+      "function": "shift_solution",
+      "line": 6,
+      "revision": "eaa0a3398515a21f30a850de59a0b44c775fad4d",
+      "sha256": "0faab03574394c3ecebe071a7c5f4e9e01d704a7d9b625fb6d0c122cc4cb34ed",
+      "url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/eaa0a3398515a21f30a850de59a0b44c775fad4d/src/apex/control/mpc/warm_start.py#L6"
+    },
+    {
+      "path": "src/apex/control/mpc/cost.py",
+      "function": "TerminalSchedule.__init__",
+      "line": 90,
+      "revision": "eaa0a3398515a21f30a850de59a0b44c775fad4d",
+      "sha256": "1b8367af3a41c72fc24573a92d9dba526100e53985e33d2626084b1222c5623b",
+      "url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/eaa0a3398515a21f30a850de59a0b44c775fad4d/src/apex/control/mpc/cost.py#L90"
+    },
+    {
+      "path": "src/apex/optimization/solvers/ipopt.py",
+      "function": "IpoptSolver.__init__",
+      "line": 25,
+      "revision": "eaa0a3398515a21f30a850de59a0b44c775fad4d",
+      "sha256": "3897eb4e5c2cf55b33b96e361e0c83e43ce783172e7095f59daf72785473c728",
+      "url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/eaa0a3398515a21f30a850de59a0b44c775fad4d/src/apex/optimization/solvers/ipopt.py#L25"
+    },
+    {
+      "path": "src/apex/optimization/solvers/ipopt.py",
+      "function": "IpoptSolver.solve",
+      "line": 33,
+      "revision": "eaa0a3398515a21f30a850de59a0b44c775fad4d",
+      "sha256": "3897eb4e5c2cf55b33b96e361e0c83e43ce783172e7095f59daf72785473c728",
+      "url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/eaa0a3398515a21f30a850de59a0b44c775fad4d/src/apex/optimization/solvers/ipopt.py#L33"
+    },
+    {
+      "path": "src/apex/control/trajectory/prediction.py",
+      "function": "ActuationPredictor.predict",
+      "line": 83,
+      "revision": "eaa0a3398515a21f30a850de59a0b44c775fad4d",
+      "sha256": "0013fd74299a68993dabbc381ca384837f09b862011956a94fd1d3b138b839ab",
+      "url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/eaa0a3398515a21f30a850de59a0b44c775fad4d/src/apex/control/trajectory/prediction.py#L83"
+    },
+    {
+      "path": "src/apex/control/trajectory/tracker.py",
+      "function": "TVLQR.__init__",
+      "line": 19,
+      "revision": "eaa0a3398515a21f30a850de59a0b44c775fad4d",
+      "sha256": "ffa5d9968650c97411121ba3dedd89a5de04a1a9ce832c50efa351763567ef27",
+      "url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/eaa0a3398515a21f30a850de59a0b44c775fad4d/src/apex/control/trajectory/tracker.py#L19"
+    },
+    {
+      "path": "src/apex/control/trajectory/tracker.py",
+      "function": "TVLQR.compute",
+      "line": 28,
+      "revision": "eaa0a3398515a21f30a850de59a0b44c775fad4d",
+      "sha256": "ffa5d9968650c97411121ba3dedd89a5de04a1a9ce832c50efa351763567ef27",
+      "url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/eaa0a3398515a21f30a850de59a0b44c775fad4d/src/apex/control/trajectory/tracker.py#L28"
+    },
+    {
+      "path": "src/apex/control/trajectory/packet.py",
+      "function": "TrajectoryPacket.__post_init__",
+      "line": 32,
+      "revision": "eaa0a3398515a21f30a850de59a0b44c775fad4d",
+      "sha256": "00830d2ced67321547add91a4e241664689cdeed57d57f0b9b2d95552b9fd704",
+      "url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/eaa0a3398515a21f30a850de59a0b44c775fad4d/src/apex/control/trajectory/packet.py#L32"
+    },
+    {
+      "path": "src/apex/simulation/asynchronous.py",
+      "function": "AsyncRunner.run",
+      "line": 132,
+      "revision": "eaa0a3398515a21f30a850de59a0b44c775fad4d",
+      "sha256": "7d14395aa27707f2561bf6bdb32cd613bc2508ab12d6fe617bf45855d378f018",
+      "url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/eaa0a3398515a21f30a850de59a0b44c775fad4d/src/apex/simulation/asynchronous.py#L132"
+    },
+    {
+      "path": "src/apex/simulation/prediction_capture.py",
+      "function": "PredictionRelease.capture",
+      "line": 25,
+      "revision": "eaa0a3398515a21f30a850de59a0b44c775fad4d",
+      "sha256": "f8f4d7d840a73744aebbe85dc09d817b79e839022bd7298bbde792ee061d4a29",
+      "url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/eaa0a3398515a21f30a850de59a0b44c775fad4d/src/apex/simulation/prediction_capture.py#L25"
+    },
+    {
+      "path": "scripts/task007dvis/worker.py",
+      "function": "run",
+      "line": 30,
+      "revision": "eaa0a3398515a21f30a850de59a0b44c775fad4d",
+      "sha256": "fd6dedd1caace418d4f3b60ef973f387d3e240a5ce8fa87c774450500f89bd5a",
+      "url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/eaa0a3398515a21f30a850de59a0b44c775fad4d/scripts/task007dvis/worker.py#L30"
+    },
+    {
+      "path": "scripts/threading_study/config.py",
+      "function": "configure_accelerate",
+      "line": 42,
+      "revision": "eaa0a3398515a21f30a850de59a0b44c775fad4d",
+      "sha256": "a50a73015c3ab739c35aa1fd715840364974213bf1c12666269b250264556fc3",
+      "url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/eaa0a3398515a21f30a850de59a0b44c775fad4d/scripts/threading_study/config.py#L42"
+    }
+  ],
+  "future_integration": {
+    "proposed_launcher_path": "scripts/task007f/profile1/run_phase_a.py",
+    "launcher_exists_or_is_authorized_to_be_created_now": false,
+    "opt_in": "Proposed explicit --efficiency-instrumentation profile1-v1 on a new research-only launcher; default off; unknown modes reject. No automatic environment activation or accepted-manifest rewrite.",
+    "plumbing": "Proposed optional recorder injection, default None; when disabled, no added clock reads, record allocations, capture copies, recorder imports or changes to existing return/packet schemas. Review the exact future source diff before approval.",
+    "allowed_future_hook_sites": [
+      "src/apex/control/trajectory/planner.py",
+      "src/apex/control/mpc/controller.py",
+      "src/apex/control/mpc/preview.py",
+      "src/apex/optimization/solvers/ipopt.py",
+      "src/apex/control/trajectory/tracker.py",
+      "src/apex/simulation/asynchronous.py"
+    ],
+    "other_sites": "Observe construction at research composition root; packet validation via caller spans. AsyncRunner.run.release lines 222-245 may receive only a reviewed passive opt-in dispatch-envelope hook before capture and after prepare/append, before delay selection. Existing release_observer starts after capture argument evaluation and cannot enclose it. No scheduler-time policy edit or physical event is implicit.",
+    "forbidden": [
+      "global time or numerical monkeypatching",
+      "rerunning any computation for timing",
+      "new physical scheduler events or altered RK4 partitions",
+      "future-truth inputs",
+      "extra solves, Jacobians or residual evaluations",
+      "disk/network export inside kernel",
+      "changed IPOPT options, warm starts, models, gains, defaults or Safety interfaces"
+    ],
+    "storage": "Bounded in-memory sidecar keyed by worker/plan/span/occurrence. Snapshot only at existing causal boundaries; outside timed intervals record/export cost remains separately charged. Overflow or recorder failure stops the affected worker without silent drops or numerical fallback."
+  },
+  "construction": {
+    "outer": "At research composition root: before fixture/reference/vehicle loading through completed plant, controller, planner and tracker construction; finish before gated startup prepare.",
+    "children": [
+      {
+        "path": "scripts/task007dvis/worker.py",
+        "function": "run",
+        "lines": [
+          32,
+          35
+        ],
+        "scope": "fixture/reference/vehicle and frozen configuration loading"
+      },
+      {
+        "path": "src/apex/control/mpc/problem.py",
+        "function": "MPCProblem.__init__",
+        "lines": [
+          62,
+          209
+        ],
+        "scope": "symbolic model/NLP graph and evaluation functions"
+      },
+      {
+        "path": "src/apex/optimization/solvers/ipopt.py",
+        "function": "IpoptSolver.__init__",
+        "lines": [
+          25,
+          31
+        ],
+        "scope": "adapter plus nested ca.nlpsol at line 29"
+      },
+      {
+        "path": "src/apex/control/mpc/controller.py",
+        "function": "MPCController.__init__",
+        "lines": [
+          26,
+          60
+        ],
+        "scope": "controller and nested TerminalSchedule construction; other initialization residual"
+      },
+      {
+        "path": "src/apex/control/trajectory/planner.py",
+        "function": "TrajectoryPlanner.__init__",
+        "lines": [
+          14,
+          17
+        ],
+        "scope": "predictor and nested TVLQR symbolic Jacobian construction"
+      }
+    ],
+    "startup": "Startup prepare(plan_id=0,startup=True) is a separate full preparation call, not graph construction or recurring simulated work. Retain prepositioning and gating; do not amortize startup into recurring CPU/simulated-s."
+  },
+  "recurring_spans": [
+    {
+      "id": "prepare_full",
+      "parent": null,
+      "path": "src/apex/control/trajectory/planner.py",
+      "function": "TrajectoryPlanner.prepare",
+      "first_line": 19,
+      "last_line": 110,
+      "boundary": "Research caller immediately before invocation until returned tuple exists, or original exception exits; includes final replacement and returned diagnostics assembly."
+    },
+    {
+      "id": "prediction",
+      "parent": "prepare_full",
+      "path": "src/apex/control/trajectory/planner.py",
+      "function": "TrajectoryPlanner.prepare",
+      "first_line": 38,
+      "last_line": 47,
+      "boundary": "Before startup/predict branch through predicted state/previous command, including tracker clone; preserve startup path label."
+    },
+    {
+      "id": "controller",
+      "parent": "prepare_full",
+      "path": "src/apex/control/mpc/controller.py",
+      "function": "MPCController.compute_control",
+      "first_line": 62,
+      "last_line": 170,
+      "boundary": "Entire existing compute_control invocation, including exceptional exit."
+    },
+    {
+      "id": "reference",
+      "parent": "controller",
+      "path": "src/apex/control/mpc/controller.py",
+      "function": "MPCController.compute_control",
+      "first_line": 69,
+      "last_line": 80,
+      "boundary": "Complete make_preview invocation."
+    },
+    {
+      "id": "reference_geometry",
+      "parent": "reference",
+      "path": "src/apex/control/mpc/preview.py",
+      "function": "make_preview",
+      "first_line": 38,
+      "last_line": 40,
+      "boundary": "Each track.sample; aggregate occurrences only as a child."
+    },
+    {
+      "id": "reference_values",
+      "parent": "reference",
+      "path": "src/apex/control/mpc/preview.py",
+      "function": "make_preview",
+      "first_line": 41,
+      "last_line": 68,
+      "boundary": "Existing reference-generation blocks on the executed branch; loop advance/array assembly remain reference residual."
+    },
+    {
+      "id": "warm",
+      "parent": "controller",
+      "path": "src/apex/control/mpc/controller.py",
+      "function": "MPCController.compute_control",
+      "first_line": 81,
+      "last_line": 89,
+      "boundary": "Terminal lookup plus warm/cold decision and guess; do not rename this legacy combined timer."
+    },
+    {
+      "id": "terminal_lookup",
+      "parent": "warm",
+      "path": "src/apex/control/mpc/controller.py",
+      "function": "MPCController.compute_control",
+      "first_line": 82,
+      "last_line": 82,
+      "boundary": "TerminalSchedule.matrix invocation only."
+    },
+    {
+      "id": "guess",
+      "parent": "warm",
+      "path": "src/apex/control/mpc/controller.py",
+      "function": "MPCController.compute_control",
+      "first_line": 83,
+      "last_line": 88,
+      "boundary": "Existing branch and shift_solution or cold_start exactly once; record which."
+    },
+    {
+      "id": "parameter_pack",
+      "parent": "controller",
+      "path": "src/apex/control/mpc/controller.py",
+      "function": "MPCController.compute_control",
+      "first_line": 90,
+      "last_line": 95,
+      "boundary": "NLPRequest, packed initial and parameter_vector."
+    },
+    {
+      "id": "solver_adapter",
+      "parent": "controller",
+      "path": "src/apex/control/mpc/controller.py",
+      "function": "MPCController.compute_control",
+      "first_line": 96,
+      "last_line": 98,
+      "boundary": "Entire solver.solve invocation."
+    },
+    {
+      "id": "ipopt_call",
+      "parent": "solver_adapter",
+      "path": "src/apex/optimization/solvers/ipopt.py",
+      "function": "IpoptSolver.solve",
+      "first_line": 36,
+      "last_line": 43,
+      "boundary": "Immediately before self.backend call to answer return/raise; no stats extraction in this child."
+    },
+    {
+      "id": "adapter_validation",
+      "parent": "solver_adapter",
+      "path": "src/apex/optimization/solvers/ipopt.py",
+      "function": "IpoptSolver.solve",
+      "first_line": 45,
+      "last_line": 82,
+      "boundary": "Executed stats/extraction/finite/bounds/feasibility/SolverResult path or RuntimeError path; do not change historical solve_time semantics."
+    },
+    {
+      "id": "controller_validation",
+      "parent": "controller",
+      "path": "src/apex/control/mpc/controller.py",
+      "function": "MPCController.compute_control",
+      "first_line": 99,
+      "last_line": 170,
+      "boundary": "Existing result shape, evaluate(), constraints, objective components, solution copies and failure reset; includes existing diagnostic work."
+    },
+    {
+      "id": "packet_initial",
+      "parent": "prepare_full",
+      "path": "src/apex/control/trajectory/planner.py",
+      "function": "TrajectoryPlanner.prepare",
+      "first_line": 54,
+      "last_line": 73,
+      "boundary": "Nominal packet and curvature replacement, including constructor validation/copies."
+    },
+    {
+      "id": "gains",
+      "parent": "prepare_full",
+      "path": "src/apex/control/trajectory/planner.py",
+      "function": "TrajectoryPlanner.prepare",
+      "first_line": 75,
+      "last_line": 75,
+      "boundary": "TVLQR.compute only; existing gain_time additionally includes gain packet replacement and remains unchanged."
+    },
+    {
+      "id": "gain_jacobians",
+      "parent": "gains",
+      "path": "src/apex/control/trajectory/tracker.py",
+      "function": "TVLQR.compute",
+      "first_line": 29,
+      "last_line": 41,
+      "boundary": "Existing 100 Hz samples, Jacobian evaluations and matrix list."
+    },
+    {
+      "id": "gain_terminal_dare",
+      "parent": "gains",
+      "path": "src/apex/control/trajectory/tracker.py",
+      "function": "TVLQR.compute",
+      "first_line": 42,
+      "last_line": 43,
+      "boundary": "Existing terminal solve_discrete_are."
+    },
+    {
+      "id": "gain_backward",
+      "parent": "gains",
+      "path": "src/apex/control/trajectory/tracker.py",
+      "function": "TVLQR.compute",
+      "first_line": 44,
+      "last_line": 50,
+      "boundary": "Existing recursion and return-array construction."
+    },
+    {
+      "id": "packet_gain_attach",
+      "parent": "prepare_full",
+      "path": "src/apex/control/trajectory/planner.py",
+      "function": "TrajectoryPlanner.prepare",
+      "first_line": 76,
+      "last_line": 76,
+      "boundary": "Existing gain packet replacement including constructor validation."
+    },
+    {
+      "id": "packet_final",
+      "parent": "prepare_full",
+      "path": "src/apex/control/trajectory/planner.py",
+      "function": "TrajectoryPlanner.prepare",
+      "first_line": 86,
+      "last_line": 87,
+      "boundary": "Final total_computation_duration replacement, outside historical planner_total_time."
+    },
+    {
+      "id": "return_assembly",
+      "parent": "prepare_full",
+      "path": "src/apex/control/trajectory/planner.py",
+      "function": "TrajectoryPlanner.prepare",
+      "first_line": 88,
+      "last_line": 110,
+      "boundary": "Existing diagnostics dict/list conversion and tuple assembly through caller receipt."
+    }
+  ],
+  "clock_contract": {
+    "wall": "time.perf_counter_ns",
+    "cpu": "time.process_time_ns",
+    "raw_units": "integer ns",
+    "derived_seconds": "delta_ns / 1e9, preserving raw integers",
+    "read_order": "At every entry and exit read wall then CPU in that order; record clock implementations/resolution and calibration envelope. Clocks are distinct, not a simultaneous timestamp.",
+    "clock_domains": [
+      "worker_monotonic_wall",
+      "worker_process_cpu",
+      "simulated_physical_seconds"
+    ],
+    "rule": "Never add a host timestamp to simulated time. Only a declared duration policy maps host deltas to a simulated delay; do not subtract CPU from wall or clamp CPU/wall to one.",
+    "UTC": "Optional campaign metadata only; never elapsed timing or authority.",
+    "native": "Process CPU includes all worker threads. SINGLE must be configured before numerical imports and observed; environment variables alone do not prove it."
+  },
+  "accounting": {
+    "tree_rule": "Inclusive duration = end-start. Exclusive duration = inclusive minus complete immediate-child occurrences on the same clock. Aggregate disjoint siblings only; never add preview children, IPOPT internals, gain children or controller total on top of parents.",
+    "reconciliation": "Full prepare = sum exclusive leaves/parent residuals. Preserve signed residuals and clock-pair skew; investigate negative residual or uncovered spans. No arbitrary clamping or assumed zero. Approved clock-resolution allowance is unresolved in review_gates.json.",
+    "existing_fields": "Preserve every legacy timing field and boundary. planner_total_time/planner_cpu_time end at planner.py:84-85; solve_time on successful solve includes the adapter pre-call entry overhead whereas ipopt_call is just the backend invocation.",
+    "new_fields": [
+      "full_prepare_wall_ns",
+      "full_prepare_cpu_ns",
+      "dispatch_envelope_wall_ns",
+      "dispatch_envelope_cpu_ns",
+      "legacy_boundary_wall_delta_ns",
+      "legacy_boundary_cpu_delta_ns"
+    ],
+    "legacy_delta": "Use full_prepare duration minus the legacy duration converted from seconds; label float conversion/clock skew. Do not relabel the legacy boundary as full readiness.",
+    "dispatch_envelope": "Research observer at existing release boundary before capture/recorder work through completed preparation and sidecar append, immediately before current delay selection. Include enabled capture overhead once. Report whole-worker CPU and later serialization separately.",
+    "metric_population": "Recurring launch cohort [t0,t1): charge every fully observed launched call including failed/rejected/late/terminal physically pending calls. Missing host completion means partial/lower-bound CPU and incomplete aggregate, never imputation. Startup/construction separate.",
+    "offline_panel": "CPU/wall per call only; no physical simulated-duration denominator."
+  },
+  "record_fields": {
+    "required_identity": [
+      "schema_version",
+      "worker_id",
+      "source_revision",
+      "source_diff_sha256",
+      "manifest_sha256",
+      "plan_id",
+      "call_kind",
+      "span_id",
+      "parent_span_id",
+      "occurrence"
+    ],
+    "span": {
+      "wall_start_ns": "integer or null",
+      "wall_end_ns": "integer or null",
+      "cpu_start_ns": "integer or null",
+      "cpu_end_ns": "integer or null",
+      "status": [
+        "complete",
+        "partial",
+        "not_reached",
+        "unavailable"
+      ],
+      "missing_reason": "string or null"
+    },
+    "causal_simulated_fields_s": [
+      "release_time",
+      "estimate_at_release",
+      "predicted_target_time",
+      "legacy_modeled_completion_time",
+      "observed_completion_time",
+      "accepted_time",
+      "packet_start",
+      "packet_expiry",
+      "request_time",
+      "application_time"
+    ],
+    "causal_rule": "Unavailable future outcome is null with reason until observed outside the preparation kernel; immutable causal inputs never receive actual future completion or state.",
+    "separate_outcomes": [
+      "solver_status",
+      "numerical_proposal_valid",
+      "packet_prepared",
+      "handoff_accepted",
+      "application_permission_status",
+      "application_observed",
+      "physical_completion_censored",
+      "stop_reason"
+    ],
+    "safety_rule": "application_permission_status is not_implemented_or_unobserved for frozen A, not inferred true from applied commands. Existing simulated applications remain observations, not S0 grants."
+  },
+  "readiness_policy": {
+    "current_consumer": "AsyncRunner.run.release: asynchronous.py:246-254 consumes legacy planner_total_time under measured dispatch; controlled DiagnosticTiming overrides via its existing interface.",
+    "phase_A": "Do not redirect this consumer or mutate packets with new full timers. Controlled zero/injected parity uses identical approved delays. Report legacy completion, observed host full duration, dispatch envelope and would-be full-boundary readiness separately; the latter is an audit, never authority.",
+    "phase_B_blocker": "Engineering must explicitly settle whether availability is reported on legacy A timing or an independently versioned full-boundary policy. Full-preparation authority claims require charging the declared full envelope, including observer cost, through a separately reviewed mapping; silently omitting it or silently changing A scheduling is prohibited.",
+    "measured_parity": "Wall equality and measured closed-loop trace equality are not required; genuine readiness changes are reported as observer effects, never removed or mislabeled numerical changes."
+  }
+}

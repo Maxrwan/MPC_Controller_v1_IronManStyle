@@ -1,3 +1,42 @@
+# Current handoff — F0 acceptance overlay and F-PROFILE-1 Phase A specification
+
+**WORK_COMPLETE_PENDING_REVIEW — documentation/specification only, 22 October 2026.**
+Inspected/base revision `eaa0a3398515a21f30a850de59a0b44c775fad4d`, branch `research/efficiency`.
+Primary's human-supplied **APPROVED WITH CONDITIONS** F0 decision is now recorded separately in
+[the acceptance overlay](task007f/f0/primary_acceptance.json), bound to that exact F0 delivery.
+Original F0 pending-review labels/evidence remain byte-for-byte historical records; the new
+Phase A specification still requires Engineering Review. Exact Primary decision date was not supplied.
+
+[Phase A spec](F_PROFILE_1_PHASE_A_SPEC.md),
+[instrumentation contract](task007f/profile1/instrumentation_contract.json),
+[parity/observer requirements](task007f/profile1/parity_and_observer_checks.json),
+[Phase B readiness](task007f/profile1/phase_b_readiness.json),
+[review gates](task007f/profile1/review_gates.json),
+[scoped static validation](task007f/profile1/validation.json).
+
+Future B0/B1/B2 pristine/OFF/ON checks require exact controlled zero/injected numerical, packet,
+RK4 and authority parity; measured wall equality is not required. Full-call and dispatch-envelope
+CPU/wall accounting preserve all legacy timing fields; readiness mapping and observer budgets are
+explicit review decisions. No timing data feed authority or silently change A scheduling.
+
+Read-only inspection found 622 controlled-A and 620 measured-A causal captures, but no full
+pre-call optimizer X/U/slacks/reset lineage in the inspected files. Exact diagnostic IDs/geometry
+criteria and faithful warm-state recovery remain blockers; a labelled cold-panel amendment needs
+explicit review. Conditional Phase B remains 10x2-second workers + 10x12 contexts, sequential SINGLE,
+20-minute host ceiling with RAM/disk/owner guards. No Phase A implementation/execution or Phase B
+measurement is authorized. S0/S1 remain independent; feasible proposal, accepted authority and
+application permission are separate. Floors/peak thresholds/grid-cost policies are deferred until
+scientifically required. Archive copies are reported by the human handoff; restore qualification is separate.
+
+Only documentation/JSON/structure/reference/hash/whitespace/preservation checks are performed;
+no numerical tests, solver construction, simulation, profiling or benchmarks. Frozen A refs/profile,
+source/tests/configuration/dependencies and historical scientific evidence remain unchanged.
+Existing research/efficiency occupies the original checkout; Safety has its own clean worktree.
+No second same-branch worktree or merge to main. Final delivery supplies the containing commit SHA/URL.
+Next: Secondary Engineering Review of this specification, then explicit scoped authorization only.
+
+---
+
 # Current handoff — Task007F-0 revised preservation and Efficiency specification
 
 **WORK_COMPLETE_PENDING_REVIEW.** Base/E4 acceptance `48adbdf64d492592d15e23c917aca71fa58aa8a5`.

@@ -1,0 +1,163 @@
+{
+  "schema": "apex-profile1-documentation-validation/1.0.0",
+  "schema_version": "1.0.0",
+  "recorded_date": "2026-10-22",
+  "stage": "WORK_DOCUMENTATION_SPECIFICATION_ONLY",
+  "status": "WORK_COMPLETE_PENDING_REVIEW",
+  "base_revision": "eaa0a3398515a21f30a850de59a0b44c775fad4d",
+  "branch": "research/efficiency",
+  "validation_scope": "Static documentation/structure/reference/hash/preservation only; no runtime import or mathematical execution",
+  "checks": {
+    "strict_JSON_records": 5,
+    "source_function_line_hash_anchors": 19,
+    "recurring_span_tree_nodes": 22,
+    "relative_added_document_links": 17,
+    "future_test_paths_exist": 12,
+    "accepted_F0_immutable_records": 9,
+    "retained_context_records_schema_inspected": 1242,
+    "retained_evidence_files_SHA256_checked": 8,
+    "conditional_worker_resource_and_authorization_consistency": "pass",
+    "Markdown_fences_and_added_whitespace": "pass",
+    "git_diff_check": "pass",
+    "authorized_document_only_scope": "pass"
+  },
+  "preservation": {
+    "preexisting_tracked_files": 836,
+    "unchanged_tracked_files": 833,
+    "only_preexisting_changes": [
+      "docs/CODEX_HANDOFF.md",
+      "docs/PROJECT_ROADMAP.md",
+      "docs/DECISIONS.md"
+    ],
+    "original_handoff_roadmap_retained_as_suffix": true,
+    "original_decisions_retained_as_prefix": true,
+    "original_F0_records_byte_unchanged": true,
+    "scientific_source_configs_tests_dependencies_diff_from_verified_revision": "empty",
+    "results_size_mtime_entries": 11646,
+    "results_added_removed_or_size_mtime_changed": 0,
+    "results_inventory_is_full_content_hash": false,
+    "independent_Safety_worktree_clean": true,
+    "manifest_sha256": "5299adca29d5c5bd383252cd2c299a392dd6872dc6bb72d1a4dd7ecfb8dd1ebf"
+  },
+  "remote_readback_before_delivery": {
+    "heads": [
+      {
+        "ref": "refs/heads/main",
+        "sha": "48adbdf64d492592d15e23c917aca71fa58aa8a5"
+      },
+      {
+        "ref": "refs/heads/release/performance-synthetic-v1",
+        "sha": "48adbdf64d492592d15e23c917aca71fa58aa8a5"
+      },
+      {
+        "ref": "refs/heads/research/efficiency",
+        "sha": "eaa0a3398515a21f30a850de59a0b44c775fad4d"
+      },
+      {
+        "ref": "refs/heads/research/safety-s0",
+        "sha": "3747e0d9a7e834a5df34c4b089a5292c0a749fa4"
+      }
+    ],
+    "rules": [
+      {
+        "id": 25418055,
+        "enforcement": "active",
+        "conditions": {
+          "ref_name": {
+            "exclude": [],
+            "include": [
+              "refs/heads/release/performance-synthetic-v1"
+            ]
+          }
+        },
+        "rules": [
+          {
+            "type": "deletion"
+          },
+          {
+            "type": "non_fast_forward"
+          },
+          {
+            "type": "update"
+          }
+        ],
+        "bypass_actors": [],
+        "current_user_can_bypass": "never"
+      },
+      {
+        "id": 25418590,
+        "enforcement": "active",
+        "conditions": {
+          "ref_name": {
+            "exclude": [],
+            "include": [
+              "refs/tags/performance-synthetic-v1"
+            ]
+          }
+        },
+        "rules": [
+          {
+            "type": "deletion"
+          },
+          {
+            "type": "non_fast_forward"
+          },
+          {
+            "type": "update"
+          }
+        ],
+        "bypass_actors": [],
+        "current_user_can_bypass": "never"
+      }
+    ],
+    "tag": {
+      "sha": "76d9eaa65af02efb0263916adc75d5247a0e778f",
+      "target": {
+        "sha": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+        "type": "commit",
+        "url": "https://api.github.com/repos/Maxrwan/MPC_Controller_v1_IronManStyle/git/commits/48adbdf64d492592d15e23c917aca71fa58aa8a5"
+      }
+    }
+  },
+  "not_executed": [
+    "numerical tests or collection",
+    "numeric package imports",
+    "solver construction or calls",
+    "profiling/observer probes",
+    "simulation",
+    "benchmarks",
+    "context panel regeneration",
+    "Phase A implementation",
+    "Phase B",
+    "archive backup/restore qualification"
+  ],
+  "blockers": [
+    "Full pre-call optimizer warm state/slacks/reset lineage absent in inspected accepted A files",
+    "Exact diagnostic contexts and geometry-stratum criteria not frozen",
+    "Phase A API/exclusion paths, fixture/observer budget, clock allowance and future readiness mapping require review"
+  ],
+  "changed_files": [
+    "docs/task007f/f0/primary_acceptance.json",
+    "docs/F_PROFILE_1_PHASE_A_SPEC.md",
+    "docs/task007f/profile1/instrumentation_contract.json",
+    "docs/task007f/profile1/parity_and_observer_checks.json",
+    "docs/task007f/profile1/phase_b_readiness.json",
+    "docs/task007f/profile1/review_gates.json",
+    "docs/CODEX_HANDOFF.md",
+    "docs/PROJECT_ROADMAP.md",
+    "docs/DECISIONS.md",
+    "docs/task007f/profile1/validation.json"
+  ],
+  "scoped_file_sha256_excluding_this_record": {
+    "docs/task007f/f0/primary_acceptance.json": "b034ebb34e4d801d32a885c379e2ebf1b8f13d2f4382ef72a65bf900e3107f15",
+    "docs/F_PROFILE_1_PHASE_A_SPEC.md": "db82e471fefc827f8bb00f61b9944701d4c0b4e87cd977c043c4d8e504c44581",
+    "docs/task007f/profile1/instrumentation_contract.json": "aaa4e001a52d2577aa5dcf7dd577ebbaca61192a532b0e7ed16ea9009ecf89e9",
+    "docs/task007f/profile1/parity_and_observer_checks.json": "106901b2ff6ac90419b91d7dad66061a1229188f5b0115d483162bcfd1cba4d0",
+    "docs/task007f/profile1/phase_b_readiness.json": "c648cdff553110dc335c38eb770d97b4ac8b6b1a46091ddb019a5685c216b1fc",
+    "docs/task007f/profile1/review_gates.json": "f4814c32a1e6f769523f40b56954a44a81cf54f7396710067b717e65026418f3",
+    "docs/CODEX_HANDOFF.md": "aebf2354a13a3b384e94cdc3487d78c320038a56ad10806ddaf47dff71041a8f",
+    "docs/PROJECT_ROADMAP.md": "3c4c8eeab7f772e6dd002b607d229685a025cec9e2cd6bb5ccbe01364d6c4dac",
+    "docs/DECISIONS.md": "2df7172fd3d12c65479ac9caac99fb4f2387ef6ec5ba7327d79a3a471a8eda45"
+  },
+  "delivery_identity_policy": "Containing normal documentation commit supplied in final handoff; this record does not self-hash. Verify remote delivery SHA after push."
+}

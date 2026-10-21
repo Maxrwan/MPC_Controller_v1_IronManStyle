@@ -1056,3 +1056,30 @@ unchanged. C70 negative evidence and shared Safety obligations remain intact.
 See [specification](TASK007F0_EFFICIENCY_SPEC.md), [Git guide](TASK007F0_GIT_REFERENCES.md) and
 [grid audit](task007f/f0/temporal_grid_audit.md). No implementation, profiling, numerical run, Safety
 change or next stage is authorized by this specification delivery. Stop for Engineering Review.
+
+
+## ADR-166 — Record F0 acceptance and specify opt-in Phase A without execution
+
+On **22 October 2026**, record the human-supplied Primary APEX **APPROVED WITH CONDITIONS**
+F0 decision separately in [the acceptance overlay](task007f/f0/primary_acceptance.json), bound to
+`eaa0a3398515a21f30a850de59a0b44c775fad4d`. Its exact decision date was not supplied.
+Preserve original specification/evidence statuses and bytes. Lexicographic objectives, Pareto
+metrics and profiling-first order are accepted; no Efficiency controller/profile is implemented.
+
+The approved two-phase structure separates opt-in instrumentation/parity/observer assessment from
+later bounded measurements. This assignment prepares only the
+[Phase A execution specification](F_PROFILE_1_PHASE_A_SPEC.md) and versioned contracts. Future
+pristine/OFF/ON checks require exact numerical/packet/RK4/authority parity under controlled timing;
+measured observer overhead and changed readiness are reported, not forced equal or subtracted away.
+Full-call/dispatch-envelope accounting preserves legacy fields. Any measured readiness mapping change
+requires an independently reviewed policy; no frozen scheduling behavior changes through diagnostics.
+
+The 10x2-second and 10x12-context plan is conditionally approved, with no execution authorization.
+Inspected accepted-A captures lack full pre-call optimizer slacks/reset lineage; exact contexts and
+faithful warm-start recovery remain blockers or require an explicitly labelled cold-panel amendment.
+API/exclusion paths, Phase A fixtures/observer budget, clock allowance and readiness mapping need review.
+RMS/TV floors, peak thresholds and nonuniform cost policies wait for their dependent scientific gates.
+Native SINGLE, physical/numerical and authority gates, historical negative evidence, frozen Performance
+refs and separate Safety S0/S1 work remain binding. Feasibility, accepted authority and application
+permission are distinct; this record installs no Safety interface or recovery policy. Stop at
+WORK_COMPLETE_PENDING_REVIEW after documentation-only checks and normal research/efficiency delivery.

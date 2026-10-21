@@ -1,0 +1,138 @@
+{
+  "schema": "apex-profile1-phase-b-readiness/1.0.0",
+  "schema_version": "1.0.0",
+  "experiment_id": "F-PROFILE-1",
+  "stage": "WORK_DOCUMENTATION_SPECIFICATION_ONLY",
+  "status": "WORK_COMPLETE_PENDING_REVIEW",
+  "inspected_source_revision": "eaa0a3398515a21f30a850de59a0b44c775fad4d",
+  "phase_a_implementation_authorized": false,
+  "numerical_execution_authorized": false,
+  "phase_b_authorized": false,
+  "readiness": "BLOCKED_NOT_AUTHORIZED",
+  "conditional_research_basis": {
+    "reference": "Architecture A / predictor A / variable handoff / frozen gamma2 Planning; no C70 or grid factor",
+    "closed_loop": {
+      "fresh_workers": 10,
+      "duration_simulated_s_each": 2,
+      "codriver_imposed_delay_s": 0.005,
+      "planner_availability": "measured, subject to explicit readiness-policy gate",
+      "initial_state_reference": "docs/task007d/vis/vis1l/evidence/controlled_A/summary.json#/initial_state",
+      "initial_state": [
+        5.253846582838669,
+        0.0,
+        0.9966576677921577,
+        0.034598592705642695,
+        1.0,
+        -0.11268618155631815
+      ]
+    },
+    "diagnostic": {
+      "fresh_workers": 10,
+      "contexts_each": 12,
+      "strata": {
+        "straight": 4,
+        "sustained_corner": 4,
+        "transition": 4
+      },
+      "physical_duration": null,
+      "physical_duration_reason": "Offline context panel has no physical execution."
+    },
+    "resources": {
+      "native_policy": "SINGLE",
+      "worker_order": "isolated sequential",
+      "host_allocation_ceiling_minutes": 20,
+      "worker_peak_RSS_ceiling_GiB": 1,
+      "reserved_output_GiB": 1,
+      "minimum_free_GiB_plus_remaining_output": 1,
+      "initial_minimum_free_GiB": 2,
+      "rule": "Ceilings are proposed allocations, not runtime predictions or authorization; check before each worker and stop starting workers when depleted."
+    },
+    "guards": [
+      "results/**/MEASURED_ACTIVE",
+      "results/task007d/D3_ACTIVE",
+      "actual active computational processes and other owner guards"
+    ],
+    "guard_policy": "Do not remove a guard; investigate owner. No overlap with tests, analysis, rendering or benchmarks. Inspect supported backend controls before initialization; retain process/thread observations and limitations."
+  },
+  "retained_evidence_inspection": [
+    {
+      "run": "controlled_A",
+      "release_records": 622,
+      "files": [
+        {
+          "path": "results/task007d/vis/vis1r_c699057/controlled_A/release_contexts.json",
+          "sha256": "331f41c76d18c56b9f675c3babdda6dc10c043f20c40631c0d96f008c7486843"
+        },
+        {
+          "path": "results/task007d/vis/vis1r_c699057/controlled_A/raw.json",
+          "sha256": "369ebcc2433ad6476ba9d379db521317eecae31fd0e0de35866000ac6027a189"
+        },
+        {
+          "path": "results/task007d/vis/vis1r_c699057/controlled_A/summary.json",
+          "sha256": "4840934ea4d425bdccd17b18cbd254f4372ba5275b655189010c223c2be72d71"
+        },
+        {
+          "path": "results/task007d/vis/vis1r_c699057/controlled_A/input_configuration.json",
+          "sha256": "0ad9739d8d4dddfb17451759724c7336751b30cafd06bbf65208b09ee901b0c9"
+        }
+      ],
+      "schema_findings": "Release fields verified over all records; full pre-call optimizer solution/slacks absent. Raw plans retain scalar slack diagnostics, not full warm state. No solves or context replay executed.",
+      "faithful_recurring_warm_panel_recoverable_from_these_files": false
+    },
+    {
+      "run": "measured_A_1",
+      "release_records": 620,
+      "files": [
+        {
+          "path": "results/task007d/vis/vis1r_c699057/measured_A_1/release_contexts.json",
+          "sha256": "9956c08015cd91ae453e1fdb1a25d9796a470976d23c7ba872d6afa8dd3f80fa"
+        },
+        {
+          "path": "results/task007d/vis/vis1r_c699057/measured_A_1/raw.json",
+          "sha256": "2562bd1e4cbd195bfbc951c36f4979421f6636bb1a4aba92dcf914fea2322412"
+        },
+        {
+          "path": "results/task007d/vis/vis1r_c699057/measured_A_1/summary.json",
+          "sha256": "a75d8a216a1ff0313800dc50869af0e2787b7c6c0a1e06c640803570ac038177"
+        },
+        {
+          "path": "results/task007d/vis/vis1r_c699057/measured_A_1/input_configuration.json",
+          "sha256": "7a8eaf33eed56333a8eb7091f462b712e6061368f63f49b5747d6a3a70184b3a"
+        }
+      ],
+      "schema_findings": "Release fields verified over all records; full pre-call optimizer solution/slacks absent. Raw plans retain scalar slack diagnostics, not full warm state. No solves or context replay executed.",
+      "faithful_recurring_warm_panel_recoverable_from_these_files": false
+    }
+  ],
+  "exact_context_ids": null,
+  "exact_context_ids_reason": "No panel selected or generated. Warm-start recovery blocker and unapproved exact geometry selection prevent freezing a faithful recurring panel.",
+  "context_identification_procedure": [
+    "Read/hash retained accepted A summary, configuration, source inventory, raw plans, release_contexts and Planning/vehicle files; match to immutable manifest. Never invoke a numerical worker, solver, simulation or historical regeneration.",
+    "Propose controlled_A as the primary selection population (622 releases); measured_A_1 (620) is an alternate requiring explicit review. Do not pool them or select the faster run. Validate source/config/fixture parity and successful authority history from retained records.",
+    "Join by unique plan_id and exact prefix.release_time to raw release/event and active packet. Capture sampled state, estimate-at-release, target, tracker configuration/limits/previous command, actual previous application, pending control/time, active packet identity/contents/expiry/reserve, and chronology up to release only.",
+    "Recover the actual controller.solution X/U/slacks immediately BEFORE that preparation, its use_warm_start/reset history, previous_control and required terminal/reference configuration. A release-active packet is not necessarily the latest optimizer solution; rejected proposals and reset paths matter. Full slacks cannot be reconstructed from aggregate max/sum or replaced with zeros.",
+    "Before selecting IDs, review a geometry-only rule using frozen Planning curvature/progress interpolation: define straight/corner quantiles, sustained-corner dwell and entry/exit classification. Do not infer cost from solver timings, iterations or failure ranking. Freeze exact formula/units/quantile/tie rules and handle absent strata without fabrication.",
+    "Within each approved stratum order eligible releases by continuous progress then release_time/plan_id; choose four nearest to 20/40/60/80 percent of that stratum progress span, without replacement, ties to lower release_time then plan_id. Require four distinct contexts per stratum and twelve overall, including reviewed entry and exit coverage. If unavailable, stop selection and request a protocol amendment.",
+    "Write a new compact manifest with source run IDs, file SHA256s, JSON pointers, exact context IDs/times/progress, geometry classification, full causal-context digest and warm/cold provenance. Hash exact artifact bytes; never rewrite retained source records.",
+    "Engineering reviews the selected contexts and verifies recoverability before any execution. If warm starts are unavailable, block the faithful recurring panel; a cold-start diagnostic alternative needs explicit amendment, must be labelled cold and cannot establish recurring preparation cost."
+  ],
+  "missing_recovery_fields_in_inspected_files": [
+    "pre-call controller.solution including full slack array",
+    "optimizer solution/reset lineage for exact pre-call recovery"
+  ],
+  "selection_geometry_parameters": {
+    "approved": false,
+    "exact_quantiles_and_dwell": null,
+    "reason": "Not supplied by Primary; review the geometry rule before selecting diagnostic IDs. No physical threshold invented."
+  },
+  "gate_requirements": [
+    "reviewed Phase A source diff and explicit implementation/execution authorization",
+    "zero/injected controlled semantic/RK4/authority parity",
+    "observer-overhead evidence and reviewed readiness accounting",
+    "exact context IDs/hashes and faithful warm-start recovery or explicit cold-panel amendment",
+    "approved resource allocation and guards",
+    "separate explicit Phase B authorization"
+  ],
+  "outcome_accounting": "Keep all workers/launches, failures, late/rejected results and tails; nearest-rank distributions and per-run uncertainty. Never replace unfavorable runs or change repetitions after results. Two-second samples cannot establish complete-lap gates, p99 reliability or hard-real-time bounds.",
+  "hardware_limit": "Mac observations do not certify future embedded hardware."
+}
