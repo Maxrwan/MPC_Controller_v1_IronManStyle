@@ -1,0 +1,162 @@
+{
+  "task": "APEX-CT-1",
+  "status": "WORK_COMPLETE_PENDING_REVIEW",
+  "numerical_evaluation_status": "NOT EXECUTED",
+  "accepted_E4_revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+  "verified_scientific_revision": "e603672b209985f11ed26b6f44d3949ffd5675c5",
+  "schema": "apex-ct1-metrics/1.0.0",
+  "state_scaling_SI": [
+    0.5,
+    0.5,
+    1,
+    0.1,
+    0.75,
+    0.1
+  ],
+  "input_scaling_SI": [
+    0.2,
+    1
+  ],
+  "lateral_scaling_SI": [
+    0.1,
+    0.1,
+    0.5,
+    1
+  ],
+  "continuous_time_scale_s": 1,
+  "rank": {
+    "method": "SVD on C=[B,AB,...,A^(n-1)B], not Gramian",
+    "relative_tolerances": [
+      1e-12,
+      1e-10,
+      1e-08,
+      1e-06
+    ],
+    "absolute_floor": 1e-12,
+    "default_relative_tolerance": 1e-10,
+    "rank_rule": "count sigma_i > max(absolute_floor,relative_tolerance*sigma_max)",
+    "condition_rule": "sigma_max/sigma_min; deficient = null with reason RANK_DEFICIENT (mathematical infinity)",
+    "sensitivity": "raw plus nominal scaled; one state/input scale at a time x0.1 and x10; continuous tau=0.1,1,10 s"
+  },
+  "finite_difference": {
+    "normalized_column_steps": [
+      2e-05,
+      1e-05,
+      5e-06
+    ],
+    "scheme": "central differences of independently implemented matching NumPy f/F",
+    "entry_absolute_tolerance": 1e-07,
+    "entry_relative_tolerance": 0.0001,
+    "rule": "abs(J-Dh)<=abs_tol+rel_tol*max(abs(J),abs(Dh)); also two smallest Dh agree by same rule",
+    "boundaries": "No clamp, no silent step adjustment; unavailable or explicitly one-sided at knot/wrap/domain boundary",
+    "geometry_kappa_s": {
+      "s_steps_m": [
+        2e-05,
+        1e-05,
+        5e-06
+      ],
+      "absolute_tolerance_1pm2": 1e-05,
+      "relative_tolerance": 0.001
+    }
+  },
+  "PBH": {
+    "continuous": "full row rank at every eigenvalue Re(lambda)>=0",
+    "discrete": "full row rank at every eigenvalue |lambda|>=1",
+    "include_boundary_band": 1e-08,
+    "ambiguous_result": "INDETERMINATE; Schur/staircase/residual follow-up, no favorable classification"
+  },
+  "closed_loop": {
+    "stable_frozen_rho_upper_exclusive": 0.99999999,
+    "unstable_frozen_rho_lower_exclusive": 1.00000001,
+    "between": "INDETERMINATE",
+    "products": "Phi(k,j)=Acl[k-1]...Acl[j]; Phi(j,j)=I; all covered subintervals within original remaining packet",
+    "norms": [
+      "scaled induced 2-norm",
+      "raw SI 2-norm with unit-dependence warning"
+    ],
+    "time_windows_s": [
+      0.01,
+      0.05,
+      0.1,
+      0.2,
+      0.4
+    ],
+    "include_remaining_horizon": true,
+    "measures": [
+      "all eigenvalues and residuals",
+      "singular spectra",
+      "max transient amplification/time to peak",
+      "endpoint norm",
+      "affine defect and forced response",
+      "full six-state coupled and conditional scalar speed results"
+    ]
+  },
+  "Riccati": {
+    "DARE_and_recursion_relative_residual_max": 1e-08,
+    "symmetry_relative_residual_max": 1e-10,
+    "positive_eigenvalue_floor_scaled": 1e-12,
+    "condition_warning": 10000000000.0,
+    "gain_reproduction_abs_tol": 1e-09,
+    "gain_reproduction_rel_tol": 1e-07,
+    "denominator": "max(1,sum of Frobenius norms of equation terms)",
+    "on_failure": "Preserve original gains; stop affected certificate/reproduction, do not retune"
+  },
+  "response_sampling": {
+    "clock": "native physical event/plant sample times; no visual interpolation for extrema",
+    "errors": "actual minus active packet reference, heading wrapped on local chart; also original fixed packet within validity in ModeB where available",
+    "integrals": "sum abs(e_i)*(t_next-t_i), sum e_i^2*(t_next-t_i); last sample has no extrapolated interval",
+    "handoff": "split windows by authority; retain jump and distinguish original-feedback from post-replacement behavior",
+    "peak": "max absolute error; earliest tie time; report initial value and sign; overshoot opposite initial signed displacement normalized by increment when meaningful, otherwise null",
+    "bands_SI": {
+      "vx": 0.02,
+      "vy": 0.02,
+      "r": 0.02,
+      "e_psi": 0.005,
+      "e_y": 0.005
+    },
+    "settling": "First native sample such that every regulated component remains inside its absolute band for >=0.2 s AND through the entire remaining observed window. Report individual and joint settling, duration and relative-to-injection time. At least 0.2 s subsequent data required. No progress settling claim.",
+    "censoring": "If unsettled or insufficient dwell at packet expiry/observation limit/domain stop/budget, settling_time=null, right_censored=true, lower_bound=observed duration if no qualifying entry; distinguish no observed settling from instability. Domain termination is failure plus truncated/censored response, not missing favorable trial.",
+    "oscillation": "sign changes outside declared bands, peak ordering/amplitude and timing; short records give descriptive counts only; no inferred asymptotic frequency",
+    "finite_horizon_amplification": "max scaled norm(e(t))/scaled norm(initial error) if nonzero; normalized-by-injected increment also reported with defect/baseline caveat",
+    "monotonic_decrease_required": false
+  },
+  "effort_and_validity": [
+    "max and integrated delta, delta-nominal correction",
+    "actual application steering TV=sum abs(delta_j-delta_(j-1)); rates use actual application intervals, ties explicit",
+    "box/slew saturation duration and counts; pending/held/request/applied identity",
+    "max acceleration/braking, acceleration variation, speed error and extrema",
+    "front/rear force/load/slip/combined utilization and longitudinal reserve",
+    "min D, speed and actuator-domain margins, physical center clearance, corridor/slack margins",
+    "packet expiry, acceptance/rejection, fallback, planner misses and codriver misses separately",
+    "estimation timestamp and age only if separately specified"
+  ],
+  "observation_states": [
+    "COMPLETED",
+    "INVALID_INITIAL_PERTURBATION",
+    "MODEL_DOMAIN_FAILURE",
+    "CORRIDOR_OR_SLACK_STOP",
+    "GAIN_OR_SOLVER_FAILURE",
+    "PACKET_EXPIRED",
+    "FALLBACK",
+    "RESOURCE_CENSORED",
+    "UNEXECUTED_BUDGET",
+    "UNAVAILABLE_CHECKPOINT"
+  ],
+  "claim_levels": {
+    "1": "Mathematical/local conditioned evidence only; currently analytic derivation without evaluated matrices",
+    "2": "Empirical finite-horizon synthetic observations only; NOT EXECUTED",
+    "3": "Formal guarantee only with explicit hypotheses and actual proof; NONE supplied"
+  },
+  "forbidden_inferences": [
+    "global asymptotic stability",
+    "nonlinear reachable-set invariance",
+    "guaranteed disturbance rejection",
+    "physical collision safety",
+    "hardware robustness",
+    "full-rank linear pair implies constrained nonlinear controllability",
+    "stable frozen matrices imply stable time-varying products",
+    "successful solver alone implies valid packet",
+    "simulation stop implies physical safe stopping"
+  ],
+  "baseline_limit": "No paired zero-disturbance simulations in 80/32 caps; no causal incremental-rejection or timing-equivalent sensitivity claim from archived divergent baseline."
+}

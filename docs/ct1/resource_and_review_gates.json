@@ -1,0 +1,84 @@
+{
+  "task": "APEX-CT-1",
+  "status": "WORK_COMPLETE_PENDING_REVIEW",
+  "numerical_evaluation_status": "NOT EXECUTED",
+  "accepted_E4_revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+  "verified_scientific_revision": "e603672b209985f11ed26b6f44d3949ffd5675c5",
+  "schema": "apex-ct1-resource-gates/1.0.0",
+  "execution_authorized": false,
+  "planning_caps_not_estimates": true,
+  "aggregate_host_seconds": 1500,
+  "stage_allocation_seconds": {
+    "CT1L": 300,
+    "CT1N": 800,
+    "CT1R": 400
+  },
+  "allocation_accounting": "Sum all future stage invocation wall durations including initialization, matrix evaluations, simulations, export and inspection. Harness/prerequisite work also needs an explicit reconciled allocation before numerical execution. No uncounted prewarming, pilots or failed starts. Unused time not silently transferred.",
+  "worker_count_max": 1,
+  "worker_policy": "fresh isolated sequential native SINGLE workers; no overlapping benchmark, tests, rendering or analysis",
+  "peak_worker_RSS_bytes": 1073741824,
+  "new_output_reservation_bytes": 1073741824,
+  "initial_free_bytes_min": 2147483648,
+  "runtime_free_bytes_floor": 1073741824,
+  "resource_poll_interval_s": 0.1,
+  "resource_observation_limit": "RSS/disk sampled ceiling; kernel hard limit only if supported/validated. A sampled watcher cannot certify no between-sample overshoot; hard RSS enforcement on macOS must be qualified before claiming a hard bound.",
+  "resource_actions": {
+    "before_each_worker": "Check available stage/aggregate time, output bytes, >=1 GiB free, no MEASURED_ACTIVE/D3_ACTIVE owner conflict; record guard ownership, never remove another guard",
+    "during": "At 0.1 s poll elapsed monotonic wall, worker RSS, filesystem free space and output growth; flush bounded structured observations; ensure process group reaped on timeout",
+    "at_ceiling": "Stop launching immediately; ask worker to flush/checkpoint, <=1 s grace then terminate worker process group; preserve partial writes and explicit truncation; supervision/grace counted inside allocation",
+    "wall_reserve": "Reserve final 5 s of each stage for termination and partial manifest. Do not launch a trial if <5 s remains. Per CT1N/CT1R worker timeout <=30 s and <=remaining minus reserve; CT1L timeout <=remaining minus reserve.",
+    "output_ceiling": "All new data, logs, temporary files and exports share 1 GiB; at 95% stop launching, flush within remaining 5%; do not delete earlier evidence",
+    "RSS_ceiling": "At >=1 GiB observed worker RSS stop worker; log max RSS and enforcement limitations",
+    "disk_floor": "Below 1 GiB free stop worker; initial 2 GiB is verified immediately before stage, not inferred from this plan"
+  },
+  "environment_identity_required": [
+    "exact CT1 documentation SHA plus future harness SHA and clean authorized diff",
+    "accepted E4, E3 and manifest/source/config/fixture/lock hashes",
+    "OS/kernel/architecture, Python binary/version/path/hash, installed package metadata and locked versions",
+    "actual BLAS/LAPACK backend/distribution binary metadata, CasADi/IPOPT plugin identity if available; unknown remains unknown",
+    "supported native controls configured before numerical imports in fresh subprocess",
+    "Accelerate configure_accelerate(1) result and mode, environment, process thread counts and CPU/time observations; env vars alone insufficient",
+    "hardware memory, disk, process inventory and guard ownership, output location and cap accounting",
+    "trial IDs/order, source rows/packet IDs, branch/worktree identity and checkpoint/harness scope"
+  ],
+  "prerequisites": [
+    "Secondary Engineering Review of analytic equations, selection screening limitations, scaling/tolerances and metrics",
+    "Primary approves each stage independently; an approved document is not execution authorization",
+    "CT1L physical curvature/load/interior/chart qualification; no favorable replacement for missing category",
+    "Separate reviewed harness authorization for ModeA, single-channel injection, checkpoint/restoration and causal state availability",
+    "Exact ModeB midrun restore is unresolved; versioned restart or prefix reconstruction and budget must be reconciled without claiming exact historical replay",
+    "All required focused mathematical/parity/chronology/observer noninterference checks on future harness before any experiment; no tests run now",
+    "Review perturbation magnitudes, proposed synthetic bounds, baseline limitations, timing confounding and unsupported estimation exclusion",
+    "Predeclare complete resource guard implementation including memory enforcement limits; no runtime guards implemented by this document",
+    "Rehash original source/evidence and verify protected refs/status; no archive restoration or copied-drive qualification implied"
+  ],
+  "scientific_stop_conditions": [
+    "source/config/environment mismatch or ambiguous packet authority",
+    "invalid chronology, future information leakage, accidental model/parameter sharing",
+    "nonfinite dynamics/derivatives, failed FD/Riccati reproduction",
+    "invalid initial state, any invalid RK4 intermediate/final state, axle load or square-root reserve violation",
+    "physical center corridor crossing or predicted material slack >1e-6 m; preserve immediate offending observation",
+    "unexpected fallback, gain/preparation/solver failure; stop affected branch pending review",
+    "packet expiry ModeA: expected censored observation, no extrapolation",
+    "same-time clip/domain/knot branch ambiguity: label unavailable, do not manufacture smoothness",
+    "resource cap or unsafe guard ownership: retain partial/censored evidence; no rerun to replace outcome"
+  ],
+  "separate_authorization_requests": [
+    {
+      "id": "CT1L",
+      "request": "After Secondary review, authorize only the twelve source-bound local-matrix evaluations, <=960 gain-grid samples and specified cross-checks, <=300 s; no nonlinear trials or optimization solves. First resolve derivative qualification and report lost coverage.",
+      "state": "PENDING_PRIMARY_AUTHORIZATION"
+    },
+    {
+      "id": "CT1N",
+      "request": "Separately authorize reviewed harness/prerequisites and then up to 80 specified one-channel trials, <=800 s, only after checkpoint, perturbation, timing and cap reconciliation. No inferred permission from CT1L approval.",
+      "state": "PENDING_SECONDARY_REVIEW_AND_PRIMARY_AUTHORIZATION"
+    },
+    {
+      "id": "CT1R",
+      "request": "Separately authorize reviewed harness/prerequisites and then up to 32 plant-only synthetic mismatch trials, <=400 s. Estimation/noise, interactions, baselines and retuning excluded pending new reviewed plan/cap.",
+      "state": "PENDING_SECONDARY_REVIEW_AND_PRIMARY_AUTHORIZATION"
+    }
+  ],
+  "reruns": "No unfavorable replacement; failures, instability, infeasibility and censoring retained. A diagnostic repetition needs separately documented authorization and linked original result."
+}

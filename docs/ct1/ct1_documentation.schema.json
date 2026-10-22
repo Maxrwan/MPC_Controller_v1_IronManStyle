@@ -1,0 +1,925 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:apex:ct1:documentation:1.0.0",
+  "title": "CT1 documentation records; separate file validated against named $defs entry",
+  "schema_version": "1.0.0",
+  "$defs": {
+    "operating_point_selection": {
+      "type": "object",
+      "required": [
+        "task",
+        "status",
+        "numerical_evaluation_status",
+        "accepted_E4_revision",
+        "verified_scientific_revision",
+        "schema",
+        "selection_rule",
+        "selection_rule_sha256",
+        "selection_character",
+        "candidate_counts",
+        "requested_count",
+        "bound_archived_anchor_count",
+        "qualified_derivative_point_count",
+        "missing_category_slots",
+        "qualification_status",
+        "nonlinear_representatives",
+        "source_hash_index",
+        "source_scope_limit",
+        "points",
+        "selection_rule_original_file_sha256",
+        "selection_rule_hash_encoding",
+        "qualified_category_coverage",
+        "coverage_gaps"
+      ],
+      "properties": {
+        "task": {
+          "type": "string"
+        },
+        "status": {
+          "const": "WORK_COMPLETE_PENDING_REVIEW"
+        },
+        "numerical_evaluation_status": {
+          "const": "NOT EXECUTED"
+        },
+        "accepted_E4_revision": {
+          "const": "48adbdf64d492592d15e23c917aca71fa58aa8a5"
+        },
+        "verified_scientific_revision": {
+          "const": "e603672b209985f11ed26b6f44d3949ffd5675c5"
+        },
+        "schema": {
+          "type": "string"
+        },
+        "selection_rule": {
+          "type": "object"
+        },
+        "selection_rule_sha256": {
+          "type": "string"
+        },
+        "selection_character": {
+          "type": "string"
+        },
+        "candidate_counts": {
+          "type": "object"
+        },
+        "requested_count": {
+          "type": "integer"
+        },
+        "bound_archived_anchor_count": {
+          "type": "integer"
+        },
+        "qualified_derivative_point_count": {
+          "type": "integer"
+        },
+        "missing_category_slots": {
+          "type": "array"
+        },
+        "qualification_status": {
+          "type": "string"
+        },
+        "nonlinear_representatives": {
+          "type": "array"
+        },
+        "source_hash_index": {
+          "type": "string"
+        },
+        "source_scope_limit": {
+          "type": "string"
+        },
+        "points": {
+          "type": "array",
+          "minItems": 12,
+          "maxItems": 12,
+          "items": {
+            "type": "object",
+            "required": [
+              "id",
+              "category",
+              "binding_status",
+              "run_id",
+              "worker_revision",
+              "raw_state_row",
+              "raw_control_row",
+              "export_row",
+              "timestamp_s",
+              "progress_s_abs_m",
+              "state_order",
+              "state",
+              "held_applied_control",
+              "nominal_control",
+              "request_control",
+              "request_application_s",
+              "request_actually_applied_control",
+              "last_application_s",
+              "previous_applied_steering_rad",
+              "applied_source_plan_id",
+              "reference_state",
+              "planning_reference_state",
+              "packet_preview_curvature_1pm",
+              "category_neighbor_preview_curvatures_1pm",
+              "physical_centerline_curvature_1pm",
+              "physical_curvature_missing_reason",
+              "racing_line_curvature_1pm",
+              "racing_curvature_missing_reason",
+              "speed_mps",
+              "sideslip_rad",
+              "front_combined_utilization",
+              "rear_combined_utilization",
+              "axle_loads_N",
+              "loads_missing_reason",
+              "constraint_and_actuator_margins",
+              "authority",
+              "packet_id",
+              "packet_valid",
+              "packet_validation_reason",
+              "packet_stage_index",
+              "packet_gain_index",
+              "gain_time_s",
+              "original_gain",
+              "gain_order",
+              "gain_source_json_pointer",
+              "evidence_files",
+              "future_evaluations",
+              "initial_vx_perturbation_domain_screen"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "category": {
+                "type": "string"
+              },
+              "binding_status": {
+                "type": "string"
+              },
+              "run_id": {
+                "type": "string"
+              },
+              "worker_revision": {
+                "type": "string"
+              },
+              "raw_state_row": {
+                "type": "integer"
+              },
+              "raw_control_row": {
+                "type": "integer"
+              },
+              "export_row": {
+                "type": "integer"
+              },
+              "timestamp_s": {
+                "type": "number"
+              },
+              "progress_s_abs_m": {
+                "type": "number"
+              },
+              "state_order": {
+                "const": [
+                  "vx",
+                  "vy",
+                  "r",
+                  "e_psi",
+                  "s_abs",
+                  "e_y"
+                ]
+              },
+              "state": {
+                "type": "array",
+                "minItems": 6,
+                "maxItems": 6,
+                "items": {
+                  "type": "number"
+                }
+              },
+              "held_applied_control": {
+                "type": "array",
+                "minItems": 2,
+                "maxItems": 2,
+                "items": {
+                  "type": "number"
+                }
+              },
+              "nominal_control": {
+                "type": "array",
+                "minItems": 2,
+                "maxItems": 2,
+                "items": {
+                  "type": "number"
+                }
+              },
+              "request_control": {
+                "type": "array",
+                "minItems": 2,
+                "maxItems": 2,
+                "items": {
+                  "type": "number"
+                }
+              },
+              "request_application_s": {
+                "type": "number"
+              },
+              "request_actually_applied_control": {
+                "type": "array",
+                "minItems": 2,
+                "maxItems": 2,
+                "items": {
+                  "type": "number"
+                }
+              },
+              "last_application_s": {
+                "type": "number"
+              },
+              "previous_applied_steering_rad": {
+                "type": "number"
+              },
+              "applied_source_plan_id": {
+                "type": "integer"
+              },
+              "reference_state": {
+                "type": "array",
+                "minItems": 6,
+                "maxItems": 6,
+                "items": {
+                  "type": "number"
+                }
+              },
+              "planning_reference_state": {
+                "type": "array",
+                "minItems": 6,
+                "maxItems": 6,
+                "items": {
+                  "type": "number"
+                }
+              },
+              "packet_preview_curvature_1pm": {
+                "type": "number"
+              },
+              "category_neighbor_preview_curvatures_1pm": {
+                "type": "array"
+              },
+              "physical_centerline_curvature_1pm": {
+                "type": [
+                  "null",
+                  "number",
+                  "string",
+                  "object",
+                  "array",
+                  "boolean"
+                ]
+              },
+              "physical_curvature_missing_reason": {
+                "type": "string"
+              },
+              "racing_line_curvature_1pm": {
+                "type": [
+                  "null",
+                  "number",
+                  "string",
+                  "object",
+                  "array",
+                  "boolean"
+                ]
+              },
+              "racing_curvature_missing_reason": {
+                "type": "string"
+              },
+              "speed_mps": {
+                "type": "number"
+              },
+              "sideslip_rad": {
+                "type": "number"
+              },
+              "front_combined_utilization": {
+                "type": "number"
+              },
+              "rear_combined_utilization": {
+                "type": "number"
+              },
+              "axle_loads_N": {
+                "type": [
+                  "null",
+                  "number",
+                  "string",
+                  "object",
+                  "array",
+                  "boolean"
+                ]
+              },
+              "loads_missing_reason": {
+                "type": "string"
+              },
+              "constraint_and_actuator_margins": {
+                "type": "object"
+              },
+              "authority": {
+                "type": "object"
+              },
+              "packet_id": {
+                "type": "integer"
+              },
+              "packet_valid": {
+                "type": "boolean"
+              },
+              "packet_validation_reason": {
+                "type": "string"
+              },
+              "packet_stage_index": {
+                "type": "integer"
+              },
+              "packet_gain_index": {
+                "type": "integer"
+              },
+              "gain_time_s": {
+                "type": "number"
+              },
+              "original_gain": {
+                "type": "array",
+                "minItems": 4,
+                "maxItems": 4,
+                "items": {
+                  "type": "number"
+                }
+              },
+              "gain_order": {
+                "type": "array"
+              },
+              "gain_source_json_pointer": {
+                "type": "string"
+              },
+              "evidence_files": {
+                "type": "array"
+              },
+              "future_evaluations": {
+                "const": "NOT EXECUTED"
+              },
+              "initial_vx_perturbation_domain_screen": {
+                "type": "object"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "selection_rule_original_file_sha256": {
+          "type": "string"
+        },
+        "selection_rule_hash_encoding": {
+          "type": "string"
+        },
+        "qualified_category_coverage": {
+          "type": "object"
+        },
+        "coverage_gaps": {
+          "type": "array"
+        }
+      },
+      "additionalProperties": false
+    },
+    "test_matrix": {
+      "type": "object",
+      "required": [
+        "task",
+        "status",
+        "numerical_evaluation_status",
+        "accepted_E4_revision",
+        "verified_scientific_revision",
+        "schema",
+        "authorization",
+        "CT1L",
+        "CT1N",
+        "CT1R",
+        "trial_order"
+      ],
+      "properties": {
+        "task": {
+          "type": "string"
+        },
+        "status": {
+          "const": "WORK_COMPLETE_PENDING_REVIEW"
+        },
+        "numerical_evaluation_status": {
+          "const": "NOT EXECUTED"
+        },
+        "accepted_E4_revision": {
+          "const": "48adbdf64d492592d15e23c917aca71fa58aa8a5"
+        },
+        "verified_scientific_revision": {
+          "const": "e603672b209985f11ed26b6f44d3949ffd5675c5"
+        },
+        "schema": {
+          "type": "string"
+        },
+        "authorization": {
+          "type": "string"
+        },
+        "CT1L": {
+          "type": "object"
+        },
+        "CT1N": {
+          "type": "object",
+          "required": [
+            "trials",
+            "max_trials",
+            "harness_status"
+          ],
+          "properties": {
+            "trials": {
+              "type": "array",
+              "minItems": 80,
+              "maxItems": 80,
+              "items": {
+                "type": "object",
+                "required": [
+                  "id",
+                  "representative",
+                  "channel",
+                  "increment",
+                  "unit",
+                  "mode",
+                  "timing_block",
+                  "status"
+                ],
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "representative": {
+                    "type": "string"
+                  },
+                  "channel": {
+                    "type": "string"
+                  },
+                  "increment": {
+                    "type": "number"
+                  },
+                  "unit": {
+                    "type": "string"
+                  },
+                  "mode": {
+                    "type": "string"
+                  },
+                  "timing_block": {
+                    "type": "string"
+                  },
+                  "status": {
+                    "const": "NOT EXECUTED"
+                  }
+                },
+                "additionalProperties": false
+              }
+            },
+            "max_trials": {
+              "const": 80
+            },
+            "harness_status": {
+              "type": "string"
+            }
+          }
+        },
+        "CT1R": {
+          "type": "object",
+          "required": [
+            "trials",
+            "max_trials",
+            "estimation_study"
+          ],
+          "properties": {
+            "trials": {
+              "type": "array",
+              "minItems": 32,
+              "maxItems": 32,
+              "items": {
+                "type": "object",
+                "required": [
+                  "id",
+                  "representative",
+                  "plant_parameter",
+                  "multiplier",
+                  "mode",
+                  "timing_block",
+                  "status"
+                ],
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "representative": {
+                    "type": "string"
+                  },
+                  "plant_parameter": {
+                    "type": "string"
+                  },
+                  "multiplier": {
+                    "type": "number"
+                  },
+                  "mode": {
+                    "type": "string"
+                  },
+                  "timing_block": {
+                    "type": "string"
+                  },
+                  "status": {
+                    "const": "NOT EXECUTED"
+                  }
+                },
+                "additionalProperties": false
+              }
+            },
+            "max_trials": {
+              "const": 32
+            },
+            "estimation_study": {
+              "type": "object"
+            }
+          }
+        },
+        "trial_order": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "metrics_and_interpretation": {
+      "type": "object",
+      "required": [
+        "task",
+        "status",
+        "numerical_evaluation_status",
+        "accepted_E4_revision",
+        "verified_scientific_revision",
+        "schema",
+        "state_scaling_SI",
+        "input_scaling_SI",
+        "lateral_scaling_SI",
+        "continuous_time_scale_s",
+        "rank",
+        "finite_difference",
+        "PBH",
+        "closed_loop",
+        "Riccati",
+        "response_sampling",
+        "effort_and_validity",
+        "observation_states",
+        "claim_levels",
+        "forbidden_inferences",
+        "baseline_limit"
+      ],
+      "properties": {
+        "task": {
+          "type": "string"
+        },
+        "status": {
+          "const": "WORK_COMPLETE_PENDING_REVIEW"
+        },
+        "numerical_evaluation_status": {
+          "const": "NOT EXECUTED"
+        },
+        "accepted_E4_revision": {
+          "const": "48adbdf64d492592d15e23c917aca71fa58aa8a5"
+        },
+        "verified_scientific_revision": {
+          "const": "e603672b209985f11ed26b6f44d3949ffd5675c5"
+        },
+        "schema": {
+          "type": "string"
+        },
+        "state_scaling_SI": {
+          "type": "array"
+        },
+        "input_scaling_SI": {
+          "type": "array"
+        },
+        "lateral_scaling_SI": {
+          "type": "array"
+        },
+        "continuous_time_scale_s": {
+          "type": "integer"
+        },
+        "rank": {
+          "type": "object"
+        },
+        "finite_difference": {
+          "type": "object"
+        },
+        "PBH": {
+          "type": "object"
+        },
+        "closed_loop": {
+          "type": "object"
+        },
+        "Riccati": {
+          "type": "object"
+        },
+        "response_sampling": {
+          "type": "object"
+        },
+        "effort_and_validity": {
+          "type": "array"
+        },
+        "observation_states": {
+          "type": "array"
+        },
+        "claim_levels": {
+          "type": "object"
+        },
+        "forbidden_inferences": {
+          "type": "array"
+        },
+        "baseline_limit": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "resource_and_review_gates": {
+      "type": "object",
+      "required": [
+        "task",
+        "status",
+        "numerical_evaluation_status",
+        "accepted_E4_revision",
+        "verified_scientific_revision",
+        "schema",
+        "execution_authorized",
+        "planning_caps_not_estimates",
+        "aggregate_host_seconds",
+        "stage_allocation_seconds",
+        "allocation_accounting",
+        "worker_count_max",
+        "worker_policy",
+        "peak_worker_RSS_bytes",
+        "new_output_reservation_bytes",
+        "initial_free_bytes_min",
+        "runtime_free_bytes_floor",
+        "resource_poll_interval_s",
+        "resource_observation_limit",
+        "resource_actions",
+        "environment_identity_required",
+        "prerequisites",
+        "scientific_stop_conditions",
+        "separate_authorization_requests",
+        "reruns"
+      ],
+      "properties": {
+        "task": {
+          "type": "string"
+        },
+        "status": {
+          "const": "WORK_COMPLETE_PENDING_REVIEW"
+        },
+        "numerical_evaluation_status": {
+          "const": "NOT EXECUTED"
+        },
+        "accepted_E4_revision": {
+          "const": "48adbdf64d492592d15e23c917aca71fa58aa8a5"
+        },
+        "verified_scientific_revision": {
+          "const": "e603672b209985f11ed26b6f44d3949ffd5675c5"
+        },
+        "schema": {
+          "type": "string"
+        },
+        "execution_authorized": {
+          "const": false
+        },
+        "planning_caps_not_estimates": {
+          "type": "boolean"
+        },
+        "aggregate_host_seconds": {
+          "type": "integer"
+        },
+        "stage_allocation_seconds": {
+          "type": "object"
+        },
+        "allocation_accounting": {
+          "type": "string"
+        },
+        "worker_count_max": {
+          "type": "integer"
+        },
+        "worker_policy": {
+          "type": "string"
+        },
+        "peak_worker_RSS_bytes": {
+          "type": "integer"
+        },
+        "new_output_reservation_bytes": {
+          "type": "integer"
+        },
+        "initial_free_bytes_min": {
+          "type": "integer"
+        },
+        "runtime_free_bytes_floor": {
+          "type": "integer"
+        },
+        "resource_poll_interval_s": {
+          "type": "number"
+        },
+        "resource_observation_limit": {
+          "type": "string"
+        },
+        "resource_actions": {
+          "type": "object"
+        },
+        "environment_identity_required": {
+          "type": "array"
+        },
+        "prerequisites": {
+          "type": "array"
+        },
+        "scientific_stop_conditions": {
+          "type": "array"
+        },
+        "separate_authorization_requests": {
+          "type": "array"
+        },
+        "reruns": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "preservation_and_provenance": {
+      "type": "object",
+      "required": [
+        "task",
+        "status",
+        "numerical_evaluation_status",
+        "accepted_E4_revision",
+        "verified_scientific_revision",
+        "schema",
+        "repository",
+        "remote",
+        "manifest",
+        "research_branch",
+        "worktree",
+        "original_worktree",
+        "isolation_preflight",
+        "before_inventory",
+        "accepted_scientific_source_inventory",
+        "source_files",
+        "evidence_files",
+        "availability",
+        "preservation_method",
+        "baseline_refs_and_tags",
+        "delivery_identity",
+        "scope_limit",
+        "static_reader_scope"
+      ],
+      "properties": {
+        "task": {
+          "type": "string"
+        },
+        "status": {
+          "const": "WORK_COMPLETE_PENDING_REVIEW"
+        },
+        "numerical_evaluation_status": {
+          "const": "NOT EXECUTED"
+        },
+        "accepted_E4_revision": {
+          "const": "48adbdf64d492592d15e23c917aca71fa58aa8a5"
+        },
+        "verified_scientific_revision": {
+          "const": "e603672b209985f11ed26b6f44d3949ffd5675c5"
+        },
+        "schema": {
+          "type": "string"
+        },
+        "repository": {
+          "type": "string"
+        },
+        "remote": {
+          "type": "string"
+        },
+        "manifest": {
+          "type": "object"
+        },
+        "research_branch": {
+          "type": "string"
+        },
+        "worktree": {
+          "type": "string"
+        },
+        "original_worktree": {
+          "type": "string"
+        },
+        "isolation_preflight": {
+          "type": "object"
+        },
+        "before_inventory": {
+          "type": "object"
+        },
+        "accepted_scientific_source_inventory": {
+          "type": "object"
+        },
+        "source_files": {
+          "type": "array"
+        },
+        "evidence_files": {
+          "type": "array"
+        },
+        "availability": {
+          "type": "object"
+        },
+        "preservation_method": {
+          "type": "object"
+        },
+        "baseline_refs_and_tags": {
+          "type": "string"
+        },
+        "delivery_identity": {
+          "type": "string"
+        },
+        "scope_limit": {
+          "type": "string"
+        },
+        "static_reader_scope": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "validation": {
+      "type": "object",
+      "required": [
+        "task",
+        "status",
+        "numerical_evaluation_status",
+        "accepted_E4_revision",
+        "verified_scientific_revision",
+        "schema",
+        "passed",
+        "scope",
+        "checks",
+        "changed_files",
+        "authored_payload_hashes",
+        "unexecuted",
+        "delivery_revision",
+        "reader",
+        "environment",
+        "reproduction_note"
+      ],
+      "properties": {
+        "task": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "numerical_evaluation_status": {
+          "const": "NOT EXECUTED"
+        },
+        "accepted_E4_revision": {
+          "type": "string"
+        },
+        "verified_scientific_revision": {
+          "type": "string"
+        },
+        "schema": {
+          "type": "string"
+        },
+        "passed": {
+          "const": true
+        },
+        "scope": {
+          "type": "string"
+        },
+        "checks": {
+          "type": "object"
+        },
+        "changed_files": {
+          "type": "array"
+        },
+        "authored_payload_hashes": {
+          "type": "object"
+        },
+        "unexecuted": {
+          "type": "array"
+        },
+        "delivery_revision": {
+          "type": "string"
+        },
+        "reader": {
+          "type": "object"
+        },
+        "environment": {
+          "type": "object"
+        },
+        "reproduction_note": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "validation_vocabulary": [
+    "type",
+    "const",
+    "required",
+    "properties",
+    "additionalProperties",
+    "items",
+    "minItems",
+    "maxItems"
+  ],
+  "scope": "Closed record roots and operating-point/trial shapes; semantic invariants and source hashes checked separately; this is not a runtime experiment-output schema."
+}

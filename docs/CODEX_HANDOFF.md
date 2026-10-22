@@ -1,3 +1,38 @@
+# Current handoff — APEX-CT-1 control-theoretic assessment plan
+
+**WORK_COMPLETE_PENDING_REVIEW — documentation only. Numerical evaluations NOT EXECUTED.**
+Isolated `research/control-theory-ct1` from accepted E4
+`48adbdf64d492592d15e23c917aca71fa58aa8a5`; verified scientific source remains
+`e603672b209985f11ed26b6f44d3949ffd5675c5`. Manifest SHA256 remains
+`5299adca29d5c5bd383252cd2c299a392dd6872dc6bb72d1a4dd7ecfb8dd1ebf`.
+
+[Methodology](ct1/CT1_CONTROL_THEORY_METHODOLOGY.md),
+[exact mathematical audit](ct1/model_and_linearization_audit.md),
+[operating anchors](ct1/operating_point_selection.json), [test matrix](ct1/test_matrix.json),
+[metrics](ct1/metrics_and_interpretation.json), [gates](ct1/resource_and_review_gates.json),
+[provenance](ct1/preservation_and_provenance.json), [static validation](ct1/validation.json).
+Analytic A/B derivation retains acceleration/load/grip and physical curvature derivatives;
+10 ms two-substep tracker and 100 ms four-substep NMPC maps remain distinct. Actual TVLQR,
+proportional speed feedback, interpolation defects, progress mode and stateful delayed slew
+limit applicability are documented. No claimed numerical rank, pole or nonlinear stability result.
+
+Twelve deterministic archived valid-run anchors extracted, with original gains and authority;
+strict derivative domains, true plant curvature, axle loads and some margins remain unqualified.
+Exact mid-run asynchronous checkpoint restoration is unresolved. Proposed 80 one-channel
+ModeA/B trials and 32 plant-only mismatch trials are enumerated; amplitudes, harness/prerequisite
+work, timing confounding and no-paired-baseline limits need review. Estimator study deferred
+because no exact measurement/injection model exists. Future total <=25 min, SINGLE sequential,
+worker RSS <=1 GiB, outputs <=1 GiB, >=2 GiB initially free; ceilings are not runtime estimates.
+
+Only docs/ct1 and this prepended handoff change. No tests, numerical imports, solvers, simulations,
+retuning, archives or protected branch changes. Static schema/hash/link/scope/preservation checks
+recorded; prior E3 passes are historical and not new CT1 evidence. Exact delivery SHA, branch,
+commit URL and remote equality are supplied in final handoff after push.
+**Next:** Secondary Engineering Review, then separate Primary authorization for CT-1L, CT-1N,
+and CT-1R, each after its unresolved prerequisites. Do not execute scientific experiments.
+
+---
+
 # Current handoff — Task007E-4 Primary acceptance record
 
 **WORK_COMPLETE_PENDING_REVIEW — documentation/status delivery.** Primary APEX already accepted

@@ -1,0 +1,1266 @@
+{
+  "task": "APEX-CT-1",
+  "status": "WORK_COMPLETE_PENDING_REVIEW",
+  "numerical_evaluation_status": "NOT EXECUTED",
+  "accepted_E4_revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+  "verified_scientific_revision": "e603672b209985f11ed26b6f44d3949ffd5675c5",
+  "schema": "apex-ct1-test-matrix/1.0.0",
+  "authorization": "NONE for numerical execution or harness construction",
+  "CT1L": {
+    "max_operating_points": 12,
+    "full_state_order": [
+      "vx",
+      "vy",
+      "r",
+      "e_psi",
+      "s_abs",
+      "e_y"
+    ],
+    "input_order": [
+      "delta",
+      "a_cmd"
+    ],
+    "lateral_order": [
+      "e_y",
+      "e_psi",
+      "vy",
+      "r"
+    ],
+    "pairs": [
+      "continuous_frozen_preview",
+      "continuous_geometry_dependent_plant",
+      "discrete_symbolic_RK4_0.01_2substeps",
+      "discrete_symbolic_RK4_0.1_4substeps",
+      "discrete_held_input_NumPy_0.01_2steps",
+      "discrete_held_input_NumPy_0.1_20steps"
+    ],
+    "gain_grid_sample_cap": 960,
+    "stage_scope": "No optimization solves, no nonlinear trials; evaluating F for derivatives/defects is only within separately authorized CT1L",
+    "checks": [
+      "analytic/AD vs independent real finite differences",
+      "full/lateral/speed controllability SVD and normalization sensitivity",
+      "continuous/discrete PBH stabilizability including marginal modes",
+      "original gain/Riccati validity audit",
+      "frozen matrices and time-varying products",
+      "nominal defects and full longitudinal/lateral coupling",
+      "actuator-memory applicability classification"
+    ],
+    "status": "NOT EXECUTED"
+  },
+  "CT1N": {
+    "max_trials": 80,
+    "enumeration": "4 representatives * 5 channels * 2 signs * 2 modes = 80",
+    "magnitudes_status": "PROPOSED__REQUIRES_REVIEW",
+    "channels": [
+      {
+        "channel": "e_y",
+        "absolute_increment": 0.02,
+        "unit": "m"
+      },
+      {
+        "channel": "e_psi",
+        "absolute_increment": 0.02,
+        "unit": "rad"
+      },
+      {
+        "channel": "vy",
+        "absolute_increment": 0.1,
+        "unit": "m/s"
+      },
+      {
+        "channel": "r",
+        "absolute_increment": 0.1,
+        "unit": "rad/s"
+      },
+      {
+        "channel": "vx",
+        "absolute_increment": 0.1,
+        "unit": "m/s"
+      }
+    ],
+    "modes": {
+      "A": "Fixed original accepted trajectory and original gains; no replanning; censor at packet expiry",
+      "B": "Original asynchronous Performance preparation/acceptance/TVLQR; max 2 simulated s"
+    },
+    "timing_blocks": {
+      "straight_2": {
+        "id": "ZERO",
+        "planner_s": [
+          0.0
+        ],
+        "codriver_s": 0.0
+      },
+      "corner_2": {
+        "id": "INJECTED_ACCEPTED",
+        "planner_s": [
+          0.035,
+          0.055,
+          0.045,
+          0.025
+        ],
+        "codriver_s": 0.005
+      },
+      "entry_exit_2": {
+        "id": "INJECTED_MISS",
+        "planner_s": [
+          0.035,
+          0.125,
+          0.045,
+          0.025
+        ],
+        "codriver_s": 0.015
+      },
+      "high_speed_2": {
+        "id": "MEASURED",
+        "planner_s": null,
+        "codriver_s": null
+      }
+    },
+    "timing_aliasing": "Geometry and latency blocks confounded; no latency-factorial or matched-sign-across-block claim",
+    "baseline_trials": 0,
+    "baseline_limitation": "No new unperturbed counterfactual; report absolute tracking/nominal defects; archived divergent histories are descriptive only",
+    "harness_status": "NOT IMPLEMENTED; existing hook only combined ey/heading; midrun restoration and ModeA require separately authorized reviewed harness",
+    "checkpoint_restore_required": [
+      "physical clock and exact archived actual state",
+      "active trimmed packet and original gains",
+      "held pair, last application time, pending actuator request with original provenance",
+      "tracker previous and tick/release grid indices",
+      "pending planner completion, waiting packet and next plan ID",
+      "rolling-delay samples, urgent latch/count, warm-start solution and solver state if reproducibly restorable",
+      "fallback mode/state and release chronology"
+    ],
+    "checkpoint_limit": "Release contexts do not serialize the entire live NMPC/warm-start/pending-planner state. Exact full-architecture restart is not presently established. Require reviewed causal prefix reconstruction or label a versioned restart experiment; do not call it exact replay. No prefix runs hidden in trial cap or resource budget.",
+    "trials": [
+      {
+        "id": "N001",
+        "representative": "straight_2",
+        "channel": "e_y",
+        "increment": -0.02,
+        "unit": "m",
+        "mode": "A",
+        "timing_block": "ZERO",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "N002",
+        "representative": "straight_2",
+        "channel": "e_y",
+        "increment": -0.02,
+        "unit": "m",
+        "mode": "B",
+        "timing_block": "ZERO",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "N003",
+        "representative": "straight_2",
+        "channel": "e_y",
+        "increment": 0.02,
+        "unit": "m",
+        "mode": "A",
+        "timing_block": "ZERO",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "N004",
+        "representative": "straight_2",
+        "channel": "e_y",
+        "increment": 0.02,
+        "unit": "m",
+        "mode": "B",
+        "timing_block": "ZERO",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "N005",
+        "representative": "straight_2",
+        "channel": "e_psi",
+        "increment": -0.02,
+        "unit": "rad",
+        "mode": "A",
+        "timing_block": "ZERO",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "N006",
+        "representative": "straight_2",
+        "channel": "e_psi",
+        "increment": -0.02,
+        "unit": "rad",
+        "mode": "B",
+        "timing_block": "ZERO",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "N007",
+        "representative": "straight_2",
+        "channel": "e_psi",
+        "increment": 0.02,
+        "unit": "rad",
+        "mode": "A",
+        "timing_block": "ZERO",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "N008",
+        "representative": "straight_2",
+        "channel": "e_psi",
+        "increment": 0.02,
+        "unit": "rad",
+        "mode": "B",
+        "timing_block": "ZERO",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "N009",
+        "representative": "straight_2",
+        "channel": "vy",
+        "increment": -0.1,
+        "unit": "m/s",
+        "mode": "A",
+        "timing_block": "ZERO",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "N010",
+        "representative": "straight_2",
+        "channel": "vy",
+        "increment": -0.1,
+        "unit": "m/s",
+        "mode": "B",
+        "timing_block": "ZERO",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "N011",
+        "representative": "straight_2",
+        "channel": "vy",
+        "increment": 0.1,
+        "unit": "m/s",
+        "mode": "A",
+        "timing_block": "ZERO",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "N012",
+        "representative": "straight_2",
+        "channel": "vy",
+        "increment": 0.1,
+        "unit": "m/s",
+        "mode": "B",
+        "timing_block": "ZERO",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "N013",
+        "representative": "straight_2",
+        "channel": "r",
+        "increment": -0.1,
+        "unit": "rad/s",
+        "mode": "A",
+        "timing_block": "ZERO",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "N014",
+        "representative": "straight_2",
+        "channel": "r",
+        "increment": -0.1,
+        "unit": "rad/s",
+        "mode": "B",
+        "timing_block": "ZERO",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "N015",
+        "representative": "straight_2",
+        "channel": "r",
+        "increment": 0.1,
+        "unit": "rad/s",
+        "mode": "A",
+        "timing_block": "ZERO",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "N016",
+        "representative": "straight_2",
+        "channel": "r",
+        "increment": 0.1,
+        "unit": "rad/s",
+        "mode": "B",
+        "timing_block": "ZERO",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "N017",
+        "representative": "straight_2",
+        "channel": "vx",
+        "increment": -0.1,
+        "unit": "m/s",
+        "mode": "A",
+        "timing_block": "ZERO",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "N018",
+        "representative": "straight_2",
+        "channel": "vx",
+        "increment": -0.1,
+        "unit": "m/s",
+        "mode": "B",
+        "timing_block": "ZERO",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "N019",
+        "representative": "straight_2",
+        "channel": "vx",
+        "increment": 0.1,
+        "unit": "m/s",
+        "mode": "A",
+        "timing_block": "ZERO",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "N020",
+        "representative": "straight_2",
+        "channel": "vx",
+        "increment": 0.1,
+        "unit": "m/s",
+        "mode": "B",
+        "timing_block": "ZERO",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "N021",
+        "representative": "corner_2",
+        "channel": "e_y",
+        "increment": -0.02,
+        "unit": "m",
+        "mode": "A",
+        "timing_block": "INJECTED_ACCEPTED",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "N022",
+        "representative": "corner_2",
+        "channel": "e_y",
+        "increment": -0.02,
+        "unit": "m",
+        "mode": "B",
+        "timing_block": "INJECTED_ACCEPTED",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "N023",
+        "representative": "corner_2",
+        "channel": "e_y",
+        "increment": 0.02,
+        "unit": "m",
+        "mode": "A",
+        "timing_block": "INJECTED_ACCEPTED",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "N024",
+        "representative": "corner_2",
+        "channel": "e_y",
+        "increment": 0.02,
+        "unit": "m",
+        "mode": "B",
+        "timing_block": "INJECTED_ACCEPTED",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "N025",
+        "representative": "corner_2",
+        "channel": "e_psi",
+        "increment": -0.02,
+        "unit": "rad",
+        "mode": "A",
+        "timing_block": "INJECTED_ACCEPTED",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "N026",
+        "representative": "corner_2",
+        "channel": "e_psi",
+        "increment": -0.02,
+        "unit": "rad",
+        "mode": "B",
+        "timing_block": "INJECTED_ACCEPTED",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "N027",
+        "representative": "corner_2",
+        "channel": "e_psi",
+        "increment": 0.02,
+        "unit": "rad",
+        "mode": "A",
+        "timing_block": "INJECTED_ACCEPTED",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "N028",
+        "representative": "corner_2",
+        "channel": "e_psi",
+        "increment": 0.02,
+        "unit": "rad",
+        "mode": "B",
+        "timing_block": "INJECTED_ACCEPTED",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "N029",
+        "representative": "corner_2",
+        "channel": "vy",
+        "increment": -0.1,
+        "unit": "m/s",
+        "mode": "A",
+        "timing_block": "INJECTED_ACCEPTED",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "N030",
+        "representative": "corner_2",
+        "channel": "vy",
+        "increment": -0.1,
+        "unit": "m/s",
+        "mode": "B",
+        "timing_block": "INJECTED_ACCEPTED",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "N031",
+        "representative": "corner_2",
+        "channel": "vy",
+        "increment": 0.1,
+        "unit": "m/s",
+        "mode": "A",
+        "timing_block": "INJECTED_ACCEPTED",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "N032",
+        "representative": "corner_2",
+        "channel": "vy",
+        "increment": 0.1,
+        "unit": "m/s",
+        "mode": "B",
+        "timing_block": "INJECTED_ACCEPTED",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "N033",
+        "representative": "corner_2",
+        "channel": "r",
+        "increment": -0.1,
+        "unit": "rad/s",
+        "mode": "A",
+        "timing_block": "INJECTED_ACCEPTED",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "N034",
+        "representative": "corner_2",
+        "channel": "r",
+        "increment": -0.1,
+        "unit": "rad/s",
+        "mode": "B",
+        "timing_block": "INJECTED_ACCEPTED",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "N035",
+        "representative": "corner_2",
+        "channel": "r",
+        "increment": 0.1,
+        "unit": "rad/s",
+        "mode": "A",
+        "timing_block": "INJECTED_ACCEPTED",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "N036",
+        "representative": "corner_2",
+        "channel": "r",
+        "increment": 0.1,
+        "unit": "rad/s",
+        "mode": "B",
+        "timing_block": "INJECTED_ACCEPTED",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "N037",
+        "representative": "corner_2",
+        "channel": "vx",
+        "increment": -0.1,
+        "unit": "m/s",
+        "mode": "A",
+        "timing_block": "INJECTED_ACCEPTED",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "N038",
+        "representative": "corner_2",
+        "channel": "vx",
+        "increment": -0.1,
+        "unit": "m/s",
+        "mode": "B",
+        "timing_block": "INJECTED_ACCEPTED",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "N039",
+        "representative": "corner_2",
+        "channel": "vx",
+        "increment": 0.1,
+        "unit": "m/s",
+        "mode": "A",
+        "timing_block": "INJECTED_ACCEPTED",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "N040",
+        "representative": "corner_2",
+        "channel": "vx",
+        "increment": 0.1,
+        "unit": "m/s",
+        "mode": "B",
+        "timing_block": "INJECTED_ACCEPTED",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "N041",
+        "representative": "entry_exit_2",
+        "channel": "e_y",
+        "increment": -0.02,
+        "unit": "m",
+        "mode": "A",
+        "timing_block": "INJECTED_MISS",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "N042",
+        "representative": "entry_exit_2",
+        "channel": "e_y",
+        "increment": -0.02,
+        "unit": "m",
+        "mode": "B",
+        "timing_block": "INJECTED_MISS",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "N043",
+        "representative": "entry_exit_2",
+        "channel": "e_y",
+        "increment": 0.02,
+        "unit": "m",
+        "mode": "A",
+        "timing_block": "INJECTED_MISS",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "N044",
+        "representative": "entry_exit_2",
+        "channel": "e_y",
+        "increment": 0.02,
+        "unit": "m",
+        "mode": "B",
+        "timing_block": "INJECTED_MISS",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "N045",
+        "representative": "entry_exit_2",
+        "channel": "e_psi",
+        "increment": -0.02,
+        "unit": "rad",
+        "mode": "A",
+        "timing_block": "INJECTED_MISS",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "N046",
+        "representative": "entry_exit_2",
+        "channel": "e_psi",
+        "increment": -0.02,
+        "unit": "rad",
+        "mode": "B",
+        "timing_block": "INJECTED_MISS",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "N047",
+        "representative": "entry_exit_2",
+        "channel": "e_psi",
+        "increment": 0.02,
+        "unit": "rad",
+        "mode": "A",
+        "timing_block": "INJECTED_MISS",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "N048",
+        "representative": "entry_exit_2",
+        "channel": "e_psi",
+        "increment": 0.02,
+        "unit": "rad",
+        "mode": "B",
+        "timing_block": "INJECTED_MISS",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "N049",
+        "representative": "entry_exit_2",
+        "channel": "vy",
+        "increment": -0.1,
+        "unit": "m/s",
+        "mode": "A",
+        "timing_block": "INJECTED_MISS",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "N050",
+        "representative": "entry_exit_2",
+        "channel": "vy",
+        "increment": -0.1,
+        "unit": "m/s",
+        "mode": "B",
+        "timing_block": "INJECTED_MISS",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "N051",
+        "representative": "entry_exit_2",
+        "channel": "vy",
+        "increment": 0.1,
+        "unit": "m/s",
+        "mode": "A",
+        "timing_block": "INJECTED_MISS",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "N052",
+        "representative": "entry_exit_2",
+        "channel": "vy",
+        "increment": 0.1,
+        "unit": "m/s",
+        "mode": "B",
+        "timing_block": "INJECTED_MISS",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "N053",
+        "representative": "entry_exit_2",
+        "channel": "r",
+        "increment": -0.1,
+        "unit": "rad/s",
+        "mode": "A",
+        "timing_block": "INJECTED_MISS",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "N054",
+        "representative": "entry_exit_2",
+        "channel": "r",
+        "increment": -0.1,
+        "unit": "rad/s",
+        "mode": "B",
+        "timing_block": "INJECTED_MISS",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "N055",
+        "representative": "entry_exit_2",
+        "channel": "r",
+        "increment": 0.1,
+        "unit": "rad/s",
+        "mode": "A",
+        "timing_block": "INJECTED_MISS",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "N056",
+        "representative": "entry_exit_2",
+        "channel": "r",
+        "increment": 0.1,
+        "unit": "rad/s",
+        "mode": "B",
+        "timing_block": "INJECTED_MISS",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "N057",
+        "representative": "entry_exit_2",
+        "channel": "vx",
+        "increment": -0.1,
+        "unit": "m/s",
+        "mode": "A",
+        "timing_block": "INJECTED_MISS",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "N058",
+        "representative": "entry_exit_2",
+        "channel": "vx",
+        "increment": -0.1,
+        "unit": "m/s",
+        "mode": "B",
+        "timing_block": "INJECTED_MISS",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "N059",
+        "representative": "entry_exit_2",
+        "channel": "vx",
+        "increment": 0.1,
+        "unit": "m/s",
+        "mode": "A",
+        "timing_block": "INJECTED_MISS",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "N060",
+        "representative": "entry_exit_2",
+        "channel": "vx",
+        "increment": 0.1,
+        "unit": "m/s",
+        "mode": "B",
+        "timing_block": "INJECTED_MISS",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "N061",
+        "representative": "high_speed_2",
+        "channel": "e_y",
+        "increment": -0.02,
+        "unit": "m",
+        "mode": "A",
+        "timing_block": "MEASURED",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "N062",
+        "representative": "high_speed_2",
+        "channel": "e_y",
+        "increment": -0.02,
+        "unit": "m",
+        "mode": "B",
+        "timing_block": "MEASURED",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "N063",
+        "representative": "high_speed_2",
+        "channel": "e_y",
+        "increment": 0.02,
+        "unit": "m",
+        "mode": "A",
+        "timing_block": "MEASURED",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "N064",
+        "representative": "high_speed_2",
+        "channel": "e_y",
+        "increment": 0.02,
+        "unit": "m",
+        "mode": "B",
+        "timing_block": "MEASURED",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "N065",
+        "representative": "high_speed_2",
+        "channel": "e_psi",
+        "increment": -0.02,
+        "unit": "rad",
+        "mode": "A",
+        "timing_block": "MEASURED",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "N066",
+        "representative": "high_speed_2",
+        "channel": "e_psi",
+        "increment": -0.02,
+        "unit": "rad",
+        "mode": "B",
+        "timing_block": "MEASURED",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "N067",
+        "representative": "high_speed_2",
+        "channel": "e_psi",
+        "increment": 0.02,
+        "unit": "rad",
+        "mode": "A",
+        "timing_block": "MEASURED",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "N068",
+        "representative": "high_speed_2",
+        "channel": "e_psi",
+        "increment": 0.02,
+        "unit": "rad",
+        "mode": "B",
+        "timing_block": "MEASURED",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "N069",
+        "representative": "high_speed_2",
+        "channel": "vy",
+        "increment": -0.1,
+        "unit": "m/s",
+        "mode": "A",
+        "timing_block": "MEASURED",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "N070",
+        "representative": "high_speed_2",
+        "channel": "vy",
+        "increment": -0.1,
+        "unit": "m/s",
+        "mode": "B",
+        "timing_block": "MEASURED",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "N071",
+        "representative": "high_speed_2",
+        "channel": "vy",
+        "increment": 0.1,
+        "unit": "m/s",
+        "mode": "A",
+        "timing_block": "MEASURED",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "N072",
+        "representative": "high_speed_2",
+        "channel": "vy",
+        "increment": 0.1,
+        "unit": "m/s",
+        "mode": "B",
+        "timing_block": "MEASURED",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "N073",
+        "representative": "high_speed_2",
+        "channel": "r",
+        "increment": -0.1,
+        "unit": "rad/s",
+        "mode": "A",
+        "timing_block": "MEASURED",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "N074",
+        "representative": "high_speed_2",
+        "channel": "r",
+        "increment": -0.1,
+        "unit": "rad/s",
+        "mode": "B",
+        "timing_block": "MEASURED",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "N075",
+        "representative": "high_speed_2",
+        "channel": "r",
+        "increment": 0.1,
+        "unit": "rad/s",
+        "mode": "A",
+        "timing_block": "MEASURED",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "N076",
+        "representative": "high_speed_2",
+        "channel": "r",
+        "increment": 0.1,
+        "unit": "rad/s",
+        "mode": "B",
+        "timing_block": "MEASURED",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "N077",
+        "representative": "high_speed_2",
+        "channel": "vx",
+        "increment": -0.1,
+        "unit": "m/s",
+        "mode": "A",
+        "timing_block": "MEASURED",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "N078",
+        "representative": "high_speed_2",
+        "channel": "vx",
+        "increment": -0.1,
+        "unit": "m/s",
+        "mode": "B",
+        "timing_block": "MEASURED",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "N079",
+        "representative": "high_speed_2",
+        "channel": "vx",
+        "increment": 0.1,
+        "unit": "m/s",
+        "mode": "A",
+        "timing_block": "MEASURED",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "N080",
+        "representative": "high_speed_2",
+        "channel": "vx",
+        "increment": 0.1,
+        "unit": "m/s",
+        "mode": "B",
+        "timing_block": "MEASURED",
+        "status": "NOT EXECUTED"
+      }
+    ]
+  },
+  "CT1R": {
+    "max_trials": 32,
+    "enumeration": "4 representatives * 4 plant-only families * 2 multipliers = 32",
+    "parameter_magnitudes_status": "PROPOSED_SYNTHETIC__NOT_MEASURED_UNCERTAINTY__REQUIRES_REVIEW",
+    "nominal_values": {
+      "front_cornering_stiffness": 45,
+      "rear_cornering_stiffness": 45,
+      "tire_road_friction_coefficient": 1,
+      "yaw_inertia": 0.025
+    },
+    "multipliers": [
+      0.9,
+      1.1
+    ],
+    "vary": [
+      "plant parameter object only"
+    ],
+    "fixed": [
+      "controller prediction parameter object",
+      "gain generator model parameters, Q, R and terminal policy",
+      "reference, geometry and NMPC settings",
+      "existing active packet gains"
+    ],
+    "new_packet_gain_rule": "Use unchanged nominal gain construction for new nominal packets; never regenerate with varied plant parameters",
+    "timing_block": "INJECTED_ACCEPTED",
+    "max_simulated_seconds": 2,
+    "baseline_trials": 0,
+    "estimation_study": {
+      "status": "DEFERRED_UNSUPPORTED_EXACT_TEST_MODEL",
+      "required_before_plan_activation": [
+        "versioned estimator/measurement injection and timestamp contract",
+        "noise/delay distribution, bounded magnitudes, channel correlations and seeds",
+        "causal measurement queue/hold model and plant/controller split",
+        "separate trial count and cap reconciliation",
+        "separate authorization"
+      ]
+    },
+    "alternative_matched_model_sensitivity": "DEFERRED_SEPARATE_VERSIONED_MODE",
+    "trials": [
+      {
+        "id": "R001",
+        "representative": "straight_2",
+        "plant_parameter": "front_cornering_stiffness",
+        "multiplier": 0.9,
+        "mode": "B_PLANT_ONLY_MISMATCH",
+        "timing_block": "INJECTED_ACCEPTED",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "R002",
+        "representative": "straight_2",
+        "plant_parameter": "front_cornering_stiffness",
+        "multiplier": 1.1,
+        "mode": "B_PLANT_ONLY_MISMATCH",
+        "timing_block": "INJECTED_ACCEPTED",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "R003",
+        "representative": "straight_2",
+        "plant_parameter": "rear_cornering_stiffness",
+        "multiplier": 0.9,
+        "mode": "B_PLANT_ONLY_MISMATCH",
+        "timing_block": "INJECTED_ACCEPTED",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "R004",
+        "representative": "straight_2",
+        "plant_parameter": "rear_cornering_stiffness",
+        "multiplier": 1.1,
+        "mode": "B_PLANT_ONLY_MISMATCH",
+        "timing_block": "INJECTED_ACCEPTED",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "R005",
+        "representative": "straight_2",
+        "plant_parameter": "tire_road_friction_coefficient",
+        "multiplier": 0.9,
+        "mode": "B_PLANT_ONLY_MISMATCH",
+        "timing_block": "INJECTED_ACCEPTED",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "R006",
+        "representative": "straight_2",
+        "plant_parameter": "tire_road_friction_coefficient",
+        "multiplier": 1.1,
+        "mode": "B_PLANT_ONLY_MISMATCH",
+        "timing_block": "INJECTED_ACCEPTED",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "R007",
+        "representative": "straight_2",
+        "plant_parameter": "yaw_inertia",
+        "multiplier": 0.9,
+        "mode": "B_PLANT_ONLY_MISMATCH",
+        "timing_block": "INJECTED_ACCEPTED",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "R008",
+        "representative": "straight_2",
+        "plant_parameter": "yaw_inertia",
+        "multiplier": 1.1,
+        "mode": "B_PLANT_ONLY_MISMATCH",
+        "timing_block": "INJECTED_ACCEPTED",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "R009",
+        "representative": "corner_2",
+        "plant_parameter": "front_cornering_stiffness",
+        "multiplier": 0.9,
+        "mode": "B_PLANT_ONLY_MISMATCH",
+        "timing_block": "INJECTED_ACCEPTED",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "R010",
+        "representative": "corner_2",
+        "plant_parameter": "front_cornering_stiffness",
+        "multiplier": 1.1,
+        "mode": "B_PLANT_ONLY_MISMATCH",
+        "timing_block": "INJECTED_ACCEPTED",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "R011",
+        "representative": "corner_2",
+        "plant_parameter": "rear_cornering_stiffness",
+        "multiplier": 0.9,
+        "mode": "B_PLANT_ONLY_MISMATCH",
+        "timing_block": "INJECTED_ACCEPTED",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "R012",
+        "representative": "corner_2",
+        "plant_parameter": "rear_cornering_stiffness",
+        "multiplier": 1.1,
+        "mode": "B_PLANT_ONLY_MISMATCH",
+        "timing_block": "INJECTED_ACCEPTED",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "R013",
+        "representative": "corner_2",
+        "plant_parameter": "tire_road_friction_coefficient",
+        "multiplier": 0.9,
+        "mode": "B_PLANT_ONLY_MISMATCH",
+        "timing_block": "INJECTED_ACCEPTED",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "R014",
+        "representative": "corner_2",
+        "plant_parameter": "tire_road_friction_coefficient",
+        "multiplier": 1.1,
+        "mode": "B_PLANT_ONLY_MISMATCH",
+        "timing_block": "INJECTED_ACCEPTED",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "R015",
+        "representative": "corner_2",
+        "plant_parameter": "yaw_inertia",
+        "multiplier": 0.9,
+        "mode": "B_PLANT_ONLY_MISMATCH",
+        "timing_block": "INJECTED_ACCEPTED",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "R016",
+        "representative": "corner_2",
+        "plant_parameter": "yaw_inertia",
+        "multiplier": 1.1,
+        "mode": "B_PLANT_ONLY_MISMATCH",
+        "timing_block": "INJECTED_ACCEPTED",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "R017",
+        "representative": "entry_exit_2",
+        "plant_parameter": "front_cornering_stiffness",
+        "multiplier": 0.9,
+        "mode": "B_PLANT_ONLY_MISMATCH",
+        "timing_block": "INJECTED_ACCEPTED",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "R018",
+        "representative": "entry_exit_2",
+        "plant_parameter": "front_cornering_stiffness",
+        "multiplier": 1.1,
+        "mode": "B_PLANT_ONLY_MISMATCH",
+        "timing_block": "INJECTED_ACCEPTED",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "R019",
+        "representative": "entry_exit_2",
+        "plant_parameter": "rear_cornering_stiffness",
+        "multiplier": 0.9,
+        "mode": "B_PLANT_ONLY_MISMATCH",
+        "timing_block": "INJECTED_ACCEPTED",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "R020",
+        "representative": "entry_exit_2",
+        "plant_parameter": "rear_cornering_stiffness",
+        "multiplier": 1.1,
+        "mode": "B_PLANT_ONLY_MISMATCH",
+        "timing_block": "INJECTED_ACCEPTED",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "R021",
+        "representative": "entry_exit_2",
+        "plant_parameter": "tire_road_friction_coefficient",
+        "multiplier": 0.9,
+        "mode": "B_PLANT_ONLY_MISMATCH",
+        "timing_block": "INJECTED_ACCEPTED",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "R022",
+        "representative": "entry_exit_2",
+        "plant_parameter": "tire_road_friction_coefficient",
+        "multiplier": 1.1,
+        "mode": "B_PLANT_ONLY_MISMATCH",
+        "timing_block": "INJECTED_ACCEPTED",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "R023",
+        "representative": "entry_exit_2",
+        "plant_parameter": "yaw_inertia",
+        "multiplier": 0.9,
+        "mode": "B_PLANT_ONLY_MISMATCH",
+        "timing_block": "INJECTED_ACCEPTED",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "R024",
+        "representative": "entry_exit_2",
+        "plant_parameter": "yaw_inertia",
+        "multiplier": 1.1,
+        "mode": "B_PLANT_ONLY_MISMATCH",
+        "timing_block": "INJECTED_ACCEPTED",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "R025",
+        "representative": "high_speed_2",
+        "plant_parameter": "front_cornering_stiffness",
+        "multiplier": 0.9,
+        "mode": "B_PLANT_ONLY_MISMATCH",
+        "timing_block": "INJECTED_ACCEPTED",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "R026",
+        "representative": "high_speed_2",
+        "plant_parameter": "front_cornering_stiffness",
+        "multiplier": 1.1,
+        "mode": "B_PLANT_ONLY_MISMATCH",
+        "timing_block": "INJECTED_ACCEPTED",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "R027",
+        "representative": "high_speed_2",
+        "plant_parameter": "rear_cornering_stiffness",
+        "multiplier": 0.9,
+        "mode": "B_PLANT_ONLY_MISMATCH",
+        "timing_block": "INJECTED_ACCEPTED",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "R028",
+        "representative": "high_speed_2",
+        "plant_parameter": "rear_cornering_stiffness",
+        "multiplier": 1.1,
+        "mode": "B_PLANT_ONLY_MISMATCH",
+        "timing_block": "INJECTED_ACCEPTED",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "R029",
+        "representative": "high_speed_2",
+        "plant_parameter": "tire_road_friction_coefficient",
+        "multiplier": 0.9,
+        "mode": "B_PLANT_ONLY_MISMATCH",
+        "timing_block": "INJECTED_ACCEPTED",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "R030",
+        "representative": "high_speed_2",
+        "plant_parameter": "tire_road_friction_coefficient",
+        "multiplier": 1.1,
+        "mode": "B_PLANT_ONLY_MISMATCH",
+        "timing_block": "INJECTED_ACCEPTED",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "R031",
+        "representative": "high_speed_2",
+        "plant_parameter": "yaw_inertia",
+        "multiplier": 0.9,
+        "mode": "B_PLANT_ONLY_MISMATCH",
+        "timing_block": "INJECTED_ACCEPTED",
+        "status": "NOT EXECUTED"
+      },
+      {
+        "id": "R032",
+        "representative": "high_speed_2",
+        "plant_parameter": "yaw_inertia",
+        "multiplier": 1.1,
+        "mode": "B_PLANT_ONLY_MISMATCH",
+        "timing_block": "INJECTED_ACCEPTED",
+        "status": "NOT EXECUTED"
+      }
+    ]
+  },
+  "trial_order": "CT1L first only if authorized; nonlinear then robustness independently gated. Listed order within stage; stop at budget, retain partial coverage, never rerun to replace unfavorable observation."
+}

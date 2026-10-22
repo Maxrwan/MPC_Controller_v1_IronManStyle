@@ -1,0 +1,2086 @@
+{
+  "task": "APEX-CT-1",
+  "status": "WORK_COMPLETE_PENDING_REVIEW",
+  "numerical_evaluation_status": "NOT EXECUTED",
+  "accepted_E4_revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+  "verified_scientific_revision": "e603672b209985f11ed26b6f44d3949ffd5675c5",
+  "schema": "apex-ct1-operating-points/1.0.0",
+  "selection_rule": {
+    "status": "PROPOSED_STATIC_SOURCE_ANCHOR_SELECTION",
+    "run_order": [
+      "controlled_A"
+    ],
+    "source": "results/task007d/vis/vis1r_c699057/controlled_A",
+    "observation": "Only archived values, comparisons and indexing; no model or matrix evaluation",
+    "coverage": "recorded complete lap between first and second crossings; 0.3 s edge exclusion",
+    "curvature": "packet.curvatures ZOH at archived control request time; this is exogenous nominal track curvature, not kappa_ref or actual plant curvature",
+    "neighborhood_seconds": 0.1,
+    "straight": {
+      "absolute_curvature_max_1pm": 0.02,
+      "rule": "all three samples t-0.1,t,t+0.1 satisfy bound"
+    },
+    "corner": {
+      "absolute_curvature_min_1pm": 0.08,
+      "window_range_max_1pm": 0.01,
+      "rule": "all three same-sign and above min"
+    },
+    "entry_exit": {
+      "window_absolute_change_min_1pm": 0.03,
+      "rule": "absolute difference in end and start curvature"
+    },
+    "high_speed": {
+      "vx_min_mps": 5.5
+    },
+    "eligibility": "native state exactly matches archived control sample; trajectory authority available and valid; no boundary violation; positive reserve; finite recorded values; source run stop_gate empty",
+    "priority": [
+      "entry_exit",
+      "corner",
+      "straight",
+      "high_speed"
+    ],
+    "allocation": "For each category sort by time, pick remaining candidate nearest to rank targets 1/6, 1/2, 5/6 in its initial eligible list; ties earlier time; exclude any already selected point within 0.5 m s_abs. Insufficient coverage stays null; no replacement run or threshold relaxation.",
+    "points_per_category": 3,
+    "domain_status": "Archived run validity only; loads, true curvature, strict interior and derivative stencil checks remain NOT EXECUTED"
+  },
+  "selection_rule_sha256": "c443a2da69f51d9455af2102acd2727e293c78499c11bfdc59da9a1679caea0e",
+  "selection_character": "Static archived scalar extraction, indexing and predeclared comparisons; no geometry/model/Jacobian/eigenvalue evaluation",
+  "candidate_counts": {
+    "entry_exit": 1506,
+    "corner": 491,
+    "straight": 190,
+    "high_speed": 1144
+  },
+  "requested_count": 12,
+  "bound_archived_anchor_count": 12,
+  "qualified_derivative_point_count": 0,
+  "missing_category_slots": [],
+  "qualification_status": "NOT EXECUTED",
+  "nonlinear_representatives": [
+    "straight_2",
+    "corner_2",
+    "entry_exit_2",
+    "high_speed_2"
+  ],
+  "source_hash_index": "preservation_and_provenance.json#/evidence_files",
+  "source_scope_limit": "One controlled synthetic A lap; no independent track/vehicle coverage; high-speed/geometry membership overlaps but selected anchors differ",
+  "points": [
+    {
+      "id": "entry_exit_1",
+      "category": "entry_exit",
+      "binding_status": "ARCHIVED_VALID_RUN_ANCHOR__DERIVATIVE_QUALIFICATION_PENDING",
+      "run_id": "controlled_A",
+      "worker_revision": "8dbd1c5fbc09781411fc762e04f9c2c5cf2d99ae",
+      "raw_state_row": 7426,
+      "raw_control_row": 3713,
+      "export_row": 7426,
+      "timestamp_s": 37.12999999999826,
+      "progress_s_abs_m": 182.19674630146187,
+      "state_order": [
+        "vx",
+        "vy",
+        "r",
+        "e_psi",
+        "s_abs",
+        "e_y"
+      ],
+      "state": [
+        3.7716673835889774,
+        0.023291463966948728,
+        0.06317815902818254,
+        -0.07876203526485881,
+        182.19674630146187,
+        2.3961025358654273e-05
+      ],
+      "held_applied_control": [
+        0.009387496186841007,
+        1.4258397531473757
+      ],
+      "nominal_control": [
+        0.003767807971302272,
+        1.4239847173243814
+      ],
+      "request_control": [
+        0.010239450297907883,
+        1.4257956323582512
+      ],
+      "request_application_s": 37.134999999998264,
+      "request_actually_applied_control": [
+        0.010239450297907883,
+        1.4257956323582512
+      ],
+      "last_application_s": 37.12499999999826,
+      "previous_applied_steering_rad": 0.009387496186841007,
+      "applied_source_plan_id": 370,
+      "reference_state": [
+        3.7734782986228472,
+        0.021965424930868418,
+        0.023878351557582143,
+        -0.07443018827396233,
+        182.19723713461732,
+        0.0006242813836522502
+      ],
+      "planning_reference_state": [
+        4.051353928579582,
+        0.0,
+        0.03737482645540817,
+        -0.08503283318006138,
+        182.19674630146187,
+        0.013186056659955262
+      ],
+      "packet_preview_curvature_1pm": -0.04121333342872992,
+      "category_neighbor_preview_curvatures_1pm": [
+        -0.06457400896252526,
+        -0.04121333342872992,
+        -0.014122321428239383
+      ],
+      "physical_centerline_curvature_1pm": null,
+      "physical_curvature_missing_reason": "No direct curvature column; geometry evaluation intentionally NOT EXECUTED",
+      "racing_line_curvature_1pm": null,
+      "racing_curvature_missing_reason": "Exact reference interpolation intentionally NOT EXECUTED; serialized package available",
+      "speed_mps": 3.7716673835889774,
+      "sideslip_rad": 0.006175297429370471,
+      "front_combined_utilization": 0.14538097788572912,
+      "rear_combined_utilization": 0.14631324615213256,
+      "axle_loads_N": null,
+      "loads_missing_reason": "Not exported in native state; future source-bound diagnostic evaluation required",
+      "constraint_and_actuator_margins": {
+        "recorded_center_clearance_m": 0.5499760389746414,
+        "recorded_left_clearance_m": 0.5499760389746414,
+        "recorded_right_clearance_m": 0.5500239610253587,
+        "recorded_frenet_denominator": 1.0000004015641442,
+        "recorded_reserve_s": 0.7049999999999557,
+        "box_speed_load_grip_slew_margins": null,
+        "missing_reason": "Box/speed/clearance/utilization differences are static recorded-value arithmetic above. Exact axle-load, longitudinal grip-domain and slew-memory branch margins require later model/history evaluation; utilization is not longitudinal reserve.",
+        "static_record_differences": {
+          "speed_lower_mps": 3.2716673835889774,
+          "speed_upper_mps": 2.2283326164110226,
+          "steering_lower_rad": 0.409387496186841,
+          "steering_upper_rad": 0.39061250381315904,
+          "acceleration_lower_mps2": 4.425839753147375,
+          "acceleration_upper_mps2": 0.5741602468526243,
+          "physical_D_above_0p001": 0.9990004015641442,
+          "prediction_D_above_0p01": 0.9900004015641442,
+          "center_margin_above_tracker_reserve_m": 0.4699760389746414,
+          "front_utilization_reserve": 0.8546190221142709,
+          "rear_utilization_reserve": 0.8536867538478674
+        }
+      },
+      "authority": {
+        "plan_id": 370,
+        "start": 37.05499999999822,
+        "end": 37.14499999999825,
+        "origin": "accepted_handoff",
+        "expiry": 37.83499999999822,
+        "superseded_at": 37.14499999999825,
+        "fallback_at": null,
+        "right_censored": false,
+        "interval_rule": "left_inclusive; end_exclusive_except_observation_endpoint",
+        "sample_provenance": "reconstructed",
+        "reconstruction": "recorded_acceptance_and_expiry; no_packet_id_interpolation"
+      },
+      "packet_id": 370,
+      "packet_valid": true,
+      "packet_validation_reason": "solver_and_model_valid",
+      "packet_stage_index": 0,
+      "packet_gain_index": 9,
+      "gain_time_s": 37.1249999999982,
+      "original_gain": [
+        1.5561107553386346,
+        2.4885036376356044,
+        0.12847722730085337,
+        0.12905849015308393
+      ],
+      "gain_order": [
+        "e_y",
+        "e_psi",
+        "vy",
+        "r"
+      ],
+      "gain_source_json_pointer": "/370/gains/9",
+      "evidence_files": [
+        "results/task007d/vis/vis1r_c699057/controlled_A/summary.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/exit.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/raw.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/input_configuration.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/worker.log",
+        "results/task007d/vis/vis1r_c699057/controlled_A/segments.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/release_contexts.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/analysis.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/segments.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/manifest.sha256",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/controls.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/planning.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/metrics.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/boundaries.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/manifest.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/cycles.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/events.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/packets.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/reserves.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/states.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/fixture/planning_reference.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/fixture/planning_manifest.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/fixture/speed_polynomial.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/fixture/track_source.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/fixture/planning_validation.json"
+      ],
+      "future_evaluations": "NOT EXECUTED",
+      "initial_vx_perturbation_domain_screen": {
+        "plus_0p1_within_speed_box": true,
+        "minus_0p1_within_speed_box": true,
+        "status": "static scalar screen only; all other domains unqualified; invalid proposal will not be shrunk or replaced"
+      }
+    },
+    {
+      "id": "entry_exit_2",
+      "category": "entry_exit",
+      "binding_status": "ARCHIVED_VALID_RUN_ANCHOR__DERIVATIVE_QUALIFICATION_PENDING",
+      "run_id": "controlled_A",
+      "worker_revision": "8dbd1c5fbc09781411fc762e04f9c2c5cf2d99ae",
+      "raw_state_row": 10068,
+      "raw_control_row": 5034,
+      "export_row": 10068,
+      "timestamp_s": 50.34,
+      "progress_s_abs_m": 252.94816939308677,
+      "state_order": [
+        "vx",
+        "vy",
+        "r",
+        "e_psi",
+        "s_abs",
+        "e_y"
+      ],
+      "state": [
+        4.904169780584269,
+        0.5782771896287163,
+        -0.9769826787268969,
+        -0.10051221951090739,
+        252.94816939308677,
+        0.0026550661632836936
+      ],
+      "held_applied_control": [
+        -0.05160731545774227,
+        0.5133833669034686
+      ],
+      "nominal_control": [
+        -0.06188753387118908,
+        0.7051611270810914
+      ],
+      "request_control": [
+        -0.0520505413034484,
+        0.709088456102887
+      ],
+      "request_application_s": 50.345000000000006,
+      "request_actually_applied_control": [
+        -0.0520505413034484,
+        0.709088456102887
+      ],
+      "last_application_s": 50.335,
+      "previous_applied_steering_rad": -0.05160731545774227,
+      "applied_source_plan_id": 502,
+      "reference_state": [
+        4.908097109606064,
+        0.5802663341433013,
+        -1.0494364391196414,
+        -0.0941520175949673,
+        252.94845420796554,
+        0.003928407251693038
+      ],
+      "planning_reference_state": [
+        5.012194304422806,
+        0.0,
+        -1.0834495268766215,
+        1.8314390004547931e-09,
+        252.94816939308677,
+        -5.4310283014765845e-14
+      ],
+      "packet_preview_curvature_1pm": -0.21845762995273588,
+      "category_neighbor_preview_curvatures_1pm": [
+        -0.24908629309187932,
+        -0.21845762995273588,
+        -0.18453218140886823
+      ],
+      "physical_centerline_curvature_1pm": null,
+      "physical_curvature_missing_reason": "No direct curvature column; geometry evaluation intentionally NOT EXECUTED",
+      "racing_line_curvature_1pm": null,
+      "racing_curvature_missing_reason": "Exact reference interpolation intentionally NOT EXECUTED; serialized package available",
+      "speed_mps": 4.904169780584269,
+      "sideslip_rad": 0.11737342384527817,
+      "front_combined_utilization": 0.5668130199375186,
+      "rear_combined_utilization": 0.5891426792750107,
+      "axle_loads_N": null,
+      "loads_missing_reason": "Not exported in native state; future source-bound diagnostic evaluation required",
+      "constraint_and_actuator_margins": {
+        "recorded_center_clearance_m": 0.5473449338367163,
+        "recorded_left_clearance_m": 0.5473449338367163,
+        "recorded_right_clearance_m": 0.5526550661632837,
+        "recorded_frenet_denominator": 1.0005739216572904,
+        "recorded_reserve_s": 0.6949999999999932,
+        "box_speed_load_grip_slew_margins": null,
+        "missing_reason": "Box/speed/clearance/utilization differences are static recorded-value arithmetic above. Exact axle-load, longitudinal grip-domain and slew-memory branch margins require later model/history evaluation; utilization is not longitudinal reserve.",
+        "static_record_differences": {
+          "speed_lower_mps": 4.404169780584269,
+          "speed_upper_mps": 1.0958302194157312,
+          "steering_lower_rad": 0.34839268454225775,
+          "steering_upper_rad": 0.4516073154577423,
+          "acceleration_lower_mps2": 3.5133833669034686,
+          "acceleration_upper_mps2": 1.4866166330965314,
+          "physical_D_above_0p001": 0.9995739216572904,
+          "prediction_D_above_0p01": 0.9905739216572904,
+          "center_margin_above_tracker_reserve_m": 0.4673449338367163,
+          "front_utilization_reserve": 0.43318698006248135,
+          "rear_utilization_reserve": 0.41085732072498926
+        }
+      },
+      "authority": {
+        "plan_id": 502,
+        "start": 50.255,
+        "end": 50.345000000000006,
+        "origin": "accepted_handoff",
+        "expiry": 51.035,
+        "superseded_at": 50.345000000000006,
+        "fallback_at": null,
+        "right_censored": false,
+        "interval_rule": "left_inclusive; end_exclusive_except_observation_endpoint",
+        "sample_provenance": "reconstructed",
+        "reconstruction": "recorded_acceptance_and_expiry; no_packet_id_interpolation"
+      },
+      "packet_id": 502,
+      "packet_valid": true,
+      "packet_validation_reason": "solver_and_model_valid",
+      "packet_stage_index": 1,
+      "packet_gain_index": 10,
+      "gain_time_s": 50.33499999999998,
+      "original_gain": [
+        1.4574482894631817,
+        3.1621595657435253,
+        0.1649955192350866,
+        0.1719580794219142
+      ],
+      "gain_order": [
+        "e_y",
+        "e_psi",
+        "vy",
+        "r"
+      ],
+      "gain_source_json_pointer": "/502/gains/10",
+      "evidence_files": [
+        "results/task007d/vis/vis1r_c699057/controlled_A/summary.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/exit.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/raw.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/input_configuration.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/worker.log",
+        "results/task007d/vis/vis1r_c699057/controlled_A/segments.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/release_contexts.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/analysis.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/segments.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/manifest.sha256",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/controls.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/planning.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/metrics.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/boundaries.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/manifest.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/cycles.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/events.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/packets.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/reserves.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/states.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/fixture/planning_reference.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/fixture/planning_manifest.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/fixture/speed_polynomial.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/fixture/track_source.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/fixture/planning_validation.json"
+      ],
+      "future_evaluations": "NOT EXECUTED",
+      "initial_vx_perturbation_domain_screen": {
+        "plus_0p1_within_speed_box": true,
+        "minus_0p1_within_speed_box": true,
+        "status": "static scalar screen only; all other domains unqualified; invalid proposal will not be shrunk or replaced"
+      }
+    },
+    {
+      "id": "entry_exit_3",
+      "category": "entry_exit",
+      "binding_status": "ARCHIVED_VALID_RUN_ANCHOR__DERIVATIVE_QUALIFICATION_PENDING",
+      "run_id": "controlled_A",
+      "worker_revision": "8dbd1c5fbc09781411fc762e04f9c2c5cf2d99ae",
+      "raw_state_row": 11630,
+      "raw_control_row": 5815,
+      "export_row": 11630,
+      "timestamp_s": 58.15,
+      "progress_s_abs_m": 288.1642152502837,
+      "state_order": [
+        "vx",
+        "vy",
+        "r",
+        "e_psi",
+        "s_abs",
+        "e_y"
+      ],
+      "state": [
+        5.508238256510244,
+        0.12681452732056753,
+        0.06626434651494867,
+        -0.05782589879876454,
+        288.1642152502837,
+        0.08926567942853017
+      ],
+      "held_applied_control": [
+        0.014284014469790678,
+        0.665805984453472
+      ],
+      "nominal_control": [
+        0.01366160672005064,
+        0.6658061226241754
+      ],
+      "request_control": [
+        0.016270925214139996,
+        0.6649435320501895
+      ],
+      "request_application_s": 58.155,
+      "request_actually_applied_control": [
+        0.016270925214139996,
+        0.6649435320501895
+      ],
+      "last_application_s": 58.145,
+      "previous_applied_steering_rad": 0.014284014469790678,
+      "applied_source_plan_id": 581,
+      "reference_state": [
+        5.507375665936258,
+        0.12644873403094029,
+        0.05807809434718468,
+        -0.05664817425070076,
+        288.16449642721136,
+        0.08938799672093325
+      ],
+      "planning_reference_state": [
+        6.0,
+        0.0,
+        -0.12708972809447888,
+        -0.03998798918077462,
+        288.1642152502837,
+        0.07257273961098615
+      ],
+      "packet_preview_curvature_1pm": -0.023213454711206366,
+      "category_neighbor_preview_curvatures_1pm": [
+        -0.050518346612173,
+        -0.023213454711206366,
+        0.007731212428649218
+      ],
+      "physical_centerline_curvature_1pm": null,
+      "physical_curvature_missing_reason": "No direct curvature column; geometry evaluation intentionally NOT EXECUTED",
+      "racing_line_curvature_1pm": null,
+      "racing_curvature_missing_reason": "Exact reference interpolation intentionally NOT EXECUTED; serialized package available",
+      "speed_mps": 5.508238256510244,
+      "sideslip_rad": 0.02301863549565414,
+      "front_combined_utilization": 0.08330334234412155,
+      "rear_combined_utilization": 0.11839392306486829,
+      "axle_loads_N": null,
+      "loads_missing_reason": "Not exported in native state; future source-bound diagnostic evaluation required",
+      "constraint_and_actuator_margins": {
+        "recorded_center_clearance_m": 0.4607343205714699,
+        "recorded_left_clearance_m": 0.4607343205714699,
+        "recorded_right_clearance_m": 0.6392656794285302,
+        "recorded_frenet_denominator": 1.0018173720645787,
+        "recorded_reserve_s": 0.7899999999999991,
+        "box_speed_load_grip_slew_margins": null,
+        "missing_reason": "Box/speed/clearance/utilization differences are static recorded-value arithmetic above. Exact axle-load, longitudinal grip-domain and slew-memory branch margins require later model/history evaluation; utilization is not longitudinal reserve.",
+        "static_record_differences": {
+          "speed_lower_mps": 5.008238256510244,
+          "speed_upper_mps": 0.4917617434897563,
+          "steering_lower_rad": 0.4142840144697907,
+          "steering_upper_rad": 0.38571598553020936,
+          "acceleration_lower_mps2": 3.6658059844534723,
+          "acceleration_upper_mps2": 1.334194015546528,
+          "physical_D_above_0p001": 1.0008173720645788,
+          "prediction_D_above_0p01": 0.9918173720645787,
+          "center_margin_above_tracker_reserve_m": 0.3807343205714699,
+          "front_utilization_reserve": 0.9166966576558785,
+          "rear_utilization_reserve": 0.8816060769351317
+        }
+      },
+      "authority": {
+        "plan_id": 581,
+        "start": 58.14,
+        "end": 58.255,
+        "origin": "accepted_handoff",
+        "expiry": 58.94,
+        "superseded_at": 58.255,
+        "fallback_at": null,
+        "right_censored": false,
+        "interval_rule": "left_inclusive; end_exclusive_except_observation_endpoint",
+        "sample_provenance": "reconstructed",
+        "reconstruction": "recorded_acceptance_and_expiry; no_packet_id_interpolation"
+      },
+      "packet_id": 581,
+      "packet_valid": true,
+      "packet_validation_reason": "solver_and_model_valid",
+      "packet_stage_index": 0,
+      "packet_gain_index": 1,
+      "gain_time_s": 58.15,
+      "original_gain": [
+        1.5291184115760956,
+        3.1297075671505645,
+        0.14061017028959083,
+        0.1480797657200646
+      ],
+      "gain_order": [
+        "e_y",
+        "e_psi",
+        "vy",
+        "r"
+      ],
+      "gain_source_json_pointer": "/581/gains/1",
+      "evidence_files": [
+        "results/task007d/vis/vis1r_c699057/controlled_A/summary.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/exit.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/raw.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/input_configuration.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/worker.log",
+        "results/task007d/vis/vis1r_c699057/controlled_A/segments.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/release_contexts.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/analysis.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/segments.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/manifest.sha256",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/controls.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/planning.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/metrics.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/boundaries.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/manifest.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/cycles.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/events.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/packets.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/reserves.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/states.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/fixture/planning_reference.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/fixture/planning_manifest.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/fixture/speed_polynomial.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/fixture/track_source.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/fixture/planning_validation.json"
+      ],
+      "future_evaluations": "NOT EXECUTED",
+      "initial_vx_perturbation_domain_screen": {
+        "plus_0p1_within_speed_box": true,
+        "minus_0p1_within_speed_box": true,
+        "status": "static scalar screen only; all other domains unqualified; invalid proposal will not be shrunk or replaced"
+      }
+    },
+    {
+      "id": "corner_1",
+      "category": "corner",
+      "binding_status": "ARCHIVED_VALID_RUN_ANCHOR__DERIVATIVE_QUALIFICATION_PENDING",
+      "run_id": "controlled_A",
+      "worker_revision": "8dbd1c5fbc09781411fc762e04f9c2c5cf2d99ae",
+      "raw_state_row": 8310,
+      "raw_control_row": 4155,
+      "export_row": 8310,
+      "timestamp_s": 41.549999999999486,
+      "progress_s_abs_m": 203.69693612576467,
+      "state_order": [
+        "vx",
+        "vy",
+        "r",
+        "e_psi",
+        "s_abs",
+        "e_y"
+      ],
+      "state": [
+        5.677832066875283,
+        0.4292741687416487,
+        -0.7004745605796893,
+        -0.12354499182582623,
+        203.69693612576467,
+        -0.07332692341265033
+      ],
+      "held_applied_control": [
+        -0.041566149296594836,
+        0.37591805032525727
+      ],
+      "nominal_control": [
+        -0.03825661073104033,
+        0.381350499598487
+      ],
+      "request_control": [
+        -0.03738089577610123,
+        0.38133353327139086
+      ],
+      "request_application_s": 41.55499999999949,
+      "request_actually_applied_control": [
+        -0.03738089577610123,
+        0.38133353327139086
+      ],
+      "last_application_s": 41.54499999999948,
+      "previous_applied_steering_rad": -0.041566149296594836,
+      "applied_source_plan_id": 414,
+      "reference_state": [
+        5.6778151005481865,
+        0.4295504185790546,
+        -0.6968246519695674,
+        -0.12348054311366398,
+        203.69706027032575,
+        -0.07331575865983447
+      ],
+      "planning_reference_state": [
+        6.0,
+        0.0,
+        -0.7484569083039552,
+        -0.04912570166132468,
+        203.69693612576467,
+        -0.060284354669115754
+      ],
+      "packet_preview_curvature_1pm": -0.12345253760795674,
+      "category_neighbor_preview_curvatures_1pm": [
+        -0.12327286107610845,
+        -0.12345253760795674,
+        -0.12427320449984748
+      ],
+      "physical_centerline_curvature_1pm": null,
+      "physical_curvature_missing_reason": "No direct curvature column; geometry evaluation intentionally NOT EXECUTED",
+      "racing_line_curvature_1pm": null,
+      "racing_curvature_missing_reason": "Exact reference interpolation intentionally NOT EXECUTED; serialized package available",
+      "speed_mps": 5.677832066875283,
+      "sideslip_rad": 0.07546172979155144,
+      "front_combined_utilization": 0.42548786703967967,
+      "rear_combined_utilization": 0.40745530219851595,
+      "axle_loads_N": null,
+      "loads_missing_reason": "Not exported in native state; future source-bound diagnostic evaluation required",
+      "constraint_and_actuator_margins": {
+        "recorded_center_clearance_m": 0.4766730765873497,
+        "recorded_left_clearance_m": 0.6233269234126504,
+        "recorded_right_clearance_m": 0.4766730765873497,
+        "recorded_frenet_denominator": 0.9909439289532933,
+        "recorded_reserve_s": 0.789999999999992,
+        "box_speed_load_grip_slew_margins": null,
+        "missing_reason": "Box/speed/clearance/utilization differences are static recorded-value arithmetic above. Exact axle-load, longitudinal grip-domain and slew-memory branch margins require later model/history evaluation; utilization is not longitudinal reserve.",
+        "static_record_differences": {
+          "speed_lower_mps": 5.177832066875283,
+          "speed_upper_mps": 0.32216793312471736,
+          "steering_lower_rad": 0.35843385070340517,
+          "steering_upper_rad": 0.4415661492965949,
+          "acceleration_lower_mps2": 3.3759180503252573,
+          "acceleration_upper_mps2": 1.6240819496747427,
+          "physical_D_above_0p001": 0.9899439289532933,
+          "prediction_D_above_0p01": 0.9809439289532933,
+          "center_margin_above_tracker_reserve_m": 0.3966730765873497,
+          "front_utilization_reserve": 0.5745121329603203,
+          "rear_utilization_reserve": 0.5925446978014841
+        }
+      },
+      "authority": {
+        "plan_id": 415,
+        "start": 41.54499999999948,
+        "end": 41.64499999999951,
+        "origin": "accepted_handoff",
+        "expiry": 42.33999999999948,
+        "superseded_at": 41.64499999999951,
+        "fallback_at": null,
+        "right_censored": false,
+        "interval_rule": "left_inclusive; end_exclusive_except_observation_endpoint",
+        "sample_provenance": "reconstructed",
+        "reconstruction": "recorded_acceptance_and_expiry; no_packet_id_interpolation"
+      },
+      "packet_id": 415,
+      "packet_valid": true,
+      "packet_validation_reason": "solver_and_model_valid",
+      "packet_stage_index": 0,
+      "packet_gain_index": 1,
+      "gain_time_s": 41.54999999999948,
+      "original_gain": [
+        1.5223567345309552,
+        3.4309513380085987,
+        0.16647794977620073,
+        0.16208852870366178
+      ],
+      "gain_order": [
+        "e_y",
+        "e_psi",
+        "vy",
+        "r"
+      ],
+      "gain_source_json_pointer": "/415/gains/1",
+      "evidence_files": [
+        "results/task007d/vis/vis1r_c699057/controlled_A/summary.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/exit.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/raw.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/input_configuration.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/worker.log",
+        "results/task007d/vis/vis1r_c699057/controlled_A/segments.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/release_contexts.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/analysis.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/segments.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/manifest.sha256",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/controls.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/planning.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/metrics.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/boundaries.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/manifest.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/cycles.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/events.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/packets.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/reserves.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/states.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/fixture/planning_reference.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/fixture/planning_manifest.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/fixture/speed_polynomial.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/fixture/track_source.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/fixture/planning_validation.json"
+      ],
+      "future_evaluations": "NOT EXECUTED",
+      "initial_vx_perturbation_domain_screen": {
+        "plus_0p1_within_speed_box": true,
+        "minus_0p1_within_speed_box": true,
+        "status": "static scalar screen only; all other domains unqualified; invalid proposal will not be shrunk or replaced"
+      }
+    },
+    {
+      "id": "corner_2",
+      "category": "corner",
+      "binding_status": "ARCHIVED_VALID_RUN_ANCHOR__DERIVATIVE_QUALIFICATION_PENDING",
+      "run_id": "controlled_A",
+      "worker_revision": "8dbd1c5fbc09781411fc762e04f9c2c5cf2d99ae",
+      "raw_state_row": 8638,
+      "raw_control_row": 4319,
+      "export_row": 8638,
+      "timestamp_s": 43.189999999999955,
+      "progress_s_abs_m": 213.25566063005647,
+      "state_order": [
+        "vx",
+        "vy",
+        "r",
+        "e_psi",
+        "s_abs",
+        "e_y"
+      ],
+      "state": [
+        5.672656074763226,
+        0.43590992731731637,
+        -0.7301196663414741,
+        -0.028201079871661427,
+        213.25566063005647,
+        -0.05726154983873615
+      ],
+      "held_applied_control": [
+        -0.040275980487674896,
+        0.24794045364523634
+      ],
+      "nominal_control": [
+        -0.04037841016812999,
+        0.24792300646104207
+      ],
+      "request_control": [
+        -0.040327580401471705,
+        0.24794401721262951
+      ],
+      "request_application_s": 43.19499999999996,
+      "request_actually_applied_control": [
+        -0.040327580401471705,
+        0.24794401721262951
+      ],
+      "last_application_s": 43.18499999999995,
+      "previous_applied_steering_rad": -0.040275980487674896,
+      "applied_source_plan_id": 431,
+      "reference_state": [
+        5.672677085514813,
+        0.4360643204818718,
+        -0.7272413052286006,
+        -0.028304223273671384,
+        213.2553390138592,
+        -0.05731889209676278
+      ],
+      "planning_reference_state": [
+        6.0,
+        0.0,
+        -0.7561868736193779,
+        0.04899670312777271,
+        213.25566063005647,
+        -0.052553481610492864
+      ],
+      "packet_preview_curvature_1pm": -0.12426293790385164,
+      "category_neighbor_preview_curvatures_1pm": [
+        -0.12487144540696102,
+        -0.12426293790385164,
+        -0.12421081554857741
+      ],
+      "physical_centerline_curvature_1pm": null,
+      "physical_curvature_missing_reason": "No direct curvature column; geometry evaluation intentionally NOT EXECUTED",
+      "racing_line_curvature_1pm": null,
+      "racing_curvature_missing_reason": "Exact reference interpolation intentionally NOT EXECUTED; serialized package available",
+      "speed_mps": 5.672656074763226,
+      "sideslip_rad": 0.0766933392995741,
+      "front_combined_utilization": 0.4213221242264068,
+      "rear_combined_utilization": 0.41415617051387915,
+      "axle_loads_N": null,
+      "loads_missing_reason": "Not exported in native state; future source-bound diagnostic evaluation required",
+      "constraint_and_actuator_margins": {
+        "recorded_center_clearance_m": 0.4927384501612639,
+        "recorded_left_clearance_m": 0.6072615498387361,
+        "recorded_right_clearance_m": 0.4927384501612639,
+        "recorded_frenet_denominator": 0.9928898882569551,
+        "recorded_reserve_s": 0.7499999999999716,
+        "box_speed_load_grip_slew_margins": null,
+        "missing_reason": "Box/speed/clearance/utilization differences are static recorded-value arithmetic above. Exact axle-load, longitudinal grip-domain and slew-memory branch margins require later model/history evaluation; utilization is not longitudinal reserve.",
+        "static_record_differences": {
+          "speed_lower_mps": 5.172656074763226,
+          "speed_upper_mps": 0.32734392523677425,
+          "steering_lower_rad": 0.35972401951232513,
+          "steering_upper_rad": 0.4402759804876749,
+          "acceleration_lower_mps2": 3.2479404536452363,
+          "acceleration_upper_mps2": 1.7520595463547637,
+          "physical_D_above_0p001": 0.9918898882569551,
+          "prediction_D_above_0p01": 0.9828898882569551,
+          "center_margin_above_tracker_reserve_m": 0.41273845016126387,
+          "front_utilization_reserve": 0.5786778757735932,
+          "rear_utilization_reserve": 0.5858438294861208
+        }
+      },
+      "authority": {
+        "plan_id": 431,
+        "start": 43.14499999999993,
+        "end": 43.24499999999996,
+        "origin": "accepted_handoff",
+        "expiry": 43.93999999999993,
+        "superseded_at": 43.24499999999996,
+        "fallback_at": null,
+        "right_censored": false,
+        "interval_rule": "left_inclusive; end_exclusive_except_observation_endpoint",
+        "sample_provenance": "reconstructed",
+        "reconstruction": "recorded_acceptance_and_expiry; no_packet_id_interpolation"
+      },
+      "packet_id": 431,
+      "packet_valid": true,
+      "packet_validation_reason": "solver_and_model_valid",
+      "packet_stage_index": 0,
+      "packet_gain_index": 5,
+      "gain_time_s": 43.18999999999992,
+      "original_gain": [
+        1.5319547287091022,
+        3.442106500172365,
+        0.16810295718789128,
+        0.16250641202808166
+      ],
+      "gain_order": [
+        "e_y",
+        "e_psi",
+        "vy",
+        "r"
+      ],
+      "gain_source_json_pointer": "/431/gains/5",
+      "evidence_files": [
+        "results/task007d/vis/vis1r_c699057/controlled_A/summary.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/exit.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/raw.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/input_configuration.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/worker.log",
+        "results/task007d/vis/vis1r_c699057/controlled_A/segments.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/release_contexts.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/analysis.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/segments.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/manifest.sha256",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/controls.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/planning.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/metrics.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/boundaries.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/manifest.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/cycles.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/events.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/packets.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/reserves.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/states.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/fixture/planning_reference.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/fixture/planning_manifest.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/fixture/speed_polynomial.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/fixture/track_source.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/fixture/planning_validation.json"
+      ],
+      "future_evaluations": "NOT EXECUTED",
+      "initial_vx_perturbation_domain_screen": {
+        "plus_0p1_within_speed_box": true,
+        "minus_0p1_within_speed_box": true,
+        "status": "static scalar screen only; all other domains unqualified; invalid proposal will not be shrunk or replaced"
+      }
+    },
+    {
+      "id": "corner_3",
+      "category": "corner",
+      "binding_status": "ARCHIVED_VALID_RUN_ANCHOR__DERIVATIVE_QUALIFICATION_PENDING",
+      "run_id": "controlled_A",
+      "worker_revision": "8dbd1c5fbc09781411fc762e04f9c2c5cf2d99ae",
+      "raw_state_row": 11284,
+      "raw_control_row": 5642,
+      "export_row": 11284,
+      "timestamp_s": 56.42,
+      "progress_s_abs_m": 279.12600136468217,
+      "state_order": [
+        "vx",
+        "vy",
+        "r",
+        "e_psi",
+        "s_abs",
+        "e_y"
+      ],
+      "state": [
+        4.936447735440945,
+        0.4307945855920482,
+        -0.9398741285526493,
+        -0.17886240865195413,
+        279.12600136468217,
+        -0.07820593733939492
+      ],
+      "held_applied_control": [
+        -0.06307933629081193,
+        1.18967847310744
+      ],
+      "nominal_control": [
+        -0.06395650102987019,
+        1.1887718039735249
+      ],
+      "request_control": [
+        -0.06324772166744692,
+        1.18949731846609
+      ],
+      "request_application_s": 56.425,
+      "request_actually_applied_control": [
+        -0.06324772166744692,
+        1.18949731846609
+      ],
+      "last_application_s": 56.415000000000006,
+      "previous_applied_steering_rad": -0.06307933629081193,
+      "applied_source_plan_id": 563,
+      "reference_state": [
+        4.93717324993351,
+        0.429368114653687,
+        -0.9594211051455989,
+        -0.17757700227471113,
+        279.12705402218575,
+        -0.07817137845614772
+      ],
+      "planning_reference_state": [
+        5.332451305358179,
+        0.0,
+        -1.0931587602858952,
+        -0.10256086356376626,
+        279.12600136468217,
+        -0.06462138155590005
+      ],
+      "packet_preview_curvature_1pm": -0.20250717764322054,
+      "category_neighbor_preview_curvatures_1pm": [
+        -0.20665589636411621,
+        -0.20250717764322054,
+        -0.1992292251211176
+      ],
+      "physical_centerline_curvature_1pm": null,
+      "physical_curvature_missing_reason": "No direct curvature column; geometry evaluation intentionally NOT EXECUTED",
+      "racing_line_curvature_1pm": null,
+      "racing_curvature_missing_reason": "Exact reference interpolation intentionally NOT EXECUTED; serialized package available",
+      "speed_mps": 4.936447735440945,
+      "sideslip_rad": 0.08704760468584177,
+      "front_combined_utilization": 0.5203981112254926,
+      "rear_combined_utilization": 0.4989536332450538,
+      "axle_loads_N": null,
+      "loads_missing_reason": "Not exported in native state; future source-bound diagnostic evaluation required",
+      "constraint_and_actuator_margins": {
+        "recorded_center_clearance_m": 0.47179406266060514,
+        "recorded_left_clearance_m": 0.628205937339395,
+        "recorded_right_clearance_m": 0.47179406266060514,
+        "recorded_frenet_denominator": 0.9843665687588333,
+        "recorded_reserve_s": 0.7199999999999989,
+        "box_speed_load_grip_slew_margins": null,
+        "missing_reason": "Box/speed/clearance/utilization differences are static recorded-value arithmetic above. Exact axle-load, longitudinal grip-domain and slew-memory branch margins require later model/history evaluation; utilization is not longitudinal reserve.",
+        "static_record_differences": {
+          "speed_lower_mps": 4.436447735440945,
+          "speed_upper_mps": 1.0635522645590552,
+          "steering_lower_rad": 0.3369206637091881,
+          "steering_upper_rad": 0.46307933629081194,
+          "acceleration_lower_mps2": 4.18967847310744,
+          "acceleration_upper_mps2": 0.8103215268925601,
+          "physical_D_above_0p001": 0.9833665687588333,
+          "prediction_D_above_0p01": 0.9743665687588333,
+          "center_margin_above_tracker_reserve_m": 0.3917940626606051,
+          "front_utilization_reserve": 0.4796018887745074,
+          "rear_utilization_reserve": 0.5010463667549462
+        }
+      },
+      "authority": {
+        "plan_id": 563,
+        "start": 56.345000000000006,
+        "end": 56.445,
+        "origin": "accepted_handoff",
+        "expiry": 57.14,
+        "superseded_at": 56.445,
+        "fallback_at": null,
+        "right_censored": false,
+        "interval_rule": "left_inclusive; end_exclusive_except_observation_endpoint",
+        "sample_provenance": "reconstructed",
+        "reconstruction": "recorded_acceptance_and_expiry; no_packet_id_interpolation"
+      },
+      "packet_id": 563,
+      "packet_valid": true,
+      "packet_validation_reason": "solver_and_model_valid",
+      "packet_stage_index": 0,
+      "packet_gain_index": 8,
+      "gain_time_s": 56.41999999999999,
+      "original_gain": [
+        1.4863987128178529,
+        3.1686401275856744,
+        0.17120974519643056,
+        0.16224265698440468
+      ],
+      "gain_order": [
+        "e_y",
+        "e_psi",
+        "vy",
+        "r"
+      ],
+      "gain_source_json_pointer": "/563/gains/8",
+      "evidence_files": [
+        "results/task007d/vis/vis1r_c699057/controlled_A/summary.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/exit.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/raw.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/input_configuration.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/worker.log",
+        "results/task007d/vis/vis1r_c699057/controlled_A/segments.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/release_contexts.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/analysis.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/segments.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/manifest.sha256",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/controls.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/planning.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/metrics.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/boundaries.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/manifest.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/cycles.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/events.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/packets.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/reserves.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/states.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/fixture/planning_reference.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/fixture/planning_manifest.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/fixture/speed_polynomial.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/fixture/track_source.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/fixture/planning_validation.json"
+      ],
+      "future_evaluations": "NOT EXECUTED",
+      "initial_vx_perturbation_domain_screen": {
+        "plus_0p1_within_speed_box": true,
+        "minus_0p1_within_speed_box": true,
+        "status": "static scalar screen only; all other domains unqualified; invalid proposal will not be shrunk or replaced"
+      }
+    },
+    {
+      "id": "straight_1",
+      "category": "straight",
+      "binding_status": "ARCHIVED_VALID_RUN_ANCHOR__DERIVATIVE_QUALIFICATION_PENDING",
+      "run_id": "controlled_A",
+      "worker_revision": "8dbd1c5fbc09781411fc762e04f9c2c5cf2d99ae",
+      "raw_state_row": 6530,
+      "raw_control_row": 3265,
+      "export_row": 6530,
+      "timestamp_s": 32.649999999997014,
+      "progress_s_abs_m": 163.44805383808247,
+      "state_order": [
+        "vx",
+        "vy",
+        "r",
+        "e_psi",
+        "s_abs",
+        "e_y"
+      ],
+      "state": [
+        5.902344673631341,
+        0.045603379225137075,
+        -0.061048186282206804,
+        -0.00806625132807337,
+        163.44805383808247,
+        0.0004473601820869541
+      ],
+      "held_applied_control": [
+        -0.002710669248453582,
+        0.16092281639078782
+      ],
+      "nominal_control": [
+        -0.0032245167602698178,
+        0.16108349849033726
+      ],
+      "request_control": [
+        -0.002833581575239988,
+        0.16073387120545107
+      ],
+      "request_application_s": 32.65499999999699,
+      "request_actually_applied_control": [
+        -0.002833581575239988,
+        0.16073387120545107
+      ],
+      "last_application_s": 32.64499999999701,
+      "previous_applied_steering_rad": -0.002710669248453582,
+      "applied_source_plan_id": 325,
+      "reference_state": [
+        5.901995046346455,
+        0.046111889677224516,
+        -0.06605741971426067,
+        -0.007782757986082849,
+        163.44810561651022,
+        0.0005514757463381379
+      ],
+      "planning_reference_state": [
+        6.0,
+        0.0,
+        -0.0730981662328068,
+        -3.739231146937527e-13,
+        163.44805383808247,
+        -1.3196747711244772e-15
+      ],
+      "packet_preview_curvature_1pm": -0.012307844598040681,
+      "category_neighbor_preview_curvatures_1pm": [
+        -0.013878236754369644,
+        -0.012307844598040681,
+        -0.01081350442261241
+      ],
+      "physical_centerline_curvature_1pm": null,
+      "physical_curvature_missing_reason": "No direct curvature column; geometry evaluation intentionally NOT EXECUTED",
+      "racing_line_curvature_1pm": null,
+      "racing_curvature_missing_reason": "Exact reference interpolation intentionally NOT EXECUTED; serialized package available",
+      "speed_mps": 5.902344673631341,
+      "sideslip_rad": 0.0077261621158085415,
+      "front_combined_utilization": 0.04391517895745234,
+      "rear_combined_utilization": 0.045585458282028986,
+      "axle_loads_N": null,
+      "loads_missing_reason": "Not exported in native state; future source-bound diagnostic evaluation required",
+      "constraint_and_actuator_margins": {
+        "recorded_center_clearance_m": 0.5495526398179131,
+        "recorded_left_clearance_m": 0.5495526398179131,
+        "recorded_right_clearance_m": 0.550447360182087,
+        "recorded_frenet_denominator": 1.0000054502077125,
+        "recorded_reserve_s": 0.6899999999999409,
+        "box_speed_load_grip_slew_margins": null,
+        "missing_reason": "Box/speed/clearance/utilization differences are static recorded-value arithmetic above. Exact axle-load, longitudinal grip-domain and slew-memory branch margins require later model/history evaluation; utilization is not longitudinal reserve.",
+        "static_record_differences": {
+          "speed_lower_mps": 5.402344673631341,
+          "speed_upper_mps": 0.09765532636865881,
+          "steering_lower_rad": 0.39728933075154643,
+          "steering_upper_rad": 0.4027106692484536,
+          "acceleration_lower_mps2": 3.1609228163907876,
+          "acceleration_upper_mps2": 1.8390771836092121,
+          "physical_D_above_0p001": 0.9990054502077125,
+          "prediction_D_above_0p01": 0.9900054502077125,
+          "center_margin_above_tracker_reserve_m": 0.4695526398179131,
+          "front_utilization_reserve": 0.9560848210425477,
+          "rear_utilization_reserve": 0.954414541717971
+        }
+      },
+      "authority": {
+        "plan_id": 325,
+        "start": 32.53999999999696,
+        "end": 32.65499999999699,
+        "origin": "accepted_handoff",
+        "expiry": 33.339999999996955,
+        "superseded_at": 32.65499999999699,
+        "fallback_at": null,
+        "right_censored": false,
+        "interval_rule": "left_inclusive; end_exclusive_except_observation_endpoint",
+        "sample_provenance": "reconstructed",
+        "reconstruction": "recorded_acceptance_and_expiry; no_packet_id_interpolation"
+      },
+      "packet_id": 325,
+      "packet_valid": true,
+      "packet_validation_reason": "solver_and_model_valid",
+      "packet_stage_index": 1,
+      "packet_gain_index": 11,
+      "gain_time_s": 32.649999999996936,
+      "original_gain": [
+        1.5102101636658047,
+        3.2411123891063887,
+        0.1381046347265045,
+        0.15079405696268697
+      ],
+      "gain_order": [
+        "e_y",
+        "e_psi",
+        "vy",
+        "r"
+      ],
+      "gain_source_json_pointer": "/325/gains/11",
+      "evidence_files": [
+        "results/task007d/vis/vis1r_c699057/controlled_A/summary.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/exit.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/raw.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/input_configuration.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/worker.log",
+        "results/task007d/vis/vis1r_c699057/controlled_A/segments.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/release_contexts.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/analysis.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/segments.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/manifest.sha256",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/controls.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/planning.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/metrics.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/boundaries.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/manifest.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/cycles.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/events.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/packets.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/reserves.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/states.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/fixture/planning_reference.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/fixture/planning_manifest.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/fixture/speed_polynomial.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/fixture/track_source.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/fixture/planning_validation.json"
+      ],
+      "future_evaluations": "NOT EXECUTED",
+      "initial_vx_perturbation_domain_screen": {
+        "plus_0p1_within_speed_box": false,
+        "minus_0p1_within_speed_box": true,
+        "status": "static scalar screen only; all other domains unqualified; invalid proposal will not be shrunk or replaced"
+      }
+    },
+    {
+      "id": "straight_2",
+      "category": "straight",
+      "binding_status": "ARCHIVED_VALID_RUN_ANCHOR__DERIVATIVE_QUALIFICATION_PENDING",
+      "run_id": "controlled_A",
+      "worker_revision": "8dbd1c5fbc09781411fc762e04f9c2c5cf2d99ae",
+      "raw_state_row": 6658,
+      "raw_control_row": 3329,
+      "export_row": 6658,
+      "timestamp_s": 33.28999999999718,
+      "progress_s_abs_m": 167.2501714923441,
+      "state_order": [
+        "vx",
+        "vy",
+        "r",
+        "e_psi",
+        "s_abs",
+        "e_y"
+      ],
+      "state": [
+        5.956184909815748,
+        0.011447119145650298,
+        -0.004120569621968469,
+        -0.0015072848722841314,
+        167.2501714923441,
+        0.0006098593067338473
+      ],
+      "held_applied_control": [
+        9.631718410390151e-05,
+        -0.09560835402987623
+      ],
+      "nominal_control": [
+        -8.973993086743546e-05,
+        -0.09476710405126833
+      ],
+      "request_control": [
+        0.0001601384923058881,
+        -0.09559997310577219
+      ],
+      "request_application_s": 33.29499999999718,
+      "request_actually_applied_control": [
+        0.0001601384923058881,
+        -0.09559997310577219
+      ],
+      "last_application_s": 33.284999999997176,
+      "previous_applied_steering_rad": 9.631718410390151e-05,
+      "applied_source_plan_id": 332,
+      "reference_state": [
+        5.955352040761245,
+        0.011696519878292382,
+        -0.005870676940468687,
+        -0.0013816798335464437,
+        167.25001910533638,
+        0.0006574963639391185
+      ],
+      "planning_reference_state": [
+        6.0,
+        0.0,
+        -0.016079287307214588,
+        -1.7177370637000422e-12,
+        167.2501714923441,
+        1.4853094544329202e-13
+      ],
+      "packet_preview_curvature_1pm": -0.0033363646706245677,
+      "category_neighbor_preview_curvatures_1pm": [
+        -0.004871670916765063,
+        -0.0033363646706245677,
+        -0.0019513136172047945
+      ],
+      "physical_centerline_curvature_1pm": null,
+      "physical_curvature_missing_reason": "No direct curvature column; geometry evaluation intentionally NOT EXECUTED",
+      "racing_line_curvature_1pm": null,
+      "racing_curvature_missing_reason": "Exact reference interpolation intentionally NOT EXECUTED; serialized package available",
+      "speed_mps": 5.956184909815748,
+      "sideslip_rad": 0.00192188543927212,
+      "front_combined_utilization": 0.012544435946604805,
+      "rear_combined_utilization": 0.013465551905896628,
+      "axle_loads_N": null,
+      "loads_missing_reason": "Not exported in native state; future source-bound diagnostic evaluation required",
+      "constraint_and_actuator_margins": {
+        "recorded_center_clearance_m": 0.5493901406932662,
+        "recorded_left_clearance_m": 0.5493901406932662,
+        "recorded_right_clearance_m": 0.5506098593067339,
+        "recorded_frenet_denominator": 1.0000016343509028,
+        "recorded_reserve_s": 0.7549999999999741,
+        "box_speed_load_grip_slew_margins": null,
+        "missing_reason": "Box/speed/clearance/utilization differences are static recorded-value arithmetic above. Exact axle-load, longitudinal grip-domain and slew-memory branch margins require later model/history evaluation; utilization is not longitudinal reserve.",
+        "static_record_differences": {
+          "speed_lower_mps": 5.456184909815748,
+          "speed_upper_mps": 0.04381509018425156,
+          "steering_lower_rad": 0.40009631718410393,
+          "steering_upper_rad": 0.3999036828158961,
+          "acceleration_lower_mps2": 2.9043916459701236,
+          "acceleration_upper_mps2": 2.0956083540298764,
+          "physical_D_above_0p001": 0.9990016343509028,
+          "prediction_D_above_0p01": 0.9900016343509028,
+          "center_margin_above_tracker_reserve_m": 0.4693901406932662,
+          "front_utilization_reserve": 0.9874555640533952,
+          "rear_utilization_reserve": 0.9865344480941034
+        }
+      },
+      "authority": {
+        "plan_id": 332,
+        "start": 33.244999999997155,
+        "end": 33.33999999999718,
+        "origin": "accepted_handoff",
+        "expiry": 34.04499999999715,
+        "superseded_at": 33.33999999999718,
+        "fallback_at": null,
+        "right_censored": false,
+        "interval_rule": "left_inclusive; end_exclusive_except_observation_endpoint",
+        "sample_provenance": "reconstructed",
+        "reconstruction": "recorded_acceptance_and_expiry; no_packet_id_interpolation"
+      },
+      "packet_id": 332,
+      "packet_valid": true,
+      "packet_validation_reason": "solver_and_model_valid",
+      "packet_stage_index": 0,
+      "packet_gain_index": 4,
+      "gain_time_s": 33.28499999999715,
+      "original_gain": [
+        1.508023652470502,
+        3.2487019378587076,
+        0.13619821524979142,
+        0.1508368375212956
+      ],
+      "gain_order": [
+        "e_y",
+        "e_psi",
+        "vy",
+        "r"
+      ],
+      "gain_source_json_pointer": "/332/gains/4",
+      "evidence_files": [
+        "results/task007d/vis/vis1r_c699057/controlled_A/summary.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/exit.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/raw.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/input_configuration.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/worker.log",
+        "results/task007d/vis/vis1r_c699057/controlled_A/segments.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/release_contexts.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/analysis.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/segments.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/manifest.sha256",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/controls.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/planning.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/metrics.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/boundaries.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/manifest.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/cycles.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/events.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/packets.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/reserves.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/states.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/fixture/planning_reference.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/fixture/planning_manifest.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/fixture/speed_polynomial.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/fixture/track_source.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/fixture/planning_validation.json"
+      ],
+      "future_evaluations": "NOT EXECUTED",
+      "initial_vx_perturbation_domain_screen": {
+        "plus_0p1_within_speed_box": false,
+        "minus_0p1_within_speed_box": true,
+        "status": "static scalar screen only; all other domains unqualified; invalid proposal will not be shrunk or replaced"
+      }
+    },
+    {
+      "id": "straight_3",
+      "category": "straight",
+      "binding_status": "ARCHIVED_VALID_RUN_ANCHOR__DERIVATIVE_QUALIFICATION_PENDING",
+      "run_id": "controlled_A",
+      "worker_revision": "8dbd1c5fbc09781411fc762e04f9c2c5cf2d99ae",
+      "raw_state_row": 6784,
+      "raw_control_row": 3392,
+      "export_row": 6784,
+      "timestamp_s": 33.91999999999736,
+      "progress_s_abs_m": 170.92678924147185,
+      "state_order": [
+        "vx",
+        "vy",
+        "r",
+        "e_psi",
+        "s_abs",
+        "e_y"
+      ],
+      "state": [
+        5.591772629376002,
+        -0.05912423341612002,
+        0.12756129595886226,
+        0.012552426789647075,
+        170.92678924147185,
+        0.0034426417275052576
+      ],
+      "held_applied_control": [
+        0.006686747311107634,
+        -1.1705743499488674
+      ],
+      "nominal_control": [
+        0.0059094155640442205,
+        -1.166177108807318
+      ],
+      "request_control": [
+        0.0067683030013887206,
+        -1.1705212597079608
+      ],
+      "request_application_s": 33.92499999999736,
+      "request_actually_applied_control": [
+        0.0067683030013887206,
+        -1.1705212597079608
+      ],
+      "last_application_s": 33.914999999997356,
+      "previous_applied_steering_rad": 0.006686747311107634,
+      "applied_source_plan_id": 338,
+      "reference_state": [
+        5.587428478475359,
+        -0.057921626536932835,
+        0.12145644156753682,
+        0.013008689170717607,
+        170.92571618655938,
+        0.003581745677713567
+      ],
+      "planning_reference_state": [
+        5.727037115165027,
+        0.0,
+        0.10945085063241937,
+        0.0004173733122949663,
+        170.92678924147185,
+        0.00011171292349073538
+      ],
+      "packet_preview_curvature_1pm": 0.014713129868921001,
+      "category_neighbor_preview_curvatures_1pm": [
+        0.011385023408721467,
+        0.014713129868921001,
+        0.018356644273662796
+      ],
+      "physical_centerline_curvature_1pm": null,
+      "physical_curvature_missing_reason": "No direct curvature column; geometry evaluation intentionally NOT EXECUTED",
+      "racing_line_curvature_1pm": null,
+      "racing_curvature_missing_reason": "Exact reference interpolation intentionally NOT EXECUTED; serialized package available",
+      "speed_mps": 5.591772629376002,
+      "sideslip_rad": -0.01057303902876097,
+      "front_combined_utilization": 0.13511796995228148,
+      "rear_combined_utilization": 0.13545411383232903,
+      "axle_loads_N": null,
+      "loads_missing_reason": "Not exported in native state; future source-bound diagnostic evaluation required",
+      "constraint_and_actuator_margins": {
+        "recorded_center_clearance_m": 0.5465573582724947,
+        "recorded_left_clearance_m": 0.5465573582724947,
+        "recorded_right_clearance_m": 0.5534426417275053,
+        "recorded_frenet_denominator": 0.9999391814843857,
+        "recorded_reserve_s": 0.7149999999999608,
+        "box_speed_load_grip_slew_margins": null,
+        "missing_reason": "Box/speed/clearance/utilization differences are static recorded-value arithmetic above. Exact axle-load, longitudinal grip-domain and slew-memory branch margins require later model/history evaluation; utilization is not longitudinal reserve.",
+        "static_record_differences": {
+          "speed_lower_mps": 5.091772629376002,
+          "speed_upper_mps": 0.4082273706239983,
+          "steering_lower_rad": 0.40668674731110765,
+          "steering_upper_rad": 0.3933132526888924,
+          "acceleration_lower_mps2": 1.8294256500511326,
+          "acceleration_upper_mps2": 3.1705743499488674,
+          "physical_D_above_0p001": 0.9989391814843857,
+          "prediction_D_above_0p01": 0.9899391814843856,
+          "center_margin_above_tracker_reserve_m": 0.4665573582724947,
+          "front_utilization_reserve": 0.8648820300477185,
+          "rear_utilization_reserve": 0.8645458861676709
+        }
+      },
+      "authority": {
+        "plan_id": 338,
+        "start": 33.854999999997325,
+        "end": 33.94499999999735,
+        "origin": "accepted_handoff",
+        "expiry": 34.63499999999732,
+        "superseded_at": 33.94499999999735,
+        "fallback_at": null,
+        "right_censored": false,
+        "interval_rule": "left_inclusive; end_exclusive_except_observation_endpoint",
+        "sample_provenance": "reconstructed",
+        "reconstruction": "recorded_acceptance_and_expiry; no_packet_id_interpolation"
+      },
+      "packet_id": 338,
+      "packet_valid": true,
+      "packet_validation_reason": "solver_and_model_valid",
+      "packet_stage_index": 0,
+      "packet_gain_index": 8,
+      "gain_time_s": 33.914999999997306,
+      "original_gain": [
+        1.5201395328468503,
+        3.0606205456076405,
+        0.12385234183311485,
+        0.14708977724386718
+      ],
+      "gain_order": [
+        "e_y",
+        "e_psi",
+        "vy",
+        "r"
+      ],
+      "gain_source_json_pointer": "/338/gains/8",
+      "evidence_files": [
+        "results/task007d/vis/vis1r_c699057/controlled_A/summary.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/exit.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/raw.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/input_configuration.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/worker.log",
+        "results/task007d/vis/vis1r_c699057/controlled_A/segments.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/release_contexts.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/analysis.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/segments.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/manifest.sha256",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/controls.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/planning.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/metrics.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/boundaries.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/manifest.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/cycles.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/events.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/packets.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/reserves.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/states.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/fixture/planning_reference.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/fixture/planning_manifest.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/fixture/speed_polynomial.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/fixture/track_source.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/fixture/planning_validation.json"
+      ],
+      "future_evaluations": "NOT EXECUTED",
+      "initial_vx_perturbation_domain_screen": {
+        "plus_0p1_within_speed_box": true,
+        "minus_0p1_within_speed_box": true,
+        "status": "static scalar screen only; all other domains unqualified; invalid proposal will not be shrunk or replaced"
+      }
+    },
+    {
+      "id": "high_speed_1",
+      "category": "high_speed",
+      "binding_status": "ARCHIVED_VALID_RUN_ANCHOR__DERIVATIVE_QUALIFICATION_PENDING",
+      "run_id": "controlled_A",
+      "worker_revision": "8dbd1c5fbc09781411fc762e04f9c2c5cf2d99ae",
+      "raw_state_row": 6730,
+      "raw_control_row": 3365,
+      "export_row": 6730,
+      "timestamp_s": 33.64999999999727,
+      "progress_s_abs_m": 169.37967279454458,
+      "state_order": [
+        "vx",
+        "vy",
+        "r",
+        "e_psi",
+        "s_abs",
+        "e_y"
+      ],
+      "state": [
+        5.8432804675677446,
+        -0.023732974455954927,
+        0.07479995305603594,
+        0.00454397984370658,
+        169.37967279454458,
+        0.0018797638481820027
+      ],
+      "held_applied_control": [
+        0.005452725251511654,
+        -0.6001614447943235
+      ],
+      "nominal_control": [
+        0.004397672229885087,
+        -0.7413748836359731
+      ],
+      "request_control": [
+        0.004568855370129654,
+        -0.7424459811452268
+      ],
+      "request_application_s": 33.65499999999727,
+      "request_actually_applied_control": [
+        0.004568855370129654,
+        -0.7424459811452268
+      ],
+      "last_application_s": 33.64499999999727,
+      "previous_applied_steering_rad": 0.005452725251511654,
+      "applied_source_plan_id": 335,
+      "reference_state": [
+        5.842209370058491,
+        -0.02370569357150643,
+        0.07427096878567192,
+        0.004614899187872162,
+        169.37949186520424,
+        0.0018937157789249387
+      ],
+      "planning_reference_state": [
+        5.9999999999997495,
+        0.0,
+        0.0492971955101363,
+        5.507050091502208e-07,
+        169.37967279454458,
+        1.0423835406496437e-07
+      ],
+      "packet_preview_curvature_1pm": 0.008036815841427502,
+      "category_neighbor_preview_curvatures_1pm": [
+        0.004323458536517406,
+        0.008036815841427502,
+        0.011385023408721467
+      ],
+      "physical_centerline_curvature_1pm": null,
+      "physical_curvature_missing_reason": "No direct curvature column; geometry evaluation intentionally NOT EXECUTED",
+      "racing_line_curvature_1pm": null,
+      "racing_curvature_missing_reason": "Exact reference interpolation intentionally NOT EXECUTED; serialized package available",
+      "speed_mps": 5.8432804675677446,
+      "sideslip_rad": -0.004061561666529838,
+      "front_combined_utilization": 0.07039421209691157,
+      "rear_combined_utilization": 0.06704717584346376,
+      "axle_loads_N": null,
+      "loads_missing_reason": "Not exported in native state; future source-bound diagnostic evaluation required",
+      "constraint_and_actuator_margins": {
+        "recorded_center_clearance_m": 0.548120236151818,
+        "recorded_left_clearance_m": 0.548120236151818,
+        "recorded_right_clearance_m": 0.551879763848182,
+        "recorded_frenet_denominator": 0.9999845607047988,
+        "recorded_reserve_s": 0.7949999999999946,
+        "box_speed_load_grip_slew_margins": null,
+        "missing_reason": "Box/speed/clearance/utilization differences are static recorded-value arithmetic above. Exact axle-load, longitudinal grip-domain and slew-memory branch margins require later model/history evaluation; utilization is not longitudinal reserve.",
+        "static_record_differences": {
+          "speed_lower_mps": 5.3432804675677446,
+          "speed_upper_mps": 0.15671953243225545,
+          "steering_lower_rad": 0.40545272525151166,
+          "steering_upper_rad": 0.3945472747484884,
+          "acceleration_lower_mps2": 2.3998385552056765,
+          "acceleration_upper_mps2": 2.6001614447943235,
+          "physical_D_above_0p001": 0.9989845607047988,
+          "prediction_D_above_0p01": 0.9899845607047988,
+          "center_margin_above_tracker_reserve_m": 0.468120236151818,
+          "front_utilization_reserve": 0.9296057879030885,
+          "rear_utilization_reserve": 0.9329528241565362
+        }
+      },
+      "authority": {
+        "plan_id": 336,
+        "start": 33.64499999999727,
+        "end": 33.739999999997295,
+        "origin": "accepted_handoff",
+        "expiry": 34.444999999997265,
+        "superseded_at": 33.739999999997295,
+        "fallback_at": null,
+        "right_censored": false,
+        "interval_rule": "left_inclusive; end_exclusive_except_observation_endpoint",
+        "sample_provenance": "reconstructed",
+        "reconstruction": "recorded_acceptance_and_expiry; no_packet_id_interpolation"
+      },
+      "packet_id": 336,
+      "packet_valid": true,
+      "packet_validation_reason": "solver_and_model_valid",
+      "packet_stage_index": 0,
+      "packet_gain_index": 0,
+      "gain_time_s": 33.64499999999727,
+      "original_gain": [
+        1.5143769171009693,
+        3.1796634231191976,
+        0.13024015046349746,
+        0.14933913384189526
+      ],
+      "gain_order": [
+        "e_y",
+        "e_psi",
+        "vy",
+        "r"
+      ],
+      "gain_source_json_pointer": "/336/gains/0",
+      "evidence_files": [
+        "results/task007d/vis/vis1r_c699057/controlled_A/summary.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/exit.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/raw.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/input_configuration.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/worker.log",
+        "results/task007d/vis/vis1r_c699057/controlled_A/segments.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/release_contexts.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/analysis.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/segments.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/manifest.sha256",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/controls.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/planning.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/metrics.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/boundaries.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/manifest.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/cycles.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/events.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/packets.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/reserves.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/states.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/fixture/planning_reference.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/fixture/planning_manifest.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/fixture/speed_polynomial.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/fixture/track_source.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/fixture/planning_validation.json"
+      ],
+      "future_evaluations": "NOT EXECUTED",
+      "initial_vx_perturbation_domain_screen": {
+        "plus_0p1_within_speed_box": true,
+        "minus_0p1_within_speed_box": true,
+        "status": "static scalar screen only; all other domains unqualified; invalid proposal will not be shrunk or replaced"
+      }
+    },
+    {
+      "id": "high_speed_2",
+      "category": "high_speed",
+      "binding_status": "ARCHIVED_VALID_RUN_ANCHOR__DERIVATIVE_QUALIFICATION_PENDING",
+      "run_id": "controlled_A",
+      "worker_revision": "8dbd1c5fbc09781411fc762e04f9c2c5cf2d99ae",
+      "raw_state_row": 8746,
+      "raw_control_row": 4373,
+      "export_row": 8746,
+      "timestamp_s": 43.730000000000004,
+      "progress_s_abs_m": 216.31284067583078,
+      "state_order": [
+        "vx",
+        "vy",
+        "r",
+        "e_psi",
+        "s_abs",
+        "e_y"
+      ],
+      "state": [
+        5.643090512931445,
+        0.4596099908661004,
+        -0.7679718849599874,
+        -0.05420037408408174,
+        216.31284067583078,
+        0.06602498809068856
+      ],
+      "held_applied_control": [
+        -0.04278476160674633,
+        0.33504996877841225
+      ],
+      "nominal_control": [
+        -0.04262468006448477,
+        0.33477685361140125
+      ],
+      "request_control": [
+        -0.042705960465203044,
+        0.33507514711104885
+      ],
+      "request_application_s": 43.735,
+      "request_actually_applied_control": [
+        -0.042705960465203044,
+        0.33507514711104885
+      ],
+      "last_application_s": 43.725,
+      "previous_applied_steering_rad": -0.04278476160674633,
+      "applied_source_plan_id": 436,
+      "reference_state": [
+        5.643388806431092,
+        0.4591202709907083,
+        -0.764280698173197,
+        -0.0542694292639067,
+        216.312801889232,
+        0.06578989289648923
+      ],
+      "planning_reference_state": [
+        6.0,
+        0.0,
+        -0.8090119562506322,
+        0.02872726946528159,
+        216.31284067583078,
+        0.07372598600716335
+      ],
+      "packet_preview_curvature_1pm": -0.12459547993022832,
+      "category_neighbor_preview_curvatures_1pm": [
+        -0.1244245727929091,
+        -0.12459547993022832,
+        -0.12590056208591374
+      ],
+      "physical_centerline_curvature_1pm": null,
+      "physical_curvature_missing_reason": "No direct curvature column; geometry evaluation intentionally NOT EXECUTED",
+      "racing_line_curvature_1pm": null,
+      "racing_curvature_missing_reason": "Exact reference interpolation intentionally NOT EXECUTED; serialized package available",
+      "speed_mps": 5.643090512931445,
+      "sideslip_rad": 0.08126712416289554,
+      "front_combined_utilization": 0.44421840204709306,
+      "rear_combined_utilization": 0.4359781257631767,
+      "axle_loads_N": null,
+      "loads_missing_reason": "Not exported in native state; future source-bound diagnostic evaluation required",
+      "constraint_and_actuator_margins": {
+        "recorded_center_clearance_m": 0.48397501190931147,
+        "recorded_left_clearance_m": 0.48397501190931147,
+        "recorded_right_clearance_m": 0.6160249880906886,
+        "recorded_frenet_denominator": 1.0083001384855357,
+        "recorded_reserve_s": 0.7149999999999963,
+        "box_speed_load_grip_slew_margins": null,
+        "missing_reason": "Box/speed/clearance/utilization differences are static recorded-value arithmetic above. Exact axle-load, longitudinal grip-domain and slew-memory branch margins require later model/history evaluation; utilization is not longitudinal reserve.",
+        "static_record_differences": {
+          "speed_lower_mps": 5.143090512931445,
+          "speed_upper_mps": 0.3569094870685552,
+          "steering_lower_rad": 0.3572152383932537,
+          "steering_upper_rad": 0.44278476160674635,
+          "acceleration_lower_mps2": 3.3350499687784123,
+          "acceleration_upper_mps2": 1.6649500312215877,
+          "physical_D_above_0p001": 1.0073001384855358,
+          "prediction_D_above_0p01": 0.9983001384855357,
+          "center_margin_above_tracker_reserve_m": 0.40397501190931145,
+          "front_utilization_reserve": 0.5557815979529069,
+          "rear_utilization_reserve": 0.5640218742368233
+        }
+      },
+      "authority": {
+        "plan_id": 436,
+        "start": 43.645,
+        "end": 43.74,
+        "origin": "accepted_handoff",
+        "expiry": 44.445,
+        "superseded_at": 43.74,
+        "fallback_at": null,
+        "right_censored": false,
+        "interval_rule": "left_inclusive; end_exclusive_except_observation_endpoint",
+        "sample_provenance": "reconstructed",
+        "reconstruction": "recorded_acceptance_and_expiry; no_packet_id_interpolation"
+      },
+      "packet_id": 436,
+      "packet_valid": true,
+      "packet_validation_reason": "solver_and_model_valid",
+      "packet_stage_index": 0,
+      "packet_gain_index": 8,
+      "gain_time_s": 43.72499999999999,
+      "original_gain": [
+        1.539577441284035,
+        3.4806912243929298,
+        0.17412327182073417,
+        0.164255638427679
+      ],
+      "gain_order": [
+        "e_y",
+        "e_psi",
+        "vy",
+        "r"
+      ],
+      "gain_source_json_pointer": "/436/gains/8",
+      "evidence_files": [
+        "results/task007d/vis/vis1r_c699057/controlled_A/summary.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/exit.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/raw.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/input_configuration.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/worker.log",
+        "results/task007d/vis/vis1r_c699057/controlled_A/segments.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/release_contexts.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/analysis.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/segments.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/manifest.sha256",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/controls.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/planning.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/metrics.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/boundaries.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/manifest.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/cycles.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/events.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/packets.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/reserves.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/states.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/fixture/planning_reference.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/fixture/planning_manifest.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/fixture/speed_polynomial.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/fixture/track_source.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/fixture/planning_validation.json"
+      ],
+      "future_evaluations": "NOT EXECUTED",
+      "initial_vx_perturbation_domain_screen": {
+        "plus_0p1_within_speed_box": true,
+        "minus_0p1_within_speed_box": true,
+        "status": "static scalar screen only; all other domains unqualified; invalid proposal will not be shrunk or replaced"
+      }
+    },
+    {
+      "id": "high_speed_3",
+      "category": "high_speed",
+      "binding_status": "ARCHIVED_VALID_RUN_ANCHOR__DERIVATIVE_QUALIFICATION_PENDING",
+      "run_id": "controlled_A",
+      "worker_revision": "8dbd1c5fbc09781411fc762e04f9c2c5cf2d99ae",
+      "raw_state_row": 9912,
+      "raw_control_row": 4956,
+      "export_row": 9912,
+      "timestamp_s": 49.56,
+      "progress_s_abs_m": 248.83604167318413,
+      "state_order": [
+        "vx",
+        "vy",
+        "r",
+        "e_psi",
+        "s_abs",
+        "e_y"
+      ],
+      "state": [
+        5.705224284798153,
+        0.198779041175596,
+        -0.3716773572799166,
+        -0.04024176280887026,
+        248.83604167318413,
+        -0.006976760318729223
+      ],
+      "held_applied_control": [
+        -0.02433016853501067,
+        -0.9854361265689214
+      ],
+      "nominal_control": [
+        -0.02272386970506227,
+        -0.9839223389762742
+      ],
+      "request_control": [
+        -0.02390024873317288,
+        -0.9859842569183631
+      ],
+      "request_application_s": 49.565000000000005,
+      "request_actually_applied_control": [
+        -0.02390024873317288,
+        -0.9859842569183631
+      ],
+      "last_application_s": 49.55500000000001,
+      "previous_applied_steering_rad": -0.02433016853501067,
+      "applied_source_plan_id": 495,
+      "reference_state": [
+        5.7031623668560645,
+        0.20323023917160601,
+        -0.3572159862510078,
+        -0.04133505483434442,
+        248.8351769181836,
+        -0.00725925872132759
+      ],
+      "planning_reference_state": [
+        6.0,
+        0.0,
+        -0.31601029440365175,
+        1.7036329280628593e-06,
+        248.83604167318413,
+        3.1955786830499286e-14
+      ],
+      "packet_preview_curvature_1pm": -0.05248741417566672,
+      "category_neighbor_preview_curvatures_1pm": [
+        -0.050225985238107965,
+        -0.05248741417566672,
+        -0.07520797708379423
+      ],
+      "physical_centerline_curvature_1pm": null,
+      "physical_curvature_missing_reason": "No direct curvature column; geometry evaluation intentionally NOT EXECUTED",
+      "racing_line_curvature_1pm": null,
+      "racing_curvature_missing_reason": "Exact reference interpolation intentionally NOT EXECUTED; serialized package available",
+      "speed_mps": 5.705224284798153,
+      "sideslip_rad": 0.034827494028300175,
+      "front_combined_utilization": 0.24434605264425782,
+      "rear_combined_utilization": 0.22531321807345855,
+      "axle_loads_N": null,
+      "loads_missing_reason": "Not exported in native state; future source-bound diagnostic evaluation required",
+      "constraint_and_actuator_margins": {
+        "recorded_center_clearance_m": 0.5430232396812709,
+        "recorded_left_clearance_m": 0.5569767603187292,
+        "recorded_right_clearance_m": 0.5430232396812709,
+        "recorded_frenet_denominator": 0.9996312482768193,
+        "recorded_reserve_s": 0.779999999999994,
+        "box_speed_load_grip_slew_margins": null,
+        "missing_reason": "Box/speed/clearance/utilization differences are static recorded-value arithmetic above. Exact axle-load, longitudinal grip-domain and slew-memory branch margins require later model/history evaluation; utilization is not longitudinal reserve.",
+        "static_record_differences": {
+          "speed_lower_mps": 5.205224284798153,
+          "speed_upper_mps": 0.29477571520184664,
+          "steering_lower_rad": 0.37566983146498933,
+          "steering_upper_rad": 0.4243301685350107,
+          "acceleration_lower_mps2": 2.0145638734310785,
+          "acceleration_upper_mps2": 2.9854361265689215,
+          "physical_D_above_0p001": 0.9986312482768193,
+          "prediction_D_above_0p01": 0.9896312482768193,
+          "center_margin_above_tracker_reserve_m": 0.46302323968127085,
+          "front_utilization_reserve": 0.7556539473557422,
+          "rear_utilization_reserve": 0.7746867819265415
+        }
+      },
+      "authority": {
+        "plan_id": 495,
+        "start": 49.545,
+        "end": 49.645,
+        "origin": "accepted_handoff",
+        "expiry": 50.339999999999996,
+        "superseded_at": 49.645,
+        "fallback_at": null,
+        "right_censored": false,
+        "interval_rule": "left_inclusive; end_exclusive_except_observation_endpoint",
+        "sample_provenance": "reconstructed",
+        "reconstruction": "recorded_acceptance_and_expiry; no_packet_id_interpolation"
+      },
+      "packet_id": 495,
+      "packet_valid": true,
+      "packet_validation_reason": "solver_and_model_valid",
+      "packet_stage_index": 0,
+      "packet_gain_index": 2,
+      "gain_time_s": 49.559999999999995,
+      "original_gain": [
+        1.5419306346349833,
+        3.2557758230437512,
+        0.142282864310682,
+        0.1511197280189547
+      ],
+      "gain_order": [
+        "e_y",
+        "e_psi",
+        "vy",
+        "r"
+      ],
+      "gain_source_json_pointer": "/495/gains/2",
+      "evidence_files": [
+        "results/task007d/vis/vis1r_c699057/controlled_A/summary.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/exit.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/raw.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/input_configuration.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/worker.log",
+        "results/task007d/vis/vis1r_c699057/controlled_A/segments.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/release_contexts.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/analysis.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/segments.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/manifest.sha256",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/controls.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/planning.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/metrics.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/boundaries.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/manifest.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/cycles.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/events.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/packets.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/reserves.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/states.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/fixture/planning_reference.csv",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/fixture/planning_manifest.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/fixture/speed_polynomial.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/fixture/track_source.json",
+        "results/task007d/vis/vis1r_c699057/controlled_A/scientific/fixture/planning_validation.json"
+      ],
+      "future_evaluations": "NOT EXECUTED",
+      "initial_vx_perturbation_domain_screen": {
+        "plus_0p1_within_speed_box": true,
+        "minus_0p1_within_speed_box": true,
+        "status": "static scalar screen only; all other domains unqualified; invalid proposal will not be shrunk or replaced"
+      }
+    }
+  ],
+  "selection_rule_original_file_sha256": "1022062aff56aeaa4b32bf1a869aa29d5a91e85836b524e766493a0c376ca017",
+  "selection_rule_hash_encoding": "UTF-8 json.dumps(selection_rule,sort_keys=True,separators=(comma,colon)) plus LF",
+  "qualified_category_coverage": {
+    "straight": 0,
+    "corner": 0,
+    "entry_exit": 0,
+    "high_speed": 0
+  },
+  "coverage_gaps": [
+    "Physical centerline curvature and geometry-category confirmation NOT EXECUTED",
+    "Axle loads and longitudinal reserve at exact anchors NOT EXECUTED",
+    "Strict open-domain and chart/knot/stencil qualification NOT EXECUTED",
+    "Only one accepted controlled A lap; measured A not an independent replacement pool"
+  ]
+}

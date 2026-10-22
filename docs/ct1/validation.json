@@ -1,0 +1,116 @@
+{
+  "task": "APEX-CT-1",
+  "status": "WORK_COMPLETE_PENDING_REVIEW",
+  "numerical_evaluation_status": "NOT EXECUTED",
+  "accepted_E4_revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+  "verified_scientific_revision": "e603672b209985f11ed26b6f44d3949ffd5675c5",
+  "schema": "apex-ct1-static-validation/1.0.0",
+  "passed": true,
+  "scope": "STATIC DOCUMENTATION, SCHEMA, SOURCE-HASH AND GIT-PRESERVATION ONLY",
+  "checks": {
+    "strict_JSON_and_schemas": {
+      "passed": true,
+      "record_schemas": 6,
+      "negative_document_mutations_rejected": [
+        "canonical ordering",
+        "matrix result falsely executed",
+        "extra root field",
+        "execution authorization",
+        "81 nonlinear trials",
+        "missing robustness trial",
+        "trial execution claim",
+        "wrong scientific revision"
+      ],
+      "schema_vocabulary": [
+        "type",
+        "const",
+        "required",
+        "properties",
+        "additionalProperties",
+        "items",
+        "minItems",
+        "maxItems"
+      ]
+    },
+    "source_AST_parse_no_import": [
+      "src/apex/control/trajectory/tracker.py",
+      "src/apex/control/mpc/symbolic_model.py",
+      "src/apex/models/vehicle/dynamic_bicycle.py",
+      "src/apex/models/tire/grip.py",
+      "src/apex/simulation/asynchronous.py"
+    ],
+    "source_hashes_checked": 305,
+    "frozen_scientific_inventory_hashes_checked": 294,
+    "targeted_archived_file_hashes_checked": 90,
+    "operating_anchor_row_control_gain_authority_bindings_checked": 12,
+    "qualified_new_derivative_points": 0,
+    "trial_matrix_uniqueness": {
+      "nonlinear": 80,
+      "robustness": 32,
+      "executed": 0
+    },
+    "protected_tracked_files_unchanged": {
+      "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle": 850,
+      "/Users/marwansaber/.codex/worktrees/safety-s0/MPC_Controller_v1_IronManStyle": 856,
+      "/Users/marwansaber/.codex/worktrees/control-theory-ct1/MPC_Controller_v1_IronManStyle": 826
+    },
+    "protected_original_worktree_statuses": "clean and unchanged",
+    "accepted_handoff": "prepend-only; complete historical bytes retained",
+    "protected_local_refs_and_tags_unchanged": 5,
+    "protected_remote_refs": "Preflight equality confirmed; final remote equality reported after push",
+    "historical_result_metadata_unchanged": 11646,
+    "metadata_not_whole_archive_rehash": true,
+    "authored_relative_links_checked": 34,
+    "balanced_markdown_fence_pairs": 9,
+    "git_diff_check": "PASS",
+    "source_config_test_dependency_changes": 0,
+    "E3_to_E4_executable_config_test_lock_diff": "empty; historical test evidence is not a new CT1 result",
+    "prohibited_modules_in_sys_modules": []
+  },
+  "changed_files": [
+    "docs/CODEX_HANDOFF.md",
+    "docs/ct1/CT1_CONTROL_THEORY_METHODOLOGY.md",
+    "docs/ct1/ct1_documentation.schema.json",
+    "docs/ct1/metrics_and_interpretation.json",
+    "docs/ct1/model_and_linearization_audit.md",
+    "docs/ct1/operating_point_selection.json",
+    "docs/ct1/preservation_and_provenance.json",
+    "docs/ct1/resource_and_review_gates.json",
+    "docs/ct1/test_matrix.json",
+    "docs/ct1/validation.json"
+  ],
+  "authored_payload_hashes": {
+    "docs/ct1/CT1_CONTROL_THEORY_METHODOLOGY.md": "b606d3c0d5e579fa9ff01749b9d7175cb7a881355d7b57ea427a390973b42438",
+    "docs/ct1/ct1_documentation.schema.json": "497efd64467f122fe7f33319e227a50ba52cac2ce7064c8fc458c1f588971aaa",
+    "docs/ct1/metrics_and_interpretation.json": "c73af10718f194fe5cc5f6774e39c5d2742a486dd514f788cd0ec89222529dee",
+    "docs/ct1/model_and_linearization_audit.md": "f99cab35012fb9159c6b38d23002ba4b7527fa744394da5e05c1055235702386",
+    "docs/ct1/operating_point_selection.json": "da5b5556e0a0eeba112b5bb3a1190795e0d54f3210bfdb4f254ca6c32fd9082a",
+    "docs/ct1/preservation_and_provenance.json": "33b6c55647f8b5089364f4402eccfdc964dc62732a2bc2f852971d66dde7f1ef",
+    "docs/ct1/resource_and_review_gates.json": "5b41ad49cd7a7ba0b4fef3aec38e7956affd110627f761dcf25ce69173c3d963",
+    "docs/ct1/test_matrix.json": "0c16d0a5a8a3c155d8a29cf2899374cbd183584c8aef060ccd327136a98b95df",
+    "docs/CODEX_HANDOFF.md": "721c0e7b486ee1e237aa56d39c771c6e3950892f8d15cfa625c1225fe02cbf66"
+  },
+  "unexecuted": [
+    "numerical package initialization",
+    "test collection or execution",
+    "Jacobian/map/finite-difference evaluation",
+    "SVD/eigenvalue/PBH/Riccati/product calculation",
+    "solver construction or optimization solve",
+    "simulation/new disturbance or robustness trials",
+    "harness implementation",
+    "physical curvature/axle-load/strict derivative-domain qualification",
+    "two-drive archive coverage/restoration qualification"
+  ],
+  "delivery_revision": "Containing documentation commit; final exact SHA/URL and remote verification reported after commit, not self-embedded",
+  "reader": {
+    "path": "/private/tmp/ct1_finalize.py",
+    "sha256": "f9a4869c12afa2a4c20f8449cef6de9e878ef17e0c6bddf760347ac59057bc59"
+  },
+  "environment": {
+    "python": "3.14.3 (main, Feb  3 2026, 15:32:20) [Clang 17.0.0 (clang-1700.6.3.2)]",
+    "platform": "macOS-26.5.1-arm64-arm-64bit-Mach-O",
+    "invocation": "python3 -I -S /private/tmp/ct1_finalize.py",
+    "import_policy": "standard library only; no numerical or repository module imported"
+  },
+  "reproduction_note": "Schema vocabulary and all semantic checks are described in methodology and this record; source/evidence hashes are portable relative paths, complete raw archives are local and independently qualified backup remains outstanding."
+}
