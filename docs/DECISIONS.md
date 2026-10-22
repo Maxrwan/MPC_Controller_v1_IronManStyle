@@ -1073,3 +1073,25 @@ hypothesis remain pending. HW01–HW10, numerical domains and physical stopping/
 guarantees remain unresolved. Safety changes neither architecture. Independent Efficiency's
 concurrent documentation-only `ff34bd36897c4ed00b850a2d0255132bdebac5fd` is retained separately.
 Exit **WORK_COMPLETE_PENDING_REVIEW** for Engineering Review; no automatic A/B/C progression.
+
+
+## ADR-168 — Propose bounded S1-A activation, API, ordering and independent coverage
+
+**PROPOSED — NOT IMPLEMENTED. WORK_COMPLETE_PENDING_REVIEW.**
+The owner supplies Primary acceptance of exact S1 `9f0cbe0f0f48a1e2a62716957bbab79fe2b5b1b4`
+with enabled-transition coverage conditions; no exact acceptance date or code authority is inferred.
+Prepare only the [S1-A authorization package](safety/s1a/implementation_authorization_request.md).
+Original S0/S1 documents, historical WORK evidence and all22/69 case/row bytes remain unchanged.
+
+Propose eight enabled logical transitions (T01/T02/T03/T06/T09/T11/T13/T14) with independently
+reviewed positive/rejection/boundary designs, and defer six policy-activation/reentry transitions.
+Disabled policy behavior cannot suppress mandatory fault/revocation/no-policy paths.
+The pure standard-library reducer API and PC01-PC10 ordering/identity/restart resolutions are
+versioned proposals requiring review, not silent changes to accepted0.1.0 or frozen runtime.
+Complete initial records and independent oracle/reference audits are specified without execution.
+
+Only a later explicit assignment may create the named reducer/test/fixture files; Engineering
+review and focused execution permissions remain separate gates. Endpoint application/cancellation
+execution, numerical controller integration, S1-B/S1-C and physical/hardware validation are excluded.
+No new domains, timing limits or physical response guarantee. Preserve Performance/main/tag,
+independent Efficiency and archive obligations; stop for Engineering Review.

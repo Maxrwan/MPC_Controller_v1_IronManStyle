@@ -1,0 +1,105 @@
+{
+  "schema": "apex-s1a/documentation-validation/0.1.0",
+  "artifact_label": "PROPOSED — NOT IMPLEMENTED",
+  "status": "WORK_COMPLETE_PENDING_REVIEW",
+  "implemented": false,
+  "execution": "NOT_EXECUTED",
+  "accepted_s1_revision": "9f0cbe0f0f48a1e2a62716957bbab79fe2b5b1b4",
+  "check_result": "PASS_DOCUMENTATION_CHECKS_ONLY",
+  "checks": {
+    "closed_top_level_document_schemas": 6,
+    "transitions": 14,
+    "proposed_enabled": 8,
+    "proposed_disabled": 6,
+    "source_edges_with_positive_rejection_boundary_designs": 28,
+    "matrix_case_designs": 84,
+    "protocol_case_designs": 16,
+    "all_case_designs_unexecuted": 100,
+    "complete_snapshot_records": 58,
+    "original_case_designs_preserved": 22,
+    "original_rows_audited_and_hashed": 69,
+    "s1b_original_cases_deferred": 5,
+    "proposed_amendments": 10,
+    "immutable_git_reference_hashes": 11,
+    "scientific_source_hashes_per_checkout": 294,
+    "scientific_checkouts": 2,
+    "authored_local_markdown_links": 16,
+    "schema_record_checks": "Structural only; no reducer or guard/order/oracle execution.",
+    "historical_handoff_suffix_and_decision_prefix": "UNCHANGED",
+    "scope_whitespace": "PASS"
+  },
+  "preservation": {
+    "safety": {
+      "original_tracked_files_unchanged": 845,
+      "result_membership_size_mtime_entries": 1
+    },
+    "efficiency": {
+      "original_tracked_files_unchanged": 840,
+      "result_membership_size_mtime_entries": 11646
+    }
+  },
+  "protected_and_observed_refs": {
+    "refs/heads/main": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+    "refs/heads/release/performance-synthetic-v1": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+    "refs/heads/research/efficiency": "83f360b2a96e8f6d9fe429d2cc2e5447da2f47c8",
+    "refs/tags/performance-synthetic-v1": "76d9eaa65af02efb0263916adc75d5247a0e778f",
+    "performance-synthetic-v1^{commit}": "48adbdf64d492592d15e23c917aca71fa58aa8a5"
+  },
+  "concurrent_efficiency": {
+    "original_head": "ff34bd36897c4ed00b850a2d0255132bdebac5fd",
+    "observed_head": "83f360b2a96e8f6d9fe429d2cc2e5447da2f47c8",
+    "changed_paths": [
+      "docs/CODEX_HANDOFF.md",
+      "docs/DECISIONS.md",
+      "docs/PROJECT_ROADMAP.md",
+      "docs/task007f/profile1/g1_failure_and_overflow_contract.json",
+      "docs/task007f/profile1/g1_implementation_authorization_request.md",
+      "docs/task007f/profile1/g1_parity_field_allowlist.json",
+      "docs/task007f/profile1/g1_preflight_validation.json",
+      "docs/task007f/profile1/g1_recorder_api.json",
+      "docs/task007f/profile1/g1_source_change_manifest.json",
+      "docs/task007f/profile1/g1_verification_entry_gates.json"
+    ],
+    "classification": "INDEPENDENT_DOCUMENTATION_ONLY_DELIVERY_RETAINED",
+    "post_change_tracked_hashes_preserved": 850
+  },
+  "authored_files_sha256": {
+    "docs/CODEX_HANDOFF.md": "1664b5e9dbaab534ce68186ed0a6073c34a6800c4c11a3fca8fcbb733e4fe471",
+    "docs/DECISIONS.md": "7c086225de4277ec067374af5e69fe5f26f3f1af5d81cb336b24589ec8bec115",
+    "docs/safety/s1a/documentation_schemas.json": "65e2aa770dce0ab39c2781c1a5f61881e660515d0e00dbf85aa20fa92205fd56",
+    "docs/safety/s1a/event_precedence_resolution.json": "bbe90a80df62cec8150bc2536688084a2ade48f3a402d371701db45c9ec1e1b5",
+    "docs/safety/s1a/implementation_authorization_request.md": "27b1809ef9b971fef253d5cebf1d8313b80f3d75e16ba3c158c51029a4ff77a9",
+    "docs/safety/s1a/implementation_scope_and_gates.json": "0de5ef62cdb713c251c336e2cf74da08efe2818c284979b6f821317fd6bc7ea2",
+    "docs/safety/s1a/independent_oracle_expansion.json": "27a9e79a8d7ee45f46f7c9b4518da2b56524b122cf60b02df6926339d5198c7b",
+    "docs/safety/s1a/provenance.json": "488e8a3d6310c09425b1b5b2f803266cc303d18290c4e9c1f853da43ddfba402",
+    "docs/safety/s1a/reducer_api_contract.json": "cd59aa5fe0591d868924320e8579f96a579b3252cdd1b78ff97a1168fca8c9ec",
+    "docs/safety/s1a/transition_activation_matrix.json": "f731597911d54c1fd24d47daa29c9fe7dd64d94e59119159d0149f2a4823d61f"
+  },
+  "checker": {
+    "path": "/private/tmp/apex-s1a-prep.Rrd8Rm/check_package.py",
+    "sha256": "47fca5735290c9bf5443530e554b77945561c7e94a308cebebc3af746174aa42",
+    "command": "python3 -B /private/tmp/apex-s1a-prep.Rrd8Rm/check_package.py --installed",
+    "limits": "Constrained structural schema/closed-key/type/reference/hash checks. Not full JSON Schema conformance, code correctness, independent oracle execution or physical safety validation."
+  },
+  "unexecuted": [
+    "Reducer implementation",
+    "Executable test creation/collection/execution",
+    "All100 proposed case sequences",
+    "Numerical imports/verification",
+    "Solver or vehicle propagation",
+    "Fault injection/simulation",
+    "Endpoint/MCU/hardware",
+    "Archive restoration/coverage"
+  ],
+  "remaining_decisions": [
+    "Approve PC01-PC10 proposed semantics/version.",
+    "Approve the eight-enabled/six-disabled activation set and the explicit unreachable-negative-guard treatment for retained unsupported policy states.",
+    "Approve exact per-event materializations of original and new design cases, including mixed-invalid/critical batches, before focused execution."
+  ],
+  "evidence_limits": [
+    "Raw file membership/size/mtime only; no raw-content rehash/backup qualification.",
+    "No prior numerical pass is inherited as S1-A verification.",
+    "Proposed enabled branches are not implemented, executed or accepted."
+  ],
+  "delivery_identity": "Containing commit and final remote SHA supplied after commit/push; this record excludes its own hash."
+}

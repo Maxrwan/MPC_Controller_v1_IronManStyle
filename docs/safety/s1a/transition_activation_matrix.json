@@ -1,0 +1,1399 @@
+{
+  "schema": "apex-s1a/transition-activation-matrix/0.1.0",
+  "artifact_label": "PROPOSED — NOT IMPLEMENTED",
+  "status": "WORK_COMPLETE_PENDING_REVIEW",
+  "implemented": false,
+  "execution": "NOT_EXECUTED",
+  "accepted_s1_revision": "9f0cbe0f0f48a1e2a62716957bbab79fe2b5b1b4",
+  "status_meaning": "ENABLED means requested future implementation eligibility after independent review, explicit authorization and passing required checks; every transition is currently unimplemented/unverified.",
+  "enabled_ids": [
+    "T01",
+    "T02",
+    "T03",
+    "T06",
+    "T09",
+    "T11",
+    "T13",
+    "T14"
+  ],
+  "deferred_disabled_ids": [
+    "T04",
+    "T05",
+    "T07",
+    "T08",
+    "T10",
+    "T12"
+  ],
+  "current_runtime_enabled_ids": [],
+  "accepted_transition_reference": {
+    "path": "docs/safety/s1/state_and_event_invariants.json",
+    "revision": "9f0cbe0f0f48a1e2a62716957bbab79fe2b5b1b4",
+    "sha256": "256f5fa461a4d828e740d416fa8847823bb79aba6c43b05595460680cbe174bb",
+    "url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/9f0cbe0f0f48a1e2a62716957bbab79fe2b5b1b4/docs/safety/s1/state_and_event_invariants.json"
+  },
+  "entries": [
+    {
+      "transition_id": "T01",
+      "from_states": [
+        "DISARMED"
+      ],
+      "to_state": "NORMAL",
+      "proposed_s1a_status": "ENABLED",
+      "current_implemented": false,
+      "authority_effects_if_enabled": {
+        "grant_capability": true,
+        "renew": false,
+        "revoke": false,
+        "transfer": false
+      },
+      "positive_guard": "ARM_REQUEST from DISARMED; registry authorizes operator ID at decision tick; no uncleared critical latch; current accepted NOMINAL packet/VALID estimate/interpreted bounded uncertainty/HEALTH evidence all SATISFIED through the requested interval; exact prepared session/epoch/barrier and queue-clear acknowledgement match.",
+      "original_s0_predicate": "Fresh validated state, valid accepted packet, healthy enforcement/clock/actuators, confirmed queue/session reset, adequate response margin and explicit authorized arming.",
+      "synthetic_evidence_policy": "Required named policy/context/estimate/session/interval records must be explicit SYNTHETIC_ASSUMPTION; no absent field or UNKNOWN is turned into SATISFIED.",
+      "rejection_fail_closed": "Deny operation with ordered reason; create/renew/transfer zero permissions. Preserve admissible current authority only; if current continuation is unavailable perform enabled T09, or T14 from STOPPED_LATCHED.",
+      "boundaries": [
+        "Half-open packet/policy/permission/evidence intervals",
+        "Conservative capture/application/hold bounds and uncertainty",
+        "Current and target session, desired versus acknowledged epoch and barrier IDs",
+        "Exact source/config/estimate/context identity",
+        "Uncleared critical latches and role assumptions"
+      ],
+      "unknown_consequence": "Dependent permissive operation denied. UNKNOWN authoritative continuation or rest/hold knowledge invokes the mandatory fault path; reset cannot erase it.",
+      "s0_scenarios": [
+        "V19",
+        "V15"
+      ],
+      "invariant_ids": [
+        "A01",
+        "A02",
+        "A03",
+        "A04",
+        "A05",
+        "A06",
+        "A07",
+        "A08",
+        "A09",
+        "A10",
+        "A11",
+        "A12",
+        "A13",
+        "A14",
+        "A15",
+        "A16",
+        "A17",
+        "A18"
+      ],
+      "unresolved_domains": [
+        "D_NOMINAL",
+        "D_PACKET"
+      ],
+      "oracle_source_edges": [
+        {
+          "source_state": "DISARMED",
+          "positive_case_id": "T01-DISARMED-POSITIVE",
+          "rejection_case_id": "T01-DISARMED-REJECTION",
+          "boundary_case_id": "T01-DISARMED-BOUNDARY"
+        }
+      ],
+      "boundary_oracle_refs": {
+        "time": [
+          "E01-LEASE-END",
+          "E02-HOLD-AGE",
+          "E14-CLOCK-STRADDLE"
+        ],
+        "uncertainty_and_quality": [
+          "E07-INVALID-MAP",
+          "E08-UNKNOWN-CLOCK",
+          "V05-A-uncertainty"
+        ],
+        "session_epoch": [
+          "E03-PRIOR-SESSION",
+          "V07-A-explicit-reauthorization"
+        ],
+        "latches_restart": [
+          "E09-MISSING-SNAPSHOT",
+          "V19-A-latch-restart-reentry"
+        ],
+        "source_edge_specific": [
+          "T01-DISARMED-BOUNDARY"
+        ]
+      }
+    },
+    {
+      "transition_id": "T02",
+      "from_states": [
+        "NORMAL"
+      ],
+      "to_state": "WARNING",
+      "proposed_s1a_status": "ENABLED",
+      "current_implemented": false,
+      "authority_effects_if_enabled": {
+        "grant_capability": false,
+        "renew": false,
+        "revoke": false,
+        "transfer": false
+      },
+      "positive_guard": "RENEWAL_WARNING from NORMAL; current nominal packet, estimate, bounded hold and health remain admissible; named configured warning-policy evidence is SATISFIED at the decision tick; no critical latch.",
+      "original_s0_predicate": "Current authority still admissible but renewal/response budget, uncertainty or fault indication approaches its reviewed intervention boundary.",
+      "synthetic_evidence_policy": "Required named policy/context/estimate/session/interval records must be explicit SYNTHETIC_ASSUMPTION; no absent field or UNKNOWN is turned into SATISFIED.",
+      "rejection_fail_closed": "Deny operation with ordered reason; create/renew/transfer zero permissions. Preserve admissible current authority only; if current continuation is unavailable perform enabled T09, or T14 from STOPPED_LATCHED.",
+      "boundaries": [
+        "Half-open packet/policy/permission/evidence intervals",
+        "Conservative capture/application/hold bounds and uncertainty",
+        "Current and target session, desired versus acknowledged epoch and barrier IDs",
+        "Exact source/config/estimate/context identity",
+        "Uncleared critical latches and role assumptions"
+      ],
+      "unknown_consequence": "Dependent permissive operation denied. UNKNOWN authoritative continuation or rest/hold knowledge invokes the mandatory fault path; reset cannot erase it.",
+      "s0_scenarios": [
+        "V01",
+        "V05",
+        "V15"
+      ],
+      "invariant_ids": [
+        "A01",
+        "A02",
+        "A03",
+        "A04",
+        "A05",
+        "A06",
+        "A07",
+        "A08",
+        "A09",
+        "A10",
+        "A11",
+        "A12",
+        "A13",
+        "A14",
+        "A15",
+        "A16",
+        "A17",
+        "A18"
+      ],
+      "unresolved_domains": [
+        "D_NOMINAL",
+        "D_PACKET"
+      ],
+      "oracle_source_edges": [
+        {
+          "source_state": "NORMAL",
+          "positive_case_id": "T02-NORMAL-POSITIVE",
+          "rejection_case_id": "T02-NORMAL-REJECTION",
+          "boundary_case_id": "T02-NORMAL-BOUNDARY"
+        }
+      ],
+      "boundary_oracle_refs": {
+        "time": [
+          "E01-LEASE-END",
+          "E02-HOLD-AGE",
+          "E14-CLOCK-STRADDLE"
+        ],
+        "uncertainty_and_quality": [
+          "E07-INVALID-MAP",
+          "E08-UNKNOWN-CLOCK",
+          "V05-A-uncertainty"
+        ],
+        "session_epoch": [
+          "E03-PRIOR-SESSION",
+          "V07-A-explicit-reauthorization"
+        ],
+        "latches_restart": [
+          "E09-MISSING-SNAPSHOT",
+          "V19-A-latch-restart-reentry"
+        ],
+        "source_edge_specific": [
+          "T02-NORMAL-BOUNDARY"
+        ]
+      }
+    },
+    {
+      "transition_id": "T03",
+      "from_states": [
+        "WARNING"
+      ],
+      "to_state": "NORMAL",
+      "proposed_s1a_status": "ENABLED",
+      "current_implemented": false,
+      "authority_effects_if_enabled": {
+        "grant_capability": true,
+        "renew": true,
+        "revoke": false,
+        "transfer": false
+      },
+      "positive_guard": "WARNING_CLEAR from WARNING; a separately accepted valid renewal plus current nominal/health evidence and explicitly named hysteresis/stability-clear evidence are SATISFIED; prepared current barrier matches; no critical latch.",
+      "original_s0_predicate": "Renewal accepted, domain/health restored and approved hysteresis/stability evidence satisfied; no latched emergency.",
+      "synthetic_evidence_policy": "Required named policy/context/estimate/session/interval records must be explicit SYNTHETIC_ASSUMPTION; no absent field or UNKNOWN is turned into SATISFIED.",
+      "rejection_fail_closed": "Deny operation with ordered reason; create/renew/transfer zero permissions. Preserve admissible current authority only; if current continuation is unavailable perform enabled T09, or T14 from STOPPED_LATCHED.",
+      "boundaries": [
+        "Half-open packet/policy/permission/evidence intervals",
+        "Conservative capture/application/hold bounds and uncertainty",
+        "Current and target session, desired versus acknowledged epoch and barrier IDs",
+        "Exact source/config/estimate/context identity",
+        "Uncleared critical latches and role assumptions"
+      ],
+      "unknown_consequence": "Dependent permissive operation denied. UNKNOWN authoritative continuation or rest/hold knowledge invokes the mandatory fault path; reset cannot erase it.",
+      "s0_scenarios": [
+        "V01",
+        "V05",
+        "V15"
+      ],
+      "invariant_ids": [
+        "A01",
+        "A02",
+        "A03",
+        "A04",
+        "A05",
+        "A06",
+        "A07",
+        "A08",
+        "A09",
+        "A10",
+        "A11",
+        "A12",
+        "A13",
+        "A14",
+        "A15",
+        "A16",
+        "A17",
+        "A18"
+      ],
+      "unresolved_domains": [
+        "D_NOMINAL",
+        "D_PACKET"
+      ],
+      "oracle_source_edges": [
+        {
+          "source_state": "WARNING",
+          "positive_case_id": "T03-WARNING-POSITIVE",
+          "rejection_case_id": "T03-WARNING-REJECTION",
+          "boundary_case_id": "T03-WARNING-BOUNDARY"
+        }
+      ],
+      "boundary_oracle_refs": {
+        "time": [
+          "E01-LEASE-END",
+          "E02-HOLD-AGE",
+          "E14-CLOCK-STRADDLE"
+        ],
+        "uncertainty_and_quality": [
+          "E07-INVALID-MAP",
+          "E08-UNKNOWN-CLOCK",
+          "V05-A-uncertainty"
+        ],
+        "session_epoch": [
+          "E03-PRIOR-SESSION",
+          "V07-A-explicit-reauthorization"
+        ],
+        "latches_restart": [
+          "E09-MISSING-SNAPSHOT",
+          "V19-A-latch-restart-reentry"
+        ],
+        "source_edge_specific": [
+          "T03-WARNING-BOUNDARY"
+        ]
+      }
+    },
+    {
+      "transition_id": "T04",
+      "from_states": [
+        "NORMAL",
+        "WARNING"
+      ],
+      "to_state": "RECOVERY",
+      "proposed_s1a_status": "DEFERRED/DISABLED",
+      "current_implemented": false,
+      "authority_effects_if_enabled": {
+        "grant_capability": true,
+        "renew": false,
+        "revoke": true,
+        "transfer": true
+      },
+      "positive_guard": "S0 verified RECOVERY and SELECTION evidence in current context would be needed, but T04 is disabled in S1-A even when a labelled synthetic assertion says SATISFIED.",
+      "original_s0_predicate": "Recovery eligibility holds for reachable uncertainty and actuators; risk assessment favors recovery over stop.",
+      "synthetic_evidence_policy": "Required named policy/context/estimate/session/interval records must be explicit SYNTHETIC_ASSUMPTION; no absent field or UNKNOWN is turned into SATISFIED.",
+      "rejection_fail_closed": "Deny operation with ordered reason; create/renew/transfer zero permissions. Preserve admissible current authority only; if current continuation is unavailable perform enabled T09, or T14 from STOPPED_LATCHED.",
+      "boundaries": [
+        "Half-open packet/policy/permission/evidence intervals",
+        "Conservative capture/application/hold bounds and uncertainty",
+        "Current and target session, desired versus acknowledged epoch and barrier IDs",
+        "Exact source/config/estimate/context identity",
+        "Uncleared critical latches and role assumptions"
+      ],
+      "unknown_consequence": "Dependent permissive operation denied. UNKNOWN authoritative continuation or rest/hold knowledge invokes the mandatory fault path; reset cannot erase it.",
+      "s0_scenarios": [
+        "V07",
+        "V15",
+        "V19"
+      ],
+      "invariant_ids": [
+        "A01",
+        "A02",
+        "A03",
+        "A04",
+        "A05",
+        "A06",
+        "A07",
+        "A08",
+        "A09",
+        "A10",
+        "A11",
+        "A12",
+        "A13",
+        "A14",
+        "A15",
+        "A16",
+        "A17",
+        "A18"
+      ],
+      "unresolved_domains": [
+        "D_NOMINAL",
+        "D_PACKET",
+        "D_RECOVERY",
+        "D_DECEL",
+        "D_STOP"
+      ],
+      "oracle_source_edges": [
+        {
+          "source_state": "NORMAL",
+          "positive_case_id": "T04-NORMAL-POSITIVE",
+          "rejection_case_id": "T04-NORMAL-REJECTION",
+          "boundary_case_id": "T04-NORMAL-BOUNDARY"
+        },
+        {
+          "source_state": "WARNING",
+          "positive_case_id": "T04-WARNING-POSITIVE",
+          "rejection_case_id": "T04-WARNING-REJECTION",
+          "boundary_case_id": "T04-WARNING-BOUNDARY"
+        }
+      ],
+      "disabled_interaction": "Even a positive synthetic policy assertion is rejected TRANSITION_DISABLED. No output permission or physical response; active unsupported state without continuation takes enabled T09 and retains source/latch history.",
+      "boundary_oracle_refs": {
+        "time": [
+          "E01-LEASE-END",
+          "E02-HOLD-AGE",
+          "E14-CLOCK-STRADDLE"
+        ],
+        "uncertainty_and_quality": [
+          "E07-INVALID-MAP",
+          "E08-UNKNOWN-CLOCK",
+          "V05-A-uncertainty"
+        ],
+        "session_epoch": [
+          "E03-PRIOR-SESSION",
+          "V07-A-explicit-reauthorization"
+        ],
+        "latches_restart": [
+          "E09-MISSING-SNAPSHOT",
+          "V19-A-latch-restart-reentry"
+        ],
+        "source_edge_specific": [
+          "T04-NORMAL-BOUNDARY",
+          "T04-WARNING-BOUNDARY"
+        ]
+      }
+    },
+    {
+      "transition_id": "T05",
+      "from_states": [
+        "NORMAL",
+        "WARNING",
+        "RECOVERY"
+      ],
+      "to_state": "DECELERATING",
+      "proposed_s1a_status": "DEFERRED/DISABLED",
+      "current_implemented": false,
+      "authority_effects_if_enabled": {
+        "grant_capability": true,
+        "renew": false,
+        "revoke": true,
+        "transfer": true
+      },
+      "positive_guard": "S0 verified DECELERATION and TRANSFER/destination evidence would be needed, but T05 is disabled in S1-A even when synthetic assertions say SATISFIED.",
+      "original_s0_predicate": "Verified conservative policy remains feasible and its destination/stop transfer is assured within declared bounds.",
+      "synthetic_evidence_policy": "Required named policy/context/estimate/session/interval records must be explicit SYNTHETIC_ASSUMPTION; no absent field or UNKNOWN is turned into SATISFIED.",
+      "rejection_fail_closed": "Deny operation with ordered reason; create/renew/transfer zero permissions. Preserve admissible current authority only; if current continuation is unavailable perform enabled T09, or T14 from STOPPED_LATCHED.",
+      "boundaries": [
+        "Half-open packet/policy/permission/evidence intervals",
+        "Conservative capture/application/hold bounds and uncertainty",
+        "Current and target session, desired versus acknowledged epoch and barrier IDs",
+        "Exact source/config/estimate/context identity",
+        "Uncleared critical latches and role assumptions"
+      ],
+      "unknown_consequence": "Dependent permissive operation denied. UNKNOWN authoritative continuation or rest/hold knowledge invokes the mandatory fault path; reset cannot erase it.",
+      "s0_scenarios": [
+        "V07",
+        "V15",
+        "V19"
+      ],
+      "invariant_ids": [
+        "A01",
+        "A02",
+        "A03",
+        "A04",
+        "A05",
+        "A06",
+        "A07",
+        "A08",
+        "A09",
+        "A10",
+        "A11",
+        "A12",
+        "A13",
+        "A14",
+        "A15",
+        "A16",
+        "A17",
+        "A18"
+      ],
+      "unresolved_domains": [
+        "D_NOMINAL",
+        "D_PACKET",
+        "D_RECOVERY",
+        "D_DECEL",
+        "D_STOP"
+      ],
+      "oracle_source_edges": [
+        {
+          "source_state": "NORMAL",
+          "positive_case_id": "T05-NORMAL-POSITIVE",
+          "rejection_case_id": "T05-NORMAL-REJECTION",
+          "boundary_case_id": "T05-NORMAL-BOUNDARY"
+        },
+        {
+          "source_state": "WARNING",
+          "positive_case_id": "T05-WARNING-POSITIVE",
+          "rejection_case_id": "T05-WARNING-REJECTION",
+          "boundary_case_id": "T05-WARNING-BOUNDARY"
+        },
+        {
+          "source_state": "RECOVERY",
+          "positive_case_id": "T05-RECOVERY-POSITIVE",
+          "rejection_case_id": "T05-RECOVERY-REJECTION",
+          "boundary_case_id": "T05-RECOVERY-BOUNDARY"
+        }
+      ],
+      "disabled_interaction": "Even a positive synthetic policy assertion is rejected TRANSITION_DISABLED. No output permission or physical response; active unsupported state without continuation takes enabled T09 and retains source/latch history.",
+      "boundary_oracle_refs": {
+        "time": [
+          "E01-LEASE-END",
+          "E02-HOLD-AGE",
+          "E14-CLOCK-STRADDLE"
+        ],
+        "uncertainty_and_quality": [
+          "E07-INVALID-MAP",
+          "E08-UNKNOWN-CLOCK",
+          "V05-A-uncertainty"
+        ],
+        "session_epoch": [
+          "E03-PRIOR-SESSION",
+          "V07-A-explicit-reauthorization"
+        ],
+        "latches_restart": [
+          "E09-MISSING-SNAPSHOT",
+          "V19-A-latch-restart-reentry"
+        ],
+        "source_edge_specific": [
+          "T05-NORMAL-BOUNDARY",
+          "T05-WARNING-BOUNDARY",
+          "T05-RECOVERY-BOUNDARY"
+        ]
+      }
+    },
+    {
+      "transition_id": "T06",
+      "from_states": [
+        "DISARMED",
+        "NORMAL",
+        "WARNING",
+        "RECOVERY",
+        "DECELERATING"
+      ],
+      "to_state": "STOP_REQUESTED",
+      "proposed_s1a_status": "ENABLED",
+      "current_implemented": false,
+      "authority_effects_if_enabled": {
+        "grant_capability": false,
+        "renew": false,
+        "revoke": true,
+        "transfer": false
+      },
+      "positive_guard": "A registry-admissible EMERGENCY/stop demand in any original S0 source state is unconditional on availability of recovery/stop evidence. Latch demand, revoke affected logical grants, then T09 because stop activation T07 is disabled.",
+      "original_s0_predicate": "Emergency demand, recovery not preferable/available, or intervention boundary requires stopping.",
+      "synthetic_evidence_policy": "Required named policy/context/estimate/session/interval records must be explicit SYNTHETIC_ASSUMPTION; no absent field or UNKNOWN is turned into SATISFIED.",
+      "rejection_fail_closed": "Deny operation with ordered reason; create/renew/transfer zero permissions. Preserve admissible current authority only; if current continuation is unavailable perform enabled T09, or T14 from STOPPED_LATCHED.",
+      "boundaries": [
+        "Half-open packet/policy/permission/evidence intervals",
+        "Conservative capture/application/hold bounds and uncertainty",
+        "Current and target session, desired versus acknowledged epoch and barrier IDs",
+        "Exact source/config/estimate/context identity",
+        "Uncleared critical latches and role assumptions"
+      ],
+      "unknown_consequence": "Dependent permissive operation denied. UNKNOWN authoritative continuation or rest/hold knowledge invokes the mandatory fault path; reset cannot erase it.",
+      "s0_scenarios": [
+        "V01",
+        "V07",
+        "V15",
+        "V19"
+      ],
+      "invariant_ids": [
+        "A01",
+        "A02",
+        "A03",
+        "A04",
+        "A05",
+        "A06",
+        "A07",
+        "A08",
+        "A09",
+        "A10",
+        "A11",
+        "A12",
+        "A13",
+        "A14",
+        "A15",
+        "A16",
+        "A17",
+        "A18"
+      ],
+      "unresolved_domains": [
+        "D_NOMINAL",
+        "D_PACKET",
+        "D_RECOVERY",
+        "D_DECEL",
+        "D_STOP"
+      ],
+      "oracle_source_edges": [
+        {
+          "source_state": "DISARMED",
+          "positive_case_id": "T06-DISARMED-POSITIVE",
+          "rejection_case_id": "T06-DISARMED-REJECTION",
+          "boundary_case_id": "T06-DISARMED-BOUNDARY"
+        },
+        {
+          "source_state": "NORMAL",
+          "positive_case_id": "T06-NORMAL-POSITIVE",
+          "rejection_case_id": "T06-NORMAL-REJECTION",
+          "boundary_case_id": "T06-NORMAL-BOUNDARY"
+        },
+        {
+          "source_state": "WARNING",
+          "positive_case_id": "T06-WARNING-POSITIVE",
+          "rejection_case_id": "T06-WARNING-REJECTION",
+          "boundary_case_id": "T06-WARNING-BOUNDARY"
+        },
+        {
+          "source_state": "RECOVERY",
+          "positive_case_id": "T06-RECOVERY-POSITIVE",
+          "rejection_case_id": "T06-RECOVERY-REJECTION",
+          "boundary_case_id": "T06-RECOVERY-BOUNDARY"
+        },
+        {
+          "source_state": "DECELERATING",
+          "positive_case_id": "T06-DECELERATING-POSITIVE",
+          "rejection_case_id": "T06-DECELERATING-REJECTION",
+          "boundary_case_id": "T06-DECELERATING-BOUNDARY"
+        }
+      ],
+      "boundary_oracle_refs": {
+        "time": [
+          "E01-LEASE-END",
+          "E02-HOLD-AGE",
+          "E14-CLOCK-STRADDLE"
+        ],
+        "uncertainty_and_quality": [
+          "E07-INVALID-MAP",
+          "E08-UNKNOWN-CLOCK",
+          "V05-A-uncertainty"
+        ],
+        "session_epoch": [
+          "E03-PRIOR-SESSION",
+          "V07-A-explicit-reauthorization"
+        ],
+        "latches_restart": [
+          "E09-MISSING-SNAPSHOT",
+          "V19-A-latch-restart-reentry"
+        ],
+        "source_edge_specific": [
+          "T06-DISARMED-BOUNDARY",
+          "T06-NORMAL-BOUNDARY",
+          "T06-WARNING-BOUNDARY",
+          "T06-RECOVERY-BOUNDARY",
+          "T06-DECELERATING-BOUNDARY"
+        ]
+      }
+    },
+    {
+      "transition_id": "T07",
+      "from_states": [
+        "STOP_REQUESTED"
+      ],
+      "to_state": "STOPPING",
+      "proposed_s1a_status": "DEFERRED/DISABLED",
+      "current_implemented": false,
+      "authority_effects_if_enabled": {
+        "grant_capability": true,
+        "renew": false,
+        "revoke": false,
+        "transfer": true
+      },
+      "positive_guard": "S0 STOP evidence and matching supplied activation acknowledgement would be needed; disabled in S1-A, so a request or supplied acknowledgement cannot activate a stop policy.",
+      "original_s0_predicate": "Validated D_STOP and independent endpoint acknowledgement for the correct session/epoch.",
+      "synthetic_evidence_policy": "Required named policy/context/estimate/session/interval records must be explicit SYNTHETIC_ASSUMPTION; no absent field or UNKNOWN is turned into SATISFIED.",
+      "rejection_fail_closed": "Deny operation with ordered reason; create/renew/transfer zero permissions. Preserve admissible current authority only; if current continuation is unavailable perform enabled T09, or T14 from STOPPED_LATCHED.",
+      "boundaries": [
+        "Half-open packet/policy/permission/evidence intervals",
+        "Conservative capture/application/hold bounds and uncertainty",
+        "Current and target session, desired versus acknowledged epoch and barrier IDs",
+        "Exact source/config/estimate/context identity",
+        "Uncleared critical latches and role assumptions"
+      ],
+      "unknown_consequence": "Dependent permissive operation denied. UNKNOWN authoritative continuation or rest/hold knowledge invokes the mandatory fault path; reset cannot erase it.",
+      "s0_scenarios": [
+        "V07",
+        "V15",
+        "V19"
+      ],
+      "invariant_ids": [
+        "A01",
+        "A02",
+        "A03",
+        "A04",
+        "A05",
+        "A06",
+        "A07",
+        "A08",
+        "A09",
+        "A10",
+        "A11",
+        "A12",
+        "A13",
+        "A14",
+        "A15",
+        "A16",
+        "A17",
+        "A18"
+      ],
+      "unresolved_domains": [
+        "D_NOMINAL",
+        "D_PACKET",
+        "D_RECOVERY",
+        "D_DECEL",
+        "D_STOP"
+      ],
+      "oracle_source_edges": [
+        {
+          "source_state": "STOP_REQUESTED",
+          "positive_case_id": "T07-STOP_REQUESTED-POSITIVE",
+          "rejection_case_id": "T07-STOP_REQUESTED-REJECTION",
+          "boundary_case_id": "T07-STOP_REQUESTED-BOUNDARY"
+        }
+      ],
+      "disabled_interaction": "Even a positive synthetic policy assertion is rejected TRANSITION_DISABLED. No output permission or physical response; active unsupported state without continuation takes enabled T09 and retains source/latch history.",
+      "boundary_oracle_refs": {
+        "time": [
+          "E01-LEASE-END",
+          "E02-HOLD-AGE",
+          "E14-CLOCK-STRADDLE"
+        ],
+        "uncertainty_and_quality": [
+          "E07-INVALID-MAP",
+          "E08-UNKNOWN-CLOCK",
+          "V05-A-uncertainty"
+        ],
+        "session_epoch": [
+          "E03-PRIOR-SESSION",
+          "V07-A-explicit-reauthorization"
+        ],
+        "latches_restart": [
+          "E09-MISSING-SNAPSHOT",
+          "V19-A-latch-restart-reentry"
+        ],
+        "source_edge_specific": [
+          "T07-STOP_REQUESTED-BOUNDARY"
+        ]
+      }
+    },
+    {
+      "transition_id": "T08",
+      "from_states": [
+        "STOPPING"
+      ],
+      "to_state": "STOPPED_LATCHED",
+      "proposed_s1a_status": "DEFERRED/DISABLED",
+      "current_implemented": false,
+      "authority_effects_if_enabled": {
+        "grant_capability": false,
+        "renew": false,
+        "revoke": true,
+        "transfer": false
+      },
+      "positive_guard": "S0 STOPPING plus independent REST_HOLD and no unresolved application knowledge would be needed; disabled in S1-A. T11 remains the separately tested logical rest-evidence route from NO_VALID_POLICY.",
+      "original_s0_predicate": "Validated rest and hold confirmed; no unresolved actuation/communication ambiguity.",
+      "synthetic_evidence_policy": "Required named policy/context/estimate/session/interval records must be explicit SYNTHETIC_ASSUMPTION; no absent field or UNKNOWN is turned into SATISFIED.",
+      "rejection_fail_closed": "Deny operation with ordered reason; create/renew/transfer zero permissions. Preserve admissible current authority only; if current continuation is unavailable perform enabled T09, or T14 from STOPPED_LATCHED.",
+      "boundaries": [
+        "Half-open packet/policy/permission/evidence intervals",
+        "Conservative capture/application/hold bounds and uncertainty",
+        "Current and target session, desired versus acknowledged epoch and barrier IDs",
+        "Exact source/config/estimate/context identity",
+        "Uncleared critical latches and role assumptions"
+      ],
+      "unknown_consequence": "Dependent permissive operation denied. UNKNOWN authoritative continuation or rest/hold knowledge invokes the mandatory fault path; reset cannot erase it.",
+      "s0_scenarios": [
+        "V15",
+        "V19"
+      ],
+      "invariant_ids": [
+        "A01",
+        "A02",
+        "A03",
+        "A04",
+        "A05",
+        "A06",
+        "A07",
+        "A08",
+        "A09",
+        "A10",
+        "A11",
+        "A12",
+        "A13",
+        "A14",
+        "A15",
+        "A16",
+        "A17",
+        "A18"
+      ],
+      "unresolved_domains": [
+        "D_NOMINAL",
+        "D_PACKET",
+        "D_RECOVERY",
+        "D_DECEL",
+        "D_STOP"
+      ],
+      "oracle_source_edges": [
+        {
+          "source_state": "STOPPING",
+          "positive_case_id": "T08-STOPPING-POSITIVE",
+          "rejection_case_id": "T08-STOPPING-REJECTION",
+          "boundary_case_id": "T08-STOPPING-BOUNDARY"
+        }
+      ],
+      "disabled_interaction": "Even a positive synthetic policy assertion is rejected TRANSITION_DISABLED. No output permission or physical response; active unsupported state without continuation takes enabled T09 and retains source/latch history.",
+      "boundary_oracle_refs": {
+        "time": [
+          "E01-LEASE-END",
+          "E02-HOLD-AGE",
+          "E14-CLOCK-STRADDLE"
+        ],
+        "uncertainty_and_quality": [
+          "E07-INVALID-MAP",
+          "E08-UNKNOWN-CLOCK",
+          "V05-A-uncertainty"
+        ],
+        "session_epoch": [
+          "E03-PRIOR-SESSION",
+          "V07-A-explicit-reauthorization"
+        ],
+        "latches_restart": [
+          "E09-MISSING-SNAPSHOT",
+          "V19-A-latch-restart-reentry"
+        ],
+        "source_edge_specific": [
+          "T08-STOPPING-BOUNDARY"
+        ]
+      }
+    },
+    {
+      "transition_id": "T09",
+      "from_states": [
+        "DISARMED",
+        "NORMAL",
+        "WARNING",
+        "RECOVERY",
+        "DECELERATING",
+        "STOP_REQUESTED",
+        "STOPPING"
+      ],
+      "to_state": "NO_VALID_POLICY",
+      "proposed_s1a_status": "ENABLED",
+      "current_implemented": false,
+      "authority_effects_if_enabled": {
+        "grant_capability": false,
+        "renew": false,
+        "revoke": true,
+        "transfer": false
+      },
+      "positive_guard": "Critical authoritative estimate/clock/health/identity/permission knowledge is invalid or no admissible bounded continuation remains, and no enabled eligible response exists. Mere unarmed DISARMED startup without a critical fault is not itself a no-policy fault. UNKNOWN mandatory knowledge triggers denial, never a fabricated domain.",
+      "original_s0_predicate": "No eligible policy exists, critical uncertainty is unbounded, or response/ack bounds violated.",
+      "synthetic_evidence_policy": "Required named policy/context/estimate/session/interval records must be explicit SYNTHETIC_ASSUMPTION; no absent field or UNKNOWN is turned into SATISFIED.",
+      "rejection_fail_closed": "Deny operation with ordered reason; create/renew/transfer zero permissions. Preserve admissible current authority only; if current continuation is unavailable perform enabled T09, or T14 from STOPPED_LATCHED.",
+      "boundaries": [
+        "Half-open packet/policy/permission/evidence intervals",
+        "Conservative capture/application/hold bounds and uncertainty",
+        "Current and target session, desired versus acknowledged epoch and barrier IDs",
+        "Exact source/config/estimate/context identity",
+        "Uncleared critical latches and role assumptions"
+      ],
+      "unknown_consequence": "Dependent permissive operation denied. UNKNOWN authoritative continuation or rest/hold knowledge invokes the mandatory fault path; reset cannot erase it.",
+      "s0_scenarios": [
+        "V01",
+        "V05",
+        "V06",
+        "V07",
+        "V15",
+        "V19"
+      ],
+      "invariant_ids": [
+        "A01",
+        "A02",
+        "A03",
+        "A04",
+        "A05",
+        "A06",
+        "A07",
+        "A08",
+        "A09",
+        "A10",
+        "A11",
+        "A12",
+        "A13",
+        "A14",
+        "A15",
+        "A16",
+        "A17",
+        "A18"
+      ],
+      "unresolved_domains": [
+        "D_NOMINAL",
+        "D_PACKET",
+        "D_RECOVERY",
+        "D_DECEL",
+        "D_STOP"
+      ],
+      "oracle_source_edges": [
+        {
+          "source_state": "DISARMED",
+          "positive_case_id": "T09-DISARMED-POSITIVE",
+          "rejection_case_id": "T09-DISARMED-REJECTION",
+          "boundary_case_id": "T09-DISARMED-BOUNDARY"
+        },
+        {
+          "source_state": "NORMAL",
+          "positive_case_id": "T09-NORMAL-POSITIVE",
+          "rejection_case_id": "T09-NORMAL-REJECTION",
+          "boundary_case_id": "T09-NORMAL-BOUNDARY"
+        },
+        {
+          "source_state": "WARNING",
+          "positive_case_id": "T09-WARNING-POSITIVE",
+          "rejection_case_id": "T09-WARNING-REJECTION",
+          "boundary_case_id": "T09-WARNING-BOUNDARY"
+        },
+        {
+          "source_state": "RECOVERY",
+          "positive_case_id": "T09-RECOVERY-POSITIVE",
+          "rejection_case_id": "T09-RECOVERY-REJECTION",
+          "boundary_case_id": "T09-RECOVERY-BOUNDARY"
+        },
+        {
+          "source_state": "DECELERATING",
+          "positive_case_id": "T09-DECELERATING-POSITIVE",
+          "rejection_case_id": "T09-DECELERATING-REJECTION",
+          "boundary_case_id": "T09-DECELERATING-BOUNDARY"
+        },
+        {
+          "source_state": "STOP_REQUESTED",
+          "positive_case_id": "T09-STOP_REQUESTED-POSITIVE",
+          "rejection_case_id": "T09-STOP_REQUESTED-REJECTION",
+          "boundary_case_id": "T09-STOP_REQUESTED-BOUNDARY"
+        },
+        {
+          "source_state": "STOPPING",
+          "positive_case_id": "T09-STOPPING-POSITIVE",
+          "rejection_case_id": "T09-STOPPING-REJECTION",
+          "boundary_case_id": "T09-STOPPING-BOUNDARY"
+        }
+      ],
+      "boundary_oracle_refs": {
+        "time": [
+          "E01-LEASE-END",
+          "E02-HOLD-AGE",
+          "E14-CLOCK-STRADDLE"
+        ],
+        "uncertainty_and_quality": [
+          "E07-INVALID-MAP",
+          "E08-UNKNOWN-CLOCK",
+          "V05-A-uncertainty"
+        ],
+        "session_epoch": [
+          "E03-PRIOR-SESSION",
+          "V07-A-explicit-reauthorization"
+        ],
+        "latches_restart": [
+          "E09-MISSING-SNAPSHOT",
+          "V19-A-latch-restart-reentry"
+        ],
+        "source_edge_specific": [
+          "T09-DISARMED-BOUNDARY",
+          "T09-NORMAL-BOUNDARY",
+          "T09-WARNING-BOUNDARY",
+          "T09-RECOVERY-BOUNDARY",
+          "T09-DECELERATING-BOUNDARY",
+          "T09-STOP_REQUESTED-BOUNDARY",
+          "T09-STOPPING-BOUNDARY"
+        ]
+      }
+    },
+    {
+      "transition_id": "T10",
+      "from_states": [
+        "NO_VALID_POLICY"
+      ],
+      "to_state": "STOPPING",
+      "proposed_s1a_status": "DEFERRED/DISABLED",
+      "current_implemented": false,
+      "authority_effects_if_enabled": {
+        "grant_capability": true,
+        "renew": false,
+        "revoke": false,
+        "transfer": true
+      },
+      "positive_guard": "S0 STOP evidence plus independently supplied activation acknowledgement would be needed from NO_VALID_POLICY; disabled, so unavailable braking cannot escape the latch.",
+      "original_s0_predicate": "Independently validated emergency response is now available, domain and endpoint acknowledgement confirmed.",
+      "synthetic_evidence_policy": "Required named policy/context/estimate/session/interval records must be explicit SYNTHETIC_ASSUMPTION; no absent field or UNKNOWN is turned into SATISFIED.",
+      "rejection_fail_closed": "Deny operation with ordered reason; create/renew/transfer zero permissions. Preserve admissible current authority only; if current continuation is unavailable perform enabled T09, or T14 from STOPPED_LATCHED.",
+      "boundaries": [
+        "Half-open packet/policy/permission/evidence intervals",
+        "Conservative capture/application/hold bounds and uncertainty",
+        "Current and target session, desired versus acknowledged epoch and barrier IDs",
+        "Exact source/config/estimate/context identity",
+        "Uncleared critical latches and role assumptions"
+      ],
+      "unknown_consequence": "Dependent permissive operation denied. UNKNOWN authoritative continuation or rest/hold knowledge invokes the mandatory fault path; reset cannot erase it.",
+      "s0_scenarios": [
+        "V15",
+        "V19"
+      ],
+      "invariant_ids": [
+        "A01",
+        "A02",
+        "A03",
+        "A04",
+        "A05",
+        "A06",
+        "A07",
+        "A08",
+        "A09",
+        "A10",
+        "A11",
+        "A12",
+        "A13",
+        "A14",
+        "A15",
+        "A16",
+        "A17",
+        "A18"
+      ],
+      "unresolved_domains": [
+        "D_NOMINAL",
+        "D_PACKET",
+        "D_RECOVERY",
+        "D_DECEL",
+        "D_STOP"
+      ],
+      "oracle_source_edges": [
+        {
+          "source_state": "NO_VALID_POLICY",
+          "positive_case_id": "T10-NO_VALID_POLICY-POSITIVE",
+          "rejection_case_id": "T10-NO_VALID_POLICY-REJECTION",
+          "boundary_case_id": "T10-NO_VALID_POLICY-BOUNDARY"
+        }
+      ],
+      "disabled_interaction": "Even a positive synthetic policy assertion is rejected TRANSITION_DISABLED. No output permission or physical response; active unsupported state without continuation takes enabled T09 and retains source/latch history.",
+      "boundary_oracle_refs": {
+        "time": [
+          "E01-LEASE-END",
+          "E02-HOLD-AGE",
+          "E14-CLOCK-STRADDLE"
+        ],
+        "uncertainty_and_quality": [
+          "E07-INVALID-MAP",
+          "E08-UNKNOWN-CLOCK",
+          "V05-A-uncertainty"
+        ],
+        "session_epoch": [
+          "E03-PRIOR-SESSION",
+          "V07-A-explicit-reauthorization"
+        ],
+        "latches_restart": [
+          "E09-MISSING-SNAPSHOT",
+          "V19-A-latch-restart-reentry"
+        ],
+        "source_edge_specific": [
+          "T10-NO_VALID_POLICY-BOUNDARY"
+        ]
+      }
+    },
+    {
+      "transition_id": "T11",
+      "from_states": [
+        "NO_VALID_POLICY"
+      ],
+      "to_state": "STOPPED_LATCHED",
+      "proposed_s1a_status": "ENABLED",
+      "current_implemented": false,
+      "authority_effects_if_enabled": {
+        "grant_capability": false,
+        "renew": false,
+        "revoke": false,
+        "transfer": false
+      },
+      "positive_guard": "From NO_VALID_POLICY, independent supplied SYNTHETIC_ASSUMPTION REST_HOLD evidence is SATISFIED in current frame/map/context and [from,until), with a current zero-rest toy estimate and holding assertion. Unknown past application stays unknown; no permission is granted and latches remain uncleared.",
+      "original_s0_predicate": "Independent valid rest/hold evidence obtained even if stop action history is incomplete.",
+      "synthetic_evidence_policy": "Required named policy/context/estimate/session/interval records must be explicit SYNTHETIC_ASSUMPTION; no absent field or UNKNOWN is turned into SATISFIED.",
+      "rejection_fail_closed": "Deny operation with ordered reason; create/renew/transfer zero permissions. Preserve admissible current authority only; if current continuation is unavailable perform enabled T09, or T14 from STOPPED_LATCHED.",
+      "boundaries": [
+        "Half-open packet/policy/permission/evidence intervals",
+        "Conservative capture/application/hold bounds and uncertainty",
+        "Current and target session, desired versus acknowledged epoch and barrier IDs",
+        "Exact source/config/estimate/context identity",
+        "Uncleared critical latches and role assumptions"
+      ],
+      "unknown_consequence": "Dependent permissive operation denied. UNKNOWN authoritative continuation or rest/hold knowledge invokes the mandatory fault path; reset cannot erase it.",
+      "s0_scenarios": [
+        "V19"
+      ],
+      "invariant_ids": [
+        "A01",
+        "A02",
+        "A03",
+        "A04",
+        "A05",
+        "A06",
+        "A07",
+        "A08",
+        "A09",
+        "A10",
+        "A11",
+        "A12",
+        "A13",
+        "A14",
+        "A15",
+        "A16",
+        "A17",
+        "A18"
+      ],
+      "unresolved_domains": [
+        "D_NOMINAL",
+        "D_PACKET"
+      ],
+      "oracle_source_edges": [
+        {
+          "source_state": "NO_VALID_POLICY",
+          "positive_case_id": "T11-NO_VALID_POLICY-POSITIVE",
+          "rejection_case_id": "T11-NO_VALID_POLICY-REJECTION",
+          "boundary_case_id": "T11-NO_VALID_POLICY-BOUNDARY"
+        }
+      ],
+      "boundary_oracle_refs": {
+        "time": [
+          "E01-LEASE-END",
+          "E02-HOLD-AGE",
+          "E14-CLOCK-STRADDLE"
+        ],
+        "uncertainty_and_quality": [
+          "E07-INVALID-MAP",
+          "E08-UNKNOWN-CLOCK",
+          "V05-A-uncertainty"
+        ],
+        "session_epoch": [
+          "E03-PRIOR-SESSION",
+          "V07-A-explicit-reauthorization"
+        ],
+        "latches_restart": [
+          "E09-MISSING-SNAPSHOT",
+          "V19-A-latch-restart-reentry"
+        ],
+        "source_edge_specific": [
+          "T11-NO_VALID_POLICY-BOUNDARY"
+        ]
+      }
+    },
+    {
+      "transition_id": "T12",
+      "from_states": [
+        "RECOVERY",
+        "DECELERATING"
+      ],
+      "to_state": "WARNING",
+      "proposed_s1a_status": "DEFERRED/DISABLED",
+      "current_implemented": false,
+      "authority_effects_if_enabled": {
+        "grant_capability": true,
+        "renew": true,
+        "revoke": true,
+        "transfer": true
+      },
+      "positive_guard": "S0 terminal recovery/transfer, nominal renewal, reviewed reentry/dwell evidence and epoch barrier would be needed; disabled in S1-A. No RECOVERY/DECELERATING-to-WARNING shortcut can activate nominal permission.",
+      "original_s0_predicate": "Verified terminal recovery set reached, new nominal authority accepted, transition feasible and separately approved reentry policy permits.",
+      "synthetic_evidence_policy": "Required named policy/context/estimate/session/interval records must be explicit SYNTHETIC_ASSUMPTION; no absent field or UNKNOWN is turned into SATISFIED.",
+      "rejection_fail_closed": "Deny operation with ordered reason; create/renew/transfer zero permissions. Preserve admissible current authority only; if current continuation is unavailable perform enabled T09, or T14 from STOPPED_LATCHED.",
+      "boundaries": [
+        "Half-open packet/policy/permission/evidence intervals",
+        "Conservative capture/application/hold bounds and uncertainty",
+        "Current and target session, desired versus acknowledged epoch and barrier IDs",
+        "Exact source/config/estimate/context identity",
+        "Uncleared critical latches and role assumptions"
+      ],
+      "unknown_consequence": "Dependent permissive operation denied. UNKNOWN authoritative continuation or rest/hold knowledge invokes the mandatory fault path; reset cannot erase it.",
+      "s0_scenarios": [
+        "V15",
+        "V19"
+      ],
+      "invariant_ids": [
+        "A01",
+        "A02",
+        "A03",
+        "A04",
+        "A05",
+        "A06",
+        "A07",
+        "A08",
+        "A09",
+        "A10",
+        "A11",
+        "A12",
+        "A13",
+        "A14",
+        "A15",
+        "A16",
+        "A17",
+        "A18"
+      ],
+      "unresolved_domains": [
+        "D_NOMINAL",
+        "D_PACKET",
+        "D_RECOVERY",
+        "D_DECEL",
+        "D_STOP"
+      ],
+      "oracle_source_edges": [
+        {
+          "source_state": "RECOVERY",
+          "positive_case_id": "T12-RECOVERY-POSITIVE",
+          "rejection_case_id": "T12-RECOVERY-REJECTION",
+          "boundary_case_id": "T12-RECOVERY-BOUNDARY"
+        },
+        {
+          "source_state": "DECELERATING",
+          "positive_case_id": "T12-DECELERATING-POSITIVE",
+          "rejection_case_id": "T12-DECELERATING-REJECTION",
+          "boundary_case_id": "T12-DECELERATING-BOUNDARY"
+        }
+      ],
+      "disabled_interaction": "Even a positive synthetic policy assertion is rejected TRANSITION_DISABLED. No output permission or physical response; active unsupported state without continuation takes enabled T09 and retains source/latch history.",
+      "boundary_oracle_refs": {
+        "time": [
+          "E01-LEASE-END",
+          "E02-HOLD-AGE",
+          "E14-CLOCK-STRADDLE"
+        ],
+        "uncertainty_and_quality": [
+          "E07-INVALID-MAP",
+          "E08-UNKNOWN-CLOCK",
+          "V05-A-uncertainty"
+        ],
+        "session_epoch": [
+          "E03-PRIOR-SESSION",
+          "V07-A-explicit-reauthorization"
+        ],
+        "latches_restart": [
+          "E09-MISSING-SNAPSHOT",
+          "V19-A-latch-restart-reentry"
+        ],
+        "source_edge_specific": [
+          "T12-RECOVERY-BOUNDARY",
+          "T12-DECELERATING-BOUNDARY"
+        ]
+      }
+    },
+    {
+      "transition_id": "T13",
+      "from_states": [
+        "STOPPED_LATCHED"
+      ],
+      "to_state": "DISARMED",
+      "proposed_s1a_status": "ENABLED",
+      "current_implemented": false,
+      "authority_effects_if_enabled": {
+        "grant_capability": false,
+        "renew": false,
+        "revoke": true,
+        "transfer": false
+      },
+      "positive_guard": "From STOPPED_LATCHED, explicit authorized RESET_REQUEST; initiating causes cleared by named current evidence; REST_HOLD/HEALTH valid; new control session differs from old; exact supplied target-session/epoch queue-clear barrier acknowledgement matches. Preserve latch/command history; mark only reviewed latch clearance and enter DISARMED.",
+      "original_s0_predicate": "Authorized reset, faults cleared, inspected actuator/state/clock health and invalidated old session/queue.",
+      "synthetic_evidence_policy": "Required named policy/context/estimate/session/interval records must be explicit SYNTHETIC_ASSUMPTION; no absent field or UNKNOWN is turned into SATISFIED.",
+      "rejection_fail_closed": "Deny operation with ordered reason; create/renew/transfer zero permissions. Preserve admissible current authority only; if current continuation is unavailable perform enabled T09, or T14 from STOPPED_LATCHED.",
+      "boundaries": [
+        "Half-open packet/policy/permission/evidence intervals",
+        "Conservative capture/application/hold bounds and uncertainty",
+        "Current and target session, desired versus acknowledged epoch and barrier IDs",
+        "Exact source/config/estimate/context identity",
+        "Uncleared critical latches and role assumptions"
+      ],
+      "unknown_consequence": "Dependent permissive operation denied. UNKNOWN authoritative continuation or rest/hold knowledge invokes the mandatory fault path; reset cannot erase it.",
+      "s0_scenarios": [
+        "V19"
+      ],
+      "invariant_ids": [
+        "A01",
+        "A02",
+        "A03",
+        "A04",
+        "A05",
+        "A06",
+        "A07",
+        "A08",
+        "A09",
+        "A10",
+        "A11",
+        "A12",
+        "A13",
+        "A14",
+        "A15",
+        "A16",
+        "A17",
+        "A18"
+      ],
+      "unresolved_domains": [
+        "D_NOMINAL",
+        "D_PACKET"
+      ],
+      "oracle_source_edges": [
+        {
+          "source_state": "STOPPED_LATCHED",
+          "positive_case_id": "T13-STOPPED_LATCHED-POSITIVE",
+          "rejection_case_id": "T13-STOPPED_LATCHED-REJECTION",
+          "boundary_case_id": "T13-STOPPED_LATCHED-BOUNDARY"
+        }
+      ],
+      "boundary_oracle_refs": {
+        "time": [
+          "E01-LEASE-END",
+          "E02-HOLD-AGE",
+          "E14-CLOCK-STRADDLE"
+        ],
+        "uncertainty_and_quality": [
+          "E07-INVALID-MAP",
+          "E08-UNKNOWN-CLOCK",
+          "V05-A-uncertainty"
+        ],
+        "session_epoch": [
+          "E03-PRIOR-SESSION",
+          "V07-A-explicit-reauthorization"
+        ],
+        "latches_restart": [
+          "E09-MISSING-SNAPSHOT",
+          "V19-A-latch-restart-reentry"
+        ],
+        "source_edge_specific": [
+          "T13-STOPPED_LATCHED-BOUNDARY"
+        ]
+      }
+    },
+    {
+      "transition_id": "T14",
+      "from_states": [
+        "STOPPED_LATCHED"
+      ],
+      "to_state": "NO_VALID_POLICY",
+      "proposed_s1a_status": "ENABLED",
+      "current_implemented": false,
+      "authority_effects_if_enabled": {
+        "grant_capability": false,
+        "renew": false,
+        "revoke": true,
+        "transfer": false
+      },
+      "positive_guard": "From STOPPED_LATCHED, authoritative rest/hold confidence becomes UNKNOWN/VIOLATED/expired or unexpected motion/power/actuator fault is asserted; revoke rest claim/grants, preserve history, bump current-session epoch once and enter NO_VALID_POLICY.",
+      "original_s0_predicate": "Rest/holding confidence lost or unexpected motion/power/actuator fault.",
+      "synthetic_evidence_policy": "Required named policy/context/estimate/session/interval records must be explicit SYNTHETIC_ASSUMPTION; no absent field or UNKNOWN is turned into SATISFIED.",
+      "rejection_fail_closed": "Deny operation with ordered reason; create/renew/transfer zero permissions. Preserve admissible current authority only; if current continuation is unavailable perform enabled T09, or T14 from STOPPED_LATCHED.",
+      "boundaries": [
+        "Half-open packet/policy/permission/evidence intervals",
+        "Conservative capture/application/hold bounds and uncertainty",
+        "Current and target session, desired versus acknowledged epoch and barrier IDs",
+        "Exact source/config/estimate/context identity",
+        "Uncleared critical latches and role assumptions"
+      ],
+      "unknown_consequence": "Dependent permissive operation denied. UNKNOWN authoritative continuation or rest/hold knowledge invokes the mandatory fault path; reset cannot erase it.",
+      "s0_scenarios": [
+        "V19",
+        "V15"
+      ],
+      "invariant_ids": [
+        "A01",
+        "A02",
+        "A03",
+        "A04",
+        "A05",
+        "A06",
+        "A07",
+        "A08",
+        "A09",
+        "A10",
+        "A11",
+        "A12",
+        "A13",
+        "A14",
+        "A15",
+        "A16",
+        "A17",
+        "A18"
+      ],
+      "unresolved_domains": [
+        "D_NOMINAL",
+        "D_PACKET",
+        "D_RECOVERY",
+        "D_DECEL",
+        "D_STOP"
+      ],
+      "oracle_source_edges": [
+        {
+          "source_state": "STOPPED_LATCHED",
+          "positive_case_id": "T14-STOPPED_LATCHED-POSITIVE",
+          "rejection_case_id": "T14-STOPPED_LATCHED-REJECTION",
+          "boundary_case_id": "T14-STOPPED_LATCHED-BOUNDARY"
+        }
+      ],
+      "boundary_oracle_refs": {
+        "time": [
+          "E01-LEASE-END",
+          "E02-HOLD-AGE",
+          "E14-CLOCK-STRADDLE"
+        ],
+        "uncertainty_and_quality": [
+          "E07-INVALID-MAP",
+          "E08-UNKNOWN-CLOCK",
+          "V05-A-uncertainty"
+        ],
+        "session_epoch": [
+          "E03-PRIOR-SESSION",
+          "V07-A-explicit-reauthorization"
+        ],
+        "latches_restart": [
+          "E09-MISSING-SNAPSHOT",
+          "V19-A-latch-restart-reentry"
+        ],
+        "source_edge_specific": [
+          "T14-STOPPED_LATCHED-BOUNDARY"
+        ]
+      }
+    }
+  ],
+  "core_fault_policy": "T06/T09/T14, expiry/revocation and latch handling cannot be disabled to reduce coverage. Retained RECOVERY/DECELERATING/STOPPING snapshots admit no permissive work; mandatory T06/T09 escape remains available.",
+  "coverage_policy": "Every enabled ID has positive, rejection and relevant boundary oracles; every S0 source edge has explicit mappings. False no-policy predicates in disabled active-policy states are unreachable: test wrong-source T14 dispatch/permission denial rather than fabricate a valid recovery/stop policy.",
+  "authority_effect_note": "Capability/renewal means eligibility for a separately checked phase4 permission. No state transition alone creates a command Permission or extends an old lease.",
+  "physical_requirements": "All D_RECOVERY/D_DECEL/D_STOP and HW01-HW10 remain unresolved. SATISFIED toy assertions do not establish a physical domain.",
+  "activation_gate": "Approved matrix/PC amendments plus independent oracle review, explicit code/test assignment and passing focused checks on exact delivered revision. Any unverified permissive branch remains unavailable."
+}

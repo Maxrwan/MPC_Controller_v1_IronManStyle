@@ -1,0 +1,815 @@
+{
+  "schema": "apex-s1a/reducer-api-contract/0.1.0",
+  "artifact_label": "PROPOSED — NOT IMPLEMENTED",
+  "status": "WORK_COMPLETE_PENDING_REVIEW",
+  "implemented": false,
+  "execution": "NOT_EXECUTED",
+  "accepted_s1_revision": "9f0cbe0f0f48a1e2a62716957bbab79fe2b5b1b4",
+  "python_api_version": "apex-s1a-python/0.1.0",
+  "proposed_wire_version": "apex-s1-authority/0.2.0",
+  "accepted_interface_binding": {
+    "path": "docs/safety/s1/interface_contract.json",
+    "revision": "9f0cbe0f0f48a1e2a62716957bbab79fe2b5b1b4",
+    "sha256": "dfc8b10d0fb33bc7eee030cb8563101486991693617e7fd93b828c7447ac4dbe",
+    "url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/9f0cbe0f0f48a1e2a62716957bbab79fe2b5b1b4/docs/safety/s1/interface_contract.json"
+  },
+  "amendment_requirement": "Constructor entries retain accepted fields; the exact extensions below are mandatory proposed deltas, not an already accepted interface.",
+  "scalar_types": {
+    "Tick": "int >=0 excluding bool; no float scheduler time",
+    "State": "Literal['DISARMED', 'NORMAL', 'WARNING', 'RECOVERY', 'DECELERATING', 'STOP_REQUESTED', 'STOPPING', 'STOPPED_LATCHED', 'NO_VALID_POLICY']",
+    "TickPeriod": "TickPeriod(*, numerator: int, denominator: int) -> TickPeriod; both positive, reduce canonically using fractions.Fraction",
+    "SIValue": "finite Decimal, never float/NaN/Infinity; fixed state/input tuple lengths retain SI and canonical order",
+    "FrozenJsonObject": "tuple[tuple[str, FrozenJsonValue], ...], unique keys sorted by UTF-8; no mutable dict/list escapes validated boundaries",
+    "Unknown": "None plus nonempty UnknownField(field: str, reason: str); never substitute a zero or a safe outcome"
+  },
+  "accepted_record_constructors": [
+    {
+      "name": "ClockStamp",
+      "module": "records.py",
+      "constructor": "ClockStamp(*, clock_id: str, clock_session_id: str, source_tick: int, mapping_id: str | None, control_tick_bounds: tuple[int, int] | None, unknown_reason: str | None) -> ClockStamp",
+      "fields": {
+        "clock_id": "str",
+        "clock_session_id": "str",
+        "source_tick": "int",
+        "mapping_id": "str | None",
+        "control_tick_bounds": "tuple[int, int] | None",
+        "unknown_reason": "str | None"
+      },
+      "accepted_fields_binding": "docs/safety/s1/interface_contract.json#/schemas/$defs/ClockStamp",
+      "record_policy": "frozen=True, slots=True, kw_only=True; recursively immutable tuples; no implicit defaults."
+    },
+    {
+      "name": "Uncertainty",
+      "module": "records.py",
+      "constructor": "Uncertainty(*, representation: Literal['BOUNDED_SET', 'COVARIANCE', 'UNKNOWN'], bounded_set_ref: str | None, covariance_si: tuple[tuple[Decimal, Decimal, Decimal, Decimal, Decimal, Decimal], tuple[Decimal, Decimal, Decimal, Decimal, Decimal, Decimal], tuple[Decimal, Decimal, Decimal, Decimal, Decimal, Decimal], tuple[Decimal, Decimal, Decimal, Decimal, Decimal, Decimal], tuple[Decimal, Decimal, Decimal, Decimal, Decimal, Decimal], tuple[Decimal, Decimal, Decimal, Decimal, Decimal, Decimal]] | None, interpretation_ref: str | None, reason: str | None) -> Uncertainty",
+      "fields": {
+        "representation": "Literal['BOUNDED_SET', 'COVARIANCE', 'UNKNOWN']",
+        "bounded_set_ref": "str | None",
+        "covariance_si": "tuple[tuple[Decimal, Decimal, Decimal, Decimal, Decimal, Decimal], tuple[Decimal, Decimal, Decimal, Decimal, Decimal, Decimal], tuple[Decimal, Decimal, Decimal, Decimal, Decimal, Decimal], tuple[Decimal, Decimal, Decimal, Decimal, Decimal, Decimal], tuple[Decimal, Decimal, Decimal, Decimal, Decimal, Decimal], tuple[Decimal, Decimal, Decimal, Decimal, Decimal, Decimal]] | None",
+        "interpretation_ref": "str | None",
+        "reason": "str | None"
+      },
+      "accepted_fields_binding": "docs/safety/s1/interface_contract.json#/schemas/$defs/Uncertainty",
+      "record_policy": "frozen=True, slots=True, kw_only=True; recursively immutable tuples; no implicit defaults."
+    },
+    {
+      "name": "Estimate",
+      "module": "records.py",
+      "constructor": "Estimate(*, estimate_id: str, state_si: tuple[Decimal, Decimal, Decimal, Decimal, Decimal, Decimal] | None, capture: ClockStamp | None, publication: ClockStamp | None, receipt: ClockStamp, quality: Literal['VALID', 'DEGRADED', 'INVALID', 'MISSING'], frame_id: str | None, map_id: str | None, uncertainty: Uncertainty, health_evidence_id: str | None, publication_latency_tick_bounds: tuple[int, int] | None, unknown_reason: str | None) -> Estimate",
+      "fields": {
+        "estimate_id": "str",
+        "state_si": "tuple[Decimal, Decimal, Decimal, Decimal, Decimal, Decimal] | None",
+        "capture": "ClockStamp | None",
+        "publication": "ClockStamp | None",
+        "receipt": "ClockStamp",
+        "quality": "Literal['VALID', 'DEGRADED', 'INVALID', 'MISSING']",
+        "frame_id": "str | None",
+        "map_id": "str | None",
+        "uncertainty": "Uncertainty",
+        "health_evidence_id": "str | None",
+        "publication_latency_tick_bounds": "tuple[int, int] | None",
+        "unknown_reason": "str | None"
+      },
+      "accepted_fields_binding": "docs/safety/s1/interface_contract.json#/schemas/$defs/Estimate",
+      "record_policy": "frozen=True, slots=True, kw_only=True; recursively immutable tuples; no implicit defaults."
+    },
+    {
+      "name": "Evidence",
+      "module": "records.py",
+      "constructor": "Evidence(*, evidence_id: str, kind: Literal['NOMINAL', 'CONTINUATION', 'RECOVERY', 'DECELERATION', 'STOP', 'REST_HOLD', 'HEALTH', 'REENTRY', 'QUEUE_BARRIER', 'FEASIBILITY', 'ACCEPTANCE', 'ACTUATOR_CONSTRAINTS', 'SELECTION', 'TRANSFER', 'FAULT_CLEARANCE', 'REAUTHORIZATION'], result: Literal['SATISFIED', 'VIOLATED', 'UNKNOWN'], claim_scope: Literal['SYNTHETIC_ASSUMPTION'], policy_id: str | None, estimate_id: str | None, source_packet_id: str | None, context_revision: str, domain_ids: tuple[Literal['D_NOMINAL', 'D_PACKET', 'D_RECOVERY', 'D_DECEL', 'D_STOP'], ...], assumption_set_ref: str, terminal_or_transfer_ref: str | None, uncertainty_interpretation_ref: str | None, fault_model_ref: str | None, valid_from_tick: int, valid_until_tick: int, reason: str) -> Evidence",
+      "fields": {
+        "evidence_id": "str",
+        "kind": "Literal['NOMINAL', 'CONTINUATION', 'RECOVERY', 'DECELERATION', 'STOP', 'REST_HOLD', 'HEALTH', 'REENTRY', 'QUEUE_BARRIER', 'FEASIBILITY', 'ACCEPTANCE', 'ACTUATOR_CONSTRAINTS', 'SELECTION', 'TRANSFER', 'FAULT_CLEARANCE', 'REAUTHORIZATION']",
+        "result": "Literal['SATISFIED', 'VIOLATED', 'UNKNOWN']",
+        "claim_scope": "Literal['SYNTHETIC_ASSUMPTION']",
+        "policy_id": "str | None",
+        "estimate_id": "str | None",
+        "source_packet_id": "str | None",
+        "context_revision": "str",
+        "domain_ids": "tuple[Literal['D_NOMINAL', 'D_PACKET', 'D_RECOVERY', 'D_DECEL', 'D_STOP'], ...]",
+        "assumption_set_ref": "str",
+        "terminal_or_transfer_ref": "str | None",
+        "uncertainty_interpretation_ref": "str | None",
+        "fault_model_ref": "str | None",
+        "valid_from_tick": "int",
+        "valid_until_tick": "int",
+        "reason": "str"
+      },
+      "accepted_fields_binding": "docs/safety/s1/interface_contract.json#/schemas/$defs/Evidence",
+      "record_policy": "frozen=True, slots=True, kw_only=True; recursively immutable tuples; no implicit defaults."
+    },
+    {
+      "name": "Packet",
+      "module": "records.py",
+      "constructor": "Packet(*, packet_id: str, source_controller_id: str, source_manifest_sha256: str, timestamps_s: tuple[Decimal, ...], timestamp_control_tick_bounds: tuple[tuple[int, int], ...], clock_mapping_id: str, ready_tick: int, accepted_tick: int, acceptance_id: str, acceptance_evidence_id: str, authority_start_tick: int, authority_end_tick: int, handoff_mode: Literal['VARIABLE', 'FIXED'], fixed_deadline_tick: int | None, frame_id: str, map_id: str) -> Packet",
+      "fields": {
+        "packet_id": "str",
+        "source_controller_id": "str",
+        "source_manifest_sha256": "str",
+        "timestamps_s": "tuple[Decimal, ...]",
+        "timestamp_control_tick_bounds": "tuple[tuple[int, int], ...]",
+        "clock_mapping_id": "str",
+        "ready_tick": "int",
+        "accepted_tick": "int",
+        "acceptance_id": "str",
+        "acceptance_evidence_id": "str",
+        "authority_start_tick": "int",
+        "authority_end_tick": "int",
+        "handoff_mode": "Literal['VARIABLE', 'FIXED']",
+        "fixed_deadline_tick": "int | None",
+        "frame_id": "str",
+        "map_id": "str"
+      },
+      "accepted_fields_binding": "docs/safety/s1/interface_contract.json#/schemas/$defs/Packet",
+      "record_policy": "frozen=True, slots=True, kw_only=True; recursively immutable tuples; no implicit defaults."
+    },
+    {
+      "name": "Command",
+      "module": "records.py",
+      "constructor": "Command(*, command_id: str, session_id: str, producer_id: str, sequence: int, payload_sha256: str, payload_utf8: str, source_controller_id: str, source_manifest_sha256: str, source_packet_id: str | None, nonpacket_reason: str | None, policy_id: str, mode: Literal['NOMINAL', 'RECOVERY', 'DECELERATION', 'STOP'], generation_epoch: int, generated: ClockStamp, estimate_id: str, requested_application_tick: int, latest_application_tick: int, held_until_tick: int, requested_control_si: tuple[Decimal, Decimal]) -> Command",
+      "fields": {
+        "command_id": "str",
+        "session_id": "str",
+        "producer_id": "str",
+        "sequence": "int",
+        "payload_sha256": "str",
+        "payload_utf8": "str",
+        "source_controller_id": "str",
+        "source_manifest_sha256": "str",
+        "source_packet_id": "str | None",
+        "nonpacket_reason": "str | None",
+        "policy_id": "str",
+        "mode": "Literal['NOMINAL', 'RECOVERY', 'DECELERATION', 'STOP']",
+        "generation_epoch": "int",
+        "generated": "ClockStamp",
+        "estimate_id": "str",
+        "requested_application_tick": "int",
+        "latest_application_tick": "int",
+        "held_until_tick": "int",
+        "requested_control_si": "tuple[Decimal, Decimal]"
+      },
+      "accepted_fields_binding": "docs/safety/s1/interface_contract.json#/schemas/$defs/Command",
+      "record_policy": "frozen=True, slots=True, kw_only=True; recursively immutable tuples; no implicit defaults."
+    },
+    {
+      "name": "Permission",
+      "module": "records.py",
+      "constructor": "Permission(*, permission_id: str, command_id: str, session_id: str, source_controller_id: str, source_packet_id: str | None, policy_id: str, generation_epoch: int, permission_epoch: int, valid_from_tick: int, valid_until_tick: int, latest_application_tick: int, held_until_tick: int, estimate_id: str, evidence_ids: tuple[str, ...], reauthorization_of_permission_id: str | None, transition_id: str | None, claim_scope: Literal['LOGICAL_PERMISSION_ONLY']) -> Permission",
+      "fields": {
+        "permission_id": "str",
+        "command_id": "str",
+        "session_id": "str",
+        "source_controller_id": "str",
+        "source_packet_id": "str | None",
+        "policy_id": "str",
+        "generation_epoch": "int",
+        "permission_epoch": "int",
+        "valid_from_tick": "int",
+        "valid_until_tick": "int",
+        "latest_application_tick": "int",
+        "held_until_tick": "int",
+        "estimate_id": "str",
+        "evidence_ids": "tuple[str, ...]",
+        "reauthorization_of_permission_id": "str | None",
+        "transition_id": "str | None",
+        "claim_scope": "Literal['LOGICAL_PERMISSION_ONLY']"
+      },
+      "accepted_fields_binding": "docs/safety/s1/interface_contract.json#/schemas/$defs/Permission",
+      "record_policy": "frozen=True, slots=True, kw_only=True; recursively immutable tuples; no implicit defaults."
+    },
+    {
+      "name": "Cancellation",
+      "module": "records.py",
+      "constructor": "Cancellation(*, cancellation_id: str, session_id: str, command_id: str, permission_id: str, requested_tick: int, endpoint_delivery_tick: int | None, ack_id: str | None, outcome: Literal['REQUESTED', 'SIMULATED_CANCELLED', 'TOO_LATE', 'UNKNOWN'], unknown_reason: str | None) -> Cancellation",
+      "fields": {
+        "cancellation_id": "str",
+        "session_id": "str",
+        "command_id": "str",
+        "permission_id": "str",
+        "requested_tick": "int",
+        "endpoint_delivery_tick": "int | None",
+        "ack_id": "str | None",
+        "outcome": "Literal['REQUESTED', 'SIMULATED_CANCELLED', 'TOO_LATE', 'UNKNOWN']",
+        "unknown_reason": "str | None"
+      },
+      "accepted_fields_binding": "docs/safety/s1/interface_contract.json#/schemas/$defs/Cancellation",
+      "record_policy": "frozen=True, slots=True, kw_only=True; recursively immutable tuples; no implicit defaults."
+    },
+    {
+      "name": "EndpointObservation",
+      "module": "records.py",
+      "constructor": "EndpointObservation(*, ack_id: str, endpoint_session_id: str, command_id: str, permission_id: str, installed_epoch: int, endpoint_sequence: int, receipt_tick: int, decision_tick: int, commit_tick: int | None, ack_observed_tick: int | None, outcome: Literal['SIMULATED_APPLIED', 'SIMULATED_CANCELLED', 'REJECTED', 'TOO_LATE', 'UNKNOWN'], applied_control_si: tuple[Decimal, Decimal] | None, held_until_tick: int | None, physical_feedback: None, reason: str) -> EndpointObservation",
+      "fields": {
+        "ack_id": "str",
+        "endpoint_session_id": "str",
+        "command_id": "str",
+        "permission_id": "str",
+        "installed_epoch": "int",
+        "endpoint_sequence": "int",
+        "receipt_tick": "int",
+        "decision_tick": "int",
+        "commit_tick": "int | None",
+        "ack_observed_tick": "int | None",
+        "outcome": "Literal['SIMULATED_APPLIED', 'SIMULATED_CANCELLED', 'REJECTED', 'TOO_LATE', 'UNKNOWN']",
+        "applied_control_si": "tuple[Decimal, Decimal] | None",
+        "held_until_tick": "int | None",
+        "physical_feedback": "None",
+        "reason": "str"
+      },
+      "accepted_fields_binding": "docs/safety/s1/interface_contract.json#/schemas/$defs/EndpointObservation",
+      "record_policy": "frozen=True, slots=True, kw_only=True; recursively immutable tuples; no implicit defaults."
+    },
+    {
+      "name": "BarrierAck",
+      "module": "records.py",
+      "constructor": "BarrierAck(*, ack_id: str, barrier_id: str, endpoint_session_id: str, control_session_id: str, installed_epoch: int, endpoint_delivery_tick: int, installation_tick: int | None, ack_observed_tick: int, queue_cleared: bool, outcome: Literal['INSTALLED', 'REJECTED', 'UNKNOWN'], unknown_reason: str | None) -> BarrierAck",
+      "fields": {
+        "ack_id": "str",
+        "barrier_id": "str",
+        "endpoint_session_id": "str",
+        "control_session_id": "str",
+        "installed_epoch": "int",
+        "endpoint_delivery_tick": "int",
+        "installation_tick": "int | None",
+        "ack_observed_tick": "int",
+        "queue_cleared": "bool",
+        "outcome": "Literal['INSTALLED', 'REJECTED', 'UNKNOWN']",
+        "unknown_reason": "str | None"
+      },
+      "accepted_fields_binding": "docs/safety/s1/interface_contract.json#/schemas/$defs/BarrierAck",
+      "record_policy": "frozen=True, slots=True, kw_only=True; recursively immutable tuples; no implicit defaults."
+    },
+    {
+      "name": "FaultLatch",
+      "module": "records.py",
+      "constructor": "FaultLatch(*, fault_id: str, reason: str, first_detected_tick: int, last_observed_tick: int, latched: Literal[True], cleared_tick: int | None, clearance_evidence_ids: tuple[str, ...]) -> FaultLatch",
+      "fields": {
+        "fault_id": "str",
+        "reason": "str",
+        "first_detected_tick": "int",
+        "last_observed_tick": "int",
+        "latched": "Literal[True]",
+        "cleared_tick": "int | None",
+        "clearance_evidence_ids": "tuple[str, ...]"
+      },
+      "accepted_fields_binding": "docs/safety/s1/interface_contract.json#/schemas/$defs/FaultLatch",
+      "record_policy": "frozen=True, slots=True, kw_only=True; recursively immutable tuples; no implicit defaults."
+    },
+    {
+      "name": "Snapshot",
+      "module": "records.py",
+      "constructor": "Snapshot(*, schema_version: Literal['apex-s1-authority/0.1.0'], state: Literal['DISARMED', 'NORMAL', 'WARNING', 'RECOVERY', 'DECELERATING', 'STOP_REQUESTED', 'STOPPING', 'STOPPED_LATCHED', 'NO_VALID_POLICY'], control_session_id: str, current_tick: int, desired_epoch: int, endpoint_installed_epoch: int | None, endpoint_session_id: str | None, epoch_barrier_ack_id: str | None, active_packet: Packet | None, active_policy_id: str | None, proposals: tuple[Proposal, ...], accepted_packet_history: tuple[Packet, ...], cancellation_history: tuple[Cancellation, ...], acknowledgement_ledger: tuple[EndpointObservation, ...], barrier_acknowledgement_ledger: tuple[BarrierAck, ...], latest_estimate: Estimate | None, evidence: tuple[Evidence, ...], permissions: tuple[Permission, ...], revoked_permission_ids: tuple[str, ...], commands: tuple[Command, ...], pending_command_ids: tuple[str, ...], held_observation: EndpointObservation | None, held_unknown_reason: str | None, fault_latches: tuple[FaultLatch, ...], sequence_floors: tuple[FrozenJsonObject, ...], command_ledger: tuple[FrozenJsonObject, ...], event_high_watermarks: tuple[FrozenJsonObject, ...], last_trace_sequence: int, persistence_revision: str) -> Snapshot",
+      "fields": {
+        "schema_version": "Literal['apex-s1-authority/0.1.0']",
+        "state": "Literal['DISARMED', 'NORMAL', 'WARNING', 'RECOVERY', 'DECELERATING', 'STOP_REQUESTED', 'STOPPING', 'STOPPED_LATCHED', 'NO_VALID_POLICY']",
+        "control_session_id": "str",
+        "current_tick": "int",
+        "desired_epoch": "int",
+        "endpoint_installed_epoch": "int | None",
+        "endpoint_session_id": "str | None",
+        "epoch_barrier_ack_id": "str | None",
+        "active_packet": "Packet | None",
+        "active_policy_id": "str | None",
+        "proposals": "tuple[Proposal, ...]",
+        "accepted_packet_history": "tuple[Packet, ...]",
+        "cancellation_history": "tuple[Cancellation, ...]",
+        "acknowledgement_ledger": "tuple[EndpointObservation, ...]",
+        "barrier_acknowledgement_ledger": "tuple[BarrierAck, ...]",
+        "latest_estimate": "Estimate | None",
+        "evidence": "tuple[Evidence, ...]",
+        "permissions": "tuple[Permission, ...]",
+        "revoked_permission_ids": "tuple[str, ...]",
+        "commands": "tuple[Command, ...]",
+        "pending_command_ids": "tuple[str, ...]",
+        "held_observation": "EndpointObservation | None",
+        "held_unknown_reason": "str | None",
+        "fault_latches": "tuple[FaultLatch, ...]",
+        "sequence_floors": "tuple[FrozenJsonObject, ...]",
+        "command_ledger": "tuple[FrozenJsonObject, ...]",
+        "event_high_watermarks": "tuple[FrozenJsonObject, ...]",
+        "last_trace_sequence": "int",
+        "persistence_revision": "str"
+      },
+      "accepted_fields_binding": "docs/safety/s1/interface_contract.json#/schemas/$defs/Snapshot",
+      "record_policy": "frozen=True, slots=True, kw_only=True; recursively immutable tuples; no implicit defaults."
+    },
+    {
+      "name": "Proposal",
+      "module": "records.py",
+      "constructor": "Proposal(*, packet_id: str, source_controller_id: str, source_manifest_sha256: str, timestamps_s: tuple[Decimal, ...], timestamp_control_tick_bounds: tuple[tuple[int, int], ...], clock_mapping_id: str, ready_tick: int, authority_start_tick: int, authority_end_tick: int, handoff_mode: Literal['VARIABLE', 'FIXED'], fixed_deadline_tick: int | None, frame_id: str, map_id: str, feasibility_evidence_id: str) -> Proposal",
+      "fields": {
+        "packet_id": "str",
+        "source_controller_id": "str",
+        "source_manifest_sha256": "str",
+        "timestamps_s": "tuple[Decimal, ...]",
+        "timestamp_control_tick_bounds": "tuple[tuple[int, int], ...]",
+        "clock_mapping_id": "str",
+        "ready_tick": "int",
+        "authority_start_tick": "int",
+        "authority_end_tick": "int",
+        "handoff_mode": "Literal['VARIABLE', 'FIXED']",
+        "fixed_deadline_tick": "int | None",
+        "frame_id": "str",
+        "map_id": "str",
+        "feasibility_evidence_id": "str"
+      },
+      "accepted_fields_binding": "docs/safety/s1/interface_contract.json#/schemas/$defs/Proposal",
+      "record_policy": "frozen=True, slots=True, kw_only=True; recursively immutable tuples; no implicit defaults."
+    },
+    {
+      "name": "Trace",
+      "module": "records.py",
+      "constructor": "Trace(*, trace_sequence: int, at_tick: int, phase: int, microstep: int, event_id: str, causal_parent_ids: tuple[str, ...], stage: Literal['S1-A', 'S1-B', 'S1-C'], state_before: str, state_after: str, transition_path: tuple[str, ...], control_session_id: str, desired_epoch: int, endpoint_installed_epoch: int | None, source_packet_id: str | None, command_id: str | None, permission_id: str | None, estimate_id: str | None, evidence_ids: tuple[str, ...], decision: Literal['ACCEPT', 'REJECT', 'REPLAY_PRIOR_OUTCOME', 'REVOKE', 'REQUEST_CANCEL', 'OBSERVE', 'NO_CHANGE'], reason_codes: tuple[str, ...], granted_permission_ids: tuple[str, ...], revoked_permission_ids: tuple[str, ...], fault_ids: tuple[str, ...], endpoint_observation: EndpointObservation | None, unknowns: tuple[FrozenJsonObject, ...], physical_actuation_claim: Literal['NOT_OBSERVED_NOT_VALIDATED']) -> Trace",
+      "fields": {
+        "trace_sequence": "int",
+        "at_tick": "int",
+        "phase": "int",
+        "microstep": "int",
+        "event_id": "str",
+        "causal_parent_ids": "tuple[str, ...]",
+        "stage": "Literal['S1-A', 'S1-B', 'S1-C']",
+        "state_before": "str",
+        "state_after": "str",
+        "transition_path": "tuple[str, ...]",
+        "control_session_id": "str",
+        "desired_epoch": "int",
+        "endpoint_installed_epoch": "int | None",
+        "source_packet_id": "str | None",
+        "command_id": "str | None",
+        "permission_id": "str | None",
+        "estimate_id": "str | None",
+        "evidence_ids": "tuple[str, ...]",
+        "decision": "Literal['ACCEPT', 'REJECT', 'REPLAY_PRIOR_OUTCOME', 'REVOKE', 'REQUEST_CANCEL', 'OBSERVE', 'NO_CHANGE']",
+        "reason_codes": "tuple[str, ...]",
+        "granted_permission_ids": "tuple[str, ...]",
+        "revoked_permission_ids": "tuple[str, ...]",
+        "fault_ids": "tuple[str, ...]",
+        "endpoint_observation": "EndpointObservation | None",
+        "unknowns": "tuple[FrozenJsonObject, ...]",
+        "physical_actuation_claim": "Literal['NOT_OBSERVED_NOT_VALIDATED']"
+      },
+      "accepted_fields_binding": "docs/safety/s1/interface_contract.json#/schemas/$defs/Trace",
+      "record_policy": "frozen=True, slots=True, kw_only=True; recursively immutable tuples; no implicit defaults."
+    },
+    {
+      "name": "Configuration",
+      "module": "records.py",
+      "constructor": "Configuration(*, configuration_id: str, tick_period_s: TickPeriod, control_clock_id: str, expected_frame_id: str, expected_map_id: str, nominal_max_estimate_age_ticks: int | None, continuation_policy_id: str | None, warning_policy_evidence_id: str | None, reentry_policy_evidence_id: str | None, claim_scope: Literal['SYNTHETIC_PROTOCOL_ONLY']) -> Configuration",
+      "fields": {
+        "configuration_id": "str",
+        "tick_period_s": "TickPeriod",
+        "control_clock_id": "str",
+        "expected_frame_id": "str",
+        "expected_map_id": "str",
+        "nominal_max_estimate_age_ticks": "int | None",
+        "continuation_policy_id": "str | None",
+        "warning_policy_evidence_id": "str | None",
+        "reentry_policy_evidence_id": "str | None",
+        "claim_scope": "Literal['SYNTHETIC_PROTOCOL_ONLY']"
+      },
+      "accepted_fields_binding": "docs/safety/s1/interface_contract.json#/schemas/$defs/Configuration",
+      "record_policy": "frozen=True, slots=True, kw_only=True; recursively immutable tuples; no implicit defaults."
+    }
+  ],
+  "proposed_extensions": [
+    {
+      "record": "Configuration",
+      "add": {
+        "enabled_transition_ids": "tuple[str, ...] exactly reviewed eight IDs",
+        "clock_mappings": "tuple[ClockMapping, ...]",
+        "authorization_registry": "tuple[AuthorizationAssumption, ...]",
+        "contract_version": "str exactly proposed 0.2.0",
+        "activation_matrix_sha256": "str 64 hex"
+      }
+    },
+    {
+      "record": "Snapshot",
+      "add": {
+        "event_ledger": "tuple[EventLedgerEntry, ...]",
+        "operation_ledger": "tuple[OperationLedgerEntry, ...]",
+        "configuration_sha256": "str 64 hex",
+        "prepared_barrier_ids": "tuple[str, ...]",
+        "trace_ledger": "tuple[Trace, ...]"
+      }
+    },
+    {
+      "record": "REAUTHORIZE payload",
+      "add": {
+        "requested_permission_interval_ticks": "tuple[Tick, Tick]"
+      }
+    },
+    {
+      "record": "Event kind",
+      "add": {
+        "WARNING_CLEAR": "WarningClear(*, evidence_ids: tuple[str, ...], acceptance_id: str) -> WarningClear"
+      }
+    },
+    {
+      "record": "Trace",
+      "add": {
+        "decision_scope": "Literal[HOST_LOGICAL, SUPPLIED_OBSERVATION]",
+        "denial": "Denial | None",
+        "transition_records": "tuple[TransitionRecord, ...]"
+      }
+    },
+    {
+      "record": "Snapshot.schema_version",
+      "replace": "apex-s1-authority/0.2.0 only after PC amendments approved"
+    },
+    {
+      "record": "PERMISSION_REQUEST payload",
+      "replace": "PermissionRequest(command: Command, permission_id: str, supersedes_permission_id: str | None)"
+    }
+  ],
+  "new_record_constructors": [
+    "ClockMapping(*, mapping_id: str, source_clock_id: str, source_session_id: str, control_clock_id: str, scale_numerator: int, scale_denominator: int, offset_numerator: int, offset_denominator: int, lower_error_ticks: Tick, upper_error_ticks: Tick, valid_source_interval: tuple[Tick, Tick], assumption_ref: str) -> ClockMapping",
+    "AuthorizationAssumption(*, authorization_id: str, producer_id: str, allowed_event_kinds: tuple[str, ...], valid_interval: tuple[Tick, Tick], claim_scope: Literal[SYNTHETIC_ASSUMPTION]) -> AuthorizationAssumption",
+    "EventLedgerEntry(*, event_id: str, producer_id: str, producer_sequence: Tick, payload_sha256: str, original_trace_sequences: tuple[int, ...]) -> EventLedgerEntry",
+    "OperationLedgerEntry(*, operation_kind: str, operation_key: tuple[str, ...], content_sha256: str, result_trace_sequences: tuple[int, ...], permission_ids: tuple[str, ...]) -> OperationLedgerEntry",
+    "TransitionRecord(*, transition_id: str, state_before: State, state_after: State, at_tick: Tick, cause_event_id: str, evidence_ids: tuple[str, ...], revoked_permission_ids: tuple[str, ...], fault_ids: tuple[str, ...]) -> TransitionRecord",
+    "Denial(*, reason_codes: tuple[str, ...], denied_operation_key: tuple[str, ...], unknowns: tuple[UnknownField, ...], permission_created: Literal[False]) -> Denial",
+    "SealedBatch(*, batch_id: str, at_tick: Tick, events: tuple[Event, ...], configuration_sha256: str, initial_snapshot_sha256: str, canonical_input_sha256: str) -> SealedBatch",
+    "InputError(*, path: str, reason_code: str, message: str) -> InputError",
+    "DecodeSuccess[T](*, value: T) -> DecodeSuccess[T]",
+    "DecodeFailure(*, errors: tuple[InputError, ...]) -> DecodeFailure",
+    "Reduction(*, snapshot: Snapshot, traces: tuple[Trace, ...], transitions: tuple[TransitionRecord, ...], denials: tuple[Denial, ...], cancellation_intents: tuple[Cancellation, ...], endpoint_outputs: tuple[()] = ()) -> Reduction",
+    "RestartInput(*, event_id: str, at_tick: Tick, boot_control_session_id: str, endpoint_session_id: str, saved_snapshot_sha256: str | None) -> RestartInput",
+    "BoundSuccess(*, lower: Tick, upper: Tick, mapping_id: str) -> BoundSuccess",
+    "BoundFailure(*, reason_codes: tuple[str, ...], unknowns: tuple[UnknownField, ...]) -> BoundFailure",
+    "Event(*, event_id: str, producer_id: str, producer_sequence: Tick, at_tick: Tick, causal_parent_ids: tuple[str, ...], kind: str, payload: EventPayload) -> Event",
+    "PermissionRequest(*, command: Command, permission_id: str, supersedes_permission_id: str | None) -> PermissionRequest",
+    "UnknownField(*, field: str, reason: str) -> UnknownField",
+    "SequenceFloor(*, producer_id: str, sequence: Tick) -> SequenceFloor",
+    "ProducerWatermark(*, producer_id: str, sequence: Tick) -> ProducerWatermark",
+    "CommandLedgerEntry(*, command_id: str, producer_id: str, sequence: Tick, payload_sha256: str, first_decision_id: str) -> CommandLedgerEntry"
+  ],
+  "functions": [
+    {
+      "module": "codec.py",
+      "signature": "decode_configuration(document: FrozenJsonObject) -> DecodeSuccess[Configuration] | DecodeFailure"
+    },
+    {
+      "module": "codec.py",
+      "signature": "decode_snapshot(document: FrozenJsonObject, *, configuration: Configuration) -> DecodeSuccess[Snapshot] | DecodeFailure"
+    },
+    {
+      "module": "codec.py",
+      "signature": "decode_event(document: FrozenJsonObject, *, configuration: Configuration) -> DecodeSuccess[Event] | DecodeFailure"
+    },
+    {
+      "module": "codec.py",
+      "signature": "encode_snapshot(snapshot: Snapshot) -> FrozenJsonObject"
+    },
+    {
+      "module": "time.py",
+      "signature": "map_stamp(configuration: Configuration, stamp: ClockStamp, *, at_tick: Tick) -> BoundSuccess | BoundFailure"
+    },
+    {
+      "module": "time.py",
+      "signature": "validate_interval(*, start: Tick, end: Tick, application_bounds: tuple[Tick, Tick], latest_application: Tick, hold_end: Tick) -> tuple[InputError, ...]"
+    },
+    {
+      "module": "ordering.py",
+      "signature": "seal_batch(configuration: Configuration, snapshot: Snapshot, *, batch_id: str, at_tick: Tick, events: tuple[Event, ...]) -> DecodeSuccess[SealedBatch] | DecodeFailure"
+    },
+    {
+      "module": "reducer.py",
+      "signature": "reduce_batch(configuration: Configuration, snapshot: Snapshot, batch: SealedBatch) -> Reduction"
+    },
+    {
+      "module": "reducer.py",
+      "signature": "restore_snapshot(configuration: Configuration, *, saved: Snapshot | DecodeFailure | None, integrity: Evidence | None, restart: RestartInput) -> Reduction"
+    },
+    {
+      "module": "reducer.py",
+      "signature": "reject_batch(configuration: Configuration, snapshot: Snapshot, *, batch_id: str, at_tick: Tick, errors: tuple[InputError, ...], known_critical_events: tuple[Event, ...]) -> Reduction"
+    }
+  ],
+  "validation_strategy": [
+    "Constructors are exact kw-only value objects; all named fields required except Reduction.endpoint_outputs fixed empty. Recursively freeze inputs and validate ranges, finite decimals, tuple lengths, uniqueness and reference closure.",
+    "Codec uses strict duplicate-key rejection, finite exact decimal parsing and explicit version selection. No arbitrary object deserialization, pickle, dynamic imports or inference from truthiness.",
+    "Configuration checks the fixed reviewed activation set, canonical clock mappings/authorization assumptions and immutable source/context binding.",
+    "seal_batch does not mutate Snapshot; reduce_batch rechecks its configuration/snapshot fingerprints and admission invariants to reject stale or forged SealedBatch inputs.",
+    "Malformed external records produce DecodeFailure/Denial, no default valid state or grant; invariant corruption of persisted Snapshot goes through restore_snapshot fail-closed path.",
+    "Equivalent valid initial records and event sequence produce byte-identical canonical outputs. No random IDs: trace identity is control_session_id/batch_id/event_id/phase/microstep/record_index with explicit integer fields.",
+    "Snapshot history is logical input/output, not filesystem or power durability. The reducer never creates a physical/synthetic endpoint application, acknowledgement or rest measurement.",
+    "PC10 reject_batch must be used for classified seal/record failures; no valid known critical observation can be discarded by a global early return."
+  ],
+  "permissible_imports": [
+    "__future__",
+    "dataclasses",
+    "decimal",
+    "enum",
+    "fractions",
+    "hashlib",
+    "json",
+    "typing"
+  ],
+  "forbidden_imports": [
+    "numpy",
+    "scipy",
+    "casadi",
+    "apex.control",
+    "apex.models",
+    "apex.simulation",
+    "time",
+    "datetime",
+    "threading",
+    "multiprocessing",
+    "asyncio",
+    "socket",
+    "requests",
+    "subprocess",
+    "os",
+    "random",
+    "uuid",
+    "pickle",
+    "any MCU/actuator API"
+  ],
+  "dependency_limit": "Python standard library only for runtime; pytest is already present for separately authorized future tests. No dependency or package-wide initialization change.",
+  "no_implementation_or_execution": true,
+  "event_payload_constructors": [
+    {
+      "kind": "ESTIMATE_OBSERVED",
+      "accepted_payload_type": "Estimate",
+      "constructor": null,
+      "override": "See explicit proposed_extensions for REAUTHORIZE/PERMISSION_REQUEST; WARNING_CLEAR is a proposed new kind.",
+      "final_proposed_constructor": "Estimate (exact immutable constructor specified in final_proposed_record_constructors)"
+    },
+    {
+      "kind": "EVIDENCE_OBSERVED",
+      "accepted_payload_type": "Evidence",
+      "constructor": null,
+      "override": "See explicit proposed_extensions for REAUTHORIZE/PERMISSION_REQUEST; WARNING_CLEAR is a proposed new kind.",
+      "final_proposed_constructor": "Evidence (exact immutable constructor specified in final_proposed_record_constructors)"
+    },
+    {
+      "kind": "PROPOSAL_READY",
+      "accepted_payload_type": "Proposal",
+      "constructor": null,
+      "override": "See explicit proposed_extensions for REAUTHORIZE/PERMISSION_REQUEST; WARNING_CLEAR is a proposed new kind.",
+      "final_proposed_constructor": "Proposal (exact immutable constructor specified in final_proposed_record_constructors)"
+    },
+    {
+      "kind": "AUTHORITY_ACCEPT",
+      "accepted_payload_type": "Packet",
+      "constructor": null,
+      "override": "See explicit proposed_extensions for REAUTHORIZE/PERMISSION_REQUEST; WARNING_CLEAR is a proposed new kind.",
+      "final_proposed_constructor": "Packet (exact immutable constructor specified in final_proposed_record_constructors)"
+    },
+    {
+      "kind": "COMMAND_SUBMIT",
+      "accepted_payload_type": "Command",
+      "constructor": null,
+      "override": "See explicit proposed_extensions for REAUTHORIZE/PERMISSION_REQUEST; WARNING_CLEAR is a proposed new kind.",
+      "final_proposed_constructor": "Command (exact immutable constructor specified in final_proposed_record_constructors)"
+    },
+    {
+      "kind": "PERMISSION_REQUEST",
+      "accepted_payload_type": "Command",
+      "constructor": null,
+      "override": "See explicit proposed_extensions for REAUTHORIZE/PERMISSION_REQUEST; WARNING_CLEAR is a proposed new kind.",
+      "final_proposed_constructor": "PermissionRequest(*, command: Command, permission_id: str, supersedes_permission_id: str | None) -> PermissionRequest"
+    },
+    {
+      "kind": "ENDPOINT_OBSERVATION",
+      "accepted_payload_type": "EndpointObservation",
+      "constructor": null,
+      "override": "See explicit proposed_extensions for REAUTHORIZE/PERMISSION_REQUEST; WARNING_CLEAR is a proposed new kind.",
+      "final_proposed_constructor": "EndpointObservation (exact immutable constructor specified in final_proposed_record_constructors)"
+    },
+    {
+      "kind": "BARRIER_ACK_OBSERVED",
+      "accepted_payload_type": "BarrierAck",
+      "constructor": null,
+      "override": "See explicit proposed_extensions for REAUTHORIZE/PERMISSION_REQUEST; WARNING_CLEAR is a proposed new kind.",
+      "final_proposed_constructor": "BarrierAck (exact immutable constructor specified in final_proposed_record_constructors)"
+    },
+    {
+      "kind": "COMMAND_DELIVER",
+      "accepted_payload_type": "Command",
+      "constructor": null,
+      "override": "See explicit proposed_extensions for REAUTHORIZE/PERMISSION_REQUEST; WARNING_CLEAR is a proposed new kind.",
+      "final_proposed_constructor": "Command (exact immutable constructor specified in final_proposed_record_constructors)"
+    },
+    {
+      "kind": "PERMISSION_DELIVER",
+      "accepted_payload_type": "Permission",
+      "constructor": null,
+      "override": "See explicit proposed_extensions for REAUTHORIZE/PERMISSION_REQUEST; WARNING_CLEAR is a proposed new kind.",
+      "final_proposed_constructor": "Permission (exact immutable constructor specified in final_proposed_record_constructors)"
+    },
+    {
+      "kind": "ENDPOINT_ESTIMATE_DELIVER",
+      "accepted_payload_type": "Estimate",
+      "constructor": null,
+      "override": "See explicit proposed_extensions for REAUTHORIZE/PERMISSION_REQUEST; WARNING_CLEAR is a proposed new kind.",
+      "final_proposed_constructor": "Estimate (exact immutable constructor specified in final_proposed_record_constructors)"
+    },
+    {
+      "kind": "ENDPOINT_EVIDENCE_DELIVER",
+      "accepted_payload_type": "Evidence",
+      "constructor": null,
+      "override": "See explicit proposed_extensions for REAUTHORIZE/PERMISSION_REQUEST; WARNING_CLEAR is a proposed new kind.",
+      "final_proposed_constructor": "Evidence (exact immutable constructor specified in final_proposed_record_constructors)"
+    },
+    {
+      "kind": "ADVANCE",
+      "accepted_payload_type": "AdvancePayload",
+      "constructor": "AdvancePayload(*, target_tick: int) -> AdvancePayload",
+      "override": "See explicit proposed_extensions for REAUTHORIZE/PERMISSION_REQUEST; WARNING_CLEAR is a proposed new kind.",
+      "final_proposed_constructor": "AdvancePayload(*, target_tick: int) -> AdvancePayload"
+    },
+    {
+      "kind": "EMERGENCY",
+      "accepted_payload_type": "EmergencyPayload",
+      "constructor": "EmergencyPayload(*, fault_id: str, reason: str) -> EmergencyPayload",
+      "override": "See explicit proposed_extensions for REAUTHORIZE/PERMISSION_REQUEST; WARNING_CLEAR is a proposed new kind.",
+      "final_proposed_constructor": "EmergencyPayload(*, fault_id: str, reason: str) -> EmergencyPayload"
+    },
+    {
+      "kind": "REVOKE_REQUEST",
+      "accepted_payload_type": "RevokeRequestPayload",
+      "constructor": "RevokeRequestPayload(*, new_epoch: int, reason: str) -> RevokeRequestPayload",
+      "override": "See explicit proposed_extensions for REAUTHORIZE/PERMISSION_REQUEST; WARNING_CLEAR is a proposed new kind.",
+      "final_proposed_constructor": "RevokeRequestPayload(*, new_epoch: int, reason: str) -> RevokeRequestPayload"
+    },
+    {
+      "kind": "EPOCH_INSTALL",
+      "accepted_payload_type": "EpochInstallPayload",
+      "constructor": "EpochInstallPayload(*, new_epoch: int, target_control_session_id: str, endpoint_session_id: str, barrier_id: str) -> EpochInstallPayload",
+      "override": "See explicit proposed_extensions for REAUTHORIZE/PERMISSION_REQUEST; WARNING_CLEAR is a proposed new kind.",
+      "final_proposed_constructor": "EpochInstallPayload(*, new_epoch: int, target_control_session_id: str, endpoint_session_id: str, barrier_id: str) -> EpochInstallPayload"
+    },
+    {
+      "kind": "CANCEL_REQUEST",
+      "accepted_payload_type": "Cancellation",
+      "constructor": null,
+      "override": "See explicit proposed_extensions for REAUTHORIZE/PERMISSION_REQUEST; WARNING_CLEAR is a proposed new kind.",
+      "final_proposed_constructor": "Cancellation (exact immutable constructor specified in final_proposed_record_constructors)"
+    },
+    {
+      "kind": "CANCEL_DELIVER",
+      "accepted_payload_type": "Cancellation",
+      "constructor": null,
+      "override": "See explicit proposed_extensions for REAUTHORIZE/PERMISSION_REQUEST; WARNING_CLEAR is a proposed new kind.",
+      "final_proposed_constructor": "Cancellation (exact immutable constructor specified in final_proposed_record_constructors)"
+    },
+    {
+      "kind": "ARM_REQUEST",
+      "accepted_payload_type": "ArmRequestPayload",
+      "constructor": "ArmRequestPayload(*, operator_authorization_id: str, evidence_ids: tuple[str, ...]) -> ArmRequestPayload",
+      "override": "See explicit proposed_extensions for REAUTHORIZE/PERMISSION_REQUEST; WARNING_CLEAR is a proposed new kind.",
+      "final_proposed_constructor": "ArmRequestPayload(*, operator_authorization_id: str, evidence_ids: tuple[str, ...]) -> ArmRequestPayload"
+    },
+    {
+      "kind": "RENEWAL_WARNING",
+      "accepted_payload_type": "RenewalWarningPayload",
+      "constructor": "RenewalWarningPayload(*, evidence_id: str) -> RenewalWarningPayload",
+      "override": "See explicit proposed_extensions for REAUTHORIZE/PERMISSION_REQUEST; WARNING_CLEAR is a proposed new kind.",
+      "final_proposed_constructor": "RenewalWarningPayload(*, evidence_id: str) -> RenewalWarningPayload"
+    },
+    {
+      "kind": "REENTRY_REQUEST",
+      "accepted_payload_type": "ReentryRequestPayload",
+      "constructor": "ReentryRequestPayload(*, evidence_ids: tuple[str, ...]) -> ReentryRequestPayload",
+      "override": "See explicit proposed_extensions for REAUTHORIZE/PERMISSION_REQUEST; WARNING_CLEAR is a proposed new kind.",
+      "final_proposed_constructor": "ReentryRequestPayload(*, evidence_ids: tuple[str, ...]) -> ReentryRequestPayload"
+    },
+    {
+      "kind": "RESET_REQUEST",
+      "accepted_payload_type": "ResetRequestPayload",
+      "constructor": "ResetRequestPayload(*, operator_authorization_id: str, new_session_id: str, queue_barrier_evidence_id: str, clearance_evidence_ids: tuple[str, ...]) -> ResetRequestPayload",
+      "override": "See explicit proposed_extensions for REAUTHORIZE/PERMISSION_REQUEST; WARNING_CLEAR is a proposed new kind.",
+      "final_proposed_constructor": "ResetRequestPayload(*, operator_authorization_id: str, new_session_id: str, queue_barrier_evidence_id: str, clearance_evidence_ids: tuple[str, ...]) -> ResetRequestPayload"
+    },
+    {
+      "kind": "POLICY_SELECT",
+      "accepted_payload_type": "PolicySelectPayload",
+      "constructor": "PolicySelectPayload(*, policy_id: str, evidence_ids: tuple[str, ...]) -> PolicySelectPayload",
+      "override": "See explicit proposed_extensions for REAUTHORIZE/PERMISSION_REQUEST; WARNING_CLEAR is a proposed new kind.",
+      "final_proposed_constructor": "PolicySelectPayload(*, policy_id: str, evidence_ids: tuple[str, ...]) -> PolicySelectPayload"
+    },
+    {
+      "kind": "APPLICATION_CHECK",
+      "accepted_payload_type": "ApplicationCheckPayload",
+      "constructor": "ApplicationCheckPayload(*, permission_id: str, command_id: str, application_tick_bounds: tuple[int, int], hold_end_tick: int) -> ApplicationCheckPayload",
+      "override": "See explicit proposed_extensions for REAUTHORIZE/PERMISSION_REQUEST; WARNING_CLEAR is a proposed new kind.",
+      "final_proposed_constructor": "ApplicationCheckPayload(*, permission_id: str, command_id: str, application_tick_bounds: tuple[int, int], hold_end_tick: int) -> ApplicationCheckPayload"
+    },
+    {
+      "kind": "ENDPOINT_COMMIT",
+      "accepted_payload_type": "EndpointCommitPayload",
+      "constructor": "EndpointCommitPayload(*, permission_id: str, command_id: str, application_tick_bounds: tuple[int, int], hold_end_tick: int) -> EndpointCommitPayload",
+      "override": "See explicit proposed_extensions for REAUTHORIZE/PERMISSION_REQUEST; WARNING_CLEAR is a proposed new kind.",
+      "final_proposed_constructor": "EndpointCommitPayload(*, permission_id: str, command_id: str, application_tick_bounds: tuple[int, int], hold_end_tick: int) -> EndpointCommitPayload"
+    },
+    {
+      "kind": "REAUTHORIZE",
+      "accepted_payload_type": "ReauthorizePayload",
+      "constructor": "ReauthorizePayload(*, command_id: str, prior_permission_id: str, new_permission_id: str, transition_id: str, evidence_ids: tuple[str, ...]) -> ReauthorizePayload",
+      "override": "See explicit proposed_extensions for REAUTHORIZE/PERMISSION_REQUEST; WARNING_CLEAR is a proposed new kind.",
+      "final_proposed_constructor": "ReauthorizePayload(*, command_id: str, prior_permission_id: str, new_permission_id: str, transition_id: str, evidence_ids: tuple[str, ...], requested_permission_interval_ticks: tuple[Tick, Tick]) -> ReauthorizePayload"
+    },
+    {
+      "kind": "RESTART",
+      "accepted_payload_type": "RestartPayload",
+      "constructor": "RestartPayload(*, snapshot_revision: str | None, endpoint_session_id: str, restored_latch_ids: tuple[str, ...], integrity_evidence_id: str | None) -> RestartPayload",
+      "override": "See explicit proposed_extensions for REAUTHORIZE/PERMISSION_REQUEST; WARNING_CLEAR is a proposed new kind.",
+      "final_proposed_constructor": "RestartPayload(*, snapshot_revision: str | None, endpoint_session_id: str, restored_latch_ids: tuple[str, ...], integrity_evidence_id: str | None) -> RestartPayload"
+    }
+  ],
+  "final_proposed_record_constructors": [
+    {
+      "name": "ClockStamp",
+      "module": "records.py",
+      "signature": "ClockStamp(*, clock_id: str, clock_session_id: str, source_tick: int, mapping_id: str | None, control_tick_bounds: tuple[int, int] | None, unknown_reason: str | None) -> ClockStamp",
+      "requires_review": "PC01-PC10 and proposed0.2.0; no code exists."
+    },
+    {
+      "name": "Uncertainty",
+      "module": "records.py",
+      "signature": "Uncertainty(*, representation: Literal['BOUNDED_SET', 'COVARIANCE', 'UNKNOWN'], bounded_set_ref: str | None, covariance_si: tuple[tuple[Decimal, Decimal, Decimal, Decimal, Decimal, Decimal], tuple[Decimal, Decimal, Decimal, Decimal, Decimal, Decimal], tuple[Decimal, Decimal, Decimal, Decimal, Decimal, Decimal], tuple[Decimal, Decimal, Decimal, Decimal, Decimal, Decimal], tuple[Decimal, Decimal, Decimal, Decimal, Decimal, Decimal], tuple[Decimal, Decimal, Decimal, Decimal, Decimal, Decimal]] | None, interpretation_ref: str | None, reason: str | None) -> Uncertainty",
+      "requires_review": "PC01-PC10 and proposed0.2.0; no code exists."
+    },
+    {
+      "name": "Estimate",
+      "module": "records.py",
+      "signature": "Estimate(*, estimate_id: str, state_si: tuple[Decimal, Decimal, Decimal, Decimal, Decimal, Decimal] | None, capture: ClockStamp | None, publication: ClockStamp | None, receipt: ClockStamp, quality: Literal['VALID', 'DEGRADED', 'INVALID', 'MISSING'], frame_id: str | None, map_id: str | None, uncertainty: Uncertainty, health_evidence_id: str | None, publication_latency_tick_bounds: tuple[int, int] | None, unknown_reason: str | None) -> Estimate",
+      "requires_review": "PC01-PC10 and proposed0.2.0; no code exists."
+    },
+    {
+      "name": "Evidence",
+      "module": "records.py",
+      "signature": "Evidence(*, evidence_id: str, kind: Literal['NOMINAL', 'CONTINUATION', 'RECOVERY', 'DECELERATION', 'STOP', 'REST_HOLD', 'HEALTH', 'REENTRY', 'QUEUE_BARRIER', 'FEASIBILITY', 'ACCEPTANCE', 'ACTUATOR_CONSTRAINTS', 'SELECTION', 'TRANSFER', 'FAULT_CLEARANCE', 'REAUTHORIZATION'], result: Literal['SATISFIED', 'VIOLATED', 'UNKNOWN'], claim_scope: Literal['SYNTHETIC_ASSUMPTION'], policy_id: str | None, estimate_id: str | None, source_packet_id: str | None, context_revision: str, domain_ids: tuple[Literal['D_NOMINAL', 'D_PACKET', 'D_RECOVERY', 'D_DECEL', 'D_STOP'], ...], assumption_set_ref: str, terminal_or_transfer_ref: str | None, uncertainty_interpretation_ref: str | None, fault_model_ref: str | None, valid_from_tick: int, valid_until_tick: int, reason: str) -> Evidence",
+      "requires_review": "PC01-PC10 and proposed0.2.0; no code exists."
+    },
+    {
+      "name": "Packet",
+      "module": "records.py",
+      "signature": "Packet(*, packet_id: str, source_controller_id: str, source_manifest_sha256: str, timestamps_s: tuple[Decimal, ...], timestamp_control_tick_bounds: tuple[tuple[int, int], ...], clock_mapping_id: str, ready_tick: int, accepted_tick: int, acceptance_id: str, acceptance_evidence_id: str, authority_start_tick: int, authority_end_tick: int, handoff_mode: Literal['VARIABLE', 'FIXED'], fixed_deadline_tick: int | None, frame_id: str, map_id: str) -> Packet",
+      "requires_review": "PC01-PC10 and proposed0.2.0; no code exists."
+    },
+    {
+      "name": "Command",
+      "module": "records.py",
+      "signature": "Command(*, command_id: str, session_id: str, producer_id: str, sequence: int, payload_sha256: str, payload_utf8: str, source_controller_id: str, source_manifest_sha256: str, source_packet_id: str | None, nonpacket_reason: str | None, policy_id: str, mode: Literal['NOMINAL', 'RECOVERY', 'DECELERATION', 'STOP'], generation_epoch: int, generated: ClockStamp, estimate_id: str, requested_application_tick: int, latest_application_tick: int, held_until_tick: int, requested_control_si: tuple[Decimal, Decimal]) -> Command",
+      "requires_review": "PC01-PC10 and proposed0.2.0; no code exists."
+    },
+    {
+      "name": "Permission",
+      "module": "records.py",
+      "signature": "Permission(*, permission_id: str, command_id: str, session_id: str, source_controller_id: str, source_packet_id: str | None, policy_id: str, generation_epoch: int, permission_epoch: int, valid_from_tick: int, valid_until_tick: int, latest_application_tick: int, held_until_tick: int, estimate_id: str, evidence_ids: tuple[str, ...], reauthorization_of_permission_id: str | None, transition_id: str | None, claim_scope: Literal['LOGICAL_PERMISSION_ONLY']) -> Permission",
+      "requires_review": "PC01-PC10 and proposed0.2.0; no code exists."
+    },
+    {
+      "name": "Cancellation",
+      "module": "records.py",
+      "signature": "Cancellation(*, cancellation_id: str, session_id: str, command_id: str, permission_id: str, requested_tick: int, endpoint_delivery_tick: int | None, ack_id: str | None, outcome: Literal['REQUESTED', 'SIMULATED_CANCELLED', 'TOO_LATE', 'UNKNOWN'], unknown_reason: str | None) -> Cancellation",
+      "requires_review": "PC01-PC10 and proposed0.2.0; no code exists."
+    },
+    {
+      "name": "EndpointObservation",
+      "module": "records.py",
+      "signature": "EndpointObservation(*, ack_id: str, endpoint_session_id: str, command_id: str, permission_id: str, installed_epoch: int, endpoint_sequence: int, receipt_tick: int, decision_tick: int, commit_tick: int | None, ack_observed_tick: int | None, outcome: Literal['SIMULATED_APPLIED', 'SIMULATED_CANCELLED', 'REJECTED', 'TOO_LATE', 'UNKNOWN'], applied_control_si: tuple[Decimal, Decimal] | None, held_until_tick: int | None, physical_feedback: None, reason: str) -> EndpointObservation",
+      "requires_review": "PC01-PC10 and proposed0.2.0; no code exists."
+    },
+    {
+      "name": "BarrierAck",
+      "module": "records.py",
+      "signature": "BarrierAck(*, ack_id: str, barrier_id: str, endpoint_session_id: str, control_session_id: str, installed_epoch: int, endpoint_delivery_tick: int, installation_tick: int | None, ack_observed_tick: int, queue_cleared: bool, outcome: Literal['INSTALLED', 'REJECTED', 'UNKNOWN'], unknown_reason: str | None) -> BarrierAck",
+      "requires_review": "PC01-PC10 and proposed0.2.0; no code exists."
+    },
+    {
+      "name": "FaultLatch",
+      "module": "records.py",
+      "signature": "FaultLatch(*, fault_id: str, reason: str, first_detected_tick: int, last_observed_tick: int, latched: Literal[True], cleared_tick: int | None, clearance_evidence_ids: tuple[str, ...]) -> FaultLatch",
+      "requires_review": "PC01-PC10 and proposed0.2.0; no code exists."
+    },
+    {
+      "name": "Snapshot",
+      "module": "records.py",
+      "signature": "Snapshot(*, schema_version: Literal['apex-s1-authority/0.2.0'], state: Literal['DISARMED', 'NORMAL', 'WARNING', 'RECOVERY', 'DECELERATING', 'STOP_REQUESTED', 'STOPPING', 'STOPPED_LATCHED', 'NO_VALID_POLICY'], control_session_id: str, current_tick: int, desired_epoch: int, endpoint_installed_epoch: int | None, endpoint_session_id: str | None, epoch_barrier_ack_id: str | None, active_packet: Packet | None, active_policy_id: str | None, proposals: tuple[Proposal, ...], accepted_packet_history: tuple[Packet, ...], cancellation_history: tuple[Cancellation, ...], acknowledgement_ledger: tuple[EndpointObservation, ...], barrier_acknowledgement_ledger: tuple[BarrierAck, ...], latest_estimate: Estimate | None, evidence: tuple[Evidence, ...], permissions: tuple[Permission, ...], revoked_permission_ids: tuple[str, ...], commands: tuple[Command, ...], pending_command_ids: tuple[str, ...], held_observation: EndpointObservation | None, held_unknown_reason: str | None, fault_latches: tuple[FaultLatch, ...], sequence_floors: tuple[SequenceFloor, ...], command_ledger: tuple[CommandLedgerEntry, ...], event_high_watermarks: tuple[ProducerWatermark, ...], last_trace_sequence: int, persistence_revision: str, event_ledger: tuple[EventLedgerEntry, ...], operation_ledger: tuple[OperationLedgerEntry, ...], configuration_sha256: str, prepared_barrier_ids: tuple[str, ...], trace_ledger: tuple[Trace, ...]) -> Snapshot",
+      "requires_review": "PC01-PC10 and proposed0.2.0; no code exists."
+    },
+    {
+      "name": "Proposal",
+      "module": "records.py",
+      "signature": "Proposal(*, packet_id: str, source_controller_id: str, source_manifest_sha256: str, timestamps_s: tuple[Decimal, ...], timestamp_control_tick_bounds: tuple[tuple[int, int], ...], clock_mapping_id: str, ready_tick: int, authority_start_tick: int, authority_end_tick: int, handoff_mode: Literal['VARIABLE', 'FIXED'], fixed_deadline_tick: int | None, frame_id: str, map_id: str, feasibility_evidence_id: str) -> Proposal",
+      "requires_review": "PC01-PC10 and proposed0.2.0; no code exists."
+    },
+    {
+      "name": "Trace",
+      "module": "records.py",
+      "signature": "Trace(*, trace_sequence: int, at_tick: int, phase: int, microstep: int, event_id: str, causal_parent_ids: tuple[str, ...], stage: Literal['S1-A'], state_before: str, state_after: str, transition_path: tuple[str, ...], control_session_id: str, desired_epoch: int, endpoint_installed_epoch: int | None, source_packet_id: str | None, command_id: str | None, permission_id: str | None, estimate_id: str | None, evidence_ids: tuple[str, ...], decision: Literal['ACCEPT', 'REJECT', 'REPLAY_PRIOR_OUTCOME', 'REVOKE', 'REQUEST_CANCEL', 'OBSERVE', 'NO_CHANGE'], reason_codes: tuple[str, ...], granted_permission_ids: tuple[str, ...], revoked_permission_ids: tuple[str, ...], fault_ids: tuple[str, ...], endpoint_observation: EndpointObservation | None, unknowns: tuple[UnknownField, ...], physical_actuation_claim: Literal['NOT_OBSERVED_NOT_VALIDATED'], decision_scope: Literal['HOST_LOGICAL', 'SUPPLIED_OBSERVATION'], denial: Denial | None, transition_records: tuple[TransitionRecord, ...]) -> Trace",
+      "requires_review": "PC01-PC10 and proposed0.2.0; no code exists."
+    },
+    {
+      "name": "Configuration",
+      "module": "records.py",
+      "signature": "Configuration(*, configuration_id: str, tick_period_s: TickPeriod, control_clock_id: str, expected_frame_id: str, expected_map_id: str, nominal_max_estimate_age_ticks: int | None, continuation_policy_id: str | None, warning_policy_evidence_id: str | None, reentry_policy_evidence_id: str | None, claim_scope: Literal['SYNTHETIC_PROTOCOL_ONLY'], enabled_transition_ids: tuple[str, ...], clock_mappings: tuple[ClockMapping, ...], authorization_registry: tuple[AuthorizationAssumption, ...], contract_version: str, activation_matrix_sha256: str) -> Configuration",
+      "requires_review": "PC01-PC10 and proposed0.2.0; no code exists."
+    }
+  ],
+  "event_payload_type_alias": "EventPayload = Estimate | Evidence | Proposal | Packet | Command | PermissionRequest | EndpointObservation | BarrierAck | Permission | AdvancePayload | EmergencyPayload | RevokeRequestPayload | EpochInstallPayload | Cancellation | ArmRequestPayload | RenewalWarningPayload | ReentryRequestPayload | ResetRequestPayload | PolicySelectPayload | ApplicationCheckPayload | EndpointCommitPayload | ReauthorizePayload | RestartPayload | WarningClear"
+}

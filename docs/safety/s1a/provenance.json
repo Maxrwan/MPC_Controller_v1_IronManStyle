@@ -1,0 +1,102 @@
+{
+  "schema": "apex-s1a/provenance/0.1.0",
+  "artifact_label": "PROPOSED — NOT IMPLEMENTED",
+  "status": "WORK_COMPLETE_PENDING_REVIEW",
+  "implemented": false,
+  "execution": "NOT_EXECUTED",
+  "accepted_s1_revision": "9f0cbe0f0f48a1e2a62716957bbab79fe2b5b1b4",
+  "primary_decision": {
+    "source": "Owner-supplied S1-A Implementation Authorization Preparation assignment",
+    "statement": "Primary APEX has formally accepted S1 with conditions; preparation of a bounded S1-A implementation assignment only is authorized.",
+    "decision_date": null,
+    "date_reason": "No Primary acceptance date was supplied.",
+    "attachment_sha256": "d8048221ac10d486aff3aba5c8a74d03237f3de5039116e6c65eb82d54ce97fe",
+    "implementation_or_test_authorization": false
+  },
+  "s0_acceptance": {
+    "path": "docs/safety/s0/primary_acceptance.json",
+    "revision": "9f0cbe0f0f48a1e2a62716957bbab79fe2b5b1b4",
+    "sha256": "eb08e7345a4ba83cadc6b92f4fd7c151c5910f95572ba670ebee9659ec65a9e1",
+    "url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/9f0cbe0f0f48a1e2a62716957bbab79fe2b5b1b4/docs/safety/s0/primary_acceptance.json"
+  },
+  "s0_specification": {
+    "path": "docs/S0_SHARED_SAFETY_SPEC.md",
+    "revision": "3747e0d9a7e834a5df34c4b089a5292c0a749fa4",
+    "sha256": "5dc23236866b645a12f94bb4c67c480a67223e0dad8ac652b08fbf5848863bf3",
+    "url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/3747e0d9a7e834a5df34c4b089a5292c0a749fa4/docs/S0_SHARED_SAFETY_SPEC.md"
+  },
+  "s1_artifacts": [
+    {
+      "path": "docs/S1_STANDALONE_AUTHORITY_SPEC.md",
+      "revision": "9f0cbe0f0f48a1e2a62716957bbab79fe2b5b1b4",
+      "sha256": "25c1d3ab440b96982e77079a97481258e3d84fe73bf60619ff799cd714edea90",
+      "url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/9f0cbe0f0f48a1e2a62716957bbab79fe2b5b1b4/docs/S1_STANDALONE_AUTHORITY_SPEC.md"
+    },
+    {
+      "path": "docs/safety/s1/interface_contract.json",
+      "revision": "9f0cbe0f0f48a1e2a62716957bbab79fe2b5b1b4",
+      "sha256": "dfc8b10d0fb33bc7eee030cb8563101486991693617e7fd93b828c7447ac4dbe",
+      "url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/9f0cbe0f0f48a1e2a62716957bbab79fe2b5b1b4/docs/safety/s1/interface_contract.json"
+    },
+    {
+      "path": "docs/safety/s1/state_and_event_invariants.json",
+      "revision": "9f0cbe0f0f48a1e2a62716957bbab79fe2b5b1b4",
+      "sha256": "256f5fa461a4d828e740d416fa8847823bb79aba6c43b05595460680cbe174bb",
+      "url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/9f0cbe0f0f48a1e2a62716957bbab79fe2b5b1b4/docs/safety/s1/state_and_event_invariants.json"
+    },
+    {
+      "path": "docs/safety/s1/initial_scenario_oracles.json",
+      "revision": "9f0cbe0f0f48a1e2a62716957bbab79fe2b5b1b4",
+      "sha256": "baf4684ee7fa7f7362f7524de19b912415ce892aedc3de26168459279702c0ff",
+      "url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/9f0cbe0f0f48a1e2a62716957bbab79fe2b5b1b4/docs/safety/s1/initial_scenario_oracles.json"
+    },
+    {
+      "path": "docs/safety/s1/staged_implementation_plan.json",
+      "revision": "9f0cbe0f0f48a1e2a62716957bbab79fe2b5b1b4",
+      "sha256": "46d022c42c2a0ac9879973b822a65d642eceed0cfa877a466b4a8545d16a1f37",
+      "url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/9f0cbe0f0f48a1e2a62716957bbab79fe2b5b1b4/docs/safety/s1/staged_implementation_plan.json"
+    },
+    {
+      "path": "docs/safety/s1/review_gates.json",
+      "revision": "9f0cbe0f0f48a1e2a62716957bbab79fe2b5b1b4",
+      "sha256": "0ad6e121753f45f4c943144dac1e1ae4f5601de0e852f36c49f1710cf7df990f",
+      "url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/9f0cbe0f0f48a1e2a62716957bbab79fe2b5b1b4/docs/safety/s1/review_gates.json"
+    },
+    {
+      "path": "docs/safety/s1/provenance.json",
+      "revision": "9f0cbe0f0f48a1e2a62716957bbab79fe2b5b1b4",
+      "sha256": "0995cc8d37f9d0040dd83329bbf244616fdd1fc95c7703177069c745a5d3ce7c",
+      "url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/9f0cbe0f0f48a1e2a62716957bbab79fe2b5b1b4/docs/safety/s1/provenance.json"
+    },
+    {
+      "path": "docs/safety/s1/validation.json",
+      "revision": "9f0cbe0f0f48a1e2a62716957bbab79fe2b5b1b4",
+      "sha256": "97b89ee06745a9133f409772e7169e6008ade130cf6ddcbbdecd93db0be0eb57",
+      "url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/9f0cbe0f0f48a1e2a62716957bbab79fe2b5b1b4/docs/safety/s1/validation.json"
+    }
+  ],
+  "scientific_inventory": {
+    "path": "docs/task007d/vis/vis1l/evidence/controlled_A/summary.json",
+    "revision": "9f0cbe0f0f48a1e2a62716957bbab79fe2b5b1b4",
+    "sha256": "4840934ea4d425bdccd17b18cbd254f4372ba5275b655189010c223c2be72d71",
+    "url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/9f0cbe0f0f48a1e2a62716957bbab79fe2b5b1b4/docs/task007d/vis/vis1l/evidence/controlled_A/summary.json"
+  },
+  "scientific_inventory_pointer": "/source_sha256",
+  "scientific_inventory_entries": 294,
+  "protected_references": {
+    "main": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+    "release/performance-synthetic-v1": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+    "performance-synthetic-v1_peeled": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+    "research/efficiency_at_preflight": "ff34bd36897c4ed00b850a2d0255132bdebac5fd"
+  },
+  "concurrent_efficiency_observation": {
+    "revision": "83f360b2a96e8f6d9fe429d2cc2e5447da2f47c8",
+    "scope": "Independent ten-file documentation-only G1 authorization-preparation commit observed while Safety files existed only in a temporary draft. No Safety write to that checkout; preserve its post-change snapshot and source hashes."
+  },
+  "limits": [
+    "S1 acceptance is supplied by Primary through the owner; this preparation package is not itself accepted.",
+    "Original S0/S1 specifications, expected rows and WORK evidence stay byte-identical.",
+    "Archive copying is owner-reported; restoration and coverage remain unqualified.",
+    "All HW01-HW10 and physical-domain/actuator/uncertainty/timing claims remain unresolved."
+  ]
+}

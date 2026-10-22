@@ -1,0 +1,191 @@
+{
+  "schema": "apex-s1a/implementation-scope-gates/0.1.0",
+  "artifact_label": "PROPOSED — NOT IMPLEMENTED",
+  "status": "WORK_COMPLETE_PENDING_REVIEW",
+  "implemented": false,
+  "execution": "NOT_EXECUTED",
+  "accepted_s1_revision": "9f0cbe0f0f48a1e2a62716957bbab79fe2b5b1b4",
+  "current_authorization": "Prepare and deliver these documentation artifacts only.",
+  "future_code_scope": [
+    {
+      "path": "src/apex/safety_authority/__init__.py",
+      "responsibility": "Explicit public exports only; no initialization side effects."
+    },
+    {
+      "path": "src/apex/safety_authority/records.py",
+      "responsibility": "Frozen value types, enums/aliases and output records; no IO or model imports."
+    },
+    {
+      "path": "src/apex/safety_authority/codec.py",
+      "responsibility": "Strict versioned decoding/encoding, immutable structures, digest and field/reference validation."
+    },
+    {
+      "path": "src/apex/safety_authority/time.py",
+      "responsibility": "Pure exact-rational clock bounds, half-open intervals and boundary enumeration."
+    },
+    {
+      "path": "src/apex/safety_authority/ordering.py",
+      "responsibility": "Batch admission, fingerprints, phase/key/causal validation; no scheduler or real clock."
+    },
+    {
+      "path": "src/apex/safety_authority/policy.py",
+      "responsibility": "Reviewed enabled transition guards and mandatory fault closure over explicit records only."
+    },
+    {
+      "path": "src/apex/safety_authority/reducer.py",
+      "responsibility": "Pure batch reduction/restart, immutable ledgers, latches, logical grants and traces; endpoint outputs always empty."
+    }
+  ],
+  "future_test_scope": [
+    {
+      "path": "tests/unit/safety_authority/test_records.py",
+      "oracles": "API constructor/strict schema/version/null/digest contracts."
+    },
+    {
+      "path": "tests/unit/safety_authority/test_time.py",
+      "oracles": "Independent exact interval/boundary arithmetic; V01/V05 design references."
+    },
+    {
+      "path": "tests/unit/safety_authority/test_ordering.py",
+      "oracles": "Literal E11/E12, producer sequence/causal parent/phase and input permutation expectations."
+    },
+    {
+      "path": "tests/unit/safety_authority/test_transitions.py",
+      "oracles": "All matrix source-edge positive/rejection/boundary IDs; disabled branches explicitly deny."
+    },
+    {
+      "path": "tests/unit/safety_authority/test_identity.py",
+      "oracles": "V06/V07 and E03/E04/E05, exact operation and source/epoch identities."
+    },
+    {
+      "path": "tests/unit/safety_authority/test_restart.py",
+      "oracles": "V19/E09/T11/T13/T14 logical persistence and controlled reentry."
+    },
+    {
+      "path": "tests/unit/safety_authority/test_oracle_cases.py",
+      "oracles": "Approved materialized literal case/trace registry, excluding S1-B execution."
+    },
+    {
+      "path": "tests/unit/safety_authority/oracle_support.py",
+      "oracles": "Data loading and independent assertions only; never call implementation helpers to produce expectations."
+    }
+  ],
+  "future_literal_fixture_scope": [
+    "tests/fixtures/safety_authority/s1a/configurations.json",
+    "tests/fixtures/safety_authority/s1a/snapshots.json",
+    "tests/fixtures/safety_authority/s1a/cases.json",
+    "tests/fixtures/safety_authority/s1a/expected_traces.json"
+  ],
+  "future_documentation_edits": [
+    "docs/CODEX_HANDOFF.md",
+    "docs/DECISIONS.md",
+    "docs/safety/s1a/implementation_work_evidence.json"
+  ],
+  "no_other_files_authorized": "Future assignment must explicitly name these paths. Do not modify accepted S0/S1 records, existing source/tests/configuration/dependencies, package-wide initializers, Performance/Efficiency or create an endpoint module.",
+  "maximum_dependency_surface": [
+    "__future__",
+    "dataclasses",
+    "decimal",
+    "enum",
+    "fractions",
+    "hashlib",
+    "json",
+    "typing"
+  ],
+  "unit_import_isolation": "The Safety worktree has no local .venv. Read-only inspection found the existing Efficiency checkout .venv/bin/python; the proposed command uses that interpreter with Safety cwd/PYTHONPATH=src, plugin autoload disabled and --noconftest. Reconfirm interpreter/dependency identity at the future execution gate; do not install packages or write to the Efficiency environment. No imports or tests were executed here.",
+  "proposed_focused_command": "PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONPATH=src /Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/.venv/bin/python -m pytest --noconftest -q tests/unit/safety_authority",
+  "gates": [
+    {
+      "id": "A0_SPEC_REVIEW",
+      "owner": "Secondary Engineering and Primary",
+      "requires": [
+        "Approve activation matrix, PC amendments and wire/API versions.",
+        "Independently review literal coverage, unreachable false-guard cases and original-row findings."
+      ],
+      "allows": "Preparation review only; no code or execution."
+    },
+    {
+      "id": "A1_CODE_AUTHORIZATION",
+      "owner": "Explicit Primary implementation assignment after Secondary review",
+      "requires": [
+        "Exact reviewed package SHA and bounded file list.",
+        "Explicit permission to create reducer source, focused test code and literal fixtures."
+      ],
+      "allows": "Only the named source/test/fixture creation; execution not implicit."
+    },
+    {
+      "id": "A2_IMPLEMENTATION_ORACLE_REVIEW",
+      "owner": "Secondary Engineering",
+      "requires": [
+        "Exact implementation revision, canonical fixture hashes and all enabled/deferred branch mappings.",
+        "Independent review of materialized expected traces and failures/blockers; no SUT-generated expectations."
+      ],
+      "allows": "Request explicit focused execution gate; no automatic test or numerical execution."
+    },
+    {
+      "id": "A3_FOCUSED_EXECUTION_AUTHORIZATION",
+      "owner": "Explicit Primary/Engineering execution instruction",
+      "requires": [
+        "Named reviewed source/fixtures and focused command/selection.",
+        "Data/semantic entry gates complete, no conflicting host measurement."
+      ],
+      "allows": "Only named deterministic pure unit checks; no numerical controller, vehicle or endpoint simulation."
+    },
+    {
+      "id": "A4_WORK_REVIEW",
+      "owner": "Engineering",
+      "requires": [
+        "All required enabled positive/rejection/boundary and disabled-denial cases pass on the exact revision.",
+        "Complete failed/censored traces, source/config/fixture hashes and scope/preservation audit."
+      ],
+      "allows": "WORK_COMPLETE_PENDING_REVIEW; no formal acceptance or next stage."
+    },
+    {
+      "id": "A5_FORMAL_VERIFICATION",
+      "owner": "Separately authorized acceptance gate",
+      "requires": [
+        "Exact reviewed implementation revision and complete applicable protocol regression selection."
+      ],
+      "allows": "Only explicitly authorized verification; Primary scientific acceptance remains separate."
+    }
+  ],
+  "verification_order": [
+    "Static type/record/schema/source-scope checks after code creation authorization.",
+    "Independent literal fixture/expected-output Engineering Review.",
+    "Explicitly authorized focused records/time/ordering checks.",
+    "All enabled source-edge positive/rejection/boundary and disabled-permissive denial checks.",
+    "Identity, restart, six-scenario logical projections, noninterference by source hashes and failure/unknown audit.",
+    "Engineering Review; formal protocol verification only at a later explicit gate."
+  ],
+  "ready_for_implementation_review": [
+    "Only authorized files changed; standard-library import boundary preserved.",
+    "Complete API and record validation; all nine state identifiers retained; exactly reviewed transition activation set.",
+    "No generated endpoint application/acknowledgement/cancellation success, no physical response claim.",
+    "Required focused checks explicitly authorized and passed; unexecuted checks labelled; failed/censored evidence retained.",
+    "Reviewable exact revision committed/pushed per standing workflow; next stage not started."
+  ],
+  "core_fail_stops": [
+    "Any newly enabled unreviewed permissive transition",
+    "Any missing mandatory fault/revocation/no-policy branch",
+    "Guard, ordering, boundary or identity mismatch",
+    "Permission after expiry/stale/UNKNOWN required evidence",
+    "Ledger/latch loss on logical restart",
+    "Actual or simulated endpoint outcome produced by S1-A",
+    "Any numerical/solver/vehicle/transport/hardware dependency or unapproved file mutation"
+  ],
+  "preservation": [
+    "Original S0/S1 specifications/oracles/evidence hashes immutable.",
+    "Frozen Performance E4/main/tag and independent Efficiency references/working bytes unchanged by this task.",
+    "Historical raw results preserved; metadata audit is not raw-content hashing or archive restoration qualification."
+  ],
+  "not_authorized": [
+    "Reducer source now",
+    "Executable test creation now",
+    "Any test/numerical/fault execution now",
+    "S1-B/S1-C progression",
+    "Racing runtime/controller/plant modification",
+    "Hardware/HIL/physical validation",
+    "New physical safety envelopes or thresholds"
+  ],
+  "readiness": "READY_FOR_ENGINEERING_REVIEW_OF_AUTHORIZATION_REQUEST; IMPLEMENTATION_BLOCKED_PENDING_EXPLICIT_GATES"
+}

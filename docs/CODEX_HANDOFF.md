@@ -1,3 +1,31 @@
+# Current handoff — S1-A implementation authorization preparation
+
+**PROPOSED — NOT IMPLEMENTED. WORK_COMPLETE_PENDING_REVIEW.**
+Owner-supplied Primary acceptance binds S1 `9f0cbe0f0f48a1e2a62716957bbab79fe2b5b1b4`;
+the exact acceptance date remains unspecified. This task prepares only the
+[bounded implementation request](safety/s1a/implementation_authorization_request.md).
+[Provenance](safety/s1a/provenance.json) binds the authority statement and immutable S0/S1 bytes.
+
+[Matrix](safety/s1a/transition_activation_matrix.json) proposes T01/T02/T03/T06/T09/T11/T13/T14
+enabled after authorization/coverage, T04/T05/T07/T08/T10/T12 deferred. Core fault/revocation/
+no-policy/rest-loss paths remain required. [API](safety/s1a/reducer_api_contract.json) and
+[precedence](safety/s1a/event_precedence_resolution.json) specify a pure standard-library reducer;
+PC01-PC10 and proposed0.2.0 semantics need review. [Oracles](safety/s1a/independent_oracle_expansion.json)
+map every source edge and audit all original69 rows without changing them.
+
+[Scope/gates](safety/s1a/implementation_scope_and_gates.json) separates explicit source/test creation,
+Engineering/oracle review and focused execution authorization. No implementation, executable test,
+test collection, numerical import, simulation, fault injection, endpoint or hardware work occurred.
+[Validation](safety/s1a/validation.json) is documentation/schema/reference/source-hash/preservation only.
+Frozen Performance/main/tag are unchanged; concurrent Efficiency documentation-only `83f360b`
+is retained separately with runtime hashes preserved. Archive restoration remains
+unqualified. No S1-B/S1-C, integration or physical safety acceptance follows.
+
+Next: Secondary Engineering Review and explicit Primary implementation authorization after entry
+decisions. Stop here; delivery commit/remote SHA is supplied separately without a circular self-hash.
+
+---
+
 # Current handoff — S0 acceptance record and S1 standalone specification
 
 **WORK_COMPLETE_PENDING_REVIEW — documentation/specification only.**

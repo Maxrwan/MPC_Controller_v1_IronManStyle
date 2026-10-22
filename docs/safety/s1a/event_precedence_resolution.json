@@ -1,0 +1,233 @@
+{
+  "schema": "apex-s1a/event-precedence-resolution/0.1.0",
+  "artifact_label": "PROPOSED — NOT IMPLEMENTED",
+  "status": "WORK_COMPLETE_PENDING_REVIEW",
+  "implemented": false,
+  "execution": "NOT_EXECUTED",
+  "accepted_s1_revision": "9f0cbe0f0f48a1e2a62716957bbab79fe2b5b1b4",
+  "accepted_ordering_source": {
+    "path": "docs/safety/s1/state_and_event_invariants.json",
+    "revision": "9f0cbe0f0f48a1e2a62716957bbab79fe2b5b1b4",
+    "sha256": "256f5fa461a4d828e740d416fa8847823bb79aba6c43b05595460680cbe174bb",
+    "url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/9f0cbe0f0f48a1e2a62716957bbab79fe2b5b1b4/docs/safety/s1/state_and_event_invariants.json"
+  },
+  "proposed_wire_version": "apex-s1-authority/0.2.0",
+  "version_policy": "0.2.0 is only a proposed successor to accepted 0.1.0; no accepted file is rewritten and no runtime decoder exists. Do not claim silent compatibility.",
+  "amendments": [
+    {
+      "id": "PC01",
+      "issue": "Accepted phase sorting can run a later producer sequence before an earlier one, conflicting with processing-time high-watermark checks.",
+      "resolution": "Validate all sealed-batch identities/sequences against the prior snapshot before phase sorting. Reserve each unique producer sequence once; execute by phase/key; advance the producer watermark to the batch maximum only at completion. Duplicate event IDs need an immutable persisted event ledger.",
+      "contract_change": "Add EventLedgerEntry and Snapshot.event_ledger; no processed-phase order is used to reject a previously admitted event in this same batch.",
+      "status": "PROPOSED_REQUIRES_ENGINEERING_AND_PRIMARY_REVIEW"
+    },
+    {
+      "id": "PC02",
+      "issue": "Accepted REAUTHORIZE fields do not encode the requested [24,80) lease in V07-A-explicit-reauthorization row4.",
+      "resolution": "Add requested_permission_interval_ticks=[start,end] to REAUTHORIZE. Require now<=start<end, original requested<=start, latest<end, hold<=end and end<=original packet/evidence expiry. It requests a future logical lease, never an artificial compute/transport delay.",
+      "contract_change": "Versioned payload extension. Preserve the original row; the proposed materialization explicitly supplies [24,80].",
+      "status": "PROPOSED_REQUIRES_ENGINEERING_AND_PRIMARY_REVIEW"
+    },
+    {
+      "id": "PC03",
+      "issue": "RENEWAL_WARNING/T03 clear triggers, warning evidence restoration and reset-to-new-session barriers need exact event/record binding.",
+      "resolution": "Add WARNING_CLEAR(evidence_ids,acceptance_id). Treat supplied epoch-install/barrier observations as journaled facts; they grant nothing before exact session/epoch/barrier/context matching and an authorized request. T13 consumes matching new-session evidence; T01 consumes an already prepared/acknowledged session without inventing another epoch.",
+      "contract_change": "Add WARNING_CLEAR payload and explicit prepared-barrier references in Configuration/Snapshot context; endpoint observations remain external inputs.",
+      "status": "PROPOSED_REQUIRES_ENGINEERING_AND_PRIMARY_REVIEW"
+    },
+    {
+      "id": "PC04",
+      "issue": "The accepted compound rows contain batch-level decisions and salient reason lists, whereas exact per-event trace precedence is not fully specified.",
+      "resolution": "Emit one Trace per admitted event plus explicit boundary/internal transition traces. Preserve original 69 rows as historical intent; proposed per-event materializations and any changed reason ordering require review. No old row is treated as an executed golden trace.",
+      "contract_change": "Add DecisionScope, Denial, TransitionRecord and Reduction. No ambiguous last-event batch decision substitutes for the full ordered trace.",
+      "status": "PROPOSED_REQUIRES_ENGINEERING_AND_PRIMARY_REVIEW"
+    },
+    {
+      "id": "PC05",
+      "issue": "Snapshot stores only command first_decision_id/high-watermarks, insufficient to distinguish submission, first permission, reauthorization and exact event replay.",
+      "resolution": "Persist separate event and operation ledgers. Operation key includes kind plus command_id, and new permission/transition IDs for REAUTHORIZE. Replayed historical acceptance never reactivates a lease.",
+      "contract_change": "Add OperationLedgerEntry and Snapshot.operation_ledger; preserve command generation/source identity.",
+      "status": "PROPOSED_REQUIRES_ENGINEERING_AND_PRIMARY_REVIEW"
+    },
+    {
+      "id": "PC06",
+      "issue": "Core fault closure, phase0 simultaneous causes and restart ordering can otherwise yield arbitrary extra epoch bumps or permissive reset paths.",
+      "resolution": "Collect same-tick critical facts before grants. Emergency records T06 where its S0 source is admissible; then T09 if no enabled response. Bump the affected current-session desired epoch at most once per sealed batch; T14 handles lost rest. Restart evidence is checked before any grants; intact snapshots preserve latches/ledgers, missing/corrupt persistence boot-latches T09.",
+      "contract_change": "Explicit closure/epoch transaction semantics, not a change to frozen runtime ordering.",
+      "status": "PROPOSED_REQUIRES_ENGINEERING_AND_PRIMARY_REVIEW"
+    },
+    {
+      "id": "PC07",
+      "issue": "An expiry/freshness threshold crossed between batches and a fresh same-tick observation need a causal interpretation.",
+      "resolution": "Visit every crossed boundary. Invalidate the elapsed lease at its exact boundary before later facts. At an inclusive age bound L, the first invalid integer tick is capture_lower+L+1. A fresh observation received at a boundary can support a new grant only after closure rules and cannot restore an expired permission or clear a critical latch.",
+      "contract_change": "Timing clarification with conservative bounds; no physical freshness/watchdog value is adopted.",
+      "status": "PROPOSED_REQUIRES_ENGINEERING_AND_PRIMARY_REVIEW"
+    },
+    {
+      "id": "PC08",
+      "issue": "UNKNOWN/null evidence and opaque operator/producer IDs require typed provenance without implying real authentication or physical validity.",
+      "resolution": "Use a configured immutable synthetic authorization registry and explicit assumption/context records. Unknown mappings/evidence deny dependent permission; malformed unauthenticated proposals do not overwrite healthy authoritative state. An authoritative invalid estimate triggers core closure.",
+      "contract_change": "Add registry/mapping inputs to the Python configuration. These are fixture role assumptions, not a transport-security implementation.",
+      "status": "PROPOSED_REQUIRES_ENGINEERING_AND_PRIMARY_REVIEW"
+    },
+    {
+      "id": "PC09",
+      "issue": "Accepted PERMISSION_REQUEST embeds Command but does not say how the literal permission ID p1 is selected; no exact cross-platform identifier policy is specified.",
+      "resolution": "Use PermissionRequest(command,permission_id,supersedes_permission_id) in proposed0.2.0. Caller proposes an immutable ID; reducer alone validates and grants. Unknown/reused/conflicting IDs deny permission; supersession needs explicit matching live prior grant and separate fresh validation.",
+      "contract_change": "Replace the PERMISSION_REQUEST payload only in proposed0.2.0; original0.1.0 rows remain unchanged.",
+      "status": "PROPOSED_REQUIRES_ENGINEERING_AND_PRIMARY_REVIEW"
+    },
+    {
+      "id": "PC10",
+      "issue": "A global invalid-batch early return must not suppress a separately valid known critical observation, nor should a malformed unauthenticated proposal alone destroy healthy authority.",
+      "resolution": "Decode each input independently. Retain individually validated critical observations. reject_batch is a pure explicit fail-closed reduction entry: isolated malformed proposal denies new work and journals rejection; trusted identity/causal/time integrity failures or known critical events invoke T06/T09 or T14, with no permissions. Never discard already known faults because another input is invalid.",
+      "contract_change": "Add reject_batch API and its exact deterministic inputs; review literal mixed-invalid/critical cases before any execution.",
+      "status": "PROPOSED_REQUIRES_ENGINEERING_AND_PRIMARY_REVIEW"
+    }
+  ],
+  "time": {
+    "tick_type": "int excluding bool, >=0; SI seconds via exact positive Fraction",
+    "mappings": "Configured ClockMapping is a synthetic assumed affine rational scale/offset with outward integer error bounds. floor(source_tick*scale+offset)-lower_error, ceil(...)+upper_error; reject negative/unknown/reset-unmatched mappings.",
+    "intervals": "[start,end); application upper < end; latest < end; hold_end <= end; packet start=first mapped upper, end=last mapped lower; adjacent timestamp bounds strictly ordered.",
+    "authority_age": "Application/hold upper minus capture lower <= configured age bound. Unknown bound denies nominal authority. Approximately50ms is not an adopted value."
+  },
+  "batch_policy": {
+    "seal": "seal_batch validates exact configuration and snapshot fingerprints, common target tick, unique IDs and prior-ledger identity. A trusted event may refer only to an already journaled parent or an earlier topological layer of this sealed batch.",
+    "external_key": [
+      "at_tick",
+      "phase",
+      "producer_id UTF-8 bytes",
+      "producer_sequence",
+      "event_id UTF-8 bytes"
+    ],
+    "sequence": "Sequence admission is a prepass, not a mutation in phase-execution order. For each producer, unique new sequences must exceed prior watermark; gaps are allowed and cannot infer a missing event. Exact known replay is historical only.",
+    "same_phase_parent": "A same-phase parent must precede child under the declared key; otherwise reject the batch rather than arbitrarily reorder. Cycles and references to future ticks are invalid.",
+    "microsteps": "External inputs are microstep0. Internal consequences have increasing nonnegative microstep and explicit parent IDs; they are trace/deny/transition records, never new endpoint outcomes. A newly discovered critical fact synchronously updates the deny mask before any remaining permissive action.",
+    "closure": "Process boundary/critical facts and phases1/2; evaluate admissible continuation before phase4. Critical latch closure cannot be cancelled by a positive same-tick input. No transient STOP_REQUESTED state admits a permission.",
+    "invalid_batch": "Use individually decoded records; seal failure calls reject_batch with immutable original Snapshot, classified InputErrors and independently validated known critical events. No new grants. Isolated malformed proposal preserves still-admissible authority; critical integrity/fault closure cannot be suppressed."
+  },
+  "phases": [
+    {
+      "phase": 0,
+      "kinds": [
+        "ADVANCE boundaries",
+        "EMERGENCY",
+        "REVOKE_REQUEST",
+        "EPOCH_INSTALL facts",
+        "invalid/stale/degraded authoritative estimate/evidence",
+        "RESTART integrity failure"
+      ],
+      "meaning": "Invalidate/revoke/latch first; installation facts alone are not a host barrier acknowledgement."
+    },
+    {
+      "phase": 1,
+      "kinds": [
+        "ENDPOINT_OBSERVATION",
+        "BARRIER_ACK_OBSERVED"
+      ],
+      "meaning": "Consume supplied observations; retain earlier occurrence and present receipt times; unknown/censored means unknown."
+    },
+    {
+      "phase": 2,
+      "kinds": [
+        "valid ESTIMATE_OBSERVED",
+        "EVIDENCE_OBSERVED",
+        "PROPOSAL_READY",
+        "AUTHORITY_ACCEPT"
+      ],
+      "meaning": "Use only received evidence. Acceptance is independent of proposal readiness; fixed deadlines stay explicit."
+    },
+    {
+      "phase": 3,
+      "kinds": [
+        "ARM_REQUEST",
+        "RENEWAL_WARNING",
+        "WARNING_CLEAR",
+        "REENTRY_REQUEST",
+        "RESET_REQUEST",
+        "POLICY_SELECT",
+        "CANCEL_REQUEST"
+      ],
+      "meaning": "Guarded logical state/intent decisions; no endpoint acknowledgement generated."
+    },
+    {
+      "phase": 4,
+      "kinds": [
+        "COMMAND_SUBMIT",
+        "PERMISSION_REQUEST",
+        "REAUTHORIZE",
+        "APPLICATION_CHECK"
+      ],
+      "meaning": "Revalidate current facts; grant only bounded logical permissions."
+    },
+    {
+      "phase": 5,
+      "kinds": [
+        "ENDPOINT_COMMIT"
+      ],
+      "meaning": "Unavailable in S1-A. Reject STAGE_NOT_ENABLED before any synthetic endpoint effect."
+    },
+    {
+      "phase": 6,
+      "kinds": [
+        "locally generated endpoint acknowledgements"
+      ],
+      "meaning": "Unavailable in S1-A; no such output can be generated."
+    }
+  ],
+  "reason_order": [
+    "STAGE_NOT_ENABLED",
+    "SCHEMA_INVALID",
+    "VERSION_UNSUPPORTED",
+    "BATCH_INVALID",
+    "CAUSALITY_INVALID",
+    "IDENTITY_CONFLICT",
+    "SESSION_MISMATCH",
+    "REVOKED",
+    "CANCELLED",
+    "EPOCH_MISMATCH",
+    "BARRIER_UNACKNOWLEDGED",
+    "EXPIRED",
+    "NOT_YET_VALID",
+    "APPLICATION_DEADLINE_MISSED",
+    "TIME_INVALID",
+    "FAULT_LATCHED",
+    "AUTHORIZATION_UNKNOWN",
+    "TRANSITION_DISABLED",
+    "RESET_NOT_ADMISSIBLE",
+    "ESTIMATE_MISSING",
+    "ESTIMATE_INVALID",
+    "ESTIMATE_DEGRADED",
+    "MAP_MISMATCH",
+    "FRAME_MISMATCH",
+    "CLOCK_UNKNOWN",
+    "STALE_ESTIMATE",
+    "UNCERTAINTY_UNKNOWN",
+    "NO_NOMINAL_FRESHNESS_BOUND",
+    "HEALTH_INVALID",
+    "DOMAIN_UNKNOWN",
+    "SEQUENCE_REORDERED",
+    "PERSISTENCE_UNKNOWN",
+    "NO_VALID_POLICY",
+    "APPLICATION_UNKNOWN",
+    "CANCEL_PENDING",
+    "DUPLICATE_PRIOR_OUTCOME",
+    "PROPOSAL_ONLY",
+    "TOO_LATE",
+    "OK"
+  ],
+  "reason_selection": "Reject unsupported S1-B input before semantic dispatch. Otherwise select all applicable causes within the first denying category; critical closure may add NO_VALID_POLICY and knowledge annotations. Deduplicate and sort by reason_order. OK is absent when a denial code exists. Per-event Trace separates denial, transition and observation; original compound-row lists remain unchanged pending PC04 materialization review.",
+  "fault_latches": "Record every simultaneous accepted critical cause in canonical (fault code,event_id) order; one cause cannot erase another. No new grant, warning-clear, reset or healthy sample clears an uncleared critical latch.",
+  "restart": "Logical persistence only: validate version, configuration binding, canonical digest and required ledger/latch fields. Missing/corrupt evidence creates a disarmed boot snapshot with PERSISTENCE_UNKNOWN then T09, no grants; physical held/application knowledge remains null with reason.",
+  "logical_vs_physical": "Lease expiry, application permission and cancellation intent never assert a physical input was applied, removed, held safely or stopped.",
+  "review_blocker": "PC01-PC10 and their literal trace materializations require Engineering/Primary review; no implementation is authorized.",
+  "excluded_s1b_inputs": [
+    "COMMAND_DELIVER",
+    "PERMISSION_DELIVER",
+    "ENDPOINT_ESTIMATE_DELIVER",
+    "ENDPOINT_EVIDENCE_DELIVER",
+    "CANCEL_DELIVER",
+    "ENDPOINT_COMMIT"
+  ],
+  "excluded_s1b_policy": "Reject before any S1-A effect; the phase gate here does not redefine their accepted future S1-B ordering."
+}
