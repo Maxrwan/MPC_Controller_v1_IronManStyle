@@ -1,0 +1,276 @@
+{
+  "schema": "apex-profile1-g1-preflight-validation/1.0.0",
+  "schema_version": "1.0.0",
+  "experiment_id": "F-PROFILE-1",
+  "recorded_date": "2026-10-23",
+  "status": "PROPOSED — NOT IMPLEMENTED",
+  "delivery_status": "WORK_COMPLETE_PENDING_REVIEW",
+  "base_revision": "ff34bd36897c4ed00b850a2d0255132bdebac5fd",
+  "stage": "WORK_G1_ASSIGNMENT_PREPARATION_ONLY",
+  "g1_implementation_authorized": false,
+  "g2_execution_authorized": false,
+  "phase_b_authorized": false,
+  "scope": "Static documentation/record-structure/API-syntax/source-reference/hash/preservation checks only; no project numerical imports or execution",
+  "record_structure_contract": {
+    "type": "object",
+    "required": [
+      "schema",
+      "schema_version",
+      "experiment_id",
+      "recorded_date",
+      "status",
+      "delivery_status",
+      "base_revision",
+      "stage",
+      "g1_implementation_authorized",
+      "g2_execution_authorized",
+      "phase_b_authorized"
+    ],
+    "authorization_fields_must_be_false": [
+      "g1_implementation_authorized",
+      "g2_execution_authorized",
+      "phase_b_authorized"
+    ],
+    "status_const": "PROPOSED — NOT IMPLEMENTED"
+  },
+  "checks": {
+    "strict_JSON_records_excluding_this_record": 5,
+    "API_signature_AST_parses": 12,
+    "accepted_source_anchor_hash_function_line_checks": 19,
+    "recurring_span_graph_matches_accepted": 22,
+    "construction_nodes": 8,
+    "future_source_test_paths": 10,
+    "timing_duration_leaf_paths": 98,
+    "individually_evidenced_IPOPT_timing_keys": 14,
+    "failure_cases": 12,
+    "future_integrity_cases": 20,
+    "future_existing_regression_nodes_resolve": 5,
+    "proposed_worker_count_and_resource_consistency": "pass",
+    "added_relative_links_checked": 16,
+    "status_scope_whitespace_reference_checks": "pass",
+    "git_diff_check": "pass"
+  },
+  "accepted_record_bindings_unchanged": [
+    {
+      "path": "docs/TASK007F0_EFFICIENCY_SPEC.md",
+      "revision": "ff34bd36897c4ed00b850a2d0255132bdebac5fd",
+      "sha256": "94fdbab17b0f0be99527c224168839a189b5d4095e30ba90df9e5f6c08e7c45c"
+    },
+    {
+      "path": "docs/TASK007F0_GIT_REFERENCES.md",
+      "revision": "ff34bd36897c4ed00b850a2d0255132bdebac5fd",
+      "sha256": "fcf05bfaea2b0f2509930b41341198113b317c20b5e80856c73675ee79180737"
+    },
+    {
+      "path": "docs/F_PROFILE_1_PHASE_A_SPEC.md",
+      "revision": "ff34bd36897c4ed00b850a2d0255132bdebac5fd",
+      "sha256": "db82e471fefc827f8bb00f61b9944701d4c0b4e87cd977c043c4d8e504c44581"
+    },
+    {
+      "path": "docs/task007f/f0/experiment_matrix.json",
+      "revision": "ff34bd36897c4ed00b850a2d0255132bdebac5fd",
+      "sha256": "d42ac2d3059359352d4142789e4ea3c770c69a707b780b8a393ba13953d4ae8e"
+    },
+    {
+      "path": "docs/task007f/f0/git_preservation.json",
+      "revision": "ff34bd36897c4ed00b850a2d0255132bdebac5fd",
+      "sha256": "080608b79c5b5a995cfe6ad26e4896c02f933378ba14edfaa17b42edeccd0d09"
+    },
+    {
+      "path": "docs/task007f/f0/metrics_and_gates.json",
+      "revision": "ff34bd36897c4ed00b850a2d0255132bdebac5fd",
+      "sha256": "79d03e72c262c7e7d3387026ff275ba48c574f6c61124ad188a056d6e647d207"
+    },
+    {
+      "path": "docs/task007f/f0/primary_acceptance.json",
+      "revision": "ff34bd36897c4ed00b850a2d0255132bdebac5fd",
+      "sha256": "b034ebb34e4d801d32a885c379e2ebf1b8f13d2f4382ef72a65bf900e3107f15"
+    },
+    {
+      "path": "docs/task007f/f0/profiling_protocol.json",
+      "revision": "ff34bd36897c4ed00b850a2d0255132bdebac5fd",
+      "sha256": "6514a0b202d42ec7d11c695911515587a482abd5d11f735bc5fe99bec9b7bd15"
+    },
+    {
+      "path": "docs/task007f/f0/resource_and_review_gates.json",
+      "revision": "ff34bd36897c4ed00b850a2d0255132bdebac5fd",
+      "sha256": "e1fa05ff7efc03b275d016de7adb54273e8c8faf19f9e8cfa5fbd215d602d3cd"
+    },
+    {
+      "path": "docs/task007f/f0/temporal_grid_audit.md",
+      "revision": "ff34bd36897c4ed00b850a2d0255132bdebac5fd",
+      "sha256": "de653c8a8846295d3792886e73afcfe71a164e205b51f2665d26f5c1c68f60c9"
+    },
+    {
+      "path": "docs/task007f/f0/validation.json",
+      "revision": "ff34bd36897c4ed00b850a2d0255132bdebac5fd",
+      "sha256": "902705ffb16aec609999c8aadc73030b3fbd034ff6b60570824eaaab05dc4980"
+    },
+    {
+      "path": "docs/task007f/profile1/instrumentation_contract.json",
+      "revision": "ff34bd36897c4ed00b850a2d0255132bdebac5fd",
+      "sha256": "aaa4e001a52d2577aa5dcf7dd577ebbaca61192a532b0e7ed16ea9009ecf89e9"
+    },
+    {
+      "path": "docs/task007f/profile1/parity_and_observer_checks.json",
+      "revision": "ff34bd36897c4ed00b850a2d0255132bdebac5fd",
+      "sha256": "106901b2ff6ac90419b91d7dad66061a1229188f5b0115d483162bcfd1cba4d0"
+    },
+    {
+      "path": "docs/task007f/profile1/phase_b_readiness.json",
+      "revision": "ff34bd36897c4ed00b850a2d0255132bdebac5fd",
+      "sha256": "c648cdff553110dc335c38eb770d97b4ac8b6b1a46091ddb019a5685c216b1fc"
+    },
+    {
+      "path": "docs/task007f/profile1/review_gates.json",
+      "revision": "ff34bd36897c4ed00b850a2d0255132bdebac5fd",
+      "sha256": "f4814c32a1e6f769523f40b56954a44a81cf54f7396710067b717e65026418f3"
+    },
+    {
+      "path": "docs/task007f/profile1/validation.json",
+      "revision": "ff34bd36897c4ed00b850a2d0255132bdebac5fd",
+      "sha256": "3d284b9988b42ff58d4d997938ff5f87a03eaca3115bf98d8fe1989e1d1a1b6d"
+    }
+  ],
+  "preservation": {
+    "tracked_files_before": 843,
+    "tracked_files_byte_unchanged": 840,
+    "only_preexisting_changes": [
+      "docs/CODEX_HANDOFF.md",
+      "docs/PROJECT_ROADMAP.md",
+      "docs/DECISIONS.md"
+    ],
+    "old_handoff_roadmap_retained_as_suffix": true,
+    "old_decisions_retained_as_prefix": true,
+    "source_tests_configs_dependency_diff_from_scientific_revision": "empty",
+    "manifest_sha256": "5299adca29d5c5bd383252cd2c299a392dd6872dc6bb72d1a4dd7ecfb8dd1ebf",
+    "results_metadata_files_checked": 11646,
+    "results_size_mtime_or_membership_changes": 0,
+    "metadata_is_full_content_backup": false,
+    "Safety_head_before": "9f0cbe0f0f48a1e2a62716957bbab79fe2b5b1b4",
+    "Safety_head_at_check": "9f0cbe0f0f48a1e2a62716957bbab79fe2b5b1b4",
+    "Safety_worktree_status_at_check": "clean",
+    "no_Safety_paths_written": true
+  },
+  "remote_readback_before_delivery": {
+    "heads": [
+      {
+        "ref": "refs/heads/main",
+        "sha": "48adbdf64d492592d15e23c917aca71fa58aa8a5"
+      },
+      {
+        "ref": "refs/heads/release/performance-synthetic-v1",
+        "sha": "48adbdf64d492592d15e23c917aca71fa58aa8a5"
+      },
+      {
+        "ref": "refs/heads/research/efficiency",
+        "sha": "ff34bd36897c4ed00b850a2d0255132bdebac5fd"
+      },
+      {
+        "ref": "refs/heads/research/safety-s0",
+        "sha": "9f0cbe0f0f48a1e2a62716957bbab79fe2b5b1b4"
+      }
+    ],
+    "branch_rules": {
+      "id": 25418055,
+      "enforcement": "active",
+      "conditions": {
+        "ref_name": {
+          "exclude": [],
+          "include": [
+            "refs/heads/release/performance-synthetic-v1"
+          ]
+        }
+      },
+      "rules": [
+        {
+          "type": "deletion"
+        },
+        {
+          "type": "non_fast_forward"
+        },
+        {
+          "type": "update"
+        }
+      ],
+      "bypass_actors": [],
+      "current_user_can_bypass": "never"
+    },
+    "tag_rules": {
+      "id": 25418590,
+      "enforcement": "active",
+      "conditions": {
+        "ref_name": {
+          "exclude": [],
+          "include": [
+            "refs/tags/performance-synthetic-v1"
+          ]
+        }
+      },
+      "rules": [
+        {
+          "type": "deletion"
+        },
+        {
+          "type": "non_fast_forward"
+        },
+        {
+          "type": "update"
+        }
+      ],
+      "bypass_actors": [],
+      "current_user_can_bypass": "never"
+    },
+    "tag": {
+      "sha": "76d9eaa65af02efb0263916adc75d5247a0e778f",
+      "target": "48adbdf64d492592d15e23c917aca71fa58aa8a5"
+    }
+  },
+  "not_executed": [
+    "G1 implementation",
+    "recorder creation or instrumentation",
+    "project numerical imports/backend construction",
+    "tests/collection",
+    "numerical parity",
+    "clock calibration",
+    "observer probes",
+    "simulation",
+    "profiling",
+    "benchmarks",
+    "fresh warm capture",
+    "historical reconstruction",
+    "Phase B",
+    "archive qualification"
+  ],
+  "assumptions_and_open_gates": [
+    "Primary Phase A acceptance supplied by human assignment; exact decision date unspecified",
+    "Exact API/source/parity/fault-policy approval needed before G1",
+    "Review G1 exact source revision and independently authorize proposed G2 budget/samples",
+    "Empirical clock allowance unresolved; only separately authorized clock-only gate may precede numerical checks",
+    "No observer negligible-cost threshold invented; Phase B contexts/warm state/readiness mapping remain independent blockers"
+  ],
+  "changed_files": [
+    "docs/task007f/profile1/g1_implementation_authorization_request.md",
+    "docs/task007f/profile1/g1_recorder_api.json",
+    "docs/task007f/profile1/g1_source_change_manifest.json",
+    "docs/task007f/profile1/g1_parity_field_allowlist.json",
+    "docs/task007f/profile1/g1_failure_and_overflow_contract.json",
+    "docs/task007f/profile1/g1_verification_entry_gates.json",
+    "docs/CODEX_HANDOFF.md",
+    "docs/PROJECT_ROADMAP.md",
+    "docs/DECISIONS.md",
+    "docs/task007f/profile1/g1_preflight_validation.json"
+  ],
+  "authored_file_sha256_excluding_this_record": {
+    "docs/task007f/profile1/g1_implementation_authorization_request.md": "8e4774fc9d0a8eebc2373340c11938bf7af8f3eab85510a4e7d6ee3f76ed5cae",
+    "docs/task007f/profile1/g1_recorder_api.json": "f4e892b72ff69b62248870be6257b17332665c476362923b9515819184a4526c",
+    "docs/task007f/profile1/g1_source_change_manifest.json": "b3f2ebb02d598643a8566a0d93a36bf6a698af0992bc0d781f9fb8603e659272",
+    "docs/task007f/profile1/g1_parity_field_allowlist.json": "4fd84a427601aa1255d74686d10490b5f166bec0c7816b762984a4d1cf17468f",
+    "docs/task007f/profile1/g1_failure_and_overflow_contract.json": "3ac4afd3e1fec2f926aa9c0949faa9f47f03b5e77155911349f39539862e80b6",
+    "docs/task007f/profile1/g1_verification_entry_gates.json": "8b7059b77ff83b5e501ef80b4812e78cca155d21f48727d325575ed96a916249",
+    "docs/CODEX_HANDOFF.md": "954befcfca3a33ce1264f05d75901e0857ccb0a15fe972de9daf851ef30f2400",
+    "docs/PROJECT_ROADMAP.md": "72b5cb6a7e6199998e7549241af3b637d6dcba9efd32b203c27f781a3dd6c6d6",
+    "docs/DECISIONS.md": "f04264eb8da1798c69cdb892ffb3481f2f91f0cd22091473362e10f247116ccb"
+  },
+  "delivery_identity": "Final handoff supplies containing documentation commit/URL after normal research/efficiency push and remote visibility check; no self-hash."
+}

@@ -1,0 +1,391 @@
+{
+  "schema": "apex-profile1-g1-source-change-manifest/1.0.0",
+  "schema_version": "1.0.0",
+  "experiment_id": "F-PROFILE-1",
+  "recorded_date": "2026-10-23",
+  "status": "PROPOSED — NOT IMPLEMENTED",
+  "delivery_status": "WORK_COMPLETE_PENDING_REVIEW",
+  "base_revision": "ff34bd36897c4ed00b850a2d0255132bdebac5fd",
+  "stage": "WORK_G1_ASSIGNMENT_PREPARATION_ONLY",
+  "g1_implementation_authorized": false,
+  "g2_execution_authorized": false,
+  "phase_b_authorized": false,
+  "current_assignment_may_change_only": "Documentation paths in this delivery; every runtime/test path below is a future PROPOSAL only.",
+  "future_runtime_and_test_allowlist": [
+    "src/apex/control/trajectory/planner.py",
+    "src/apex/control/mpc/controller.py",
+    "src/apex/control/mpc/preview.py",
+    "src/apex/optimization/solvers/ipopt.py",
+    "src/apex/control/trajectory/tracker.py",
+    "src/apex/simulation/asynchronous.py",
+    "scripts/task007f/profile1/recorder.py",
+    "scripts/task007f/profile1/run_phase_a.py",
+    "tests/unit/test_profile1_recorder.py",
+    "tests/integration/test_profile1_parity.py"
+  ],
+  "changes": [
+    {
+      "path": "src/apex/control/trajectory/planner.py",
+      "operation": "modify",
+      "base_sha256": "6dcc8abe959fa65d7036f90379179703f54091c55a54bedee4db9a47d4622e44",
+      "proposed_signatures": [
+        "TrajectoryPlanner.__init__(self, controller, track, tracker_dt=0.01, *, recorder=None)",
+        "TrajectoryPlanner.prepare signature unchanged"
+      ],
+      "insertion_points": [
+        "__init__:14-17 store optional recorder; enclose original TVLQR construction at :17 with gain_builder_construction and pass recorder; original predictor unchanged",
+        "prepare:38-47 prediction; :49-51 controller parent; :54-73 initial packet; :75 gain compute; :76 gain attachment; :86-87 final packet; :88-110 return assembly"
+      ],
+      "expected_control_flow": "Explicit ON-only try/finally span closures around original work. ON return expression may bind the one original tuple to a local before closing return_assembly, then return the identical tuple. OFF executes original return expression and original legacy clock boundaries. No catch-class/status/packet semantics change.",
+      "necessity": "Necessary recurring coverage; avoid editing predictor.py, packet.py or prepare arguments."
+    },
+    {
+      "path": "src/apex/control/mpc/controller.py",
+      "operation": "modify",
+      "base_sha256": "63e17bd863dcd8d649d9f382a545f5c004e982fd87e837aa6b283ec1b1206b82",
+      "proposed_signatures": [
+        "MPCController.__init__(self, parameters, track, solver, problem, speed_reference=ConstantSpeed(), *, warm_start=True, racing_reference=None, recorder=None)",
+        "make_mpc(parameters, track, config=MPCConfig(), speed_reference=ConstantSpeed(), solver_options=None, *, recorder=None, **kwargs)",
+        "MPCController.compute_control(self, state, context) unchanged"
+      ],
+      "insertion_points": [
+        "make_mpc:232-235 construction caller spans around existing problem, solver and controller constructors",
+        "__init__:43-45 terminal constructor child only",
+        "compute_control:69-80 reference; :81-89 warm; :82 terminal; :83-88 guess; :90-95 packing; :96-98 adapter; :99-170 validation"
+      ],
+      "expected_control_flow": "Keep existing argument evaluation order and exactly one construction/call. ON may split nested return into equivalent local solver/controller variables; OFF retains current expression. Pass recorder to preview/solver only on ON path. Do not change reset, finalize_control, guesses, evaluation counts or solver kwargs.",
+      "necessity": "Necessary orchestration hooks; avoid problem.py/cost.py/warm_start.py edits."
+    },
+    {
+      "path": "src/apex/control/mpc/preview.py",
+      "operation": "modify",
+      "base_sha256": "c3e74f7c197ed42961f3494b6be8061570d294d790214e2e27401a2771a418cf",
+      "proposed_signatures": [
+        "make_preview(track, parameters, speed_reference, progress, horizon=20, dt=0.05, timing=None, racing_reference=None, *, recorder=None)"
+      ],
+      "insertion_points": [
+        "make_preview:38-40 track.sample geometry occurrences",
+        "make_preview:41-63 racing branch / :65-68 ordinary reference block occurrences"
+      ],
+      "expected_control_flow": "Observe only executed branch in each original loop. Do not move progress advance across reference/end timestamps, change continue ordering, recompute samples or alter legacy child timers.",
+      "necessity": "Necessary nested CPU/wall children; no geometry/reference implementation edits."
+    },
+    {
+      "path": "src/apex/optimization/solvers/ipopt.py",
+      "operation": "modify",
+      "base_sha256": "3897eb4e5c2cf55b33b96e361e0c83e43ce783172e7095f59daf72785473c728",
+      "proposed_signatures": [
+        "IpoptSolver.__init__(self, problem, options=None, *, recorder=None)",
+        "IpoptSolver.solve(self, problem) unchanged"
+      ],
+      "insertion_points": [
+        "__init__:store optional recorder; preserve :28-30 constructor timer",
+        "solve:36-43 backend child",
+        "solve:45-70 successful adapter validation; :72-82 RuntimeError branch"
+      ],
+      "expected_control_flow": "Same backend object, options, invocation count/argument values and RuntimeError handling. Observer errors cannot enter this existing RuntimeError catch. Error child exists only on executed branch, with original result returned exactly.",
+      "necessity": "Necessary backend/adapter split; no backend creation replacement or option change."
+    },
+    {
+      "path": "src/apex/control/trajectory/tracker.py",
+      "operation": "modify",
+      "base_sha256": "ffa5d9968650c97411121ba3dedd89a5de04a1a9ce832c50efa351763567ef27",
+      "proposed_signatures": [
+        "TVLQR.__init__(self, model, track, dt=0.01, *, recorder=None)",
+        "TVLQR.compute(self, packet) unchanged"
+      ],
+      "insertion_points": [
+        "TVLQR.compute:29-41 Jacobian block; :42-43 terminal DARE; :44-50 recursion/return"
+      ],
+      "expected_control_flow": "No change to Jacobian construction, sample times, matrix lists, design scales or solves. No hooks in TrajectoryTracker.command/update; codriver source remains untouched. ON may bind the existing (times, np.array(gains[::-1])) return tuple once to close gain_backward, returning the same values; OFF retains the original return expression.",
+      "necessity": "Necessary gain children; avoid an event or timer per gain interval."
+    },
+    {
+      "path": "src/apex/simulation/asynchronous.py",
+      "operation": "modify",
+      "base_sha256": "7d14395aa27707f2561bf6bdb32cd613bc2508ab12d6fe617bf45855d378f018",
+      "proposed_signatures": [
+        "AsyncRunner.__init__(self, plant, planner, tracker, track, config=AsyncConfig(), estimator=None, *, timing=None, release_observer=None, recorder=None)",
+        "AsyncRunner.run(self, initial) unchanged"
+      ],
+      "insertion_points": [
+        "startup prepare call :146: separate startup call/full root, close after returned tuple",
+        "release after estimate setup :219-221 and before :222: dispatch begin; :240-245: full root around whichever existing prepare branch executes; close root and dispatch before :246",
+        "startup after original call and recurring after existing release() returns, before original zero-delay/physics dispatch: sticky-fault reporting check only",
+        "run return :561-589 unchanged normal schema; observer-only stop uses existing stop_reason and preserves numerical outcome separately in sidecar"
+      ],
+      "expected_control_flow": "OFF branches invoke original call directly, no capture/spans. Normal ON leaves c.delay, estimator observations, actual completion, handoff, due ordering, packet activation and physical partition unchanged. Recorder failure completes current original preparation, then stops before another simulation event at existing reporting boundary; no fallback/zero command or cancel/retime of existing requests. Escaping original exceptions are re-raised, not masked by recorder.",
+      "necessity": "Necessary dispatch/full-call boundaries and explicit observer-failure termination; avoid changing AsyncConfig, DiagnosticTiming, buffer or authority interfaces."
+    },
+    {
+      "path": "scripts/task007f/profile1/recorder.py",
+      "operation": "create",
+      "base_sha256": null,
+      "proposed_signatures": [
+        "create_recorder(*, mode: str, identity: WorkerIdentity, limits: RecorderLimits, clock: ClockReader | None = None) -> Recorder | None",
+        "begin_call(self, *, kind: str, plan_id: int | None, release_sim_s: float | None, estimate_sim_s: float | None) -> CallToken | None",
+        "active_call(self) -> CallToken | None",
+        "span_begin(self, call: CallToken, span_id: str, *, expected_parent: str | None) -> SpanToken | None",
+        "span_end(self, token: SpanToken | None, *, exit: str, exception_type: str | None = None) -> str",
+        "finish_call(self, call: CallToken | None, *, outcome: PrepOutcome) -> str",
+        "stop_requested(self) -> bool",
+        "reconcile(self, *, clock_allowance_ns: ClockAllowance | None = None) -> ReconciliationReport",
+        "seal(self, *, legacy_result: Mapping[str, object] | None, termination: str) -> FrozenSidecar",
+        "write_sidecar(sidecar: FrozenSidecar, *, output_dir: Path) -> ExportReport",
+        "wall_ns(self) -> int",
+        "cpu_ns(self) -> int"
+      ],
+      "insertion_points": [
+        "New stdlib-only bounded scalar recorder per g1_recorder_api.json"
+      ],
+      "expected_control_flow": "No import side effects, numerical dependencies, new threads or background serialization. All protocol failures are sticky evidence failures with best-effort original-result preservation.",
+      "necessity": "Necessary opt-in observer implementation; no package __init__.py required for namespace modules."
+    },
+    {
+      "path": "scripts/task007f/profile1/run_phase_a.py",
+      "operation": "create",
+      "base_sha256": null,
+      "proposed_signatures": [
+        "main(argv: list[str] | None = None) -> int"
+      ],
+      "insertion_points": [
+        "New explicit mode parser/composition; existing SINGLE bootstrap before numeric imports; constructor spans and post-worker sealing/export"
+      ],
+      "expected_control_flow": "OFF does not import recorder; unsupported mode rejected before any numerical import. Defining worker code is G1; importing backend/constructing objects/running it is G2, never G1. Reuse existing frozen fixture/config factories without editing them; do not add dense warm capture or Phase B worker loop.",
+      "necessity": "Necessary research entry point, independent of existing launchers."
+    },
+    {
+      "path": "tests/unit/test_profile1_recorder.py",
+      "operation": "create",
+      "base_sha256": null,
+      "proposed_signatures": [],
+      "insertion_points": [
+        "New U01-U20 proposed protocol/failure checks and R01-R05 scoped regression selection in G2 entry contract"
+      ],
+      "expected_control_flow": "May be authored under a future G1 approval, but not imported/collected/executed until G2. No existing fixture/assertion/tolerance edits.",
+      "necessity": "Necessary future recorder integrity coverage; test authoring is proposed, not authorized now."
+    },
+    {
+      "path": "tests/integration/test_profile1_parity.py",
+      "operation": "create",
+      "base_sha256": null,
+      "proposed_signatures": [],
+      "insertion_points": [
+        "New controlled B0/B1/B2 fixtures and independently labelled observer protocol in entry gates"
+      ],
+      "expected_control_flow": "G2-only execution. Test-only bounded in-memory argument/result snapshots can compare numerical data, but cannot become a persistent warm-history capture or instrumentation-on benchmark feature.",
+      "necessity": "Necessary future noninterference coverage; no existing tests changed."
+    }
+  ],
+  "nineteen_accepted_anchors_reinspected": [
+    {
+      "path": "src/apex/control/trajectory/planner.py",
+      "function": "TrajectoryPlanner.__init__",
+      "line": 14,
+      "revision": "eaa0a3398515a21f30a850de59a0b44c775fad4d",
+      "sha256": "6dcc8abe959fa65d7036f90379179703f54091c55a54bedee4db9a47d4622e44",
+      "url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/eaa0a3398515a21f30a850de59a0b44c775fad4d/src/apex/control/trajectory/planner.py#L14",
+      "rechecked_revision": "ff34bd36897c4ed00b850a2d0255132bdebac5fd",
+      "current_sha256": "6dcc8abe959fa65d7036f90379179703f54091c55a54bedee4db9a47d4622e44"
+    },
+    {
+      "path": "src/apex/control/trajectory/planner.py",
+      "function": "TrajectoryPlanner.prepare",
+      "line": 19,
+      "revision": "eaa0a3398515a21f30a850de59a0b44c775fad4d",
+      "sha256": "6dcc8abe959fa65d7036f90379179703f54091c55a54bedee4db9a47d4622e44",
+      "url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/eaa0a3398515a21f30a850de59a0b44c775fad4d/src/apex/control/trajectory/planner.py#L19",
+      "rechecked_revision": "ff34bd36897c4ed00b850a2d0255132bdebac5fd",
+      "current_sha256": "6dcc8abe959fa65d7036f90379179703f54091c55a54bedee4db9a47d4622e44"
+    },
+    {
+      "path": "src/apex/control/mpc/controller.py",
+      "function": "MPCController.__init__",
+      "line": 26,
+      "revision": "eaa0a3398515a21f30a850de59a0b44c775fad4d",
+      "sha256": "63e17bd863dcd8d649d9f382a545f5c004e982fd87e837aa6b283ec1b1206b82",
+      "url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/eaa0a3398515a21f30a850de59a0b44c775fad4d/src/apex/control/mpc/controller.py#L26",
+      "rechecked_revision": "ff34bd36897c4ed00b850a2d0255132bdebac5fd",
+      "current_sha256": "63e17bd863dcd8d649d9f382a545f5c004e982fd87e837aa6b283ec1b1206b82"
+    },
+    {
+      "path": "src/apex/control/mpc/controller.py",
+      "function": "MPCController.compute_control",
+      "line": 62,
+      "revision": "eaa0a3398515a21f30a850de59a0b44c775fad4d",
+      "sha256": "63e17bd863dcd8d649d9f382a545f5c004e982fd87e837aa6b283ec1b1206b82",
+      "url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/eaa0a3398515a21f30a850de59a0b44c775fad4d/src/apex/control/mpc/controller.py#L62",
+      "rechecked_revision": "ff34bd36897c4ed00b850a2d0255132bdebac5fd",
+      "current_sha256": "63e17bd863dcd8d649d9f382a545f5c004e982fd87e837aa6b283ec1b1206b82"
+    },
+    {
+      "path": "src/apex/control/mpc/controller.py",
+      "function": "make_mpc",
+      "line": 221,
+      "revision": "eaa0a3398515a21f30a850de59a0b44c775fad4d",
+      "sha256": "63e17bd863dcd8d649d9f382a545f5c004e982fd87e837aa6b283ec1b1206b82",
+      "url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/eaa0a3398515a21f30a850de59a0b44c775fad4d/src/apex/control/mpc/controller.py#L221",
+      "rechecked_revision": "ff34bd36897c4ed00b850a2d0255132bdebac5fd",
+      "current_sha256": "63e17bd863dcd8d649d9f382a545f5c004e982fd87e837aa6b283ec1b1206b82"
+    },
+    {
+      "path": "src/apex/control/mpc/problem.py",
+      "function": "MPCProblem.__init__",
+      "line": 62,
+      "revision": "eaa0a3398515a21f30a850de59a0b44c775fad4d",
+      "sha256": "b0560718155ff04074633aa92c4374a15ec975f21f5e3a022f4e94d52636087e",
+      "url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/eaa0a3398515a21f30a850de59a0b44c775fad4d/src/apex/control/mpc/problem.py#L62",
+      "rechecked_revision": "ff34bd36897c4ed00b850a2d0255132bdebac5fd",
+      "current_sha256": "b0560718155ff04074633aa92c4374a15ec975f21f5e3a022f4e94d52636087e"
+    },
+    {
+      "path": "src/apex/control/mpc/preview.py",
+      "function": "make_preview",
+      "line": 24,
+      "revision": "eaa0a3398515a21f30a850de59a0b44c775fad4d",
+      "sha256": "c3e74f7c197ed42961f3494b6be8061570d294d790214e2e27401a2771a418cf",
+      "url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/eaa0a3398515a21f30a850de59a0b44c775fad4d/src/apex/control/mpc/preview.py#L24",
+      "rechecked_revision": "ff34bd36897c4ed00b850a2d0255132bdebac5fd",
+      "current_sha256": "c3e74f7c197ed42961f3494b6be8061570d294d790214e2e27401a2771a418cf"
+    },
+    {
+      "path": "src/apex/control/mpc/warm_start.py",
+      "function": "shift_solution",
+      "line": 6,
+      "revision": "eaa0a3398515a21f30a850de59a0b44c775fad4d",
+      "sha256": "0faab03574394c3ecebe071a7c5f4e9e01d704a7d9b625fb6d0c122cc4cb34ed",
+      "url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/eaa0a3398515a21f30a850de59a0b44c775fad4d/src/apex/control/mpc/warm_start.py#L6",
+      "rechecked_revision": "ff34bd36897c4ed00b850a2d0255132bdebac5fd",
+      "current_sha256": "0faab03574394c3ecebe071a7c5f4e9e01d704a7d9b625fb6d0c122cc4cb34ed"
+    },
+    {
+      "path": "src/apex/control/mpc/cost.py",
+      "function": "TerminalSchedule.__init__",
+      "line": 90,
+      "revision": "eaa0a3398515a21f30a850de59a0b44c775fad4d",
+      "sha256": "1b8367af3a41c72fc24573a92d9dba526100e53985e33d2626084b1222c5623b",
+      "url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/eaa0a3398515a21f30a850de59a0b44c775fad4d/src/apex/control/mpc/cost.py#L90",
+      "rechecked_revision": "ff34bd36897c4ed00b850a2d0255132bdebac5fd",
+      "current_sha256": "1b8367af3a41c72fc24573a92d9dba526100e53985e33d2626084b1222c5623b"
+    },
+    {
+      "path": "src/apex/optimization/solvers/ipopt.py",
+      "function": "IpoptSolver.__init__",
+      "line": 25,
+      "revision": "eaa0a3398515a21f30a850de59a0b44c775fad4d",
+      "sha256": "3897eb4e5c2cf55b33b96e361e0c83e43ce783172e7095f59daf72785473c728",
+      "url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/eaa0a3398515a21f30a850de59a0b44c775fad4d/src/apex/optimization/solvers/ipopt.py#L25",
+      "rechecked_revision": "ff34bd36897c4ed00b850a2d0255132bdebac5fd",
+      "current_sha256": "3897eb4e5c2cf55b33b96e361e0c83e43ce783172e7095f59daf72785473c728"
+    },
+    {
+      "path": "src/apex/optimization/solvers/ipopt.py",
+      "function": "IpoptSolver.solve",
+      "line": 33,
+      "revision": "eaa0a3398515a21f30a850de59a0b44c775fad4d",
+      "sha256": "3897eb4e5c2cf55b33b96e361e0c83e43ce783172e7095f59daf72785473c728",
+      "url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/eaa0a3398515a21f30a850de59a0b44c775fad4d/src/apex/optimization/solvers/ipopt.py#L33",
+      "rechecked_revision": "ff34bd36897c4ed00b850a2d0255132bdebac5fd",
+      "current_sha256": "3897eb4e5c2cf55b33b96e361e0c83e43ce783172e7095f59daf72785473c728"
+    },
+    {
+      "path": "src/apex/control/trajectory/prediction.py",
+      "function": "ActuationPredictor.predict",
+      "line": 83,
+      "revision": "eaa0a3398515a21f30a850de59a0b44c775fad4d",
+      "sha256": "0013fd74299a68993dabbc381ca384837f09b862011956a94fd1d3b138b839ab",
+      "url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/eaa0a3398515a21f30a850de59a0b44c775fad4d/src/apex/control/trajectory/prediction.py#L83",
+      "rechecked_revision": "ff34bd36897c4ed00b850a2d0255132bdebac5fd",
+      "current_sha256": "0013fd74299a68993dabbc381ca384837f09b862011956a94fd1d3b138b839ab"
+    },
+    {
+      "path": "src/apex/control/trajectory/tracker.py",
+      "function": "TVLQR.__init__",
+      "line": 19,
+      "revision": "eaa0a3398515a21f30a850de59a0b44c775fad4d",
+      "sha256": "ffa5d9968650c97411121ba3dedd89a5de04a1a9ce832c50efa351763567ef27",
+      "url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/eaa0a3398515a21f30a850de59a0b44c775fad4d/src/apex/control/trajectory/tracker.py#L19",
+      "rechecked_revision": "ff34bd36897c4ed00b850a2d0255132bdebac5fd",
+      "current_sha256": "ffa5d9968650c97411121ba3dedd89a5de04a1a9ce832c50efa351763567ef27"
+    },
+    {
+      "path": "src/apex/control/trajectory/tracker.py",
+      "function": "TVLQR.compute",
+      "line": 28,
+      "revision": "eaa0a3398515a21f30a850de59a0b44c775fad4d",
+      "sha256": "ffa5d9968650c97411121ba3dedd89a5de04a1a9ce832c50efa351763567ef27",
+      "url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/eaa0a3398515a21f30a850de59a0b44c775fad4d/src/apex/control/trajectory/tracker.py#L28",
+      "rechecked_revision": "ff34bd36897c4ed00b850a2d0255132bdebac5fd",
+      "current_sha256": "ffa5d9968650c97411121ba3dedd89a5de04a1a9ce832c50efa351763567ef27"
+    },
+    {
+      "path": "src/apex/control/trajectory/packet.py",
+      "function": "TrajectoryPacket.__post_init__",
+      "line": 32,
+      "revision": "eaa0a3398515a21f30a850de59a0b44c775fad4d",
+      "sha256": "00830d2ced67321547add91a4e241664689cdeed57d57f0b9b2d95552b9fd704",
+      "url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/eaa0a3398515a21f30a850de59a0b44c775fad4d/src/apex/control/trajectory/packet.py#L32",
+      "rechecked_revision": "ff34bd36897c4ed00b850a2d0255132bdebac5fd",
+      "current_sha256": "00830d2ced67321547add91a4e241664689cdeed57d57f0b9b2d95552b9fd704"
+    },
+    {
+      "path": "src/apex/simulation/asynchronous.py",
+      "function": "AsyncRunner.run",
+      "line": 132,
+      "revision": "eaa0a3398515a21f30a850de59a0b44c775fad4d",
+      "sha256": "7d14395aa27707f2561bf6bdb32cd613bc2508ab12d6fe617bf45855d378f018",
+      "url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/eaa0a3398515a21f30a850de59a0b44c775fad4d/src/apex/simulation/asynchronous.py#L132",
+      "rechecked_revision": "ff34bd36897c4ed00b850a2d0255132bdebac5fd",
+      "current_sha256": "7d14395aa27707f2561bf6bdb32cd613bc2508ab12d6fe617bf45855d378f018"
+    },
+    {
+      "path": "src/apex/simulation/prediction_capture.py",
+      "function": "PredictionRelease.capture",
+      "line": 25,
+      "revision": "eaa0a3398515a21f30a850de59a0b44c775fad4d",
+      "sha256": "f8f4d7d840a73744aebbe85dc09d817b79e839022bd7298bbde792ee061d4a29",
+      "url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/eaa0a3398515a21f30a850de59a0b44c775fad4d/src/apex/simulation/prediction_capture.py#L25",
+      "rechecked_revision": "ff34bd36897c4ed00b850a2d0255132bdebac5fd",
+      "current_sha256": "f8f4d7d840a73744aebbe85dc09d817b79e839022bd7298bbde792ee061d4a29"
+    },
+    {
+      "path": "scripts/task007dvis/worker.py",
+      "function": "run",
+      "line": 30,
+      "revision": "eaa0a3398515a21f30a850de59a0b44c775fad4d",
+      "sha256": "fd6dedd1caace418d4f3b60ef973f387d3e240a5ce8fa87c774450500f89bd5a",
+      "url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/eaa0a3398515a21f30a850de59a0b44c775fad4d/scripts/task007dvis/worker.py#L30",
+      "rechecked_revision": "ff34bd36897c4ed00b850a2d0255132bdebac5fd",
+      "current_sha256": "fd6dedd1caace418d4f3b60ef973f387d3e240a5ce8fa87c774450500f89bd5a"
+    },
+    {
+      "path": "scripts/threading_study/config.py",
+      "function": "configure_accelerate",
+      "line": 42,
+      "revision": "eaa0a3398515a21f30a850de59a0b44c775fad4d",
+      "sha256": "a50a73015c3ab739c35aa1fd715840364974213bf1c12666269b250264556fc3",
+      "url": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/eaa0a3398515a21f30a850de59a0b44c775fad4d/scripts/threading_study/config.py#L42",
+      "rechecked_revision": "ff34bd36897c4ed00b850a2d0255132bdebac5fd",
+      "current_sha256": "a50a73015c3ab739c35aa1fd715840364974213bf1c12666269b250264556fc3"
+    }
+  ],
+  "future_documentation_allowlist": [
+    "docs/task007f/profile1/",
+    "docs/CODEX_HANDOFF.md",
+    "docs/DECISIONS.md",
+    "docs/PROJECT_ROADMAP.md"
+  ],
+  "avoid_modification": [
+    "src/apex/control/mpc/problem.py",
+    "src/apex/control/mpc/cost.py",
+    "src/apex/control/mpc/warm_start.py",
+    "src/apex/control/trajectory/prediction.py",
+    "src/apex/control/trajectory/packet.py",
+    "src/apex/simulation/diagnostic_timing.py",
+    "scripts/task007dvis/worker.py",
+    "scripts/threading_study/config.py"
+  ],
+  "forbidden_diff": "Any other path, existing test/fixture, dependency, backend option, scientific equation, accepted manifest/profile, native policy, physical event partition, Safety implementation or frozen ref requires separate review. No broad cleanup.",
+  "scheduler_rule": "The only normal ON/OFF scheduler differences may be host observation cost. The selected legacy duration policy and causal event semantics remain identical; observer-fault early termination is explicitly labelled unsuccessful.",
+  "source_identity": "B0 binds exact frozen numerical inventory. B1/B2 bind one reviewed implementation diff, with B1/B2 bytes identical. Reference/fixture hashes remain equal; changed allowlisted source hashes must match reviewed per-build manifests, never be dropped as timing noise."
+}

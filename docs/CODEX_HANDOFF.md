@@ -1,3 +1,42 @@
+# Current handoff — F-PROFILE-1 bounded G1 authorization preparation
+
+**PROPOSED — NOT IMPLEMENTED. WORK_COMPLETE_PENDING_REVIEW.** Documentation only, 23 October 2026.
+Base/accepted Phase A delivery `ff34bd36897c4ed00b850a2d0255132bdebac5fd`, `research/efficiency`.
+Human-supplied Primary decision accepts Phase A with conditions; exact decision date unspecified.
+No G1 code or G2 execution is authorized. Original F0/Phase A statuses/evidence remain historical.
+
+[G1 code authorization request](task007f/profile1/g1_implementation_authorization_request.md),
+[recorder API](task007f/profile1/g1_recorder_api.json),
+[future source allowlist](task007f/profile1/g1_source_change_manifest.json),
+[exact parity paths](task007f/profile1/g1_parity_field_allowlist.json),
+[failure/overflow semantics](task007f/profile1/g1_failure_and_overflow_contract.json),
+[G2 entry gates](task007f/profile1/g1_verification_entry_gates.json),
+[static preflight](task007f/profile1/g1_preflight_validation.json).
+
+Final proposal: worker-local scalar-only recorder, explicit OFF default, 22 unchanged recurring
+spans, eight separate construction nodes, full preparation/dispatch envelope and bounded sidecar.
+Ten future runtime/test paths are allowlisted; all 19 accepted anchors reinspected. Numerical data,
+warm state, packets/gains/RK4 and controlled authority remain strict; 98 explicit duration leaf paths
+and 14 individually observed IPOPT timing keys are separated. Host computational_deadline_exceeded
+must satisfy its original per-build timing predicate; actual physical misses remain exact.
+
+Original numerical outcome and observer validity are separate. Ordinary observer faults cannot
+enter solver/planner exception handlers; finish active original work then stop at existing reporting
+boundary without fallback/grant. Clock publication tail and partial evidence remain explicit.
+Proposed G2: 44 fresh sequential workers, independent 10-minute allocation, own disk/RAM/owner guards;
+no Phase B budget borrowed. If clock allowance unresolved, authorize only one clock worker then pause.
+No numerical tolerance or negligible-overhead threshold invented. All counts/budgets await review.
+
+Phase B still blocked by missing historical full pre-call X/U/slacks/reset lineage and unfrozen IDs.
+No new capture, reconstruction or packet substitution. Later fresh capture/cold-panel amendment
+requires a separate assignment. Frozen Performance/main/tag/manifest unchanged. Independent Safety
+head observed `9f0cbe0f0f48a1e2a62716957bbab79fe2b5b1b4`; no Safety edits or application permission inferred.
+Only documentation/schema/hash/reference/preservation checks run; no runtime imports, tests/collection,
+solver construction, simulation, calibration, profiling or benchmarks. Final containing commit SHA/URL
+is supplied after scoped normal commit/push. Next is Engineering Review and an explicit G1 instruction.
+
+---
+
 # Current handoff — F0 acceptance overlay and F-PROFILE-1 Phase A specification
 
 **WORK_COMPLETE_PENDING_REVIEW — documentation/specification only, 22 October 2026.**

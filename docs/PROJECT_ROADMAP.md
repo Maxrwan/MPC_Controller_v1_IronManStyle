@@ -1,3 +1,26 @@
+# Current Efficiency coordination — 23 October 2026
+
+**PROPOSED — NOT IMPLEMENTED. WORK_COMPLETE_PENDING_REVIEW.** Primary has accepted Phase A
+with conditions, bound to `ff34bd36897c4ed00b850a2d0255132bdebac5fd` according to the human assignment.
+The [bounded G1 code request](task007f/profile1/g1_implementation_authorization_request.md) finalizes
+API, ten future paths, 22-span tree, exact parity paths and observer-failure reporting semantics.
+
+- Current work is assignment preparation only. G1 code needs a new scoped authorization.
+- G2 requires reviewed implementation/fixtures and separate authorization; proposed 44-worker,
+  10-minute allocation is independent of Phase B. An unresolved clock allowance gates all but a
+  separately authorized one-worker clock calibration, followed by review.
+- OFF has no added capture/timer calls; B0/B1 measures disabled-branch cost. Controlled numerical,
+  packet, RK4 and authority parity is exact; measured timing and its host-derived flag are audited.
+- Original timer/readiness meanings and frozen A remain intact. No scheduler mapping or Safety grant.
+- Phase B remains blocked by missing full historical warm state/reset lineage and unfrozen context IDs.
+  Later fresh capture or a labelled cold panel is outside G1 and requires separate review.
+
+No code, imports constructing numerical backends, tests/collection, simulation, profiling, benchmark,
+new evidence capture, Safety integration or merge to main is authorized. Older entries below remain
+historical records; the new request remains pending Engineering Review.
+
+---
+
 # Current Efficiency coordination — 22 October 2026
 
 Primary APEX has accepted F0 **APPROVED WITH CONDITIONS**; the separate

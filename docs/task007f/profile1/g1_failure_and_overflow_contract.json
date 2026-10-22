@@ -1,0 +1,118 @@
+{
+  "schema": "apex-profile1-g1-failure-overflow-contract/1.0.0",
+  "schema_version": "1.0.0",
+  "experiment_id": "F-PROFILE-1",
+  "recorded_date": "2026-10-23",
+  "status": "PROPOSED — NOT IMPLEMENTED",
+  "delivery_status": "WORK_COMPLETE_PENDING_REVIEW",
+  "base_revision": "ff34bd36897c4ed00b850a2d0255132bdebac5fd",
+  "stage": "WORK_G1_ASSIGNMENT_PREPARATION_ONLY",
+  "g1_implementation_authorized": false,
+  "g2_execution_authorized": false,
+  "phase_b_authorized": false,
+  "two_independent_axes": {
+    "original_preparation": [
+      "returned_packet",
+      "returned_none",
+      "raised"
+    ],
+    "observer": [
+      "valid",
+      "incomplete",
+      "invalid"
+    ],
+    "rule": "Never overwrite original solver/preparation status, turn failure into success or infer Safety permission. Span completion means the measured block returned, not feasible or accepted."
+  },
+  "cases": [
+    {
+      "id": "F01",
+      "case": "normal call",
+      "required": "Close exact executed spans and return identical numerical tuple. Join actual legacy authority/application observations only after run; no approval from prepared status."
+    },
+    {
+      "id": "F02",
+      "case": "prediction/preparation exception",
+      "required": "Close crossed spans as exception/partial in finally-safe hooks. Preserve original catch classes, diagnostics and re-raise if originally uncaught. Root may complete with returned None even if child failed."
+    },
+    {
+      "id": "F03",
+      "case": "solver RuntimeError/failure/rejection",
+      "required": "Backend child exception or completed rejection, original adapter result/status unchanged; controller validation/reset recorded as executed. Missing later spans not_reached."
+    },
+    {
+      "id": "F04",
+      "case": "invalid optimizer trajectory",
+      "required": "Existing shape/finite/constraint/bounds rejection remains. No extra evaluation, tolerance change, repaired solution or warm reset alteration."
+    },
+    {
+      "id": "F05",
+      "case": "gain or packet validation failure",
+      "required": "Mark failed reached child; original planner produces same no-packet result or exception. No solve-only success relabel; final packet metadata untouched."
+    },
+    {
+      "id": "F06",
+      "case": "late/waiting/rejected handoff",
+      "required": "Preparation may be complete; readiness, waiting, acceptance/rejection and expiry remain distinct original outcomes. No timing-based insertion or grant."
+    },
+    {
+      "id": "F07",
+      "case": "physical pending at termination",
+      "required": "If host prepare returned fully, charge full CPU in launch cohort and retain physical completion as censored. If host call itself was interrupted, retain partial lower bound and incomplete aggregate."
+    },
+    {
+      "id": "F08",
+      "case": "missing parent/nesting/end",
+      "required": "Latch invalid observer; preserve actual raw sequence, endpoints and unknowns. Never invent parent, auto-close as successful, flatten tree or replace missing duration by zero."
+    },
+    {
+      "id": "F09",
+      "case": "clock anomaly",
+      "required": "Raw noninteger/decreasing/raising clock read invalidates observer. Preserve available pair halves with reasons. Negative exclusive residual retained; reconciliation allowance remains a reviewed null prerequisite, not a clamp."
+    },
+    {
+      "id": "F10",
+      "case": "sidecar limit/overflow",
+      "required": "Reserved begun slots may still close. Latch first fault in reserved emergency status; do not append/drop/overwrite more records. Complete active original numerical work then stop before a new simulation event or preparation."
+    },
+    {
+      "id": "F11",
+      "case": "serialization/storage failure",
+      "required": "After measurement, preserve original raw result first; retain .partial output and error manifest if possible. No complete export claim, silent truncation, overwrite or rerun."
+    },
+    {
+      "id": "F12",
+      "case": "MemoryError/process death/interrupt",
+      "required": "No infallibility claim. Preserve active original exception and best-effort already reserved evidence without arbitrary formatting; parent retains exit status/log and marks missing tail. Do not fabricate a complete numerical return or physical termination state."
+    }
+  ],
+  "observer_error_containment": "Ordinary recorder/clock errors return fault status and must not reach existing numerical ValueError/RuntimeError handlers. Reporting failures are separate from original exceptions. Catastrophic failure can prevent persistence and is explicitly incomplete; no guarantee of zero-cost or exception-free observation.",
+  "safe_stop_points": [
+    "Startup: after original prepare returns, before accepting/prepositioning startup authority; preserve original tuple separately and report observer-invalid launch rather than startup solver failure.",
+    "Recurring: original release setup/prepare returns normally; check sticky observer fault at the existing end-of-release reporting boundary before another completion/application/physics event. Preserve completed original call and already queued legacy metadata; terminate with existing stop_reason field instrumentation_stop, no fallback or new command.",
+    "Escaping original numerical exception: close observer best-effort and propagate the original type/traceback; if AsyncRunner never returns raw output, mark raw_not_returned and coverage unknown instead of inventing a partial raw result.",
+    "Post-run export: original result stays intact; observer/export validity and worker nonzero exit report are separate."
+  ],
+  "report_fields": [
+    "first_fault_code",
+    "first_fault_call",
+    "first_fault_span",
+    "fault_count",
+    "original_outcome",
+    "observer_validity",
+    "last_validated_sim_time_or_null",
+    "open_span_tokens",
+    "physical_completion_censored",
+    "host_call_partial",
+    "missing_evidence_reason",
+    "export_complete"
+  ],
+  "worker_exit_proposal": {
+    "0": "expected fixture numerical outcome plus valid observer/export",
+    "2": "unsupported mode/invalid configuration before backend import",
+    "3": "instrumentation or serialization invalid",
+    "4": "unexpected numerical/scientific stop",
+    "interrupt": "retain actual process/interrupt status; no fabricated success"
+  },
+  "authority": "No zero command, emergency brake, cancellation, permission epoch or Safety S1 grant is created by any observer state.",
+  "evidence": "Unique fresh worker directories; never discard outliers, replace unsuccessful attempts, alter original historical exports or repair chronology to proceed."
+}

@@ -1083,3 +1083,32 @@ Native SINGLE, physical/numerical and authority gates, historical negative evide
 refs and separate Safety S0/S1 work remain binding. Feasibility, accepted authority and application
 permission are distinct; this record installs no Safety interface or recovery policy. Stop at
 WORK_COMPLETE_PENDING_REVIEW after documentation-only checks and normal research/efficiency delivery.
+
+
+## ADR-167 — Bound G1 recorder implementation and keep G2 separately gated
+
+**PROPOSED — NOT IMPLEMENTED. WORK_COMPLETE_PENDING_REVIEW.** On 23 October 2026, prepare the
+[G1 authorization request](task007f/profile1/g1_implementation_authorization_request.md) after the
+human-supplied Primary acceptance with conditions of Phase A delivery
+`ff34bd36897c4ed00b850a2d0255132bdebac5fd`. No exact decision date was provided.
+This assignment finalizes an implementation-ready API and ten-path future source/test allowlist;
+it does not authorize writing recorder/runtime/test code or executing G2.
+
+Preserve the accepted 22-span graph and legacy timer/readiness meanings. The recorder is explicitly
+opt-in, worker-local, scalar-only and bounded; OFF adds no capture allocations or instrumented clock
+calls. Construction, startup, recurring calls and clock-only probes remain separate populations.
+Compare every numerical/packet/RK4/authority leaf strictly except 98 enumerated duration selectors.
+Fourteen IPOPT timing keys are evidenced individually; no statistics object is dropped. The original
+host-derived deadline boolean is checked against its own total_time/period and changes are reported;
+physical deadline/miss/activation/application traces are never waived under controlled timing.
+
+Original numerical outcomes and observer faults remain separate. Failure/overflow cannot mask a
+solver error, silently lose evidence or trigger fallback/permission. Report an explicit observer-invalid
+stop at the existing reporting boundary, retain partial/censored outcomes and preserve original output.
+Clock publication cost has an unmeasured final tail; no zero-cost observer is claimed.
+
+G2 is a separately reviewed proposal: 44 fresh sequential workers and an independent 10-minute cap,
+not Phase B's allocation. If clock reconciliation allowance remains unresolved, only a separately
+authorized clock worker may run before another review. No ns tolerance or observer threshold is invented.
+Phase B historical warm-state/ID blockers remain; no new capture or guessed reconstruction enters G1.
+Frozen Performance/main/tag, source/fixtures/dependencies and independent Safety S1 stay untouched.

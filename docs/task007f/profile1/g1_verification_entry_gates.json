@@ -1,0 +1,179 @@
+{
+  "schema": "apex-profile1-g1-verification-entry-gates/1.0.0",
+  "schema_version": "1.0.0",
+  "experiment_id": "F-PROFILE-1",
+  "recorded_date": "2026-10-23",
+  "status": "PROPOSED — NOT IMPLEMENTED",
+  "delivery_status": "WORK_COMPLETE_PENDING_REVIEW",
+  "base_revision": "ff34bd36897c4ed00b850a2d0255132bdebac5fd",
+  "stage": "WORK_G1_ASSIGNMENT_PREPARATION_ONLY",
+  "g1_implementation_authorized": false,
+  "g2_execution_authorized": false,
+  "phase_b_authorized": false,
+  "authority": {
+    "Primary_Phase_A_decision": "Accepted with conditions, according to human-supplied assignment; binds exact Phase A delivery ff34bd36897c4ed00b850a2d0255132bdebac5fd",
+    "assignment_sha256": "d85f439c96cf4c9a561cd09918592fe37aaadb687806c4b4fb1e7b114951139b",
+    "exact_decision_date": null,
+    "exact_decision_date_reason": "Not supplied; recording date is not decision date.",
+    "current_authorization": "Prepare this bounded G1 code-authorization request only; no G1 code, backend imports/construction or G2 execution."
+  },
+  "G1_proposed_scope": {
+    "requires": "Explicit next human scoped authorization of this API, exact 10-path runtime/test allowlist, parity paths and failure-stop semantics.",
+    "work": "Write only approved hooks, research recorder/launcher and proposed new test files; syntax/AST/reference/static checks. No module import/pytest collection that constructs numerical backends, no worker invocation or calibration.",
+    "exit": "WORK_COMPLETE_PENDING_REVIEW with exact source diff/hashes and explicit unrun numerical/observer checks; normal reviewed branch delivery."
+  },
+  "G2_separate_gate": {
+    "requires": "Review exact G1 commit/diff and test bodies; approve exact fixtures/order/resource plan and resolve clock reconciliation rule before any numerical/observer execution.",
+    "work": "Only approved controlled parity/recorder integrity/observer probes below, sequential fresh SINGLE; no broader study, optimization, target-hardware claim or Phase B campaign.",
+    "timing_tolerance_ns": null,
+    "timing_tolerance_reason": "Clock-pair/reconciliation allowance must be justified and approved; not invented here.",
+    "observer_negligibility_threshold": null,
+    "observer_threshold_reason": "No cost threshold chosen; report raw costs/deltas and require Engineering Review. No subtractive correction.",
+    "numerical_parity": "Exact relevant finite values/types/dtypes/shapes and controlled authority/RK4 traces; existing physical validity tolerances unchanged.",
+    "clock_subgate": "If the empirical reconciliation allowance is unresolved, separately authorize only the single stdlib clock_probe worker, then stop for review. Do not run the other 43 numerical/observer/protocol workers until the rule/allowance is explicitly approved. No automatic continuation from calibration."
+  },
+  "builds": {
+    "B0": "Unmodified frozen numerical implementation/config identity, launched with common approved test harness",
+    "B1": "Exact reviewed instrumentation source, recorder OFF",
+    "B2": "Same B1 source bytes, explicit recorder ON; identical controller options/fixture/native policy"
+  },
+  "real_controlled_fixtures": [
+    {
+      "id": "C0",
+      "source": "Frozen Architecture A gamma2 fixture and initial state from docs/task007d/vis/vis1l/evidence/controlled_A/summary.json",
+      "duration_sim_s": 0.24,
+      "latency_mode": "zero",
+      "planner_delay_s": 0.0,
+      "codriver_delay_s": 0.0,
+      "laps_cap": 2,
+      "purpose": "Cold gated startup and recurring warm prepare, early waiting and coincident zero-delay event order."
+    },
+    {
+      "id": "C1",
+      "source": "Same C0 frozen fixture/state/mathematics",
+      "duration_sim_s": 0.24,
+      "latency_mode": "injected",
+      "planner_delay_s": 0.06,
+      "codriver_delay_s": 0.025,
+      "laps_cap": 2,
+      "purpose": "Plant motion during solve, pending old-source commands/codriver busy deadlines and physically censored terminal preparation."
+    }
+  ],
+  "real_fixture_rules": "Only timing/duration evaluation conditions differ from frozen profile; original urgent setting, predictor, TVLQR, vehicle, Planning gamma2, NLP/solver options and startup remain fixed. Warm state is produced by actual preceding startup in each NEW TEST worker, never recovered/guessed from history or exported as a Phase B capture. No full lap. Any unexpected physical/scientific failure stops the branch and is not replaced.",
+  "synthetic_chronology_fixtures": [
+    {
+      "id": "S0",
+      "existing_helper": "tests/unit/test_async_chronology.py::run",
+      "duration_sim_s": 0.8,
+      "planner_delay_s": 0.15,
+      "codriver_delay_s": 0.0,
+      "purpose": "Busy planner while plant/codriver advance."
+    },
+    {
+      "id": "S1",
+      "existing_helper": "tests/unit/test_async_chronology.py::run",
+      "duration_sim_s": 0.8,
+      "planner_delay_s": 0.025,
+      "codriver_delay_s": 0.025,
+      "purpose": "Codriver deadlines and pending commands distinct from planner misses."
+    },
+    {
+      "id": "S2",
+      "existing_helper": "tests/unit/test_async_chronology.py::run",
+      "duration_sim_s": 0.8,
+      "planner_delay_s": 0.025,
+      "codriver_delay_s": 0.005,
+      "spike_plan_id": 3,
+      "spike_delay_s": 0.15,
+      "purpose": "Isolated late preparation with old authority retained."
+    },
+    {
+      "id": "S3",
+      "existing_helper": "tests/unit/test_async_chronology.py::run",
+      "duration_sim_s": 0.8,
+      "planner_delay_s": 0.45,
+      "codriver_delay_s": 0.0,
+      "purpose": "Expected synthetic exhaustion/fallback admission oracle; no emergency-stop claim."
+    },
+    {
+      "id": "S4",
+      "existing_helper": "tests/unit/test_async_chronology.py::run",
+      "duration_sim_s": 0.24,
+      "planner_delay_s": 0.06,
+      "codriver_delay_s": 0.025,
+      "purpose": "Censored completion and original request provenance."
+    }
+  ],
+  "synthetic_scope": "Reuse existing StraightPlanner test fixture/parameters and declared numerical plant solely for chronology. Its fake nominal data are not an NMPC solution or an Efficiency timing profile. Future harness may adapt the duration argument in a new test file; existing helper/tests remain unchanged.",
+  "required_new_integrity_cases": [
+    "U01 OFF/unsupported modes and import/clock/allocation sentinels",
+    "U02 wall-then-CPU integer read order",
+    "U03 exact 22-span graph and repeated occurrence identity",
+    "U04 recorder cannot mutate borrowed numerical objects",
+    "U05 prediction exception/original traceback",
+    "U06 backend RuntimeError versus observer error",
+    "U07 invalid optimized result and original reset",
+    "U08 gain failure and no packet promotion",
+    "U09 packet validation failure",
+    "U10 complete returned None versus span exception",
+    "U11 missing/out-of-order/foreign-thread nested token",
+    "U12 decreasing/noninteger clock",
+    "U13 raised clock read and half-pair retention",
+    "U14 span capacity overflow with reserved end slot",
+    "U15 call/depth capacity and sticky first fault",
+    "U16 exception type/diagnostic bound",
+    "U17 file export/OSError with original raw result retained",
+    "U18 serialized-byte cap/partial file",
+    "U19 interrupt/open span best-effort incomplete result",
+    "U20 physical pending/full host CPU versus interrupted lower bound"
+  ],
+  "existing_regression_nodes": [
+    "tests/unit/test_diagnostic_timing.py::test_default_measured_dispatch_is_preserved",
+    "tests/unit/test_diagnostic_timing.py::test_default_measured_runner_uses_actual_timers",
+    "tests/unit/test_fixed_handoff_scheduler.py::test_replay_is_exact_and_defaults_have_no_new_telemetry",
+    "tests/unit/test_fixed_handoff_scheduler.py::test_pending_old_command_survives_handoff",
+    "tests/unit/test_fixed_handoff_scheduler.py::test_due_old_application_precedes_fixed_handoff_and_new_sampling"
+  ],
+  "G2_sample_plan_PROPOSED": {
+    "controlled": "C0,C1,S0-S4 once per B0/B1/B2: 21 fresh workers. Same fixture replay across builds. Cold startup and every recurring call reported separately.",
+    "observer": "C1 in six fixed blocks with build orders [B0,B1,B2], [B1,B2,B0], [B2,B0,B1], [B2,B1,B0], [B1,B0,B2], [B0,B2,B1]: 18 additional fresh workers. Six per build, no outcome-dependent reruns.",
+    "measured": "M0 is C0 evaluation with latency_mode=measured and codriver_delay=0.005; one fresh B0/B1/B2 worker each, three total. Descriptive readiness/validity only; no trace equality or statistical performance claim.",
+    "protocol_worker": "One fresh worker for U01-U20 plus the five listed existing regression nodes, no unrestricted suite.",
+    "clock_worker": "One separate stdlib-only fresh worker, exactly 1000 empty single spans and 1000 empty two-level nested span pairs; include both endpoints, append and clock counts; retain all raw records. No backend imports or BLAS calibration.",
+    "total_fresh_workers": 44,
+    "real_fixture_workers": 27,
+    "synthetic_chronology_workers": 15,
+    "protocol_workers": 1,
+    "clock_calibration_workers": 1,
+    "observer_capture_rule": "Controlled parity harness can use bounded test-only in-memory spies equally across builds; their times are not overhead estimates. The separate 18 observer workers disable dense spies/copying in all builds and preserve minimal returned outcomes. All source/config matches are verified before each block.",
+    "statistics": "Report all run-level paired CPU/wall differences, counts, extrema and raw order, including negative deltas. Six observer replicates per build are descriptive, not p99/reliability estimates; no launch-level independence or hardware bound claim."
+  },
+  "G2_resources_PROPOSED_NOT_AUTHORIZED": {
+    "host_allocation_minutes": 10,
+    "allocation_source": "New G2 proposal; does not consume or inherit Phase B 20-minute ceiling.",
+    "individual_data_worker_timeout_s": 30,
+    "protocol_worker_timeout_s": 120,
+    "clock_worker_timeout_s": 30,
+    "worker_peak_RSS_GiB": 1,
+    "reserved_output_GiB": 1,
+    "minimum_free_floor_GiB": 1,
+    "initial_min_free_GiB": 2,
+    "worker_sidecar_limit_bytes": 16777216,
+    "policy": "Fresh sequential native SINGLE, no parallel tests/rendering/analysis/benchmark. Inspect supported controls before numeric imports; retain actual backend/API observations, process thread counts and CPU/wall limits. Read environment alone is insufficient.",
+    "guards": [
+      "results/**/MEASURED_ACTIVE",
+      "results/task007d/D3_ACTIVE",
+      "actual concurrent computational processes and owner guards"
+    ],
+    "stop": "Ceilings are allocations, not estimates. Stop starting workers on budget/space/RSS/isolation failure; preserve current/partial attempt and all previous evidence. Any timeout makes campaign incomplete, not a replacement slot."
+  },
+  "remaining_decisions": [
+    "Approve this exact API/10-path diff, bounded observer-fault stop and host-derived deadline predicate policy before G1.",
+    "Review future G1 source/test revision; approve or amend the exact 44-worker/10-minute G2 proposal separately.",
+    "Justify clock-resolution/skew reconciliation allowance; no invented ns tolerance or negligible-overhead threshold.",
+    "Resolve independent Phase B contexts/warm-state lineage and later full-versus-legacy readiness policy; neither enters G1.",
+    "Phase B may later request reviewed fresh capture OR a labelled cold-panel amendment under its own assignment; neither is silently included here."
+  ],
+  "hard_stops": "Unexplained controlled parity mismatch, numerical/physical/grip/domain failure, slack >1e-6 m, unexpected fallback/exhaustion, future leakage, authority/RK4 change, timer/schema/recorder invalidity, missing provenance or resource isolation failure. Expected negative test fixtures remain labelled negative and never accepted racing evidence.",
+  "next_gate": "Only Secondary/Primary review and an explicit G1 code instruction can authorize implementation. Only separate G2 authorization can execute numerical/observer checks; formal reviewed-revision verification and Phase B remain later independent gates."
+}

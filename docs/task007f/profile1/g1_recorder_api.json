@@ -1,0 +1,488 @@
+{
+  "schema": "apex-profile1-g1-recorder-api/1.0.0",
+  "schema_version": "1.0.0",
+  "experiment_id": "F-PROFILE-1",
+  "recorded_date": "2026-10-23",
+  "status": "PROPOSED — NOT IMPLEMENTED",
+  "delivery_status": "WORK_COMPLETE_PENDING_REVIEW",
+  "base_revision": "ff34bd36897c4ed00b850a2d0255132bdebac5fd",
+  "stage": "WORK_G1_ASSIGNMENT_PREPARATION_ONLY",
+  "g1_implementation_authorized": false,
+  "g2_execution_authorized": false,
+  "phase_b_authorized": false,
+  "future_module": "scripts/task007f/profile1/recorder.py",
+  "types": {
+    "WorkerIdentity": {
+      "worker_id": "nonempty string, at most 128 UTF-8 bytes",
+      "pid": "integer",
+      "reference_revision": "eaa0a3398515a21f30a850de59a0b44c775fad4d",
+      "implementation_revision": "exact reviewed build SHA",
+      "implementation_diff_sha256": "reviewed diff digest; empty diff digest for B0",
+      "manifest_sha256": "unchanged accepted Performance manifest identity"
+    },
+    "CallToken": "worker-local increasing positive integer; never a packet or permission identity",
+    "SpanToken": "reserved slot integer; unique per worker, no reuse",
+    "CallKind": [
+      "construction",
+      "startup",
+      "recurring",
+      "clock_probe"
+    ],
+    "SpanExit": [
+      "complete",
+      "exception",
+      "aborted"
+    ],
+    "PrepOutcome": {
+      "kind": [
+        "returned_packet",
+        "returned_none",
+        "raised",
+        "not_applicable"
+      ],
+      "existing_status": "original scalar diagnostic status or null",
+      "solver_attempted": "original bool or null",
+      "exception_type": "qualified type name or null"
+    },
+    "RecordStatus": [
+      "ok",
+      "faulted"
+    ],
+    "FrozenSidecar": {
+      "schema": "apex-profile1-sidecar/1.0.0",
+      "schema_version": "1.0.0",
+      "worker_identity": "WorkerIdentity",
+      "limits": "RecorderLimits",
+      "calls": "bounded CallKind/plan/simulated release-estimate/dispatch clock/outcome records",
+      "spans": "bounded span_fields rows with integer or null endpoints and missing reasons",
+      "faults": "bounded first-fault and diagnostics",
+      "reconciliation": "ReconciliationReport",
+      "termination": "actual process/run termination classification",
+      "physical_outcomes": "post-run observed completion/accepted/application timestamps or null with reasons; application_permission_status remains not_implemented_or_unobserved",
+      "clock_publication_tail": "unmeasured after last endpoint; no invented bound",
+      "export_scope": "scalar timing/identity/outcome evidence; no state/control/slack/gain arrays"
+    },
+    "ExportReport": {
+      "complete": "bool",
+      "path": "string or null",
+      "partial_path": "string or null",
+      "sha256": "string or null; no digest of incomplete file presented as complete",
+      "failure": "string or null"
+    },
+    "RecorderLimits": "Frozen integer limits exactly named in limits_proposed_for_review; validate before recording; no numerical objects.",
+    "ClockAllowance": {
+      "wall_ns": "review-approved nonnegative integer or null",
+      "cpu_ns": "review-approved nonnegative integer or null",
+      "provenance": "approved calibration/review identity; absent means uncalibrated"
+    },
+    "ReconciliationReport": {
+      "structural_valid": "bool",
+      "clock_order_valid": "bool",
+      "allowance_status": [
+        "approved",
+        "unresolved"
+      ],
+      "call_reports": "bounded scalar inclusive/exclusive/residual records by clock; null where partial",
+      "faults": "bounded explicit reasons"
+    }
+  },
+  "signatures": [
+    {
+      "name": "create_recorder",
+      "signature": "create_recorder(*, mode: str, identity: WorkerIdentity, limits: RecorderLimits, clock: ClockReader | None = None) -> Recorder | None",
+      "contract": "off returns None without constructing buffers or reading clocks. profile1-v1 constructs bounded scalar-only recorder. Other mode rejected before numerical imports. ClockReader injection only in approved integrity tests.",
+      "descriptor": "function"
+    },
+    {
+      "name": "Recorder.begin_call",
+      "signature": "begin_call(self, *, kind: str, plan_id: int | None, release_sim_s: float | None, estimate_sim_s: float | None) -> CallToken | None",
+      "contract": "Construction and clock_probe have null plan/simulated fields; startup plan 0; recurring plan >=1. One active call per worker. Initial dispatch clock pair precedes slot/metadata work. Capture inputs available at release only.",
+      "descriptor": "method"
+    },
+    {
+      "name": "Recorder.active_call",
+      "signature": "active_call(self) -> CallToken | None",
+      "contract": "Read-only property returning the current token; no global/thread-local registry. Internal recorder is single-writer and detects another writer thread.",
+      "descriptor": "property"
+    },
+    {
+      "name": "Recorder.span_begin",
+      "signature": "span_begin(self, call: CallToken, span_id: str, *, expected_parent: str | None) -> SpanToken | None",
+      "contract": "Validate span catalog and actual stack parent; reserve one slot for both endpoints, number occurrence by (call,span_id,parent_token) from 1, then wall/CPU pair. None means sticky observer fault; original numerical code still executes unchanged.",
+      "descriptor": "method"
+    },
+    {
+      "name": "Recorder.span_end",
+      "signature": "span_end(self, token: SpanToken | None, *, exit: str, exception_type: str | None = None) -> str",
+      "contract": "Wall then CPU pair, fill the reserved slot and pop exactly that top token. Complete marks lexical completion, not numerical success. Catch ordinary observer errors internally; never raise them into planner/solver exception handlers.",
+      "descriptor": "method"
+    },
+    {
+      "name": "Recorder.finish_call",
+      "signature": "finish_call(self, call: CallToken | None, *, outcome: PrepOutcome) -> str",
+      "contract": "Retain original preparation outcome, finish sidecar append work, then wall/CPU dispatch endpoint. Unclosed spans become partial/invalid, never successful zero spans. End-stamp publication/return tail is outside the last endpoint and explicitly unmeasured, with independent observer assessment.",
+      "descriptor": "method"
+    },
+    {
+      "name": "Recorder.stop_requested",
+      "signature": "stop_requested(self) -> bool",
+      "contract": "Read-only sticky fault flag; checked only at named existing safe reporting boundaries, never used as a numerical fallback or authority grant.",
+      "descriptor": "method"
+    },
+    {
+      "name": "Recorder.reconcile",
+      "signature": "reconcile(self, *, clock_allowance_ns: ClockAllowance | None = None) -> ReconciliationReport",
+      "contract": "Post-kernel integer arithmetic only: inclusive duration and subtraction of immediate complete disjoint children. Partial coverage yields unknown exclusive values/reasons. Preserve signed residual and clock-skew evidence; never clamp. Cache the report for seal; missing reviewed allowance is explicitly unresolved, not zero.",
+      "descriptor": "method"
+    },
+    {
+      "name": "Recorder.seal",
+      "signature": "seal(self, *, legacy_result: Mapping[str, object] | None, termination: str) -> FrozenSidecar",
+      "contract": "After the measured worker, join already observed legacy completion/handoff/application outcomes; no clock reads, new solves, warm-state copies or future inputs. Seal once, record open calls/spans as partial, and reject subsequent recording. Require a prior reconciliation report; unresolved allowance remains visible, never promoted to approved.",
+      "descriptor": "method"
+    },
+    {
+      "name": "write_sidecar",
+      "signature": "write_sidecar(sidecar: FrozenSidecar, *, output_dir: Path) -> ExportReport",
+      "contract": "Post-measurement serialization only, in a fresh exclusively owned worker directory. Create .partial exclusively; flush and fsync before publishing a fresh final filename. Never overwrite. Keep partial data on failure and report it; original numerical result is written/preserved separately first.",
+      "descriptor": "function"
+    },
+    {
+      "name": "ClockReader.wall_ns",
+      "signature": "wall_ns(self) -> int",
+      "contract": "Production reader calls time.perf_counter_ns.",
+      "descriptor": "method"
+    },
+    {
+      "name": "ClockReader.cpu_ns",
+      "signature": "cpu_ns(self) -> int",
+      "contract": "Production reader calls time.process_time_ns.",
+      "descriptor": "method"
+    }
+  ],
+  "import_and_injection": {
+    "launcher": "Parse --efficiency-instrumentation {off,profile1-v1}, default off, with stdlib only. Reject unsupported values before imports/configuration of any numerical backend. In off mode do not import recorder.py at all.",
+    "ON_order": "Fresh child: configure supported native SINGLE before numerical imports; import recorder module only for explicit ON; create identity/limits; inject same recorder into composition, planner and AsyncRunner. Numerical objects never import the research recorder module; optional recorder=None arguments only.",
+    "OFF_path": "No newly added clock reads, capture containers, spans, lambdas, context managers, payload dictionaries or tuple snapshots. Branch on recorder is not None around all new observation. Existing numerical/legacy diagnostic allocations remain. No claim of zero disabled-branch CPU cost; B0/B1 assesses it.",
+    "no_runtime_framework": "Stdlib bounded slots and explicit try/finally hooks; no global patching, sys.settrace, contextvars framework, solver replacement or dependency changes.",
+    "supported_recorder": "Only create_recorder output at the reviewed API version is supported; validate at research composition before backend construction. Arbitrary third-party recorder objects require review."
+  },
+  "limits_proposed_for_review": {
+    "max_calls": 64,
+    "max_span_records": 8192,
+    "max_stack_depth": 8,
+    "max_fault_records": 64,
+    "max_identity_utf8_bytes": 128,
+    "max_exception_type_utf8_bytes": 256,
+    "max_serialized_bytes": 16777216,
+    "storage": "One slot per begun span holds both endpoints; a first-fault/emergency status slot is reserved at creation. No dropping, ring overwrite or retaining numerical arrays. Limits are software/output caps, not a proof of total Python RSS; G2 has its own RSS guard.",
+    "fault_after_limit": "Latch first failure, stop recording new spans/calls without interrupting original active numerical computation, close already reserved endpoints if possible, then stop at the reporting boundary. Never begin a new preparation after fault.",
+    "max_status_utf8_bytes": 2048
+  },
+  "identity_and_clock_rules": {
+    "span_fields": [
+      "worker_id",
+      "call_seq",
+      "call_kind",
+      "plan_id",
+      "span_token",
+      "parent_span_token",
+      "span_id",
+      "occurrence",
+      "begin_sequence",
+      "end_sequence",
+      "wall_start_ns",
+      "cpu_start_ns",
+      "wall_end_ns",
+      "cpu_end_ns",
+      "exit",
+      "exception_type",
+      "coverage",
+      "missing_reason"
+    ],
+    "ordering": "For every pair, wall first then process CPU, raw integers. Verify nondecreasing endpoints per clock. Record actual clock implementations/resolution outside kernels in G2. Host time, process CPU and simulated seconds remain separate.",
+    "reentrancy": "No second call while one active; no implicit parent repair; out-of-order/missing tokens or foreign worker/thread mark invalid. No lock contention or cross-worker global state introduced.",
+    "exception_detail": "Qualified exception type only inside hooks; never call arbitrary exception __str__/repr or traceback formatter there. Original diagnostics are untouched. Larger error text, if safe, belongs to post-kernel worker report.",
+    "missing": "not_reached, partial, unavailable and aborted are distinct. Only a sampled complete zero interval is zero. Null needs a reason.",
+    "integer_range": "Raw endpoint is a non-boolean nonnegative signed-64-bit integer nanosecond count or null with reason; reject anomalous injected types/ranges without exposing errors to numerical handlers."
+  },
+  "span_tree": [
+    {
+      "id": "prepare_full",
+      "parent": null,
+      "path": "src/apex/control/trajectory/planner.py",
+      "function": "TrajectoryPlanner.prepare",
+      "first_line": 19,
+      "last_line": 110,
+      "boundary": "Research caller immediately before invocation until returned tuple exists, or original exception exits; includes final replacement and returned diagnostics assembly."
+    },
+    {
+      "id": "prediction",
+      "parent": "prepare_full",
+      "path": "src/apex/control/trajectory/planner.py",
+      "function": "TrajectoryPlanner.prepare",
+      "first_line": 38,
+      "last_line": 47,
+      "boundary": "Before startup/predict branch through predicted state/previous command, including tracker clone; preserve startup path label."
+    },
+    {
+      "id": "controller",
+      "parent": "prepare_full",
+      "path": "src/apex/control/mpc/controller.py",
+      "function": "MPCController.compute_control",
+      "first_line": 62,
+      "last_line": 170,
+      "boundary": "Entire existing compute_control invocation, including exceptional exit."
+    },
+    {
+      "id": "reference",
+      "parent": "controller",
+      "path": "src/apex/control/mpc/controller.py",
+      "function": "MPCController.compute_control",
+      "first_line": 69,
+      "last_line": 80,
+      "boundary": "Complete make_preview invocation."
+    },
+    {
+      "id": "reference_geometry",
+      "parent": "reference",
+      "path": "src/apex/control/mpc/preview.py",
+      "function": "make_preview",
+      "first_line": 38,
+      "last_line": 40,
+      "boundary": "Each track.sample; aggregate occurrences only as a child."
+    },
+    {
+      "id": "reference_values",
+      "parent": "reference",
+      "path": "src/apex/control/mpc/preview.py",
+      "function": "make_preview",
+      "first_line": 41,
+      "last_line": 68,
+      "boundary": "Existing reference-generation blocks on the executed branch; loop advance/array assembly remain reference residual."
+    },
+    {
+      "id": "warm",
+      "parent": "controller",
+      "path": "src/apex/control/mpc/controller.py",
+      "function": "MPCController.compute_control",
+      "first_line": 81,
+      "last_line": 89,
+      "boundary": "Terminal lookup plus warm/cold decision and guess; do not rename this legacy combined timer."
+    },
+    {
+      "id": "terminal_lookup",
+      "parent": "warm",
+      "path": "src/apex/control/mpc/controller.py",
+      "function": "MPCController.compute_control",
+      "first_line": 82,
+      "last_line": 82,
+      "boundary": "TerminalSchedule.matrix invocation only."
+    },
+    {
+      "id": "guess",
+      "parent": "warm",
+      "path": "src/apex/control/mpc/controller.py",
+      "function": "MPCController.compute_control",
+      "first_line": 83,
+      "last_line": 88,
+      "boundary": "Existing branch and shift_solution or cold_start exactly once; record which."
+    },
+    {
+      "id": "parameter_pack",
+      "parent": "controller",
+      "path": "src/apex/control/mpc/controller.py",
+      "function": "MPCController.compute_control",
+      "first_line": 90,
+      "last_line": 95,
+      "boundary": "NLPRequest, packed initial and parameter_vector."
+    },
+    {
+      "id": "solver_adapter",
+      "parent": "controller",
+      "path": "src/apex/control/mpc/controller.py",
+      "function": "MPCController.compute_control",
+      "first_line": 96,
+      "last_line": 98,
+      "boundary": "Entire solver.solve invocation."
+    },
+    {
+      "id": "ipopt_call",
+      "parent": "solver_adapter",
+      "path": "src/apex/optimization/solvers/ipopt.py",
+      "function": "IpoptSolver.solve",
+      "first_line": 36,
+      "last_line": 43,
+      "boundary": "Immediately before self.backend call to answer return/raise; no stats extraction in this child."
+    },
+    {
+      "id": "adapter_validation",
+      "parent": "solver_adapter",
+      "path": "src/apex/optimization/solvers/ipopt.py",
+      "function": "IpoptSolver.solve",
+      "first_line": 45,
+      "last_line": 82,
+      "boundary": "Executed stats/extraction/finite/bounds/feasibility/SolverResult path or RuntimeError path; do not change historical solve_time semantics."
+    },
+    {
+      "id": "controller_validation",
+      "parent": "controller",
+      "path": "src/apex/control/mpc/controller.py",
+      "function": "MPCController.compute_control",
+      "first_line": 99,
+      "last_line": 170,
+      "boundary": "Existing result shape, evaluate(), constraints, objective components, solution copies and failure reset; includes existing diagnostic work."
+    },
+    {
+      "id": "packet_initial",
+      "parent": "prepare_full",
+      "path": "src/apex/control/trajectory/planner.py",
+      "function": "TrajectoryPlanner.prepare",
+      "first_line": 54,
+      "last_line": 73,
+      "boundary": "Nominal packet and curvature replacement, including constructor validation/copies."
+    },
+    {
+      "id": "gains",
+      "parent": "prepare_full",
+      "path": "src/apex/control/trajectory/planner.py",
+      "function": "TrajectoryPlanner.prepare",
+      "first_line": 75,
+      "last_line": 75,
+      "boundary": "TVLQR.compute only; existing gain_time additionally includes gain packet replacement and remains unchanged."
+    },
+    {
+      "id": "gain_jacobians",
+      "parent": "gains",
+      "path": "src/apex/control/trajectory/tracker.py",
+      "function": "TVLQR.compute",
+      "first_line": 29,
+      "last_line": 41,
+      "boundary": "Existing 100 Hz samples, Jacobian evaluations and matrix list."
+    },
+    {
+      "id": "gain_terminal_dare",
+      "parent": "gains",
+      "path": "src/apex/control/trajectory/tracker.py",
+      "function": "TVLQR.compute",
+      "first_line": 42,
+      "last_line": 43,
+      "boundary": "Existing terminal solve_discrete_are."
+    },
+    {
+      "id": "gain_backward",
+      "parent": "gains",
+      "path": "src/apex/control/trajectory/tracker.py",
+      "function": "TVLQR.compute",
+      "first_line": 44,
+      "last_line": 50,
+      "boundary": "Existing recursion and return-array construction."
+    },
+    {
+      "id": "packet_gain_attach",
+      "parent": "prepare_full",
+      "path": "src/apex/control/trajectory/planner.py",
+      "function": "TrajectoryPlanner.prepare",
+      "first_line": 76,
+      "last_line": 76,
+      "boundary": "Existing gain packet replacement including constructor validation."
+    },
+    {
+      "id": "packet_final",
+      "parent": "prepare_full",
+      "path": "src/apex/control/trajectory/planner.py",
+      "function": "TrajectoryPlanner.prepare",
+      "first_line": 86,
+      "last_line": 87,
+      "boundary": "Final total_computation_duration replacement, outside historical planner_total_time."
+    },
+    {
+      "id": "return_assembly",
+      "parent": "prepare_full",
+      "path": "src/apex/control/trajectory/planner.py",
+      "function": "TrajectoryPlanner.prepare",
+      "first_line": 88,
+      "last_line": 110,
+      "boundary": "Existing diagnostics dict/list conversion and tuple assembly through caller receipt."
+    }
+  ],
+  "span_tree_policy": "The 22 IDs and their parent graph are copied exactly from accepted Phase A; no extra recurring spans or per-Jacobian microspans. Repeated preview geometry/reference occurrences have separate ordinals. Dispatch and one-time construction are separate populations.",
+  "construction_tree": [
+    {
+      "id": "construction_full",
+      "parent": null,
+      "scope": "Research launcher before fixture loading through completed controller/planner/plant/tracker; excludes recorder creation, which is reported separately in whole-worker startup."
+    },
+    {
+      "id": "fixture_load",
+      "parent": "construction_full",
+      "scope": "Original frozen geometry/reference/vehicle/config loading."
+    },
+    {
+      "id": "nlp_graph",
+      "parent": "construction_full",
+      "scope": "Existing MPCProblem constructor from make_mpc caller; no problem.py edits."
+    },
+    {
+      "id": "solver_construction",
+      "parent": "construction_full",
+      "scope": "Existing IpoptSolver constructor from make_mpc caller; construction_seconds preserved."
+    },
+    {
+      "id": "controller_construction",
+      "parent": "construction_full",
+      "scope": "Existing MPCController constructor from make_mpc caller."
+    },
+    {
+      "id": "terminal_construction",
+      "parent": "controller_construction",
+      "scope": "Existing TerminalSchedule construction inside controller constructor; cost.py unchanged."
+    },
+    {
+      "id": "planner_construction",
+      "parent": "construction_full",
+      "scope": "Existing TrajectoryPlanner constructor from research launcher."
+    },
+    {
+      "id": "gain_builder_construction",
+      "parent": "planner_construction",
+      "scope": "Existing TVLQR constructor and symbolic Jacobian creation; predictor construction remains planner residual."
+    }
+  ],
+  "legacy_boundaries": {
+    "planner_total_time": "Original perf_counter start planner.py:31 to sample at :84. New timing overhead inside that interval remains naturally included; name/start/end not moved.",
+    "planner_cpu_time": "Original process_time at planner.py:31 to :85; preserve process CPU meaning.",
+    "solve_time": "Success: original IpoptSolver.solve start :34 to :44; RuntimeError: original :34 to :74. Backend-only span is not a renamed solve_time.",
+    "packet_metadata": "Original solve_duration and total_computation_duration values continue to originate from the same legacy fields. Do not replace with new full/envelope timers.",
+    "startup": "Startup prepare is measured separately and is gated at simulated completion 0 as before. Construction/startup are not recurring CPU/simulated-s."
+  },
+  "readiness": {
+    "legacy": "AsyncRunner.run.release continues original c.delay(plan_id,event[planner_total_time]) or existing DiagnosticTiming path, unchanged.",
+    "full": "prepare_full pair starts at research caller immediately before prepare invocation, ends after receipt of exactly the original tuple or escaped exception. Final packet replacement and return assembly included.",
+    "dispatch": "begin_call immediately before asynchronous.py:222 capture/prefix block, after original estimate-at-release calculation; finish_call after prepare/sidecar append and before :246 delay selection. Release prologue :212-221 is outside this explicitly named envelope.",
+    "overhead": "Independent paired B0/B1 and B1/B2 differences plus clock-operation counts and calibration. Exclusive residual contains numerical bookkeeping AND instrumentation; never label all residual as observer cost or subtract a presumed constant.",
+    "publication_tail": "Last endpoint-field publication/return cannot be enclosed in its own clock pair. Mark it unmeasured and assess independently; no universal zero-cost claim or invented bound.",
+    "hypothetical": "Post-measurement only: release_sim_s + full_prepare_wall_ns/1e9 and release_sim_s + dispatch_wall_ns/1e9, with differences from the ORIGINAL modeled legacy completion clearly labelled hypothetical_measured. Under injected/spike timing these are counterfactual host-duration mappings, not replacement replay outcomes.",
+    "authority": "No hypothetical field enters estimator, packet, pending queue, deadline comparison, buffer, tracker, accepted timestamp or application permission. Phase B full-boundary policy remains separate review."
+  },
+  "capture_prohibition": "G1 introduces scalar timing/identity/outcome sidecars only. No dense numerical snapshot recorder, new warm-start history capture, historical reconstruction or context-panel generation. G2 test-only in-memory observation is separately authorized and never substitutes for Phase B history.",
+  "clock_probe_catalog": {
+    "kind": "clock_probe",
+    "span_ids": [
+      {
+        "id": "clock_empty",
+        "parent": null
+      },
+      {
+        "id": "clock_parent",
+        "parent": null
+      },
+      {
+        "id": "clock_child",
+        "parent": "clock_parent"
+      }
+    ],
+    "rule": "G2 clock-only calibration population: one call, 1000 disjoint empty single spans plus 1000 empty parent/child pairs. Not preparation, construction or simulated work; no extra recurring span IDs."
+  },
+  "physical_outcome_join": "Only raw.plans[i].completed == true establishes observed completion; completion_time and packet.actual_completion_time may already contain scheduled future times on an incomplete call, so retain those as scheduled and set observed completion null/censored. Accepted time requires an accepted handoff record, and application time requires an observed applied control row. Never infer Safety permission or an acknowledgement."
+}
