@@ -1,0 +1,244 @@
+{
+  "task": "APEX-CT-1L-L0",
+  "stage": "L0_ASSIGNMENT_PREPARATION_ONLY",
+  "status": "WORK_COMPLETE_PENDING_REVIEW",
+  "starting_revision": "b22e24c13f76ea2e265d54a423825f8b15ea7b37",
+  "accepted_Performance_E4": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+  "verified_scientific_revision": "e603672b209985f11ed26b6f44d3949ffd5675c5",
+  "implementation_status": "NOT IMPLEMENTED",
+  "numerical_evaluation_status": "NOT EXECUTED",
+  "tests_status": "UNEXECUTED",
+  "authority_note": "Primary accepted prior CT1 methodology/interpretation/candidate panel in current assignment; historical records retain their original status and bytes. No L1 or L3 authorization.",
+  "schema": "apex-ct1l-point-qualification/1.0.0",
+  "immutable_panel": {
+    "path": "docs/ct1/operating_point_selection.json",
+    "sha256": "da5b5556e0a0eeba112b5bb3a1190795e0d54f3210bfdb4f254ca6c32fd9082a",
+    "candidate_count": 12,
+    "candidate_order": [
+      "entry_exit_1",
+      "entry_exit_2",
+      "entry_exit_3",
+      "corner_1",
+      "corner_2",
+      "corner_3",
+      "straight_1",
+      "straight_2",
+      "straight_3",
+      "high_speed_1",
+      "high_speed_2",
+      "high_speed_3"
+    ],
+    "bindings": [
+      {
+        "candidate_id": "entry_exit_1",
+        "candidate_object_canonical_sha256": "1b8b4ac20f51888a6d5a2888b4df0421d814bf1e256be7317f6774de48546528",
+        "packet_id": 370,
+        "original_gain_index": 9,
+        "raw_state_row": 7426,
+        "raw_control_row": 3713,
+        "timestamp_s": 37.12999999999826,
+        "qualification_status": "NOT EXECUTED"
+      },
+      {
+        "candidate_id": "entry_exit_2",
+        "candidate_object_canonical_sha256": "80cc4dedf246c4ed9adf20e1fa4df507a300f1b29babd18a2b8f68efb05659af",
+        "packet_id": 502,
+        "original_gain_index": 10,
+        "raw_state_row": 10068,
+        "raw_control_row": 5034,
+        "timestamp_s": 50.34,
+        "qualification_status": "NOT EXECUTED"
+      },
+      {
+        "candidate_id": "entry_exit_3",
+        "candidate_object_canonical_sha256": "6768120f0810c9ed9745da9e74e2cc211047fba2ed2df14a7cb96015fa413b94",
+        "packet_id": 581,
+        "original_gain_index": 1,
+        "raw_state_row": 11630,
+        "raw_control_row": 5815,
+        "timestamp_s": 58.15,
+        "qualification_status": "NOT EXECUTED"
+      },
+      {
+        "candidate_id": "corner_1",
+        "candidate_object_canonical_sha256": "f3eee9fd4c4657446ed4d81e2c1f940409a13c9f57e126c87961ce92bc65864a",
+        "packet_id": 415,
+        "original_gain_index": 1,
+        "raw_state_row": 8310,
+        "raw_control_row": 4155,
+        "timestamp_s": 41.549999999999486,
+        "qualification_status": "NOT EXECUTED"
+      },
+      {
+        "candidate_id": "corner_2",
+        "candidate_object_canonical_sha256": "e60f88961452c81969942ad1a7f4ffbb223d3ffcf4714639b60e089b9efadf5e",
+        "packet_id": 431,
+        "original_gain_index": 5,
+        "raw_state_row": 8638,
+        "raw_control_row": 4319,
+        "timestamp_s": 43.189999999999955,
+        "qualification_status": "NOT EXECUTED"
+      },
+      {
+        "candidate_id": "corner_3",
+        "candidate_object_canonical_sha256": "e61b291da316545957cdffe199fc03dbca5cd63af6e8d9fa36ab4638bb9a1f7b",
+        "packet_id": 563,
+        "original_gain_index": 8,
+        "raw_state_row": 11284,
+        "raw_control_row": 5642,
+        "timestamp_s": 56.42,
+        "qualification_status": "NOT EXECUTED"
+      },
+      {
+        "candidate_id": "straight_1",
+        "candidate_object_canonical_sha256": "27b9bd34ff5579891fa34fce341d83b91fe0acc13195a509e50d7b59c942174e",
+        "packet_id": 325,
+        "original_gain_index": 11,
+        "raw_state_row": 6530,
+        "raw_control_row": 3265,
+        "timestamp_s": 32.649999999997014,
+        "qualification_status": "NOT EXECUTED"
+      },
+      {
+        "candidate_id": "straight_2",
+        "candidate_object_canonical_sha256": "b3efce8ebaef1431ad221b22de51c62e18ee363ba22b18a9231c24e30e7850c2",
+        "packet_id": 332,
+        "original_gain_index": 4,
+        "raw_state_row": 6658,
+        "raw_control_row": 3329,
+        "timestamp_s": 33.28999999999718,
+        "qualification_status": "NOT EXECUTED"
+      },
+      {
+        "candidate_id": "straight_3",
+        "candidate_object_canonical_sha256": "a4646e54816cbb5f50591ce3ca54361660ee66261df22b82b3de814b12f99565",
+        "packet_id": 338,
+        "original_gain_index": 8,
+        "raw_state_row": 6784,
+        "raw_control_row": 3392,
+        "timestamp_s": 33.91999999999736,
+        "qualification_status": "NOT EXECUTED"
+      },
+      {
+        "candidate_id": "high_speed_1",
+        "candidate_object_canonical_sha256": "2c316cf831667818c5d50b3a4b4c8d0556d41830e098b9e64fbaa2ff170de140",
+        "packet_id": 336,
+        "original_gain_index": 0,
+        "raw_state_row": 6730,
+        "raw_control_row": 3365,
+        "timestamp_s": 33.64999999999727,
+        "qualification_status": "NOT EXECUTED"
+      },
+      {
+        "candidate_id": "high_speed_2",
+        "candidate_object_canonical_sha256": "c426e84633a90ff746258df3e020749d6569bd5a528531d019883fa027e33489",
+        "packet_id": 436,
+        "original_gain_index": 8,
+        "raw_state_row": 8746,
+        "raw_control_row": 4373,
+        "timestamp_s": 43.730000000000004,
+        "qualification_status": "NOT EXECUTED"
+      },
+      {
+        "candidate_id": "high_speed_3",
+        "candidate_object_canonical_sha256": "c45197e76bc424867ed414457e5440eb7eefd4f1dbcc5dfd2e5336bfbaa6ff6c",
+        "packet_id": 495,
+        "original_gain_index": 2,
+        "raw_state_row": 9912,
+        "raw_control_row": 4956,
+        "timestamp_s": 49.56,
+        "qualification_status": "NOT EXECUTED"
+      }
+    ],
+    "preserve": "Every ID, source hash, source row, archived actual x, held applied u, nominal x/u, packet/gain association and category. No replacement/reselection/rank-based exclusion."
+  },
+  "operating_tuples": {
+    "ACTUAL_HELD": "Use archived actual x and physically held applied [delta,a_cmd] at original timestamp. Prior application source plan may differ from active authority; preserve both. Source physical curvature evaluated at actual s_abs.",
+    "PACKET_NOMINAL": "Use original immutable packet.sample(t) semantics at same physical time and original ZOH control/gain/preview index. Preserve original untrimmed design grid; accepted authority trimming is separately reconstructed.",
+    "source_compare_only": "When comparing methods, x,u,parameters,curvature policy, dt/substep schedule and chart must be identical. ACTUAL_HELD vs PACKET_NOMINAL differences are model/tuple effects, not derivative errors."
+  },
+  "pipeline": [
+    {
+      "step": "Q0_SOURCE_IDENTITY",
+      "action": "Verify authorized CT1 parent, E4/E3/manifest, all 305 source bindings and 90 retained evidence hashes before import; original panel hash and exact candidate object SHA must match.",
+      "failure": "global preflight failure; no numerical worker or substitute source"
+    },
+    {
+      "step": "Q1_CAUSAL_BINDING",
+      "action": "Bind native state row/time, held command via latest observed application, application-source packet, original accepted authority interval and packet expiry, original stored gain/gain_time/ZOH index, nominal reference, pending-command request lineage and prior applied delta.",
+      "failure": "UNAVAILABLE for genuinely absent pending-tail information; INVALID for contradictory chronology. Do not infer complete in-flight state from absence of a control row."
+    },
+    {
+      "step": "Q2_GEOMETRY",
+      "action": "Compute q(s) through accepted spline numerical-arc map; inspect exact source-bound polynomial derivatives and segment boundaries; calculate kappa, kappa_s in arc-length units, distinguish nominal preview and offset reference curvature.",
+      "failure": "UNAVAILABLE if no read-only pinned geometry binding, ambiguous segment or cannot resolve inversion/stencil branch; never fabricate dkappa/ds=0."
+    },
+    {
+      "step": "Q3_PHYSICAL_DOMAIN",
+      "action": "Evaluate accepted diagnostics without time advancement; record speed, loads, sqrt arguments, slip/force/utilization, D, actuator boxes, corridor/slack/longitudinal margins; preserve source guard thresholds.",
+      "failure": "INVALID if actual source domain rejects; valid boundary without open neighborhood only branch-specific/unavailable derivative."
+    },
+    {
+      "step": "Q4_MAP_AND_STENCIL",
+      "action": "Precheck fixed CT1 central stencils including every actual RK4 stage and endpoint, unwrapped heading residual chart, positive unwrapped progress and geometry branch; no shifted point, clipping, step shrinking, extra regularization or relaxed tolerances.",
+      "failure": "QUALIFIED_BRANCH_SPECIFIC only for an explicitly identified feasible side with one-sided derivative; central parity unavailable. Otherwise UNAVAILABLE. Record original tuple unchanged."
+    },
+    {
+      "step": "Q5_FEEDBACK_APPLICABILITY",
+      "action": "Determine whether unsaturated immediate-memory-free A-BK assumptions apply. Flag box/slew branch, old applied delta, pending/delayed actuation, skipped grid, active/expired/superseded packet, nominal/actual mismatch and nonzero defects.",
+      "failure": "Does not erase an otherwise valid open-loop pair. Mark closed-loop conclusion conditional/UNAVAILABLE_ASYNC_EVENT_MAP; no hybrid-map implementation authorized."
+    },
+    {
+      "step": "Q6_PANEL_COVERAGE",
+      "action": "Emit all twelve candidates with per-tuple/per-map status, reasons, missing fields, inherited versus newly evaluated domain checks and category counts.",
+      "failure": "Retain INVALID/UNAVAILABLE/poor conditioning and all partial results; never reduce denominator from 12."
+    }
+  ],
+  "domain_thresholds": {
+    "NumPy_physical": {
+      "vx_min_mps": 0.5,
+      "vx_max_mps": 6,
+      "speed_roundoff_tolerance_mps": 1e-10,
+      "D_min_strict": 0.001,
+      "loads_min_strict_N": 1e-09,
+      "delta_rad": [
+        -0.4,
+        0.4
+      ],
+      "a_cmd_mps2": [
+        -3,
+        2
+      ],
+      "longitudinal_fraction_abs_max": 0.999999
+    },
+    "NLP_preview_comparison": {
+      "vx_mps": [
+        0.5,
+        6
+      ],
+      "D_min": 0.01,
+      "loads_min_N": 1e-06,
+      "longitudinal_fraction_abs_max": 0.999999
+    },
+    "distinction": "Plant admissibility and stricter NLP constraints are separate fields; no silent threshold merger. Even if source accepts roundoff at speed bounds, unrestricted central derivatives need a valid open neighborhood.",
+    "corridor": "Record original widths, 0.08 m planning margin and scientific material-slack 1e-6 m gate; no swept-body safety inference.",
+    "sqrt": "Both (mu*Fzi)^2-Fxi^2 strictly positive and all stencil stages retain longitudinal reserve; no epsilon inside sqrt."
+  },
+  "geometry_and_chart_contract": {
+    "read_only_binding": "Proposed pinned access via ClosedTrack.centerline to PeriodicCenterline._spline.c, _q, _arc and _parameter(s); snapshot copies only, no monkeypatch or file edit. Private access must be explicitly reviewed at L1/L2.",
+    "physical_derivative": "V=|c_q|, N=Xq*Yqq-Yq*Xqq; kappa=N/V^3; kappa_s=(Xq*Yqqq-Yq*Xqqq)/V^4-3*N*(Xq*Xqq+Yq*Yqq)/V^6",
+    "tangent_domain": "V must exceed accepted source 1e-8; no replacement geometry or raw-chord differentiation.",
+    "knot_handling": "C2 spline gives continuous curvature but possibly distinct one-sided kappa_s at knots/seam. Preserve original s and explicit LEFT/RIGHT branch. No averaged derivative. Inversion/root uncertainty that prevents unique segment classification yields UNAVAILABLE; no new arbitrary knot tolerance. Record original inversion xtol=1e-12 and rtol=1e-13 plus quadrature epsabs/epsrel=1e-11 as source metadata, not proof error bounds.",
+    "map_crossing": "Classify entire original and perturbed RK4 paths. If a required physical map crosses an unresolved knot/event/chart branch, report unavailable or explicitly branch-specific; do not substitute frozen geometry.",
+    "heading": "Local lift of theta and endpoint residual; source plant wraps only completed steps. Do not finite-difference +/-pi values directly.",
+    "packet_boundary": "Time and discrete packet/gain identity held fixed in x/u stencils; never interpolate IDs. An endpoint crossing authority, gain or input ZOH boundary gets explicit interval truncation, not a smooth time derivative."
+  },
+  "status_rules": {
+    "QUALIFIED": "Source/causal binding valid; requested tuple/map has finite smooth two-sided domain, matching chart and required full stencils; feedback applicability classified independently.",
+    "QUALIFIED_BRANCH_SPECIFIC": "Original tuple retained, source domain valid and a named one-sided/nonsmooth branch interpretable; may emit that branch derivative, never unrestricted central parity or stability guarantee.",
+    "UNAVAILABLE": "Required record, differentiability certificate, map stage, chronology detail or branch resolution absent; preserve null result and exact missing reason.",
+    "INVALID": "Contradictory source/causal record, source rejects domain, or nonfinite/unphysical requested tuple; preserve values/reason, no shifted replacement."
+  },
+  "conditioning_rule": "Poor conditioning never changes candidate identity or deletes it. Retain QUALIFIED domain status with numerical INDETERMINATE conditioning status if applicable.",
+  "current_qualification": "NOT EXECUTED; no point newly qualified by L0."
+}

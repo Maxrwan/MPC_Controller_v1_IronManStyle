@@ -1,0 +1,261 @@
+{
+  "task": "APEX-CT-1L-L0",
+  "stage": "L0_ASSIGNMENT_PREPARATION_ONLY",
+  "status": "WORK_COMPLETE_PENDING_REVIEW",
+  "starting_revision": "b22e24c13f76ea2e265d54a423825f8b15ea7b37",
+  "accepted_Performance_E4": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+  "verified_scientific_revision": "e603672b209985f11ed26b6f44d3949ffd5675c5",
+  "implementation_status": "NOT IMPLEMENTED",
+  "numerical_evaluation_status": "NOT EXECUTED",
+  "tests_status": "UNEXECUTED",
+  "authority_note": "Primary accepted prior CT1 methodology/interpretation/candidate panel in current assignment; historical records retain their original status and bytes. No L1 or L3 authorization.",
+  "schema": "apex-ct1l-linear-systems/1.0.0",
+  "criteria": {
+    "state_scaling_SI": [
+      0.5,
+      0.5,
+      1,
+      0.1,
+      0.75,
+      0.1
+    ],
+    "input_scaling_SI": [
+      0.2,
+      1
+    ],
+    "lateral_scaling_SI": [
+      0.1,
+      0.1,
+      0.5,
+      1
+    ],
+    "continuous_time_scale_s": 1,
+    "rank": {
+      "method": "SVD on C=[B,AB,...,A^(n-1)B], not Gramian",
+      "relative_tolerances": [
+        1e-12,
+        1e-10,
+        1e-08,
+        1e-06
+      ],
+      "absolute_floor": 1e-12,
+      "default_relative_tolerance": 1e-10,
+      "rank_rule": "count sigma_i > max(absolute_floor,relative_tolerance*sigma_max)",
+      "condition_rule": "sigma_max/sigma_min; deficient = null with reason RANK_DEFICIENT (mathematical infinity)",
+      "sensitivity": "raw plus nominal scaled; one state/input scale at a time x0.1 and x10; continuous tau=0.1,1,10 s"
+    },
+    "PBH": {
+      "continuous": "full row rank at every eigenvalue Re(lambda)>=0",
+      "discrete": "full row rank at every eigenvalue |lambda|>=1",
+      "include_boundary_band": 1e-08,
+      "ambiguous_result": "INDETERMINATE; Schur/staircase/residual follow-up, no favorable classification"
+    },
+    "closed_loop": {
+      "stable_frozen_rho_upper_exclusive": 0.99999999,
+      "unstable_frozen_rho_lower_exclusive": 1.00000001,
+      "between": "INDETERMINATE",
+      "products": "Phi(k,j)=Acl[k-1]...Acl[j]; Phi(j,j)=I; all covered subintervals within original remaining packet",
+      "norms": [
+        "scaled induced 2-norm",
+        "raw SI 2-norm with unit-dependence warning"
+      ],
+      "time_windows_s": [
+        0.01,
+        0.05,
+        0.1,
+        0.2,
+        0.4
+      ],
+      "include_remaining_horizon": true,
+      "measures": [
+        "all eigenvalues and residuals",
+        "singular spectra",
+        "max transient amplification/time to peak",
+        "endpoint norm",
+        "affine defect and forced response",
+        "full six-state coupled and conditional scalar speed results"
+      ]
+    },
+    "Riccati": {
+      "DARE_and_recursion_relative_residual_max": 1e-08,
+      "symmetry_relative_residual_max": 1e-10,
+      "positive_eigenvalue_floor_scaled": 1e-12,
+      "condition_warning": 10000000000.0,
+      "gain_reproduction_abs_tol": 1e-09,
+      "gain_reproduction_rel_tol": 1e-07,
+      "denominator": "max(1,sum of Frobenius norms of equation terms)",
+      "on_failure": "Preserve original gains; stop affected certificate/reproduction, do not retune"
+    }
+  },
+  "criteria_source": {
+    "path": "docs/ct1/metrics_and_interpretation.json",
+    "sha256": "c73af10718f194fe5cc5f6774e39c5d2742a486dd514f788cd0ec89222529dee"
+  },
+  "subsystems": {
+    "full": {
+      "state_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "input_indices": [
+        0,
+        1
+      ],
+      "A_shape": [
+        6,
+        6
+      ],
+      "B_shape": [
+        6,
+        2
+      ]
+    },
+    "lateral": {
+      "state_indices": [
+        5,
+        3,
+        1,
+        2
+      ],
+      "state_order": [
+        "e_y",
+        "e_psi",
+        "vy",
+        "r"
+      ],
+      "input_indices": [
+        0
+      ],
+      "A_shape": [
+        4,
+        4
+      ],
+      "B_shape": [
+        4,
+        1
+      ],
+      "qualifier": "Extract E*A*E^T and E*B[:,delta]; omitted speed/progress and acceleration coupling blocks retained; not assumed invariant."
+    },
+    "speed": {
+      "state_indices": [
+        0
+      ],
+      "input_indices": [
+        1
+      ],
+      "A_shape": [
+        1,
+        1
+      ],
+      "B_shape": [
+        1,
+        1
+      ],
+      "qualifier": "Continuous A_vv=0,B_va=1; use actual discrete entries, not guessed Euler values. Other perturbations frozen is conditional, not coupled-loop pole."
+    }
+  },
+  "scaling": {
+    "full_Dx": [
+      0.5,
+      0.5,
+      1,
+      0.1,
+      0.75,
+      0.1
+    ],
+    "full_Du": [
+      0.2,
+      1
+    ],
+    "lat_Dx": [
+      0.1,
+      0.1,
+      0.5,
+      1
+    ],
+    "lat_Du": [
+      0.2
+    ],
+    "speed_Dx": [
+      0.5
+    ],
+    "speed_Du": [
+      1
+    ],
+    "continuous": "Abar=tau*Dx^-1*A*Dx;Bbar=tau*Dx^-1*B*Du",
+    "discrete": "Abar=Dx^-1*A*Dx;Bbar=Dx^-1*B*Du",
+    "feedback": "Gbar=Du^-1*G*Dx; Pbar=Dx^T*P*Dx, Qbar=Dx^T*Q*Dx, Rbar=Du^T*R*Du",
+    "sensitivity": "Every one of n+m scale entries separately x0.1 and x10 with all others fixed; publish dimensional raw matrices too. Continuous tau in [0.1,1,10] s. No perturbation amplitude or controller weight change."
+  },
+  "controllability": {
+    "construct": "C=[B,A*B,...,A^(n-1)*B] for n=6,4,1, both dimensional and normalized pairs; continuous use accepted tau.",
+    "method": "SVD of C directly, all singular values descending, rank threshold max(1e-12,t_rel*sigma_max), t_rel=[1e-12,1e-10,1e-8,1e-6], default1e-10.",
+    "conditioning": "sigma_max/sigma_min with mathematical infinity encoded null+INFINITE_RANK_DEFICIENT; near-zero numerical result is not a theorem of exact deficiency.",
+    "ambiguity": "Retain ill-conditioned cases. PBH plus rank-revealing Schur/staircase cross-check before any physical deficiency claim; if not resolved within reviewed methods/budget, INDETERMINATE.",
+    "limitations": "Full-rank unconstrained local pair is not constrained nonlinear controllability or reachable-set invariance."
+  },
+  "PBH_contract": {
+    "matrix": "[lambda*I-A,B] in complex arithmetic at every eigenvalue; store every singular spectrum and rank across same declared tolerances.",
+    "continuous_required": "Re(lambda)>=0 including marginal modes; near imaginary axis within1e-8 -> INDETERMINATE pending residual/Schur/staircase resolution.",
+    "discrete_required": "abs(lambda)>=1 including unit circle; within1e-8 of boundary -> INDETERMINATE pending residual/Schur/staircase resolution.",
+    "repeated_modes": "No eigenvector inverse; log Schur clusters, eigenvalue residual and conditioning. Ambiguity remains visible, not rounded stable.",
+    "no_exact_deficiency_from_roundoff": true
+  },
+  "gain_verification": {
+    "primary": "Original archived K and gain_times/gain interval source pointers; never substitute recomputed values.",
+    "grid": "Use original untrimmed 0.01 s gain-generation grid and stored preview/ZOH/control/state sampling; preserve original last grid point used for terminal DARE.",
+    "terminal": "P_M=DARE(A_lat,last,B_delta,last,Q,R); Q=diag(1/0.1^2,1/0.1^2,1/0.5^2,1),R=1/0.2^2. Not the separate NMPC baseline-design terminal schedule.",
+    "backward": "H=R+B^T*Pnext*B;K=solve(H,B^T*Pnext*A);P=Q+A^T*Pnext*A-A^T*Pnext*B*K; store pre-symmetrization skew then symmetrize.",
+    "checks": "Accepted residual/symmetry/positive-definiteness/condition/gain reproduction criteria copied verbatim above. No invalid terminal solve replaced by a different regularized DARE.",
+    "suffix_support": "To audit selected gain and later gains, compute original index suffix from bound gain index through last original sample; backwards recursion needs its terminal support. No preceding unneeded gain samples.",
+    "sample_cap": "Count requested suffix grid slots across all 12 candidates before any cross-candidate deduplication; <=960 total, <=80 per candidate; cap applies before matrix evaluation. Extra off-grid work may not silently enlarge grid.",
+    "failure": "Riccati/gain mismatch -> FAILED_COMPARISON with original gain retained and affected reproduction/stability conclusion withheld."
+  },
+  "authority_and_products": {
+    "DESIGN_SUPPORT_ONLY": "Original nominal/gain-grid suffix belongs to original packet design interval [timestamps[0],expiry), possibly after supersession. Needed for DARE/backward audit; not evidence of ongoing accepted authority.",
+    "OBSERVED_AUTHORITY": "Products default to intersection of original gain intervals with [anchor_time,min(original expiry, recorded authority end, observed coverage end)). Never cross packet replacement, expiry, gain/input discontinuity by extrapolation.",
+    "mapping": "At physical sample time use exact original packet sampling and stored ZOH gain index; trimmed acceptance anchors may be off-grid. If exact actual-duration Jacobian is not among reviewed six maps, report UNAVAILABLE for that event interval; do not substitute a10ms map at a shorter duration.",
+    "conditional_product": "Original design-grid Phi may be reported separately with authority_scope=DESIGN_CONDITIONAL and interval entirely inside original nominal/gain validity, never as observed asynchronous evolution. Review this labeling at L2; actual-authority crossing cannot be hidden.",
+    "order": "Phi(j,j)=I;Phi(k,j)=Acl[k-1]...Acl[j], chronological new factors multiply on LEFT. Store exact index/time interval and list of source gains.",
+    "measures": "All covered subinterval scaled/raw 2-norms, endpoint gain, max transient/time to peak; windows0.01,0.05,0.1,0.2,0.4s and remaining only when actually covered. No new tau in discrete closed-loop poles.",
+    "normalization_sensitivity": "Repeat each individual state scale x0.1/x10 for products using coordinate similarity; no gain retuning. Raw SI norm explicitly unit-dependent.",
+    "resource": "Stream products and bounded peak summaries; if truncated, completed interval/index bounds plus explicit missing ranges. Log rescaling/QR factors and numerical underflow/overflow, never replace an unfavorable product."
+  },
+  "closed_loop": {
+    "lateral": "Acl_lat=A_lat-B_delta*K_original",
+    "full_feedback_rows": [
+      "[0,K_vy,K_r,K_epsi,0,K_ey]",
+      "[kp,0,0,0,0,0] with kp=1 s^-1"
+    ],
+    "full": "Acl_full=Ad-Bd*G using same nominal tuple/map and archived gain; actual-held tuple versions separately labeled conditional frozen feedback.",
+    "speed": "dot(ev)=-kp*ev+r_nom*ew+vy_nom*er+defect_v; expose coupled entries and defects, no PI integral.",
+    "progress": "Frozen kappa A s-column=0, ideal discrete G ignores s => unit progress-offset multiplier structurally; do not confuse possible progress controllability with regulated progress stability. Physical kappa_s coupling may differ.",
+    "poles": "Complex values plus eigenvector residual ||Acl*v-lambda*v||/(max(1,||Acl||)*||v||); no new residual pass threshold. Report large/residual-sensitive/near-circle cases indeterminate using accepted1e-8 boundary band.",
+    "certification": "Each frozen Schur-stable matrix does not establish stability of a varying product. Finite amplification/contraction does not establish uniform exponential/asymptotic nonlinear stability."
+  },
+  "nominal_defects": {
+    "definition": "d[k]=F(x_nom[k],u_nom[k])-x_nom[k+1], with matching physical time interval, ZOH u/kappa policy and lifted heading; raw units and scaled vector retained.",
+    "reference_semantics": "Original packet linear state interpolation versus 100ms shooting nodes; 10ms tracker map and 100ms NMPC map different; only compare next nominal state at actual map endpoint and within validity.",
+    "decomposition": "Report fixed-preview symbolic defect, geometry-dependent physical defect and their difference at identical nominal tuple. Separate racing pseudo-reference inconsistency, preview-versus-track curvature and interpolation. No unique causal attribution to feedback without an appropriate comparative experiment.",
+    "forcing": "e_next=Acl*e+d at first order; forced response=sum_i Phi(k,i+1)*d_i with exact covered times and indices. Never drop nonzero d to claim zero-error invariance.",
+    "authority": "Reference jumps/packet replacement are events, not smooth d across a different packet. Emit discontinuity and truncate prior-packet product."
+  },
+  "applicability_flags": [
+    "SATURATED_BOX",
+    "SLEW_ACTIVE",
+    "CLIP_TIE_NONDIFFERENTIABLE",
+    "PREVIOUS_APPLIED_STEERING_REQUIRED",
+    "PENDING_OR_DELAYED_COMMAND",
+    "SKIPPED_CODRIVER_TICK",
+    "AUTHORITY_EXPIRED",
+    "AUTHORITY_SUPERSEDED",
+    "NOMINAL_ACTUAL_TUPLE_MISMATCH",
+    "NONZERO_NOMINAL_DEFECT",
+    "AUGMENTED_HYBRID_EVENT_MAP_UNAVAILABLE"
+  ],
+  "applicability_rule": "Open-loop derivative validity is separate from full-feedback applicability. Always label ideal unsaturated immediate A-BK as conditional if any relevant flag; no augmented event-map implementation, asynchronous system stability certificate or optimization analysis in this allowlist."
+}

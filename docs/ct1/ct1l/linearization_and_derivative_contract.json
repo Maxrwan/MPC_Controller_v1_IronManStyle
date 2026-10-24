@@ -1,0 +1,291 @@
+{
+  "task": "APEX-CT-1L-L0",
+  "stage": "L0_ASSIGNMENT_PREPARATION_ONLY",
+  "status": "WORK_COMPLETE_PENDING_REVIEW",
+  "starting_revision": "b22e24c13f76ea2e265d54a423825f8b15ea7b37",
+  "accepted_Performance_E4": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+  "verified_scientific_revision": "e603672b209985f11ed26b6f44d3949ffd5675c5",
+  "implementation_status": "NOT IMPLEMENTED",
+  "numerical_evaluation_status": "NOT EXECUTED",
+  "tests_status": "UNEXECUTED",
+  "authority_note": "Primary accepted prior CT1 methodology/interpretation/candidate panel in current assignment; historical records retain their original status and bytes. No L1 or L3 authorization.",
+  "schema": "apex-ct1l-derivatives/1.0.0",
+  "state_order": [
+    "vx",
+    "vy",
+    "r",
+    "e_psi",
+    "s_abs",
+    "e_y"
+  ],
+  "input_order": [
+    "delta",
+    "a_cmd"
+  ],
+  "state_units": [
+    "m/s",
+    "m/s",
+    "rad/s",
+    "rad",
+    "m",
+    "m"
+  ],
+  "input_units": [
+    "rad",
+    "m/s^2"
+  ],
+  "maps": [
+    {
+      "id": "C_FIXED",
+      "kind": "continuous",
+      "curvature_policy": "FROZEN_EXOGENOUS",
+      "dt_s": null,
+      "substeps": null,
+      "comparison_methods": [
+        "analytic",
+        "accepted CasADi AD",
+        "independent NumPy real FD"
+      ],
+      "tuples": [
+        "ACTUAL_HELD",
+        "PACKET_NOMINAL"
+      ],
+      "shape_A": [
+        6,
+        6
+      ],
+      "shape_B": [
+        6,
+        2
+      ]
+    },
+    {
+      "id": "C_PHYSICAL",
+      "kind": "continuous",
+      "curvature_policy": "GEOMETRY_PROGRESS",
+      "dt_s": null,
+      "substeps": null,
+      "comparison_methods": [
+        "analytic incl kappa_s",
+        "accepted NumPy plant real FD",
+        "independent value transcription with separately qualified geometry"
+      ],
+      "tuples": [
+        "ACTUAL_HELD",
+        "PACKET_NOMINAL"
+      ],
+      "shape_A": [
+        6,
+        6
+      ],
+      "shape_B": [
+        6,
+        2
+      ]
+    },
+    {
+      "id": "D_TRACKER",
+      "kind": "discrete",
+      "curvature_policy": "FROZEN_EXOGENOUS",
+      "dt_s": 0.01,
+      "substeps": 2,
+      "comparison_methods": [
+        "accepted CasADi AD",
+        "manual RK4 tangent",
+        "independent NumPy RK4 real FD"
+      ],
+      "tuples": [
+        "ACTUAL_HELD",
+        "PACKET_NOMINAL"
+      ],
+      "shape_A": [
+        6,
+        6
+      ],
+      "shape_B": [
+        6,
+        2
+      ]
+    },
+    {
+      "id": "D_NMPC",
+      "kind": "discrete",
+      "curvature_policy": "FROZEN_EXOGENOUS",
+      "dt_s": 0.1,
+      "substeps": 4,
+      "comparison_methods": [
+        "accepted CasADi AD",
+        "manual RK4 tangent",
+        "independent NumPy RK4 real FD"
+      ],
+      "tuples": [
+        "ACTUAL_HELD",
+        "PACKET_NOMINAL"
+      ],
+      "shape_A": [
+        6,
+        6
+      ],
+      "shape_B": [
+        6,
+        2
+      ]
+    },
+    {
+      "id": "D_PLANT_10",
+      "kind": "discrete",
+      "curvature_policy": "GEOMETRY_PROGRESS",
+      "dt_s": 0.01,
+      "substeps": 2,
+      "comparison_methods": [
+        "physical manual RK4 tangent",
+        "accepted NumPy composed step real FD",
+        "independent value RK4 cross-check"
+      ],
+      "tuples": [
+        "ACTUAL_HELD",
+        "PACKET_NOMINAL"
+      ],
+      "shape_A": [
+        6,
+        6
+      ],
+      "shape_B": [
+        6,
+        2
+      ]
+    },
+    {
+      "id": "D_PLANT_100",
+      "kind": "discrete",
+      "curvature_policy": "GEOMETRY_PROGRESS",
+      "dt_s": 0.1,
+      "substeps": 20,
+      "comparison_methods": [
+        "physical manual RK4 tangent",
+        "accepted NumPy composed step real FD",
+        "independent value RK4 cross-check"
+      ],
+      "tuples": [
+        "ACTUAL_HELD",
+        "PACKET_NOMINAL"
+      ],
+      "shape_A": [
+        6,
+        6
+      ],
+      "shape_B": [
+        6,
+        2
+      ]
+    }
+  ],
+  "equation_authority": {
+    "audit_path": "docs/ct1/model_and_linearization_audit.md",
+    "sha256": "f99cab35012fb9159c6b38d23002ba4b7527fa744394da5e05c1055235702386",
+    "sections": [
+      "Exact continuous equations",
+      "Analytic local A and B, without evaluating them",
+      "Curvature differentiability and charts",
+      "Exact discrete maps and proposed derivatives"
+    ],
+    "requirements": [
+      "Exact atan2 axle slips, no invented front-force rotation",
+      "a_cmd=Fx/m; dvx=a_cmd+r*vy",
+      "Load transfer dZf/da=-m*h/L and dZr/da=m*h/L",
+      "Fx_i=m*a*Zi/(Zf+Zr), Ci_eff=Ci*Zi/Zi0",
+      "Ti=sqrt((mu*Zi)^2-Fxi^2), zi=Ci_eff*alpha_i/Ti, Yi=Ti*tanh(zi)",
+      "dYi=sech(zi)^2*(Ci_eff*dalpha_i+alpha_i*dCi_eff)+(tanh(zi)-zi*sech(zi)^2)*dTi",
+      "dTi=(mu^2*Zi*dZi-Fxi*dFxi)/Ti, all a-dependent terms retained",
+      "Physical A s-column adds (df/dkappa)*kappa_s; frozen AD holds kappa scalar fixed",
+      "Independent transcription is value-only cross-check, never substitutes accepted plant or parameter values"
+    ]
+  },
+  "RK4_tangent": {
+    "value": "k1=f(z,u);k2=f(z+h*k1/2,u);k3=f(z+h*k2/2,u);k4=f(z+h*k3,u);z_next=z+h*(k1+2*k2+2*k3+k4)/6",
+    "initial": "X0=I6, U0=zeros(6,2)",
+    "stage_sensitivity": "For stage z_j, D_x f=f_x(z_j)*X_j; D_u f=f_x(z_j)*U_j+f_u(z_j). Intermediate stage X_j/U_j use corresponding earlier stage derivative; combine with identical RK4 weights.",
+    "composition": "For substep Jacobians Jx_j,Ju_j: X_next=Jx_j*X; U_next=Jx_j*U+Ju_j; shared held u throughout all substeps.",
+    "physical": "Use accepted DynamicBicycle.step held pair for value comparison, 2 or20 steps of0.005; physical geometry refreshed at every derivative stage; lift completed-step wrap before residual/tangent comparisons.",
+    "frozen": "Use exact SymbolicBicycle.rk4 dt/substeps and held scalar kappa; no geometry resampling at symbolic stages.",
+    "prohibited_substitutions": [
+      "Euler I+dt*A",
+      "exp(A*dt) as nonlinear RK4 Jacobian",
+      "NLP shooting map for actual event-split application map",
+      "CasADi function hidden inside independent finite-difference value routine"
+    ]
+  },
+  "accepted_criteria": {
+    "state_scaling_SI": [
+      0.5,
+      0.5,
+      1,
+      0.1,
+      0.75,
+      0.1
+    ],
+    "input_scaling_SI": [
+      0.2,
+      1
+    ],
+    "lateral_scaling_SI": [
+      0.1,
+      0.1,
+      0.5,
+      1
+    ],
+    "continuous_time_scale_s": 1,
+    "finite_difference": {
+      "normalized_column_steps": [
+        2e-05,
+        1e-05,
+        5e-06
+      ],
+      "scheme": "central differences of independently implemented matching NumPy f/F",
+      "entry_absolute_tolerance": 1e-07,
+      "entry_relative_tolerance": 0.0001,
+      "rule": "abs(J-Dh)<=abs_tol+rel_tol*max(abs(J),abs(Dh)); also two smallest Dh agree by same rule",
+      "boundaries": "No clamp, no silent step adjustment; unavailable or explicitly one-sided at knot/wrap/domain boundary",
+      "geometry_kappa_s": {
+        "s_steps_m": [
+          2e-05,
+          1e-05,
+          5e-06
+        ],
+        "absolute_tolerance_1pm2": 1e-05,
+        "relative_tolerance": 0.001
+      }
+    }
+  },
+  "criteria_binding": {
+    "path": "docs/ct1/metrics_and_interpretation.json",
+    "sha256": "c73af10718f194fe5cc5f6774e39c5d2742a486dd514f788cd0ec89222529dee",
+    "no_looser_thresholds": true
+  },
+  "comparison_key": [
+    "candidate_id",
+    "tuple_role",
+    "exact x and u bytes/hash",
+    "parameters hash",
+    "curvature value and policy",
+    "map_id dt/substep schedule",
+    "heading lift/geometry branch",
+    "source hash-set identity"
+  ],
+  "parity_rules": [
+    "Normalize A/B output and column perturbations with accepted Dx/Du and continuous tau; central steps exactly [2e-5,1e-5,5e-6] times column scales.",
+    "Entry bound: abs(J-Dh)<=1e-7+1e-4*max(abs(J),abs(Dh)); require two-smallest-step agreement by same bound. Store every entry/column/step error and observed cancellation.",
+    "Geometry kappa_s uses s steps [2e-5,1e-5,5e-6] m, abs1e-5 1/m^2 plus rel1e-3, within a single qualified segment.",
+    "If one method rejects a stencil/domain, report missing comparison for that precise key rather than set error=0 or silently change tuple.",
+    "Different curvature policies/nominal tuples are a separately labeled model-difference report, not pass/fail parity.",
+    "Derivative failure preserves all numbers and stops affected quantitative conclusion; no repeated favorable-run replacement."
+  ],
+  "matrix_units": {
+    "continuous_A_ij": "state_unit[i]/(s*state_unit[j])",
+    "continuous_B_ij": "state_unit[i]/(s*input_unit[j])",
+    "discrete_A_ij": "state_unit[i]/state_unit[j]",
+    "discrete_B_ij": "state_unit[i]/input_unit[j]",
+    "normalized": "dimensionless with tau=1 s for continuous pairs; raw units always retained"
+  },
+  "no_evaluated_results": "All map/derivative/FD results remain NOT EXECUTED; NULL scientific values in any unexecuted status record, never literal oracles presented as candidate data."
+}

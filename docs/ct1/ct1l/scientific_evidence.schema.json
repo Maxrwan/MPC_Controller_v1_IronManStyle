@@ -1,0 +1,3248 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:apex:ct1l:scientific-evidence:1.0.0",
+  "title": "Future CT1L scientific record contract, declared at L0 only",
+  "$comment": "No scientific output exists at L0. Finite numbers only enforced by strict JSON reader in addition to schema. Cross-field dimensions, interval/cap semantics and provenance must be checked by future evidence.validate_record.",
+  "oneOf": [
+    {
+      "$ref": "#/$defs/qualification_record"
+    },
+    {
+      "$ref": "#/$defs/linearization_record"
+    },
+    {
+      "$ref": "#/$defs/finite_difference_record"
+    },
+    {
+      "$ref": "#/$defs/linear_system_record"
+    },
+    {
+      "$ref": "#/$defs/riccati_record"
+    },
+    {
+      "$ref": "#/$defs/closed_loop_record"
+    },
+    {
+      "$ref": "#/$defs/product_record"
+    },
+    {
+      "$ref": "#/$defs/defect_record"
+    },
+    {
+      "$ref": "#/$defs/coverage_record"
+    },
+    {
+      "$ref": "#/$defs/resource_record"
+    },
+    {
+      "$ref": "#/$defs/event_record"
+    },
+    {
+      "$ref": "#/$defs/environment_record"
+    },
+    {
+      "$ref": "#/$defs/manifest_record"
+    },
+    {
+      "$ref": "#/$defs/index_record"
+    }
+  ],
+  "$defs": {
+    "binding": {
+      "type": "object",
+      "properties": {
+        "path": {
+          "type": "string"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "json_pointer": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string"
+            }
+          ]
+        }
+      },
+      "required": [
+        "path",
+        "sha256",
+        "json_pointer"
+      ],
+      "additionalProperties": false
+    },
+    "reason": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "detail": {
+          "type": "string"
+        },
+        "source_pointer": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string"
+            }
+          ]
+        },
+        "observed": {
+          "type": [
+            "number",
+            "string",
+            "boolean",
+            "null"
+          ]
+        },
+        "threshold": {
+          "type": [
+            "number",
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "code",
+        "detail",
+        "source_pointer",
+        "observed",
+        "threshold"
+      ],
+      "additionalProperties": false
+    },
+    "complex": {
+      "type": "object",
+      "properties": {
+        "re": {
+          "type": "number"
+        },
+        "im": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "re",
+        "im"
+      ],
+      "additionalProperties": false
+    },
+    "matrix": {
+      "type": "object",
+      "properties": {
+        "rows": {
+          "type": "integer"
+        },
+        "cols": {
+          "type": "integer"
+        },
+        "row_names": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "column_names": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "row_units": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "column_units": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "entry_units": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "values": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          }
+        },
+        "normalization": {
+          "enum": [
+            "DIMENSIONAL",
+            "SCALED"
+          ]
+        },
+        "dtype": {
+          "const": "float64"
+        }
+      },
+      "required": [
+        "rows",
+        "cols",
+        "row_names",
+        "column_names",
+        "row_units",
+        "column_units",
+        "entry_units",
+        "values",
+        "normalization",
+        "dtype"
+      ],
+      "additionalProperties": false
+    },
+    "spectrum": {
+      "type": "object",
+      "properties": {
+        "singular_values": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          }
+        },
+        "relative_tolerance": {
+          "type": "number"
+        },
+        "absolute_floor": {
+          "type": "number"
+        },
+        "threshold": {
+          "type": "number"
+        },
+        "rank": {
+          "type": "integer"
+        },
+        "condition_number": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "number"
+            }
+          ]
+        },
+        "condition_kind": {
+          "enum": [
+            "FINITE",
+            "INFINITE_RANK_DEFICIENT",
+            "UNRESOLVED"
+          ]
+        }
+      },
+      "required": [
+        "singular_values",
+        "relative_tolerance",
+        "absolute_floor",
+        "threshold",
+        "rank",
+        "condition_number",
+        "condition_kind"
+      ],
+      "additionalProperties": false
+    },
+    "residual": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "norm_kind": {
+          "type": "string"
+        },
+        "raw_residual": {
+          "type": "number"
+        },
+        "denominator": {
+          "type": "number"
+        },
+        "normalized_residual": {
+          "type": "number"
+        },
+        "threshold": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "number"
+            }
+          ]
+        },
+        "comparison": {
+          "enum": [
+            "PASS",
+            "FAIL",
+            "REPORT_ONLY",
+            "INDETERMINATE"
+          ]
+        }
+      },
+      "required": [
+        "name",
+        "norm_kind",
+        "raw_residual",
+        "denominator",
+        "normalized_residual",
+        "threshold",
+        "comparison"
+      ],
+      "additionalProperties": false
+    },
+    "coverage_range": {
+      "type": "object",
+      "properties": {
+        "start_index_inclusive": {
+          "type": "integer"
+        },
+        "end_index_exclusive": {
+          "type": "integer"
+        },
+        "start_time_s": {
+          "type": "number"
+        },
+        "end_time_s": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "start_index_inclusive",
+        "end_index_exclusive",
+        "start_time_s",
+        "end_time_s"
+      ],
+      "additionalProperties": false
+    },
+    "tuple_context": {
+      "type": "object",
+      "properties": {
+        "candidate_id": {
+          "type": "string"
+        },
+        "tuple_id": {
+          "type": "string"
+        },
+        "tuple_role": {
+          "enum": [
+            "ACTUAL_HELD",
+            "PACKET_NOMINAL",
+            "ORIGINAL_GAIN_GRID_SUPPORT",
+            "NOT_APPLICABLE"
+          ]
+        },
+        "map_id": {
+          "enum": [
+            "C_FIXED",
+            "C_PHYSICAL",
+            "D_TRACKER",
+            "D_NMPC",
+            "D_PLANT_10",
+            "D_PLANT_100",
+            "NOT_APPLICABLE"
+          ]
+        },
+        "curvature_policy": {
+          "enum": [
+            "FROZEN_EXOGENOUS",
+            "GEOMETRY_PROGRESS",
+            "NOT_APPLICABLE"
+          ]
+        },
+        "time_s": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "number"
+            }
+          ]
+        },
+        "packet_id": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "integer"
+            }
+          ]
+        },
+        "gain_index": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "integer"
+            }
+          ]
+        },
+        "branch": {
+          "enum": [
+            "SMOOTH",
+            "LEFT",
+            "RIGHT",
+            "UNRESOLVED",
+            "NOT_APPLICABLE"
+          ]
+        },
+        "authority_scope": {
+          "enum": [
+            "OBSERVED_AUTHORITY",
+            "DESIGN_SUPPORT_ONLY",
+            "DESIGN_CONDITIONAL",
+            "NONE"
+          ]
+        },
+        "source_binding_set_sha256": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "candidate_id",
+        "tuple_id",
+        "tuple_role",
+        "map_id",
+        "curvature_policy",
+        "time_s",
+        "packet_id",
+        "gain_index",
+        "branch",
+        "authority_scope",
+        "source_binding_set_sha256"
+      ],
+      "additionalProperties": false
+    },
+    "qualification_data": {
+      "type": "object",
+      "properties": {
+        "qualification": {
+          "enum": [
+            "QUALIFIED",
+            "QUALIFIED_BRANCH_SPECIFIC",
+            "UNAVAILABLE",
+            "INVALID"
+          ]
+        },
+        "actual_state": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 6,
+          "maxItems": 6
+        },
+        "held_control": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "nominal_state": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 6,
+          "maxItems": 6
+        },
+        "nominal_control": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "original_gain": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 4,
+          "maxItems": 4
+        },
+        "domain_checks": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "value": {
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "number"
+                  }
+                ]
+              },
+              "unit": {
+                "type": "string"
+              },
+              "source_threshold": {
+                "type": "string"
+              },
+              "state": {
+                "enum": [
+                  "PASS",
+                  "FAIL",
+                  "NOT_EVALUATED",
+                  "BRANCH_SPECIFIC"
+                ]
+              }
+            },
+            "required": [
+              "name",
+              "value",
+              "unit",
+              "source_threshold",
+              "state"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "applicability_flags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "missing_fields": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "qualification",
+        "actual_state",
+        "held_control",
+        "nominal_state",
+        "nominal_control",
+        "original_gain",
+        "domain_checks",
+        "applicability_flags",
+        "missing_fields"
+      ],
+      "additionalProperties": false
+    },
+    "linearization_data": {
+      "type": "object",
+      "properties": {
+        "A": {
+          "$ref": "#/$defs/matrix"
+        },
+        "B": {
+          "$ref": "#/$defs/matrix"
+        },
+        "method": {
+          "enum": [
+            "ANALYTIC",
+            "CASADI_AD",
+            "INDEPENDENT_FD",
+            "RK4_TANGENT"
+          ]
+        },
+        "stage_states": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 6,
+            "maxItems": 6
+          }
+        },
+        "chart_lift": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          }
+        },
+        "substeps": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "integer"
+            }
+          ]
+        },
+        "dt_s": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "number"
+            }
+          ]
+        },
+        "qualified_domain": {
+          "enum": [
+            "QUALIFIED",
+            "QUALIFIED_BRANCH_SPECIFIC"
+          ]
+        }
+      },
+      "required": [
+        "A",
+        "B",
+        "method",
+        "stage_states",
+        "chart_lift",
+        "substeps",
+        "dt_s",
+        "qualified_domain"
+      ],
+      "additionalProperties": false
+    },
+    "fd_data": {
+      "type": "object",
+      "properties": {
+        "reference_matrix_id": {
+          "type": "string"
+        },
+        "independent_matrix_id": {
+          "type": "string"
+        },
+        "column_steps": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          }
+        },
+        "entry_errors_per_step": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/matrix"
+          }
+        },
+        "max_abs_error": {
+          "type": "number"
+        },
+        "max_relative_error": {
+          "type": "number"
+        },
+        "two_smallest_step_agreement": {
+          "type": "boolean"
+        },
+        "comparison": {
+          "enum": [
+            "PASS",
+            "FAIL",
+            "INCOMPARABLE_METHOD_SEMANTICS"
+          ]
+        },
+        "invalid_columns": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          }
+        }
+      },
+      "required": [
+        "reference_matrix_id",
+        "independent_matrix_id",
+        "column_steps",
+        "entry_errors_per_step",
+        "max_abs_error",
+        "max_relative_error",
+        "two_smallest_step_agreement",
+        "comparison",
+        "invalid_columns"
+      ],
+      "additionalProperties": false
+    },
+    "linear_system_data": {
+      "type": "object",
+      "properties": {
+        "subsystem": {
+          "enum": [
+            "full",
+            "lateral",
+            "speed"
+          ]
+        },
+        "A_dimensional": {
+          "$ref": "#/$defs/matrix"
+        },
+        "B_dimensional": {
+          "$ref": "#/$defs/matrix"
+        },
+        "A_scaled": {
+          "$ref": "#/$defs/matrix"
+        },
+        "B_scaled": {
+          "$ref": "#/$defs/matrix"
+        },
+        "controllability_dimensional": {
+          "$ref": "#/$defs/matrix"
+        },
+        "controllability_scaled": {
+          "$ref": "#/$defs/matrix"
+        },
+        "spectra_and_scale_cases": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "case_id": {
+                "type": "string"
+              },
+              "Dx": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                }
+              },
+              "Du": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                }
+              },
+              "tau_s": {
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "number"
+                  }
+                ]
+              },
+              "spectrum": {
+                "$ref": "#/$defs/spectrum"
+              }
+            },
+            "required": [
+              "case_id",
+              "Dx",
+              "Du",
+              "tau_s",
+              "spectrum"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "PBH_modes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "eigenvalue": {
+                "$ref": "#/$defs/complex"
+              },
+              "eigenvalue_residual": {
+                "$ref": "#/$defs/residual"
+              },
+              "required_for_stabilizability": {
+                "type": "boolean"
+              },
+              "boundary_ambiguous": {
+                "type": "boolean"
+              },
+              "PBH_matrix_real": {
+                "$ref": "#/$defs/matrix"
+              },
+              "PBH_matrix_imag": {
+                "$ref": "#/$defs/matrix"
+              },
+              "spectra": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/spectrum"
+                }
+              },
+              "classification": {
+                "enum": [
+                  "CONTROLLABLE_MODE",
+                  "UNCONTROLLABLE_STABLE",
+                  "UNCONTROLLABLE_UNSTABLE_OR_MARGINAL",
+                  "INDETERMINATE"
+                ]
+              }
+            },
+            "required": [
+              "eigenvalue",
+              "eigenvalue_residual",
+              "required_for_stabilizability",
+              "boundary_ambiguous",
+              "PBH_matrix_real",
+              "PBH_matrix_imag",
+              "spectra",
+              "classification"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "stabilizability": {
+          "enum": [
+            "SUPPORTED_LOCAL_NUMERICAL",
+            "FAILED_PBH",
+            "INDETERMINATE"
+          ]
+        },
+        "omitted_coupling_blocks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/matrix"
+          }
+        }
+      },
+      "required": [
+        "subsystem",
+        "A_dimensional",
+        "B_dimensional",
+        "A_scaled",
+        "B_scaled",
+        "controllability_dimensional",
+        "controllability_scaled",
+        "spectra_and_scale_cases",
+        "PBH_modes",
+        "stabilizability",
+        "omitted_coupling_blocks"
+      ],
+      "additionalProperties": false
+    },
+    "riccati_data": {
+      "type": "object",
+      "properties": {
+        "packet_id": {
+          "type": "integer"
+        },
+        "original_gain_indices": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          }
+        },
+        "original_gains": {
+          "$ref": "#/$defs/matrix"
+        },
+        "recomputed_gains": {
+          "$ref": "#/$defs/matrix"
+        },
+        "terminal_P": {
+          "$ref": "#/$defs/matrix"
+        },
+        "terminal_Q": {
+          "$ref": "#/$defs/matrix"
+        },
+        "terminal_R": {
+          "$ref": "#/$defs/matrix"
+        },
+        "residuals": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/residual"
+          }
+        },
+        "P_min_eigenvalues": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          }
+        },
+        "H_min_eigenvalues": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          }
+        },
+        "condition_numbers": {
+          "type": "array",
+          "items": {
+            "anyOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "number"
+              }
+            ]
+          }
+        },
+        "pre_symmetrization_skews": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          }
+        },
+        "gain_abs_errors": {
+          "$ref": "#/$defs/matrix"
+        },
+        "gain_reproduction": {
+          "enum": [
+            "PASS",
+            "FAIL"
+          ]
+        },
+        "original_gains_replaced": {
+          "const": false
+        }
+      },
+      "required": [
+        "packet_id",
+        "original_gain_indices",
+        "original_gains",
+        "recomputed_gains",
+        "terminal_P",
+        "terminal_Q",
+        "terminal_R",
+        "residuals",
+        "P_min_eigenvalues",
+        "H_min_eigenvalues",
+        "condition_numbers",
+        "pre_symmetrization_skews",
+        "gain_abs_errors",
+        "gain_reproduction",
+        "original_gains_replaced"
+      ],
+      "additionalProperties": false
+    },
+    "closed_loop_data": {
+      "type": "object",
+      "properties": {
+        "subsystem": {
+          "enum": [
+            "full",
+            "lateral",
+            "speed"
+          ]
+        },
+        "Acl_dimensional": {
+          "$ref": "#/$defs/matrix"
+        },
+        "Acl_scaled": {
+          "$ref": "#/$defs/matrix"
+        },
+        "original_feedback": {
+          "$ref": "#/$defs/matrix"
+        },
+        "eigenvalues": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/complex"
+          }
+        },
+        "eigenvalue_residuals": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/residual"
+          }
+        },
+        "spectral_radius": {
+          "type": "number"
+        },
+        "frozen_classification": {
+          "enum": [
+            "SCHUR_LOCAL_IDEAL",
+            "UNSTABLE_LOCAL_IDEAL",
+            "INDETERMINATE"
+          ]
+        },
+        "singular_values": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          }
+        },
+        "ideal_feedback_applicable": {
+          "type": "boolean"
+        },
+        "applicability_flags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "progress_interpretation": {
+          "type": "string"
+        },
+        "hybrid_event_map": {
+          "const": "UNAVAILABLE_NOT_IMPLEMENTED"
+        }
+      },
+      "required": [
+        "subsystem",
+        "Acl_dimensional",
+        "Acl_scaled",
+        "original_feedback",
+        "eigenvalues",
+        "eigenvalue_residuals",
+        "spectral_radius",
+        "frozen_classification",
+        "singular_values",
+        "ideal_feedback_applicable",
+        "applicability_flags",
+        "progress_interpretation",
+        "hybrid_event_map"
+      ],
+      "additionalProperties": false
+    },
+    "product_data": {
+      "type": "object",
+      "properties": {
+        "requested_range": {
+          "$ref": "#/$defs/coverage_range"
+        },
+        "completed_range": {
+          "$ref": "#/$defs/coverage_range"
+        },
+        "missing_ranges": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/coverage_range"
+          }
+        },
+        "source_matrix_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "original_gain_indices": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          }
+        },
+        "Phi_endpoint": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/matrix"
+            }
+          ]
+        },
+        "endpoint_norm": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "number"
+            }
+          ]
+        },
+        "max_transient_norm": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "number"
+            }
+          ]
+        },
+        "peak_time_s": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "number"
+            }
+          ]
+        },
+        "norm_scope": {
+          "enum": [
+            "COMPLETE_REQUESTED_INTERVAL",
+            "COMPLETED_PREFIX_ONLY"
+          ]
+        },
+        "rescaling_log": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "time_varying_stability_guarantee": {
+          "const": false
+        }
+      },
+      "required": [
+        "requested_range",
+        "completed_range",
+        "missing_ranges",
+        "source_matrix_ids",
+        "original_gain_indices",
+        "Phi_endpoint",
+        "endpoint_norm",
+        "max_transient_norm",
+        "peak_time_s",
+        "norm_scope",
+        "rescaling_log",
+        "time_varying_stability_guarantee"
+      ],
+      "additionalProperties": false
+    },
+    "defect_data": {
+      "type": "object",
+      "properties": {
+        "nominal_x_start": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 6,
+          "maxItems": 6
+        },
+        "nominal_x_next": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 6,
+          "maxItems": 6
+        },
+        "nominal_u": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "F_nominal": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 6,
+          "maxItems": 6
+        },
+        "d_dimensional": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 6,
+          "maxItems": 6
+        },
+        "d_scaled": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 6,
+          "maxItems": 6
+        },
+        "forced_response_scaled": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 6,
+              "maxItems": 6
+            }
+          ]
+        },
+        "matching_map_semantics": {
+          "type": "boolean"
+        },
+        "discontinuity_flags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "interpretation": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "nominal_x_start",
+        "nominal_x_next",
+        "nominal_u",
+        "F_nominal",
+        "d_dimensional",
+        "d_scaled",
+        "forced_response_scaled",
+        "matching_map_semantics",
+        "discontinuity_flags",
+        "interpretation"
+      ],
+      "additionalProperties": false
+    },
+    "coverage_data": {
+      "type": "object",
+      "properties": {
+        "total_candidates": {
+          "const": 12
+        },
+        "candidate_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 12,
+          "maxItems": 12
+        },
+        "per_candidate_status": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "candidate_id": {
+                "type": "string"
+              },
+              "qualification": {
+                "enum": [
+                  "QUALIFIED",
+                  "QUALIFIED_BRANCH_SPECIFIC",
+                  "UNAVAILABLE",
+                  "INVALID",
+                  "NOT_EXECUTED"
+                ]
+              },
+              "reasons": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "completed_record_ids": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "missing_map_ids": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "required": [
+              "candidate_id",
+              "qualification",
+              "reasons",
+              "completed_record_ids",
+              "missing_map_ids"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 12,
+          "maxItems": 12
+        },
+        "gain_grid_slots_before_dedup": {
+          "type": "integer"
+        },
+        "gain_grid_slots_evaluated": {
+          "type": "integer"
+        },
+        "missing_products": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/coverage_range"
+          }
+        },
+        "new_trials": {
+          "const": 0
+        },
+        "global_stability_guarantee": {
+          "const": false
+        }
+      },
+      "required": [
+        "total_candidates",
+        "candidate_ids",
+        "per_candidate_status",
+        "gain_grid_slots_before_dedup",
+        "gain_grid_slots_evaluated",
+        "missing_products",
+        "new_trials",
+        "global_stability_guarantee"
+      ],
+      "additionalProperties": false
+    },
+    "resource_data": {
+      "type": "object",
+      "properties": {
+        "monotonic_elapsed_s": {
+          "type": "number"
+        },
+        "worker_pid": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "integer"
+            }
+          ]
+        },
+        "worker_rss_bytes": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "integer"
+            }
+          ]
+        },
+        "output_bytes": {
+          "type": "integer"
+        },
+        "disk_free_bytes": {
+          "type": "integer"
+        },
+        "process_thread_count": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "integer"
+            }
+          ]
+        },
+        "native_mode": {
+          "type": "string"
+        },
+        "hard_memory_enforcement": {
+          "enum": [
+            "UNAVAILABLE_SAMPLED_ONLY",
+            "QUALIFIED_EXTERNAL_ENFORCEMENT"
+          ]
+        },
+        "guard_owner": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string"
+            }
+          ]
+        },
+        "action": {
+          "enum": [
+            "OBSERVE",
+            "NO_NEW_WORK",
+            "REQUEST_FLUSH",
+            "TERM",
+            "KILL",
+            "EXIT"
+          ]
+        }
+      },
+      "required": [
+        "monotonic_elapsed_s",
+        "worker_pid",
+        "worker_rss_bytes",
+        "output_bytes",
+        "disk_free_bytes",
+        "process_thread_count",
+        "native_mode",
+        "hard_memory_enforcement",
+        "guard_owner",
+        "action"
+      ],
+      "additionalProperties": false
+    },
+    "event_data": {
+      "type": "object",
+      "properties": {
+        "event": {
+          "type": "string"
+        },
+        "clock_s": {
+          "type": "number"
+        },
+        "related_record_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "termination_reason": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string"
+            }
+          ]
+        },
+        "retention_action": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "event",
+        "clock_s",
+        "related_record_ids",
+        "termination_reason",
+        "retention_action"
+      ],
+      "additionalProperties": false
+    },
+    "environment_data": {
+      "type": "object",
+      "properties": {
+        "implementation_sha": {
+          "type": "string"
+        },
+        "assignment_sha": {
+          "type": "string"
+        },
+        "source_revision": {
+          "const": "e603672b209985f11ed26b6f44d3949ffd5675c5"
+        },
+        "python_binary": {
+          "type": "string"
+        },
+        "python_version": {
+          "type": "string"
+        },
+        "platform": {
+          "type": "string"
+        },
+        "package_versions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "version": {
+                "type": "string"
+              },
+              "binary_sha256": {
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "string"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "name",
+              "version",
+              "binary_sha256"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "backend_identity": {
+          "type": "string"
+        },
+        "backend_setup_receipt": {
+          "type": "string"
+        },
+        "unknown_binary_identities": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "source_bindings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/binding"
+          }
+        }
+      },
+      "required": [
+        "implementation_sha",
+        "assignment_sha",
+        "source_revision",
+        "python_binary",
+        "python_version",
+        "platform",
+        "package_versions",
+        "backend_identity",
+        "backend_setup_receipt",
+        "unknown_binary_identities",
+        "source_bindings"
+      ],
+      "additionalProperties": false
+    },
+    "manifest_data": {
+      "type": "object",
+      "properties": {
+        "run_id": {
+          "type": "string"
+        },
+        "authorized_stage": {
+          "const": "L3"
+        },
+        "assignment_sha": {
+          "type": "string"
+        },
+        "implementation_sha": {
+          "type": "string"
+        },
+        "source_bindings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/binding"
+          }
+        },
+        "allowlisted_test_paths": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "budget_wall_s": {
+          "const": 300
+        },
+        "max_candidates": {
+          "const": 12
+        },
+        "gain_sample_ceiling_before_dedup": {
+          "const": 960
+        },
+        "streams": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "run_id",
+        "authorized_stage",
+        "assignment_sha",
+        "implementation_sha",
+        "source_bindings",
+        "allowlisted_test_paths",
+        "budget_wall_s",
+        "max_candidates",
+        "gain_sample_ceiling_before_dedup",
+        "streams"
+      ],
+      "additionalProperties": false
+    },
+    "index_data": {
+      "type": "object",
+      "properties": {
+        "run_id": {
+          "type": "string"
+        },
+        "termination": {
+          "enum": [
+            "COMPLETE",
+            "SOURCE_IDENTITY_FAILURE",
+            "NUMERICAL_FAILURE",
+            "RESOURCE_CENSORED",
+            "MISSING_COVERAGE",
+            "INVALID_PANEL"
+          ]
+        },
+        "files": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string"
+              },
+              "sha256": {
+                "type": "string"
+              },
+              "bytes": {
+                "type": "integer"
+              },
+              "complete_JSONL_records": {
+                "type": "integer"
+              },
+              "truncated_tail_bytes": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "path",
+              "sha256",
+              "bytes",
+              "complete_JSONL_records",
+              "truncated_tail_bytes"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "coverage_record_id": {
+          "type": "string"
+        },
+        "wall_elapsed_s": {
+          "type": "number"
+        },
+        "peak_observed_worker_rss_bytes": {
+          "type": "integer"
+        },
+        "full_acceptance_claim": {
+          "const": false
+        }
+      },
+      "required": [
+        "run_id",
+        "termination",
+        "files",
+        "coverage_record_id",
+        "wall_elapsed_s",
+        "peak_observed_worker_rss_bytes",
+        "full_acceptance_claim"
+      ],
+      "additionalProperties": false
+    },
+    "qualification_record": {
+      "type": "object",
+      "properties": {
+        "schema": {
+          "const": "apex-ct1l-scientific-evidence/1.0.0"
+        },
+        "record_type": {
+          "const": "qualification"
+        },
+        "record_id": {
+          "type": "string"
+        },
+        "run_id": {
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "COMPUTED",
+            "COMPUTED_BRANCH_SPECIFIC",
+            "FAILED_COMPARISON",
+            "UNAVAILABLE",
+            "INVALID",
+            "RESOURCE_CENSORED",
+            "UNEXECUTED_BUDGET",
+            "NOT_EXECUTED"
+          ]
+        },
+        "context": {
+          "$ref": "#/$defs/tuple_context"
+        },
+        "source_bindings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/binding"
+          }
+        },
+        "reasons": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/reason"
+          }
+        },
+        "data": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/qualification_data"
+            }
+          ]
+        }
+      },
+      "required": [
+        "schema",
+        "record_type",
+        "record_id",
+        "run_id",
+        "status",
+        "context",
+        "source_bindings",
+        "reasons",
+        "data"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "enum": [
+                  "UNAVAILABLE",
+                  "INVALID",
+                  "UNEXECUTED_BUDGET",
+                  "NOT_EXECUTED"
+                ]
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "data": {
+                "type": "null"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "enum": [
+                  "COMPUTED",
+                  "COMPUTED_BRANCH_SPECIFIC",
+                  "FAILED_COMPARISON"
+                ]
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "data": {
+                "$ref": "#/$defs/qualification_data"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "linearization_record": {
+      "type": "object",
+      "properties": {
+        "schema": {
+          "const": "apex-ct1l-scientific-evidence/1.0.0"
+        },
+        "record_type": {
+          "const": "linearization"
+        },
+        "record_id": {
+          "type": "string"
+        },
+        "run_id": {
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "COMPUTED",
+            "COMPUTED_BRANCH_SPECIFIC",
+            "FAILED_COMPARISON",
+            "UNAVAILABLE",
+            "INVALID",
+            "RESOURCE_CENSORED",
+            "UNEXECUTED_BUDGET",
+            "NOT_EXECUTED"
+          ]
+        },
+        "context": {
+          "$ref": "#/$defs/tuple_context"
+        },
+        "source_bindings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/binding"
+          }
+        },
+        "reasons": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/reason"
+          }
+        },
+        "data": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/linearization_data"
+            }
+          ]
+        }
+      },
+      "required": [
+        "schema",
+        "record_type",
+        "record_id",
+        "run_id",
+        "status",
+        "context",
+        "source_bindings",
+        "reasons",
+        "data"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "enum": [
+                  "UNAVAILABLE",
+                  "INVALID",
+                  "UNEXECUTED_BUDGET",
+                  "NOT_EXECUTED"
+                ]
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "data": {
+                "type": "null"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "enum": [
+                  "COMPUTED",
+                  "COMPUTED_BRANCH_SPECIFIC",
+                  "FAILED_COMPARISON"
+                ]
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "data": {
+                "$ref": "#/$defs/linearization_data"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "finite_difference_record": {
+      "type": "object",
+      "properties": {
+        "schema": {
+          "const": "apex-ct1l-scientific-evidence/1.0.0"
+        },
+        "record_type": {
+          "const": "finite_difference"
+        },
+        "record_id": {
+          "type": "string"
+        },
+        "run_id": {
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "COMPUTED",
+            "COMPUTED_BRANCH_SPECIFIC",
+            "FAILED_COMPARISON",
+            "UNAVAILABLE",
+            "INVALID",
+            "RESOURCE_CENSORED",
+            "UNEXECUTED_BUDGET",
+            "NOT_EXECUTED"
+          ]
+        },
+        "context": {
+          "$ref": "#/$defs/tuple_context"
+        },
+        "source_bindings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/binding"
+          }
+        },
+        "reasons": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/reason"
+          }
+        },
+        "data": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/fd_data"
+            }
+          ]
+        }
+      },
+      "required": [
+        "schema",
+        "record_type",
+        "record_id",
+        "run_id",
+        "status",
+        "context",
+        "source_bindings",
+        "reasons",
+        "data"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "enum": [
+                  "UNAVAILABLE",
+                  "INVALID",
+                  "UNEXECUTED_BUDGET",
+                  "NOT_EXECUTED"
+                ]
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "data": {
+                "type": "null"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "enum": [
+                  "COMPUTED",
+                  "COMPUTED_BRANCH_SPECIFIC",
+                  "FAILED_COMPARISON"
+                ]
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "data": {
+                "$ref": "#/$defs/fd_data"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "linear_system_record": {
+      "type": "object",
+      "properties": {
+        "schema": {
+          "const": "apex-ct1l-scientific-evidence/1.0.0"
+        },
+        "record_type": {
+          "const": "linear_system"
+        },
+        "record_id": {
+          "type": "string"
+        },
+        "run_id": {
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "COMPUTED",
+            "COMPUTED_BRANCH_SPECIFIC",
+            "FAILED_COMPARISON",
+            "UNAVAILABLE",
+            "INVALID",
+            "RESOURCE_CENSORED",
+            "UNEXECUTED_BUDGET",
+            "NOT_EXECUTED"
+          ]
+        },
+        "context": {
+          "$ref": "#/$defs/tuple_context"
+        },
+        "source_bindings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/binding"
+          }
+        },
+        "reasons": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/reason"
+          }
+        },
+        "data": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/linear_system_data"
+            }
+          ]
+        }
+      },
+      "required": [
+        "schema",
+        "record_type",
+        "record_id",
+        "run_id",
+        "status",
+        "context",
+        "source_bindings",
+        "reasons",
+        "data"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "enum": [
+                  "UNAVAILABLE",
+                  "INVALID",
+                  "UNEXECUTED_BUDGET",
+                  "NOT_EXECUTED"
+                ]
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "data": {
+                "type": "null"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "enum": [
+                  "COMPUTED",
+                  "COMPUTED_BRANCH_SPECIFIC",
+                  "FAILED_COMPARISON"
+                ]
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "data": {
+                "$ref": "#/$defs/linear_system_data"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "riccati_record": {
+      "type": "object",
+      "properties": {
+        "schema": {
+          "const": "apex-ct1l-scientific-evidence/1.0.0"
+        },
+        "record_type": {
+          "const": "riccati"
+        },
+        "record_id": {
+          "type": "string"
+        },
+        "run_id": {
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "COMPUTED",
+            "COMPUTED_BRANCH_SPECIFIC",
+            "FAILED_COMPARISON",
+            "UNAVAILABLE",
+            "INVALID",
+            "RESOURCE_CENSORED",
+            "UNEXECUTED_BUDGET",
+            "NOT_EXECUTED"
+          ]
+        },
+        "context": {
+          "$ref": "#/$defs/tuple_context"
+        },
+        "source_bindings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/binding"
+          }
+        },
+        "reasons": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/reason"
+          }
+        },
+        "data": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/riccati_data"
+            }
+          ]
+        }
+      },
+      "required": [
+        "schema",
+        "record_type",
+        "record_id",
+        "run_id",
+        "status",
+        "context",
+        "source_bindings",
+        "reasons",
+        "data"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "enum": [
+                  "UNAVAILABLE",
+                  "INVALID",
+                  "UNEXECUTED_BUDGET",
+                  "NOT_EXECUTED"
+                ]
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "data": {
+                "type": "null"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "enum": [
+                  "COMPUTED",
+                  "COMPUTED_BRANCH_SPECIFIC",
+                  "FAILED_COMPARISON"
+                ]
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "data": {
+                "$ref": "#/$defs/riccati_data"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "closed_loop_record": {
+      "type": "object",
+      "properties": {
+        "schema": {
+          "const": "apex-ct1l-scientific-evidence/1.0.0"
+        },
+        "record_type": {
+          "const": "closed_loop"
+        },
+        "record_id": {
+          "type": "string"
+        },
+        "run_id": {
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "COMPUTED",
+            "COMPUTED_BRANCH_SPECIFIC",
+            "FAILED_COMPARISON",
+            "UNAVAILABLE",
+            "INVALID",
+            "RESOURCE_CENSORED",
+            "UNEXECUTED_BUDGET",
+            "NOT_EXECUTED"
+          ]
+        },
+        "context": {
+          "$ref": "#/$defs/tuple_context"
+        },
+        "source_bindings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/binding"
+          }
+        },
+        "reasons": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/reason"
+          }
+        },
+        "data": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/closed_loop_data"
+            }
+          ]
+        }
+      },
+      "required": [
+        "schema",
+        "record_type",
+        "record_id",
+        "run_id",
+        "status",
+        "context",
+        "source_bindings",
+        "reasons",
+        "data"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "enum": [
+                  "UNAVAILABLE",
+                  "INVALID",
+                  "UNEXECUTED_BUDGET",
+                  "NOT_EXECUTED"
+                ]
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "data": {
+                "type": "null"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "enum": [
+                  "COMPUTED",
+                  "COMPUTED_BRANCH_SPECIFIC",
+                  "FAILED_COMPARISON"
+                ]
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "data": {
+                "$ref": "#/$defs/closed_loop_data"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "product_record": {
+      "type": "object",
+      "properties": {
+        "schema": {
+          "const": "apex-ct1l-scientific-evidence/1.0.0"
+        },
+        "record_type": {
+          "const": "product"
+        },
+        "record_id": {
+          "type": "string"
+        },
+        "run_id": {
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "COMPUTED",
+            "COMPUTED_BRANCH_SPECIFIC",
+            "FAILED_COMPARISON",
+            "UNAVAILABLE",
+            "INVALID",
+            "RESOURCE_CENSORED",
+            "UNEXECUTED_BUDGET",
+            "NOT_EXECUTED"
+          ]
+        },
+        "context": {
+          "$ref": "#/$defs/tuple_context"
+        },
+        "source_bindings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/binding"
+          }
+        },
+        "reasons": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/reason"
+          }
+        },
+        "data": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/product_data"
+            }
+          ]
+        }
+      },
+      "required": [
+        "schema",
+        "record_type",
+        "record_id",
+        "run_id",
+        "status",
+        "context",
+        "source_bindings",
+        "reasons",
+        "data"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "enum": [
+                  "UNAVAILABLE",
+                  "INVALID",
+                  "UNEXECUTED_BUDGET",
+                  "NOT_EXECUTED"
+                ]
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "data": {
+                "type": "null"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "enum": [
+                  "COMPUTED",
+                  "COMPUTED_BRANCH_SPECIFIC",
+                  "FAILED_COMPARISON"
+                ]
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "data": {
+                "$ref": "#/$defs/product_data"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "defect_record": {
+      "type": "object",
+      "properties": {
+        "schema": {
+          "const": "apex-ct1l-scientific-evidence/1.0.0"
+        },
+        "record_type": {
+          "const": "defect"
+        },
+        "record_id": {
+          "type": "string"
+        },
+        "run_id": {
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "COMPUTED",
+            "COMPUTED_BRANCH_SPECIFIC",
+            "FAILED_COMPARISON",
+            "UNAVAILABLE",
+            "INVALID",
+            "RESOURCE_CENSORED",
+            "UNEXECUTED_BUDGET",
+            "NOT_EXECUTED"
+          ]
+        },
+        "context": {
+          "$ref": "#/$defs/tuple_context"
+        },
+        "source_bindings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/binding"
+          }
+        },
+        "reasons": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/reason"
+          }
+        },
+        "data": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/defect_data"
+            }
+          ]
+        }
+      },
+      "required": [
+        "schema",
+        "record_type",
+        "record_id",
+        "run_id",
+        "status",
+        "context",
+        "source_bindings",
+        "reasons",
+        "data"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "enum": [
+                  "UNAVAILABLE",
+                  "INVALID",
+                  "UNEXECUTED_BUDGET",
+                  "NOT_EXECUTED"
+                ]
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "data": {
+                "type": "null"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "enum": [
+                  "COMPUTED",
+                  "COMPUTED_BRANCH_SPECIFIC",
+                  "FAILED_COMPARISON"
+                ]
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "data": {
+                "$ref": "#/$defs/defect_data"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "coverage_record": {
+      "type": "object",
+      "properties": {
+        "schema": {
+          "const": "apex-ct1l-scientific-evidence/1.0.0"
+        },
+        "record_type": {
+          "const": "coverage"
+        },
+        "record_id": {
+          "type": "string"
+        },
+        "run_id": {
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "COMPUTED",
+            "COMPUTED_BRANCH_SPECIFIC",
+            "FAILED_COMPARISON",
+            "UNAVAILABLE",
+            "INVALID",
+            "RESOURCE_CENSORED",
+            "UNEXECUTED_BUDGET",
+            "NOT_EXECUTED"
+          ]
+        },
+        "context": {
+          "$ref": "#/$defs/tuple_context"
+        },
+        "source_bindings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/binding"
+          }
+        },
+        "reasons": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/reason"
+          }
+        },
+        "data": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/coverage_data"
+            }
+          ]
+        }
+      },
+      "required": [
+        "schema",
+        "record_type",
+        "record_id",
+        "run_id",
+        "status",
+        "context",
+        "source_bindings",
+        "reasons",
+        "data"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "enum": [
+                  "UNAVAILABLE",
+                  "INVALID",
+                  "UNEXECUTED_BUDGET",
+                  "NOT_EXECUTED"
+                ]
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "data": {
+                "type": "null"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "enum": [
+                  "COMPUTED",
+                  "COMPUTED_BRANCH_SPECIFIC",
+                  "FAILED_COMPARISON"
+                ]
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "data": {
+                "$ref": "#/$defs/coverage_data"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "resource_record": {
+      "type": "object",
+      "properties": {
+        "schema": {
+          "const": "apex-ct1l-scientific-evidence/1.0.0"
+        },
+        "record_type": {
+          "const": "resource"
+        },
+        "record_id": {
+          "type": "string"
+        },
+        "run_id": {
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "COMPUTED",
+            "COMPUTED_BRANCH_SPECIFIC",
+            "FAILED_COMPARISON",
+            "UNAVAILABLE",
+            "INVALID",
+            "RESOURCE_CENSORED",
+            "UNEXECUTED_BUDGET",
+            "NOT_EXECUTED"
+          ]
+        },
+        "context": {
+          "$ref": "#/$defs/tuple_context"
+        },
+        "source_bindings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/binding"
+          }
+        },
+        "reasons": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/reason"
+          }
+        },
+        "data": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/resource_data"
+            }
+          ]
+        }
+      },
+      "required": [
+        "schema",
+        "record_type",
+        "record_id",
+        "run_id",
+        "status",
+        "context",
+        "source_bindings",
+        "reasons",
+        "data"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "enum": [
+                  "UNAVAILABLE",
+                  "INVALID",
+                  "UNEXECUTED_BUDGET",
+                  "NOT_EXECUTED"
+                ]
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "data": {
+                "type": "null"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "enum": [
+                  "COMPUTED",
+                  "COMPUTED_BRANCH_SPECIFIC",
+                  "FAILED_COMPARISON"
+                ]
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "data": {
+                "$ref": "#/$defs/resource_data"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "event_record": {
+      "type": "object",
+      "properties": {
+        "schema": {
+          "const": "apex-ct1l-scientific-evidence/1.0.0"
+        },
+        "record_type": {
+          "const": "event"
+        },
+        "record_id": {
+          "type": "string"
+        },
+        "run_id": {
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "COMPUTED",
+            "COMPUTED_BRANCH_SPECIFIC",
+            "FAILED_COMPARISON",
+            "UNAVAILABLE",
+            "INVALID",
+            "RESOURCE_CENSORED",
+            "UNEXECUTED_BUDGET",
+            "NOT_EXECUTED"
+          ]
+        },
+        "context": {
+          "$ref": "#/$defs/tuple_context"
+        },
+        "source_bindings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/binding"
+          }
+        },
+        "reasons": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/reason"
+          }
+        },
+        "data": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/event_data"
+            }
+          ]
+        }
+      },
+      "required": [
+        "schema",
+        "record_type",
+        "record_id",
+        "run_id",
+        "status",
+        "context",
+        "source_bindings",
+        "reasons",
+        "data"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "enum": [
+                  "UNAVAILABLE",
+                  "INVALID",
+                  "UNEXECUTED_BUDGET",
+                  "NOT_EXECUTED"
+                ]
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "data": {
+                "type": "null"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "enum": [
+                  "COMPUTED",
+                  "COMPUTED_BRANCH_SPECIFIC",
+                  "FAILED_COMPARISON"
+                ]
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "data": {
+                "$ref": "#/$defs/event_data"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "environment_record": {
+      "type": "object",
+      "properties": {
+        "schema": {
+          "const": "apex-ct1l-scientific-evidence/1.0.0"
+        },
+        "record_type": {
+          "const": "environment"
+        },
+        "record_id": {
+          "type": "string"
+        },
+        "run_id": {
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "COMPUTED",
+            "COMPUTED_BRANCH_SPECIFIC",
+            "FAILED_COMPARISON",
+            "UNAVAILABLE",
+            "INVALID",
+            "RESOURCE_CENSORED",
+            "UNEXECUTED_BUDGET",
+            "NOT_EXECUTED"
+          ]
+        },
+        "context": {
+          "$ref": "#/$defs/tuple_context"
+        },
+        "source_bindings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/binding"
+          }
+        },
+        "reasons": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/reason"
+          }
+        },
+        "data": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/environment_data"
+            }
+          ]
+        }
+      },
+      "required": [
+        "schema",
+        "record_type",
+        "record_id",
+        "run_id",
+        "status",
+        "context",
+        "source_bindings",
+        "reasons",
+        "data"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "enum": [
+                  "UNAVAILABLE",
+                  "INVALID",
+                  "UNEXECUTED_BUDGET",
+                  "NOT_EXECUTED"
+                ]
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "data": {
+                "type": "null"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "enum": [
+                  "COMPUTED",
+                  "COMPUTED_BRANCH_SPECIFIC",
+                  "FAILED_COMPARISON"
+                ]
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "data": {
+                "$ref": "#/$defs/environment_data"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "manifest_record": {
+      "type": "object",
+      "properties": {
+        "schema": {
+          "const": "apex-ct1l-scientific-evidence/1.0.0"
+        },
+        "record_type": {
+          "const": "manifest"
+        },
+        "record_id": {
+          "type": "string"
+        },
+        "run_id": {
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "COMPUTED",
+            "COMPUTED_BRANCH_SPECIFIC",
+            "FAILED_COMPARISON",
+            "UNAVAILABLE",
+            "INVALID",
+            "RESOURCE_CENSORED",
+            "UNEXECUTED_BUDGET",
+            "NOT_EXECUTED"
+          ]
+        },
+        "context": {
+          "$ref": "#/$defs/tuple_context"
+        },
+        "source_bindings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/binding"
+          }
+        },
+        "reasons": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/reason"
+          }
+        },
+        "data": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/manifest_data"
+            }
+          ]
+        }
+      },
+      "required": [
+        "schema",
+        "record_type",
+        "record_id",
+        "run_id",
+        "status",
+        "context",
+        "source_bindings",
+        "reasons",
+        "data"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "enum": [
+                  "UNAVAILABLE",
+                  "INVALID",
+                  "UNEXECUTED_BUDGET",
+                  "NOT_EXECUTED"
+                ]
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "data": {
+                "type": "null"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "enum": [
+                  "COMPUTED",
+                  "COMPUTED_BRANCH_SPECIFIC",
+                  "FAILED_COMPARISON"
+                ]
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "data": {
+                "$ref": "#/$defs/manifest_data"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "index_record": {
+      "type": "object",
+      "properties": {
+        "schema": {
+          "const": "apex-ct1l-scientific-evidence/1.0.0"
+        },
+        "record_type": {
+          "const": "index"
+        },
+        "record_id": {
+          "type": "string"
+        },
+        "run_id": {
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "COMPUTED",
+            "COMPUTED_BRANCH_SPECIFIC",
+            "FAILED_COMPARISON",
+            "UNAVAILABLE",
+            "INVALID",
+            "RESOURCE_CENSORED",
+            "UNEXECUTED_BUDGET",
+            "NOT_EXECUTED"
+          ]
+        },
+        "context": {
+          "$ref": "#/$defs/tuple_context"
+        },
+        "source_bindings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/binding"
+          }
+        },
+        "reasons": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/reason"
+          }
+        },
+        "data": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/index_data"
+            }
+          ]
+        }
+      },
+      "required": [
+        "schema",
+        "record_type",
+        "record_id",
+        "run_id",
+        "status",
+        "context",
+        "source_bindings",
+        "reasons",
+        "data"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "enum": [
+                  "UNAVAILABLE",
+                  "INVALID",
+                  "UNEXECUTED_BUDGET",
+                  "NOT_EXECUTED"
+                ]
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "data": {
+                "type": "null"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "enum": [
+                  "COMPUTED",
+                  "COMPUTED_BRANCH_SPECIFIC",
+                  "FAILED_COMPARISON"
+                ]
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "data": {
+                "$ref": "#/$defs/index_data"
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

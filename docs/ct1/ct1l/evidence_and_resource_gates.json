@@ -1,0 +1,191 @@
+{
+  "task": "APEX-CT-1L-L0",
+  "stage": "L0_ASSIGNMENT_PREPARATION_ONLY",
+  "status": "WORK_COMPLETE_PENDING_REVIEW",
+  "starting_revision": "b22e24c13f76ea2e265d54a423825f8b15ea7b37",
+  "accepted_Performance_E4": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+  "verified_scientific_revision": "e603672b209985f11ed26b6f44d3949ffd5675c5",
+  "implementation_status": "NOT IMPLEMENTED",
+  "numerical_evaluation_status": "NOT EXECUTED",
+  "tests_status": "UNEXECUTED",
+  "authority_note": "Primary accepted prior CT1 methodology/interpretation/candidate panel in current assignment; historical records retain their original status and bytes. No L1 or L3 authorization.",
+  "schema": "apex-ct1l-evidence-gates/1.0.0",
+  "current_stage_execution_authorized": false,
+  "resource_proposal": {
+    "max_candidates": 12,
+    "gain_grid_samples_before_dedup_max": 960,
+    "host_allocation_seconds": 300,
+    "native_policy": "SINGLE",
+    "sequential_workers_max": 1,
+    "worker_RSS_ceiling_bytes": 1073741824,
+    "overall_new_output_reservation_bytes": 1073741824,
+    "initial_free_bytes_min": 2147483648,
+    "runtime_free_bytes_floor": 1073741824,
+    "poll_interval_s": 0.1,
+    "finalization_reserve_s": 5,
+    "termination_grace_s_max": 1,
+    "output_no_new_work_fraction": 0.95,
+    "sampled_RSS_is_hard_cap": false,
+    "ceiling_not_runtime_estimate": true
+  },
+  "budget_accounting": "The300s proposal includes fresh-process/backend initialization, authorized test collection/execution and oracle evaluation, point qualification, source/AD/tangent/FD evaluations, all ranks/Riccati/products, monitoring and export/finalization. Rejected/failed/censored work counts. L3 must reconcile exact prerequisite selection and allocation before execution; no L0 timing test to estimate cost. This consumes only previously proposed CT1L300s; CT1N/R allocations unchanged and excluded.",
+  "future_preflight_sequence": [
+    "Read and authenticate explicit stageL3 grant binding exact reviewed implementation/assignment SHA, expiry, test paths and budget; absence/mismatch rejects before numerical import.",
+    "Check clean isolated worktree, accepted ancestry, exact locked source/config/panel and fixture/oracle hashes; fail closed on mismatch; verify source paths not original Efficiency cwd.",
+    "Inspect process inventory, active scientific workers and owner MEASURED_ACTIVE/D3_ACTIVE guards across relevant result roots; preserve owner/mtime and refuse conflicting work, never delete or rename their guard.",
+    "Check >=2GiB free initially, available memory/headroom and new empty output directory; no output root under archives/source or another worker. Record disk/memory values, not inferred old observations.",
+    "Resolve supported actual numerical backend controls in a fresh worker. For this Mac use reviewed configure_accelerate(1) with VECLIB_MAXIMUM_THREADS=1 before numerical imports; record returned status/mode. For other backends require separately qualified supported controls, not generic env assumptions.",
+    "Only then import numerical packages and record their binary/version/module origins, BLAS/LAPACK/backend receipt, threadpool info, process thread samples and CPU/wall observations. Environment values alone are not evidence of execution behavior. Unknown historical IPOPT plugin identity remains unknown; no optimizer plugin construction is needed or permitted.",
+    "Run only the exact reviewed tests under same supervised allocation before candidate analysis; any prerequisite failure preserves logs and stops affected stage without favorable retry.",
+    "Reserve counters before each original grid slot; <=12candidate IDs and <=960 suffix slots before dedup. Model/AD/FD calls use allocation tokens, no prewarming or uncounted scans."
+  ],
+  "supervision": [
+    "One worker process group, sequential; supervisor polls monotonic time/RSS/disk/output/thread observations every0.1s; no concurrent tests/analysis/rendering/benchmark.",
+    "At elapsed295s no new work; flush and finalize inside300s. <=1s grace must fit remaining allocation, then TERM/KILL as needed and reap process group. Poll/OS scheduling may prevent a certified hard wall bound; report actual elapsed and overrun rather than claim exact enforcement.",
+    "At observed RSS>=1GiB terminate/censor and report peak-observed plus monitor gap. macOS sampled monitoring is not a hard memory cap; L3 review must accept this limitation or qualify real enforcement before hard-bound claims.",
+    "At output>=95% of1GiB stop new work; include all logs, temps, test artifacts and exports inside same reservation; below1GiB free stop/censor. Never delete prior results to gain budget.",
+    "Signal handlers/append-only JSONL flush only within resource bounds; final index labels torn tail bytes and missing ranges. No old artifact overwrites or retry to replace unfavorable evidence."
+  ],
+  "scientific_streams": {
+    "run_manifest.json": "manifest_record",
+    "source_environment.json": "environment_record",
+    "panel.jsonl": "qualification_record",
+    "linearizations.jsonl": "linearization_record",
+    "finite_differences.jsonl": "finite_difference_record",
+    "linear_systems.jsonl": "linear_system_record",
+    "riccati.jsonl": "riccati_record",
+    "closed_loop.jsonl": "closed_loop_record",
+    "products.jsonl": "product_record",
+    "defects.jsonl": "defect_record",
+    "events.jsonl": "event_record",
+    "resources.jsonl": "resource_record",
+    "coverage.json": "coverage_record",
+    "index.json": "index_record"
+  },
+  "output_schema": {
+    "path": "docs/ct1/ct1l/scientific_evidence.schema.json",
+    "id": "urn:apex:ct1l:scientific-evidence:1.0.0",
+    "exact_encoding": "UTF-8 strict JSON or one complete object per JSONL line; finite float64/scalar values only; no NaN/Infinity tokens. complex={re:number,im:number}; infinity is null+condition_kind. Matrices retain shapes, names, units, normalization, source and validity.",
+    "semantic_guards": [
+      "Validate row/column names and all nested array dimensions against explicit shapes.",
+      "Source binding set SHA and exact operating tuple/map/chart/authority semantics must match referenced records.",
+      "All12candidate IDs remain in coverage even if invalid/unavailable/unexecuted; match immutable panel order and exact identity hashes.",
+      "Count requested suffix slots BEFORE deduplication, enforce960; all persisted gain/sample indices inside original packet/gain interval.",
+      "Products may only use completed contiguous factors in declared authority/design scope. At truncation a prefix norm is labeled COMPLETED_PREFIX_ONLY and requested endpoint metric remains unavailable; missing ranges explicit.",
+      "Failed comparisons may retain computed payload and reasons; unexecuted/unavailable/invalid records have data=null and reasons plus immutable context. Raw offending values recorded in structured reason fields, not fabricated result arrays.",
+      "Strict no-NaN and duplicate-key rejection before schema. Unexpected extra fields rejected by closed schemas.",
+      "No actual result records emitted at L0; no fixture/toy oracle relabeled as a candidate result.",
+      "Qualification record.status describes whether the qualification procedure ran. If computed procedure returns qualification INVALID/UNAVAILABLE, qualification_data may retain archived tuples, evaluated checks and null missing values. Matrix/result records with status INVALID/UNAVAILABLE still have data=null; no matrix is backfilled. Coverage uses the qualification result, not the procedure-executed status."
+    ]
+  },
+  "gates": [
+    {
+      "id": "L0",
+      "scope": "Current documentation/specification only; static checks and required Git delivery.",
+      "next_authorization": "None implied by L0 completion."
+    },
+    {
+      "id": "L1",
+      "scope": "Future CREATE of exactly allowlisted source/test/fixture paths; no numerical imports, function execution, test collection or running tests.",
+      "requires": "Secondary Engineering Review and explicit Primary code-creation authorization on this exact reviewed assignment.",
+      "exit": "Implementation diff and AST/schema/source/fixture/oracle hashes for L2."
+    },
+    {
+      "id": "L2",
+      "scope": "Implementation Engineering Review of exact code, dependency graph, imported-source isolation, independent expectations, output/guard contracts and static checks.",
+      "requires": "Exact L1 delivery SHA and complete allowlist diff.",
+      "exit": "Review disposition, unresolved decisions and proposed exact test/node selection; no numerical execution automatically authorized."
+    },
+    {
+      "id": "L3",
+      "scope": "Only separately authorized tests/qualification/local-analysis under reviewed300s/native/resource rules; no optimization/simulation.",
+      "requires": "Explicit Primary numerical grant after L2, reviewed thresholds, point qualification, budget/test selection, final memory/host guard policy.",
+      "exit": "All failed/partial/censored scientific evidence, raw checks and valid coverage; no favorable rerun."
+    },
+    {
+      "id": "L4",
+      "scope": "Results review with per-point/method errors, conditioning, unavailability, invalid domains and truncated products.",
+      "requires": "Immutable L3 source/environment/evidence hashes.",
+      "exit": "Bounded local conclusions and limitations only."
+    },
+    {
+      "id": "L5",
+      "scope": "Primary scientific acceptance of supported local findings.",
+      "requires": "Independent review of exact evidence and explicit hypotheses.",
+      "exit": "Acceptance/rejection with scope; no N/R/controller/hardware authority."
+    }
+  ],
+  "unresolved_review_decisions": [
+    {
+      "id": "D01",
+      "decision": "Approve source-pinned read-only private spline/arc access in proposed geometry adapter or require an alternate read-only binding. No frozen geometry API change.",
+      "before": "L1"
+    },
+    {
+      "id": "D02",
+      "decision": "Confirm separate ORIGINAL_DESIGN_SUPPORT suffix for DARE/gain reproduction versus observed-authority products; actual off-grid intervals unsupported by six fixed maps remain unavailable. No post-supersession authority claim.",
+      "before": "L2/L3"
+    },
+    {
+      "id": "D03",
+      "decision": "Review branch-specific knot/domain reporting and whether conservative unavailable map coverage suffices; no shifting candidate or unreviewed hybrid/event implementation.",
+      "before": "L2/L3"
+    },
+    {
+      "id": "D04",
+      "decision": "Reconcile exact L3 executable test selection and300s total allocation including tests/init/export; no runtime estimate or extra allocation established by L0.",
+      "before": "L3"
+    },
+    {
+      "id": "D05",
+      "decision": "Accept sampled-RSS monitoring limitation or qualify real OS enforcement; do not claim demonstrated hard1GiB memory bound.",
+      "before": "L3"
+    },
+    {
+      "id": "D06",
+      "decision": "Missing unapplied-command-tail evidence may make asynchronous applicability unavailable. A complete checkpoint reconstruction is not required to compute source-bound local open-loop pairs and is excluded here.",
+      "before": "L2/L3"
+    },
+    {
+      "id": "D07",
+      "decision": "For numerically ambiguous repeated PBH modes, confirm scoped Schur/rank-revealing procedure or retain INDETERMINATE; no new threshold/dependency to force a conclusion.",
+      "before": "L2/L3"
+    }
+  ],
+  "explicit_exclusions": [
+    "CT1L implementation in current L0",
+    "all numerical/test execution in L0/L1/L2",
+    "CT1N/CT1R plan amendments or experiments",
+    "controller retuning/optimization",
+    "solver construction or migration",
+    "hardware, Safety/Efficiency/SID changes",
+    "source model or accepted fixture modifications",
+    "archive restoration or copied-drive qualification"
+  ],
+  "preservation_plan": {
+    "accepted_CT1_records": {
+      "docs/ct1/preservation_and_provenance.json": "33b6c55647f8b5089364f4402eccfdc964dc62732a2bc2f852971d66dde7f1ef",
+      "docs/ct1/resource_and_review_gates.json": "5b41ad49cd7a7ba0b4fef3aec38e7956affd110627f761dcf25ce69173c3d963",
+      "docs/ct1/ct1_documentation.schema.json": "497efd64467f122fe7f33319e227a50ba52cac2ce7064c8fc458c1f588971aaa",
+      "docs/ct1/metrics_and_interpretation.json": "c73af10718f194fe5cc5f6774e39c5d2742a486dd514f788cd0ec89222529dee",
+      "docs/ct1/operating_point_selection.json": "da5b5556e0a0eeba112b5bb3a1190795e0d54f3210bfdb4f254ca6c32fd9082a",
+      "docs/ct1/validation.json": "cfe9ca8b2a51c29e1dcac6704a558ffa4a7efdf3649f6c5e4493826b6e5d8796",
+      "docs/ct1/test_matrix.json": "0c16d0a5a8a3c155d8a29cf2899374cbd183584c8aef060ccd327136a98b95df",
+      "docs/ct1/model_and_linearization_audit.md": "f99cab35012fb9159c6b38d23002ba4b7527fa744394da5e05c1055235702386",
+      "docs/ct1/CT1_CONTROL_THEORY_METHODOLOGY.md": "b606d3c0d5e579fa9ff01749b9d7175cb7a881355d7b57ea427a390973b42438"
+    },
+    "authorized_current_diff": [
+      "docs/ct1/ct1l/ new documentation/schema only",
+      "docs/CODEX_HANDOFF.md prepend-only"
+    ],
+    "source_binding_set": "305 accepted source/document hashes and90 targeted archived evidence hashes; E4/E3/manifest unchanged.",
+    "original_efficiency": "Preexisting dirty files and scripts/task007f untracked captured; no authoritative CT1 imports from this checkout. Do not reset/stage/commit them. Independent concurrent edits, if observed, reported rather than attributed to CT1.",
+    "protected_refs_before": "48adbdf64d492592d15e23c917aca71fa58aa8a5 refs/heads/main\n48adbdf64d492592d15e23c917aca71fa58aa8a5 refs/heads/release/performance-synthetic-v1\nb22e24c13f76ea2e265d54a423825f8b15ea7b37 refs/heads/research/control-theory-ct1\n83f360b2a96e8f6d9fe429d2cc2e5447da2f47c8 refs/heads/research/efficiency\nfa4615ac11a1cf79c14d12eedb9360e33291c182 refs/heads/research/safety-s0\n76d9eaa65af02efb0263916adc75d5247a0e778f refs/tags/performance-synthetic-v1\n",
+    "before_inventory": {
+      "path": "/private/tmp/ct1l0_before.json",
+      "sha256": "e3ce20e96ac1ae97b6acd2641efa1d07e4d8a78ac1e5c4220b1d03b5896d7657"
+    },
+    "historical_results": "11646 size/mtime pairs plus90 targeted content hashes; not whole-archive content rehash or backup certification.",
+    "two_drive_archive": "No modification, inspection, restoration or qualification; independent requirements unchanged."
+  }
+}

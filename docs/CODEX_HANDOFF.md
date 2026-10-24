@@ -1,3 +1,42 @@
+# Current handoff — CT-1L L0 implementation-assignment preparation
+
+**WORK_COMPLETE_PENDING_REVIEW — documentation only. No implementation or numerical execution.**
+Exact authorized start: `b22e24c13f76ea2e265d54a423825f8b15ea7b37` on
+`research/control-theory-ct1`; accepted Performance E4 `48adbdf64d492592d15e23c917aca71fa58aa8a5`,
+verified scientific source `e603672b209985f11ed26b6f44d3949ffd5675c5`, manifest SHA256
+`5299adca29d5c5bd383252cd2c299a392dd6872dc6bb72d1a4dd7ecfb8dd1ebf` remain unchanged.
+Primary accepts prior CT-1 methodology/interpretation/candidates per this assignment; all
+historical CT-1 documents and CT-1N/R trial identities retain their original bytes/status.
+
+[Implementation authorization request](ct1/ct1l/implementation_authorization_request.md),
+[future source/test/fixture manifest](ct1/ct1l/future_source_allowlist.json),
+[point qualification](ct1/ct1l/point_qualification_contract.json),
+[derivatives](ct1/ct1l/linearization_and_derivative_contract.json),
+[linear systems/TVLQR](ct1/ct1l/controllability_stability_contract.json),
+[independent oracles](ct1/ct1l/independent_test_oracles.json),
+[evidence/resource/stage gates](ct1/ct1l/evidence_and_resource_gates.json),
+[static validation](ct1/ct1l/validation.json).
+Exact proposed signatures/dependencies and independent literal expectations are declarations;
+no scripts/ct1 or tests/ct1l files exist yet. No tests collected/executed or numerical imports.
+
+Preserve all12candidates with source/gain associations. Separate actual-held from packet-nominal
+pairs, physical curvature from frozen preview, original design suffix for gain verification
+from observed authority products. No relaxed criteria or replacement gains. Missing pending-tail,
+knot/off-grid coverage, geometry private-access review, exact300s test allocation and sampled
+RSS limitations remain explicit D01-D07 decisions. All scientific results remain NOT EXECUTED.
+Future caps:12candidates,960gain slots before dedup,300s,SINGLE sequential,1GiB proposed worker
+RSS/output reservation,>=2GiB initially free. No hard memory enforcement demonstrated.
+
+Only docs/ct1/ct1l and this prepend change. Original Efficiency's unrelated dirty/untracked work
+is preserved and excluded from CT-1 source identity. Frozen Performance/Safety refs, original
+archives and accepted CT-1 records remain protected; no architecture/decision-log change.
+**Next:** Secondary reviews this exact delivery, then Primary may explicitly authorize L1 code
+creation only. L2 exact-implementation review and separate L3 numerical authorization still
+required; L4 results review and L5 Primary acceptance follow independently. No CT-1N/R,
+controller optimization, solver migration, Safety/Efficiency/SID or hardware work authorized.
+
+---
+
 # Current handoff — APEX-CT-1 control-theoretic assessment plan
 
 **WORK_COMPLETE_PENDING_REVIEW — documentation only. Numerical evaluations NOT EXECUTED.**

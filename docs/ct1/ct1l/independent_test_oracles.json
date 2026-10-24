@@ -1,0 +1,397 @@
+{
+  "task": "APEX-CT-1L-L0",
+  "stage": "L0_ASSIGNMENT_PREPARATION_ONLY",
+  "status": "WORK_COMPLETE_PENDING_REVIEW",
+  "starting_revision": "b22e24c13f76ea2e265d54a423825f8b15ea7b37",
+  "accepted_Performance_E4": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+  "verified_scientific_revision": "e603672b209985f11ed26b6f44d3949ffd5675c5",
+  "implementation_status": "NOT IMPLEMENTED",
+  "numerical_evaluation_status": "NOT EXECUTED",
+  "tests_status": "UNEXECUTED",
+  "authority_note": "Primary accepted prior CT1 methodology/interpretation/candidate panel in current assignment; historical records retain their original status and bytes. No L1 or L3 authorization.",
+  "schema": "apex-ct1l-test-oracles/1.0.0",
+  "files": [
+    {
+      "path": "tests/ct1l/conftest.py",
+      "operation": "CREATE_ONLY_AFTER_L1_AUTHORIZATION",
+      "purpose": "Tiny immutable fixture loading; no root conftest dependence, numerical initialization or oracle generation.",
+      "oracle_ids": [
+        "O00"
+      ],
+      "unit_under_test": [
+        "scripts/ct1/contracts.py"
+      ],
+      "expected_execution_stage": "L3_ONLY",
+      "current_status": "UNEXECUTED"
+    },
+    {
+      "path": "tests/ct1l/test_contracts.py",
+      "operation": "CREATE_ONLY_AFTER_L1_AUTHORIZATION",
+      "purpose": "Canonical orders, tuple role separation, strict schema/shape/dtype invariants.",
+      "oracle_ids": [
+        "O00"
+      ],
+      "unit_under_test": [
+        "scripts/ct1/contracts.py",
+        "scripts/ct1/evidence.py"
+      ],
+      "expected_execution_stage": "L3_ONLY",
+      "current_status": "UNEXECUTED"
+    },
+    {
+      "path": "tests/ct1l/test_inputs.py",
+      "operation": "CREATE_ONLY_AFTER_L1_AUTHORIZATION",
+      "purpose": "Exact source/candidate/gain/held-control bindings, missing raw file and source-hash mismatch fail closed.",
+      "oracle_ids": [
+        "O01"
+      ],
+      "unit_under_test": [
+        "scripts/ct1/inputs.py"
+      ],
+      "expected_execution_stage": "L3_ONLY",
+      "current_status": "UNEXECUTED"
+    },
+    {
+      "path": "tests/ct1l/test_geometry.py",
+      "operation": "CREATE_ONLY_AFTER_L1_AUTHORIZATION",
+      "purpose": "Analytical local line/circle/parabola, physical arc derivative, C2 knot and chart handling.",
+      "oracle_ids": [
+        "O02",
+        "O03"
+      ],
+      "unit_under_test": [
+        "scripts/ct1/geometry.py"
+      ],
+      "expected_execution_stage": "L3_ONLY",
+      "current_status": "UNEXECUTED"
+    },
+    {
+      "path": "tests/ct1l/test_analytic.py",
+      "operation": "CREATE_ONLY_AFTER_L1_AUTHORIZATION",
+      "purpose": "Literal axle-load slopes and zero-slip force Jacobian; nonzero-slip acceleration sensitivity expression.",
+      "oracle_ids": [
+        "O04",
+        "O05"
+      ],
+      "unit_under_test": [
+        "scripts/ct1/analytic.py"
+      ],
+      "expected_execution_stage": "L3_ONLY",
+      "current_status": "UNEXECUTED"
+    },
+    {
+      "path": "tests/ct1l/test_rk4.py",
+      "operation": "CREATE_ONLY_AFTER_L1_AUTHORIZATION",
+      "purpose": "Nilpotent double integrator and scalar quartic RK4; substep count/order and Bd injection.",
+      "oracle_ids": [
+        "O06",
+        "O07"
+      ],
+      "unit_under_test": [
+        "scripts/ct1/rk4.py"
+      ],
+      "expected_execution_stage": "L3_ONLY",
+      "current_status": "UNEXECUTED"
+    },
+    {
+      "path": "tests/ct1l/test_derivative_parity.py",
+      "operation": "CREATE_ONLY_AFTER_L1_AUTHORIZATION",
+      "purpose": "Analytical vs accepted AD vs independent value finite difference with identical tuples/maps; no cross-policy false failures.",
+      "oracle_ids": [
+        "O05",
+        "O06",
+        "O08"
+      ],
+      "unit_under_test": [
+        "scripts/ct1/analytic.py",
+        "scripts/ct1/source_adapter.py",
+        "scripts/ct1/crosscheck_numpy.py",
+        "scripts/ct1/finite_difference.py"
+      ],
+      "expected_execution_stage": "L3_ONLY",
+      "current_status": "UNEXECUTED"
+    },
+    {
+      "path": "tests/ct1l/test_qualification.py",
+      "operation": "CREATE_ONLY_AFTER_L1_AUTHORIZATION",
+      "purpose": "Interior, boundary, invalid square root/load, incompatible chart/stencil and unavailable geometry.",
+      "oracle_ids": [
+        "O03",
+        "O08"
+      ],
+      "unit_under_test": [
+        "scripts/ct1/qualification.py"
+      ],
+      "expected_execution_stage": "L3_ONLY",
+      "current_status": "UNEXECUTED"
+    },
+    {
+      "path": "tests/ct1l/test_linear_systems.py",
+      "operation": "CREATE_ONLY_AFTER_L1_AUTHORIZATION",
+      "purpose": "Literal C/SVD/rank/scaling and PBH stable/uncontrollable/marginal modes; normalization sensitivity.",
+      "oracle_ids": [
+        "O09",
+        "O10",
+        "O11"
+      ],
+      "unit_under_test": [
+        "scripts/ct1/linear_systems.py"
+      ],
+      "expected_execution_stage": "L3_ONLY",
+      "current_status": "UNEXECUTED"
+    },
+    {
+      "path": "tests/ct1l/test_riccati.py",
+      "operation": "CREATE_ONLY_AFTER_L1_AUTHORIZATION",
+      "purpose": "Scalar DARE radical, exact one-step recursion, deliberate bad gain and nonpositive H failure.",
+      "oracle_ids": [
+        "O12",
+        "O13"
+      ],
+      "unit_under_test": [
+        "scripts/ct1/riccati.py"
+      ],
+      "expected_execution_stage": "L3_ONLY",
+      "current_status": "UNEXECUTED"
+    },
+    {
+      "path": "tests/ct1l/test_closed_loop.py",
+      "operation": "CREATE_ONLY_AFTER_L1_AUTHORIZATION",
+      "purpose": "Noncommuting product order, stable frozen matrices with growing product, normalization-dependent norm, affine defects and unregulated progress.",
+      "oracle_ids": [
+        "O14",
+        "O15",
+        "O16",
+        "O17"
+      ],
+      "unit_under_test": [
+        "scripts/ct1/closed_loop.py"
+      ],
+      "expected_execution_stage": "L3_ONLY",
+      "current_status": "UNEXECUTED"
+    },
+    {
+      "path": "tests/ct1l/test_applicability.py",
+      "operation": "CREATE_ONLY_AFTER_L1_AUTHORIZATION",
+      "purpose": "Box/slew ties, applied-memory/pending command provenance, expiry, supersession and nominal/actual mismatch.",
+      "oracle_ids": [
+        "O01",
+        "O18"
+      ],
+      "unit_under_test": [
+        "scripts/ct1/qualification.py",
+        "scripts/ct1/closed_loop.py"
+      ],
+      "expected_execution_stage": "L3_ONLY",
+      "current_status": "UNEXECUTED"
+    },
+    {
+      "path": "tests/ct1l/test_evidence.py",
+      "operation": "CREATE_ONLY_AFTER_L1_AUTHORIZATION",
+      "purpose": "Complex encoding, null infinity, strict no-NaN, output schema failure, missing panel and truncated products.",
+      "oracle_ids": [
+        "O00",
+        "O19"
+      ],
+      "unit_under_test": [
+        "scripts/ct1/evidence.py"
+      ],
+      "expected_execution_stage": "L3_ONLY",
+      "current_status": "UNEXECUTED"
+    },
+    {
+      "path": "tests/ct1l/test_guards.py",
+      "operation": "CREATE_ONLY_AFTER_L1_AUTHORIZATION",
+      "purpose": "Simulated supervisor clock/RSS/disk/guard ownership and explicit permission rejection, no actual APEX experiments.",
+      "oracle_ids": [
+        "O20"
+      ],
+      "unit_under_test": [
+        "scripts/ct1/guards.py",
+        "scripts/ct1/worker.py",
+        "scripts/ct1/cli.py"
+      ],
+      "expected_execution_stage": "L3_ONLY",
+      "current_status": "UNEXECUTED"
+    }
+  ],
+  "future_fixtures": [
+    {
+      "path": "tests/ct1l/fixtures/literal_oracles.json",
+      "operation": "CREATE_ONLY_AFTER_L1_AUTHORIZATION",
+      "role": "O04-O17 exact rational/radical matrix and derivative expectations, locked before implementation tests.",
+      "independence": "Hand-derived declarative literals or exact copied identity bindings; never generated by ct1 analysis, solver, eigensolve or simulation."
+    },
+    {
+      "path": "tests/ct1l/fixtures/geometry_cases.json",
+      "operation": "CREATE_ONLY_AFTER_L1_AUTHORIZATION",
+      "role": "O02/O03 local analytic geometry and explicit one-sided cubic coefficients; never replace accepted racing geometry.",
+      "independence": "Hand-derived declarative literals or exact copied identity bindings; never generated by ct1 analysis, solver, eigensolve or simulation."
+    },
+    {
+      "path": "tests/ct1l/fixtures/causal_packets.json",
+      "operation": "CREATE_ONLY_AFTER_L1_AUTHORIZATION",
+      "role": "O01/O18/O19 tiny synthetic authority/pending/control/expiry records, explicitly not Performance scientific evidence.",
+      "independence": "Hand-derived declarative literals or exact copied identity bindings; never generated by ct1 analysis, solver, eigensolve or simulation."
+    },
+    {
+      "path": "tests/ct1l/fixtures/source_bindings.json",
+      "operation": "CREATE_ONLY_AFTER_L1_AUTHORIZATION",
+      "role": "Read-only path/hash references to exact accepted CT1 panel/source/fixtures; no archived state or source edits.",
+      "independence": "Hand-derived declarative literals or exact copied identity bindings; never generated by ct1 analysis, solver, eigensolve or simulation."
+    },
+    {
+      "path": "tests/ct1l/fixtures/README.md",
+      "operation": "CREATE_ONLY_AFTER_L1_AUTHORIZATION",
+      "role": "Independent written derivations, oracle authorship/review and literal file hashes fixed before numerical execution.",
+      "independence": "Hand-derived declarative literals or exact copied identity bindings; never generated by ct1 analysis, solver, eigensolve or simulation."
+    }
+  ],
+  "oracle_cases": [
+    {
+      "id": "O00",
+      "kind": "structural",
+      "literal": "State=[vx,vy,r,e_psi,s_abs,e_y], input=[delta,a_cmd], lat indices=[5,3,1,2], shapes6x6/6x2,4x4/4x1,1x1/1x1.",
+      "expected": "Permutation, missing/extra keys, NaN/Inf and result payload on NOT_EXECUTED rejected; immutable original records byte-identical."
+    },
+    {
+      "id": "O01",
+      "kind": "causal",
+      "literal": "At t=1.00 active packet20 was accepted0.99; held command came from packet19 applied0.995; packet20 request due1.005 is pending.",
+      "expected": "ACTUAL_HELD retains packet19 input/source; PACKET_NOMINAL uses20; pending is not already applied; absence of unapplied tail does not prove no pending request."
+    },
+    {
+      "id": "O02",
+      "kind": "geometry_numeric_future",
+      "literal": "Line c(q)=(q,0):kappa=0,kappa_s=0. Circle radius5m:kappa=1/5 1/m,kappa_s=0. Local parabola c(q)=(q,q^2/2), s(q)=(q*sqrt(1+q^2)+asinh(q))/2.",
+      "expected": "kappa=(1+q^2)^(-3/2), kappa_s=-3*q/(1+q^2)^3; at q=1 values1/(2*sqrt(2)) and -3/8. Physical arc derivative differs from d/dq; geometry tolerance exactly accepted kappa_s criteria."
+    },
+    {
+      "id": "O03",
+      "kind": "geometry_branch",
+      "literal": "Local C2 knot q=0: c_left(q)=(q,0), c_right(q)=(q,q^3/6).",
+      "expected": "Curvature is0 from both sides; kappa_s LEFT=0,RIGHT=1. No unique derivative; branch-specific or unavailable; never average to1/2. Headings pi-eps versus -pi+eps must use a lifted residual2eps rather than2pi-2eps."
+    },
+    {
+      "id": "O04",
+      "kind": "force_load_numeric_future",
+      "literal": "Accepted synthetic m=2,h=1/25,L=3/10,lf=lr=3/20,g=981/100; zero a.",
+      "expected": "Zf0=Zr0=981/100 N; dZf/da=-4/15, dZr/da=+4/15 N/(m/s^2); sum slope0; allocation q_i=a/(mu*g). Values are hand rational substitution, not model-generated."
+    },
+    {
+      "id": "O05",
+      "kind": "force_derivative_numeric_future",
+      "literal": "Synthetic params, x=[2,0,0,0,s,0], u=[0,0], frozen kappa=0. Cf=Cr=45,Iz=1/40.",
+      "expected": "dYf/ddelta=45,dYr/ddelta=0; dYf/dvy=dYr/dvy=-45/2; dYf/dr=-27/8,dYr/dr=+27/8. B[vx,a]=1,B[vy,delta]=45/2,B[r,delta]=270. A[vy,vy]=-45/2,A[vy,r]=-2,A[r,vy]=0,A[r,r]=-81/2. dYf/da=dYr/da=0 at zero slip. Mixed d^2Yf/(ddelta da)=-400/327 at zero a/slip proves load sensitivity cannot be discarded.",
+      "nonzero_slip_oracle": "For mu=1,a=0, alpha_f fixed nonzero, z=45*alpha_f/(981/100), dYf/da=(-4/15)*tanh(z); rear counterpart(+4/15)*tanh(zr). Derive by Xi=0 and Ci_eff/Ti constant w.r.t a to first order. Do not use zero-slip-only test to validate general dFy/da."
+    },
+    {
+      "id": "O06",
+      "kind": "RK4_numeric_future",
+      "literal": "Independent double integrator f=[x2,u], A=[[0,1],[0,0]],B=[[0],[1]].",
+      "expected": "For h, exact RK4 Ad=[[1,h],[0,1]],Bd=[[h^2/2],[h]]. At totalT=1/100 with2steps:Ad=[[1,1/100],[0,1]],Bd=[[1/20000],[1/100]]. AtT=1/10 with4or20steps:Ad=[[1,1/10],[0,1]],Bd=[[1/200],[1/10]]. No future analysis call generates these expected literals."
+    },
+    {
+      "id": "O07",
+      "kind": "RK4_numeric_future",
+      "literal": "Independent scalar f=-x+u; stability polynomial R(z)=1+z+z^2/2+z^3/6+z^4/24.",
+      "expected": "n held-input substeps h=T/n give Ad=R(-h)^n,Bd=1-R(-h)^n. Include n=2,T=1/100;n=4,T=1/10;n=20,T=1/10. Different maps must not be compared as equal by replacing with exp(-T) or Euler."
+    },
+    {
+      "id": "O08",
+      "kind": "qualification_and_FD",
+      "literal": "Original stencil steps multipliers=[2e-5,1e-5,5e-6], boundaries vx=0.5 or6, D=0.001 plant limit, Fz=1e-9, |Fx|/(mu*Fz)=1-1e-6 and sqrt argument0; no mutation.",
+      "expected": "Domain rejection or branch-specific result as applicable; equality accepted by one source guard is not an unrestricted central stencil. No step shrink/clamp; compare all matching methods only. Deliberate wrong curvature policy gets INCOMPARABLE_METHOD_SEMANTICS, not derivative error."
+    },
+    {
+      "id": "O09",
+      "kind": "linear_algebra_numeric_future",
+      "literal": "A=[[0,1],[0,0]],B=[[0],[1]]; C=[[0,1],[1,0]].",
+      "expected": "C singular values=[1,1],rank2,condition1. Dx=diag(2,1),Du=1 gives Cbar=[[0,1/2],[1,0]],singular values[1,1/2],rank2,condition2. Literal expectation independent of SVD implementation."
+    },
+    {
+      "id": "O10",
+      "kind": "rank_sensitivity_numeric_future",
+      "literal": "A=[[0,1e-9],[0,0]],B=[[0],[1]],C=[[0,1e-9],[1,0]].",
+      "expected": "singular values=[1,1e-9]. Threshold max(1e-12,t_rel) yields ranks2,2,1,1 for t_rel1e-12,1e-10,1e-8,1e-6 respectively. Exact controllability nonzero determinant; numerical rank sensitivity must not be reported as an exact physical deficiency."
+    },
+    {
+      "id": "O11",
+      "kind": "PBH_numeric_future",
+      "literal": "Discrete A=diag(1/2,3/4),B=[1,0]^T; A=diag(1/2,11/10),same B; A=diag(1/2,1),same B. Continuous counterparts diag(-1,-2),diag(-1,1),diag(-1,0).",
+      "expected": "All rank1 reachable; stable-uncontrollable examples stabilizable, unstable/marginal uncontrollable examples fail exact PBH requirement. Boundary examples carry numeric INDETERMINATE boundary classification even though literal exact algebra proves an uncontrollable marginal mode. B=[1,1]^T at distinct diagonal entries is controllable; include real Schur/repeated-eigenvalue residual-sensitive case without favorable rounding."
+    },
+    {
+      "id": "O12",
+      "kind": "Riccati_numeric_future",
+      "literal": "Scalar A=B=Q=R=1.",
+      "expected": "DARE stabilizing P=(1+sqrt(5))/2, K=(sqrt(5)-1)/2, closed-loop=(3-sqrt(5))/2; verify exact radical-derived residual and positivity. For finite one-step with Pnext=1,K=1/2,P=3/2. All acceptance uses existing CT1 Riccati/gain bounds."
+    },
+    {
+      "id": "O13",
+      "kind": "Riccati_failure",
+      "literal": "Original scalar gain from O12; deliberately stored gain offset+1/100; separate H=0 or negative invalid datum.",
+      "expected": "Gain reproduction fails accepted1e-9+1e-7*abs(original); original preserved. Nonpositive H/invalid DARE is failure not regularization. Corrupted source-bound packet gain triggers identity failure before numerical replacement."
+    },
+    {
+      "id": "O14",
+      "kind": "time_product_numeric_future",
+      "literal": "M0=[[1/2,2],[0,1/2]],M1=[[1/2,0],[2,1/2]].",
+      "expected": "Each frozen matrix has poles1/2. Phi(2,0)=M1*M0=[[1/4,1],[1,17/4]],while reversed product=[[17/4,1],[1,1/4]]. Correct product top-left1/4 catches wrong factor order. Correct product largest eigenvalue=(9+4*sqrt(5))/4>1 demonstrates finite amplification with stable frozen factors."
+    },
+    {
+      "id": "O15",
+      "kind": "normalization_numeric_future",
+      "literal": "M=[[1,2],[0,1]],Dx=diag(2,1).",
+      "expected": "Dx^-1*M*Dx=[[1,1],[0,1]]. Raw2norm=1+sqrt(2);normalized2norm=(1+sqrt(5))/2. Poles remain1; norms change with chosen units. No gain changes."
+    },
+    {
+      "id": "O16",
+      "kind": "defect_numeric_future",
+      "literal": "Scalar F(x,u)=x+T*u, x_nom_next=x_nom+T*u_nom+c with declared fixed symbolic c nonzero.",
+      "expected": "d=-c and forced response adds negativec, not zero. For two steps of identical scalarAcl=1, forced response=-2c. Packet replacement to unrelated next reference must be an event, not a fabricated within-packet defect."
+    },
+    {
+      "id": "O17",
+      "kind": "coupling_progress_numeric_future",
+      "literal": "Generic frozen-curvature six-state map has s column e_s=[0,0,0,0,1,0]^T and G[:,s]=0. Nominal vy=2,r=1.",
+      "expected": "Acl*e_s=e_s structurally, regardless of controllability via speed; longitudinal continuous closed-loop row contains [-kp,1,2,0,0,0]. Physical kappa_s contribution can change s-column; it is not set to zero by a lateral subsystem extractor."
+    },
+    {
+      "id": "O18",
+      "kind": "applicability",
+      "literal": "delta_des above+0.4, or rate request beyond delta_prev+0.01 at dt0.01; exact equality clip tie; t=expiry; authority superseded before requested product end.",
+      "expected": "SATURATED_BOX/SLEW_ACTIVE/CLIP_TIE_NONDIFFERENTIABLE/expired/superseded flags; hold source identities. Open-loop pair may remain valid but ideal A-BK conclusion conditional. No augmented event-map result created."
+    },
+    {
+      "id": "O19",
+      "kind": "evidence_and_censoring",
+      "literal": "Synthetic 12-entry panel, only first candidate completed; product interval[0,5) requested, factors[0,2) completed; timeout before factor2.",
+      "expected": "Coverage denominator12; eleven UNEXECUTED_BUDGET records; product completed prefix[0,2),missing range[2,5); no final norm/eigenvalue backfill. Complex values encode{re,im}; infinity null+reason; valid JSONL prefix retained after torn tail."
+    },
+    {
+      "id": "O20",
+      "kind": "guard_logic",
+      "literal": "Fake monotonic clock reaches295s of300; sampled RSS reaches1073741824 bytes; free bytes below1073741824; output at95%; external owned MEASURED_ACTIVE.",
+      "expected": "No new job in final5s; flush/terminate within remaining totalbudget, <=1s grace; resource-censored output. No guard deletion and no worker while conflicting owner. Missing/expired/wrong-SHA L3 grant rejects before numerical imports. A sampled RSS watcher reports observed ceiling, not hard cap."
+    }
+  ],
+  "oracle_independence_requirements": [
+    "These literal cases are hand-derived assignment declarations, not evaluated scientific results. No numeric expectations were calculated by running CT1 or any matrix/model function during L0.",
+    "At L1 write literal fixture values/closed forms before evaluating implementation, retain independent derivation prose and review hashes. Secondary reviews equations and signs before L3.",
+    "Test expectation code must not import ct1 analytic/rk4/linear_systems/riccati/closed_loop to generate expected outputs. Fraction/radical evaluation at L3 only may evaluate the declared independent closed forms.",
+    "Use independent tiny algebraic reference helper confined to tests if needed; never call solver/AD/SVD from the same implementation to obtain oracle expected values.",
+    "Accepted archived gains and source hashes are primary historical identity/gain evidence; they are separate from source-independent mathematical toy oracles. No model output generated by analysis becomes a new reference fixture.",
+    "Independent FD value transcription may share type records, constants, immutable source geometry values and domain policy; it may not share derivative/tangent routines or CasADi functions. Geometry derivative independence tested separately by O02/O03.",
+    "No broad testpaths/conftest/pytest configuration change. All exact future files remain absent in L0."
+  ],
+  "comparison_criteria": "All numerical tests use accepted CT1 relevant entrywise/geometry/rank/Riccati criteria, or exact equality of declarative identities/closed-form algebra where applicable. No new global or looser tolerance. Eigenvalue residual has no newly invented acceptance cutoff; report unresolved ambiguity.",
+  "stages": {
+    "L0": "Schema/hash/AST of existing source and documentation only; tests NOT CREATED and UNEXECUTED.",
+    "L1": "After explicit code-creation authorization, write allowlisted source/test/fixtures and inspect AST/schema without importing/executing them.",
+    "L2": "Independent exact diff/dependency/oracle/hash review; static checks only.",
+    "L3": "Separate numerical authorization and native/resource preflight before any pytest collection, numerical import, oracle numeric evaluation or model call. Exact test selection must be in reviewed grant; include all numerical correctness/qualification/prerequisite files before candidate analysis.",
+    "L4_L5": "Preserve all failed oracles and candidate failures/censoring for review/Primary acceptance; a completed test run is not scientific acceptance."
+  },
+  "unresolved_test_budget": "300s proposed total must include authorized test collection/execution, backend initialization, qualification/analysis and export. At L3 review confirm exact file/node selection and suballocation; no extra hidden prerequisite-test allocation or selective favorable retry."
+}

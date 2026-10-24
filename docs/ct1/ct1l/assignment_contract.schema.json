@@ -1,0 +1,859 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:apex:ct1l:l0-assignment:1.0.0",
+  "title": "CT1L L0 documentation record schemas, not implementation/runtime results",
+  "$defs": {
+    "controllability_stability_contract": {
+      "type": "object",
+      "properties": {
+        "task": {
+          "type": "string"
+        },
+        "stage": {
+          "const": "L0_ASSIGNMENT_PREPARATION_ONLY"
+        },
+        "status": {
+          "const": "WORK_COMPLETE_PENDING_REVIEW"
+        },
+        "starting_revision": {
+          "const": "b22e24c13f76ea2e265d54a423825f8b15ea7b37"
+        },
+        "accepted_Performance_E4": {
+          "const": "48adbdf64d492592d15e23c917aca71fa58aa8a5"
+        },
+        "verified_scientific_revision": {
+          "const": "e603672b209985f11ed26b6f44d3949ffd5675c5"
+        },
+        "implementation_status": {
+          "const": "NOT IMPLEMENTED"
+        },
+        "numerical_evaluation_status": {
+          "const": "NOT EXECUTED"
+        },
+        "tests_status": {
+          "const": "UNEXECUTED"
+        },
+        "authority_note": {
+          "type": "string"
+        },
+        "schema": {
+          "type": "string"
+        },
+        "criteria": {
+          "type": "object"
+        },
+        "criteria_source": {
+          "type": "object"
+        },
+        "subsystems": {
+          "type": "object"
+        },
+        "scaling": {
+          "type": "object"
+        },
+        "controllability": {
+          "type": "object"
+        },
+        "PBH_contract": {
+          "type": "object"
+        },
+        "gain_verification": {
+          "type": "object"
+        },
+        "authority_and_products": {
+          "type": "object"
+        },
+        "closed_loop": {
+          "type": "object"
+        },
+        "nominal_defects": {
+          "type": "object"
+        },
+        "applicability_flags": {
+          "type": "array"
+        },
+        "applicability_rule": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "task",
+        "stage",
+        "status",
+        "starting_revision",
+        "accepted_Performance_E4",
+        "verified_scientific_revision",
+        "implementation_status",
+        "numerical_evaluation_status",
+        "tests_status",
+        "authority_note",
+        "schema",
+        "criteria",
+        "criteria_source",
+        "subsystems",
+        "scaling",
+        "controllability",
+        "PBH_contract",
+        "gain_verification",
+        "authority_and_products",
+        "closed_loop",
+        "nominal_defects",
+        "applicability_flags",
+        "applicability_rule"
+      ],
+      "additionalProperties": false
+    },
+    "evidence_and_resource_gates": {
+      "type": "object",
+      "properties": {
+        "task": {
+          "type": "string"
+        },
+        "stage": {
+          "const": "L0_ASSIGNMENT_PREPARATION_ONLY"
+        },
+        "status": {
+          "const": "WORK_COMPLETE_PENDING_REVIEW"
+        },
+        "starting_revision": {
+          "const": "b22e24c13f76ea2e265d54a423825f8b15ea7b37"
+        },
+        "accepted_Performance_E4": {
+          "const": "48adbdf64d492592d15e23c917aca71fa58aa8a5"
+        },
+        "verified_scientific_revision": {
+          "const": "e603672b209985f11ed26b6f44d3949ffd5675c5"
+        },
+        "implementation_status": {
+          "const": "NOT IMPLEMENTED"
+        },
+        "numerical_evaluation_status": {
+          "const": "NOT EXECUTED"
+        },
+        "tests_status": {
+          "const": "UNEXECUTED"
+        },
+        "authority_note": {
+          "type": "string"
+        },
+        "schema": {
+          "type": "string"
+        },
+        "current_stage_execution_authorized": {
+          "const": false
+        },
+        "resource_proposal": {
+          "type": "object",
+          "properties": {
+            "max_candidates": {
+              "const": 12
+            },
+            "gain_grid_samples_before_dedup_max": {
+              "const": 960
+            },
+            "host_allocation_seconds": {
+              "const": 300
+            },
+            "native_policy": {
+              "const": "SINGLE"
+            },
+            "sequential_workers_max": {
+              "const": 1
+            },
+            "worker_RSS_ceiling_bytes": {
+              "const": 1073741824
+            },
+            "overall_new_output_reservation_bytes": {
+              "const": 1073741824
+            },
+            "initial_free_bytes_min": {
+              "const": 2147483648
+            },
+            "runtime_free_bytes_floor": {
+              "const": 1073741824
+            },
+            "poll_interval_s": {
+              "const": 0.1
+            },
+            "finalization_reserve_s": {
+              "const": 5
+            },
+            "termination_grace_s_max": {
+              "const": 1
+            },
+            "output_no_new_work_fraction": {
+              "const": 0.95
+            },
+            "sampled_RSS_is_hard_cap": {
+              "const": false
+            },
+            "ceiling_not_runtime_estimate": {
+              "const": true
+            }
+          },
+          "required": [
+            "max_candidates",
+            "gain_grid_samples_before_dedup_max",
+            "host_allocation_seconds",
+            "native_policy",
+            "sequential_workers_max",
+            "worker_RSS_ceiling_bytes",
+            "overall_new_output_reservation_bytes",
+            "initial_free_bytes_min",
+            "runtime_free_bytes_floor",
+            "poll_interval_s",
+            "finalization_reserve_s",
+            "termination_grace_s_max",
+            "output_no_new_work_fraction",
+            "sampled_RSS_is_hard_cap",
+            "ceiling_not_runtime_estimate"
+          ],
+          "additionalProperties": false
+        },
+        "budget_accounting": {
+          "type": "string"
+        },
+        "future_preflight_sequence": {
+          "type": "array"
+        },
+        "supervision": {
+          "type": "array"
+        },
+        "scientific_streams": {
+          "type": "object"
+        },
+        "output_schema": {
+          "type": "object"
+        },
+        "gates": {
+          "type": "array"
+        },
+        "unresolved_review_decisions": {
+          "type": "array"
+        },
+        "explicit_exclusions": {
+          "type": "array"
+        },
+        "preservation_plan": {
+          "type": "object"
+        }
+      },
+      "required": [
+        "task",
+        "stage",
+        "status",
+        "starting_revision",
+        "accepted_Performance_E4",
+        "verified_scientific_revision",
+        "implementation_status",
+        "numerical_evaluation_status",
+        "tests_status",
+        "authority_note",
+        "schema",
+        "current_stage_execution_authorized",
+        "resource_proposal",
+        "budget_accounting",
+        "future_preflight_sequence",
+        "supervision",
+        "scientific_streams",
+        "output_schema",
+        "gates",
+        "unresolved_review_decisions",
+        "explicit_exclusions",
+        "preservation_plan"
+      ],
+      "additionalProperties": false
+    },
+    "future_source_allowlist": {
+      "type": "object",
+      "properties": {
+        "task": {
+          "type": "string"
+        },
+        "stage": {
+          "const": "L0_ASSIGNMENT_PREPARATION_ONLY"
+        },
+        "status": {
+          "const": "WORK_COMPLETE_PENDING_REVIEW"
+        },
+        "starting_revision": {
+          "const": "b22e24c13f76ea2e265d54a423825f8b15ea7b37"
+        },
+        "accepted_Performance_E4": {
+          "const": "48adbdf64d492592d15e23c917aca71fa58aa8a5"
+        },
+        "verified_scientific_revision": {
+          "const": "e603672b209985f11ed26b6f44d3949ffd5675c5"
+        },
+        "implementation_status": {
+          "const": "NOT IMPLEMENTED"
+        },
+        "numerical_evaluation_status": {
+          "const": "NOT EXECUTED"
+        },
+        "tests_status": {
+          "const": "UNEXECUTED"
+        },
+        "authority_note": {
+          "type": "string"
+        },
+        "schema": {
+          "type": "string"
+        },
+        "paths_are_proposals_only": {
+          "const": true
+        },
+        "files": {
+          "type": "array"
+        },
+        "allowed_create_paths": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "scripts/ct1/__init__.py",
+              "scripts/ct1/contracts.py",
+              "scripts/ct1/inputs.py",
+              "scripts/ct1/source_adapter.py",
+              "scripts/ct1/geometry.py",
+              "scripts/ct1/qualification.py",
+              "scripts/ct1/analytic.py",
+              "scripts/ct1/crosscheck_numpy.py",
+              "scripts/ct1/rk4.py",
+              "scripts/ct1/finite_difference.py",
+              "scripts/ct1/linear_systems.py",
+              "scripts/ct1/riccati.py",
+              "scripts/ct1/closed_loop.py",
+              "scripts/ct1/evidence.py",
+              "scripts/ct1/guards.py",
+              "scripts/ct1/worker.py",
+              "scripts/ct1/cli.py",
+              "tests/ct1l/conftest.py",
+              "tests/ct1l/test_contracts.py",
+              "tests/ct1l/test_inputs.py",
+              "tests/ct1l/test_geometry.py",
+              "tests/ct1l/test_analytic.py",
+              "tests/ct1l/test_rk4.py",
+              "tests/ct1l/test_derivative_parity.py",
+              "tests/ct1l/test_qualification.py",
+              "tests/ct1l/test_linear_systems.py",
+              "tests/ct1l/test_riccati.py",
+              "tests/ct1l/test_closed_loop.py",
+              "tests/ct1l/test_applicability.py",
+              "tests/ct1l/test_evidence.py",
+              "tests/ct1l/test_guards.py",
+              "tests/ct1l/fixtures/literal_oracles.json",
+              "tests/ct1l/fixtures/geometry_cases.json",
+              "tests/ct1l/fixtures/causal_packets.json",
+              "tests/ct1l/fixtures/source_bindings.json",
+              "tests/ct1l/fixtures/README.md"
+            ]
+          },
+          "minItems": 36,
+          "maxItems": 36
+        },
+        "existing_source_edits_allowed": {
+          "const": []
+        },
+        "dependency_changes_allowed": {
+          "type": "boolean"
+        },
+        "numerical_runtime_dependencies": {
+          "type": "array"
+        },
+        "dependency_identity": {
+          "type": "string"
+        },
+        "read_only_source_bindings": {
+          "type": "array"
+        },
+        "additional_read_only_paths": {
+          "type": "array"
+        },
+        "prohibited_calls": {
+          "type": "array"
+        },
+        "module_import_isolation": {
+          "type": "string"
+        },
+        "data_type_contract": {
+          "type": "object"
+        },
+        "future_test_import_boundary": {
+          "type": "string"
+        },
+        "future_output_root_pattern": {
+          "type": "string"
+        },
+        "support_record_fields": {
+          "type": "object"
+        },
+        "source_adapter_budget_detail": {
+          "type": "string"
+        },
+        "additional_read_only_bindings": {
+          "type": "array"
+        },
+        "canonical_operating_tuple_worklist": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "task",
+        "stage",
+        "status",
+        "starting_revision",
+        "accepted_Performance_E4",
+        "verified_scientific_revision",
+        "implementation_status",
+        "numerical_evaluation_status",
+        "tests_status",
+        "authority_note",
+        "schema",
+        "paths_are_proposals_only",
+        "files",
+        "allowed_create_paths",
+        "existing_source_edits_allowed",
+        "dependency_changes_allowed",
+        "numerical_runtime_dependencies",
+        "dependency_identity",
+        "read_only_source_bindings",
+        "additional_read_only_paths",
+        "prohibited_calls",
+        "module_import_isolation",
+        "data_type_contract",
+        "future_test_import_boundary",
+        "future_output_root_pattern",
+        "support_record_fields",
+        "source_adapter_budget_detail",
+        "additional_read_only_bindings",
+        "canonical_operating_tuple_worklist"
+      ],
+      "additionalProperties": false
+    },
+    "independent_test_oracles": {
+      "type": "object",
+      "properties": {
+        "task": {
+          "type": "string"
+        },
+        "stage": {
+          "const": "L0_ASSIGNMENT_PREPARATION_ONLY"
+        },
+        "status": {
+          "const": "WORK_COMPLETE_PENDING_REVIEW"
+        },
+        "starting_revision": {
+          "const": "b22e24c13f76ea2e265d54a423825f8b15ea7b37"
+        },
+        "accepted_Performance_E4": {
+          "const": "48adbdf64d492592d15e23c917aca71fa58aa8a5"
+        },
+        "verified_scientific_revision": {
+          "const": "e603672b209985f11ed26b6f44d3949ffd5675c5"
+        },
+        "implementation_status": {
+          "const": "NOT IMPLEMENTED"
+        },
+        "numerical_evaluation_status": {
+          "const": "NOT EXECUTED"
+        },
+        "tests_status": {
+          "const": "UNEXECUTED"
+        },
+        "authority_note": {
+          "type": "string"
+        },
+        "schema": {
+          "type": "string"
+        },
+        "files": {
+          "type": "array"
+        },
+        "future_fixtures": {
+          "type": "array"
+        },
+        "oracle_cases": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          },
+          "minItems": 21,
+          "maxItems": 21
+        },
+        "oracle_independence_requirements": {
+          "type": "array"
+        },
+        "comparison_criteria": {
+          "type": "string"
+        },
+        "stages": {
+          "type": "object"
+        },
+        "unresolved_test_budget": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "task",
+        "stage",
+        "status",
+        "starting_revision",
+        "accepted_Performance_E4",
+        "verified_scientific_revision",
+        "implementation_status",
+        "numerical_evaluation_status",
+        "tests_status",
+        "authority_note",
+        "schema",
+        "files",
+        "future_fixtures",
+        "oracle_cases",
+        "oracle_independence_requirements",
+        "comparison_criteria",
+        "stages",
+        "unresolved_test_budget"
+      ],
+      "additionalProperties": false
+    },
+    "linearization_and_derivative_contract": {
+      "type": "object",
+      "properties": {
+        "task": {
+          "type": "string"
+        },
+        "stage": {
+          "const": "L0_ASSIGNMENT_PREPARATION_ONLY"
+        },
+        "status": {
+          "const": "WORK_COMPLETE_PENDING_REVIEW"
+        },
+        "starting_revision": {
+          "const": "b22e24c13f76ea2e265d54a423825f8b15ea7b37"
+        },
+        "accepted_Performance_E4": {
+          "const": "48adbdf64d492592d15e23c917aca71fa58aa8a5"
+        },
+        "verified_scientific_revision": {
+          "const": "e603672b209985f11ed26b6f44d3949ffd5675c5"
+        },
+        "implementation_status": {
+          "const": "NOT IMPLEMENTED"
+        },
+        "numerical_evaluation_status": {
+          "const": "NOT EXECUTED"
+        },
+        "tests_status": {
+          "const": "UNEXECUTED"
+        },
+        "authority_note": {
+          "type": "string"
+        },
+        "schema": {
+          "type": "string"
+        },
+        "state_order": {
+          "type": "array"
+        },
+        "input_order": {
+          "type": "array"
+        },
+        "state_units": {
+          "type": "array"
+        },
+        "input_units": {
+          "type": "array"
+        },
+        "maps": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          },
+          "minItems": 6,
+          "maxItems": 6
+        },
+        "equation_authority": {
+          "type": "object"
+        },
+        "RK4_tangent": {
+          "type": "object"
+        },
+        "accepted_criteria": {
+          "type": "object"
+        },
+        "criteria_binding": {
+          "type": "object"
+        },
+        "comparison_key": {
+          "type": "array"
+        },
+        "parity_rules": {
+          "type": "array"
+        },
+        "matrix_units": {
+          "type": "object"
+        },
+        "no_evaluated_results": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "task",
+        "stage",
+        "status",
+        "starting_revision",
+        "accepted_Performance_E4",
+        "verified_scientific_revision",
+        "implementation_status",
+        "numerical_evaluation_status",
+        "tests_status",
+        "authority_note",
+        "schema",
+        "state_order",
+        "input_order",
+        "state_units",
+        "input_units",
+        "maps",
+        "equation_authority",
+        "RK4_tangent",
+        "accepted_criteria",
+        "criteria_binding",
+        "comparison_key",
+        "parity_rules",
+        "matrix_units",
+        "no_evaluated_results"
+      ],
+      "additionalProperties": false
+    },
+    "point_qualification_contract": {
+      "type": "object",
+      "properties": {
+        "task": {
+          "type": "string"
+        },
+        "stage": {
+          "const": "L0_ASSIGNMENT_PREPARATION_ONLY"
+        },
+        "status": {
+          "const": "WORK_COMPLETE_PENDING_REVIEW"
+        },
+        "starting_revision": {
+          "const": "b22e24c13f76ea2e265d54a423825f8b15ea7b37"
+        },
+        "accepted_Performance_E4": {
+          "const": "48adbdf64d492592d15e23c917aca71fa58aa8a5"
+        },
+        "verified_scientific_revision": {
+          "const": "e603672b209985f11ed26b6f44d3949ffd5675c5"
+        },
+        "implementation_status": {
+          "const": "NOT IMPLEMENTED"
+        },
+        "numerical_evaluation_status": {
+          "const": "NOT EXECUTED"
+        },
+        "tests_status": {
+          "const": "UNEXECUTED"
+        },
+        "authority_note": {
+          "type": "string"
+        },
+        "schema": {
+          "type": "string"
+        },
+        "immutable_panel": {
+          "type": "object",
+          "properties": {
+            "path": {
+              "const": "docs/ct1/operating_point_selection.json"
+            },
+            "sha256": {
+              "const": "da5b5556e0a0eeba112b5bb3a1190795e0d54f3210bfdb4f254ca6c32fd9082a"
+            },
+            "candidate_count": {
+              "const": 12
+            },
+            "candidate_order": {
+              "const": [
+                "entry_exit_1",
+                "entry_exit_2",
+                "entry_exit_3",
+                "corner_1",
+                "corner_2",
+                "corner_3",
+                "straight_1",
+                "straight_2",
+                "straight_3",
+                "high_speed_1",
+                "high_speed_2",
+                "high_speed_3"
+              ]
+            },
+            "bindings": {
+              "type": "array",
+              "items": {
+                "type": "object"
+              },
+              "minItems": 12,
+              "maxItems": 12
+            },
+            "preserve": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "path",
+            "sha256",
+            "candidate_count",
+            "candidate_order",
+            "bindings",
+            "preserve"
+          ],
+          "additionalProperties": false
+        },
+        "operating_tuples": {
+          "type": "object"
+        },
+        "pipeline": {
+          "type": "array"
+        },
+        "domain_thresholds": {
+          "type": "object"
+        },
+        "geometry_and_chart_contract": {
+          "type": "object"
+        },
+        "status_rules": {
+          "type": "object"
+        },
+        "conditioning_rule": {
+          "type": "string"
+        },
+        "current_qualification": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "task",
+        "stage",
+        "status",
+        "starting_revision",
+        "accepted_Performance_E4",
+        "verified_scientific_revision",
+        "implementation_status",
+        "numerical_evaluation_status",
+        "tests_status",
+        "authority_note",
+        "schema",
+        "immutable_panel",
+        "operating_tuples",
+        "pipeline",
+        "domain_thresholds",
+        "geometry_and_chart_contract",
+        "status_rules",
+        "conditioning_rule",
+        "current_qualification"
+      ],
+      "additionalProperties": false
+    },
+    "validation": {
+      "type": "object",
+      "properties": {
+        "task": {
+          "type": "string"
+        },
+        "stage": {
+          "const": "L0_ASSIGNMENT_PREPARATION_ONLY"
+        },
+        "status": {
+          "const": "WORK_COMPLETE_PENDING_REVIEW"
+        },
+        "starting_revision": {
+          "const": "b22e24c13f76ea2e265d54a423825f8b15ea7b37"
+        },
+        "accepted_Performance_E4": {
+          "type": "string"
+        },
+        "verified_scientific_revision": {
+          "type": "string"
+        },
+        "implementation_status": {
+          "const": "NOT IMPLEMENTED"
+        },
+        "numerical_evaluation_status": {
+          "const": "NOT EXECUTED"
+        },
+        "tests_status": {
+          "const": "UNEXECUTED"
+        },
+        "authority_note": {
+          "type": "string"
+        },
+        "schema": {
+          "type": "string"
+        },
+        "passed": {
+          "const": true
+        },
+        "scope": {
+          "type": "string"
+        },
+        "checks": {
+          "type": "object"
+        },
+        "changed_files": {
+          "type": "array"
+        },
+        "new_document_hashes_excluding_self": {
+          "type": "object"
+        },
+        "reader": {
+          "type": "object"
+        },
+        "environment": {
+          "type": "object"
+        },
+        "unexecuted": {
+          "type": "array"
+        },
+        "delivery_identity": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "task",
+        "stage",
+        "status",
+        "starting_revision",
+        "accepted_Performance_E4",
+        "verified_scientific_revision",
+        "implementation_status",
+        "numerical_evaluation_status",
+        "tests_status",
+        "authority_note",
+        "schema",
+        "passed",
+        "scope",
+        "checks",
+        "changed_files",
+        "new_document_hashes_excluding_self",
+        "reader",
+        "environment",
+        "unexecuted",
+        "delivery_identity"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "vocabulary": [
+    "type",
+    "const",
+    "enum",
+    "required",
+    "properties",
+    "additionalProperties",
+    "items",
+    "minItems",
+    "maxItems"
+  ],
+  "scope": "Closed root records and explicit critical immutable/scope constraints; semantic API/dependency/candidate/threshold checks separately recorded in validation."
+}
