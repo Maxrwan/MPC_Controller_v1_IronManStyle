@@ -93,6 +93,14 @@ def _binding(name, reference, namespace, expected_hash):
     return resolve(reference, load(name), namespace)
 
 
+def _snapshot_literal(reference, expected_hash):
+    if reference is None:
+        if expected_hash is not None:
+            raise ValueError("Missing saved history cannot have a trusted snapshot digest")
+        return None
+    return _binding("snapshots", reference, "snapshot_records", expected_hash)
+
+
 def population():
     inputs, expected = load("cases"), load("expected_traces")
     result = {}
@@ -291,12 +299,14 @@ def _reduce(cfg, snapshot, step, batch):
         # Neither a new SUT digest nor an expected checkpoint replaces this input.
         # Decoder-only envelope; only its supplied literal Evidence payload is
         # passed to restore_snapshot. No fabricated Event reaches the reducer.
-        integrity = _decoded(codec.decode_event(codec.freeze({
-            "event_id": step["restart_input"]["event_id"] + "/integrity-input",
-            "producer_id": "TOY_INPUT", "producer_sequence": 0,
-            "at_tick": step["at_tick"], "causal_parent_ids": [],
-            "kind": "EVIDENCE_OBSERVED", "payload": step["integrity_evidence"],
-        }), configuration=cfg), r).payload
+        integrity = None
+        if step["integrity_evidence"] is not None:
+            integrity = _decoded(codec.decode_event(codec.freeze({
+                "event_id": step["restart_input"]["event_id"] + "/integrity-input",
+                "producer_id": "TOY_INPUT", "producer_sequence": 0,
+                "at_tick": step["at_tick"], "causal_parent_ids": [],
+                "kind": "EVIDENCE_OBSERVED", "payload": step["integrity_evidence"],
+            }), configuration=cfg), r).payload
         return reducer.restore_snapshot(
             cfg, saved=snapshot, integrity=integrity,
             restart=r.RestartInput(**step["restart_input"]),
@@ -452,19 +462,18 @@ def run_materialization(case_id):
         raise ValueError("Missing/extra materialization batches")
     cfg_ref = "#/configuration_records/" + material["configuration_key"]
     cfg_data = _binding("configurations", cfg_ref, "configuration_records", material["configuration_sha256"])
-    initial_data = _binding("snapshots", literal["initial_snapshot_ref"], "snapshot_records",
-                            literal["initial_snapshot_sha256"])
+    initial_data = _snapshot_literal(literal["initial_snapshot_ref"], literal["initial_snapshot_sha256"])
     r, codec, _, _ = _sut()
     cfg = _decoded(codec.decode_configuration(codec.freeze(cfg_data)), r)
-    snapshot = _decoded(codec.decode_snapshot(codec.freeze(initial_data), configuration=cfg), r)
+    snapshot = None if initial_data is None else _decoded(
+        codec.decode_snapshot(codec.freeze(initial_data), configuration=cfg), r)
     actual_sequences, actual_cancellations, actual_outputs = [], [], []
     for index, (step, batch) in enumerate(zip(steps, batches, strict=True)):
         if (step["at_tick"] != batch["at_tick"] or step["original_row_ids"] != batch["source_row_ids"]
                 or step["expected_checkpoint_ref"] != batch["expected_checkpoint_ref"]
                 or step["initial_snapshot_ref"] != batch["initial_snapshot_ref"]):
             raise ValueError("Versioned step/batch identity mismatch")
-        expected_before = _binding("snapshots", batch["initial_snapshot_ref"], "snapshot_records",
-                                   batch["initial_snapshot_sha256"])
+        expected_before = _snapshot_literal(batch["initial_snapshot_ref"], batch["initial_snapshot_sha256"])
         expected_after = _binding("snapshots", batch["expected_checkpoint_ref"], "snapshot_records",
                                   batch["expected_checkpoint_sha256"])
         try:
@@ -482,7 +491,8 @@ def run_materialization(case_id):
         comparison.compare("initial_snapshot", expected_before, shape(snapshot))
         comparison.compare("snapshot", expected_after, final)
         comparison.compare("live_permission_ids", batch["expected_live_ids"], _live(final))
-        expected_cancellations = expected_after["cancellation_history"][len(expected_before["cancellation_history"]):]
+        prior_cancellation_count = 0 if expected_before is None else len(expected_before["cancellation_history"])
+        expected_cancellations = expected_after["cancellation_history"][prior_cancellation_count:]
         comparison.compare("cancellation_intents", expected_cancellations, shape(result.cancellation_intents))
         report.batches.append(comparison)
         actual_sequences.extend(t.trace_sequence for t in result.traces)
