@@ -1,0 +1,242 @@
+{
+  "schema": "apex-profile1-clock-only-protocol/1.0.0",
+  "schema_version": "1.0.0",
+  "recorded_date": "2026-10-26",
+  "stage": "DOCUMENTATION_ONLY_EXECUTION_REQUEST_PREPARATION",
+  "status": "PROPOSED_NOT_EXECUTED",
+  "delivery_status": "WORK_COMPLETE_PENDING_REVIEW",
+  "authority": "Human-supplied Primary APEX F-C1: approved for execution-request preparation only",
+  "reviewed_implementation_revision": "c99b9dfdc981cb13ccd2e5ff53af98a3b568f70a",
+  "clock_execution_authorized": false,
+  "g2_campaign_authorized": false,
+  "phase_b_authorized": false,
+  "assignment_sha256": "a6a5bb1a1a53b9a9671d76dcc8b35a08eb73a03299904342f9ea51f5875ff02e",
+  "implementation_identity": {
+    "source_sha256": {
+      "src/apex/control/trajectory/planner.py": "f4795ece7ec380fa933553c7ba50e29eb58225eb5ba0b458306f506d875c9fe3",
+      "src/apex/control/mpc/controller.py": "0b1344f6ff6fe05e6c35de1406fd1204997da00857aa81cd16839487ee1336d8",
+      "src/apex/control/mpc/preview.py": "c09f7ce073fd3fe59b689c2a64ac7632a57dac1720ecd9c7b8970b3c98d94da1",
+      "src/apex/optimization/solvers/ipopt.py": "87c57294407d71d959af8154cca6d45c76c31605eb713f0aba1b9cd0c73db9fa",
+      "src/apex/control/trajectory/tracker.py": "8da7535836bb194f6d0242201b73960a47f24146bf5fdf59f51503f6c869721d",
+      "src/apex/simulation/asynchronous.py": "89183d4333aee5420980ac9635a00eb3c35fc2857ff4129513b79b5ebe1c55fe",
+      "scripts/task007f/profile1/recorder.py": "94e286cfdfb57022209cc02f22a5debf665b7e1704b790f6f3ce22b3600a1744",
+      "scripts/task007f/profile1/run_phase_a.py": "6d194312f3afc209c72ce89fdea6e2158e738aeefce8321ade8d6875f627778b",
+      "tests/unit/test_profile1_recorder.py": "95b4a287cafd8e133571dd07964c93ef858c73249bf41e959d2694f8e71e43d0",
+      "tests/integration/test_profile1_parity.py": "5fffa49629eef3faae79ad87a16f7a2a8aa78a59e456ae3a36f5b38f1da75bb1",
+      "scripts/threading_study/config.py": "a50a73015c3ab739c35aa1fd715840364974213bf1c12666269b250264556fc3"
+    },
+    "entry_point": "scripts/task007f/profile1/run_phase_a.py:main",
+    "entry_point_line": 509,
+    "source_binding": "Every executable under pinned clean detached checkout at reviewed SHA, including launcher itself. A documentation-only branch HEAD is not an execution SHA.",
+    "implementation_diff_from_reference_sha256": "7956a83c3e1f8025b96d6636b1b2691c711957755f79965a990ba7bf52251131",
+    "recorder_reference_revision_field": "eaa0a3398515a21f30a850de59a0b44c775fad4d",
+    "frozen_acceptance_revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5"
+  },
+  "paths": {
+    "current_documentation_checkout": "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle",
+    "pinned_execution_checkout": "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle_FC1_c99b9df",
+    "working_directory": "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle_FC1_c99b9df",
+    "interpreter": "/Users/marwansaber/.local/share/uv/python/cpython-3.12-macos-aarch64-none/bin/python3.12",
+    "parent_dependency_root": "/private/tmp/apex-fc1-parent-deps-c99b9df-001",
+    "empty_cache_prefix": "/private/tmp/apex-fc1-pycache-c99b9df-001",
+    "output_directory": "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/results/task007f/profile1/fc1-clock-c99b9df-001",
+    "output_parent": "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/results/task007f/profile1",
+    "supervisor_evidence_directory": "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/results/task007f/profile1/fc1-clock-c99b9df-001-envelope",
+    "parent_console_log": "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/results/task007f/profile1/fc1-clock-c99b9df-001-envelope/parent_console.log"
+  },
+  "invocation": {
+    "argv": [
+      "/usr/bin/env",
+      "-i",
+      "PATH=/usr/bin:/bin:/usr/sbin:/sbin",
+      "LANG=C",
+      "LC_ALL=C",
+      "PYTHONNOUSERSITE=1",
+      "PYTHONSAFEPATH=1",
+      "PYTHONDONTWRITEBYTECODE=1",
+      "PYTHONPYCACHEPREFIX=/private/tmp/apex-fc1-pycache-c99b9df-001",
+      "PYTHONHASHSEED=0",
+      "PYTHONVERBOSE=1",
+      "PYTHONPATH=/private/tmp/apex-fc1-parent-deps-c99b9df-001",
+      "/Users/marwansaber/.local/share/uv/python/cpython-3.12-macos-aarch64-none/bin/python3.12",
+      "-S",
+      "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle_FC1_c99b9df/scripts/task007f/profile1/run_phase_a.py",
+      "--efficiency-instrumentation",
+      "profile1-v1",
+      "--fixture",
+      "clock_probe",
+      "--source-root",
+      "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle_FC1_c99b9df",
+      "--reviewed-revision",
+      "c99b9dfdc981cb13ccd2e5ff53af98a3b568f70a",
+      "--output",
+      "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/results/task007f/profile1/fc1-clock-c99b9df-001"
+    ],
+    "environment": {
+      "PATH": "/usr/bin:/bin:/usr/sbin:/sbin",
+      "LANG": "C",
+      "LC_ALL": "C",
+      "PYTHONNOUSERSITE": "1",
+      "PYTHONSAFEPATH": "1",
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "PYTHONPYCACHEPREFIX": "/private/tmp/apex-fc1-pycache-c99b9df-001",
+      "PYTHONHASHSEED": "0",
+      "PYTHONVERBOSE": "1",
+      "PYTHONPATH": "/private/tmp/apex-fc1-parent-deps-c99b9df-001"
+    },
+    "shell_literal": "cd /Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle_FC1_c99b9df && \\\n/usr/bin/env \\\n  -i \\\n  PATH=/usr/bin:/bin:/usr/sbin:/sbin \\\n  LANG=C \\\n  LC_ALL=C \\\n  PYTHONNOUSERSITE=1 \\\n  PYTHONSAFEPATH=1 \\\n  PYTHONDONTWRITEBYTECODE=1 \\\n  PYTHONPYCACHEPREFIX=/private/tmp/apex-fc1-pycache-c99b9df-001 \\\n  PYTHONHASHSEED=0 \\\n  PYTHONVERBOSE=1 \\\n  PYTHONPATH=/private/tmp/apex-fc1-parent-deps-c99b9df-001 \\\n  /Users/marwansaber/.local/share/uv/python/cpython-3.12-macos-aarch64-none/bin/python3.12 \\\n  -S \\\n  /Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle_FC1_c99b9df/scripts/task007f/profile1/run_phase_a.py \\\n  --efficiency-instrumentation \\\n  profile1-v1 \\\n  --fixture \\\n  clock_probe \\\n  --source-root \\\n  /Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle_FC1_c99b9df \\\n  --reviewed-revision \\\n  c99b9dfdc981cb13ccd2e5ff53af98a3b568f70a \\\n  --output \\\n  /Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/results/task007f/profile1/fc1-clock-c99b9df-001 \\\n  > /Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/results/task007f/profile1/fc1-clock-c99b9df-001-envelope/parent_console.log 2>&1",
+    "executed": false,
+    "internal_worker_flag": "Do not supply --_worker; the reviewed parent creates exactly one direct clock child."
+  },
+  "future_setup": {
+    "executed": false,
+    "authorization_required": true,
+    "detached_checkout_argv": [
+      "git",
+      "-C",
+      "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle",
+      "worktree",
+      "add",
+      "--detach",
+      "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle_FC1_c99b9df",
+      "c99b9dfdc981cb13ccd2e5ff53af98a3b568f70a"
+    ],
+    "must_be_absent_before_setup": [
+      "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle_FC1_c99b9df",
+      "/private/tmp/apex-fc1-parent-deps-c99b9df-001",
+      "/private/tmp/apex-fc1-pycache-c99b9df-001",
+      "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/results/task007f/profile1/fc1-clock-c99b9df-001",
+      "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/results/task007f/profile1/fc1-clock-c99b9df-001-envelope"
+    ],
+    "steps": [
+      "After separate approval, create detached checkout with given argv; never move/reset the current Efficiency, Safety or CT-1 branch.",
+      "Create output parent and fresh supervisor envelope; leave output directory absent for parent mkdir(exist_ok=False).",
+      "Create dependency-only directory; copy only the 18 listed psutil package/dist-info files byte-for-byte from the observed installed distribution, preserving relative names. No .pth, editable install, symlink, pyc, dependency installer, download or package resolution.",
+      "Create empty cache-prefix directory and verify empty; do not copy existing bytecode.",
+      "Perform source/environment/process/guard identity checks and record their real results in the envelope; stop on any mismatch.",
+      "Obtain exclusive scientific measurement reservation across all known worktrees. Manual coordination is required because the existing guards are not an atomic global lock.",
+      "Invoke the exact literal command once. Preserve all outcomes; never retry or silently choose another numbered output path."
+    ]
+  },
+  "intended_population": {
+    "population": "clock_probe only; not preparation/construction/simulation",
+    "call_count": 1,
+    "clock_empty_occurrences": 1000,
+    "clock_parent_occurrences": 1000,
+    "clock_child_occurrences": 1000,
+    "span_occurrences_total": 3000,
+    "standalone_span_parent": null,
+    "nested_tree": {
+      "clock_parent": null,
+      "clock_child": "clock_parent"
+    },
+    "occurrence_identity": "clock_empty and clock_parent each 1..1000 under no parent. Each clock_child has occurrence 1 under its distinct parent token; do not require global child occurrence 1..1000.",
+    "span_tokens_if_full": "0..2999; one token per begun span with both endpoint pairs",
+    "endpoints_per_clock_if_full": 6002,
+    "clock_reads_total_if_full": 12004,
+    "count_derivation": "3000 spans * 2 endpoint pairs + 1 call * 2 endpoint pairs = 6002 pairs; wall then CPU for every pair.",
+    "observed_call_count": null,
+    "observed_span_count": null,
+    "counts_are_observations_not_targets_passed": true
+  },
+  "analysis_policy": {
+    "raw_integer_ns": "perf_counter_ns then process_time_ns; non-Boolean signed-64-bit nonnegative integers or explicit null/fault. Preserve read sequence and unavailable halves.",
+    "reconciliation": "Signed inclusive and complete-immediate-child exclusive arithmetic only. Partial coverage gives unknown exclusive duration; no clamping or substituted zeros.",
+    "allowance": null,
+    "automatic_allowance_approval": false,
+    "expected_unresolved_status": "No allowance passed. reconcile.allowance_status remains unresolved and clock_allowance null; fault-free sealed observer_validity is incomplete. This is expected at this subgate, not scientific suitability.",
+    "exit_zero_meaning": "The clock branch checks sticky fault and export completeness, not resolved allowance; zero is not acceptance or campaign permission.",
+    "physical_censoring": "No simulation or physical population exists. raw_not_returned=true and null simulated/readiness/physical fields are expected. Interrupted host work is incomplete, not a successful physical stop.",
+    "prohibitions": [
+      "No solver/controller/dynamics import or construction",
+      "No G2 numerical parity or overhead campaign",
+      "No statistical precision, solver-speedup or full software latency claim",
+      "No automatic allowance, correction, rerun or continuation",
+      "No historical warm reconstruction, retuning or Phase B"
+    ]
+  },
+  "record_contract": {
+    "required": [
+      "schema",
+      "schema_version",
+      "recorded_date",
+      "stage",
+      "status",
+      "delivery_status",
+      "authority",
+      "reviewed_implementation_revision",
+      "clock_execution_authorized",
+      "g2_campaign_authorized",
+      "phase_b_authorized",
+      "assignment_sha256",
+      "implementation_identity",
+      "paths",
+      "invocation",
+      "future_setup",
+      "intended_population",
+      "analysis_policy",
+      "record_contract"
+    ],
+    "properties": {
+      "schema": {
+        "type": "string"
+      },
+      "schema_version": {
+        "type": "string"
+      },
+      "recorded_date": {
+        "type": "string"
+      },
+      "stage": {
+        "type": "string"
+      },
+      "status": {
+        "type": "string"
+      },
+      "delivery_status": {
+        "type": "string"
+      },
+      "authority": {
+        "type": "string"
+      },
+      "reviewed_implementation_revision": {
+        "type": "string"
+      },
+      "clock_execution_authorized": {
+        "type": "boolean"
+      },
+      "g2_campaign_authorized": {
+        "type": "boolean"
+      },
+      "phase_b_authorized": {
+        "type": "boolean"
+      },
+      "assignment_sha256": {
+        "type": "string"
+      },
+      "implementation_identity": {
+        "type": "object"
+      },
+      "paths": {
+        "type": "object"
+      },
+      "invocation": {
+        "type": "object"
+      },
+      "future_setup": {
+        "type": "object"
+      },
+      "intended_population": {
+        "type": "object"
+      },
+      "analysis_policy": {
+        "type": "object"
+      },
+      "record_contract": {
+        "type": "object"
+      }
+    },
+    "additionalProperties": false,
+    "scope": "Root key/type contract plus task-specific semantic assertions; not a claim of generic full JSON Schema dialect coverage."
+  }
+}

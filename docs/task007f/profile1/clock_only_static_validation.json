@@ -1,0 +1,241 @@
+{
+  "schema": "apex-profile1-clock-only-static-validation/1.0.0",
+  "schema_version": "1.0.0",
+  "recorded_date": "2026-10-26",
+  "stage": "DOCUMENTATION_ONLY_EXECUTION_REQUEST_PREPARATION",
+  "status": "PROPOSED_NOT_EXECUTED",
+  "delivery_status": "WORK_COMPLETE_PENDING_REVIEW",
+  "authority": "Human-supplied Primary APEX F-C1: approved for execution-request preparation only",
+  "reviewed_implementation_revision": "c99b9dfdc981cb13ccd2e5ff53af98a3b568f70a",
+  "clock_execution_authorized": false,
+  "g2_campaign_authorized": false,
+  "phase_b_authorized": false,
+  "authorized_document_paths": [
+    "docs/task007f/profile1/clock_only_authorization_request.md",
+    "docs/task007f/profile1/clock_only_protocol.json",
+    "docs/task007f/profile1/clock_only_environment_and_resources.json",
+    "docs/task007f/profile1/clock_only_evidence_manifest.json",
+    "docs/task007f/profile1/clock_only_static_validation.json"
+  ],
+  "source_sha256": {
+    "src/apex/control/trajectory/planner.py": "f4795ece7ec380fa933553c7ba50e29eb58225eb5ba0b458306f506d875c9fe3",
+    "src/apex/control/mpc/controller.py": "0b1344f6ff6fe05e6c35de1406fd1204997da00857aa81cd16839487ee1336d8",
+    "src/apex/control/mpc/preview.py": "c09f7ce073fd3fe59b689c2a64ac7632a57dac1720ecd9c7b8970b3c98d94da1",
+    "src/apex/optimization/solvers/ipopt.py": "87c57294407d71d959af8154cca6d45c76c31605eb713f0aba1b9cd0c73db9fa",
+    "src/apex/control/trajectory/tracker.py": "8da7535836bb194f6d0242201b73960a47f24146bf5fdf59f51503f6c869721d",
+    "src/apex/simulation/asynchronous.py": "89183d4333aee5420980ac9635a00eb3c35fc2857ff4129513b79b5ebe1c55fe",
+    "scripts/task007f/profile1/recorder.py": "94e286cfdfb57022209cc02f22a5debf665b7e1704b790f6f3ce22b3600a1744",
+    "scripts/task007f/profile1/run_phase_a.py": "6d194312f3afc209c72ce89fdea6e2158e738aeefce8321ade8d6875f627778b",
+    "tests/unit/test_profile1_recorder.py": "95b4a287cafd8e133571dd07964c93ef858c73249bf41e959d2694f8e71e43d0",
+    "tests/integration/test_profile1_parity.py": "5fffa49629eef3faae79ad87a16f7a2a8aa78a59e456ae3a36f5b38f1da75bb1",
+    "scripts/threading_study/config.py": "a50a73015c3ab739c35aa1fd715840364974213bf1c12666269b250264556fc3"
+  },
+  "baseline_snapshot_path": "/var/folders/rf/cx0rw_k56hg9rz_v10glp1k40000gn/T/apex-fc1-docs-w4s5e2ht/before.json",
+  "baseline_snapshot_sha256": "bdab8447f68313ba7d634eba24b3ed39218b562659accec8adba1785008312e6",
+  "checks": {
+    "strict_JSON_records": 4,
+    "root_key_type_contracts": 4,
+    "schema_scope": "Strict root required keys/types/additional-key policy plus semantic assertions; no generic full-dialect JSON Schema coverage claim.",
+    "reviewed_G1_executable_test_helper_hashes": 11,
+    "AST_files_parsed_without_import": 11,
+    "recorder_API_signatures": 12,
+    "literal_argv_and_shell_roundtrip": "passed",
+    "CLI_argument_pairs": 5,
+    "clock_probe_static_loop_bounds": [
+      1000,
+      1000
+    ],
+    "intended_spans_derived": 3000,
+    "expected_endpoints_per_clock_derived": 6002,
+    "child_route_precedes_native_import": true,
+    "child_recorder_imports": [
+      "__future__",
+      "collections.abc",
+      "dataclasses",
+      "hashlib",
+      "json",
+      "math",
+      "os",
+      "pathlib",
+      "threading",
+      "time",
+      "types"
+    ],
+    "resource_guarantee_audit": "Sampled direct-child limits only; 2-second grace/unbounded wait, no process group, global lock or hard quota documented.",
+    "origin_isolation_design": "Separate pinned checkout, base Python, psutil-only copied root, clean env/cache and future parent/child trace audit; runtime checks not performed.",
+    "existing_tracked_file_hashes_unchanged": 857,
+    "results_metadata_unchanged": 11646,
+    "raw_content_full_rehash": false,
+    "backup_created": false,
+    "five_new_document_paths_only": true,
+    "original_runtime_tests_and_docs_unchanged": true,
+    "markdown_internal_links": "resolved",
+    "frozen_main_release_tag_manifest": "matched",
+    "runtime_acceptance_claim": false
+  },
+  "recorded_observations": {
+    "probe_invocations": 0,
+    "selected_interpreter_invocations": 0,
+    "psutil_imports": 0,
+    "numerical_imports": 0,
+    "tests_or_collection": 0,
+    "timer_samples": 0,
+    "resource_measurements": 0
+  },
+  "unresolved": [
+    "Separate approval of exact setup/invocation and disclosed limitations",
+    "Fresh future source/environment/module-origin and process/guard identity checks",
+    "No hard total-parent deadline, process-group kill, memory/output quota or structured import enforcement in G1",
+    "Observed clock mechanics and empirical allowance remain unmeasured/unapproved",
+    "G2 full protocol/aggregate budget and Phase B gates remain separate"
+  ],
+  "record_contract": {
+    "required": [
+      "schema",
+      "schema_version",
+      "recorded_date",
+      "stage",
+      "status",
+      "delivery_status",
+      "authority",
+      "reviewed_implementation_revision",
+      "clock_execution_authorized",
+      "g2_campaign_authorized",
+      "phase_b_authorized",
+      "authorized_document_paths",
+      "source_sha256",
+      "baseline_snapshot_path",
+      "baseline_snapshot_sha256",
+      "checks",
+      "recorded_observations",
+      "unresolved",
+      "record_contract",
+      "implementation_source_anchors",
+      "package_hashes_excluding_self",
+      "git_observations"
+    ],
+    "properties": {
+      "schema": {
+        "type": "string"
+      },
+      "schema_version": {
+        "type": "string"
+      },
+      "recorded_date": {
+        "type": "string"
+      },
+      "stage": {
+        "type": "string"
+      },
+      "status": {
+        "type": "string"
+      },
+      "delivery_status": {
+        "type": "string"
+      },
+      "authority": {
+        "type": "string"
+      },
+      "reviewed_implementation_revision": {
+        "type": "string"
+      },
+      "clock_execution_authorized": {
+        "type": "boolean"
+      },
+      "g2_campaign_authorized": {
+        "type": "boolean"
+      },
+      "phase_b_authorized": {
+        "type": "boolean"
+      },
+      "authorized_document_paths": {
+        "type": "array"
+      },
+      "source_sha256": {
+        "type": "object"
+      },
+      "baseline_snapshot_path": {
+        "type": "string"
+      },
+      "baseline_snapshot_sha256": {
+        "type": "string"
+      },
+      "checks": {
+        "type": "object"
+      },
+      "recorded_observations": {
+        "type": "object"
+      },
+      "unresolved": {
+        "type": "array"
+      },
+      "record_contract": {
+        "type": "object"
+      },
+      "implementation_source_anchors": {
+        "type": "object"
+      },
+      "package_hashes_excluding_self": {
+        "type": "object"
+      },
+      "git_observations": {
+        "type": "object"
+      }
+    },
+    "additionalProperties": false,
+    "scope": "Root key/type contract plus task-specific semantic assertions; not a claim of generic full JSON Schema dialect coverage."
+  },
+  "implementation_source_anchors": {
+    "main": {
+      "path": "scripts/task007f/profile1/run_phase_a.py",
+      "line": 509,
+      "end_line": 522
+    },
+    "_parent": {
+      "path": "scripts/task007f/profile1/run_phase_a.py",
+      "line": 399,
+      "end_line": 506
+    },
+    "_worker": {
+      "path": "scripts/task007f/profile1/run_phase_a.py",
+      "line": 137,
+      "end_line": 326
+    },
+    "_clock_worker": {
+      "path": "scripts/task007f/profile1/run_phase_a.py",
+      "line": 329,
+      "end_line": 396
+    },
+    "_fresh": {
+      "path": "scripts/task007f/profile1/run_phase_a.py",
+      "line": 73,
+      "end_line": 85
+    }
+  },
+  "package_hashes_excluding_self": {
+    "clock_only_authorization_request.md": "a6099521778a36418ef182967418d7f94e3dd17cb758d62ba0811d2cd87bc793",
+    "clock_only_protocol.json": "2e44c9c86a85609e27e5df78f2dcfffa733fe1c51f50253c064fea901d9e2c4e",
+    "clock_only_environment_and_resources.json": "fbba39380e0ab4204f11ae63f0c927ed532caffc063d9bb8a952eb93ac0bf508",
+    "clock_only_evidence_manifest.json": "aee4eaf57cc5d0cdfbea2a7f84826d033e991e525d1b8bf9f5bb8b7f0142d950"
+  },
+  "git_observations": {
+    "starting_HEAD": "c99b9dfdc981cb13ccd2e5ff53af98a3b568f70a",
+    "branch": "research/efficiency",
+    "safety": "6392092d68c1e2dd75120fbd87c32714e530e44e",
+    "ct1": "3898704102e7570bcaff9b1654b7b345db1f9b6f",
+    "remote_frozen_rulesets": [
+      {
+        "id": 25418055,
+        "enforcement": "active",
+        "bypass_actors": []
+      },
+      {
+        "id": 25418590,
+        "enforcement": "active",
+        "bypass_actors": []
+      }
+    ],
+    "delivery_binding": "Containing documentation commit; SHA/URL supplied after normal push. Execution remains pinned to G1, not this documentation HEAD.",
+    "independent_worktrees_clean_at_inspection": true
+  }
+}

@@ -1,0 +1,263 @@
+{
+  "schema": "apex-profile1-clock-only-evidence-manifest/1.0.0",
+  "schema_version": "1.0.0",
+  "recorded_date": "2026-10-26",
+  "stage": "DOCUMENTATION_ONLY_EXECUTION_REQUEST_PREPARATION",
+  "status": "PROPOSED_NOT_EXECUTED",
+  "delivery_status": "WORK_COMPLETE_PENDING_REVIEW",
+  "authority": "Human-supplied Primary APEX F-C1: approved for execution-request preparation only",
+  "reviewed_implementation_revision": "c99b9dfdc981cb13ccd2e5ff53af98a3b568f70a",
+  "clock_execution_authorized": false,
+  "g2_campaign_authorized": false,
+  "phase_b_authorized": false,
+  "future_output_directory": "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/results/task007f/profile1/fc1-clock-c99b9df-001",
+  "future_supervisor_directory": "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/results/task007f/profile1/fc1-clock-c99b9df-001-envelope",
+  "outputs": [
+    {
+      "name": "clock_metadata.json",
+      "producer": "Clock child before begin_call",
+      "meaning": "get_clock_info perf_counter/process_time implementation, resolution, monotonic, adjustable. Nominal metadata is not empirical resolution/error guarantee."
+    },
+    {
+      "name": "preparation_sidecar.json",
+      "producer": "Clock child after reconcile/seal",
+      "meaning": "Raw calls/spans, identities, limits, fault records, signed reconciliation, unresolved allowance and incomplete observer status."
+    },
+    {
+      "name": "preparation_sidecar.json.partial",
+      "producer": "On export failure or incomplete publication",
+      "meaning": "Retain actual partial bytes; never parse missing tail as complete or replace it."
+    },
+    {
+      "name": "sidecar_export.json",
+      "producer": "Clock child after export attempt",
+      "meaning": "complete/path/partial_path/SHA256/failure. Verify final file hash if complete; code may fail before this record exists."
+    },
+    {
+      "name": "clock_probe_counts.json",
+      "producer": "Clock child after sidecar_export",
+      "meaning": "Observed spans_begun/spans_closed and sampled endpoint counts, not intended counts. Cross-check raw slots including nulls/open tokens."
+    },
+    {
+      "name": "parent_exit.json",
+      "producer": "Parent after direct child wait",
+      "meaning": "Child exit_code, broad resource_or_worker_timeout reason or null, sampled elapsed/RSS/threads/user/system CPU. May be absent on parent exception/interrupt."
+    },
+    {
+      "name": "worker.log",
+      "producer": "Parent owns fd; child stdout+stderr",
+      "meaning": "Tracebacks and proposed verbose Python import origins. May be empty/partial if startup dies."
+    },
+    {
+      "name": "MEASURED_ACTIVE",
+      "producer": "Parent before Popen; normally removed in finally",
+      "meaning": "Owner PID/fixture; residual guard is evidence to investigate, not permission to delete."
+    },
+    {
+      "name": "*.json.partial / MEASURED_ACTIVE.partial",
+      "producer": "Any interrupted _write_new",
+      "meaning": "Preserve all exclusive partial files; do not overwrite or complete by inference."
+    }
+  ],
+  "supervisor_outputs": [
+    {
+      "name": "execution_identity.json",
+      "producer": "Authorized operator/stdlib-only identity inspection, outside probe",
+      "contents": [
+        "Exact approved SHA/argv/cwd; base executable/version/prefix/architecture",
+        "All source/contract/psutil binary+Python hashes and origins",
+        "Detached worktree status and unchanged frozen refs",
+        "Actual environment whitelist and child PYTHONPATH reasoning",
+        "Actual process/guard owners/reservation; approval reference",
+        "Setup/preflight start/end and limitations only when actually observed, not invented here"
+      ]
+    },
+    {
+      "name": "parent_console.log",
+      "producer": "Literal shell redirection outside output",
+      "contents": [
+        "Parent stderr/stdout and verbose import-origin trail; hash and retain full log"
+      ]
+    },
+    {
+      "name": "execution_review.json",
+      "producer": "Post-attempt Engineering review only",
+      "contents": [
+        "All artifact existence/sizes/SHA256 and observed complete/partial/missing counts",
+        "Actual parent exit status, sample coverage and resource/isolation gaps",
+        "Import-origin audit verdict and forbidden-package findings",
+        "Raw signed interval/residual/exception/fault evidence; no automatic tolerance",
+        "Explicit completeness, mechanics eligibility and scientific-suitability status kept separate"
+      ]
+    }
+  ],
+  "not_expected_from_clock_branch": [
+    "raw.json",
+    "original_preparation.json",
+    "provenance.json",
+    "clock_allowance_input.json",
+    "sidecar_export_failure.json (numeric-worker handler is bypassed)"
+  ],
+  "intended_counts": {
+    "population": "clock_probe only; not preparation/construction/simulation",
+    "call_count": 1,
+    "clock_empty_occurrences": 1000,
+    "clock_parent_occurrences": 1000,
+    "clock_child_occurrences": 1000,
+    "span_occurrences_total": 3000,
+    "standalone_span_parent": null,
+    "nested_tree": {
+      "clock_parent": null,
+      "clock_child": "clock_parent"
+    },
+    "occurrence_identity": "clock_empty and clock_parent each 1..1000 under no parent. Each clock_child has occurrence 1 under its distinct parent token; do not require global child occurrence 1..1000.",
+    "span_tokens_if_full": "0..2999; one token per begun span with both endpoint pairs",
+    "endpoints_per_clock_if_full": 6002,
+    "clock_reads_total_if_full": 12004,
+    "count_derivation": "3000 spans * 2 endpoint pairs + 1 call * 2 endpoint pairs = 6002 pairs; wall then CPU for every pair.",
+    "observed_call_count": null,
+    "observed_span_count": null,
+    "counts_are_observations_not_targets_passed": true
+  },
+  "observed_results": null,
+  "review_rules": [
+    {
+      "id": "A01",
+      "rule": "First require exact source/interpreter/environment/origin/owner identity and full artifact audit. Unknown/missing identity is incomplete; exit zero alone is insufficient."
+    },
+    {
+      "id": "A02",
+      "rule": "Only compare observed population to intended 1 call/3000 spans and named 1000/1000/1000 groups after reading raw slots. Validate unique worker/call/token/begin/end identities, parent graph, disjoint standalone spans and child-in-parent sequence. Child occurrence resets under each parent."
+    },
+    {
+      "id": "A03",
+      "rule": "For a full mechanics candidate, require 6002 available wall and 6002 CPU integer endpoints, wall-before-CPU code order and nondecreasing observed sequence, no open span/call, complete exits/coverage and no faults. Coarse equal endpoints/zero intervals are retained; do not invent a minimum duration."
+    },
+    {
+      "id": "A04",
+      "rule": "Preserve every signed inclusive/exclusive result; independently recompute using only complete immediate children. Missing/partial means unknown, never zero. Negative residuals/anomalies/faults remain explicit and block clean-mechanics status; this record supplies no tolerance."
+    },
+    {
+      "id": "A05",
+      "rule": "Validate sidecar-export completeness/file SHA and parent/resource/import logs. Clock branch normally has raw_not_returned true, null simulation fields, allowance_status unresolved and observer_validity incomplete. Distinguish complete population/export from scientific observer-validity."
+    },
+    {
+      "id": "A06",
+      "rule": "Any timeout, signal, overflow, unclosed token, unsupported clock value, export/storage or origin/isolation error makes attempt incomplete/invalid. Preserve all reached raw slots, pair halves, partials, exit/log and guard; missing record is missing, never inferred success. No discard/rerun/favorable replacement."
+    },
+    {
+      "id": "A07",
+      "rule": "No physical work exists: no physical completion/authority or stopping claim. Host interrupted/censored tail remains unknown, even if partial lower bound can be read; do not repurpose it as physical latency."
+    },
+    {
+      "id": "A08",
+      "rule": "Engineering and Primary separately decide whether observations justify any allowance or expose recorder unsuitability. No automatic allowance or negative-time clamp, no NMPC result, improvement, end-to-end latency, native-thread-control or broader-G2 acceptance claim."
+    }
+  ],
+  "next_review": {
+    "clock_allowance_ns": null,
+    "allowance_approval_automatic": false,
+    "g2_unlock_automatic": false,
+    "g2_later_issues": [
+      "Worker identities/order and exact selection",
+      "Aggregate ten-minute budget including supervisory coverage",
+      "B0/B1/B2 strict numerical/authority/RK4 parity",
+      "Separate minimal observer overhead population",
+      "Deadline/readiness and full-boundary interpretation",
+      "Full warm-state/reset lineage limitations"
+    ],
+    "phase_b": "Independently blocked; no reconstruction or tuning authorized"
+  },
+  "record_contract": {
+    "required": [
+      "schema",
+      "schema_version",
+      "recorded_date",
+      "stage",
+      "status",
+      "delivery_status",
+      "authority",
+      "reviewed_implementation_revision",
+      "clock_execution_authorized",
+      "g2_campaign_authorized",
+      "phase_b_authorized",
+      "future_output_directory",
+      "future_supervisor_directory",
+      "outputs",
+      "supervisor_outputs",
+      "not_expected_from_clock_branch",
+      "intended_counts",
+      "observed_results",
+      "review_rules",
+      "next_review",
+      "record_contract"
+    ],
+    "properties": {
+      "schema": {
+        "type": "string"
+      },
+      "schema_version": {
+        "type": "string"
+      },
+      "recorded_date": {
+        "type": "string"
+      },
+      "stage": {
+        "type": "string"
+      },
+      "status": {
+        "type": "string"
+      },
+      "delivery_status": {
+        "type": "string"
+      },
+      "authority": {
+        "type": "string"
+      },
+      "reviewed_implementation_revision": {
+        "type": "string"
+      },
+      "clock_execution_authorized": {
+        "type": "boolean"
+      },
+      "g2_campaign_authorized": {
+        "type": "boolean"
+      },
+      "phase_b_authorized": {
+        "type": "boolean"
+      },
+      "future_output_directory": {
+        "type": "string"
+      },
+      "future_supervisor_directory": {
+        "type": "string"
+      },
+      "outputs": {
+        "type": "array"
+      },
+      "supervisor_outputs": {
+        "type": "array"
+      },
+      "not_expected_from_clock_branch": {
+        "type": "array"
+      },
+      "intended_counts": {
+        "type": "object"
+      },
+      "observed_results": {
+        "type": "null"
+      },
+      "review_rules": {
+        "type": "array"
+      },
+      "next_review": {
+        "type": "object"
+      },
+      "record_contract": {
+        "type": "object"
+      }
+    },
+    "additionalProperties": false,
+    "scope": "Root key/type contract plus task-specific semantic assertions; not a claim of generic full JSON Schema dialect coverage."
+  }
+}
