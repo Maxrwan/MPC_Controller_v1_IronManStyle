@@ -1,0 +1,182 @@
+{
+  "task": "APEX-CT-1L-L2B",
+  "stage": "CODE_ONLY_AMENDMENT_AND_L3_PLANNING",
+  "status": "WORK_COMPLETE_PENDING_REVIEW",
+  "execution_authorized": false,
+  "tests_status": "UNEXECUTED",
+  "numerical_status": "NOT_EXECUTED",
+  "base_sha": "8293fa43ecf22a4bb8b4947ee74a3e7080f91f12",
+  "implementation_revision_binding": {
+    "method": "EXACT_GIT_COMMIT_CONTAINING_THIS_L2B_PACKAGE",
+    "base_implementation_sha": "8293fa43ecf22a4bb8b4947ee74a3e7080f91f12",
+    "resolution": "git log -1 --format=%H -- docs/ct1/ct1l/l2b_l3_execution_request.md",
+    "required_consistency": "Resolved commit must equal the exact delivery SHA supplied in the final handoff and future Primary grant implementation_sha. No floating HEAD or descendant is authorized.",
+    "literal_self_SHA_excluded": "A tracked file cannot embed its own containing Git SHA. Supply it after commit in the final handoff; no circular metadata-only commits."
+  },
+  "schema": "apex-ct1l-l2b-workload/1",
+  "runtime_constants": {
+    "window_lengths_gain_steps": [
+      1,
+      5,
+      10,
+      20,
+      40
+    ],
+    "maximum_factors": 80,
+    "maximum_selected_intervals": 16,
+    "normalization_ids": [
+      "nominal_scaled",
+      "raw_SI_unit_dependent",
+      "selected_coordinate_x0.1",
+      "selected_coordinate_x10"
+    ],
+    "sensitivity_coordinates": {
+      "full": "e_y",
+      "lateral": "e_y",
+      "speed": "vx"
+    }
+  },
+  "selection": {
+    "rule_id": "ct1l-l2b-full-first-three-anchors-v1",
+    "population_order": [
+      "DESIGN_CONDITIONAL",
+      "OBSERVED_AUTHORITY"
+    ],
+    "subsystem_order": [
+      "full",
+      "lateral",
+      "speed"
+    ],
+    "inputs_only": [
+      "original candidate identity",
+      "original gain indices and exact timestamps",
+      "complete available original 10ms factors",
+      "original packet expiry and recorded authority interval",
+      "candidate anchor time"
+    ],
+    "forbidden_selection_inputs": [
+      "Acl entries",
+      "eigenvalues/eigenvectors",
+      "singular values",
+      "transient growth",
+      "parity outcomes",
+      "favorable conclusions"
+    ],
+    "algorithm": [
+      "Validate a single contiguous original gain-grid population of N<=80 complete 10ms factors. Empty populations remain empty.",
+      "If N>0 retain [0,N) first.",
+      "For L in [1,5,10,20,40] in this fixed order, skip L>N; otherwise propose [a,a+L) for a in [0,(N-L)//2,N-L], in that fixed early/middle/final order.",
+      "Deduplicate by first occurrence; do not sort by result or replace missing lengths with clipped windows.",
+      "Use exact timestamps of selected original endpoints. Candidate identity is retained; the same fixed sampling rule applies to all twelve candidates.",
+      "For each normalization and selected interval, scan every factor/prefix chronologically with LEFT multiplication. Retain only its endpoint and actual maximum prefix norm/time, including identity prefix 0.",
+      "Count deliberately omitted nonempty intervals as N*(N+1)//2-selected_count, separately from missing/censored SELECTED endpoints."
+    ],
+    "max_selected_intervals_per_candidate_subsystem_population": 16,
+    "full_interval_first": true,
+    "windows_seconds": [
+      0.01,
+      0.05,
+      0.1,
+      0.2,
+      0.4
+    ],
+    "authority": [
+      "DESIGN_CONDITIONAL is the original untrimmed nominal design suffix through original validity; never ongoing physical authority.",
+      "OBSERVED_AUTHORITY contains only complete original 10ms factors after anchor and inside original recorded authority/expiry.",
+      "Unsupported leading/trailing off-grid pieces are omitted as unsupported duration; do not approximate them with a 10ms map.",
+      "Missing authority/pending evidence does not substitute the design population; an empty observed population emits unavailable status and has zero selected intervals."
+    ]
+  },
+  "normalization_populations": [
+    {
+      "id": "nominal_scaled",
+      "definition": "Unchanged accepted Dx similarity; full [.5,.5,1,.1,.75,.1], lateral [.1,.1,.5,1], speed [.5]."
+    },
+    {
+      "id": "raw_SI_unit_dependent",
+      "definition": "Dx=I for dimensional Phi norm; explicitly dependent on physical unit choices."
+    },
+    {
+      "id": "selected_coordinate_x0.1",
+      "definition": "Multiply only e_y scale (full/lateral) or vx scale (speed) by 0.1; all other accepted scales unchanged."
+    },
+    {
+      "id": "selected_coordinate_x10",
+      "definition": "Multiply the same predeclared coordinate scale by 10; no gain/weight/dynamics change."
+    }
+  ],
+  "sensitivity_rationale": "e_y exposes the lateral/corridor perturbation coordinate in coupled and projected lateral products; scalar speed has only vx. Coordinate choice is fixed before any result. Other full/lateral coordinate sensitivities are omitted; full controllability normalization studies are unchanged.",
+  "worst_case_product_accounting": {
+    "candidates": 12,
+    "subsystems": 3,
+    "authority_populations": 2,
+    "normalization_populations": 4,
+    "max_factors": 80,
+    "max_intervals": 16,
+    "max_product_records_per_candidate_subsystem_population": 64,
+    "max_product_records_per_candidate": 384,
+    "max_product_records_total": 4608,
+    "factor_multiplications_per_normalization_per_subsystem_population": 308,
+    "derivation": "80 + 3*(1+5+10+20+40) = 308. Each full/short window scans its own prefixes; four bounded passes, no all-starts/all-ends loop.",
+    "max_matrix_multiplications_total": 88704,
+    "max_prefix_spectral_norm_calls": 88704,
+    "max_extra_endpoint_norm_calls": 4608,
+    "max_extra_raw_SI_endpoint_norm_calls": 4608,
+    "max_all_product_spectral_norm_calls": 97920,
+    "product_matrix_dimensions": [
+      6,
+      4,
+      1
+    ],
+    "selected_coordinate_variants_per_subsystem": 2,
+    "old_exhaustive_80_slot_intervals": 3240,
+    "new_80_slot_omitted_intervals": 3224,
+    "old_product_record_upper_bound": 2177280,
+    "old_matrix_multiplication_upper_bound": 59512320
+  },
+  "record_upper_bounds": {
+    "qualification": 144,
+    "linearization_including_support": 2112,
+    "finite_difference": 576,
+    "linear_system": 432,
+    "riccati": 12,
+    "closed_loop_including_support": 3024,
+    "defect_including_support": 1008,
+    "computed_or_censored_product_endpoints": 4608,
+    "additional_unavailable_product_records_conservative_reserve": 72,
+    "worker_events_including_local_failures_conservative": 813,
+    "manifest_environment_coverage": 3,
+    "worker_scientific_records_conservative_total": 12804,
+    "supervisor_resource_poll_records_planning_bound": 3001,
+    "supervisor_event_and_index_records": 2,
+    "combined_scientific_record_planning_bound": 15807,
+    "record_bound_notes": [
+      "Per map at most eight linearizations, four FD comparisons and three linear-system records; this intentionally overbounds physical maps.",
+      "Original gain slots <=960 before dedup. At most 3*960 support closed loops plus 144 delayed selected-point closed loops.",
+      "Event reserve includes 432 Schur crosschecks, 24 model differences, 72 panel declarations, 144 map failures, 12 candidate failures, 24 candidate begin/end and five stage/coverage events.",
+      "Global stop reduces data coverage; partial/missing observations remain records, not favorable retries. Unknown programming defects propagate; traceback/log bytes are governed by the shared output watcher, not this scientific-record count.",
+      "3001 monitor rows is a planning bound from <=300s at 0.1s sampling, not proof of a certified OS scheduling bound."
+    ]
+  },
+  "structural_work_estimates": {
+    "product_time_complexity": "O(C*S*P*Q*(N+3*sum(available L))*[n^3 for multiplication + n^3-order norm work]); fixed C<=12,S=3,P=2,Q=4,N<=80. Non-product derivative/domain/PBH/Riccati work is unchanged and may dominate.",
+    "product_factor_matrix_payload_bytes_per_max_full_sequence": 23040,
+    "payload_formula": "80*6*6*8 bytes, excluding ndarray/Python metadata and archived source arrays.",
+    "candidate_numeric_product_buffers_estimate": "O(80*(6^2+4^2+1)*8) per design/observed copy plus gain buffers and one current Phi; <0.25 MiB of float64 product/gain matrices per candidate as a coarse structural estimate. This excludes source-adapter, pytest, imports, qualification, JSON and Python object memory.",
+    "retained_panel_metadata": "<=16 intervals per subsystem/population; no 3240-interval materialization and no list of every prefix matrix. Completed keys/coverage still grow with <=4608 selected endpoint records.",
+    "output_estimate": "Every scientific row repeats the fixed source-binding header. Product rows add <=80 source IDs/gain indices and <=6x6 endpoint matrices. O(4608*(binding header bytes + product payload)) plus <=8196 other worker rows, <=3001 monitor rows and all test/log/temp artifacts. A conservative 100 KiB average-row planning envelope alone is about 1.51 GiB for 15807 rows, exceeding the 1 GiB reservation; this is an uncertainty envelope, not a measured size or a guarantee that the run will fit.",
+    "resource_feasibility": "NOT ESTABLISHED STATICALLY. Do not raise caps or transfer CT1N/CT1R allocations; future censoring/incomplete coverage may be necessary.",
+    "certified_runtime_or_memory_bound": false
+  },
+  "omissions_and_interpretation": {
+    "not_evaluated": "All other arbitrary-start/arbitrary-end contiguous windows; most interior amplification opportunities; nonselected full/lateral coordinate perturbations.",
+    "prefix_scope": "The full interval scans all prefixes anchored at its first available original factor. A late-starting omitted interval can have a larger amplification; full-prefix maximum is not maximum over all possible starts.",
+    "not_claimed": [
+      "Exhaustive interval/stability verification",
+      "Uniform exponential/asymptotic/nonlinear stability",
+      "Physical hybrid/actuator stability",
+      "Constrained reachability or physical safety"
+    ],
+    "failure_counting": "Missing selected endpoints and deliberately omitted exhaustive windows have separate fields/events. An unknown population length is null/coverage_unknown, never falsely zero."
+  }
+}

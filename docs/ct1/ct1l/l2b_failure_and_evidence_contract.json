@@ -1,0 +1,112 @@
+{
+  "task": "APEX-CT-1L-L2B",
+  "stage": "CODE_ONLY_AMENDMENT_AND_L3_PLANNING",
+  "status": "WORK_COMPLETE_PENDING_REVIEW",
+  "execution_authorized": false,
+  "tests_status": "UNEXECUTED",
+  "numerical_status": "NOT_EXECUTED",
+  "base_sha": "8293fa43ecf22a4bb8b4947ee74a3e7080f91f12",
+  "implementation_revision_binding": {
+    "method": "EXACT_GIT_COMMIT_CONTAINING_THIS_L2B_PACKAGE",
+    "base_implementation_sha": "8293fa43ecf22a4bb8b4947ee74a3e7080f91f12",
+    "resolution": "git log -1 --format=%H -- docs/ct1/ct1l/l2b_l3_execution_request.md",
+    "required_consistency": "Resolved commit must equal the exact delivery SHA supplied in the final handoff and future Primary grant implementation_sha. No floating HEAD or descendant is authorized.",
+    "literal_self_SHA_excluded": "A tracked file cannot embed its own containing Git SHA. Supply it after commit in the final handoff; no circular metadata-only commits."
+  },
+  "schema": "apex-ct1l-l2b-failure-contract/1",
+  "handlers": {
+    "local_exception": "_LocalScientificFailure with exact MAP or CANDIDATE scope",
+    "common_exception": "_GlobalIntegrityFailure or _EvidenceIntegrityFailure",
+    "resources": "TimeoutError/RESOURCE_CENSORED",
+    "unexpected_programming_error": "Not caught by local handlers or broad Exception suppression; propagates after retained-coverage finalization."
+  },
+  "map_local": [
+    "Invalid physical/preview/curvature domain with immutable original point retained",
+    "Unavailable differentiation stencil",
+    "Failed derivative-method comparison after failed numeric record is appended",
+    "Expected numerical linear algebra failure in a map/subsystem audit"
+  ],
+  "candidate_local": [
+    "Missing original candidate packet/support",
+    "Unavailable original gain-grid qualification",
+    "Failed Riccati/DARE/gain reproduction after original audit record retained",
+    "Expected numerical linear algebra failure in original gain/closed-loop support"
+  ],
+  "global": [
+    "Changed reviewed HEAD/dirty CT1 source checkout or pinned input metadata",
+    "Explicit SOURCE_IDENTITY_FAILURE outcome",
+    "Untrusted native/backend/package prerequisites",
+    "Failed required tests",
+    "Broken evidence append/schema/duplicate/finite/serialization integrity",
+    "Plan/normalization/source-key bookkeeping inconsistency",
+    "Aggregate timeout/resource exhaustion"
+  ],
+  "containment_rules": [
+    "Dispatch originals exactly once in original order. Local map failure advances to the next original role/map; candidate support failure advances to the next original candidate.",
+    "Recheck common provenance/native trust before downgrading a producer failure to local status. A common recheck failure escapes immediately.",
+    "No substitute state/input/reference/gain or cross-candidate source-result cache. Per-candidate callbacks own their state; only common immutable model objects are shared.",
+    "Delayed selected-point closed-loop requests are emitted only after original Riccati audit passes. A failed gain audit blocks dependent closed loops/products/forced response, retaining already-computed independent open-loop/defect observations.",
+    "Unknown programming defects are not converted into ordinary unavailability.",
+    "Emit all twelve coverage rows, including not executed/invalid/unavailable entries and unknown selected-product denominators."
+  ],
+  "evidence_encoding": {
+    "existing_schema_unchanged": "docs/ct1/ct1l/scientific_evidence.schema.json",
+    "event_stream": "events.jsonl",
+    "detail_encoding": "The closed existing event_data.termination_reason string contains a strict JSON object for each L2B event. Envelope context carries original candidate/map/authority where available. This typed JSON-in-string extension avoids changing the approved scientific schema.",
+    "event_names": [
+      "L2B_WORKLOAD_POLICY",
+      "L2B_LOCAL_MAP_FAILURE",
+      "L2B_LOCAL_CANDIDATE_FAILURE",
+      "L2B_PRODUCT_SELECTION",
+      "L2B_SELECTED_COVERAGE"
+    ],
+    "local_failure_detail_fields": [
+      "classification",
+      "candidate_id",
+      "stage",
+      "status",
+      "reasons",
+      "retry",
+      "replacement"
+    ],
+    "candidate_failure_extra_field": "dependent_conclusions_withheld=true",
+    "selection_detail_fields": [
+      "rule_id",
+      "candidate_id",
+      "authority_scope",
+      "factor_count",
+      "intervals",
+      "selected_interval_count",
+      "exhaustive_nonempty_interval_count",
+      "omitted_interval_count",
+      "unavailable_window_lengths_steps",
+      "full_interval_prefixes_scanned_if_complete",
+      "exhaustive_stability_verification",
+      "subsystem",
+      "normalization_ids"
+    ],
+    "coverage_detail_fields": [
+      "candidates",
+      "denominator",
+      "exhaustive_verification"
+    ],
+    "coverage_candidate_known_fields": [
+      "candidate_id",
+      "planned_selected_records",
+      "missing_selected_records",
+      "completed_selected_records",
+      "missing",
+      "coverage_unknown",
+      "deliberately_omitted_windows_per_subsystem"
+    ],
+    "unknown_population_rule": "planned_selected_records=null, missing_selected_records=null, coverage_unknown=true; all twelve IDs remain present.",
+    "coverage_json_missing_products": "Only missing SELECTED complete endpoints with exact original index/time ranges; repetitions across subsystem/normalization/population are intentional and identified in L2B_SELECTED_COVERAGE. Deliberately omitted exhaustive windows do not enter missing_products.",
+    "censored_prefix": "Retained product is RESOURCE_CENSORED/COMPLETED_PREFIX_ONLY, requested endpoint stays null. It remains a missing selected endpoint; no result backfill."
+  },
+  "unchanged_producer_limitations": [
+    "Some immutable L1 producers collapse specific errors into Outcome. This amendment uses exact common reason codes and rechecks common input/native trust before local containment. Richer producer exception typing would require separately authorized changes outside this allowlist.",
+    "qualification.py remains unchanged: genuinely missing causal history can conservatively make local open-loop qualification unavailable. This amendment contains that loss to the affected candidate; relaxing that producer policy is outside scope.",
+    "guards.py remains unchanged: macOS RSS/output/time sampling is not a demonstrated hard bound; per-phase budgets below are planning allocations checked at review, not separately enforced interrupt deadlines.",
+    "The unchanged CLI performs input/resource preflight before the supervisor starts its timer. Establishing a single whole-command 300s deadline requires separately authorized cli.py/guards.py changes; do not treat the displayed command as ready to execute before that scope is resolved."
+  ]
+}

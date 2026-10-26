@@ -1,0 +1,207 @@
+{
+  "task": "APEX-CT-1L-L2B",
+  "schema": "apex-ct1l-l2b-static-validation/1",
+  "stage": "CODE_ONLY_AMENDMENT_AND_L3_PLANNING",
+  "status": "WORK_COMPLETE_PENDING_REVIEW",
+  "execution_authorized": false,
+  "tests_status": "UNEXECUTED",
+  "numerical_status": "NOT_EXECUTED",
+  "base_sha": "8293fa43ecf22a4bb8b4947ee74a3e7080f91f12",
+  "implementation_revision_binding": {
+    "method": "EXACT_GIT_COMMIT_CONTAINING_THIS_L2B_PACKAGE",
+    "base_implementation_sha": "8293fa43ecf22a4bb8b4947ee74a3e7080f91f12",
+    "resolution": "git log -1 --format=%H -- docs/ct1/ct1l/l2b_l3_execution_request.md",
+    "required_consistency": "Resolved commit must equal the exact delivery SHA supplied in the final handoff and future Primary grant implementation_sha. No floating HEAD or descendant is authorized.",
+    "literal_self_SHA_excluded": "A tracked file cannot embed its own containing Git SHA. Supply it after commit in the final handoff; no circular metadata-only commits."
+  },
+  "static_status": "PASS_STATIC_ONLY",
+  "allowed_modified_paths": [
+    "scripts/ct1/worker.py",
+    "scripts/ct1/closed_loop.py",
+    "tests/ct1l/test_closed_loop.py",
+    "tests/ct1l/test_guards.py",
+    "tests/ct1l/test_evidence.py"
+  ],
+  "new_documents": [
+    "docs/ct1/ct1l/l2b_workload_plan.json",
+    "docs/ct1/ct1l/l2b_failure_and_evidence_contract.json",
+    "docs/ct1/ct1l/l2b_l3_execution_plan.json",
+    "docs/ct1/ct1l/l2b_l3_execution_request.md",
+    "docs/ct1/ct1l/l2b_change_manifest.json",
+    "docs/ct1/ct1l/l2b_static_validation.json",
+    "docs/ct1/ct1l/l2b_handoff.md"
+  ],
+  "Python_ASTs_parsed": 31,
+  "changed_Python_ASTs": 5,
+  "new_unexecuted_independent_test_functions": 14,
+  "new_test_node_selectors": [
+    "tests/ct1l/test_closed_loop.py::test_predeclared_interval_indices_literal_short_medium_and_80",
+    "tests/ct1l/test_closed_loop.py::test_short_panel_never_clips_an_unavailable_window",
+    "tests/ct1l/test_closed_loop.py::test_population_metadata_is_never_substituted",
+    "tests/ct1l/test_closed_loop.py::test_original_authority_keeps_only_complete_original_factors",
+    "tests/ct1l/test_closed_loop.py::test_full_selected_interval_scans_actual_prefix_peak",
+    "tests/ct1l/test_closed_loop.py::test_exact_four_normalization_populations_without_retuning",
+    "tests/ct1l/test_guards.py::test_local_invalid_then_independent_valid_without_retry_or_replacement",
+    "tests/ct1l/test_guards.py::test_global_or_unknown_failure_stops_immediately",
+    "tests/ct1l/test_guards.py::test_map_local_failure_continues_other_original_map",
+    "tests/ct1l/test_guards.py::test_failed_common_trust_is_not_downgraded_by_local_handler",
+    "tests/ct1l/test_guards.py::test_common_source_outcome_cannot_become_local_unavailability",
+    "tests/ct1l/test_guards.py::test_failed_gain_audit_prevents_dependent_conclusion_only",
+    "tests/ct1l/test_evidence.py::test_broken_common_evidence_stops_candidate_dispatch",
+    "tests/ct1l/test_evidence.py::test_partial_selected_coverage_counts_omissions_separately"
+  ],
+  "total_proposed_L3_test_node_selectors": 59,
+  "test_collection": "NOT_EXECUTED",
+  "numerical_imports": "NOT_EXECUTED",
+  "numerical_calculations": "NOT_EXECUTED",
+  "resource_benchmarks": "NOT_EXECUTED",
+  "original_closed_loop_equations_AST_identical": [
+    "_forced_step",
+    "closed_loop_pair",
+    "feedback_matrix",
+    "nominal_defects",
+    "transition_products"
+  ],
+  "unchanged_worker_helpers_AST_identical": [
+    "_json",
+    "_context",
+    "_mat",
+    "_payload",
+    "main"
+  ],
+  "original_test_bodies_AST_unchanged": true,
+  "selection_metadata_only_AST_check": true,
+  "bounded_panel_constants_match_JSON": true,
+  "count_formulas_consistent": true,
+  "no_broad_Exception_suppression_in_worker": true,
+  "dependent_dispatch_after_Riccati_gate": true,
+  "unresolved_global_names": [],
+  "source_dependency_graph_acyclic": true,
+  "dependency_graph": {
+    "scripts/ct1/worker.py": [
+      "analytic.py",
+      "closed_loop.py",
+      "contracts.py",
+      "crosscheck_numpy.py",
+      "evidence.py",
+      "finite_difference.py",
+      "geometry.py",
+      "guards.py",
+      "inputs.py",
+      "linear_systems.py",
+      "qualification.py",
+      "riccati.py",
+      "rk4.py",
+      "source_adapter.py"
+    ],
+    "scripts/ct1/guards.py": [
+      "contracts.py",
+      "evidence.py",
+      "inputs.py"
+    ],
+    "scripts/ct1/crosscheck_numpy.py": [
+      "contracts.py"
+    ],
+    "scripts/ct1/__init__.py": [],
+    "scripts/ct1/rk4.py": [
+      "contracts.py"
+    ],
+    "scripts/ct1/linear_systems.py": [
+      "contracts.py"
+    ],
+    "scripts/ct1/source_adapter.py": [
+      "contracts.py",
+      "inputs.py"
+    ],
+    "scripts/ct1/inputs.py": [
+      "contracts.py"
+    ],
+    "scripts/ct1/cli.py": [
+      "contracts.py",
+      "guards.py",
+      "inputs.py"
+    ],
+    "scripts/ct1/qualification.py": [
+      "contracts.py",
+      "geometry.py",
+      "inputs.py",
+      "source_adapter.py"
+    ],
+    "scripts/ct1/geometry.py": [
+      "contracts.py"
+    ],
+    "scripts/ct1/contracts.py": [],
+    "scripts/ct1/analytic.py": [
+      "contracts.py"
+    ],
+    "scripts/ct1/closed_loop.py": [
+      "contracts.py"
+    ],
+    "scripts/ct1/evidence.py": [
+      "contracts.py"
+    ],
+    "scripts/ct1/riccati.py": [
+      "contracts.py"
+    ],
+    "scripts/ct1/finite_difference.py": [
+      "contracts.py"
+    ]
+  },
+  "Ruff": "PASS_STATIC_ONLY --select E9,F,I on exact five files",
+  "whitespace": "PASS",
+  "source_hashes_preserved": 305,
+  "evidence_content_hashes_preserved": 90,
+  "preservation": {
+    "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle": {
+      "preexisting_hashes_checked": 864,
+      "preexisting_hash_changes": [],
+      "initial_head": "37b3f19a5d58f9a76cfd9dee5cb5bf4352edc980",
+      "observed_head": "37b3f19a5d58f9a76cfd9dee5cb5bf4352edc980"
+    },
+    "/Users/marwansaber/.codex/worktrees/control-theory-ct1/MPC_Controller_v1_IronManStyle": {
+      "preexisting_hashes_checked": 877,
+      "preexisting_hash_changes": [],
+      "initial_head": "8293fa43ecf22a4bb8b4947ee74a3e7080f91f12",
+      "observed_head": "8293fa43ecf22a4bb8b4947ee74a3e7080f91f12"
+    },
+    "/Users/marwansaber/.codex/worktrees/safety-s0/MPC_Controller_v1_IronManStyle": {
+      "preexisting_hashes_checked": 879,
+      "preexisting_hash_changes": [
+        "tests/unit/safety_authority/oracle_support.py",
+        "tests/unit/safety_authority/test_oracle_cases.py"
+      ],
+      "initial_head": "f3c80f3aaeb18318e08f9ef976cfce711bb1690f",
+      "observed_head": "24cd70ca18b3efa56a9412d7cef9a86466091721"
+    },
+    "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle_FC1_c99b9df": {
+      "preexisting_hashes_checked": 857,
+      "preexisting_hash_changes": [],
+      "initial_head": "c99b9dfdc981cb13ccd2e5ff53af98a3b568f70a",
+      "observed_head": "c99b9dfdc981cb13ccd2e5ff53af98a3b568f70a"
+    }
+  },
+  "historical_metadata_entries_checked": 11677,
+  "historical_metadata_drift": [],
+  "concurrent_unrelated_activity": [
+    {
+      "worktree": "/Users/marwansaber/.codex/worktrees/safety-s0/MPC_Controller_v1_IronManStyle",
+      "initial_head": "f3c80f3aaeb18318e08f9ef976cfce711bb1690f",
+      "observed_head": "24cd70ca18b3efa56a9412d7cef9a86466091721",
+      "initial_status": "",
+      "observed_status": "",
+      "changed_preexisting_paths": [
+        "tests/unit/safety_authority/oracle_support.py",
+        "tests/unit/safety_authority/test_oracle_cases.py"
+      ],
+      "attributed_to_CT1": false
+    }
+  ],
+  "protected_Performance_refs": {
+    "main": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+    "release/performance-synthetic-v1": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+    "performance-synthetic-v1": "76d9eaa65af02efb0263916adc75d5247a0e778f",
+    "performance-synthetic-v1^{commit}": "48adbdf64d492592d15e23c917aca71fa58aa8a5"
+  },
+  "active_L3_grant_created": false,
+  "required_next_step": "Secondary review; resolve documented out-of-scope aggregate timer gap, then separate Primary L3 execution decision."
+}

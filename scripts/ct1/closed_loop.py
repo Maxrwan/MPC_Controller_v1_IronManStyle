@@ -287,3 +287,101 @@ def _forced_step(previous, acl, defect, dx):
 
     scale = np.asarray(dx)
     return (np.asarray(acl) @ np.asarray(previous) + np.asarray(defect)) / scale
+
+
+# CT-L2B fixed metadata-only panel; supersedes exhaustive interval enumeration.
+_PRODUCT_WINDOW_STEPS = (1, 5, 10, 20, 40)
+_PRODUCT_PANEL_MAX_FACTORS = 80
+_PRODUCT_PANEL_MAX_INTERVALS = 16
+_PRODUCT_NORMALIZATION_IDS = (
+    "nominal_scaled",
+    "raw_SI_unit_dependent",
+    "selected_coordinate_x0.1",
+    "selected_coordinate_x10",
+)
+_PRODUCT_SENSITIVITY_COORDINATE = {"full": "e_y", "lateral": "e_y", "speed": "vx"}
+
+
+def _product_selection(sequence, candidate_id, authority_scope):
+    """Select from metadata, never matrices/growth; full scan is retained first.
+
+    Full [0,N), then lengths 1/5/10/20/40 in this order. For each available
+    length L, select starts 0, (N-L)//2, N-L, in that order. Deduplicate by
+    first occurrence. Lengths exceeding N are omitted, never shortened.
+    Each selected product scans all its prefixes and reports the actual maximum.
+    This is not exhaustive enumeration of arbitrary start/end intervals.
+    """
+    from .contracts import IndexInterval
+
+    if not candidate_id or authority_scope not in ("DESIGN_CONDITIONAL", "OBSERVED_AUTHORITY"):
+        raise ValueError("Explicit candidate and one reviewed authority population required")
+    n = len(sequence)
+    if n > _PRODUCT_PANEL_MAX_FACTORS:
+        raise ValueError("Product panel exceeds the reviewed 80-slot population bound")
+    for i, sample in enumerate(sequence):
+        if sample.authority_scope != authority_scope:
+            raise ValueError("No cross-population substitution")
+        if abs(sample.next_time_s - sample.time_s - 0.01) > 1e-10:
+            raise ValueError("No approximate off-grid factor in bounded selection")
+        if i and (
+            sample.original_gain_index != sequence[i - 1].original_gain_index + 1
+            or abs(sequence[i - 1].next_time_s - sample.time_s) > 1e-10
+        ):
+            raise ValueError("Selection requires one original contiguous gain-grid population")
+    pairs = []
+
+    def add(start, end):
+        if (start, end) not in pairs:
+            pairs.append((start, end))
+
+    if n:
+        add(0, n)
+        for length in _PRODUCT_WINDOW_STEPS:
+            if length <= n:
+                for start in (0, (n - length) // 2, n - length):
+                    add(start, start + length)
+    if len(pairs) > _PRODUCT_PANEL_MAX_INTERVALS:
+        raise ValueError("Bounded panel implementation exceeds its declared interval cap")
+    intervals = tuple(
+        IndexInterval(start, end, sequence[start].time_s, sequence[end - 1].next_time_s)
+        for start, end in pairs
+    )
+    exhaustive = n * (n + 1) // 2
+    return {
+        "rule_id": "ct1l-l2b-full-first-three-anchors-v1",
+        "candidate_id": candidate_id,
+        "authority_scope": authority_scope,
+        "factor_count": n,
+        "intervals": intervals,
+        "selected_interval_count": len(intervals),
+        "exhaustive_nonempty_interval_count": exhaustive,
+        "omitted_interval_count": exhaustive - len(intervals),
+        "unavailable_window_lengths_steps": [
+            length for length in _PRODUCT_WINDOW_STEPS if length > n
+        ],
+        "full_interval_prefixes_scanned_if_complete": n,
+        "exhaustive_stability_verification": False,
+    }
+
+
+def _product_normalizations(subsystem_pair, nominal_scales):
+    """Four fixed populations; existing Dx and definitions are unchanged.
+
+    The two sensitivity cases probe e_y for full/lateral and vx for scalar speed.
+    Other coordinate sensitivities are explicitly omitted by CT-L2B, not retuned.
+    """
+    import numpy as np
+
+    from .contracts import Scales
+
+    coordinate = _PRODUCT_SENSITIVITY_COORDINATE[subsystem_pair.subsystem]
+    index = subsystem_pair.state_names.index(coordinate)
+    base = nominal_scales.Dx_diagonal_SI
+    low, high = base.copy(), base.copy()
+    low[index] *= 0.1
+    high[index] *= 10.0
+    values = (base, np.ones(len(base)), low, high)
+    return tuple(
+        (name, Scales(dx, nominal_scales.Du_diagonal_SI))
+        for name, dx in zip(_PRODUCT_NORMALIZATION_IDS, values, strict=True)
+    )

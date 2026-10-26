@@ -1,0 +1,51 @@
+{
+  "task": "APEX-CT-1L-L2B",
+  "stage": "CODE_ONLY_AMENDMENT_AND_L3_PLANNING",
+  "status": "WORK_COMPLETE_PENDING_REVIEW",
+  "execution_authorized": false,
+  "tests_status": "UNEXECUTED",
+  "numerical_status": "NOT_EXECUTED",
+  "base_sha": "8293fa43ecf22a4bb8b4947ee74a3e7080f91f12",
+  "implementation_revision_binding": {
+    "method": "EXACT_GIT_COMMIT_CONTAINING_THIS_L2B_PACKAGE",
+    "base_implementation_sha": "8293fa43ecf22a4bb8b4947ee74a3e7080f91f12",
+    "resolution": "git log -1 --format=%H -- docs/ct1/ct1l/l2b_l3_execution_request.md",
+    "required_consistency": "Resolved commit must equal the exact delivery SHA supplied in the final handoff and future Primary grant implementation_sha. No floating HEAD or descendant is authorized.",
+    "literal_self_SHA_excluded": "A tracked file cannot embed its own containing Git SHA. Supply it after commit in the final handoff; no circular metadata-only commits."
+  },
+  "schema": "apex-ct1l-l2b-change-manifest/1",
+  "allowed_modified_paths": [
+    "scripts/ct1/worker.py",
+    "scripts/ct1/closed_loop.py",
+    "tests/ct1l/test_closed_loop.py",
+    "tests/ct1l/test_guards.py",
+    "tests/ct1l/test_evidence.py"
+  ],
+  "created_documents": [
+    "docs/ct1/ct1l/l2b_workload_plan.json",
+    "docs/ct1/ct1l/l2b_failure_and_evidence_contract.json",
+    "docs/ct1/ct1l/l2b_l3_execution_plan.json",
+    "docs/ct1/ct1l/l2b_l3_execution_request.md",
+    "docs/ct1/ct1l/l2b_change_manifest.json",
+    "docs/ct1/ct1l/l2b_static_validation.json",
+    "docs/ct1/ct1l/l2b_handoff.md"
+  ],
+  "all_other_tracked_paths_immutable": true,
+  "canonical_model_and_threshold_records_unchanged": [
+    "docs/ct1/metrics_and_interpretation.json",
+    "docs/ct1/ct1l/linearization_and_derivative_contract.json",
+    "docs/ct1/ct1l/controllability_stability_contract.json",
+    "docs/ct1/ct1l/point_qualification_contract.json",
+    "docs/ct1/ct1l/scientific_evidence.schema.json"
+  ],
+  "modified_file_sha256": {
+    "scripts/ct1/worker.py": "a681ebaa461202bdfd911e45e4f9d3e23fd21b3602819ea7ee9006aba82a2001",
+    "scripts/ct1/closed_loop.py": "d01f44e9e6551ba0e67771a58dc697ea98e6a0be8086ab61206f518be3cc9b71",
+    "tests/ct1l/test_closed_loop.py": "a9bb0c0a117d658c60d8ec3f61415dd374a02685d16a723c7201d62c5791d413",
+    "tests/ct1l/test_guards.py": "69eff98438347c789e1e1754082d00b31f69d558f488202e42865f1a94f273fa",
+    "tests/ct1l/test_evidence.py": "06eb4c78ed1fc604731fed3271cabb9b430df4c64b03e61330f03275a2c30e00"
+  },
+  "original_L1_fixture_handling": "tests/ct1l/fixtures/source_bindings.json and README remain immutable L1 historical evidence. Their original code hashes are not relabeled as current L2B hashes. This manifest plus exact containing Git SHA bind the amended contents.",
+  "validation_document": "docs/ct1/ct1l/l2b_static_validation.json",
+  "no_handoff_or_architecture_doc_exception": "Exact newest scope prohibits changing docs/CODEX_HANDOFF.md and docs/DECISIONS.md. This newly allowed L2B handoff records the decisions instead."
+}
