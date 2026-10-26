@@ -1,0 +1,251 @@
+{
+  "schema": "ct1l-independent-literals/1",
+  "status": "UNEXECUTED_REFERENCE_DECLARATIONS",
+  "source_assignment_sha": "3898704102e7570bcaff9b1654b7b345db1f9b6f",
+  "synthetic_parameters": {
+    "name": "synthetic_dynamic_test_vehicle",
+    "mass": 2.0,
+    "yaw_inertia": 0.025,
+    "wheelbase": 0.3,
+    "lf": 0.15,
+    "lr": 0.15,
+    "cg_height": 0.04,
+    "vehicle_width": null,
+    "vehicle_length": null,
+    "front_cornering_stiffness": 45.0,
+    "rear_cornering_stiffness": 45.0,
+    "tire_road_friction_coefficient": 1.0,
+    "maximum_steering_angle": 0.4,
+    "maximum_steering_rate": null,
+    "maximum_acceleration": 2.0,
+    "maximum_braking_deceleration": 3.0,
+    "maximum_speed": 6.0
+  },
+  "oracles": [
+    {
+      "id": "O00",
+      "kind": "structural",
+      "literal": "State=[vx,vy,r,e_psi,s_abs,e_y], input=[delta,a_cmd], lat indices=[5,3,1,2], shapes6x6/6x2,4x4/4x1,1x1/1x1.",
+      "expected": "Permutation, missing/extra keys, NaN/Inf and result payload on NOT_EXECUTED rejected; immutable original records byte-identical."
+    },
+    {
+      "id": "O01",
+      "kind": "causal",
+      "literal": "At t=1.00 active packet20 was accepted0.99; held command came from packet19 applied0.995; packet20 request due1.005 is pending.",
+      "expected": "ACTUAL_HELD retains packet19 input/source; PACKET_NOMINAL uses20; pending is not already applied; absence of unapplied tail does not prove no pending request."
+    },
+    {
+      "id": "O02",
+      "kind": "geometry_numeric_future",
+      "literal": "Line c(q)=(q,0):kappa=0,kappa_s=0. Circle radius5m:kappa=1/5 1/m,kappa_s=0. Local parabola c(q)=(q,q^2/2), s(q)=(q*sqrt(1+q^2)+asinh(q))/2.",
+      "expected": "kappa=(1+q^2)^(-3/2), kappa_s=-3*q/(1+q^2)^3; at q=1 values1/(2*sqrt(2)) and -3/8. Physical arc derivative differs from d/dq; geometry tolerance exactly accepted kappa_s criteria."
+    },
+    {
+      "id": "O03",
+      "kind": "geometry_branch",
+      "literal": "Local C2 knot q=0: c_left(q)=(q,0), c_right(q)=(q,q^3/6).",
+      "expected": "Curvature is0 from both sides; kappa_s LEFT=0,RIGHT=1. No unique derivative; branch-specific or unavailable; never average to1/2. Headings pi-eps versus -pi+eps must use a lifted residual2eps rather than2pi-2eps."
+    },
+    {
+      "id": "O04",
+      "kind": "force_load_numeric_future",
+      "literal": "Accepted synthetic m=2,h=1/25,L=3/10,lf=lr=3/20,g=981/100; zero a.",
+      "expected": "Zf0=Zr0=981/100 N; dZf/da=-4/15, dZr/da=+4/15 N/(m/s^2); sum slope0; allocation q_i=a/(mu*g). Values are hand rational substitution, not model-generated."
+    },
+    {
+      "id": "O05",
+      "kind": "force_derivative_numeric_future",
+      "literal": "Synthetic params, x=[2,0,0,0,s,0], u=[0,0], frozen kappa=0. Cf=Cr=45,Iz=1/40.",
+      "expected": "dYf/ddelta=45,dYr/ddelta=0; dYf/dvy=dYr/dvy=-45/2; dYf/dr=-27/8,dYr/dr=+27/8. B[vx,a]=1,B[vy,delta]=45/2,B[r,delta]=270. A[vy,vy]=-45/2,A[vy,r]=-2,A[r,vy]=0,A[r,r]=-81/2. dYf/da=dYr/da=0 at zero slip. Mixed d^2Yf/(ddelta da)=-400/327 at zero a/slip proves load sensitivity cannot be discarded.",
+      "nonzero_slip_oracle": "For mu=1,a=0, alpha_f fixed nonzero, z=45*alpha_f/(981/100), dYf/da=(-4/15)*tanh(z); rear counterpart(+4/15)*tanh(zr). Derive by Xi=0 and Ci_eff/Ti constant w.r.t a to first order. Do not use zero-slip-only test to validate general dFy/da."
+    },
+    {
+      "id": "O06",
+      "kind": "RK4_numeric_future",
+      "literal": "Independent double integrator f=[x2,u], A=[[0,1],[0,0]],B=[[0],[1]].",
+      "expected": "For h, exact RK4 Ad=[[1,h],[0,1]],Bd=[[h^2/2],[h]]. At totalT=1/100 with2steps:Ad=[[1,1/100],[0,1]],Bd=[[1/20000],[1/100]]. AtT=1/10 with4or20steps:Ad=[[1,1/10],[0,1]],Bd=[[1/200],[1/10]]. No future analysis call generates these expected literals."
+    },
+    {
+      "id": "O07",
+      "kind": "RK4_numeric_future",
+      "literal": "Independent scalar f=-x+u; stability polynomial R(z)=1+z+z^2/2+z^3/6+z^4/24.",
+      "expected": "n held-input substeps h=T/n give Ad=R(-h)^n,Bd=1-R(-h)^n. Include n=2,T=1/100;n=4,T=1/10;n=20,T=1/10. Different maps must not be compared as equal by replacing with exp(-T) or Euler."
+    },
+    {
+      "id": "O08",
+      "kind": "qualification_and_FD",
+      "literal": "Original stencil steps multipliers=[2e-5,1e-5,5e-6], boundaries vx=0.5 or6, D=0.001 plant limit, Fz=1e-9, |Fx|/(mu*Fz)=1-1e-6 and sqrt argument0; no mutation.",
+      "expected": "Domain rejection or branch-specific result as applicable; equality accepted by one source guard is not an unrestricted central stencil. No step shrink/clamp; compare all matching methods only. Deliberate wrong curvature policy gets INCOMPARABLE_METHOD_SEMANTICS, not derivative error."
+    },
+    {
+      "id": "O09",
+      "kind": "linear_algebra_numeric_future",
+      "literal": "A=[[0,1],[0,0]],B=[[0],[1]]; C=[[0,1],[1,0]].",
+      "expected": "C singular values=[1,1],rank2,condition1. Dx=diag(2,1),Du=1 gives Cbar=[[0,1/2],[1,0]],singular values[1,1/2],rank2,condition2. Literal expectation independent of SVD implementation."
+    },
+    {
+      "id": "O10",
+      "kind": "rank_sensitivity_numeric_future",
+      "literal": "A=[[0,1e-9],[0,0]],B=[[0],[1]],C=[[0,1e-9],[1,0]].",
+      "expected": "singular values=[1,1e-9]. Threshold max(1e-12,t_rel) yields ranks2,2,1,1 for t_rel1e-12,1e-10,1e-8,1e-6 respectively. Exact controllability nonzero determinant; numerical rank sensitivity must not be reported as an exact physical deficiency."
+    },
+    {
+      "id": "O11",
+      "kind": "PBH_numeric_future",
+      "literal": "Discrete A=diag(1/2,3/4),B=[1,0]^T; A=diag(1/2,11/10),same B; A=diag(1/2,1),same B. Continuous counterparts diag(-1,-2),diag(-1,1),diag(-1,0).",
+      "expected": "All rank1 reachable; stable-uncontrollable examples stabilizable, unstable/marginal uncontrollable examples fail exact PBH requirement. Boundary examples carry numeric INDETERMINATE boundary classification even though literal exact algebra proves an uncontrollable marginal mode. B=[1,1]^T at distinct diagonal entries is controllable; include real Schur/repeated-eigenvalue residual-sensitive case without favorable rounding."
+    },
+    {
+      "id": "O12",
+      "kind": "Riccati_numeric_future",
+      "literal": "Scalar A=B=Q=R=1.",
+      "expected": "DARE stabilizing P=(1+sqrt(5))/2, K=(sqrt(5)-1)/2, closed-loop=(3-sqrt(5))/2; verify exact radical-derived residual and positivity. For finite one-step with Pnext=1,K=1/2,P=3/2. All acceptance uses existing CT1 Riccati/gain bounds."
+    },
+    {
+      "id": "O13",
+      "kind": "Riccati_failure",
+      "literal": "Original scalar gain from O12; deliberately stored gain offset+1/100; separate H=0 or negative invalid datum.",
+      "expected": "Gain reproduction fails accepted1e-9+1e-7*abs(original); original preserved. Nonpositive H/invalid DARE is failure not regularization. Corrupted source-bound packet gain triggers identity failure before numerical replacement."
+    },
+    {
+      "id": "O14",
+      "kind": "time_product_numeric_future",
+      "literal": "M0=[[1/2,2],[0,1/2]],M1=[[1/2,0],[2,1/2]].",
+      "expected": "Each frozen matrix has poles1/2. Phi(2,0)=M1*M0=[[1/4,1],[1,17/4]],while reversed product=[[17/4,1],[1,1/4]]. Correct product top-left1/4 catches wrong factor order. Correct product largest eigenvalue=(9+4*sqrt(5))/4>1 demonstrates finite amplification with stable frozen factors."
+    },
+    {
+      "id": "O15",
+      "kind": "normalization_numeric_future",
+      "literal": "M=[[1,2],[0,1]],Dx=diag(2,1).",
+      "expected": "Dx^-1*M*Dx=[[1,1],[0,1]]. Raw2norm=1+sqrt(2);normalized2norm=(1+sqrt(5))/2. Poles remain1; norms change with chosen units. No gain changes."
+    },
+    {
+      "id": "O16",
+      "kind": "defect_numeric_future",
+      "literal": "Scalar F(x,u)=x+T*u, x_nom_next=x_nom+T*u_nom+c with declared fixed symbolic c nonzero.",
+      "expected": "d=-c and forced response adds negativec, not zero. For two steps of identical scalarAcl=1, forced response=-2c. Packet replacement to unrelated next reference must be an event, not a fabricated within-packet defect."
+    },
+    {
+      "id": "O17",
+      "kind": "coupling_progress_numeric_future",
+      "literal": "Generic frozen-curvature six-state map has s column e_s=[0,0,0,0,1,0]^T and G[:,s]=0. Nominal vy=2,r=1.",
+      "expected": "Acl*e_s=e_s structurally, regardless of controllability via speed; longitudinal continuous closed-loop row contains [-kp,1,2,0,0,0]. Physical kappa_s contribution can change s-column; it is not set to zero by a lateral subsystem extractor."
+    },
+    {
+      "id": "O18",
+      "kind": "applicability",
+      "literal": "delta_des above+0.4, or rate request beyond delta_prev+0.01 at dt0.01; exact equality clip tie; t=expiry; authority superseded before requested product end.",
+      "expected": "SATURATED_BOX/SLEW_ACTIVE/CLIP_TIE_NONDIFFERENTIABLE/expired/superseded flags; hold source identities. Open-loop pair may remain valid but ideal A-BK conclusion conditional. No augmented event-map result created."
+    },
+    {
+      "id": "O19",
+      "kind": "evidence_and_censoring",
+      "literal": "Synthetic 12-entry panel, only first candidate completed; product interval[0,5) requested, factors[0,2) completed; timeout before factor2.",
+      "expected": "Coverage denominator12; eleven UNEXECUTED_BUDGET records; product completed prefix[0,2),missing range[2,5); no final norm/eigenvalue backfill. Complex values encode{re,im}; infinity null+reason; valid JSONL prefix retained after torn tail."
+    },
+    {
+      "id": "O20",
+      "kind": "guard_logic",
+      "literal": "Fake monotonic clock reaches295s of300; sampled RSS reaches1073741824 bytes; free bytes below1073741824; output at95%; external owned MEASURED_ACTIVE.",
+      "expected": "No new job in final5s; flush/terminate within remaining totalbudget, <=1s grace; resource-censored output. No guard deletion and no worker while conflicting owner. Missing/expired/wrong-SHA L3 grant rejects before numerical imports. A sampled RSS watcher reports observed ceiling, not hard cap."
+    }
+  ],
+  "double_integrator": {
+    "A": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "B": [
+      [
+        0
+      ],
+      [
+        1
+      ]
+    ],
+    "Ad_10ms": [
+      [
+        1,
+        0.01
+      ],
+      [
+        0,
+        1
+      ]
+    ],
+    "Bd_10ms": [
+      [
+        5e-05
+      ],
+      [
+        0.01
+      ]
+    ],
+    "Ad_100ms": [
+      [
+        1,
+        0.1
+      ],
+      [
+        0,
+        1
+      ]
+    ],
+    "Bd_100ms": [
+      [
+        0.005
+      ],
+      [
+        0.1
+      ]
+    ]
+  },
+  "products": {
+    "M0": [
+      [
+        0.5,
+        2
+      ],
+      [
+        0,
+        0.5
+      ]
+    ],
+    "M1": [
+      [
+        0.5,
+        0
+      ],
+      [
+        2,
+        0.5
+      ]
+    ],
+    "M1_M0": [
+      [
+        0.25,
+        1
+      ],
+      [
+        1,
+        4.25
+      ]
+    ],
+    "M0_M1": [
+      [
+        4.25,
+        1
+      ],
+      [
+        1,
+        0.25
+      ]
+    ]
+  }
+}

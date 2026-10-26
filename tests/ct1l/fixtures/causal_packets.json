@@ -1,0 +1,18 @@
+{
+  "schema": "ct1l-synthetic-causal-literals/1",
+  "not_Performance_evidence": true,
+  "time_s": 1.0,
+  "active_packet": 20,
+  "accepted_s": 0.99,
+  "held_source_packet": 19,
+  "held_application_s": 0.995,
+  "pending_packet": 20,
+  "pending_due_s": 1.005,
+  "unapplied_tail_complete": false,
+  "expected": [
+    "ACTUAL_HELD uses packet19 input",
+    "PACKET_NOMINAL uses packet20",
+    "pending is not already applied",
+    "expiry is not observed valid authority"
+  ]
+}

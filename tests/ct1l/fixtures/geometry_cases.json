@@ -1,0 +1,70 @@
+{
+  "schema": "ct1l-local-geometry-literals/1",
+  "not_Performance_geometry": true,
+  "representation": "descending local-q cubic coefficients, columns x/y",
+  "parabola": {
+    "coefficients": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0.5
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "q": 1,
+    "kappa_expression": "1/(2*sqrt(2))",
+    "dkappa_ds_expression": "-3/8"
+  },
+  "C2_knot": {
+    "q": 0,
+    "left_coefficients": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        -1,
+        0
+      ]
+    ],
+    "right_coefficients": [
+      [
+        0,
+        0.16666666666666666
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "kappa": 0,
+    "dkappa_ds_left": 0,
+    "dkappa_ds_right": 1
+  }
+}
