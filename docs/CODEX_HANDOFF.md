@@ -1,3 +1,33 @@
+# Current handoff — F-C3 one-shot clock-only attempt
+
+**ONE_SHOT_ATTEMPT_COMPLETE_PENDING_REVIEW. WORK_COMPLETE_PENDING_REVIEW.** Recorded 27 October 2026.
+Primary F-C3 authorized one attempt after strict preflight; all ten gates passed. Documentation
+revision b53d92f8284e5f1c87c86b05916ea3019bba859f; executable revision remains
+c99b9dfdc981cb13ccd2e5ff53af98a3b568f70a in the exact clean detached checkout.
+
+[Execution report](task007f/profile1/clock_only_execution_report.md),
+[machine-readable results and exact artifact hashes](task007f/profile1/clock_only_execution_record.json).
+The containing documentation commit is the delivery revision; exact SHA/URL is reported after push.
+
+Exactly one literal invocation, no retry: exit codes 0/0; one call, 3000 complete spans,
+6002 endpoints per clock, zero faults/missing/open spans or negative residuals; export hash matches.
+Observer validity is incomplete and clock allowance unresolved. No allowance calculated or approved.
+Whole literal invocation 0.833299333 s; max sampled child RSS 42,385,408 bytes across five samples;
+worker output 1,757,731 bytes. These are soft sampled observations, not hard resource/timing bounds.
+
+Runtime/source/import/owner/disk gates passed. Actual parent/child import trails contain no numerical
+or foreign research imports. One own-output guard disappeared during a non-atomic cleanup observation;
+retain the raw unavailable-owner row and supervision gap. No remaining guards or partial exports.
+Raw output/envelope, hashes and actual supervisory source are preserved under ignored results.
+Historical tracked/source/profile/frozen refs and original 11,646 results metadata were preserved;
+only this handoff and two new execution documents are changed for delivery. Detached G1 stays clean.
+
+No numerical controller, optimizer, vehicle simulation, test suite, other 43 G2 workers, Phase B,
+warm reconstruction or tuning ran. One-shot authorization is consumed. Stop for Engineering/Primary
+review of the raw mechanics, unresolved observer status and supervision gap; no automatic continuation.
+
+---
+
 # Current handoff — F-PROFILE-1 G1 code creation
 
 **WORK_COMPLETE_PENDING_REVIEW. CODE_CREATED_NOT_EXECUTED.** Recorded 26 October 2026.

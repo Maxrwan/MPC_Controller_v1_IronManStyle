@@ -1,0 +1,343 @@
+{
+  "schema": "apex-profile1-fc3-one-shot-delivery/1.0.0",
+  "recorded_date": "2026-10-27",
+  "status": "ONE_SHOT_ATTEMPT_COMPLETE_PENDING_REVIEW",
+  "delivery_status": "WORK_COMPLETE_PENDING_REVIEW",
+  "primary_decision": "F-C3 APPROVED WITH STRICT PRE-EXECUTION CONDITIONS",
+  "authorization_sha256": "4a72da8ca27c116e3c1a03cc7238774120001c4420ec55cef2f5539a6befb4d2",
+  "documentation_revision": "b53d92f8284e5f1c87c86b05916ea3019bba859f",
+  "executable_revision": "c99b9dfdc981cb13ccd2e5ff53af98a3b568f70a",
+  "execution_checkout": "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle_FC1_c99b9df",
+  "all_ten_preflight_gates_passed": true,
+  "preflight_gates": {
+    "1_pinned_clean_detached_remote": true,
+    "2_source_documentation_hashes": true,
+    "3_runtime_interpreter_identity": true,
+    "4_parent_dependency_copy_exact": true,
+    "5_startup_and_cache_isolation": true,
+    "6_runtime_module_origins": true,
+    "7_output_fresh_owned_setup": true,
+    "8_initial_disk_bytes": 14908563456,
+    "9_process_and_guard_isolation": true,
+    "10_exclusive_reservation_owner": {
+      "owner_pid": 25831,
+      "owner_ppid": 2559,
+      "owner_process_start": "Tue Oct 27 01:34:10 2026",
+      "owner_command": "/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python /private/tmp/apex_fc3_supervisor.py",
+      "reserved_utc": "2026-10-26T22:34:11.794009+00:00",
+      "primary_authority": "F-C3",
+      "fixture": "clock_probe",
+      "one_shot": true,
+      "source_sha": "c99b9dfdc981cb13ccd2e5ff53af98a3b568f70a",
+      "limitation": "Cross-root owner guard plus observed isolation and Primary instruction; not an atomic OS-wide admission lock."
+    }
+  },
+  "probe_actually_invoked": true,
+  "clock_probe_attempts": 1,
+  "retries": 0,
+  "other_G2_workers": 0,
+  "numerical_controller_optimization_simulation_or_test_work": false,
+  "clock_allowance_derived_or_approved": false,
+  "phase_b_executed": false,
+  "interpreter": {
+    "command_path": "/Users/marwansaber/.local/share/uv/python/cpython-3.12-macos-aarch64-none/bin/python3.12",
+    "runtime_version": "3.12.14 (main, Sep  1 2026, 14:09:38) [Clang 22.1.3 ]",
+    "architecture": "arm64",
+    "prefix": "/Users/marwansaber/.local/share/uv/python/cpython-3.12.14-macos-aarch64-none",
+    "base_prefix": "/Users/marwansaber/.local/share/uv/python/cpython-3.12.14-macos-aarch64-none",
+    "binary_sha256": "2d96eb826dc74db4fcd5da6dde045a6fa145e292e07e69d1bdd1a19fa90ffc22",
+    "parent_no_site": true,
+    "child_no_site": false
+  },
+  "psutil": {
+    "version": "7.2.2",
+    "root": "/private/tmp/apex-fc1-parent-deps-c99b9df-001",
+    "native_extension_sha256": "ff4568b9187ca7b37c5134aaf614ffb061e7fedccebd84158343afb05991b8e2"
+  },
+  "source_sha256": {
+    "src/apex/control/trajectory/planner.py": "f4795ece7ec380fa933553c7ba50e29eb58225eb5ba0b458306f506d875c9fe3",
+    "src/apex/control/mpc/controller.py": "0b1344f6ff6fe05e6c35de1406fd1204997da00857aa81cd16839487ee1336d8",
+    "src/apex/control/mpc/preview.py": "c09f7ce073fd3fe59b689c2a64ac7632a57dac1720ecd9c7b8970b3c98d94da1",
+    "src/apex/optimization/solvers/ipopt.py": "87c57294407d71d959af8154cca6d45c76c31605eb713f0aba1b9cd0c73db9fa",
+    "src/apex/control/trajectory/tracker.py": "8da7535836bb194f6d0242201b73960a47f24146bf5fdf59f51503f6c869721d",
+    "src/apex/simulation/asynchronous.py": "89183d4333aee5420980ac9635a00eb3c35fc2857ff4129513b79b5ebe1c55fe",
+    "scripts/task007f/profile1/recorder.py": "94e286cfdfb57022209cc02f22a5debf665b7e1704b790f6f3ce22b3600a1744",
+    "scripts/task007f/profile1/run_phase_a.py": "6d194312f3afc209c72ce89fdea6e2158e738aeefce8321ade8d6875f627778b",
+    "tests/unit/test_profile1_recorder.py": "95b4a287cafd8e133571dd07964c93ef858c73249bf41e959d2694f8e71e43d0",
+    "tests/integration/test_profile1_parity.py": "5fffa49629eef3faae79ad87a16f7a2a8aa78a59e456ae3a36f5b38f1da75bb1",
+    "scripts/threading_study/config.py": "a50a73015c3ab739c35aa1fd715840364974213bf1c12666269b250264556fc3"
+  },
+  "actual_results": {
+    "calls": 1,
+    "span_occurrences": {
+      "clock_empty": 1000,
+      "clock_parent": 1000,
+      "clock_child": 1000
+    },
+    "spans_begun": 3000,
+    "spans_closed": 3000,
+    "clocks": {
+      "wall": {
+        "endpoints": 6002,
+        "nondecreasing": true,
+        "missing_endpoints": 0,
+        "call_envelope_ns": 11709125
+      },
+      "cpu": {
+        "endpoints": 6002,
+        "nondecreasing": true,
+        "missing_endpoints": 0,
+        "call_envelope_ns": 11701000
+      }
+    },
+    "fault_count": 0,
+    "missing_or_open_spans": 0,
+    "negative_exclusive_residuals": 0,
+    "signed_reconciliation_recomputed": true,
+    "structural_valid": true,
+    "clock_order_valid": true,
+    "observer_validity": "incomplete",
+    "allowance_status": "unresolved",
+    "clock_allowance": null,
+    "sidecar_export_complete": true,
+    "sidecar_sha256": "6bf979124574fdc4d4e6072e80d93bcd786d11b5cce7c9857dce93b9b6449c83",
+    "clock_metadata": {
+      "perf_counter": {
+        "adjustable": false,
+        "implementation": "mach_absolute_time()",
+        "monotonic": true,
+        "resolution": 4.166666666666667e-08
+      },
+      "process_time": {
+        "adjustable": false,
+        "implementation": "clock_gettime(CLOCK_PROCESS_CPUTIME_ID)",
+        "monotonic": true,
+        "resolution": 1.0000000000000002e-06
+      }
+    }
+  },
+  "actual_resources": {
+    "literal_invocation_wall_s": 0.833299333,
+    "literal_parent_exit_code": 0,
+    "clock_child_exit_code": 0,
+    "parent_monitor_failure": null,
+    "parent_samples": 5,
+    "parent_sample_elapsed_s": [
+      0.0017758328467607498,
+      0.10501279099844396,
+      0.21026079077273607,
+      0.3155077078845352,
+      0.4207339577842504
+    ],
+    "maximum_sampled_child_RSS_bytes": 42385408,
+    "sampled_threads": [
+      1
+    ],
+    "last_observed_child_CPU_user_s": 0.216042576,
+    "last_observed_child_CPU_system_s": 0.021119666,
+    "external_process_guard_observations": 4,
+    "external_observed_output_bytes": [
+      0,
+      12100,
+      16203,
+      1757731
+    ],
+    "final_output_bytes": 1757731,
+    "final_output_file_bytes": {
+      "worker.log": 22820,
+      "preparation_sidecar.json": 1733204,
+      "clock_probe_counts.json": 204,
+      "sidecar_export.json": 297,
+      "clock_metadata.json": 295,
+      "parent_exit.json": 911
+    },
+    "termination_escalation_observed": false,
+    "limits": "Sampled soft/direct-child controls only. RSS maximum is not true peak; final CPU is not measured by the last sample; final parent/output tail lies outside internal monitoring. No hard 30/32-second or native-thread-control guarantee."
+  },
+  "supervision": {
+    "preflight_known_competing_processes": [],
+    "confirmed_competing_processes": [],
+    "remaining_guards": [],
+    "guard_observation_gaps": [
+      {
+        "elapsed_s": 0.712523375,
+        "path": "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/results/task007f/profile1/fc1-clock-c99b9df-001/MEASURED_ACTIVE",
+        "classification": "own_output_guard_vanished_during_nonatomic_observation",
+        "ownership_read_available": false,
+        "interpretation": "Path was enumerated but was no longer a regular file when read. Consistent with normal reviewed parent finally unlink; raw observation retained. Not a confirmed foreign guard, and ownership at this instant is unknown."
+      }
+    ],
+    "external_observation_elapsed_s": [
+      0.088901416,
+      0.29775825,
+      0.498536041,
+      0.712523375
+    ],
+    "last_external_observation_to_invocation_return_s": 0.12077595800000007,
+    "global_atomic_lock": false
+  },
+  "import_findings": {
+    "parent_log_sha256": "139e562e6f2ba369e49df8e1cba9b3a6de48f3e5904045b8ff2fe6fda413ad2b",
+    "child_log_sha256": "ff62756af92723e1b3af77709204a04c9b172778cf46e68deca3043962ad245a",
+    "forbidden_numerical_imports": [],
+    "foreign_research_origins": [],
+    "child_psutil_imported": false
+  },
+  "post_attempt_preservation_before_documentation": {
+    "original_tracked_hashes_unchanged": 862,
+    "original_results_metadata_unchanged": 11646,
+    "pinned_source_hashes_unchanged": 11,
+    "base_stdlib_hash_inventory_unchanged": 747,
+    "frozen_refs": {
+      "main": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "release/performance-synthetic-v1": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "performance-synthetic-v1": "76d9eaa65af02efb0263916adc75d5247a0e778f",
+      "performance-synthetic-v1^{}": "48adbdf64d492592d15e23c917aca71fa58aa8a5"
+    },
+    "no_raw_backup_or_full_raw_content_rehash": true
+  },
+  "artifact_paths": {
+    "output": "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/results/task007f/profile1/fc1-clock-c99b9df-001",
+    "supervisor_envelope": "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/results/task007f/profile1/fc1-clock-c99b9df-001-envelope"
+  },
+  "artifact_file_sha256_and_bytes": {
+    "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/results/task007f/profile1/fc1-clock-c99b9df-001/clock_metadata.json": {
+      "bytes": 295,
+      "sha256": "214b484ff6d3a099dd8aebe19773a91a4a36889761144ea27347995a9dc325a5"
+    },
+    "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/results/task007f/profile1/fc1-clock-c99b9df-001/clock_probe_counts.json": {
+      "bytes": 204,
+      "sha256": "3b8e71b66cbc1806d647750e1367eac80c8911f810e8807f523d7ced67da80c4"
+    },
+    "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/results/task007f/profile1/fc1-clock-c99b9df-001/parent_exit.json": {
+      "bytes": 911,
+      "sha256": "bdc73d933162db6219b1185bd751f36c4f02651e5d4f18a3817ede360878a0e7"
+    },
+    "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/results/task007f/profile1/fc1-clock-c99b9df-001/preparation_sidecar.json": {
+      "bytes": 1733204,
+      "sha256": "6bf979124574fdc4d4e6072e80d93bcd786d11b5cce7c9857dce93b9b6449c83"
+    },
+    "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/results/task007f/profile1/fc1-clock-c99b9df-001/sidecar_export.json": {
+      "bytes": 297,
+      "sha256": "3b7557e8cbbb778cbbb860829b5884d327f8260987188a0343f5d30a3974d95f"
+    },
+    "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/results/task007f/profile1/fc1-clock-c99b9df-001/worker.log": {
+      "bytes": 22820,
+      "sha256": "ff62756af92723e1b3af77709204a04c9b172778cf46e68deca3043962ad245a"
+    },
+    "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/results/task007f/profile1/fc1-clock-c99b9df-001-envelope/artifact_hashes.json": {
+      "bytes": 7304,
+      "sha256": "c3c1d97c24dfb618c998fbb2bd0100a2f1ac68a54dfe499fe4ff6d655320f3c3"
+    },
+    "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/results/task007f/profile1/fc1-clock-c99b9df-001-envelope/authorization.json": {
+      "bytes": 391,
+      "sha256": "2cfb5497c1c3b941ce9037df68a3265b7871f3fb8626ae688ac0cea84248f1a1"
+    },
+    "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/results/task007f/profile1/fc1-clock-c99b9df-001-envelope/child_startup_identity.json": {
+      "bytes": 4672,
+      "sha256": "18edf82f62e3f7658b061b86ec647312e049ce3722f20d911b4470ce4673129d"
+    },
+    "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/results/task007f/profile1/fc1-clock-c99b9df-001-envelope/child_startup_identity_imports.log": {
+      "bytes": 12493,
+      "sha256": "d784d1b09ca58008f3b0a9f0d1a502e13386e99eff357d50b80a5ecc704cc8bc"
+    },
+    "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/results/task007f/profile1/fc1-clock-c99b9df-001-envelope/execution_identity.json": {
+      "bytes": 29728,
+      "sha256": "ea4c70ebafd428a220b82c35416072cc4584d3a725996e2281e705de4c63836b"
+    },
+    "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/results/task007f/profile1/fc1-clock-c99b9df-001-envelope/execution_review.json": {
+      "bytes": 20492,
+      "sha256": "a314b05929083896ca7e7b74f03597071096b94603343aefdedf7621cd6ecbae"
+    },
+    "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/results/task007f/profile1/fc1-clock-c99b9df-001-envelope/import_origin_audit.json": {
+      "bytes": 24905,
+      "sha256": "6b204b888166d7953e7b607cddbd1412aedd2776df92b14bb0caf7aa6b3d0362"
+    },
+    "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/results/task007f/profile1/fc1-clock-c99b9df-001-envelope/invocation_started.json": {
+      "bytes": 213,
+      "sha256": "3ca5f82820af2683c2bc318368e4d04a413e200512625353e536bd9edd6e5a24"
+    },
+    "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/results/task007f/profile1/fc1-clock-c99b9df-001-envelope/literal_shell_supervisor.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/results/task007f/profile1/fc1-clock-c99b9df-001-envelope/parent_console.log": {
+      "bytes": 21929,
+      "sha256": "139e562e6f2ba369e49df8e1cba9b3a6de48f3e5904045b8ff2fe6fda413ad2b"
+    },
+    "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/results/task007f/profile1/fc1-clock-c99b9df-001-envelope/parent_identity.json": {
+      "bytes": 13821,
+      "sha256": "0d1c8cb9c6c46e9ae020c2f3edc4275c05167cb543b5b509fbf7184671b6e201"
+    },
+    "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/results/task007f/profile1/fc1-clock-c99b9df-001-envelope/parent_identity_imports.log": {
+      "bytes": 36052,
+      "sha256": "01c0021219ed2237c9ba73a909809c8f0f725891db4dbc3a3733a5764744b34f"
+    },
+    "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/results/task007f/profile1/fc1-clock-c99b9df-001-envelope/post_attempt_audit_source.py.txt": {
+      "bytes": 13660,
+      "sha256": "256eec22ba0c398c0a9f7065a091b850eec291feb888f443c466cb8e8e2b114c"
+    },
+    "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/results/task007f/profile1/fc1-clock-c99b9df-001-envelope/preservation_after.json": {
+      "bytes": 552,
+      "sha256": "eef309460b88e429fb85a9b04c2bff5f209244433ada019cdc0286198ced7d4c"
+    },
+    "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/results/task007f/profile1/fc1-clock-c99b9df-001-envelope/preservation_before.json": {
+      "bytes": 1470243,
+      "sha256": "dc56472e39d9ca5ca7c123ed7eb8adef6727bbda2f71fab650cb4fb8730df8da"
+    },
+    "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/results/task007f/profile1/fc1-clock-c99b9df-001-envelope/process_guard_preflight.json": {
+      "bytes": 626,
+      "sha256": "3c4b78f324321caf8158ba474a5c28febb8b4a2e8927bc6d26c7c2f6c33616e4"
+    },
+    "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/results/task007f/profile1/fc1-clock-c99b9df-001-envelope/reservation_release.json": {
+      "bytes": 147,
+      "sha256": "5742d148f172fa5526089359cdc95cf30b4913378184652cb942108b79858176"
+    },
+    "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/results/task007f/profile1/fc1-clock-c99b9df-001-envelope/runtime_identity_preflight_source.py.txt": {
+      "bytes": 3768,
+      "sha256": "b520e5f215df9803ac383bdcba81c041b61dd2d9ffa33a0f99e89058b9fcbd59"
+    },
+    "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/results/task007f/profile1/fc1-clock-c99b9df-001-envelope/setup_identity.json": {
+      "bytes": 3389,
+      "sha256": "a5bb7968814b72299fb0a435575103e44b137e91bbc61142156e661fa3a6ea1f"
+    },
+    "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/results/task007f/profile1/fc1-clock-c99b9df-001-envelope/stdlib_inventory_before.json": {
+      "bytes": 69681,
+      "sha256": "e2df2145b5cb9b434db334d2e3b0f4d36d728d012feb037240e5644b0ef67f6d"
+    },
+    "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/results/task007f/profile1/fc1-clock-c99b9df-001-envelope/supervisor_result.json": {
+      "bytes": 7192,
+      "sha256": "f77df68fc4a3e6b16585256078789a6999ee97e52aac8b69b405986d57da6501"
+    },
+    "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/results/task007f/profile1/fc1-clock-c99b9df-001-envelope/supervisor_source.py.txt": {
+      "bytes": 12275,
+      "sha256": "6e221d30a490264536d5b981105ca345ae6acd086993f280b287249e4895b5bf"
+    },
+    "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/results/task007f/profile1/fc1-clock-c99b9df-001-envelope/supervisor_source_provenance.json": {
+      "bytes": 582,
+      "sha256": "ef92e1b19b9be41fda09dc022cc5631ebab6c276ec70eacfbc77695e2cf1da2f"
+    },
+    "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/results/task007f/profile1/fc1-clock-c99b9df-001-envelope/supervisor_start.json": {
+      "bytes": 234,
+      "sha256": "4058f16cb9803fd738e4465c3880afca0248adeed244f29769f80bd55cf91623"
+    }
+  },
+  "delivery_manifest": {
+    "path": "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/results/task007f/profile1/fc1-clock-c99b9df-001-envelope/delivery_artifact_hashes.json",
+    "bytes": 8470,
+    "sha256": "7736bad8872e21f6c35b75e8fcba8dae84968d3ca42db36b832cfa651348da2e",
+    "excludes_itself": true
+  },
+  "audit": {
+    "path": "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/results/task007f/profile1/fc1-clock-c99b9df-001-envelope/execution_review.json",
+    "sha256": "a314b05929083896ca7e7b74f03597071096b94603343aefdedf7621cd6ecbae",
+    "scope": "Codex factual mechanics/evidence audit, not formal Engineering/Primary acceptance."
+  },
+  "remaining_guards": [],
+  "remaining_decisions": [
+    "Engineering/Primary review of raw records, clock mechanics, import trails and retained cleanup observation gap.",
+    "Empirical allowance remains unresolved; no numeric allowance calculated or proposed by this attempt.",
+    "No automatic permission for other 43 G2 workers, aggregate campaign, numerical parity, overhead or Phase B."
+  ],
+  "delivery_revision_binding": "Containing documentation commit; exact SHA and URL supplied in final response. Never an executable revision substitution."
+}
