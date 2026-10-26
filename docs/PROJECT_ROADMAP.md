@@ -1,3 +1,28 @@
+# Current Efficiency coordination — 26 October 2026
+
+**G1 CODE_CREATED_NOT_EXECUTED. WORK_COMPLETE_PENDING_REVIEW.**
+The human's bounded implementation assignment applies on `research/efficiency`, from
+`83f360b2a96e8f6d9fe429d2cc2e5447da2f47c8`. See the
+[G1 implementation handoff](task007f/profile1/g1_implementation_handoff.md) and
+[static evidence](task007f/profile1/g1_static_validation.json). Older entries remain historical.
+
+- Complete: code authoring for the ten approved runtime/test paths, source projection/API/anchor/
+  graph/preservation audits, full static Ruff checks and a reviewable commit/push delivery.
+- Pending Secondary review: exact recorder/source/launcher/test diff; runtime correctness,
+  exception containment, clock reconciliation, peak resources, strict B0/B1/B2 parity and cost
+  remain unverified. No module/test import, collection or numerical execution occurred.
+- G2 requires a separate Primary decision for exact cases/order/resources and clock allowance.
+  The proposed 44 fresh sequential workers/ten-minute allocation is not permission. An unresolved
+  allowance gates all but a separately authorized clock-only worker and subsequent review.
+- Frozen Performance/main/tag/profile and legacy readiness stay intact. Safety and CT-1 remain
+  separate. Fault reporting creates no fallback, S1 permission or physical stopping guarantee.
+- Phase B full warm-state/reset lineage/context IDs and full-boundary readiness policy remain
+  separate unresolved decisions. No tuning, C++ port or native-solver work is authorized.
+
+**NO NUMERICAL TESTS, PROFILING OR BENCHMARKS EXECUTED**.
+
+---
+
 # Current Efficiency coordination — 23 October 2026
 
 **PROPOSED — NOT IMPLEMENTED. WORK_COMPLETE_PENDING_REVIEW.** Primary has accepted Phase A

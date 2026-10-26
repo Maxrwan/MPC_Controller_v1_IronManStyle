@@ -1,3 +1,33 @@
+# Current handoff — F-PROFILE-1 G1 code creation
+
+**WORK_COMPLETE_PENDING_REVIEW. CODE_CREATED_NOT_EXECUTED.** Recorded 26 October 2026.
+Authorized base `83f360b2a96e8f6d9fe429d2cc2e5447da2f47c8`, branch `research/efficiency`.
+The explicit human G1 assignment authorizes only the accepted ten source/test paths and
+approved documentation. Historical authorization-preparation records below remain intact.
+
+[Implementation handoff](task007f/profile1/g1_implementation_handoff.md),
+[static evidence/source hashes/test inventory](task007f/profile1/g1_static_validation.json),
+[reproducible source projection audit](task007f/profile1/g1_source_projection_audit.md).
+The containing delivery commit binds these source bytes; final SHA/URL is reported after push.
+
+Authored bounded scalar recorder, opt-in source hooks and isolated research launcher; OFF
+default, unchanged legacy timer/consumer, exact 22-span graph and separate construction/startup/
+recurring/clock populations. Original numerical outcome and observer/export validity remain
+separate. Fault stops grant no authority or physical stopping guarantee. Tests are written only.
+
+Static checks: ten AST parses/full Ruff checks, twelve API signatures, nineteen accepted anchors,
+OFF/ON projection equality for six modules, exact parity selectors, preservation and whitespace.
+All 21 original Efficiency documents and all nonallowlisted original file hashes match; 11,646
+results files retain size/mtime metadata (not a content rehash/backup). Frozen E4/tag/profile stay
+unchanged; independent Safety and CT-1 worktrees are untouched. No new experiment output.
+
+**NO NUMERICAL TESTS, PROFILING OR BENCHMARKS EXECUTED**. No project imports or pytest collection.
+G2 parity/clock/fault/resource/censoring/observer checks, the reviewed allowance and exact protocol
+selection remain unexecuted. Secondary must review this exact code/test revision; Primary must
+separately authorize G2. No automatic 44-worker campaign or Phase B, tuning or native solver work.
+
+---
+
 # Current handoff — F-PROFILE-1 bounded G1 authorization preparation
 
 **PROPOSED — NOT IMPLEMENTED. WORK_COMPLETE_PENDING_REVIEW.** Documentation only, 23 October 2026.

@@ -1,0 +1,334 @@
+{
+  "schema": "apex-profile1-g1-static-validation/1.0.0",
+  "recorded_date": "2026-10-26",
+  "status": "CODE_CREATED_NOT_EXECUTED",
+  "delivery_status": "WORK_COMPLETE_PENDING_REVIEW",
+  "authorized_base_revision": "83f360b2a96e8f6d9fe429d2cc2e5447da2f47c8",
+  "g1_code_creation_authorized": true,
+  "g2_execution_authorized": false,
+  "phase_b_authorized": false,
+  "python_AST_files": 10,
+  "API_signatures": 12,
+  "accepted_source_anchors": [
+    {
+      "path": "src/apex/control/trajectory/planner.py",
+      "function": "TrajectoryPlanner.__init__",
+      "base_line": 14,
+      "sha256": "6dcc8abe959fa65d7036f90379179703f54091c55a54bedee4db9a47d4622e44"
+    },
+    {
+      "path": "src/apex/control/trajectory/planner.py",
+      "function": "TrajectoryPlanner.prepare",
+      "base_line": 19,
+      "sha256": "6dcc8abe959fa65d7036f90379179703f54091c55a54bedee4db9a47d4622e44"
+    },
+    {
+      "path": "src/apex/control/mpc/controller.py",
+      "function": "MPCController.__init__",
+      "base_line": 26,
+      "sha256": "63e17bd863dcd8d649d9f382a545f5c004e982fd87e837aa6b283ec1b1206b82"
+    },
+    {
+      "path": "src/apex/control/mpc/controller.py",
+      "function": "MPCController.compute_control",
+      "base_line": 62,
+      "sha256": "63e17bd863dcd8d649d9f382a545f5c004e982fd87e837aa6b283ec1b1206b82"
+    },
+    {
+      "path": "src/apex/control/mpc/controller.py",
+      "function": "make_mpc",
+      "base_line": 221,
+      "sha256": "63e17bd863dcd8d649d9f382a545f5c004e982fd87e837aa6b283ec1b1206b82"
+    },
+    {
+      "path": "src/apex/control/mpc/problem.py",
+      "function": "MPCProblem.__init__",
+      "base_line": 62,
+      "sha256": "b0560718155ff04074633aa92c4374a15ec975f21f5e3a022f4e94d52636087e"
+    },
+    {
+      "path": "src/apex/control/mpc/preview.py",
+      "function": "make_preview",
+      "base_line": 24,
+      "sha256": "c3e74f7c197ed42961f3494b6be8061570d294d790214e2e27401a2771a418cf"
+    },
+    {
+      "path": "src/apex/control/mpc/warm_start.py",
+      "function": "shift_solution",
+      "base_line": 6,
+      "sha256": "0faab03574394c3ecebe071a7c5f4e9e01d704a7d9b625fb6d0c122cc4cb34ed"
+    },
+    {
+      "path": "src/apex/control/mpc/cost.py",
+      "function": "TerminalSchedule.__init__",
+      "base_line": 90,
+      "sha256": "1b8367af3a41c72fc24573a92d9dba526100e53985e33d2626084b1222c5623b"
+    },
+    {
+      "path": "src/apex/optimization/solvers/ipopt.py",
+      "function": "IpoptSolver.__init__",
+      "base_line": 25,
+      "sha256": "3897eb4e5c2cf55b33b96e361e0c83e43ce783172e7095f59daf72785473c728"
+    },
+    {
+      "path": "src/apex/optimization/solvers/ipopt.py",
+      "function": "IpoptSolver.solve",
+      "base_line": 33,
+      "sha256": "3897eb4e5c2cf55b33b96e361e0c83e43ce783172e7095f59daf72785473c728"
+    },
+    {
+      "path": "src/apex/control/trajectory/prediction.py",
+      "function": "ActuationPredictor.predict",
+      "base_line": 83,
+      "sha256": "0013fd74299a68993dabbc381ca384837f09b862011956a94fd1d3b138b839ab"
+    },
+    {
+      "path": "src/apex/control/trajectory/tracker.py",
+      "function": "TVLQR.__init__",
+      "base_line": 19,
+      "sha256": "ffa5d9968650c97411121ba3dedd89a5de04a1a9ce832c50efa351763567ef27"
+    },
+    {
+      "path": "src/apex/control/trajectory/tracker.py",
+      "function": "TVLQR.compute",
+      "base_line": 28,
+      "sha256": "ffa5d9968650c97411121ba3dedd89a5de04a1a9ce832c50efa351763567ef27"
+    },
+    {
+      "path": "src/apex/control/trajectory/packet.py",
+      "function": "TrajectoryPacket.__post_init__",
+      "base_line": 32,
+      "sha256": "00830d2ced67321547add91a4e241664689cdeed57d57f0b9b2d95552b9fd704"
+    },
+    {
+      "path": "src/apex/simulation/asynchronous.py",
+      "function": "AsyncRunner.run",
+      "base_line": 132,
+      "sha256": "7d14395aa27707f2561bf6bdb32cd613bc2508ab12d6fe617bf45855d378f018"
+    },
+    {
+      "path": "src/apex/simulation/prediction_capture.py",
+      "function": "PredictionRelease.capture",
+      "base_line": 25,
+      "sha256": "f8f4d7d840a73744aebbe85dc09d817b79e839022bd7298bbde792ee061d4a29"
+    },
+    {
+      "path": "scripts/task007dvis/worker.py",
+      "function": "run",
+      "base_line": 30,
+      "sha256": "fd6dedd1caace418d4f3b60ef973f387d3e240a5ce8fa87c774450500f89bd5a"
+    },
+    {
+      "path": "scripts/threading_study/config.py",
+      "function": "configure_accelerate",
+      "base_line": 42,
+      "sha256": "a50a73015c3ab739c35aa1fd715840364974213bf1c12666269b250264556fc3"
+    }
+  ],
+  "spans": {
+    "preparation": 22,
+    "construction": 8,
+    "clock_probe": 3
+  },
+  "limits": {
+    "max_calls": 64,
+    "max_span_records": 8192,
+    "max_stack_depth": 8,
+    "max_fault_records": 64,
+    "max_identity_utf8_bytes": 128,
+    "max_exception_type_utf8_bytes": 256,
+    "max_serialized_bytes": 16777216,
+    "max_status_utf8_bytes": 2048
+  },
+  "parity": {
+    "exact_duration_selectors": 98,
+    "individually_named_IPOPT_clock_keys": 14,
+    "approved_contract_sha256": "4fd84a427601aa1255d74686d10490b5f166bec0c7816b762984a4d1cf17468f"
+  },
+  "unchanged_scheduler_consumer": [
+    "Call(func=Attribute(value=Name(id='c', ctx=Load()), attr='delay', ctx=Load()), args=[Name(id='plan_id', ctx=Load()), Subscript(value=Name(id='event', ctx=Load()), slice=Constant(value='planner_total_time'), ctx=Load())])"
+  ],
+  "recorder_imports": [
+    "__future__",
+    "collections",
+    "dataclasses",
+    "hashlib",
+    "json",
+    "math",
+    "os",
+    "pathlib",
+    "threading",
+    "time",
+    "types"
+  ],
+  "source_sha256": {
+    "src/apex/control/trajectory/planner.py": "f4795ece7ec380fa933553c7ba50e29eb58225eb5ba0b458306f506d875c9fe3",
+    "src/apex/control/mpc/controller.py": "0b1344f6ff6fe05e6c35de1406fd1204997da00857aa81cd16839487ee1336d8",
+    "src/apex/control/mpc/preview.py": "c09f7ce073fd3fe59b689c2a64ac7632a57dac1720ecd9c7b8970b3c98d94da1",
+    "src/apex/optimization/solvers/ipopt.py": "87c57294407d71d959af8154cca6d45c76c31605eb713f0aba1b9cd0c73db9fa",
+    "src/apex/control/trajectory/tracker.py": "8da7535836bb194f6d0242201b73960a47f24146bf5fdf59f51503f6c869721d",
+    "src/apex/simulation/asynchronous.py": "89183d4333aee5420980ac9635a00eb3c35fc2857ff4129513b79b5ebe1c55fe",
+    "scripts/task007f/profile1/recorder.py": "94e286cfdfb57022209cc02f22a5debf665b7e1704b790f6f3ce22b3600a1744",
+    "scripts/task007f/profile1/run_phase_a.py": "6d194312f3afc209c72ce89fdea6e2158e738aeefce8321ade8d6875f627778b",
+    "tests/unit/test_profile1_recorder.py": "95b4a287cafd8e133571dd07964c93ef858c73249bf41e959d2694f8e71e43d0",
+    "tests/integration/test_profile1_parity.py": "5fffa49629eef3faae79ad87a16f7a2a8aa78a59e456ae3a36f5b38f1da75bb1"
+  },
+  "authored_test_nodes": {
+    "tests/unit/test_profile1_recorder.py": [
+      "test_U01_off_and_unsupported_have_no_clock_or_recorder_allocation",
+      "test_U02_wall_then_cpu_integer_endpoints",
+      "test_U03_exact_tree_and_occurrence_accounting",
+      "test_U04_no_borrowed_numerical_objects_or_mutation",
+      "test_U10_returned_none_complete_root_and_not_reached_children",
+      "test_U11_wrong_or_foreign_tokens_are_invalid",
+      "test_U12_decreasing_and_invalid_clock_values",
+      "test_U13_raised_clock_keeps_half_pair_and_original_result",
+      "test_U14_capacity_retains_reserved_endpoints",
+      "test_U15_call_depth_and_sticky_first_fault",
+      "test_U16_exception_and_diagnostic_bounds",
+      "test_U17_export_oserror_preserves_original_raw",
+      "test_U18_serialized_cap_and_no_overwrite",
+      "test_U19_interrupt_open_span_has_no_invented_endpoint",
+      "test_U20_pending_completion_is_censored_but_full_host_work_retained",
+      "test_missing_root_and_unresolved_allowance_never_validate",
+      "test_outcome_join_capacity_is_explicit_and_raw_unchanged",
+      "test_signed_negative_residual_is_retained_and_never_clamped",
+      "test_partial_child_makes_parent_exclusive_unknown",
+      "test_auxiliary_populations_never_become_physical_preparations"
+    ],
+    "tests/integration/test_profile1_parity.py": [
+      "test_B0_B1_B2_controlled_parity",
+      "test_measured_observer_readiness_is_separate",
+      "test_strict_allowlist_rejects_unlisted_stats_and_authority_changes",
+      "test_host_flag_predicate_checked_and_differences_exposed",
+      "test_U05_U09_original_negative_outcome_and_traceback",
+      "test_observer_fault_preserves_tuple_and_stops_before_authority",
+      "test_default_off_launcher_rejects_mode_before_numerical_imports"
+    ]
+  },
+  "unexecuted_existing_regression_nodes": [
+    "tests/unit/test_diagnostic_timing.py::test_default_measured_dispatch_is_preserved",
+    "tests/unit/test_diagnostic_timing.py::test_default_measured_runner_uses_actual_timers",
+    "tests/unit/test_fixed_handoff_scheduler.py::test_replay_is_exact_and_defaults_have_no_new_telemetry",
+    "tests/unit/test_fixed_handoff_scheduler.py::test_pending_old_command_survives_handoff",
+    "tests/unit/test_fixed_handoff_scheduler.py::test_due_old_application_precedes_fixed_handoff_and_new_sampling"
+  ],
+  "preservation": {
+    "original_tracked_files": 850,
+    "changed_original_tracked_paths": [
+      "docs/CODEX_HANDOFF.md",
+      "docs/DECISIONS.md",
+      "docs/PROJECT_ROADMAP.md",
+      "src/apex/control/mpc/controller.py",
+      "src/apex/control/mpc/preview.py",
+      "src/apex/control/trajectory/planner.py",
+      "src/apex/control/trajectory/tracker.py",
+      "src/apex/optimization/solvers/ipopt.py",
+      "src/apex/simulation/asynchronous.py"
+    ],
+    "unchanged_outside_six_source_and_three_shared_docs": true,
+    "results_file_metadata_count": 11646,
+    "results_metadata_equal": true,
+    "raw_content_full_rehash_performed": false,
+    "backup_created": false,
+    "historical_document_sha256": {
+      "docs/F_PROFILE_1_PHASE_A_SPEC.md": "db82e471fefc827f8bb00f61b9944701d4c0b4e87cd977c043c4d8e504c44581",
+      "docs/task007f/f0/experiment_matrix.json": "d42ac2d3059359352d4142789e4ea3c770c69a707b780b8a393ba13953d4ae8e",
+      "docs/task007f/f0/git_preservation.json": "080608b79c5b5a995cfe6ad26e4896c02f933378ba14edfaa17b42edeccd0d09",
+      "docs/task007f/f0/metrics_and_gates.json": "79d03e72c262c7e7d3387026ff275ba48c574f6c61124ad188a056d6e647d207",
+      "docs/task007f/f0/primary_acceptance.json": "b034ebb34e4d801d32a885c379e2ebf1b8f13d2f4382ef72a65bf900e3107f15",
+      "docs/task007f/f0/profiling_protocol.json": "6514a0b202d42ec7d11c695911515587a482abd5d11f735bc5fe99bec9b7bd15",
+      "docs/task007f/f0/resource_and_review_gates.json": "e1fa05ff7efc03b275d016de7adb54273e8c8faf19f9e8cfa5fbd215d602d3cd",
+      "docs/task007f/f0/temporal_grid_audit.md": "de653c8a8846295d3792886e73afcfe71a164e205b51f2665d26f5c1c68f60c9",
+      "docs/task007f/f0/validation.json": "902705ffb16aec609999c8aadc73030b3fbd034ff6b60570824eaaab05dc4980",
+      "docs/task007f/profile1/g1_failure_and_overflow_contract.json": "3ac4afd3e1fec2f926aa9c0949faa9f47f03b5e77155911349f39539862e80b6",
+      "docs/task007f/profile1/g1_implementation_authorization_request.md": "8e4774fc9d0a8eebc2373340c11938bf7af8f3eab85510a4e7d6ee3f76ed5cae",
+      "docs/task007f/profile1/g1_parity_field_allowlist.json": "4fd84a427601aa1255d74686d10490b5f166bec0c7816b762984a4d1cf17468f",
+      "docs/task007f/profile1/g1_preflight_validation.json": "deeb26bb83d8f0d493d2e88173c617b6299cbfa91144aa717a70c7ebf3f07b74",
+      "docs/task007f/profile1/g1_recorder_api.json": "f4e892b72ff69b62248870be6257b17332665c476362923b9515819184a4526c",
+      "docs/task007f/profile1/g1_source_change_manifest.json": "b3f2ebb02d598643a8566a0d93a36bf6a698af0992bc0d781f9fb8603e659272",
+      "docs/task007f/profile1/g1_verification_entry_gates.json": "8b7059b77ff83b5e501ef80b4812e78cca155d21f48727d325575ed96a916249",
+      "docs/task007f/profile1/instrumentation_contract.json": "aaa4e001a52d2577aa5dcf7dd577ebbaca61192a532b0e7ed16ea9009ecf89e9",
+      "docs/task007f/profile1/parity_and_observer_checks.json": "106901b2ff6ac90419b91d7dad66061a1229188f5b0115d483162bcfd1cba4d0",
+      "docs/task007f/profile1/phase_b_readiness.json": "c648cdff553110dc335c38eb770d97b4ac8b6b1a46091ddb019a5685c216b1fc",
+      "docs/task007f/profile1/review_gates.json": "f4814c32a1e6f769523f40b56954a44a81cf54f7396710067b717e65026418f3",
+      "docs/task007f/profile1/validation.json": "3d284b9988b42ff58d4d997938ff5f87a03eaca3115bf98d8fe1989e1d1a1b6d"
+    },
+    "baseline_snapshot_path": "/var/folders/rf/cx0rw_k56hg9rz_v10glp1k40000gn/T/apex-g1-implementation-43nncwur/before.json",
+    "baseline_snapshot_sha256": "0f3d3b2473cd8390637ff8bd77341e0c53f0d3d26f9b94057a71f732997727a8",
+    "results_metadata_before_and_after_sha256": "72ab26a066956d35cb2103f9f3ae724b79200f552339e473aefd004d05adfee2",
+    "frozen_source_anchor_hashes_equal": true,
+    "frozen_common_fixture_and_factory_equal": true
+  },
+  "no_project_imports_or_test_collection": true,
+  "numerical_tests_run": 0,
+  "profiling_runs": 0,
+  "benchmark_runs": 0,
+  "static_lint": "Full Ruff check on ten files passed; format/check are static and do not import project code",
+  "projection": {
+    "OFF_all_six_equal": true,
+    "ON_original_statements_all_six_equal": true,
+    "normalization": "Remove only injection/observer statements, guards and finally wrappers; restore return bindings; inline make_mpc solver-constructor hoist. Reporting-stop paths inspected separately.",
+    "script_sha256": "d479ba36e0cff7ead55f9a258d23ee19ef642c1cf768e582be0c397f91251aeb",
+    "limitation": "Source-structure comparison only, not numerical, behavioral, exception-safety, memory, clock or latency verification."
+  },
+  "unresolved": [
+    "Secondary review of exact code and tests",
+    "Primary G2 decision and exact protocol selection/order/resource approval",
+    "Empirical wall/CPU reconciliation allowance and provenance; no default ns tolerance",
+    "Runtime correctness, numerical/authority/RK4 parity, fault containment, resource sufficiency and observer costs unexecuted",
+    "Phase B contexts, historical full warm-state/reset lineage and any full-readiness policy remain separate"
+  ],
+  "git": {
+    "branch": "research/efficiency",
+    "remote": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle.git",
+    "frozen_branch_and_main": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+    "annotated_tag_object": "76d9eaa65af02efb0263916adc75d5247a0e778f",
+    "tag_peeled_revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+    "scientific_revision": "e603672b209985f11ed26b6f44d3949ffd5675c5",
+    "manifest_sha256": "5299adca29d5c5bd383252cd2c299a392dd6872dc6bb72d1a4dd7ecfb8dd1ebf",
+    "remote_freeze_rulesets": [
+      {
+        "id": 25418055,
+        "target": "branch",
+        "enforcement": "active",
+        "bypass_actors": []
+      },
+      {
+        "id": 25418590,
+        "target": "tag",
+        "enforcement": "active",
+        "bypass_actors": []
+      }
+    ],
+    "safety_local_observed": "fa4615ac11a1cf79c14d12eedb9360e33291c182",
+    "safety_remote_observed": "6392092d68c1e2dd75120fbd87c32714e530e44e",
+    "ct1_local_remote_observed": "3898704102e7570bcaff9b1654b7b345db1f9b6f",
+    "isolation": "Existing Efficiency checkout reused because it already owns the required branch; no second attachment or independent-worktree modification.",
+    "delivery_revision_binding": "Containing commit plus ten source hashes; exact delivery SHA/URL in final GitHub handoff, not a circular self-reference"
+  },
+  "authority": {
+    "assignment_sha256": "4545b5642a49d8935afb2a2ee65b5d1cc7ede8b9c86820a3bc2526bc61be1835",
+    "instruction": "G1 CODE CREATION ONLY; implement approved instrumentation and author unexecuted tests",
+    "decision_date": null,
+    "decision_date_reason": "Not supplied; recording date is not decision date"
+  },
+  "full_diff_scope": [
+    "src/apex/control/trajectory/planner.py",
+    "src/apex/control/mpc/controller.py",
+    "src/apex/control/mpc/preview.py",
+    "src/apex/optimization/solvers/ipopt.py",
+    "src/apex/control/trajectory/tracker.py",
+    "src/apex/simulation/asynchronous.py",
+    "scripts/task007f/profile1/recorder.py",
+    "scripts/task007f/profile1/run_phase_a.py",
+    "tests/unit/test_profile1_recorder.py",
+    "tests/integration/test_profile1_parity.py",
+    "docs/task007f/profile1/g1_implementation_handoff.md",
+    "docs/task007f/profile1/g1_source_projection_audit.md",
+    "docs/task007f/profile1/g1_static_validation.json",
+    "docs/CODEX_HANDOFF.md",
+    "docs/DECISIONS.md",
+    "docs/PROJECT_ROADMAP.md"
+  ]
+}

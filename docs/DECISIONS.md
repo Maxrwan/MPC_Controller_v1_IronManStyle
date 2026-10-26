@@ -1112,3 +1112,34 @@ not Phase B's allocation. If clock reconciliation allowance remains unresolved, 
 authorized clock worker may run before another review. No ns tolerance or observer threshold is invented.
 Phase B historical warm-state/ID blockers remain; no new capture or guessed reconstruction enters G1.
 Frozen Performance/main/tag, source/fixtures/dependencies and independent Safety S1 stay untouched.
+
+
+## ADR-168 — Author bounded G1 instrumentation; retain separate G2 execution gate
+
+Recorded 26 October 2026. Status: `CODE_CREATED_NOT_EXECUTED`, `WORK_COMPLETE_PENDING_REVIEW`.
+The explicit human implementation assignment authorizes the previously reviewed API and ten-path
+source/test allowlist from `83f360b2a96e8f6d9fe429d2cc2e5447da2f47c8`. It does not authorize imports,
+test collection, numerical/observer execution or Phase B. Original ADR-167 proposal/evidence remains
+historical. See [implementation handoff](task007f/profile1/g1_implementation_handoff.md).
+
+Use optional worker-local scalar recorder injection with explicit OFF/ON branches, reserved bounded
+slots, accepted 22-span tree and separate auxiliary populations. Keep original numerical calls,
+legacy timing starts/ends and scheduler consumer. Full/envelope/hypothetical completion fields are
+post-run observations only. The final clock-publication tail is unmeasured; no complete-latency claim.
+
+Original preparation outcome and observer validity stay independent. Preserve returned tuples or
+original escaping exceptions. Ordinary observation faults latch invalidity and stop at the accepted
+startup/end-of-release reporting boundaries; they never grant authority or trigger new fallback or
+physical action. Preserve partial/censored evidence and original raw output before exclusive sidecar
+publication. Resource caps and best-effort persistence are not memory/fault-infallibility proofs.
+
+Future controlled parity uses exact numerical/packet/warm/gain/RK4/authority data with only the 98
+explicit duration selectors and fourteen named IPOPT timing keys. Independently check the original
+host deadline predicate and expose cross-build differences. Keep bounded test snapshots in RAM/IPC;
+never turn the test harness into persistent warm-history capture. Separate dense parity observation
+from minimal C1 observer blocks and M0 descriptive readiness. No automatic 44-worker campaign.
+
+Static source projections/API/anchor/schema/reference/hash/lint checks support design review only.
+All G2 numerical/observer/failure/clock/resource checks remain unexecuted; the empirical clock
+allowance is unresolved. Secondary reviews the exact revision; Primary separately approves G2.
+Frozen Performance refs/profile/evidence, independent Safety and CT-1, and Phase B stay protected.

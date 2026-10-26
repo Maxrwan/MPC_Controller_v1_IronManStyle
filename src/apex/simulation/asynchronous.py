@@ -104,8 +104,10 @@ class AsyncRunner:
         *,
         timing=None,
         release_observer=None,
+        recorder=None,
     ):
         self.plant, self.planner, self.tracker, self.track = plant, planner, tracker, track
+        self._recorder = recorder
         self.config = config
         self.timing = timing
         self.release_observer = release_observer
@@ -130,6 +132,7 @@ class AsyncRunner:
         )
 
     def run(self, initial):
+        recorder = self._recorder
         c, tracker, buffer = self.config, self.tracker, self.buffer
         x, t, command = np.array(initial, copy=True), 0.0, np.zeros(2)
         states, controls, events, packets, triggers, fallbacks = [], [], [], [], [], []
@@ -143,7 +146,64 @@ class AsyncRunner:
         fixed = None if c.fixed_handoff_offset is None else FixedHandoffs(c.fixed_handoff_offset)
         lap_times, last_lap_time = [], 0.0
         next_lap = (int(x[S.S_ABS] / self.track.length) + 1) * self.track.length
-        startup, startup_event = self.planner.prepare(0, x, 0, 0, buffer, tracker, startup=True)
+        if recorder is not None and recorder.stop_requested():
+            return dict(
+                states=[],
+                controls=[],
+                plans=[],
+                packets=[],
+                triggers=[],
+                fallbacks=[],
+                handoffs=[],
+                releases=[],
+                misses=[],
+                reserves=[],
+                failure=None,
+                stop_reason="instrumentation_stop",
+                lap_times=[],
+                end_time=t,
+                pending_at_end=False,
+                codriver_misses=[],
+            )
+        if recorder is None:
+            startup, startup_event = self.planner.prepare(0, x, 0, 0, buffer, tracker, startup=True)
+        else:
+            _g1_call = recorder.begin_call(
+                kind="startup", plan_id=0, release_sim_s=0.0, estimate_sim_s=0.0
+            )
+            _g1_full = recorder.span_begin(
+                recorder.active_call, "prepare_full", expected_parent=None
+            )
+            try:
+                _g1_prepared = self.planner.prepare(0, x, 0, 0, buffer, tracker, startup=True)
+            except BaseException as _g1_exception:
+                _g1_exception_type = (
+                    type(_g1_exception).__module__ + "." + type(_g1_exception).__qualname__
+                )
+                recorder.span_end(_g1_full, exit="exception", exception_type=_g1_exception_type)
+                recorder.finish_call(
+                    _g1_call,
+                    outcome={
+                        "kind": "raised",
+                        "existing_status": None,
+                        "solver_attempted": None,
+                        "exception_type": _g1_exception_type,
+                    },
+                )
+                raise
+            else:
+                startup, startup_event = _g1_prepared
+                self._instrumentation_last_preparation = _g1_prepared
+                recorder.span_end(_g1_full, exit="complete")
+                recorder.finish_call(
+                    _g1_call,
+                    outcome={
+                        "kind": "returned_packet" if startup is not None else "returned_none",
+                        "existing_status": startup_event.get("status"),
+                        "solver_attempted": startup_event.get("solver_attempted"),
+                        "exception_type": None,
+                    },
+                )
         startup_event.update(
             completion_time=0.0,
             startup=True,
@@ -151,6 +211,25 @@ class AsyncRunner:
             release_command_pending=False,
             pending_application_time=None,
         )
+        if recorder is not None and recorder.stop_requested():
+            return dict(
+                states=[],
+                controls=[],
+                plans=[startup_event],
+                packets=[],
+                triggers=[],
+                fallbacks=[],
+                handoffs=[],
+                releases=[],
+                misses=[],
+                reserves=[],
+                failure=None,
+                stop_reason="instrumentation_stop",
+                lap_times=[],
+                end_time=t,
+                pending_at_end=False,
+                codriver_misses=[],
+            )
         if startup is None:
             return dict(
                 states=[],
@@ -219,6 +298,10 @@ class AsyncRunner:
             estimate = rolling_estimate if fixed is None else c.fixed_handoff_offset
             if fixed is not None and not on_grid(t):
                 raise ValueError("Fixed release must be on the global codriver grid")
+            if recorder is not None:
+                _g1_call = recorder.begin_call(
+                    kind="recurring", plan_id=plan_id, release_sim_s=t, estimate_sim_s=estimate
+                )
             if c.committed_prefix_prediction or self.release_observer is not None:
                 # Capture after this timestamp's application/codriver processing. The
                 # requested value is still pending, including new zero-latency work.
@@ -237,12 +320,54 @@ class AsyncRunner:
                 self.release_observer(
                     PredictionRelease.capture(plan_id, x, estimate, prefix, buffer, tracker)
                 )
-            if c.committed_prefix_prediction:
-                packet, event = self.planner.prepare(
-                    plan_id, x, t, estimate, buffer, tracker, committed_prefix=prefix
-                )
+            if recorder is None:
+                if c.committed_prefix_prediction:
+                    packet, event = self.planner.prepare(
+                        plan_id, x, t, estimate, buffer, tracker, committed_prefix=prefix
+                    )
+                else:
+                    packet, event = self.planner.prepare(plan_id, x, t, estimate, buffer, tracker)
             else:
-                packet, event = self.planner.prepare(plan_id, x, t, estimate, buffer, tracker)
+                _g1_full = recorder.span_begin(
+                    recorder.active_call, "prepare_full", expected_parent=None
+                )
+                try:
+                    if c.committed_prefix_prediction:
+                        _g1_prepared = self.planner.prepare(
+                            plan_id, x, t, estimate, buffer, tracker, committed_prefix=prefix
+                        )
+                    else:
+                        _g1_prepared = self.planner.prepare(
+                            plan_id, x, t, estimate, buffer, tracker
+                        )
+                except BaseException as _g1_exception:
+                    _g1_exception_type = (
+                        type(_g1_exception).__module__ + "." + type(_g1_exception).__qualname__
+                    )
+                    recorder.span_end(_g1_full, exit="exception", exception_type=_g1_exception_type)
+                    recorder.finish_call(
+                        _g1_call,
+                        outcome={
+                            "kind": "raised",
+                            "existing_status": None,
+                            "solver_attempted": None,
+                            "exception_type": _g1_exception_type,
+                        },
+                    )
+                    raise
+                else:
+                    packet, event = _g1_prepared
+                    self._instrumentation_last_preparation = _g1_prepared
+                    recorder.span_end(_g1_full, exit="complete")
+                    recorder.finish_call(
+                        _g1_call,
+                        outcome={
+                            "kind": "returned_packet" if packet is not None else "returned_none",
+                            "existing_status": event.get("status"),
+                            "solver_attempted": event.get("solver_attempted"),
+                            "exception_type": None,
+                        },
+                    )
             delay = (
                 c.delay(plan_id, event["planner_total_time"])
                 if self.timing is None
@@ -491,6 +616,9 @@ class AsyncRunner:
                     and (fixed is None or on_grid(t))
                 ):
                     release(urgent=True)
+                if recorder is not None and recorder.stop_requested():
+                    stop = "instrumentation_stop"
+                    break
                 # A zero-duration solve becomes visible at this same physical timestamp.
                 if (pending is not None and pending[0] <= t + 1e-10) or (
                     actuator_pending is not None and actuator_pending[0] <= t + 1e-10
