@@ -1,64 +1,43 @@
-"""Protocol cases plus an explicit unresolved full-trace readiness gate."""
+"""O4B focused literal cases: separate independent approval BEFORE selection.
+
+NOT EXECUTED. Collection itself is unauthorized at this delivery stage. A later
+execution assignment must authenticate/supply the external review document and
+its digest described in oracle_support. No local approval, fixture status edit,
+skip, xfail, or partial-prefix success substitutes for independent acceptance.
+"""
 
 import pytest
-from oracle_support import assert_projection, cases, load, run_case
+from oracle_support import (
+    approved_selection,
+    compare_core,
+    independent_review,
+    population,
+    run_case,
+    run_materialization,
+)
 
-PROTOCOL_CASES = [c for c in cases() if c["case_id"].startswith("E")]
-
-
-@pytest.mark.parametrize("case", PROTOCOL_CASES, ids=[c["case_id"] for c in PROTOCOL_CASES])
-def test_reviewed_protocol_projection(case):
-    initial, result = run_case(case)
-    assert_projection(case, initial, result)
-
-
-def test_independent_full_trace_materialization_entry_gate():
-    data = load("expected_traces")
-    assert data["full_trace_status"] == "INDEPENDENTLY_REVIEWED", data["unresolved_findings"]
-    assert set(data["full_trace_cases"]) == {c["case_id"] for c in cases()}
+# Fails collection closed when review is absent; no reducer import/call first.
+# Excluded/incomplete cases create NO test instances and are NOT passes.
+SELECTED_CASE_IDS = approved_selection()
 
 
-def test_original_map_scenario_literal_materialization():
-    from apex.safety_authority import records as r
-    from apex.safety_authority.codec import (
-        decode_configuration,
-        decode_event,
-        decode_snapshot,
-        freeze,
-    )
-    from apex.safety_authority.ordering import seal_batch
-    from apex.safety_authority.reducer import reduce_batch
+def test_independent_full_trace_materialization_entry_gate(record_property):
+    approval = independent_review()
+    assert tuple(approval["accepted_case_ids"]) == SELECTED_CASE_IDS
+    record_property("independent_review_record", approval["review_record_ref"])
+    record_property("selected_literal_case_ids", approval["accepted_case_ids"])
+    record_property("excluded_NOT_RUN_NOT_PASS", approval["excluded_cases"])
 
-    material = load("cases")["original_materializations"][0]
-    cfg = decode_configuration(freeze(load("configurations")[material["configuration_key"]]))
-    assert isinstance(cfg, r.DecodeSuccess)
-    saved = decode_snapshot(
-        freeze(load("snapshots")[material["initial_snapshot_key"]]), configuration=cfg.value
-    )
-    assert isinstance(saved, r.DecodeSuccess)
-    snapshot = saved.value
-    projections = load("expected_traces")["original_materialization_projections"][
-        material["case_id"]
-    ]
-    for index, (step, expected) in enumerate(zip(material["steps"], projections)):
-        decoded = [decode_event(freeze(e), configuration=cfg.value) for e in step["events"]]
-        assert all(isinstance(e, r.DecodeSuccess) for e in decoded)
-        sealed = seal_batch(
-            cfg.value,
-            snapshot,
-            batch_id="original-map-" + str(index),
-            at_tick=step["at_tick"],
-            events=tuple(e.value for e in decoded),
-        )
-        assert isinstance(sealed, r.DecodeSuccess)
-        result = reduce_batch(cfg.value, snapshot, sealed.value)
-        assert result.snapshot.state == expected["state"]
-        assert result.snapshot.desired_epoch == expected["desired_epoch"]
-        assert [t.transition_id for t in result.transitions] == expected["transition_path"]
-        assert any(
-            t.decision == expected["decision"] and list(t.reason_codes) == expected["reason_codes"]
-            for t in result.traces
-        )
-        assert not any(t.granted_permission_ids for t in result.traces)
-        assert result.endpoint_outputs == ()
-        snapshot = result.snapshot
+
+@pytest.mark.parametrize("case_id", SELECTED_CASE_IDS, ids=SELECTED_CASE_IDS)
+def test_reviewed_literal_reduction(case_id, record_property):
+    kind, case, _ = population()[case_id]
+    record_property("case_id", case_id)
+    if kind == "core":
+        initial, result = run_case(case)
+        report = compare_core(case, initial, result)
+    else:
+        report = run_materialization(case_id)
+    record_property("materialization_version", report.materialization_version)
+    record_property("original_row_bindings", report.original_row_bindings)
+    report.assert_matches()
