@@ -1,0 +1,2783 @@
+{
+  "schema": "apex-s1a/oracle-provenance-and-disagreements/O1.1",
+  "status": "WORK_COMPLETE_PENDING_REVIEW",
+  "authorship_date_client": "2026-10-26",
+  "scientific_acceptance_date": null,
+  "acceptance_date_unknown_reason": "No independent acceptance or dated Primary decision record supplied for these newly authored literals.",
+  "starting_revision": "6392092d68c1e2dd75120fbd87c32714e530e44e",
+  "wire_version": "apex-s1-authority/0.2.0",
+  "authorship_status": "PENDING_INDEPENDENT_REVIEW",
+  "scientific_authority_attachment_sha256": "fbea27f9baa96e8562373d24b9668bebce7e21afafb4bff72474ca34990f5f2e",
+  "source_bindings": [
+    {
+      "path": "docs/safety/s1/interface_contract.json",
+      "revision": "6392092d68c1e2dd75120fbd87c32714e530e44e",
+      "sha256": "dfc8b10d0fb33bc7eee030cb8563101486991693617e7fd93b828c7447ac4dbe",
+      "use": "Scientific/schema/case authority; no implementation logic."
+    },
+    {
+      "path": "docs/safety/s1/state_and_event_invariants.json",
+      "revision": "6392092d68c1e2dd75120fbd87c32714e530e44e",
+      "sha256": "256f5fa461a4d828e740d416fa8847823bb79aba6c43b05595460680cbe174bb",
+      "use": "Scientific/schema/case authority; no implementation logic."
+    },
+    {
+      "path": "docs/safety/s1/initial_scenario_oracles.json",
+      "revision": "6392092d68c1e2dd75120fbd87c32714e530e44e",
+      "sha256": "baf4684ee7fa7f7362f7524de19b912415ce892aedc3de26168459279702c0ff",
+      "use": "Scientific/schema/case authority; no implementation logic."
+    },
+    {
+      "path": "docs/safety/s1a/reducer_api_contract.json",
+      "revision": "6392092d68c1e2dd75120fbd87c32714e530e44e",
+      "sha256": "cd59aa5fe0591d868924320e8579f96a579b3252cdd1b78ff97a1168fca8c9ec",
+      "use": "Scientific/schema/case authority; no implementation logic."
+    },
+    {
+      "path": "docs/safety/s1a/event_precedence_resolution.json",
+      "revision": "6392092d68c1e2dd75120fbd87c32714e530e44e",
+      "sha256": "bbe90a80df62cec8150bc2536688084a2ade48f3a402d371701db45c9ec1e1b5",
+      "use": "Scientific/schema/case authority; no implementation logic."
+    },
+    {
+      "path": "docs/safety/s1a/transition_activation_matrix.json",
+      "revision": "6392092d68c1e2dd75120fbd87c32714e530e44e",
+      "sha256": "f731597911d54c1fd24d47daa29c9fe7dd64d94e59119159d0149f2a4823d61f",
+      "use": "Scientific/schema/case authority; no implementation logic."
+    },
+    {
+      "path": "docs/safety/s1a/independent_oracle_expansion.json",
+      "revision": "6392092d68c1e2dd75120fbd87c32714e530e44e",
+      "sha256": "27a9e79a8d7ee45f46f7c9b4518da2b56524b122cf60b02df6926339d5198c7b",
+      "use": "Scientific/schema/case authority; no implementation logic."
+    }
+  ],
+  "construction_method": {
+    "same_conversation_as_implementation_authorship": true,
+    "implementation_source_bodies_consulted_in_this_assignment": false,
+    "implementation_outputs_used": false,
+    "independence_method": "Documentation-only literal plans, manual reasoning and generic JSON/schema/hash formatting. Implementation and test files are protected by byte hashes; no implementation helpers calculate expectations.",
+    "independent_review_received": false
+  },
+  "authoring_method_details": [
+    "Outcome states, paths, epochs, decisions and permissions come from approved tables or explicit source-derived manual plans. Generic scripts only expand records, bind supplied history and calculate structural identities.",
+    "No S1-A modules/guards/ordering helpers/reference reducer/endpoint were imported or executed. No implementation source body or prior observed implementation output was used as oracle authority.",
+    "50 record schemas were reconstructed from approved documentation signatures for structural checking; no runtime constructor was invoked.",
+    "Ordinary JSON/SHA-256 and integer chronology/identity consistency were used. Synthetic vector/covariance values are record data, not measured APEX parameters or invented dynamics.",
+    "The original covariance-only input uses a finite identity6x6 toy matrix solely to exercise UNKNOWN containment interpretation; no physical covariance/containment claim."
+  ],
+  "authoring_script_sha256": [
+    {
+      "temporary_path": "/private/tmp/apex-s1-oracles.P1wf0l/author_cases.py",
+      "sha256": "62a312a83f2270a560f32559c32cbe2231de1af88c9a6b776497a86eebe29687",
+      "purpose": "Table formatting, manual plan expansion or static validation; not repository source and not a SUT/reference reducer."
+    },
+    {
+      "temporary_path": "/private/tmp/apex-s1-oracles.P1wf0l/author_originals.py",
+      "sha256": "b6cbb1d66e86f0c1500d970c7efcc6f01729db12b562eb3060ead0ae5134a902",
+      "purpose": "Table formatting, manual plan expansion or static validation; not repository source and not a SUT/reference reducer."
+    },
+    {
+      "temporary_path": "/private/tmp/apex-s1-oracles.P1wf0l/format_originals.py",
+      "sha256": "14c1207d54bb350663a2550d1161d4ce67e3309f17c8d5207a90daddf1e95e17",
+      "purpose": "Table formatting, manual plan expansion or static validation; not repository source and not a SUT/reference reducer."
+    },
+    {
+      "temporary_path": "/private/tmp/apex-s1-oracles.P1wf0l/refine_review_data.py",
+      "sha256": "bbe0fbba589d02b47e71dca034fd9c5f2adefed8de848f427fcfe254644d8366",
+      "purpose": "Table formatting, manual plan expansion or static validation; not repository source and not a SUT/reference reducer."
+    },
+    {
+      "temporary_path": "/private/tmp/apex-s1-oracles.P1wf0l/validate_static.py",
+      "sha256": "6fdae27a7a92e5c33df5fc8ba63f7c721364c09c244254a4fdd83432032e5c4d",
+      "purpose": "Table formatting, manual plan expansion or static validation; not repository source and not a SUT/reference reducer."
+    },
+    {
+      "temporary_path": "/private/tmp/apex-s1-oracles.P1wf0l/normalize_references.py",
+      "sha256": "118b11f53125220b7d0d282dca6fd38b1e24d78686aeb38b6b59aa34ad559f1b",
+      "purpose": "Normalize authored checkpoint key names for valid JSON Pointer references; no outcome calculation."
+    }
+  ],
+  "materialization_conventions": {
+    "version": "apex-s1a-oracle-materialization/O1.1",
+    "review_status": "PENDING_INDEPENDENT_REVIEW",
+    "authority_limit": "These are concrete authored representations for review, not newly accepted scientific policy. No SUT body/output was consulted.",
+    "trace_identity": "External Trace.event_id is the supplied event_id, microstep0. Internal transition ID is cause_event_id + /transition/ + Txx; positive microsteps increase along a causal chain. Boundary IDs are batch_id + /boundary/ + kind + / + identity + / + tick. Closure ID is batch_id + /continuation-check. Implicit time/continuation roots name the sealed batch and initial snapshot digest in causal_roots.",
+    "trace_decisions": "External receipt/denial/intent and internal state-transition outcomes are distinct traces. Internal candidate transitions are OBSERVE except revoking T06/T09/T14, which are REVOKE. Rejected identity receipt is REJECT; its critical closure is separately REVOKE.",
+    "state_change_linearization": "External guarded request may ACCEPT eligibility; a child transition Trace records actual supervisor before/after state. No state transition creates a Permission. Critical external fact latches/revokes first; child traces record T06/T09 or T14.",
+    "denial_precedence": "Only first denying operation category is returned, with all causes in that category. Critical closure may add NO_VALID_POLICY. Knowledge is retained in fault/unknown fields, never appended OK on denial. Historical salient row lists are separately preserved.",
+    "batch_root": "A causal root outside the Trace array binds the exact supplied SealedBatch and initial Snapshot. It is not a generated endpoint event.",
+    "scope_labels": "HOST_LOGICAL for host decisions. SUPPLIED_OBSERVATION for journal-only endpoint/barrier installation facts. Labels/text are authored presentation conventions awaiting independent review.",
+    "identity_effects": "Exact input content digests and explicit operation keys are authored review data. Event content digest binds the complete canonical event envelope. A future comparator must review this preimage convention rather than silently adopting implementation hashes.",
+    "nondecisional_boundaries": "An irrelevant requested-policy evidence expiry is observed without latching a fault in still-admissible nominal authority. Active packet/rest/permission boundaries retain their actual authority effects.",
+    "full_status_meaning": "COMPLETE_LITERAL_CANDIDATE means every Trace field and requested semantic effect is explicitly authored. It does not mean unique derivation, independent acceptance, executable wiring or a passing implementation."
+  },
+  "counts": {
+    "original100_complete_literal_candidates": 98,
+    "original100_partial_unresolved": 2,
+    "original100_independently_accepted": 0,
+    "original_s1a_complete": 14,
+    "original_s1a_partial": 3,
+    "original_s1a_independently_accepted": 0,
+    "s1b_deferred": 5,
+    "additional_v05_precedence_chains": 1,
+    "execution": "NOT_EXECUTED"
+  },
+  "review_records": [],
+  "barrier_resolutions": [
+    {
+      "case_id": "E13-LOGICAL-GRANT",
+      "required": true,
+      "scientific_basis": [
+        "G_NOMINAL",
+        "A06",
+        "PC03",
+        "separate phase4 permission gate"
+      ],
+      "resolution": "Added the missing explicit BOOT_BARRIER_A synthetic acknowledgement record; did not weaken guards or change intended positive outcome.",
+      "snapshot_key": "NORMAL-no-live-grant",
+      "ack_id": "BOOT_BARRIER_A",
+      "barrier_id": "BOOT_BARRIER_A",
+      "control_session_id": "SESSION_A",
+      "endpoint_session_id": "ENDPOINT_A",
+      "installed_epoch": 1,
+      "delivery_tick": 0,
+      "installation_tick": 0,
+      "ack_observed_tick": 0,
+      "initial_current_tick": 10,
+      "queue_cleared": true,
+      "claim_scope": "SYNTHETIC_ASSUMPTION_ONLY",
+      "measurement_claim": false,
+      "historical_before_snapshot_sha256": "77a57a6c4a02fd6c6422262a22919c9c83123406069698fa0b5243832d27086d",
+      "after_snapshot_sha256": "c7ca458f06b45a8cc19e5e8d8f0dcf3653209f85a46289291a8aeb86303aec21",
+      "review_status": "PENDING_INDEPENDENT_REVIEW"
+    },
+    {
+      "case_id": "T01-DISARMED-POSITIVE",
+      "required": true,
+      "scientific_basis": [
+        "G_NOMINAL",
+        "A06",
+        "PC03",
+        "T01"
+      ],
+      "resolution": "Added the missing explicit BOOT_BARRIER_A synthetic acknowledgement record; did not weaken guards or change intended positive outcome.",
+      "snapshot_key": "DISARMED",
+      "ack_id": "BOOT_BARRIER_A",
+      "barrier_id": "BOOT_BARRIER_A",
+      "control_session_id": "SESSION_A",
+      "endpoint_session_id": "ENDPOINT_A",
+      "installed_epoch": 1,
+      "delivery_tick": 0,
+      "installation_tick": 0,
+      "ack_observed_tick": 0,
+      "initial_current_tick": 10,
+      "queue_cleared": true,
+      "claim_scope": "SYNTHETIC_ASSUMPTION_ONLY",
+      "measurement_claim": false,
+      "historical_before_snapshot_sha256": "4e908bb7fb4da427930d09b5f783368a8f11b022ae7c87ec3cf6e806aaca2157",
+      "after_snapshot_sha256": "483c94eef86fcd05d3fc364721da946763704c7e961dea698d47f6cce915bb99",
+      "review_status": "PENDING_INDEPENDENT_REVIEW"
+    },
+    {
+      "case_id": "T02-NORMAL-POSITIVE",
+      "required": true,
+      "scientific_basis": [
+        "G_NOMINAL",
+        "A06",
+        "PC03",
+        "T02"
+      ],
+      "resolution": "Added the missing explicit BOOT_BARRIER_A synthetic acknowledgement record; did not weaken guards or change intended positive outcome.",
+      "snapshot_key": "NORMAL-warning-POSITIVE",
+      "ack_id": "BOOT_BARRIER_A",
+      "barrier_id": "BOOT_BARRIER_A",
+      "control_session_id": "SESSION_A",
+      "endpoint_session_id": "ENDPOINT_A",
+      "installed_epoch": 1,
+      "delivery_tick": 0,
+      "installation_tick": 0,
+      "ack_observed_tick": 0,
+      "initial_current_tick": 10,
+      "queue_cleared": true,
+      "claim_scope": "SYNTHETIC_ASSUMPTION_ONLY",
+      "measurement_claim": false,
+      "historical_before_snapshot_sha256": "2feb8e809f8781fd7eed9602762661d6899f322fc131f055219c0b8142c17b79",
+      "after_snapshot_sha256": "6cfdacc78d96dd49ce83ed2ed6035f3077cd443d5c744ec84a13ccdd1c343b55",
+      "review_status": "PENDING_INDEPENDENT_REVIEW"
+    },
+    {
+      "case_id": "T03-WARNING-POSITIVE",
+      "required": true,
+      "scientific_basis": [
+        "G_NOMINAL",
+        "A06",
+        "PC03",
+        "T03"
+      ],
+      "resolution": "Added the missing explicit BOOT_BARRIER_A synthetic acknowledgement record; did not weaken guards or change intended positive outcome.",
+      "snapshot_key": "WARNING-clear-POSITIVE",
+      "ack_id": "BOOT_BARRIER_A",
+      "barrier_id": "BOOT_BARRIER_A",
+      "control_session_id": "SESSION_A",
+      "endpoint_session_id": "ENDPOINT_A",
+      "installed_epoch": 1,
+      "delivery_tick": 0,
+      "installation_tick": 0,
+      "ack_observed_tick": 0,
+      "initial_current_tick": 10,
+      "queue_cleared": true,
+      "claim_scope": "SYNTHETIC_ASSUMPTION_ONLY",
+      "measurement_claim": false,
+      "historical_before_snapshot_sha256": "e494e99394790ebfc4619d421946f5d36e3c0fd6f2999c631e7e1374370c67c4",
+      "after_snapshot_sha256": "280afc4ba355200d2e4754acfdc9579a5842ec1bcb2b27dc90bfed8b1b6f5aac",
+      "review_status": "PENDING_INDEPENDENT_REVIEW"
+    }
+  ],
+  "shared_boot_prehistory_completions": [
+    {
+      "snapshot_key": "DISARMED",
+      "before_sha256": "4e908bb7fb4da427930d09b5f783368a8f11b022ae7c87ec3cf6e806aaca2157",
+      "after_sha256": "483c94eef86fcd05d3fc364721da946763704c7e961dea698d47f6cce915bb99",
+      "rule": "G_NOMINAL/A06, PC03; explicitly assumed prehistory at tick0, before initial current_tick",
+      "assumption_id": "O1-TOY-BOOT-BARRIER-PREHISTORY"
+    },
+    {
+      "snapshot_key": "DISARMED-arm-expired",
+      "before_sha256": "d79248ad749588504761d80b6c087adc928259eb64442aa7c5671b7ad22fc987",
+      "after_sha256": "761118361f9627c2f699606aee7e4b1c83ab820924dde2f12f96c2f4aa95e900",
+      "rule": "G_NOMINAL/A06, PC03; explicitly assumed prehistory at tick0, before initial current_tick",
+      "assumption_id": "O1-TOY-BOOT-BARRIER-PREHISTORY"
+    },
+    {
+      "snapshot_key": "NORMAL",
+      "before_sha256": "823332a71b80f91a93a213fa0f19ba88d95b36aa2869b22b277b32011f659897",
+      "after_sha256": "88c8bc939e41687f3a204f70f53bd6268e2acf4716e2a3c3e831bd5d2a77b3ea",
+      "rule": "G_NOMINAL/A06, PC03; explicitly assumed prehistory at tick0, before initial current_tick",
+      "assumption_id": "O1-TOY-BOOT-BARRIER-PREHISTORY"
+    },
+    {
+      "snapshot_key": "NORMAL-warning-POSITIVE",
+      "before_sha256": "2feb8e809f8781fd7eed9602762661d6899f322fc131f055219c0b8142c17b79",
+      "after_sha256": "6cfdacc78d96dd49ce83ed2ed6035f3077cd443d5c744ec84a13ccdd1c343b55",
+      "rule": "G_NOMINAL/A06, PC03; explicitly assumed prehistory at tick0, before initial current_tick",
+      "assumption_id": "O1-TOY-BOOT-BARRIER-PREHISTORY"
+    },
+    {
+      "snapshot_key": "NORMAL-warning-REJECTION",
+      "before_sha256": "b941b480159ba86d3d5d88089e1bd0919b44db05169c535de76e083e011efc15",
+      "after_sha256": "9b6bc9f37b6d7197e0e6b26317ebbf692fe9fc271c5ff66ac54144ca0144cd15",
+      "rule": "G_NOMINAL/A06, PC03; explicitly assumed prehistory at tick0, before initial current_tick",
+      "assumption_id": "O1-TOY-BOOT-BARRIER-PREHISTORY"
+    },
+    {
+      "snapshot_key": "NORMAL-warning-BOUNDARY",
+      "before_sha256": "d974cf83c10cc911d9295eec5bb0fa81bf2e96d835f88549f11d4ac0a7304197",
+      "after_sha256": "a7efbcee7eaac24ad5e46d981de364805987a69e7b2d31bb29e3121d5dea02a8",
+      "rule": "G_NOMINAL/A06, PC03; explicitly assumed prehistory at tick0, before initial current_tick",
+      "assumption_id": "O1-TOY-BOOT-BARRIER-PREHISTORY"
+    },
+    {
+      "snapshot_key": "WARNING",
+      "before_sha256": "01785441e700b2d0ff7796dc3f09853d89e2c1e6d844c8f051fe94f0bad98fbe",
+      "after_sha256": "ec44944758f9f2cb602248aa1f7a07e40de55820f4c2004b64b0c02ecc204c7a",
+      "rule": "G_NOMINAL/A06, PC03; explicitly assumed prehistory at tick0, before initial current_tick",
+      "assumption_id": "O1-TOY-BOOT-BARRIER-PREHISTORY"
+    },
+    {
+      "snapshot_key": "WARNING-clear-POSITIVE",
+      "before_sha256": "e494e99394790ebfc4619d421946f5d36e3c0fd6f2999c631e7e1374370c67c4",
+      "after_sha256": "280afc4ba355200d2e4754acfdc9579a5842ec1bcb2b27dc90bfed8b1b6f5aac",
+      "rule": "G_NOMINAL/A06, PC03; explicitly assumed prehistory at tick0, before initial current_tick",
+      "assumption_id": "O1-TOY-BOOT-BARRIER-PREHISTORY"
+    },
+    {
+      "snapshot_key": "WARNING-clear-REJECTION",
+      "before_sha256": "89b5539c72a16d92aaf72c9e37b875e9e224cc7d26399bd6149337520c0940b6",
+      "after_sha256": "edaf6ee4af5df192a35f0942428c4ef2cca31865df11a0229be36e5119420382",
+      "rule": "G_NOMINAL/A06, PC03; explicitly assumed prehistory at tick0, before initial current_tick",
+      "assumption_id": "O1-TOY-BOOT-BARRIER-PREHISTORY"
+    },
+    {
+      "snapshot_key": "WARNING-clear-BOUNDARY",
+      "before_sha256": "59bf4aef1e628920c3b48b8ec4463a84cffdd7a586a7bbde0fa83b93db8a4f2d",
+      "after_sha256": "8ff510bda0998c1598c14bfe856095e20e7f3e8689d1d745bbfe91462840e8a9",
+      "rule": "G_NOMINAL/A06, PC03; explicitly assumed prehistory at tick0, before initial current_tick",
+      "assumption_id": "O1-TOY-BOOT-BARRIER-PREHISTORY"
+    },
+    {
+      "snapshot_key": "NORMAL-T04-POSITIVE",
+      "before_sha256": "5767774d5a2fc96e63f04cd31c3408d3fdf85bc37f2a03a1db80ee5c415d9077",
+      "after_sha256": "e2c0c7d4e99efa2694cbaa2313f033aa2053ca08b8cbdc4596b378210688d4bd",
+      "rule": "G_NOMINAL/A06, PC03; explicitly assumed prehistory at tick0, before initial current_tick",
+      "assumption_id": "O1-TOY-BOOT-BARRIER-PREHISTORY"
+    },
+    {
+      "snapshot_key": "NORMAL-T04-REJECTION",
+      "before_sha256": "45c75b230a41945a71e03ff2fb591328cc9e30e640e73284b65a1993a8025efe",
+      "after_sha256": "7cf8678ed4c22accf5d7d8d516775746385a97196d0c87e16c604002be58c024",
+      "rule": "G_NOMINAL/A06, PC03; explicitly assumed prehistory at tick0, before initial current_tick",
+      "assumption_id": "O1-TOY-BOOT-BARRIER-PREHISTORY"
+    },
+    {
+      "snapshot_key": "NORMAL-T04-BOUNDARY",
+      "before_sha256": "1fc704d1e89025d90def580cb19d03c446b4107e1b7306e9aac4c3c19e9c3ac5",
+      "after_sha256": "c1cad76d477cbc2dadcbff1d27e1084a064020b7f228b23843824d2597e3c2f6",
+      "rule": "G_NOMINAL/A06, PC03; explicitly assumed prehistory at tick0, before initial current_tick",
+      "assumption_id": "O1-TOY-BOOT-BARRIER-PREHISTORY"
+    },
+    {
+      "snapshot_key": "WARNING-T04-POSITIVE",
+      "before_sha256": "1a6d8609be5c52a1a96a717983a588bac0486194655e96d802f1a107f3ac6470",
+      "after_sha256": "ae17adf9fd1281b6e386bf6e0d25e93bfc888cf0ae9d5a64e3d2fbffa21f1185",
+      "rule": "G_NOMINAL/A06, PC03; explicitly assumed prehistory at tick0, before initial current_tick",
+      "assumption_id": "O1-TOY-BOOT-BARRIER-PREHISTORY"
+    },
+    {
+      "snapshot_key": "WARNING-T04-REJECTION",
+      "before_sha256": "e3b1247386d6438d610988731bdcdefb4259be2856d3be3cd3e485587f9be06e",
+      "after_sha256": "d043e012fe02a9627c83953154e82a1d5c4abc099a7d38bc40f11cf6afc072c4",
+      "rule": "G_NOMINAL/A06, PC03; explicitly assumed prehistory at tick0, before initial current_tick",
+      "assumption_id": "O1-TOY-BOOT-BARRIER-PREHISTORY"
+    },
+    {
+      "snapshot_key": "WARNING-T04-BOUNDARY",
+      "before_sha256": "247a278618f150796e867a46101c28882b163c5462f9f8674cdd66739cef5e35",
+      "after_sha256": "0f4ff5e0ee8a092a4b8f6f630bd8c8a9cb702060089517a66857dde201b0d4f8",
+      "rule": "G_NOMINAL/A06, PC03; explicitly assumed prehistory at tick0, before initial current_tick",
+      "assumption_id": "O1-TOY-BOOT-BARRIER-PREHISTORY"
+    },
+    {
+      "snapshot_key": "NORMAL-T05-POSITIVE",
+      "before_sha256": "8c9bd16ca190f589b40ca5756c7fbff3a65990763089b916aa00b8cc912e1975",
+      "after_sha256": "b067cec3b89c80e7e39cf6b6c120eba72114cca13dc8656f489937bbb6d2b73b",
+      "rule": "G_NOMINAL/A06, PC03; explicitly assumed prehistory at tick0, before initial current_tick",
+      "assumption_id": "O1-TOY-BOOT-BARRIER-PREHISTORY"
+    },
+    {
+      "snapshot_key": "NORMAL-T05-REJECTION",
+      "before_sha256": "abba0fd8cb9c7fb187cd4f72d5b1ceceb6c3f0ac8acd874800bb3a8f6369878b",
+      "after_sha256": "5ef025ce2c651b28924a93cdf21f2951d34a83e79f9edc62a87de0c8b3953eb3",
+      "rule": "G_NOMINAL/A06, PC03; explicitly assumed prehistory at tick0, before initial current_tick",
+      "assumption_id": "O1-TOY-BOOT-BARRIER-PREHISTORY"
+    },
+    {
+      "snapshot_key": "NORMAL-T05-BOUNDARY",
+      "before_sha256": "a8a5d04ca4da244bdebe15f61ebe5e0538dc1746be66c87456a6b23dbe240584",
+      "after_sha256": "d866f5d5bea27d846b321a40051f515c3a717286ca080e13fb49587e9d7be3b8",
+      "rule": "G_NOMINAL/A06, PC03; explicitly assumed prehistory at tick0, before initial current_tick",
+      "assumption_id": "O1-TOY-BOOT-BARRIER-PREHISTORY"
+    },
+    {
+      "snapshot_key": "WARNING-T05-POSITIVE",
+      "before_sha256": "4d4feec9955653fcbe52bbe1d8adbffbd31eccfaf947730193a8b30589b9b058",
+      "after_sha256": "c6742338e9a2574ac783650ec0a921019ffa802711b5e36d13d5eaa411953cd2",
+      "rule": "G_NOMINAL/A06, PC03; explicitly assumed prehistory at tick0, before initial current_tick",
+      "assumption_id": "O1-TOY-BOOT-BARRIER-PREHISTORY"
+    },
+    {
+      "snapshot_key": "WARNING-T05-REJECTION",
+      "before_sha256": "54a66ec7095dbd74da03db59db34fb2e9bbb16a7b5396de0a40310a0aa739010",
+      "after_sha256": "9cae9e7f9dcba7f8d545c5b0431be1b37f7a7a5f2f2c7395b5344272a2e04ad2",
+      "rule": "G_NOMINAL/A06, PC03; explicitly assumed prehistory at tick0, before initial current_tick",
+      "assumption_id": "O1-TOY-BOOT-BARRIER-PREHISTORY"
+    },
+    {
+      "snapshot_key": "WARNING-T05-BOUNDARY",
+      "before_sha256": "dc63c742f5227032cc841ff9a083792d8475467e0109fe408f5eb553b7738a74",
+      "after_sha256": "914abb0c00ed698cc670fff08332b6a32d5b0fc67d7b444fc206299fef6c1f0a",
+      "rule": "G_NOMINAL/A06, PC03; explicitly assumed prehistory at tick0, before initial current_tick",
+      "assumption_id": "O1-TOY-BOOT-BARRIER-PREHISTORY"
+    },
+    {
+      "snapshot_key": "RECOVERY",
+      "before_sha256": "aba9c3ece598ba38086bc27539b3d8929854450f6a2ea03021bda37ac765b873",
+      "after_sha256": "3cb3297706226f9be4c8a36f823004393014dd34049c58b84129586f47e4b013",
+      "rule": "G_NOMINAL/A06, PC03; explicitly assumed prehistory at tick0, before initial current_tick",
+      "assumption_id": "O1-TOY-BOOT-BARRIER-PREHISTORY"
+    },
+    {
+      "snapshot_key": "RECOVERY-T05-POSITIVE",
+      "before_sha256": "863d5cd62fdb1b8d0bb2cba3e609113c70d51fcbf23fdcc6c74b4f054d9aef85",
+      "after_sha256": "1785e214e0874c119b6ce48c623947c285ddd77b66e33f99ca72c476e7b9bffa",
+      "rule": "G_NOMINAL/A06, PC03; explicitly assumed prehistory at tick0, before initial current_tick",
+      "assumption_id": "O1-TOY-BOOT-BARRIER-PREHISTORY"
+    },
+    {
+      "snapshot_key": "RECOVERY-T05-REJECTION",
+      "before_sha256": "458b113a5fd800e706bdd602e07bdb47b32fcdd059554dbf50f43cec0d76b4c9",
+      "after_sha256": "df72a5a534d3be7c9ce6d33059be58f9611f6c7e60732cc10d4303621c88d2cd",
+      "rule": "G_NOMINAL/A06, PC03; explicitly assumed prehistory at tick0, before initial current_tick",
+      "assumption_id": "O1-TOY-BOOT-BARRIER-PREHISTORY"
+    },
+    {
+      "snapshot_key": "RECOVERY-T05-BOUNDARY",
+      "before_sha256": "3803e68213dbfdb094317f56025d14df76eae6c5869d175737d6e6c6a8884f04",
+      "after_sha256": "a7e33d0cca3d9319394827f7f51fe4a1e05abd1917f0a4d5b79977a5e75e46fa",
+      "rule": "G_NOMINAL/A06, PC03; explicitly assumed prehistory at tick0, before initial current_tick",
+      "assumption_id": "O1-TOY-BOOT-BARRIER-PREHISTORY"
+    },
+    {
+      "snapshot_key": "DISARMED-emergency-expiry",
+      "before_sha256": "54e098be26f31075df32aa41dcdbeb127f75d7618f85e4507954a7c481f01026",
+      "after_sha256": "427e056aae26a0a79c5d0b86abaeecd1bd5c33af43d8d8a6935c964644b4cd2e",
+      "rule": "G_NOMINAL/A06, PC03; explicitly assumed prehistory at tick0, before initial current_tick",
+      "assumption_id": "O1-TOY-BOOT-BARRIER-PREHISTORY"
+    },
+    {
+      "snapshot_key": "NORMAL-emergency-expiry",
+      "before_sha256": "bf5d46f352d5c60cd26407e377db61e87964f369c0bf2052657b5b3c171a12fb",
+      "after_sha256": "f38d280685e054d68a4dc588937315ef31389951d35ebc20668748a758792d78",
+      "rule": "G_NOMINAL/A06, PC03; explicitly assumed prehistory at tick0, before initial current_tick",
+      "assumption_id": "O1-TOY-BOOT-BARRIER-PREHISTORY"
+    },
+    {
+      "snapshot_key": "WARNING-emergency-expiry",
+      "before_sha256": "3e12ddb9714f1219199406efbd84c848b036e76bc7061b2a08f0a2713c392a3c",
+      "after_sha256": "4d1bdc58e017cf3fcdc1ceb8287d647c6ac9ddb8892d3e1549b20ed48379a6ae",
+      "rule": "G_NOMINAL/A06, PC03; explicitly assumed prehistory at tick0, before initial current_tick",
+      "assumption_id": "O1-TOY-BOOT-BARRIER-PREHISTORY"
+    },
+    {
+      "snapshot_key": "RECOVERY-emergency-expiry",
+      "before_sha256": "02199b59fcc3ffc4353157f54f14b75c4c1cc575584b2ef0df87598e591f61f5",
+      "after_sha256": "dbfbe519252895d9093b3134eb79729742915a57d2e3b29c37fa52d3a9996a47",
+      "rule": "G_NOMINAL/A06, PC03; explicitly assumed prehistory at tick0, before initial current_tick",
+      "assumption_id": "O1-TOY-BOOT-BARRIER-PREHISTORY"
+    },
+    {
+      "snapshot_key": "DECELERATING",
+      "before_sha256": "44cc28b4831a7236023fc8977ed11f30215d78d98fc1ada22b3dc827a34668a7",
+      "after_sha256": "7935c99c15a4979c8ac893a56018bd5dd2976ab683527d7567903b1d5d37d236",
+      "rule": "G_NOMINAL/A06, PC03; explicitly assumed prehistory at tick0, before initial current_tick",
+      "assumption_id": "O1-TOY-BOOT-BARRIER-PREHISTORY"
+    },
+    {
+      "snapshot_key": "DECELERATING-emergency-expiry",
+      "before_sha256": "e8297b67f1fd0b45038812d150df917c47bfb4f74a6cce585750ddd29afdc5ef",
+      "after_sha256": "c912289b6640ffb25c85d656d1e9193a5587f6afc51e8e63ada6830a9972e945",
+      "rule": "G_NOMINAL/A06, PC03; explicitly assumed prehistory at tick0, before initial current_tick",
+      "assumption_id": "O1-TOY-BOOT-BARRIER-PREHISTORY"
+    },
+    {
+      "snapshot_key": "STOP_REQUESTED",
+      "before_sha256": "4fec9f20e6c5ab83853d8a7a7281fa28f368969afe8f6e5a5bdc28352c75f514",
+      "after_sha256": "d4d4e28ade1e5973e7aa574d9396fd79de3aa043b1526934ea3ca2d98a0cdc4a",
+      "rule": "G_NOMINAL/A06, PC03; explicitly assumed prehistory at tick0, before initial current_tick",
+      "assumption_id": "O1-TOY-BOOT-BARRIER-PREHISTORY"
+    },
+    {
+      "snapshot_key": "STOP_REQUESTED-T07-POSITIVE",
+      "before_sha256": "7187c21774ca538c35e535f446f5f3928d8b137af3c71dd06f1a9a6820a9b0f0",
+      "after_sha256": "f0acebf574b3c16bf2ee85e94a797c4ff069c619470e603817232d4561207fe7",
+      "rule": "G_NOMINAL/A06, PC03; explicitly assumed prehistory at tick0, before initial current_tick",
+      "assumption_id": "O1-TOY-BOOT-BARRIER-PREHISTORY"
+    },
+    {
+      "snapshot_key": "STOP_REQUESTED-T07-REJECTION",
+      "before_sha256": "84d9e1a94b3429fd8948a4f118f13d77879abdf1b9776f973e3d095e044d02a9",
+      "after_sha256": "34e9742dae46f255bc31271d6dd82cc7e28c50d1e6ebca1f81c6302e0ad9dc15",
+      "rule": "G_NOMINAL/A06, PC03; explicitly assumed prehistory at tick0, before initial current_tick",
+      "assumption_id": "O1-TOY-BOOT-BARRIER-PREHISTORY"
+    },
+    {
+      "snapshot_key": "STOP_REQUESTED-T07-BOUNDARY",
+      "before_sha256": "159447ba190c04642b461b13e203cd9774df7e3c1642983ab3430943101f9157",
+      "after_sha256": "e80dbaa9340856a3c66521f92060ce1e242841bb8c831c41d9e7e70d7475f86f",
+      "rule": "G_NOMINAL/A06, PC03; explicitly assumed prehistory at tick0, before initial current_tick",
+      "assumption_id": "O1-TOY-BOOT-BARRIER-PREHISTORY"
+    },
+    {
+      "snapshot_key": "STOPPING",
+      "before_sha256": "957bfcf402a24fd8da55bda5872dc3265fc8b7593178b6fa25b0cbe64741ff57",
+      "after_sha256": "843a37da1caf325cc9c4db77d52654ddc51a0a0cbea11fd1949c6224b9b0bc3d",
+      "rule": "G_NOMINAL/A06, PC03; explicitly assumed prehistory at tick0, before initial current_tick",
+      "assumption_id": "O1-TOY-BOOT-BARRIER-PREHISTORY"
+    },
+    {
+      "snapshot_key": "STOPPING-T08-POSITIVE",
+      "before_sha256": "d24155bb383239ec8bea3e53c0fc6ebe4385b43cdd2f97ee173fb4708df4e156",
+      "after_sha256": "d06906d0ede4491395317dbead1ce185170e6a42edf5c93c913faab7cc87cd08",
+      "rule": "G_NOMINAL/A06, PC03; explicitly assumed prehistory at tick0, before initial current_tick",
+      "assumption_id": "O1-TOY-BOOT-BARRIER-PREHISTORY"
+    },
+    {
+      "snapshot_key": "STOPPING-T08-REJECTION",
+      "before_sha256": "3fe9edc124933af7cecbafa8c4c081b8fea33a244aa4643ef183bd4a1afd7ea9",
+      "after_sha256": "076d81c70c303a61bc8f83362133a16b1bb71825d26f2c7afd56849842309d8f",
+      "rule": "G_NOMINAL/A06, PC03; explicitly assumed prehistory at tick0, before initial current_tick",
+      "assumption_id": "O1-TOY-BOOT-BARRIER-PREHISTORY"
+    },
+    {
+      "snapshot_key": "STOPPING-T08-BOUNDARY",
+      "before_sha256": "007a4718fc0c2eed996e18d234b17c225bbf4e22fa5e3a20d3107a614ea24939",
+      "after_sha256": "12b61c56ad596263ec2e9a51916488ad856f4c8b51b3558765d0c919dac03451",
+      "rule": "G_NOMINAL/A06, PC03; explicitly assumed prehistory at tick0, before initial current_tick",
+      "assumption_id": "O1-TOY-BOOT-BARRIER-PREHISTORY"
+    },
+    {
+      "snapshot_key": "STOPPED_LATCHED-T09-wrong-source",
+      "before_sha256": "1d985fa5b0344e2b2ae763e96482f928e07b78a4a9a2582880bfe946102f75ca",
+      "after_sha256": "b8ad7864cc79e5d305d2684978c1d2e67b8857800d93e0b5f4b5f09e9fb867c6",
+      "rule": "G_NOMINAL/A06, PC03; explicitly assumed prehistory at tick0, before initial current_tick",
+      "assumption_id": "O1-TOY-BOOT-BARRIER-PREHISTORY"
+    },
+    {
+      "snapshot_key": "NO_VALID_POLICY",
+      "before_sha256": "066bbffa661db5b10326fd722095c6cadfce9d6d5b8d00cde33b53d80db0fc30",
+      "after_sha256": "2131ccfe9dbc5133c60e8478076e5da970a491efd79f299d39fde46df9eebb15",
+      "rule": "G_NOMINAL/A06, PC03; explicitly assumed prehistory at tick0, before initial current_tick",
+      "assumption_id": "O1-TOY-BOOT-BARRIER-PREHISTORY"
+    },
+    {
+      "snapshot_key": "NO_VALID_POLICY-T10-POSITIVE",
+      "before_sha256": "86c30032a74c6fd61d0548ef011965f833249200d325c5ffb1d7e88bceb9d344",
+      "after_sha256": "b9d439c95280832bbefa3d3a2ebbab836067e72ebf5894de0f4277680782f5b1",
+      "rule": "G_NOMINAL/A06, PC03; explicitly assumed prehistory at tick0, before initial current_tick",
+      "assumption_id": "O1-TOY-BOOT-BARRIER-PREHISTORY"
+    },
+    {
+      "snapshot_key": "NO_VALID_POLICY-T10-REJECTION",
+      "before_sha256": "9df6a36d8ac18e4331bb51825245e8afd0cf6b5b6040f93b972eae9fc1cc6c0e",
+      "after_sha256": "17d5c58588879d4c4515975cd77ee82922dd5ac98f66f67f4265c63cad289fb5",
+      "rule": "G_NOMINAL/A06, PC03; explicitly assumed prehistory at tick0, before initial current_tick",
+      "assumption_id": "O1-TOY-BOOT-BARRIER-PREHISTORY"
+    },
+    {
+      "snapshot_key": "NO_VALID_POLICY-T10-BOUNDARY",
+      "before_sha256": "330bd161f75ca3b89d6574def1e9a36ae480b89ea9776ebce175cbb86280bced",
+      "after_sha256": "fac63c21015e9cae45c4fd7fdd71d6b8126ce622c56022e0b7fd8e367cf207fc",
+      "rule": "G_NOMINAL/A06, PC03; explicitly assumed prehistory at tick0, before initial current_tick",
+      "assumption_id": "O1-TOY-BOOT-BARRIER-PREHISTORY"
+    },
+    {
+      "snapshot_key": "NO_VALID_POLICY-rest-candidate",
+      "before_sha256": "dab921460d3a5e01cf58b7a842fc25de5a9658bdecd818ae9602498eeb68fc54",
+      "after_sha256": "281ff49cc201abb69d077191fd140039238fa09dadde03d2618c8bb59100b53d",
+      "rule": "G_NOMINAL/A06, PC03; explicitly assumed prehistory at tick0, before initial current_tick",
+      "assumption_id": "O1-TOY-BOOT-BARRIER-PREHISTORY"
+    },
+    {
+      "snapshot_key": "RECOVERY-T12-POSITIVE",
+      "before_sha256": "f3234842eae32652c3795fc4160d7ec5eb5611f54fbf316c56856673483a8335",
+      "after_sha256": "fbc534076fc0d5065412cc86da7afac01df00f6d136ce16d0b4070e7d3998f04",
+      "rule": "G_NOMINAL/A06, PC03; explicitly assumed prehistory at tick0, before initial current_tick",
+      "assumption_id": "O1-TOY-BOOT-BARRIER-PREHISTORY"
+    },
+    {
+      "snapshot_key": "RECOVERY-T12-REJECTION",
+      "before_sha256": "e22ba5cd82f23f0315c380987fd18490dc0f0c9058e5c5b619d05d1be917d292",
+      "after_sha256": "9b1f074ea5e66210aaa853a94ad6b77064fcebfd769c08f93146ffc5044c72c6",
+      "rule": "G_NOMINAL/A06, PC03; explicitly assumed prehistory at tick0, before initial current_tick",
+      "assumption_id": "O1-TOY-BOOT-BARRIER-PREHISTORY"
+    },
+    {
+      "snapshot_key": "RECOVERY-T12-BOUNDARY",
+      "before_sha256": "60a7471f7294fc76036f3984d3d5be1b1f8817d8528203c492e5d31272b2550c",
+      "after_sha256": "c75cd4eb87739f06b842f91b386c64be46225b03c79b949c58a5d77e8ff7ff76",
+      "rule": "G_NOMINAL/A06, PC03; explicitly assumed prehistory at tick0, before initial current_tick",
+      "assumption_id": "O1-TOY-BOOT-BARRIER-PREHISTORY"
+    },
+    {
+      "snapshot_key": "DECELERATING-T12-POSITIVE",
+      "before_sha256": "b84d005211f147d0375fa4bc12d7bfabe1fa50f0d095652947961d7f0fc504af",
+      "after_sha256": "2c9804ed216bda1e481c6f8e0129de0f81faa085e597d8ea2d2d3ebd07824d0a",
+      "rule": "G_NOMINAL/A06, PC03; explicitly assumed prehistory at tick0, before initial current_tick",
+      "assumption_id": "O1-TOY-BOOT-BARRIER-PREHISTORY"
+    },
+    {
+      "snapshot_key": "DECELERATING-T12-REJECTION",
+      "before_sha256": "1ff17ddfa720740ea4e8fd7f603eef22d9d8d8b6953265be8456d6308d37a5fa",
+      "after_sha256": "724b431f97aba9f354a662dc0acbd2089e95dbe69dae54a9985600e18de4c1d2",
+      "rule": "G_NOMINAL/A06, PC03; explicitly assumed prehistory at tick0, before initial current_tick",
+      "assumption_id": "O1-TOY-BOOT-BARRIER-PREHISTORY"
+    },
+    {
+      "snapshot_key": "DECELERATING-T12-BOUNDARY",
+      "before_sha256": "0922c67f0675651b35aacfd70b22c9c6cc679038189f13e2cb358cd63143b8c7",
+      "after_sha256": "d72b924f1fdf2262d2318097c6af9e310e1c5e959a2e8a3b9e819b6f4f226b34",
+      "rule": "G_NOMINAL/A06, PC03; explicitly assumed prehistory at tick0, before initial current_tick",
+      "assumption_id": "O1-TOY-BOOT-BARRIER-PREHISTORY"
+    },
+    {
+      "snapshot_key": "STOPPED_LATCHED",
+      "before_sha256": "1d985fa5b0344e2b2ae763e96482f928e07b78a4a9a2582880bfe946102f75ca",
+      "after_sha256": "b8ad7864cc79e5d305d2684978c1d2e67b8857800d93e0b5f4b5f09e9fb867c6",
+      "rule": "G_NOMINAL/A06, PC03; explicitly assumed prehistory at tick0, before initial current_tick",
+      "assumption_id": "O1-TOY-BOOT-BARRIER-PREHISTORY"
+    },
+    {
+      "snapshot_key": "STOPPED_LATCHED-reset-POSITIVE",
+      "before_sha256": "a50426cb6aeb146179d132fbf70115a65a0e64259dc566d8a256b3a6e860105d",
+      "after_sha256": "029b156450ca060180927ea403da3d3d3755867990131954fe91a32dc81f549d",
+      "rule": "G_NOMINAL/A06, PC03; explicitly assumed prehistory at tick0, before initial current_tick",
+      "assumption_id": "O1-TOY-BOOT-BARRIER-PREHISTORY"
+    },
+    {
+      "snapshot_key": "STOPPED_LATCHED-reset-REJECTION",
+      "before_sha256": "870ab72e6477997a37cdd1d814605ca12946c45e270eae33f7d6fe22ec7f7ede",
+      "after_sha256": "0180e875887238c2503c2786fcbd81909ad81091469f711770705a050b8b031e",
+      "rule": "G_NOMINAL/A06, PC03; explicitly assumed prehistory at tick0, before initial current_tick",
+      "assumption_id": "O1-TOY-BOOT-BARRIER-PREHISTORY"
+    },
+    {
+      "snapshot_key": "STOPPED_LATCHED-reset-BOUNDARY",
+      "before_sha256": "870ab72e6477997a37cdd1d814605ca12946c45e270eae33f7d6fe22ec7f7ede",
+      "after_sha256": "0180e875887238c2503c2786fcbd81909ad81091469f711770705a050b8b031e",
+      "rule": "G_NOMINAL/A06, PC03; explicitly assumed prehistory at tick0, before initial current_tick",
+      "assumption_id": "O1-TOY-BOOT-BARRIER-PREHISTORY"
+    },
+    {
+      "snapshot_key": "STOPPED_LATCHED-rest-expires",
+      "before_sha256": "a9e2954d56763a1cdcffcd4a760dacde4d39631229ac15c29c4ecbf93b028ad0",
+      "after_sha256": "27900b7da0dad2e097deb7dafda7710663b4422b1ba3d64f3fd00690dd469aff",
+      "rule": "G_NOMINAL/A06, PC03; explicitly assumed prehistory at tick0, before initial current_tick",
+      "assumption_id": "O1-TOY-BOOT-BARRIER-PREHISTORY"
+    },
+    {
+      "snapshot_key": "NORMAL-no-live-grant",
+      "before_sha256": "77a57a6c4a02fd6c6422262a22919c9c83123406069698fa0b5243832d27086d",
+      "after_sha256": "c7ca458f06b45a8cc19e5e8d8f0dcf3653209f85a46289291a8aeb86303aec21",
+      "rule": "G_NOMINAL/A06, PC03; explicitly assumed prehistory at tick0, before initial current_tick",
+      "assumption_id": "O1-TOY-BOOT-BARRIER-PREHISTORY"
+    },
+    {
+      "snapshot_key": "ORIGINAL-V05-A-map",
+      "before_sha256": "50934c3d3943427549b9274e00d8f151939546cade6f74fc45e42fe8b9acd789",
+      "after_sha256": "1aced02b9d0e20fef3909995317eae717a75f796e418887b8c4d33b23d1b6750",
+      "rule": "G_NOMINAL/A06, PC03; explicitly assumed prehistory at tick0, before initial current_tick",
+      "assumption_id": "O1-TOY-BOOT-BARRIER-PREHISTORY"
+    }
+  ],
+  "barrier_scope_rationale": "The same already-declared BOOT_BARRIER_A host/queue/session context was incomplete across59 seed snapshots. Completing it consistently also prevents unrelated negative cases from acquiring an unintended missing-barrier cause. Existing RESET_ACK UNKNOWN/rejected records remain unchanged. All additions are explicit synthetic prehistory, not physical delivery claims.",
+  "case_revision_history": [
+    {
+      "case_id": "T01-DISARMED-POSITIVE",
+      "before_case_sha256": "de4f2bd12b9acf01a98ffef82c54ffbdc6668f52ec6b669f5571b4eff6c2752f",
+      "after_case_sha256": "c56cf22e8256fbbd046310f978bf54e55aa95aea42a009a5d986fef6073478e2",
+      "before_snapshot_sha256": "4e908bb7fb4da427930d09b5f783368a8f11b022ae7c87ec3cf6e806aaca2157",
+      "after_snapshot_sha256": "483c94eef86fcd05d3fc364721da946763704c7e961dea698d47f6cce915bb99",
+      "projection_changed": false,
+      "reason": "S-R2 explicit synthetic boot barrier prehistory; full traces added separately."
+    },
+    {
+      "case_id": "T01-DISARMED-REJECTION",
+      "before_case_sha256": "0117f4ce0ee6f5ec9e7c57fa18cb0cd1dae786593c85f37cedae16bbf35d73e5",
+      "after_case_sha256": "9da91bfcf5486b3b801e8b6e2366103de16ac239b36c43ca687566ac830cae5b",
+      "before_snapshot_sha256": "4e908bb7fb4da427930d09b5f783368a8f11b022ae7c87ec3cf6e806aaca2157",
+      "after_snapshot_sha256": "483c94eef86fcd05d3fc364721da946763704c7e961dea698d47f6cce915bb99",
+      "projection_changed": false,
+      "reason": "S-R2 explicit synthetic boot barrier prehistory; full traces added separately."
+    },
+    {
+      "case_id": "T01-DISARMED-BOUNDARY",
+      "before_case_sha256": "2e103e378f7a8163eb4eb529d3b30ee7721c2115cde48593dc4c1a1dceea91c9",
+      "after_case_sha256": "2d69a2d55ed77ca32844f9390a573da08b84c026a8f384541f7b1bf8858c2709",
+      "before_snapshot_sha256": "d79248ad749588504761d80b6c087adc928259eb64442aa7c5671b7ad22fc987",
+      "after_snapshot_sha256": "761118361f9627c2f699606aee7e4b1c83ab820924dde2f12f96c2f4aa95e900",
+      "projection_changed": false,
+      "reason": "S-R2 explicit synthetic boot barrier prehistory; full traces added separately."
+    },
+    {
+      "case_id": "T02-NORMAL-POSITIVE",
+      "before_case_sha256": "a1b2c1b35f906965f1229f246115d456c7ca0063e59aa261a846f1fd1c91f8f2",
+      "after_case_sha256": "3974890d83a58f8c69d81e08440ed93236bce911a54100e71aa8ab8a9ec70aa9",
+      "before_snapshot_sha256": "2feb8e809f8781fd7eed9602762661d6899f322fc131f055219c0b8142c17b79",
+      "after_snapshot_sha256": "6cfdacc78d96dd49ce83ed2ed6035f3077cd443d5c744ec84a13ccdd1c343b55",
+      "projection_changed": false,
+      "reason": "S-R2 explicit synthetic boot barrier prehistory; full traces added separately."
+    },
+    {
+      "case_id": "T02-NORMAL-REJECTION",
+      "before_case_sha256": "e85525a118b8e1356851e29393175db9e1701c830451ef61bfffafef8493b24a",
+      "after_case_sha256": "63c227db5e3041a11ebafdfb195b82d394094085ac9434563271a42560460939",
+      "before_snapshot_sha256": "b941b480159ba86d3d5d88089e1bd0919b44db05169c535de76e083e011efc15",
+      "after_snapshot_sha256": "9b6bc9f37b6d7197e0e6b26317ebbf692fe9fc271c5ff66ac54144ca0144cd15",
+      "projection_changed": false,
+      "reason": "S-R2 explicit synthetic boot barrier prehistory; full traces added separately."
+    },
+    {
+      "case_id": "T02-NORMAL-BOUNDARY",
+      "before_case_sha256": "41c31db2e672ffd4185ba91255cc01c81710376e76b4a5436ae5111cf2d0b1cb",
+      "after_case_sha256": "6dba0c1e1e2195ddf08a3cfa9ad2560a22b3148bbe266bb1769a8ac9bdb9839e",
+      "before_snapshot_sha256": "d974cf83c10cc911d9295eec5bb0fa81bf2e96d835f88549f11d4ac0a7304197",
+      "after_snapshot_sha256": "a7efbcee7eaac24ad5e46d981de364805987a69e7b2d31bb29e3121d5dea02a8",
+      "projection_changed": false,
+      "reason": "S-R2 explicit synthetic boot barrier prehistory; full traces added separately."
+    },
+    {
+      "case_id": "T03-WARNING-POSITIVE",
+      "before_case_sha256": "b5fc288fb6bbf438c0f565362e1c6e86e968fd173efdaae9f53ee9f5f68f8cc6",
+      "after_case_sha256": "5087852680f9794b8aff7a8221101f87082f8dd920ef8fbcaf2292541625ccbb",
+      "before_snapshot_sha256": "e494e99394790ebfc4619d421946f5d36e3c0fd6f2999c631e7e1374370c67c4",
+      "after_snapshot_sha256": "280afc4ba355200d2e4754acfdc9579a5842ec1bcb2b27dc90bfed8b1b6f5aac",
+      "projection_changed": false,
+      "reason": "S-R2 explicit synthetic boot barrier prehistory; full traces added separately."
+    },
+    {
+      "case_id": "T03-WARNING-REJECTION",
+      "before_case_sha256": "d0e6fa81e242bd839413a30b213d2e9011a61161b5108833289c2d320a75d123",
+      "after_case_sha256": "ab9cf06749b0b50e09f2f278aff7af78ff166f66275be73796eeb1e14c6fbbe1",
+      "before_snapshot_sha256": "89b5539c72a16d92aaf72c9e37b875e9e224cc7d26399bd6149337520c0940b6",
+      "after_snapshot_sha256": "edaf6ee4af5df192a35f0942428c4ef2cca31865df11a0229be36e5119420382",
+      "projection_changed": false,
+      "reason": "S-R2 explicit synthetic boot barrier prehistory; full traces added separately."
+    },
+    {
+      "case_id": "T03-WARNING-BOUNDARY",
+      "before_case_sha256": "dae86a819d3a5536974b7bfcd760ddb5a57cd958f4886b6dfe2d2a1f103caf95",
+      "after_case_sha256": "b9185f10aec3793588c0d7a859f5cf2a4259d7ca942b2fb817bae8cab5775168",
+      "before_snapshot_sha256": "59bf4aef1e628920c3b48b8ec4463a84cffdd7a586a7bbde0fa83b93db8a4f2d",
+      "after_snapshot_sha256": "8ff510bda0998c1598c14bfe856095e20e7f3e8689d1d745bbfe91462840e8a9",
+      "projection_changed": false,
+      "reason": "S-R2 explicit synthetic boot barrier prehistory; full traces added separately."
+    },
+    {
+      "case_id": "T04-NORMAL-POSITIVE",
+      "before_case_sha256": "6b617bcb0e725ee555ea0fdacda8dca978ebc89ba0bd7d90d3cf0a63b874ecc2",
+      "after_case_sha256": "161253eafcfaadeb794334647e8eae83321a551a60728b5ef0cfca93d3a9c365",
+      "before_snapshot_sha256": "5767774d5a2fc96e63f04cd31c3408d3fdf85bc37f2a03a1db80ee5c415d9077",
+      "after_snapshot_sha256": "e2c0c7d4e99efa2694cbaa2313f033aa2053ca08b8cbdc4596b378210688d4bd",
+      "projection_changed": false,
+      "reason": "S-R2 explicit synthetic boot barrier prehistory; full traces added separately."
+    },
+    {
+      "case_id": "T04-NORMAL-REJECTION",
+      "before_case_sha256": "88b8ae78abcdb7e0625fbe1aea409a1178620b3b52a2eeb3997a9df6512a99b5",
+      "after_case_sha256": "5e431807bdafb8f9af0cc147dbe54fccc6985818d1a8363559a85b2fe1fca0ca",
+      "before_snapshot_sha256": "45c75b230a41945a71e03ff2fb591328cc9e30e640e73284b65a1993a8025efe",
+      "after_snapshot_sha256": "7cf8678ed4c22accf5d7d8d516775746385a97196d0c87e16c604002be58c024",
+      "projection_changed": false,
+      "reason": "S-R2 explicit synthetic boot barrier prehistory; full traces added separately."
+    },
+    {
+      "case_id": "T04-NORMAL-BOUNDARY",
+      "before_case_sha256": "c0124aa3d51eebead79f3e28e5d1de286b854a113b5d6b05809bf7185fae6f9e",
+      "after_case_sha256": "32db5e519b3c4a7daa80670cf3e4dcb11c10e77ba95787cd8f2437b20f23b7d6",
+      "before_snapshot_sha256": "1fc704d1e89025d90def580cb19d03c446b4107e1b7306e9aac4c3c19e9c3ac5",
+      "after_snapshot_sha256": "c1cad76d477cbc2dadcbff1d27e1084a064020b7f228b23843824d2597e3c2f6",
+      "projection_changed": false,
+      "reason": "S-R2 explicit synthetic boot barrier prehistory; full traces added separately."
+    },
+    {
+      "case_id": "T04-WARNING-POSITIVE",
+      "before_case_sha256": "c3d1bdc811c31b6c3e9702e7e15c19f18f834adaee336e3ad51995c7b59b7497",
+      "after_case_sha256": "582c34f95cf41b3e938cafc66bce0d9f0343fed06e14c189a874ca223bed2161",
+      "before_snapshot_sha256": "1a6d8609be5c52a1a96a717983a588bac0486194655e96d802f1a107f3ac6470",
+      "after_snapshot_sha256": "ae17adf9fd1281b6e386bf6e0d25e93bfc888cf0ae9d5a64e3d2fbffa21f1185",
+      "projection_changed": false,
+      "reason": "S-R2 explicit synthetic boot barrier prehistory; full traces added separately."
+    },
+    {
+      "case_id": "T04-WARNING-REJECTION",
+      "before_case_sha256": "c2a48985445caff79ffaf1ab296fa4ed160395ee8c08b4adf86992d65908a923",
+      "after_case_sha256": "622534d6206ade552174dc2b0711460f790af1d07dc80ea66cdd7b5f402915da",
+      "before_snapshot_sha256": "e3b1247386d6438d610988731bdcdefb4259be2856d3be3cd3e485587f9be06e",
+      "after_snapshot_sha256": "d043e012fe02a9627c83953154e82a1d5c4abc099a7d38bc40f11cf6afc072c4",
+      "projection_changed": false,
+      "reason": "S-R2 explicit synthetic boot barrier prehistory; full traces added separately."
+    },
+    {
+      "case_id": "T04-WARNING-BOUNDARY",
+      "before_case_sha256": "b2a17f6b41df09fb871652630cda7d7a11b65e5f9a21588a9ba448994a17f205",
+      "after_case_sha256": "6932874e82b5a6ce458d140882bd1fcf3745ff8e8ce24a80eb0e78824590bf08",
+      "before_snapshot_sha256": "247a278618f150796e867a46101c28882b163c5462f9f8674cdd66739cef5e35",
+      "after_snapshot_sha256": "0f4ff5e0ee8a092a4b8f6f630bd8c8a9cb702060089517a66857dde201b0d4f8",
+      "projection_changed": false,
+      "reason": "S-R2 explicit synthetic boot barrier prehistory; full traces added separately."
+    },
+    {
+      "case_id": "T05-NORMAL-POSITIVE",
+      "before_case_sha256": "677e7930e13413fe511e0f2d8cb0c6966857ce3a5912db70a18658cbe2585545",
+      "after_case_sha256": "8036f8e82fb92eb2e4cb32d8a898e2dfad030411957e9afcc534477f1ce863e1",
+      "before_snapshot_sha256": "8c9bd16ca190f589b40ca5756c7fbff3a65990763089b916aa00b8cc912e1975",
+      "after_snapshot_sha256": "b067cec3b89c80e7e39cf6b6c120eba72114cca13dc8656f489937bbb6d2b73b",
+      "projection_changed": false,
+      "reason": "S-R2 explicit synthetic boot barrier prehistory; full traces added separately."
+    },
+    {
+      "case_id": "T05-NORMAL-REJECTION",
+      "before_case_sha256": "c958b9a314d19de14dba901698d455cc52eb3ded388e7af51b4c18974709ac54",
+      "after_case_sha256": "a7bca6b3d0979e8ffec19f5cfaa1a4fb23c203615476193ddfec25cf4e9df3fd",
+      "before_snapshot_sha256": "abba0fd8cb9c7fb187cd4f72d5b1ceceb6c3f0ac8acd874800bb3a8f6369878b",
+      "after_snapshot_sha256": "5ef025ce2c651b28924a93cdf21f2951d34a83e79f9edc62a87de0c8b3953eb3",
+      "projection_changed": false,
+      "reason": "S-R2 explicit synthetic boot barrier prehistory; full traces added separately."
+    },
+    {
+      "case_id": "T05-NORMAL-BOUNDARY",
+      "before_case_sha256": "51ab6c500e4f53aef41198af4a01e3ead17cd6b67008d4127daf7ac2dce05219",
+      "after_case_sha256": "d4a8272a9b060c221b79f6a932a28c25f02b44a9d2bbb1083b32bae7f16d82d0",
+      "before_snapshot_sha256": "a8a5d04ca4da244bdebe15f61ebe5e0538dc1746be66c87456a6b23dbe240584",
+      "after_snapshot_sha256": "d866f5d5bea27d846b321a40051f515c3a717286ca080e13fb49587e9d7be3b8",
+      "projection_changed": false,
+      "reason": "S-R2 explicit synthetic boot barrier prehistory; full traces added separately."
+    },
+    {
+      "case_id": "T05-WARNING-POSITIVE",
+      "before_case_sha256": "88816ba5441487bf06b079ea5cfd4e86b11de4971b7b25369c4af2a28bcdd70a",
+      "after_case_sha256": "350194c3ad2f883f956726a8a147cb957ab3b3ccf05b78cb574cfdaf86099c0c",
+      "before_snapshot_sha256": "4d4feec9955653fcbe52bbe1d8adbffbd31eccfaf947730193a8b30589b9b058",
+      "after_snapshot_sha256": "c6742338e9a2574ac783650ec0a921019ffa802711b5e36d13d5eaa411953cd2",
+      "projection_changed": false,
+      "reason": "S-R2 explicit synthetic boot barrier prehistory; full traces added separately."
+    },
+    {
+      "case_id": "T05-WARNING-REJECTION",
+      "before_case_sha256": "f80aaeedc53ab59d27bd88be43e7af62f77e631b38d5f1b99461e4688c7938c4",
+      "after_case_sha256": "3d509a5fbc49e8a695ec0cfc2909d256f9e97279464bbe8b20e1c1fb19cec641",
+      "before_snapshot_sha256": "54a66ec7095dbd74da03db59db34fb2e9bbb16a7b5396de0a40310a0aa739010",
+      "after_snapshot_sha256": "9cae9e7f9dcba7f8d545c5b0431be1b37f7a7a5f2f2c7395b5344272a2e04ad2",
+      "projection_changed": false,
+      "reason": "S-R2 explicit synthetic boot barrier prehistory; full traces added separately."
+    },
+    {
+      "case_id": "T05-WARNING-BOUNDARY",
+      "before_case_sha256": "835b4674ef26f96178bc9741cd2758108699f70a2a6052f528cc3b4cfa54391b",
+      "after_case_sha256": "583e8b5b576526f1f78cc479cdcf68d4f32adbbf81f74c51aaf2d2e75d411ba1",
+      "before_snapshot_sha256": "dc63c742f5227032cc841ff9a083792d8475467e0109fe408f5eb553b7738a74",
+      "after_snapshot_sha256": "914abb0c00ed698cc670fff08332b6a32d5b0fc67d7b444fc206299fef6c1f0a",
+      "projection_changed": false,
+      "reason": "S-R2 explicit synthetic boot barrier prehistory; full traces added separately."
+    },
+    {
+      "case_id": "T05-RECOVERY-POSITIVE",
+      "before_case_sha256": "b4850d240d98009193b9f1e88cd6379917ca5ef486669a9fb33f98b597410a21",
+      "after_case_sha256": "e7dfb2d436032dc93e498cade26a484eb7adf1b7297fb11d827b82ed70bf7c48",
+      "before_snapshot_sha256": "863d5cd62fdb1b8d0bb2cba3e609113c70d51fcbf23fdcc6c74b4f054d9aef85",
+      "after_snapshot_sha256": "1785e214e0874c119b6ce48c623947c285ddd77b66e33f99ca72c476e7b9bffa",
+      "projection_changed": false,
+      "reason": "S-R2 explicit synthetic boot barrier prehistory; full traces added separately."
+    },
+    {
+      "case_id": "T05-RECOVERY-REJECTION",
+      "before_case_sha256": "6117cbae5c3cfe9a2c08f268682c02ed1739b660c951721df027733a81d6ae98",
+      "after_case_sha256": "96bda38ef55467051665435f331ba867b4a420171f61c8988d08d6981b17d35f",
+      "before_snapshot_sha256": "458b113a5fd800e706bdd602e07bdb47b32fcdd059554dbf50f43cec0d76b4c9",
+      "after_snapshot_sha256": "df72a5a534d3be7c9ce6d33059be58f9611f6c7e60732cc10d4303621c88d2cd",
+      "projection_changed": false,
+      "reason": "S-R2 explicit synthetic boot barrier prehistory; full traces added separately."
+    },
+    {
+      "case_id": "T05-RECOVERY-BOUNDARY",
+      "before_case_sha256": "bc8c2ba452682afa649176b80d91b8f612904336798c47445bad05ab5bd65c90",
+      "after_case_sha256": "6f2305aecd54cd2595c8c11ddb4a08019c24a239c809cf9d72f0dfd8277cc306",
+      "before_snapshot_sha256": "3803e68213dbfdb094317f56025d14df76eae6c5869d175737d6e6c6a8884f04",
+      "after_snapshot_sha256": "a7e33d0cca3d9319394827f7f51fe4a1e05abd1917f0a4d5b79977a5e75e46fa",
+      "projection_changed": false,
+      "reason": "S-R2 explicit synthetic boot barrier prehistory; full traces added separately."
+    },
+    {
+      "case_id": "T06-DISARMED-POSITIVE",
+      "before_case_sha256": "9e26fe7ab7027e00a96bca3c021631bdd4e7bb596d1db33e0f210a218fe6b99f",
+      "after_case_sha256": "0088b04623f85bbba54c7d93e55f747f8f7ad1e2d3e23fa19f7929c41c0fd6b6",
+      "before_snapshot_sha256": "4e908bb7fb4da427930d09b5f783368a8f11b022ae7c87ec3cf6e806aaca2157",
+      "after_snapshot_sha256": "483c94eef86fcd05d3fc364721da946763704c7e961dea698d47f6cce915bb99",
+      "projection_changed": false,
+      "reason": "S-R2 explicit synthetic boot barrier prehistory; full traces added separately."
+    },
+    {
+      "case_id": "T06-DISARMED-REJECTION",
+      "before_case_sha256": "170fb2647825c50cfdb6edac1d2dbd7addd2ab3c9ec491112a57540fe17f656d",
+      "after_case_sha256": "cd1b35b1ace33ac3a75dc51380393578c983712d12d086db551a349aeda7b39c",
+      "before_snapshot_sha256": "4e908bb7fb4da427930d09b5f783368a8f11b022ae7c87ec3cf6e806aaca2157",
+      "after_snapshot_sha256": "483c94eef86fcd05d3fc364721da946763704c7e961dea698d47f6cce915bb99",
+      "projection_changed": false,
+      "reason": "S-R2 explicit synthetic boot barrier prehistory; full traces added separately."
+    },
+    {
+      "case_id": "T06-DISARMED-BOUNDARY",
+      "before_case_sha256": "1cacb684108b454311bd1f3b8d753583aa96e1e64af239d68a2ef928064c326c",
+      "after_case_sha256": "bcd046fdf7c3fa3c0b9b37ed6f400c0280ec182afd848ae47e0545488a152ae9",
+      "before_snapshot_sha256": "54e098be26f31075df32aa41dcdbeb127f75d7618f85e4507954a7c481f01026",
+      "after_snapshot_sha256": "427e056aae26a0a79c5d0b86abaeecd1bd5c33af43d8d8a6935c964644b4cd2e",
+      "projection_changed": false,
+      "reason": "S-R2 explicit synthetic boot barrier prehistory; full traces added separately."
+    },
+    {
+      "case_id": "T06-NORMAL-POSITIVE",
+      "before_case_sha256": "849ec128736ea1408d55b0dd4399df00549dc87813b1c86cc569e6a9116d0171",
+      "after_case_sha256": "cdde18ff8c66cf7aca83566e8829239abc4d1deea09f3662980596961ece08c1",
+      "before_snapshot_sha256": "823332a71b80f91a93a213fa0f19ba88d95b36aa2869b22b277b32011f659897",
+      "after_snapshot_sha256": "88c8bc939e41687f3a204f70f53bd6268e2acf4716e2a3c3e831bd5d2a77b3ea",
+      "projection_changed": false,
+      "reason": "S-R2 explicit synthetic boot barrier prehistory; full traces added separately."
+    },
+    {
+      "case_id": "T06-NORMAL-REJECTION",
+      "before_case_sha256": "f04449b46c3bca7a208de993175e30361f4f6b462d6e4ba17b5c70dca4d5b09a",
+      "after_case_sha256": "b01928294ee671cac41ee6e58f3482177ac43165250833348007f0888df45969",
+      "before_snapshot_sha256": "823332a71b80f91a93a213fa0f19ba88d95b36aa2869b22b277b32011f659897",
+      "after_snapshot_sha256": "88c8bc939e41687f3a204f70f53bd6268e2acf4716e2a3c3e831bd5d2a77b3ea",
+      "projection_changed": false,
+      "reason": "S-R2 explicit synthetic boot barrier prehistory; full traces added separately."
+    },
+    {
+      "case_id": "T06-NORMAL-BOUNDARY",
+      "before_case_sha256": "b1a5a2d4db671ecfef96c7f77d3409a9460c91ffd2ced700ac732c2a48422a57",
+      "after_case_sha256": "e46d58954232ea8dec10fa1d9b650d998717cadafc66c3302778b7cede579ed4",
+      "before_snapshot_sha256": "bf5d46f352d5c60cd26407e377db61e87964f369c0bf2052657b5b3c171a12fb",
+      "after_snapshot_sha256": "f38d280685e054d68a4dc588937315ef31389951d35ebc20668748a758792d78",
+      "projection_changed": false,
+      "reason": "S-R2 explicit synthetic boot barrier prehistory; full traces added separately."
+    },
+    {
+      "case_id": "T06-WARNING-POSITIVE",
+      "before_case_sha256": "0cf8d83d0cc450016ca8d22d6cc4f9bbdea9bc828ea030b0b9c39da3afd249ba",
+      "after_case_sha256": "016f7530d52bcf86ad9b46c453fbcf8f617dd39cbe51a8813d0c18b004c462c5",
+      "before_snapshot_sha256": "01785441e700b2d0ff7796dc3f09853d89e2c1e6d844c8f051fe94f0bad98fbe",
+      "after_snapshot_sha256": "ec44944758f9f2cb602248aa1f7a07e40de55820f4c2004b64b0c02ecc204c7a",
+      "projection_changed": false,
+      "reason": "S-R2 explicit synthetic boot barrier prehistory; full traces added separately."
+    },
+    {
+      "case_id": "T06-WARNING-REJECTION",
+      "before_case_sha256": "da649bce381df367e69b8ed87d8b3adae1608abd2e8d9ba2425a59540c4710be",
+      "after_case_sha256": "4e7fde26c5fa6d1b87bd92902ee9f2d55797f4f76c8cd18b155591568bb1b719",
+      "before_snapshot_sha256": "01785441e700b2d0ff7796dc3f09853d89e2c1e6d844c8f051fe94f0bad98fbe",
+      "after_snapshot_sha256": "ec44944758f9f2cb602248aa1f7a07e40de55820f4c2004b64b0c02ecc204c7a",
+      "projection_changed": false,
+      "reason": "S-R2 explicit synthetic boot barrier prehistory; full traces added separately."
+    },
+    {
+      "case_id": "T06-WARNING-BOUNDARY",
+      "before_case_sha256": "4fa514868bda5283b6328944b217208cb95e6ce2bc4eaf2f83947647bbc99f3d",
+      "after_case_sha256": "4785e19ec6a518e316332df1fe41185bb822a96fcaf53138c065fd1bfe4b4cad",
+      "before_snapshot_sha256": "3e12ddb9714f1219199406efbd84c848b036e76bc7061b2a08f0a2713c392a3c",
+      "after_snapshot_sha256": "4d1bdc58e017cf3fcdc1ceb8287d647c6ac9ddb8892d3e1549b20ed48379a6ae",
+      "projection_changed": false,
+      "reason": "S-R2 explicit synthetic boot barrier prehistory; full traces added separately."
+    },
+    {
+      "case_id": "T06-RECOVERY-POSITIVE",
+      "before_case_sha256": "f11e285f3f3d9695bea0187c4440c32f2512920b3ad8a9b019793eca07f07b34",
+      "after_case_sha256": "853f36d7f80b4810aeba48ec7925486b7566d7d9d8e8e895e33615a99d1f0674",
+      "before_snapshot_sha256": "aba9c3ece598ba38086bc27539b3d8929854450f6a2ea03021bda37ac765b873",
+      "after_snapshot_sha256": "3cb3297706226f9be4c8a36f823004393014dd34049c58b84129586f47e4b013",
+      "projection_changed": false,
+      "reason": "S-R2 explicit synthetic boot barrier prehistory; full traces added separately."
+    },
+    {
+      "case_id": "T06-RECOVERY-REJECTION",
+      "before_case_sha256": "7e67103e7b98a28b0145dd59828f43d0132d88c5d8726fe3cc0f202991ed9fd3",
+      "after_case_sha256": "087e8f3be9ffcb7099be236176a0f2ea022ffcb7c6138a1b453fefe6681f57e6",
+      "before_snapshot_sha256": "aba9c3ece598ba38086bc27539b3d8929854450f6a2ea03021bda37ac765b873",
+      "after_snapshot_sha256": "3cb3297706226f9be4c8a36f823004393014dd34049c58b84129586f47e4b013",
+      "projection_changed": false,
+      "reason": "S-R2 explicit synthetic boot barrier prehistory; full traces added separately."
+    },
+    {
+      "case_id": "T06-RECOVERY-BOUNDARY",
+      "before_case_sha256": "ade5cef141ea9cb134b261c52a38a3b5c878c7e44f9e92240ade5d1cb2e97889",
+      "after_case_sha256": "ffdcfccfefd40a2c81cc3eaa05c6d4811ae020aec265b26daf2f1d3c6783a481",
+      "before_snapshot_sha256": "02199b59fcc3ffc4353157f54f14b75c4c1cc575584b2ef0df87598e591f61f5",
+      "after_snapshot_sha256": "dbfbe519252895d9093b3134eb79729742915a57d2e3b29c37fa52d3a9996a47",
+      "projection_changed": false,
+      "reason": "S-R2 explicit synthetic boot barrier prehistory; full traces added separately."
+    },
+    {
+      "case_id": "T06-DECELERATING-POSITIVE",
+      "before_case_sha256": "c288baa664760837fa7b2ea71da671f9f65d4219b4765e294b51210cd00e294d",
+      "after_case_sha256": "a7b625432297014205ac89562f49a31727dc103d1c9d5a56c7800876d31eb1f4",
+      "before_snapshot_sha256": "44cc28b4831a7236023fc8977ed11f30215d78d98fc1ada22b3dc827a34668a7",
+      "after_snapshot_sha256": "7935c99c15a4979c8ac893a56018bd5dd2976ab683527d7567903b1d5d37d236",
+      "projection_changed": false,
+      "reason": "S-R2 explicit synthetic boot barrier prehistory; full traces added separately."
+    },
+    {
+      "case_id": "T06-DECELERATING-REJECTION",
+      "before_case_sha256": "5da7eaa90fcd7906a826974be9b3e645aaa274562770626faa6f3060c24defc3",
+      "after_case_sha256": "53b874e4e462b0153e946afe79b91cba3a29ec15b357c2c8dd86e247f03b8ebf",
+      "before_snapshot_sha256": "44cc28b4831a7236023fc8977ed11f30215d78d98fc1ada22b3dc827a34668a7",
+      "after_snapshot_sha256": "7935c99c15a4979c8ac893a56018bd5dd2976ab683527d7567903b1d5d37d236",
+      "projection_changed": false,
+      "reason": "S-R2 explicit synthetic boot barrier prehistory; full traces added separately."
+    },
+    {
+      "case_id": "T06-DECELERATING-BOUNDARY",
+      "before_case_sha256": "212733d01ffe4ccc1b552fcd369121a25b732fb4d9327746893e5e9d7949f42d",
+      "after_case_sha256": "c8eefe8c05e3ad8c05ca4a7cdc56f50254692725b9e595ca1fb091e106ab453f",
+      "before_snapshot_sha256": "e8297b67f1fd0b45038812d150df917c47bfb4f74a6cce585750ddd29afdc5ef",
+      "after_snapshot_sha256": "c912289b6640ffb25c85d656d1e9193a5587f6afc51e8e63ada6830a9972e945",
+      "projection_changed": false,
+      "reason": "S-R2 explicit synthetic boot barrier prehistory; full traces added separately."
+    },
+    {
+      "case_id": "T07-STOP_REQUESTED-POSITIVE",
+      "before_case_sha256": "3fdf889328961505d118249cdfda58dba83face2e1e6f06ad903f3b1f2311e9d",
+      "after_case_sha256": "68d528320c3f37828ce015434ea54774401bd075aeb521621e6218e90ab3a307",
+      "before_snapshot_sha256": "7187c21774ca538c35e535f446f5f3928d8b137af3c71dd06f1a9a6820a9b0f0",
+      "after_snapshot_sha256": "f0acebf574b3c16bf2ee85e94a797c4ff069c619470e603817232d4561207fe7",
+      "projection_changed": false,
+      "reason": "S-R2 explicit synthetic boot barrier prehistory; full traces added separately."
+    },
+    {
+      "case_id": "T07-STOP_REQUESTED-REJECTION",
+      "before_case_sha256": "a6929c5992cf2dc1bf628d3650dc4ebd7592d9d38479e4644ca94932c7921cdc",
+      "after_case_sha256": "ed8c473cf5516001495374994402052afcb1b52045d09fa7b9068c1f1ae4047d",
+      "before_snapshot_sha256": "84d9e1a94b3429fd8948a4f118f13d77879abdf1b9776f973e3d095e044d02a9",
+      "after_snapshot_sha256": "34e9742dae46f255bc31271d6dd82cc7e28c50d1e6ebca1f81c6302e0ad9dc15",
+      "projection_changed": false,
+      "reason": "S-R2 explicit synthetic boot barrier prehistory; full traces added separately."
+    },
+    {
+      "case_id": "T07-STOP_REQUESTED-BOUNDARY",
+      "before_case_sha256": "594dc986fd9f964ee19c98f3b287438a7e5d985f89d28a513473970eef50f2f0",
+      "after_case_sha256": "17a97c947464eba6a6b86823b4694f2a5615e710e2b6eb060535114ee63a8b2a",
+      "before_snapshot_sha256": "159447ba190c04642b461b13e203cd9774df7e3c1642983ab3430943101f9157",
+      "after_snapshot_sha256": "e80dbaa9340856a3c66521f92060ce1e242841bb8c831c41d9e7e70d7475f86f",
+      "projection_changed": false,
+      "reason": "S-R2 explicit synthetic boot barrier prehistory; full traces added separately."
+    },
+    {
+      "case_id": "T08-STOPPING-POSITIVE",
+      "before_case_sha256": "31b93e1862bef2979d0c0b3f99bd0764efc3acf2d17315ec0e65edb7741dc773",
+      "after_case_sha256": "9731119557865808b45ad90d49ea8f43a7d76fae8b613aef14ab9dcc934e860f",
+      "before_snapshot_sha256": "d24155bb383239ec8bea3e53c0fc6ebe4385b43cdd2f97ee173fb4708df4e156",
+      "after_snapshot_sha256": "d06906d0ede4491395317dbead1ce185170e6a42edf5c93c913faab7cc87cd08",
+      "projection_changed": false,
+      "reason": "S-R2 explicit synthetic boot barrier prehistory; full traces added separately."
+    },
+    {
+      "case_id": "T08-STOPPING-REJECTION",
+      "before_case_sha256": "1e15ed1a2a86c884285e8f5c264a6345c63d98d4756870c05230d56cbc1b0f14",
+      "after_case_sha256": "bd151cbe06b18aa047acde6e2d9dc1102cdec0c3cdf014684b75b2a4cf0236ca",
+      "before_snapshot_sha256": "3fe9edc124933af7cecbafa8c4c081b8fea33a244aa4643ef183bd4a1afd7ea9",
+      "after_snapshot_sha256": "076d81c70c303a61bc8f83362133a16b1bb71825d26f2c7afd56849842309d8f",
+      "projection_changed": false,
+      "reason": "S-R2 explicit synthetic boot barrier prehistory; full traces added separately."
+    },
+    {
+      "case_id": "T08-STOPPING-BOUNDARY",
+      "before_case_sha256": "4f747e82f242b84f3be49f30b2de9df4af1ce701151252eb9bc76c516f849279",
+      "after_case_sha256": "984fc916e66ab6e9589ea5d15b405324de5519f21b9a10a184d548ceef0fc703",
+      "before_snapshot_sha256": "007a4718fc0c2eed996e18d234b17c225bbf4e22fa5e3a20d3107a614ea24939",
+      "after_snapshot_sha256": "12b61c56ad596263ec2e9a51916488ad856f4c8b51b3558765d0c919dac03451",
+      "projection_changed": false,
+      "reason": "S-R2 explicit synthetic boot barrier prehistory; full traces added separately."
+    },
+    {
+      "case_id": "T09-DISARMED-POSITIVE",
+      "before_case_sha256": "305fd29244ed29f561c390ec14c4313b4e6838e272f02ab3407e3d8a092a528e",
+      "after_case_sha256": "4ddf5f15fefd41577ad3bcbaa7e92cf0f930a3e313954b56642ba13a76ac8290",
+      "before_snapshot_sha256": "4e908bb7fb4da427930d09b5f783368a8f11b022ae7c87ec3cf6e806aaca2157",
+      "after_snapshot_sha256": "483c94eef86fcd05d3fc364721da946763704c7e961dea698d47f6cce915bb99",
+      "projection_changed": false,
+      "reason": "S-R2 explicit synthetic boot barrier prehistory; full traces added separately."
+    },
+    {
+      "case_id": "T09-DISARMED-REJECTION",
+      "before_case_sha256": "c0866e111b0407e039f78202b26b23a2aced3aed94eb425ed4f4b67bd03a19d7",
+      "after_case_sha256": "3fcff53f07810665fb70f0071f846121be36cf5126d6ae074df908f8ce1f7b63",
+      "before_snapshot_sha256": "4e908bb7fb4da427930d09b5f783368a8f11b022ae7c87ec3cf6e806aaca2157",
+      "after_snapshot_sha256": "483c94eef86fcd05d3fc364721da946763704c7e961dea698d47f6cce915bb99",
+      "projection_changed": false,
+      "reason": "S-R2 explicit synthetic boot barrier prehistory; full traces added separately."
+    },
+    {
+      "case_id": "T09-DISARMED-BOUNDARY",
+      "before_case_sha256": "e82be1be91a1bd7b9d2f06dc46e2484296f85a2b6ea2896a1f38b490f8a53f6e",
+      "after_case_sha256": "d82621bdbfe77dcda046bea531c6ef122584d30d31f13f7b0ba2c63596f5371b",
+      "before_snapshot_sha256": "4e908bb7fb4da427930d09b5f783368a8f11b022ae7c87ec3cf6e806aaca2157",
+      "after_snapshot_sha256": "483c94eef86fcd05d3fc364721da946763704c7e961dea698d47f6cce915bb99",
+      "projection_changed": false,
+      "reason": "S-R2 explicit synthetic boot barrier prehistory; full traces added separately."
+    },
+    {
+      "case_id": "T09-NORMAL-POSITIVE",
+      "before_case_sha256": "f512fd00854fd2dbb9a935a01395c4d348f2cf15206cdd1f424fa8b2ca161372",
+      "after_case_sha256": "2e24648cff437d80d29593a9fcbe692de1fa5573154856a4709bb61f02a44712",
+      "before_snapshot_sha256": "823332a71b80f91a93a213fa0f19ba88d95b36aa2869b22b277b32011f659897",
+      "after_snapshot_sha256": "88c8bc939e41687f3a204f70f53bd6268e2acf4716e2a3c3e831bd5d2a77b3ea",
+      "projection_changed": false,
+      "reason": "S-R2 explicit synthetic boot barrier prehistory; full traces added separately."
+    },
+    {
+      "case_id": "T09-NORMAL-REJECTION",
+      "before_case_sha256": "e68129bdb710436ff6084992c234a310edd29e5e3bc4d721904132b53e9241d9",
+      "after_case_sha256": "e6982936d0f3d8af28a5fff9523c47fa86a9713e1caa7669fd86eb95ce092832",
+      "before_snapshot_sha256": "823332a71b80f91a93a213fa0f19ba88d95b36aa2869b22b277b32011f659897",
+      "after_snapshot_sha256": "88c8bc939e41687f3a204f70f53bd6268e2acf4716e2a3c3e831bd5d2a77b3ea",
+      "projection_changed": false,
+      "reason": "S-R2 explicit synthetic boot barrier prehistory; full traces added separately."
+    },
+    {
+      "case_id": "T09-NORMAL-BOUNDARY",
+      "before_case_sha256": "cb811abaa24ba56f1f73acbf3d886424f51c5f7af9d0cb3c58842ae14532b2db",
+      "after_case_sha256": "49e56e4a66fc40e8f9d5ae42cf73a7e514c683cc3722be79e852cc768248bde6",
+      "before_snapshot_sha256": "823332a71b80f91a93a213fa0f19ba88d95b36aa2869b22b277b32011f659897",
+      "after_snapshot_sha256": "88c8bc939e41687f3a204f70f53bd6268e2acf4716e2a3c3e831bd5d2a77b3ea",
+      "projection_changed": false,
+      "reason": "S-R2 explicit synthetic boot barrier prehistory; full traces added separately."
+    },
+    {
+      "case_id": "T09-WARNING-POSITIVE",
+      "before_case_sha256": "728198d264bb779d656e0b28548079198403b3dc2526f40e569e50f561b156cb",
+      "after_case_sha256": "21879ddf3f4d091d2e2b35925faf824282853d2da89cb2238a3cfe0294045865",
+      "before_snapshot_sha256": "01785441e700b2d0ff7796dc3f09853d89e2c1e6d844c8f051fe94f0bad98fbe",
+      "after_snapshot_sha256": "ec44944758f9f2cb602248aa1f7a07e40de55820f4c2004b64b0c02ecc204c7a",
+      "projection_changed": false,
+      "reason": "S-R2 explicit synthetic boot barrier prehistory; full traces added separately."
+    },
+    {
+      "case_id": "T09-WARNING-REJECTION",
+      "before_case_sha256": "de7b143bc18aba55712b9161f4a1732ccb5ac5240941a02d51075224029b414d",
+      "after_case_sha256": "6d062f304589677dee92715141008a97ef2edaef2aa153d0c9fd1ad258984bd0",
+      "before_snapshot_sha256": "01785441e700b2d0ff7796dc3f09853d89e2c1e6d844c8f051fe94f0bad98fbe",
+      "after_snapshot_sha256": "ec44944758f9f2cb602248aa1f7a07e40de55820f4c2004b64b0c02ecc204c7a",
+      "projection_changed": false,
+      "reason": "S-R2 explicit synthetic boot barrier prehistory; full traces added separately."
+    },
+    {
+      "case_id": "T09-WARNING-BOUNDARY",
+      "before_case_sha256": "f1884a3f09b76f6a6ecd6a0b21e7bf945ae09fa755dc3a7b040007b3542fa581",
+      "after_case_sha256": "dd997a9a4fb02238e79b04ed3813ebb9c34d435dc4c3f0e4ba8d4a4520765cce",
+      "before_snapshot_sha256": "01785441e700b2d0ff7796dc3f09853d89e2c1e6d844c8f051fe94f0bad98fbe",
+      "after_snapshot_sha256": "ec44944758f9f2cb602248aa1f7a07e40de55820f4c2004b64b0c02ecc204c7a",
+      "projection_changed": false,
+      "reason": "S-R2 explicit synthetic boot barrier prehistory; full traces added separately."
+    },
+    {
+      "case_id": "T09-RECOVERY-POSITIVE",
+      "before_case_sha256": "dd72d6853265de897632005da2f7cda5fcd3605deb17e8d0d7e807d5c468a45f",
+      "after_case_sha256": "48bbf6d60ac0cec6071465808afc2773cd7a8f5fae39d0fffffb0b12ad02ba50",
+      "before_snapshot_sha256": "aba9c3ece598ba38086bc27539b3d8929854450f6a2ea03021bda37ac765b873",
+      "after_snapshot_sha256": "3cb3297706226f9be4c8a36f823004393014dd34049c58b84129586f47e4b013",
+      "projection_changed": false,
+      "reason": "S-R2 explicit synthetic boot barrier prehistory; full traces added separately."
+    },
+    {
+      "case_id": "T09-RECOVERY-REJECTION",
+      "before_case_sha256": "aaa7b51950194c0a910327f3bfc7b329868dbb5f840b91e93638fae9d03c39bb",
+      "after_case_sha256": "57775d7397d29d4119e9c903c5e9114813880515831262c2836487936fdfe058",
+      "before_snapshot_sha256": "1d985fa5b0344e2b2ae763e96482f928e07b78a4a9a2582880bfe946102f75ca",
+      "after_snapshot_sha256": "b8ad7864cc79e5d305d2684978c1d2e67b8857800d93e0b5f4b5f09e9fb867c6",
+      "projection_changed": false,
+      "reason": "S-R2 explicit synthetic boot barrier prehistory; full traces added separately."
+    },
+    {
+      "case_id": "T09-RECOVERY-BOUNDARY",
+      "before_case_sha256": "14759b63162bdf443b2d27ee34b00a12d9bdb2c808fab9a7022b1ce251a0ca41",
+      "after_case_sha256": "160022ddebb351b36337e9b78c1cf1a3d261cdce441cf5948e405b7436a3826f",
+      "before_snapshot_sha256": "aba9c3ece598ba38086bc27539b3d8929854450f6a2ea03021bda37ac765b873",
+      "after_snapshot_sha256": "3cb3297706226f9be4c8a36f823004393014dd34049c58b84129586f47e4b013",
+      "projection_changed": false,
+      "reason": "S-R2 explicit synthetic boot barrier prehistory; full traces added separately."
+    },
+    {
+      "case_id": "T09-DECELERATING-POSITIVE",
+      "before_case_sha256": "88deec4e7fe44f7243ece86cb3e6f121b5535facbe99d93b7afe0db4d977a46a",
+      "after_case_sha256": "a7b4cef7a3f7829b585815b9909bff1cd5bbe0d5fc3da16c813ca91f9a5e1bc7",
+      "before_snapshot_sha256": "44cc28b4831a7236023fc8977ed11f30215d78d98fc1ada22b3dc827a34668a7",
+      "after_snapshot_sha256": "7935c99c15a4979c8ac893a56018bd5dd2976ab683527d7567903b1d5d37d236",
+      "projection_changed": false,
+      "reason": "S-R2 explicit synthetic boot barrier prehistory; full traces added separately."
+    },
+    {
+      "case_id": "T09-DECELERATING-REJECTION",
+      "before_case_sha256": "282d0befe085f1eebcee2444ba24c258ad289df55d875a2d378f41250e090906",
+      "after_case_sha256": "40db5fa336704b7a7a8234b56c637f27dd6edd38bc59a5af6c32b1c3ac91f7e3",
+      "before_snapshot_sha256": "1d985fa5b0344e2b2ae763e96482f928e07b78a4a9a2582880bfe946102f75ca",
+      "after_snapshot_sha256": "b8ad7864cc79e5d305d2684978c1d2e67b8857800d93e0b5f4b5f09e9fb867c6",
+      "projection_changed": false,
+      "reason": "S-R2 explicit synthetic boot barrier prehistory; full traces added separately."
+    },
+    {
+      "case_id": "T09-DECELERATING-BOUNDARY",
+      "before_case_sha256": "3005bd4e974a23876c28575ec9e141f1e9931a997232defdec97981c5748bb34",
+      "after_case_sha256": "549f0e403a6a1beb621e961206055dd16f1aaa232eca7662dca359cc2172d41a",
+      "before_snapshot_sha256": "44cc28b4831a7236023fc8977ed11f30215d78d98fc1ada22b3dc827a34668a7",
+      "after_snapshot_sha256": "7935c99c15a4979c8ac893a56018bd5dd2976ab683527d7567903b1d5d37d236",
+      "projection_changed": false,
+      "reason": "S-R2 explicit synthetic boot barrier prehistory; full traces added separately."
+    },
+    {
+      "case_id": "T09-STOP_REQUESTED-POSITIVE",
+      "before_case_sha256": "a88a9175da66b12ffbbc301f1cfd9ad0e9111c36b9b3373655105a4d283063e0",
+      "after_case_sha256": "48732955cd035e9d6ea9af21b269d194beb6ae4870c144c777bd03cbfb8c2344",
+      "before_snapshot_sha256": "4fec9f20e6c5ab83853d8a7a7281fa28f368969afe8f6e5a5bdc28352c75f514",
+      "after_snapshot_sha256": "d4d4e28ade1e5973e7aa574d9396fd79de3aa043b1526934ea3ca2d98a0cdc4a",
+      "projection_changed": false,
+      "reason": "S-R2 explicit synthetic boot barrier prehistory; full traces added separately."
+    },
+    {
+      "case_id": "T09-STOP_REQUESTED-REJECTION",
+      "before_case_sha256": "1f9132f1463c35d227fdb83fc7c8125425bf85b4236df24c31bf2fab2ee4c724",
+      "after_case_sha256": "8fdf013884f9dd62e912e8f34dbf5ed986fc6282cb1f1752f287fc4e7347f99a",
+      "before_snapshot_sha256": "1d985fa5b0344e2b2ae763e96482f928e07b78a4a9a2582880bfe946102f75ca",
+      "after_snapshot_sha256": "b8ad7864cc79e5d305d2684978c1d2e67b8857800d93e0b5f4b5f09e9fb867c6",
+      "projection_changed": false,
+      "reason": "S-R2 explicit synthetic boot barrier prehistory; full traces added separately."
+    },
+    {
+      "case_id": "T09-STOP_REQUESTED-BOUNDARY",
+      "before_case_sha256": "d50ea739a3d447a476ce077c0ecea4cd17db7766f359c43a924e24b7ef4b87e3",
+      "after_case_sha256": "dd263a57ddbec6fedfb2ccb8b90c2a019368a6845d455755723c51a6956f99b2",
+      "before_snapshot_sha256": "4fec9f20e6c5ab83853d8a7a7281fa28f368969afe8f6e5a5bdc28352c75f514",
+      "after_snapshot_sha256": "d4d4e28ade1e5973e7aa574d9396fd79de3aa043b1526934ea3ca2d98a0cdc4a",
+      "projection_changed": false,
+      "reason": "S-R2 explicit synthetic boot barrier prehistory; full traces added separately."
+    },
+    {
+      "case_id": "T09-STOPPING-POSITIVE",
+      "before_case_sha256": "5b154b07d1596cd26244ce3d91aa3eb4323f2e6743cf5593203ad79c542d194a",
+      "after_case_sha256": "c39fade5caaf9db7ed2251abe02b1d872669f173fc677f67e679ee466c9161d5",
+      "before_snapshot_sha256": "957bfcf402a24fd8da55bda5872dc3265fc8b7593178b6fa25b0cbe64741ff57",
+      "after_snapshot_sha256": "843a37da1caf325cc9c4db77d52654ddc51a0a0cbea11fd1949c6224b9b0bc3d",
+      "projection_changed": false,
+      "reason": "S-R2 explicit synthetic boot barrier prehistory; full traces added separately."
+    },
+    {
+      "case_id": "T09-STOPPING-REJECTION",
+      "before_case_sha256": "68246c7a1f798eb3e9bcdedf5e63ea2ee252d3248093eac8eca97665b316e5f8",
+      "after_case_sha256": "344f87f1c38f45a7399eedc2c330dc48508e019e15365a20b92eac54739e23fe",
+      "before_snapshot_sha256": "1d985fa5b0344e2b2ae763e96482f928e07b78a4a9a2582880bfe946102f75ca",
+      "after_snapshot_sha256": "b8ad7864cc79e5d305d2684978c1d2e67b8857800d93e0b5f4b5f09e9fb867c6",
+      "projection_changed": false,
+      "reason": "S-R2 explicit synthetic boot barrier prehistory; full traces added separately."
+    },
+    {
+      "case_id": "T09-STOPPING-BOUNDARY",
+      "before_case_sha256": "421ae0f413888366acda4dee5a8c69d7c6997500cbdbbeb5d67d65a7d377d2f1",
+      "after_case_sha256": "81669152d4c793700e759cee3377452aae70335f1dd93ce1e8394232aaf7a93b",
+      "before_snapshot_sha256": "957bfcf402a24fd8da55bda5872dc3265fc8b7593178b6fa25b0cbe64741ff57",
+      "after_snapshot_sha256": "843a37da1caf325cc9c4db77d52654ddc51a0a0cbea11fd1949c6224b9b0bc3d",
+      "projection_changed": false,
+      "reason": "S-R2 explicit synthetic boot barrier prehistory; full traces added separately."
+    },
+    {
+      "case_id": "T10-NO_VALID_POLICY-POSITIVE",
+      "before_case_sha256": "ef7ef580ac2e98f4e2f02c4712429f1ed00a05dffa9911ad831cc84f1caca810",
+      "after_case_sha256": "96df909d063f306b9b19189646a7036a344cc40973935c5e6d75341d78a51c76",
+      "before_snapshot_sha256": "86c30032a74c6fd61d0548ef011965f833249200d325c5ffb1d7e88bceb9d344",
+      "after_snapshot_sha256": "b9d439c95280832bbefa3d3a2ebbab836067e72ebf5894de0f4277680782f5b1",
+      "projection_changed": false,
+      "reason": "S-R2 explicit synthetic boot barrier prehistory; full traces added separately."
+    },
+    {
+      "case_id": "T10-NO_VALID_POLICY-REJECTION",
+      "before_case_sha256": "6b58b5c381b9bf3e3d024bb99cc7958efad6ede9e7290d7b9fc2820a6d53550c",
+      "after_case_sha256": "af501fb9c6b50e23dd74986566d34128cde1f3d436c32681cc4813fe63bedb14",
+      "before_snapshot_sha256": "9df6a36d8ac18e4331bb51825245e8afd0cf6b5b6040f93b972eae9fc1cc6c0e",
+      "after_snapshot_sha256": "17d5c58588879d4c4515975cd77ee82922dd5ac98f66f67f4265c63cad289fb5",
+      "projection_changed": false,
+      "reason": "S-R2 explicit synthetic boot barrier prehistory; full traces added separately."
+    },
+    {
+      "case_id": "T10-NO_VALID_POLICY-BOUNDARY",
+      "before_case_sha256": "bb630229a71c8012ca2766d77b9fbb32402f92798ed752ddd17d964522599a3d",
+      "after_case_sha256": "1f7621bc99911b0d2e4cb2e0c0a0172149989fbf105f6c5c2c253d1b6d24c7ae",
+      "before_snapshot_sha256": "330bd161f75ca3b89d6574def1e9a36ae480b89ea9776ebce175cbb86280bced",
+      "after_snapshot_sha256": "fac63c21015e9cae45c4fd7fdd71d6b8126ce622c56022e0b7fd8e367cf207fc",
+      "projection_changed": false,
+      "reason": "S-R2 explicit synthetic boot barrier prehistory; full traces added separately."
+    },
+    {
+      "case_id": "T11-NO_VALID_POLICY-POSITIVE",
+      "before_case_sha256": "f5d8961a1e72db9a73156e66748d7e859aaba9257bb06f5775f6aa174b105fa9",
+      "after_case_sha256": "aa5997c357e7127c5b20a6c259cff2a393d6448e0840635b91fba8e21ea8ed9d",
+      "before_snapshot_sha256": "dab921460d3a5e01cf58b7a842fc25de5a9658bdecd818ae9602498eeb68fc54",
+      "after_snapshot_sha256": "281ff49cc201abb69d077191fd140039238fa09dadde03d2618c8bb59100b53d",
+      "projection_changed": false,
+      "reason": "S-R2 explicit synthetic boot barrier prehistory; full traces added separately."
+    },
+    {
+      "case_id": "T11-NO_VALID_POLICY-REJECTION",
+      "before_case_sha256": "c1564d5aa9a5c5c05b3a5988ecaa6962675c9610e33b5809ecd8762837cef33c",
+      "after_case_sha256": "ed2786189b864c976ed1c2cd3ef13c1bcd7fa4855d2f0790174b5222c37e3631",
+      "before_snapshot_sha256": "dab921460d3a5e01cf58b7a842fc25de5a9658bdecd818ae9602498eeb68fc54",
+      "after_snapshot_sha256": "281ff49cc201abb69d077191fd140039238fa09dadde03d2618c8bb59100b53d",
+      "projection_changed": false,
+      "reason": "S-R2 explicit synthetic boot barrier prehistory; full traces added separately."
+    },
+    {
+      "case_id": "T11-NO_VALID_POLICY-BOUNDARY",
+      "before_case_sha256": "34649595714ae84d4e682e460ece55b5d6325961c1bf905bc3818c21ca0451b3",
+      "after_case_sha256": "2a9f9a9be069464c47bc0a728023d8c65952244c5f4d901372752a2e9327e8fa",
+      "before_snapshot_sha256": "dab921460d3a5e01cf58b7a842fc25de5a9658bdecd818ae9602498eeb68fc54",
+      "after_snapshot_sha256": "281ff49cc201abb69d077191fd140039238fa09dadde03d2618c8bb59100b53d",
+      "projection_changed": false,
+      "reason": "S-R2 explicit synthetic boot barrier prehistory; full traces added separately."
+    },
+    {
+      "case_id": "T12-RECOVERY-POSITIVE",
+      "before_case_sha256": "5b75a4cfa08443472ba268b31cf8d253f27dc6961b95f0c091b78e639252a559",
+      "after_case_sha256": "30f0548571c338670a4b609074456e20fef25c714bf443dc2815dceb0298c99c",
+      "before_snapshot_sha256": "f3234842eae32652c3795fc4160d7ec5eb5611f54fbf316c56856673483a8335",
+      "after_snapshot_sha256": "fbc534076fc0d5065412cc86da7afac01df00f6d136ce16d0b4070e7d3998f04",
+      "projection_changed": false,
+      "reason": "S-R2 explicit synthetic boot barrier prehistory; full traces added separately."
+    },
+    {
+      "case_id": "T12-RECOVERY-REJECTION",
+      "before_case_sha256": "4565c63d8293cf114ec6d700d1cc6bddc8ba24189850462c687179784aec74ca",
+      "after_case_sha256": "16c1760fa9bf9572c8c686f4fe5dfb993a22e7d1a95747d4530d726697622812",
+      "before_snapshot_sha256": "e22ba5cd82f23f0315c380987fd18490dc0f0c9058e5c5b619d05d1be917d292",
+      "after_snapshot_sha256": "9b1f074ea5e66210aaa853a94ad6b77064fcebfd769c08f93146ffc5044c72c6",
+      "projection_changed": false,
+      "reason": "S-R2 explicit synthetic boot barrier prehistory; full traces added separately."
+    },
+    {
+      "case_id": "T12-RECOVERY-BOUNDARY",
+      "before_case_sha256": "7aba267f7a447750dfb7ae428f3c0486951f6e5f6932dadc56a1f0a4b73f2be5",
+      "after_case_sha256": "8fcf23b6972356b1cd42c96590413e9188f892d2002758f858d7f32238593160",
+      "before_snapshot_sha256": "60a7471f7294fc76036f3984d3d5be1b1f8817d8528203c492e5d31272b2550c",
+      "after_snapshot_sha256": "c75cd4eb87739f06b842f91b386c64be46225b03c79b949c58a5d77e8ff7ff76",
+      "projection_changed": false,
+      "reason": "S-R2 explicit synthetic boot barrier prehistory; full traces added separately."
+    },
+    {
+      "case_id": "T12-DECELERATING-POSITIVE",
+      "before_case_sha256": "de1c6e58311617c5c6e5921326bd88c048c614650e1ad3ffcc08151d0c9008ad",
+      "after_case_sha256": "73e51de1e871b5558681735c01cc59dda85028b097d25093cbb10c955ee1e569",
+      "before_snapshot_sha256": "b84d005211f147d0375fa4bc12d7bfabe1fa50f0d095652947961d7f0fc504af",
+      "after_snapshot_sha256": "2c9804ed216bda1e481c6f8e0129de0f81faa085e597d8ea2d2d3ebd07824d0a",
+      "projection_changed": false,
+      "reason": "S-R2 explicit synthetic boot barrier prehistory; full traces added separately."
+    },
+    {
+      "case_id": "T12-DECELERATING-REJECTION",
+      "before_case_sha256": "78b01773447712bc827c7eddc19b6b23f4021ecd1862ee82003b34ceceb004e4",
+      "after_case_sha256": "993d4679032d5fe35a47743663db4477b10738747ad788447c25fe350b86bea8",
+      "before_snapshot_sha256": "1ff17ddfa720740ea4e8fd7f603eef22d9d8d8b6953265be8456d6308d37a5fa",
+      "after_snapshot_sha256": "724b431f97aba9f354a662dc0acbd2089e95dbe69dae54a9985600e18de4c1d2",
+      "projection_changed": false,
+      "reason": "S-R2 explicit synthetic boot barrier prehistory; full traces added separately."
+    },
+    {
+      "case_id": "T12-DECELERATING-BOUNDARY",
+      "before_case_sha256": "8142b27131e696c9a6a88d9f208e138fa8082c776cb0685f9c89e9e0749255c7",
+      "after_case_sha256": "877d4a4c8aebf8a44f74e1600044c7d7bde1ae2de32704c9cdb46f0d2d5384f1",
+      "before_snapshot_sha256": "0922c67f0675651b35aacfd70b22c9c6cc679038189f13e2cb358cd63143b8c7",
+      "after_snapshot_sha256": "d72b924f1fdf2262d2318097c6af9e310e1c5e959a2e8a3b9e819b6f4f226b34",
+      "projection_changed": false,
+      "reason": "S-R2 explicit synthetic boot barrier prehistory; full traces added separately."
+    },
+    {
+      "case_id": "T13-STOPPED_LATCHED-POSITIVE",
+      "before_case_sha256": "059a8dc51fe163d8cba97b419704a0142a48f91e64083cac83e7001e00554b6c",
+      "after_case_sha256": "a692c5c1aa889ccc7bdcbee638095eb380ee656b29f49819f69967bbbbb02c1f",
+      "before_snapshot_sha256": "a50426cb6aeb146179d132fbf70115a65a0e64259dc566d8a256b3a6e860105d",
+      "after_snapshot_sha256": "029b156450ca060180927ea403da3d3d3755867990131954fe91a32dc81f549d",
+      "projection_changed": false,
+      "reason": "S-R2 explicit synthetic boot barrier prehistory; full traces added separately."
+    },
+    {
+      "case_id": "T13-STOPPED_LATCHED-REJECTION",
+      "before_case_sha256": "09a98935c4673a4415d4b23ef009f1a6d55fd787cc631ceda36dbdf9b4d51180",
+      "after_case_sha256": "f6d61f3cbe3443507ffea1196de2441503d682a5aff9755b1ba5f2b88b2fa647",
+      "before_snapshot_sha256": "870ab72e6477997a37cdd1d814605ca12946c45e270eae33f7d6fe22ec7f7ede",
+      "after_snapshot_sha256": "0180e875887238c2503c2786fcbd81909ad81091469f711770705a050b8b031e",
+      "projection_changed": false,
+      "reason": "S-R2 explicit synthetic boot barrier prehistory; full traces added separately."
+    },
+    {
+      "case_id": "T13-STOPPED_LATCHED-BOUNDARY",
+      "before_case_sha256": "3c6b105d06d1b14cb69cab8f5f828d307e0e6eb793045b7c7d491d3a2f817e0e",
+      "after_case_sha256": "14d834afbc2a4e1e36be1c622a8345955815453ac34a48f97cefb091d39fbcbb",
+      "before_snapshot_sha256": "870ab72e6477997a37cdd1d814605ca12946c45e270eae33f7d6fe22ec7f7ede",
+      "after_snapshot_sha256": "0180e875887238c2503c2786fcbd81909ad81091469f711770705a050b8b031e",
+      "projection_changed": false,
+      "reason": "S-R2 explicit synthetic boot barrier prehistory; full traces added separately."
+    },
+    {
+      "case_id": "T14-STOPPED_LATCHED-POSITIVE",
+      "before_case_sha256": "6d061fab511ff7c0bad332100f2e4e62ba296930fb5b289114b98a4e9132a224",
+      "after_case_sha256": "4fbcad80593ae979d1b1ba4ffef6993d4d14e7955c5981568c0f04b8cf8f10a6",
+      "before_snapshot_sha256": "1d985fa5b0344e2b2ae763e96482f928e07b78a4a9a2582880bfe946102f75ca",
+      "after_snapshot_sha256": "b8ad7864cc79e5d305d2684978c1d2e67b8857800d93e0b5f4b5f09e9fb867c6",
+      "projection_changed": false,
+      "reason": "S-R2 explicit synthetic boot barrier prehistory; full traces added separately."
+    },
+    {
+      "case_id": "T14-STOPPED_LATCHED-REJECTION",
+      "before_case_sha256": "255fd2726f5fcc23e04d19954d704ae676d90f12a2b9e06160dc7d7c1d3dd7d1",
+      "after_case_sha256": "acac13348c0dfc376caaec40d47a2fd07072545690cfc95bf629516b26d15d92",
+      "before_snapshot_sha256": "1d985fa5b0344e2b2ae763e96482f928e07b78a4a9a2582880bfe946102f75ca",
+      "after_snapshot_sha256": "b8ad7864cc79e5d305d2684978c1d2e67b8857800d93e0b5f4b5f09e9fb867c6",
+      "projection_changed": false,
+      "reason": "S-R2 explicit synthetic boot barrier prehistory; full traces added separately."
+    },
+    {
+      "case_id": "T14-STOPPED_LATCHED-BOUNDARY",
+      "before_case_sha256": "51ee9038c7533860f5a4d01e5872434f823346b87d3c0e1d1a23341307a50526",
+      "after_case_sha256": "5166d10a6b4ac53902e2a67162c24e81ad9e4d0577f41fd7851991060ccfbb10",
+      "before_snapshot_sha256": "a9e2954d56763a1cdcffcd4a760dacde4d39631229ac15c29c4ecbf93b028ad0",
+      "after_snapshot_sha256": "27900b7da0dad2e097deb7dafda7710663b4422b1ba3d64f3fd00690dd469aff",
+      "projection_changed": false,
+      "reason": "S-R2 explicit synthetic boot barrier prehistory; full traces added separately."
+    },
+    {
+      "case_id": "E01-LEASE-END",
+      "before_case_sha256": "71575d2f06cea8f168720e520a044d63d47fa1fe66a2a997116098bf50a2f10d",
+      "after_case_sha256": "83cfc36e9b26089fc57b2c7ca0f12d9909e4c8d66f09ca9186d9ab399bd86358",
+      "before_snapshot_sha256": "823332a71b80f91a93a213fa0f19ba88d95b36aa2869b22b277b32011f659897",
+      "after_snapshot_sha256": "88c8bc939e41687f3a204f70f53bd6268e2acf4716e2a3c3e831bd5d2a77b3ea",
+      "projection_changed": false,
+      "reason": "S-R2 explicit synthetic boot barrier prehistory; full traces added separately."
+    },
+    {
+      "case_id": "E02-HOLD-AGE",
+      "before_case_sha256": "02888ca57e951fa2e43e6d3389b421213128d955da85016782671ed853bbe43d",
+      "after_case_sha256": "12e542ec46a1f29de939c285e7ae216e10964d9245a74e06c087f00ac975f31a",
+      "before_snapshot_sha256": "823332a71b80f91a93a213fa0f19ba88d95b36aa2869b22b277b32011f659897",
+      "after_snapshot_sha256": "88c8bc939e41687f3a204f70f53bd6268e2acf4716e2a3c3e831bd5d2a77b3ea",
+      "projection_changed": false,
+      "reason": "S-R2 explicit synthetic boot barrier prehistory; full traces added separately."
+    },
+    {
+      "case_id": "E03-PRIOR-SESSION",
+      "before_case_sha256": "90947ac54adccac559ac8afbcf280ba06d4e6ff242d732c67597eb74cdb18c6b",
+      "after_case_sha256": "f7570c9c37c71d3004fb3302d75946e372917717f9f5642014d4840d0b376c1f",
+      "before_snapshot_sha256": "823332a71b80f91a93a213fa0f19ba88d95b36aa2869b22b277b32011f659897",
+      "after_snapshot_sha256": "88c8bc939e41687f3a204f70f53bd6268e2acf4716e2a3c3e831bd5d2a77b3ea",
+      "projection_changed": false,
+      "reason": "S-R2 explicit synthetic boot barrier prehistory; full traces added separately."
+    },
+    {
+      "case_id": "E04-CONFLICT-ID",
+      "before_case_sha256": "23a6ccbbfdfbb9ae5b741757ad8a87dd410b5f097af200b2e442c1ad4bb42c7e",
+      "after_case_sha256": "f1813446be79a0fdc0691556b9cf4095419f16491567e396072ce3cc57025730",
+      "before_snapshot_sha256": "823332a71b80f91a93a213fa0f19ba88d95b36aa2869b22b277b32011f659897",
+      "after_snapshot_sha256": "88c8bc939e41687f3a204f70f53bd6268e2acf4716e2a3c3e831bd5d2a77b3ea",
+      "projection_changed": false,
+      "reason": "S-R2 explicit synthetic boot barrier prehistory; full traces added separately."
+    },
+    {
+      "case_id": "E05-EXACT-DUPLICATE",
+      "before_case_sha256": "17333a9749b687a040c2c5a9918134f1fb305e9bd800da599adbf6e2d9c742ac",
+      "after_case_sha256": "5c7646548d992706f32edee2f3c52c8a66bad9113b118d6e449c835e328d7435",
+      "before_snapshot_sha256": "823332a71b80f91a93a213fa0f19ba88d95b36aa2869b22b277b32011f659897",
+      "after_snapshot_sha256": "88c8bc939e41687f3a204f70f53bd6268e2acf4716e2a3c3e831bd5d2a77b3ea",
+      "projection_changed": false,
+      "reason": "S-R2 explicit synthetic boot barrier prehistory; full traces added separately."
+    },
+    {
+      "case_id": "E06-ENDPOINT-EXCLUDED",
+      "before_case_sha256": "93ce32e6dc151a62f67e43cdb349f73dc33e4c28bd1f66626fe19312f6c5a9e6",
+      "after_case_sha256": "5dc9f2fa7175baee8d2c701d8fabfb90e1da52527b5cdc40d7052ca65c493e43",
+      "before_snapshot_sha256": "823332a71b80f91a93a213fa0f19ba88d95b36aa2869b22b277b32011f659897",
+      "after_snapshot_sha256": "88c8bc939e41687f3a204f70f53bd6268e2acf4716e2a3c3e831bd5d2a77b3ea",
+      "projection_changed": false,
+      "reason": "S-R2 explicit synthetic boot barrier prehistory; full traces added separately."
+    },
+    {
+      "case_id": "E07-INVALID-MAP",
+      "before_case_sha256": "69e39ce00beb5b6fdbed49f8fba24b98adcd1a39e55f44a509ff883371ebb5cc",
+      "after_case_sha256": "164b5b93468c931bee65d688b544cc9b28b8077eb7a19bbab04443468bb058fa",
+      "before_snapshot_sha256": "823332a71b80f91a93a213fa0f19ba88d95b36aa2869b22b277b32011f659897",
+      "after_snapshot_sha256": "88c8bc939e41687f3a204f70f53bd6268e2acf4716e2a3c3e831bd5d2a77b3ea",
+      "projection_changed": false,
+      "reason": "S-R2 explicit synthetic boot barrier prehistory; full traces added separately."
+    },
+    {
+      "case_id": "E08-UNKNOWN-CLOCK",
+      "before_case_sha256": "3d25ad1aabe5959e68bbd9d781ccc17fc5c7dc46c87b7e37414eff43c7a3efda",
+      "after_case_sha256": "656b11f96dca5fa18a55f295013fdf06b9a3cc9e1813e5a9c7e882b373e7267b",
+      "before_snapshot_sha256": "823332a71b80f91a93a213fa0f19ba88d95b36aa2869b22b277b32011f659897",
+      "after_snapshot_sha256": "88c8bc939e41687f3a204f70f53bd6268e2acf4716e2a3c3e831bd5d2a77b3ea",
+      "projection_changed": false,
+      "reason": "S-R2 explicit synthetic boot barrier prehistory; full traces added separately."
+    },
+    {
+      "case_id": "E09-MISSING-SNAPSHOT",
+      "before_case_sha256": "183e472c6bffa5aaa890545bea4ad56563bf33909311572cf7b497bae28b4dba",
+      "after_case_sha256": "a2412a7d08b7527191f1f02a6e1cbe16b6ce02ab782a082fb5ae5ffe8a26b7a5",
+      "before_snapshot_sha256": "823332a71b80f91a93a213fa0f19ba88d95b36aa2869b22b277b32011f659897",
+      "after_snapshot_sha256": "88c8bc939e41687f3a204f70f53bd6268e2acf4716e2a3c3e831bd5d2a77b3ea",
+      "projection_changed": false,
+      "reason": "S-R2 explicit synthetic boot barrier prehistory; full traces added separately."
+    },
+    {
+      "case_id": "E10-CANCEL-INTENT",
+      "before_case_sha256": "bdafb9682b50d0637382a49b8c9800b328467f3e11ada2827b6e88bc135b8391",
+      "after_case_sha256": "96ade4b765caeee0f0b5792bcbcd0e87a56802838c007f4fb5a2f67c0098c455",
+      "before_snapshot_sha256": "823332a71b80f91a93a213fa0f19ba88d95b36aa2869b22b277b32011f659897",
+      "after_snapshot_sha256": "88c8bc939e41687f3a204f70f53bd6268e2acf4716e2a3c3e831bd5d2a77b3ea",
+      "projection_changed": false,
+      "reason": "S-R2 explicit synthetic boot barrier prehistory; full traces added separately."
+    },
+    {
+      "case_id": "E11-SEALED-SEQUENCE",
+      "before_case_sha256": "2f03ba144411118c46c7049fcf7bbbbeab53a0446e78e965dad2c2d444f4647f",
+      "after_case_sha256": "03f18679cc9f91e973ade65d459026b7de22ec663880efe65a97480191fc1c60",
+      "before_snapshot_sha256": "823332a71b80f91a93a213fa0f19ba88d95b36aa2869b22b277b32011f659897",
+      "after_snapshot_sha256": "88c8bc939e41687f3a204f70f53bd6268e2acf4716e2a3c3e831bd5d2a77b3ea",
+      "projection_changed": false,
+      "reason": "S-R2 explicit synthetic boot barrier prehistory; full traces added separately."
+    },
+    {
+      "case_id": "E12-SIMULTANEOUS-FAULTS",
+      "before_case_sha256": "db703ad536d3043f90cde747ea6b17aef95fc87451f5018962c0dcec8e846f2d",
+      "after_case_sha256": "4e08f9455e6276bdd28b458f9c44495712d3254dd82c30df22e8f4e8fc4fbe35",
+      "before_snapshot_sha256": "823332a71b80f91a93a213fa0f19ba88d95b36aa2869b22b277b32011f659897",
+      "after_snapshot_sha256": "88c8bc939e41687f3a204f70f53bd6268e2acf4716e2a3c3e831bd5d2a77b3ea",
+      "projection_changed": false,
+      "reason": "S-R2 explicit synthetic boot barrier prehistory; full traces added separately."
+    },
+    {
+      "case_id": "E13-LOGICAL-GRANT",
+      "before_case_sha256": "190fd8a9863c87a37aaca0ec9b3645d060beb7038ad4323e73b2e1efe6b94c69",
+      "after_case_sha256": "21f0c32bb4460b673728fb2490c632624e8b3afbbe58d20bbb0ca4bfa9872215",
+      "before_snapshot_sha256": "77a57a6c4a02fd6c6422262a22919c9c83123406069698fa0b5243832d27086d",
+      "after_snapshot_sha256": "c7ca458f06b45a8cc19e5e8d8f0dcf3653209f85a46289291a8aeb86303aec21",
+      "projection_changed": false,
+      "reason": "S-R2 explicit synthetic boot barrier prehistory; full traces added separately."
+    },
+    {
+      "case_id": "E14-CLOCK-STRADDLE",
+      "before_case_sha256": "f1e2d1a7e76a38968394a7175ba6c45c22c758721aa88da82a415e8eb9190d51",
+      "after_case_sha256": "7110b11dcd4dce615038c65cf91da28f69a0ce3f9319811e98c3e5659837a701",
+      "before_snapshot_sha256": "823332a71b80f91a93a213fa0f19ba88d95b36aa2869b22b277b32011f659897",
+      "after_snapshot_sha256": "88c8bc939e41687f3a204f70f53bd6268e2acf4716e2a3c3e831bd5d2a77b3ea",
+      "projection_changed": false,
+      "reason": "S-R2 explicit synthetic boot barrier prehistory; full traces added separately."
+    },
+    {
+      "case_id": "E15-MIXED-INVALID-WITH-CRITICAL",
+      "before_case_sha256": "b2db3e5ceb5fa18ac26a57fcabe4e8e462f0abb44462d18b286b686642cac4be",
+      "after_case_sha256": "9a38e541e3b766553caa4704a11dfe9098b79c706688cf3a852f66385ae662dd",
+      "before_snapshot_sha256": "823332a71b80f91a93a213fa0f19ba88d95b36aa2869b22b277b32011f659897",
+      "after_snapshot_sha256": "88c8bc939e41687f3a204f70f53bd6268e2acf4716e2a3c3e831bd5d2a77b3ea",
+      "projection_changed": false,
+      "reason": "S-R2 explicit synthetic boot barrier prehistory; full traces added separately."
+    },
+    {
+      "case_id": "E15-MIXED-INVALID-PROPOSAL-ONLY",
+      "before_case_sha256": "3f753b7a7f10813d4c3f360936530bd067b5982d53b47cfe84f89604815d8970",
+      "after_case_sha256": "b879982ec25a84a1c975bf79ea8224742a66f168974645cb0a71d1ed759edca8",
+      "before_snapshot_sha256": "823332a71b80f91a93a213fa0f19ba88d95b36aa2869b22b277b32011f659897",
+      "after_snapshot_sha256": "88c8bc939e41687f3a204f70f53bd6268e2acf4716e2a3c3e831bd5d2a77b3ea",
+      "projection_changed": false,
+      "reason": "S-R2 explicit synthetic boot barrier prehistory; full traces added separately."
+    }
+  ],
+  "original69_ordered_row_hashes": [
+    {
+      "row_id": "V01-A-expiry/row1",
+      "sha256": "6ef62805bd83433a1072ef6f2e0a58071ad60c6e161d427dab7533dc3b0e2391"
+    },
+    {
+      "row_id": "V01-A-expiry/row2",
+      "sha256": "7afe03e02af71086fc168e9bdb7d5c2d55bf89b332ff1d0853aef1df31c4f61c"
+    },
+    {
+      "row_id": "V01-A-expiry/row3",
+      "sha256": "6e9c45f2cd89950eeae1097a684e58d8e7285ba316bb9b79c2f0c12785a634b0"
+    },
+    {
+      "row_id": "V01-A-expiry/row4",
+      "sha256": "18bf2299c1821ba9bfc77372dea8d165a99d88263c284baa7c1f46e73b251177"
+    },
+    {
+      "row_id": "V01-B-endpoint-expiry/row1",
+      "sha256": "1126590e3b17344496c86908a16657a41b95248faba4eb129cc386460d498864"
+    },
+    {
+      "row_id": "V05-A-missing/row1",
+      "sha256": "b5aa0bad77b0aa82c50c2141243383de9595211bfd182d3b3aba6f7707466395"
+    },
+    {
+      "row_id": "V05-A-missing/row2",
+      "sha256": "6343c13dcab80c0c7d06f4a001ce5e85ac34e224d50308c4f5d176e916bfcead"
+    },
+    {
+      "row_id": "V05-A-missing/row3",
+      "sha256": "cbee0b36514aec441f2787a7a23554664c419c1858b21e60395d250a1a118fcb"
+    },
+    {
+      "row_id": "V05-A-invalid/row1",
+      "sha256": "ae8ef96bbe12a006af9a0b6fcf6ab29e6db47bf013306e0cdfd203ea3fa9f19c"
+    },
+    {
+      "row_id": "V05-A-invalid/row2",
+      "sha256": "6343c13dcab80c0c7d06f4a001ce5e85ac34e224d50308c4f5d176e916bfcead"
+    },
+    {
+      "row_id": "V05-A-invalid/row3",
+      "sha256": "cbee0b36514aec441f2787a7a23554664c419c1858b21e60395d250a1a118fcb"
+    },
+    {
+      "row_id": "V05-A-degraded/row1",
+      "sha256": "2e6fe21107b582e7d5d9ca06b8fa922598126120442c491620464db926ca364d"
+    },
+    {
+      "row_id": "V05-A-degraded/row2",
+      "sha256": "6343c13dcab80c0c7d06f4a001ce5e85ac34e224d50308c4f5d176e916bfcead"
+    },
+    {
+      "row_id": "V05-A-degraded/row3",
+      "sha256": "cbee0b36514aec441f2787a7a23554664c419c1858b21e60395d250a1a118fcb"
+    },
+    {
+      "row_id": "V05-A-map/row1",
+      "sha256": "f3b722507921f9fa0e04bd3bc293e9ada8c13a63baf6a137cac919cb73d45817"
+    },
+    {
+      "row_id": "V05-A-map/row2",
+      "sha256": "6343c13dcab80c0c7d06f4a001ce5e85ac34e224d50308c4f5d176e916bfcead"
+    },
+    {
+      "row_id": "V05-A-map/row3",
+      "sha256": "cbee0b36514aec441f2787a7a23554664c419c1858b21e60395d250a1a118fcb"
+    },
+    {
+      "row_id": "V05-A-frame/row1",
+      "sha256": "f9f5a69bd271f6d42471faefca76b577ba1fa3871371439132184297faf9a282"
+    },
+    {
+      "row_id": "V05-A-frame/row2",
+      "sha256": "6343c13dcab80c0c7d06f4a001ce5e85ac34e224d50308c4f5d176e916bfcead"
+    },
+    {
+      "row_id": "V05-A-frame/row3",
+      "sha256": "cbee0b36514aec441f2787a7a23554664c419c1858b21e60395d250a1a118fcb"
+    },
+    {
+      "row_id": "V05-A-clock/row1",
+      "sha256": "48d3f8929b543ce19861892cbf1d80a38f8848632d1d7bf43b3fda692249ab63"
+    },
+    {
+      "row_id": "V05-A-clock/row2",
+      "sha256": "6343c13dcab80c0c7d06f4a001ce5e85ac34e224d50308c4f5d176e916bfcead"
+    },
+    {
+      "row_id": "V05-A-clock/row3",
+      "sha256": "cbee0b36514aec441f2787a7a23554664c419c1858b21e60395d250a1a118fcb"
+    },
+    {
+      "row_id": "V05-A-uncertainty/row1",
+      "sha256": "7bb872d4591469ec68bb544e6b3a908110acd92eeccc0f14eb4dcc63ca1efc1c"
+    },
+    {
+      "row_id": "V05-A-uncertainty/row2",
+      "sha256": "6343c13dcab80c0c7d06f4a001ce5e85ac34e224d50308c4f5d176e916bfcead"
+    },
+    {
+      "row_id": "V05-A-uncertainty/row3",
+      "sha256": "cbee0b36514aec441f2787a7a23554664c419c1858b21e60395d250a1a118fcb"
+    },
+    {
+      "row_id": "V05-A-stale-capture/row1",
+      "sha256": "6e08e3ff8b595135b2b89fb9ed0d1d32ed07661530001c3230a46bf42ab2bd5f"
+    },
+    {
+      "row_id": "V05-A-stale-capture/row2",
+      "sha256": "c0d6156e86d5558b3c24c69855e3e4f1cfb3aab04cdced5726c63ae5f98b04e1"
+    },
+    {
+      "row_id": "V05-A-stale-capture/row3",
+      "sha256": "7669157bd863a24a611c3d9a002982f62b34f757c99f158a1e0ea0cb03584206"
+    },
+    {
+      "row_id": "V06-A-identities/row1",
+      "sha256": "bc80599abcbea84f8b55f1c7da6d11ea8f42832d4d275f6080d9fcbc05253a15"
+    },
+    {
+      "row_id": "V06-A-identities/row2",
+      "sha256": "08dfbab8bca864fecc6ce634d8dde1b4898d07fb007671ab57d2abe9650c649a"
+    },
+    {
+      "row_id": "V06-A-identities/row3",
+      "sha256": "475422dbb3cbdfc5a9398b3ce94aa6826008fd4c96d0e11b6cebfb4c25e1145f"
+    },
+    {
+      "row_id": "V06-A-identities/row4",
+      "sha256": "049f404d06ad9745cdd2fb7984c32171655bd78633d905dce97d25f60da7591b"
+    },
+    {
+      "row_id": "V06-A-identities/row5",
+      "sha256": "e495f2475ef78d8fcc9d5b03a3476b14fc7b516af899b2af1ac3bcc794dcf555"
+    },
+    {
+      "row_id": "V06-A-identities/row6",
+      "sha256": "5d7add48afda3bfa99f3eb70fb9a08a27fc094a4f0315bcbda3c77155c78e26b"
+    },
+    {
+      "row_id": "V06-A-conflicting-payload/row1",
+      "sha256": "fbad5560d2e9a0bb5de4782ddca3694b07ff62a25ac749928e88ef2bad1dab00"
+    },
+    {
+      "row_id": "V06-B-at-most-once/row1",
+      "sha256": "8b565d29af28527978241fabdaac5c3b4d85204842145acbf134ebd5c7a5d14f"
+    },
+    {
+      "row_id": "V06-B-at-most-once/row2",
+      "sha256": "ab00d0b512c67b5e289ad241fb248033ba7608141721631c7cf5a6e0c7944948"
+    },
+    {
+      "row_id": "V06-B-at-most-once/row3",
+      "sha256": "42b1c4d08003f959f64f36dbb12fc69893bdb9cada3c265d8b8db401c9a9b3c2"
+    },
+    {
+      "row_id": "V07-A-explicit-reauthorization/row1",
+      "sha256": "8425bc75d9c115216c02d414377e44616413e078fbb018d5c50a062b246d9d49"
+    },
+    {
+      "row_id": "V07-A-explicit-reauthorization/row2",
+      "sha256": "2f798bcf44c81fd3c0701d7ea5d4ecb693a29b8e57a7a0f58268233ca4b69d60"
+    },
+    {
+      "row_id": "V07-A-explicit-reauthorization/row3",
+      "sha256": "6c2cb7aed800e61c0b179453b3a6477c2eb5d0eac1be9a8253c5471b383f7577"
+    },
+    {
+      "row_id": "V07-A-explicit-reauthorization/row4",
+      "sha256": "f41d873b9fd7c0048f4ab65d32fa99c2f1454b1aa6b84bf0a8621c0ffa205a14"
+    },
+    {
+      "row_id": "V07-A-explicit-reauthorization/row5",
+      "sha256": "34eaa530e78a1f4e0d101907a1e07cb3d45fdf7fae3849501cb90f59d8d8a4f9"
+    },
+    {
+      "row_id": "V07-A-unacknowledged-handoff/row1",
+      "sha256": "a57bea706488725ce93c65473a20f1e607cef7449dffa66a8b492dea14d89995"
+    },
+    {
+      "row_id": "V07-A-unacknowledged-handoff/row2",
+      "sha256": "1cc872f3387dac10a591ea9ca7b69f99c1b27bd17ddc925f2888cb97c9fc64bf"
+    },
+    {
+      "row_id": "V07-A-mode-fault/row1",
+      "sha256": "5e7e47d8568b24da586686df6046e09da54aeaef29f125a9c2efec652d1b3ceb"
+    },
+    {
+      "row_id": "V07-A-mode-fault/row2",
+      "sha256": "bcfbf63a10605c5f2d4745a9a09284bebdea37708cc27d2aa57305463761d547"
+    },
+    {
+      "row_id": "V15-A-same-tick-fault/row1",
+      "sha256": "1298f0c111f8e11f4ed840f78e1e0b54b75bf4963dffb6c9bd9d430489590aae"
+    },
+    {
+      "row_id": "V15-B-cancel-at-commit/row1",
+      "sha256": "769d359e9a61018c4f7cca99262311c218cc2c5f3e3fcb43c7cc1b55b2afbeb8"
+    },
+    {
+      "row_id": "V15-B-cancel-at-commit/row2",
+      "sha256": "70c5cd2e9375fbd66faad2feef61a2066d26401ce00effc87f0da1ac4a507670"
+    },
+    {
+      "row_id": "V15-B-cancel-too-late/row1",
+      "sha256": "6ba64bc5366b4ce1f372b83029ee5bcf0488119aed24498f9cffc927a8fe5df1"
+    },
+    {
+      "row_id": "V15-B-cancel-too-late/row2",
+      "sha256": "83a3c1b66416571f1b5968d531e6695b167cf6751511596ce4ef1b843ceccceb"
+    },
+    {
+      "row_id": "V15-B-cancel-too-late/row3",
+      "sha256": "3012b8048be1f86bd645de9eae2c3e2e64bd566385f48f33c83d80086e0b0a0f"
+    },
+    {
+      "row_id": "V15-B-undelivered-revocation/row1",
+      "sha256": "82c50c390c6a491ea963e3468d891820e6cbfbd8de49316300a4771e21bc8010"
+    },
+    {
+      "row_id": "V15-B-undelivered-revocation/row2",
+      "sha256": "6605add0d9f42ccea47bbd0319c9d058e69d1189a1eb9de8e274cb4cd331a5ac"
+    },
+    {
+      "row_id": "V15-B-undelivered-revocation/row3",
+      "sha256": "9a5379d8619754726b7543f47be01b77ad4dc3c25d7112f76bd33112bc8c002b"
+    },
+    {
+      "row_id": "V15-B-undelivered-revocation/row4",
+      "sha256": "627edb277da3768551b0901ffeba07ca40f40b3cfe8d000cff9044efb6e735a2"
+    },
+    {
+      "row_id": "V15-B-undelivered-revocation/row5",
+      "sha256": "8de28915189d87386096f1b6861f38b2e941f3b3d6a94aa9369f08c82c152afc"
+    },
+    {
+      "row_id": "V19-A-latch-restart-reentry/row1",
+      "sha256": "13aafcee206e8c4b582be07bbafaad7d23c4892bbc7c89ce5d6c12907cef86ac"
+    },
+    {
+      "row_id": "V19-A-latch-restart-reentry/row2",
+      "sha256": "07449033605b9f0b2312bdd4f896038cf6af90123b1acaa339a7ad7f86631730"
+    },
+    {
+      "row_id": "V19-A-latch-restart-reentry/row3",
+      "sha256": "343c81ab971a04b18d481bbfd9d3400a7989140fa918d3dec165d4eb39d0dd2d"
+    },
+    {
+      "row_id": "V19-A-latch-restart-reentry/row4",
+      "sha256": "b14ebb4e64d13af02274dcd261ec97b2756c98febacf73fff6ee0942a025a065"
+    },
+    {
+      "row_id": "V19-A-latch-restart-reentry/row5",
+      "sha256": "1eba6b4b1c80c2b41ae4485651c092854f0bce3c897d2c130d6a31d50a9dbbba"
+    },
+    {
+      "row_id": "V19-A-latch-restart-reentry/row6",
+      "sha256": "b603eb73bf68ed29baffc39481893992b8a4269a1b9ce2d7485c9d346857a570"
+    },
+    {
+      "row_id": "V19-A-latch-restart-reentry/row7",
+      "sha256": "3b058b549ae7e4c1e2d2e3558ac078f59004cc16e2f21b71f2b534d84c77ae43"
+    },
+    {
+      "row_id": "V19-A-latch-restart-reentry/row8",
+      "sha256": "5419a43cca43c7348fdfb4473fe381bc7cfd4cfb59d40538c7a28c2401d97531"
+    },
+    {
+      "row_id": "V19-A-missing-persistence/row1",
+      "sha256": "250f76ca786802bfed77125c3744f34b9b35fada252d48c4f9c4a26a9560d46f"
+    },
+    {
+      "row_id": "V19-A-missing-persistence/row2",
+      "sha256": "f5103452cbf9751db51e63b5bc532e807a21b74abfb6ebf0333b0eec1bbcfb1e"
+    }
+  ],
+  "original_scenario_dispositions": [
+    {
+      "case_id": "V01-A-expiry",
+      "stage": "S1-A",
+      "status": "COMPLETE_LITERAL_CANDIDATE",
+      "review_status": "PENDING_INDEPENDENT_REVIEW",
+      "original_row_count": 4,
+      "row_ids": [
+        "V01-A-expiry/row1",
+        "V01-A-expiry/row2",
+        "V01-A-expiry/row3",
+        "V01-A-expiry/row4"
+      ],
+      "complete_literal_prefix_row_ids": [
+        "V01-A-expiry/row1",
+        "V01-A-expiry/row2",
+        "V01-A-expiry/row3",
+        "V01-A-expiry/row4"
+      ],
+      "missing_or_unresolved": [],
+      "original_case_source_sha256": "6e38d36ac8686d21891d94cd60c147cf06a4c9edcaaa5579a3fe8c9383ed75ab"
+    },
+    {
+      "case_id": "V01-B-endpoint-expiry",
+      "stage": "S1-B",
+      "status": "DEFERRED_S1_B",
+      "review_status": "DEFERRED",
+      "original_row_count": 1,
+      "row_ids": [
+        "V01-B-endpoint-expiry/row1"
+      ],
+      "complete_literal_prefix_row_ids": [],
+      "missing_or_unresolved": [
+        "Endpoint-stage implementation/execution is outside authorization."
+      ],
+      "original_case_source_sha256": "ef4cbfd680cbf4e5420267dc214504c624135bf19915191b2d9658974c02798d"
+    },
+    {
+      "case_id": "V05-A-missing",
+      "stage": "S1-A",
+      "status": "COMPLETE_LITERAL_CANDIDATE",
+      "review_status": "PENDING_INDEPENDENT_REVIEW",
+      "original_row_count": 3,
+      "row_ids": [
+        "V05-A-missing/row1",
+        "V05-A-missing/row2",
+        "V05-A-missing/row3"
+      ],
+      "complete_literal_prefix_row_ids": [
+        "V05-A-missing/row1",
+        "V05-A-missing/row2",
+        "V05-A-missing/row3"
+      ],
+      "missing_or_unresolved": [],
+      "original_case_source_sha256": "7add541d6a4800c2c52895a2d0a6379a3c9a3bc4cd1dd15a8304efae49b9bc56"
+    },
+    {
+      "case_id": "V05-A-invalid",
+      "stage": "S1-A",
+      "status": "COMPLETE_LITERAL_CANDIDATE",
+      "review_status": "PENDING_INDEPENDENT_REVIEW",
+      "original_row_count": 3,
+      "row_ids": [
+        "V05-A-invalid/row1",
+        "V05-A-invalid/row2",
+        "V05-A-invalid/row3"
+      ],
+      "complete_literal_prefix_row_ids": [
+        "V05-A-invalid/row1",
+        "V05-A-invalid/row2",
+        "V05-A-invalid/row3"
+      ],
+      "missing_or_unresolved": [],
+      "original_case_source_sha256": "3be864cec63fbe71e1fdac401053085395118a117c05c4332ee5e881f8815140"
+    },
+    {
+      "case_id": "V05-A-degraded",
+      "stage": "S1-A",
+      "status": "COMPLETE_LITERAL_CANDIDATE",
+      "review_status": "PENDING_INDEPENDENT_REVIEW",
+      "original_row_count": 3,
+      "row_ids": [
+        "V05-A-degraded/row1",
+        "V05-A-degraded/row2",
+        "V05-A-degraded/row3"
+      ],
+      "complete_literal_prefix_row_ids": [
+        "V05-A-degraded/row1",
+        "V05-A-degraded/row2",
+        "V05-A-degraded/row3"
+      ],
+      "missing_or_unresolved": [],
+      "original_case_source_sha256": "b485409ca7aa6b5cdf25407c22530cc9223c076ebff27dfb56a3bdd3e5739a10"
+    },
+    {
+      "case_id": "V05-A-map",
+      "stage": "S1-A",
+      "status": "COMPLETE_LITERAL_CANDIDATE",
+      "review_status": "PENDING_INDEPENDENT_REVIEW",
+      "original_row_count": 3,
+      "row_ids": [
+        "V05-A-map/row1",
+        "V05-A-map/row2",
+        "V05-A-map/row3"
+      ],
+      "complete_literal_prefix_row_ids": [
+        "V05-A-map/row1",
+        "V05-A-map/row2",
+        "V05-A-map/row3"
+      ],
+      "missing_or_unresolved": [],
+      "original_case_source_sha256": "3dbcaf66af91f4dc1ef18e498b7083edc106fee78feb307d2eaa0c98d9f194ef"
+    },
+    {
+      "case_id": "V05-A-frame",
+      "stage": "S1-A",
+      "status": "COMPLETE_LITERAL_CANDIDATE",
+      "review_status": "PENDING_INDEPENDENT_REVIEW",
+      "original_row_count": 3,
+      "row_ids": [
+        "V05-A-frame/row1",
+        "V05-A-frame/row2",
+        "V05-A-frame/row3"
+      ],
+      "complete_literal_prefix_row_ids": [
+        "V05-A-frame/row1",
+        "V05-A-frame/row2",
+        "V05-A-frame/row3"
+      ],
+      "missing_or_unresolved": [],
+      "original_case_source_sha256": "e534fca1900c74a9326ca59d1c9719b4ff0f6d76b90a028c860a8a9b50b61f27"
+    },
+    {
+      "case_id": "V05-A-clock",
+      "stage": "S1-A",
+      "status": "COMPLETE_LITERAL_CANDIDATE",
+      "review_status": "PENDING_INDEPENDENT_REVIEW",
+      "original_row_count": 3,
+      "row_ids": [
+        "V05-A-clock/row1",
+        "V05-A-clock/row2",
+        "V05-A-clock/row3"
+      ],
+      "complete_literal_prefix_row_ids": [
+        "V05-A-clock/row1",
+        "V05-A-clock/row2",
+        "V05-A-clock/row3"
+      ],
+      "missing_or_unresolved": [],
+      "original_case_source_sha256": "aac20669c91388692e95f79dbc5152891df4ea7d2de25ab92d6a3caff04303ed"
+    },
+    {
+      "case_id": "V05-A-uncertainty",
+      "stage": "S1-A",
+      "status": "COMPLETE_LITERAL_CANDIDATE",
+      "review_status": "PENDING_INDEPENDENT_REVIEW",
+      "original_row_count": 3,
+      "row_ids": [
+        "V05-A-uncertainty/row1",
+        "V05-A-uncertainty/row2",
+        "V05-A-uncertainty/row3"
+      ],
+      "complete_literal_prefix_row_ids": [
+        "V05-A-uncertainty/row1",
+        "V05-A-uncertainty/row2",
+        "V05-A-uncertainty/row3"
+      ],
+      "missing_or_unresolved": [],
+      "original_case_source_sha256": "6c7b0d3b71e2a3e39619b74ecbe2cfbc0a466437f80cdf515778a2de047f37de"
+    },
+    {
+      "case_id": "V05-A-stale-capture",
+      "stage": "S1-A",
+      "status": "PARTIAL_UNRESOLVED",
+      "review_status": "PENDING_INDEPENDENT_REVIEW",
+      "original_row_count": 3,
+      "row_ids": [
+        "V05-A-stale-capture/row1",
+        "V05-A-stale-capture/row2",
+        "V05-A-stale-capture/row3"
+      ],
+      "complete_literal_prefix_row_ids": [
+        "V05-A-stale-capture/row1",
+        "V05-A-stale-capture/row2"
+      ],
+      "missing_or_unresolved": [
+        {
+          "field": "row3 desired_epoch and fault-latch refresh semantics",
+          "missing_rule": "At-most-one bump per batch does not determine whether an already-closed session increments again for a repeated stale observation with no remaining authority.",
+          "known_input_event": {
+            "event_id": "V05-A-stale-capture/120/0/ESTIMATE_OBSERVED",
+            "producer_id": "TOY_INPUT",
+            "producer_sequence": 1200,
+            "at_tick": 120,
+            "causal_parent_ids": [],
+            "kind": "ESTIMATE_OBSERVED",
+            "payload": {
+              "estimate_id": "E120_LATE",
+              "state_si": [
+                2,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "capture": {
+                "clock_id": "TOY_CLOCK",
+                "clock_session_id": "CLOCK_A",
+                "source_tick": 0,
+                "mapping_id": "EXACT_TOY",
+                "control_tick_bounds": [
+                  0,
+                  0
+                ],
+                "unknown_reason": null
+              },
+              "publication": {
+                "clock_id": "TOY_CLOCK",
+                "clock_session_id": "CLOCK_A",
+                "source_tick": 5,
+                "mapping_id": "EXACT_TOY",
+                "control_tick_bounds": [
+                  5,
+                  5
+                ],
+                "unknown_reason": null
+              },
+              "receipt": {
+                "clock_id": "TOY_CLOCK",
+                "clock_session_id": "CLOCK_A",
+                "source_tick": 120,
+                "mapping_id": "EXACT_TOY",
+                "control_tick_bounds": [
+                  120,
+                  120
+                ],
+                "unknown_reason": null
+              },
+              "quality": "VALID",
+              "frame_id": "FRAME_A",
+              "map_id": "MAP_A",
+              "uncertainty": {
+                "representation": "BOUNDED_SET",
+                "bounded_set_ref": "TOY_BOUND",
+                "covariance_si": null,
+                "interpretation_ref": "TOY_ONLY",
+                "reason": null
+              },
+              "health_evidence_id": "HEALTH_OK@E120_LATE@P1@TOY_CONTEXT",
+              "publication_latency_tick_bounds": [
+                5,
+                5
+              ],
+              "unknown_reason": null
+            }
+          },
+          "known_expectations": {
+            "state": "NO_VALID_POLICY",
+            "no_new_permission": true,
+            "capture_tick": 0,
+            "publication_tick": 5,
+            "receipt_tick": 120,
+            "age_at_receipt": 120,
+            "publication_latency": [
+              5,
+              5
+            ]
+          },
+          "disposition": "Stop before the third complete Trace. Do not copy candidate behavior."
+        }
+      ],
+      "original_case_source_sha256": "6aee92d432b1de495dac4d1f59a0108739a81d0d1174722ade353969d8efd749"
+    },
+    {
+      "case_id": "V06-A-identities",
+      "stage": "S1-A",
+      "status": "COMPLETE_LITERAL_CANDIDATE",
+      "review_status": "PENDING_INDEPENDENT_REVIEW",
+      "original_row_count": 6,
+      "row_ids": [
+        "V06-A-identities/row1",
+        "V06-A-identities/row2",
+        "V06-A-identities/row3",
+        "V06-A-identities/row4",
+        "V06-A-identities/row5",
+        "V06-A-identities/row6"
+      ],
+      "complete_literal_prefix_row_ids": [
+        "V06-A-identities/row1",
+        "V06-A-identities/row2",
+        "V06-A-identities/row3",
+        "V06-A-identities/row4",
+        "V06-A-identities/row5",
+        "V06-A-identities/row6"
+      ],
+      "missing_or_unresolved": [],
+      "original_case_source_sha256": "ed12f99ed37d0e9561af1ae260468a962637adce9acac0597a2f215581df04e0"
+    },
+    {
+      "case_id": "V06-A-conflicting-payload",
+      "stage": "S1-A",
+      "status": "COMPLETE_LITERAL_CANDIDATE",
+      "review_status": "PENDING_INDEPENDENT_REVIEW",
+      "original_row_count": 1,
+      "row_ids": [
+        "V06-A-conflicting-payload/row1"
+      ],
+      "complete_literal_prefix_row_ids": [
+        "V06-A-conflicting-payload/row1"
+      ],
+      "missing_or_unresolved": [],
+      "original_case_source_sha256": "0f62d158ee549824d031d6ab8a4deba90f329daa9ad5e539ef1fbcef402e71a3"
+    },
+    {
+      "case_id": "V06-B-at-most-once",
+      "stage": "S1-B",
+      "status": "DEFERRED_S1_B",
+      "review_status": "DEFERRED",
+      "original_row_count": 3,
+      "row_ids": [
+        "V06-B-at-most-once/row1",
+        "V06-B-at-most-once/row2",
+        "V06-B-at-most-once/row3"
+      ],
+      "complete_literal_prefix_row_ids": [],
+      "missing_or_unresolved": [
+        "Endpoint-stage implementation/execution is outside authorization."
+      ],
+      "original_case_source_sha256": "4a11ef09a36a07b94e37e3a1273387cd519ef0ee2f6033117dec4759c9eef3ae"
+    },
+    {
+      "case_id": "V07-A-explicit-reauthorization",
+      "stage": "S1-A",
+      "status": "PARTIAL_UNRESOLVED",
+      "review_status": "PENDING_INDEPENDENT_REVIEW",
+      "original_row_count": 5,
+      "row_ids": [
+        "V07-A-explicit-reauthorization/row1",
+        "V07-A-explicit-reauthorization/row2",
+        "V07-A-explicit-reauthorization/row3",
+        "V07-A-explicit-reauthorization/row4",
+        "V07-A-explicit-reauthorization/row5"
+      ],
+      "complete_literal_prefix_row_ids": [
+        "V07-A-explicit-reauthorization/row1",
+        "V07-A-explicit-reauthorization/row2",
+        "V07-A-explicit-reauthorization/row3"
+      ],
+      "missing_or_unresolved": [
+        {
+          "fields": [
+            "row4 Permission.policy_id",
+            "row4 transition_id binding",
+            "row4 evidence/cmd original-versus-current context binding"
+          ],
+          "known_lease": [
+            24,
+            80
+          ],
+          "known_original_source": [
+            "c-old",
+            "CTRL_A",
+            "P1",
+            1
+          ],
+          "known_permission_epoch": 2,
+          "missing_rule": "PC02 preserves original source/generation and bounds, but the original case does not uniquely bind the new Permission.policy_id and opaque transition_id to the active CTRL_B/NOMINAL_B handoff.",
+          "disposition": "Stop before constructing p-new. Do not invent a passing new-policy identity or copy implementation conventions."
+        }
+      ],
+      "original_case_source_sha256": "0682993a4bfbbd6f597b07aef6a51772a5e939bb92b0b4fcd2b9eb5b96ec53e0"
+    },
+    {
+      "case_id": "V07-A-unacknowledged-handoff",
+      "stage": "S1-A",
+      "status": "COMPLETE_LITERAL_CANDIDATE",
+      "review_status": "PENDING_INDEPENDENT_REVIEW",
+      "original_row_count": 2,
+      "row_ids": [
+        "V07-A-unacknowledged-handoff/row1",
+        "V07-A-unacknowledged-handoff/row2"
+      ],
+      "complete_literal_prefix_row_ids": [
+        "V07-A-unacknowledged-handoff/row1",
+        "V07-A-unacknowledged-handoff/row2"
+      ],
+      "missing_or_unresolved": [],
+      "original_case_source_sha256": "ae7b067fa0aa2864d9337356d647d86de9dd08c521072ee190dc33146bca6658"
+    },
+    {
+      "case_id": "V07-A-mode-fault",
+      "stage": "S1-A",
+      "status": "COMPLETE_LITERAL_CANDIDATE",
+      "review_status": "PENDING_INDEPENDENT_REVIEW",
+      "original_row_count": 2,
+      "row_ids": [
+        "V07-A-mode-fault/row1",
+        "V07-A-mode-fault/row2"
+      ],
+      "complete_literal_prefix_row_ids": [
+        "V07-A-mode-fault/row1",
+        "V07-A-mode-fault/row2"
+      ],
+      "missing_or_unresolved": [],
+      "original_case_source_sha256": "eb7d0076957c490ffa7b4566a9b6bea642a41ba2e5f52a9734a1d0f11b8f4518"
+    },
+    {
+      "case_id": "V15-A-same-tick-fault",
+      "stage": "S1-A",
+      "status": "COMPLETE_LITERAL_CANDIDATE",
+      "review_status": "PENDING_INDEPENDENT_REVIEW",
+      "original_row_count": 1,
+      "row_ids": [
+        "V15-A-same-tick-fault/row1"
+      ],
+      "complete_literal_prefix_row_ids": [
+        "V15-A-same-tick-fault/row1"
+      ],
+      "missing_or_unresolved": [],
+      "original_case_source_sha256": "a6d9418260e9441d175a9c837ee640e2a7c7ec8979552c2f4ba588b7e948e6fa"
+    },
+    {
+      "case_id": "V15-B-cancel-at-commit",
+      "stage": "S1-B",
+      "status": "DEFERRED_S1_B",
+      "review_status": "DEFERRED",
+      "original_row_count": 2,
+      "row_ids": [
+        "V15-B-cancel-at-commit/row1",
+        "V15-B-cancel-at-commit/row2"
+      ],
+      "complete_literal_prefix_row_ids": [],
+      "missing_or_unresolved": [
+        "Endpoint-stage implementation/execution is outside authorization."
+      ],
+      "original_case_source_sha256": "db12186a647aea56f57414b5fbc594987e61497c1bbedb2fab2b5c3953f4517a"
+    },
+    {
+      "case_id": "V15-B-cancel-too-late",
+      "stage": "S1-B",
+      "status": "DEFERRED_S1_B",
+      "review_status": "DEFERRED",
+      "original_row_count": 3,
+      "row_ids": [
+        "V15-B-cancel-too-late/row1",
+        "V15-B-cancel-too-late/row2",
+        "V15-B-cancel-too-late/row3"
+      ],
+      "complete_literal_prefix_row_ids": [],
+      "missing_or_unresolved": [
+        "Endpoint-stage implementation/execution is outside authorization."
+      ],
+      "original_case_source_sha256": "fa21ff5fffa522a63a6ce2ec97d75fbf0bf18f4e02ebc097e8e270e8a3350689"
+    },
+    {
+      "case_id": "V15-B-undelivered-revocation",
+      "stage": "S1-B",
+      "status": "DEFERRED_S1_B",
+      "review_status": "DEFERRED",
+      "original_row_count": 5,
+      "row_ids": [
+        "V15-B-undelivered-revocation/row1",
+        "V15-B-undelivered-revocation/row2",
+        "V15-B-undelivered-revocation/row3",
+        "V15-B-undelivered-revocation/row4",
+        "V15-B-undelivered-revocation/row5"
+      ],
+      "complete_literal_prefix_row_ids": [],
+      "missing_or_unresolved": [
+        "Endpoint-stage implementation/execution is outside authorization."
+      ],
+      "original_case_source_sha256": "2baca2e4d40340abf3bdb7f44e213b3f6c036a6877c4d86b9b54771a3e4ca615"
+    },
+    {
+      "case_id": "V19-A-latch-restart-reentry",
+      "stage": "S1-A",
+      "status": "COMPLETE_LITERAL_CANDIDATE",
+      "review_status": "PENDING_INDEPENDENT_REVIEW",
+      "original_row_count": 8,
+      "row_ids": [
+        "V19-A-latch-restart-reentry/row1",
+        "V19-A-latch-restart-reentry/row2",
+        "V19-A-latch-restart-reentry/row3",
+        "V19-A-latch-restart-reentry/row4",
+        "V19-A-latch-restart-reentry/row5",
+        "V19-A-latch-restart-reentry/row6",
+        "V19-A-latch-restart-reentry/row7",
+        "V19-A-latch-restart-reentry/row8"
+      ],
+      "complete_literal_prefix_row_ids": [
+        "V19-A-latch-restart-reentry/row1",
+        "V19-A-latch-restart-reentry/row2",
+        "V19-A-latch-restart-reentry/row3",
+        "V19-A-latch-restart-reentry/row4",
+        "V19-A-latch-restart-reentry/row5",
+        "V19-A-latch-restart-reentry/row6",
+        "V19-A-latch-restart-reentry/row7",
+        "V19-A-latch-restart-reentry/row8"
+      ],
+      "missing_or_unresolved": [],
+      "original_case_source_sha256": "3cba1a963c297ac6111c1675504917c3fb09c349cd524a66f25f3f7df58cd755"
+    },
+    {
+      "case_id": "V19-A-missing-persistence",
+      "stage": "S1-A",
+      "status": "PARTIAL_UNRESOLVED",
+      "review_status": "PENDING_INDEPENDENT_REVIEW",
+      "original_row_count": 2,
+      "row_ids": [
+        "V19-A-missing-persistence/row1",
+        "V19-A-missing-persistence/row2"
+      ],
+      "complete_literal_prefix_row_ids": [],
+      "missing_or_unresolved": [
+        {
+          "field": "boot desired_epoch and complete initial Snapshot identity",
+          "missing_rule": "RestartInput supplies no boot epoch. The approved specification requires explicit initialization but does not select a numeric initial epoch. The candidate convention0->1 is implementation evidence, not independent authority.",
+          "disposition": "Do not construct a complete boot Trace until Primary approves the initialization convention."
+        }
+      ],
+      "original_case_source_sha256": "127fb313f967640e72652f88491d126ec9ea39ab2c53088915f2d4e09dcbf80c"
+    }
+  ],
+  "primary_versioned_adjudications": [
+    {
+      "id": "PRIMARY-S1-O2-V05-0.2.0",
+      "authority": "Owner supplied Primary S1-O1/S1-O2 APPROVED WITH CONDITIONS",
+      "source_attachment_sha256": "fbea27f9baa96e8562373d24b9668bebce7e21afafb4bff72474ca34990f5f2e",
+      "old_version": "apex-s1-authority/0.1.0",
+      "old_reason_codes": [
+        "FAULT_LATCHED"
+      ],
+      "new_version": "apex-s1-authority/0.2.0",
+      "new_first_reason": "EPOCH_MISMATCH",
+      "applies_to": "V05-A-map/row2; epoch1 command after desired epoch advances to2",
+      "execution": "NOT_EXECUTED"
+    }
+  ],
+  "source_version_disagreements": [
+    {
+      "row_id": "V05-A-map/row2",
+      "original_reason_codes": [
+        "FAULT_LATCHED"
+      ],
+      "authored_event_reason_sets": [
+        [
+          "EPOCH_MISMATCH"
+        ]
+      ],
+      "version": "apex-s1-authority/0.2.0",
+      "status": "PRIMARY_ADJUDICATED",
+      "basis": "Current session/effective epoch/revocation category precedes latch/quality/time as specified; historical batch summaries remain unchanged."
+    },
+    {
+      "row_id": "V01-A-expiry/row4",
+      "original_reason_codes": [
+        "EXPIRED",
+        "FAULT_LATCHED"
+      ],
+      "authored_event_reason_sets": [
+        [
+          "EXPIRED"
+        ],
+        [
+          "EXPIRED",
+          "NO_VALID_POLICY"
+        ],
+        [
+          "FAULT_LATCHED"
+        ],
+        [
+          "REVOKED",
+          "EPOCH_MISMATCH"
+        ]
+      ],
+      "version": "apex-s1-authority/0.2.0",
+      "status": "DERIVED_VERSIONED_CANDIDATE_PENDING_REVIEW",
+      "basis": "Current session/effective epoch/revocation category precedes latch/quality/time as specified; historical batch summaries remain unchanged."
+    },
+    {
+      "row_id": "V05-A-missing/row2",
+      "original_reason_codes": [
+        "FAULT_LATCHED"
+      ],
+      "authored_event_reason_sets": [
+        [
+          "EPOCH_MISMATCH"
+        ]
+      ],
+      "version": "apex-s1-authority/0.2.0",
+      "status": "DERIVED_VERSIONED_CANDIDATE_PENDING_REVIEW",
+      "basis": "Current session/effective epoch/revocation category precedes latch/quality/time as specified; historical batch summaries remain unchanged."
+    },
+    {
+      "row_id": "V05-A-invalid/row2",
+      "original_reason_codes": [
+        "FAULT_LATCHED"
+      ],
+      "authored_event_reason_sets": [
+        [
+          "EPOCH_MISMATCH"
+        ]
+      ],
+      "version": "apex-s1-authority/0.2.0",
+      "status": "DERIVED_VERSIONED_CANDIDATE_PENDING_REVIEW",
+      "basis": "Current session/effective epoch/revocation category precedes latch/quality/time as specified; historical batch summaries remain unchanged."
+    },
+    {
+      "row_id": "V05-A-degraded/row2",
+      "original_reason_codes": [
+        "FAULT_LATCHED"
+      ],
+      "authored_event_reason_sets": [
+        [
+          "EPOCH_MISMATCH"
+        ]
+      ],
+      "version": "apex-s1-authority/0.2.0",
+      "status": "DERIVED_VERSIONED_CANDIDATE_PENDING_REVIEW",
+      "basis": "Current session/effective epoch/revocation category precedes latch/quality/time as specified; historical batch summaries remain unchanged."
+    },
+    {
+      "row_id": "V05-A-frame/row2",
+      "original_reason_codes": [
+        "FAULT_LATCHED"
+      ],
+      "authored_event_reason_sets": [
+        [
+          "EPOCH_MISMATCH"
+        ]
+      ],
+      "version": "apex-s1-authority/0.2.0",
+      "status": "DERIVED_VERSIONED_CANDIDATE_PENDING_REVIEW",
+      "basis": "Current session/effective epoch/revocation category precedes latch/quality/time as specified; historical batch summaries remain unchanged."
+    },
+    {
+      "row_id": "V05-A-clock/row2",
+      "original_reason_codes": [
+        "FAULT_LATCHED"
+      ],
+      "authored_event_reason_sets": [
+        [
+          "EPOCH_MISMATCH"
+        ]
+      ],
+      "version": "apex-s1-authority/0.2.0",
+      "status": "DERIVED_VERSIONED_CANDIDATE_PENDING_REVIEW",
+      "basis": "Current session/effective epoch/revocation category precedes latch/quality/time as specified; historical batch summaries remain unchanged."
+    },
+    {
+      "row_id": "V05-A-uncertainty/row2",
+      "original_reason_codes": [
+        "FAULT_LATCHED"
+      ],
+      "authored_event_reason_sets": [
+        [
+          "EPOCH_MISMATCH"
+        ]
+      ],
+      "version": "apex-s1-authority/0.2.0",
+      "status": "DERIVED_VERSIONED_CANDIDATE_PENDING_REVIEW",
+      "basis": "Current session/effective epoch/revocation category precedes latch/quality/time as specified; historical batch summaries remain unchanged."
+    },
+    {
+      "row_id": "V07-A-unacknowledged-handoff/row2",
+      "original_reason_codes": [
+        "FAULT_LATCHED"
+      ],
+      "authored_event_reason_sets": [
+        [
+          "REVOKED",
+          "EPOCH_MISMATCH"
+        ]
+      ],
+      "version": "apex-s1-authority/0.2.0",
+      "status": "DERIVED_VERSIONED_CANDIDATE_PENDING_REVIEW",
+      "basis": "Current session/effective epoch/revocation category precedes latch/quality/time as specified; historical batch summaries remain unchanged."
+    },
+    {
+      "row_id": "V07-A-mode-fault/row2",
+      "original_reason_codes": [
+        "REVOKED",
+        "FAULT_LATCHED"
+      ],
+      "authored_event_reason_sets": [
+        [
+          "REVOKED",
+          "EPOCH_MISMATCH"
+        ]
+      ],
+      "version": "apex-s1-authority/0.2.0",
+      "status": "DERIVED_VERSIONED_CANDIDATE_PENDING_REVIEW",
+      "basis": "Current session/effective epoch/revocation category precedes latch/quality/time as specified; historical batch summaries remain unchanged."
+    },
+    {
+      "row_id": "V15-A-same-tick-fault/row1",
+      "original_reason_codes": [
+        "FAULT_LATCHED",
+        "NO_VALID_POLICY"
+      ],
+      "authored_event_reason_sets": [
+        [
+          "NO_VALID_POLICY"
+        ],
+        [
+          "NO_VALID_POLICY"
+        ],
+        [
+          "NO_VALID_POLICY"
+        ],
+        [
+          "FAULT_LATCHED"
+        ],
+        [
+          "EPOCH_MISMATCH"
+        ],
+        [
+          "REVOKED",
+          "EPOCH_MISMATCH"
+        ]
+      ],
+      "version": "apex-s1-authority/0.2.0",
+      "status": "DERIVED_VERSIONED_CANDIDATE_PENDING_REVIEW",
+      "basis": "Current session/effective epoch/revocation category precedes latch/quality/time as specified; historical batch summaries remain unchanged."
+    },
+    {
+      "row_id": "V05-A-map/row2",
+      "original_reason_codes": [
+        "FAULT_LATCHED"
+      ],
+      "authored_event_reason_sets": [
+        [
+          "OK"
+        ],
+        [
+          "OK"
+        ],
+        [
+          "EPOCH_MISMATCH"
+        ]
+      ],
+      "version": "apex-s1-authority/0.2.0",
+      "status": "PRIMARY_ADJUDICATED",
+      "basis": "Current session/effective epoch/revocation category precedes latch/quality/time as specified; historical batch summaries remain unchanged."
+    },
+    {
+      "id": "D-V06-FUTURE-LEASE-LABEL",
+      "row_id": "V06-A-identities/row2",
+      "original_live_permission_ids": [
+        "p1"
+      ],
+      "authored_created_permission_ids": [
+        "p1"
+      ],
+      "authored_currently_applicable_permission_ids": [],
+      "at_tick": 10,
+      "permission_interval": [
+        20,
+        60
+      ],
+      "status": "PENDING_INDEPENDENT_REVIEW",
+      "basis": "The original row labels the newly granted future lease live; O1 separates existence of an issued conditional lease from present application eligibility. The grant is retained and no favorable outcome is removed. The label/comparator interpretation needs review."
+    }
+  ],
+  "unresolved_main_cases": [
+    {
+      "case_id": "T06-NORMAL-BOUNDARY",
+      "details": [
+        {
+          "id": "D-PC06-EXPIRY-EMERGENCY-LATCH-ACCOUNTING",
+          "status": "UNRESOLVED_SCIENTIFIC_ADJUDICATION_REQUIRED",
+          "conflicting_basis": [
+            "PC06 and fault_latches require every simultaneous accepted critical cause to be retained.",
+            "These two NORMAL/WARNING designs expire active P1 at tick20 and accept an emergency at tick20, but expected.added_fault_ids contains only F_EMERGENCY."
+          ],
+          "not_chosen": "Whether expiry is an independently identified critical latch, or an additional cause represented within the emergency fault, is not settled by the approved schema/projection.",
+          "specified_without_dispute": {
+            "transition_path": [
+              "T06",
+              "T09"
+            ],
+            "final_state": "NO_VALID_POLICY",
+            "desired_epoch": 2,
+            "new_permission_ids": [],
+            "reason_codes": [
+              "EXPIRED",
+              "NO_VALID_POLICY"
+            ]
+          },
+          "disposition": "Stop complete fault/trace materialization for these cases. Preserve the original projection. No guessed latch set and no source change."
+        }
+      ]
+    },
+    {
+      "case_id": "T06-WARNING-BOUNDARY",
+      "details": [
+        {
+          "id": "D-PC06-EXPIRY-EMERGENCY-LATCH-ACCOUNTING",
+          "status": "UNRESOLVED_SCIENTIFIC_ADJUDICATION_REQUIRED",
+          "conflicting_basis": [
+            "PC06 and fault_latches require every simultaneous accepted critical cause to be retained.",
+            "These two NORMAL/WARNING designs expire active P1 at tick20 and accept an emergency at tick20, but expected.added_fault_ids contains only F_EMERGENCY."
+          ],
+          "not_chosen": "Whether expiry is an independently identified critical latch, or an additional cause represented within the emergency fault, is not settled by the approved schema/projection.",
+          "specified_without_dispute": {
+            "transition_path": [
+              "T06",
+              "T09"
+            ],
+            "final_state": "NO_VALID_POLICY",
+            "desired_epoch": 2,
+            "new_permission_ids": [],
+            "reason_codes": [
+              "EXPIRED",
+              "NO_VALID_POLICY"
+            ]
+          },
+          "disposition": "Stop complete fault/trace materialization for these cases. Preserve the original projection. No guessed latch set and no source change."
+        }
+      ]
+    }
+  ],
+  "other_review_questions": [
+    {
+      "id": "D-O1-PRESENTATION-IDENTITY",
+      "status": "PENDING_INDEPENDENT_REVIEW",
+      "fields": [
+        "internal Trace.event_id spelling",
+        "human-readable reason wording",
+        "input-content hash preimage and operation-key representation",
+        "implicit batch/snapshot causal-root representation"
+      ],
+      "finding": "The approved contracts constrain these representations without spelling every byte. O1 supplies concrete candidates for review, rather than extracting implementation choices. These choices are not newly accepted policy or an assertion of native-output byte equality.",
+      "required_decision": "Secondary must approve literal representations or an explicit bijective presentation mapping and strict comparator contract before execution. Do not silently normalize mismatches."
+    },
+    {
+      "id": "D-V19-RESET-EPOCH-CONTEXT",
+      "status": "SPECIFICATION_EXPECTATION_RETAINED_REVIEW_REQUIRED",
+      "source_row": "V19-A-latch-restart-reentry/row6",
+      "specified_target": [
+        "SESSION_B",
+        "ENDPOINT_B",
+        2
+      ],
+      "expected_desired_epoch": 2,
+      "finding": "The source row explicitly supplies new-session epoch2 after the earlier fault transaction already selected2. No accepted general rule requires another increment on reset; O1 follows the explicit row context. The earlier implementation bootstrap/reset conventions are not used as oracle authority.",
+      "source_change_authorized": false
+    },
+    {
+      "id": "D-ORACLE-AUTHOR-INDEPENDENCE",
+      "status": "PENDING_EXTERNAL_INDEPENDENT_REVIEW",
+      "finding": "This chat previously authored the implementation. This assignment used documentation-only plans and no implementation source bodies/helpers/output; that method is source-independent construction, not independent-person acceptance."
+    }
+  ],
+  "proposed_test_only_amendment": {
+    "id": "PROPOSED-S1-O3-TEST-WIRING-ONLY",
+    "status": "NOT_AUTHORIZED_NOT_IMPLEMENTED",
+    "requested_paths": [
+      "tests/unit/safety_authority/oracle_support.py",
+      "tests/unit/safety_authority/test_oracle_cases.py"
+    ],
+    "reason": "Current support compares salient projection fields and the original map scenario only; it does not consume full_trace_cases/original_full_trace_cases/adjudication chains, and its acceptance gate requires INDEPENDENTLY_REVIEWED.",
+    "proposed_changes": [
+      "Add a literal full-trace loader and explicit reviewed-case selection; never derive expected values using implementation guards/order/ID helpers.",
+      "Compare complete ordered actual traces and semantic permission/fault/command/event/operation effects with the reviewed literal cases; retain complete differences and unknown observations.",
+      "Do not treat a compound historical salient row as one exact per-event trace. Keep row provenance and compare its explicitly bound subtraces/effects.",
+      "Add original multi-batch/restore_snapshot and V05 old/current-epoch chain adapters. Carry actual returned state forward; never replace actual history with expected checkpoints to conceal divergence.",
+      "Review exact snapshot-hash/canonical identity and human-readable presentation matching before implementing comparator behavior. No unapproved normalization or source guard fixes.",
+      "Preserve the independent-review gate. Pending/partial cases remain blocked, never auto-labelled reviewed, skipped into acceptance or regenerated from observed outputs."
+    ],
+    "explicitly_not_requested": [
+      "Any implementation-source change",
+      "Any test collection/execution",
+      "Any simulation/endpoint/hardware work"
+    ],
+    "approval_request": "Request a separately scoped test-only wiring assignment after Secondary reviews these artifacts and the representation/remaining scientific questions. No permission is inferred from this proposal."
+  },
+  "preservation_baseline": {
+    "tracked_safety_files": 876,
+    "protected_references": {
+      "refs/heads/main": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "refs/heads/release/performance-synthetic-v1": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "refs/heads/research/control-theory-ct1": "3898704102e7570bcaff9b1654b7b345db1f9b6f",
+      "refs/heads/research/efficiency": "b53d92f8284e5f1c87c86b05916ea3019bba859f",
+      "refs/heads/research/safety-s0": "6392092d68c1e2dd75120fbd87c32714e530e44e",
+      "refs/remotes/origin/HEAD": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "refs/remotes/origin/main": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "refs/remotes/origin/release/performance-synthetic-v1": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "refs/remotes/origin/research/control-theory-ct1": "3898704102e7570bcaff9b1654b7b345db1f9b6f",
+      "refs/remotes/origin/research/efficiency": "b53d92f8284e5f1c87c86b05916ea3019bba859f",
+      "refs/remotes/origin/research/safety-s0": "6392092d68c1e2dd75120fbd87c32714e530e44e",
+      "refs/tags/performance-synthetic-v1": "76d9eaa65af02efb0263916adc75d5247a0e778f"
+    },
+    "source_module_sha256": {
+      "src/apex/safety_authority/__init__.py": "d57ef16432c013767adfb52f0929e93abdd699d10df799b0ac1b1eaeba81f9fb",
+      "src/apex/safety_authority/codec.py": "9d890bb6e8593db4381305ddae62e5e88e9c6815a468e9e5b0d1e130028529d4",
+      "src/apex/safety_authority/ordering.py": "764ab3708a630e71730d2a6085389e481db87f0913bdd8e4b1536321ded090da",
+      "src/apex/safety_authority/policy.py": "a7e6947f8d0b39a69a6d9cc71cc8a5b391baa8506ee88998101eccc5e0b16293",
+      "src/apex/safety_authority/records.py": "8602b92b3c71cbeb59d7dc25d2cb7ad61545c81f7ff38c42d7818ba705be0cf2",
+      "src/apex/safety_authority/reducer.py": "3085c050dc1c3cd274c1712499220528759efdc6c359def4122d60f2414e2db9",
+      "src/apex/safety_authority/time.py": "ff57a5ccd9dd7c2af6c08f1607c38b52f609dc651f137dbc7b9b398e8671f76d"
+    },
+    "test_support_sha256": {
+      "tests/unit/safety_authority/oracle_support.py": "a6aa53280a41488966bd721df9aa4de9e5d36db8129c266224b4ed05750f6f8e",
+      "tests/unit/safety_authority/test_identity.py": "6796cfbba9e2494900cd5b9eeffa76e1a5fddf78ee5ae255a1db6545fabb7e32",
+      "tests/unit/safety_authority/test_oracle_cases.py": "acc6ec4c5b79d04745d1d3cf1a686ab15325bdd036a18736c603bc84ce771034",
+      "tests/unit/safety_authority/test_ordering.py": "af208c0577ef44d9f55ebc4554a0e7f68b35a1ea715773c80e594c8e9c3372b1",
+      "tests/unit/safety_authority/test_records.py": "5d2b6d6977655945485be5c152ac1ece120f4c278c2c203a5c559c5e29320b9c",
+      "tests/unit/safety_authority/test_restart.py": "b042193276cf00f5cdacee9fdeb87568a751fccf82198ab86ad974cb09477464",
+      "tests/unit/safety_authority/test_time.py": "b7835b63e3e55419facd3316d1f7bcd5f92715a843dca9094f4191878f04d02d",
+      "tests/unit/safety_authority/test_transitions.py": "dd94c9fe914438fc81c619f00aad39989db01109987dd958ee8d23f2f63c9e42"
+    },
+    "efficiency_head_at_inspection": "b53d92f8284e5f1c87c86b05916ea3019bba859f",
+    "efficiency_status_at_inspection": "",
+    "historical_efficiency_result_metadata_entries": 11646,
+    "raw_content_rehash_or_archive_restoration_qualified": false
+  },
+  "execution_statement": "NO DETERMINISTIC TESTS EXECUTED",
+  "next_gate": "Secondary independent oracle/fixture review, Primary dispositions for unresolved fields, then separately authorized test-only wiring and later separately authorized focused execution.",
+  "manual_review_refinements": [
+    {
+      "case_ids": [
+        "T06-DISARMED-BOUNDARY",
+        "T06-RECOVERY-BOUNDARY",
+        "T06-DECELERATING-BOUNDARY"
+      ],
+      "reason": "Resolved non-permissive context separately from NORMAL/WARNING active nominal expiry; preserved boundary knowledge and F_EMERGENCY projection.",
+      "basis": [
+        "DISARMED-startup exception",
+        "disabled-state authority restriction",
+        "T06/PC06 priority"
+      ]
+    },
+    {
+      "case_id": "E10-CANCEL-INTENT",
+      "reason": "Retain p1 as the approved design specifies. A cancellation request alone is not an acknowledgement, a separate host revocation or endpoint cancellation."
+    },
+    {
+      "case_id": "E06-ENDPOINT-EXCLUDED",
+      "reason": "Reject before semantic dispatch/sealing; rejected raw identity remains provenance, not a decoded Command or admitted Event."
+    },
+    {
+      "case_ids": [
+        "T06-RECOVERY-REJECTION",
+        "T06-DECELERATING-REJECTION"
+      ],
+      "reason": "Untrusted emergency denial changes no authority; mandatory unsupported-state closure has its own Snapshot/batch cause."
+    }
+  ]
+}
