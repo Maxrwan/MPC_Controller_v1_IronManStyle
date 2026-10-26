@@ -1095,3 +1095,36 @@ review and focused execution permissions remain separate gates. Endpoint applica
 execution, numerical controller integration, S1-B/S1-C and physical/hardware validation are excluded.
 No new domains, timing limits or physical response guarantee. Preserve Performance/main/tag,
 independent Efficiency and archive obligations; stop for Engineering Review.
+
+
+## ADR-169 — Create an isolated pure S1-A candidate without executing it
+
+**Status:** WORK_COMPLETE_PENDING_REVIEW; unverified research implementation, 2026-10-23.
+**Basis:** explicit owner code-creation authorization at `fa4615ac11a1cf79c14d12eedb9360e33291c182`.
+
+Create only the approved seven-module `apex.safety_authority` namespace, eight test/support files,
+four literal fixture files and three documentation paths. Adopt the approved0.2.0 wire and0.1.0
+Python API, PC01–PC10 and eight-candidate/six-disabled transition matrix without rewriting accepted
+S0/S1/preparation documents. The API is pure and standard-library only. Source/command generations,
+logical permissions, supplied endpoint observations and unknown physical application stay distinct.
+No controller, simulator, endpoint, braking or hardware policy is introduced.
+
+Batch admission reserves producer sequences before phase sorting, journals exact event/operation
+history and visits crossed half-open expiry/freshness boundaries. Critical causes latch together,
+T06 precedes T09, and desired epoch advances at most once per current session/batch. Supplied barrier
+facts grant nothing without exact acknowledgement matching. T13 enters a new DISARMED session only;
+reauthorization requests a distinct bounded permission while retaining original command identity.
+All state transitions alone create zero command permissions; disabled transition labels cannot be
+used to reauthorize. Snapshot persistence is logical input/output, with no disk durability claim.
+
+Independent oracle data remain literal and unexecuted. Four positive designs lack the full barrier
+acknowledgement precondition; keep the strict guard and record the gap. Full event-level golden
+traces remain incomplete; one original map-fault case has three projections with an explicit
+row2 reason disagreement. Review bootstrap/reset epoch conventions, synthetic clearance/provenance
+assumptions and complete materializations before any focused execution. Do not fabricate passing
+results or use the reducer to generate expectations. Work evidence lists all incomplete obligations.
+
+Static AST/signature/import/path, JSON/reference/hash/coverage, Ruff and Git/preservation checks
+are the only validation. **NO DETERMINISTIC OR NUMERICAL TESTS EXECUTED.** Engineering Review and
+separate explicit focused-execution authorization remain required. No S1-B/C, integration or
+physical safety acceptance follows. See [implementation work evidence](safety/s1a/implementation_work_evidence.json).

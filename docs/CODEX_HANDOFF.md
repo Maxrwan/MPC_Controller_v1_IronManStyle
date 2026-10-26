@@ -1,3 +1,51 @@
+# Current handoff — S1-A bounded code creation
+
+**WORK_COMPLETE_PENDING_REVIEW — UNVERIFIED RESEARCH CANDIDATE.**
+The owner authorized code creation only from exact Safety `fa4615ac11a1cf79c14d12eedb9360e33291c182`,
+including PC01–PC10, wire `apex-s1-authority/0.2.0` and API `apex-s1a-python/0.1.0`.
+The same existing Safety worktree/branch is used; no S1-B endpoint or runtime integration is created.
+Historical preparation/specification labels below remain unchanged as historical records.
+
+[Work evidence](safety/s1a/implementation_work_evidence.json) contains the complete22-file manifest,
+source/fixture hashes,10 public entry points,50 frozen record declarations, seven module roles,
+PC01–PC10 mapping, exact assumptions and deferred checks. Candidate transitions are
+T01/T02/T03/T06/T09/T11/T13/T14; T04/T05/T07/T08/T10/T12 remain explicitly disabled.
+All nine states are retained. State changes create no permission; endpoint outputs are fixed empty.
+
+Eight test/support files and four literal JSON fixtures are authored, without importing or collecting
+them. The unchanged100 approved designs cover84 matrix cases/28 source edges and16 protocol cases.
+All58 approved snapshots and69 original rows remain unchanged; one added original-map snapshot
+and three literal event projections document V05-A-map, including its row2 epoch-versus-latch
+reason disagreement. There are24 test function declarations; this is static source inventory,
+not a collected node count or pass result.
+
+**Incomplete:** full golden Trace registry is0/100; other16 original S1-A designs are unmaterialized.
+Four positive designs name prepared barriers but lack matching BarrierAck ledger records. Strict
+matching is retained; independent review must resolve the fixture preconditions. The authored
+full-trace entry-gate assertion is intentionally unsatisfied pending independent review. These are
+static findings, not observed test failures. See U01–U05 and implementation assumptions in work evidence.
+In particular, reset next-epoch/bootstrap conventions, synthetic fault-clearance scope, reauthorization
+provenance labels and precise per-event trace/denial materializations remain review obligations.
+
+**Checks actually performed:** AST parsing of15 Python files; exact10-function/50-record signature
+inspection; static import/path allowlists; Ruff lint/format; JSON/reference/hash/coverage inspection;
+Git whitespace and preservation checks. No behavioral correctness or physical safety is established.
+**NO DETERMINISTIC OR NUMERICAL TESTS EXECUTED.** No new module import, constructor/reducer call,
+pytest collection, simulation, event/fault execution, endpoint, vehicle or hardware execution occurred.
+
+Frozen Performance main/release remain `48adbdf64d492592d15e23c917aca71fa58aa8a5`.
+Separate Efficiency remains at HEAD `83f360b2a96e8f6d9fe429d2cc2e5447da2f47c8`, but
+independent runtime work became dirty during drafting (six tracked source paths plus new Task007F
+files at inspection). This Safety task writes no Efficiency files; work evidence lists that concurrent
+state rather than claiming its live source remained unchanged. Historical result metadata is audited separately. Accepted S0/S1/preparation artifacts, existing source,
+tests, dependencies and package initializer remain unchanged. Archive coverage/restoration is unqualified.
+
+Next: Secondary Engineering Review of this exact delivery and unresolved oracle/assumption issues.
+Focused execution needs a separate explicit assignment after those entry gates; no automatic S1-B/C.
+The containing commit and exact verified remote SHA are supplied in the final handoff.
+
+---
+
 # Current handoff — S1-A implementation authorization preparation
 
 **PROPOSED — NOT IMPLEMENTED. WORK_COMPLETE_PENDING_REVIEW.**

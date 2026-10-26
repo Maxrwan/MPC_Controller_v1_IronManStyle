@@ -1,0 +1,395 @@
+{
+  "schema": "apex-s1a/implementation-work-evidence/0.1.0",
+  "status": "WORK_COMPLETE_PENDING_REVIEW",
+  "stage": "S1-A_CODE_CREATION_ONLY",
+  "implementation_label": "UNVERIFIED_RESEARCH_CANDIDATE",
+  "authorization_starting_sha": "fa4615ac11a1cf79c14d12eedb9360e33291c182",
+  "branch": "research/safety-s0",
+  "repository": "Maxrwan/MPC_Controller_v1_IronManStyle",
+  "worktree": "/Users/marwansaber/.codex/worktrees/safety-s0/MPC_Controller_v1_IronManStyle",
+  "wire_version": "apex-s1-authority/0.2.0",
+  "python_api_version": "apex-s1a-python/0.1.0",
+  "authorization_attachment_sha256": "2d9a643f909fc918655defc586f2b0d4a5f53b881ee73651104045afc822c0fe",
+  "delivery_sha": "Containing Git commit; exact SHA and remote visibility supplied in final handoff to avoid circular self-hashing.",
+  "changed_files": [
+    {
+      "path": "src/apex/safety_authority/__init__.py",
+      "absolute_path": "/Users/marwansaber/.codex/worktrees/safety-s0/MPC_Controller_v1_IronManStyle/src/apex/safety_authority/__init__.py",
+      "change": "CREATE"
+    },
+    {
+      "path": "src/apex/safety_authority/records.py",
+      "absolute_path": "/Users/marwansaber/.codex/worktrees/safety-s0/MPC_Controller_v1_IronManStyle/src/apex/safety_authority/records.py",
+      "change": "CREATE"
+    },
+    {
+      "path": "src/apex/safety_authority/codec.py",
+      "absolute_path": "/Users/marwansaber/.codex/worktrees/safety-s0/MPC_Controller_v1_IronManStyle/src/apex/safety_authority/codec.py",
+      "change": "CREATE"
+    },
+    {
+      "path": "src/apex/safety_authority/time.py",
+      "absolute_path": "/Users/marwansaber/.codex/worktrees/safety-s0/MPC_Controller_v1_IronManStyle/src/apex/safety_authority/time.py",
+      "change": "CREATE"
+    },
+    {
+      "path": "src/apex/safety_authority/ordering.py",
+      "absolute_path": "/Users/marwansaber/.codex/worktrees/safety-s0/MPC_Controller_v1_IronManStyle/src/apex/safety_authority/ordering.py",
+      "change": "CREATE"
+    },
+    {
+      "path": "src/apex/safety_authority/policy.py",
+      "absolute_path": "/Users/marwansaber/.codex/worktrees/safety-s0/MPC_Controller_v1_IronManStyle/src/apex/safety_authority/policy.py",
+      "change": "CREATE"
+    },
+    {
+      "path": "src/apex/safety_authority/reducer.py",
+      "absolute_path": "/Users/marwansaber/.codex/worktrees/safety-s0/MPC_Controller_v1_IronManStyle/src/apex/safety_authority/reducer.py",
+      "change": "CREATE"
+    },
+    {
+      "path": "tests/unit/safety_authority/test_records.py",
+      "absolute_path": "/Users/marwansaber/.codex/worktrees/safety-s0/MPC_Controller_v1_IronManStyle/tests/unit/safety_authority/test_records.py",
+      "change": "CREATE"
+    },
+    {
+      "path": "tests/unit/safety_authority/test_time.py",
+      "absolute_path": "/Users/marwansaber/.codex/worktrees/safety-s0/MPC_Controller_v1_IronManStyle/tests/unit/safety_authority/test_time.py",
+      "change": "CREATE"
+    },
+    {
+      "path": "tests/unit/safety_authority/test_ordering.py",
+      "absolute_path": "/Users/marwansaber/.codex/worktrees/safety-s0/MPC_Controller_v1_IronManStyle/tests/unit/safety_authority/test_ordering.py",
+      "change": "CREATE"
+    },
+    {
+      "path": "tests/unit/safety_authority/test_transitions.py",
+      "absolute_path": "/Users/marwansaber/.codex/worktrees/safety-s0/MPC_Controller_v1_IronManStyle/tests/unit/safety_authority/test_transitions.py",
+      "change": "CREATE"
+    },
+    {
+      "path": "tests/unit/safety_authority/test_identity.py",
+      "absolute_path": "/Users/marwansaber/.codex/worktrees/safety-s0/MPC_Controller_v1_IronManStyle/tests/unit/safety_authority/test_identity.py",
+      "change": "CREATE"
+    },
+    {
+      "path": "tests/unit/safety_authority/test_restart.py",
+      "absolute_path": "/Users/marwansaber/.codex/worktrees/safety-s0/MPC_Controller_v1_IronManStyle/tests/unit/safety_authority/test_restart.py",
+      "change": "CREATE"
+    },
+    {
+      "path": "tests/unit/safety_authority/test_oracle_cases.py",
+      "absolute_path": "/Users/marwansaber/.codex/worktrees/safety-s0/MPC_Controller_v1_IronManStyle/tests/unit/safety_authority/test_oracle_cases.py",
+      "change": "CREATE"
+    },
+    {
+      "path": "tests/unit/safety_authority/oracle_support.py",
+      "absolute_path": "/Users/marwansaber/.codex/worktrees/safety-s0/MPC_Controller_v1_IronManStyle/tests/unit/safety_authority/oracle_support.py",
+      "change": "CREATE"
+    },
+    {
+      "path": "tests/fixtures/safety_authority/s1a/configurations.json",
+      "absolute_path": "/Users/marwansaber/.codex/worktrees/safety-s0/MPC_Controller_v1_IronManStyle/tests/fixtures/safety_authority/s1a/configurations.json",
+      "change": "CREATE"
+    },
+    {
+      "path": "tests/fixtures/safety_authority/s1a/snapshots.json",
+      "absolute_path": "/Users/marwansaber/.codex/worktrees/safety-s0/MPC_Controller_v1_IronManStyle/tests/fixtures/safety_authority/s1a/snapshots.json",
+      "change": "CREATE"
+    },
+    {
+      "path": "tests/fixtures/safety_authority/s1a/cases.json",
+      "absolute_path": "/Users/marwansaber/.codex/worktrees/safety-s0/MPC_Controller_v1_IronManStyle/tests/fixtures/safety_authority/s1a/cases.json",
+      "change": "CREATE"
+    },
+    {
+      "path": "tests/fixtures/safety_authority/s1a/expected_traces.json",
+      "absolute_path": "/Users/marwansaber/.codex/worktrees/safety-s0/MPC_Controller_v1_IronManStyle/tests/fixtures/safety_authority/s1a/expected_traces.json",
+      "change": "CREATE"
+    },
+    {
+      "path": "docs/CODEX_HANDOFF.md",
+      "absolute_path": "/Users/marwansaber/.codex/worktrees/safety-s0/MPC_Controller_v1_IronManStyle/docs/CODEX_HANDOFF.md",
+      "change": "MODIFY"
+    },
+    {
+      "path": "docs/DECISIONS.md",
+      "absolute_path": "/Users/marwansaber/.codex/worktrees/safety-s0/MPC_Controller_v1_IronManStyle/docs/DECISIONS.md",
+      "change": "MODIFY"
+    },
+    {
+      "path": "docs/safety/s1a/implementation_work_evidence.json",
+      "absolute_path": "/Users/marwansaber/.codex/worktrees/safety-s0/MPC_Controller_v1_IronManStyle/docs/safety/s1a/implementation_work_evidence.json",
+      "change": "CREATE"
+    }
+  ],
+  "module_summary": {
+    "src/apex/safety_authority/__init__.py": "Explicit public exports only; no initialization side effects.",
+    "src/apex/safety_authority/records.py": "Frozen value types, enums/aliases and output records; no IO or model imports.",
+    "src/apex/safety_authority/codec.py": "Strict versioned decoding/encoding, immutable structures, digest and field/reference validation.",
+    "src/apex/safety_authority/time.py": "Pure exact-rational clock bounds, half-open intervals and boundary enumeration.",
+    "src/apex/safety_authority/ordering.py": "Batch admission, fingerprints, phase/key/causal validation; no scheduler or real clock.",
+    "src/apex/safety_authority/policy.py": "Reviewed enabled transition guards and mandatory fault closure over explicit records only.",
+    "src/apex/safety_authority/reducer.py": "Pure batch reduction/restart, immutable ledgers, latches, logical grants and traces; endpoint outputs always empty."
+  },
+  "public_api": "All10 approved pure entry points and all50 frozen kw-only record declarations are written with statically checked signatures. This is not a behavioral completeness assertion.",
+  "candidate_enabled_transitions": [
+    "T01",
+    "T02",
+    "T03",
+    "T06",
+    "T09",
+    "T11",
+    "T13",
+    "T14"
+  ],
+  "explicitly_disabled_transitions": [
+    "T04",
+    "T05",
+    "T07",
+    "T08",
+    "T10",
+    "T12"
+  ],
+  "states": [
+    "DISARMED",
+    "NORMAL",
+    "WARNING",
+    "RECOVERY",
+    "DECELERATING",
+    "STOP_REQUESTED",
+    "STOPPING",
+    "STOPPED_LATCHED",
+    "NO_VALID_POLICY"
+  ],
+  "pc_implementation": {
+    "PC01": "ordering.seal_batch admits initial-ledger identities/sequences before phase sort; reducer journals batch-maximum watermarks.",
+    "PC02": "Explicit requested reauthorization interval, original packet/command source and generation retained; new permission uses current epoch and current named evidence.",
+    "PC03": "WARNING_CLEAR and supplied install/barrier journaling; exact acknowledged matching required; T01 does not increment epoch.",
+    "PC04": "Per-event Trace, Denial and separate internal TransitionRecord traces; original69 rows unchanged and materialization disagreement explicit.",
+    "PC05": "Separate event/command/operation ledgers and immutable historical outcomes; old denied/granted operations do not recreate a permission.",
+    "PC06": "Simultaneous critical facts retained; T06 before T09; one desired-epoch bump per current session/batch; restart/reset retain histories or boot-latch unknown persistence.",
+    "PC07": "Every crossed permission/evidence/packet/freshness boundary visited; inclusive freshness first invalid capture_lower+L+1; no resurrection by a later fresh observation.",
+    "PC08": "Exact rational synthetic clock registry, configured role registry, interpreted bounded uncertainty, unknown-as-denial and isolated untrusted proposal rejection.",
+    "PC09": "Caller-proposed permission identity/supersession checked; separate reauthorization identity; no state transition automatically creates permission.",
+    "PC10": "Independent decoding and reject_batch retain validated critical events alongside malformed proposals; trusted integrity failures close authority."
+  },
+  "static_validation": {
+    "validation_kind": "STATIC_ONLY_NO_SOURCE_OR_TEST_IMPORT",
+    "python_files_ast_parsed": 15,
+    "public_functions_signature_checked": 10,
+    "record_declarations_checked": 50,
+    "runtime_external_import_roots": [
+      "__future__",
+      "dataclasses",
+      "decimal",
+      "fractions",
+      "hashlib",
+      "json",
+      "typing"
+    ],
+    "source_test_fixture_paths_checked": 19,
+    "configuration_records": 1,
+    "snapshot_records": 59,
+    "approved_snapshots_unchanged": 58,
+    "matrix_designs": 84,
+    "protocol_designs": 16,
+    "original_rows_preserved": 69,
+    "matrix_source_edges": 28,
+    "original_materializations": 1,
+    "original_materialized_steps": 3,
+    "test_function_definitions": 24,
+    "full_trace_cases_materialized": 0,
+    "positive_designs_missing_ack_ledger": [
+      "E13-LOGICAL-GRANT",
+      "T01-DISARMED-POSITIVE",
+      "T02-NORMAL-POSITIVE",
+      "T03-WARNING-POSITIVE"
+    ],
+    "source_fixture_hashes": {
+      "src/apex/safety_authority/__init__.py": "d57ef16432c013767adfb52f0929e93abdd699d10df799b0ac1b1eaeba81f9fb",
+      "src/apex/safety_authority/codec.py": "9d890bb6e8593db4381305ddae62e5e88e9c6815a468e9e5b0d1e130028529d4",
+      "src/apex/safety_authority/ordering.py": "764ab3708a630e71730d2a6085389e481db87f0913bdd8e4b1536321ded090da",
+      "src/apex/safety_authority/policy.py": "a7e6947f8d0b39a69a6d9cc71cc8a5b391baa8506ee88998101eccc5e0b16293",
+      "src/apex/safety_authority/records.py": "8602b92b3c71cbeb59d7dc25d2cb7ad61545c81f7ff38c42d7818ba705be0cf2",
+      "src/apex/safety_authority/reducer.py": "3085c050dc1c3cd274c1712499220528759efdc6c359def4122d60f2414e2db9",
+      "src/apex/safety_authority/time.py": "ff57a5ccd9dd7c2af6c08f1607c38b52f609dc651f137dbc7b9b398e8671f76d",
+      "tests/fixtures/safety_authority/s1a/cases.json": "dd4704d9db113c9496681a3f2cb01a44ac86a0b68f9fcafcfc897fdfe7e5c589",
+      "tests/fixtures/safety_authority/s1a/configurations.json": "d044a91097b1cc64f501c70df51845e4732ae7130c1def79bd82ab3a1878a136",
+      "tests/fixtures/safety_authority/s1a/expected_traces.json": "8e3d8d3c083a903fe4544fca6ef9119b48eccd14dd3ceebe8a4fa81ad953a047",
+      "tests/fixtures/safety_authority/s1a/snapshots.json": "51c7e067b48d49820b43e9093de05951e981b6c86d925eeee29a32ef2df34ce0",
+      "tests/unit/safety_authority/oracle_support.py": "a6aa53280a41488966bd721df9aa4de9e5d36db8129c266224b4ed05750f6f8e",
+      "tests/unit/safety_authority/test_identity.py": "6796cfbba9e2494900cd5b9eeffa76e1a5fddf78ee5ae255a1db6545fabb7e32",
+      "tests/unit/safety_authority/test_oracle_cases.py": "acc6ec4c5b79d04745d1d3cf1a686ab15325bdd036a18736c603bc84ce771034",
+      "tests/unit/safety_authority/test_ordering.py": "af208c0577ef44d9f55ebc4554a0e7f68b35a1ea715773c80e594c8e9c3372b1",
+      "tests/unit/safety_authority/test_records.py": "5d2b6d6977655945485be5c152ac1ece120f4c278c2c203a5c559c5e29320b9c",
+      "tests/unit/safety_authority/test_restart.py": "b042193276cf00f5cdacee9fdeb87568a751fccf82198ab86ad974cb09477464",
+      "tests/unit/safety_authority/test_time.py": "b7835b63e3e55419facd3316d1f7bcd5f92715a843dca9094f4191878f04d02d",
+      "tests/unit/safety_authority/test_transitions.py": "dd94c9fe914438fc81c619f00aad39989db01109987dd958ee8d23f2f63c9e42"
+    },
+    "tests_executed": false,
+    "tests_collected": false,
+    "behavioral_correctness_established": false
+  },
+  "static_tools": {
+    "python": "Standalone AST/JSON/hash inspection only; no importlib, source imports, compile, exec or reducer calls.",
+    "ruff": "Existing Efficiency .venv/bin/ruff used with --no-cache for static lint/import formatting and format checking; no installation or environment mutation.",
+    "git": "Explicit22-path audit and whitespace/diff checks; final installed-tree preservation is required before commit."
+  },
+  "execution": {
+    "statement": "NO DETERMINISTIC OR NUMERICAL TESTS EXECUTED",
+    "source_imports": false,
+    "test_imports": false,
+    "pytest_collection": false,
+    "pytest_execution": false,
+    "reducer_execution": false,
+    "numerical_or_simulation": false,
+    "endpoint_or_hardware": false,
+    "physical_safety_validation": false
+  },
+  "unresolved_issues": [
+    {
+      "id": "U01",
+      "status": "BLOCKS_FOCUSED_EXECUTION_READINESS",
+      "finding": "No complete literal per-event Trace golden registry is materialized (0/100). Independent review is required; authored entry-gate assertion is deliberately unsatisfied, not an observed test failure."
+    },
+    {
+      "id": "U02",
+      "status": "BLOCKS_UNCONDITIONAL_POSITIVE_ORACLE_CLAIM",
+      "finding": "T01-DISARMED-POSITIVE, T02-NORMAL-POSITIVE, T03-WARNING-POSITIVE and E13-LOGICAL-GRANT reference prepared barrier IDs/host fields but contain no BarrierAck ledger record. Strict matching guard is retained; approved fixture data are not weakened or patched."
+    },
+    {
+      "id": "U03",
+      "status": "MATERIALIZATION_INCOMPLETE",
+      "finding": "One original S1-A design (V05-A-map) has three literal event projections. Other16 original S1-A designs remain unmaterialized. Five S1-B designs remain deferred. All original22 designs/69 rows remain unchanged."
+    },
+    {
+      "id": "U04",
+      "status": "REQUIRES_SCIENTIFIC_DISPOSITION",
+      "finding": "V05-A-map/row2 historically expects FAULT_LATCHED; proposed0.2.0 event materialization expects EPOCH_MISMATCH under epoch-before-latch guard precedence. Both expectations are retained separately. This is a static interpretation, not an observed mismatch."
+    },
+    {
+      "id": "U05",
+      "status": "IMPLEMENTATION_UNVERIFIED",
+      "finding": "No source import, constructor invocation, reducer call, pytest collection or deterministic/numerical execution occurred. Runtime correctness, total error handling, replay/trace equivalence and complete protocol behavior are unestablished."
+    }
+  ],
+  "code_assumptions_and_limits": [
+    "AuthorizationAssumption identifies a synthetic gateway producer role that can carry Command records from named controller producers; no cryptographic authentication is implemented.",
+    "Packet source SI timestamps use the configured rational tick period to obtain source ticks before the declared affine mapping. No N*dt or physical latency is inferred.",
+    "Only interpreted BOUNDED_SET uncertainty admits nominal grants. Recorded covariance alone has no implemented containment interpretation and is denied.",
+    "T13 consumes an exact acknowledged new-session barrier at prior desired_epoch+1. Named current FAULT_CLEARANCE evidence is treated as an explicit synthetic assertion over the initiating fault set; faults detected in this transaction cannot be cleared by same-batch reset.",
+    "REAUTHORIZE.transition_id is explicit operation provenance, not an S0 dispatch. Disabled S0 IDs are always rejected; other labels require current named REAUTHORIZATION evidence. Binding arbitrary provenance labels to an external scientific handoff remains an independent review obligation.",
+    "Missing/corrupt persistence uses an explicit unarmed boot epoch0 followed by fault closure to epoch1, with endpoint-installed epoch unknown. An intact known session retains its epoch/history. This protocol bootstrap convention must be reviewed; it asserts no real endpoint state.",
+    "Configuration continuation_policy_id is retained as data; no non-nominal continuation, recovery, deceleration or stop policy is activated. An unsupported retained state or failed nominal eligibility closes authority.",
+    "Guard categories short-circuit session/epoch/state before dependent permission validation; all returned causes are canonically reason-sorted. Exact per-event denial grouping and internal trace identity require the unfilled independent golden-trace review.",
+    "Internal transition IDs use parent event ID plus transition ID and causal microsteps; boundary IDs include batch ID/type/tick. SEALED_BATCH operation-ledger entries bind batch IDs to original trace sequences without adding unapproved Trace fields.",
+    "Persistence is supplied immutable logical state, not filesystem or power durability. Supplied past endpoint observations are journaled without inferring a presently held control or generating an acknowledgement."
+  ],
+  "preservation": {
+    "pre_edit_safety_head": "fa4615ac11a1cf79c14d12eedb9360e33291c182",
+    "pre_edit_safety_tracked_files_hashed": 856,
+    "pre_edit_all_original_tracked_bytes_unchanged": true,
+    "efficiency_worktree": "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle",
+    "efficiency_head": "83f360b2a96e8f6d9fe429d2cc2e5447da2f47c8",
+    "efficiency_tracked_files_hashed": 850,
+    "efficiency_status": "M src/apex/control/mpc/controller.py\n M src/apex/control/mpc/preview.py\n M src/apex/control/trajectory/planner.py\n M src/apex/control/trajectory/tracker.py\n M src/apex/optimization/solvers/ipopt.py\n M src/apex/simulation/asynchronous.py\n?? scripts/task007f/\n?? tests/integration/test_profile1_parity.py\n?? tests/unit/test_profile1_recorder.py",
+    "efficiency_tracked_hashes_unchanged": false,
+    "concurrent_efficiency_changes_not_by_this_task": [
+      "src/apex/control/mpc/controller.py",
+      "src/apex/control/mpc/preview.py",
+      "src/apex/control/trajectory/planner.py",
+      "src/apex/control/trajectory/tracker.py",
+      "src/apex/optimization/solvers/ipopt.py",
+      "src/apex/simulation/asynchronous.py"
+    ],
+    "concurrent_efficiency_status": "M src/apex/control/mpc/controller.py\n M src/apex/control/mpc/preview.py\n M src/apex/control/trajectory/planner.py\n M src/apex/control/trajectory/tracker.py\n M src/apex/optimization/solvers/ipopt.py\n M src/apex/simulation/asynchronous.py\n?? scripts/task007f/\n?? tests/integration/test_profile1_parity.py\n?? tests/unit/test_profile1_recorder.py",
+    "no_efficiency_file_writes_by_safety_task": true,
+    "efficiency_original_result_metadata_entries": 11646,
+    "efficiency_results_metadata_current_entries": 11646,
+    "efficiency_original_result_metadata_unchanged": true,
+    "safety_results_metadata_entries_unchanged": 1,
+    "performance_main_sha": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+    "performance_release_sha": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+    "performance_tag_peeled_sha": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+    "protected_branch_remote_tag_refs_unchanged_before_install": true,
+    "app_internal_capture_refs_excluded": true,
+    "accepted_s0_s1_and_preparation_source_sha256": {
+      "docs/safety/s0/authority_interface.json": "60a95f2cb3320b63723c774ec996fd420aeba0d316c429afa7e0b09751ea58bc",
+      "docs/safety/s0/dependency_matrix.json": "97297cb61eab5e61e2aaee70bf112b1090db16907c3e659c8f54e60d12b43d61",
+      "docs/safety/s0/hardware_dependencies.json": "15d22b6caf8ab1c2cd7967fbe92dfcfee6526ca431495e1964dd860209a1e34a",
+      "docs/safety/s0/hazard_register.json": "4cfea69bb5547fa3a165aad65776a59caf2dd79e395e6689118624abe13b914f",
+      "docs/safety/s0/primary_acceptance.json": "eb08e7345a4ba83cadc6b92f4fd7c151c5910f95572ba670ebee9659ec65a9e1",
+      "docs/safety/s0/provenance.json": "5291c1c3b34044b5195d3f141a6fa9d3d1370011f483849d8b221618e5ccfff7",
+      "docs/safety/s0/record_schemas.json": "40effebb8bf458d543e7f84d8ba4649b2e2e4ab547f000d3c5c01eac8d768269",
+      "docs/safety/s0/supervisor_states.json": "3e0be131e3696a628ddd63ea44bb01e649c30a3b562200435d9a569b3783366a",
+      "docs/safety/s0/validation.json": "1a7a65e158b0b83e26b3545ab8070ff0d424dfd23304810f8b60a0c89df6359c",
+      "docs/safety/s0/verification_requirements.json": "c9cbc6d513abad222fd62acdb1f6d9c89f9e0e69a7f30ee460cbd9108bc737db",
+      "docs/safety/s1/documentation_schemas.json": "8550ed6b8ebf9ae333b151b2c5277575d7bb147a53ab0ee6c53613d5707b7f89",
+      "docs/safety/s1/initial_scenario_oracles.json": "baf4684ee7fa7f7362f7524de19b912415ce892aedc3de26168459279702c0ff",
+      "docs/safety/s1/interface_contract.json": "dfc8b10d0fb33bc7eee030cb8563101486991693617e7fd93b828c7447ac4dbe",
+      "docs/safety/s1/provenance.json": "0995cc8d37f9d0040dd83329bbf244616fdd1fc95c7703177069c745a5d3ce7c",
+      "docs/safety/s1/review_gates.json": "0ad6e121753f45f4c943144dac1e1ae4f5601de0e852f36c49f1710cf7df990f",
+      "docs/safety/s1/staged_implementation_plan.json": "46d022c42c2a0ac9879973b822a65d642eceed0cfa877a466b4a8545d16a1f37",
+      "docs/safety/s1/state_and_event_invariants.json": "256f5fa461a4d828e740d416fa8847823bb79aba6c43b05595460680cbe174bb",
+      "docs/safety/s1/validation.json": "97b89ee06745a9133f409772e7169e6008ade130cf6ddcbbdecd93db0be0eb57",
+      "docs/safety/s1a/documentation_schemas.json": "65e2aa770dce0ab39c2781c1a5f61881e660515d0e00dbf85aa20fa92205fd56",
+      "docs/safety/s1a/event_precedence_resolution.json": "bbe90a80df62cec8150bc2536688084a2ade48f3a402d371701db45c9ec1e1b5",
+      "docs/safety/s1a/implementation_authorization_request.md": "27b1809ef9b971fef253d5cebf1d8313b80f3d75e16ba3c158c51029a4ff77a9",
+      "docs/safety/s1a/implementation_scope_and_gates.json": "0de5ef62cdb713c251c336e2cf74da08efe2818c284979b6f821317fd6bc7ea2",
+      "docs/safety/s1a/independent_oracle_expansion.json": "27a9e79a8d7ee45f46f7c9b4518da2b56524b122cf60b02df6926339d5198c7b",
+      "docs/safety/s1a/provenance.json": "488e8a3d6310c09425b1b5b2f803266cc303d18290c4e9c1f853da43ddfba402",
+      "docs/safety/s1a/reducer_api_contract.json": "cd59aa5fe0591d868924320e8579f96a579b3252cdd1b78ff97a1168fca8c9ec",
+      "docs/safety/s1a/transition_activation_matrix.json": "f731597911d54c1fd24d47daa29c9fe7dd64d94e59119159d0149f2a4823d61f",
+      "docs/safety/s1a/validation.json": "32bd52b16199a876766eb31811dcf69146c9e707db8e755a9763a99ce0b42086"
+    },
+    "results_audit_limit": "Metadata membership/size/mtime only, not raw content rehash or archive coverage/restoration qualification."
+  },
+  "dependency_audit": {
+    "runtime_import_roots": [
+      "__future__",
+      "dataclasses",
+      "decimal",
+      "fractions",
+      "hashlib",
+      "json",
+      "typing"
+    ],
+    "all_roots_in_approved_standard_library_allowlist": true,
+    "package_wide_initializer_sha256": "2dd176027291d40716c8c828e8a9994afbf247d22bea1426fac52c259cbbc33b",
+    "package_wide_initializer_unchanged": true,
+    "dependency_files_changed": false,
+    "external_runtime_io_or_controller_imports": false
+  },
+  "next_gate": "Secondary Engineering Review of exact candidate code, assumptions, incomplete materializations and immutable oracle disagreements. Explicit later authorization is required for any focused execution; no automatic B/C or hardware progression.",
+  "installed_tree_static_audit": {
+    "authorized_changed_paths": 22,
+    "protected_preexisting_tracked_files_hashed": 854,
+    "protected_preexisting_tracked_bytes_unchanged": true,
+    "all_installed_files_equal_reviewed_draft": true,
+    "existing_source_tests_dependencies_and_accepted_specifications_unchanged": true,
+    "git_diff_whitespace": "PASS",
+    "execution": "NOT_EXECUTED"
+  },
+  "resumption_static_audit": {
+    "client_date": "2026-10-26",
+    "efficiency_head": "83f360b2a96e8f6d9fe429d2cc2e5447da2f47c8",
+    "efficiency_status": " M src/apex/control/mpc/controller.py\n M src/apex/control/mpc/preview.py\n M src/apex/control/trajectory/planner.py\n M src/apex/control/trajectory/tracker.py\n M src/apex/optimization/solvers/ipopt.py\n M src/apex/simulation/asynchronous.py\n?? scripts/task007f/\n?? tests/integration/test_profile1_parity.py\n?? tests/unit/test_profile1_recorder.py\n",
+    "changed_efficiency_baseline_paths": [
+      "src/apex/control/mpc/controller.py",
+      "src/apex/control/mpc/preview.py",
+      "src/apex/control/trajectory/planner.py",
+      "src/apex/control/trajectory/tracker.py",
+      "src/apex/optimization/solvers/ipopt.py",
+      "src/apex/simulation/asynchronous.py"
+    ],
+    "original_result_metadata_entries_preserved": 11646,
+    "original_result_metadata_entries": 11646,
+    "result_metadata_current_entries": 11646,
+    "source_test_execution": "NONE_BY_SAFETY_TASK",
+    "remote_safety_sha_verified": "fa4615ac11a1cf79c14d12eedb9360e33291c182",
+    "remote_performance_main_release_sha_verified": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+    "independent_control_theory_head_observed": "3898704102e7570bcaff9b1654b7b345db1f9b6f",
+    "ruff_lint_and_format_check": "PASS_STATIC_ONLY"
+  }
+}

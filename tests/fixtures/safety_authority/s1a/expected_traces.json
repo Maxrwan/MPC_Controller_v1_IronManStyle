@@ -1,0 +1,4485 @@
+{
+  "execution": "NOT_EXECUTED",
+  "projection_expectations": {
+    "T01-DISARMED-POSITIVE": {
+      "state": "NORMAL",
+      "control_session_id": "SESSION_A",
+      "desired_epoch": 1,
+      "live_permission_ids": [],
+      "added_fault_ids": [],
+      "cleared_fault_ids": [],
+      "retained_fault_history_ids": [],
+      "transition_path": [
+        "T01"
+      ],
+      "decision": "ACCEPT",
+      "reason_codes": [
+        "OK"
+      ],
+      "new_endpoint_applications": 0,
+      "new_endpoint_acknowledgements": 0,
+      "unknown_fields": {
+        "physical_feedback": "NOT_OBSERVED_NOT_VALIDATED",
+        "held_input": "No endpoint implementation in S1-A; supplied past observations alone may update knowledge."
+      }
+    },
+    "T01-DISARMED-REJECTION": {
+      "state": "DISARMED",
+      "control_session_id": "SESSION_A",
+      "desired_epoch": 1,
+      "live_permission_ids": [],
+      "added_fault_ids": [],
+      "cleared_fault_ids": [],
+      "retained_fault_history_ids": [],
+      "transition_path": [],
+      "decision": "REJECT",
+      "reason_codes": [
+        "AUTHORIZATION_UNKNOWN"
+      ],
+      "new_endpoint_applications": 0,
+      "new_endpoint_acknowledgements": 0,
+      "unknown_fields": {
+        "physical_feedback": "NOT_OBSERVED_NOT_VALIDATED",
+        "held_input": "No endpoint implementation in S1-A; supplied past observations alone may update knowledge."
+      }
+    },
+    "T01-DISARMED-BOUNDARY": {
+      "state": "DISARMED",
+      "control_session_id": "SESSION_A",
+      "desired_epoch": 1,
+      "live_permission_ids": [],
+      "added_fault_ids": [],
+      "cleared_fault_ids": [],
+      "retained_fault_history_ids": [],
+      "transition_path": [],
+      "decision": "REJECT",
+      "reason_codes": [
+        "EXPIRED"
+      ],
+      "new_endpoint_applications": 0,
+      "new_endpoint_acknowledgements": 0,
+      "unknown_fields": {
+        "physical_feedback": "NOT_OBSERVED_NOT_VALIDATED",
+        "held_input": "No endpoint implementation in S1-A; supplied past observations alone may update knowledge."
+      }
+    },
+    "T02-NORMAL-POSITIVE": {
+      "state": "WARNING",
+      "control_session_id": "SESSION_A",
+      "desired_epoch": 1,
+      "live_permission_ids": [
+        "p1"
+      ],
+      "added_fault_ids": [],
+      "cleared_fault_ids": [],
+      "retained_fault_history_ids": [],
+      "transition_path": [
+        "T02"
+      ],
+      "decision": "ACCEPT",
+      "reason_codes": [
+        "OK"
+      ],
+      "new_endpoint_applications": 0,
+      "new_endpoint_acknowledgements": 0,
+      "unknown_fields": {
+        "physical_feedback": "NOT_OBSERVED_NOT_VALIDATED",
+        "held_input": "No endpoint implementation in S1-A; supplied past observations alone may update knowledge."
+      }
+    },
+    "T02-NORMAL-REJECTION": {
+      "state": "NORMAL",
+      "control_session_id": "SESSION_A",
+      "desired_epoch": 1,
+      "live_permission_ids": [
+        "p1"
+      ],
+      "added_fault_ids": [],
+      "cleared_fault_ids": [],
+      "retained_fault_history_ids": [],
+      "transition_path": [],
+      "decision": "REJECT",
+      "reason_codes": [
+        "DOMAIN_UNKNOWN"
+      ],
+      "new_endpoint_applications": 0,
+      "new_endpoint_acknowledgements": 0,
+      "unknown_fields": {
+        "physical_feedback": "NOT_OBSERVED_NOT_VALIDATED",
+        "held_input": "No endpoint implementation in S1-A; supplied past observations alone may update knowledge."
+      }
+    },
+    "T02-NORMAL-BOUNDARY": {
+      "state": "NORMAL",
+      "control_session_id": "SESSION_A",
+      "desired_epoch": 1,
+      "live_permission_ids": [
+        "p1"
+      ],
+      "added_fault_ids": [],
+      "cleared_fault_ids": [],
+      "retained_fault_history_ids": [],
+      "transition_path": [],
+      "decision": "REJECT",
+      "reason_codes": [
+        "EXPIRED"
+      ],
+      "new_endpoint_applications": 0,
+      "new_endpoint_acknowledgements": 0,
+      "unknown_fields": {
+        "physical_feedback": "NOT_OBSERVED_NOT_VALIDATED",
+        "held_input": "No endpoint implementation in S1-A; supplied past observations alone may update knowledge."
+      }
+    },
+    "T03-WARNING-POSITIVE": {
+      "state": "NORMAL",
+      "control_session_id": "SESSION_A",
+      "desired_epoch": 1,
+      "live_permission_ids": [
+        "p1"
+      ],
+      "added_fault_ids": [],
+      "cleared_fault_ids": [],
+      "retained_fault_history_ids": [],
+      "transition_path": [
+        "T03"
+      ],
+      "decision": "ACCEPT",
+      "reason_codes": [
+        "OK"
+      ],
+      "new_endpoint_applications": 0,
+      "new_endpoint_acknowledgements": 0,
+      "unknown_fields": {
+        "physical_feedback": "NOT_OBSERVED_NOT_VALIDATED",
+        "held_input": "No endpoint implementation in S1-A; supplied past observations alone may update knowledge."
+      }
+    },
+    "T03-WARNING-REJECTION": {
+      "state": "WARNING",
+      "control_session_id": "SESSION_A",
+      "desired_epoch": 1,
+      "live_permission_ids": [
+        "p1"
+      ],
+      "added_fault_ids": [],
+      "cleared_fault_ids": [],
+      "retained_fault_history_ids": [],
+      "transition_path": [],
+      "decision": "REJECT",
+      "reason_codes": [
+        "DOMAIN_UNKNOWN"
+      ],
+      "new_endpoint_applications": 0,
+      "new_endpoint_acknowledgements": 0,
+      "unknown_fields": {
+        "physical_feedback": "NOT_OBSERVED_NOT_VALIDATED",
+        "held_input": "No endpoint implementation in S1-A; supplied past observations alone may update knowledge."
+      }
+    },
+    "T03-WARNING-BOUNDARY": {
+      "state": "WARNING",
+      "control_session_id": "SESSION_A",
+      "desired_epoch": 1,
+      "live_permission_ids": [
+        "p1"
+      ],
+      "added_fault_ids": [],
+      "cleared_fault_ids": [],
+      "retained_fault_history_ids": [],
+      "transition_path": [],
+      "decision": "REJECT",
+      "reason_codes": [
+        "EXPIRED"
+      ],
+      "new_endpoint_applications": 0,
+      "new_endpoint_acknowledgements": 0,
+      "unknown_fields": {
+        "physical_feedback": "NOT_OBSERVED_NOT_VALIDATED",
+        "held_input": "No endpoint implementation in S1-A; supplied past observations alone may update knowledge."
+      }
+    },
+    "T04-NORMAL-POSITIVE": {
+      "state": "NORMAL",
+      "control_session_id": "SESSION_A",
+      "desired_epoch": 1,
+      "live_permission_ids": [
+        "p1"
+      ],
+      "added_fault_ids": [],
+      "cleared_fault_ids": [],
+      "retained_fault_history_ids": [],
+      "transition_path": [],
+      "decision": "REJECT",
+      "reason_codes": [
+        "TRANSITION_DISABLED"
+      ],
+      "new_endpoint_applications": 0,
+      "new_endpoint_acknowledgements": 0,
+      "unknown_fields": {
+        "physical_feedback": "NOT_OBSERVED_NOT_VALIDATED",
+        "held_input": "No endpoint implementation in S1-A; supplied past observations alone may update knowledge."
+      }
+    },
+    "T04-NORMAL-REJECTION": {
+      "state": "NORMAL",
+      "control_session_id": "SESSION_A",
+      "desired_epoch": 1,
+      "live_permission_ids": [
+        "p1"
+      ],
+      "added_fault_ids": [],
+      "cleared_fault_ids": [],
+      "retained_fault_history_ids": [],
+      "transition_path": [],
+      "decision": "REJECT",
+      "reason_codes": [
+        "TRANSITION_DISABLED",
+        "DOMAIN_UNKNOWN"
+      ],
+      "new_endpoint_applications": 0,
+      "new_endpoint_acknowledgements": 0,
+      "unknown_fields": {
+        "physical_feedback": "NOT_OBSERVED_NOT_VALIDATED",
+        "held_input": "No endpoint implementation in S1-A; supplied past observations alone may update knowledge."
+      }
+    },
+    "T04-NORMAL-BOUNDARY": {
+      "state": "NORMAL",
+      "control_session_id": "SESSION_A",
+      "desired_epoch": 1,
+      "live_permission_ids": [
+        "p1"
+      ],
+      "added_fault_ids": [],
+      "cleared_fault_ids": [],
+      "retained_fault_history_ids": [],
+      "transition_path": [],
+      "decision": "REJECT",
+      "reason_codes": [
+        "EXPIRED",
+        "TRANSITION_DISABLED"
+      ],
+      "new_endpoint_applications": 0,
+      "new_endpoint_acknowledgements": 0,
+      "unknown_fields": {
+        "physical_feedback": "NOT_OBSERVED_NOT_VALIDATED",
+        "held_input": "No endpoint implementation in S1-A; supplied past observations alone may update knowledge."
+      }
+    },
+    "T04-WARNING-POSITIVE": {
+      "state": "WARNING",
+      "control_session_id": "SESSION_A",
+      "desired_epoch": 1,
+      "live_permission_ids": [
+        "p1"
+      ],
+      "added_fault_ids": [],
+      "cleared_fault_ids": [],
+      "retained_fault_history_ids": [],
+      "transition_path": [],
+      "decision": "REJECT",
+      "reason_codes": [
+        "TRANSITION_DISABLED"
+      ],
+      "new_endpoint_applications": 0,
+      "new_endpoint_acknowledgements": 0,
+      "unknown_fields": {
+        "physical_feedback": "NOT_OBSERVED_NOT_VALIDATED",
+        "held_input": "No endpoint implementation in S1-A; supplied past observations alone may update knowledge."
+      }
+    },
+    "T04-WARNING-REJECTION": {
+      "state": "WARNING",
+      "control_session_id": "SESSION_A",
+      "desired_epoch": 1,
+      "live_permission_ids": [
+        "p1"
+      ],
+      "added_fault_ids": [],
+      "cleared_fault_ids": [],
+      "retained_fault_history_ids": [],
+      "transition_path": [],
+      "decision": "REJECT",
+      "reason_codes": [
+        "TRANSITION_DISABLED",
+        "DOMAIN_UNKNOWN"
+      ],
+      "new_endpoint_applications": 0,
+      "new_endpoint_acknowledgements": 0,
+      "unknown_fields": {
+        "physical_feedback": "NOT_OBSERVED_NOT_VALIDATED",
+        "held_input": "No endpoint implementation in S1-A; supplied past observations alone may update knowledge."
+      }
+    },
+    "T04-WARNING-BOUNDARY": {
+      "state": "WARNING",
+      "control_session_id": "SESSION_A",
+      "desired_epoch": 1,
+      "live_permission_ids": [
+        "p1"
+      ],
+      "added_fault_ids": [],
+      "cleared_fault_ids": [],
+      "retained_fault_history_ids": [],
+      "transition_path": [],
+      "decision": "REJECT",
+      "reason_codes": [
+        "EXPIRED",
+        "TRANSITION_DISABLED"
+      ],
+      "new_endpoint_applications": 0,
+      "new_endpoint_acknowledgements": 0,
+      "unknown_fields": {
+        "physical_feedback": "NOT_OBSERVED_NOT_VALIDATED",
+        "held_input": "No endpoint implementation in S1-A; supplied past observations alone may update knowledge."
+      }
+    },
+    "T05-NORMAL-POSITIVE": {
+      "state": "NORMAL",
+      "control_session_id": "SESSION_A",
+      "desired_epoch": 1,
+      "live_permission_ids": [
+        "p1"
+      ],
+      "added_fault_ids": [],
+      "cleared_fault_ids": [],
+      "retained_fault_history_ids": [],
+      "transition_path": [],
+      "decision": "REJECT",
+      "reason_codes": [
+        "TRANSITION_DISABLED"
+      ],
+      "new_endpoint_applications": 0,
+      "new_endpoint_acknowledgements": 0,
+      "unknown_fields": {
+        "physical_feedback": "NOT_OBSERVED_NOT_VALIDATED",
+        "held_input": "No endpoint implementation in S1-A; supplied past observations alone may update knowledge."
+      }
+    },
+    "T05-NORMAL-REJECTION": {
+      "state": "NORMAL",
+      "control_session_id": "SESSION_A",
+      "desired_epoch": 1,
+      "live_permission_ids": [
+        "p1"
+      ],
+      "added_fault_ids": [],
+      "cleared_fault_ids": [],
+      "retained_fault_history_ids": [],
+      "transition_path": [],
+      "decision": "REJECT",
+      "reason_codes": [
+        "TRANSITION_DISABLED",
+        "DOMAIN_UNKNOWN"
+      ],
+      "new_endpoint_applications": 0,
+      "new_endpoint_acknowledgements": 0,
+      "unknown_fields": {
+        "physical_feedback": "NOT_OBSERVED_NOT_VALIDATED",
+        "held_input": "No endpoint implementation in S1-A; supplied past observations alone may update knowledge."
+      }
+    },
+    "T05-NORMAL-BOUNDARY": {
+      "state": "NORMAL",
+      "control_session_id": "SESSION_A",
+      "desired_epoch": 1,
+      "live_permission_ids": [
+        "p1"
+      ],
+      "added_fault_ids": [],
+      "cleared_fault_ids": [],
+      "retained_fault_history_ids": [],
+      "transition_path": [],
+      "decision": "REJECT",
+      "reason_codes": [
+        "EXPIRED",
+        "TRANSITION_DISABLED"
+      ],
+      "new_endpoint_applications": 0,
+      "new_endpoint_acknowledgements": 0,
+      "unknown_fields": {
+        "physical_feedback": "NOT_OBSERVED_NOT_VALIDATED",
+        "held_input": "No endpoint implementation in S1-A; supplied past observations alone may update knowledge."
+      }
+    },
+    "T05-WARNING-POSITIVE": {
+      "state": "WARNING",
+      "control_session_id": "SESSION_A",
+      "desired_epoch": 1,
+      "live_permission_ids": [
+        "p1"
+      ],
+      "added_fault_ids": [],
+      "cleared_fault_ids": [],
+      "retained_fault_history_ids": [],
+      "transition_path": [],
+      "decision": "REJECT",
+      "reason_codes": [
+        "TRANSITION_DISABLED"
+      ],
+      "new_endpoint_applications": 0,
+      "new_endpoint_acknowledgements": 0,
+      "unknown_fields": {
+        "physical_feedback": "NOT_OBSERVED_NOT_VALIDATED",
+        "held_input": "No endpoint implementation in S1-A; supplied past observations alone may update knowledge."
+      }
+    },
+    "T05-WARNING-REJECTION": {
+      "state": "WARNING",
+      "control_session_id": "SESSION_A",
+      "desired_epoch": 1,
+      "live_permission_ids": [
+        "p1"
+      ],
+      "added_fault_ids": [],
+      "cleared_fault_ids": [],
+      "retained_fault_history_ids": [],
+      "transition_path": [],
+      "decision": "REJECT",
+      "reason_codes": [
+        "TRANSITION_DISABLED",
+        "DOMAIN_UNKNOWN"
+      ],
+      "new_endpoint_applications": 0,
+      "new_endpoint_acknowledgements": 0,
+      "unknown_fields": {
+        "physical_feedback": "NOT_OBSERVED_NOT_VALIDATED",
+        "held_input": "No endpoint implementation in S1-A; supplied past observations alone may update knowledge."
+      }
+    },
+    "T05-WARNING-BOUNDARY": {
+      "state": "WARNING",
+      "control_session_id": "SESSION_A",
+      "desired_epoch": 1,
+      "live_permission_ids": [
+        "p1"
+      ],
+      "added_fault_ids": [],
+      "cleared_fault_ids": [],
+      "retained_fault_history_ids": [],
+      "transition_path": [],
+      "decision": "REJECT",
+      "reason_codes": [
+        "EXPIRED",
+        "TRANSITION_DISABLED"
+      ],
+      "new_endpoint_applications": 0,
+      "new_endpoint_acknowledgements": 0,
+      "unknown_fields": {
+        "physical_feedback": "NOT_OBSERVED_NOT_VALIDATED",
+        "held_input": "No endpoint implementation in S1-A; supplied past observations alone may update knowledge."
+      }
+    },
+    "T05-RECOVERY-POSITIVE": {
+      "state": "NO_VALID_POLICY",
+      "control_session_id": "SESSION_A",
+      "desired_epoch": 2,
+      "live_permission_ids": [],
+      "added_fault_ids": [
+        "F_POLICY_UNAVAILABLE"
+      ],
+      "cleared_fault_ids": [],
+      "retained_fault_history_ids": [],
+      "transition_path": [
+        "T09"
+      ],
+      "decision": "REJECT",
+      "reason_codes": [
+        "TRANSITION_DISABLED",
+        "NO_VALID_POLICY"
+      ],
+      "new_endpoint_applications": 0,
+      "new_endpoint_acknowledgements": 0,
+      "unknown_fields": {
+        "physical_feedback": "NOT_OBSERVED_NOT_VALIDATED",
+        "held_input": "No endpoint implementation in S1-A; supplied past observations alone may update knowledge."
+      }
+    },
+    "T05-RECOVERY-REJECTION": {
+      "state": "NO_VALID_POLICY",
+      "control_session_id": "SESSION_A",
+      "desired_epoch": 2,
+      "live_permission_ids": [],
+      "added_fault_ids": [
+        "F_POLICY_UNAVAILABLE"
+      ],
+      "cleared_fault_ids": [],
+      "retained_fault_history_ids": [],
+      "transition_path": [
+        "T09"
+      ],
+      "decision": "REJECT",
+      "reason_codes": [
+        "TRANSITION_DISABLED",
+        "DOMAIN_UNKNOWN",
+        "NO_VALID_POLICY"
+      ],
+      "new_endpoint_applications": 0,
+      "new_endpoint_acknowledgements": 0,
+      "unknown_fields": {
+        "physical_feedback": "NOT_OBSERVED_NOT_VALIDATED",
+        "held_input": "No endpoint implementation in S1-A; supplied past observations alone may update knowledge."
+      }
+    },
+    "T05-RECOVERY-BOUNDARY": {
+      "state": "NO_VALID_POLICY",
+      "control_session_id": "SESSION_A",
+      "desired_epoch": 2,
+      "live_permission_ids": [],
+      "added_fault_ids": [
+        "F_POLICY_UNAVAILABLE"
+      ],
+      "cleared_fault_ids": [],
+      "retained_fault_history_ids": [],
+      "transition_path": [
+        "T09"
+      ],
+      "decision": "REJECT",
+      "reason_codes": [
+        "EXPIRED",
+        "TRANSITION_DISABLED",
+        "NO_VALID_POLICY"
+      ],
+      "new_endpoint_applications": 0,
+      "new_endpoint_acknowledgements": 0,
+      "unknown_fields": {
+        "physical_feedback": "NOT_OBSERVED_NOT_VALIDATED",
+        "held_input": "No endpoint implementation in S1-A; supplied past observations alone may update knowledge."
+      }
+    },
+    "T06-DISARMED-POSITIVE": {
+      "state": "NO_VALID_POLICY",
+      "control_session_id": "SESSION_A",
+      "desired_epoch": 2,
+      "live_permission_ids": [],
+      "added_fault_ids": [
+        "F_EMERGENCY"
+      ],
+      "cleared_fault_ids": [],
+      "retained_fault_history_ids": [],
+      "transition_path": [
+        "T06",
+        "T09"
+      ],
+      "decision": "REVOKE",
+      "reason_codes": [
+        "NO_VALID_POLICY"
+      ],
+      "new_endpoint_applications": 0,
+      "new_endpoint_acknowledgements": 0,
+      "unknown_fields": {
+        "physical_feedback": "NOT_OBSERVED_NOT_VALIDATED",
+        "held_input": "No endpoint implementation in S1-A; supplied past observations alone may update knowledge."
+      }
+    },
+    "T06-DISARMED-REJECTION": {
+      "state": "DISARMED",
+      "control_session_id": "SESSION_A",
+      "desired_epoch": 1,
+      "live_permission_ids": [],
+      "added_fault_ids": [],
+      "cleared_fault_ids": [],
+      "retained_fault_history_ids": [],
+      "transition_path": [],
+      "decision": "REJECT",
+      "reason_codes": [
+        "AUTHORIZATION_UNKNOWN"
+      ],
+      "new_endpoint_applications": 0,
+      "new_endpoint_acknowledgements": 0,
+      "unknown_fields": {
+        "physical_feedback": "NOT_OBSERVED_NOT_VALIDATED",
+        "held_input": "No endpoint implementation in S1-A; supplied past observations alone may update knowledge."
+      }
+    },
+    "T06-DISARMED-BOUNDARY": {
+      "state": "NO_VALID_POLICY",
+      "control_session_id": "SESSION_A",
+      "desired_epoch": 2,
+      "live_permission_ids": [],
+      "added_fault_ids": [
+        "F_EMERGENCY"
+      ],
+      "cleared_fault_ids": [],
+      "retained_fault_history_ids": [],
+      "transition_path": [
+        "T06",
+        "T09"
+      ],
+      "decision": "REVOKE",
+      "reason_codes": [
+        "EXPIRED",
+        "NO_VALID_POLICY"
+      ],
+      "new_endpoint_applications": 0,
+      "new_endpoint_acknowledgements": 0,
+      "unknown_fields": {
+        "physical_feedback": "NOT_OBSERVED_NOT_VALIDATED",
+        "held_input": "No endpoint implementation in S1-A; supplied past observations alone may update knowledge."
+      }
+    },
+    "T06-NORMAL-POSITIVE": {
+      "state": "NO_VALID_POLICY",
+      "control_session_id": "SESSION_A",
+      "desired_epoch": 2,
+      "live_permission_ids": [],
+      "added_fault_ids": [
+        "F_EMERGENCY"
+      ],
+      "cleared_fault_ids": [],
+      "retained_fault_history_ids": [],
+      "transition_path": [
+        "T06",
+        "T09"
+      ],
+      "decision": "REVOKE",
+      "reason_codes": [
+        "NO_VALID_POLICY"
+      ],
+      "new_endpoint_applications": 0,
+      "new_endpoint_acknowledgements": 0,
+      "unknown_fields": {
+        "physical_feedback": "NOT_OBSERVED_NOT_VALIDATED",
+        "held_input": "No endpoint implementation in S1-A; supplied past observations alone may update knowledge."
+      }
+    },
+    "T06-NORMAL-REJECTION": {
+      "state": "NORMAL",
+      "control_session_id": "SESSION_A",
+      "desired_epoch": 1,
+      "live_permission_ids": [
+        "p1"
+      ],
+      "added_fault_ids": [],
+      "cleared_fault_ids": [],
+      "retained_fault_history_ids": [],
+      "transition_path": [],
+      "decision": "REJECT",
+      "reason_codes": [
+        "AUTHORIZATION_UNKNOWN"
+      ],
+      "new_endpoint_applications": 0,
+      "new_endpoint_acknowledgements": 0,
+      "unknown_fields": {
+        "physical_feedback": "NOT_OBSERVED_NOT_VALIDATED",
+        "held_input": "No endpoint implementation in S1-A; supplied past observations alone may update knowledge."
+      }
+    },
+    "T06-NORMAL-BOUNDARY": {
+      "state": "NO_VALID_POLICY",
+      "control_session_id": "SESSION_A",
+      "desired_epoch": 2,
+      "live_permission_ids": [],
+      "added_fault_ids": [
+        "F_EMERGENCY"
+      ],
+      "cleared_fault_ids": [],
+      "retained_fault_history_ids": [],
+      "transition_path": [
+        "T06",
+        "T09"
+      ],
+      "decision": "REVOKE",
+      "reason_codes": [
+        "EXPIRED",
+        "NO_VALID_POLICY"
+      ],
+      "new_endpoint_applications": 0,
+      "new_endpoint_acknowledgements": 0,
+      "unknown_fields": {
+        "physical_feedback": "NOT_OBSERVED_NOT_VALIDATED",
+        "held_input": "No endpoint implementation in S1-A; supplied past observations alone may update knowledge."
+      }
+    },
+    "T06-WARNING-POSITIVE": {
+      "state": "NO_VALID_POLICY",
+      "control_session_id": "SESSION_A",
+      "desired_epoch": 2,
+      "live_permission_ids": [],
+      "added_fault_ids": [
+        "F_EMERGENCY"
+      ],
+      "cleared_fault_ids": [],
+      "retained_fault_history_ids": [],
+      "transition_path": [
+        "T06",
+        "T09"
+      ],
+      "decision": "REVOKE",
+      "reason_codes": [
+        "NO_VALID_POLICY"
+      ],
+      "new_endpoint_applications": 0,
+      "new_endpoint_acknowledgements": 0,
+      "unknown_fields": {
+        "physical_feedback": "NOT_OBSERVED_NOT_VALIDATED",
+        "held_input": "No endpoint implementation in S1-A; supplied past observations alone may update knowledge."
+      }
+    },
+    "T06-WARNING-REJECTION": {
+      "state": "WARNING",
+      "control_session_id": "SESSION_A",
+      "desired_epoch": 1,
+      "live_permission_ids": [
+        "p1"
+      ],
+      "added_fault_ids": [],
+      "cleared_fault_ids": [],
+      "retained_fault_history_ids": [],
+      "transition_path": [],
+      "decision": "REJECT",
+      "reason_codes": [
+        "AUTHORIZATION_UNKNOWN"
+      ],
+      "new_endpoint_applications": 0,
+      "new_endpoint_acknowledgements": 0,
+      "unknown_fields": {
+        "physical_feedback": "NOT_OBSERVED_NOT_VALIDATED",
+        "held_input": "No endpoint implementation in S1-A; supplied past observations alone may update knowledge."
+      }
+    },
+    "T06-WARNING-BOUNDARY": {
+      "state": "NO_VALID_POLICY",
+      "control_session_id": "SESSION_A",
+      "desired_epoch": 2,
+      "live_permission_ids": [],
+      "added_fault_ids": [
+        "F_EMERGENCY"
+      ],
+      "cleared_fault_ids": [],
+      "retained_fault_history_ids": [],
+      "transition_path": [
+        "T06",
+        "T09"
+      ],
+      "decision": "REVOKE",
+      "reason_codes": [
+        "EXPIRED",
+        "NO_VALID_POLICY"
+      ],
+      "new_endpoint_applications": 0,
+      "new_endpoint_acknowledgements": 0,
+      "unknown_fields": {
+        "physical_feedback": "NOT_OBSERVED_NOT_VALIDATED",
+        "held_input": "No endpoint implementation in S1-A; supplied past observations alone may update knowledge."
+      }
+    },
+    "T06-RECOVERY-POSITIVE": {
+      "state": "NO_VALID_POLICY",
+      "control_session_id": "SESSION_A",
+      "desired_epoch": 2,
+      "live_permission_ids": [],
+      "added_fault_ids": [
+        "F_EMERGENCY"
+      ],
+      "cleared_fault_ids": [],
+      "retained_fault_history_ids": [],
+      "transition_path": [
+        "T06",
+        "T09"
+      ],
+      "decision": "REVOKE",
+      "reason_codes": [
+        "NO_VALID_POLICY"
+      ],
+      "new_endpoint_applications": 0,
+      "new_endpoint_acknowledgements": 0,
+      "unknown_fields": {
+        "physical_feedback": "NOT_OBSERVED_NOT_VALIDATED",
+        "held_input": "No endpoint implementation in S1-A; supplied past observations alone may update knowledge."
+      }
+    },
+    "T06-RECOVERY-REJECTION": {
+      "state": "NO_VALID_POLICY",
+      "control_session_id": "SESSION_A",
+      "desired_epoch": 2,
+      "live_permission_ids": [],
+      "added_fault_ids": [
+        "F_POLICY_UNAVAILABLE"
+      ],
+      "cleared_fault_ids": [],
+      "retained_fault_history_ids": [],
+      "transition_path": [
+        "T09"
+      ],
+      "decision": "REJECT",
+      "reason_codes": [
+        "AUTHORIZATION_UNKNOWN",
+        "NO_VALID_POLICY"
+      ],
+      "new_endpoint_applications": 0,
+      "new_endpoint_acknowledgements": 0,
+      "unknown_fields": {
+        "physical_feedback": "NOT_OBSERVED_NOT_VALIDATED",
+        "held_input": "No endpoint implementation in S1-A; supplied past observations alone may update knowledge."
+      }
+    },
+    "T06-RECOVERY-BOUNDARY": {
+      "state": "NO_VALID_POLICY",
+      "control_session_id": "SESSION_A",
+      "desired_epoch": 2,
+      "live_permission_ids": [],
+      "added_fault_ids": [
+        "F_EMERGENCY"
+      ],
+      "cleared_fault_ids": [],
+      "retained_fault_history_ids": [],
+      "transition_path": [
+        "T06",
+        "T09"
+      ],
+      "decision": "REVOKE",
+      "reason_codes": [
+        "EXPIRED",
+        "NO_VALID_POLICY"
+      ],
+      "new_endpoint_applications": 0,
+      "new_endpoint_acknowledgements": 0,
+      "unknown_fields": {
+        "physical_feedback": "NOT_OBSERVED_NOT_VALIDATED",
+        "held_input": "No endpoint implementation in S1-A; supplied past observations alone may update knowledge."
+      }
+    },
+    "T06-DECELERATING-POSITIVE": {
+      "state": "NO_VALID_POLICY",
+      "control_session_id": "SESSION_A",
+      "desired_epoch": 2,
+      "live_permission_ids": [],
+      "added_fault_ids": [
+        "F_EMERGENCY"
+      ],
+      "cleared_fault_ids": [],
+      "retained_fault_history_ids": [],
+      "transition_path": [
+        "T06",
+        "T09"
+      ],
+      "decision": "REVOKE",
+      "reason_codes": [
+        "NO_VALID_POLICY"
+      ],
+      "new_endpoint_applications": 0,
+      "new_endpoint_acknowledgements": 0,
+      "unknown_fields": {
+        "physical_feedback": "NOT_OBSERVED_NOT_VALIDATED",
+        "held_input": "No endpoint implementation in S1-A; supplied past observations alone may update knowledge."
+      }
+    },
+    "T06-DECELERATING-REJECTION": {
+      "state": "NO_VALID_POLICY",
+      "control_session_id": "SESSION_A",
+      "desired_epoch": 2,
+      "live_permission_ids": [],
+      "added_fault_ids": [
+        "F_POLICY_UNAVAILABLE"
+      ],
+      "cleared_fault_ids": [],
+      "retained_fault_history_ids": [],
+      "transition_path": [
+        "T09"
+      ],
+      "decision": "REJECT",
+      "reason_codes": [
+        "AUTHORIZATION_UNKNOWN",
+        "NO_VALID_POLICY"
+      ],
+      "new_endpoint_applications": 0,
+      "new_endpoint_acknowledgements": 0,
+      "unknown_fields": {
+        "physical_feedback": "NOT_OBSERVED_NOT_VALIDATED",
+        "held_input": "No endpoint implementation in S1-A; supplied past observations alone may update knowledge."
+      }
+    },
+    "T06-DECELERATING-BOUNDARY": {
+      "state": "NO_VALID_POLICY",
+      "control_session_id": "SESSION_A",
+      "desired_epoch": 2,
+      "live_permission_ids": [],
+      "added_fault_ids": [
+        "F_EMERGENCY"
+      ],
+      "cleared_fault_ids": [],
+      "retained_fault_history_ids": [],
+      "transition_path": [
+        "T06",
+        "T09"
+      ],
+      "decision": "REVOKE",
+      "reason_codes": [
+        "EXPIRED",
+        "NO_VALID_POLICY"
+      ],
+      "new_endpoint_applications": 0,
+      "new_endpoint_acknowledgements": 0,
+      "unknown_fields": {
+        "physical_feedback": "NOT_OBSERVED_NOT_VALIDATED",
+        "held_input": "No endpoint implementation in S1-A; supplied past observations alone may update knowledge."
+      }
+    },
+    "T07-STOP_REQUESTED-POSITIVE": {
+      "state": "NO_VALID_POLICY",
+      "control_session_id": "SESSION_A",
+      "desired_epoch": 2,
+      "live_permission_ids": [],
+      "added_fault_ids": [
+        "F_POLICY_UNAVAILABLE"
+      ],
+      "cleared_fault_ids": [],
+      "retained_fault_history_ids": [
+        "F_SEED"
+      ],
+      "transition_path": [
+        "T09"
+      ],
+      "decision": "REJECT",
+      "reason_codes": [
+        "TRANSITION_DISABLED",
+        "NO_VALID_POLICY"
+      ],
+      "new_endpoint_applications": 0,
+      "new_endpoint_acknowledgements": 0,
+      "unknown_fields": {
+        "physical_feedback": "NOT_OBSERVED_NOT_VALIDATED",
+        "held_input": "No endpoint implementation in S1-A; supplied past observations alone may update knowledge."
+      }
+    },
+    "T07-STOP_REQUESTED-REJECTION": {
+      "state": "NO_VALID_POLICY",
+      "control_session_id": "SESSION_A",
+      "desired_epoch": 2,
+      "live_permission_ids": [],
+      "added_fault_ids": [
+        "F_POLICY_UNAVAILABLE"
+      ],
+      "cleared_fault_ids": [],
+      "retained_fault_history_ids": [
+        "F_SEED"
+      ],
+      "transition_path": [
+        "T09"
+      ],
+      "decision": "REJECT",
+      "reason_codes": [
+        "TRANSITION_DISABLED",
+        "DOMAIN_UNKNOWN",
+        "NO_VALID_POLICY"
+      ],
+      "new_endpoint_applications": 0,
+      "new_endpoint_acknowledgements": 0,
+      "unknown_fields": {
+        "physical_feedback": "NOT_OBSERVED_NOT_VALIDATED",
+        "held_input": "No endpoint implementation in S1-A; supplied past observations alone may update knowledge."
+      }
+    },
+    "T07-STOP_REQUESTED-BOUNDARY": {
+      "state": "NO_VALID_POLICY",
+      "control_session_id": "SESSION_A",
+      "desired_epoch": 2,
+      "live_permission_ids": [],
+      "added_fault_ids": [
+        "F_POLICY_UNAVAILABLE"
+      ],
+      "cleared_fault_ids": [],
+      "retained_fault_history_ids": [
+        "F_SEED"
+      ],
+      "transition_path": [
+        "T09"
+      ],
+      "decision": "REJECT",
+      "reason_codes": [
+        "EXPIRED",
+        "TRANSITION_DISABLED",
+        "NO_VALID_POLICY"
+      ],
+      "new_endpoint_applications": 0,
+      "new_endpoint_acknowledgements": 0,
+      "unknown_fields": {
+        "physical_feedback": "NOT_OBSERVED_NOT_VALIDATED",
+        "held_input": "No endpoint implementation in S1-A; supplied past observations alone may update knowledge."
+      }
+    },
+    "T08-STOPPING-POSITIVE": {
+      "state": "NO_VALID_POLICY",
+      "control_session_id": "SESSION_A",
+      "desired_epoch": 2,
+      "live_permission_ids": [],
+      "added_fault_ids": [
+        "F_POLICY_UNAVAILABLE"
+      ],
+      "cleared_fault_ids": [],
+      "retained_fault_history_ids": [
+        "F_SEED"
+      ],
+      "transition_path": [
+        "T09"
+      ],
+      "decision": "REJECT",
+      "reason_codes": [
+        "TRANSITION_DISABLED",
+        "NO_VALID_POLICY"
+      ],
+      "new_endpoint_applications": 0,
+      "new_endpoint_acknowledgements": 0,
+      "unknown_fields": {
+        "physical_feedback": "NOT_OBSERVED_NOT_VALIDATED",
+        "held_input": "No endpoint implementation in S1-A; supplied past observations alone may update knowledge."
+      }
+    },
+    "T08-STOPPING-REJECTION": {
+      "state": "NO_VALID_POLICY",
+      "control_session_id": "SESSION_A",
+      "desired_epoch": 2,
+      "live_permission_ids": [],
+      "added_fault_ids": [
+        "F_POLICY_UNAVAILABLE"
+      ],
+      "cleared_fault_ids": [],
+      "retained_fault_history_ids": [
+        "F_SEED"
+      ],
+      "transition_path": [
+        "T09"
+      ],
+      "decision": "REJECT",
+      "reason_codes": [
+        "TRANSITION_DISABLED",
+        "DOMAIN_UNKNOWN",
+        "NO_VALID_POLICY"
+      ],
+      "new_endpoint_applications": 0,
+      "new_endpoint_acknowledgements": 0,
+      "unknown_fields": {
+        "physical_feedback": "NOT_OBSERVED_NOT_VALIDATED",
+        "held_input": "No endpoint implementation in S1-A; supplied past observations alone may update knowledge."
+      }
+    },
+    "T08-STOPPING-BOUNDARY": {
+      "state": "NO_VALID_POLICY",
+      "control_session_id": "SESSION_A",
+      "desired_epoch": 2,
+      "live_permission_ids": [],
+      "added_fault_ids": [
+        "F_POLICY_UNAVAILABLE"
+      ],
+      "cleared_fault_ids": [],
+      "retained_fault_history_ids": [
+        "F_SEED"
+      ],
+      "transition_path": [
+        "T09"
+      ],
+      "decision": "REJECT",
+      "reason_codes": [
+        "EXPIRED",
+        "TRANSITION_DISABLED",
+        "NO_VALID_POLICY"
+      ],
+      "new_endpoint_applications": 0,
+      "new_endpoint_acknowledgements": 0,
+      "unknown_fields": {
+        "physical_feedback": "NOT_OBSERVED_NOT_VALIDATED",
+        "held_input": "No endpoint implementation in S1-A; supplied past observations alone may update knowledge."
+      }
+    },
+    "T09-DISARMED-POSITIVE": {
+      "state": "NO_VALID_POLICY",
+      "control_session_id": "SESSION_A",
+      "desired_epoch": 2,
+      "live_permission_ids": [],
+      "added_fault_ids": [
+        "F_ESTIMATE_INVALID"
+      ],
+      "cleared_fault_ids": [],
+      "retained_fault_history_ids": [],
+      "transition_path": [
+        "T09"
+      ],
+      "decision": "REVOKE",
+      "reason_codes": [
+        "ESTIMATE_INVALID",
+        "NO_VALID_POLICY"
+      ],
+      "new_endpoint_applications": 0,
+      "new_endpoint_acknowledgements": 0,
+      "unknown_fields": {
+        "physical_feedback": "NOT_OBSERVED_NOT_VALIDATED",
+        "held_input": "No endpoint implementation in S1-A; supplied past observations alone may update knowledge."
+      }
+    },
+    "T09-DISARMED-REJECTION": {
+      "state": "DISARMED",
+      "control_session_id": "SESSION_A",
+      "desired_epoch": 1,
+      "live_permission_ids": [],
+      "added_fault_ids": [],
+      "cleared_fault_ids": [],
+      "retained_fault_history_ids": [],
+      "transition_path": [],
+      "decision": "OBSERVE",
+      "reason_codes": [
+        "OK"
+      ],
+      "new_endpoint_applications": 0,
+      "new_endpoint_acknowledgements": 0,
+      "unknown_fields": {
+        "physical_feedback": "NOT_OBSERVED_NOT_VALIDATED",
+        "held_input": "No endpoint implementation in S1-A; supplied past observations alone may update knowledge."
+      }
+    },
+    "T09-DISARMED-BOUNDARY": {
+      "state": "NO_VALID_POLICY",
+      "control_session_id": "SESSION_A",
+      "desired_epoch": 2,
+      "live_permission_ids": [],
+      "added_fault_ids": [
+        "F_ESTIMATE_DEGRADED"
+      ],
+      "cleared_fault_ids": [],
+      "retained_fault_history_ids": [],
+      "transition_path": [
+        "T09"
+      ],
+      "decision": "REVOKE",
+      "reason_codes": [
+        "ESTIMATE_DEGRADED",
+        "NO_VALID_POLICY"
+      ],
+      "new_endpoint_applications": 0,
+      "new_endpoint_acknowledgements": 0,
+      "unknown_fields": {
+        "physical_feedback": "NOT_OBSERVED_NOT_VALIDATED",
+        "held_input": "No endpoint implementation in S1-A; supplied past observations alone may update knowledge."
+      }
+    },
+    "T09-NORMAL-POSITIVE": {
+      "state": "NO_VALID_POLICY",
+      "control_session_id": "SESSION_A",
+      "desired_epoch": 2,
+      "live_permission_ids": [],
+      "added_fault_ids": [
+        "F_ESTIMATE_INVALID"
+      ],
+      "cleared_fault_ids": [],
+      "retained_fault_history_ids": [],
+      "transition_path": [
+        "T09"
+      ],
+      "decision": "REVOKE",
+      "reason_codes": [
+        "ESTIMATE_INVALID",
+        "NO_VALID_POLICY"
+      ],
+      "new_endpoint_applications": 0,
+      "new_endpoint_acknowledgements": 0,
+      "unknown_fields": {
+        "physical_feedback": "NOT_OBSERVED_NOT_VALIDATED",
+        "held_input": "No endpoint implementation in S1-A; supplied past observations alone may update knowledge."
+      }
+    },
+    "T09-NORMAL-REJECTION": {
+      "state": "NORMAL",
+      "control_session_id": "SESSION_A",
+      "desired_epoch": 1,
+      "live_permission_ids": [
+        "p1"
+      ],
+      "added_fault_ids": [],
+      "cleared_fault_ids": [],
+      "retained_fault_history_ids": [],
+      "transition_path": [],
+      "decision": "OBSERVE",
+      "reason_codes": [
+        "OK"
+      ],
+      "new_endpoint_applications": 0,
+      "new_endpoint_acknowledgements": 0,
+      "unknown_fields": {
+        "physical_feedback": "NOT_OBSERVED_NOT_VALIDATED",
+        "held_input": "No endpoint implementation in S1-A; supplied past observations alone may update knowledge."
+      }
+    },
+    "T09-NORMAL-BOUNDARY": {
+      "state": "NO_VALID_POLICY",
+      "control_session_id": "SESSION_A",
+      "desired_epoch": 2,
+      "live_permission_ids": [],
+      "added_fault_ids": [
+        "F_ESTIMATE_DEGRADED"
+      ],
+      "cleared_fault_ids": [],
+      "retained_fault_history_ids": [],
+      "transition_path": [
+        "T09"
+      ],
+      "decision": "REVOKE",
+      "reason_codes": [
+        "ESTIMATE_DEGRADED",
+        "NO_VALID_POLICY"
+      ],
+      "new_endpoint_applications": 0,
+      "new_endpoint_acknowledgements": 0,
+      "unknown_fields": {
+        "physical_feedback": "NOT_OBSERVED_NOT_VALIDATED",
+        "held_input": "No endpoint implementation in S1-A; supplied past observations alone may update knowledge."
+      }
+    },
+    "T09-WARNING-POSITIVE": {
+      "state": "NO_VALID_POLICY",
+      "control_session_id": "SESSION_A",
+      "desired_epoch": 2,
+      "live_permission_ids": [],
+      "added_fault_ids": [
+        "F_ESTIMATE_INVALID"
+      ],
+      "cleared_fault_ids": [],
+      "retained_fault_history_ids": [],
+      "transition_path": [
+        "T09"
+      ],
+      "decision": "REVOKE",
+      "reason_codes": [
+        "ESTIMATE_INVALID",
+        "NO_VALID_POLICY"
+      ],
+      "new_endpoint_applications": 0,
+      "new_endpoint_acknowledgements": 0,
+      "unknown_fields": {
+        "physical_feedback": "NOT_OBSERVED_NOT_VALIDATED",
+        "held_input": "No endpoint implementation in S1-A; supplied past observations alone may update knowledge."
+      }
+    },
+    "T09-WARNING-REJECTION": {
+      "state": "WARNING",
+      "control_session_id": "SESSION_A",
+      "desired_epoch": 1,
+      "live_permission_ids": [
+        "p1"
+      ],
+      "added_fault_ids": [],
+      "cleared_fault_ids": [],
+      "retained_fault_history_ids": [],
+      "transition_path": [],
+      "decision": "OBSERVE",
+      "reason_codes": [
+        "OK"
+      ],
+      "new_endpoint_applications": 0,
+      "new_endpoint_acknowledgements": 0,
+      "unknown_fields": {
+        "physical_feedback": "NOT_OBSERVED_NOT_VALIDATED",
+        "held_input": "No endpoint implementation in S1-A; supplied past observations alone may update knowledge."
+      }
+    },
+    "T09-WARNING-BOUNDARY": {
+      "state": "NO_VALID_POLICY",
+      "control_session_id": "SESSION_A",
+      "desired_epoch": 2,
+      "live_permission_ids": [],
+      "added_fault_ids": [
+        "F_ESTIMATE_DEGRADED"
+      ],
+      "cleared_fault_ids": [],
+      "retained_fault_history_ids": [],
+      "transition_path": [
+        "T09"
+      ],
+      "decision": "REVOKE",
+      "reason_codes": [
+        "ESTIMATE_DEGRADED",
+        "NO_VALID_POLICY"
+      ],
+      "new_endpoint_applications": 0,
+      "new_endpoint_acknowledgements": 0,
+      "unknown_fields": {
+        "physical_feedback": "NOT_OBSERVED_NOT_VALIDATED",
+        "held_input": "No endpoint implementation in S1-A; supplied past observations alone may update knowledge."
+      }
+    },
+    "T09-RECOVERY-POSITIVE": {
+      "state": "NO_VALID_POLICY",
+      "control_session_id": "SESSION_A",
+      "desired_epoch": 2,
+      "live_permission_ids": [],
+      "added_fault_ids": [
+        "F_ESTIMATE_INVALID"
+      ],
+      "cleared_fault_ids": [],
+      "retained_fault_history_ids": [],
+      "transition_path": [
+        "T09"
+      ],
+      "decision": "REVOKE",
+      "reason_codes": [
+        "ESTIMATE_INVALID",
+        "NO_VALID_POLICY"
+      ],
+      "new_endpoint_applications": 0,
+      "new_endpoint_acknowledgements": 0,
+      "unknown_fields": {
+        "physical_feedback": "NOT_OBSERVED_NOT_VALIDATED",
+        "held_input": "No endpoint implementation in S1-A; supplied past observations alone may update knowledge."
+      }
+    },
+    "T09-RECOVERY-REJECTION": {
+      "state": "NO_VALID_POLICY",
+      "control_session_id": "SESSION_A",
+      "desired_epoch": 2,
+      "live_permission_ids": [],
+      "added_fault_ids": [
+        "F_REST_LOST"
+      ],
+      "cleared_fault_ids": [],
+      "retained_fault_history_ids": [
+        "F_SEED"
+      ],
+      "transition_path": [
+        "T14"
+      ],
+      "decision": "REVOKE",
+      "reason_codes": [
+        "ESTIMATE_INVALID",
+        "NO_VALID_POLICY"
+      ],
+      "new_endpoint_applications": 0,
+      "new_endpoint_acknowledgements": 0,
+      "unknown_fields": {
+        "physical_feedback": "NOT_OBSERVED_NOT_VALIDATED",
+        "held_input": "No endpoint implementation in S1-A; supplied past observations alone may update knowledge."
+      }
+    },
+    "T09-RECOVERY-BOUNDARY": {
+      "state": "NO_VALID_POLICY",
+      "control_session_id": "SESSION_A",
+      "desired_epoch": 2,
+      "live_permission_ids": [],
+      "added_fault_ids": [
+        "F_ESTIMATE_DEGRADED"
+      ],
+      "cleared_fault_ids": [],
+      "retained_fault_history_ids": [],
+      "transition_path": [
+        "T09"
+      ],
+      "decision": "REVOKE",
+      "reason_codes": [
+        "ESTIMATE_DEGRADED",
+        "NO_VALID_POLICY"
+      ],
+      "new_endpoint_applications": 0,
+      "new_endpoint_acknowledgements": 0,
+      "unknown_fields": {
+        "physical_feedback": "NOT_OBSERVED_NOT_VALIDATED",
+        "held_input": "No endpoint implementation in S1-A; supplied past observations alone may update knowledge."
+      }
+    },
+    "T09-DECELERATING-POSITIVE": {
+      "state": "NO_VALID_POLICY",
+      "control_session_id": "SESSION_A",
+      "desired_epoch": 2,
+      "live_permission_ids": [],
+      "added_fault_ids": [
+        "F_ESTIMATE_INVALID"
+      ],
+      "cleared_fault_ids": [],
+      "retained_fault_history_ids": [],
+      "transition_path": [
+        "T09"
+      ],
+      "decision": "REVOKE",
+      "reason_codes": [
+        "ESTIMATE_INVALID",
+        "NO_VALID_POLICY"
+      ],
+      "new_endpoint_applications": 0,
+      "new_endpoint_acknowledgements": 0,
+      "unknown_fields": {
+        "physical_feedback": "NOT_OBSERVED_NOT_VALIDATED",
+        "held_input": "No endpoint implementation in S1-A; supplied past observations alone may update knowledge."
+      }
+    },
+    "T09-DECELERATING-REJECTION": {
+      "state": "NO_VALID_POLICY",
+      "control_session_id": "SESSION_A",
+      "desired_epoch": 2,
+      "live_permission_ids": [],
+      "added_fault_ids": [
+        "F_REST_LOST"
+      ],
+      "cleared_fault_ids": [],
+      "retained_fault_history_ids": [
+        "F_SEED"
+      ],
+      "transition_path": [
+        "T14"
+      ],
+      "decision": "REVOKE",
+      "reason_codes": [
+        "ESTIMATE_INVALID",
+        "NO_VALID_POLICY"
+      ],
+      "new_endpoint_applications": 0,
+      "new_endpoint_acknowledgements": 0,
+      "unknown_fields": {
+        "physical_feedback": "NOT_OBSERVED_NOT_VALIDATED",
+        "held_input": "No endpoint implementation in S1-A; supplied past observations alone may update knowledge."
+      }
+    },
+    "T09-DECELERATING-BOUNDARY": {
+      "state": "NO_VALID_POLICY",
+      "control_session_id": "SESSION_A",
+      "desired_epoch": 2,
+      "live_permission_ids": [],
+      "added_fault_ids": [
+        "F_ESTIMATE_DEGRADED"
+      ],
+      "cleared_fault_ids": [],
+      "retained_fault_history_ids": [],
+      "transition_path": [
+        "T09"
+      ],
+      "decision": "REVOKE",
+      "reason_codes": [
+        "ESTIMATE_DEGRADED",
+        "NO_VALID_POLICY"
+      ],
+      "new_endpoint_applications": 0,
+      "new_endpoint_acknowledgements": 0,
+      "unknown_fields": {
+        "physical_feedback": "NOT_OBSERVED_NOT_VALIDATED",
+        "held_input": "No endpoint implementation in S1-A; supplied past observations alone may update knowledge."
+      }
+    },
+    "T09-STOP_REQUESTED-POSITIVE": {
+      "state": "NO_VALID_POLICY",
+      "control_session_id": "SESSION_A",
+      "desired_epoch": 2,
+      "live_permission_ids": [],
+      "added_fault_ids": [
+        "F_ESTIMATE_INVALID"
+      ],
+      "cleared_fault_ids": [],
+      "retained_fault_history_ids": [
+        "F_SEED"
+      ],
+      "transition_path": [
+        "T09"
+      ],
+      "decision": "REVOKE",
+      "reason_codes": [
+        "ESTIMATE_INVALID",
+        "NO_VALID_POLICY"
+      ],
+      "new_endpoint_applications": 0,
+      "new_endpoint_acknowledgements": 0,
+      "unknown_fields": {
+        "physical_feedback": "NOT_OBSERVED_NOT_VALIDATED",
+        "held_input": "No endpoint implementation in S1-A; supplied past observations alone may update knowledge."
+      }
+    },
+    "T09-STOP_REQUESTED-REJECTION": {
+      "state": "NO_VALID_POLICY",
+      "control_session_id": "SESSION_A",
+      "desired_epoch": 2,
+      "live_permission_ids": [],
+      "added_fault_ids": [
+        "F_REST_LOST"
+      ],
+      "cleared_fault_ids": [],
+      "retained_fault_history_ids": [
+        "F_SEED"
+      ],
+      "transition_path": [
+        "T14"
+      ],
+      "decision": "REVOKE",
+      "reason_codes": [
+        "ESTIMATE_INVALID",
+        "NO_VALID_POLICY"
+      ],
+      "new_endpoint_applications": 0,
+      "new_endpoint_acknowledgements": 0,
+      "unknown_fields": {
+        "physical_feedback": "NOT_OBSERVED_NOT_VALIDATED",
+        "held_input": "No endpoint implementation in S1-A; supplied past observations alone may update knowledge."
+      }
+    },
+    "T09-STOP_REQUESTED-BOUNDARY": {
+      "state": "NO_VALID_POLICY",
+      "control_session_id": "SESSION_A",
+      "desired_epoch": 2,
+      "live_permission_ids": [],
+      "added_fault_ids": [
+        "F_ESTIMATE_DEGRADED"
+      ],
+      "cleared_fault_ids": [],
+      "retained_fault_history_ids": [
+        "F_SEED"
+      ],
+      "transition_path": [
+        "T09"
+      ],
+      "decision": "REVOKE",
+      "reason_codes": [
+        "ESTIMATE_DEGRADED",
+        "NO_VALID_POLICY"
+      ],
+      "new_endpoint_applications": 0,
+      "new_endpoint_acknowledgements": 0,
+      "unknown_fields": {
+        "physical_feedback": "NOT_OBSERVED_NOT_VALIDATED",
+        "held_input": "No endpoint implementation in S1-A; supplied past observations alone may update knowledge."
+      }
+    },
+    "T09-STOPPING-POSITIVE": {
+      "state": "NO_VALID_POLICY",
+      "control_session_id": "SESSION_A",
+      "desired_epoch": 2,
+      "live_permission_ids": [],
+      "added_fault_ids": [
+        "F_ESTIMATE_INVALID"
+      ],
+      "cleared_fault_ids": [],
+      "retained_fault_history_ids": [
+        "F_SEED"
+      ],
+      "transition_path": [
+        "T09"
+      ],
+      "decision": "REVOKE",
+      "reason_codes": [
+        "ESTIMATE_INVALID",
+        "NO_VALID_POLICY"
+      ],
+      "new_endpoint_applications": 0,
+      "new_endpoint_acknowledgements": 0,
+      "unknown_fields": {
+        "physical_feedback": "NOT_OBSERVED_NOT_VALIDATED",
+        "held_input": "No endpoint implementation in S1-A; supplied past observations alone may update knowledge."
+      }
+    },
+    "T09-STOPPING-REJECTION": {
+      "state": "NO_VALID_POLICY",
+      "control_session_id": "SESSION_A",
+      "desired_epoch": 2,
+      "live_permission_ids": [],
+      "added_fault_ids": [
+        "F_REST_LOST"
+      ],
+      "cleared_fault_ids": [],
+      "retained_fault_history_ids": [
+        "F_SEED"
+      ],
+      "transition_path": [
+        "T14"
+      ],
+      "decision": "REVOKE",
+      "reason_codes": [
+        "ESTIMATE_INVALID",
+        "NO_VALID_POLICY"
+      ],
+      "new_endpoint_applications": 0,
+      "new_endpoint_acknowledgements": 0,
+      "unknown_fields": {
+        "physical_feedback": "NOT_OBSERVED_NOT_VALIDATED",
+        "held_input": "No endpoint implementation in S1-A; supplied past observations alone may update knowledge."
+      }
+    },
+    "T09-STOPPING-BOUNDARY": {
+      "state": "NO_VALID_POLICY",
+      "control_session_id": "SESSION_A",
+      "desired_epoch": 2,
+      "live_permission_ids": [],
+      "added_fault_ids": [
+        "F_ESTIMATE_DEGRADED"
+      ],
+      "cleared_fault_ids": [],
+      "retained_fault_history_ids": [
+        "F_SEED"
+      ],
+      "transition_path": [
+        "T09"
+      ],
+      "decision": "REVOKE",
+      "reason_codes": [
+        "ESTIMATE_DEGRADED",
+        "NO_VALID_POLICY"
+      ],
+      "new_endpoint_applications": 0,
+      "new_endpoint_acknowledgements": 0,
+      "unknown_fields": {
+        "physical_feedback": "NOT_OBSERVED_NOT_VALIDATED",
+        "held_input": "No endpoint implementation in S1-A; supplied past observations alone may update knowledge."
+      }
+    },
+    "T10-NO_VALID_POLICY-POSITIVE": {
+      "state": "NO_VALID_POLICY",
+      "control_session_id": "SESSION_A",
+      "desired_epoch": 1,
+      "live_permission_ids": [],
+      "added_fault_ids": [],
+      "cleared_fault_ids": [],
+      "retained_fault_history_ids": [
+        "F_SEED"
+      ],
+      "transition_path": [],
+      "decision": "REJECT",
+      "reason_codes": [
+        "FAULT_LATCHED",
+        "TRANSITION_DISABLED"
+      ],
+      "new_endpoint_applications": 0,
+      "new_endpoint_acknowledgements": 0,
+      "unknown_fields": {
+        "physical_feedback": "NOT_OBSERVED_NOT_VALIDATED",
+        "held_input": "No endpoint implementation in S1-A; supplied past observations alone may update knowledge."
+      }
+    },
+    "T10-NO_VALID_POLICY-REJECTION": {
+      "state": "NO_VALID_POLICY",
+      "control_session_id": "SESSION_A",
+      "desired_epoch": 1,
+      "live_permission_ids": [],
+      "added_fault_ids": [],
+      "cleared_fault_ids": [],
+      "retained_fault_history_ids": [
+        "F_SEED"
+      ],
+      "transition_path": [],
+      "decision": "REJECT",
+      "reason_codes": [
+        "FAULT_LATCHED",
+        "TRANSITION_DISABLED",
+        "DOMAIN_UNKNOWN"
+      ],
+      "new_endpoint_applications": 0,
+      "new_endpoint_acknowledgements": 0,
+      "unknown_fields": {
+        "physical_feedback": "NOT_OBSERVED_NOT_VALIDATED",
+        "held_input": "No endpoint implementation in S1-A; supplied past observations alone may update knowledge."
+      }
+    },
+    "T10-NO_VALID_POLICY-BOUNDARY": {
+      "state": "NO_VALID_POLICY",
+      "control_session_id": "SESSION_A",
+      "desired_epoch": 1,
+      "live_permission_ids": [],
+      "added_fault_ids": [],
+      "cleared_fault_ids": [],
+      "retained_fault_history_ids": [
+        "F_SEED"
+      ],
+      "transition_path": [],
+      "decision": "REJECT",
+      "reason_codes": [
+        "EXPIRED",
+        "FAULT_LATCHED",
+        "TRANSITION_DISABLED"
+      ],
+      "new_endpoint_applications": 0,
+      "new_endpoint_acknowledgements": 0,
+      "unknown_fields": {
+        "physical_feedback": "NOT_OBSERVED_NOT_VALIDATED",
+        "held_input": "No endpoint implementation in S1-A; supplied past observations alone may update knowledge."
+      }
+    },
+    "T11-NO_VALID_POLICY-POSITIVE": {
+      "state": "STOPPED_LATCHED",
+      "control_session_id": "SESSION_A",
+      "desired_epoch": 1,
+      "live_permission_ids": [],
+      "added_fault_ids": [],
+      "cleared_fault_ids": [],
+      "retained_fault_history_ids": [
+        "F_SEED"
+      ],
+      "transition_path": [
+        "T11"
+      ],
+      "decision": "OBSERVE",
+      "reason_codes": [
+        "OK"
+      ],
+      "new_endpoint_applications": 0,
+      "new_endpoint_acknowledgements": 0,
+      "unknown_fields": {
+        "physical_feedback": "NOT_OBSERVED_NOT_VALIDATED",
+        "held_input": "No endpoint implementation in S1-A; supplied past observations alone may update knowledge."
+      }
+    },
+    "T11-NO_VALID_POLICY-REJECTION": {
+      "state": "NO_VALID_POLICY",
+      "control_session_id": "SESSION_A",
+      "desired_epoch": 1,
+      "live_permission_ids": [],
+      "added_fault_ids": [],
+      "cleared_fault_ids": [],
+      "retained_fault_history_ids": [
+        "F_SEED"
+      ],
+      "transition_path": [],
+      "decision": "REJECT",
+      "reason_codes": [
+        "DOMAIN_UNKNOWN"
+      ],
+      "new_endpoint_applications": 0,
+      "new_endpoint_acknowledgements": 0,
+      "unknown_fields": {
+        "physical_feedback": "NOT_OBSERVED_NOT_VALIDATED",
+        "held_input": "No endpoint implementation in S1-A; supplied past observations alone may update knowledge."
+      }
+    },
+    "T11-NO_VALID_POLICY-BOUNDARY": {
+      "state": "NO_VALID_POLICY",
+      "control_session_id": "SESSION_A",
+      "desired_epoch": 1,
+      "live_permission_ids": [],
+      "added_fault_ids": [],
+      "cleared_fault_ids": [],
+      "retained_fault_history_ids": [
+        "F_SEED"
+      ],
+      "transition_path": [],
+      "decision": "REJECT",
+      "reason_codes": [
+        "EXPIRED"
+      ],
+      "new_endpoint_applications": 0,
+      "new_endpoint_acknowledgements": 0,
+      "unknown_fields": {
+        "physical_feedback": "NOT_OBSERVED_NOT_VALIDATED",
+        "held_input": "No endpoint implementation in S1-A; supplied past observations alone may update knowledge."
+      }
+    },
+    "T12-RECOVERY-POSITIVE": {
+      "state": "NO_VALID_POLICY",
+      "control_session_id": "SESSION_A",
+      "desired_epoch": 2,
+      "live_permission_ids": [],
+      "added_fault_ids": [
+        "F_POLICY_UNAVAILABLE"
+      ],
+      "cleared_fault_ids": [],
+      "retained_fault_history_ids": [],
+      "transition_path": [
+        "T09"
+      ],
+      "decision": "REJECT",
+      "reason_codes": [
+        "TRANSITION_DISABLED",
+        "NO_VALID_POLICY"
+      ],
+      "new_endpoint_applications": 0,
+      "new_endpoint_acknowledgements": 0,
+      "unknown_fields": {
+        "physical_feedback": "NOT_OBSERVED_NOT_VALIDATED",
+        "held_input": "No endpoint implementation in S1-A; supplied past observations alone may update knowledge."
+      }
+    },
+    "T12-RECOVERY-REJECTION": {
+      "state": "NO_VALID_POLICY",
+      "control_session_id": "SESSION_A",
+      "desired_epoch": 2,
+      "live_permission_ids": [],
+      "added_fault_ids": [
+        "F_POLICY_UNAVAILABLE"
+      ],
+      "cleared_fault_ids": [],
+      "retained_fault_history_ids": [],
+      "transition_path": [
+        "T09"
+      ],
+      "decision": "REJECT",
+      "reason_codes": [
+        "TRANSITION_DISABLED",
+        "DOMAIN_UNKNOWN",
+        "NO_VALID_POLICY"
+      ],
+      "new_endpoint_applications": 0,
+      "new_endpoint_acknowledgements": 0,
+      "unknown_fields": {
+        "physical_feedback": "NOT_OBSERVED_NOT_VALIDATED",
+        "held_input": "No endpoint implementation in S1-A; supplied past observations alone may update knowledge."
+      }
+    },
+    "T12-RECOVERY-BOUNDARY": {
+      "state": "NO_VALID_POLICY",
+      "control_session_id": "SESSION_A",
+      "desired_epoch": 2,
+      "live_permission_ids": [],
+      "added_fault_ids": [
+        "F_POLICY_UNAVAILABLE"
+      ],
+      "cleared_fault_ids": [],
+      "retained_fault_history_ids": [],
+      "transition_path": [
+        "T09"
+      ],
+      "decision": "REJECT",
+      "reason_codes": [
+        "EXPIRED",
+        "TRANSITION_DISABLED",
+        "NO_VALID_POLICY"
+      ],
+      "new_endpoint_applications": 0,
+      "new_endpoint_acknowledgements": 0,
+      "unknown_fields": {
+        "physical_feedback": "NOT_OBSERVED_NOT_VALIDATED",
+        "held_input": "No endpoint implementation in S1-A; supplied past observations alone may update knowledge."
+      }
+    },
+    "T12-DECELERATING-POSITIVE": {
+      "state": "NO_VALID_POLICY",
+      "control_session_id": "SESSION_A",
+      "desired_epoch": 2,
+      "live_permission_ids": [],
+      "added_fault_ids": [
+        "F_POLICY_UNAVAILABLE"
+      ],
+      "cleared_fault_ids": [],
+      "retained_fault_history_ids": [],
+      "transition_path": [
+        "T09"
+      ],
+      "decision": "REJECT",
+      "reason_codes": [
+        "TRANSITION_DISABLED",
+        "NO_VALID_POLICY"
+      ],
+      "new_endpoint_applications": 0,
+      "new_endpoint_acknowledgements": 0,
+      "unknown_fields": {
+        "physical_feedback": "NOT_OBSERVED_NOT_VALIDATED",
+        "held_input": "No endpoint implementation in S1-A; supplied past observations alone may update knowledge."
+      }
+    },
+    "T12-DECELERATING-REJECTION": {
+      "state": "NO_VALID_POLICY",
+      "control_session_id": "SESSION_A",
+      "desired_epoch": 2,
+      "live_permission_ids": [],
+      "added_fault_ids": [
+        "F_POLICY_UNAVAILABLE"
+      ],
+      "cleared_fault_ids": [],
+      "retained_fault_history_ids": [],
+      "transition_path": [
+        "T09"
+      ],
+      "decision": "REJECT",
+      "reason_codes": [
+        "TRANSITION_DISABLED",
+        "DOMAIN_UNKNOWN",
+        "NO_VALID_POLICY"
+      ],
+      "new_endpoint_applications": 0,
+      "new_endpoint_acknowledgements": 0,
+      "unknown_fields": {
+        "physical_feedback": "NOT_OBSERVED_NOT_VALIDATED",
+        "held_input": "No endpoint implementation in S1-A; supplied past observations alone may update knowledge."
+      }
+    },
+    "T12-DECELERATING-BOUNDARY": {
+      "state": "NO_VALID_POLICY",
+      "control_session_id": "SESSION_A",
+      "desired_epoch": 2,
+      "live_permission_ids": [],
+      "added_fault_ids": [
+        "F_POLICY_UNAVAILABLE"
+      ],
+      "cleared_fault_ids": [],
+      "retained_fault_history_ids": [],
+      "transition_path": [
+        "T09"
+      ],
+      "decision": "REJECT",
+      "reason_codes": [
+        "EXPIRED",
+        "TRANSITION_DISABLED",
+        "NO_VALID_POLICY"
+      ],
+      "new_endpoint_applications": 0,
+      "new_endpoint_acknowledgements": 0,
+      "unknown_fields": {
+        "physical_feedback": "NOT_OBSERVED_NOT_VALIDATED",
+        "held_input": "No endpoint implementation in S1-A; supplied past observations alone may update knowledge."
+      }
+    },
+    "T13-STOPPED_LATCHED-POSITIVE": {
+      "state": "DISARMED",
+      "control_session_id": "SESSION_B",
+      "desired_epoch": 2,
+      "live_permission_ids": [],
+      "added_fault_ids": [],
+      "cleared_fault_ids": [
+        "F_SEED"
+      ],
+      "retained_fault_history_ids": [
+        "F_SEED"
+      ],
+      "transition_path": [
+        "T13"
+      ],
+      "decision": "ACCEPT",
+      "reason_codes": [
+        "OK"
+      ],
+      "new_endpoint_applications": 0,
+      "new_endpoint_acknowledgements": 0,
+      "unknown_fields": {
+        "physical_feedback": "NOT_OBSERVED_NOT_VALIDATED",
+        "held_input": "No endpoint implementation in S1-A; supplied past observations alone may update knowledge."
+      }
+    },
+    "T13-STOPPED_LATCHED-REJECTION": {
+      "state": "STOPPED_LATCHED",
+      "control_session_id": "SESSION_A",
+      "desired_epoch": 1,
+      "live_permission_ids": [],
+      "added_fault_ids": [],
+      "cleared_fault_ids": [],
+      "retained_fault_history_ids": [
+        "F_SEED"
+      ],
+      "transition_path": [],
+      "decision": "REJECT",
+      "reason_codes": [
+        "BARRIER_UNACKNOWLEDGED",
+        "RESET_NOT_ADMISSIBLE"
+      ],
+      "new_endpoint_applications": 0,
+      "new_endpoint_acknowledgements": 0,
+      "unknown_fields": {
+        "physical_feedback": "NOT_OBSERVED_NOT_VALIDATED",
+        "held_input": "No endpoint implementation in S1-A; supplied past observations alone may update knowledge."
+      }
+    },
+    "T13-STOPPED_LATCHED-BOUNDARY": {
+      "state": "STOPPED_LATCHED",
+      "control_session_id": "SESSION_A",
+      "desired_epoch": 1,
+      "live_permission_ids": [],
+      "added_fault_ids": [],
+      "cleared_fault_ids": [],
+      "retained_fault_history_ids": [
+        "F_SEED"
+      ],
+      "transition_path": [],
+      "decision": "REJECT",
+      "reason_codes": [
+        "BARRIER_UNACKNOWLEDGED",
+        "RESET_NOT_ADMISSIBLE"
+      ],
+      "new_endpoint_applications": 0,
+      "new_endpoint_acknowledgements": 0,
+      "unknown_fields": {
+        "physical_feedback": "NOT_OBSERVED_NOT_VALIDATED",
+        "held_input": "No endpoint implementation in S1-A; supplied past observations alone may update knowledge."
+      }
+    },
+    "T14-STOPPED_LATCHED-POSITIVE": {
+      "state": "NO_VALID_POLICY",
+      "control_session_id": "SESSION_A",
+      "desired_epoch": 2,
+      "live_permission_ids": [],
+      "added_fault_ids": [
+        "F_REST_LOST"
+      ],
+      "cleared_fault_ids": [],
+      "retained_fault_history_ids": [
+        "F_SEED"
+      ],
+      "transition_path": [
+        "T14"
+      ],
+      "decision": "REVOKE",
+      "reason_codes": [
+        "NO_VALID_POLICY"
+      ],
+      "new_endpoint_applications": 0,
+      "new_endpoint_acknowledgements": 0,
+      "unknown_fields": {
+        "physical_feedback": "NOT_OBSERVED_NOT_VALIDATED",
+        "held_input": "No endpoint implementation in S1-A; supplied past observations alone may update knowledge."
+      }
+    },
+    "T14-STOPPED_LATCHED-REJECTION": {
+      "state": "STOPPED_LATCHED",
+      "control_session_id": "SESSION_A",
+      "desired_epoch": 1,
+      "live_permission_ids": [],
+      "added_fault_ids": [],
+      "cleared_fault_ids": [],
+      "retained_fault_history_ids": [
+        "F_SEED"
+      ],
+      "transition_path": [],
+      "decision": "OBSERVE",
+      "reason_codes": [
+        "OK"
+      ],
+      "new_endpoint_applications": 0,
+      "new_endpoint_acknowledgements": 0,
+      "unknown_fields": {
+        "physical_feedback": "NOT_OBSERVED_NOT_VALIDATED",
+        "held_input": "No endpoint implementation in S1-A; supplied past observations alone may update knowledge."
+      }
+    },
+    "T14-STOPPED_LATCHED-BOUNDARY": {
+      "state": "NO_VALID_POLICY",
+      "control_session_id": "SESSION_A",
+      "desired_epoch": 2,
+      "live_permission_ids": [],
+      "added_fault_ids": [
+        "F_REST_LOST"
+      ],
+      "cleared_fault_ids": [],
+      "retained_fault_history_ids": [
+        "F_SEED"
+      ],
+      "transition_path": [
+        "T14"
+      ],
+      "decision": "REVOKE",
+      "reason_codes": [
+        "EXPIRED",
+        "NO_VALID_POLICY"
+      ],
+      "new_endpoint_applications": 0,
+      "new_endpoint_acknowledgements": 0,
+      "unknown_fields": {
+        "physical_feedback": "NOT_OBSERVED_NOT_VALIDATED",
+        "held_input": "No endpoint implementation in S1-A; supplied past observations alone may update knowledge."
+      }
+    },
+    "E01-LEASE-END": {
+      "state": "NORMAL",
+      "control_session_id": "SESSION_A",
+      "desired_epoch": 1,
+      "live_permission_ids": [],
+      "added_fault_ids": [],
+      "cleared_fault_ids": [],
+      "retained_fault_history_ids": [],
+      "transition_path": [],
+      "decision": "REJECT",
+      "reason_codes": [
+        "EXPIRED"
+      ],
+      "new_endpoint_applications": 0,
+      "new_endpoint_acknowledgements": 0,
+      "unknown_fields": {
+        "physical_feedback": "NOT_OBSERVED_NOT_VALIDATED",
+        "held_input": "No endpoint implementation in S1-A; supplied past observations alone may update knowledge."
+      }
+    },
+    "E02-HOLD-AGE": {
+      "state": "NORMAL",
+      "control_session_id": "SESSION_A",
+      "desired_epoch": 1,
+      "live_permission_ids": [
+        "p1"
+      ],
+      "added_fault_ids": [],
+      "cleared_fault_ids": [],
+      "retained_fault_history_ids": [],
+      "transition_path": [],
+      "decision": "REJECT",
+      "reason_codes": [
+        "STALE_ESTIMATE"
+      ],
+      "new_endpoint_applications": 0,
+      "new_endpoint_acknowledgements": 0,
+      "unknown_fields": {
+        "physical_feedback": "NOT_OBSERVED_NOT_VALIDATED",
+        "held_input": "No endpoint implementation in S1-A; supplied past observations alone may update knowledge."
+      }
+    },
+    "E03-PRIOR-SESSION": {
+      "state": "NORMAL",
+      "control_session_id": "SESSION_A",
+      "desired_epoch": 1,
+      "live_permission_ids": [
+        "p1"
+      ],
+      "added_fault_ids": [],
+      "cleared_fault_ids": [],
+      "retained_fault_history_ids": [],
+      "transition_path": [],
+      "decision": "REJECT",
+      "reason_codes": [
+        "SESSION_MISMATCH"
+      ],
+      "new_endpoint_applications": 0,
+      "new_endpoint_acknowledgements": 0,
+      "unknown_fields": {
+        "physical_feedback": "NOT_OBSERVED_NOT_VALIDATED",
+        "held_input": "No endpoint implementation in S1-A; supplied past observations alone may update knowledge."
+      }
+    },
+    "E04-CONFLICT-ID": {
+      "state": "NO_VALID_POLICY",
+      "control_session_id": "SESSION_A",
+      "desired_epoch": 2,
+      "live_permission_ids": [],
+      "added_fault_ids": [
+        "F_IDENTITY_CONFLICT"
+      ],
+      "cleared_fault_ids": [],
+      "retained_fault_history_ids": [],
+      "transition_path": [
+        "T09"
+      ],
+      "decision": "REVOKE",
+      "reason_codes": [
+        "IDENTITY_CONFLICT",
+        "NO_VALID_POLICY"
+      ],
+      "new_endpoint_applications": 0,
+      "new_endpoint_acknowledgements": 0,
+      "unknown_fields": {
+        "physical_feedback": "NOT_OBSERVED_NOT_VALIDATED",
+        "held_input": "No endpoint implementation in S1-A; supplied past observations alone may update knowledge."
+      }
+    },
+    "E05-EXACT-DUPLICATE": {
+      "state": "NORMAL",
+      "control_session_id": "SESSION_A",
+      "desired_epoch": 1,
+      "live_permission_ids": [
+        "p1"
+      ],
+      "added_fault_ids": [],
+      "cleared_fault_ids": [],
+      "retained_fault_history_ids": [],
+      "transition_path": [],
+      "decision": "REPLAY_PRIOR_OUTCOME",
+      "reason_codes": [
+        "DUPLICATE_PRIOR_OUTCOME"
+      ],
+      "new_endpoint_applications": 0,
+      "new_endpoint_acknowledgements": 0,
+      "unknown_fields": {
+        "physical_feedback": "NOT_OBSERVED_NOT_VALIDATED",
+        "held_input": "No endpoint implementation in S1-A; supplied past observations alone may update knowledge."
+      }
+    },
+    "E06-ENDPOINT-EXCLUDED": {
+      "state": "NORMAL",
+      "control_session_id": "SESSION_A",
+      "desired_epoch": 1,
+      "live_permission_ids": [
+        "p1"
+      ],
+      "added_fault_ids": [],
+      "cleared_fault_ids": [],
+      "retained_fault_history_ids": [],
+      "transition_path": [],
+      "decision": "REJECT",
+      "reason_codes": [
+        "STAGE_NOT_ENABLED"
+      ],
+      "new_endpoint_applications": 0,
+      "new_endpoint_acknowledgements": 0,
+      "unknown_fields": {
+        "physical_feedback": "NOT_OBSERVED_NOT_VALIDATED",
+        "held_input": "No endpoint implementation in S1-A; supplied past observations alone may update knowledge."
+      }
+    },
+    "E07-INVALID-MAP": {
+      "state": "NO_VALID_POLICY",
+      "control_session_id": "SESSION_A",
+      "desired_epoch": 2,
+      "live_permission_ids": [],
+      "added_fault_ids": [
+        "F_MAP_MISMATCH"
+      ],
+      "cleared_fault_ids": [],
+      "retained_fault_history_ids": [],
+      "transition_path": [
+        "T09"
+      ],
+      "decision": "REVOKE",
+      "reason_codes": [
+        "MAP_MISMATCH",
+        "NO_VALID_POLICY"
+      ],
+      "new_endpoint_applications": 0,
+      "new_endpoint_acknowledgements": 0,
+      "unknown_fields": {
+        "physical_feedback": "NOT_OBSERVED_NOT_VALIDATED",
+        "held_input": "No endpoint implementation in S1-A; supplied past observations alone may update knowledge."
+      }
+    },
+    "E08-UNKNOWN-CLOCK": {
+      "state": "NO_VALID_POLICY",
+      "control_session_id": "SESSION_A",
+      "desired_epoch": 2,
+      "live_permission_ids": [],
+      "added_fault_ids": [
+        "F_CLOCK_UNKNOWN"
+      ],
+      "cleared_fault_ids": [],
+      "retained_fault_history_ids": [],
+      "transition_path": [
+        "T09"
+      ],
+      "decision": "REVOKE",
+      "reason_codes": [
+        "CLOCK_UNKNOWN",
+        "NO_VALID_POLICY"
+      ],
+      "new_endpoint_applications": 0,
+      "new_endpoint_acknowledgements": 0,
+      "unknown_fields": {
+        "physical_feedback": "NOT_OBSERVED_NOT_VALIDATED",
+        "held_input": "No endpoint implementation in S1-A; supplied past observations alone may update knowledge."
+      }
+    },
+    "E09-MISSING-SNAPSHOT": {
+      "state": "NO_VALID_POLICY",
+      "control_session_id": "SESSION_A",
+      "desired_epoch": 2,
+      "live_permission_ids": [],
+      "added_fault_ids": [
+        "F_PERSISTENCE_UNKNOWN"
+      ],
+      "cleared_fault_ids": [],
+      "retained_fault_history_ids": [],
+      "transition_path": [
+        "T09"
+      ],
+      "decision": "REVOKE",
+      "reason_codes": [
+        "PERSISTENCE_UNKNOWN",
+        "NO_VALID_POLICY"
+      ],
+      "new_endpoint_applications": 0,
+      "new_endpoint_acknowledgements": 0,
+      "unknown_fields": {
+        "physical_feedback": "NOT_OBSERVED_NOT_VALIDATED",
+        "held_input": "No endpoint implementation in S1-A; supplied past observations alone may update knowledge."
+      }
+    },
+    "E10-CANCEL-INTENT": {
+      "state": "NORMAL",
+      "control_session_id": "SESSION_A",
+      "desired_epoch": 1,
+      "live_permission_ids": [
+        "p1"
+      ],
+      "added_fault_ids": [],
+      "cleared_fault_ids": [],
+      "retained_fault_history_ids": [],
+      "transition_path": [],
+      "decision": "REQUEST_CANCEL",
+      "reason_codes": [
+        "CANCEL_PENDING"
+      ],
+      "new_endpoint_applications": 0,
+      "new_endpoint_acknowledgements": 0,
+      "unknown_fields": {
+        "physical_feedback": "NOT_OBSERVED_NOT_VALIDATED",
+        "held_input": "No endpoint implementation in S1-A; supplied past observations alone may update knowledge."
+      }
+    },
+    "E11-SEALED-SEQUENCE": {
+      "state": "NO_VALID_POLICY",
+      "control_session_id": "SESSION_A",
+      "desired_epoch": 2,
+      "live_permission_ids": [],
+      "added_fault_ids": [
+        "F_EMERGENCY"
+      ],
+      "cleared_fault_ids": [],
+      "retained_fault_history_ids": [],
+      "transition_path": [
+        "T06",
+        "T09"
+      ],
+      "decision": "REVOKE",
+      "reason_codes": [
+        "NO_VALID_POLICY"
+      ],
+      "new_endpoint_applications": 0,
+      "new_endpoint_acknowledgements": 0,
+      "unknown_fields": {
+        "physical_feedback": "NOT_OBSERVED_NOT_VALIDATED",
+        "held_input": "No endpoint implementation in S1-A; supplied past observations alone may update knowledge."
+      }
+    },
+    "E12-SIMULTANEOUS-FAULTS": {
+      "state": "NO_VALID_POLICY",
+      "control_session_id": "SESSION_A",
+      "desired_epoch": 2,
+      "live_permission_ids": [],
+      "added_fault_ids": [
+        "F_EMERGENCY",
+        "F_MAP_MISMATCH"
+      ],
+      "cleared_fault_ids": [],
+      "retained_fault_history_ids": [],
+      "transition_path": [
+        "T06",
+        "T09"
+      ],
+      "decision": "REVOKE",
+      "reason_codes": [
+        "MAP_MISMATCH",
+        "NO_VALID_POLICY"
+      ],
+      "new_endpoint_applications": 0,
+      "new_endpoint_acknowledgements": 0,
+      "unknown_fields": {
+        "physical_feedback": "NOT_OBSERVED_NOT_VALIDATED",
+        "held_input": "No endpoint implementation in S1-A; supplied past observations alone may update knowledge."
+      }
+    },
+    "E13-LOGICAL-GRANT": {
+      "state": "NORMAL",
+      "control_session_id": "SESSION_A",
+      "desired_epoch": 1,
+      "live_permission_ids": [
+        "p2"
+      ],
+      "added_fault_ids": [],
+      "cleared_fault_ids": [],
+      "retained_fault_history_ids": [],
+      "transition_path": [],
+      "decision": "ACCEPT",
+      "reason_codes": [
+        "OK"
+      ],
+      "new_endpoint_applications": 0,
+      "new_endpoint_acknowledgements": 0,
+      "unknown_fields": {
+        "physical_feedback": "NOT_OBSERVED_NOT_VALIDATED",
+        "held_input": "No endpoint implementation in S1-A; supplied past observations alone may update knowledge."
+      },
+      "created_permissions": [
+        {
+          "permission_id": "p2",
+          "command_id": "c2",
+          "session_id": "SESSION_A",
+          "source_controller_id": "CTRL_A",
+          "source_packet_id": "P1",
+          "policy_id": "NOMINAL_A",
+          "generation_epoch": 1,
+          "permission_epoch": 1,
+          "valid_from_tick": 20,
+          "valid_until_tick": 40,
+          "latest_application_tick": 30,
+          "held_until_tick": 40,
+          "estimate_id": "E0",
+          "evidence_ids": [
+            "NOMINAL_OK",
+            "HEALTH_OK",
+            "BARRIER_OK"
+          ],
+          "reauthorization_of_permission_id": null,
+          "transition_id": null,
+          "claim_scope": "LOGICAL_PERMISSION_ONLY"
+        }
+      ]
+    },
+    "E14-CLOCK-STRADDLE": {
+      "state": "NORMAL",
+      "control_session_id": "SESSION_A",
+      "desired_epoch": 1,
+      "live_permission_ids": [
+        "p1"
+      ],
+      "added_fault_ids": [],
+      "cleared_fault_ids": [],
+      "retained_fault_history_ids": [],
+      "transition_path": [],
+      "decision": "REJECT",
+      "reason_codes": [
+        "EXPIRED"
+      ],
+      "new_endpoint_applications": 0,
+      "new_endpoint_acknowledgements": 0,
+      "unknown_fields": {
+        "physical_feedback": "NOT_OBSERVED_NOT_VALIDATED",
+        "held_input": "No endpoint implementation in S1-A; supplied past observations alone may update knowledge."
+      }
+    },
+    "E15-MIXED-INVALID-WITH-CRITICAL": {
+      "state": "NO_VALID_POLICY",
+      "control_session_id": "SESSION_A",
+      "desired_epoch": 2,
+      "live_permission_ids": [],
+      "added_fault_ids": [
+        "F_EMERGENCY"
+      ],
+      "cleared_fault_ids": [],
+      "retained_fault_history_ids": [],
+      "transition_path": [
+        "T06",
+        "T09"
+      ],
+      "decision": "REVOKE",
+      "reason_codes": [
+        "SCHEMA_INVALID",
+        "NO_VALID_POLICY"
+      ],
+      "new_endpoint_applications": 0,
+      "new_endpoint_acknowledgements": 0,
+      "unknown_fields": {
+        "physical_feedback": "NOT_OBSERVED_NOT_VALIDATED",
+        "held_input": "No endpoint implementation in S1-A; supplied past observations alone may update knowledge."
+      }
+    },
+    "E15-MIXED-INVALID-PROPOSAL-ONLY": {
+      "state": "NORMAL",
+      "control_session_id": "SESSION_A",
+      "desired_epoch": 1,
+      "live_permission_ids": [
+        "p1"
+      ],
+      "added_fault_ids": [],
+      "cleared_fault_ids": [],
+      "retained_fault_history_ids": [],
+      "transition_path": [],
+      "decision": "REJECT",
+      "reason_codes": [
+        "SCHEMA_INVALID"
+      ],
+      "new_endpoint_applications": 0,
+      "new_endpoint_acknowledgements": 0,
+      "unknown_fields": {
+        "physical_feedback": "NOT_OBSERVED_NOT_VALIDATED",
+        "held_input": "No endpoint implementation in S1-A; supplied past observations alone may update knowledge."
+      }
+    }
+  },
+  "full_trace_status": "UNRESOLVED_REQUIRES_INDEPENDENT_REVIEW",
+  "full_trace_cases": {},
+  "original_69_row_audit": [
+    {
+      "row_id": "V01-A-expiry/row1",
+      "s0_scenario": "V01",
+      "original_row_sha256": "6ef62805bd83433a1072ef6f2e0a58071ad60c6e161d427dab7533dc3b0e2391",
+      "original_row": {
+        "at_tick": 900,
+        "event": "PROPOSAL_READY",
+        "facts": "P-next is feasible/ready at900, timestamps [1.0,1.1,1.4] s; no acceptance event.",
+        "expected": {
+          "state": "NORMAL",
+          "decision": "OBSERVE",
+          "reason_codes": [
+            "PROPOSAL_ONLY"
+          ],
+          "live_permission_ids": [
+            "p-exp"
+          ],
+          "transition_path": [],
+          "stage": "S1-A",
+          "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+        }
+      },
+      "review_status": "INTENT_CONSISTENT_NOT_EXECUTED",
+      "findings": [
+        "No intent contradiction found in scoped prose review; required fields still need an independently reviewed literal fixture expansion."
+      ],
+      "original_modified": false,
+      "execution": "NOT_EXECUTED"
+    },
+    {
+      "row_id": "V01-A-expiry/row2",
+      "s0_scenario": "V01",
+      "original_row_sha256": "7afe03e02af71086fc168e9bdb7d5c2d55bf89b332ff1d0853aef1df31c4f61c",
+      "original_row": {
+        "at_tick": 999,
+        "event": "APPLICATION_CHECK",
+        "facts": "p-exp at[999,999], hold_end1000.",
+        "expected": {
+          "state": "NORMAL",
+          "decision": "ACCEPT",
+          "reason_codes": [
+            "OK"
+          ],
+          "live_permission_ids": [
+            "p-exp"
+          ],
+          "transition_path": [],
+          "stage": "S1-A",
+          "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+        }
+      },
+      "review_status": "INTENT_CONSISTENT_NOT_EXECUTED",
+      "findings": [
+        "No intent contradiction found in scoped prose review; required fields still need an independently reviewed literal fixture expansion."
+      ],
+      "original_modified": false,
+      "execution": "NOT_EXECUTED"
+    },
+    {
+      "row_id": "V01-A-expiry/row3",
+      "s0_scenario": "V01",
+      "original_row_sha256": "6e9c45f2cd89950eeae1097a684e58d8e7285ba316bb9b79c2f0c12785a634b0",
+      "original_row": {
+        "at_tick": 1000,
+        "event": "ADVANCE",
+        "facts": "P1 and p-exp expire; P-next remains a proposal; all alternative evidence UNKNOWN.",
+        "expected": {
+          "state": "NO_VALID_POLICY",
+          "decision": "REVOKE",
+          "reason_codes": [
+            "EXPIRED",
+            "NO_VALID_POLICY"
+          ],
+          "live_permission_ids": [],
+          "transition_path": [
+            "T09"
+          ],
+          "stage": "S1-A",
+          "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+        }
+      },
+      "review_status": "INTENT_CONSISTENT_NOT_EXECUTED",
+      "findings": [
+        "No intent contradiction found in scoped prose review; required fields still need an independently reviewed literal fixture expansion."
+      ],
+      "original_modified": false,
+      "execution": "NOT_EXECUTED"
+    },
+    {
+      "row_id": "V01-A-expiry/row4",
+      "s0_scenario": "V01",
+      "original_row_sha256": "18bf2299c1821ba9bfc77372dea8d165a99d88263c284baa7c1f46e73b251177",
+      "original_row": {
+        "at_tick": 1000,
+        "event": "APPLICATION_CHECK",
+        "facts": "Attempt p-exp at original expiry.",
+        "expected": {
+          "state": "NO_VALID_POLICY",
+          "decision": "REJECT",
+          "reason_codes": [
+            "EXPIRED",
+            "FAULT_LATCHED"
+          ],
+          "live_permission_ids": [],
+          "transition_path": [],
+          "stage": "S1-A",
+          "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+        }
+      },
+      "review_status": "PROPOSED_MATERIALIZATION_REVIEW_REQUIRED",
+      "findings": [
+        "PC04: exact denial ordering must reconcile archived EXPIRED/FAULT_LATCHED with current revocation knowledge; retain old row and review the separate canonical materialization."
+      ],
+      "original_modified": false,
+      "execution": "NOT_EXECUTED"
+    },
+    {
+      "row_id": "V01-B-endpoint-expiry/row1",
+      "s0_scenario": "V01",
+      "original_row_sha256": "1126590e3b17344496c86908a16657a41b95248faba4eb129cc386460d498864",
+      "original_row": {
+        "at_tick": 1000,
+        "event": "ENDPOINT_COMMIT",
+        "facts": "Attempt expired p-exp; local lease boundary processed first.",
+        "expected": {
+          "state": "NO_VALID_POLICY",
+          "decision": "REJECT",
+          "reason_codes": [
+            "EXPIRED",
+            "NO_VALID_POLICY"
+          ],
+          "live_permission_ids": [],
+          "transition_path": [
+            "T09"
+          ],
+          "stage": "S1-B",
+          "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+        }
+      },
+      "review_status": "DEFERRED_S1_B",
+      "findings": [
+        "S1-B endpoint execution excluded from S1-A; preserve for later independent gate."
+      ],
+      "original_modified": false,
+      "execution": "NOT_EXECUTED"
+    },
+    {
+      "row_id": "V05-A-missing/row1",
+      "s0_scenario": "V05",
+      "original_row_sha256": "b5aa0bad77b0aa82c50c2141243383de9595211bfd182d3b3aba6f7707466395",
+      "original_row": {
+        "at_tick": 20,
+        "event": "ESTIMATE_OBSERVED",
+        "facts": "Authoritative estimate reports MISSING; state/capture/publication null with reasons.",
+        "expected": {
+          "state": "NO_VALID_POLICY",
+          "decision": "REVOKE",
+          "reason_codes": [
+            "ESTIMATE_MISSING",
+            "NO_VALID_POLICY"
+          ],
+          "live_permission_ids": [],
+          "transition_path": [
+            "T09"
+          ],
+          "stage": "S1-A",
+          "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+        }
+      },
+      "review_status": "INTENT_CONSISTENT_NOT_EXECUTED",
+      "findings": [
+        "No intent contradiction found in scoped prose review; required fields still need an independently reviewed literal fixture expansion."
+      ],
+      "original_modified": false,
+      "execution": "NOT_EXECUTED"
+    },
+    {
+      "row_id": "V05-A-missing/row2",
+      "s0_scenario": "V05",
+      "original_row_sha256": "6343c13dcab80c0c7d06f4a001ce5e85ac34e224d50308c4f5d176e916bfcead",
+      "original_row": {
+        "at_tick": 21,
+        "event": "PERMISSION_REQUEST",
+        "facts": "c1; invalid estimate is not replaced with E0.",
+        "expected": {
+          "state": "NO_VALID_POLICY",
+          "decision": "REJECT",
+          "reason_codes": [
+            "FAULT_LATCHED"
+          ],
+          "live_permission_ids": [],
+          "transition_path": [],
+          "stage": "S1-A",
+          "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+        }
+      },
+      "review_status": "PROPOSED_MATERIALIZATION_REVIEW_REQUIRED",
+      "findings": [
+        "PC05: operation ledger distinguishes first permission from duplicate command receipt; explicit permission identity needs reviewed materialization."
+      ],
+      "original_modified": false,
+      "execution": "NOT_EXECUTED"
+    },
+    {
+      "row_id": "V05-A-missing/row3",
+      "s0_scenario": "V05",
+      "original_row_sha256": "cbee0b36514aec441f2787a7a23554664c419c1858b21e60395d250a1a118fcb",
+      "original_row": {
+        "at_tick": 22,
+        "event": "ESTIMATE_OBSERVED",
+        "facts": "Fresh VALID E22 arrives.",
+        "expected": {
+          "state": "NO_VALID_POLICY",
+          "decision": "OBSERVE",
+          "reason_codes": [
+            "FAULT_LATCHED"
+          ],
+          "live_permission_ids": [],
+          "transition_path": [],
+          "stage": "S1-A",
+          "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+        }
+      },
+      "review_status": "INTENT_CONSISTENT_NOT_EXECUTED",
+      "findings": [
+        "No intent contradiction found in scoped prose review; required fields still need an independently reviewed literal fixture expansion."
+      ],
+      "original_modified": false,
+      "execution": "NOT_EXECUTED"
+    },
+    {
+      "row_id": "V05-A-invalid/row1",
+      "s0_scenario": "V05",
+      "original_row_sha256": "ae8ef96bbe12a006af9a0b6fcf6ab29e6db47bf013306e0cdfd203ea3fa9f19c",
+      "original_row": {
+        "at_tick": 20,
+        "event": "ESTIMATE_OBSERVED",
+        "facts": "E20 has INVALID quality.",
+        "expected": {
+          "state": "NO_VALID_POLICY",
+          "decision": "REVOKE",
+          "reason_codes": [
+            "ESTIMATE_INVALID",
+            "NO_VALID_POLICY"
+          ],
+          "live_permission_ids": [],
+          "transition_path": [
+            "T09"
+          ],
+          "stage": "S1-A",
+          "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+        }
+      },
+      "review_status": "INTENT_CONSISTENT_NOT_EXECUTED",
+      "findings": [
+        "No intent contradiction found in scoped prose review; required fields still need an independently reviewed literal fixture expansion."
+      ],
+      "original_modified": false,
+      "execution": "NOT_EXECUTED"
+    },
+    {
+      "row_id": "V05-A-invalid/row2",
+      "s0_scenario": "V05",
+      "original_row_sha256": "6343c13dcab80c0c7d06f4a001ce5e85ac34e224d50308c4f5d176e916bfcead",
+      "original_row": {
+        "at_tick": 21,
+        "event": "PERMISSION_REQUEST",
+        "facts": "c1; invalid estimate is not replaced with E0.",
+        "expected": {
+          "state": "NO_VALID_POLICY",
+          "decision": "REJECT",
+          "reason_codes": [
+            "FAULT_LATCHED"
+          ],
+          "live_permission_ids": [],
+          "transition_path": [],
+          "stage": "S1-A",
+          "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+        }
+      },
+      "review_status": "PROPOSED_MATERIALIZATION_REVIEW_REQUIRED",
+      "findings": [
+        "PC05: operation ledger distinguishes first permission from duplicate command receipt; explicit permission identity needs reviewed materialization."
+      ],
+      "original_modified": false,
+      "execution": "NOT_EXECUTED"
+    },
+    {
+      "row_id": "V05-A-invalid/row3",
+      "s0_scenario": "V05",
+      "original_row_sha256": "cbee0b36514aec441f2787a7a23554664c419c1858b21e60395d250a1a118fcb",
+      "original_row": {
+        "at_tick": 22,
+        "event": "ESTIMATE_OBSERVED",
+        "facts": "Fresh VALID E22 arrives.",
+        "expected": {
+          "state": "NO_VALID_POLICY",
+          "decision": "OBSERVE",
+          "reason_codes": [
+            "FAULT_LATCHED"
+          ],
+          "live_permission_ids": [],
+          "transition_path": [],
+          "stage": "S1-A",
+          "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+        }
+      },
+      "review_status": "INTENT_CONSISTENT_NOT_EXECUTED",
+      "findings": [
+        "No intent contradiction found in scoped prose review; required fields still need an independently reviewed literal fixture expansion."
+      ],
+      "original_modified": false,
+      "execution": "NOT_EXECUTED"
+    },
+    {
+      "row_id": "V05-A-degraded/row1",
+      "s0_scenario": "V05",
+      "original_row_sha256": "2e6fe21107b582e7d5d9ca06b8fa922598126120442c491620464db926ca364d",
+      "original_row": {
+        "at_tick": 20,
+        "event": "ESTIMATE_OBSERVED",
+        "facts": "E20 has DEGRADED quality; no validated continuation token.",
+        "expected": {
+          "state": "NO_VALID_POLICY",
+          "decision": "REVOKE",
+          "reason_codes": [
+            "ESTIMATE_DEGRADED",
+            "NO_VALID_POLICY"
+          ],
+          "live_permission_ids": [],
+          "transition_path": [
+            "T09"
+          ],
+          "stage": "S1-A",
+          "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+        }
+      },
+      "review_status": "INTENT_CONSISTENT_NOT_EXECUTED",
+      "findings": [
+        "No intent contradiction found in scoped prose review; required fields still need an independently reviewed literal fixture expansion."
+      ],
+      "original_modified": false,
+      "execution": "NOT_EXECUTED"
+    },
+    {
+      "row_id": "V05-A-degraded/row2",
+      "s0_scenario": "V05",
+      "original_row_sha256": "6343c13dcab80c0c7d06f4a001ce5e85ac34e224d50308c4f5d176e916bfcead",
+      "original_row": {
+        "at_tick": 21,
+        "event": "PERMISSION_REQUEST",
+        "facts": "c1; invalid estimate is not replaced with E0.",
+        "expected": {
+          "state": "NO_VALID_POLICY",
+          "decision": "REJECT",
+          "reason_codes": [
+            "FAULT_LATCHED"
+          ],
+          "live_permission_ids": [],
+          "transition_path": [],
+          "stage": "S1-A",
+          "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+        }
+      },
+      "review_status": "PROPOSED_MATERIALIZATION_REVIEW_REQUIRED",
+      "findings": [
+        "PC05: operation ledger distinguishes first permission from duplicate command receipt; explicit permission identity needs reviewed materialization."
+      ],
+      "original_modified": false,
+      "execution": "NOT_EXECUTED"
+    },
+    {
+      "row_id": "V05-A-degraded/row3",
+      "s0_scenario": "V05",
+      "original_row_sha256": "cbee0b36514aec441f2787a7a23554664c419c1858b21e60395d250a1a118fcb",
+      "original_row": {
+        "at_tick": 22,
+        "event": "ESTIMATE_OBSERVED",
+        "facts": "Fresh VALID E22 arrives.",
+        "expected": {
+          "state": "NO_VALID_POLICY",
+          "decision": "OBSERVE",
+          "reason_codes": [
+            "FAULT_LATCHED"
+          ],
+          "live_permission_ids": [],
+          "transition_path": [],
+          "stage": "S1-A",
+          "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+        }
+      },
+      "review_status": "INTENT_CONSISTENT_NOT_EXECUTED",
+      "findings": [
+        "No intent contradiction found in scoped prose review; required fields still need an independently reviewed literal fixture expansion."
+      ],
+      "original_modified": false,
+      "execution": "NOT_EXECUTED"
+    },
+    {
+      "row_id": "V05-A-map/row1",
+      "s0_scenario": "V05",
+      "original_row_sha256": "f3b722507921f9fa0e04bd3bc293e9ada8c13a63baf6a137cac919cb73d45817",
+      "original_row": {
+        "at_tick": 20,
+        "event": "ESTIMATE_OBSERVED",
+        "facts": "E20 map_id=MAP_B.",
+        "expected": {
+          "state": "NO_VALID_POLICY",
+          "decision": "REVOKE",
+          "reason_codes": [
+            "MAP_MISMATCH",
+            "NO_VALID_POLICY"
+          ],
+          "live_permission_ids": [],
+          "transition_path": [
+            "T09"
+          ],
+          "stage": "S1-A",
+          "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+        }
+      },
+      "review_status": "INTENT_CONSISTENT_NOT_EXECUTED",
+      "findings": [
+        "No intent contradiction found in scoped prose review; required fields still need an independently reviewed literal fixture expansion."
+      ],
+      "original_modified": false,
+      "execution": "NOT_EXECUTED"
+    },
+    {
+      "row_id": "V05-A-map/row2",
+      "s0_scenario": "V05",
+      "original_row_sha256": "6343c13dcab80c0c7d06f4a001ce5e85ac34e224d50308c4f5d176e916bfcead",
+      "original_row": {
+        "at_tick": 21,
+        "event": "PERMISSION_REQUEST",
+        "facts": "c1; invalid estimate is not replaced with E0.",
+        "expected": {
+          "state": "NO_VALID_POLICY",
+          "decision": "REJECT",
+          "reason_codes": [
+            "FAULT_LATCHED"
+          ],
+          "live_permission_ids": [],
+          "transition_path": [],
+          "stage": "S1-A",
+          "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+        }
+      },
+      "review_status": "PROPOSED_MATERIALIZATION_REVIEW_REQUIRED",
+      "findings": [
+        "PC05: operation ledger distinguishes first permission from duplicate command receipt; explicit permission identity needs reviewed materialization."
+      ],
+      "original_modified": false,
+      "execution": "NOT_EXECUTED"
+    },
+    {
+      "row_id": "V05-A-map/row3",
+      "s0_scenario": "V05",
+      "original_row_sha256": "cbee0b36514aec441f2787a7a23554664c419c1858b21e60395d250a1a118fcb",
+      "original_row": {
+        "at_tick": 22,
+        "event": "ESTIMATE_OBSERVED",
+        "facts": "Fresh VALID E22 arrives.",
+        "expected": {
+          "state": "NO_VALID_POLICY",
+          "decision": "OBSERVE",
+          "reason_codes": [
+            "FAULT_LATCHED"
+          ],
+          "live_permission_ids": [],
+          "transition_path": [],
+          "stage": "S1-A",
+          "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+        }
+      },
+      "review_status": "INTENT_CONSISTENT_NOT_EXECUTED",
+      "findings": [
+        "No intent contradiction found in scoped prose review; required fields still need an independently reviewed literal fixture expansion."
+      ],
+      "original_modified": false,
+      "execution": "NOT_EXECUTED"
+    },
+    {
+      "row_id": "V05-A-frame/row1",
+      "s0_scenario": "V05",
+      "original_row_sha256": "f9f5a69bd271f6d42471faefca76b577ba1fa3871371439132184297faf9a282",
+      "original_row": {
+        "at_tick": 20,
+        "event": "ESTIMATE_OBSERVED",
+        "facts": "E20 frame_id=FRAME_B.",
+        "expected": {
+          "state": "NO_VALID_POLICY",
+          "decision": "REVOKE",
+          "reason_codes": [
+            "FRAME_MISMATCH",
+            "NO_VALID_POLICY"
+          ],
+          "live_permission_ids": [],
+          "transition_path": [
+            "T09"
+          ],
+          "stage": "S1-A",
+          "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+        }
+      },
+      "review_status": "INTENT_CONSISTENT_NOT_EXECUTED",
+      "findings": [
+        "No intent contradiction found in scoped prose review; required fields still need an independently reviewed literal fixture expansion."
+      ],
+      "original_modified": false,
+      "execution": "NOT_EXECUTED"
+    },
+    {
+      "row_id": "V05-A-frame/row2",
+      "s0_scenario": "V05",
+      "original_row_sha256": "6343c13dcab80c0c7d06f4a001ce5e85ac34e224d50308c4f5d176e916bfcead",
+      "original_row": {
+        "at_tick": 21,
+        "event": "PERMISSION_REQUEST",
+        "facts": "c1; invalid estimate is not replaced with E0.",
+        "expected": {
+          "state": "NO_VALID_POLICY",
+          "decision": "REJECT",
+          "reason_codes": [
+            "FAULT_LATCHED"
+          ],
+          "live_permission_ids": [],
+          "transition_path": [],
+          "stage": "S1-A",
+          "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+        }
+      },
+      "review_status": "PROPOSED_MATERIALIZATION_REVIEW_REQUIRED",
+      "findings": [
+        "PC05: operation ledger distinguishes first permission from duplicate command receipt; explicit permission identity needs reviewed materialization."
+      ],
+      "original_modified": false,
+      "execution": "NOT_EXECUTED"
+    },
+    {
+      "row_id": "V05-A-frame/row3",
+      "s0_scenario": "V05",
+      "original_row_sha256": "cbee0b36514aec441f2787a7a23554664c419c1858b21e60395d250a1a118fcb",
+      "original_row": {
+        "at_tick": 22,
+        "event": "ESTIMATE_OBSERVED",
+        "facts": "Fresh VALID E22 arrives.",
+        "expected": {
+          "state": "NO_VALID_POLICY",
+          "decision": "OBSERVE",
+          "reason_codes": [
+            "FAULT_LATCHED"
+          ],
+          "live_permission_ids": [],
+          "transition_path": [],
+          "stage": "S1-A",
+          "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+        }
+      },
+      "review_status": "INTENT_CONSISTENT_NOT_EXECUTED",
+      "findings": [
+        "No intent contradiction found in scoped prose review; required fields still need an independently reviewed literal fixture expansion."
+      ],
+      "original_modified": false,
+      "execution": "NOT_EXECUTED"
+    },
+    {
+      "row_id": "V05-A-clock/row1",
+      "s0_scenario": "V05",
+      "original_row_sha256": "48d3f8929b543ce19861892cbf1d80a38f8848632d1d7bf43b3fda692249ab63",
+      "original_row": {
+        "at_tick": 20,
+        "event": "ESTIMATE_OBSERVED",
+        "facts": "E20 capture mapping/bounds null with reason.",
+        "expected": {
+          "state": "NO_VALID_POLICY",
+          "decision": "REVOKE",
+          "reason_codes": [
+            "CLOCK_UNKNOWN",
+            "NO_VALID_POLICY"
+          ],
+          "live_permission_ids": [],
+          "transition_path": [
+            "T09"
+          ],
+          "stage": "S1-A",
+          "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+        }
+      },
+      "review_status": "INTENT_CONSISTENT_NOT_EXECUTED",
+      "findings": [
+        "No intent contradiction found in scoped prose review; required fields still need an independently reviewed literal fixture expansion."
+      ],
+      "original_modified": false,
+      "execution": "NOT_EXECUTED"
+    },
+    {
+      "row_id": "V05-A-clock/row2",
+      "s0_scenario": "V05",
+      "original_row_sha256": "6343c13dcab80c0c7d06f4a001ce5e85ac34e224d50308c4f5d176e916bfcead",
+      "original_row": {
+        "at_tick": 21,
+        "event": "PERMISSION_REQUEST",
+        "facts": "c1; invalid estimate is not replaced with E0.",
+        "expected": {
+          "state": "NO_VALID_POLICY",
+          "decision": "REJECT",
+          "reason_codes": [
+            "FAULT_LATCHED"
+          ],
+          "live_permission_ids": [],
+          "transition_path": [],
+          "stage": "S1-A",
+          "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+        }
+      },
+      "review_status": "PROPOSED_MATERIALIZATION_REVIEW_REQUIRED",
+      "findings": [
+        "PC05: operation ledger distinguishes first permission from duplicate command receipt; explicit permission identity needs reviewed materialization."
+      ],
+      "original_modified": false,
+      "execution": "NOT_EXECUTED"
+    },
+    {
+      "row_id": "V05-A-clock/row3",
+      "s0_scenario": "V05",
+      "original_row_sha256": "cbee0b36514aec441f2787a7a23554664c419c1858b21e60395d250a1a118fcb",
+      "original_row": {
+        "at_tick": 22,
+        "event": "ESTIMATE_OBSERVED",
+        "facts": "Fresh VALID E22 arrives.",
+        "expected": {
+          "state": "NO_VALID_POLICY",
+          "decision": "OBSERVE",
+          "reason_codes": [
+            "FAULT_LATCHED"
+          ],
+          "live_permission_ids": [],
+          "transition_path": [],
+          "stage": "S1-A",
+          "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+        }
+      },
+      "review_status": "INTENT_CONSISTENT_NOT_EXECUTED",
+      "findings": [
+        "No intent contradiction found in scoped prose review; required fields still need an independently reviewed literal fixture expansion."
+      ],
+      "original_modified": false,
+      "execution": "NOT_EXECUTED"
+    },
+    {
+      "row_id": "V05-A-uncertainty/row1",
+      "s0_scenario": "V05",
+      "original_row_sha256": "7bb872d4591469ec68bb544e6b3a908110acd92eeccc0f14eb4dcc63ca1efc1c",
+      "original_row": {
+        "at_tick": 20,
+        "event": "ESTIMATE_OBSERVED",
+        "facts": "E20 carries only covariance, no bounded-set interpretation.",
+        "expected": {
+          "state": "NO_VALID_POLICY",
+          "decision": "REVOKE",
+          "reason_codes": [
+            "UNCERTAINTY_UNKNOWN",
+            "NO_VALID_POLICY"
+          ],
+          "live_permission_ids": [],
+          "transition_path": [
+            "T09"
+          ],
+          "stage": "S1-A",
+          "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+        }
+      },
+      "review_status": "INTENT_CONSISTENT_NOT_EXECUTED",
+      "findings": [
+        "No intent contradiction found in scoped prose review; required fields still need an independently reviewed literal fixture expansion."
+      ],
+      "original_modified": false,
+      "execution": "NOT_EXECUTED"
+    },
+    {
+      "row_id": "V05-A-uncertainty/row2",
+      "s0_scenario": "V05",
+      "original_row_sha256": "6343c13dcab80c0c7d06f4a001ce5e85ac34e224d50308c4f5d176e916bfcead",
+      "original_row": {
+        "at_tick": 21,
+        "event": "PERMISSION_REQUEST",
+        "facts": "c1; invalid estimate is not replaced with E0.",
+        "expected": {
+          "state": "NO_VALID_POLICY",
+          "decision": "REJECT",
+          "reason_codes": [
+            "FAULT_LATCHED"
+          ],
+          "live_permission_ids": [],
+          "transition_path": [],
+          "stage": "S1-A",
+          "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+        }
+      },
+      "review_status": "PROPOSED_MATERIALIZATION_REVIEW_REQUIRED",
+      "findings": [
+        "PC05: operation ledger distinguishes first permission from duplicate command receipt; explicit permission identity needs reviewed materialization."
+      ],
+      "original_modified": false,
+      "execution": "NOT_EXECUTED"
+    },
+    {
+      "row_id": "V05-A-uncertainty/row3",
+      "s0_scenario": "V05",
+      "original_row_sha256": "cbee0b36514aec441f2787a7a23554664c419c1858b21e60395d250a1a118fcb",
+      "original_row": {
+        "at_tick": 22,
+        "event": "ESTIMATE_OBSERVED",
+        "facts": "Fresh VALID E22 arrives.",
+        "expected": {
+          "state": "NO_VALID_POLICY",
+          "decision": "OBSERVE",
+          "reason_codes": [
+            "FAULT_LATCHED"
+          ],
+          "live_permission_ids": [],
+          "transition_path": [],
+          "stage": "S1-A",
+          "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+        }
+      },
+      "review_status": "INTENT_CONSISTENT_NOT_EXECUTED",
+      "findings": [
+        "No intent contradiction found in scoped prose review; required fields still need an independently reviewed literal fixture expansion."
+      ],
+      "original_modified": false,
+      "execution": "NOT_EXECUTED"
+    },
+    {
+      "row_id": "V05-A-stale-capture/row1",
+      "s0_scenario": "V05",
+      "original_row_sha256": "6e08e3ff8b595135b2b89fb9ed0d1d32ed07661530001c3230a46bf42ab2bd5f",
+      "original_row": {
+        "at_tick": 100,
+        "event": "ADVANCE",
+        "facts": "E0 age exactly100 ticks, no requested hold beyond100.",
+        "expected": {
+          "state": "NORMAL",
+          "decision": "NO_CHANGE",
+          "reason_codes": [
+            "OK"
+          ],
+          "live_permission_ids": [],
+          "transition_path": [],
+          "stage": "S1-A",
+          "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+        }
+      },
+      "review_status": "INTENT_CONSISTENT_NOT_EXECUTED",
+      "findings": [
+        "No intent contradiction found in scoped prose review; required fields still need an independently reviewed literal fixture expansion."
+      ],
+      "original_modified": false,
+      "execution": "NOT_EXECUTED"
+    },
+    {
+      "row_id": "V05-A-stale-capture/row2",
+      "s0_scenario": "V05",
+      "original_row_sha256": "c0d6156e86d5558b3c24c69855e3e4f1cfb3aab04cdced5726c63ae5f98b04e1",
+      "original_row": {
+        "at_tick": 101,
+        "event": "ADVANCE",
+        "facts": "First integer tick with age>100; no continuation/alternate token.",
+        "expected": {
+          "state": "NO_VALID_POLICY",
+          "decision": "REVOKE",
+          "reason_codes": [
+            "STALE_ESTIMATE",
+            "NO_VALID_POLICY"
+          ],
+          "live_permission_ids": [],
+          "transition_path": [
+            "T09"
+          ],
+          "stage": "S1-A",
+          "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+        }
+      },
+      "review_status": "INTENT_CONSISTENT_NOT_EXECUTED",
+      "findings": [
+        "No intent contradiction found in scoped prose review; required fields still need an independently reviewed literal fixture expansion."
+      ],
+      "original_modified": false,
+      "execution": "NOT_EXECUTED"
+    },
+    {
+      "row_id": "V05-A-stale-capture/row3",
+      "s0_scenario": "V05",
+      "original_row_sha256": "7669157bd863a24a611c3d9a002982f62b34f757c99f158a1e0ea0cb03584206",
+      "original_row": {
+        "at_tick": 120,
+        "event": "ESTIMATE_OBSERVED",
+        "facts": "Capture0, publication5, receipt120; publication latency[5,5], receipt delay115.",
+        "expected": {
+          "state": "NO_VALID_POLICY",
+          "decision": "REJECT",
+          "reason_codes": [
+            "STALE_ESTIMATE",
+            "FAULT_LATCHED"
+          ],
+          "live_permission_ids": [],
+          "transition_path": [],
+          "stage": "S1-A",
+          "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+        }
+      },
+      "review_status": "INTENT_CONSISTENT_NOT_EXECUTED",
+      "findings": [
+        "No intent contradiction found in scoped prose review; required fields still need an independently reviewed literal fixture expansion."
+      ],
+      "original_modified": false,
+      "execution": "NOT_EXECUTED"
+    },
+    {
+      "row_id": "V06-A-identities/row1",
+      "s0_scenario": "V06",
+      "original_row_sha256": "bc80599abcbea84f8b55f1c7da6d11ea8f42832d4d275f6080d9fcbc05253a15",
+      "original_row": {
+        "at_tick": 10,
+        "event": "COMMAND_SUBMIT",
+        "facts": "c1 recorded once; no permission yet.",
+        "expected": {
+          "state": "NORMAL",
+          "decision": "ACCEPT",
+          "reason_codes": [
+            "OK"
+          ],
+          "live_permission_ids": [],
+          "transition_path": [],
+          "stage": "S1-A",
+          "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+        }
+      },
+      "review_status": "INTENT_CONSISTENT_NOT_EXECUTED",
+      "findings": [
+        "No intent contradiction found in scoped prose review; required fields still need an independently reviewed literal fixture expansion."
+      ],
+      "original_modified": false,
+      "execution": "NOT_EXECUTED"
+    },
+    {
+      "row_id": "V06-A-identities/row2",
+      "s0_scenario": "V06",
+      "original_row_sha256": "08dfbab8bca864fecc6ce634d8dde1b4898d07fb007671ab57d2abe9650c649a",
+      "original_row": {
+        "at_tick": 10,
+        "event": "PERMISSION_REQUEST",
+        "facts": "First explicit grant request for c1 -> p1.",
+        "expected": {
+          "state": "NORMAL",
+          "decision": "ACCEPT",
+          "reason_codes": [
+            "OK"
+          ],
+          "live_permission_ids": [
+            "p1"
+          ],
+          "transition_path": [],
+          "stage": "S1-A",
+          "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+        }
+      },
+      "review_status": "PROPOSED_MATERIALIZATION_REVIEW_REQUIRED",
+      "findings": [
+        "PC05: operation ledger distinguishes first permission from duplicate command receipt; explicit permission identity needs reviewed materialization."
+      ],
+      "original_modified": false,
+      "execution": "NOT_EXECUTED"
+    },
+    {
+      "row_id": "V06-A-identities/row3",
+      "s0_scenario": "V06",
+      "original_row_sha256": "475422dbb3cbdfc5a9398b3ce94aa6826008fd4c96d0e11b6cebfb4c25e1145f",
+      "original_row": {
+        "at_tick": 20,
+        "event": "APPLICATION_CHECK",
+        "facts": "p1 at[20,20], hold60.",
+        "expected": {
+          "state": "NORMAL",
+          "decision": "ACCEPT",
+          "reason_codes": [
+            "OK"
+          ],
+          "live_permission_ids": [
+            "p1"
+          ],
+          "transition_path": [],
+          "stage": "S1-A",
+          "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+        }
+      },
+      "review_status": "INTENT_CONSISTENT_NOT_EXECUTED",
+      "findings": [
+        "No intent contradiction found in scoped prose review; required fields still need an independently reviewed literal fixture expansion."
+      ],
+      "original_modified": false,
+      "execution": "NOT_EXECUTED"
+    },
+    {
+      "row_id": "V06-A-identities/row4",
+      "s0_scenario": "V06",
+      "original_row_sha256": "049f404d06ad9745cdd2fb7984c32171655bd78633d905dce97d25f60da7591b",
+      "original_row": {
+        "at_tick": 21,
+        "event": "COMMAND_SUBMIT",
+        "facts": "Exact c1 ID, sequence and original payload bytes.",
+        "expected": {
+          "state": "NORMAL",
+          "decision": "REPLAY_PRIOR_OUTCOME",
+          "reason_codes": [
+            "DUPLICATE_PRIOR_OUTCOME"
+          ],
+          "live_permission_ids": [
+            "p1"
+          ],
+          "transition_path": [],
+          "stage": "S1-A",
+          "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+        }
+      },
+      "review_status": "INTENT_CONSISTENT_NOT_EXECUTED",
+      "findings": [
+        "No intent contradiction found in scoped prose review; required fields still need an independently reviewed literal fixture expansion."
+      ],
+      "original_modified": false,
+      "execution": "NOT_EXECUTED"
+    },
+    {
+      "row_id": "V06-A-identities/row5",
+      "s0_scenario": "V06",
+      "original_row_sha256": "e495f2475ef78d8fcc9d5b03a3476b14fc7b516af899b2af1ac3bcc794dcf555",
+      "original_row": {
+        "at_tick": 22,
+        "event": "COMMAND_SUBMIT",
+        "facts": "New ID c0/sequence0 from CTRL_A.",
+        "expected": {
+          "state": "NORMAL",
+          "decision": "REJECT",
+          "reason_codes": [
+            "SEQUENCE_REORDERED"
+          ],
+          "live_permission_ids": [
+            "p1"
+          ],
+          "transition_path": [],
+          "stage": "S1-A",
+          "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+        }
+      },
+      "review_status": "INTENT_CONSISTENT_NOT_EXECUTED",
+      "findings": [
+        "No intent contradiction found in scoped prose review; required fields still need an independently reviewed literal fixture expansion."
+      ],
+      "original_modified": false,
+      "execution": "NOT_EXECUTED"
+    },
+    {
+      "row_id": "V06-A-identities/row6",
+      "s0_scenario": "V06",
+      "original_row_sha256": "5d7add48afda3bfa99f3eb70fb9a08a27fc094a4f0315bcbda3c77155c78e26b",
+      "original_row": {
+        "at_tick": 50,
+        "event": "PERMISSION_REQUEST",
+        "facts": "c2/sequence2: generated0, requested40/latest45/hold60; arrival50.",
+        "expected": {
+          "state": "NORMAL",
+          "decision": "REJECT",
+          "reason_codes": [
+            "APPLICATION_DEADLINE_MISSED"
+          ],
+          "live_permission_ids": [
+            "p1"
+          ],
+          "transition_path": [],
+          "stage": "S1-A",
+          "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+        }
+      },
+      "review_status": "PROPOSED_MATERIALIZATION_REVIEW_REQUIRED",
+      "findings": [
+        "PC05: operation ledger distinguishes first permission from duplicate command receipt; explicit permission identity needs reviewed materialization."
+      ],
+      "original_modified": false,
+      "execution": "NOT_EXECUTED"
+    },
+    {
+      "row_id": "V06-A-conflicting-payload/row1",
+      "s0_scenario": "V06",
+      "original_row_sha256": "fbad5560d2e9a0bb5de4782ddca3694b07ff62a25ac749928e88ef2bad1dab00",
+      "original_row": {
+        "at_tick": 20,
+        "event": "COMMAND_SUBMIT",
+        "facts": "Reuse c1 ID with different payload bytes/control.",
+        "expected": {
+          "state": "NO_VALID_POLICY",
+          "decision": "REJECT",
+          "reason_codes": [
+            "IDENTITY_CONFLICT",
+            "NO_VALID_POLICY"
+          ],
+          "live_permission_ids": [],
+          "transition_path": [
+            "T09"
+          ],
+          "stage": "S1-A",
+          "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+        }
+      },
+      "review_status": "INTENT_CONSISTENT_NOT_EXECUTED",
+      "findings": [
+        "No intent contradiction found in scoped prose review; required fields still need an independently reviewed literal fixture expansion."
+      ],
+      "original_modified": false,
+      "execution": "NOT_EXECUTED"
+    },
+    {
+      "row_id": "V06-B-at-most-once/row1",
+      "s0_scenario": "V06",
+      "original_row_sha256": "8b565d29af28527978241fabdaac5c3b4d85204842145acbf134ebd5c7a5d14f",
+      "original_row": {
+        "at_tick": 20,
+        "event": "ENDPOINT_COMMIT",
+        "facts": "c1/p1 first local commit; all toy evidence valid.",
+        "expected": {
+          "state": "NORMAL",
+          "decision": "ACCEPT",
+          "reason_codes": [
+            "OK"
+          ],
+          "live_permission_ids": [
+            "p1"
+          ],
+          "transition_path": [],
+          "stage": "S1-B",
+          "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+        }
+      },
+      "review_status": "DEFERRED_S1_B",
+      "findings": [
+        "S1-B endpoint execution excluded from S1-A; preserve for later independent gate."
+      ],
+      "original_modified": false,
+      "execution": "NOT_EXECUTED"
+    },
+    {
+      "row_id": "V06-B-at-most-once/row2",
+      "s0_scenario": "V06",
+      "original_row_sha256": "ab00d0b512c67b5e289ad241fb248033ba7608141721631c7cf5a6e0c7944948",
+      "original_row": {
+        "at_tick": 21,
+        "event": "ENDPOINT_COMMIT",
+        "facts": "Exact duplicate c1/p1.",
+        "expected": {
+          "state": "NORMAL",
+          "decision": "REPLAY_PRIOR_OUTCOME",
+          "reason_codes": [
+            "DUPLICATE_PRIOR_OUTCOME"
+          ],
+          "live_permission_ids": [
+            "p1"
+          ],
+          "transition_path": [],
+          "stage": "S1-B",
+          "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+        }
+      },
+      "review_status": "DEFERRED_S1_B",
+      "findings": [
+        "S1-B endpoint execution excluded from S1-A; preserve for later independent gate."
+      ],
+      "original_modified": false,
+      "execution": "NOT_EXECUTED"
+    },
+    {
+      "row_id": "V06-B-at-most-once/row3",
+      "s0_scenario": "V06",
+      "original_row_sha256": "42b1c4d08003f959f64f36dbb12fc69893bdb9cada3c265d8b8db401c9a9b3c2",
+      "original_row": {
+        "at_tick": 22,
+        "event": "ENDPOINT_OBSERVATION",
+        "facts": "Deliver duplicate ack for commit20.",
+        "expected": {
+          "state": "NORMAL",
+          "decision": "OBSERVE",
+          "reason_codes": [
+            "DUPLICATE_PRIOR_OUTCOME"
+          ],
+          "live_permission_ids": [
+            "p1"
+          ],
+          "transition_path": [],
+          "stage": "S1-B",
+          "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+        }
+      },
+      "review_status": "DEFERRED_S1_B",
+      "findings": [
+        "S1-B endpoint execution excluded from S1-A; preserve for later independent gate."
+      ],
+      "original_modified": false,
+      "execution": "NOT_EXECUTED"
+    },
+    {
+      "row_id": "V07-A-explicit-reauthorization/row1",
+      "s0_scenario": "V07",
+      "original_row_sha256": "8425bc75d9c115216c02d414377e44616413e078fbb018d5c50a062b246d9d49",
+      "original_row": {
+        "at_tick": 20,
+        "event": "EPOCH_INSTALL + BARRIER_ACK_OBSERVED + AUTHORITY_ACCEPT",
+        "facts": "Same sealed batch: install epoch2/SESSION_A, observe matching barrier ack, then accept P2 with NOMINAL_B_OK and desired_epoch2; revoke p-old atomically before permissive work.",
+        "expected": {
+          "state": "NORMAL",
+          "decision": "REVOKE",
+          "reason_codes": [
+            "OK"
+          ],
+          "live_permission_ids": [],
+          "transition_path": [],
+          "stage": "S1-A",
+          "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+        }
+      },
+      "review_status": "PROPOSED_MATERIALIZATION_REVIEW_REQUIRED",
+      "findings": [
+        "PC04: split compound input into exact per-event/closure traces; original batch summary is preserved, not silently reused as exact per-event output."
+      ],
+      "original_modified": false,
+      "execution": "NOT_EXECUTED"
+    },
+    {
+      "row_id": "V07-A-explicit-reauthorization/row2",
+      "s0_scenario": "V07",
+      "original_row_sha256": "2f798bcf44c81fd3c0701d7ea5d4ecb693a29b8e57a7a0f58268233ca4b69d60",
+      "original_row": {
+        "at_tick": 21,
+        "event": "APPLICATION_CHECK",
+        "facts": "Attempt p-old after the acknowledged epoch2 handoff.",
+        "expected": {
+          "state": "NORMAL",
+          "decision": "REJECT",
+          "reason_codes": [
+            "REVOKED",
+            "EPOCH_MISMATCH"
+          ],
+          "live_permission_ids": [],
+          "transition_path": [],
+          "stage": "S1-A",
+          "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+        }
+      },
+      "review_status": "INTENT_CONSISTENT_NOT_EXECUTED",
+      "findings": [
+        "No intent contradiction found in scoped prose review; required fields still need an independently reviewed literal fixture expansion."
+      ],
+      "original_modified": false,
+      "execution": "NOT_EXECUTED"
+    },
+    {
+      "row_id": "V07-A-explicit-reauthorization/row3",
+      "s0_scenario": "V07",
+      "original_row_sha256": "6c2cb7aed800e61c0b179453b3a6477c2eb5d0eac1be9a8253c5471b383f7577",
+      "original_row": {
+        "at_tick": 22,
+        "event": "APPLICATION_CHECK",
+        "facts": "Attempt p-old/epoch1.",
+        "expected": {
+          "state": "NORMAL",
+          "decision": "REJECT",
+          "reason_codes": [
+            "REVOKED",
+            "EPOCH_MISMATCH"
+          ],
+          "live_permission_ids": [],
+          "transition_path": [],
+          "stage": "S1-A",
+          "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+        }
+      },
+      "review_status": "INTENT_CONSISTENT_NOT_EXECUTED",
+      "findings": [
+        "No intent contradiction found in scoped prose review; required fields still need an independently reviewed literal fixture expansion."
+      ],
+      "original_modified": false,
+      "execution": "NOT_EXECUTED"
+    },
+    {
+      "row_id": "V07-A-explicit-reauthorization/row4",
+      "s0_scenario": "V07",
+      "original_row_sha256": "f41d873b9fd7c0048f4ab65d32fa99c2f1454b1aa6b84bf0a8621c0ffa205a14",
+      "original_row": {
+        "at_tick": 23,
+        "event": "EVIDENCE_OBSERVED + REAUTHORIZE",
+        "facts": "REAUTH_OLD_OK explicitly validates still-unapplied c-old/P1 for current CTRL_B mode/epoch2 and original interval; grant p-new valid[24,80), latest30, hold80.",
+        "expected": {
+          "state": "NORMAL",
+          "decision": "ACCEPT",
+          "reason_codes": [
+            "OK"
+          ],
+          "live_permission_ids": [
+            "p-new"
+          ],
+          "transition_path": [],
+          "stage": "S1-A",
+          "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+        }
+      },
+      "review_status": "PROPOSED_MATERIALIZATION_REVIEW_REQUIRED",
+      "findings": [
+        "PC04: split compound input into exact per-event/closure traces; original batch summary is preserved, not silently reused as exact per-event output.",
+        "PC02: source payload does not specify [24,80); proposed versioned interval field required."
+      ],
+      "original_modified": false,
+      "execution": "NOT_EXECUTED"
+    },
+    {
+      "row_id": "V07-A-explicit-reauthorization/row5",
+      "s0_scenario": "V07",
+      "original_row_sha256": "34eaa530e78a1f4e0d101907a1e07cb3d45fdf7fae3849501cb90f59d8d8a4f9",
+      "original_row": {
+        "at_tick": 24,
+        "event": "APPLICATION_CHECK",
+        "facts": "p-new with original c-old/CTRL_A/P1/generation_epoch1 and permission_epoch2.",
+        "expected": {
+          "state": "NORMAL",
+          "decision": "ACCEPT",
+          "reason_codes": [
+            "OK"
+          ],
+          "live_permission_ids": [
+            "p-new"
+          ],
+          "transition_path": [],
+          "stage": "S1-A",
+          "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+        }
+      },
+      "review_status": "INTENT_CONSISTENT_NOT_EXECUTED",
+      "findings": [
+        "No intent contradiction found in scoped prose review; required fields still need an independently reviewed literal fixture expansion."
+      ],
+      "original_modified": false,
+      "execution": "NOT_EXECUTED"
+    },
+    {
+      "row_id": "V07-A-unacknowledged-handoff/row1",
+      "s0_scenario": "V07",
+      "original_row_sha256": "a57bea706488725ce93c65473a20f1e607cef7449dffa66a8b492dea14d89995",
+      "original_row": {
+        "at_tick": 20,
+        "event": "AUTHORITY_ACCEPT",
+        "facts": "P2 candidate acceptance cannot complete: epoch2 barrier unacknowledged and no separate continuation/response evidence. Revoke affected grants at closure.",
+        "expected": {
+          "state": "NO_VALID_POLICY",
+          "decision": "REJECT",
+          "reason_codes": [
+            "BARRIER_UNACKNOWLEDGED",
+            "NO_VALID_POLICY"
+          ],
+          "live_permission_ids": [],
+          "transition_path": [
+            "T09"
+          ],
+          "stage": "S1-A",
+          "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+        }
+      },
+      "review_status": "INTENT_CONSISTENT_NOT_EXECUTED",
+      "findings": [
+        "No intent contradiction found in scoped prose review; required fields still need an independently reviewed literal fixture expansion."
+      ],
+      "original_modified": false,
+      "execution": "NOT_EXECUTED"
+    },
+    {
+      "row_id": "V07-A-unacknowledged-handoff/row2",
+      "s0_scenario": "V07",
+      "original_row_sha256": "1cc872f3387dac10a591ea9ca7b69f99c1b27bd17ddc925f2888cb97c9fc64bf",
+      "original_row": {
+        "at_tick": 21,
+        "event": "APPLICATION_CHECK",
+        "facts": "No inferred barrier acknowledgement.",
+        "expected": {
+          "state": "NO_VALID_POLICY",
+          "decision": "REJECT",
+          "reason_codes": [
+            "FAULT_LATCHED"
+          ],
+          "live_permission_ids": [],
+          "transition_path": [],
+          "stage": "S1-A",
+          "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+        }
+      },
+      "review_status": "INTENT_CONSISTENT_NOT_EXECUTED",
+      "findings": [
+        "No intent contradiction found in scoped prose review; required fields still need an independently reviewed literal fixture expansion."
+      ],
+      "original_modified": false,
+      "execution": "NOT_EXECUTED"
+    },
+    {
+      "row_id": "V07-A-mode-fault/row1",
+      "s0_scenario": "V07",
+      "original_row_sha256": "5e7e47d8568b24da586686df6046e09da54aeaef29f125a9c2efec652d1b3ceb",
+      "original_row": {
+        "at_tick": 20,
+        "event": "EMERGENCY + CANCEL_REQUEST",
+        "facts": "Stop/recovery evidence UNKNOWN; revoke p1, request cancellation; endpoint delivery/ack absent.",
+        "expected": {
+          "state": "NO_VALID_POLICY",
+          "decision": "REQUEST_CANCEL",
+          "reason_codes": [
+            "NO_VALID_POLICY",
+            "CANCEL_PENDING"
+          ],
+          "live_permission_ids": [],
+          "transition_path": [
+            "T06",
+            "T09"
+          ],
+          "stage": "S1-A",
+          "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+        }
+      },
+      "review_status": "PROPOSED_MATERIALIZATION_REVIEW_REQUIRED",
+      "findings": [
+        "PC04: split compound input into exact per-event/closure traces; original batch summary is preserved, not silently reused as exact per-event output."
+      ],
+      "original_modified": false,
+      "execution": "NOT_EXECUTED"
+    },
+    {
+      "row_id": "V07-A-mode-fault/row2",
+      "s0_scenario": "V07",
+      "original_row_sha256": "bcfbf63a10605c5f2d4745a9a09284bebdea37708cc27d2aa57305463761d547",
+      "original_row": {
+        "at_tick": 21,
+        "event": "APPLICATION_CHECK",
+        "facts": "Old nominal p1 after mode/epoch transition.",
+        "expected": {
+          "state": "NO_VALID_POLICY",
+          "decision": "REJECT",
+          "reason_codes": [
+            "REVOKED",
+            "FAULT_LATCHED"
+          ],
+          "live_permission_ids": [],
+          "transition_path": [],
+          "stage": "S1-A",
+          "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+        }
+      },
+      "review_status": "INTENT_CONSISTENT_NOT_EXECUTED",
+      "findings": [
+        "No intent contradiction found in scoped prose review; required fields still need an independently reviewed literal fixture expansion."
+      ],
+      "original_modified": false,
+      "execution": "NOT_EXECUTED"
+    },
+    {
+      "row_id": "V15-A-same-tick-fault/row1",
+      "s0_scenario": "V15",
+      "original_row_sha256": "1298f0c111f8e11f4ed840f78e1e0b54b75bf4963dffb6c9bd9d430489590aae",
+      "original_row": {
+        "at_tick": 20,
+        "event": "EMERGENCY + ESTIMATE_OBSERVED + PERMISSION_REQUEST + APPLICATION_CHECK",
+        "facts": "All at20: emergency; healthy E20; new nominal request; old p1 application check. Phase0 fault wins over phases2/4.",
+        "expected": {
+          "state": "NO_VALID_POLICY",
+          "decision": "REJECT",
+          "reason_codes": [
+            "FAULT_LATCHED",
+            "NO_VALID_POLICY"
+          ],
+          "live_permission_ids": [],
+          "transition_path": [
+            "T06",
+            "T09"
+          ],
+          "stage": "S1-A",
+          "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+        }
+      },
+      "review_status": "PROPOSED_MATERIALIZATION_REVIEW_REQUIRED",
+      "findings": [
+        "PC04: split compound input into exact per-event/closure traces; original batch summary is preserved, not silently reused as exact per-event output.",
+        "PC05: operation ledger distinguishes first permission from duplicate command receipt; explicit permission identity needs reviewed materialization."
+      ],
+      "original_modified": false,
+      "execution": "NOT_EXECUTED"
+    },
+    {
+      "row_id": "V15-B-cancel-at-commit/row1",
+      "s0_scenario": "V15",
+      "original_row_sha256": "769d359e9a61018c4f7cca99262311c218cc2c5f3e3fcb43c7cc1b55b2afbeb8",
+      "original_row": {
+        "at_tick": 20,
+        "event": "CANCEL_DELIVER + ENDPOINT_COMMIT",
+        "facts": "Cancellation for c1/p1 delivered at the exact commit tick; delivery phase0 precedes commit phase5.",
+        "expected": {
+          "state": "NORMAL",
+          "decision": "REJECT",
+          "reason_codes": [
+            "CANCELLED"
+          ],
+          "live_permission_ids": [
+            "p1"
+          ],
+          "transition_path": [],
+          "stage": "S1-B",
+          "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+        }
+      },
+      "review_status": "DEFERRED_S1_B",
+      "findings": [
+        "S1-B endpoint execution excluded from S1-A; preserve for later independent gate."
+      ],
+      "original_modified": false,
+      "execution": "NOT_EXECUTED"
+    },
+    {
+      "row_id": "V15-B-cancel-at-commit/row2",
+      "s0_scenario": "V15",
+      "original_row_sha256": "70c5cd2e9375fbd66faad2feef61a2066d26401ce00effc87f0da1ac4a507670",
+      "original_row": {
+        "at_tick": 21,
+        "event": "ENDPOINT_OBSERVATION",
+        "facts": "Observe SIMULATED_CANCELLED ack; p1 removed from live grants.",
+        "expected": {
+          "state": "NORMAL",
+          "decision": "OBSERVE",
+          "reason_codes": [
+            "CANCELLED"
+          ],
+          "live_permission_ids": [],
+          "transition_path": [],
+          "stage": "S1-B",
+          "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+        }
+      },
+      "review_status": "DEFERRED_S1_B",
+      "findings": [
+        "S1-B endpoint execution excluded from S1-A; preserve for later independent gate."
+      ],
+      "original_modified": false,
+      "execution": "NOT_EXECUTED"
+    },
+    {
+      "row_id": "V15-B-cancel-too-late/row1",
+      "s0_scenario": "V15",
+      "original_row_sha256": "6ba64bc5366b4ce1f372b83029ee5bcf0488119aed24498f9cffc927a8fe5df1",
+      "original_row": {
+        "at_tick": 20,
+        "event": "ENDPOINT_COMMIT",
+        "facts": "c1/p1 commits before cancellation reaches endpoint.",
+        "expected": {
+          "state": "NORMAL",
+          "decision": "ACCEPT",
+          "reason_codes": [
+            "OK"
+          ],
+          "live_permission_ids": [
+            "p1"
+          ],
+          "transition_path": [],
+          "stage": "S1-B",
+          "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+        }
+      },
+      "review_status": "DEFERRED_S1_B",
+      "findings": [
+        "S1-B endpoint execution excluded from S1-A; preserve for later independent gate."
+      ],
+      "original_modified": false,
+      "execution": "NOT_EXECUTED"
+    },
+    {
+      "row_id": "V15-B-cancel-too-late/row2",
+      "s0_scenario": "V15",
+      "original_row_sha256": "83a3c1b66416571f1b5968d531e6695b167cf6751511596ce4ef1b843ceccceb",
+      "original_row": {
+        "at_tick": 21,
+        "event": "CANCEL_DELIVER",
+        "facts": "Delivery after known simulated commit20.",
+        "expected": {
+          "state": "NORMAL",
+          "decision": "REJECT",
+          "reason_codes": [
+            "TOO_LATE"
+          ],
+          "live_permission_ids": [
+            "p1"
+          ],
+          "transition_path": [],
+          "stage": "S1-B",
+          "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+        }
+      },
+      "review_status": "DEFERRED_S1_B",
+      "findings": [
+        "S1-B endpoint execution excluded from S1-A; preserve for later independent gate."
+      ],
+      "original_modified": false,
+      "execution": "NOT_EXECUTED"
+    },
+    {
+      "row_id": "V15-B-cancel-too-late/row3",
+      "s0_scenario": "V15",
+      "original_row_sha256": "3012b8048be1f86bd645de9eae2c3e2e64bd566385f48f33c83d80086e0b0a0f",
+      "original_row": {
+        "at_tick": 22,
+        "event": "ENDPOINT_OBSERVATION",
+        "facts": "Observe TOO_LATE, retaining commit20 and held record.",
+        "expected": {
+          "state": "NORMAL",
+          "decision": "OBSERVE",
+          "reason_codes": [
+            "TOO_LATE"
+          ],
+          "live_permission_ids": [
+            "p1"
+          ],
+          "transition_path": [],
+          "stage": "S1-B",
+          "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+        }
+      },
+      "review_status": "DEFERRED_S1_B",
+      "findings": [
+        "S1-B endpoint execution excluded from S1-A; preserve for later independent gate."
+      ],
+      "original_modified": false,
+      "execution": "NOT_EXECUTED"
+    },
+    {
+      "row_id": "V15-B-undelivered-revocation/row1",
+      "s0_scenario": "V15",
+      "original_row_sha256": "82c50c390c6a491ea963e3468d891820e6cbfbd8de49316300a4771e21bc8010",
+      "original_row": {
+        "at_tick": 20,
+        "event": "REVOKE_REQUEST",
+        "facts": "Host desired_epoch2; p1 revoked at host; endpoint still installed1; no independent alternate response.",
+        "expected": {
+          "state": "NO_VALID_POLICY",
+          "decision": "REVOKE",
+          "reason_codes": [
+            "BARRIER_UNACKNOWLEDGED",
+            "APPLICATION_UNKNOWN",
+            "NO_VALID_POLICY"
+          ],
+          "live_permission_ids": [],
+          "transition_path": [
+            "T09"
+          ],
+          "stage": "S1-B",
+          "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+        }
+      },
+      "review_status": "DEFERRED_S1_B",
+      "findings": [
+        "S1-B endpoint execution excluded from S1-A; preserve for later independent gate."
+      ],
+      "original_modified": false,
+      "execution": "NOT_EXECUTED"
+    },
+    {
+      "row_id": "V15-B-undelivered-revocation/row2",
+      "s0_scenario": "V15",
+      "original_row_sha256": "6605add0d9f42ccea47bbd0319c9d058e69d1189a1eb9de8e274cb4cd331a5ac",
+      "original_row": {
+        "at_tick": 25,
+        "event": "ENDPOINT_COMMIT",
+        "facts": "Endpoint-local delivered p1/epoch1 remains unexpired; no revoke received and local evidence valid.",
+        "expected": {
+          "state": "NO_VALID_POLICY",
+          "decision": "ACCEPT",
+          "reason_codes": [
+            "OK",
+            "APPLICATION_UNKNOWN"
+          ],
+          "live_permission_ids": [],
+          "transition_path": [],
+          "stage": "S1-B",
+          "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+        }
+      },
+      "review_status": "DEFERRED_S1_B",
+      "findings": [
+        "S1-B endpoint execution excluded from S1-A; preserve for later independent gate."
+      ],
+      "original_modified": false,
+      "execution": "NOT_EXECUTED"
+    },
+    {
+      "row_id": "V15-B-undelivered-revocation/row3",
+      "s0_scenario": "V15",
+      "original_row_sha256": "9a5379d8619754726b7543f47be01b77ad4dc3c25d7112f76bd33112bc8c002b",
+      "original_row": {
+        "at_tick": 30,
+        "event": "EPOCH_INSTALL",
+        "facts": "Endpoint finally installs epoch2, invalidating old local permission.",
+        "expected": {
+          "state": "NO_VALID_POLICY",
+          "decision": "REVOKE",
+          "reason_codes": [
+            "EPOCH_MISMATCH"
+          ],
+          "live_permission_ids": [],
+          "transition_path": [],
+          "stage": "S1-B",
+          "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+        }
+      },
+      "review_status": "DEFERRED_S1_B",
+      "findings": [
+        "S1-B endpoint execution excluded from S1-A; preserve for later independent gate."
+      ],
+      "original_modified": false,
+      "execution": "NOT_EXECUTED"
+    },
+    {
+      "row_id": "V15-B-undelivered-revocation/row4",
+      "s0_scenario": "V15",
+      "original_row_sha256": "627edb277da3768551b0901ffeba07ca40f40b3cfe8d000cff9044efb6e735a2",
+      "original_row": {
+        "at_tick": 31,
+        "event": "ENDPOINT_OBSERVATION + BARRIER_ACK_OBSERVED",
+        "facts": "Host learns SIMULATED_APPLIED at25 and barrier at30.",
+        "expected": {
+          "state": "NO_VALID_POLICY",
+          "decision": "OBSERVE",
+          "reason_codes": [
+            "FAULT_LATCHED"
+          ],
+          "live_permission_ids": [],
+          "transition_path": [],
+          "stage": "S1-B",
+          "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+        }
+      },
+      "review_status": "DEFERRED_S1_B",
+      "findings": [
+        "S1-B endpoint execution excluded from S1-A; preserve for later independent gate."
+      ],
+      "original_modified": false,
+      "execution": "NOT_EXECUTED"
+    },
+    {
+      "row_id": "V15-B-undelivered-revocation/row5",
+      "s0_scenario": "V15",
+      "original_row_sha256": "8de28915189d87386096f1b6861f38b2e941f3b3d6a94aa9369f08c82c152afc",
+      "original_row": {
+        "at_tick": 32,
+        "event": "ENDPOINT_COMMIT",
+        "facts": "Replay old c1 after installation.",
+        "expected": {
+          "state": "NO_VALID_POLICY",
+          "decision": "REJECT",
+          "reason_codes": [
+            "EPOCH_MISMATCH"
+          ],
+          "live_permission_ids": [],
+          "transition_path": [],
+          "stage": "S1-B",
+          "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+        }
+      },
+      "review_status": "DEFERRED_S1_B",
+      "findings": [
+        "S1-B endpoint execution excluded from S1-A; preserve for later independent gate."
+      ],
+      "original_modified": false,
+      "execution": "NOT_EXECUTED"
+    },
+    {
+      "row_id": "V19-A-latch-restart-reentry/row1",
+      "s0_scenario": "V19",
+      "original_row_sha256": "13aafcee206e8c4b582be07bbafaad7d23c4892bbc7c89ce5d6c12907cef86ac",
+      "original_row": {
+        "at_tick": 20,
+        "event": "ESTIMATE_OBSERVED",
+        "facts": "E20 INVALID; all continuation/recovery/deceleration/stop evidence UNKNOWN.",
+        "expected": {
+          "state": "NO_VALID_POLICY",
+          "decision": "REVOKE",
+          "reason_codes": [
+            "ESTIMATE_INVALID",
+            "NO_VALID_POLICY"
+          ],
+          "live_permission_ids": [],
+          "transition_path": [
+            "T09"
+          ],
+          "stage": "S1-A",
+          "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+        }
+      },
+      "review_status": "INTENT_CONSISTENT_NOT_EXECUTED",
+      "findings": [
+        "No intent contradiction found in scoped prose review; required fields still need an independently reviewed literal fixture expansion."
+      ],
+      "original_modified": false,
+      "execution": "NOT_EXECUTED"
+    },
+    {
+      "row_id": "V19-A-latch-restart-reentry/row2",
+      "s0_scenario": "V19",
+      "original_row_sha256": "07449033605b9f0b2312bdd4f896038cf6af90123b1acaa339a7ad7f86631730",
+      "original_row": {
+        "at_tick": 21,
+        "event": "ESTIMATE_OBSERVED + PERMISSION_REQUEST",
+        "facts": "VALID E21 plus nominal request; no clearance.",
+        "expected": {
+          "state": "NO_VALID_POLICY",
+          "decision": "REJECT",
+          "reason_codes": [
+            "FAULT_LATCHED"
+          ],
+          "live_permission_ids": [],
+          "transition_path": [],
+          "stage": "S1-A",
+          "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+        }
+      },
+      "review_status": "PROPOSED_MATERIALIZATION_REVIEW_REQUIRED",
+      "findings": [
+        "PC04: split compound input into exact per-event/closure traces; original batch summary is preserved, not silently reused as exact per-event output.",
+        "PC05: operation ledger distinguishes first permission from duplicate command receipt; explicit permission identity needs reviewed materialization."
+      ],
+      "original_modified": false,
+      "execution": "NOT_EXECUTED"
+    },
+    {
+      "row_id": "V19-A-latch-restart-reentry/row3",
+      "s0_scenario": "V19",
+      "original_row_sha256": "343c81ab971a04b18d481bbfd9d3400a7989140fa918d3dec165d4eb39d0dd2d",
+      "original_row": {
+        "at_tick": 22,
+        "event": "RESET_REQUEST",
+        "facts": "Operator reset without rest/health/queue-clearance evidence.",
+        "expected": {
+          "state": "NO_VALID_POLICY",
+          "decision": "REJECT",
+          "reason_codes": [
+            "RESET_NOT_ADMISSIBLE"
+          ],
+          "live_permission_ids": [],
+          "transition_path": [],
+          "stage": "S1-A",
+          "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+        }
+      },
+      "review_status": "INTENT_CONSISTENT_NOT_EXECUTED",
+      "findings": [
+        "No intent contradiction found in scoped prose review; required fields still need an independently reviewed literal fixture expansion."
+      ],
+      "original_modified": false,
+      "execution": "NOT_EXECUTED"
+    },
+    {
+      "row_id": "V19-A-latch-restart-reentry/row4",
+      "s0_scenario": "V19",
+      "original_row_sha256": "b14ebb4e64d13af02274dcd261ec97b2756c98febacf73fff6ee0942a025a065",
+      "original_row": {
+        "at_tick": 23,
+        "event": "RESTART",
+        "facts": "Restore current snapshot and critical latch; use new supervisor instance only.",
+        "expected": {
+          "state": "NO_VALID_POLICY",
+          "decision": "OBSERVE",
+          "reason_codes": [
+            "FAULT_LATCHED"
+          ],
+          "live_permission_ids": [],
+          "transition_path": [],
+          "stage": "S1-A",
+          "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+        }
+      },
+      "review_status": "INTENT_CONSISTENT_NOT_EXECUTED",
+      "findings": [
+        "No intent contradiction found in scoped prose review; required fields still need an independently reviewed literal fixture expansion."
+      ],
+      "original_modified": false,
+      "execution": "NOT_EXECUTED"
+    },
+    {
+      "row_id": "V19-A-latch-restart-reentry/row5",
+      "s0_scenario": "V19",
+      "original_row_sha256": "1eba6b4b1c80c2b41ae4485651c092854f0bce3c897d2c130d6a31d50a9dbbba",
+      "original_row": {
+        "at_tick": 25,
+        "event": "EVIDENCE_OBSERVED",
+        "facts": "Independent REST_HOLD_TOY_OK supplied as explicit SYNTHETIC_ASSUMPTION [25,1000); prior actuation remains unknown.",
+        "expected": {
+          "state": "STOPPED_LATCHED",
+          "decision": "OBSERVE",
+          "reason_codes": [
+            "OK"
+          ],
+          "live_permission_ids": [],
+          "transition_path": [
+            "T11"
+          ],
+          "stage": "S1-A",
+          "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+        }
+      },
+      "review_status": "PROPOSED_MATERIALIZATION_REVIEW_REQUIRED",
+      "findings": [
+        "PC03/PC08: materialize current rest/health/clearance/target-session barrier assumptions and their complete context before permissive transition; no physical validation is implied."
+      ],
+      "original_modified": false,
+      "execution": "NOT_EXECUTED"
+    },
+    {
+      "row_id": "V19-A-latch-restart-reentry/row6",
+      "s0_scenario": "V19",
+      "original_row_sha256": "b603eb73bf68ed29baffc39481893992b8a4269a1b9ce2d7485c9d346857a570",
+      "original_row": {
+        "at_tick": 26,
+        "event": "EPOCH_INSTALL + BARRIER_ACK_OBSERVED + RESET_REQUEST",
+        "facts": "Install new SESSION_B/ENDPOINT_B epoch2; ack cleared old queue; named health/fault-clearance evidence and authorized reset. Retain cleared latch history.",
+        "expected": {
+          "state": "DISARMED",
+          "decision": "ACCEPT",
+          "reason_codes": [
+            "OK"
+          ],
+          "live_permission_ids": [],
+          "transition_path": [
+            "T13"
+          ],
+          "stage": "S1-A",
+          "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+        }
+      },
+      "review_status": "PROPOSED_MATERIALIZATION_REVIEW_REQUIRED",
+      "findings": [
+        "PC04: split compound input into exact per-event/closure traces; original batch summary is preserved, not silently reused as exact per-event output.",
+        "PC03/PC08: materialize current rest/health/clearance/target-session barrier assumptions and their complete context before permissive transition; no physical validation is implied."
+      ],
+      "original_modified": false,
+      "execution": "NOT_EXECUTED"
+    },
+    {
+      "row_id": "V19-A-latch-restart-reentry/row7",
+      "s0_scenario": "V19",
+      "original_row_sha256": "3b058b549ae7e4c1e2d2e3558ac078f59004cc16e2f21b71f2b534d84c77ae43",
+      "original_row": {
+        "at_tick": 27,
+        "event": "ESTIMATE_OBSERVED + AUTHORITY_ACCEPT + ARM_REQUEST",
+        "facts": "VALID E27; new P3 from CTRL_A timestamps[.027,.2,1] s, accepted27 in SESSION_B with current NOMINAL_OK; explicit arm and barrier evidence, same installed epoch2.",
+        "expected": {
+          "state": "NORMAL",
+          "decision": "ACCEPT",
+          "reason_codes": [
+            "OK"
+          ],
+          "live_permission_ids": [],
+          "transition_path": [
+            "T01"
+          ],
+          "stage": "S1-A",
+          "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+        }
+      },
+      "review_status": "PROPOSED_MATERIALIZATION_REVIEW_REQUIRED",
+      "findings": [
+        "PC04: split compound input into exact per-event/closure traces; original batch summary is preserved, not silently reused as exact per-event output.",
+        "PC03/PC08: materialize current rest/health/clearance/target-session barrier assumptions and their complete context before permissive transition; no physical validation is implied."
+      ],
+      "original_modified": false,
+      "execution": "NOT_EXECUTED"
+    },
+    {
+      "row_id": "V19-A-latch-restart-reentry/row8",
+      "s0_scenario": "V19",
+      "original_row_sha256": "5419a43cca43c7348fdfb4473fe381bc7cfd4cfb59d40538c7a28c2401d97531",
+      "original_row": {
+        "at_tick": 28,
+        "event": "COMMAND_SUBMIT",
+        "facts": "Old c1 from SESSION_A.",
+        "expected": {
+          "state": "NORMAL",
+          "decision": "REJECT",
+          "reason_codes": [
+            "SESSION_MISMATCH"
+          ],
+          "live_permission_ids": [],
+          "transition_path": [],
+          "stage": "S1-A",
+          "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+        }
+      },
+      "review_status": "INTENT_CONSISTENT_NOT_EXECUTED",
+      "findings": [
+        "No intent contradiction found in scoped prose review; required fields still need an independently reviewed literal fixture expansion."
+      ],
+      "original_modified": false,
+      "execution": "NOT_EXECUTED"
+    },
+    {
+      "row_id": "V19-A-missing-persistence/row1",
+      "s0_scenario": "V19",
+      "original_row_sha256": "250f76ca786802bfed77125c3744f34b9b35fada252d48c4f9c4a26a9560d46f",
+      "original_row": {
+        "at_tick": 0,
+        "event": "RESTART",
+        "facts": "Snapshot absent/corrupt; integrity evidence absent.",
+        "expected": {
+          "state": "NO_VALID_POLICY",
+          "decision": "REVOKE",
+          "reason_codes": [
+            "PERSISTENCE_UNKNOWN",
+            "NO_VALID_POLICY"
+          ],
+          "live_permission_ids": [],
+          "transition_path": [
+            "T09"
+          ],
+          "stage": "S1-A",
+          "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+        }
+      },
+      "review_status": "PROPOSED_MATERIALIZATION_REVIEW_REQUIRED",
+      "findings": [
+        "PC06: distinguish boot snapshot creation from already-known current-session restart so epoch initialization is explicit, not inferred."
+      ],
+      "original_modified": false,
+      "execution": "NOT_EXECUTED"
+    },
+    {
+      "row_id": "V19-A-missing-persistence/row2",
+      "s0_scenario": "V19",
+      "original_row_sha256": "f5103452cbf9751db51e63b5bc532e807a21b74abfb6ebf0333b0eec1bbcfb1e",
+      "original_row": {
+        "at_tick": 1,
+        "event": "ARM_REQUEST",
+        "facts": "Operator authorization only.",
+        "expected": {
+          "state": "NO_VALID_POLICY",
+          "decision": "REJECT",
+          "reason_codes": [
+            "FAULT_LATCHED"
+          ],
+          "live_permission_ids": [],
+          "transition_path": [],
+          "stage": "S1-A",
+          "physical_actuation_claim": "NOT_OBSERVED_NOT_VALIDATED"
+        }
+      },
+      "review_status": "PROPOSED_MATERIALIZATION_REVIEW_REQUIRED",
+      "findings": [
+        "PC06: distinguish boot snapshot creation from already-known current-session restart so epoch initialization is explicit, not inferred."
+      ],
+      "original_modified": false,
+      "execution": "NOT_EXECUTED"
+    }
+  ],
+  "unresolved_findings": [
+    "Approved designs specify final projections and triggering decisions, not complete per-event Trace literals. No full golden trace is fabricated.",
+    "Original17 S1-A case designs require complete inputs/context and event-level materializations before execution.",
+    "Historical compound rows and reason ordering are preserved verbatim; event-level differences must be reviewed, never normalized into passing results.",
+    "V05-A-map now has three literal event-projection materializations; row2 reason disagreement is explicit and unresolved.",
+    "Other16 original S1-A case designs remain unmaterialized at event level; five S1-B designs remain deferred."
+  ],
+  "original_materialization_projections": {
+    "V05-A-map": [
+      {
+        "at_tick": 20,
+        "state": "NO_VALID_POLICY",
+        "desired_epoch": 2,
+        "transition_path": [
+          "T09"
+        ],
+        "decision": "REVOKE",
+        "reason_codes": [
+          "MAP_MISMATCH",
+          "NO_VALID_POLICY"
+        ],
+        "live_permission_ids": []
+      },
+      {
+        "at_tick": 21,
+        "state": "NO_VALID_POLICY",
+        "desired_epoch": 2,
+        "transition_path": [],
+        "decision": "REJECT",
+        "reason_codes": [
+          "EPOCH_MISMATCH"
+        ],
+        "live_permission_ids": []
+      },
+      {
+        "at_tick": 22,
+        "state": "NO_VALID_POLICY",
+        "desired_epoch": 2,
+        "transition_path": [],
+        "decision": "OBSERVE",
+        "reason_codes": [
+          "FAULT_LATCHED"
+        ],
+        "live_permission_ids": []
+      }
+    ]
+  },
+  "materialization_disagreements": [
+    {
+      "row_id": "V05-A-map/row2",
+      "original_reason_codes": [
+        "FAULT_LATCHED"
+      ],
+      "proposed_event_reason_codes": [
+        "EPOCH_MISMATCH"
+      ],
+      "basis": "PC04 per-event materialization; current epoch guard precedes latch guard in0.2.0 reason ordering. Original row remains unchanged. Requires Engineering/Primary disposition."
+    }
+  ]
+}

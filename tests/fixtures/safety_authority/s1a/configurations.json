@@ -1,0 +1,89 @@
+{
+  "S1A_TOY_CONFIG": {
+    "configuration_id": "S1A_TOY_CONFIG",
+    "tick_period_s": {
+      "numerator": 1,
+      "denominator": 1000
+    },
+    "control_clock_id": "TOY_CLOCK",
+    "expected_frame_id": "FRAME_A",
+    "expected_map_id": "MAP_A",
+    "nominal_max_estimate_age_ticks": 100,
+    "continuation_policy_id": null,
+    "warning_policy_evidence_id": "WARN_OK",
+    "reentry_policy_evidence_id": "CLEAR_OK",
+    "claim_scope": "SYNTHETIC_PROTOCOL_ONLY",
+    "contract_version": "apex-s1-authority/0.2.0",
+    "enabled_transition_ids": [
+      "T01",
+      "T02",
+      "T03",
+      "T06",
+      "T09",
+      "T11",
+      "T13",
+      "T14"
+    ],
+    "activation_matrix_sha256": "f731597911d54c1fd24d47daa29c9fe7dd64d94e59119159d0149f2a4823d61f",
+    "clock_mappings": [
+      {
+        "mapping_id": "EXACT_TOY",
+        "source_clock_id": "TOY_CLOCK",
+        "source_session_id": "CLOCK_A",
+        "control_clock_id": "TOY_CLOCK",
+        "scale_numerator": 1,
+        "scale_denominator": 1,
+        "offset_numerator": 0,
+        "offset_denominator": 1,
+        "lower_error_ticks": 0,
+        "upper_error_ticks": 0,
+        "valid_source_interval": [
+          0,
+          2001
+        ],
+        "assumption_ref": "TOY_TIME_ONLY"
+      }
+    ],
+    "authorization_registry": [
+      {
+        "authorization_id": "OPERATOR_TOY",
+        "producer_id": "TOY_INPUT",
+        "allowed_event_kinds": [
+          "ESTIMATE_OBSERVED",
+          "EVIDENCE_OBSERVED",
+          "PROPOSAL_READY",
+          "AUTHORITY_ACCEPT",
+          "COMMAND_SUBMIT",
+          "PERMISSION_REQUEST",
+          "ENDPOINT_OBSERVATION",
+          "BARRIER_ACK_OBSERVED",
+          "COMMAND_DELIVER",
+          "PERMISSION_DELIVER",
+          "ENDPOINT_ESTIMATE_DELIVER",
+          "ENDPOINT_EVIDENCE_DELIVER",
+          "ADVANCE",
+          "EMERGENCY",
+          "REVOKE_REQUEST",
+          "EPOCH_INSTALL",
+          "CANCEL_REQUEST",
+          "CANCEL_DELIVER",
+          "ARM_REQUEST",
+          "RENEWAL_WARNING",
+          "REENTRY_REQUEST",
+          "RESET_REQUEST",
+          "POLICY_SELECT",
+          "APPLICATION_CHECK",
+          "ENDPOINT_COMMIT",
+          "REAUTHORIZE",
+          "RESTART",
+          "WARNING_CLEAR"
+        ],
+        "valid_interval": [
+          0,
+          2001
+        ],
+        "claim_scope": "SYNTHETIC_ASSUMPTION"
+      }
+    ]
+  }
+}
