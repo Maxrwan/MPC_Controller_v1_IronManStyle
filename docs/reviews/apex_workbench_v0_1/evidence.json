@@ -1,0 +1,365 @@
+{
+  "status": "ENGINEERING_REVIEW_COMPLETE_PENDING_DECISION",
+  "decision": "FAIL",
+  "reviewed_revision": "a0b4a98b14f53469735ca4dd9f7a93a7b0651860",
+  "working_checkout_base_revision": "a8e96ee95b99088bafb8ef2cb7a4d13f76c7905f",
+  "working_checkout_initial_status": "",
+  "later_descendant_changes": [
+    "Launch_APEX_Workbench.command",
+    "docs/CODEX_HANDOFF.md",
+    "tools/apex_workbench/README.md"
+  ],
+  "launcher_reviewed": false,
+  "pinned_clone": "/private/tmp/apex-workbench-review-a0b4a98-20261027",
+  "pinned_tracked_contents_unchanged": true,
+  "pinned_clone_untracked_status": "?? tools/apex_workbench/.venv\n",
+  "untracked_entry_classification": "Tooling environment symlink; no reviewed source difference",
+  "delivery_tool_hashes_match": true,
+  "delivered_review_harness": {
+    "path": "docs/reviews/apex_workbench_v0_1/review_probes.py",
+    "sha256": "441a875eebf6d1aca2f13053457ed185c1ca4dff8248bd0fa0d34d97e445b8fe",
+    "relation_to_executed_harness": "AST-identical formatted copy; original raw harness/logs unchanged"
+  },
+  "review_authority": "Same Codex chat as implementer; fresh technical audit, not external Secondary or Primary approval",
+  "environment": {
+    "review_root": "/private/tmp/apex-workbench-review-a0b4a98-20261027",
+    "apex_module": "/private/tmp/apex-workbench-review-a0b4a98-20261027/src/apex/__init__.py",
+    "python": "3.12.14 (main, Sep  1 2026, 14:09:38) [Clang 22.1.3 ]",
+    "packages": {
+      "numpy": "2.5.3",
+      "scipy": "1.18.1",
+      "pandas": "3.0.6",
+      "matplotlib": "3.11.2",
+      "streamlit": "1.66.1",
+      "plotly": "6.9.0",
+      "psutil": "7.2.2",
+      "threadpoolctl": "3.7.0",
+      "pytest": "9.1.1"
+    }
+  },
+  "thread_policy": "Existing macOS Accelerate SINGLE API before numerical imports; fresh sequential processes",
+  "focused_tests": {
+    "passed": 85,
+    "failed": 0,
+    "skipped": 0,
+    "workbench": 17,
+    "selected_scientific_units": 68,
+    "paths": [
+      "tools/apex_workbench/tests",
+      "tests/unit/test_frenet.py",
+      "tests/unit/test_baseline.py",
+      "tests/unit/test_runner.py"
+    ],
+    "cwd": "/private/tmp/apex-workbench-review-a0b4a98-20261027",
+    "environment": {
+      "VECLIB_MAXIMUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "PYTHONPATH": ".:scripts:src"
+    },
+    "argv": [
+      "tools/apex_workbench/.venv/bin/python",
+      "-c",
+      "from threading_study.config import configure_accelerate; configure_accelerate(1); import importlib.metadata, json, sys, apex, pytest; from tools.apex_workbench.configuration import ROOT; print(json.dumps({\"review_root\":str(ROOT),\"apex_module\":apex.__file__,\"python\":sys.version,\"packages\":{n:importlib.metadata.version(n) for n in [\"numpy\",\"scipy\",\"pandas\",\"matplotlib\",\"streamlit\",\"plotly\",\"psutil\",\"threadpoolctl\",\"pytest\"]}})); raise SystemExit(pytest.main(sys.argv[1:]))",
+      "-q",
+      "tools/apex_workbench/tests",
+      "tests/unit/test_frenet.py",
+      "tests/unit/test_baseline.py",
+      "tests/unit/test_runner.py",
+      "--durations=5",
+      "--basetemp=/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/results/apex_workbench_review_20261027/pytest"
+    ],
+    "exit_code": 0,
+    "log": "results/apex_workbench_review_20261027/focused-tests.log"
+  },
+  "probe_exit_codes": {
+    "orphan": 0,
+    "publication": 0,
+    "notes": 0,
+    "comparison": 0,
+    "finalization": 0
+  },
+  "probe_exit_meaning": "Assertions reproduced defects, not product acceptance passes",
+  "probe_commands": {
+    "orphan": {
+      "cwd": "/private/tmp/apex-workbench-review-a0b4a98-20261027",
+      "environment": {
+        "VECLIB_MAXIMUM_THREADS": "1",
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "PYTHONPATH": ".:scripts:src"
+      },
+      "argv": [
+        "tools/apex_workbench/.venv/bin/python",
+        "-c",
+        "from threading_study.config import configure_accelerate; configure_accelerate(1); import runpy, sys; sys.argv=sys.argv[1:]; runpy.run_path(sys.argv[0],run_name=\"__main__\")",
+        "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/results/apex_workbench_review_20261027/review_probes.py",
+        "orphan",
+        "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/results/apex_workbench_review_20261027"
+      ]
+    },
+    "publication": {
+      "cwd": "/private/tmp/apex-workbench-review-a0b4a98-20261027",
+      "environment": {
+        "VECLIB_MAXIMUM_THREADS": "1",
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "PYTHONPATH": ".:scripts:src"
+      },
+      "argv": [
+        "tools/apex_workbench/.venv/bin/python",
+        "-c",
+        "from threading_study.config import configure_accelerate; configure_accelerate(1); import runpy, sys; sys.argv=sys.argv[1:]; runpy.run_path(sys.argv[0],run_name=\"__main__\")",
+        "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/results/apex_workbench_review_20261027/review_probes.py",
+        "publication",
+        "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/results/apex_workbench_review_20261027"
+      ]
+    },
+    "notes": {
+      "cwd": "/private/tmp/apex-workbench-review-a0b4a98-20261027",
+      "environment": {
+        "VECLIB_MAXIMUM_THREADS": "1",
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "PYTHONPATH": ".:scripts:src"
+      },
+      "argv": [
+        "tools/apex_workbench/.venv/bin/python",
+        "-c",
+        "from threading_study.config import configure_accelerate; configure_accelerate(1); import runpy, sys; sys.argv=sys.argv[1:]; runpy.run_path(sys.argv[0],run_name=\"__main__\")",
+        "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/results/apex_workbench_review_20261027/review_probes.py",
+        "notes",
+        "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/results/apex_workbench_review_20261027"
+      ]
+    },
+    "comparison": {
+      "cwd": "/private/tmp/apex-workbench-review-a0b4a98-20261027",
+      "environment": {
+        "VECLIB_MAXIMUM_THREADS": "1",
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "PYTHONPATH": ".:scripts:src"
+      },
+      "argv": [
+        "tools/apex_workbench/.venv/bin/python",
+        "-c",
+        "from threading_study.config import configure_accelerate; configure_accelerate(1); import runpy, sys; sys.argv=sys.argv[1:]; runpy.run_path(sys.argv[0],run_name=\"__main__\")",
+        "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/results/apex_workbench_review_20261027/review_probes.py",
+        "comparison",
+        "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/results/apex_workbench_review_20261027"
+      ]
+    },
+    "finalization": {
+      "cwd": "/private/tmp/apex-workbench-review-a0b4a98-20261027",
+      "environment": {
+        "VECLIB_MAXIMUM_THREADS": "1",
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "PYTHONPATH": ".:scripts:src"
+      },
+      "argv": [
+        "tools/apex_workbench/.venv/bin/python",
+        "-c",
+        "from threading_study.config import configure_accelerate; configure_accelerate(1); import runpy, sys; sys.argv=sys.argv[1:]; runpy.run_path(sys.argv[0],run_name=\"__main__\")",
+        "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/results/apex_workbench_review_20261027/review_probes.py",
+        "finalization",
+        "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/results/apex_workbench_review_20261027"
+      ]
+    }
+  },
+  "findings": [
+    {
+      "id": "R1",
+      "priority": "P1",
+      "blocking": true,
+      "title": "Supervisor death loses worker ownership/serialization and status recovery"
+    },
+    {
+      "id": "R2",
+      "priority": "P2",
+      "title": "Request visible before initial status publication"
+    },
+    {
+      "id": "R3",
+      "priority": "P2",
+      "title": "Note visible before JSON completion"
+    },
+    {
+      "id": "R4",
+      "priority": "P2",
+      "title": "Comparison ignores scientific compatibility"
+    },
+    {
+      "id": "R5",
+      "priority": "P2",
+      "title": "Evidence hash failure leaves clean completed status"
+    },
+    {
+      "id": "R6",
+      "priority": "P2",
+      "title": "CSV checksum mismatch is not enforced before plotting"
+    }
+  ],
+  "probe_observations": [
+    {
+      "reviewed_sha": "a0b4a98b14f53469735ca4dd9f7a93a7b0651860",
+      "probe": "orphan",
+      "observations": {
+        "worker_survived_supervisor_sigkill": true,
+        "execution_lock_released_while_worker_alive": true,
+        "new_launch_reached_popen_while_orphan_alive": true,
+        "cancellation_marker_did_not_stop_orphan": true,
+        "retained_status": {
+          "state": "running",
+          "pid": 38020,
+          "supervisor_pid": 38019,
+          "updated_utc": "2026-10-27T18:35:23.844994+00:00"
+        },
+        "artifact_manifest_present": false,
+        "directory": "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/results/apex_workbench_review_20261027/orphan/runs/20261027T183523621224Z_a50da1f78d35"
+      }
+    },
+    {
+      "reviewed_sha": "a0b4a98b14f53469735ca4dd9f7a93a7b0651860",
+      "probe": "publication",
+      "observations": {
+        "request_visible_without_status": true,
+        "second_ui_session_exceptions": [
+          "[Errno 2] No such file or directory: '/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/results/apex_workbench_review_20261027/publication/runs/20261027T183627978719Z_324f270665c8/status.json'"
+        ],
+        "writer_completed_after_barrier_release": "completed",
+        "directory": "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/results/apex_workbench_review_20261027/publication/runs/20261027T183627978719Z_324f270665c8"
+      }
+    },
+    {
+      "reviewed_sha": "a0b4a98b14f53469735ca4dd9f7a93a7b0651860",
+      "probe": "notes",
+      "observations": {
+        "unfinished_note_visible_to_readers": true,
+        "reader_error": "JSONDecodeError",
+        "prediction_preserved": true,
+        "completed_note_valid_after_release": true
+      }
+    },
+    {
+      "reviewed_sha": "a0b4a98b14f53469735ca4dd9f7a93a7b0651860",
+      "probe": "comparison",
+      "observations": {
+        "fixture_not_scientific_data": true,
+        "mismatched_fields": [
+          "track",
+          "source_revision",
+          "source_hash",
+          "vehicle_yaml",
+          "timing_mode",
+          "controller"
+        ],
+        "ui_warnings": [],
+        "ui_errors": [],
+        "overlay_chart_count": 3,
+        "expected_states_sha256": "69b6ba31561a7c7329e15185fb5e40e0c7508b41938ae16ff2cf64d36c7bf78e",
+        "actual_states_sha256": "9feb2a68fc02d23eddb8bf420ca8bbb4d82c09b8d78990a08b6e68dd00177180",
+        "altered_sample_plotted_without_integrity_warning": 123.456
+      }
+    },
+    {
+      "reviewed_sha": "a0b4a98b14f53469735ca4dd9f7a93a7b0651860",
+      "probe": "finalization",
+      "observations": {
+        "injected_fault": "review: artifact hash read failed",
+        "status_after_manifest_failure": {
+          "state": "completed",
+          "error": null,
+          "returncode": 0,
+          "updated_utc": "2026-10-27T18:36:32.646745+00:00",
+          "wall_runtime_s": 1.0572367920540273,
+          "sampled_peak_worker_rss_bytes": 81166336,
+          "sampled_peak_worker_threads": 1,
+          "sampling_note": "100 ms samples; not hard peak bounds or proof of parallel computation"
+        },
+        "artifact_manifest_present": false,
+        "failure_exposed_in_status": false
+      }
+    }
+  ],
+  "local_artifacts": {
+    "focused-tests.log": {
+      "sha256": "fdc035273836f0c4df5cef468f4ba10811e0bb641e076cff0381608f9e356208",
+      "bytes": 1179
+    },
+    "review_probes.py": {
+      "sha256": "5fc5dda27a04d9f3bb3ead364d99ec8a543bc28f39eccc2f0d1858941c4af175",
+      "bytes": 11468
+    },
+    "review_identity.json": {
+      "sha256": "50f74d89304678ff43c9d54e5198039dc375cf65824b5e40f8b5319c3cc53d55",
+      "bytes": 276
+    },
+    "preservation_before.json": {
+      "sha256": "6212e0c187fdb44d39ad867a28c76b7dd0e88c3c6ba36a1b3b0a1441e1354ac7",
+      "bytes": 1490299
+    },
+    "probe-orphan.json": {
+      "sha256": "dbe4b4fdbf24f5970d31d74176ac867326fe902cefd4d4da46cdffce28078cea",
+      "bytes": 713
+    },
+    "probe-orphan.log": {
+      "sha256": "ff21c45d871c45f8830faec41860e17c93b8d618df2e2e4acc04b508c8ad1f7e",
+      "bytes": 196
+    },
+    "probe-publication.json": {
+      "sha256": "ee0ccfe468882628f30fcd191de6fb88e2f6450c76d531d0cffa5ab228e6b18e",
+      "bytes": 680
+    },
+    "probe-publication.log": {
+      "sha256": "037a2cbd6ec19e0133be3563423fe5e07c326703df7719e8f7fffe38839c8575",
+      "bytes": 1945
+    },
+    "probe-notes.json": {
+      "sha256": "65080b337d43aae1c9455ced16c28c358adfd5a216fc9b65d99a7dc1fecf1dd5",
+      "bytes": 278
+    },
+    "probe-notes.log": {
+      "sha256": "5e6451423dd8c30d0f4f080ff84da6486bc2ea18cbd1465b2e65b7af2b7bbdde",
+      "bytes": 194
+    },
+    "probe-comparison.json": {
+      "sha256": "79fba90308b4ad07f9544556f997268c5dd5a517abf5bcea2dacb9a61de5fc94",
+      "bytes": 645
+    },
+    "probe-comparison.log": {
+      "sha256": "d66e5e9b7e5888a5b4cb7c7d76f5f94c913a3e0510c3389decd36142030cb12f",
+      "bytes": 395
+    },
+    "probe-finalization.json": {
+      "sha256": "d0a96c428cac944639dfeabe9001370f4609bd9dedc690b1dcac3541be3632fa",
+      "bytes": 658
+    },
+    "probe-finalization.log": {
+      "sha256": "c91db4f1fc9874e5057e3371fd762d49edff7998c2cddb960ec9b249d3ffe9aa",
+      "bytes": 208
+    }
+  },
+  "preservation": {
+    "initial_tracked_file_count": 877,
+    "unexpected_tracked_changes": [],
+    "original_result_file_count": 11775,
+    "historical_result_metadata_changes": [],
+    "historical_result_check_limit": "Size/mtime only, not complete content rehash or backup",
+    "canonical_implementation_changes": [],
+    "reviewed_implementation_changes": []
+  },
+  "audit_bookkeeping": "Initial packaging assertion required a fully clean clone; inspection found only the deliberately created untracked .venv symlink. Audit was corrected to report it explicitly; no source was changed or test rerun.",
+  "not_executed": [
+    "Full integration/regression",
+    "Resource-exhaustion stress",
+    "NMPC",
+    "Async planner",
+    "Measured-latency campaign",
+    "VIS-2",
+    "Efficiency",
+    "Hardware",
+    "V0.2 features"
+  ],
+  "next_action": "User/Engineering/Primary decision; authorize bounded correction, review corrected SHA, separately authorize formal Verification"
+}

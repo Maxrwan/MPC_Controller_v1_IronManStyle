@@ -1,3 +1,35 @@
+# Current handoff — Workbench V0.1 Engineering Review
+
+**ENGINEERING_REVIEW_COMPLETE_PENDING_DECISION. Decision: FAIL.** Recorded 27 October 2026.
+Exact reviewed pin: `a0b4a98b14f53469735ca4dd9f7a93a7b0651860`. Original checkout clean at
+launcher descendant `a8e96ee95b99088bafb8ef2cb7a4d13f76c7905f`; its three-file difference was
+reported before review. Launcher is excluded. Pinned tracked source and all eight delivery
+manifest hashes match in a detached local clone; only its tooling environment symlink is untracked.
+Review branch: `codex/apex-workbench-v0-1`. Containing commit is the review delivery revision;
+exact SHA/URL is reported after push.
+
+[Engineering Review Report](reviews/apex_workbench_v0_1/REVIEW.md),
+[commands and reproduction](reviews/apex_workbench_v0_1/REPRODUCTION.md),
+[machine-readable observations](reviews/apex_workbench_v0_1/evidence.json).
+
+Fresh pinned checks: 85 passed (17 Workbench + 68 selected Frenet/baseline/runner), including
+both original-entry-point parity checks. Five bounded review probes reproduced six defects:
+R1/P1 orphan survives supervisor death while lock releases and stale RUNNING cannot cancel;
+R2 initial request/status visibility race; R3 incomplete note JSON visibility; R4 incompatible
+comparison provenance accepted; R5 hash failure leaves completed/error-null evidence state;
+R6 altered CSV plotted without checksum warning. All owned test processes were stopped;
+raw failure/status/log evidence remains in `results/apex_workbench_review_20261027/`.
+
+No implementation, canonical test, model/controller/solver, configuration or frozen evidence
+was changed. Original 11,775 result files retain size/mtime (not a full content rehash/backup).
+Only this handoff, review documents/evidence and a syntax-equivalent review-only harness are
+added for delivery. Review is from the implementing Codex chat, not external Secondary approval.
+No full regression, resource-exhaustion campaign, NMPC/async/latency, VIS-2, Efficiency, hardware,
+V0.2 or correction ran. Stop for the user/Engineering/Primary decision: separately authorize
+R1–R6 correction, review the corrected SHA, then select a separate formal Verification gate.
+
+---
+
 # Current handoff — Workbench double-click launcher
 
 **WORK_COMPLETE_PENDING_REVIEW.** Recorded 27 October 2026. Authorized launcher-only follow-up
