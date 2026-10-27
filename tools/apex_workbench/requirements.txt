@@ -1,0 +1,5 @@
+# Tooling only; deliberately absent from the core pyproject.toml.
+streamlit>=1.50,<2
+plotly>=6,<7
+psutil>=7.2.2,<8
+threadpoolctl>=3.7,<4

@@ -1,3 +1,14 @@
+# Workbench tooling workstream — 27 October 2026
+
+The explicit APEX Workbench V0.1 assignment separately authorizes the isolated local tool in
+[`tools/apex_workbench/`](../tools/apex_workbench/README.md), plus focused functional checks of
+the existing Task004 dynamic demo and Task005 LQR/PI baseline. Status is
+`WORK_COMPLETE_PENDING_REVIEW`; see [ADR-169](DECISIONS.md#adr-169--isolated-local-workbench-reuses-original-experiment-entry-points).
+Earlier Workbench/VIS-2 deferrals below retain their historical scope. This task does not open
+VIS-2, scientific export acceptance, frozen Performance changes or Efficiency execution.
+
+---
+
 # Current Efficiency coordination — 26 October 2026
 
 **G1 CODE_CREATED_NOT_EXECUTED. WORK_COMPLETE_PENDING_REVIEW.**

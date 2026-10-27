@@ -1,3 +1,41 @@
+# Current handoff — APEX Workbench V0.1 local tooling
+
+**WORK_COMPLETE_PENDING_REVIEW.** Recorded 27 October 2026. Separately authorized local
+Workbench assignment; base `37b3f19a5d58f9a76cfd9dee5cb5bf4352edc980`, isolated branch
+`codex/apex-workbench-v0-1`. The containing delivery commit binds the tested tool-source hashes;
+exact SHA/URL is reported after push. Earlier Workbench/VIS-2 deferrals remain historical;
+VIS-2, VIS ingestion acceptance, frozen Performance and Efficiency work are not reopened.
+
+[Launch and Engineering Understanding Notes](../tools/apex_workbench/README.md),
+[capability matrix](../tools/apex_workbench/CAPABILITY_MATRIX.md),
+[focused validation](../tools/apex_workbench/VALIDATION.md),
+[machine-readable record/source hashes](../tools/apex_workbench/validation_record.json).
+
+Added isolated Streamlit/Plotly UI, strict input contract, original dynamic-demo/LQR entry-point
+adapters, bounded sequential subprocess execution/cancellation, retained logs/provenance,
+real CSV/XY plots, append-only learning notes and two-run overlays. Vehicle constants, tire law,
+controller weights and timing composition remain read-only. Core environment/source unchanged.
+Architecture/tooling decision: ADR-169; roadmap receives a separately scoped tooling entry.
+
+Focused evidence: initial 16 Workbench tests + 127 applicable existing unit tests passed;
+final UI test passed again after its metadata caption, and final inherited-lock/cancellation plus
+new guard/disk test passed (17 distinct current Workbench tests covered). Both adapters produced
+byte-identical original-entry-point CSV/JSON outputs. Live Chrome UI executed the dynamic 10 s,
+LQR disturbed 12 s and nominal 1 s cases, plotted actual output, persisted notes through reload,
+and overlaid the two LQR runs. Ruff/format, whitespace/link and preservation checks passed.
+Full local logs/screenshots/failure fixtures: `results/apex_workbench_delivery_20261027/`.
+All original tracked hashes outside these authorized docs match; 11,677 original result files
+retain size/mtime (not a complete content rehash or backup). Three fresh UI runs remain under
+`results/apex_workbench/`, each with request/status/logs/CSV/environment/artifact hashes.
+
+No canonical model/controller/profile or frozen artifact was changed. No NMPC/async campaign,
+latency benchmark, VIS-2, scientific tuning or hardware work ran. Full integration/regression and
+formal verification remain deferred pending review. The owned preview server is stopped after
+checks; README contains the exact launch command. Next action: Engineering Review of this exact
+WORK delivery and an explicit decision on verification or later adapters. No automatic continuation.
+
+---
+
 # Current handoff — F-C3 one-shot clock-only attempt
 
 **ONE_SHOT_ATTEMPT_COMPLETE_PENDING_REVIEW. WORK_COMPLETE_PENDING_REVIEW.** Recorded 27 October 2026.

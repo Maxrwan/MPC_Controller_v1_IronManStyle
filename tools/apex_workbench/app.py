@@ -1,0 +1,257 @@
+"""APEX Workbench V0.1 — local experiment, predict, inspect and retain loop."""
+
+import io
+import sys
+import zipfile
+from pathlib import Path
+
+import streamlit as st
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+
+from tools.apex_workbench import jobs, plots  # noqa: E402
+from tools.apex_workbench.configuration import ADAPTERS, DEFAULTS, RUNS, validate  # noqa: E402
+
+st.set_page_config(page_title="APEX Workbench", page_icon="🏎", layout="wide")
+st.markdown(
+    """<style>
+.stApp {background:#0c1421;color:#e8eef6}
+[data-testid="stSidebar"] {background:#111e30}
+h1 {letter-spacing:-.045em} h2,h3 {letter-spacing:-.025em}
+[data-testid="stMetric"] {border:1px solid #294058;border-radius:10px;padding:12px}
+</style>""",
+    unsafe_allow_html=True,
+)
+st.caption("APEX / ENGINEERING LABORATORY                                      LOCAL · V0.1")
+st.title("Predict. Run. Understand.")
+st.write("Explore the actual APEX bicycle model and LQR/PI baseline. Every run keeps its evidence.")
+st.caption(
+    "SYNTHETIC parameters · perfect state · unsaturated linear tires · no physical safety claim"
+)
+
+with st.sidebar:
+    st.header("APEX Workbench")
+    page = st.radio("Workspace", ["Experiment", "Compare runs", "Capabilities"])
+    if page == "Experiment":
+        adapter = st.selectbox("Experiment", list(ADAPTERS), format_func=ADAPTERS.get)
+        st.caption(
+            "Existing Task004 demo" if adapter == "dynamic_demo" else "Existing Task005 run_case"
+        )
+        with st.form("configuration"):
+            values = {}
+            values["duration"] = st.number_input(
+                "Duration [s]",
+                value=DEFAULTS[adapter]["duration"],
+                step=0.01,
+                help="UI resource safeguard: 0.01–20 s. LQR: multiple of 0.005 s.",
+            )
+            if adapter == "dynamic_demo":
+                values["dt"] = st.number_input(
+                    "Integration timestep [s]",
+                    value=0.005,
+                    step=0.001,
+                    format="%.4f",
+                    help="UI numerical/resource safeguard: 0.001–0.01 s; no accuracy guarantee.",
+                )
+                st.caption("Fixed 2 m/s initial vx; original steering/acceleration schedule.")
+            else:
+                values["track"] = st.selectbox("Synthetic track", ["circle", "oval"])
+                values["speed"] = st.number_input(
+                    "Initial / reference speed [m/s]",
+                    value=2.0,
+                    step=0.1,
+                    help="Task005 design/reference domain: 1–3 m/s.",
+                )
+                values["ey"] = st.number_input(
+                    "Initial lateral error [m]",
+                    value=0.0,
+                    step=0.01,
+                    help="UI safeguard: ±0.1 m, based on existing disturbance examples.",
+                )
+                values["epsi"] = st.number_input(
+                    "Initial heading error [rad]",
+                    value=0.0,
+                    step=0.01,
+                    help="UI safeguard: ±0.05 rad, based on existing disturbance examples.",
+                )
+                st.caption("Fixed plant 200 Hz / controller 100 Hz. Duration-only stop.")
+            prediction = st.text_area(
+                "My prediction", max_chars=8000, placeholder="What do I expect to happen, and why?"
+            )
+            submitted = st.form_submit_button("Run experiment", type="primary")
+        if submitted:
+            try:
+                validate(adapter, values)
+                directory = jobs.start_run(adapter, values, prediction)
+                st.session_state["selected_run"] = directory.name
+                st.success("Run launched; evidence directory reserved.")
+            except (ValueError, RuntimeError, OSError) as error:
+                st.error(str(error))
+    st.divider()
+    st.caption(
+        "Vehicle constants, weights, tire selection and latency modes are read-only in V0.1."
+    )
+
+RUNS.mkdir(parents=True, exist_ok=True)
+retained = sorted(
+    [p for p in RUNS.iterdir() if p.is_dir() and (p / "request.json").is_file()], reverse=True
+)
+by_id = {p.name: p for p in retained}
+
+if page == "Capabilities":
+    st.subheader("Supported inputs and scientific boundaries")
+    st.markdown((Path(__file__).parent / "CAPABILITY_MATRIX.md").read_text())
+    st.stop()
+
+if page == "Compare runs":
+    st.subheader("Compare retained experiments")
+    selected = st.multiselect("Choose two runs", list(by_id), max_selections=2)
+    if len(selected) == 2:
+        records = [jobs.read_json(by_id[key] / "request.json") for key in selected]
+        if records[0]["adapter"] != records[1]["adapter"]:
+            st.warning("Choose runs from the same adapter for a comparable overlay.")
+        elif any(
+            jobs.read_json(by_id[key] / "status.json")["state"] != "completed" for key in selected
+        ):
+            st.warning(
+                "Comparison requires two completed executions. Inspect failed runs individually."
+            )
+        else:
+            st.caption(
+                "Raw samples over elapsed simulation time; no interpolation or acceptance claim."
+            )
+            st.json({key: record["effective"] for key, record in zip(selected, records)})
+            pairs = [(key, by_id[key]) for key in selected]
+            for columns, unit in [
+                (["vx"], "vx [m/s]"),
+                (["e_y"], "e_y [m]"),
+                (["delta"], "Steering [rad]"),
+            ]:
+                st.plotly_chart(plots.series(pairs, columns, unit), width="stretch")
+    st.stop()
+
+if not retained:
+    st.info("Choose an experiment, write a prediction, then run it from the sidebar.")
+    st.subheader("A real experiment, with its limits visible")
+    st.write(
+        "The dynamic demo explores open-loop response; LQR/PI tracks a synthetic centerline. "
+        "Plots appear only after the original experiment produces real output files."
+    )
+    st.stop()
+
+selected = st.selectbox("Retained run", list(by_id), key="selected_run")
+directory = by_id[selected]
+request = jobs.read_json(directory / "request.json")
+st.caption(f"Viewing {ADAPTERS[request['adapter']]} · effective configuration below")
+st.json(request["effective"], expanded=False)
+
+
+@st.fragment(run_every=1)
+def progress():
+    status = jobs.read_json(directory / "status.json")
+    state = status["state"]
+    st.metric("Execution", state.upper())
+    if status.get("error"):
+        st.error(status["error"])
+    if state in {"queued", "running"}:
+        st.caption("Fresh worker running. Closing this page does not cancel the bounded run.")
+        if st.button("Cancel run"):
+            jobs.cancel_run(directory)
+            st.info("Cancellation requested; partial files will be retained.")
+    elif st.session_state.get("last_terminal") != selected:
+        st.session_state["last_terminal"] = selected
+        st.rerun()
+
+
+progress()
+status = jobs.read_json(directory / "status.json")
+trajectory_tab, states_tab, evidence_tab, notes_tab = st.tabs(
+    ["Trajectory", "States & controls", "Evidence & logs", "Learning notes"]
+)
+with trajectory_tab:
+    if status["state"] in {"queued", "running"}:
+        st.info("Waiting for the experiment to finish. Status updates automatically.")
+    elif (directory / "experiment/trajectory_xy.csv").exists():
+        st.plotly_chart(plots.trajectory(directory), width="stretch")
+        st.caption(
+            "XY is derived from retained Frenet states using apex.coordinates.frenet. "
+            "Track boundaries describe a CG corridor; no swept-body safety guarantee."
+        )
+    else:
+        st.info("Trajectory unavailable: this run produced no complete coordinate export.")
+    if (directory / "worker_result.json").exists():
+        st.json(jobs.read_json(directory / "worker_result.json"), expanded=False)
+    st.caption(
+        "COMPLETED means the entry point exited successfully. "
+        "Scientific acceptance remains separate."
+    )
+with states_tab:
+    if status["state"] in {"queued", "running"}:
+        st.info("Telemetry is displayed after execution to avoid reading partially written CSVs.")
+    else:
+        data = plots.read_frame(directory, "states.csv")
+        if data.empty:
+            st.info("State telemetry unavailable for this run.")
+        else:
+            pairs = [("Actual", directory)]
+            for columns, unit, reference in [
+                (["vx"], "Longitudinal speed [m/s]", "reference_speed"),
+                (["vy"], "Lateral velocity [m/s]", "vy_ref"),
+                (["r"], "Yaw rate [rad/s]", "r_ref"),
+                (["e_y"], "Lateral error [m]", None),
+                (["e_psi"], "Heading error [rad]", None),
+                (["delta"], "Steering [rad]", None),
+                (["a_cmd"], "Commanded Fx/m [m/s²]", None),
+            ]:
+                st.plotly_chart(
+                    plots.series(pairs, columns, unit, reference=reference), width="stretch"
+                )
+            if "boundary_violation" in data:
+                st.write("Sampled CG boundary violations:", int(data.boundary_violation.sum()))
+            else:
+                st.caption("Boundary violation metric unavailable in the original dynamic demo.")
+    st.info(
+        "Solver status/time, injected/measured latency and deadline metrics: unavailable in these "
+        "adapters. LQR is not an optimizer; host execution time is shown only in evidence."
+    )
+with evidence_tab:
+    st.code(str(directory), language=None)
+    st.json(request, expanded=False)
+    st.json(status, expanded=False)
+    for name in ["numerical_environment.json", "artifacts.json"]:
+        if (directory / name).exists():
+            with st.expander(name):
+                st.json(jobs.read_json(directory / name))
+    for name in ["stdout.log", "stderr.log", "supervisor.log"]:
+        with st.expander(name):
+            path = directory / name
+            st.code(
+                path.read_text(errors="replace")[-100_000:] if path.exists() else "Pending",
+                language=None,
+            )
+            st.caption("Last 100,000 characters displayed; full log retained on disk.")
+    if status["state"] not in {"queued", "running"}:
+        archive = io.BytesIO()
+        with zipfile.ZipFile(archive, "w", zipfile.ZIP_DEFLATED) as zipped:
+            for path in directory.rglob("*"):
+                if path.is_file():
+                    zipped.write(path, path.relative_to(directory))
+        st.download_button(
+            "Download run evidence (.zip)", archive.getvalue(), selected + ".zip", "application/zip"
+        )
+with notes_tab:
+    st.write("**My prediction**")
+    st.write(request["prediction"] or "No prediction recorded.")
+    versions = sorted(directory.glob("notes-*.json"))
+    latest = jobs.read_json(versions[-1]) if versions else {}
+    with st.form("notes_" + selected):
+        observation = st.text_area(
+            "My observation", value=latest.get("observation", ""), max_chars=8000
+        )
+        explanation = st.text_area(
+            "My explanation", value=latest.get("explanation", ""), max_chars=8000
+        )
+        if st.form_submit_button("Save learning notes"):
+            jobs.save_notes(directory, observation, explanation)
+            st.success("Saved a new note version. Earlier notes and prediction retained.")
+    st.caption("Explain the result in your own words. No generated answer is supplied.")

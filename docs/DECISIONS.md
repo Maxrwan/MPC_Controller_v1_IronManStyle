@@ -1143,3 +1143,31 @@ Static source projections/API/anchor/schema/reference/hash/lint checks support d
 All G2 numerical/observer/failure/clock/resource checks remain unexecuted; the empirical clock
 allowance is unresolved. Secondary reviews the exact revision; Primary separately approves G2.
 Frozen Performance refs/profile/evidence, independent Safety and CT-1, and Phase B stay protected.
+
+
+## ADR-169 — Isolated local Workbench reuses original experiment entry points
+
+Recorded 27 October 2026. Status: `WORK_COMPLETE_PENDING_REVIEW`. The explicit human
+APEX Workbench V0.1 assignment separately authorizes local development tooling and focused
+functional execution. The earlier Workbench/VIS-2 deferral is acknowledged; this assignment
+opens only the isolated tool, not VIS-2, VIS package acceptance, frozen Performance changes,
+Efficiency execution or further scientific campaigns.
+
+Use Streamlit/Plotly with a separate tool environment in `tools/apex_workbench/`, leaving core
+dependencies and canonical scientific source untouched. Start with Task004's original dynamic
+demo CLI and Task005's original LQR/PI `run_case()` function. Expose only their supported inputs;
+keep fixed vehicle constants, tires, controller weights and timing composition read-only.
+No equations, integrator, solver, fallback or controller are reproduced in tooling. XY display
+coordinates use the canonical Frenet API and plots consume retained CSVs.
+
+Fresh subprocesses and exclusive run directories retain requests, source/environment identity,
+logs, failures and versioned learner notes. One checkout-local inherited lock serializes Workbench
+runs, with repository measurement-guard/disk preflight, native SINGLE configuration and bounded
+execution. Sampled RSS/thread/output observations are soft safeguards, not real-time or safety
+certification. This tool's ideal zero-delay experiments do not implement new computational
+controllers or qualify measured/injected latency. Those adapters need separately bounded gates.
+
+See the [Workbench README](../tools/apex_workbench/README.md),
+[capability matrix](../tools/apex_workbench/CAPABILITY_MATRIX.md) and
+[focused validation](../tools/apex_workbench/VALIDATION.md). Engineering Review is next;
+formal full-suite verification and scientific acceptance remain separate.

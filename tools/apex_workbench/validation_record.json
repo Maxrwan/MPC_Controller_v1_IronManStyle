@@ -1,0 +1,134 @@
+{
+  "status": "WORK_COMPLETE_PENDING_REVIEW",
+  "base_revision": "37b3f19a5d58f9a76cfd9dee5cb5bf4352edc980",
+  "branch": "codex/apex-workbench-v0-1",
+  "source_identity": "WORK source hashes; containing commit is delivery revision, supplied after push",
+  "tool_source_sha256": {
+    "tools/apex_workbench/worker.py": "2c8465ad10210793ac9036670475507f787dbfabc152583114ca9d7f2715bd60",
+    "tools/apex_workbench/configuration.py": "e82b19ace25655fadbe8216eb01eb2038b37698d6ef614ad8996eae3527e97e4",
+    "tools/apex_workbench/__init__.py": "194595c8c9d46745693697c8417c2408fbe76e3254ae716f26b50c47f4723396",
+    "tools/apex_workbench/jobs.py": "d5f49d37ef4430042899805c5ea1adf868ef2114835da725f1f551ae394d8e80",
+    "tools/apex_workbench/plots.py": "2e34868a6ce47280a8c0e8e9334371dee37160437bf60cd6e40d16b9a3cb91eb",
+    "tools/apex_workbench/app.py": "022ab115a371f15e7ebb656180666dbc62f71417defad05dfdee1e3944de1833",
+    "tools/apex_workbench/tests/test_workbench.py": "fd57d43cdca6ba3021e77a3222a6e20f66d3778e8a69bfe19eebcbe5f697b926",
+    "tools/apex_workbench/requirements.txt": "5140d1eb1196f17eeefb645da49b4ec0d4bff4918e58951c506ec4a99fb48b01"
+  },
+  "tests": [
+    {
+      "selection": "tools/apex_workbench/tests (initial 16 tests)",
+      "passed": 16,
+      "exit_code": 0,
+      "log": "results/apex_workbench_delivery_20261027/focused-tests.log"
+    },
+    {
+      "selection": "tests/unit/test_config.py test_dynamic_bicycle.py test_baseline.py test_runner.py",
+      "passed": 127,
+      "exit_code": 0,
+      "log": "results/apex_workbench_delivery_20261027/applicable-core-tests.log"
+    },
+    {
+      "selection": "final app UI test after metadata-caption change",
+      "passed": 1,
+      "exit_code": 0,
+      "log": "results/apex_workbench_delivery_20261027/final-ui-test.log"
+    },
+    {
+      "selection": "final inherited-lock/cancellation test and new guard/disk test",
+      "passed": 2,
+      "exit_code": 0,
+      "log": "results/apex_workbench_delivery_20261027/final-supervisor-tests.log"
+    }
+  ],
+  "current_workbench_unique_tests": 17,
+  "parity": "states/summary byte-identical for both adapters; LQR controls also byte-identical",
+  "live_browser": "Chrome via CUA; actual form submissions, actual result plots, retained-note reload and same-adapter comparison",
+  "live_runs": [
+    {
+      "id": "20261027T162115750326Z_c5c6a9c8ab24",
+      "adapter": "dynamic_demo",
+      "effective": {
+        "duration": 10.0,
+        "dt": 0.005
+      },
+      "status": {
+        "state": "completed",
+        "error": null,
+        "returncode": 0,
+        "updated_utc": "2026-10-27T16:21:24.763865+00:00",
+        "wall_runtime_s": 8.609366624848917,
+        "sampled_peak_worker_rss_bytes": 80183296,
+        "sampled_peak_worker_threads": 1,
+        "sampling_note": "100 ms samples; not hard peak bounds or proof of parallel computation"
+      },
+      "artifact_manifest": "results/apex_workbench/20261027T162115750326Z_c5c6a9c8ab24/artifacts.json"
+    },
+    {
+      "id": "20261027T162143537820Z_2dc88d2a1ec3",
+      "adapter": "lqr_baseline",
+      "effective": {
+        "duration": 12.0,
+        "track": "circle",
+        "speed": 2.0,
+        "ey": 0.1,
+        "epsi": 0.0
+      },
+      "status": {
+        "state": "completed",
+        "error": null,
+        "returncode": 0,
+        "updated_utc": "2026-10-27T16:22:08.044883+00:00",
+        "wall_runtime_s": 24.235715833026916,
+        "sampled_peak_worker_rss_bytes": 136036352,
+        "sampled_peak_worker_threads": 2,
+        "sampling_note": "100 ms samples; not hard peak bounds or proof of parallel computation"
+      },
+      "artifact_manifest": "results/apex_workbench/20261027T162143537820Z_2dc88d2a1ec3/artifacts.json"
+    },
+    {
+      "id": "20261027T162319201355Z_8cda800d3492",
+      "adapter": "lqr_baseline",
+      "effective": {
+        "duration": 1.0,
+        "track": "circle",
+        "speed": 2.0,
+        "ey": 0.0,
+        "epsi": 0.0
+      },
+      "status": {
+        "state": "completed",
+        "error": null,
+        "returncode": 0,
+        "updated_utc": "2026-10-27T16:23:34.980924+00:00",
+        "wall_runtime_s": 15.421191958943382,
+        "sampled_peak_worker_rss_bytes": 139182080,
+        "sampled_peak_worker_threads": 2,
+        "sampling_note": "100 ms samples; not hard peak bounds or proof of parallel computation"
+      },
+      "artifact_manifest": "results/apex_workbench/20261027T162319201355Z_8cda800d3492/artifacts.json"
+    }
+  ],
+  "preservation": {
+    "initial_tracked_file_count": 864,
+    "allowed_existing_document_changes": [
+      "docs/CODEX_HANDOFF.md",
+      "docs/DECISIONS.md",
+      "docs/PROJECT_ROADMAP.md"
+    ],
+    "unexpected_tracked_changes": [],
+    "historical_result_file_count": 11677,
+    "historical_result_size_mtime_changes": [],
+    "limit": "Ignored historical results checked by size/mtime only, not a full content rehash or backup",
+    "canonical_source_config_test_changes": [],
+    "frozen_refs_observed": [
+      "48adbdf64d492592d15e23c917aca71fa58aa8a5 refs/heads/release/performance-synthetic-v1",
+      "48adbdf64d492592d15e23c917aca71fa58aa8a5 refs/remotes/origin/release/performance-synthetic-v1",
+      "76d9eaa65af02efb0263916adc75d5247a0e778f refs/tags/performance-synthetic-v1"
+    ]
+  },
+  "deferred": [
+    "Full integration/regression and formal verification of reviewed revision",
+    "NMPC/async/latency and VIS ingestion",
+    "Vehicle/tire composition adapters and controller tuning",
+    "Hardware safety and identified parameter validation"
+  ]
+}
