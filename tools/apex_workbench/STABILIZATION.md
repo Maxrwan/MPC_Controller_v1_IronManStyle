@@ -1,9 +1,10 @@
 # V0.1 delegated stabilization
 
-**WORK_COMPLETE_PENDING_REVIEW — cycle 2.** Recorded 28 October 2026. Initial baseline:
+**WORK_COMPLETE_PENDING_REVIEW — cycle 3.** Recorded 28 October 2026. Initial baseline:
 `5acdf4ff4db927bfaf3828b8714dfe39619a5db8`, branch `codex/apex-workbench-v0-1`.
 Cycle-1 candidate: `aeedf18e0df9b40ef7294ba15fc73e19b0d5884b`.
-The containing cycle-2 corrective commit binds the source hashes in [stabilization_record.json](stabilization_record.json).
+Cycle-2 candidate: `ca5c72fd255bd2b9511d891485087dc3174b9aea`.
+The containing cycle-3 corrective commit binds the source hashes in [stabilization_record.json](stabilization_record.json).
 Historical [failed review](../../docs/reviews/apex_workbench_v0_1_corrections/REVIEW.md),
 reproductions and result files remain unchanged.
 
@@ -26,6 +27,13 @@ of UI evidence-field validation, blocks admission on unreadable identifiable lif
 and validates the in-lock status reread. Malformed records remain unchanged. Four real sleeping
 legacy-command sentinels and a controlled status-replacement regression cover these findings;
 no second scientific execution is admitted by the sentinel tests.
+
+The [cycle-2 review](../../docs/reviews/apex_workbench_v0_1_stabilization/CYCLE2_REVIEW.md)
+closed those lifecycle gaps but retained a receipt-consumption failure: deleting manifest-listed
+`execution.json` left charts visible without warning. Cycle 3 checks the presence and containment
+of **every manifest-listed file**, plus required exports, before selected-record plots/comparison.
+Selected bytes still undergo checksum verification; unrelated contents are not read merely to
+check presence. The real-copy missing-artifact regression now includes the immutable receipt.
 
 ## Focused checks
 
@@ -50,6 +58,10 @@ applicable: no canonical/script/configuration/dependency/scientific-test content
 the lifecycle/storage corrections do not enter their import/dependency graph. No claim of a fresh
 combined 225-pass invocation is made.
 
+Cycle 3 complete Workbench selection: **78 passed, zero failures/skips**, 49.96 s. This adds the
+receipt-deletion case and reruns all Workbench lifecycle, UI, integrity and parity checks against
+the final corrective contents. Complete formal Verification is still pending exact-revision review.
+
 The actual launcher smoke passed: unrelated working directory, health 200/ok, repeated click
 reuses its live server, owned SIGINT shutdown, immediate reusable-address bind, foreign listener
 rejection without termination and an exact launcher copy with no environment reporting setup missing.
@@ -61,12 +73,10 @@ or physical model validation. Existing negative reviews and measurements are not
 
 ## Review and Verification gate
 
-Next, obtain a separate-context technical review of this exact cycle-2 corrective commit. A fresh technical
-review is distinct from designated Secondary/user approval. The repository workflow assigns the
-Engineering Review decision to the user and Secondary APEX Engineering Orchestrator; Primary retains
-scientific direction/final approval. Do not impersonate or waive that gate.
-
-If designated approval is unavailable, deliver a Verification-ready package with that explicit pending
-gate. Do not run the complete scientific acceptance suite merely to substitute for required review.
-The delegated task permits routine corrective iterations; it does not authorize a new scientific
-campaign, frozen-profile change, V0.2 or physical acceptance.
+Next, obtain a separate-context technical review of this exact cycle-3 corrective commit. This is
+independent technical scrutiny, not named external Secondary approval or Primary scientific acceptance.
+The delegated task expressly permits that reviewer context and conditional functional Verification;
+repository governance adds no extra named-human authorization before that already-delegated gate.
+After technical PASS, execute the complete required repository/Workbench acceptance set on that exact
+reviewed revision. Final user/scientific acceptance remains separate. No new research campaign,
+frozen-profile change, V0.2 or physical acceptance is authorized.

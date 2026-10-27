@@ -155,10 +155,14 @@ def artifact_manifest(directory):
 
 
 def check_required_artifacts(directory, request, status):
-    """Check required export membership/presence; selected contents are hashed on ingestion."""
+    """Every listed file must remain present; selected contents are hashed on ingestion."""
     manifest = artifact_manifest(directory)
-    for relative in sorted(required_artifacts(request, status)):
-        if relative not in manifest or not (Path(directory) / relative).is_file():
+    root = Path(directory).resolve()
+    for relative in sorted(set(manifest) | required_artifacts(request, status)):
+        path = Path(directory) / relative
+        if not path.resolve().is_relative_to(root):
+            raise IntegrityError(f"Retained artifact lies outside its run directory: {relative}")
+        if relative not in manifest or not path.is_file():
             raise IntegrityError(f"Required retained artifact missing: {relative}")
 
 

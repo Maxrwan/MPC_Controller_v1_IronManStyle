@@ -1,3 +1,30 @@
+# Current handoff — Workbench stabilization cycle 3 candidate
+
+**WORK_COMPLETE_PENDING_REVIEW.** Recorded 28 October 2026. Corrective base
+`ca5c72fd255bd2b9511d891485087dc3174b9aea`, branch `codex/apex-workbench-v0-1`.
+Containing commit binds final corrective source; exact SHA is reported after push.
+
+Cycle-2 independent technical review closed the lifecycle blockers but retained an R6 receipt gap:
+root-run deletion of manifest-listed execution.json rendered eight charts without warning. The
+[failed cycle-2 review](reviews/apex_workbench_v0_1_stabilization/CYCLE2_REVIEW.md) preserves that result.
+Cycle 3 checks presence/containment of every manifest-listed file before selected-record display or
+comparison, while retaining selected-content hash checks. Real-copy receipt-deletion regression added.
+
+Fresh complete Workbench selection: **78 passed** in 49.96 s, including all lifecycle/UI/integrity
+regressions and original/full-worker dynamic/LQR parity. The unchanged 148 scientific-unit passes
+remain applicable WORK evidence. No canonical science/config/profile/dependency or historical result
+change. [Resolution](../tools/apex_workbench/STABILIZATION.md),
+[machine record](../tools/apex_workbench/stabilization_record.json).
+
+This is the third and final permitted substantive correction cycle. Next: separate-context technical
+review of this exact SHA. If PASS, the user's explicit delegation permits complete functional
+Verification; governance contains no additional named-human authorization requirement for that
+already-delegated gate. Do not claim named external Secondary approval or Primary scientific/user
+acceptance. Preserve earlier conservative gate interpretations in historical handoffs; this records
+the current authorization assessment. Any remaining blocker requires a decision, not a fourth cycle.
+
+---
+
 # Current handoff — Workbench stabilization cycle 2 candidate
 
 **WORK_COMPLETE_PENDING_REVIEW.** Recorded 28 October 2026. Corrective base

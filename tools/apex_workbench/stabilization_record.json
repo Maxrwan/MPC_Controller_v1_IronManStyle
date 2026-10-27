@@ -11,9 +11,9 @@
     "tools/apex_workbench/jobs.py": "d0fe01231490f3f1a2ad7875cc4697d603cf6c404b383f48c07c3834b25b3fdf",
     "tools/apex_workbench/lifecycle.py": "794bd5ada88048a402a2d0946942ec9962e52b0caf2e72d7a8a3a0279f51f05a",
     "tools/apex_workbench/plots.py": "ec157954259b89e37987b57f5359659a625c7480df57a1abae1bfa5bb0359d95",
-    "tools/apex_workbench/storage.py": "c4d2eb5e5659c98cd7c4357484a1199cf7ef9e75c500b8fe74c74ce81df3289b",
+    "tools/apex_workbench/storage.py": "f1aa40dbca722e4e559aee00e653209b760279496b3746f2e3dc328003234c14",
     "tools/apex_workbench/worker.py": "198731c5b47320efd03824fd1abca722e534731c120db575bde047a4456fa49b",
-    "tools/apex_workbench/tests/test_corrections.py": "a1e8f1b913b5b68a3a711cff8bf5883643f31ebc2ac5ed509b57589694323381",
+    "tools/apex_workbench/tests/test_corrections.py": "487e79c20b41e8290e1f4e062f3cb4d6ec7b9a3ba0ccb84bf08a2c41ab9840d7",
     "tools/apex_workbench/tests/test_workbench.py": "de6ce8b4d99a364617cb459221af4568db7d787a7f1bcbcf8e87ef19631e1d59"
   },
   "first_test_source": {
@@ -89,17 +89,20 @@
     "launcher-missing-env.log": "5c7f614f1ec87a652035852463597ab80c158c72aa5931f9c842626c3f2400e2",
     "preservation_before.json": "1c21974cb8318735f4c066ff888335a94726779d597807279de8fc8710b05569",
     "cycle2-tests.log": "eb49b8d113a7f239c95027a8b2c948b1dc1092ca29bb91d3971dc384a38875c8",
-    "cycle2-source.json": "91f0f7d0df8368c86d858a6c1e98ff9012843657726f4e010a750a2dff71452c"
+    "cycle2-source.json": "91f0f7d0df8368c86d858a6c1e98ff9012843657726f4e010a750a2dff71452c",
+    "cycle3-tests.log": "9201c71a89b1d117fb20330921500f577b049ef82c019b3973edf08b10f2e7f0",
+    "cycle3-source.json": "a71f569ea9adb18af1b65839f7db35d91840da39107045003164c751a56c9198"
   },
   "commands": {
     "combined": "VECLIB_MAXIMUM_THREADS=1 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 PYTHONPATH=.:scripts:src tools/apex_workbench/.venv/bin/python -c 'from threading_study.config import configure_accelerate; native=configure_accelerate(1); import importlib.metadata,json,sys,apex,pytest; from tools.apex_workbench.configuration import ROOT; print(json.dumps({\"root\":str(ROOT),\"apex\":apex.__file__,\"python\":sys.version,\"native\":native,\"packages\":{p:importlib.metadata.version(p) for p in [\"numpy\",\"scipy\",\"streamlit\",\"psutil\",\"pytest\"]}},default=str),flush=True); raise SystemExit(pytest.main(sys.argv[1:]))' -q tools/apex_workbench/tests tests/unit/test_config.py tests/unit/test_dynamic_bicycle.py tests/unit/test_state.py tests/unit/test_frenet.py tests/unit/test_baseline.py tests/unit/test_runner.py --durations=8 --basetemp=results/apex_workbench_stabilization_20261028/cycle1-pytest > results/apex_workbench_stabilization_20261028/cycle1-tests.log 2>&1",
     "affected": "VECLIB_MAXIMUM_THREADS=1 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 PYTHONPATH=.:scripts:src tools/apex_workbench/.venv/bin/python -c 'from threading_study.config import configure_accelerate; configure_accelerate(1); import sys,pytest; raise SystemExit(pytest.main(sys.argv[1:]))' -q tools/apex_workbench/tests/test_corrections.py::test_request_changed_after_listing_is_quarantined tools/apex_workbench/tests/test_corrections.py::test_failed_execution_with_no_exports_remains_inspectable --basetemp=results/apex_workbench_stabilization_20261028/affected-pytest > results/apex_workbench_stabilization_20261028/affected-tests.log 2>&1",
-    "cycle2": "VECLIB_MAXIMUM_THREADS=1 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 PYTHONPATH=.:scripts:src tools/apex_workbench/.venv/bin/python -c 'from threading_study.config import configure_accelerate; configure_accelerate(1); import sys,pytest; raise SystemExit(pytest.main(sys.argv[1:]))' -q tools/apex_workbench/tests --durations=6 --basetemp=results/apex_workbench_stabilization_20261028/cycle2-pytest > results/apex_workbench_stabilization_20261028/cycle2-tests.log 2>&1"
+    "cycle2": "VECLIB_MAXIMUM_THREADS=1 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 PYTHONPATH=.:scripts:src tools/apex_workbench/.venv/bin/python -c 'from threading_study.config import configure_accelerate; configure_accelerate(1); import sys,pytest; raise SystemExit(pytest.main(sys.argv[1:]))' -q tools/apex_workbench/tests --durations=6 --basetemp=results/apex_workbench_stabilization_20261028/cycle2-pytest > results/apex_workbench_stabilization_20261028/cycle2-tests.log 2>&1",
+    "cycle3": "VECLIB_MAXIMUM_THREADS=1 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 PYTHONPATH=.:scripts:src tools/apex_workbench/.venv/bin/python -c 'from threading_study.config import configure_accelerate; configure_accelerate(1); import sys,pytest; raise SystemExit(pytest.main(sys.argv[1:]))' -q tools/apex_workbench/tests --durations=6 --basetemp=results/apex_workbench_stabilization_20261028/cycle3-pytest > results/apex_workbench_stabilization_20261028/cycle3-tests.log 2>&1"
   },
-  "formal_verification": "NOT_RUN: designated Engineering Review decision pending",
+  "formal_verification": "NOT_RUN: pending exact-cycle-3 technical Review PASS; user delegation authorizes functional gate thereafter, no additional named-human gate found",
   "canonical_scientific_changes": false,
-  "substantive_corrective_cycles": 2,
-  "next": "Separate-context review of containing exact corrective commit; preserve external review authority",
+  "substantive_corrective_cycles": 3,
+  "next": "Separate-context review of exact cycle-3 corrective commit; if PASS, execute complete tests/ plus Workbench acceptance set on that SHA under delegated authority. Final scientific/user acceptance remains separate.",
   "cycle1_review": {
     "reviewed_sha": "aeedf18e0df9b40ef7294ba15fc73e19b0d5884b",
     "decision": "FAIL",
@@ -445,5 +448,101 @@
       "test_request_changed_after_listing_is_quarantined",
       "test_failed_execution_with_no_exports_remains_inspectable"
     ]
+  },
+  "cycle2_review": {
+    "sha": "ca5c72fd255bd2b9511d891485087dc3174b9aea",
+    "decision": "FAIL",
+    "reviewer": "separate stabilization_review context",
+    "R1_R2": "Independent direct/AppTest and live process repeats pass",
+    "R6": "Root-run receipt deletion probe gives 8 charts and no errors/warnings",
+    "evidence": {
+      "independent-review-cycle2/lifecycle-probe.json": {
+        "sha256": "e87a2dceb2f0382f8f8508f632b6f4b53f9ce54be2c32d8e324aa1c4f5a75e94",
+        "observations": {
+          "status_read_race": {
+            "state": "quarantined",
+            "scientific_outcome": "unknown",
+            "evidence_state": "incomplete",
+            "error": "Incomplete record retained: Incomplete or unknown status contract"
+          },
+          "legacy_live_owner": true,
+          "listed_runs": [],
+          "malformed_status_admission": {
+            "exception": "RuntimeError",
+            "message": "A worker is still alive for legacy-active",
+            "owner_alive": true
+          },
+          "readable_status_control": {
+            "exception": "RuntimeError",
+            "message": "A worker is still alive for legacy-active",
+            "owner_alive": true
+          }
+        }
+      },
+      "independent-review-cycle2/followup-probe.json": {
+        "sha256": "846391e942bc95bf1ce1640cfb15e5644608cc657851107b024edc944ac82c06",
+        "observations": {
+          "app_status_read_race": {
+            "exceptions": [],
+            "errors": [
+              "Incomplete record retained: Incomplete or unknown status contract",
+              "Retained record quarantined; files preserved: Incomplete or unknown status contract"
+            ],
+            "charts": 0,
+            "retained_status": []
+          },
+          "terminal_live_supervisor": {
+            "exception": "RuntimeError",
+            "message": "Verified supervisor is still alive for terminal-record"
+          },
+          "terminal_owner_alive_and_unmodified": true,
+          "terminal_departed_supervisor": {
+            "exception": "RuntimeError",
+            "message": "REVIEW_ADMISSION_REACHED_PROVENANCE"
+          },
+          "terminal_record_unchanged": true
+        }
+      },
+      "root-receipt-probe/observation.json": {
+        "sha256": "a6ea13969467c3b32d00f22294807155a08bd56343e59335b103460cca321522",
+        "observations": {
+          "sha": "ca5c72fd255bd2b9511d891485087dc3174b9aea",
+          "fixture": "results/apex_workbench_stabilization_20261028/root-receipt-probe/record",
+          "deleted": "execution.json",
+          "exceptions": [],
+          "errors": [],
+          "warnings": [],
+          "charts": 8
+        }
+      }
+    }
+  },
+  "cycle3_test_source": {
+    "base_sha": "ca5c72fd255bd2b9511d891485087dc3174b9aea",
+    "tracked_diff_sha256": "6ff15086e3677f3dc3a3f05620b1032b0e5b0858a96348066d40c123800de585",
+    "files": {
+      "Launch_APEX_Workbench.command": "980ec823f4daa2652ea960a5fb58e3fa05da757add867a6b4a76d13a4a2fb21f",
+      "tools/apex_workbench/__init__.py": "194595c8c9d46745693697c8417c2408fbe76e3254ae716f26b50c47f4723396",
+      "tools/apex_workbench/app.py": "894d1b365d5b0fcbb2f93e5f72ffcad3929237a6b4ba54258941cea7512a9f27",
+      "tools/apex_workbench/comparison.py": "408181cde33c284a22eb0e06cd12b5e11aaef74c7c67bc160f63f87bb2420dd1",
+      "tools/apex_workbench/configuration.py": "e82b19ace25655fadbe8216eb01eb2038b37698d6ef614ad8996eae3527e97e4",
+      "tools/apex_workbench/jobs.py": "d0fe01231490f3f1a2ad7875cc4697d603cf6c404b383f48c07c3834b25b3fdf",
+      "tools/apex_workbench/lifecycle.py": "794bd5ada88048a402a2d0946942ec9962e52b0caf2e72d7a8a3a0279f51f05a",
+      "tools/apex_workbench/plots.py": "ec157954259b89e37987b57f5359659a625c7480df57a1abae1bfa5bb0359d95",
+      "tools/apex_workbench/storage.py": "f1aa40dbca722e4e559aee00e653209b760279496b3746f2e3dc328003234c14",
+      "tools/apex_workbench/worker.py": "198731c5b47320efd03824fd1abca722e534731c120db575bde047a4456fa49b",
+      "tools/apex_workbench/tests/test_corrections.py": "487e79c20b41e8290e1f4e062f3cb4d6ec7b9a3ba0ccb84bf08a2c41ab9840d7",
+      "tools/apex_workbench/tests/test_workbench.py": "de6ce8b4d99a364617cb459221af4568db7d787a7f1bcbcf8e87ef19631e1d59"
+    }
+  },
+  "cycle3_tests": {
+    "selection": "tools/apex_workbench/tests",
+    "passed": 78,
+    "failed": 0,
+    "skipped": 0,
+    "exit": 0,
+    "seconds": 49.96,
+    "scientific_unit_reuse": 148,
+    "scope": "focused WORK, not formal Verification"
   }
 }
