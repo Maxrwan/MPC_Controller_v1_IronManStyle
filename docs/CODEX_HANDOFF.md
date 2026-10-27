@@ -1,3 +1,24 @@
+# Current handoff — Workbench double-click launcher
+
+**WORK_COMPLETE_PENDING_REVIEW.** Recorded 27 October 2026. Authorized launcher-only follow-up
+on `codex/apex-workbench-v0-1`, base `a0b4a98b14f53469735ca4dd9f7a93a7b0651860`.
+The containing commit is the delivery revision; exact SHA/URL is reported after push.
+
+Added executable [`Launch_APEX_Workbench.command`](../Launch_APEX_Workbench.command) at the
+repository root and documented double-click use in the Workbench README. It resolves its own
+location, uses the existing separate environment, starts only the loopback web server, waits
+for readiness and opens the default browser. It reports missing setup/startup failures and
+retains the Terminal window during use. Control-C stops the owned server.
+
+Scoped checks: zsh and embedded Python syntax; actual launch from `/private/tmp`; automatic
+browser opening with the APEX Workbench page confirmed; Control-C teardown; unchanged hashes
+for 333 scientific source/configuration files; whitespace/link checks. Smoke log and check
+record: `results/apex_workbench_launcher_20261027/`. No simulation or numerical test suite ran;
+this change does not alter application/scientific logic or historical validation records.
+Stop for Engineering Review; no additional scientific work is authorized.
+
+---
+
 # Current handoff — APEX Workbench V0.1 local tooling
 
 **WORK_COMPLETE_PENDING_REVIEW.** Recorded 27 October 2026. Separately authorized local

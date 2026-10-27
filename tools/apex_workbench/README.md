@@ -8,6 +8,12 @@ controller, profile, scientific exporter, or historical evidence. Delivery statu
 
 ## Setup and launch
 
+On this configured Mac, double-click
+[Launch_APEX_Workbench.command](../../Launch_APEX_Workbench.command) in the repository root.
+It starts the local server and opens your default browser when ready. Keep the Terminal window
+open while using Workbench; press **Control-C** there to stop it. The launcher works regardless
+of Terminal's current folder and does not run an experiment automatically.
+
 From the repository root, using Python 3.12 and the existing core environment:
 
 ```sh
