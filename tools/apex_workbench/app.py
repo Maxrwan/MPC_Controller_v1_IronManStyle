@@ -9,7 +9,7 @@ import streamlit as st
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 
-from tools.apex_workbench import jobs, plots  # noqa: E402
+from tools.apex_workbench import comparison, jobs, plots, storage  # noqa: E402
 from tools.apex_workbench.configuration import ADAPTERS, DEFAULTS, RUNS, validate  # noqa: E402
 
 st.set_page_config(page_title="APEX Workbench", page_icon="🏎", layout="wide")
@@ -93,9 +93,9 @@ with st.sidebar:
     )
 
 RUNS.mkdir(parents=True, exist_ok=True)
-retained = sorted(
-    [p for p in RUNS.iterdir() if p.is_dir() and (p / "request.json").is_file()], reverse=True
-)
+retained, incomplete = storage.list_runs(RUNS)
+for problem in incomplete:
+    st.warning("Incomplete record preserved and excluded from selection: " + problem)
 by_id = {p.name: p for p in retained}
 
 if page == "Capabilities":
@@ -107,27 +107,29 @@ if page == "Compare runs":
     st.subheader("Compare retained experiments")
     selected = st.multiselect("Choose two runs", list(by_id), max_selections=2)
     if len(selected) == 2:
-        records = [jobs.read_json(by_id[key] / "request.json") for key in selected]
-        if records[0]["adapter"] != records[1]["adapter"]:
-            st.warning("Choose runs from the same adapter for a comparable overlay.")
-        elif any(
-            jobs.read_json(by_id[key] / "status.json")["state"] != "completed" for key in selected
-        ):
-            st.warning(
-                "Comparison requires two completed executions. Inspect failed runs individually."
-            )
+        decision = comparison.eligibility(*(by_id[key] for key in selected))
+        label = decision["classification"].upper()
+        if label == "CONTROLLED":
+            st.success("Controlled comparison: " + decision["reason"])
+        elif label == "ILLUSTRATIVE":
+            st.warning("Illustrative comparison only: " + decision["reason"])
         else:
-            st.caption(
-                "Raw samples over elapsed simulation time; no interpolation or acceptance claim."
-            )
-            st.json({key: record["effective"] for key, record in zip(selected, records)})
+            st.error("Invalid comparison — telemetry quarantined: " + decision["reason"])
+        st.json(
+            {"varied_inputs": decision["varied_inputs"], "differences": decision["differences"]}
+        )
+        if label != "INVALID":
+            st.caption("Raw elapsed simulation time; no interpolation or acceptance claim.")
             pairs = [(key, by_id[key]) for key in selected]
-            for columns, unit in [
-                (["vx"], "vx [m/s]"),
-                (["e_y"], "e_y [m]"),
-                (["delta"], "Steering [rad]"),
-            ]:
-                st.plotly_chart(plots.series(pairs, columns, unit), width="stretch")
+            try:
+                for columns, unit in [
+                    (["vx"], "vx [m/s]"),
+                    (["e_y"], "e_y [m]"),
+                    (["delta"], "Steering [rad]"),
+                ]:
+                    st.plotly_chart(plots.series(pairs, columns, unit), width="stretch")
+            except storage.IntegrityError as error:
+                st.error("Telemetry quarantined: " + str(error))
     st.stop()
 
 if not retained:
@@ -148,12 +150,18 @@ st.json(request["effective"], expanded=False)
 
 @st.fragment(run_every=1)
 def progress():
-    status = jobs.read_json(directory / "status.json")
+    status = jobs.status_for(directory)
     state = status["state"]
     st.metric("Execution", state.upper())
+    st.caption(
+        "Scientific outcome: "
+        + status.get("scientific_outcome", state)
+        + " · Evidence: "
+        + status.get("evidence_state", "legacy — hashes checked on use")
+    )
     if status.get("error"):
         st.error(status["error"])
-    if state in {"queued", "running"}:
+    if state in jobs.ACTIVE:
         st.caption("Fresh worker running. Closing this page does not cancel the bounded run.")
         if st.button("Cancel run"):
             jobs.cancel_run(directory)
@@ -164,33 +172,45 @@ def progress():
 
 
 progress()
-status = jobs.read_json(directory / "status.json")
+status = jobs.status_for(directory)
 trajectory_tab, states_tab, evidence_tab, notes_tab = st.tabs(
     ["Trajectory", "States & controls", "Evidence & logs", "Learning notes"]
 )
 with trajectory_tab:
-    if status["state"] in {"queued", "running"}:
+    if status["state"] in jobs.ACTIVE:
         st.info("Waiting for the experiment to finish. Status updates automatically.")
     elif (directory / "experiment/trajectory_xy.csv").exists():
-        st.plotly_chart(plots.trajectory(directory), width="stretch")
+        try:
+            st.plotly_chart(plots.trajectory(directory), width="stretch")
+        except storage.IntegrityError as error:
+            st.error("Telemetry quarantined: " + str(error))
         st.caption(
             "XY is derived from retained Frenet states using apex.coordinates.frenet. "
             "Track boundaries describe a CG corridor; no swept-body safety guarantee."
         )
     else:
         st.info("Trajectory unavailable: this run produced no complete coordinate export.")
-    if (directory / "worker_result.json").exists():
-        st.json(jobs.read_json(directory / "worker_result.json"), expanded=False)
+    if status["state"] not in jobs.ACTIVE and (directory / "worker_result.json").exists():
+        try:
+            st.json(storage.artifact_json(directory, "worker_result.json"), expanded=False)
+        except storage.IntegrityError as error:
+            st.error("Summary quarantined: " + str(error))
     st.caption(
         "COMPLETED means the entry point exited successfully. "
         "Scientific acceptance remains separate."
     )
 with states_tab:
-    if status["state"] in {"queued", "running"}:
+    if status["state"] in jobs.ACTIVE:
         st.info("Telemetry is displayed after execution to avoid reading partially written CSVs.")
     else:
-        data = plots.read_frame(directory, "states.csv")
-        if data.empty:
+        try:
+            data = plots.read_frame(directory, "states.csv")
+        except storage.IntegrityError as error:
+            st.error("Telemetry quarantined: " + str(error))
+            data = None
+        if data is None:
+            pass
+        elif data.empty:
             st.info("State telemetry unavailable for this run.")
         else:
             pairs = [("Actual", directory)]
@@ -203,9 +223,12 @@ with states_tab:
                 (["delta"], "Steering [rad]", None),
                 (["a_cmd"], "Commanded Fx/m [m/s²]", None),
             ]:
-                st.plotly_chart(
-                    plots.series(pairs, columns, unit, reference=reference), width="stretch"
-                )
+                try:
+                    st.plotly_chart(
+                        plots.series(pairs, columns, unit, reference=reference), width="stretch"
+                    )
+                except storage.IntegrityError as error:
+                    st.error("Telemetry quarantined: " + str(error))
             if "boundary_violation" in data:
                 st.write("Sampled CG boundary violations:", int(data.boundary_violation.sum()))
             else:
@@ -221,7 +244,16 @@ with evidence_tab:
     for name in ["numerical_environment.json", "artifacts.json"]:
         if (directory / name).exists():
             with st.expander(name):
-                st.json(jobs.read_json(directory / name))
+                try:
+                    if status["state"] in jobs.ACTIVE:
+                        st.caption("Evidence finalization pending")
+                    elif name == "artifacts.json":
+                        st.json(jobs.read_json(directory / name))
+                        st.caption("Manifest is validated when selected data is consumed.")
+                    else:
+                        st.json(storage.artifact_json(directory, name))
+                except (storage.IntegrityError, OSError, ValueError) as error:
+                    st.error("Evidence unavailable/unverified: " + str(error))
     for name in ["stdout.log", "stderr.log", "supervisor.log"]:
         with st.expander(name):
             path = directory / name
@@ -230,20 +262,24 @@ with evidence_tab:
                 language=None,
             )
             st.caption("Last 100,000 characters displayed; full log retained on disk.")
-    if status["state"] not in {"queued", "running"}:
+    if status["state"] not in jobs.ACTIVE:
         archive = io.BytesIO()
         with zipfile.ZipFile(archive, "w", zipfile.ZIP_DEFLATED) as zipped:
             for path in directory.rglob("*"):
                 if path.is_file():
                     zipped.write(path, path.relative_to(directory))
         st.download_button(
-            "Download run evidence (.zip)", archive.getvalue(), selected + ".zip", "application/zip"
+            "Download retained files (.zip, may include unverified evidence)",
+            archive.getvalue(),
+            selected + ".zip",
+            "application/zip",
         )
 with notes_tab:
     st.write("**My prediction**")
     st.write(request["prediction"] or "No prediction recorded.")
-    versions = sorted(directory.glob("notes-*.json"))
-    latest = jobs.read_json(versions[-1]) if versions else {}
+    latest, note_problems = storage.latest_note(directory)
+    for problem in note_problems:
+        st.warning(problem)
     with st.form("notes_" + selected):
         observation = st.text_area(
             "My observation", value=latest.get("observation", ""), max_chars=8000

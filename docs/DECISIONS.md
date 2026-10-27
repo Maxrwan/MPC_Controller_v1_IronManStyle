@@ -1171,3 +1171,29 @@ See the [Workbench README](../tools/apex_workbench/README.md),
 [capability matrix](../tools/apex_workbench/CAPABILITY_MATRIX.md) and
 [focused validation](../tools/apex_workbench/VALIDATION.md). Engineering Review is next;
 formal full-suite verification and scientific acceptance remain separate.
+
+
+## ADR-170 — Correct Workbench ownership, publication and evidence boundaries
+
+Recorded 27 October 2026. Status: `WORK_COMPLETE_PENDING_REVIEW`, not Engineering acceptance.
+The explicit R1–R6 correction assignment accepts the failed review as the basis for bounded
+corrective WORK only. Preserve the failed review and its evidence unchanged. No new controller,
+model, experiment adapter, parameter, dependency, scientific campaign or V0.2 work is authorized.
+
+Keep the existing subprocess design. Pass the same flock descriptor through supervisor to worker;
+the worker retains it until process exit and independently monitors supervisor identity, cancellation
+and the existing limits. Verify PID creation time, full command, role and run path before signalling
+a worker. Reconcile abandoned corrected records only under the execution lease; legacy records
+remain read-only. Interrupted/uncertain execution cannot become a successful scientific outcome.
+
+Publish initial metadata/status together and complete learning-note versions atomically. Record
+scientific outcome in an exclusive receipt; commit evidence validity separately, with the artifact
+manifest hash published in final status last. Retain evidence failure and interrupted finalization.
+Validate selected artifacts before plotting, and classify comparisons using recorded scientific
+identity/composition/geometry/timing/schema/units and explicit input differences. Documentation-only
+Git revisions do not alone invalidate controlled comparisons. No statistical framework is added.
+
+See [correction handoff and evidence](../tools/apex_workbench/CORRECTIONS.md). These are local
+process/data integrity mechanisms, not physical safety, hardware watchdog or real-time guarantees.
+The exact corrected revision needs a new Engineering Review before a separately authorized
+Verification gate. No source, profile, historical result or failed-review promotion is implied.

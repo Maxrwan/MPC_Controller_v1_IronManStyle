@@ -1,0 +1,186 @@
+{
+  "status": "WORK_COMPLETE_PENDING_REVIEW",
+  "base_revision": "5495781d461236d1e562e1280e594a0e8dc43e20",
+  "branch": "codex/apex-workbench-v0-1",
+  "delivery_revision": "Containing commit; exact SHA/URL supplied after push",
+  "source_sha256": {
+    "tools/apex_workbench/worker.py": "198731c5b47320efd03824fd1abca722e534731c120db575bde047a4456fa49b",
+    "tools/apex_workbench/configuration.py": "e82b19ace25655fadbe8216eb01eb2038b37698d6ef614ad8996eae3527e97e4",
+    "tools/apex_workbench/__init__.py": "194595c8c9d46745693697c8417c2408fbe76e3254ae716f26b50c47f4723396",
+    "tools/apex_workbench/comparison.py": "36f144f06966dade4841e792c2bd4dc589ab2fb50c813c93ad2a368e3543e56e",
+    "tools/apex_workbench/jobs.py": "705f57df6b1cf3a59684d1bfa64a13363bc50249cd73560212024d353ab77f97",
+    "tools/apex_workbench/plots.py": "39a9641cef4e1ba8bb742d8a6c2fffb451c158b8e457c7c31e9abfe8744f7f3d",
+    "tools/apex_workbench/lifecycle.py": "794bd5ada88048a402a2d0946942ec9962e52b0caf2e72d7a8a3a0279f51f05a",
+    "tools/apex_workbench/storage.py": "0307564c402e1c0c606d71f1390d65218752ce4c8aabad4419ee21b311c76108",
+    "tools/apex_workbench/app.py": "6c3e4fdd8c46d2eb8bd95e46e4e51c1c8a1af3cd8eb1eec0a64bb60e6ee77119",
+    "tools/apex_workbench/tests/test_workbench.py": "de6ce8b4d99a364617cb459221af4568db7d787a7f1bcbcf8e87ef19631e1d59",
+    "tools/apex_workbench/tests/test_corrections.py": "8f4492e8db60a11c0beaefd6fe479c296cb1422db01255743d8c6096646f1058"
+  },
+  "environment": {
+    "python": "3.12.14 (main, Sep  1 2026, 14:09:38) [Clang 22.1.3 ]",
+    "native": {
+      "requested_ceiling": 1,
+      "set_status": 0,
+      "blas_threading_mode": 1,
+      "mode_name": "single",
+      "exact_active_thread_count_available": false
+    },
+    "packages": {
+      "numpy": "2.5.3",
+      "scipy": "1.18.1",
+      "pandas": "3.0.6",
+      "matplotlib": "3.11.2",
+      "streamlit": "1.66.1",
+      "plotly": "6.9.0",
+      "psutil": "7.2.2",
+      "threadpoolctl": "3.7.0",
+      "pytest": "9.1.1"
+    }
+  },
+  "resolution_matrix": {
+    "R1": {
+      "candidate_status": "addressed_pending_review",
+      "mechanism": "Inherited worker lease, independent guard, verified process identity, conservative reconciliation"
+    },
+    "R2": {
+      "candidate_status": "addressed_pending_review",
+      "mechanism": "Atomic hidden-directory initial publication and tolerant readers"
+    },
+    "R3": {
+      "candidate_status": "addressed_pending_review",
+      "mechanism": "Atomic exclusive note publication and append-only history"
+    },
+    "R4": {
+      "candidate_status": "addressed_pending_review",
+      "mechanism": "Controlled/illustrative/invalid scientific compatibility plus explicit varied inputs"
+    },
+    "R5": {
+      "candidate_status": "addressed_pending_review",
+      "mechanism": "Immutable scientific receipt; separate evidence status; final manifest anchor committed last"
+    },
+    "R6": {
+      "candidate_status": "addressed_pending_review",
+      "mechanism": "Selected artifact verification and identity-aware bounded cache; quarantine before plots"
+    }
+  },
+  "checks": [
+    {
+      "log": "initial-tests.log",
+      "passed": 17,
+      "failed": 0,
+      "exit_code": 0,
+      "role": "initial prerequisite"
+    },
+    {
+      "log": "correction-tests.log",
+      "passed": 26,
+      "failed": 1,
+      "exit_code": 1,
+      "disposition": "Font-cache lock disappearance; sampler corrected; raw interruption preserved"
+    },
+    {
+      "log": "sampler-repair-tests.log",
+      "passed": 1,
+      "failed": 1,
+      "exit_code": 1,
+      "disposition": "LQR worker parity passed; sampler test missing Path import corrected"
+    },
+    {
+      "log": "final-tests.log",
+      "passed": 99,
+      "errors": 18,
+      "exit_code": 1,
+      "disposition": "68 scientific passes retained; dependent seed errors caused by post-status lease release window"
+    },
+    {
+      "log": "confirmed-tests.log",
+      "passed": 49,
+      "failed": 0,
+      "skipped": 0,
+      "exit_code": 0,
+      "role": "final corrected Workbench selection"
+    }
+  ],
+  "scientific_unit_passes": {
+    "passed": 68,
+    "log": "final-tests.log",
+    "reused_within_this_work": true,
+    "applicability": "Canonical source, scripts, unit tests/fixtures, core dependencies and numerical environment unchanged; only tools changed after this selection",
+    "selection": [
+      "tests/unit/test_frenet.py",
+      "tests/unit/test_baseline.py",
+      "tests/unit/test_runner.py"
+    ]
+  },
+  "parity": "Byte-identical original-entry-point and supervised-worker states/controls/summary outputs for supported dynamic and LQR cases",
+  "log_sha256": {
+    "initial-tests.log": "af63a7066b5a6d8c128b57b181a2b14a205b39c5b31981b002d6c55fa81491db",
+    "correction-tests.log": "26b1a321eeee8d25ed869fec0ddba4013e2b79484d48c139dc9ab53cc034244f",
+    "sampler-repair-tests.log": "a70447934baefe3ab72fa5091e49ff201a89709090e712c28b25f70902b2b125",
+    "final-tests.log": "53f5107f2ee0b54d682e1afad1408db03dff305e7fe8307ac0b59cafb1df4a4f",
+    "confirmed-tests.log": "962d095f2696e01a5f349806bcb87026aa75c1901b040d8156ed6fd01da6488e"
+  },
+  "preservation": {
+    "original_tracked_files": 881,
+    "unexpected_original_file_changes": [],
+    "historical_result_files": 11892,
+    "historical_result_metadata_changes": [],
+    "historical_check_limit": "size/mtime only, not a full content rehash or backup",
+    "failed_review_preserved": true,
+    "canonical_scientific_files_unchanged": true,
+    "new_dependencies": false
+  },
+  "scope_exclusions": [
+    "Formal Verification",
+    "New scientific campaigns",
+    "V0.2",
+    "New adapters/parameters",
+    "NMPC/async/measured latency",
+    "VIS-2/Efficiency/hardware",
+    "Full regression/resource-exhaustion qualification"
+  ],
+  "next_action": "New Engineering Review of correction revision, then separate Verification authorization",
+  "commands": {
+    "confirmed_workbench": {
+      "cwd": "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle",
+      "environment": {
+        "VECLIB_MAXIMUM_THREADS": "1",
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "PYTHONPATH": ".:scripts:src"
+      },
+      "argv": [
+        "tools/apex_workbench/.venv/bin/python",
+        "-c",
+        "from threading_study.config import configure_accelerate; native=configure_accelerate(1); import json, sys, pytest; print(json.dumps(native)); raise SystemExit(pytest.main(sys.argv[1:]))",
+        "-q",
+        "tools/apex_workbench/tests",
+        "--durations=6",
+        "--basetemp=results/apex_workbench_corrections_20261027/confirmed-pytest"
+      ],
+      "stdout_stderr": "results/apex_workbench_corrections_20261027/confirmed-tests.log"
+    },
+    "combined_scientific_selection": {
+      "cwd": "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle",
+      "environment": {
+        "VECLIB_MAXIMUM_THREADS": "1",
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "PYTHONPATH": ".:scripts:src"
+      },
+      "argv": [
+        "tools/apex_workbench/.venv/bin/python",
+        "-c",
+        "from threading_study.config import configure_accelerate; native=configure_accelerate(1); import importlib.metadata, json, sys, pytest; print(json.dumps({\"python\":sys.version,\"native\":native,\"packages\":{n:importlib.metadata.version(n) for n in [\"numpy\",\"scipy\",\"pandas\",\"matplotlib\",\"streamlit\",\"plotly\",\"psutil\",\"threadpoolctl\",\"pytest\"]}})); raise SystemExit(pytest.main(sys.argv[1:]))",
+        "-q",
+        "tools/apex_workbench/tests",
+        "tests/unit/test_frenet.py",
+        "tests/unit/test_baseline.py",
+        "tests/unit/test_runner.py",
+        "--durations=8",
+        "--basetemp=results/apex_workbench_corrections_20261027/final-pytest"
+      ],
+      "stdout_stderr": "results/apex_workbench_corrections_20261027/final-tests.log"
+    }
+  }
+}

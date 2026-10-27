@@ -1,3 +1,44 @@
+# Current handoff — Workbench V0.1 R1–R6 corrections
+
+**WORK_COMPLETE_PENDING_REVIEW.** Recorded 27 October 2026. Explicit corrective WORK baseline
+`5495781d461236d1e562e1280e594a0e8dc43e20`, branch `codex/apex-workbench-v0-1`.
+The containing delivery commit binds the tested source hashes; exact SHA/URL is reported after
+push. The original failed review and supporting evidence remain unchanged. No self-approval,
+formal Verification, V0.2, new adapter/parameter/dependency or canonical scientific change.
+
+[Resolution matrix, tests, retained failures and limits](../tools/apex_workbench/CORRECTIONS.md),
+[source/environment/commands/preservation record](../tools/apex_workbench/correction_record.json).
+ADR-170 records the corrective ownership/publication/evidence boundaries.
+
+R1: worker inherits execution lease, independently guards supervisor loss/cancellation/limits,
+verifies process birth/command/role/run identity before signalling, and conservatively reconciles
+stale corrected records. R2/R3: atomic initial record and append-only complete note publication.
+R4: controlled/illustrative/invalid comparison over verified scientific/composition/geometry/
+timing/environment/schema identity, with explicit varied inputs and doc-only Git revisions allowed.
+R5: immutable scientific receipt, separate evidence validity, final manifest anchor published last.
+R6: selected-artifact hashes checked before telemetry ingestion; changed data quarantined.
+
+Final Workbench selection: **49 passed**, including real supervisor SIGKILL/lease/recovery,
+PID-reuse rejection, two-session publication, note interruption/concurrency, comparison/UI,
+manifest failure and tampered-file cases. Original-entry-point and full-worker dynamic/LQR
+states/controls/summaries retain byte parity. **68 scientific unit passes** from the preceding
+combined invocation remain applicable: canonical sources/scripts/tests/fixtures/environment are
+unchanged. That invocation's 18 dependent fixture setup errors and earlier sampler interruption/
+test import failure remain in retained logs; corrected completion/lease handling and tests passed.
+No unchanged scientific selection was unnecessarily repeated. Full logs/raw runs:
+`results/apex_workbench_corrections_20261027/`.
+
+Ruff/format, whitespace, links and source/preservation checks passed. All 11,892 pre-existing
+result files retain size/mtime (not a complete content rehash or backup); canonical files,
+failed review and frozen evidence match their original hashes. Existing user-owned web server
+is preserved; no owned test worker/supervisor remains. Full regression/resource-exhaustion,
+NMPC/async/measured latency, VIS-2, Efficiency and hardware remain unexecuted.
+
+Next: new Engineering Review of the exact correction revision and evidence, followed only by
+an explicitly selected formal Verification gate. Candidate resolution of R1–R6 is not acceptance.
+
+---
+
 # Current handoff — Workbench V0.1 Engineering Review
 
 **ENGINEERING_REVIEW_COMPLETE_PENDING_DECISION. Decision: FAIL.** Recorded 27 October 2026.

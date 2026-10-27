@@ -17,10 +17,14 @@ def wait_for_run(directory):
     deadline = time.monotonic() + 65
     while time.monotonic() < deadline:
         status = jobs.read_json(directory / "status.json")
-        if status["state"] not in {"queued", "running"}:
+        if status["state"] not in jobs.ACTIVE:
             # Artifact hashes are written immediately after final status.
             if (directory / "artifacts.json").exists():
-                return status
+                try:
+                    with jobs.execution_lock():
+                        return status
+                except RuntimeError:
+                    pass
         time.sleep(0.1)
     jobs.cancel_run(directory)
     pytest.fail(f"Worker did not finish: {directory}")
@@ -147,7 +151,15 @@ def test_measurement_guard_and_disk_floor(tmp_path, monkeypatch):
 def test_failure_logs_and_timeout_retained(tmp_path, monkeypatch):
     failed = tmp_path / "failed"
     failed.mkdir()
-    jobs.write_json(failed / "request.json", {"adapter": "invalid", "effective": {}})
+    jobs.write_json(
+        failed / "request.json",
+        {
+            "adapter": "invalid",
+            "effective": {},
+            "execution_lock": str(jobs.RUNS / ".execution.lock"),
+            "provenance": {"limits": jobs.LIMITS},
+        },
+    )
     jobs.supervise(failed)
     assert jobs.read_json(failed / "status.json")["state"] == "failed"
     assert "Unsupported experiment" in (failed / "stderr.log").read_text()
@@ -155,7 +167,13 @@ def test_failure_logs_and_timeout_retained(tmp_path, monkeypatch):
     timed = tmp_path / "timed"
     timed.mkdir()
     jobs.write_json(
-        timed / "request.json", {"adapter": "dynamic_demo", "effective": DEFAULTS["dynamic_demo"]}
+        timed / "request.json",
+        {
+            "adapter": "dynamic_demo",
+            "effective": DEFAULTS["dynamic_demo"],
+            "execution_lock": str(jobs.RUNS / ".execution.lock"),
+            "provenance": {"limits": jobs.LIMITS},
+        },
     )
     monkeypatch.setitem(jobs.LIMITS, "wall_s", -1)
     jobs.supervise(timed)
@@ -164,12 +182,12 @@ def test_failure_logs_and_timeout_retained(tmp_path, monkeypatch):
 
 
 def test_plot_reads_actual_csv_and_leaves_missing_metrics_empty(tmp_path):
-    output = tmp_path / "experiment"
-    output.mkdir()
-    (output / "states.csv").write_text("time,vx\n0,2\n0.1,2.125\n")
-    figure = plots.series([("run", tmp_path)], ["vx"], "vx [m/s]")
-    assert list(figure.data[0].y) == [2, 2.125]
-    assert not plots.series([("run", tmp_path)], ["invented_metric"], "").data
+    directory = jobs.start_run("dynamic_demo", {"duration": 0.01, "dt": 0.005}, runs=tmp_path)
+    assert wait_for_run(directory)["state"] == "completed"
+    data = plots.read_frame(directory, "states.csv")
+    figure = plots.series([("run", directory)], ["vx"], "vx [m/s]")
+    assert list(figure.data[0].y) == list(data.vx)
+    assert not plots.series([("run", directory)], ["invented_metric"], "").data
 
 
 def test_ui_real_run_and_invalid_input(tmp_path, monkeypatch):

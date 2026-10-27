@@ -86,11 +86,37 @@ def export_geometry(adapter, effective, output):
             right = frenet_to_global(track, progress, -sample.right_width, 0)
             writer.writerow([progress, sample.x, sample.y, left.x, left.y, right.x, right.y])
 
+    from apex.state import CONTROL_NAMES, CONTROL_UNITS, STATE_NAMES, STATE_UNITS
+    from tools.apex_workbench.storage import write_json
 
-def main(directory: Path) -> int:
+    control_path = output / "controls.csv"
+    with control_path.open() if control_path.exists() else (output / "states.csv").open() as stream:
+        control_columns = csv.DictReader(stream).fieldnames
+    write_json(
+        output / "telemetry_contract.json",
+        {
+            "schema": "apex-workbench-telemetry/1",
+            "state_names": list(STATE_NAMES),
+            "state_units": list(STATE_UNITS),
+            "control_names": list(CONTROL_NAMES),
+            "control_units": list(CONTROL_UNITS),
+            "time_unit": "s",
+            "xy_unit": "m",
+            "state_columns": list(rows[0]),
+            "control_columns": control_columns,
+        },
+        exclusive=True,
+    )
+
+
+def main(directory: Path, lock_fd: int) -> int:
     # Apply kernel limits and native controls BEFORE any numerical imports.
     resource.setrlimit(resource.RLIMIT_CPU, (30, 31))
     resource.setrlimit(resource.RLIMIT_FSIZE, (16 * 1024**2, 16 * 1024**2))
+    from tools.apex_workbench.lifecycle import start_guard
+
+    # This guard and the inherited lock remain effective until this process exits.
+    start_guard(directory, lock_fd)
     sys.path[:0] = [str(ROOT / "scripts"), str(ROOT / "src")]
     environment = {"python": sys.version, "platform": sys.platform}
     if sys.platform == "darwin":
@@ -130,4 +156,4 @@ def main(directory: Path) -> int:
 
 
 if __name__ == "__main__":
-    raise SystemExit(main(Path(sys.argv[1]).resolve()))
+    raise SystemExit(main(Path(sys.argv[1]).resolve(), int(sys.argv[2])))

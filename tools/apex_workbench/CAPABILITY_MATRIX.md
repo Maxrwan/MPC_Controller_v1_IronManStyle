@@ -24,3 +24,8 @@ All vehicle/track values are **synthetic**, not measured or identified. Status d
 Existing result formats: the dynamic demo emits states.csv and summary.json; LQR emits states.csv,
 controls.csv and summary.json. NMPC/async additionally emit solver events/predictions/timing, but
 those are not exposed by these adapters. No fake solver, constraint or timing series is generated.
+
+R1–R6 corrections add no editable parameters or experiments. Runs now use worker-owned execution
+leases, atomic publication, separate execution/evidence outcomes, verified selected artifacts and
+controlled/illustrative/invalid comparison eligibility. Historical records and the original failed
+review are preserved. See [CORRECTIONS.md](CORRECTIONS.md); a new Engineering Review is required.

@@ -3,7 +3,6 @@
 import fcntl
 import hashlib
 import importlib.metadata
-import json
 import os
 import shutil
 import signal
@@ -16,6 +15,7 @@ from pathlib import Path
 
 import psutil
 
+from tools.apex_workbench import lifecycle, storage
 from tools.apex_workbench.configuration import ROOT, RUNS, validate, validate_note
 
 LIMITS = {
@@ -31,19 +31,9 @@ def timestamp():
     return datetime.now(UTC).isoformat()
 
 
-def write_json(path: Path, value):
-    temporary = path.with_suffix(".tmp")
-    temporary.write_text(json.dumps(value, indent=2, allow_nan=False) + "\n")
-    temporary.replace(path)
-
-
-def read_json(path: Path):
-    return json.loads(path.read_text())
-
-
-def sha256(path: Path):
-    with path.open("rb") as stream:
-        return hashlib.file_digest(stream, "sha256").hexdigest()
+write_json = storage.write_json
+read_json = storage.read_json
+sha256 = storage.sha256
 
 
 def provenance():
@@ -127,31 +117,153 @@ def worker_environment(directory):
     return env
 
 
+ACTIVE = {"queued", "running", "finalizing"}
+
+
+def execution_lock():
+    RUNS.mkdir(parents=True, exist_ok=True)
+    lock = (RUNS / ".execution.lock").open("a+")
+    try:
+        fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+    except BlockingIOError as error:
+        lock.close()
+        raise RuntimeError("Another Workbench experiment is running") from error
+    return lock
+
+
+def finalize(directory, outcome, **details):
+    """Scientific outcome survives a failed evidence commit. Status commits last."""
+    receipt = directory / "execution.json"
+    if not receipt.exists():
+        write_json(receipt, {"scientific_outcome": outcome, **details}, exclusive=True)
+    elif read_json(receipt).get("scientific_outcome") != outcome:
+        raise storage.IntegrityError("Refusing to change the recorded scientific outcome")
+    status = {
+        "record_version": 2,
+        "state": "finalizing",
+        "scientific_outcome": outcome,
+        "evidence_state": "pending",
+        "updated_utc": timestamp(),
+        **details,
+    }
+    write_json(directory / "status.json", status)
+    try:
+        manifest = {
+            str(p.relative_to(directory)): {"sha256": sha256(p), "bytes": p.stat().st_size}
+            for p in directory.rglob("*")
+            if p.is_file()
+            and not p.name.startswith(".")
+            and p.name not in {"status.json", "artifacts.json", "supervisor.log", "cancel.request"}
+            and not p.name.startswith("notes-")
+        }
+        target = directory / "artifacts.json"
+        if target.exists():
+            # Interrupted finalization may have published the complete manifest already.
+            if read_json(target) != manifest:
+                raise storage.IntegrityError(
+                    "Existing manifest differs; refusing to replace evidence"
+                )
+        else:
+            write_json(target, manifest, exclusive=True)
+        committed = sha256(target)
+        status.update(state=outcome, evidence_state="valid", manifest_sha256=committed)
+    except Exception as error:
+        status.update(
+            state="evidence_failed",
+            evidence_state="failed",
+            error=f"Evidence finalization failed: {type(error).__name__}: {error}",
+        )
+    status["updated_utc"] = timestamp()
+    write_json(directory / "status.json", status)
+    return status
+
+
+def _owner(directory, name):
+    try:
+        return read_json(directory / f"{name}.json")
+    except (OSError, ValueError):
+        return {}
+
+
+def _reconcile_locked(directory, status):
+    status = read_json(directory / "status.json")
+    if status.get("state") not in ACTIVE:
+        return status
+    request = read_json(directory / "request.json")
+    if lifecycle.legacy_worker_alive(status, directory):
+        raise RuntimeError(f"A worker is still alive for {directory.name}")
+    for name, role in (("worker", "worker"), ("supervisor", "jobs")):
+        if lifecycle.owned_process(_owner(directory, name), role, directory) is not None:
+            raise RuntimeError(f"Verified {name} is still alive for {directory.name}")
+    if request.get("record_version") != 2:
+        # Never repair/overwrite historical evidence in place.
+        return {
+            **status,
+            "state": "interrupted",
+            "scientific_outcome": "unknown",
+            "evidence_state": "incomplete",
+            "error": "Legacy owner unavailable; record preserved",
+        }
+    abort = _owner(directory, "worker_abort")
+    receipt = _owner(directory, "execution")
+    return finalize(
+        directory,
+        abort.get("scientific_outcome", receipt.get("scientific_outcome", "interrupted")),
+        error=abort.get(
+            "error", receipt.get("error", "Execution owner disappeared; outcome is uncertain")
+        ),
+        recovered=True,
+    )
+
+
+def status_for(directory):
+    try:
+        status = read_json(directory / "status.json")
+        if status.get("state") not in ACTIVE:
+            return status
+        try:
+            with execution_lock():
+                return _reconcile_locked(directory, status)
+        except RuntimeError as error:
+            return {**status, "owner_notice": str(error)}
+    except (OSError, ValueError, TypeError) as error:
+        return {
+            "state": "quarantined",
+            "scientific_outcome": "unknown",
+            "evidence_state": "incomplete",
+            "error": f"Incomplete record retained: {error}",
+        }
+
+
 def start_run(adapter, source, prediction="", *, runs=RUNS):
     effective = validate(adapter, source)
     prediction = validate_note(prediction)
     runs = Path(runs)
     runs.mkdir(parents=True, exist_ok=True)
-    # One lock per checkout, even if a test/client supplies a different run directory.
-    RUNS.mkdir(parents=True, exist_ok=True)
-    with (RUNS / ".execution.lock").open("a+") as lock:
-        try:
-            fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
-        except BlockingIOError as error:
-            raise RuntimeError("Another Workbench experiment is running") from error
+    with execution_lock() as lock:
         preflight()
-        identity = datetime.now(UTC).strftime("%Y%m%dT%H%M%S%fZ") + "_" + uuid.uuid4().hex[:12]
-        directory = runs / identity
-        directory.mkdir(exist_ok=False)
+        # With no lease holder, reconcile abandoned records before admission.
+        for parent in {RUNS.resolve(), runs.resolve()}:
+            retained, _ = storage.list_runs(parent)
+            for previous in retained:
+                status = read_json(previous / "status.json")
+                if status["state"] in ACTIVE:
+                    _reconcile_locked(previous, status)
+        run_id = datetime.now(UTC).strftime("%Y%m%dT%H%M%S%fZ") + "_" + uuid.uuid4().hex
+        directory = runs / run_id
+        staging = runs / (".pending-" + run_id)
+        staging.mkdir(exist_ok=False)
         request = {
             "schema": "apex-workbench/0.1",
-            "run_id": identity,
+            "record_version": 2,
+            "run_id": run_id,
             "timestamp_utc": timestamp(),
             "adapter": adapter,
-            "adapter_version": "0.1",
+            "adapter_version": "0.1.1",
             "source_configuration": source,
             "effective": effective,
             "prediction": prediction,
+            "execution_lock": str((RUNS / ".execution.lock").resolve()),
             "controller": "none (predetermined command)"
             if adapter == "dynamic_demo"
             else "Task005 BaselineController / scheduled LQR + PI",
@@ -160,12 +272,30 @@ def start_run(adapter, source, prediction="", *, runs=RUNS):
             else "scripts/run_lqr_baseline.py:run_case",
             "provenance": provenance(),
         }
-        write_json(directory / "request.json", request)
-        write_json(directory / "status.json", {"state": "queued", "updated_utc": timestamp()})
+        write_json(staging / "request.json", request, exclusive=True)
+        write_json(
+            staging / "status.json",
+            {
+                "record_version": 2,
+                "state": "queued",
+                "scientific_outcome": "pending",
+                "evidence_state": "pending",
+                "updated_utc": timestamp(),
+            },
+        )
+        if directory.exists():
+            raise FileExistsError("Refusing to replace an earlier run")
+        staging.rename(directory)  # Initial request and status become selectable together.
         try:
             with (directory / "supervisor.log").open("xb") as log:
                 subprocess.Popen(
-                    [sys.executable, "-m", "tools.apex_workbench.jobs", str(directory)],
+                    [
+                        sys.executable,
+                        "-m",
+                        "tools.apex_workbench.jobs",
+                        str(directory),
+                        str(lock.fileno()),
+                    ],
                     cwd=ROOT,
                     env=worker_environment(directory),
                     pass_fds=(lock.fileno(),),
@@ -174,20 +304,15 @@ def start_run(adapter, source, prediction="", *, runs=RUNS):
                     start_new_session=True,
                 )
         except Exception as error:
-            write_json(
-                directory / "status.json",
-                {
-                    "state": "failed",
-                    "error": str(error),
-                    "updated_utc": timestamp(),
-                },
-            )
+            finalize(directory, "failed", error=f"Supervisor could not launch: {error}")
             raise
     return directory
 
 
 def cancel_run(directory):
-    if read_json(directory / "status.json")["state"] in {"queued", "running"}:
+    status = status_for(directory)
+    if status["state"] in ACTIVE:
+        # The scientific worker independently consumes this even if its supervisor is gone.
         (directory / "cancel.request").touch(exist_ok=True)
 
 
@@ -197,24 +322,16 @@ def save_notes(directory, observation, explanation):
         "observation": validate_note(observation),
         "explanation": validate_note(explanation),
     }
-    path = directory / f"notes-{time.time_ns()}-{uuid.uuid4().hex[:8]}.json"
-    with path.open("x") as stream:
-        json.dump(record, stream, indent=2)
+    path = directory / f"notes-{time.time_ns()}-{uuid.uuid4().hex}.json"
+    write_json(path, record, exclusive=True)
     return path
 
 
-def terminate(process):
-    if process.poll() is None:
-        os.killpg(process.pid, signal.SIGTERM)
-        try:
-            process.wait(timeout=2)
-        except subprocess.TimeoutExpired:
-            os.killpg(process.pid, signal.SIGKILL)
-            process.wait(timeout=2)
-
-
-def supervise(directory):
+def supervise(directory, lock_fd=None):
+    own_lock = execution_lock() if lock_fd is None else None
+    lock_fd = own_lock.fileno() if own_lock else lock_fd
     process = None
+    worker = None
     started = time.monotonic()
     peak_rss, peak_threads = 0, 0
     outcome, error, returncode = "failed", None, None
@@ -227,22 +344,39 @@ def supervise(directory):
     signal.signal(signal.SIGTERM, interrupt)
     signal.signal(signal.SIGINT, interrupt)
     try:
+        write_json(
+            directory / "supervisor.json",
+            lifecycle.identity(os.getpid(), "jobs", directory),
+            exclusive=True,
+        )
         with (
             (directory / "stdout.log").open("xb") as stdout,
             (directory / "stderr.log").open("xb") as stderr,
         ):
             process = subprocess.Popen(
-                [sys.executable, "-m", "tools.apex_workbench.worker", str(directory)],
+                [sys.executable, "-m", "tools.apex_workbench.worker", str(directory), str(lock_fd)],
                 cwd=ROOT,
                 env=worker_environment(directory),
+                pass_fds=(lock_fd,),
                 stdout=stdout,
                 stderr=stderr,
                 start_new_session=True,
             )
+            deadline = time.monotonic() + 2
+            while worker is None and process.poll() is None:
+                try:
+                    worker = lifecycle.identity(process.pid, "worker", directory)
+                except (RuntimeError, psutil.Error):
+                    if time.monotonic() > deadline:
+                        raise RuntimeError("Worker identity was not established") from None
+                    time.sleep(0.01)
             write_json(
                 directory / "status.json",
                 {
+                    "record_version": 2,
                     "state": "running",
+                    "scientific_outcome": "running",
+                    "evidence_state": "pending",
                     "pid": process.pid,
                     "supervisor_pid": os.getpid(),
                     "updated_utc": timestamp(),
@@ -255,58 +389,68 @@ def supervise(directory):
                     peak_threads = max(peak_threads, child.num_threads())
                 except psutil.NoSuchProcess:
                     pass
-                size = sum(p.stat().st_size for p in directory.rglob("*") if p.is_file())
+                size = lifecycle.sampled_output_size(directory)
                 if interrupted or (directory / "cancel.request").exists():
-                    outcome, error = (
-                        "cancelled",
-                        "Cancellation requested; partial evidence retained",
-                    )
+                    outcome, error = "cancelled", "Cancellation requested"
                     break
                 if time.monotonic() - started > LIMITS["wall_s"]:
                     outcome, error = "timed_out", "Wall execution limit exceeded"
                     break
-                if peak_rss > LIMITS["sampled_rss_bytes"]:
-                    error = "Sampled worker RSS exceeded resource safeguard"
-                    break
-                if size > LIMITS["sampled_output_bytes"]:
-                    error = "Sampled output size exceeded resource safeguard"
+                if peak_rss > LIMITS["sampled_rss_bytes"] or size > LIMITS["sampled_output_bytes"]:
+                    error = "Sampled worker resource safeguard exceeded"
                     break
                 time.sleep(0.1)
             if error is None:
                 returncode = process.wait()
-                outcome = "completed" if returncode == 0 else "failed"
-                if returncode:
-                    error = f"Scientific worker exited {returncode}; inspect stderr.log"
+                abort = _owner(directory, "worker_abort")
+                outcome = abort.get(
+                    "scientific_outcome", "completed" if returncode == 0 else "failed"
+                )
+                error = abort.get(
+                    "error", None if returncode == 0 else f"Worker exited {returncode}"
+                )
     except Exception as exception:
         error = f"Supervisor error: {type(exception).__name__}: {exception}"
     finally:
-        if process is not None:
-            terminate(process)
-            returncode = process.returncode
-        write_json(
-            directory / "status.json",
-            {
-                "state": outcome,
-                "error": error,
-                "returncode": returncode,
-                "updated_utc": timestamp(),
-                "wall_runtime_s": time.monotonic() - started,
-                "sampled_peak_worker_rss_bytes": peak_rss,
-                "sampled_peak_worker_threads": peak_threads,
-                "sampling_note": (
-                    "100 ms samples; not hard peak bounds or proof of parallel computation"
-                ),
-            },
-        )
-        write_json(
-            directory / "artifacts.json",
-            {
-                str(p.relative_to(directory)): {"sha256": sha256(p), "bytes": p.stat().st_size}
-                for p in directory.rglob("*")
-                if p.is_file() and p.name not in {"artifacts.json", "status.json", "supervisor.log"}
-            },
-        )
+        try:
+            if process is not None:
+                if process.poll() is None and worker is not None:
+                    try:
+                        lifecycle.terminate_owned(worker, directory)
+                    except psutil.Error as exception:
+                        error = f"Worker termination unconfirmed: {exception}"
+                returncode = process.poll()
+            if process is not None and returncode is None:
+                # Its inherited lease still blocks admission. Recovery cannot claim completion.
+                write_json(
+                    directory / "status.json",
+                    {
+                        "record_version": 2,
+                        "state": "running",
+                        "scientific_outcome": "unknown",
+                        "evidence_state": "incomplete",
+                        "error": error or "Worker ownership uncertain",
+                    },
+                )
+            else:
+                finalize(
+                    directory,
+                    outcome,
+                    error=error,
+                    returncode=returncode,
+                    wall_runtime_s=time.monotonic() - started,
+                    sampled_peak_worker_rss_bytes=peak_rss,
+                    sampled_peak_worker_threads=peak_threads,
+                    sampling_note=(
+                        "100 ms supervisor samples; worker guard polls at 50 ms; soft bounds"
+                    ),
+                )
+        finally:
+            if own_lock:
+                own_lock.close()
+            else:
+                os.close(lock_fd)  # Release admission after finalization, not interpreter teardown.
 
 
 if __name__ == "__main__":
-    supervise(Path(sys.argv[1]).resolve())
+    supervise(Path(sys.argv[1]).resolve(), int(sys.argv[2]))

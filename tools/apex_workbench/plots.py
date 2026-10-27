@@ -5,10 +5,29 @@ from pathlib import Path
 import pandas as pd
 import plotly.graph_objects as go
 
+from tools.apex_workbench.storage import IntegrityError, artifact_json, artifact_stream
+
 
 def read_frame(directory: Path, name: str):
     path = directory / "experiment" / name
-    return pd.read_csv(path) if path.is_file() else pd.DataFrame()
+    if not path.is_file():
+        return pd.DataFrame()
+    artifact_json(directory, "request.json")
+    try:
+        data = pd.read_csv(artifact_stream(directory, "experiment/" + name))
+        required = {
+            "states.csv": ["time", "vx", "vy", "r", "e_psi", "s_abs", "e_y", "delta", "a_cmd"],
+            "controls.csv": ["time", "delta", "a_cmd"],
+            "geometry.csv": ["s", "x", "y", "left_x", "left_y", "right_x", "right_y"],
+            "trajectory_xy.csv": ["time", "x", "y"],
+        }[name]
+        if data.empty or not set(required) <= set(data.columns):
+            raise IntegrityError("Incomplete telemetry columns/rows: " + name)
+        if data[required].isna().any().any():
+            raise IntegrityError("Incomplete telemetry values: " + name)
+        return data
+    except (pd.errors.ParserError, pd.errors.EmptyDataError, UnicodeError) as error:
+        raise IntegrityError("Unreadable telemetry: " + name) from error
 
 
 def style(figure, ylabel, *, xy=False):
