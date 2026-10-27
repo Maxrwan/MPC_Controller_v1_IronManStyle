@@ -5,11 +5,19 @@ import hashlib
 import io
 
 from tools.apex_workbench.configuration import validate
-from tools.apex_workbench.storage import IntegrityError, artifact_bytes, artifact_json
+from tools.apex_workbench.storage import (
+    IntegrityError,
+    artifact_bytes,
+    artifact_json,
+    check_required_artifacts,
+    read_request,
+    read_status,
+)
 
 
 def fingerprint(directory):
-    request = artifact_json(directory, "request.json")
+    request = read_request(directory, verified=True)
+    check_required_artifacts(directory, request, read_status(directory))
     provenance = request["provenance"]
     effective = validate(request["adapter"], request["effective"])
     contract = artifact_json(directory, "experiment/telemetry_contract.json")
@@ -93,7 +101,7 @@ def eligibility(first, second):
             "differences": differences,
             "varied_inputs": varied,
         }
-    except (IntegrityError, OSError, ValueError, KeyError, TypeError) as error:
+    except (IntegrityError, OSError, ValueError, KeyError, TypeError, AttributeError) as error:
         return {
             "classification": "invalid",
             "reason": str(error),

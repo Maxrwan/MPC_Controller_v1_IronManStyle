@@ -1,0 +1,100 @@
+{
+  "status": "WORK_COMPLETE_PENDING_REVIEW",
+  "base_sha": "5acdf4ff4db927bfaf3828b8714dfe39619a5db8",
+  "branch": "codex/apex-workbench-v0-1",
+  "source_sha256": {
+    "Launch_APEX_Workbench.command": "980ec823f4daa2652ea960a5fb58e3fa05da757add867a6b4a76d13a4a2fb21f",
+    "tools/apex_workbench/__init__.py": "194595c8c9d46745693697c8417c2408fbe76e3254ae716f26b50c47f4723396",
+    "tools/apex_workbench/app.py": "894d1b365d5b0fcbb2f93e5f72ffcad3929237a6b4ba54258941cea7512a9f27",
+    "tools/apex_workbench/comparison.py": "408181cde33c284a22eb0e06cd12b5e11aaef74c7c67bc160f63f87bb2420dd1",
+    "tools/apex_workbench/configuration.py": "e82b19ace25655fadbe8216eb01eb2038b37698d6ef614ad8996eae3527e97e4",
+    "tools/apex_workbench/jobs.py": "afa39893198c9a5f38dad24f9504b888321da6604dec85cd4f80b19d9c519fe6",
+    "tools/apex_workbench/lifecycle.py": "794bd5ada88048a402a2d0946942ec9962e52b0caf2e72d7a8a3a0279f51f05a",
+    "tools/apex_workbench/plots.py": "ec157954259b89e37987b57f5359659a625c7480df57a1abae1bfa5bb0359d95",
+    "tools/apex_workbench/storage.py": "469356e5f423efa5cf3c8d698025c8ff7ecce355015f500aa4ccf646db0608b3",
+    "tools/apex_workbench/worker.py": "198731c5b47320efd03824fd1abca722e534731c120db575bde047a4456fa49b",
+    "tools/apex_workbench/tests/test_corrections.py": "39cf1fb67c604686c71f62bc3f916bc2fe801e8b4f7ffd1ccf7e491ba32b6283",
+    "tools/apex_workbench/tests/test_workbench.py": "de6ce8b4d99a364617cb459221af4568db7d787a7f1bcbcf8e87ef19631e1d59"
+  },
+  "first_test_source": {
+    "base_sha": "5acdf4ff4db927bfaf3828b8714dfe39619a5db8",
+    "tracked_diff_sha256": "7b3c7040d9ebf11b37aee622716024329d55c68c289b2b38e07f5fa651a8caf2",
+    "files": {
+      "Launch_APEX_Workbench.command": "980ec823f4daa2652ea960a5fb58e3fa05da757add867a6b4a76d13a4a2fb21f",
+      "tools/apex_workbench/__init__.py": "194595c8c9d46745693697c8417c2408fbe76e3254ae716f26b50c47f4723396",
+      "tools/apex_workbench/app.py": "894d1b365d5b0fcbb2f93e5f72ffcad3929237a6b4ba54258941cea7512a9f27",
+      "tools/apex_workbench/comparison.py": "408181cde33c284a22eb0e06cd12b5e11aaef74c7c67bc160f63f87bb2420dd1",
+      "tools/apex_workbench/configuration.py": "e82b19ace25655fadbe8216eb01eb2038b37698d6ef614ad8996eae3527e97e4",
+      "tools/apex_workbench/jobs.py": "afa39893198c9a5f38dad24f9504b888321da6604dec85cd4f80b19d9c519fe6",
+      "tools/apex_workbench/lifecycle.py": "794bd5ada88048a402a2d0946942ec9962e52b0caf2e72d7a8a3a0279f51f05a",
+      "tools/apex_workbench/plots.py": "ec157954259b89e37987b57f5359659a625c7480df57a1abae1bfa5bb0359d95",
+      "tools/apex_workbench/storage.py": "469356e5f423efa5cf3c8d698025c8ff7ecce355015f500aa4ccf646db0608b3",
+      "tools/apex_workbench/worker.py": "198731c5b47320efd03824fd1abca722e534731c120db575bde047a4456fa49b",
+      "tools/apex_workbench/tests/test_corrections.py": "b42c878b8fca25282598c5bd46186cf421dda5b2aa6ea94e64f6242cf35028d8",
+      "tools/apex_workbench/tests/test_workbench.py": "de6ce8b4d99a364617cb459221af4568db7d787a7f1bcbcf8e87ef19631e1d59"
+    }
+  },
+  "tests": {
+    "combined": {
+      "passed": 218,
+      "failed": 2,
+      "exit": 1,
+      "seconds": 54.67
+    },
+    "affected": {
+      "passed": 2,
+      "failed": 0,
+      "exit": 0,
+      "seconds": 4.44
+    },
+    "distinct_current_cases_covered": 220,
+    "workbench_cases": 72,
+    "scientific_unit_cases": 148,
+    "scientific_selection": [
+      "test_config.py",
+      "test_dynamic_bicycle.py",
+      "test_state.py",
+      "test_frenet.py",
+      "test_baseline.py",
+      "test_runner.py"
+    ],
+    "source_changes_after_combined": [
+      "tools/apex_workbench/tests/test_corrections.py"
+    ],
+    "applicability": "Only the two failing test bodies changed; production, other assertions, fixtures, scientific source and numerical environment are unchanged. Prior 218 passes reused, not newly rerun."
+  },
+  "launcher": {
+    "cwd": "/private/tmp",
+    "launcher_sha256": "980ec823f4daa2652ea960a5fb58e3fa05da757add867a6b4a76d13a4a2fb21f",
+    "server_pid": 43259,
+    "helper_pid": 43256,
+    "health": "200 ok",
+    "repeat_reuses_live_server": true,
+    "owned_server_stopped": true,
+    "reuse_bind_after_shutdown": true,
+    "foreign_port_rejected_without_termination": true,
+    "missing_environment_clear_error": true
+  },
+  "evidence_root": "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/results/apex_workbench_stabilization_20261028",
+  "log_sha256": {
+    "cycle1-tests.log": "5d1ac263909bcb0c888edf3d3138ba0d2534d555f3059dc965194b8c39f53179",
+    "affected-tests.log": "538f7736032dc6121f626d811a1df32271dadbf77eece233983f84ce253a3413",
+    "cycle1-source.json": "3eb748ec1d2ad0c60944ae78374ffa1c1c6957fc0b8b3e7d923a114827a1bbe0",
+    "launcher_smoke.py": "c2f87c12f91f5459b47b148c46a25da5756ccdb5c530841c87129b0032743fb4",
+    "launcher-smoke.log": "320e2f4541ee7275339883a2b3c956d956a13b4baa8ca07110e6bd04d3bfc900",
+    "launcher-smoke.json": "320e2f4541ee7275339883a2b3c956d956a13b4baa8ca07110e6bd04d3bfc900",
+    "launcher-server.log": "f6d21abd68b85a61748c45e8d3677daca1593d83a1780eeba313cb26588da4ca",
+    "launcher-repeat.log": "4b4b88102ced713168c7de0be8070a4e8626922df381beb8a9d0b1d4be426240",
+    "launcher-foreign-port.log": "3ed07e85b7ec205a2600e4859caa923c6a264f67ec30528b9c2f3a4c7cc50bf2",
+    "launcher-missing-env.log": "5c7f614f1ec87a652035852463597ab80c158c72aa5931f9c842626c3f2400e2",
+    "preservation_before.json": "1c21974cb8318735f4c066ff888335a94726779d597807279de8fc8710b05569"
+  },
+  "commands": {
+    "combined": "VECLIB_MAXIMUM_THREADS=1 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 PYTHONPATH=.:scripts:src tools/apex_workbench/.venv/bin/python -c 'from threading_study.config import configure_accelerate; native=configure_accelerate(1); import importlib.metadata,json,sys,apex,pytest; from tools.apex_workbench.configuration import ROOT; print(json.dumps({\"root\":str(ROOT),\"apex\":apex.__file__,\"python\":sys.version,\"native\":native,\"packages\":{p:importlib.metadata.version(p) for p in [\"numpy\",\"scipy\",\"streamlit\",\"psutil\",\"pytest\"]}},default=str),flush=True); raise SystemExit(pytest.main(sys.argv[1:]))' -q tools/apex_workbench/tests tests/unit/test_config.py tests/unit/test_dynamic_bicycle.py tests/unit/test_state.py tests/unit/test_frenet.py tests/unit/test_baseline.py tests/unit/test_runner.py --durations=8 --basetemp=results/apex_workbench_stabilization_20261028/cycle1-pytest > results/apex_workbench_stabilization_20261028/cycle1-tests.log 2>&1",
+    "affected": "VECLIB_MAXIMUM_THREADS=1 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 PYTHONPATH=.:scripts:src tools/apex_workbench/.venv/bin/python -c 'from threading_study.config import configure_accelerate; configure_accelerate(1); import sys,pytest; raise SystemExit(pytest.main(sys.argv[1:]))' -q tools/apex_workbench/tests/test_corrections.py::test_request_changed_after_listing_is_quarantined tools/apex_workbench/tests/test_corrections.py::test_failed_execution_with_no_exports_remains_inspectable --basetemp=results/apex_workbench_stabilization_20261028/affected-pytest > results/apex_workbench_stabilization_20261028/affected-tests.log 2>&1"
+  },
+  "formal_verification": "NOT_RUN: designated Engineering Review decision pending",
+  "canonical_scientific_changes": false,
+  "substantive_corrective_cycles": 1,
+  "next": "Separate-context review of containing exact corrective commit; preserve external review authority"
+}

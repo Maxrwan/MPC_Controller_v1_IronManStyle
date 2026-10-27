@@ -11,6 +11,7 @@ if [[ ! -x "$apex_workbench_python" ]]; then
 fi
 
 "$apex_workbench_python" -I - "$apex_workbench_root" <<'PY'
+import errno
 import os
 import socket
 import subprocess
@@ -84,9 +85,13 @@ def launch(root, port=8501):
         return 1
     try:
         with socket.socket() as available:
+            available.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
             available.bind(("127.0.0.1", port))
-    except OSError:
-        print(f"Port {port} is occupied by another application. Workbench could not start.")
+    except OSError as error:
+        if error.errno == errno.EADDRINUSE:
+            print(f"Port {port} is occupied by another application. Workbench could not start.")
+        else:
+            print(f"Workbench could not bind its local address: {error}")
         return 1
     print("Starting APEX Workbench from this project. Your browser will open when ready.", flush=True)
     print("Keep this Terminal window open. Press Control-C here to stop Workbench.", flush=True)

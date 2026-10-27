@@ -195,6 +195,8 @@ def _reconcile_locked(directory, status):
     for name, role in (("worker", "worker"), ("supervisor", "jobs")):
         if lifecycle.owned_process(_owner(directory, name), role, directory) is not None:
             raise RuntimeError(f"Verified {name} is still alive for {directory.name}")
+    if not isinstance(request, dict):
+        raise RuntimeError(f"Incomplete abandoned request needs inspection: {directory.name}")
     if request.get("record_version") != 2:
         # Never repair/overwrite historical evidence in place.
         return {
@@ -218,7 +220,7 @@ def _reconcile_locked(directory, status):
 
 def status_for(directory):
     try:
-        status = read_json(directory / "status.json")
+        status = storage.read_status(directory)
         if status.get("state") not in ACTIVE:
             return status
         try:
@@ -244,9 +246,12 @@ def start_run(adapter, source, prediction="", *, runs=RUNS):
         preflight()
         # With no lease holder, reconcile abandoned records before admission.
         for parent in {RUNS.resolve(), runs.resolve()}:
-            retained, _ = storage.list_runs(parent)
-            for previous in retained:
-                status = read_json(previous / "status.json")
+            # UI quarantine must not hide a legacy active owner from admission checks.
+            for previous in storage.run_directories(parent):
+                try:
+                    status = storage.read_status(previous)
+                except (OSError, ValueError, TypeError):
+                    continue  # Not a readable lifecycle record; never repair it here.
                 if status["state"] in ACTIVE:
                     _reconcile_locked(previous, status)
         run_id = datetime.now(UTC).strftime("%Y%m%dT%H%M%S%fZ") + "_" + uuid.uuid4().hex

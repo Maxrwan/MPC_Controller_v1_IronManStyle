@@ -105,6 +105,17 @@ def test_r1_real_sigkill_keeps_worker_lease_and_recovers(tmp_path, cancel):
             assert (directory / "cancel.request").exists()
         worker.send_signal(signal.SIGCONT)
         until(lambda: lifecycle.owned_process(worker_record, "worker", directory) is None, 5)
+
+        # Identity may cease matching during exit before the inherited FD is released.
+        # Keep the admission-blocking assertion above; recover only after the lease is free.
+        def lease_released():
+            try:
+                with jobs.execution_lock():
+                    return True
+            except RuntimeError:
+                return False
+
+        until(lease_released, 5)
         recovered = jobs.status_for(directory)
         assert recovered["scientific_outcome"] == ("cancelled" if cancel else "interrupted")
         assert recovered["state"] != "completed" and recovered["evidence_state"] == "valid"
@@ -377,7 +388,7 @@ def test_r6_missing_manifest_and_unverified_legacy_are_rejected(completed_runs, 
         plots.read_frame(directory, "states.csv")
 
 
-def test_existing_lqr_still_executes_under_owned_worker(tmp_path):
+def test_existing_lqr_still_executes_under_owned_worker(tmp_path, monkeypatch):
     config = {**configuration.DEFAULTS["lqr_baseline"], "duration": 0.01}
     directory = jobs.start_run(
         "lqr_baseline", config, "Original baseline smoke check", runs=tmp_path
@@ -390,6 +401,13 @@ def test_existing_lqr_still_executes_under_owned_worker(tmp_path):
     execute("lqr_baseline", config, original)
     for name in ("states.csv", "controls.csv", "summary.json"):
         assert (directory / "experiment" / name).read_bytes() == (original / name).read_bytes()
+    damaged = copied(directory, tmp_path / "damaged-records/missing-controls")
+    (damaged / "experiment/controls.csv").unlink()
+    with pytest.raises(storage.IntegrityError, match="controls.csv"):
+        plots.read_frame(damaged, "controls.csv")
+    app = retained_app(damaged.parent, monkeypatch)
+    assert not app.exception and not app.get("plotly_chart")
+    assert any("controls.csv" in error.value for error in app.error)
 
 
 def test_sampler_tolerates_removed_temporary_file(tmp_path):
@@ -468,3 +486,150 @@ def test_r5_scientific_receipt_cannot_be_rewritten(completed_runs, tmp_path):
     with pytest.raises(storage.IntegrityError, match="Refusing to change"):
         jobs.finalize(directory, "failed")
     assert (directory / "execution.json").read_bytes() == before
+
+
+def retained_app(parent, monkeypatch):
+    from streamlit.testing.v1 import AppTest
+
+    monkeypatch.setattr(configuration, "RUNS", parent)
+    return AppTest.from_file(
+        str(configuration.ROOT / "tools/apex_workbench/app.py"), default_timeout=20
+    ).run()
+
+
+@pytest.mark.parametrize(
+    "damage", ["prediction_missing", "prediction_type", "effective", "adapter", "array", "json"]
+)
+def test_incomplete_request_is_excluded_without_ui_crash(
+    completed_runs, tmp_path, monkeypatch, damage
+):
+    directory = copied(completed_runs[0], tmp_path / "damaged")
+    path = directory / "request.json"
+    request = storage.read_json(path)
+    if damage == "prediction_missing":
+        del request["prediction"]
+    elif damage == "prediction_type":
+        request["prediction"] = None
+    elif damage == "effective":
+        request["effective"] = {"duration": -1}
+    elif damage == "adapter":
+        request["adapter"] = ["dynamic_demo"]
+    elif damage == "array":
+        request = []
+    if damage == "json":
+        path.write_text('{"adapter":')
+    else:
+        storage.write_json(path, request)
+    before = {
+        str(p.relative_to(directory)): p.read_bytes() for p in directory.rglob("*") if p.is_file()
+    }
+    assert not storage.list_runs(tmp_path)[0]
+    app = retained_app(tmp_path, monkeypatch)
+    assert not app.exception and not app.get("plotly_chart")
+    assert any("Incomplete record preserved" in warning.value for warning in app.warning)
+    assert {
+        str(p.relative_to(directory)): p.read_bytes() for p in directory.rglob("*") if p.is_file()
+    } == before
+
+
+@pytest.mark.parametrize(
+    "content", ["[]", "null", '{"state": []}', '{"state":"running","evidence_state":{}}']
+)
+def test_malformed_status_is_quarantined(completed_runs, tmp_path, monkeypatch, content):
+    directory = copied(completed_runs[0], tmp_path / "damaged")
+    (directory / "status.json").write_text(content)
+    assert jobs.status_for(directory)["state"] == "quarantined"
+    app = retained_app(tmp_path, monkeypatch)
+    assert not app.exception and app.warning
+    assert (directory / "status.json").read_text() == content
+
+
+def test_request_changed_after_listing_is_quarantined(completed_runs, tmp_path, monkeypatch):
+    directory = copied(completed_runs[0], tmp_path / "record")
+    original = storage.list_runs
+
+    def interleaved(parent):
+        result = original(parent)
+        (directory / "request.json").write_text('{"prediction":')
+        return result
+
+    monkeypatch.setattr(storage, "list_runs", interleaved)
+    from streamlit.testing.v1 import AppTest
+
+    monkeypatch.setattr(configuration, "RUNS", tmp_path)
+    app = AppTest.from_file(
+        str(configuration.ROOT / "tools/apex_workbench/app.py"), default_timeout=20
+    )
+    # Skip the ordinary first-terminal rerun so this forces the selected-record read race.
+    app.session_state["last_terminal"] = "record"
+    app.run()
+    assert not app.exception and not app.get("plotly_chart")
+    assert any("record quarantined" in error.value for error in app.error)
+
+
+@pytest.mark.parametrize(
+    "relative",
+    [
+        "experiment/geometry.csv",
+        "experiment/trajectory_xy.csv",
+        "experiment/states.csv",
+        "experiment/summary.json",
+        "experiment/telemetry_contract.json",
+        "worker_result.json",
+        "numerical_environment.json",
+        "stdout.log",
+        "stderr.log",
+    ],
+)
+def test_missing_retained_artifact_is_visible(completed_runs, tmp_path, monkeypatch, relative):
+    directory = copied(completed_runs[0], tmp_path / "record")
+    assert relative in storage.artifact_manifest(directory)
+    (directory / relative).unlink()
+    with pytest.raises(storage.IntegrityError):
+        storage.artifact_bytes(directory, relative, optional=True)
+    app = retained_app(tmp_path, monkeypatch)
+    assert not app.exception
+    assert any(relative in error.value for error in app.error)
+    if relative not in {"stdout.log", "stderr.log"}:
+        assert not app.get("plotly_chart")
+        assert comparison.eligibility(directory, completed_runs[1])["classification"] == "invalid"
+
+
+def test_optional_unproduced_controls_stay_unavailable(completed_runs, tmp_path):
+    directory = copied(completed_runs[0], tmp_path / "record")
+    assert "experiment/controls.csv" not in storage.artifact_manifest(directory)
+    assert plots.read_frame(directory, "controls.csv").empty
+    assert not plots.series(
+        [("actual", directory)], ["vx"], "vx", reference="reference_speed"
+    ).data[1:]
+    assert comparison.eligibility(directory, completed_runs[1])["classification"] == "controlled"
+
+
+def test_failed_execution_with_no_exports_remains_inspectable(tmp_path, monkeypatch):
+    request = {
+        "record_version": 2,
+        "adapter": "dynamic_demo",
+        "effective": {"duration": 0.01, "dt": 0.005},
+        "prediction": "Failure fixture",
+    }
+    directory = tmp_path / "failed"
+    directory.mkdir()
+    storage.write_json(directory / "request.json", request)
+    jobs.finalize(directory, "failed", error="Review fixture: worker never produced exports")
+    app = retained_app(tmp_path, monkeypatch)
+    assert not app.exception and not app.get("plotly_chart")
+    assert [error.value for error in app.error] == ["Review fixture: worker never produced exports"]
+    assert any("Trajectory unavailable" in info.value for info in app.info)
+    assert jobs.status_for(directory)["scientific_outcome"] == "failed"
+
+
+def test_ui_quarantine_does_not_hide_legacy_active_owner(tmp_path):
+    directory = tmp_path / "legacy-active"
+    directory.mkdir()
+    storage.write_json(directory / "request.json", {"adapter": "dynamic_demo", "effective": {}})
+    storage.write_json(directory / "status.json", {"state": "running", "pid": 12345})
+    assert not storage.list_runs(tmp_path)[0]
+    with patch.object(lifecycle, "legacy_worker_alive", return_value=True):
+        with pytest.raises(RuntimeError, match="worker is still alive"):
+            jobs.start_run("dynamic_demo", {"duration": 0.01, "dt": 0.005}, runs=tmp_path)
+    assert len(list(tmp_path.glob("*/request.json"))) == 1

@@ -8,6 +8,8 @@ import tempfile
 from functools import lru_cache
 from pathlib import Path
 
+from tools.apex_workbench.configuration import validate, validate_note
+
 
 class IntegrityError(ValueError):
     """Retained data is incomplete, unverified or changed."""
@@ -15,6 +17,65 @@ class IntegrityError(ValueError):
 
 def read_json(path):
     return json.loads(Path(path).read_text())
+
+
+def read_status(directory):
+    status = read_json(Path(directory) / "status.json")
+    if not isinstance(status, dict) or status.get("state") not in {
+        "queued",
+        "running",
+        "finalizing",
+        "completed",
+        "failed",
+        "cancelled",
+        "timed_out",
+        "interrupted",
+        "evidence_failed",
+        "quarantined",
+    }:
+        raise IntegrityError("Incomplete or unknown status contract")
+    for key in ("scientific_outcome", "evidence_state"):
+        if key in status and not isinstance(status[key], str):
+            raise IntegrityError(f"Invalid status field: {key}")
+    return status
+
+
+def read_request(directory, *, verified=False):
+    """Validate every field the UI consumes; never repair retained metadata."""
+    request = (
+        artifact_json(directory, "request.json")
+        if verified
+        else read_json(Path(directory) / "request.json")
+    )
+    if not isinstance(request, dict):
+        raise IntegrityError("Request must be a JSON object")
+    try:
+        validate(request["adapter"], request["effective"])
+        validate_note(request["prediction"])
+    except (KeyError, TypeError, ValueError) as error:
+        raise IntegrityError(f"Incomplete or invalid request: {error}") from error
+    return request
+
+
+def required_artifacts(request, status):
+    """Successful version-2 exports are required; failed/legacy exports may be absent."""
+    if (
+        request.get("record_version") != 2
+        or status.get("scientific_outcome", status["state"]) != "completed"
+    ):
+        return set()
+    expected = {
+        "experiment/states.csv",
+        "experiment/summary.json",
+        "experiment/geometry.csv",
+        "experiment/trajectory_xy.csv",
+        "experiment/telemetry_contract.json",
+        "worker_result.json",
+        "numerical_environment.json",
+    }
+    if request["adapter"] == "lqr_baseline":
+        expected.add("experiment/controls.csv")
+    return expected
 
 
 def write_json(path, value, *, exclusive=False):
@@ -58,11 +119,11 @@ def _checked_bytes(path, observed, expected):
     return data
 
 
-def artifact_bytes(directory, relative):
-    """Read only the selected file. Cache is keyed by content hash and full file identity."""
+def artifact_manifest(directory):
+    """Verify the committed manifest before interpreting membership or consuming files."""
     directory = Path(directory)
     try:
-        status = read_json(directory / "status.json")
+        status = read_status(directory)
         if status.get("state") not in {
             "completed",
             "failed",
@@ -80,6 +141,28 @@ def artifact_bytes(directory, relative):
         elif status.get("record_version") == 2:
             raise IntegrityError("Corrected run has no committed artifact manifest")
         manifest = json.loads(manifest_data)
+        if not isinstance(manifest, dict):
+            raise IntegrityError("Artifact manifest must be a JSON object")
+        return manifest
+    except (OSError, TypeError, AttributeError, json.JSONDecodeError) as error:
+        raise IntegrityError(f"Unverified artifact manifest: {error}") from error
+
+
+def check_required_artifacts(directory, request, status):
+    """Check required export membership/presence; selected contents are hashed on ingestion."""
+    manifest = artifact_manifest(directory)
+    for relative in sorted(required_artifacts(request, status)):
+        if relative not in manifest or not (Path(directory) / relative).is_file():
+            raise IntegrityError(f"Required retained artifact missing: {relative}")
+
+
+def artifact_bytes(directory, relative, *, optional=False):
+    """Optional means never recorded/produced; a missing manifest-listed file always fails."""
+    directory = Path(directory)
+    try:
+        manifest = artifact_manifest(directory)
+        if optional and relative not in manifest and not (directory / relative).exists():
+            return None
         entry = manifest[relative]
         path = directory / relative
         if not path.resolve().is_relative_to(directory.resolve()):
@@ -96,9 +179,10 @@ def artifact_bytes(directory, relative):
         raise IntegrityError(f"Unverified artifact {relative}: {error}") from error
 
 
-def artifact_json(directory, relative):
+def artifact_json(directory, relative, *, optional=False):
     try:
-        return json.loads(artifact_bytes(directory, relative))
+        data = artifact_bytes(directory, relative, optional=optional)
+        return None if data is None else json.loads(data)
     except json.JSONDecodeError as error:
         raise IntegrityError(f"Invalid JSON artifact: {relative}") from error
 
@@ -107,20 +191,19 @@ def artifact_stream(directory, relative):
     return io.BytesIO(artifact_bytes(directory, relative))
 
 
+def run_directories(runs):
+    return sorted(
+        (path for path in Path(runs).iterdir() if path.is_dir() and not path.name.startswith(".")),
+        reverse=True,
+    )
+
+
 def list_runs(runs):
     retained, problems = [], []
-    for path in Path(runs).iterdir():
-        if not path.is_dir() or path.name.startswith("."):
-            continue
+    for path in run_directories(runs):
         try:
-            request = read_json(path / "request.json")
-            status = read_json(path / "status.json")
-            if not isinstance(request.get("effective"), dict) or not isinstance(
-                status.get("state"), str
-            ):
-                raise ValueError("Incomplete request/status contract")
-            if request.get("adapter") not in {"dynamic_demo", "lqr_baseline"}:
-                raise ValueError("Unknown adapter")
+            read_request(path)
+            read_status(path)
             retained.append(path)
         except (OSError, ValueError, AttributeError, TypeError) as error:
             problems.append(f"{path.name}: {error}")

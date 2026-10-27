@@ -1,20 +1,27 @@
 """Read actual retained CSVs. Missing columns are never synthesized."""
 
+import io
 from pathlib import Path
 
 import pandas as pd
 import plotly.graph_objects as go
 
-from tools.apex_workbench.storage import IntegrityError, artifact_json, artifact_stream
+from tools.apex_workbench import storage
+from tools.apex_workbench.storage import IntegrityError
 
 
 def read_frame(directory: Path, name: str):
-    path = directory / "experiment" / name
-    if not path.is_file():
+    request = storage.read_request(directory, verified=True)
+    status = storage.read_status(directory)
+    storage.check_required_artifacts(directory, request, status)
+    relative = "experiment/" + name
+    contents = storage.artifact_bytes(
+        directory, relative, optional=relative not in storage.required_artifacts(request, status)
+    )
+    if contents is None:
         return pd.DataFrame()
-    artifact_json(directory, "request.json")
     try:
-        data = pd.read_csv(artifact_stream(directory, "experiment/" + name))
+        data = pd.read_csv(io.BytesIO(contents))
         required = {
             "states.csv": ["time", "vx", "vy", "r", "e_psi", "s_abs", "e_y", "delta", "a_cmd"],
             "controls.csv": ["time", "delta", "a_cmd"],
@@ -64,6 +71,16 @@ def trajectory(directory):
     if not xy.empty:
         figure.add_trace(
             go.Scatter(x=xy.x, y=xy.y, name="Plant trajectory", line=dict(color="#3ee0b2", width=3))
+        )
+    if geometry.empty or xy.empty:
+        missing = "Track geometry" if geometry.empty else "Plant trajectory"
+        figure.add_annotation(
+            text=missing + " unavailable in this record",
+            x=0.5,
+            y=1.0,
+            xref="paper",
+            yref="paper",
+            showarrow=False,
         )
     return style(figure, "Y [m]", xy=True)
 

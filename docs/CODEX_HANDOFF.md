@@ -1,3 +1,31 @@
+# Current handoff — Delegated Workbench V0.1 stabilization candidate
+
+**WORK_COMPLETE_PENDING_REVIEW.** Recorded 28 October 2026. Baseline
+`5acdf4ff4db927bfaf3828b8714dfe39619a5db8`, branch `codex/apex-workbench-v0-1`.
+Containing corrective commit binds the tested source hashes; exact delivery SHA is reported after push.
+
+[Resolution/evidence](../tools/apex_workbench/STABILIZATION.md),
+[machine record](../tools/apex_workbench/stabilization_record.json).
+C-R2: validate/quarantine malformed retained metadata and selected-read races without repair.
+C-R6: distinguish optional absent output from missing manifest-listed/required exports; selected
+UI/comparison fail visibly. R1: wait for lease release before recovery assertion, retaining live
+worker admission rejection. Legacy active-owner admission checks remain independent of UI selection.
+Launcher: reusable-address pre-bind and accurate bind-error diagnostics; original identity checks remain.
+
+First combined selection: 218 passes/two new fixture assertion failures. Only those two test bodies
+changed; affected rerun passes 2/2. All 220 current distinct cases are covered (72 Workbench/148
+existing scientific unit cases), with 218 applicable passes explicitly reused. Original/full-worker
+parity passes. Actual launcher smoke passes, owned server stopped. Full negative logs preserved in
+`results/apex_workbench_stabilization_20261028/`. No canonical science/config/profile/dependency or
+historical evidence change. No full acceptance/regression or new scientific campaign run.
+
+Next: separate-context technical review of this exact committed candidate, then apply the repository's
+designated Engineering Review decision gate. Such technical review does not impersonate Secondary
+approval. Delegated routine correction iterations continue if bounded defects are found; formal
+Verification remains subject to required external review authority.
+
+---
+
 # Current handoff — Workbench V0.1 corrective Engineering Review
 
 **ENGINEERING_REVIEW_COMPLETE_PENDING_DECISION. Decision: FAIL.** Recorded 28 October 2026,

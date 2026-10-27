@@ -9,6 +9,8 @@ controller, profile, scientific exporter, or historical evidence. Delivery statu
 R1–R6 corrective WORK uses record version 2. See [correction scope and evidence](CORRECTIONS.md).
 The original [failed Engineering Review](../../docs/reviews/apex_workbench_v0_1/REVIEW.md)
 remains preserved; the corrected revision still requires a new Engineering Review.
+The [delegated stabilization record](STABILIZATION.md) covers subsequent metadata/missing-evidence
+corrections and their revision-specific review status.
 
 ## Setup and launch
 
@@ -101,6 +103,10 @@ artifact hashes are checked before plots or comparison. Only selected files are 
 bounded cache keyed by expected hash, inode, size, mtime and ctime; changed data is quarantined.
 Historical records are not repaired in place. Legacy runs need their original valid artifact hashes
 for individual plots and lack the new comparison contract, so cannot claim a controlled comparison.
+Malformed request/status records are preserved and excluded with a warning. Selected completed records
+are revalidated before metadata or plots appear. Missing manifest-listed files are integrity failures;
+successful corrected runs also require their expected exports. Optional channels never produced by
+an adapter remain unavailable. A failed run with no exports keeps its failure/error visible.
 
 Repository `MEASURED_ACTIVE` / `D3_ACTIVE` guards and a 1 GiB disk floor are checked before launch.
 The Workbench lease cannot serialize unrelated direct experiment launches: do not start external

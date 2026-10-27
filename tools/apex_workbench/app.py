@@ -143,9 +143,6 @@ if not retained:
 
 selected = st.selectbox("Retained run", list(by_id), key="selected_run")
 directory = by_id[selected]
-request = jobs.read_json(directory / "request.json")
-st.caption(f"Viewing {ADAPTERS[request['adapter']]} · effective configuration below")
-st.json(request["effective"], expanded=False)
 
 
 @st.fragment(run_every=1)
@@ -173,26 +170,46 @@ def progress():
 
 progress()
 status = jobs.status_for(directory)
+try:
+    request = storage.read_request(directory, verified=status["state"] not in jobs.ACTIVE)
+    if status["state"] not in jobs.ACTIVE:
+        storage.check_required_artifacts(directory, request, status)
+except (storage.IntegrityError, OSError, ValueError) as error:
+    st.error("Retained record quarantined; files preserved: " + str(error))
+    st.code(str(directory), language=None)
+    st.json(status, expanded=False)
+    st.stop()
+st.caption(f"Viewing {ADAPTERS[request['adapter']]} · effective configuration below")
+st.json(request["effective"], expanded=False)
+expected = storage.required_artifacts(request, status)
 trajectory_tab, states_tab, evidence_tab, notes_tab = st.tabs(
     ["Trajectory", "States & controls", "Evidence & logs", "Learning notes"]
 )
 with trajectory_tab:
     if status["state"] in jobs.ACTIVE:
         st.info("Waiting for the experiment to finish. Status updates automatically.")
-    elif (directory / "experiment/trajectory_xy.csv").exists():
+    else:
         try:
-            st.plotly_chart(plots.trajectory(directory), width="stretch")
+            figure = plots.trajectory(directory)
+            if figure.data:
+                st.plotly_chart(figure, width="stretch")
+            else:
+                st.info("Trajectory unavailable: this run produced no coordinate export.")
         except storage.IntegrityError as error:
             st.error("Telemetry quarantined: " + str(error))
         st.caption(
             "XY is derived from retained Frenet states using apex.coordinates.frenet. "
             "Track boundaries describe a CG corridor; no swept-body safety guarantee."
         )
-    else:
-        st.info("Trajectory unavailable: this run produced no complete coordinate export.")
-    if status["state"] not in jobs.ACTIVE and (directory / "worker_result.json").exists():
+    if status["state"] not in jobs.ACTIVE:
         try:
-            st.json(storage.artifact_json(directory, "worker_result.json"), expanded=False)
+            summary = storage.artifact_json(
+                directory, "worker_result.json", optional="worker_result.json" not in expected
+            )
+            if summary is not None:
+                st.json(summary, expanded=False)
+            else:
+                st.info("Summary unavailable: not produced by this execution.")
         except storage.IntegrityError as error:
             st.error("Summary quarantined: " + str(error))
     st.caption(
@@ -242,25 +259,39 @@ with evidence_tab:
     st.json(request, expanded=False)
     st.json(status, expanded=False)
     for name in ["numerical_environment.json", "artifacts.json"]:
-        if (directory / name).exists():
-            with st.expander(name):
-                try:
-                    if status["state"] in jobs.ACTIVE:
-                        st.caption("Evidence finalization pending")
-                    elif name == "artifacts.json":
-                        st.json(jobs.read_json(directory / name))
-                        st.caption("Manifest is validated when selected data is consumed.")
+        with st.expander(name):
+            try:
+                if status["state"] in jobs.ACTIVE:
+                    st.caption("Evidence finalization pending")
+                else:
+                    data = (
+                        storage.artifact_manifest(directory)
+                        if name == "artifacts.json"
+                        else storage.artifact_json(directory, name, optional=name not in expected)
+                    )
+                    if data is None:
+                        st.info("Evidence unavailable: not produced by this execution.")
                     else:
-                        st.json(storage.artifact_json(directory, name))
-                except (storage.IntegrityError, OSError, ValueError) as error:
-                    st.error("Evidence unavailable/unverified: " + str(error))
+                        st.json(data)
+            except (storage.IntegrityError, OSError, ValueError) as error:
+                st.error("Evidence unavailable/unverified: " + str(error))
     for name in ["stdout.log", "stderr.log", "supervisor.log"]:
         with st.expander(name):
             path = directory / name
-            st.code(
-                path.read_text(errors="replace")[-100_000:] if path.exists() else "Pending",
-                language=None,
-            )
+            try:
+                if status["state"] in jobs.ACTIVE or name == "supervisor.log":
+                    st.caption("Live/unverified diagnostic log; excluded from scientific claims.")
+                    contents = path.read_bytes() if path.exists() else None
+                else:
+                    contents = storage.artifact_bytes(directory, name, optional=True)
+                st.code(
+                    contents.decode(errors="replace")[-100_000:]
+                    if contents is not None
+                    else "No log produced yet",
+                    language=None,
+                )
+            except (storage.IntegrityError, OSError) as error:
+                st.error("Log unavailable/unverified: " + str(error))
             st.caption("Last 100,000 characters displayed; full log retained on disk.")
     if status["state"] not in jobs.ACTIVE:
         archive = io.BytesIO()
