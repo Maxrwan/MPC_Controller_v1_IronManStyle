@@ -1,0 +1,241 @@
+{
+  "status": "V0.1_VERIFIED_PENDING_USER_ACCEPTANCE",
+  "repository_stage": "VERIFIED_AWAITING_ACCEPTANCE",
+  "reviewed_tested_sha": "77d018b11bbbfc39ab81d98c9bef70e90ab82725",
+  "branch": "codex/apex-workbench-v0-1",
+  "delivery_revision": "Containing documentation-only commit; exact SHA/URL provided after push",
+  "review": {
+    "decision": "PASS",
+    "reviewer": "separate Codex stabilization_review context initialized without implementing history",
+    "named_external_secondary_approval_claimed": false,
+    "primary_scientific_acceptance_claimed": false,
+    "authority": "User explicitly delegated separate-context review and conditional functional Verification; no additional named/external human gate found",
+    "final_independent_probe": {
+      "receipt": {
+        "exceptions": [],
+        "errors": [
+          "Retained record quarantined; files preserved: Required retained artifact missing: execution.json"
+        ],
+        "warnings": [],
+        "charts": 0,
+        "comparison": "invalid",
+        "fixture_unchanged_by_reads": true
+      },
+      "listed-owner": {
+        "exceptions": [],
+        "errors": [
+          "Retained record quarantined; files preserved: Required retained artifact missing: worker.json"
+        ],
+        "warnings": [],
+        "charts": 0,
+        "comparison": "invalid",
+        "fixture_unchanged_by_reads": true
+      },
+      "intact-optional-controls": {
+        "exceptions": [],
+        "errors": [],
+        "warnings": [],
+        "charts": 8,
+        "comparison": "controlled",
+        "fixture_unchanged_by_reads": true,
+        "optional_dynamic_controls_empty": true
+      },
+      "audit": {
+        "head": "77d018b11bbbfc39ab81d98c9bef70e90ab82725",
+        "tracked_status": "",
+        "source_manifest_matches": true,
+        "cycle3_snapshot_matches": true,
+        "cycle3_log_hash_matches": true,
+        "cycle3_source_hash_matches": true,
+        "original_seed_unchanged": true,
+        "unchanged_lifecycle_source_paths": [],
+        "scientific_source_dependency_changes": [],
+        "read_status_ast_unchanged": true
+      }
+    },
+    "probe_sha256": "a12f92ab6eeea5817e2c7c196546982ab8eff6011f8aa0b63cdafc4eb0b8cf59"
+  },
+  "verification": {
+    "selection": [
+      "tests",
+      "tools/apex_workbench/tests"
+    ],
+    "passed": 855,
+    "skipped": 17,
+    "failed": 0,
+    "errors": 0,
+    "exit": 0,
+    "seconds": 667.18,
+    "workbench_passed": 78,
+    "existing_repository_passed": 777,
+    "skips": {
+      "count": 17,
+      "file": "tests/integration/test_profile1_parity.py:55",
+      "reason": "Separate G2 authorization, reviewed revision/allowance and pristine B0 root required",
+      "not_passed": true,
+      "outside_workbench_delegation": true
+    },
+    "environment": {
+      "reviewed_sha": "77d018b11bbbfc39ab81d98c9bef70e90ab82725",
+      "python": "3.12.14 (main, Sep  1 2026, 14:09:38) [Clang 22.1.3 ]",
+      "apex": "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/src/apex/__init__.py",
+      "native": {
+        "requested_ceiling": 1,
+        "set_status": 0,
+        "blas_threading_mode": 1,
+        "mode_name": "single",
+        "exact_active_thread_count_available": false
+      },
+      "packages": {
+        "numpy": "2.5.3",
+        "scipy": "1.18.1",
+        "casadi": "3.8.1",
+        "pandas": "3.0.6",
+        "matplotlib": "3.11.2",
+        "streamlit": "1.66.1",
+        "plotly": "6.9.0",
+        "psutil": "7.2.2",
+        "pytest": "9.1.1"
+      }
+    }
+  },
+  "command": "VECLIB_MAXIMUM_THREADS=1 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 PYTHONPATH=.:scripts:src tools/apex_workbench/.venv/bin/python -c 'from threading_study.config import configure_accelerate; native=configure_accelerate(1); import importlib.metadata,json,sys,subprocess,apex,pytest; sha=subprocess.check_output([\"git\",\"rev-parse\",\"HEAD\"],text=True).strip(); assert sha==\"77d018b11bbbfc39ab81d98c9bef70e90ab82725\"; assert not subprocess.check_output([\"git\",\"status\",\"--porcelain\"],text=True); print(json.dumps({\"reviewed_sha\":sha,\"python\":sys.version,\"apex\":apex.__file__,\"native\":native,\"packages\":{p:importlib.metadata.version(p) for p in [\"numpy\",\"scipy\",\"casadi\",\"pandas\",\"matplotlib\",\"streamlit\",\"plotly\",\"psutil\",\"pytest\"]}}),flush=True); raise SystemExit(pytest.main(sys.argv[1:]))' -q tests tools/apex_workbench/tests --durations=10 --basetemp=results/apex_workbench_stabilization_20261028/verification-77d018b/pytest > results/apex_workbench_stabilization_20261028/verification-77d018b/complete-tests.log 2>&1",
+  "artifact_and_preservation_audit": {
+    "reviewed_sha": "77d018b11bbbfc39ab81d98c9bef70e90ab82725",
+    "completed_utc": "2026-10-27T22:20:48.006041+00:00",
+    "tracked_files_verified_unchanged_during_verification": 896,
+    "changed_tracked": [],
+    "historical_result_files_unchanged_size_mtime": 14100,
+    "historical_changes": [],
+    "real_run_selection": "request.run_id equals original directory name, published valid evidence; deliberately corrupt copies and direct fault fixtures are separately covered by tests",
+    "real_run_manifests_verified": [
+      {
+        "path": "pytest/test_plot_reads_actual_csv_and0/20261027T221913587868Z_83553c472d8d487b98884c35473fc214",
+        "scientific_outcome": "completed",
+        "evidence_state": "valid",
+        "manifest_entries_verified": 13
+      },
+      {
+        "path": "pytest/test_existing_lqr_still_execut0/20261027T221851210994Z_e5209afd0f994b4a9fdf7d521a0c760c",
+        "scientific_outcome": "completed",
+        "evidence_state": "valid",
+        "manifest_entries_verified": 15
+      },
+      {
+        "path": "pytest/test_cancel_and_unique_run_dir0/20261027T221911742393Z_04e910a03fa44b27a43d0da9a9619ac1",
+        "scientific_outcome": "completed",
+        "evidence_state": "valid",
+        "manifest_entries_verified": 13
+      },
+      {
+        "path": "pytest/test_cancel_and_unique_run_dir0/20261027T221911270319Z_73433b3fac5342d9ae7399104c3d7c8e",
+        "scientific_outcome": "cancelled",
+        "evidence_state": "valid",
+        "manifest_entries_verified": 5
+      },
+      {
+        "path": "pytest/test_r1_real_sigkill_keeps_wor1/20261027T221843430420Z_32f569bbbeea42119d2e25291d6623d2",
+        "scientific_outcome": "cancelled",
+        "evidence_state": "valid",
+        "manifest_entries_verified": 7
+      },
+      {
+        "path": "pytest/test_r1_real_sigkill_keeps_wor0/20261027T221842916418Z_845ead3f876644feb79bb5afb9da5617",
+        "scientific_outcome": "interrupted",
+        "evidence_state": "valid",
+        "manifest_entries_verified": 7
+      },
+      {
+        "path": "pytest/genuine-workbench-outputs0/20261027T221846713120Z_9f02b609b06640dbb29ee0ff38a4d040",
+        "scientific_outcome": "completed",
+        "evidence_state": "valid",
+        "manifest_entries_verified": 13
+      },
+      {
+        "path": "pytest/genuine-workbench-outputs0/20261027T221848250254Z_7aade3475d2f45fdb5e5eb72161bc9b5",
+        "scientific_outcome": "completed",
+        "evidence_state": "valid",
+        "manifest_entries_verified": 13
+      },
+      {
+        "path": "pytest/test_r2_two_sessions_during_in0/20261027T221844210132Z_c44cda6733d74476a4ee60b4cb19ad20",
+        "scientific_outcome": "completed",
+        "evidence_state": "valid",
+        "manifest_entries_verified": 13
+      },
+      {
+        "path": "pytest/test_ui_real_run_and_invalid_i0/20261027T221915312516Z_59b70c0ba1d543e9adda9e8419ce1b65",
+        "scientific_outcome": "completed",
+        "evidence_state": "valid",
+        "manifest_entries_verified": 13
+      }
+    ],
+    "unverified_original_run_records": [],
+    "clean_tracked_status": true
+  },
+  "launcher": {
+    "cwd": "/private/tmp",
+    "launcher_sha256": "980ec823f4daa2652ea960a5fb58e3fa05da757add867a6b4a76d13a4a2fb21f",
+    "server_pid": 45121,
+    "helper_pid": 45118,
+    "health": "200 ok",
+    "repeat_reuses_live_server": true,
+    "owned_server_stopped": true,
+    "reuse_bind_after_shutdown": true,
+    "foreign_port_rejected_without_termination": true,
+    "missing_environment_clear_error": true
+  },
+  "evidence_root": "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/results/apex_workbench_stabilization_20261028/verification-77d018b",
+  "evidence_sha256": {
+    "complete-tests.log": "64670e4f9ddc8f8c2a8e53d426c7d8a7203121787566af2cd8f2a957b6d4adc2",
+    "start.json": "d4464832557d7f5a7340645123f0ad550a52d850fddea5d82e3427c37226d538",
+    "audit.json": "9e516b0b7256c3deaa6f51f2bccdba90000be2d3d16ce4983e1a9d8301c7fa69",
+    "launcher/smoke.log": "d009aa19810946437a151f14815a5a4dcc1c9be5b3ec100367b355ce20acba13",
+    "launcher/launcher-smoke.json": "d009aa19810946437a151f14815a5a4dcc1c9be5b3ec100367b355ce20acba13",
+    "launcher/launcher-server.log": "9386669853a16bc18adbd5594e7b76aefc1982c702bd4c66be694dfa12829d9b",
+    "launcher/launcher-repeat.log": "4b4b88102ced713168c7de0be8070a4e8626922df381beb8a9d0b1d4be426240",
+    "launcher/launcher-foreign-port.log": "3ed07e85b7ec205a2600e4859caa923c6a264f67ec30528b9c2f3a4c7cc50bf2",
+    "launcher/launcher-missing-env.log": "5c7f614f1ec87a652035852463597ab80c158c72aa5931f9c842626c3f2400e2"
+  },
+  "implementation_sha256": {
+    "Launch_APEX_Workbench.command": "980ec823f4daa2652ea960a5fb58e3fa05da757add867a6b4a76d13a4a2fb21f",
+    "tools/apex_workbench/__init__.py": "194595c8c9d46745693697c8417c2408fbe76e3254ae716f26b50c47f4723396",
+    "tools/apex_workbench/app.py": "894d1b365d5b0fcbb2f93e5f72ffcad3929237a6b4ba54258941cea7512a9f27",
+    "tools/apex_workbench/comparison.py": "408181cde33c284a22eb0e06cd12b5e11aaef74c7c67bc160f63f87bb2420dd1",
+    "tools/apex_workbench/configuration.py": "e82b19ace25655fadbe8216eb01eb2038b37698d6ef614ad8996eae3527e97e4",
+    "tools/apex_workbench/jobs.py": "d0fe01231490f3f1a2ad7875cc4697d603cf6c404b383f48c07c3834b25b3fdf",
+    "tools/apex_workbench/lifecycle.py": "794bd5ada88048a402a2d0946942ec9962e52b0caf2e72d7a8a3a0279f51f05a",
+    "tools/apex_workbench/plots.py": "ec157954259b89e37987b57f5359659a625c7480df57a1abae1bfa5bb0359d95",
+    "tools/apex_workbench/storage.py": "f1aa40dbca722e4e559aee00e653209b760279496b3746f2e3dc328003234c14",
+    "tools/apex_workbench/tests/test_corrections.py": "487e79c20b41e8290e1f4e062f3cb4d6ec7b9a3ba0ccb84bf08a2c41ab9840d7",
+    "tools/apex_workbench/tests/test_workbench.py": "de6ce8b4d99a364617cb459221af4568db7d787a7f1bcbcf8e87ef19631e1d59",
+    "tools/apex_workbench/worker.py": "198731c5b47320efd03824fd1abca722e534731c120db575bde047a4456fa49b"
+  },
+  "classifications": {
+    "execution_correctness": "PASS for complete applicable test set",
+    "artifact_integrity": "PASS for 10 original supervised manifests; corrupt copies/fault fixtures are retained separately",
+    "adapter_parity": "PASS; both original-entry-point and full-worker dynamic/LQR checks freshly executed",
+    "scientific_model_validity": "Not established as a real-vehicle physical validation claim",
+    "resources_and_platform": "macOS/local filesystem; sampled guards; no hard-real-time, hardware-watchdog or resource-exhaustion qualification"
+  },
+  "substantive_corrective_cycles": 3,
+  "canonical_scientific_source_configuration_dependencies_changed": false,
+  "outstanding_decision": "User acceptance; Primary scientific acceptance not claimed",
+  "new_research_campaign_or_v02_started": false,
+  "documentation_only_delivery_checks": {
+    "documentation_links": "pass",
+    "markdown_fences": "pass",
+    "json_parse": "pass",
+    "verified_implementation_hashes_unchanged": true,
+    "documentation_only_changed_preexisting_files": [
+      "docs/CODEX_HANDOFF.md",
+      "tools/apex_workbench/CAPABILITY_MATRIX.md",
+      "tools/apex_workbench/README.md",
+      "tools/apex_workbench/STABILIZATION.md",
+      "tools/apex_workbench/stabilization_record.json"
+    ],
+    "prior_handoff_suffix": "preserved",
+    "canonical_source_changes": []
+  },
+  "delivery_checks_sha256": "6faf18c7c07f33ecdb8d7e17cf71f376917579c717d0888faddec6428843e881"
+}

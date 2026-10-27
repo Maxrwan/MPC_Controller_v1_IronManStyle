@@ -1,5 +1,5 @@
 {
-  "status": "WORK_COMPLETE_PENDING_REVIEW",
+  "status": "V0.1_VERIFIED_PENDING_USER_ACCEPTANCE",
   "base_sha": "5acdf4ff4db927bfaf3828b8714dfe39619a5db8",
   "branch": "codex/apex-workbench-v0-1",
   "source_sha256": {
@@ -99,10 +99,17 @@
     "cycle2": "VECLIB_MAXIMUM_THREADS=1 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 PYTHONPATH=.:scripts:src tools/apex_workbench/.venv/bin/python -c 'from threading_study.config import configure_accelerate; configure_accelerate(1); import sys,pytest; raise SystemExit(pytest.main(sys.argv[1:]))' -q tools/apex_workbench/tests --durations=6 --basetemp=results/apex_workbench_stabilization_20261028/cycle2-pytest > results/apex_workbench_stabilization_20261028/cycle2-tests.log 2>&1",
     "cycle3": "VECLIB_MAXIMUM_THREADS=1 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 PYTHONPATH=.:scripts:src tools/apex_workbench/.venv/bin/python -c 'from threading_study.config import configure_accelerate; configure_accelerate(1); import sys,pytest; raise SystemExit(pytest.main(sys.argv[1:]))' -q tools/apex_workbench/tests --durations=6 --basetemp=results/apex_workbench_stabilization_20261028/cycle3-pytest > results/apex_workbench_stabilization_20261028/cycle3-tests.log 2>&1"
   },
-  "formal_verification": "NOT_RUN: pending exact-cycle-3 technical Review PASS; user delegation authorizes functional gate thereafter, no additional named-human gate found",
+  "formal_verification": {
+    "sha": "77d018b11bbbfc39ab81d98c9bef70e90ab82725",
+    "passed": 855,
+    "skipped": 17,
+    "failed": 0,
+    "exit": 0,
+    "record": "docs/reviews/apex_workbench_v0_1_stabilization/verification.json"
+  },
   "canonical_scientific_changes": false,
   "substantive_corrective_cycles": 3,
-  "next": "Separate-context review of exact cycle-3 corrective commit; if PASS, execute complete tests/ plus Workbench acceptance set on that SHA under delegated authority. Final scientific/user acceptance remains separate.",
+  "next": "Stop for user acceptance. No further routine correction/execution or scientific acceptance is implied.",
   "cycle1_review": {
     "reviewed_sha": "aeedf18e0df9b40ef7294ba15fc73e19b0d5884b",
     "decision": "FAIL",
@@ -544,5 +551,7 @@
     "seconds": 49.96,
     "scientific_unit_reuse": 148,
     "scope": "focused WORK, not formal Verification"
-  }
+  },
+  "reviewed_implementation_sha": "77d018b11bbbfc39ab81d98c9bef70e90ab82725",
+  "final_review": "PASS from separate stabilization_review context; see docs/reviews/apex_workbench_v0_1_stabilization/REVIEW.md"
 }

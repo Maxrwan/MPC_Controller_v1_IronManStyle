@@ -1,10 +1,13 @@
 # V0.1 delegated stabilization
 
-**WORK_COMPLETE_PENDING_REVIEW — cycle 3.** Recorded 28 October 2026. Initial baseline:
+**V0.1_VERIFIED_PENDING_USER_ACCEPTANCE.** Recorded 28 October 2026. Initial baseline:
 `5acdf4ff4db927bfaf3828b8714dfe39619a5db8`, branch `codex/apex-workbench-v0-1`.
 Cycle-1 candidate: `aeedf18e0df9b40ef7294ba15fc73e19b0d5884b`.
 Cycle-2 candidate: `ca5c72fd255bd2b9511d891485087dc3174b9aea`.
-The containing cycle-3 corrective commit binds the source hashes in [stabilization_record.json](stabilization_record.json).
+Final reviewed/tested implementation: `77d018b11bbbfc39ab81d98c9bef70e90ab82725`.
+The final delivery is a documentation-only descendant. [Separate-context review](../../docs/reviews/apex_workbench_v0_1_stabilization/REVIEW.md)
+passes; [complete functional Verification](../../docs/reviews/apex_workbench_v0_1_stabilization/VERIFICATION.md)
+reports **855 passed, 17 separately gated G2 skips**. Historical WORK results follow.
 Historical [failed review](../../docs/reviews/apex_workbench_v0_1_corrections/REVIEW.md),
 reproductions and result files remain unchanged.
 
@@ -60,7 +63,8 @@ combined 225-pass invocation is made.
 
 Cycle 3 complete Workbench selection: **78 passed, zero failures/skips**, 49.96 s. This adds the
 receipt-deletion case and reruns all Workbench lifecycle, UI, integrity and parity checks against
-the final corrective contents. Complete formal Verification is still pending exact-revision review.
+the final corrective contents. At that WORK stage, formal Verification awaited exact-revision
+review; its subsequently executed result is recorded above.
 
 The actual launcher smoke passed: unrelated working directory, health 200/ok, repeated click
 reuses its live server, owned SIGINT shutdown, immediate reusable-address bind, foreign listener
@@ -73,10 +77,9 @@ or physical model validation. Existing negative reviews and measurements are not
 
 ## Review and Verification gate
 
-Next, obtain a separate-context technical review of this exact cycle-3 corrective commit. This is
-independent technical scrutiny, not named external Secondary approval or Primary scientific acceptance.
-The delegated task expressly permits that reviewer context and conditional functional Verification;
-repository governance adds no extra named-human authorization before that already-delegated gate.
-After technical PASS, execute the complete required repository/Workbench acceptance set on that exact
-reviewed revision. Final user/scientific acceptance remains separate. No new research campaign,
-frozen-profile change, V0.2 or physical acceptance is authorized.
+The exact cycle-3 commit passed separate-context technical review, then the complete applicable
+repository/Workbench acceptance suite under the explicit delegation. No named external Secondary
+approval or Primary scientific acceptance is claimed. The 17 frozen G2 cases remain skipped because
+their independent scientific authorization/allowance was not delegated. Final user/scientific
+acceptance remains separate. No new research campaign, frozen-profile change, V0.2 or physical
+acceptance is authorized. All three corrective cycles are complete; stop for user acceptance.

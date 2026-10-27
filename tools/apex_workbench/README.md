@@ -4,11 +4,15 @@ Local engineering tooling: choose an existing experiment, edit supported inputs,
 run real APEX code, inspect retained results, and save your explanation. This workstream is
 separately authorized from the earlier Workbench/VIS-2 deferral. It changes no canonical model,
 controller, profile, scientific exporter, or historical evidence. Delivery status:
-**WORK_COMPLETE_PENDING_REVIEW**, not formal verification or scientific acceptance.
+**V0.1_VERIFIED_PENDING_USER_ACCEPTANCE**. Functional Verification on
+`77d018b11bbbfc39ab81d98c9bef70e90ab82725`: **855 passed, 17 separately gated G2 tests skipped**.
+See the [final review](../../docs/reviews/apex_workbench_v0_1_stabilization/REVIEW.md) and
+[Verification scope/limits](../../docs/reviews/apex_workbench_v0_1_stabilization/VERIFICATION.md).
 
 R1–R6 corrective WORK uses record version 2. See [correction scope and evidence](CORRECTIONS.md).
 The original [failed Engineering Review](../../docs/reviews/apex_workbench_v0_1/REVIEW.md)
-remains preserved; the corrected revision still requires a new Engineering Review.
+remains preserved. The stabilized revision has passed separate-context technical review and
+functional Verification; user/scientific acceptance remains separate.
 The [delegated stabilization record](STABILIZATION.md) covers subsequent metadata/missing-evidence
 corrections and their revision-specific review status.
 
@@ -148,7 +152,6 @@ an AI explanation.
 - Explicit selection of existing kinematic and smooth combined-grip compositions; no hidden swap.
 - Separately bounded NMPC/async adapters after their prerequisite gates, with zero/injected/measured
   latency, continuing plant motion, application staleness, fixed deadlines and failure retention.
-- Comparison eligibility by track, source identity, timing and model as well as adapter; exported
-  comparison reports and curated learning experiments.
-- Formal verification of the reviewed delivery revision. VIS package ingestion, VIS-2 unseen tracks,
+- Exported comparison reports and curated learning experiments.
+- Review/Verification of later implementation revisions. VIS package ingestion, VIS-2 unseen tracks,
   frozen Performance changes, Efficiency execution and physical vehicle identification remain separate.

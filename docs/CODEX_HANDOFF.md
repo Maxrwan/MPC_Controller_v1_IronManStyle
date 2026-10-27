@@ -1,3 +1,43 @@
+# Current handoff — APEX Workbench V0.1 verified
+
+**V0.1_VERIFIED_PENDING_USER_ACCEPTANCE.** Repository stage: **VERIFIED_AWAITING_ACCEPTANCE**.
+Recorded 28 October 2026. Branch `codex/apex-workbench-v0-1`.
+Exact reviewed/tested implementation: `77d018b11bbbfc39ab81d98c9bef70e90ab82725`.
+The containing final delivery commit changes documentation/evidence records only; exact SHA/URL
+is reported after push. Implementation/tests/configuration/dependencies match the verified revision.
+
+[Final separate-context Engineering Review](reviews/apex_workbench_v0_1_stabilization/REVIEW.md),
+[Verification scope/result](reviews/apex_workbench_v0_1_stabilization/VERIFICATION.md),
+[machine record](reviews/apex_workbench_v0_1_stabilization/verification.json).
+R1–R6, C-R2/C-R6 and launcher: PASS. Three substantive corrective cycles completed. Failed candidate
+reviews and raw negative evidence remain unchanged. Review used a separate agent context with fresh
+probes; no named external Secondary approval or Primary scientific acceptance is claimed. The explicit
+user delegation supplied authority for functional Verification after technical PASS; no extra named
+human gate was invented.
+
+Fresh complete applicable acceptance suite: **855 passed, 17 skipped, zero failures/errors**, exit 0,
+667.18 s. Includes all 78 Workbench tests, original/full-worker dynamic/LQR parity and existing
+repository unit/integration/regression checks. All skips are separately gated frozen Profile1 G2
+cases requiring independent authorization/revision/allowance/B0 root; they remain NOT RUN, not passed.
+No old result is counted as newly executed. Final-pin launcher smoke, syntax/Ruff/format/links and
+artifact/preservation audits pass. Owned processes/server stopped.
+
+Ten original supervised manifests verified in full: seven completed, one interrupted, two cancelled;
+negative/partial outcomes remain distinct from successful science. All 896 tracked files stayed
+byte-identical during Verification; all 14,100 pre-existing results retain size/mtime. Canonical
+science, frozen configurations/profiles, dependencies and historical evidence are unchanged.
+Full logs/fixtures: `results/apex_workbench_stabilization_20261028/verification-77d018b/`.
+
+Workbench enables existing open-loop dynamic and fixed LQR/PI runs, allowlisted input changes, real
+retained plots, classified comparisons and append-only learning notes. Launch with the root command
+icon. Synthetic/fixed physics, perfect state and ideal modeled timing remain explicit; no new
+NMPC/async adapter, identification, hardware control, physical safety validation or V0.2 was added.
+
+**Next required decision: user acceptance. Stop here.** Final scientific direction/acceptance remains
+with the user/Primary; this delivery authorizes no new scientific campaign or follow-on feature.
+
+---
+
 # Current handoff — Workbench stabilization cycle 3 candidate
 
 **WORK_COMPLETE_PENDING_REVIEW.** Recorded 28 October 2026. Corrective base

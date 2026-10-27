@@ -28,4 +28,6 @@ those are not exposed by these adapters. No fake solver, constraint or timing se
 R1–R6 corrections add no editable parameters or experiments. Runs now use worker-owned execution
 leases, atomic publication, separate execution/evidence outcomes, verified selected artifacts and
 controlled/illustrative/invalid comparison eligibility. Historical records and the original failed
-review are preserved. See [CORRECTIONS.md](CORRECTIONS.md); a new Engineering Review is required.
+review are preserved. See historical [CORRECTIONS.md](CORRECTIONS.md) and current
+[STABILIZATION.md](STABILIZATION.md). The stabilized implementation passed separate-context technical
+review and complete applicable functional Verification; physical/user acceptance remains separate.
