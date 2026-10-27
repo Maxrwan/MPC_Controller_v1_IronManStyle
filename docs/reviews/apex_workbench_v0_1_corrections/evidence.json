@@ -1,0 +1,269 @@
+{
+  "status": "ENGINEERING_REVIEW_COMPLETE_PENDING_DECISION",
+  "decision": "FAIL",
+  "eligible_for_formal_verification": false,
+  "review_recorded_local_date": "2026-10-28",
+  "timezone": "Africa/Cairo",
+  "reviewed_sha": "219b9358409fa73fc59f24a7755da66771883e6b",
+  "branch": "codex/apex-workbench-v0-1",
+  "delivery_base_sha": "b49844c85b53ab3b77572156f4824689e7f80405",
+  "review_root": "/private/tmp/apex-workbench-review-219b935-20261027",
+  "technical_review_independent_of_report_claims": true,
+  "personnel_independent_secondary_approval": false,
+  "source_manifest_verified": {
+    "tools/apex_workbench/worker.py": true,
+    "tools/apex_workbench/configuration.py": true,
+    "tools/apex_workbench/__init__.py": true,
+    "tools/apex_workbench/comparison.py": true,
+    "tools/apex_workbench/jobs.py": true,
+    "tools/apex_workbench/plots.py": true,
+    "tools/apex_workbench/lifecycle.py": true,
+    "tools/apex_workbench/storage.py": true,
+    "tools/apex_workbench/app.py": true,
+    "tools/apex_workbench/tests/test_workbench.py": true,
+    "tools/apex_workbench/tests/test_corrections.py": true
+  },
+  "matrix": {
+    "R1": "PASS WITH CONDITIONS",
+    "R2": "FAIL",
+    "R3": "PASS",
+    "R4": "PASS",
+    "R5": "PASS",
+    "R6": "FAIL",
+    "launcher": "PASS WITH CONDITIONS"
+  },
+  "fresh_tests": {
+    "passed": 116,
+    "failed": 1,
+    "setup_errors": 0,
+    "skipped": 0,
+    "exit": 1,
+    "duration_s": 50.89,
+    "workbench_passed": 48,
+    "workbench_failed": 1,
+    "scientific_unit_passed": 68,
+    "failed_case": "tools/apex_workbench/tests/test_corrections.py::test_r1_real_sigkill_keeps_worker_lease_and_recovers[False]",
+    "failure": "running != interrupted at immediate recovery assertion",
+    "old_results_counted_as_fresh": false,
+    "parity": "Both original-entry-point and full-worker dynamic/LQR parity assertions passed freshly"
+  },
+  "fresh_test_command": "VECLIB_MAXIMUM_THREADS=1 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 PYTHONPATH=.:scripts:src tools/apex_workbench/.venv/bin/python -c 'from threading_study.config import configure_accelerate; native=configure_accelerate(1); import importlib.metadata,json,sys,apex,pytest; from tools.apex_workbench.configuration import ROOT; print(json.dumps({\"root\":str(ROOT),\"apex\":apex.__file__,\"python\":sys.version,\"native\":native,\"packages\":{p:importlib.metadata.version(p) for p in [\"numpy\",\"scipy\",\"streamlit\",\"psutil\",\"pytest\"]}},default=str),flush=True); raise SystemExit(pytest.main(sys.argv[1:]))' -q tools/apex_workbench/tests tests/unit/test_frenet.py tests/unit/test_baseline.py tests/unit/test_runner.py --durations=8 --basetemp=/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/results/apex_workbench_correction_review_20261027/pytest > /Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/results/apex_workbench_correction_review_20261027/fresh-tests.log 2>&1",
+  "readers": {
+    "seed": "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/results/apex_workbench_correction_review_20261027/pytest/genuine-workbench-outputs0/20261027T202737333517Z_ad45ea9cbbb9487e9c16b7c0672c52cd",
+    "fixtures_resealed": false,
+    "missing_prediction": {
+      "exceptions": [
+        "'prediction'"
+      ],
+      "errors": [
+        "Telemetry quarantined: Artifact size mismatch: request.json",
+        "Telemetry quarantined: Artifact size mismatch: request.json"
+      ],
+      "warnings": [],
+      "info": [
+        "Solver status/time, injected/measured latency and deadline metrics: unavailable in these adapters. LQR is not an optimizer; host execution time is shown only in evidence."
+      ],
+      "charts": 0
+    },
+    "missing_prediction_selected": [
+      "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/results/apex_workbench_correction_review_20261027/reader-probes/missing-prediction/record"
+    ],
+    "missing_geometry": {
+      "exceptions": [],
+      "errors": [],
+      "warnings": [],
+      "info": [
+        "Solver status/time, injected/measured latency and deadline metrics: unavailable in these adapters. LQR is not an optimizer; host execution time is shown only in evidence."
+      ],
+      "charts": 8
+    },
+    "missing_geometry_trace_names": [
+      "Plant trajectory"
+    ],
+    "geometry_recorded_in_manifest": true
+  },
+  "recovery": {
+    "failed_test_raw_status": {
+      "record_version": 2,
+      "state": "running",
+      "scientific_outcome": "running",
+      "evidence_state": "pending",
+      "pid": 40964,
+      "supervisor_pid": 40962,
+      "updated_utc": "2026-10-27T20:27:34.432245+00:00"
+    },
+    "failed_test_owners_gone": {
+      "worker": true,
+      "supervisor": true
+    },
+    "failed_test_recovered_status": {
+      "record_version": 2,
+      "state": "interrupted",
+      "scientific_outcome": "interrupted",
+      "evidence_state": "valid",
+      "updated_utc": "2026-10-27T20:29:32.057209+00:00",
+      "error": "Supervisor ownership lost; execution is uncertain",
+      "recovered": true,
+      "manifest_sha256": "cddc464fcf5310dabde7a46bff1bb210bd78ee7d2f25f1a02a2ceb4cc8756fd4"
+    },
+    "recovery_idempotent": true,
+    "natural_supervisor_loss": {
+      "record_version": 2,
+      "state": "interrupted",
+      "scientific_outcome": "interrupted",
+      "evidence_state": "valid",
+      "updated_utc": "2026-10-27T20:29:32.383660+00:00",
+      "error": "Supervisor ownership lost; execution is uncertain",
+      "recovered": true,
+      "manifest_sha256": "bfb9aa42778864af6b4c7b3cee8f16189c58e15e051721f527cfa0930edf5f2e"
+    },
+    "natural_status_observations": [
+      {
+        "state": "running",
+        "owner_notice": "Another Workbench experiment is running"
+      },
+      {
+        "state": "running",
+        "owner_notice": "Another Workbench experiment is running"
+      },
+      {
+        "state": "running",
+        "owner_notice": "Another Workbench experiment is running"
+      },
+      {
+        "state": "running",
+        "owner_notice": "Another Workbench experiment is running"
+      },
+      {
+        "state": "running",
+        "owner_notice": "Another Workbench experiment is running"
+      },
+      {
+        "state": "interrupted",
+        "owner_notice": null
+      }
+    ],
+    "unrelated_live_process_not_signalled": true,
+    "test_race_interpretation": "owned_process absence can precede lease release; immediate status read is not a completion barrier"
+  },
+  "launcher_start_and_occupied": {
+    "reviewed_sha": "219b9358409fa73fc59f24a7755da66771883e6b",
+    "cwd": "/private/tmp",
+    "launcher_sha256": "8f66a97a554ddd8c6342ce6ffe9a5661e487599ac239c0a07af6f95ab7712cf7",
+    "health": "200 ok",
+    "launcher_pid": 42372,
+    "server_pid": 42374,
+    "server_created": 1793136664.552857,
+    "helper_pid": 42373,
+    "helper_created": 1793136664.521594,
+    "owned_server_listens_8501": true,
+    "root_http_status": 200,
+    "streamlit_html": true,
+    "occupied_exit": 1,
+    "occupied_message": "Port 8501 is unavailable. An existing Workbench may already be open at http://127.0.0.1:8501.\nLaunch failed. See the messages above or tools/apex_workbench/README.md.\n",
+    "original_server_survived": true
+  },
+  "launcher_followup": {
+    "note": "Follow-up after smoke harness incorrectly required immediate non-reuse bind after TCP shutdown; original failure retained.",
+    "review_owned_server_gone": true,
+    "review_owned_helper_gone": true,
+    "connect_ex_after_shutdown": 61,
+    "reuseaddr_bind_after_shutdown": true,
+    "missing_environment_exit": 1,
+    "missing_environment_message": "Workbench setup is missing. Follow tools/apex_workbench/README.md first.\n",
+    "browser_observation": {
+      "tool": "cua_repl",
+      "tab": "873261157",
+      "title": "APEX Workbench",
+      "url": "http://127.0.0.1:8501/",
+      "visible": [
+        "Predict. Run. Understand.",
+        "SYNTHETIC parameters",
+        "Scientific outcome: completed \u00b7 Evidence: valid"
+      ],
+      "experiment_submitted_by_review_browser_actions": false
+    }
+  },
+  "launcher_harness_exit": 1,
+  "launcher_harness_failure": "Immediate non-reuse bind after shutdown raised EADDRINUSE; retained; no surviving owned process in follow-up",
+  "launcher_initial_sandbox_attempt": "Bind EPERM was labeled unavailable port; authorized unsandboxed startup then succeeded",
+  "extra_unattributed_run": {
+    "path": "/private/tmp/apex-workbench-review-219b935-20261027/results/apex_workbench/20261027T205551064973Z_940c8cb6e90248d6b0a030decd69f28d",
+    "origin": "unattributed during interaction gap",
+    "counted_as_review_success": false,
+    "modified_by_review": false
+  },
+  "preservation_after_tests": {
+    "base_head": "b49844c85b53ab3b77572156f4824689e7f80405",
+    "tracked_count": 887,
+    "changed_tracked": [],
+    "historical_results_count": 13376,
+    "changed_historical_result_metadata": [],
+    "clone_status": ""
+  },
+  "core_diff_from_pre_workbench": {
+    "base": "37b3f19a5d58f9a76cfd9dee5cb5bf4352edc980",
+    "paths": [
+      "src",
+      "scripts",
+      "configs",
+      "tests",
+      "results",
+      "pyproject.toml",
+      "uv.lock",
+      "requirements.txt"
+    ],
+    "changed": []
+  },
+  "evidence_root": "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/results/apex_workbench_correction_review_20261027",
+  "evidence_file_sha256": {
+    "fresh-tests.log": "4ed3fe1f7f3497240cf9c6025859193fbb8257aa1cf8ba20e50d4af3781e751b",
+    "review_probes.py": "8836bc808b560256897b404cdf5cd5d9a9562bfe9a67d57cd569aa8397197096",
+    "launcher_smoke.py": "5326e514e1cd65fc51a8897bcf91f02c6eb2a3e6f7faaa1cc2cf59569fbd7994",
+    "probe-readers.log": "e2821942b59ab87b49bc5241eb72efae1f5f54bcdd8f4759be73a91fd8778fc2",
+    "probe-recovery.log": "c937f2e44a32a6478c807aacca6f5469d0739f8d7b32c65f2bcb4a15b1abe3c8",
+    "probe-readers.json": "1081e4d372687907c23f9cf96ca3a0bd1818508e213a345b16cfead3c906bd75",
+    "probe-recovery.json": "c937f2e44a32a6478c807aacca6f5469d0739f8d7b32c65f2bcb4a15b1abe3c8",
+    "launcher-smoke.log": "8a7040303a7f58dab421ccc0f695405ff41aff893f6d1bf316900f41c4399fde",
+    "launcher-server.log": "85fe764c7b736df0cb0c19924e560a3d1f6e408ea56f573b6cd8b288fd7cbaed",
+    "launcher-ready.json": "608a44c6a554e07ca5a541feed68bd5990b963635768a47be4b19b218f73d371",
+    "launcher-occupied.log": "74258f36a536c756dfcdeeaca3e80a85b8ed6c039ff0b90fb1f427c1e3a5523c",
+    "launcher-followup.json": "e033830728529cd96996c03340584184868f13884d274c2d87b63333c1731ec8",
+    "launcher-missing-env.log": "5c7f614f1ec87a652035852463597ab80c158c72aa5931f9c842626c3f2400e2",
+    "preservation_before.json": "7409dc7c10e8d97d8890f19293df6bf20a694d8ac32147e3add1b2a95691fff4",
+    "preservation_after_tests.json": "3a29e6c3565fc845cb1bf53a4c3fb6f5812adfec72447cafae10f93c06dff7e8"
+  },
+  "scope_exclusions": [
+    "implementation changes",
+    "formal Verification",
+    "full regression",
+    "V0.2",
+    "NMPC",
+    "asynchronous control",
+    "hardware campaigns",
+    "resource-exhaustion qualification"
+  ],
+  "recommended_next_gate": "Narrow corrective WORK for incomplete request/missing required artifact reader paths and R1 regression synchronization; review exact new SHA before separately authorized Verification",
+  "review_artifact_checks": {
+    "harnesses": {
+      "review_probes.py": {
+        "ast_equal": true,
+        "committed_sha256": "ef32f1409ba508dc86d687e4015f05563abc799f03713d45e96063f8ebfe78a3"
+      },
+      "launcher_smoke.py": {
+        "ast_equal": true,
+        "committed_sha256": "d881748f4c8c73f6626dfd6d638d9641e3fd1e22dbba2198d2245e5a947e858d"
+      }
+    },
+    "local_markdown_links": "pass",
+    "markdown_fences": "pass",
+    "json_parse": "pass",
+    "review_harness_syntax": "pass",
+    "historical_handoff_suffix": "unchanged",
+    "only_changed_preexisting_tracked": [
+      "docs/CODEX_HANDOFF.md"
+    ],
+    "historical_results_metadata_unchanged": 13376,
+    "pinned_clone_tracked_status": "clean"
+  }
+}

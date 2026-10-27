@@ -1,3 +1,45 @@
+# Current handoff — Workbench V0.1 corrective Engineering Review
+
+**ENGINEERING_REVIEW_COMPLETE_PENDING_DECISION. Decision: FAIL.** Recorded 28 October 2026,
+Africa/Cairo. Reviewed exact `219b9358409fa73fc59f24a7755da66771883e6b` on
+`codex/apex-workbench-v0-1` in a detached local clone; delivery starts from launcher descendant
+`b49844c85b53ab3b77572156f4824689e7f80405`. The containing commit is review documentation only;
+its exact delivery SHA/URL is reported after push.
+
+[Review matrix and blocking findings](reviews/apex_workbench_v0_1_corrections/REVIEW.md),
+[reproduction](reviews/apex_workbench_v0_1_corrections/REPRODUCTION.md),
+[machine-readable observations/hashes](reviews/apex_workbench_v0_1_corrections/evidence.json).
+R1 PASS WITH CONDITIONS; R2 FAIL; R3/R4/R5 PASS; R6 FAIL. Pinned launcher separately PASS WITH
+CONDITIONS. Incomplete selected request metadata crashes the app; deletion of manifest-listed
+geometry silently removes geometry without warning. No implementation/test/launcher fix was made.
+
+Fresh combined selection: **116 passed, 1 failed, zero setup errors/skips** (48 Workbench passes,
+one R1 immediate-recovery assertion failure; all 68 selected Frenet/baseline/runner tests pass).
+Original-entry-point/full-worker parity passes freshly. Historical 18 shared-fixture setup errors
+did not recur. The R1 negative is retained; later conservative recovery and an unsuspended-worker
+SIGKILL probe support an exit/lease-release synchronization explanation. This is not a clean test
+acceptance claim. Readers reproduce both blocking defects using unresealed disposable copies.
+
+Pinned launcher: actual unrelated-directory startup/health/browser, busy-port rejection, missing
+environment and owned server shutdown observed. Smoke harness exit 1 from immediate non-reuse
+rebind is retained; follow-up confirms no server, refused connections and SO_REUSEADDR availability.
+Later launcher changes at b49844c were outside the reviewed pin. Logs/fixtures remain under
+`results/apex_workbench_correction_review_20261027/`; its start-date name is retained. An additional
+clone-local UI run found after the interaction gap is unattributed, untouched and excluded from
+controlled review evidence.
+
+All original tracked files were unchanged before review docs; all 13,376 pre-existing result files
+retain size/mtime. Canonical/scientific source, frozen profiles and old reviews/results were not
+modified. No dependency install, full regression, NMPC, async, hardware or resource-exhaustion
+campaign. This same-chat technical audit is not personnel-independent Secondary approval.
+
+**Next recommended gate:** separately authorize narrow corrective WORK for C-R2/C-R6 and the R1
+regression synchronization; review the new exact SHA before separately authorizing Verification.
+The corrected V0.1 is not currently eligible for formal Verification. Stop pending the user/
+Engineering Orchestrator decision; no V0.2 or additional experiment is authorized by this handoff.
+
+---
+
 # Current handoff — Updated Workbench launch file
 
 **WORK_COMPLETE_PENDING_REVIEW.** Recorded 27 October 2026. Launcher-only follow-up to
