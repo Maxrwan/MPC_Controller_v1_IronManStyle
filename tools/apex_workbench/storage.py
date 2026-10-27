@@ -19,7 +19,7 @@ def read_json(path):
     return json.loads(Path(path).read_text())
 
 
-def read_status(directory):
+def read_status(directory, *, lifecycle_only=False):
     status = read_json(Path(directory) / "status.json")
     if not isinstance(status, dict) or status.get("state") not in {
         "queued",
@@ -34,9 +34,15 @@ def read_status(directory):
         "quarantined",
     }:
         raise IntegrityError("Incomplete or unknown status contract")
-    for key in ("scientific_outcome", "evidence_state"):
-        if key in status and not isinstance(status[key], str):
-            raise IntegrityError(f"Invalid status field: {key}")
+    for key in ("pid", "supervisor_pid"):
+        if key in status and (
+            isinstance(status[key], bool) or not isinstance(status[key], int) or status[key] <= 0
+        ):
+            raise IntegrityError(f"Invalid lifecycle field: {key}")
+    if not lifecycle_only:
+        for key in ("scientific_outcome", "evidence_state"):
+            if key in status and not isinstance(status[key], str):
+                raise IntegrityError(f"Invalid status field: {key}")
     return status
 
 

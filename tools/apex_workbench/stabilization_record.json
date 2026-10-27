@@ -8,12 +8,12 @@
     "tools/apex_workbench/app.py": "894d1b365d5b0fcbb2f93e5f72ffcad3929237a6b4ba54258941cea7512a9f27",
     "tools/apex_workbench/comparison.py": "408181cde33c284a22eb0e06cd12b5e11aaef74c7c67bc160f63f87bb2420dd1",
     "tools/apex_workbench/configuration.py": "e82b19ace25655fadbe8216eb01eb2038b37698d6ef614ad8996eae3527e97e4",
-    "tools/apex_workbench/jobs.py": "afa39893198c9a5f38dad24f9504b888321da6604dec85cd4f80b19d9c519fe6",
+    "tools/apex_workbench/jobs.py": "d0fe01231490f3f1a2ad7875cc4697d603cf6c404b383f48c07c3834b25b3fdf",
     "tools/apex_workbench/lifecycle.py": "794bd5ada88048a402a2d0946942ec9962e52b0caf2e72d7a8a3a0279f51f05a",
     "tools/apex_workbench/plots.py": "ec157954259b89e37987b57f5359659a625c7480df57a1abae1bfa5bb0359d95",
-    "tools/apex_workbench/storage.py": "469356e5f423efa5cf3c8d698025c8ff7ecce355015f500aa4ccf646db0608b3",
+    "tools/apex_workbench/storage.py": "c4d2eb5e5659c98cd7c4357484a1199cf7ef9e75c500b8fe74c74ce81df3289b",
     "tools/apex_workbench/worker.py": "198731c5b47320efd03824fd1abca722e534731c120db575bde047a4456fa49b",
-    "tools/apex_workbench/tests/test_corrections.py": "39cf1fb67c604686c71f62bc3f916bc2fe801e8b4f7ffd1ccf7e491ba32b6283",
+    "tools/apex_workbench/tests/test_corrections.py": "a1e8f1b913b5b68a3a711cff8bf5883643f31ebc2ac5ed509b57589694323381",
     "tools/apex_workbench/tests/test_workbench.py": "de6ce8b4d99a364617cb459221af4568db7d787a7f1bcbcf8e87ef19631e1d59"
   },
   "first_test_source": {
@@ -87,14 +87,363 @@
     "launcher-repeat.log": "4b4b88102ced713168c7de0be8070a4e8626922df381beb8a9d0b1d4be426240",
     "launcher-foreign-port.log": "3ed07e85b7ec205a2600e4859caa923c6a264f67ec30528b9c2f3a4c7cc50bf2",
     "launcher-missing-env.log": "5c7f614f1ec87a652035852463597ab80c158c72aa5931f9c842626c3f2400e2",
-    "preservation_before.json": "1c21974cb8318735f4c066ff888335a94726779d597807279de8fc8710b05569"
+    "preservation_before.json": "1c21974cb8318735f4c066ff888335a94726779d597807279de8fc8710b05569",
+    "cycle2-tests.log": "eb49b8d113a7f239c95027a8b2c948b1dc1092ca29bb91d3971dc384a38875c8",
+    "cycle2-source.json": "91f0f7d0df8368c86d858a6c1e98ff9012843657726f4e010a750a2dff71452c"
   },
   "commands": {
     "combined": "VECLIB_MAXIMUM_THREADS=1 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 PYTHONPATH=.:scripts:src tools/apex_workbench/.venv/bin/python -c 'from threading_study.config import configure_accelerate; native=configure_accelerate(1); import importlib.metadata,json,sys,apex,pytest; from tools.apex_workbench.configuration import ROOT; print(json.dumps({\"root\":str(ROOT),\"apex\":apex.__file__,\"python\":sys.version,\"native\":native,\"packages\":{p:importlib.metadata.version(p) for p in [\"numpy\",\"scipy\",\"streamlit\",\"psutil\",\"pytest\"]}},default=str),flush=True); raise SystemExit(pytest.main(sys.argv[1:]))' -q tools/apex_workbench/tests tests/unit/test_config.py tests/unit/test_dynamic_bicycle.py tests/unit/test_state.py tests/unit/test_frenet.py tests/unit/test_baseline.py tests/unit/test_runner.py --durations=8 --basetemp=results/apex_workbench_stabilization_20261028/cycle1-pytest > results/apex_workbench_stabilization_20261028/cycle1-tests.log 2>&1",
-    "affected": "VECLIB_MAXIMUM_THREADS=1 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 PYTHONPATH=.:scripts:src tools/apex_workbench/.venv/bin/python -c 'from threading_study.config import configure_accelerate; configure_accelerate(1); import sys,pytest; raise SystemExit(pytest.main(sys.argv[1:]))' -q tools/apex_workbench/tests/test_corrections.py::test_request_changed_after_listing_is_quarantined tools/apex_workbench/tests/test_corrections.py::test_failed_execution_with_no_exports_remains_inspectable --basetemp=results/apex_workbench_stabilization_20261028/affected-pytest > results/apex_workbench_stabilization_20261028/affected-tests.log 2>&1"
+    "affected": "VECLIB_MAXIMUM_THREADS=1 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 PYTHONPATH=.:scripts:src tools/apex_workbench/.venv/bin/python -c 'from threading_study.config import configure_accelerate; configure_accelerate(1); import sys,pytest; raise SystemExit(pytest.main(sys.argv[1:]))' -q tools/apex_workbench/tests/test_corrections.py::test_request_changed_after_listing_is_quarantined tools/apex_workbench/tests/test_corrections.py::test_failed_execution_with_no_exports_remains_inspectable --basetemp=results/apex_workbench_stabilization_20261028/affected-pytest > results/apex_workbench_stabilization_20261028/affected-tests.log 2>&1",
+    "cycle2": "VECLIB_MAXIMUM_THREADS=1 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 PYTHONPATH=.:scripts:src tools/apex_workbench/.venv/bin/python -c 'from threading_study.config import configure_accelerate; configure_accelerate(1); import sys,pytest; raise SystemExit(pytest.main(sys.argv[1:]))' -q tools/apex_workbench/tests --durations=6 --basetemp=results/apex_workbench_stabilization_20261028/cycle2-pytest > results/apex_workbench_stabilization_20261028/cycle2-tests.log 2>&1"
   },
   "formal_verification": "NOT_RUN: designated Engineering Review decision pending",
   "canonical_scientific_changes": false,
-  "substantive_corrective_cycles": 1,
-  "next": "Separate-context review of containing exact corrective commit; preserve external review authority"
+  "substantive_corrective_cycles": 2,
+  "next": "Separate-context review of containing exact corrective commit; preserve external review authority",
+  "cycle1_review": {
+    "reviewed_sha": "aeedf18e0df9b40ef7294ba15fc73e19b0d5884b",
+    "decision": "FAIL",
+    "reviewer": "separate stabilization_review agent context",
+    "designated_secondary_approval": false,
+    "findings": [
+      "S-R1 malformed legacy status can hide live owner from admission",
+      "S-R2 unchecked in-lock status reread can crash UI"
+    ],
+    "evidence": {
+      "lifecycle-probe.json": {
+        "sha256": "6c379cc88c8e0d70a7ec5ba535ffcf7da1609708167a0c244ade468f0e6c9795",
+        "observations": {
+          "status_read_race": {
+            "exception": "AttributeError",
+            "message": "'list' object has no attribute 'get'",
+            "traceback": "Traceback (most recent call last):\n  File \"results/apex_workbench_stabilization_20261028/independent-review/lifecycle_probe.py\", line 17, in <module>\n    try: result['status_read_race']=jobs.status_for(case)\n                                    ^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/tools/apex_workbench/jobs.py\", line 228, in status_for\n    return _reconcile_locked(directory, status)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/tools/apex_workbench/jobs.py\", line 190, in _reconcile_locked\n    if status.get(\"state\") not in ACTIVE:\n       ^^^^^^^^^^\nAttributeError: 'list' object has no attribute 'get'\n"
+          },
+          "legacy_live_owner": true,
+          "listed_runs": [],
+          "malformed_status_admission": {
+            "exception": "RuntimeError",
+            "message": "REVIEW_ADMISSION_REACHED_PROVENANCE",
+            "owner_alive": true
+          },
+          "readable_status_control": {
+            "exception": "RuntimeError",
+            "message": "A worker is still alive for legacy-active",
+            "owner_alive": true
+          }
+        }
+      },
+      "retained-probe.json": {
+        "sha256": "ed7a7fa25d71030d6f6c14fdca3f1167da20092494e0c57f9c1bf753edcf6329",
+        "observations": {
+          "missing:experiment/geometry.csv": {
+            "exceptions": [],
+            "errors": [
+              "Retained record quarantined; files preserved: Required retained artifact missing: experiment/geometry.csv"
+            ],
+            "warnings": [],
+            "charts": 0,
+            "comparison": "invalid"
+          },
+          "missing:experiment/trajectory_xy.csv": {
+            "exceptions": [],
+            "errors": [
+              "Retained record quarantined; files preserved: Required retained artifact missing: experiment/trajectory_xy.csv"
+            ],
+            "warnings": [],
+            "charts": 0,
+            "comparison": "invalid"
+          },
+          "missing:experiment/states.csv": {
+            "exceptions": [],
+            "errors": [
+              "Retained record quarantined; files preserved: Required retained artifact missing: experiment/states.csv"
+            ],
+            "warnings": [],
+            "charts": 0,
+            "comparison": "invalid"
+          },
+          "missing:experiment/summary.json": {
+            "exceptions": [],
+            "errors": [
+              "Retained record quarantined; files preserved: Required retained artifact missing: experiment/summary.json"
+            ],
+            "warnings": [],
+            "charts": 0,
+            "comparison": "invalid"
+          },
+          "missing:experiment/telemetry_contract.json": {
+            "exceptions": [],
+            "errors": [
+              "Retained record quarantined; files preserved: Required retained artifact missing: experiment/telemetry_contract.json"
+            ],
+            "warnings": [],
+            "charts": 0,
+            "comparison": "invalid"
+          },
+          "missing:worker_result.json": {
+            "exceptions": [],
+            "errors": [
+              "Retained record quarantined; files preserved: Required retained artifact missing: worker_result.json"
+            ],
+            "warnings": [],
+            "charts": 0,
+            "comparison": "invalid"
+          },
+          "missing:numerical_environment.json": {
+            "exceptions": [],
+            "errors": [
+              "Retained record quarantined; files preserved: Required retained artifact missing: numerical_environment.json"
+            ],
+            "warnings": [],
+            "charts": 0,
+            "comparison": "invalid"
+          },
+          "missing:stdout.log": {
+            "exceptions": [],
+            "errors": [
+              "Log unavailable/unverified: Unverified artifact stdout.log: [Errno 2] No such file or directory: '/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/results/apex_workbench_stabilization_20261028/independent-review/retained-probes/missing-stdout.log/record/stdout.log'"
+            ],
+            "warnings": [],
+            "charts": 8,
+            "comparison": "controlled"
+          },
+          "missing:stderr.log": {
+            "exceptions": [],
+            "errors": [
+              "Log unavailable/unverified: Unverified artifact stderr.log: [Errno 2] No such file or directory: '/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/results/apex_workbench_stabilization_20261028/independent-review/retained-probes/missing-stderr.log/record/stderr.log'"
+            ],
+            "warnings": [],
+            "charts": 8,
+            "comparison": "controlled"
+          },
+          "missing:experiment/controls.csv": {
+            "exceptions": [],
+            "errors": [
+              "Retained record quarantined; files preserved: Required retained artifact missing: experiment/controls.csv"
+            ],
+            "warnings": [],
+            "charts": 0,
+            "comparison": "invalid"
+          },
+          "malformed:missing_prediction": {
+            "exceptions": [],
+            "errors": [],
+            "warnings": [
+              "Incomplete record preserved and excluded from selection: record: Incomplete or invalid request: 'prediction'"
+            ],
+            "charts": 0
+          },
+          "malformed:prediction_object": {
+            "exceptions": [],
+            "errors": [],
+            "warnings": [
+              "Incomplete record preserved and excluded from selection: record: Incomplete or invalid request: Each learning note must be text of at most 8000 characters"
+            ],
+            "charts": 0
+          },
+          "malformed:effective_list": {
+            "exceptions": [],
+            "errors": [],
+            "warnings": [
+              "Incomplete record preserved and excluded from selection: record: Incomplete or invalid request: Configuration must contain exactly the supported parameter keys"
+            ],
+            "charts": 0
+          },
+          "malformed:adapter_list": {
+            "exceptions": [],
+            "errors": [],
+            "warnings": [
+              "Incomplete record preserved and excluded from selection: record: Incomplete or invalid request: unhashable type: 'list'"
+            ],
+            "charts": 0
+          },
+          "malformed:request_null": {
+            "exceptions": [],
+            "errors": [],
+            "warnings": [
+              "Incomplete record preserved and excluded from selection: record: Request must be a JSON object"
+            ],
+            "charts": 0
+          },
+          "malformed:status_list": {
+            "exceptions": [],
+            "errors": [],
+            "warnings": [
+              "Incomplete record preserved and excluded from selection: record: Incomplete or unknown status contract"
+            ],
+            "charts": 0
+          },
+          "malformed:status_field_object": {
+            "exceptions": [],
+            "errors": [],
+            "warnings": [
+              "Incomplete record preserved and excluded from selection: record: Invalid status field: evidence_state"
+            ],
+            "charts": 0
+          },
+          "malformed:missing_status": {
+            "exceptions": [],
+            "errors": [],
+            "warnings": [
+              "Incomplete record preserved and excluded from selection: record: [Errno 2] No such file or directory: '/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/results/apex_workbench_stabilization_20261028/independent-review/retained-probes/missing_status/record/status.json'"
+            ],
+            "charts": 0
+          },
+          "malformed:status_utf8": {
+            "exceptions": [],
+            "errors": [],
+            "warnings": [
+              "Incomplete record preserved and excluded from selection: record: 'utf-8' codec can't decode byte 0xff in position 0: invalid start byte"
+            ],
+            "charts": 0
+          },
+          "active_status_read_race": {
+            "exceptions": [
+              "'list' object has no attribute 'get'"
+            ],
+            "errors": [],
+            "warnings": [],
+            "charts": 0
+          },
+          "valid_control": {
+            "exceptions": [],
+            "errors": [],
+            "warnings": [],
+            "charts": 8
+          },
+          "valid_comparison": {
+            "classification": "controlled",
+            "reason": "Matching scientific identity; explicitly varied inputs shown below",
+            "differences": {},
+            "varied_inputs": {
+              "duration": [
+                0.01,
+                0.02
+              ]
+            }
+          },
+          "optional_dynamic_controls": {
+            "frame_empty": true
+          }
+        }
+      },
+      "audit.json": {
+        "sha256": "39beeeeb39d83accaf92b2eb2f969bfa6de6f2ccb6e2ac174f7a7c8b9edd13e6",
+        "observations": {
+          "head": "aeedf18e0df9b40ef7294ba15fc73e19b0d5884b",
+          "tracked_status": "",
+          "source_manifest": {
+            "Launch_APEX_Workbench.command": true,
+            "tools/apex_workbench/__init__.py": true,
+            "tools/apex_workbench/app.py": true,
+            "tools/apex_workbench/comparison.py": true,
+            "tools/apex_workbench/configuration.py": true,
+            "tools/apex_workbench/jobs.py": true,
+            "tools/apex_workbench/lifecycle.py": true,
+            "tools/apex_workbench/plots.py": true,
+            "tools/apex_workbench/storage.py": true,
+            "tools/apex_workbench/worker.py": true,
+            "tools/apex_workbench/tests/test_corrections.py": true,
+            "tools/apex_workbench/tests/test_workbench.py": true
+          },
+          "retained_log_hashes": {
+            "cycle1-tests.log": true,
+            "affected-tests.log": true,
+            "cycle1-source.json": true,
+            "launcher_smoke.py": true,
+            "launcher-smoke.log": true,
+            "launcher-smoke.json": true,
+            "launcher-server.log": true,
+            "launcher-repeat.log": true,
+            "launcher-foreign-port.log": true,
+            "launcher-missing-env.log": true,
+            "preservation_before.json": true
+          },
+          "prior_test_hash_matches_first_run": true,
+          "changed_test_functions": [
+            "test_failed_execution_with_no_exports_remains_inspectable",
+            "test_request_changed_after_listing_is_quarantined"
+          ],
+          "rest_of_test_module_ast_unchanged": true,
+          "environment": {
+            "python_matches": true,
+            "packages": {
+              "numpy": true,
+              "scipy": true,
+              "streamlit": true,
+              "psutil": true,
+              "pytest": true
+            }
+          },
+          "scientific_diff_from_pre_workbench": [],
+          "retained_worker_parity": {
+            "dynamic": {
+              "states.csv": true,
+              "summary.json": true
+            },
+            "lqr": {
+              "states.csv": true,
+              "controls.csv": true,
+              "summary.json": true
+            }
+          },
+          "genuine_seed_integrity": {
+            "cycle1-pytest/genuine-workbench-outputs0/20261027T214712679041Z_814f1c72f1ef4d2393a6210e5b577e18": true,
+            "cycle1-pytest/genuine-workbench-outputs0/20261027T214714161737Z_0d18c058da914cfc861837599e0b4bb8": true,
+            "cycle1-pytest/test_existing_lqr_still_execut0/20261027T214716904726Z_d870e42cbf424d14949f546e1863cb38": true
+          },
+          "launcher_zsh_syntax_exit": 0,
+          "launcher_python_syntax": "pass",
+          "existing_launcher_evidence": {
+            "cwd": "/private/tmp",
+            "launcher_sha256": "980ec823f4daa2652ea960a5fb58e3fa05da757add867a6b4a76d13a4a2fb21f",
+            "server_pid": 43259,
+            "helper_pid": 43256,
+            "health": "200 ok",
+            "repeat_reuses_live_server": true,
+            "owned_server_stopped": true,
+            "reuse_bind_after_shutdown": true,
+            "foreign_port_rejected_without_termination": true,
+            "missing_environment_clear_error": true
+          }
+        }
+      }
+    }
+  },
+  "cycle2_test_source": {
+    "base_sha": "aeedf18e0df9b40ef7294ba15fc73e19b0d5884b",
+    "tracked_diff_sha256": "3d879ea225d4d4a398bdb392d21c37ac680ca62d2ed3d317d00c587800d32087",
+    "files": {
+      "Launch_APEX_Workbench.command": "980ec823f4daa2652ea960a5fb58e3fa05da757add867a6b4a76d13a4a2fb21f",
+      "tools/apex_workbench/__init__.py": "194595c8c9d46745693697c8417c2408fbe76e3254ae716f26b50c47f4723396",
+      "tools/apex_workbench/app.py": "894d1b365d5b0fcbb2f93e5f72ffcad3929237a6b4ba54258941cea7512a9f27",
+      "tools/apex_workbench/comparison.py": "408181cde33c284a22eb0e06cd12b5e11aaef74c7c67bc160f63f87bb2420dd1",
+      "tools/apex_workbench/configuration.py": "e82b19ace25655fadbe8216eb01eb2038b37698d6ef614ad8996eae3527e97e4",
+      "tools/apex_workbench/jobs.py": "d0fe01231490f3f1a2ad7875cc4697d603cf6c404b383f48c07c3834b25b3fdf",
+      "tools/apex_workbench/lifecycle.py": "794bd5ada88048a402a2d0946942ec9962e52b0caf2e72d7a8a3a0279f51f05a",
+      "tools/apex_workbench/plots.py": "ec157954259b89e37987b57f5359659a625c7480df57a1abae1bfa5bb0359d95",
+      "tools/apex_workbench/storage.py": "c4d2eb5e5659c98cd7c4357484a1199cf7ef9e75c500b8fe74c74ce81df3289b",
+      "tools/apex_workbench/worker.py": "198731c5b47320efd03824fd1abca722e534731c120db575bde047a4456fa49b",
+      "tools/apex_workbench/tests/test_corrections.py": "a1e8f1b913b5b68a3a711cff8bf5883643f31ebc2ac5ed509b57589694323381",
+      "tools/apex_workbench/tests/test_workbench.py": "de6ce8b4d99a364617cb459221af4568db7d787a7f1bcbcf8e87ef19631e1d59"
+    }
+  },
+  "cycle2_tests": {
+    "selection": "tools/apex_workbench/tests",
+    "passed": 77,
+    "failed": 0,
+    "skipped": 0,
+    "exit": 0,
+    "seconds": 49.24,
+    "scientific_units_reused": 148,
+    "applicability": "Scientific source/scripts/configs/dependencies/tests unchanged; changed lifecycle/storage modules are not dependencies of the scientific-unit selection. Full Workbench/parity selection rerun freshly."
+  },
+  "test_applicability_audit": {
+    "reconstructed_prior_test_source_sha256": "b42c878b8fca25282598c5bd46186cf421dda5b2aa6ea94e64f6242cf35028d8",
+    "matches_recorded_hash": true,
+    "only_changed_function_asts": [
+      "test_request_changed_after_listing_is_quarantined",
+      "test_failed_execution_with_no_exports_remains_inspectable"
+    ]
+  }
 }

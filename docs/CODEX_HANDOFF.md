@@ -1,3 +1,26 @@
+# Current handoff — Workbench stabilization cycle 2 candidate
+
+**WORK_COMPLETE_PENDING_REVIEW.** Recorded 28 October 2026. Corrective base
+`aeedf18e0df9b40ef7294ba15fc73e19b0d5884b`, branch `codex/apex-workbench-v0-1`.
+The containing commit binds cycle-2 tested source; exact delivery SHA is reported after push.
+
+The separate-context technical review of cycle 1 failed on malformed legacy-status admission and
+an unchecked in-lock status reread. [Historical cycle-1 result](reviews/apex_workbench_v0_1_stabilization/CYCLE1_REVIEW.md)
+and its raw negative probes are preserved. Cycle 2 checks owners independently of UI/evidence fields,
+fails closed on unreadable identifiable lifecycle records, and validates status again inside the lock.
+Four real sleeping legacy-command sentinels and an interleaved status replacement cover the gaps.
+
+Fresh complete Workbench selection: **77 passed**, including original/full-worker dynamic/LQR parity
+and all R1–R6/C-R2/C-R6 regressions. **148 existing scientific unit passes are applicable, reused**;
+no scientific/dependency/assertion changes. No full regression or formal Verification run.
+[Resolution and evidence](../tools/apex_workbench/STABILIZATION.md),
+[machine record](../tools/apex_workbench/stabilization_record.json).
+One of three substantive correction cycles remains if needed. Next: exact-cycle-2 separate-context
+technical review, then the required designated Engineering Review decision. No Secondary/Primary
+approval is claimed. No canonical science/profile/historical evidence change.
+
+---
+
 # Current handoff — Delegated Workbench V0.1 stabilization candidate
 
 **WORK_COMPLETE_PENDING_REVIEW.** Recorded 28 October 2026. Baseline

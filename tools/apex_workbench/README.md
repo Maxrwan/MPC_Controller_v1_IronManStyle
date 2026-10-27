@@ -107,6 +107,8 @@ Malformed request/status records are preserved and excluded with a warning. Sele
 are revalidated before metadata or plots appear. Missing manifest-listed files are integrity failures;
 successful corrected runs also require their expected exports. Optional channels never produced by
 an adapter remain unavailable. A failed run with no exports keeps its failure/error visible.
+Unreadable lifecycle records block new admission until inspected; exclusion from UI selection does
+not authorize another worker. No historical record is automatically repaired or deleted.
 
 Repository `MEASURED_ACTIVE` / `D3_ACTIVE` guards and a 1 GiB disk floor are checked before launch.
 The Workbench lease cannot serialize unrelated direct experiment launches: do not start external

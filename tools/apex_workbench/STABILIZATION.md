@@ -1,8 +1,9 @@
 # V0.1 delegated stabilization
 
-**WORK_COMPLETE_PENDING_REVIEW.** Recorded 28 October 2026. Baseline:
+**WORK_COMPLETE_PENDING_REVIEW — cycle 2.** Recorded 28 October 2026. Initial baseline:
 `5acdf4ff4db927bfaf3828b8714dfe39619a5db8`, branch `codex/apex-workbench-v0-1`.
-The containing corrective commit binds the source hashes in [stabilization_record.json](stabilization_record.json).
+Cycle-1 candidate: `aeedf18e0df9b40ef7294ba15fc73e19b0d5884b`.
+The containing cycle-2 corrective commit binds the source hashes in [stabilization_record.json](stabilization_record.json).
 Historical [failed review](../../docs/reviews/apex_workbench_v0_1_corrections/REVIEW.md),
 reproductions and result files remain unchanged.
 
@@ -19,6 +20,13 @@ a complete archive hash scan; unchanged selected-artifact hashing/cache rules re
 Failed executions that never produced exports remain inspectable and retain their failure labels.
 No canonical model, controller, vehicle/tire configuration, profile or core dependency changed.
 
+The separate-context [cycle-1 review](../../docs/reviews/apex_workbench_v0_1_stabilization/CYCLE1_REVIEW.md)
+failed on two additional lifecycle gaps. Cycle 2 now inspects legacy/verified owners independently
+of UI evidence-field validation, blocks admission on unreadable identifiable lifecycle records,
+and validates the in-lock status reread. Malformed records remain unchanged. Four real sleeping
+legacy-command sentinels and a controlled status-replacement regression cover these findings;
+no second scientific execution is admitted by the sentinel tests.
+
 ## Focused checks
 
 The first combined invocation executed all Workbench tests plus existing configuration, dynamic
@@ -29,11 +37,18 @@ Those two fixtures were corrected without changing production code; the affected
 passed **2/2** in 4.44 s. The full negative log remains. The current 220-case selection is covered
 by those applicable results; this is **not** a claim that one invocation freshly passed all 220.
 
-Coverage: **72 Workbench cases and 148 existing scientific unit cases**. Original dynamic/LQR
+Cycle-1 coverage: **72 Workbench cases and 148 existing scientific unit cases**. Original dynamic/LQR
 entry-point parity, full supervised-worker parity, R1–R6 regressions and the new malformed/missing
 artifact probes are included. The 218 unchanged passes remain applicable: production source,
 fixtures, environment and their test assertions did not change afterward; only the two failing
 test bodies changed. Source snapshots and precise commands are in the JSON/local evidence.
+
+After the lifecycle corrections, the complete Workbench selection passed freshly: **77 passed,
+zero failures/skips**, 49.24 s. This includes both original/full-worker parity checks, all prior
+regressions and five additional lifecycle cases. The 148 scientific-unit passes are reused as
+applicable: no canonical/script/configuration/dependency/scientific-test contents changed, and
+the lifecycle/storage corrections do not enter their import/dependency graph. No claim of a fresh
+combined 225-pass invocation is made.
 
 The actual launcher smoke passed: unrelated working directory, health 200/ok, repeated click
 reuses its live server, owned SIGINT shutdown, immediate reusable-address bind, foreign listener
@@ -46,7 +61,7 @@ or physical model validation. Existing negative reviews and measurements are not
 
 ## Review and Verification gate
 
-Next, obtain a separate-context technical review of this exact corrective commit. A fresh technical
+Next, obtain a separate-context technical review of this exact cycle-2 corrective commit. A fresh technical
 review is distinct from designated Secondary/user approval. The repository workflow assigns the
 Engineering Review decision to the user and Secondary APEX Engineering Orchestrator; Primary retains
 scientific direction/final approval. Do not impersonate or waive that gate.

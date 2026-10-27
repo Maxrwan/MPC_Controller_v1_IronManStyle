@@ -185,16 +185,20 @@ def _owner(directory, name):
         return {}
 
 
-def _reconcile_locked(directory, status):
-    status = read_json(directory / "status.json")
-    if status.get("state") not in ACTIVE:
-        return status
-    request = read_json(directory / "request.json")
+def _check_live_owners(directory, status):
     if lifecycle.legacy_worker_alive(status, directory):
         raise RuntimeError(f"A worker is still alive for {directory.name}")
     for name, role in (("worker", "worker"), ("supervisor", "jobs")):
         if lifecycle.owned_process(_owner(directory, name), role, directory) is not None:
             raise RuntimeError(f"Verified {name} is still alive for {directory.name}")
+
+
+def _reconcile_locked(directory, status):
+    status = storage.read_status(directory)
+    if status.get("state") not in ACTIVE:
+        return status
+    _check_live_owners(directory, status)
+    request = read_json(directory / "request.json")
     if not isinstance(request, dict):
         raise RuntimeError(f"Incomplete abandoned request needs inspection: {directory.name}")
     if request.get("record_version") != 2:
@@ -248,10 +252,19 @@ def start_run(adapter, source, prediction="", *, runs=RUNS):
         for parent in {RUNS.resolve(), runs.resolve()}:
             # UI quarantine must not hide a legacy active owner from admission checks.
             for previous in storage.run_directories(parent):
+                if not any(
+                    (previous / name).exists()
+                    for name in ("request.json", "status.json", "worker.json", "supervisor.json")
+                ):
+                    continue  # An unrelated output folder is not a retained execution record.
                 try:
-                    status = storage.read_status(previous)
-                except (OSError, ValueError, TypeError):
-                    continue  # Not a readable lifecycle record; never repair it here.
+                    status = storage.read_status(previous, lifecycle_only=True)
+                except (OSError, ValueError, TypeError) as error:
+                    raise RuntimeError(
+                        f"Cannot inspect retained lifecycle for {previous.name}; "
+                        "record preserved, admission blocked: " + str(error)
+                    ) from error
+                _check_live_owners(previous, status)
                 if status["state"] in ACTIVE:
                     _reconcile_locked(previous, status)
         run_id = datetime.now(UTC).strftime("%Y%m%dT%H%M%S%fZ") + "_" + uuid.uuid4().hex

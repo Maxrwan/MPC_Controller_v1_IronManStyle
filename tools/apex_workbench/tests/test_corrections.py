@@ -3,6 +3,8 @@
 import os
 import shutil
 import signal
+import subprocess
+import sys
 import threading
 import time
 from pathlib import Path
@@ -633,3 +635,64 @@ def test_ui_quarantine_does_not_hide_legacy_active_owner(tmp_path):
         with pytest.raises(RuntimeError, match="worker is still alive"):
             jobs.start_run("dynamic_demo", {"duration": 0.01, "dt": 0.005}, runs=tmp_path)
     assert len(list(tmp_path.glob("*/request.json"))) == 1
+
+
+@pytest.mark.parametrize("damage", ["evidence", "outcome", "array", "json"])
+def test_malformed_legacy_status_cannot_admit_over_live_process(tmp_path, monkeypatch, damage):
+    # A real sleeping sentinel with the legacy command contract; no scientific module runs.
+    package = tmp_path / "sentinel-package"
+    worker = package / "tools/apex_workbench/worker.py"
+    worker.parent.mkdir(parents=True)
+    worker.write_text("import time\ntime.sleep(10)\n")
+    (package / "tools/__init__.py").touch()
+    (worker.parent / "__init__.py").touch()
+    runs = tmp_path / "runs"
+    directory = runs / "legacy-active"
+    directory.mkdir(parents=True)
+    monkeypatch.setattr(jobs, "RUNS", runs)
+    with subprocess.Popen(
+        [sys.executable, "-m", "tools.apex_workbench.worker", str(directory)],
+        cwd=package,
+        env={**os.environ, "PYTHONPATH": str(package)},
+    ) as process:
+        try:
+            status = {"state": "running", "pid": process.pid}
+            until(lambda: lifecycle.legacy_worker_alive(status, directory), 3)
+            if damage == "evidence":
+                status["evidence_state"] = {}
+            elif damage == "outcome":
+                status["scientific_outcome"] = []
+            storage.write_json(directory / "status.json", [] if damage == "array" else status)
+            if damage == "json":
+                (directory / "status.json").write_text('{"state":')
+            storage.write_json(
+                directory / "request.json", {"adapter": "dynamic_demo", "effective": {}}
+            )
+            before = {p.name: p.read_bytes() for p in directory.iterdir()}
+            with patch.object(jobs, "provenance", side_effect=AssertionError("Admission escaped")):
+                with pytest.raises(RuntimeError, match="still alive|admission blocked"):
+                    jobs.start_run("dynamic_demo", {"duration": 0.01, "dt": 0.005}, runs=runs)
+            assert process.poll() is None
+            assert {p.name: p.read_bytes() for p in directory.iterdir()} == before
+            assert len(list(runs.glob("*/request.json"))) == 1
+        finally:
+            process.terminate()
+            process.wait(timeout=3)
+
+
+def test_status_replaced_before_locked_recovery_is_quarantined(tmp_path, monkeypatch):
+    directory = tmp_path / "record"
+    directory.mkdir()
+    storage.write_json(directory / "status.json", {"state": "running"})
+    original = storage.read_status
+
+    def raced(path, **kwargs):
+        status = original(path, **kwargs)
+        storage.write_json(directory / "status.json", [])
+        return status
+
+    monkeypatch.setattr(storage, "read_status", raced)
+    status = jobs.status_for(directory)
+    assert status["state"] == "quarantined"
+    assert status["scientific_outcome"] == "unknown"
+    assert (directory / "status.json").read_text().strip() == "[]"
