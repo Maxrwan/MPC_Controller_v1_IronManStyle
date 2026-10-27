@@ -1,3 +1,25 @@
+# Current handoff — Updated Workbench launch file
+
+**WORK_COMPLETE_PENDING_REVIEW.** Recorded 27 October 2026. Launcher-only follow-up to
+`219b9358409fa73fc59f24a7755da66771883e6b` on `codex/apex-workbench-v0-1`.
+The containing commit is the delivery revision; exact SHA/URL is reported after push.
+
+Updated executable `Launch_APEX_Workbench.command` to reopen this checkout's already-running
+Workbench on repeated clicks. Verify the actual loopback listening PID, user, working directory
+and app path; do not reuse another checkout/application based on a generic health response.
+Fresh startup still uses the configured tool environment, readiness wait and default browser.
+Loopback health checks bypass proxies. psutil is already a Workbench dependency; no new package.
+README describes first-launch Terminal ownership versus repeat-click browser reopening.
+
+Checks: zsh/embedded Python syntax; actual launch from `/private/tmp`; second click reuses the
+same server PID and returns successfully; Chrome shows the corrected Workbench; path-with-spaces/
+relative-app matching and foreign-owner/checkout rejection checks; owned Control-C shutdown;
+whitespace/links and original tracked-file preservation. Logs: `results/apex_workbench_launcher_update_20261027/`.
+No experiment, numerical suite, backend correction, historical evidence or failed review changed.
+Owned test server stopped. The R1–R6 candidate still requires its new Engineering Review.
+
+---
+
 # Current handoff — Workbench V0.1 R1–R6 corrections
 
 **WORK_COMPLETE_PENDING_REVIEW.** Recorded 27 October 2026. Explicit corrective WORK baseline
