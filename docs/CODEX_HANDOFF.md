@@ -1,3 +1,41 @@
+# Current handoff — Workbench V0.2-A design and capability audit
+
+**V0.2_DESIGN_COMPLETE_PENDING_SCIENTIFIC_REVIEW.** Recorded 28 October 2026.
+Audit baseline/V0.1 delivery: `c26782da2a9b94187a070ed5d9f72106a093d27e`.
+Accepted V0.1 implementation: `77d018b11bbbfc39ab81d98c9bef70e90ab82725`.
+Design branch: `codex/apex-workbench-v0-2-a-design`. Containing documentation commit is the delivery
+revision; exact SHA/URL is reported after push. No implementation or numerical execution authorized.
+
+[Design index and scientific decisions](apex_workbench_v0_2_a/README.md),
+[parameter capability matrix](apex_workbench_v0_2_a/PARAMETER_CAPABILITY_MATRIX.md),
+[adapter architecture](apex_workbench_v0_2_a/ADAPTER_DESIGN.md),
+[three experiment designs](apex_workbench_v0_2_a/LEARNING_EXPERIMENTS.md),
+[staged implementation/regression plan](apex_workbench_v0_2_a/IMPLEMENTATION_PLAN.md),
+[source/preservation audit](apex_workbench_v0_2_a/audit_record.json). ADR-171 is proposed, not accepted.
+
+Minimum proposed path: new open-loop lab using immutable canonical parameters, DynamicBicycle and
+existing SimulationRunner, inside the V0.1 protections. Expose reviewed mass/inertia/axle-stiffness
+cases, independent initial vx/vy/r and held constant/step schedules. Geometry/friction/tire/threshold/
+limit choices remain fixed initially. No missing canonical equation or new simulation engine is needed.
+Original V0.1 adapters retain exact default paths/output parity. The new runner clock has distinct
+integer-grid/terminal-control semantics; do not silently claim legacy byte identity.
+
+Scientific decisions pending: permitted synthetic case/envelope contract and independent parameter
+meaning; geometry coupling; initial-state/input/validity policy; new lab clock/export contract; and
+lab-only controlled single-factor comparison semantics. Linear versus combined-grip tires are audited
+separately. No measured parameter, new numeric range, empirical result or physical guarantee invented.
+
+Only design/audit documents, appended proposed ADR and this prepended handoff changed. Static source,
+reference/link/JSON/whitespace and preservation checks only; no pytest collection, model import/run,
+simulation, parameter sweep, formal Verification or launcher execution. Prior V0.1 855 passes/17 gated
+skips are historical, not new V0.2 evidence. V0.1 implementation/launcher, canonical science, frozen
+configurations and historical results remain unchanged.
+
+**Stop here:** scientific parameter-contract review, then separately authorize the next implementation
+stage. No automatic B1, NMPC/async/hardware, V0.2 feature code or reopened frozen work.
+
+---
+
 # Current handoff — APEX Workbench V0.1 verified
 
 **V0.1_VERIFIED_PENDING_USER_ACCEPTANCE.** Repository stage: **VERIFIED_AWAITING_ACCEPTANCE**.

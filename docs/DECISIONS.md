@@ -1197,3 +1197,33 @@ See [correction handoff and evidence](../tools/apex_workbench/CORRECTIONS.md). T
 process/data integrity mechanisms, not physical safety, hardware watchdog or real-time guarantees.
 The exact corrected revision needs a new Engineering Review before a separately authorized
 Verification gate. No source, profile, historical result or failed-review promotion is implied.
+
+
+## ADR-171 — Proposed Vehicle Dynamics Laboratory composition boundary
+
+Recorded 28 October 2026. **Proposed; V0.2_DESIGN_COMPLETE_PENDING_SCIENTIFIC_REVIEW.**
+The V0.2-A assignment authorizes source audit/design documentation only. It does not authorize
+parameter semantics, numerical experiments, implementation or a new scientific operating envelope.
+
+Propose one open-loop `dynamic_lab` adapter reusing canonical immutable `VehicleParameters`,
+`DynamicBicycle`, existing `SimulationRunner` and track/Frenet APIs within the verified V0.1
+worker/lifecycle/integrity pipeline. Keep the original Task004/Task005 V0.1 entry-point paths and
+exact default behavior unchanged. New lab nominal/perturbed cases use one explicitly versioned
+integer-tick profile; do not imply byte identity with the demo's shortened-step/terminal-input rules.
+No new engine, equations, solver, automatic equilibrium or frontend framework.
+
+Initially propose reviewed synthetic mass/inertia/front/rear stiffness, independent initial vx/vy/r
+and prescribed constant/step held inputs. Keep geometry, CG height, friction, model thresholds,
+actuator limits, track and tire/load choice fixed. Capture full base/effective parameters, every
+override/derivation, initial tuple, actual applied schedule and composition identity. Treat a_cmd
+as Fx/m; never add implicit constant-speed feedback or infer an inertia/mass/geometry relationship.
+
+A lab-only declared single-factor treatment contract may support parameter sensitivities after
+scientific review. It must not remove effective parameters from compatibility checks or relax
+historical V0.1 classifications. Missing/changed evidence and failed coverage remain invalid.
+Alternative grip physics requires a separate reviewed domain/allocation contract, not a silent swap.
+
+See [V0.2-A audit and design](apex_workbench_v0_2_a/README.md). Scientific review must approve allowed
+cases/envelopes, geometry policy, initialization/input/validity semantics, clock/export contract
+and controlled-treatment interpretation before a separately authorized implementation stage.
+No canonical source, configuration, profile, dependency, old result or V0.1 tool is changed by this ADR.

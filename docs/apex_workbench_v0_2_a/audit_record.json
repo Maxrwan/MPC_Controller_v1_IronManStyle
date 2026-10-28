@@ -1,0 +1,214 @@
+{
+  "status": "V0.2_DESIGN_COMPLETE_PENDING_SCIENTIFIC_REVIEW",
+  "classification": "read-only scientific source audit and documentation design",
+  "audit_baseline": "c26782da2a9b94187a070ed5d9f72106a093d27e",
+  "accepted_v01_implementation": "77d018b11bbbfc39ab81d98c9bef70e90ab82725",
+  "v01_delivery": "c26782da2a9b94187a070ed5d9f72106a093d27e",
+  "branch": "codex/apex-workbench-v0-2-a-design",
+  "delivery_revision": "Containing documentation commit; final SHA and URL supplied after push",
+  "permissible_documentation_paths": [
+    "docs/DECISIONS.md",
+    "docs/CODEX_HANDOFF.md",
+    "docs/apex_workbench_v0_2_a/ADAPTER_DESIGN.md",
+    "docs/apex_workbench_v0_2_a/IMPLEMENTATION_PLAN.md",
+    "docs/apex_workbench_v0_2_a/LEARNING_EXPERIMENTS.md",
+    "docs/apex_workbench_v0_2_a/PARAMETER_CAPABILITY_MATRIX.md",
+    "docs/apex_workbench_v0_2_a/README.md",
+    "docs/apex_workbench_v0_2_a/audit_record.json"
+  ],
+  "audited_source_sha256": {
+    "AGENTS.md": "115f328695c10b4f3db1cd483379a704a587526ea717bbfbadafabc1f5809445",
+    "docs/CODEX_VERIFICATION_WORKFLOW.md": "565dc7a6beb27b998c3c6e64d682b70af8270306b9e949c55f33d7b8175def74",
+    "docs/CODEX_TEST_GUIDE.md": "acb8156d766fb9483c683ecb4c86d85672e0e8200afe62ffdd5646338a447203",
+    "docs/VEHICLE_MODEL_SPEC.md": "94c0044410bd19a9127f5b568f5f0491d64c13cb662d44de0ee7ac88f61ed2d8",
+    "docs/DYNAMIC_BICYCLE_SPEC.md": "f5c413af122dd87450a4463d580cafb42a58a72933bdcdd7b6d3e2186394ac60",
+    "docs/KINEMATIC_BICYCLE_SPEC.md": "3781d852f2e461b613cf54b8d8261d17cddb55a4931a95620d6fce0870380a17",
+    "docs/LINEAR_TIRE_SPEC.md": "f073c35b4219f9f7bb10bc34f693cf1731eac1fe0134e8558235cb55cff59e0e",
+    "docs/GRIP_LIMITED_TIRE_SPEC.md": "9215caa9d067ce7c2c64072be12a933dae7d363eb32ff59eefccb3e49f09ca3c",
+    "docs/TRACK_MODEL_SPEC.md": "1c16042fdd9ab43f4e3ee6018c1e8b406d6b10d0387d8b192fc18fe04b2a2faa",
+    "docs/LQR_BASELINE_SPEC.md": "8393db17ba71f8cc0c99d24ea6aad327c6e175abe8ea675b37ddac6610bd9aaa",
+    "src/apex/config.py": "40227b4ed2a38e30ecfb9acc7f308cf9db31b54dc813bb28850b25800877e0ad",
+    "src/apex/state.py": "b2b16555f8ae83f041ee821906305accc56010b643bb3fa514f90a8a17e66862",
+    "src/apex/models/errors.py": "81baff4659f36bb6aea91e6a27327260b4d69e23de22963de6832199e7f1f916",
+    "src/apex/models/frenet.py": "a8c6190bd6be9f2a284c83b5c31e5d6cb2d8ef1f791b49bbebdd3c110a36ee96",
+    "src/apex/models/integration.py": "02009193fb2d25e83560a2da37f216048dfa3ededcb3de8616b90e411473ad51",
+    "src/apex/models/vehicle/parameters.py": "5cfce45b4a87577b17193b44cfa24f11c8e29c93082564a596f7ddf4e797fbb2",
+    "src/apex/models/vehicle/dynamic_bicycle.py": "c93b674924eed24f9641ebe263863b3422cba5eb1665c0d93dd6cd00bdfd462f",
+    "src/apex/models/vehicle/load_transfer.py": "e96c74199a7d8147866529cb4ecfffbfce74815cb57accb52ea54b407b873be1",
+    "src/apex/models/vehicle/force_allocation.py": "e77d8c87efdaa9c008ec45385ad4dad326cfa2e003798c08e29a5fb9a17647f8",
+    "src/apex/models/tire/base.py": "da1b635a6da1de465ac7af61dcf3cad8d23ef406eb6dd7f45dad825bc3f60ccf",
+    "src/apex/models/tire/linear.py": "6ae5888b0000cd57a88788463977be1a90fa8e1f6a332f131c66623192ce9cf3",
+    "src/apex/models/tire/grip.py": "e91bab930ee0650578ede2964ef680f77663cfd34d26ab1682c232b34c6d8c90",
+    "src/apex/models/tire/config.py": "73f7e47ae5768a6961a8ca65aa40a5da7ecd77e412ac6995a459e969daa83877",
+    "src/apex/simulation/runner.py": "99dd44020405dd121433637ccf43d53639451a2b7b595bed255555144802cb34",
+    "src/apex/control/base.py": "119b6cb4235421b9728838b47e4913158402997957956a473009c43435acb870",
+    "src/apex/control/baseline/lqr.py": "68e191235e03dda744cc9894ca0981a8df8bd9f1bd0e6331f7872148014cf818",
+    "src/apex/control/baseline/references.py": "9fa0f4c67d8fdd4a535bca5fa43854cf85660d70b6246632ec711f469ad2b081",
+    "scripts/run_dynamic_bicycle_demo.py": "9aa8bef1f05186d6653752becadcfb72d5698a82355606a7847be6d69171baa3",
+    "scripts/run_lqr_baseline.py": "6cc6d5a13f2cf6d244ee86a0d0d0e1c52f6decef9d49ad0466c5ffb23e2bd664",
+    "configs/vehicles/synthetic_dynamic_test_vehicle.yaml": "df1b853d21a1d3efaf858f7e58401151f2c5237793c40e16bb4189ed651f9cf3",
+    "configs/vehicles/generic_1_10_racecar.yaml": "c68bf6a0fc198d7f4e430b824d3929d8756617dc7491c5bdb8482ba51855178a",
+    "configs/models/linear_reference_tires.yaml": "c8bb4eea32298f4ac18be3c795272b4d033faec06d340bc90cef43b0cd33ee2b",
+    "configs/models/synthetic_racing_tires.yaml": "ccc64807f2a52cdbacb2365f3d4922dc15fddf7ba393405318d236b0bfbeae63",
+    "tools/apex_workbench/configuration.py": "e82b19ace25655fadbe8216eb01eb2038b37698d6ef614ad8996eae3527e97e4",
+    "tools/apex_workbench/worker.py": "198731c5b47320efd03824fd1abca722e534731c120db575bde047a4456fa49b",
+    "tools/apex_workbench/comparison.py": "408181cde33c284a22eb0e06cd12b5e11aaef74c7c67bc160f63f87bb2420dd1",
+    "tools/apex_workbench/storage.py": "f1aa40dbca722e4e559aee00e653209b760279496b3746f2e3dc328003234c14",
+    "tests/unit/test_config.py": "c159f2e4fe3685ee7ef25fadf9694c5cd2e2a593accf76a1bb92fcaaa59c173f",
+    "tests/unit/test_dynamic_components.py": "c1044b6b3fe874ef14a84156197a895cdd0b10117a03385ee15c7cc346be4d58",
+    "tests/unit/test_dynamic_bicycle.py": "f8d8cd3a078e38c988a727150440af0aef47ec618e27e8d57201ecd67ae2b985",
+    "tests/unit/test_grip_tire.py": "fcb55ec6f8d00f36634167855784591141432f3b04374fc2cf89ee756023cefe",
+    "tests/unit/test_state.py": "d4157b6671a482dd9c1ead423231e52b76adff42a105f88048bbd7fcc1902b6f",
+    "tests/unit/test_runner.py": "a0bb2ff3fc770cfeb054b8067eb8df45f0f107e271670dd99bb4ee6749685a5a",
+    "tests/unit/test_baseline.py": "4ab989982e48f063c61852ac901069287f68d95637378b4086fdd24df513dd9b",
+    "tests/integration/test_dynamic_track.py": "3c9d3a51096549dbbaf763e574cda18ff5f1a97acc902942876a7849ab180f54",
+    "tests/regression/test_dynamic_accuracy.py": "c5cf0b5fdd06e52f015fa9c50c7df4581cae861f7de0d562da7606876af5a7c0",
+    "src/apex/control/baseline/controller.py": "1d738265c24e8ff6fc557ff8d4f82669978fe12e212dcd70dc45eb94cf438ec4"
+  },
+  "ast_observations": {
+    "VehicleParameters_fields": [
+      "name",
+      "mass",
+      "yaw_inertia",
+      "wheelbase",
+      "lf",
+      "lr",
+      "cg_height",
+      "vehicle_width",
+      "vehicle_length",
+      "front_cornering_stiffness",
+      "rear_cornering_stiffness",
+      "tire_road_friction_coefficient",
+      "maximum_steering_angle",
+      "maximum_steering_rate",
+      "maximum_acceleration",
+      "maximum_braking_deceleration",
+      "maximum_speed"
+    ],
+    "existing_workbench_constants": {
+      "DEFAULTS": {
+        "dynamic_demo": {
+          "duration": 10.0,
+          "dt": 0.005
+        },
+        "lqr_baseline": {
+          "duration": 12.0,
+          "speed": 2.0,
+          "track": "circle",
+          "ey": 0.0,
+          "epsi": 0.0
+        }
+      },
+      "BOUNDS": {
+        "duration": [
+          0.01,
+          20.0
+        ],
+        "dt": [
+          0.001,
+          0.01
+        ],
+        "speed": [
+          1.0,
+          3.0
+        ],
+        "ey": [
+          -0.1,
+          0.1
+        ],
+        "epsi": [
+          -0.05,
+          0.05
+        ]
+      }
+    },
+    "project_modules_imported": false
+  },
+  "principal_findings": [
+    "Canonical immutable parameters and DynamicBicycle support the requested fields without new equations",
+    "Original demo has fixed factories/seed/schedule; SimulationRunner already provides independent injection",
+    "Legacy demo and runner differ in grids/partial-step/terminal-input/export semantics; preserve old adapters exactly",
+    "a_cmd is Fx/m, not dvx/dt or fixed force; open-loop does not hold vx constant",
+    "Linear and smooth combined-grip tires have different friction/allocation/domain contracts",
+    "Current vehicle-definition comparison differences are illustrative; lab-only declared treatment semantics require review"
+  ],
+  "proposed_minimum": {
+    "adapter": "dynamic_lab",
+    "engine": "existing SimulationRunner",
+    "plant": "canonical DynamicBicycle",
+    "tire": "explicit default linear, no allocation",
+    "exposed_after_contract_review": [
+      "mass",
+      "yaw_inertia",
+      "front_cornering_stiffness",
+      "rear_cornering_stiffness",
+      "initial vx",
+      "initial vy",
+      "initial r",
+      "constant/step held delta/a_cmd"
+    ],
+    "initially_fixed": [
+      "geometry",
+      "cg_height",
+      "mu",
+      "guard thresholds",
+      "command/speed limits",
+      "track",
+      "tire/load choice"
+    ],
+    "new_scientific_equations_required": false,
+    "new_engine_required": false
+  },
+  "scientific_review_decisions": [
+    "D1 approved synthetic case/envelope and independent parameter semantics",
+    "D2 geometry coupling policy before exposure",
+    "D3 initial-state/input/physical-validity interpretation",
+    "D4 lab clock/export contract and legacy preservation",
+    "D5 lab-only controlled-factor comparison semantics"
+  ],
+  "execution": {
+    "model_or_solver_imports": false,
+    "numerical_tests_or_collection": false,
+    "simulations_or_sweeps": false,
+    "launcher_execution": false,
+    "new_feature_or_scientific_code": false,
+    "static_documentation_checks_only": true
+  },
+  "historical_v01_tests": {
+    "source": "docs/reviews/apex_workbench_v0_1_stabilization/VERIFICATION.md",
+    "passed": 855,
+    "separately_gated_skipped": 17,
+    "newly_executed_or_claimed_as_v02": false
+  },
+  "preservation_before": {
+    "tracked_count": 899,
+    "historical_results_metadata_count": 19085,
+    "raw_manifest": "/private/tmp/apex-workbench-v02a-design-20261028/before.json",
+    "sha256": "a64ec09fde02afe2dfd3b3d6058e977c47c6da95bfce43a9cc9dd77d13c8133d"
+  },
+  "next_authorized_action": "Stop; scientific contract review and separate implementation authorization required",
+  "inspection_scope": "Relevant implementation/specification/test contracts; no exhaustive revalidation or execution",
+  "static_checks": {
+    "classification": "static documentation/source-preservation checks only",
+    "local_link_and_anchor_checks": 157,
+    "markdown_fences_and_tables": "pass",
+    "json_parse": "pass",
+    "audited_source_hashes_match": 47,
+    "existing_tracked_files_checked": 899,
+    "only_changed_preexisting_paths": [
+      "docs/CODEX_HANDOFF.md",
+      "docs/DECISIONS.md"
+    ],
+    "previous_decisions_and_handoff_text": "preserved verbatim",
+    "historical_result_metadata_unchanged": 19085,
+    "historical_result_changes": [],
+    "accepted_v01_branch_unchanged": true,
+    "numerical_model_imports_tests_simulations": "NOT_RUN"
+  },
+  "preservation_after": {
+    "tracked_unmodified_except_authorized_docs": 897,
+    "historical_results_unchanged_size_mtime": 19085,
+    "limitations": "Historical large results checked by size/mtime, not a fresh content hash/backup"
+  },
+  "static_checks_sha256": "5d9637034296f1016977524937af477a9b833310d848c1c4a4600a1b7d018a46"
+}
