@@ -1,3 +1,42 @@
+# Current handoff — V0.2-B independent Engineering Review
+
+Recorded 29 October 2026.
+**ENGINEERING_REVIEW_COMPLETE_PENDING_DECISION — PASS WITH CONDITIONS.** Reviewed exact implementation
+`895ecddf55754e94d5dbf53d5aca01f91f013a05` on `codex/apex-workbench-v0-2-b`.
+Review docs branch: `codex/apex-workbench-v0-2-b-review`. Containing documentation commit is the
+review delivery; exact SHA/URL is reported after push. No implementation corrections were made.
+[Revision-specific review/conditions](reviews/apex_workbench_v0_2_b/REVIEW.md),
+[reproduction and limitations](reviews/apex_workbench_v0_2_b/REPRODUCTION.md),
+[review evidence record](reviews/apex_workbench_v0_2_b/review_record.json).
+
+Fresh separate reviewer context inspected scientific/source/data contracts and metadata probes
+without numerical imports. Root independently reproduced **127 lab+V0.1 Workbench passes**, exit0,
+and a new literal canonical reference: state/control/diagnostic bytes and all 101 XY samples agree.
+Fifteen general metadata probes passed; root confirmed the independent context's hardening findings.
+WORK's mixed 301-case coverage and initial failures were inspected as historical evidence, not counted
+as fresh review results. Full local evidence: `results/apex_workbench_v02b_review_20261028/`.
+
+No blocking nominal model/case/timing defect found. C1 conditional: copied/rebound records can omit
+SimulationRunner source identity and remain candidates; require complete versioned dependency inventory
+before qualification. Genuine records contain the hash. C2 nonblocking: duplicate diagnostic a_cmd
+can disagree with applied inputs after copied summaries/anchors are rebound. C3 nonblocking: reader
+rejects a modeled cancelled process with retained full integration horizon; no live race was tested.
+Ordinary unchanged-anchor corruption is rejected. These are explicit producer/schema or failure-display
+conditions, not evidence of false genuine output or a checksum/authentication bypass.
+
+All accepted cases/components/guards/criteria and V0.1 paths remain intact. Numerical/physical
+qualification is unavailable. Nominal-only execution and deferred refinement admission/qualification
+records require a separately authorized preparation stage before the 17-trajectory campaign.
+No refinement trajectories, sweeps, formal Verification, scientific changes or hardware work ran.
+Tracked implementation and historical scientific evidence remain unchanged. Finder `.DS_Store` changes
+since the older WORK baseline were inspected separately and left untouched; they are filesystem-view
+metadata, not numerical evidence. No content-rehash/backup or physical-validity claim follows.
+
+**Stop for the user's/Engineering Orchestrator's decision.** Proposed corrections and qualification
+preparation need a narrowly scoped WORK authorization; this review does not implement or launch them.
+
+---
+
 # Current handoff — Workbench V0.2-B Vehicle Dynamics Laboratory
 
 **WORK_COMPLETE_PENDING_REVIEW.** Recorded 28 October 2026. Accepted scientific contract/base:

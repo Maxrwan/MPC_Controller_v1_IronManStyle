@@ -1,0 +1,214 @@
+{
+  "status": "ENGINEERING_REVIEW_COMPLETE_PENDING_DECISION",
+  "decision": "PASS WITH CONDITIONS",
+  "reviewed_sha": "895ecddf55754e94d5dbf53d5aca01f91f013a05",
+  "reviewed_branch": "codex/apex-workbench-v0-2-b",
+  "accepted_contract_sha": "0cc7e4f626311aec05977bd3beda40c346fa4214",
+  "review_delivery_branch": "codex/apex-workbench-v0-2-b-review",
+  "delivery_revision": "Containing documentation commit; exact SHA/URL supplied after push",
+  "recorded_date": "2026-10-29",
+  "classification": "read-only independent Engineering Review, bounded software tests and review docs",
+  "independent_context": {
+    "agent": "/root/v02b_independent_review",
+    "history_inheritance": "none",
+    "work": "source/contract inspection and disposable metadata probes only",
+    "numerical_imports_or_execution": false,
+    "root_role": "fresh bounded test rerun, new literal reference and independent finding confirmation"
+  },
+  "fresh_tests": {
+    "command": "VECLIB_MAXIMUM_THREADS=1 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 PYTHONPATH=.:scripts:src tools/apex_workbench/.venv/bin/python -c 'from threading_study.config import configure_accelerate; configure_accelerate(1); import sys, pytest; raise SystemExit(pytest.main(sys.argv[1:]))' -q tools/apex_workbench/tests --basetemp=results/apex_workbench_v02b_review_20261028/focused --durations=5",
+    "passed": 127,
+    "failed": 0,
+    "errors": 0,
+    "exit_code": 0,
+    "lab_tests": 49,
+    "v01_workbench_regressions": 78,
+    "elapsed_s": 46.29,
+    "wall_time_is_benchmark": false
+  },
+  "independent_nominal_parity": {
+    "reviewed_sha": "895ecddf55754e94d5dbf53d5aca01f91f013a05",
+    "scope": "two nominal software-parity trajectories only; not accuracy qualification",
+    "native_control": {
+      "requested_ceiling": 1,
+      "set_status": 0,
+      "blas_threading_mode": 1,
+      "mode_name": "single",
+      "exact_active_thread_count_available": false
+    },
+    "threadpools": [],
+    "state_rows": 101,
+    "control_rows": 100,
+    "xy_equal_samples": 101,
+    "parity": {
+      "states.csv": {
+        "byte_equal": true,
+        "sha256": "43e9945f2c458ce80dd3f234da6b3c2b4639c760c8c4ddd6321bae5e5c9ec389"
+      },
+      "controls.csv": {
+        "byte_equal": true,
+        "sha256": "139c0767e1ba41ae44a3a45fdd7c609d6c57b604812556e38b1fcea29c4c6577"
+      },
+      "diagnostics.csv": {
+        "byte_equal": true,
+        "sha256": "55730ba2c41350e8e34685e815f178e92805b5168f896d483e361e22bc0e0463"
+      }
+    },
+    "script_sha256": "603636a2a0ff39063ca0d6839339141a42a7ccae53786ac9e053bdb46b87590e"
+  },
+  "general_metadata_probes": {
+    "count": 15,
+    "all_expected_outcomes_reproduced": true,
+    "no_model_import_or_execution": true
+  },
+  "findings": [
+    {
+      "id": "C1",
+      "severity": "conditional",
+      "summary": "Incomplete source inventory can remain a candidate when both rebound records omit SimulationRunner",
+      "source": "tools/apex_workbench/lab_evidence.py:108; tools/apex_workbench/lab_comparison.py:15",
+      "fresh_root_reproduced": true,
+      "ordinary_produced_records_missing_hash": false,
+      "minimum_change": "Versioned complete source inventory at admission and consumption; missing identities invalid"
+    },
+    {
+      "id": "C2",
+      "severity": "nonblocking",
+      "summary": "Duplicate diagnostic a_cmd is not cross-checked with applied inputs",
+      "source": "tools/apex_workbench/lab_evidence.py:183",
+      "fresh_root_reproduced": true,
+      "genuine_nominal_wrong_output_observed": false,
+      "minimum_change": "Compare redundant diagnostic/input/geometry aliases without adding model equations"
+    },
+    {
+      "id": "C3",
+      "severity": "nonblocking",
+      "summary": "Reader rejects modeled noncompleted process with genuinely retained full integration horizon",
+      "source": "tools/apex_workbench/lab_evidence.py:199; tools/apex_workbench/app.py:238",
+      "fresh_root_reproduced": true,
+      "live_race_reproduced": false,
+      "minimum_change": "Completed implies full valid horizon; preserve full integration evidence independently for noncompleted processes, without comparison promotion"
+    }
+  ],
+  "blocking_nominal_findings": 0,
+  "finding_confirmation": {
+    "reviewed_sha": "895ecddf55754e94d5dbf53d5aca01f91f013a05",
+    "normal_source_keys_present": [
+      "src/apex/simulation/runner.py",
+      "src/apex/state.py",
+      "src/apex/models/frenet.py",
+      "src/apex/coordinates/frenet.py",
+      "src/apex/track/closed_track.py",
+      "src/apex/track/centerline.py"
+    ],
+    "normal_source_check": "accepted",
+    "missing_runner_worker_source_check": "accepted",
+    "missing_runner_reader_pair": "controlled_candidate",
+    "duplicate_diagnostic_a_cmd": {
+      "reader": "accepted",
+      "diagnostic": 1.0,
+      "state_and_applied_control": 0.0,
+      "row": 25
+    },
+    "late_cancelled_full_integration": {
+      "reader": "rejected",
+      "reason": "Laboratory record quarantined: Laboratory summary/qualification conflicts with retained telemetry",
+      "fixture_only_not_live_race": true
+    },
+    "trust_scope": "Deliberately rebound disposable copies; no unchanged-anchor corruption bypass and no false data observed in genuine produced records",
+    "no_numerical_imports": true,
+    "script_sha256": "10bddceec7de1f218fc09b7b66b3034a56199b282d4e8b569d89368384ffd6b5"
+  },
+  "trust_scope": "Deliberately rebound disposable metadata/summary/manifest fixtures; unchanged-anchor corruption rejected; not authentication against rewriting all evidence",
+  "historical_work_test_evidence": {
+    "logs_hashes_verified": 5,
+    "final_python_hashes_verified": 15,
+    "initial": "44 passed, 2 failed",
+    "mixed": "297 passed, 1 failed",
+    "affected": "50 passed",
+    "301_distinct_across_multiple_work_runs_not_one_clean_invocation": true,
+    "prior_174_canonical_passes_counted_as_fresh_review": false
+  },
+  "preservation": {
+    "tracked_files_before": 918,
+    "unchanged_tracked_files": 917,
+    "only_changed_preexisting_paths": [
+      "docs/CODEX_HANDOFF.md"
+    ],
+    "previous_handoff_verbatim": true,
+    "implementation_canonical_science_configs_tests_launcher_unchanged": true,
+    "accepted_five_contract_files_unchanged": true,
+    "preexisting_result_file_count": 21421,
+    "review_result_metadata_changes": {},
+    "prework_finder_metadata_changes_now_observed": {
+      "results/.DS_Store": {
+        "before": [
+          14340,
+          1791925577320252167
+        ],
+        "review_observation": [
+          14340,
+          1793219889839587373
+        ],
+        "header": "0000000142756431",
+        "classification": "Finder filesystem-view metadata, not scientific output"
+      },
+      "results/task007d/.DS_Store": {
+        "before": [
+          6148,
+          1791925520097513596
+        ],
+        "review_observation": [
+          6148,
+          1793219889866072282
+        ],
+        "header": "0000000142756431",
+        "classification": "Finder filesystem-view metadata, not scientific output"
+      },
+      "results/task007d/c/amended/.DS_Store": {
+        "before": [
+          6148,
+          1793187000483167931
+        ],
+        "review_observation": [
+          10244,
+          1793219889864511631
+        ],
+        "header": "0000000142756431",
+        "classification": "Finder filesystem-view metadata, not scientific output"
+      }
+    },
+    "all_non_DS_Store_prework_scientific_result_files_retain_size_mtime": true,
+    "fresh_historical_content_rehash_or_backup_claimed": false
+  },
+  "local_raw_artifact_sha256": {
+    "results/apex_workbench_v02b_review_20261028/focused.log": "d6c9e7edbeccce676b59109623a4d55d3f6361affea29efac89bdb0e9be915d7",
+    "results/apex_workbench_v02b_review_20261028/independent-parity.log": "94f93cb9b1234b4be2c49a6f65fcdc0644ae7b4d977d375db43906c5bc80516c",
+    "results/apex_workbench_v02b_review_20261028/adversarial.log": "68fb92fdfd381603c9b80a1f555111bf4f6f6632e303d2be239dec23d8d52fd1",
+    "results/apex_workbench_v02b_review_20261028/confirmed-findings.log": "81b8249419ebe0015cd66a3a7db074a9367a93a7f46925d2d796ef59e2b0ac39",
+    "results/apex_workbench_v02b_review_20261028/independent_parity.py": "603636a2a0ff39063ca0d6839339141a42a7ccae53786ac9e053bdb46b87590e",
+    "results/apex_workbench_v02b_review_20261028/adversarial_records.py": "b86ab62a2a153ae6b47fecc71f3f992cc431d1b8b3014277302782b91b659785",
+    "results/apex_workbench_v02b_review_20261028/confirm_findings.py": "10bddceec7de1f218fc09b7b66b3034a56199b282d4e8b569d89368384ffd6b5",
+    "results/apex_workbench_v02b_review_20261028/independent-parity/result.json": "94f93cb9b1234b4be2c49a6f65fcdc0644ae7b4d977d375db43906c5bc80516c",
+    "results/apex_workbench_v02b_review_20261028/adversarial/results.json": "68fb92fdfd381603c9b80a1f555111bf4f6f6632e303d2be239dec23d8d52fd1",
+    "results/apex_workbench_v02b_review_20261028/confirmed-findings/results.json": "81b8249419ebe0015cd66a3a7db074a9367a93a7f46925d2d796ef59e2b0ac39",
+    "results/apex_workbench_v02b_review_20261028/independent-context/independent-review.md": "b5def464f8479ae9a33bd1bd7da3bedc959dd831a113999fae646b51b412ae41",
+    "results/apex_workbench_v02b_review_20261028/independent-context/probe_results.json": "205a10c7f42deca6b31e511af57602a957fbcde72fcae976573beb6998e8f07e",
+    "results/apex_workbench_v02b_review_20261028/independent-context/probe_partial_axes.py": "5a85ef0037d828d55d3b5409f517ef42d91a4d345db450d75c72f84007611553",
+    "results/apex_workbench_v02b_review_20261028/independent-context/probe_metadata.py": "18ec9d15a17df45b905300d4d2cc3c248f74473261f21f69a9ec78d22a1a69fc",
+    "results/apex_workbench_v02b_review_20261028/independent-context/partial_axes_results.json": "8dc9cd0ee6dae828667d77236842019cf10ea30856148dbbd7c6ba85396766d3"
+  },
+  "scientific_qualification_campaign": "NOT_RUN",
+  "refinement_trajectories": "NOT_RUN",
+  "formal_verification": "NOT_RUN",
+  "next_decision": "Dispose of conditions; separately authorize bounded corrective/qualification-preparation WORK and review changed code before any scientific qualification campaign",
+  "evidence_directory_date_note": "Evidence directory was reserved with the earlier client date; review documentation finalized 29 October 2026.",
+  "static_checks": {
+    "local_links_anchors": 118,
+    "markdown_tables": 4,
+    "fences": "pass",
+    "json_parse": "pass",
+    "implementation_diff_from_pin": "empty",
+    "git_diff_check": "pass"
+  }
+}
