@@ -2,6 +2,7 @@
 
 import hashlib
 import json
+from math import isfinite
 from pathlib import Path
 
 from tools.apex_workbench import storage
@@ -87,6 +88,39 @@ def require_protocol_run(record, slot):
         raise storage.IntegrityError("Qualification case/grid identity mismatch")
 
 
+def distinct_executions(records, references):
+    """Paths/copies do not establish a fresh execution or repeatability evidence."""
+    seen_runs, seen_workers, seen_manifests = set(), set(), set()
+    identities = {}
+    for slot, record in records.items():
+        run_id = record["request"].get("run_id")
+        worker = storage.artifact_json(record["directory"], "worker.json")
+        if (
+            not isinstance(run_id, str)
+            or not run_id.strip()
+            or not isinstance(worker, dict)
+            or worker.get("role") != "worker"
+            or type(worker.get("pid")) is not int
+            or worker["pid"] <= 0
+            or type(worker.get("created")) not in (int, float)
+            or not isfinite(worker["created"])
+            or worker["created"] <= 0
+        ):
+            raise storage.IntegrityError("Missing/invalid retained execution identity")
+        worker_id = (worker["pid"], worker["created"])
+        manifest = references[slot]["manifest_sha256"]
+        if run_id in seen_runs or worker_id in seen_workers or manifest in seen_manifests:
+            raise storage.IntegrityError("Qualification requires distinct execution identities")
+        seen_runs.add(run_id)
+        seen_workers.add(worker_id)
+        seen_manifests.add(manifest)
+        identities[slot] = {
+            "run_id": run_id,
+            "worker": {"pid": worker["pid"], "created": worker["created"], "role": "worker"},
+        }
+    return identities
+
+
 def evaluate_references(references):
     if not isinstance(references, dict) or set(references) != set(SLOTS):
         raise storage.IntegrityError(
@@ -97,6 +131,7 @@ def evaluate_references(references):
     records = {slot: bound_run(references[slot]) for slot in SLOTS}
     for slot, record in records.items():
         require_protocol_run(record, slot)
+    executions = distinct_executions(records, references)
     common = scientific_identity(records[SLOTS[0]])
     if any(scientific_identity(r) != common for r in records.values()):
         raise storage.IntegrityError(
@@ -122,6 +157,7 @@ def evaluate_references(references):
         "schema": SCHEMA,
         "protocol": dict(CRITERIA),
         "references": references,
+        "source_executions": executions,
         "scientific_identity": common,
         "calculation": calculation,
         "exact_parity": parity,

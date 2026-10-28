@@ -73,6 +73,7 @@ Raw local evidence: `results/apex_workbench_v02c_work_20261029/`.
 | `affected-1.log`, lab/closure/evaluator after record-consumption hardening |149 passed |
 | `affected-2.log`, per-axis assessment tests |148 passed,1 failed: an insufficient-excitation fixture changed only nominal yaw, unintentionally introducing a grid discrepancy. The evaluator correctly rejected numerical qualification. |
 | `literal-fix.log` |1 passed after making that mathematical fixture's zero response consistent across all grids; no production criterion or scientific case changed |
+| `review-q1-fix.log` |40 qualification tests passed after the bounded execution-identity correction, including actual unchanged directory-copy rejection; two fresh nominal software smokes only |
 
 Successful unchanged tests are not repeated merely to combine counts. All attempts/logs remain.
 One BASE/half functional rate/export smoke was explicitly marked software-test-only and is rejected
@@ -83,3 +84,22 @@ real qualification record, full-suite Verification, new scientific values or can
 The committed candidate's source identity, focused logs and independent review outcome will be
 recorded in the final handoff. The final proposed execution command will name the exact reviewed
 source SHA and a fresh results directory; it must not run before separate execution authorization.
+
+## Separate-context review and bounded correction
+
+The first review inspected exact candidate `a6917a00c2ac48e69d3a28ca4e7c9fbf6d964052`.
+It independently passed C1–C3 and the accepted arithmetic, but returned **FAIL** on Q1: distinct
+filesystem paths did not establish 17 distinct executions. A copied BASE record could occupy the
+fresh-worker repeat slot. The reviewer demonstrated the admission gap with unchanged byte copies
+and an explicit in-memory loader/sentinel probe, stopping before calculation or publication.
+The [failed review](../reviews/apex_workbench_v0_2_c/iteration_1/REVIEW.md), reproduction scripts
+and original result remain preserved. Raw review artifacts are additionally retained in
+`results/apex_workbench_v02c_work_20261029/review-1/`.
+
+The bounded correction validates captured nonempty run IDs and verified retained worker role,
+positive PID and finite positive birth time. Before calculations it independently rejects reused
+run IDs, worker PID/birth identities or manifest hashes, and records those execution identities in
+the qualification document. Old workers need not remain alive; PID reuse with a different birth
+time remains distinct. Ordinary archived copies remain inspectable, but cannot count as fresh
+executions. No scientific criteria or canonical code changed. Literal metadata tests do not create
+qualification evidence. The corrected exact commit requires the next independent review iteration.

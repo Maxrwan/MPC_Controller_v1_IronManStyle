@@ -16,6 +16,7 @@ from tools.apex_workbench.qualification import (
     bind_run,
     bound_run,
     check_current_source,
+    distinct_executions,
     evaluate_references,
     exact_export_comparison,
     read_qualification,
@@ -316,3 +317,74 @@ def test_different_recorded_environment_is_not_identical(lab_runs, tmp_path):
     storage.write_json(target / "numerical_environment.json", env)
     reseal_fixture(target)
     assert scientific_identity(read_record(target)) != scientific_identity(read_record(lab_runs[0]))
+
+
+def execution_metadata_fixtures(monkeypatch):
+    """Metadata only: no trajectories, source-run claims or qualification publication."""
+    records = {
+        slot: {"directory": slot, "request": {"run_id": "literal-run-" + str(k)}}
+        for k, slot in enumerate(SLOTS)
+    }
+    workers = {
+        slot: {"pid": k + 1, "created": 1000.0 + k, "role": "worker"}
+        for k, slot in enumerate(SLOTS)
+    }
+    references = {slot: {"manifest_sha256": f"{k:064x}"} for k, slot in enumerate(SLOTS)}
+    monkeypatch.setattr(storage, "artifact_json", lambda directory, name: workers[directory])
+    return records, workers, references
+
+
+@pytest.mark.parametrize("duplicate", ["run_id", "worker", "manifest"])
+def test_copied_execution_metadata_cannot_satisfy_fresh_repeat(monkeypatch, duplicate):
+    records, workers, references = execution_metadata_fixtures(monkeypatch)
+    original = SLOTS[0]
+    if duplicate == "run_id":
+        records["repeat"]["request"]["run_id"] = records[original]["request"]["run_id"]
+    elif duplicate == "worker":
+        workers["repeat"] = dict(workers[original])
+    else:
+        references["repeat"] = dict(references[original])
+    with pytest.raises(storage.IntegrityError, match="distinct execution identities"):
+        distinct_executions(records, references)
+
+
+@pytest.mark.parametrize(
+    "field,value",
+    [
+        ("run_id", None),
+        ("run_id", " "),
+        ("pid", True),
+        ("pid", 0),
+        ("created", float("nan")),
+        ("created", 0),
+        ("role", "jobs"),
+    ],
+)
+def test_missing_or_invalid_retained_execution_identity_is_rejected(monkeypatch, field, value):
+    records, workers, references = execution_metadata_fixtures(monkeypatch)
+    target = records["repeat"]["request"] if field == "run_id" else workers["repeat"]
+    target[field] = value
+    with pytest.raises(storage.IntegrityError, match="execution identity"):
+        distinct_executions(records, references)
+
+
+def test_valid_literal_execution_metadata_and_pid_reuse_are_distinguished(monkeypatch):
+    records, workers, references = execution_metadata_fixtures(monkeypatch)
+    workers["repeat"]["pid"] = workers[SLOTS[0]]["pid"]  # Different retained birth time.
+    identities = distinct_executions(records, references)
+    assert len(identities) == 17
+    assert identities["repeat"]["worker"]["created"] != identities[SLOTS[0]]["worker"]["created"]
+
+
+def test_exact_directory_copy_is_not_a_second_execution(lab_runs, tmp_path):
+    original = lab_runs[0]
+    target = tmp_path / "same-execution-copy"
+    shutil.copytree(original, target)
+    first, first_record = bind_run(original)
+    second, second_record = bind_run(target)
+    assert first["directory"] != second["directory"]
+    assert first["manifest_sha256"] == second["manifest_sha256"]
+    with pytest.raises(storage.IntegrityError, match="distinct execution identities"):
+        distinct_executions(
+            {"base": first_record, "repeat": second_record}, {"base": first, "repeat": second}
+        )

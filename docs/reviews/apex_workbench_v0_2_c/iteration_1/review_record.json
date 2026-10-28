@@ -1,0 +1,73 @@
+{
+  "schema": "apex-v02c-independent-review/1",
+  "reviewed_source_revision": "a6917a00c2ac48e69d3a28ca4e7c9fbf6d964052",
+  "branch": "codex/apex-workbench-v0-2-c",
+  "review_iteration": 1,
+  "decision": "FAIL",
+  "readiness": "V0.2_BLOCKED_PENDING_DECISION",
+  "blockers": [
+    "Q1 distinct paths do not establish distinct executions"
+  ],
+  "new_model_trajectories": 0,
+  "real_qualification_records_created": 0,
+  "formal_verification_run": false,
+  "fresh_test_result": {
+    "passed": 99,
+    "deselected": 2,
+    "exit": 0,
+    "worker_fixture": "retained_copy_override"
+  },
+  "failed_review_harness": {
+    "passed": 25,
+    "setup_errors": 74,
+    "exit": 1,
+    "cause": "replacement fixture rejected tmp_path_factory keyword",
+    "disposition": "harness-only correction; separate logs retained"
+  },
+  "artifacts": {
+    "REVIEW.md": {
+      "sha256": "ba96fef71d671ee57a1877c80da3f113a0964e57a4c34264cc8f8a6d2722cce9",
+      "bytes": 9613
+    },
+    "REPRODUCTION.md": {
+      "sha256": "138798b7b917e2248c30cde26f91789880b76735cf923ebc9fceb22b9b18b3d2",
+      "bytes": 2601
+    },
+    "run_reader_tests.py": {
+      "sha256": "766ff71442cc4419235470bb8192820bf441cf32f8a671f0472b53744d8bb001",
+      "bytes": 1910
+    },
+    "run_reader_tests_fixed.py": {
+      "sha256": "2f139c6a55e182763e2f9858368170360bf6c00244305457d6a722d864296cf3",
+      "bytes": 1965
+    },
+    "probe_execution_identity.py": {
+      "sha256": "669705350746884426bb1964d863a5e7d81feb75b87164d66fa7049d6b19f5a0",
+      "bytes": 3738
+    },
+    "reader-tests.log": {
+      "sha256": "0a1d7532ada0dc215405ff8b0e35d5208933aa6349517ce3a5c74ac5f4b85d0c",
+      "bytes": 395843
+    },
+    "reader-tests-fixed.log": {
+      "sha256": "7335486855da455d491211b6592bc3de85a3432e5fb4003b391499e56998b041",
+      "bytes": 884
+    },
+    "pytest_exit.json": {
+      "sha256": "d5e07d57cbbc3065fbcb059a25dc0dff9695e06817cd1e3af33daebd4f8ff649",
+      "bytes": 92
+    },
+    "pytest_exit_fixed.json": {
+      "sha256": "08196315f19d1139c31b4327b8390e102d5a1bfb5da73e28d0fe774e580881bc",
+      "bytes": 92
+    },
+    "execution-identity.log": {
+      "sha256": "7e3ac97409793578ae46bdbaedcbea221290ad4a6f8dfb475b7f970fce98ed36",
+      "bytes": 513
+    },
+    "execution-identity-results.json": {
+      "sha256": "7e3ac97409793578ae46bdbaedcbea221290ad4a6f8dfb475b7f970fce98ed36",
+      "bytes": 513
+    }
+  }
+}

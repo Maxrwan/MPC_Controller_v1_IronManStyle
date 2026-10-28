@@ -6,6 +6,12 @@
 [C1–C3 closure and prepared mechanism](apex_workbench_v0_2_c/WORK.md). Exact committed source candidate
 is supplied after commit for a separate-context review; readiness is not self-certified.
 
+Review iteration 1 of `a6917a00c2ac48e69d3a28ca4e7c9fbf6d964052` passed C1–C3 but failed Q1:
+17 paths could contain a copied execution in place of a fresh repeat. The failed report/probes are
+preserved in `docs/reviews/apex_workbench_v0_2_c/iteration_1/`. The bounded correction now rejects
+duplicate run IDs, verified worker PID/birth identities and manifest hashes before evaluation;
+40 affected qualification tests pass. The corrected exact commit awaits independent re-review.
+
 Implemented complete versioned source inventory; diagnostic/input/native-track alias checks; independent
 integration coverage versus process outcome; explicit qualification-only grids; fixed17-slot future
 coordinator; literal reference; pure accepted-criteria evaluator; source-manifest-bound qualification
