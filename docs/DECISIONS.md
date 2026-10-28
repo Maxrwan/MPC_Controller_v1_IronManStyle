@@ -1227,3 +1227,34 @@ See [V0.2-A audit and design](apex_workbench_v0_2_a/README.md). Scientific revie
 cases/envelopes, geometry policy, initialization/input/validity semantics, clock/export contract
 and controlled-treatment interpretation before a separately authorized implementation stage.
 No canonical source, configuration, profile, dependency, old result or V0.1 tool is changed by this ADR.
+
+
+## ADR-172 — Approved laboratory policies; finite numerical contract proposed
+
+Recorded 28 October 2026. **V0.2_PARAMETER_CONTRACT_PENDING_SCIENTIFIC_ACCEPTANCE.**
+The user's V0.2-A2 instruction approves D1 independent synthetic mass/Iz/Cf/Cr counterfactuals,
+D2 fixed geometry/CG height, D3 independent body initial states and prescribed constant/step inputs
+with fixed pose/no reconstruction, D4 canonical SimulationRunner/fixed RK4/integer-tick held-input
+profile with unchanged V0.1 parity, and D5 single declared treatment per otherwise identical pair.
+These policy decisions supersede ADR-171's pending policy language; no invented coupling law,
+new physics, arbitrary valid slider range or self-approval of numerical assumptions follows.
+
+Propose a five-case registry: shared nominal plus increased Iz, steering amplitude, front stiffness
+and rear stiffness. Use one common zero-slip seed, fixed synthetic track/linear-load composition and
+short step schedule. Full immutable snapshots and every value's origin are in the
+[case contract](apex_workbench_v0_2_a/PROPOSED_CASES.md). Nominal grid/refinements, thresholds and
+sampled interpretation filters are explicit engineering proposals; see the
+[three outstanding scientific decisions](apex_workbench_v0_2_a/DECISION_SUMMARY.md).
+The minimum first release selects named cases rather than implements unrestricted editors/sweeps.
+Mass and additional state/input case families remain deferred without reopening approved semantics.
+
+Keep configuration admissibility, execution outcome, artifact validity, numerical qualification,
+model limitations and comparison eligibility as separate axes. Immediate analytical values are
+independent future test oracles, never executed/golden trajectories or physical measurements.
+All numerical/full-path claims remain unqualified. Reuse existing ownership, atomic publication,
+source/effective-composition provenance, manifest integrity and scientific safeguards unchanged.
+
+This ADR authorizes no implementation/experiment. Primary acceptance/amendment of the numerical
+contract precedes separately authorized V0.2-B WORK, bounded qualification, Engineering Review and
+exact-SHA Verification. A2 changes design documentation only; canonical/Workbench/launcher code,
+tests, configurations, frozen profiles, dependencies and historical results remain untouched.

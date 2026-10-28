@@ -1,7 +1,9 @@
 # Three controlled learning experiments — designs only
 
-**Not executed.** No numerical levels, new parameter bounds, measurements or results are supplied.
-All case values, event times and durations await the [scientific contract review](README.md#scientific-decisions-requiring-review).
+**Not executed.** This A1 rationale is now paired with A2's concrete
+[proposed numerical cases](PROPOSED_CASES.md), [clock/qualification](NUMERICAL_CONTRACT.md) and
+[validity contract](VALIDITY_CONTRACT.md). D1–D5 are approved; case values/thresholds still need
+Primary acceptance. Statements below about no selected values describe the A1 design stage only.
 The expectations below are conditional inferences from the existing canonical equations, not
 predicted empirical results or additional vehicle-model assumptions.
 
@@ -108,10 +110,11 @@ the same steering excitation, when their nominal axle stiffnesses are varied sep
 
 ## Common software acceptance and scientific limits
 
-Every future experiment requires reviewed literal case values, a qualified timestep and an explicit
-interpretation window before it is run. No observed result may be used to manufacture the acceptance
-oracle. Reuse existing numerical tolerances only where the same contract applies; any new tolerance
-or convergence criterion must be justified and reviewed, not invented here.
+Every future qualification requires reviewed literal case values, timestep candidates, numerical
+criteria and an explicit interpretation window before execution. Qualification runs establish whether
+the candidate timestep meets those criteria; ordinary qualified teaching runs require that evidence.
+No observed result may manufacture the acceptance oracle. A2 proposes new tolerances explicitly for
+review; existing fixture-specific tolerances do not silently transfer.
 
 Acceptance requires exact V0.1 path/default preservation; correct effective parameters/full state/
 held inputs; canonical-runner parity for the new profile; verified artifacts and visible failure/

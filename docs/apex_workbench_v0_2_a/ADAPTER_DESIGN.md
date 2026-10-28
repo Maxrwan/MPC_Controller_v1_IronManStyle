@@ -1,5 +1,10 @@
 # Minimum composition adapter — proposed, not implemented
 
+**A2 supersession:** D1–D5 policy is approved. The first release is narrowed by the
+[implementation contract](IMPLEMENTATION_CONTRACT.md) to five proposed named cases and one common
+seed/schedule; remaining numerical acceptance is listed in [DECISION_SUMMARY.md](DECISION_SUMMARY.md).
+No free-form parameter editor is implied by the broader audited construction capability below.
+
 Status and scientific decisions: [V0.2-A scope](README.md). Audited interfaces/defaults:
 [parameter matrix](PARAMETER_CAPABILITY_MATRIX.md). No canonical source change is needed for the
 recommended open-loop composition. Parameter contracts and execution remain separately gated.
@@ -100,12 +105,9 @@ Exact V0.1 preservation means the existing accepted paths remain unchanged and r
 original-entry-point parity. New-lab acceptance compares against an independently constructed call
 to the same canonical runner/profile, not against altered legacy golden files.
 
-If scientific review instead requires identical Task004 stepping/terminal export inside the new
-parameterized adapter, the missing seam is an injectable reusable function in the original demo.
-That is a separately approved scientific entry-point/interface refactor, requiring unchanged-CLI
-byte parity. It changes no equations but is outside this minimum tooling-only design. Do not copy
-the demo's integration loop into tooling, monkeypatch its factories/state conversion, or modify
-the canonical runner to mimic the demo silently.
+D4 now settles this choice: use the existing runner for the new lab and preserve original V0.1
+entry points. No original-demo extraction is needed or authorized. Do not copy its integration loop,
+monkeypatch its factories/state conversion or modify the runner to mimic the demo silently.
 
 The first schedule grammar is a bounded ordered list of piecewise-constant segments: tick zero
 first, strictly increasing unique transition ticks within the approved horizon, finite delta/a_cmd

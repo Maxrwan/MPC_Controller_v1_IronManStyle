@@ -1,5 +1,12 @@
 # Minimum implementation and regression sequence
 
+**A2 supersession:** D1–D5 policy is approved. The
+[implementation contract](IMPLEMENTATION_CONTRACT.md) narrows this sequence to five proposed finite
+cases with no arbitrary editor, and defines the minimum independent tests/qualification budget.
+[Only numerical/scientific case acceptance remains pending](DECISION_SUMMARY.md), followed by separate
+implementation/execution authorization. The legacy-loop alternative below is historical; D4 has
+selected the runner and no extraction is needed.
+
 **Design only; not an implementation authorization.** Start only after scientific review of the
 [five decisions](README.md#scientific-decisions-requiring-review) and a separately scoped instruction.
 Canonical science, frozen profiles, V0.1 behavior and old evidence stay protected at every stage.

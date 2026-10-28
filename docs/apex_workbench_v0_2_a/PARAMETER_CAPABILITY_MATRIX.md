@@ -1,5 +1,11 @@
 # Parameter capability matrix
 
+**A2 supersession:** this A1 source audit remains applicable. D1–D5 policy is now approved;
+pending policy wording below is historical, not a request to reopen it. Concrete finite cases,
+their permitted first-release selection and unaccepted numerical/filter proposals are in
+[PROPOSED_CASES.md](PROPOSED_CASES.md) and [DECISION_SUMMARY.md](DECISION_SUMMARY.md).
+Existing code constraints below do not establish trajectory qualification.
+
 Read with the [scope and review decisions](README.md). All defaults below are **existing synthetic
 software fixtures**, never measured/identified APEX properties. A code-enforced mathematical
 contract is not an experimentally validated range. No new numeric parameter range is proposed.

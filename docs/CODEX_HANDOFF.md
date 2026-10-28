@@ -1,3 +1,49 @@
+# Current handoff — Workbench V0.2-A2 parameter/timing/validity contract
+
+**V0.2_PARAMETER_CONTRACT_PENDING_SCIENTIFIC_ACCEPTANCE.** Recorded 28 October 2026.
+Inspected design/source pin: `d975a1141ae94d836b31d0ed8457870fbe9c98b6`.
+Branch: `codex/apex-workbench-v0-2-a-design`. The containing documentation commit is the delivery
+revision; exact SHA/URL is supplied after normal push. D1–D5 are approved by the user; numerical
+cases, timing thresholds and interpretation filters are proposals for Primary APEX acceptance.
+
+[Five proposed cases/full snapshots/analytical expectations](apex_workbench_v0_2_a/PROPOSED_CASES.md),
+[numerical grid and bounded qualification plan](apex_workbench_v0_2_a/NUMERICAL_CONTRACT.md),
+[distinct validity axes](apex_workbench_v0_2_a/VALIDITY_CONTRACT.md),
+[versioned implementation/test contract](apex_workbench_v0_2_a/IMPLEMENTATION_CONTRACT.md),
+[only unresolved scientific decisions](apex_workbench_v0_2_a/DECISION_SUMMARY.md).
+ADR-172 records approved policy and pending numerical assumptions separately.
+
+Shared nominal synthetic case: m=2 kg, Iz=0.025 kg m², Cf/Cr=45 N/rad. Four single-factor treatments:
+Iz=0.030, step delta=0.025 instead of 0.020 rad, Cf=54, or Cr=54. Common canonical seed [2,0,0,0,0,0],
+a_cmd=0, onset=0.100 s, horizon=0.500 s. Fixed existing radius-5-m spline/geometry and linear/no-allocator
+composition. No mass family or general slider range in the minimum first release. Scalar equations
+establish initial admissibility, schedule load positivity and conditional immediate body responses;
+rear stiffness initially has zero effect at zero rear slip. No full-path validity is claimed.
+
+Proposed nominal 5 ms grid, 2.5/1.25 ms qualification grids, componentwise tolerances/contraction,
+yaw-signal separation and sampled slip/utilization/corridor filters await acceptance. Planned future
+workload: 15 grid trajectories +1 baseline repeat +1 independent direct-runner reference=17 short
+lab trajectories. None executed. Numerical qualification, physical limitations, compatibility,
+evidence validity and process completion stay separate; no physical or hard real-time validation.
+
+Only five new contract documents, the design index/four concise supersession notes, appended ADR
+and this prepended handoff change. A1 audit and old ADR/handoff remain historical. Static document,
+literal-table/scalar arithmetic and preservation checks only, logged at
+`/private/tmp/apex-workbench-v02a2-contract-20261028/static_checks.json`.
+Before snapshot: 905 tracked files, 19,101 historical results (size/mtime). No project/numerical import,
+pytest/collection, simulation, sweep, launcher, source/test/configuration/dependency/frozen-result
+change or new evidence-based performance claim. Previous V0.1 counts are not newly executed checks.
+Static checks pass: 213 local links/anchors, 25 Markdown tables/fences, all five 17-field snapshots,
+single-factor differences, analytical table and tick/workload arithmetic. All 47 audited source hashes
+match; 898 preexisting tracked files are byte-unchanged, and historical result size/mtime is unchanged.
+The seven changed preexisting paths are authorized documentation; previous handoff/ADR text is retained.
+
+**Stop here.** Primary acceptance/amendment of the proposed numerical contract, then separately
+authorize V0.2-B implementation and its execution scope. No automatic next stage or reopened frozen
+Performance/Efficiency/Safety/VIS, NMPC/async, CT-style or hardware work.
+
+---
+
 # Current handoff — Workbench V0.2-A design and capability audit
 
 **V0.2_DESIGN_COMPLETE_PENDING_SCIENTIFIC_REVIEW.** Recorded 28 October 2026.
