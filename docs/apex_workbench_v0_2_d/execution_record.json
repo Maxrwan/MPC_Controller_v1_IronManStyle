@@ -1,0 +1,2787 @@
+{
+  "schema": "apex-v02d-execution-report/1",
+  "report_only_not_replacement_for_qualification_evidence": true,
+  "status": "V0.2_QUALIFICATION_COMPLETE_PENDING_SCIENTIFIC_REVIEW",
+  "recorded_local_date": "2026-10-29",
+  "repository": "Maxrwan/MPC_Controller_v1_IronManStyle",
+  "branch": "codex/apex-workbench-v0-2-c",
+  "reviewed_source_revision": "4897686e79c13757d5ef5b4373b44d4cab99b5bf",
+  "execution_checkout_revision": "6c6c169e483072c48866335aeb82439e24139920",
+  "accepted_scientific_contract": "0cc7e4f626311aec05977bd3beda40c346fa4214",
+  "report_delivery_revision": "containing documentation commit; exact SHA supplied after push",
+  "local_repository_root": "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle",
+  "campaign_directory": "results/apex_workbench_qualifications/v0_2_reviewed_20261029",
+  "qualification_directory": "results/apex_workbench_qualifications/v0_2_reviewed_20261029/qualification",
+  "invocation": {
+    "schema": "apex-v02d-one-shot-invocation/1",
+    "attempt": 1,
+    "maximum_authorized_attempts": 1,
+    "utc_before_invocation": "2026-10-28T22:28:28.531479+00:00",
+    "cwd": "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle",
+    "command": "PYTHONPATH=.:scripts:src tools/apex_workbench/.venv/bin/python -m tools.apex_workbench.qualification_campaign execute --output-dir results/apex_workbench_qualifications/v0_2_reviewed_20261029 --reviewed-revision 4897686e79c13757d5ef5b4373b44d4cab99b5bf --acknowledge-scientific-execution",
+    "stdout": "results/apex_workbench_v02d_reporting_20261029/campaign.stdout.log",
+    "stderr": "results/apex_workbench_v02d_reporting_20261029/campaign.stderr.log",
+    "reporting_note": "Preflight diagnostics launched zero scientific campaigns. This records intent before the sole coordinator invocation.",
+    "implementation_modified": false
+  },
+  "exit": {
+    "attempt": 1,
+    "exit_code": 0,
+    "utc_after_completion": "2026-10-28T22:29:46.594965+00:00",
+    "coordinator_state": "evaluated",
+    "retries": 0,
+    "supplementary_trajectories": 0
+  },
+  "campaign_attempts": 1,
+  "retries": 0,
+  "supplementary_trajectories": 0,
+  "actual_execution_count": 17,
+  "actual_plant_intervals": 3700,
+  "aggregate_simulated_duration_s": 8.5,
+  "all_executions_completed": true,
+  "all_source_evidence_valid": true,
+  "qualification_record_verified": true,
+  "qualification_decision": "qualified_synthetic_comparisons",
+  "physical_validity": "not_established",
+  "source_sha256": {
+    "configs/vehicles/synthetic_dynamic_test_vehicle.yaml": "df1b853d21a1d3efaf858f7e58401151f2c5237793c40e16bb4189ed651f9cf3",
+    "scripts/run_dynamic_bicycle_demo.py": "9aa8bef1f05186d6653752becadcfb72d5698a82355606a7847be6d69171baa3",
+    "scripts/threading_study/config.py": "a50a73015c3ab739c35aa1fd715840364974213bf1c12666269b250264556fc3",
+    "src/apex/__init__.py": "2dd176027291d40716c8c828e8a9994afbf247d22bea1426fac52c259cbbc33b",
+    "src/apex/config.py": "40227b4ed2a38e30ecfb9acc7f308cf9db31b54dc813bb28850b25800877e0ad",
+    "src/apex/state.py": "b2b16555f8ae83f041ee821906305accc56010b643bb3fa514f90a8a17e66862",
+    "src/apex/control/__init__.py": "12878dbd9e38ae415462ea0eccbfc315387856736233a7ea4b2f840b1a53e96a",
+    "src/apex/control/base.py": "119b6cb4235421b9728838b47e4913158402997957956a473009c43435acb870",
+    "src/apex/coordinates/__init__.py": "1c443357b2a8e949a157c09b6fb3b50c170d98c908da8c0e8ebbd7e25f919555",
+    "src/apex/coordinates/angles.py": "2ed31ef5153e42083e727efc10b7875277f7f2641a5e16e9790e3f6073b33d05",
+    "src/apex/coordinates/frenet.py": "5fd10e1648847071561086f394914f6812422b0ad04f81ef2a517968334e17bd",
+    "src/apex/models/__init__.py": "d530a05e192b5d6c8b815c3edb2599a88bc35acac91c83280cd8e22d31a1d0d2",
+    "src/apex/models/base.py": "3bd8085e89978410bbe8581903b6280bd84f1a1ca956f1bb62f974462df7c525",
+    "src/apex/models/constants.py": "1b485d45ad2d74aaa256c1aab00157d7c610db0bea9f744d75376b8e816534be",
+    "src/apex/models/errors.py": "81baff4659f36bb6aea91e6a27327260b4d69e23de22963de6832199e7f1f916",
+    "src/apex/models/frenet.py": "a8c6190bd6be9f2a284c83b5c31e5d6cb2d8ef1f791b49bbebdd3c110a36ee96",
+    "src/apex/models/integration.py": "02009193fb2d25e83560a2da37f216048dfa3ededcb3de8616b90e411473ad51",
+    "src/apex/models/vehicle/__init__.py": "ab6dddf29c21f198a84b17e28f3dcb8b4b1e6543e0ce5533d4166a062d549a9f",
+    "src/apex/models/vehicle/parameters.py": "5cfce45b4a87577b17193b44cfa24f11c8e29c93082564a596f7ddf4e797fbb2",
+    "src/apex/models/vehicle/dynamic_bicycle.py": "c93b674924eed24f9641ebe263863b3422cba5eb1665c0d93dd6cd00bdfd462f",
+    "src/apex/models/vehicle/load_transfer.py": "e96c74199a7d8147866529cb4ecfffbfce74815cb57accb52ea54b407b873be1",
+    "src/apex/models/vehicle/force_allocation.py": "e77d8c87efdaa9c008ec45385ad4dad326cfa2e003798c08e29a5fb9a17647f8",
+    "src/apex/models/tire/__init__.py": "000e7ac305a2f5bb610e6ee9e066a6f8d82a0ac335c2b9253d292a2c3c96907f",
+    "src/apex/models/tire/base.py": "da1b635a6da1de465ac7af61dcf3cad8d23ef406eb6dd7f45dad825bc3f60ccf",
+    "src/apex/models/tire/config.py": "73f7e47ae5768a6961a8ca65aa40a5da7ecd77e412ac6995a459e969daa83877",
+    "src/apex/models/tire/linear.py": "6ae5888b0000cd57a88788463977be1a90fa8e1f6a332f131c66623192ce9cf3",
+    "src/apex/models/tire/grip.py": "e91bab930ee0650578ede2964ef680f77663cfd34d26ab1682c232b34c6d8c90",
+    "src/apex/simulation/__init__.py": "84069322b2562012fcfd863d27f6fc88a0f2d5eaba3a4040f10e896cffc4a513",
+    "src/apex/simulation/runner.py": "99dd44020405dd121433637ccf43d53639451a2b7b595bed255555144802cb34",
+    "src/apex/simulation/timing.py": "1bcd5ac042dc761ff8ed83028d0dde372a1569a9549f84e7f92061e109fa968f",
+    "src/apex/track/__init__.py": "95dd539a129d605aa979952c68c75d633738d520fa66e06a491b5bfb2ef7907c",
+    "src/apex/track/base.py": "c15e48dfa2a08bfd57040c80b1280a6f56234503361a38cb3cda6cb35e93cca1",
+    "src/apex/track/centerline.py": "caf28a32f24198fbfd57a7d6a987822f9b4df88ff6b5f1bca5c1f57e2b79429f",
+    "src/apex/track/closed_track.py": "c14fb27c1a1182dec564a5a679832e67c6480fb382a15c05dd2c998b138a350e",
+    "src/apex/track/io.py": "ee2f5a27740684ddba2f1907c88e8893c6cf0c59150352d35845914d5fd30b65",
+    "src/apex/track/progress.py": "fef18ea7fe610cca1ff80f32acdecf5f756b6d26c1a47e47f0eb23b7ae8dc0d8",
+    "src/apex/track/synthetic.py": "1e7ed0900af9971d6c68ca810570b9177a97eb830361c580724870752f4744c0",
+    "tools/apex_workbench/__init__.py": "194595c8c9d46745693697c8417c2408fbe76e3254ae716f26b50c47f4723396",
+    "tools/apex_workbench/configuration.py": "39b33dcd20be80a188d532c33c3fe33561addff847d298beab626fa9a476dc02",
+    "tools/apex_workbench/jobs.py": "0e14fd1c56f76372677e6408c37f44713ca9af3b1d8b8f4c064f80bd1d23b170",
+    "tools/apex_workbench/worker.py": "065738dab95e685b61c9347c254aeb9e13b0cdbcc605087752d0b6b21601b64e",
+    "tools/apex_workbench/lifecycle.py": "794bd5ada88048a402a2d0946942ec9962e52b0caf2e72d7a8a3a0279f51f05a",
+    "tools/apex_workbench/storage.py": "9486d6339b6dc50d2d4fe9030dfb71940e11c8ce283e838e7614fed80eaeb3cb",
+    "tools/apex_workbench/lab_configuration.py": "41e937fbf8d5f4fb239f2d0a99d39f94e1966f59787a7b4ae1f7f4015ce89abc",
+    "tools/apex_workbench/lab_sources.py": "7b5bef6d440f8a16004de9b4539a43c28dc13b203d7ff2a8a01eca1b74895a84",
+    "tools/apex_workbench/dynamic_lab.py": "65e78ea7a982421837e96ea3bc5b8748ae1e1c6e0e22493fe8ae99df8d67063d",
+    "tools/apex_workbench/lab_reporting.py": "47ecc170f80fb06b99b5ef9a78d70749a22da547c52b4b671eba37eca387b0c2",
+    "tools/apex_workbench/lab_evidence.py": "a3ea1046530bbe13461c87529155d167c83681008c9298268be9167b00dbed73",
+    "tools/apex_workbench/lab_comparison.py": "ae792cb84bd0a10dec62160350f4a79e1397098b3267b2f0f7db9285f798e0cb",
+    "tools/apex_workbench/comparison.py": "5e54bd0d75e830d54c4060c19aa7db725b6402af201aba314fd8e1bc42e14b45",
+    "tools/apex_workbench/plots.py": "091359f6d07fa46105c7575627dc5862203fd2279d77ffa7c0c73b0cca5cc48c",
+    "tools/apex_workbench/app.py": "ea572914ab10d824c93002d56831492fccf45a839520754a8ff4f3fe37b4eea8",
+    "tools/apex_workbench/qualification_math.py": "4511601c8291ea40c68b7fe91763f3251e9dcb195bd373c951ec7a47a5977fbf",
+    "tools/apex_workbench/qualification.py": "ebbde4064962fe4dac9d958860fc271815fd67c804c0d2aff7c5031a2ef577cd",
+    "tools/apex_workbench/qualification_campaign.py": "a191c1cf2e34831755c9d48d71767935c3b1f67bb085f04b3539d22ff7398ac9",
+    "tools/apex_workbench/qualification_reference.py": "a93797ffd5bdf974078c032a55367849a257d92138e1e2630e89bcb8168e3826"
+  },
+  "contract_sha256": {
+    "docs/apex_workbench_v0_2_a/NUMERICAL_CONTRACT.md": "57183c9c3eb15c773cc845b87564a596b4d08f985ddf81aa2b5d7567f7bee59a",
+    "docs/apex_workbench_v0_2_a/VALIDITY_CONTRACT.md": "bc0385d26ef968f7ea755c00800299486f1c1a947bf4a93aa9683a7624470a21",
+    "docs/apex_workbench_v0_2_a/PROPOSED_CASES.md": "a0926be583fa5556a3ca27b7cd16dbc8f0542c64d22e311d23e1044b8754c1d4"
+  },
+  "actual_scientific_identity": {
+    "scientific_source": {
+      "version": "apex-dynamic-lab-sources/1",
+      "sha256": {
+        "configs/vehicles/synthetic_dynamic_test_vehicle.yaml": "df1b853d21a1d3efaf858f7e58401151f2c5237793c40e16bb4189ed651f9cf3",
+        "scripts/run_dynamic_bicycle_demo.py": "9aa8bef1f05186d6653752becadcfb72d5698a82355606a7847be6d69171baa3",
+        "scripts/threading_study/config.py": "a50a73015c3ab739c35aa1fd715840364974213bf1c12666269b250264556fc3",
+        "src/apex/__init__.py": "2dd176027291d40716c8c828e8a9994afbf247d22bea1426fac52c259cbbc33b",
+        "src/apex/config.py": "40227b4ed2a38e30ecfb9acc7f308cf9db31b54dc813bb28850b25800877e0ad",
+        "src/apex/state.py": "b2b16555f8ae83f041ee821906305accc56010b643bb3fa514f90a8a17e66862",
+        "src/apex/control/__init__.py": "12878dbd9e38ae415462ea0eccbfc315387856736233a7ea4b2f840b1a53e96a",
+        "src/apex/control/base.py": "119b6cb4235421b9728838b47e4913158402997957956a473009c43435acb870",
+        "src/apex/coordinates/__init__.py": "1c443357b2a8e949a157c09b6fb3b50c170d98c908da8c0e8ebbd7e25f919555",
+        "src/apex/coordinates/angles.py": "2ed31ef5153e42083e727efc10b7875277f7f2641a5e16e9790e3f6073b33d05",
+        "src/apex/coordinates/frenet.py": "5fd10e1648847071561086f394914f6812422b0ad04f81ef2a517968334e17bd",
+        "src/apex/models/__init__.py": "d530a05e192b5d6c8b815c3edb2599a88bc35acac91c83280cd8e22d31a1d0d2",
+        "src/apex/models/base.py": "3bd8085e89978410bbe8581903b6280bd84f1a1ca956f1bb62f974462df7c525",
+        "src/apex/models/constants.py": "1b485d45ad2d74aaa256c1aab00157d7c610db0bea9f744d75376b8e816534be",
+        "src/apex/models/errors.py": "81baff4659f36bb6aea91e6a27327260b4d69e23de22963de6832199e7f1f916",
+        "src/apex/models/frenet.py": "a8c6190bd6be9f2a284c83b5c31e5d6cb2d8ef1f791b49bbebdd3c110a36ee96",
+        "src/apex/models/integration.py": "02009193fb2d25e83560a2da37f216048dfa3ededcb3de8616b90e411473ad51",
+        "src/apex/models/vehicle/__init__.py": "ab6dddf29c21f198a84b17e28f3dcb8b4b1e6543e0ce5533d4166a062d549a9f",
+        "src/apex/models/vehicle/parameters.py": "5cfce45b4a87577b17193b44cfa24f11c8e29c93082564a596f7ddf4e797fbb2",
+        "src/apex/models/vehicle/dynamic_bicycle.py": "c93b674924eed24f9641ebe263863b3422cba5eb1665c0d93dd6cd00bdfd462f",
+        "src/apex/models/vehicle/load_transfer.py": "e96c74199a7d8147866529cb4ecfffbfce74815cb57accb52ea54b407b873be1",
+        "src/apex/models/vehicle/force_allocation.py": "e77d8c87efdaa9c008ec45385ad4dad326cfa2e003798c08e29a5fb9a17647f8",
+        "src/apex/models/tire/__init__.py": "000e7ac305a2f5bb610e6ee9e066a6f8d82a0ac335c2b9253d292a2c3c96907f",
+        "src/apex/models/tire/base.py": "da1b635a6da1de465ac7af61dcf3cad8d23ef406eb6dd7f45dad825bc3f60ccf",
+        "src/apex/models/tire/config.py": "73f7e47ae5768a6961a8ca65aa40a5da7ecd77e412ac6995a459e969daa83877",
+        "src/apex/models/tire/linear.py": "6ae5888b0000cd57a88788463977be1a90fa8e1f6a332f131c66623192ce9cf3",
+        "src/apex/models/tire/grip.py": "e91bab930ee0650578ede2964ef680f77663cfd34d26ab1682c232b34c6d8c90",
+        "src/apex/simulation/__init__.py": "84069322b2562012fcfd863d27f6fc88a0f2d5eaba3a4040f10e896cffc4a513",
+        "src/apex/simulation/runner.py": "99dd44020405dd121433637ccf43d53639451a2b7b595bed255555144802cb34",
+        "src/apex/simulation/timing.py": "1bcd5ac042dc761ff8ed83028d0dde372a1569a9549f84e7f92061e109fa968f",
+        "src/apex/track/__init__.py": "95dd539a129d605aa979952c68c75d633738d520fa66e06a491b5bfb2ef7907c",
+        "src/apex/track/base.py": "c15e48dfa2a08bfd57040c80b1280a6f56234503361a38cb3cda6cb35e93cca1",
+        "src/apex/track/centerline.py": "caf28a32f24198fbfd57a7d6a987822f9b4df88ff6b5f1bca5c1f57e2b79429f",
+        "src/apex/track/closed_track.py": "c14fb27c1a1182dec564a5a679832e67c6480fb382a15c05dd2c998b138a350e",
+        "src/apex/track/io.py": "ee2f5a27740684ddba2f1907c88e8893c6cf0c59150352d35845914d5fd30b65",
+        "src/apex/track/progress.py": "fef18ea7fe610cca1ff80f32acdecf5f756b6d26c1a47e47f0eb23b7ae8dc0d8",
+        "src/apex/track/synthetic.py": "1e7ed0900af9971d6c68ca810570b9177a97eb830361c580724870752f4744c0",
+        "tools/apex_workbench/__init__.py": "194595c8c9d46745693697c8417c2408fbe76e3254ae716f26b50c47f4723396",
+        "tools/apex_workbench/configuration.py": "39b33dcd20be80a188d532c33c3fe33561addff847d298beab626fa9a476dc02",
+        "tools/apex_workbench/jobs.py": "0e14fd1c56f76372677e6408c37f44713ca9af3b1d8b8f4c064f80bd1d23b170",
+        "tools/apex_workbench/worker.py": "065738dab95e685b61c9347c254aeb9e13b0cdbcc605087752d0b6b21601b64e",
+        "tools/apex_workbench/lifecycle.py": "794bd5ada88048a402a2d0946942ec9962e52b0caf2e72d7a8a3a0279f51f05a",
+        "tools/apex_workbench/storage.py": "9486d6339b6dc50d2d4fe9030dfb71940e11c8ce283e838e7614fed80eaeb3cb",
+        "tools/apex_workbench/lab_configuration.py": "41e937fbf8d5f4fb239f2d0a99d39f94e1966f59787a7b4ae1f7f4015ce89abc",
+        "tools/apex_workbench/lab_sources.py": "7b5bef6d440f8a16004de9b4539a43c28dc13b203d7ff2a8a01eca1b74895a84",
+        "tools/apex_workbench/dynamic_lab.py": "65e78ea7a982421837e96ea3bc5b8748ae1e1c6e0e22493fe8ae99df8d67063d",
+        "tools/apex_workbench/lab_reporting.py": "47ecc170f80fb06b99b5ef9a78d70749a22da547c52b4b671eba37eca387b0c2",
+        "tools/apex_workbench/lab_evidence.py": "a3ea1046530bbe13461c87529155d167c83681008c9298268be9167b00dbed73",
+        "tools/apex_workbench/lab_comparison.py": "ae792cb84bd0a10dec62160350f4a79e1397098b3267b2f0f7db9285f798e0cb",
+        "tools/apex_workbench/comparison.py": "5e54bd0d75e830d54c4060c19aa7db725b6402af201aba314fd8e1bc42e14b45",
+        "tools/apex_workbench/plots.py": "091359f6d07fa46105c7575627dc5862203fd2279d77ffa7c0c73b0cca5cc48c",
+        "tools/apex_workbench/app.py": "ea572914ab10d824c93002d56831492fccf45a839520754a8ff4f3fe37b4eea8",
+        "tools/apex_workbench/qualification_math.py": "4511601c8291ea40c68b7fe91763f3251e9dcb195bd373c951ec7a47a5977fbf",
+        "tools/apex_workbench/qualification.py": "ebbde4064962fe4dac9d958860fc271815fd67c804c0d2aff7c5031a2ef577cd",
+        "tools/apex_workbench/qualification_campaign.py": "a191c1cf2e34831755c9d48d71767935c3b1f67bb085f04b3539d22ff7398ac9",
+        "tools/apex_workbench/qualification_reference.py": "a93797ffd5bdf974078c032a55367849a257d92138e1e2630e89bcb8168e3826"
+      }
+    },
+    "python": "3.12.14 (main, Sep  1 2026, 14:09:38) [Clang 22.1.3 ]",
+    "packages": {
+      "numpy": "2.5.3",
+      "scipy": "1.18.1",
+      "pandas": "3.0.6",
+      "matplotlib": "3.11.2",
+      "streamlit": "1.66.1",
+      "plotly": "6.9.0",
+      "psutil": "7.2.2",
+      "threadpoolctl": "3.7.0"
+    },
+    "numerical_environment": {
+      "python": "3.12.14 (main, Sep  1 2026, 14:09:38) [Clang 22.1.3 ]",
+      "platform": "darwin",
+      "native_control": {
+        "requested_ceiling": 1,
+        "set_status": 0,
+        "blas_threading_mode": 1,
+        "mode_name": "single",
+        "exact_active_thread_count_available": false
+      },
+      "platform_details": "macOS-26.5.1-arm64-arm-64bit",
+      "machine": "arm64",
+      "threadpools": [],
+      "thread_environment": {
+        "VECLIB_MAXIMUM_THREADS": "1",
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "BLIS_NUM_THREADS": "1"
+      }
+    },
+    "model": "apex.models.vehicle.dynamic_bicycle.DynamicBicycle",
+    "tire": "LinearAxleTire (unsaturated; mu diagnostic only)",
+    "timing": "ideal zero modeled delay; host runtime is not solver latency",
+    "controller": "none (prescribed integer-tick ZOH input)",
+    "geometry_sha256": "a6a58da046d105b8c058a5d75f9d09783ab6b46f10b7f7dcca6c633198f727a1",
+    "telemetry": {
+      "schema": "apex-workbench-telemetry/1",
+      "state_names": [
+        "vx",
+        "vy",
+        "r",
+        "e_psi",
+        "s_abs",
+        "e_y"
+      ],
+      "state_units": [
+        "m/s",
+        "m/s",
+        "rad/s",
+        "rad",
+        "m",
+        "m"
+      ],
+      "control_names": [
+        "delta",
+        "a_cmd"
+      ],
+      "control_units": [
+        "rad",
+        "m/s^2"
+      ],
+      "time_unit": "s",
+      "xy_unit": "m",
+      "state_columns": [
+        "time",
+        "vx",
+        "vy",
+        "r",
+        "e_psi",
+        "s_abs",
+        "e_y",
+        "lap_index",
+        "track_s",
+        "curvature",
+        "left_width",
+        "right_width",
+        "boundary_violation",
+        "delta",
+        "a_cmd"
+      ],
+      "control_columns": [
+        "time",
+        "delta",
+        "a_cmd"
+      ],
+      "lab_schema": "apex-vdl-telemetry/2",
+      "diagnostic_columns": [
+        "time",
+        "alpha_f",
+        "alpha_r",
+        "fyf",
+        "fyr",
+        "fzf",
+        "fzr",
+        "fzf_static",
+        "fzr_static",
+        "cf",
+        "cr",
+        "cf_eff",
+        "cr_eff",
+        "track_s",
+        "curvature",
+        "frenet_denominator",
+        "fx_total",
+        "a_cmd",
+        "mu",
+        "front_lateral_utilization",
+        "rear_lateral_utilization",
+        "fx_front",
+        "fx_rear",
+        "front_friction_capacity",
+        "rear_friction_capacity",
+        "front_lateral_capacity",
+        "rear_lateral_capacity",
+        "front_combined_utilization",
+        "rear_combined_utilization"
+      ],
+      "diagnostic_units": {
+        "time": "s",
+        "alpha_f": "rad",
+        "alpha_r": "rad",
+        "fyf": "N",
+        "fyr": "N",
+        "fzf": "N",
+        "fzr": "N",
+        "fzf_static": "N",
+        "fzr_static": "N",
+        "cf": "N/rad",
+        "cr": "N/rad",
+        "cf_eff": "N/rad",
+        "cr_eff": "N/rad",
+        "fx_total": "N",
+        "a_cmd": "m/s^2",
+        "mu": "1",
+        "front_lateral_utilization": "1",
+        "rear_lateral_utilization": "1",
+        "frenet_denominator": "1",
+        "track_s": "m",
+        "curvature": "1/m",
+        "fx_front": "N",
+        "fx_rear": "N",
+        "front_friction_capacity": "N",
+        "rear_friction_capacity": "N",
+        "front_lateral_capacity": "N",
+        "rear_lateral_capacity": "N",
+        "front_combined_utilization": "1",
+        "rear_combined_utilization": "1"
+      },
+      "diagnostic_origin": "canonical diagnostics recomputed at retained samples",
+      "terminal_input": "last held command; informational, no terminal interval",
+      "row_semantics": "state at tick k; input held over next interval; terminal informational",
+      "track_columns": [
+        "time",
+        "track_s",
+        "x",
+        "y",
+        "heading",
+        "curvature",
+        "left_width",
+        "right_width"
+      ],
+      "track_units": {
+        "time": "s",
+        "track_s": "m",
+        "x": "m",
+        "y": "m",
+        "heading": "rad",
+        "curvature": "1/m",
+        "left_width": "m",
+        "right_width": "m"
+      },
+      "alias_equality": "exact finite float64 values from the same canonical sampled state/input"
+    }
+  },
+  "source_runs": [
+    {
+      "slot": "VDL1_BASE/nominal",
+      "directory": "results/apex_workbench_qualifications/v0_2_reviewed_20261029/runs/20261028T222835751293Z_021826cdd430404a809b24cc72a306df",
+      "manifest_sha256": "d1ac55e9151a4e305e783e89e3a21d42a48a8ecd1c83c710eec423de4feecf69",
+      "run_id": "20261028T222835751293Z_021826cdd430404a809b24cc72a306df",
+      "execution_identity": {
+        "run_id": "20261028T222835751293Z_021826cdd430404a809b24cc72a306df",
+        "worker": {
+          "pid": 11747,
+          "created": 1793226515.983466,
+          "role": "worker"
+        }
+      },
+      "grid": "nominal",
+      "case": "VDL1_BASE",
+      "role": "adapter",
+      "state_rows": 101,
+      "controls": 100,
+      "last_time_s": 0.5,
+      "scientific_outcome": "completed",
+      "evidence_state": "valid",
+      "runner_stop_reason": "duration",
+      "failure": null,
+      "coverage": true,
+      "execution_receipt": {
+        "scientific_outcome": "completed",
+        "error": null,
+        "returncode": 0,
+        "wall_runtime_s": 1.8781535409998469,
+        "sampled_peak_worker_rss_bytes": 83230720,
+        "sampled_peak_worker_threads": 2,
+        "sampling_note": "100 ms supervisor samples; worker guard polls at 50 ms; soft bounds"
+      },
+      "numerical_environment_sha256": "0dfcba108453574cb1e64c0d1e9a2800b872b2b958e734b51d04cd99975d0836",
+      "summary_sha256": "3f4a4337a6133f71a36ef6546574cd4cdbe0407856bc72a383db1894df81ace3",
+      "diagnostic_extrema": {
+        "alpha_f": {
+          "min": 0.0,
+          "min_time_s": 0.0,
+          "max": 0.02,
+          "max_time_s": 0.1,
+          "max_abs": 0.02,
+          "max_abs_time_s": 0.1,
+          "unit": "rad"
+        },
+        "alpha_r": {
+          "min": -0.0,
+          "min_time_s": 0.0,
+          "max": 0.005927830642624526,
+          "max_time_s": 0.5,
+          "max_abs": 0.005927830642624526,
+          "max_abs_time_s": 0.5,
+          "unit": "rad"
+        },
+        "front_lateral_utilization": {
+          "min": 0.0,
+          "min_time_s": 0.0,
+          "max": 0.09174311926605504,
+          "max_time_s": 0.1,
+          "max_abs": 0.09174311926605504,
+          "max_abs_time_s": 0.1,
+          "unit": "1"
+        },
+        "rear_lateral_utilization": {
+          "min": 0.0,
+          "min_time_s": 0.0,
+          "max": 0.027191883681763878,
+          "max_time_s": 0.5,
+          "max_abs": 0.027191883681763878,
+          "max_abs_time_s": 0.5,
+          "unit": "1"
+        },
+        "frenet_denominator": {
+          "min": 1.0,
+          "min_time_s": 0.0,
+          "max": 1.01546982324785,
+          "max_time_s": 0.5,
+          "max_abs": 1.01546982324785,
+          "max_abs_time_s": 0.5,
+          "unit": "1"
+        }
+      },
+      "nominal_state_observations": {
+        "final_r_rad_per_s": 0.1333654403855755,
+        "post_onset_peak_r_rad_per_s": 0.1333654403855755,
+        "minimum_vx_m_per_s": 2.0,
+        "maximum_vx_m_per_s": 2.000408762185587
+      }
+    },
+    {
+      "slot": "VDL1_BASE/half",
+      "directory": "results/apex_workbench_qualifications/v0_2_reviewed_20261029/runs/20261028T222838959075Z_b7c3b95d529a4d078daae45f4ba1d079",
+      "manifest_sha256": "4c6b6f2a5ffdc90a6e5b2907eb21b65e50dc0809e783654e47c8d31aaed450c9",
+      "run_id": "20261028T222838959075Z_b7c3b95d529a4d078daae45f4ba1d079",
+      "execution_identity": {
+        "run_id": "20261028T222838959075Z_b7c3b95d529a4d078daae45f4ba1d079",
+        "worker": {
+          "pid": 11836,
+          "created": 1793226519.107727,
+          "role": "worker"
+        }
+      },
+      "grid": "half",
+      "case": "VDL1_BASE",
+      "role": "adapter",
+      "state_rows": 201,
+      "controls": 200,
+      "last_time_s": 0.5,
+      "scientific_outcome": "completed",
+      "evidence_state": "valid",
+      "runner_stop_reason": "duration",
+      "failure": null,
+      "coverage": true,
+      "execution_receipt": {
+        "scientific_outcome": "completed",
+        "error": null,
+        "returncode": 0,
+        "wall_runtime_s": 2.193451625000307,
+        "sampled_peak_worker_rss_bytes": 83853312,
+        "sampled_peak_worker_threads": 2,
+        "sampling_note": "100 ms supervisor samples; worker guard polls at 50 ms; soft bounds"
+      },
+      "numerical_environment_sha256": "0dfcba108453574cb1e64c0d1e9a2800b872b2b958e734b51d04cd99975d0836",
+      "summary_sha256": "ab0dd8de6e7328d8e6dc90c32deeccd3d3086d204118f10aedee086bc85a7c11",
+      "diagnostic_extrema": {
+        "alpha_f": {
+          "min": 0.0,
+          "min_time_s": 0.0,
+          "max": 0.02,
+          "max_time_s": 0.1,
+          "max_abs": 0.02,
+          "max_abs_time_s": 0.1,
+          "unit": "rad"
+        },
+        "alpha_r": {
+          "min": -0.0,
+          "min_time_s": 0.0,
+          "max": 0.005927830643296654,
+          "max_time_s": 0.5,
+          "max_abs": 0.005927830643296654,
+          "max_abs_time_s": 0.5,
+          "unit": "rad"
+        },
+        "front_lateral_utilization": {
+          "min": 0.0,
+          "min_time_s": 0.0,
+          "max": 0.09174311926605504,
+          "max_time_s": 0.1,
+          "max_abs": 0.09174311926605504,
+          "max_abs_time_s": 0.1,
+          "unit": "1"
+        },
+        "rear_lateral_utilization": {
+          "min": 0.0,
+          "min_time_s": 0.0,
+          "max": 0.027191883684847033,
+          "max_time_s": 0.5,
+          "max_abs": 0.027191883684847033,
+          "max_abs_time_s": 0.5,
+          "unit": "1"
+        },
+        "frenet_denominator": {
+          "min": 1.0,
+          "min_time_s": 0.0,
+          "max": 1.0154698228536487,
+          "max_time_s": 0.5,
+          "max_abs": 1.0154698228536487,
+          "max_abs_time_s": 0.5,
+          "unit": "1"
+        }
+      },
+      "nominal_state_observations": {
+        "final_r_rad_per_s": 0.13336544033808323,
+        "post_onset_peak_r_rad_per_s": 0.13336544033808323,
+        "minimum_vx_m_per_s": 2.0,
+        "maximum_vx_m_per_s": 2.000408761426454
+      }
+    },
+    {
+      "slot": "VDL1_BASE/quarter",
+      "directory": "results/apex_workbench_qualifications/v0_2_reviewed_20261029/runs/20261028T222842428580Z_7f47b6423e67458593573687411eaa47",
+      "manifest_sha256": "0072a09816a85092c3972e9ee8994f9642d131e4c6bce8ca753ebf8fc4d9cfe2",
+      "run_id": "20261028T222842428580Z_7f47b6423e67458593573687411eaa47",
+      "execution_identity": {
+        "run_id": "20261028T222842428580Z_7f47b6423e67458593573687411eaa47",
+        "worker": {
+          "pid": 11905,
+          "created": 1793226522.579058,
+          "role": "worker"
+        }
+      },
+      "grid": "quarter",
+      "case": "VDL1_BASE",
+      "role": "adapter",
+      "state_rows": 401,
+      "controls": 400,
+      "last_time_s": 0.5,
+      "scientific_outcome": "completed",
+      "evidence_state": "valid",
+      "runner_stop_reason": "duration",
+      "failure": null,
+      "coverage": true,
+      "execution_receipt": {
+        "scientific_outcome": "completed",
+        "error": null,
+        "returncode": 0,
+        "wall_runtime_s": 3.1297162089995254,
+        "sampled_peak_worker_rss_bytes": 84246528,
+        "sampled_peak_worker_threads": 2,
+        "sampling_note": "100 ms supervisor samples; worker guard polls at 50 ms; soft bounds"
+      },
+      "numerical_environment_sha256": "0dfcba108453574cb1e64c0d1e9a2800b872b2b958e734b51d04cd99975d0836",
+      "summary_sha256": "9d7a1ed53adb78dd6006840c4254cfd55cfdb8ea3c3e6c1bacb946226b247778",
+      "diagnostic_extrema": {
+        "alpha_f": {
+          "min": 0.0,
+          "min_time_s": 0.0,
+          "max": 0.02,
+          "max_time_s": 0.1,
+          "max_abs": 0.02,
+          "max_abs_time_s": 0.1,
+          "unit": "rad"
+        },
+        "alpha_r": {
+          "min": -0.0,
+          "min_time_s": 0.0,
+          "max": 0.005927830643342578,
+          "max_time_s": 0.5,
+          "max_abs": 0.005927830643342578,
+          "max_abs_time_s": 0.5,
+          "unit": "rad"
+        },
+        "front_lateral_utilization": {
+          "min": 0.0,
+          "min_time_s": 0.0,
+          "max": 0.09174311926605504,
+          "max_time_s": 0.1,
+          "max_abs": 0.09174311926605504,
+          "max_abs_time_s": 0.1,
+          "unit": "1"
+        },
+        "rear_lateral_utilization": {
+          "min": 0.0,
+          "min_time_s": 0.0,
+          "max": 0.027191883685057698,
+          "max_time_s": 0.5,
+          "max_abs": 0.027191883685057698,
+          "max_abs_time_s": 0.5,
+          "unit": "1"
+        },
+        "frenet_denominator": {
+          "min": 1.0,
+          "min_time_s": 0.0,
+          "max": 1.0154698228218113,
+          "max_time_s": 0.5,
+          "max_abs": 1.0154698228218113,
+          "max_abs_time_s": 0.5,
+          "unit": "1"
+        }
+      },
+      "nominal_state_observations": {
+        "final_r_rad_per_s": 0.13336544033531628,
+        "post_onset_peak_r_rad_per_s": 0.13336544033531628,
+        "minimum_vx_m_per_s": 2.0,
+        "maximum_vx_m_per_s": 2.000408761382272
+      }
+    },
+    {
+      "slot": "VDL1_IZ_HIGH/nominal",
+      "directory": "results/apex_workbench_qualifications/v0_2_reviewed_20261029/runs/20261028T222846828499Z_4d209985d28d4e9ba778e9befb606a77",
+      "manifest_sha256": "de0d23836f55cb10562c2888728fbe835e0e5951904f51db60765d6ebcbc3bf1",
+      "run_id": "20261028T222846828499Z_4d209985d28d4e9ba778e9befb606a77",
+      "execution_identity": {
+        "run_id": "20261028T222846828499Z_4d209985d28d4e9ba778e9befb606a77",
+        "worker": {
+          "pid": 11974,
+          "created": 1793226526.979219,
+          "role": "worker"
+        }
+      },
+      "grid": "nominal",
+      "case": "VDL1_IZ_HIGH",
+      "role": "adapter",
+      "state_rows": 101,
+      "controls": 100,
+      "last_time_s": 0.5,
+      "scientific_outcome": "completed",
+      "evidence_state": "valid",
+      "runner_stop_reason": "duration",
+      "failure": null,
+      "coverage": true,
+      "execution_receipt": {
+        "scientific_outcome": "completed",
+        "error": null,
+        "returncode": 0,
+        "wall_runtime_s": 1.6781027500001073,
+        "sampled_peak_worker_rss_bytes": 83296256,
+        "sampled_peak_worker_threads": 2,
+        "sampling_note": "100 ms supervisor samples; worker guard polls at 50 ms; soft bounds"
+      },
+      "numerical_environment_sha256": "0dfcba108453574cb1e64c0d1e9a2800b872b2b958e734b51d04cd99975d0836",
+      "summary_sha256": "cdbb68a45b01120d1da861eb7615a9cd8b7fad6787cae71c09a8ed783f3367f1",
+      "diagnostic_extrema": {
+        "alpha_f": {
+          "min": 0.0,
+          "min_time_s": 0.0,
+          "max": 0.02,
+          "max_time_s": 0.1,
+          "max_abs": 0.02,
+          "max_abs_time_s": 0.1,
+          "unit": "rad"
+        },
+        "alpha_r": {
+          "min": -0.0,
+          "min_time_s": 0.0,
+          "max": 0.005927253888951358,
+          "max_time_s": 0.5,
+          "max_abs": 0.005927253888951358,
+          "max_abs_time_s": 0.5,
+          "unit": "rad"
+        },
+        "front_lateral_utilization": {
+          "min": 0.0,
+          "min_time_s": 0.0,
+          "max": 0.09174311926605504,
+          "max_time_s": 0.1,
+          "max_abs": 0.09174311926605504,
+          "max_abs_time_s": 0.1,
+          "unit": "1"
+        },
+        "rear_lateral_utilization": {
+          "min": 0.0,
+          "min_time_s": 0.0,
+          "max": 0.027189238022712652,
+          "max_time_s": 0.5,
+          "max_abs": 0.027189238022712652,
+          "max_abs_time_s": 0.5,
+          "unit": "1"
+        },
+        "frenet_denominator": {
+          "min": 1.0,
+          "min_time_s": 0.0,
+          "max": 1.015548145781494,
+          "max_time_s": 0.5,
+          "max_abs": 1.015548145781494,
+          "max_abs_time_s": 0.5,
+          "unit": "1"
+        }
+      },
+      "nominal_state_observations": {
+        "final_r_rad_per_s": 0.13336505295289638,
+        "post_onset_peak_r_rad_per_s": 0.13336505295289638,
+        "minimum_vx_m_per_s": 2.0,
+        "maximum_vx_m_per_s": 2.0004108679607744
+      }
+    },
+    {
+      "slot": "VDL1_IZ_HIGH/half",
+      "directory": "results/apex_workbench_qualifications/v0_2_reviewed_20261029/runs/20261028T222849748573Z_e85cb100b6364e83846bdcfc61c5ff15",
+      "manifest_sha256": "3c4d166316b544b52076661fdd5aae64b76fe5c3cf6a8dcb67c2e0e667677f78",
+      "run_id": "20261028T222849748573Z_e85cb100b6364e83846bdcfc61c5ff15",
+      "execution_identity": {
+        "run_id": "20261028T222849748573Z_e85cb100b6364e83846bdcfc61c5ff15",
+        "worker": {
+          "pid": 12046,
+          "created": 1793226529.900494,
+          "role": "worker"
+        }
+      },
+      "grid": "half",
+      "case": "VDL1_IZ_HIGH",
+      "role": "adapter",
+      "state_rows": 201,
+      "controls": 200,
+      "last_time_s": 0.5,
+      "scientific_outcome": "completed",
+      "evidence_state": "valid",
+      "runner_stop_reason": "duration",
+      "failure": null,
+      "coverage": true,
+      "execution_receipt": {
+        "scientific_outcome": "completed",
+        "error": null,
+        "returncode": 0,
+        "wall_runtime_s": 2.201164375001099,
+        "sampled_peak_worker_rss_bytes": 83918848,
+        "sampled_peak_worker_threads": 2,
+        "sampling_note": "100 ms supervisor samples; worker guard polls at 50 ms; soft bounds"
+      },
+      "numerical_environment_sha256": "0dfcba108453574cb1e64c0d1e9a2800b872b2b958e734b51d04cd99975d0836",
+      "summary_sha256": "cd29e008f47deaba0c19cf16c43fd01a5ddf10dea966523a983ee5019bc64cb2",
+      "diagnostic_extrema": {
+        "alpha_f": {
+          "min": 0.0,
+          "min_time_s": 0.0,
+          "max": 0.02,
+          "max_time_s": 0.1,
+          "max_abs": 0.02,
+          "max_abs_time_s": 0.1,
+          "unit": "rad"
+        },
+        "alpha_r": {
+          "min": -0.0,
+          "min_time_s": 0.0,
+          "max": 0.005927253897388948,
+          "max_time_s": 0.5,
+          "max_abs": 0.005927253897388948,
+          "max_abs_time_s": 0.5,
+          "unit": "rad"
+        },
+        "front_lateral_utilization": {
+          "min": 0.0,
+          "min_time_s": 0.0,
+          "max": 0.09174311926605504,
+          "max_time_s": 0.1,
+          "max_abs": 0.09174311926605504,
+          "max_abs_time_s": 0.1,
+          "unit": "1"
+        },
+        "rear_lateral_utilization": {
+          "min": 0.0,
+          "min_time_s": 0.0,
+          "max": 0.027189238061417195,
+          "max_time_s": 0.5,
+          "max_abs": 0.027189238061417195,
+          "max_abs_time_s": 0.5,
+          "unit": "1"
+        },
+        "frenet_denominator": {
+          "min": 1.0,
+          "min_time_s": 0.0,
+          "max": 1.015548145393251,
+          "max_time_s": 0.5,
+          "max_abs": 1.015548145393251,
+          "max_abs_time_s": 0.5,
+          "unit": "1"
+        }
+      },
+      "nominal_state_observations": {
+        "final_r_rad_per_s": 0.13336505293463258,
+        "post_onset_peak_r_rad_per_s": 0.13336505293463258,
+        "minimum_vx_m_per_s": 2.0,
+        "maximum_vx_m_per_s": 2.0004108674152725
+      }
+    },
+    {
+      "slot": "VDL1_IZ_HIGH/quarter",
+      "directory": "results/apex_workbench_qualifications/v0_2_reviewed_20261029/runs/20261028T222853191579Z_1a974f4c10f748b092b349f082954f87",
+      "manifest_sha256": "6d55a424a477cc9ad9369cf952626dcbd10be0e6a4a2155ee4a33f5beafd34ee",
+      "run_id": "20261028T222853191579Z_1a974f4c10f748b092b349f082954f87",
+      "execution_identity": {
+        "run_id": "20261028T222853191579Z_1a974f4c10f748b092b349f082954f87",
+        "worker": {
+          "pid": 12113,
+          "created": 1793226533.346006,
+          "role": "worker"
+        }
+      },
+      "grid": "quarter",
+      "case": "VDL1_IZ_HIGH",
+      "role": "adapter",
+      "state_rows": 401,
+      "controls": 400,
+      "last_time_s": 0.5,
+      "scientific_outcome": "completed",
+      "evidence_state": "valid",
+      "runner_stop_reason": "duration",
+      "failure": null,
+      "coverage": true,
+      "execution_receipt": {
+        "scientific_outcome": "completed",
+        "error": null,
+        "returncode": 0,
+        "wall_runtime_s": 3.1449892910004564,
+        "sampled_peak_worker_rss_bytes": 84328448,
+        "sampled_peak_worker_threads": 2,
+        "sampling_note": "100 ms supervisor samples; worker guard polls at 50 ms; soft bounds"
+      },
+      "numerical_environment_sha256": "0dfcba108453574cb1e64c0d1e9a2800b872b2b958e734b51d04cd99975d0836",
+      "summary_sha256": "fff0c3b4c0340239735af5f5ee190501e92a976eeaa712353054aedcfb12d923",
+      "diagnostic_extrema": {
+        "alpha_f": {
+          "min": 0.0,
+          "min_time_s": 0.0,
+          "max": 0.02,
+          "max_time_s": 0.1,
+          "max_abs": 0.02,
+          "max_abs_time_s": 0.1,
+          "unit": "rad"
+        },
+        "alpha_r": {
+          "min": -0.0,
+          "min_time_s": 0.0,
+          "max": 0.005927253897894235,
+          "max_time_s": 0.5,
+          "max_abs": 0.005927253897894235,
+          "max_abs_time_s": 0.5,
+          "unit": "rad"
+        },
+        "front_lateral_utilization": {
+          "min": 0.0,
+          "min_time_s": 0.0,
+          "max": 0.09174311926605504,
+          "max_time_s": 0.1,
+          "max_abs": 0.09174311926605504,
+          "max_abs_time_s": 0.1,
+          "unit": "1"
+        },
+        "rear_lateral_utilization": {
+          "min": 0.0,
+          "min_time_s": 0.0,
+          "max": 0.027189238063735018,
+          "max_time_s": 0.5,
+          "max_abs": 0.027189238063735018,
+          "max_abs_time_s": 0.5,
+          "unit": "1"
+        },
+        "frenet_denominator": {
+          "min": 1.0,
+          "min_time_s": 0.0,
+          "max": 1.0155481453613229,
+          "max_time_s": 0.5,
+          "max_abs": 1.0155481453613229,
+          "max_abs_time_s": 0.5,
+          "unit": "1"
+        }
+      },
+      "nominal_state_observations": {
+        "final_r_rad_per_s": 0.13336505293354764,
+        "post_onset_peak_r_rad_per_s": 0.13336505293354764,
+        "minimum_vx_m_per_s": 2.0,
+        "maximum_vx_m_per_s": 2.0004108673832186
+      }
+    },
+    {
+      "slot": "VDL1_STEER_HIGH/nominal",
+      "directory": "results/apex_workbench_qualifications/v0_2_reviewed_20261029/runs/20261028T222857599970Z_a0ec2bc0f1c44e6088e48e8a936dae96",
+      "manifest_sha256": "1f9bb5172ec4ee0fae7cddd18dcb2de08bec09cf861a61cd37c027deeb22e386",
+      "run_id": "20261028T222857599970Z_a0ec2bc0f1c44e6088e48e8a936dae96",
+      "execution_identity": {
+        "run_id": "20261028T222857599970Z_a0ec2bc0f1c44e6088e48e8a936dae96",
+        "worker": {
+          "pid": 12185,
+          "created": 1793226537.75348,
+          "role": "worker"
+        }
+      },
+      "grid": "nominal",
+      "case": "VDL1_STEER_HIGH",
+      "role": "adapter",
+      "state_rows": 101,
+      "controls": 100,
+      "last_time_s": 0.5,
+      "scientific_outcome": "completed",
+      "evidence_state": "valid",
+      "runner_stop_reason": "duration",
+      "failure": null,
+      "coverage": true,
+      "execution_receipt": {
+        "scientific_outcome": "completed",
+        "error": null,
+        "returncode": 0,
+        "wall_runtime_s": 1.7377051660005236,
+        "sampled_peak_worker_rss_bytes": 83656704,
+        "sampled_peak_worker_threads": 2,
+        "sampling_note": "100 ms supervisor samples; worker guard polls at 50 ms; soft bounds"
+      },
+      "numerical_environment_sha256": "0dfcba108453574cb1e64c0d1e9a2800b872b2b958e734b51d04cd99975d0836",
+      "summary_sha256": "5da2c6dcf8120c0b8c03377837b47773a556ddd5a388f4c9db4beb8543d86e1a",
+      "diagnostic_extrema": {
+        "alpha_f": {
+          "min": 0.0,
+          "min_time_s": 0.0,
+          "max": 0.025,
+          "max_time_s": 0.1,
+          "max_abs": 0.025,
+          "max_abs_time_s": 0.1,
+          "unit": "rad"
+        },
+        "alpha_r": {
+          "min": -0.0,
+          "min_time_s": 0.0,
+          "max": 0.007411417144265123,
+          "max_time_s": 0.5,
+          "max_abs": 0.007411417144265123,
+          "max_abs_time_s": 0.5,
+          "unit": "rad"
+        },
+        "front_lateral_utilization": {
+          "min": 0.0,
+          "min_time_s": 0.0,
+          "max": 0.1146788990825688,
+          "max_time_s": 0.1,
+          "max_abs": 0.1146788990825688,
+          "max_abs_time_s": 0.1,
+          "unit": "1"
+        },
+        "rear_lateral_utilization": {
+          "min": 0.0,
+          "min_time_s": 0.0,
+          "max": 0.03399732634984001,
+          "max_time_s": 0.5,
+          "max_abs": 0.03399732634984001,
+          "max_abs_time_s": 0.5,
+          "unit": "1"
+        },
+        "frenet_denominator": {
+          "min": 1.0,
+          "min_time_s": 0.0,
+          "max": 1.014381849685564,
+          "max_time_s": 0.5,
+          "max_abs": 1.014381849685564,
+          "max_abs_time_s": 0.5,
+          "unit": "1"
+        }
+      },
+      "nominal_state_observations": {
+        "final_r_rad_per_s": 0.16672938403813242,
+        "post_onset_peak_r_rad_per_s": 0.16672938403813242,
+        "minimum_vx_m_per_s": 2.0,
+        "maximum_vx_m_per_s": 2.000638702491741
+      }
+    },
+    {
+      "slot": "VDL1_STEER_HIGH/half",
+      "directory": "results/apex_workbench_qualifications/v0_2_reviewed_20261029/runs/20261028T222900652163Z_65820774f09d4a0c9956e873e0cfcc11",
+      "manifest_sha256": "342a223d5b306c755f09ea26f5911d5009b749280bdf8751f1ce1c095697e6e1",
+      "run_id": "20261028T222900652163Z_65820774f09d4a0c9956e873e0cfcc11",
+      "execution_identity": {
+        "run_id": "20261028T222900652163Z_65820774f09d4a0c9956e873e0cfcc11",
+        "worker": {
+          "pid": 12268,
+          "created": 1793226541.008323,
+          "role": "worker"
+        }
+      },
+      "grid": "half",
+      "case": "VDL1_STEER_HIGH",
+      "role": "adapter",
+      "state_rows": 201,
+      "controls": 200,
+      "last_time_s": 0.5,
+      "scientific_outcome": "completed",
+      "evidence_state": "valid",
+      "runner_stop_reason": "duration",
+      "failure": null,
+      "coverage": true,
+      "execution_receipt": {
+        "scientific_outcome": "completed",
+        "error": null,
+        "returncode": 0,
+        "wall_runtime_s": 2.1575815420001163,
+        "sampled_peak_worker_rss_bytes": 83427328,
+        "sampled_peak_worker_threads": 2,
+        "sampling_note": "100 ms supervisor samples; worker guard polls at 50 ms; soft bounds"
+      },
+      "numerical_environment_sha256": "0dfcba108453574cb1e64c0d1e9a2800b872b2b958e734b51d04cd99975d0836",
+      "summary_sha256": "13c447d3c72035d825fb046b77519bb8c0c43dd63dc29aa72d0c4d3d95b41273",
+      "diagnostic_extrema": {
+        "alpha_f": {
+          "min": 0.0,
+          "min_time_s": 0.0,
+          "max": 0.025,
+          "max_time_s": 0.1,
+          "max_abs": 0.025,
+          "max_abs_time_s": 0.1,
+          "unit": "rad"
+        },
+        "alpha_r": {
+          "min": -0.0,
+          "min_time_s": 0.0,
+          "max": 0.0074114171419459324,
+          "max_time_s": 0.5,
+          "max_abs": 0.0074114171419459324,
+          "max_abs_time_s": 0.5,
+          "unit": "rad"
+        },
+        "front_lateral_utilization": {
+          "min": 0.0,
+          "min_time_s": 0.0,
+          "max": 0.1146788990825688,
+          "max_time_s": 0.1,
+          "max_abs": 0.1146788990825688,
+          "max_abs_time_s": 0.1,
+          "unit": "1"
+        },
+        "rear_lateral_utilization": {
+          "min": 0.0,
+          "min_time_s": 0.0,
+          "max": 0.03399732633920152,
+          "max_time_s": 0.5,
+          "max_abs": 0.03399732633920152,
+          "max_abs_time_s": 0.5,
+          "unit": "1"
+        },
+        "frenet_denominator": {
+          "min": 1.0,
+          "min_time_s": 0.0,
+          "max": 1.0143818492596588,
+          "max_time_s": 0.5,
+          "max_abs": 1.0143818492596588,
+          "max_abs_time_s": 0.5,
+          "unit": "1"
+        }
+      },
+      "nominal_state_observations": {
+        "final_r_rad_per_s": 0.16672938394319484,
+        "post_onset_peak_r_rad_per_s": 0.16672938394319484,
+        "minimum_vx_m_per_s": 2.0,
+        "maximum_vx_m_per_s": 2.0006387013056837
+      }
+    },
+    {
+      "slot": "VDL1_STEER_HIGH/quarter",
+      "directory": "results/apex_workbench_qualifications/v0_2_reviewed_20261029/runs/20261028T222904258223Z_fe4529986deb45a68f5974f9748f441c",
+      "manifest_sha256": "c1f722facf68cc7839167ae0913adb49c6c5710535f036682023599fba3dd733",
+      "run_id": "20261028T222904258223Z_fe4529986deb45a68f5974f9748f441c",
+      "execution_identity": {
+        "run_id": "20261028T222904258223Z_fe4529986deb45a68f5974f9748f441c",
+        "worker": {
+          "pid": 12337,
+          "created": 1793226544.40818,
+          "role": "worker"
+        }
+      },
+      "grid": "quarter",
+      "case": "VDL1_STEER_HIGH",
+      "role": "adapter",
+      "state_rows": 401,
+      "controls": 400,
+      "last_time_s": 0.5,
+      "scientific_outcome": "completed",
+      "evidence_state": "valid",
+      "runner_stop_reason": "duration",
+      "failure": null,
+      "coverage": true,
+      "execution_receipt": {
+        "scientific_outcome": "completed",
+        "error": null,
+        "returncode": 0,
+        "wall_runtime_s": 3.109975792000114,
+        "sampled_peak_worker_rss_bytes": 84606976,
+        "sampled_peak_worker_threads": 2,
+        "sampling_note": "100 ms supervisor samples; worker guard polls at 50 ms; soft bounds"
+      },
+      "numerical_environment_sha256": "0dfcba108453574cb1e64c0d1e9a2800b872b2b958e734b51d04cd99975d0836",
+      "summary_sha256": "b5efa0194701c9d16a9ec3936eb307e9e2fc771b4bdf3c57ace248c89b1c397e",
+      "diagnostic_extrema": {
+        "alpha_f": {
+          "min": 0.0,
+          "min_time_s": 0.0,
+          "max": 0.025,
+          "max_time_s": 0.1,
+          "max_abs": 0.025,
+          "max_abs_time_s": 0.1,
+          "unit": "rad"
+        },
+        "alpha_r": {
+          "min": -0.0,
+          "min_time_s": 0.0,
+          "max": 0.0074114171418194884,
+          "max_time_s": 0.5,
+          "max_abs": 0.0074114171418194884,
+          "max_abs_time_s": 0.5,
+          "unit": "rad"
+        },
+        "front_lateral_utilization": {
+          "min": 0.0,
+          "min_time_s": 0.0,
+          "max": 0.1146788990825688,
+          "max_time_s": 0.1,
+          "max_abs": 0.1146788990825688,
+          "max_abs_time_s": 0.1,
+          "unit": "1"
+        },
+        "rear_lateral_utilization": {
+          "min": 0.0,
+          "min_time_s": 0.0,
+          "max": 0.03399732633862151,
+          "max_time_s": 0.5,
+          "max_abs": 0.03399732633862151,
+          "max_abs_time_s": 0.5,
+          "unit": "1"
+        },
+        "frenet_denominator": {
+          "min": 1.0,
+          "min_time_s": 0.0,
+          "max": 1.0143818492371217,
+          "max_time_s": 0.5,
+          "max_abs": 1.0143818492371217,
+          "max_abs_time_s": 0.5,
+          "unit": "1"
+        }
+      },
+      "nominal_state_observations": {
+        "final_r_rad_per_s": 0.1667293839376661,
+        "post_onset_peak_r_rad_per_s": 0.1667293839376661,
+        "minimum_vx_m_per_s": 2.0,
+        "maximum_vx_m_per_s": 2.0006387012366575
+      }
+    },
+    {
+      "slot": "VDL1_CF_HIGH/nominal",
+      "directory": "results/apex_workbench_qualifications/v0_2_reviewed_20261029/runs/20261028T222908631528Z_e848f1103e284fdd84a628ab08f6ebd1",
+      "manifest_sha256": "7bad0310782ee57427600cec093626fd3a4d201c3f832b5b33df6be5880faf61",
+      "run_id": "20261028T222908631528Z_e848f1103e284fdd84a628ab08f6ebd1",
+      "execution_identity": {
+        "run_id": "20261028T222908631528Z_e848f1103e284fdd84a628ab08f6ebd1",
+        "worker": {
+          "pid": 12407,
+          "created": 1793226548.78145,
+          "role": "worker"
+        }
+      },
+      "grid": "nominal",
+      "case": "VDL1_CF_HIGH",
+      "role": "adapter",
+      "state_rows": 101,
+      "controls": 100,
+      "last_time_s": 0.5,
+      "scientific_outcome": "completed",
+      "evidence_state": "valid",
+      "runner_stop_reason": "duration",
+      "failure": null,
+      "coverage": true,
+      "execution_receipt": {
+        "scientific_outcome": "completed",
+        "error": null,
+        "returncode": 0,
+        "wall_runtime_s": 1.7205470000008063,
+        "sampled_peak_worker_rss_bytes": 83476480,
+        "sampled_peak_worker_threads": 2,
+        "sampling_note": "100 ms supervisor samples; worker guard polls at 50 ms; soft bounds"
+      },
+      "numerical_environment_sha256": "0dfcba108453574cb1e64c0d1e9a2800b872b2b958e734b51d04cd99975d0836",
+      "summary_sha256": "4b6959a2098f84e512f3f543c47d3d97e7ef0df5b5752bc849528e275abd0901",
+      "diagnostic_extrema": {
+        "alpha_f": {
+          "min": 0.0,
+          "min_time_s": 0.0,
+          "max": 0.02,
+          "max_time_s": 0.1,
+          "max_abs": 0.02,
+          "max_abs_time_s": 0.1,
+          "unit": "rad"
+        },
+        "alpha_r": {
+          "min": -0.0,
+          "min_time_s": 0.0,
+          "max": 0.006236157145667227,
+          "max_time_s": 0.5,
+          "max_abs": 0.006236157145667227,
+          "max_abs_time_s": 0.5,
+          "unit": "rad"
+        },
+        "front_lateral_utilization": {
+          "min": 0.0,
+          "min_time_s": 0.0,
+          "max": 0.11009174311926606,
+          "max_time_s": 0.1,
+          "max_abs": 0.11009174311926606,
+          "max_abs_time_s": 0.1,
+          "unit": "1"
+        },
+        "rear_lateral_utilization": {
+          "min": 0.0,
+          "min_time_s": 0.0,
+          "max": 0.028606225438840494,
+          "max_time_s": 0.5,
+          "max_abs": 0.028606225438840494,
+          "max_abs_time_s": 0.5,
+          "unit": "1"
+        },
+        "frenet_denominator": {
+          "min": 1.0,
+          "min_time_s": 0.0,
+          "max": 1.015190051413377,
+          "max_time_s": 0.5,
+          "max_abs": 1.015190051413377,
+          "max_abs_time_s": 0.5,
+          "unit": "1"
+        }
+      },
+      "nominal_state_observations": {
+        "final_r_rad_per_s": 0.14029982760399706,
+        "post_onset_peak_r_rad_per_s": 0.14029982760399706,
+        "minimum_vx_m_per_s": 2.0,
+        "maximum_vx_m_per_s": 2.000456801032194
+      }
+    },
+    {
+      "slot": "VDL1_CF_HIGH/half",
+      "directory": "results/apex_workbench_qualifications/v0_2_reviewed_20261029/runs/20261028T222911617766Z_719928896faf431d985f5304d1fb4c0b",
+      "manifest_sha256": "157b7afae6fd2ae2568753db703ca5ab80401029c5680dfaa3e5b9105243ea85",
+      "run_id": "20261028T222911617766Z_719928896faf431d985f5304d1fb4c0b",
+      "execution_identity": {
+        "run_id": "20261028T222911617766Z_719928896faf431d985f5304d1fb4c0b",
+        "worker": {
+          "pid": 12476,
+          "created": 1793226551.768032,
+          "role": "worker"
+        }
+      },
+      "grid": "half",
+      "case": "VDL1_CF_HIGH",
+      "role": "adapter",
+      "state_rows": 201,
+      "controls": 200,
+      "last_time_s": 0.5,
+      "scientific_outcome": "completed",
+      "evidence_state": "valid",
+      "runner_stop_reason": "duration",
+      "failure": null,
+      "coverage": true,
+      "execution_receipt": {
+        "scientific_outcome": "completed",
+        "error": null,
+        "returncode": 0,
+        "wall_runtime_s": 2.1565853749998496,
+        "sampled_peak_worker_rss_bytes": 83312640,
+        "sampled_peak_worker_threads": 2,
+        "sampling_note": "100 ms supervisor samples; worker guard polls at 50 ms; soft bounds"
+      },
+      "numerical_environment_sha256": "0dfcba108453574cb1e64c0d1e9a2800b872b2b958e734b51d04cd99975d0836",
+      "summary_sha256": "3283d538cf1d4a0b00f34c77040d6564c078484f7713e5c7ba6a2afd59ac0487",
+      "diagnostic_extrema": {
+        "alpha_f": {
+          "min": 0.0,
+          "min_time_s": 0.0,
+          "max": 0.02,
+          "max_time_s": 0.1,
+          "max_abs": 0.02,
+          "max_abs_time_s": 0.1,
+          "unit": "rad"
+        },
+        "alpha_r": {
+          "min": -0.0,
+          "min_time_s": 0.0,
+          "max": 0.006236157142557985,
+          "max_time_s": 0.5,
+          "max_abs": 0.006236157142557985,
+          "max_abs_time_s": 0.5,
+          "unit": "rad"
+        },
+        "front_lateral_utilization": {
+          "min": 0.0,
+          "min_time_s": 0.0,
+          "max": 0.11009174311926606,
+          "max_time_s": 0.1,
+          "max_abs": 0.11009174311926606,
+          "max_abs_time_s": 0.1,
+          "unit": "1"
+        },
+        "rear_lateral_utilization": {
+          "min": 0.0,
+          "min_time_s": 0.0,
+          "max": 0.028606225424577914,
+          "max_time_s": 0.5,
+          "max_abs": 0.028606225424577914,
+          "max_abs_time_s": 0.5,
+          "unit": "1"
+        },
+        "frenet_denominator": {
+          "min": 1.0,
+          "min_time_s": 0.0,
+          "max": 1.0151900510002931,
+          "max_time_s": 0.5,
+          "max_abs": 1.0151900510002931,
+          "max_abs_time_s": 0.5,
+          "unit": "1"
+        }
+      },
+      "nominal_state_observations": {
+        "final_r_rad_per_s": 0.14029982751633327,
+        "post_onset_peak_r_rad_per_s": 0.14029982751633327,
+        "minimum_vx_m_per_s": 2.0,
+        "maximum_vx_m_per_s": 2.0004567997566163
+      }
+    },
+    {
+      "slot": "VDL1_CF_HIGH/quarter",
+      "directory": "results/apex_workbench_qualifications/v0_2_reviewed_20261029/runs/20261028T222915042417Z_9efc755020574f9cb0a05132b02b7104",
+      "manifest_sha256": "35eaaaa3058a54660920ddcf15d845c4315125ddd599f62ed137439b0cdb4aa3",
+      "run_id": "20261028T222915042417Z_9efc755020574f9cb0a05132b02b7104",
+      "execution_identity": {
+        "run_id": "20261028T222915042417Z_9efc755020574f9cb0a05132b02b7104",
+        "worker": {
+          "pid": 12546,
+          "created": 1793226555.192808,
+          "role": "worker"
+        }
+      },
+      "grid": "quarter",
+      "case": "VDL1_CF_HIGH",
+      "role": "adapter",
+      "state_rows": 401,
+      "controls": 400,
+      "last_time_s": 0.5,
+      "scientific_outcome": "completed",
+      "evidence_state": "valid",
+      "runner_stop_reason": "duration",
+      "failure": null,
+      "coverage": true,
+      "execution_receipt": {
+        "scientific_outcome": "completed",
+        "error": null,
+        "returncode": 0,
+        "wall_runtime_s": 3.1344709169989073,
+        "sampled_peak_worker_rss_bytes": 84312064,
+        "sampled_peak_worker_threads": 2,
+        "sampling_note": "100 ms supervisor samples; worker guard polls at 50 ms; soft bounds"
+      },
+      "numerical_environment_sha256": "0dfcba108453574cb1e64c0d1e9a2800b872b2b958e734b51d04cd99975d0836",
+      "summary_sha256": "e64d3224dcf56fc6cd2a6b064fa45906c7f0e588ee369efd19145c14031e7ee3",
+      "diagnostic_extrema": {
+        "alpha_f": {
+          "min": 0.0,
+          "min_time_s": 0.0,
+          "max": 0.02,
+          "max_time_s": 0.1,
+          "max_abs": 0.02,
+          "max_abs_time_s": 0.1,
+          "unit": "rad"
+        },
+        "alpha_r": {
+          "min": -0.0,
+          "min_time_s": 0.0,
+          "max": 0.006236157142389621,
+          "max_time_s": 0.5,
+          "max_abs": 0.006236157142389621,
+          "max_abs_time_s": 0.5,
+          "unit": "rad"
+        },
+        "front_lateral_utilization": {
+          "min": 0.0,
+          "min_time_s": 0.0,
+          "max": 0.11009174311926606,
+          "max_time_s": 0.1,
+          "max_abs": 0.11009174311926606,
+          "max_abs_time_s": 0.1,
+          "unit": "1"
+        },
+        "rear_lateral_utilization": {
+          "min": 0.0,
+          "min_time_s": 0.0,
+          "max": 0.0286062254238056,
+          "max_time_s": 0.5,
+          "max_abs": 0.0286062254238056,
+          "max_abs_time_s": 0.5,
+          "unit": "1"
+        },
+        "frenet_denominator": {
+          "min": 1.0,
+          "min_time_s": 0.0,
+          "max": 1.015190050969593,
+          "max_time_s": 0.5,
+          "max_abs": 1.015190050969593,
+          "max_abs_time_s": 0.5,
+          "unit": "1"
+        }
+      },
+      "nominal_state_observations": {
+        "final_r_rad_per_s": 0.14029982751130698,
+        "post_onset_peak_r_rad_per_s": 0.14029982751130698,
+        "minimum_vx_m_per_s": 2.0,
+        "maximum_vx_m_per_s": 2.0004567996831732
+      }
+    },
+    {
+      "slot": "VDL1_CR_HIGH/nominal",
+      "directory": "results/apex_workbench_qualifications/v0_2_reviewed_20261029/runs/20261028T222919465430Z_c8169a8a05004229aeb9fb7a7bcb9053",
+      "manifest_sha256": "2a19ccb498106f2f8c8f56acd93bc7932f24fea22a13fc2a9f39a08f07fc604e",
+      "run_id": "20261028T222919465430Z_c8169a8a05004229aeb9fb7a7bcb9053",
+      "execution_identity": {
+        "run_id": "20261028T222919465430Z_c8169a8a05004229aeb9fb7a7bcb9053",
+        "worker": {
+          "pid": 12611,
+          "created": 1793226559.616171,
+          "role": "worker"
+        }
+      },
+      "grid": "nominal",
+      "case": "VDL1_CR_HIGH",
+      "role": "adapter",
+      "state_rows": 101,
+      "controls": 100,
+      "last_time_s": 0.5,
+      "scientific_outcome": "completed",
+      "evidence_state": "valid",
+      "runner_stop_reason": "duration",
+      "failure": null,
+      "coverage": true,
+      "execution_receipt": {
+        "scientific_outcome": "completed",
+        "error": null,
+        "returncode": 0,
+        "wall_runtime_s": 1.7155357920000824,
+        "sampled_peak_worker_rss_bytes": 83525632,
+        "sampled_peak_worker_threads": 2,
+        "sampling_note": "100 ms supervisor samples; worker guard polls at 50 ms; soft bounds"
+      },
+      "numerical_environment_sha256": "0dfcba108453574cb1e64c0d1e9a2800b872b2b958e734b51d04cd99975d0836",
+      "summary_sha256": "53fe79e5f963e90af1fabefb2f9add4215e23358b8c63b08d4f8dbbf3a2fc579",
+      "diagnostic_extrema": {
+        "alpha_f": {
+          "min": 0.0,
+          "min_time_s": 0.0,
+          "max": 0.02,
+          "max_time_s": 0.1,
+          "max_abs": 0.02,
+          "max_abs_time_s": 0.1,
+          "unit": "rad"
+        },
+        "alpha_r": {
+          "min": -0.0,
+          "min_time_s": 0.0,
+          "max": 0.0047078495959367835,
+          "max_time_s": 0.5,
+          "max_abs": 0.0047078495959367835,
+          "max_abs_time_s": 0.5,
+          "unit": "rad"
+        },
+        "front_lateral_utilization": {
+          "min": 0.0,
+          "min_time_s": 0.0,
+          "max": 0.09174311926605504,
+          "max_time_s": 0.1,
+          "max_abs": 0.09174311926605504,
+          "max_abs_time_s": 0.1,
+          "unit": "1"
+        },
+        "rear_lateral_utilization": {
+          "min": 0.0,
+          "min_time_s": 0.0,
+          "max": 0.02591476841800064,
+          "max_time_s": 0.5,
+          "max_abs": 0.02591476841800064,
+          "max_abs_time_s": 0.5,
+          "unit": "1"
+        },
+        "frenet_denominator": {
+          "min": 1.0,
+          "min_time_s": 0.0,
+          "max": 1.0155276967589797,
+          "max_time_s": 0.5,
+          "max_abs": 1.0155276967589797,
+          "max_abs_time_s": 0.5,
+          "unit": "1"
+        }
+      },
+      "nominal_state_observations": {
+        "final_r_rad_per_s": 0.12708996437811604,
+        "post_onset_peak_r_rad_per_s": 0.12708996437811604,
+        "minimum_vx_m_per_s": 2.0,
+        "maximum_vx_m_per_s": 2.0004510368029944
+      }
+    },
+    {
+      "slot": "VDL1_CR_HIGH/half",
+      "directory": "results/apex_workbench_qualifications/v0_2_reviewed_20261029/runs/20261028T222922489893Z_07114372786245f1b3b004faacfd7a92",
+      "manifest_sha256": "7a8a999ebf25d29ce9049cd2b02b836b93ebaca94f75847c05d64c29d10e895f",
+      "run_id": "20261028T222922489893Z_07114372786245f1b3b004faacfd7a92",
+      "execution_identity": {
+        "run_id": "20261028T222922489893Z_07114372786245f1b3b004faacfd7a92",
+        "worker": {
+          "pid": 12677,
+          "created": 1793226562.640778,
+          "role": "worker"
+        }
+      },
+      "grid": "half",
+      "case": "VDL1_CR_HIGH",
+      "role": "adapter",
+      "state_rows": 201,
+      "controls": 200,
+      "last_time_s": 0.5,
+      "scientific_outcome": "completed",
+      "evidence_state": "valid",
+      "runner_stop_reason": "duration",
+      "failure": null,
+      "coverage": true,
+      "execution_receipt": {
+        "scientific_outcome": "completed",
+        "error": null,
+        "returncode": 0,
+        "wall_runtime_s": 2.178228124999805,
+        "sampled_peak_worker_rss_bytes": 83787776,
+        "sampled_peak_worker_threads": 2,
+        "sampling_note": "100 ms supervisor samples; worker guard polls at 50 ms; soft bounds"
+      },
+      "numerical_environment_sha256": "0dfcba108453574cb1e64c0d1e9a2800b872b2b958e734b51d04cd99975d0836",
+      "summary_sha256": "998d5e0ee00f78cfa1532966867dfb0dbc7dc3d855bf1d45bdd06eb4166c0899",
+      "diagnostic_extrema": {
+        "alpha_f": {
+          "min": 0.0,
+          "min_time_s": 0.0,
+          "max": 0.02,
+          "max_time_s": 0.1,
+          "max_abs": 0.02,
+          "max_abs_time_s": 0.1,
+          "unit": "rad"
+        },
+        "alpha_r": {
+          "min": -0.0,
+          "min_time_s": 0.0,
+          "max": 0.0047078495933262675,
+          "max_time_s": 0.5,
+          "max_abs": 0.0047078495933262675,
+          "max_abs_time_s": 0.5,
+          "unit": "rad"
+        },
+        "front_lateral_utilization": {
+          "min": 0.0,
+          "min_time_s": 0.0,
+          "max": 0.09174311926605504,
+          "max_time_s": 0.1,
+          "max_abs": 0.09174311926605504,
+          "max_abs_time_s": 0.1,
+          "unit": "1"
+        },
+        "rear_lateral_utilization": {
+          "min": 0.0,
+          "min_time_s": 0.0,
+          "max": 0.025914768403630828,
+          "max_time_s": 0.5,
+          "max_abs": 0.025914768403630828,
+          "max_abs_time_s": 0.5,
+          "unit": "1"
+        },
+        "frenet_denominator": {
+          "min": 1.0,
+          "min_time_s": 0.0,
+          "max": 1.015527696364071,
+          "max_time_s": 0.5,
+          "max_abs": 1.015527696364071,
+          "max_abs_time_s": 0.5,
+          "unit": "1"
+        }
+      },
+      "nominal_state_observations": {
+        "final_r_rad_per_s": 0.12708996433397413,
+        "post_onset_peak_r_rad_per_s": 0.12708996433397413,
+        "minimum_vx_m_per_s": 2.0,
+        "maximum_vx_m_per_s": 2.0004510360504217
+      }
+    },
+    {
+      "slot": "VDL1_CR_HIGH/quarter",
+      "directory": "results/apex_workbench_qualifications/v0_2_reviewed_20261029/runs/20261028T222925955930Z_829b9563f35a4ec4b51f66879bbb7657",
+      "manifest_sha256": "9e8ef8aba196a589c3ea1b96be8e00eae0c338d3b02c84b83201d1191b77495a",
+      "run_id": "20261028T222925955930Z_829b9563f35a4ec4b51f66879bbb7657",
+      "execution_identity": {
+        "run_id": "20261028T222925955930Z_829b9563f35a4ec4b51f66879bbb7657",
+        "worker": {
+          "pid": 12744,
+          "created": 1793226566.108175,
+          "role": "worker"
+        }
+      },
+      "grid": "quarter",
+      "case": "VDL1_CR_HIGH",
+      "role": "adapter",
+      "state_rows": 401,
+      "controls": 400,
+      "last_time_s": 0.5,
+      "scientific_outcome": "completed",
+      "evidence_state": "valid",
+      "runner_stop_reason": "duration",
+      "failure": null,
+      "coverage": true,
+      "execution_receipt": {
+        "scientific_outcome": "completed",
+        "error": null,
+        "returncode": 0,
+        "wall_runtime_s": 3.1396020829997724,
+        "sampled_peak_worker_rss_bytes": 84754432,
+        "sampled_peak_worker_threads": 2,
+        "sampling_note": "100 ms supervisor samples; worker guard polls at 50 ms; soft bounds"
+      },
+      "numerical_environment_sha256": "0dfcba108453574cb1e64c0d1e9a2800b872b2b958e734b51d04cd99975d0836",
+      "summary_sha256": "4853c7a5b7897dc5168f1d3a3fb3b6aef9761a353204672f71c6db5b9f382bd5",
+      "diagnostic_extrema": {
+        "alpha_f": {
+          "min": 0.0,
+          "min_time_s": 0.0,
+          "max": 0.02,
+          "max_time_s": 0.1,
+          "max_abs": 0.02,
+          "max_abs_time_s": 0.1,
+          "unit": "rad"
+        },
+        "alpha_r": {
+          "min": -0.0,
+          "min_time_s": 0.0,
+          "max": 0.004707849593175068,
+          "max_time_s": 0.5,
+          "max_abs": 0.004707849593175068,
+          "max_abs_time_s": 0.5,
+          "unit": "rad"
+        },
+        "front_lateral_utilization": {
+          "min": 0.0,
+          "min_time_s": 0.0,
+          "max": 0.09174311926605504,
+          "max_time_s": 0.1,
+          "max_abs": 0.09174311926605504,
+          "max_abs_time_s": 0.1,
+          "unit": "1"
+        },
+        "rear_lateral_utilization": {
+          "min": 0.0,
+          "min_time_s": 0.0,
+          "max": 0.02591476840279854,
+          "max_time_s": 0.5,
+          "max_abs": 0.02591476840279854,
+          "max_abs_time_s": 0.5,
+          "unit": "1"
+        },
+        "frenet_denominator": {
+          "min": 1.0,
+          "min_time_s": 0.0,
+          "max": 1.0155276963332918,
+          "max_time_s": 0.5,
+          "max_abs": 1.0155276963332918,
+          "max_abs_time_s": 0.5,
+          "unit": "1"
+        }
+      },
+      "nominal_state_observations": {
+        "final_r_rad_per_s": 0.1270899643314043,
+        "post_onset_peak_r_rad_per_s": 0.1270899643314043,
+        "minimum_vx_m_per_s": 2.0,
+        "maximum_vx_m_per_s": 2.0004510360066847
+      }
+    },
+    {
+      "slot": "repeat",
+      "directory": "results/apex_workbench_qualifications/v0_2_reviewed_20261029/runs/20261028T222930399552Z_aea9dc071d4945f78dd9fb4430cd3d85",
+      "manifest_sha256": "b8b2b75f06ded6d5a246844142a62efbe0ffd04d15dca1a606401229f05b34a0",
+      "run_id": "20261028T222930399552Z_aea9dc071d4945f78dd9fb4430cd3d85",
+      "execution_identity": {
+        "run_id": "20261028T222930399552Z_aea9dc071d4945f78dd9fb4430cd3d85",
+        "worker": {
+          "pid": 12809,
+          "created": 1793226570.550956,
+          "role": "worker"
+        }
+      },
+      "grid": "nominal",
+      "case": "VDL1_BASE",
+      "role": "adapter",
+      "state_rows": 101,
+      "controls": 100,
+      "last_time_s": 0.5,
+      "scientific_outcome": "completed",
+      "evidence_state": "valid",
+      "runner_stop_reason": "duration",
+      "failure": null,
+      "coverage": true,
+      "execution_receipt": {
+        "scientific_outcome": "completed",
+        "error": null,
+        "returncode": 0,
+        "wall_runtime_s": 1.6144078329998592,
+        "sampled_peak_worker_rss_bytes": 82722816,
+        "sampled_peak_worker_threads": 2,
+        "sampling_note": "100 ms supervisor samples; worker guard polls at 50 ms; soft bounds"
+      },
+      "numerical_environment_sha256": "0dfcba108453574cb1e64c0d1e9a2800b872b2b958e734b51d04cd99975d0836",
+      "summary_sha256": "3f4a4337a6133f71a36ef6546574cd4cdbe0407856bc72a383db1894df81ace3",
+      "diagnostic_extrema": {
+        "alpha_f": {
+          "min": 0.0,
+          "min_time_s": 0.0,
+          "max": 0.02,
+          "max_time_s": 0.1,
+          "max_abs": 0.02,
+          "max_abs_time_s": 0.1,
+          "unit": "rad"
+        },
+        "alpha_r": {
+          "min": -0.0,
+          "min_time_s": 0.0,
+          "max": 0.005927830642624526,
+          "max_time_s": 0.5,
+          "max_abs": 0.005927830642624526,
+          "max_abs_time_s": 0.5,
+          "unit": "rad"
+        },
+        "front_lateral_utilization": {
+          "min": 0.0,
+          "min_time_s": 0.0,
+          "max": 0.09174311926605504,
+          "max_time_s": 0.1,
+          "max_abs": 0.09174311926605504,
+          "max_abs_time_s": 0.1,
+          "unit": "1"
+        },
+        "rear_lateral_utilization": {
+          "min": 0.0,
+          "min_time_s": 0.0,
+          "max": 0.027191883681763878,
+          "max_time_s": 0.5,
+          "max_abs": 0.027191883681763878,
+          "max_abs_time_s": 0.5,
+          "unit": "1"
+        },
+        "frenet_denominator": {
+          "min": 1.0,
+          "min_time_s": 0.0,
+          "max": 1.01546982324785,
+          "max_time_s": 0.5,
+          "max_abs": 1.01546982324785,
+          "max_abs_time_s": 0.5,
+          "unit": "1"
+        }
+      },
+      "nominal_state_observations": {
+        "final_r_rad_per_s": 0.1333654403855755,
+        "post_onset_peak_r_rad_per_s": 0.1333654403855755,
+        "minimum_vx_m_per_s": 2.0,
+        "maximum_vx_m_per_s": 2.000408762185587
+      }
+    },
+    {
+      "slot": "reference",
+      "directory": "results/apex_workbench_qualifications/v0_2_reviewed_20261029/runs/20261028T222933272417Z_339ebd5ccbf7439f828ed62d48fa6fca",
+      "manifest_sha256": "8518412fe0680b4f42232b94409cae0f9a56c11f4e61ba63f16391940b83bfb8",
+      "run_id": "20261028T222933272417Z_339ebd5ccbf7439f828ed62d48fa6fca",
+      "execution_identity": {
+        "run_id": "20261028T222933272417Z_339ebd5ccbf7439f828ed62d48fa6fca",
+        "worker": {
+          "pid": 12875,
+          "created": 1793226573.425888,
+          "role": "worker"
+        }
+      },
+      "grid": "nominal",
+      "case": "VDL1_BASE",
+      "role": "canonical_reference",
+      "state_rows": 101,
+      "controls": 100,
+      "last_time_s": 0.5,
+      "scientific_outcome": "completed",
+      "evidence_state": "valid",
+      "runner_stop_reason": "duration",
+      "failure": null,
+      "coverage": true,
+      "execution_receipt": {
+        "scientific_outcome": "completed",
+        "error": null,
+        "returncode": 0,
+        "wall_runtime_s": 1.7228684169986082,
+        "sampled_peak_worker_rss_bytes": 81969152,
+        "sampled_peak_worker_threads": 2,
+        "sampling_note": "100 ms supervisor samples; worker guard polls at 50 ms; soft bounds"
+      },
+      "numerical_environment_sha256": "0dfcba108453574cb1e64c0d1e9a2800b872b2b958e734b51d04cd99975d0836",
+      "summary_sha256": "3f4a4337a6133f71a36ef6546574cd4cdbe0407856bc72a383db1894df81ace3",
+      "diagnostic_extrema": {
+        "alpha_f": {
+          "min": 0.0,
+          "min_time_s": 0.0,
+          "max": 0.02,
+          "max_time_s": 0.1,
+          "max_abs": 0.02,
+          "max_abs_time_s": 0.1,
+          "unit": "rad"
+        },
+        "alpha_r": {
+          "min": -0.0,
+          "min_time_s": 0.0,
+          "max": 0.005927830642624526,
+          "max_time_s": 0.5,
+          "max_abs": 0.005927830642624526,
+          "max_abs_time_s": 0.5,
+          "unit": "rad"
+        },
+        "front_lateral_utilization": {
+          "min": 0.0,
+          "min_time_s": 0.0,
+          "max": 0.09174311926605504,
+          "max_time_s": 0.1,
+          "max_abs": 0.09174311926605504,
+          "max_abs_time_s": 0.1,
+          "unit": "1"
+        },
+        "rear_lateral_utilization": {
+          "min": 0.0,
+          "min_time_s": 0.0,
+          "max": 0.027191883681763878,
+          "max_time_s": 0.5,
+          "max_abs": 0.027191883681763878,
+          "max_abs_time_s": 0.5,
+          "unit": "1"
+        },
+        "frenet_denominator": {
+          "min": 1.0,
+          "min_time_s": 0.0,
+          "max": 1.01546982324785,
+          "max_time_s": 0.5,
+          "max_abs": 1.01546982324785,
+          "max_abs_time_s": 0.5,
+          "unit": "1"
+        }
+      },
+      "nominal_state_observations": {
+        "final_r_rad_per_s": 0.1333654403855755,
+        "post_onset_peak_r_rad_per_s": 0.1333654403855755,
+        "minimum_vx_m_per_s": 2.0,
+        "maximum_vx_m_per_s": 2.000408762185587
+      }
+    }
+  ],
+  "actual_calculation": {
+    "schema": "apex-vdl-calculation/1",
+    "authority": "calculation_only_not_qualification_evidence",
+    "physical_validity": "not_established",
+    "cases": {
+      "VDL1_BASE": {
+        "components": {
+          "vx": {
+            "unit": "m/s",
+            "d0": 1.08225295392117e-09,
+            "d1": 6.262013130253763e-11,
+            "nominal_finest": 1.1448730852237077e-09,
+            "refinement_ratio": 17.282827924656758,
+            "satisfied": true
+          },
+          "vy": {
+            "unit": "m/s",
+            "d0": 8.228424212917279e-08,
+            "d1": 4.706070366733428e-09,
+            "nominal_finest": 8.699031249590622e-08,
+            "refinement_ratio": 17.484702887323767,
+            "satisfied": true
+          },
+          "r": {
+            "unit": "rad/s",
+            "d0": 7.670383230518052e-07,
+            "d1": 4.3931521795381734e-08,
+            "nominal_finest": 8.109698448471869e-07,
+            "refinement_ratio": 17.459862342679862,
+            "satisfied": true
+          },
+          "e_psi": {
+            "unit": "rad",
+            "d0": 1.854103404141938e-08,
+            "d1": 1.5959460419878724e-09,
+            "nominal_finest": 1.9602927281425764e-08,
+            "refinement_ratio": 11.617582019455439,
+            "satisfied": true
+          },
+          "s_abs": {
+            "unit": "m",
+            "d0": 1.0268441652527827e-10,
+            "d1": 2.1235069258551675e-11,
+            "nominal_finest": 1.1917455911003572e-10,
+            "refinement_ratio": 4.8356054447020815,
+            "satisfied": true
+          },
+          "e_y": {
+            "unit": "m",
+            "d0": 1.970732785294693e-09,
+            "d1": 1.5916720719211241e-10,
+            "nominal_finest": 2.1298999924868056e-09,
+            "refinement_ratio": 12.381525190148299,
+            "satisfied": true
+          }
+        },
+        "native_windows": {
+          "nominal": {
+            "coverage": true,
+            "maximum_absolute_slip_rad": 0.02,
+            "maximum_lateral_utilization": 0.09174311926605504,
+            "sampled_corridor_violations": 0,
+            "satisfied": true
+          },
+          "half": {
+            "coverage": true,
+            "maximum_absolute_slip_rad": 0.02,
+            "maximum_lateral_utilization": 0.09174311926605504,
+            "sampled_corridor_violations": 0,
+            "satisfied": true
+          },
+          "quarter": {
+            "coverage": true,
+            "maximum_absolute_slip_rad": 0.02,
+            "maximum_lateral_utilization": 0.09174311926605504,
+            "sampled_corridor_violations": 0,
+            "satisfied": true
+          }
+        },
+        "numerical_satisfied": true,
+        "sampled_window_satisfied": true,
+        "satisfied": true
+      },
+      "VDL1_IZ_HIGH": {
+        "components": {
+          "vx": {
+            "unit": "m/s",
+            "d0": 7.771037147108473e-10,
+            "d1": 4.544453702237661e-11,
+            "nominal_finest": 8.225482517332239e-10,
+            "refinement_ratio": 17.100046906148613,
+            "satisfied": true
+          },
+          "vy": {
+            "unit": "m/s",
+            "d0": 5.650594785220481e-08,
+            "d1": 3.2733146236932353e-09,
+            "nominal_finest": 5.977926247589804e-08,
+            "refinement_ratio": 17.262608196351724,
+            "satisfied": true
+          },
+          "r": {
+            "unit": "rad/s",
+            "d0": 3.592743488406436e-07,
+            "d1": 2.087928153982066e-08,
+            "nominal_finest": 3.8015363038046424e-07,
+            "refinement_ratio": 17.207217985707064,
+            "satisfied": true
+          },
+          "e_psi": {
+            "unit": "rad",
+            "d0": 9.935741562827616e-09,
+            "d1": 1.1298535440573687e-09,
+            "nominal_finest": 1.0513142800760988e-08,
+            "refinement_ratio": 8.793831390879033,
+            "satisfied": true
+          },
+          "s_abs": {
+            "unit": "m",
+            "d0": 6.009265307582723e-11,
+            "d1": 2.1732282640130052e-11,
+            "nominal_finest": 6.657518980546229e-11,
+            "refinement_ratio": 2.7651330544018555,
+            "satisfied": true
+          },
+          "e_y": {
+            "unit": "m",
+            "d0": 1.9409208684706414e-09,
+            "d1": 1.5987242085735431e-10,
+            "nominal_finest": 2.10054124094583e-09,
+            "refinement_ratio": 12.140435842917661,
+            "satisfied": true
+          }
+        },
+        "native_windows": {
+          "nominal": {
+            "coverage": true,
+            "maximum_absolute_slip_rad": 0.02,
+            "maximum_lateral_utilization": 0.09174311926605504,
+            "sampled_corridor_violations": 0,
+            "satisfied": true
+          },
+          "half": {
+            "coverage": true,
+            "maximum_absolute_slip_rad": 0.02,
+            "maximum_lateral_utilization": 0.09174311926605504,
+            "sampled_corridor_violations": 0,
+            "satisfied": true
+          },
+          "quarter": {
+            "coverage": true,
+            "maximum_absolute_slip_rad": 0.02,
+            "maximum_lateral_utilization": 0.09174311926605504,
+            "sampled_corridor_violations": 0,
+            "satisfied": true
+          }
+        },
+        "numerical_satisfied": true,
+        "sampled_window_satisfied": true,
+        "satisfied": true
+      },
+      "VDL1_STEER_HIGH": {
+        "components": {
+          "vx": {
+            "unit": "m/s",
+            "d0": 1.6909917910368222e-09,
+            "d1": 9.78417347141658e-11,
+            "nominal_finest": 1.788833525750988e-09,
+            "refinement_ratio": 17.282929375453886,
+            "satisfied": true
+          },
+          "vy": {
+            "unit": "m/s",
+            "d0": 1.0284513153428765e-07,
+            "d1": 5.8820298874662225e-09,
+            "nominal_finest": 1.0872716142175387e-07,
+            "refinement_ratio": 17.48463260165273,
+            "satisfied": true
+          },
+          "r": {
+            "unit": "rad/s",
+            "d0": 9.58682399118671e-07,
+            "d1": 5.490809176778022e-08,
+            "nominal_finest": 1.0135904908864513e-06,
+            "refinement_ratio": 17.459765368885407,
+            "satisfied": true
+          },
+          "e_psi": {
+            "unit": "rad",
+            "d0": 2.317431313514362e-08,
+            "d1": 1.8658603551102715e-09,
+            "nominal_finest": 2.4501558559819614e-08,
+            "refinement_ratio": 12.420175535469818,
+            "satisfied": true
+          },
+          "s_abs": {
+            "unit": "m",
+            "d0": 2.199923576640117e-10,
+            "d1": 2.5070168163665585e-11,
+            "nominal_finest": 2.38117858764042e-10,
+            "refinement_ratio": 8.77506509840044,
+            "satisfied": true
+          },
+          "e_y": {
+            "unit": "m",
+            "d0": 2.1292711344100823e-09,
+            "d1": 1.2375099903150222e-10,
+            "nominal_finest": 2.2419455042443914e-09,
+            "refinement_ratio": 17.20609248470028,
+            "satisfied": true
+          }
+        },
+        "native_windows": {
+          "nominal": {
+            "coverage": true,
+            "maximum_absolute_slip_rad": 0.025,
+            "maximum_lateral_utilization": 0.1146788990825688,
+            "sampled_corridor_violations": 0,
+            "satisfied": true
+          },
+          "half": {
+            "coverage": true,
+            "maximum_absolute_slip_rad": 0.025,
+            "maximum_lateral_utilization": 0.1146788990825688,
+            "sampled_corridor_violations": 0,
+            "satisfied": true
+          },
+          "quarter": {
+            "coverage": true,
+            "maximum_absolute_slip_rad": 0.025,
+            "maximum_lateral_utilization": 0.1146788990825688,
+            "sampled_corridor_violations": 0,
+            "satisfied": true
+          }
+        },
+        "numerical_satisfied": true,
+        "sampled_window_satisfied": true,
+        "satisfied": true
+      },
+      "VDL1_CF_HIGH": {
+        "components": {
+          "vx": {
+            "unit": "m/s",
+            "d0": 1.8228605291881195e-09,
+            "d1": 1.0423084617627865e-10,
+            "nominal_finest": 1.927091375364398e-09,
+            "refinement_ratio": 17.488685893475694,
+            "satisfied": true
+          },
+          "vy": {
+            "unit": "m/s",
+            "d0": 1.5124871961640085e-07,
+            "d1": 8.529579861860093e-09,
+            "nominal_finest": 1.5977829947826094e-07,
+            "refinement_ratio": 17.732259040413886,
+            "satisfied": true
+          },
+          "r": {
+            "unit": "rad/s",
+            "d0": 1.482133763636151e-06,
+            "d1": 8.364952654160707e-08,
+            "nominal_finest": 1.565783290177758e-06,
+            "refinement_ratio": 17.718376001792922,
+            "satisfied": true
+          },
+          "e_psi": {
+            "unit": "rad",
+            "d0": 3.134144943572892e-08,
+            "d1": 2.257202424971183e-09,
+            "nominal_finest": 3.311042684472909e-08,
+            "refinement_ratio": 13.88508584298949,
+            "satisfied": true
+          },
+          "s_abs": {
+            "unit": "m",
+            "d0": 2.700357715212931e-10,
+            "d1": 2.5846769169390882e-11,
+            "nominal_finest": 2.8446767164069797e-10,
+            "refinement_ratio": 10.447563861911368,
+            "satisfied": true
+          },
+          "e_y": {
+            "unit": "m",
+            "d0": 2.0651888255063255e-09,
+            "d1": 1.534807142489214e-10,
+            "nominal_finest": 2.218669539755247e-09,
+            "refinement_ratio": 13.4556894370254,
+            "satisfied": true
+          }
+        },
+        "native_windows": {
+          "nominal": {
+            "coverage": true,
+            "maximum_absolute_slip_rad": 0.02,
+            "maximum_lateral_utilization": 0.11009174311926606,
+            "sampled_corridor_violations": 0,
+            "satisfied": true
+          },
+          "half": {
+            "coverage": true,
+            "maximum_absolute_slip_rad": 0.02,
+            "maximum_lateral_utilization": 0.11009174311926606,
+            "sampled_corridor_violations": 0,
+            "satisfied": true
+          },
+          "quarter": {
+            "coverage": true,
+            "maximum_absolute_slip_rad": 0.02,
+            "maximum_lateral_utilization": 0.11009174311926606,
+            "sampled_corridor_violations": 0,
+            "satisfied": true
+          }
+        },
+        "numerical_satisfied": true,
+        "sampled_window_satisfied": true,
+        "satisfied": true
+      },
+      "VDL1_CR_HIGH": {
+        "components": {
+          "vx": {
+            "unit": "m/s",
+            "d0": 1.0818879125906733e-09,
+            "d1": 6.247713457696591e-11,
+            "nominal_finest": 1.1443650471676392e-09,
+            "refinement_ratio": 17.31654180231153,
+            "satisfied": true
+          },
+          "vy": {
+            "unit": "m/s",
+            "d0": 8.154977503439104e-08,
+            "d1": 4.6501528834161365e-09,
+            "nominal_finest": 8.619992791780717e-08,
+            "refinement_ratio": 17.53700944440395,
+            "satisfied": true
+          },
+          "r": {
+            "unit": "rad/s",
+            "d0": 8.721509211773171e-07,
+            "d1": 4.978722185911e-08,
+            "nominal_finest": 9.219381430364271e-07,
+            "refinement_ratio": 17.51756552404886,
+            "satisfied": true
+          },
+          "e_psi": {
+            "unit": "rad",
+            "d0": 2.0455907190353173e-08,
+            "d1": 1.6944947667241195e-09,
+            "nominal_finest": 2.1623518087210414e-08,
+            "refinement_ratio": 12.071980151286946,
+            "satisfied": true
+          },
+          "s_abs": {
+            "unit": "m",
+            "d0": 1.0260792215888159e-10,
+            "d1": 2.1184720644384925e-11,
+            "nominal_finest": 1.2181533559640911e-10,
+            "refinement_ratio": 4.843487147236853,
+            "satisfied": true
+          },
+          "e_y": {
+            "unit": "m",
+            "d0": 1.9742687762391853e-09,
+            "d1": 1.5389549357092136e-10,
+            "nominal_finest": 2.128147699731464e-09,
+            "refinement_ratio": 12.828632797680728,
+            "satisfied": true
+          }
+        },
+        "native_windows": {
+          "nominal": {
+            "coverage": true,
+            "maximum_absolute_slip_rad": 0.02,
+            "maximum_lateral_utilization": 0.09174311926605504,
+            "sampled_corridor_violations": 0,
+            "satisfied": true
+          },
+          "half": {
+            "coverage": true,
+            "maximum_absolute_slip_rad": 0.02,
+            "maximum_lateral_utilization": 0.09174311926605504,
+            "sampled_corridor_violations": 0,
+            "satisfied": true
+          },
+          "quarter": {
+            "coverage": true,
+            "maximum_absolute_slip_rad": 0.02,
+            "maximum_lateral_utilization": 0.09174311926605504,
+            "sampled_corridor_violations": 0,
+            "satisfied": true
+          }
+        },
+        "numerical_satisfied": true,
+        "sampled_window_satisfied": true,
+        "satisfied": true
+      }
+    },
+    "pairs": {
+      "VDL1_IZ_HIGH": {
+        "baseline": "VDL1_BASE",
+        "treatment": "VDL1_IZ_HIGH",
+        "peak_yaw_difference_rad_per_s": 0.008904428222327412,
+        "required_signal_rad_per_s": 0.0001,
+        "excitation_sufficient": true,
+        "satisfied": true
+      },
+      "VDL1_STEER_HIGH": {
+        "baseline": "VDL1_BASE",
+        "treatment": "VDL1_STEER_HIGH",
+        "peak_yaw_difference_rad_per_s": 0.03336394365255693,
+        "required_signal_rad_per_s": 0.0001,
+        "excitation_sufficient": true,
+        "satisfied": true
+      },
+      "VDL1_CF_HIGH": {
+        "baseline": "VDL1_BASE",
+        "treatment": "VDL1_CF_HIGH",
+        "peak_yaw_difference_rad_per_s": 0.010852414470119351,
+        "required_signal_rad_per_s": 0.0001,
+        "excitation_sufficient": true,
+        "satisfied": true
+      },
+      "VDL1_CR_HIGH": {
+        "baseline": "VDL1_BASE",
+        "treatment": "VDL1_CR_HIGH",
+        "peak_yaw_difference_rad_per_s": 0.006275476007459452,
+        "required_signal_rad_per_s": 0.0001,
+        "excitation_sufficient": true,
+        "satisfied": true
+      }
+    },
+    "all_criteria_satisfied": true
+  },
+  "numerical_cases": {
+    "VDL1_BASE": true,
+    "VDL1_IZ_HIGH": true,
+    "VDL1_STEER_HIGH": true,
+    "VDL1_CF_HIGH": true,
+    "VDL1_CR_HIGH": true
+  },
+  "comparison_pairs": {
+    "VDL1_IZ_HIGH": true,
+    "VDL1_STEER_HIGH": true,
+    "VDL1_CF_HIGH": true,
+    "VDL1_CR_HIGH": true
+  },
+  "production_comparison_classifications": {
+    "VDL1_IZ_HIGH": "qualified_synthetic_comparison",
+    "VDL1_STEER_HIGH": "qualified_synthetic_comparison",
+    "VDL1_CF_HIGH": "qualified_synthetic_comparison",
+    "VDL1_CR_HIGH": "qualified_synthetic_comparison"
+  },
+  "observed_pair_details": {
+    "VDL1_IZ_HIGH": {
+      "peak_difference_time_s": 0.125,
+      "signed_treatment_minus_baseline_at_peak_rad_per_s": -0.008904428222327412,
+      "treatment_r_at_peak_rad_per_s": 0.07598743026071822,
+      "baseline_r_at_peak_rad_per_s": 0.08489185848304563,
+      "treatment_terminal_r_rad_per_s": 0.13336505295289638,
+      "baseline_terminal_r_rad_per_s": 0.1333654403855755
+    },
+    "VDL1_STEER_HIGH": {
+      "peak_difference_time_s": 0.5,
+      "signed_treatment_minus_baseline_at_peak_rad_per_s": 0.03336394365255693,
+      "treatment_r_at_peak_rad_per_s": 0.16672938403813242,
+      "baseline_r_at_peak_rad_per_s": 0.1333654403855755,
+      "treatment_terminal_r_rad_per_s": 0.16672938403813242,
+      "baseline_terminal_r_rad_per_s": 0.1333654403855755
+    },
+    "VDL1_CF_HIGH": {
+      "peak_difference_time_s": 0.13,
+      "signed_treatment_minus_baseline_at_peak_rad_per_s": 0.010852414470119351,
+      "treatment_r_at_peak_rad_per_s": 0.10462462219610524,
+      "baseline_r_at_peak_rad_per_s": 0.09377220772598589,
+      "treatment_terminal_r_rad_per_s": 0.14029982760399706,
+      "baseline_terminal_r_rad_per_s": 0.1333654403855755
+    },
+    "VDL1_CR_HIGH": {
+      "peak_difference_time_s": 0.5,
+      "signed_treatment_minus_baseline_at_peak_rad_per_s": -0.006275476007459452,
+      "treatment_r_at_peak_rad_per_s": 0.12708996437811604,
+      "baseline_r_at_peak_rad_per_s": 0.1333654403855755,
+      "treatment_terminal_r_rad_per_s": 0.12708996437811604,
+      "baseline_terminal_r_rad_per_s": 0.1333654403855755
+    }
+  },
+  "exact_parity": {
+    "repeat": {
+      "experiment/states.csv": true,
+      "experiment/controls.csv": true,
+      "experiment/diagnostics.csv": true
+    },
+    "reference": {
+      "experiment/states.csv": true,
+      "experiment/controls.csv": true,
+      "experiment/diagnostics.csv": true
+    }
+  },
+  "parity_file_sha256": {
+    "experiment/states.csv": "43e9945f2c458ce80dd3f234da6b3c2b4639c760c8c4ddd6321bae5e5c9ec389",
+    "experiment/controls.csv": "139c0767e1ba41ae44a3a45fdd7c609d6c57b604812556e38b1fcea29c4c6577",
+    "experiment/diagnostics.csv": "55730ba2c41350e8e34685e815f178e92805b5168f896d483e361e22bc0e0463"
+  },
+  "preflight": {
+    "schema": "apex-v02d-preflight/1",
+    "utc": "2026-10-28T22:27:58.773416+00:00",
+    "passed": true,
+    "head": "6c6c169e483072c48866335aeb82439e24139920",
+    "reviewed_source": "4897686e79c13757d5ef5b4373b44d4cab99b5bf",
+    "branch": "codex/apex-workbench-v0-2-c",
+    "source_sha256": {
+      "configs/vehicles/synthetic_dynamic_test_vehicle.yaml": "df1b853d21a1d3efaf858f7e58401151f2c5237793c40e16bb4189ed651f9cf3",
+      "scripts/run_dynamic_bicycle_demo.py": "9aa8bef1f05186d6653752becadcfb72d5698a82355606a7847be6d69171baa3",
+      "scripts/threading_study/config.py": "a50a73015c3ab739c35aa1fd715840364974213bf1c12666269b250264556fc3",
+      "src/apex/__init__.py": "2dd176027291d40716c8c828e8a9994afbf247d22bea1426fac52c259cbbc33b",
+      "src/apex/config.py": "40227b4ed2a38e30ecfb9acc7f308cf9db31b54dc813bb28850b25800877e0ad",
+      "src/apex/state.py": "b2b16555f8ae83f041ee821906305accc56010b643bb3fa514f90a8a17e66862",
+      "src/apex/control/__init__.py": "12878dbd9e38ae415462ea0eccbfc315387856736233a7ea4b2f840b1a53e96a",
+      "src/apex/control/base.py": "119b6cb4235421b9728838b47e4913158402997957956a473009c43435acb870",
+      "src/apex/coordinates/__init__.py": "1c443357b2a8e949a157c09b6fb3b50c170d98c908da8c0e8ebbd7e25f919555",
+      "src/apex/coordinates/angles.py": "2ed31ef5153e42083e727efc10b7875277f7f2641a5e16e9790e3f6073b33d05",
+      "src/apex/coordinates/frenet.py": "5fd10e1648847071561086f394914f6812422b0ad04f81ef2a517968334e17bd",
+      "src/apex/models/__init__.py": "d530a05e192b5d6c8b815c3edb2599a88bc35acac91c83280cd8e22d31a1d0d2",
+      "src/apex/models/base.py": "3bd8085e89978410bbe8581903b6280bd84f1a1ca956f1bb62f974462df7c525",
+      "src/apex/models/constants.py": "1b485d45ad2d74aaa256c1aab00157d7c610db0bea9f744d75376b8e816534be",
+      "src/apex/models/errors.py": "81baff4659f36bb6aea91e6a27327260b4d69e23de22963de6832199e7f1f916",
+      "src/apex/models/frenet.py": "a8c6190bd6be9f2a284c83b5c31e5d6cb2d8ef1f791b49bbebdd3c110a36ee96",
+      "src/apex/models/integration.py": "02009193fb2d25e83560a2da37f216048dfa3ededcb3de8616b90e411473ad51",
+      "src/apex/models/vehicle/__init__.py": "ab6dddf29c21f198a84b17e28f3dcb8b4b1e6543e0ce5533d4166a062d549a9f",
+      "src/apex/models/vehicle/parameters.py": "5cfce45b4a87577b17193b44cfa24f11c8e29c93082564a596f7ddf4e797fbb2",
+      "src/apex/models/vehicle/dynamic_bicycle.py": "c93b674924eed24f9641ebe263863b3422cba5eb1665c0d93dd6cd00bdfd462f",
+      "src/apex/models/vehicle/load_transfer.py": "e96c74199a7d8147866529cb4ecfffbfce74815cb57accb52ea54b407b873be1",
+      "src/apex/models/vehicle/force_allocation.py": "e77d8c87efdaa9c008ec45385ad4dad326cfa2e003798c08e29a5fb9a17647f8",
+      "src/apex/models/tire/__init__.py": "000e7ac305a2f5bb610e6ee9e066a6f8d82a0ac335c2b9253d292a2c3c96907f",
+      "src/apex/models/tire/base.py": "da1b635a6da1de465ac7af61dcf3cad8d23ef406eb6dd7f45dad825bc3f60ccf",
+      "src/apex/models/tire/config.py": "73f7e47ae5768a6961a8ca65aa40a5da7ecd77e412ac6995a459e969daa83877",
+      "src/apex/models/tire/linear.py": "6ae5888b0000cd57a88788463977be1a90fa8e1f6a332f131c66623192ce9cf3",
+      "src/apex/models/tire/grip.py": "e91bab930ee0650578ede2964ef680f77663cfd34d26ab1682c232b34c6d8c90",
+      "src/apex/simulation/__init__.py": "84069322b2562012fcfd863d27f6fc88a0f2d5eaba3a4040f10e896cffc4a513",
+      "src/apex/simulation/runner.py": "99dd44020405dd121433637ccf43d53639451a2b7b595bed255555144802cb34",
+      "src/apex/simulation/timing.py": "1bcd5ac042dc761ff8ed83028d0dde372a1569a9549f84e7f92061e109fa968f",
+      "src/apex/track/__init__.py": "95dd539a129d605aa979952c68c75d633738d520fa66e06a491b5bfb2ef7907c",
+      "src/apex/track/base.py": "c15e48dfa2a08bfd57040c80b1280a6f56234503361a38cb3cda6cb35e93cca1",
+      "src/apex/track/centerline.py": "caf28a32f24198fbfd57a7d6a987822f9b4df88ff6b5f1bca5c1f57e2b79429f",
+      "src/apex/track/closed_track.py": "c14fb27c1a1182dec564a5a679832e67c6480fb382a15c05dd2c998b138a350e",
+      "src/apex/track/io.py": "ee2f5a27740684ddba2f1907c88e8893c6cf0c59150352d35845914d5fd30b65",
+      "src/apex/track/progress.py": "fef18ea7fe610cca1ff80f32acdecf5f756b6d26c1a47e47f0eb23b7ae8dc0d8",
+      "src/apex/track/synthetic.py": "1e7ed0900af9971d6c68ca810570b9177a97eb830361c580724870752f4744c0",
+      "tools/apex_workbench/__init__.py": "194595c8c9d46745693697c8417c2408fbe76e3254ae716f26b50c47f4723396",
+      "tools/apex_workbench/configuration.py": "39b33dcd20be80a188d532c33c3fe33561addff847d298beab626fa9a476dc02",
+      "tools/apex_workbench/jobs.py": "0e14fd1c56f76372677e6408c37f44713ca9af3b1d8b8f4c064f80bd1d23b170",
+      "tools/apex_workbench/worker.py": "065738dab95e685b61c9347c254aeb9e13b0cdbcc605087752d0b6b21601b64e",
+      "tools/apex_workbench/lifecycle.py": "794bd5ada88048a402a2d0946942ec9962e52b0caf2e72d7a8a3a0279f51f05a",
+      "tools/apex_workbench/storage.py": "9486d6339b6dc50d2d4fe9030dfb71940e11c8ce283e838e7614fed80eaeb3cb",
+      "tools/apex_workbench/lab_configuration.py": "41e937fbf8d5f4fb239f2d0a99d39f94e1966f59787a7b4ae1f7f4015ce89abc",
+      "tools/apex_workbench/lab_sources.py": "7b5bef6d440f8a16004de9b4539a43c28dc13b203d7ff2a8a01eca1b74895a84",
+      "tools/apex_workbench/dynamic_lab.py": "65e78ea7a982421837e96ea3bc5b8748ae1e1c6e0e22493fe8ae99df8d67063d",
+      "tools/apex_workbench/lab_reporting.py": "47ecc170f80fb06b99b5ef9a78d70749a22da547c52b4b671eba37eca387b0c2",
+      "tools/apex_workbench/lab_evidence.py": "a3ea1046530bbe13461c87529155d167c83681008c9298268be9167b00dbed73",
+      "tools/apex_workbench/lab_comparison.py": "ae792cb84bd0a10dec62160350f4a79e1397098b3267b2f0f7db9285f798e0cb",
+      "tools/apex_workbench/comparison.py": "5e54bd0d75e830d54c4060c19aa7db725b6402af201aba314fd8e1bc42e14b45",
+      "tools/apex_workbench/plots.py": "091359f6d07fa46105c7575627dc5862203fd2279d77ffa7c0c73b0cca5cc48c",
+      "tools/apex_workbench/app.py": "ea572914ab10d824c93002d56831492fccf45a839520754a8ff4f3fe37b4eea8",
+      "tools/apex_workbench/qualification_math.py": "4511601c8291ea40c68b7fe91763f3251e9dcb195bd373c951ec7a47a5977fbf",
+      "tools/apex_workbench/qualification.py": "ebbde4064962fe4dac9d958860fc271815fd67c804c0d2aff7c5031a2ef577cd",
+      "tools/apex_workbench/qualification_campaign.py": "a191c1cf2e34831755c9d48d71767935c3b1f67bb085f04b3539d22ff7398ac9",
+      "tools/apex_workbench/qualification_reference.py": "a93797ffd5bdf974078c032a55367849a257d92138e1e2630e89bcb8168e3826"
+    },
+    "contract_sha256": {
+      "docs/apex_workbench_v0_2_a/NUMERICAL_CONTRACT.md": "57183c9c3eb15c773cc845b87564a596b4d08f985ddf81aa2b5d7567f7bee59a",
+      "docs/apex_workbench_v0_2_a/VALIDITY_CONTRACT.md": "bc0385d26ef968f7ea755c00800299486f1c1a947bf4a93aa9683a7624470a21",
+      "docs/apex_workbench_v0_2_a/PROPOSED_CASES.md": "a0926be583fa5556a3ca27b7cd16dbc8f0542c64d22e311d23e1044b8754c1d4"
+    },
+    "clean_checkout": true,
+    "required_sources_match": true,
+    "output_absent": true,
+    "reporting_directory": "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/results/apex_workbench_v02d_reporting_20261029",
+    "campaign_directory": "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/results/apex_workbench_qualifications/v0_2_reviewed_20261029",
+    "disk_free_bytes": 46341808128,
+    "disk_floor_bytes": 1073741824,
+    "measurement_guards": [],
+    "conflicting_processes": [],
+    "execution_lease_available": true,
+    "python": "3.12.14 (main, Sep  1 2026, 14:09:38) [Clang 22.1.3 ]",
+    "python_executable": "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/tools/apex_workbench/.venv/bin/python",
+    "platform": "macOS-26.5.1-arm64-arm-64bit",
+    "packages": {
+      "numpy": "2.5.3",
+      "scipy": "1.18.1",
+      "pandas": "3.0.6",
+      "matplotlib": "3.11.2",
+      "streamlit": "1.66.1",
+      "plotly": "6.9.0",
+      "psutil": "7.2.2",
+      "threadpoolctl": "3.7.0",
+      "pytest": "9.1.1"
+    },
+    "matches_preparation_environment": true,
+    "native_control": {
+      "requested_ceiling": 1,
+      "set_status": 0,
+      "blas_threading_mode": 1,
+      "mode_name": "single",
+      "exact_active_thread_count_available": false
+    },
+    "threadpools": [],
+    "threadpool_observation_limit": "Accelerate is not enumerated here; native API reports SINGLE. No exact active BLAS thread-count claim.",
+    "thread_environment": {
+      "VECLIB_MAXIMUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "BLIS_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1",
+      "PYTHONHASHSEED": "0"
+    },
+    "preflight_kernel_limits": {
+      "cpu": [
+        30,
+        31
+      ],
+      "file_size": [
+        16777216,
+        16777216
+      ]
+    },
+    "worker_limits": {
+      "wall_s": 60,
+      "cpu_s": 30,
+      "sampled_rss_bytes": 536870912,
+      "sampled_output_bytes": 67108864,
+      "single_file_bytes": 16777216
+    },
+    "plan": {
+      "schema": "apex-vdl-campaign-plan/1",
+      "protocol": "apex-vdl-provisional-qualification/1",
+      "execution_count": 17,
+      "plant_intervals": 3700,
+      "aggregate_simulation_s": 8.5,
+      "duration_per_execution_s": 0.5,
+      "slots": [
+        {
+          "slot": "VDL1_BASE/nominal",
+          "case_id": "VDL1_BASE",
+          "grid_id": "nominal",
+          "dt_s": 0.005,
+          "steps": 100,
+          "onset_tick": 20,
+          "role": "adapter"
+        },
+        {
+          "slot": "VDL1_BASE/half",
+          "case_id": "VDL1_BASE",
+          "grid_id": "half",
+          "dt_s": 0.0025,
+          "steps": 200,
+          "onset_tick": 40,
+          "role": "adapter"
+        },
+        {
+          "slot": "VDL1_BASE/quarter",
+          "case_id": "VDL1_BASE",
+          "grid_id": "quarter",
+          "dt_s": 0.00125,
+          "steps": 400,
+          "onset_tick": 80,
+          "role": "adapter"
+        },
+        {
+          "slot": "VDL1_IZ_HIGH/nominal",
+          "case_id": "VDL1_IZ_HIGH",
+          "grid_id": "nominal",
+          "dt_s": 0.005,
+          "steps": 100,
+          "onset_tick": 20,
+          "role": "adapter"
+        },
+        {
+          "slot": "VDL1_IZ_HIGH/half",
+          "case_id": "VDL1_IZ_HIGH",
+          "grid_id": "half",
+          "dt_s": 0.0025,
+          "steps": 200,
+          "onset_tick": 40,
+          "role": "adapter"
+        },
+        {
+          "slot": "VDL1_IZ_HIGH/quarter",
+          "case_id": "VDL1_IZ_HIGH",
+          "grid_id": "quarter",
+          "dt_s": 0.00125,
+          "steps": 400,
+          "onset_tick": 80,
+          "role": "adapter"
+        },
+        {
+          "slot": "VDL1_STEER_HIGH/nominal",
+          "case_id": "VDL1_STEER_HIGH",
+          "grid_id": "nominal",
+          "dt_s": 0.005,
+          "steps": 100,
+          "onset_tick": 20,
+          "role": "adapter"
+        },
+        {
+          "slot": "VDL1_STEER_HIGH/half",
+          "case_id": "VDL1_STEER_HIGH",
+          "grid_id": "half",
+          "dt_s": 0.0025,
+          "steps": 200,
+          "onset_tick": 40,
+          "role": "adapter"
+        },
+        {
+          "slot": "VDL1_STEER_HIGH/quarter",
+          "case_id": "VDL1_STEER_HIGH",
+          "grid_id": "quarter",
+          "dt_s": 0.00125,
+          "steps": 400,
+          "onset_tick": 80,
+          "role": "adapter"
+        },
+        {
+          "slot": "VDL1_CF_HIGH/nominal",
+          "case_id": "VDL1_CF_HIGH",
+          "grid_id": "nominal",
+          "dt_s": 0.005,
+          "steps": 100,
+          "onset_tick": 20,
+          "role": "adapter"
+        },
+        {
+          "slot": "VDL1_CF_HIGH/half",
+          "case_id": "VDL1_CF_HIGH",
+          "grid_id": "half",
+          "dt_s": 0.0025,
+          "steps": 200,
+          "onset_tick": 40,
+          "role": "adapter"
+        },
+        {
+          "slot": "VDL1_CF_HIGH/quarter",
+          "case_id": "VDL1_CF_HIGH",
+          "grid_id": "quarter",
+          "dt_s": 0.00125,
+          "steps": 400,
+          "onset_tick": 80,
+          "role": "adapter"
+        },
+        {
+          "slot": "VDL1_CR_HIGH/nominal",
+          "case_id": "VDL1_CR_HIGH",
+          "grid_id": "nominal",
+          "dt_s": 0.005,
+          "steps": 100,
+          "onset_tick": 20,
+          "role": "adapter"
+        },
+        {
+          "slot": "VDL1_CR_HIGH/half",
+          "case_id": "VDL1_CR_HIGH",
+          "grid_id": "half",
+          "dt_s": 0.0025,
+          "steps": 200,
+          "onset_tick": 40,
+          "role": "adapter"
+        },
+        {
+          "slot": "VDL1_CR_HIGH/quarter",
+          "case_id": "VDL1_CR_HIGH",
+          "grid_id": "quarter",
+          "dt_s": 0.00125,
+          "steps": 400,
+          "onset_tick": 80,
+          "role": "adapter"
+        },
+        {
+          "slot": "repeat",
+          "case_id": "VDL1_BASE",
+          "grid_id": "nominal",
+          "dt_s": 0.005,
+          "steps": 100,
+          "onset_tick": 20,
+          "role": "adapter"
+        },
+        {
+          "slot": "reference",
+          "case_id": "VDL1_BASE",
+          "grid_id": "nominal",
+          "dt_s": 0.005,
+          "steps": 100,
+          "onset_tick": 20,
+          "role": "canonical_reference"
+        }
+      ],
+      "execution_authorized_by_plan": false
+    },
+    "new_model_trajectories": 0,
+    "scientific_campaign_started": false
+  },
+  "preflight_diagnostics": {
+    "scientific_campaign_invocations": 0,
+    "initial_sandbox_probe": "macOS process inventory denied by sandbox sysctl; host-permission inspection used same source and numerical environment",
+    "host_probe_reporting_error": "extra assertion required nonempty threadpoolctl list; inapplicable to this Accelerate backend; native SINGLE API succeeded and reviewed environment also records []",
+    "implementation_or_dependencies_changed": false,
+    "scientific_guards_or_criteria_changed": false
+  },
+  "post_execution_ownership": {
+    "all_campaign_owners_terminated": true,
+    "active_verified_campaign_owners": [],
+    "execution_lease_released": true,
+    "measurement_guards_after": [],
+    "new_scientific_trajectories": 0
+  },
+  "preservation": {
+    "schema": "apex-v02d-preservation/1",
+    "head_before": "6c6c169e483072c48866335aeb82439e24139920",
+    "head_after_execution": "6c6c169e483072c48866335aeb82439e24139920",
+    "tracked_files_checked": 951,
+    "changed_tracked_before_reporting": [],
+    "missing_tracked": [],
+    "historical_result_files_checked": 27782,
+    "historical_size_mtime_changes": [],
+    "missing_historical_results": [],
+    "historical_check_limit": "size/mtime preservation; no complete content rehash or backup claim",
+    "before_snapshot_sha256": "7fbb180592326ae835c73347591f92fd0df29c7dfa1573e31866f477dfd13d99"
+  },
+  "artifacts": {
+    "preflight.json": {
+      "path": "results/apex_workbench_v02d_reporting_20261029/preflight.json",
+      "sha256": "4017acdd5b619508650ef41c4d9cf8b6c4a099c607bd2d23abd16c747c2295ef",
+      "bytes": 12763
+    },
+    "preflight_diagnostics.json": {
+      "path": "results/apex_workbench_v02d_reporting_20261029/preflight_diagnostics.json",
+      "sha256": "ce7c96ccaaa8a6e691b4cf89fcd7f07af88019d5927b0bc0831bde601e774911",
+      "bytes": 493
+    },
+    "numpy-build-config.txt": {
+      "path": "results/apex_workbench_v02d_reporting_20261029/numpy-build-config.txt",
+      "sha256": "ea787852bf48143c58a84173d855607e70fc4c8346f09129c47e333157e1327d",
+      "bytes": 1170
+    },
+    "before.json": {
+      "path": "results/apex_workbench_v02d_reporting_20261029/before.json",
+      "sha256": "7fbb180592326ae835c73347591f92fd0df29c7dfa1573e31866f477dfd13d99",
+      "bytes": 3713223
+    },
+    "campaign_invocation.json": {
+      "path": "results/apex_workbench_v02d_reporting_20261029/campaign_invocation.json",
+      "sha256": "c462d0543a8d1ddc5b79a8c56e92852ba1d02bd540a32b293544baaf8e3bdbec",
+      "bytes": 899
+    },
+    "campaign.stdout.log": {
+      "path": "results/apex_workbench_v02d_reporting_20261029/campaign.stdout.log",
+      "sha256": "d35a2e0f84548a5274c3035d1f445d22555144c7c621662b5933f15bd2ad01db",
+      "bytes": 208
+    },
+    "campaign.stderr.log": {
+      "path": "results/apex_workbench_v02d_reporting_20261029/campaign.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "campaign_exit.json": {
+      "path": "results/apex_workbench_v02d_reporting_20261029/campaign_exit.json",
+      "sha256": "3821db50bc363cae664e0b69d9badfbb81c2b7a4ee7937d32b9741ecfcbe34e3",
+      "bytes": 186
+    },
+    "assessment.json": {
+      "path": "results/apex_workbench_v02d_reporting_20261029/assessment.json",
+      "sha256": "fc9619e44acfb099f3d04ed534fb083b648bb651c9326259fde337ca8e8c0e4d",
+      "bytes": 99155
+    },
+    "observations.json": {
+      "path": "results/apex_workbench_v02d_reporting_20261029/observations.json",
+      "sha256": "dec9aef44552f29fa5840cda5ebe62bc9a4825eb40d04fab9ef16d83b2e83314",
+      "bytes": 1610
+    },
+    "preservation.json": {
+      "path": "results/apex_workbench_v02d_reporting_20261029/preservation.json",
+      "sha256": "7207d10adb270993f9f4ac1ea952a0fdb64051e6a657ecab727a4cee5869d162",
+      "bytes": 587
+    },
+    "post_execution_ownership.json": {
+      "path": "results/apex_workbench_v02d_reporting_20261029/post_execution_ownership.json",
+      "sha256": "c1ba2180af592df3b43b357366828f85afb3ed3cfb566aba92da9acd89e0de02",
+      "bytes": 192
+    },
+    "admission.json": {
+      "path": "results/apex_workbench_qualifications/v0_2_reviewed_20261029/admission.json",
+      "sha256": "a3a8b352dba2bd355502f7b95a14796de203de437e156faf751c6e1e6a19e65a",
+      "bytes": 10118
+    },
+    "progress.json": {
+      "path": "results/apex_workbench_qualifications/v0_2_reviewed_20261029/progress.json",
+      "sha256": "ce744d7fd7f1d9495528298cfc8ec14f35b063b3b9442730b8305a95c928dd51",
+      "bytes": 5935
+    },
+    "status.json": {
+      "path": "results/apex_workbench_qualifications/v0_2_reviewed_20261029/status.json",
+      "sha256": "40a2418d4a77979e373155e6af1019b0057fec5c4fc6a9e62208352cc33fbdf9",
+      "bytes": 128
+    },
+    "qualification/qualification.json": {
+      "path": "results/apex_workbench_qualifications/v0_2_reviewed_20261029/qualification/qualification.json",
+      "sha256": "f08ae323e86cdd03964e87b091aef660ac1568e1601e42c43e82dbc0f5e429c8",
+      "bytes": 36545
+    },
+    "qualification/commit.json": {
+      "path": "results/apex_workbench_qualifications/v0_2_reviewed_20261029/qualification/commit.json",
+      "sha256": "abb8d5e9c0646b4aae4fce380652694a770dbc61f3868e3e113d2eff9adb1a1a",
+      "bytes": 137
+    }
+  },
+  "formal_verification_executed": false,
+  "implementation_changed": false,
+  "scientific_cases_or_thresholds_changed": false,
+  "measurement_files_added_to_git": false,
+  "remaining_limits": [
+    "finite synthetic numerical qualification only",
+    "sampled model window only",
+    "quarter grid is a numerical reference, not physical truth",
+    "unmeasured parameters, unsaturated linear tires, provisional loads and ideal steering",
+    "no physical validation, actuator feasibility, continuous-time safety, hard-real-time or controller-capability conclusion"
+  ],
+  "next_gate": "Primary scientific review; formal Verification requires separate authorization"
+}

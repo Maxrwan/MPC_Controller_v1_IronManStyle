@@ -1,3 +1,47 @@
+# Current handoff — V0.2-D one-shot numerical qualification
+
+**V0.2_QUALIFICATION_COMPLETE_PENDING_SCIENTIFIC_REVIEW.** Recorded 29 October 2026.
+Exactly one authorized campaign completed: **17/17 distinct executions, 3,700 plant intervals,
+8.5 simulated seconds, exit 0**, no retries or supplementary trajectories. Reviewed source:
+`4897686e79c13757d5ef5b4373b44d4cab99b5bf`; clean execution checkout/review delivery:
+`6c6c169e483072c48866335aeb82439e24139920`, branch `codex/apex-workbench-v0-2-c`.
+The containing report commit changes documentation only; its exact SHA/URL is supplied after push.
+
+[Scientific qualification report and tables](apex_workbench_v0_2_d/QUALIFICATION.md),
+[machine report/evidence bindings](apex_workbench_v0_2_d/execution_record.json).
+
+All five finite cases pass all componentwise convergence/contraction checks on the accepted three
+grids and remain inside the accepted sampled window. All four BASE/treatment pairs satisfy the
+0.0001 rad/s yaw-separation requirement; observed peaks [rad/s]: Iz 0.008904428222327412,
+steering 0.03336394365255693, Cf 0.010852414470119351, Cr 0.006275476007459452.
+The inertia signal is transient despite nearly equal terminal yaw rates. No pair was inconclusive.
+Both the fresh BASE repeat and independent canonical reference have byte-identical state/control/
+diagnostic CSVs. The published record and all referenced artifacts were revalidated; the production
+comparison reader classifies all four as qualified synthetic comparisons. Original run summaries
+remain immutable and distinct from the later qualification assessment.
+
+Exact raw evidence: `results/apex_workbench_qualifications/v0_2_reviewed_20261029/`;
+published `qualification/qualification.json` and `qualification/commit.json` under that directory.
+Preflight, sole command/stdout/stderr/exit, consumption and preservation records:
+`results/apex_workbench_v02d_reporting_20261029/`. The machine report records all 17 execution
+identities and manifest hashes. Generated measurement/qualification files remain ignored, outside Git.
+
+All 56 reviewed source hashes and accepted contracts match. No implementation, canonical equation,
+parameter, threshold, filter, frozen profile or historical evidence changed. All 951 preexisting
+tracked files were byte-identical immediately after execution; all 27,782 historical result files
+retain size/mtime and remain present. This is not a historical content-rehash/backup claim.
+Preflight sandbox/process-inspection and Accelerate enumeration reporting issues are retained;
+neither launched a campaign nor changed dependencies or safeguards. Native API reported SINGLE;
+empty threadpool enumeration does not measure exact active BLAS threads. All owners terminated and
+the execution lease is released. No regression/model reruns or formal Verification were performed.
+
+**Stop for Primary scientific review.** This is finite synthetic numerical/comparison qualification
+with sampled interpretation, not physical validation, continuous-time safety, actuator feasibility,
+hard-real-time performance or controller capability. No further execution, formal Verification or
+V0.3 is authorized by completion of this one-shot task.
+
+---
+
 # Current handoff — V0.2-C qualification preparation delivery
 
 **V0.2_QUALIFICATION_READY_PENDING_EXECUTION_AUTHORIZATION.** Recorded 29 October 2026.
