@@ -1,3 +1,50 @@
+# Current handoff — V0.2-E formal functional Verification
+
+**V0.2_VERIFIED_PENDING_USER_ACCEPTANCE.** Recorded 29 October 2026. **PASS.**
+Verified exact source `4897686e79c13757d5ef5b4373b44d4cab99b5bf`; tested clean documentation-only
+descendant / accepted qualification report `cd4da167166af63d758f715ede166a0e6a73b76a`.
+Branch `codex/apex-workbench-v0-2-c`. Contract `0cc7e4f626311aec05977bd3beda40c346fa4214` unchanged.
+The containing documentation commit leaves implementation/test identities intact; its exact SHA/URL
+is supplied after push. Primary explicitly accepted the finite V0.2-D qualification in this task.
+
+[Formal Verification report](reviews/apex_workbench_v0_2_e/VERIFICATION.md),
+[machine evidence record](reviews/apex_workbench_v0_2_e/verification_record.json).
+
+One fresh combined invocation of `tests/` and `tools/apex_workbench/tests/`: **1,016 passed,
+17 skipped, 0 failures/errors**, exit 0, 673.24 s. Split: 777 repository passes and 239 Workbench
+passes. All 17 skips are the separately gated G2 protocol; no gate variables were enabled. The
+run completed at 100%; no inherited or combined-across-runs count is used. V0.1 original-entry-point
+and owned-worker parity for both accepted modes, V0.2 independent canonical-runner parity, lifecycle,
+SIGKILL lease recovery, cancellation, integrity, controlled comparison and invalidation tests pass.
+
+The actual accepted qualification was consumed read-only, not rerun: all 17 source manifests and
+artifacts remain valid; all five cases retain numerical qualification. All four real pairs remain
+controlled candidates without the record and become qualified synthetic comparisons when it is
+selected. Four disposable checksum/missing-artifact/source/environment fault probes reject. Original
+evidence stayed unchanged. The launcher passed actual default-port startup from an unrelated cwd,
+server reuse, HTTP/browser-opener availability, owned shutdown and bounded error-branch checks.
+
+Raw evidence: `results/apex_workbench_v02e_verification_20261029/`, including exact commands,
+suite log/JUnit, environment/source/test hashes, qualification audit, launcher logs and preservation.
+Only authorized report/handoff documentation is delivered; generated files remain ignored.
+All 56 reviewed source hashes match. All 953 preexisting tracked files were byte-identical after
+functional checks; all 28,139 historical result files retain size/mtime and remain present. No
+canonical, configuration, dependency, threshold, frozen-profile or historical evidence change.
+This is not a complete historical content rehash/backup claim. All verified workers/owned server
+terminated, execution lease released and port 8501 available.
+
+**No unresolved blocking finding. Recommend final user acceptance within the accepted finite
+synthetic scope.** Native Accelerate SINGLE is API-verified; exact active native thread counts are
+not observed. Resource guards remain sampled/soft. Launcher executable/server/opener behavior was
+observed; no human visual/Finder acceptance is claimed. Synthetic/linear/ideal-steering and sampled
+interpretation limits persist; no physical, hardware, continuous-time safety, actuator-feasibility,
+hard-real-time or unsupported-controller conclusion follows. No qualification or frozen research
+campaign was repeated. User acceptance and V0.3 remain separately controlled decisions.
+
+**Stop: V0.2_VERIFIED_PENDING_USER_ACCEPTANCE.**
+
+---
+
 # Current handoff — V0.2-D one-shot numerical qualification
 
 **V0.2_QUALIFICATION_COMPLETE_PENDING_SCIENTIFIC_REVIEW.** Recorded 29 October 2026.
