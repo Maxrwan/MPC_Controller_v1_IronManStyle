@@ -1,0 +1,34 @@
+{
+  "schema": "review-admission-only/1",
+  "revision": "4897686e79c13757d5ef5b4373b44d4cab99b5bf",
+  "results": [
+    {
+      "mode": "unique",
+      "reached_calculation_sentinel": true,
+      "identity_rejected": false
+    },
+    {
+      "mode": "duplicate_run",
+      "reached_calculation_sentinel": false,
+      "identity_rejected": true
+    },
+    {
+      "mode": "duplicate_worker",
+      "reached_calculation_sentinel": false,
+      "identity_rejected": true
+    },
+    {
+      "mode": "duplicate_manifest",
+      "reached_calculation_sentinel": false,
+      "identity_rejected": true
+    },
+    {
+      "mode": "pid_reuse_new_birth",
+      "reached_calculation_sentinel": true,
+      "identity_rejected": false
+    }
+  ],
+  "calculation_completed": false,
+  "qualification_document_created": false,
+  "new_model_trajectories": 0
+}

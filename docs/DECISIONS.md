@@ -1306,6 +1306,8 @@ new integrator/controller or automatic tuning/retry mechanism is introduced.
 Calculate the accepted shared-time convergence/native-window/yaw criteria independently of evidence
 publication. Fixture arithmetic has no evidence authority. A real qualification document references
 17 distinct verified source-run manifests, exact repeat/reference exports, source/environment and
-unchanged criteria. Numerical case status, interpretation filters, excitation, pair/family decisions
+unchanged criteria. Distinct captured run IDs, verified worker PID/birth identities and manifest
+hashes are required independently of path names; copied directories cannot supply fresh executions.
+Numerical case status, interpretation filters, excitation, pair/family decisions
 and physical validity remain distinct. Recheck artifacts/source identities and applicability without
 rewriting source runs. See [V0.2-C WORK](apex_workbench_v0_2_c/WORK.md).

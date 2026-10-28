@@ -1,0 +1,397 @@
+{
+  "schema": "apex-workbench-v02c-work/1",
+  "status": "V0.2_QUALIFICATION_READY_PENDING_EXECUTION_AUTHORIZATION",
+  "recorded_date": "2026-10-29",
+  "base_review_delivery": "4bac7b49f623c13ee90ab7ff79376f3f5ca6b4ec",
+  "original_implementation": "895ecddf55754e94d5dbf53d5aca01f91f013a05",
+  "accepted_scientific_contract": "0cc7e4f626311aec05977bd3beda40c346fa4214",
+  "reviewed_source_revision": "4897686e79c13757d5ef5b4373b44d4cab99b5bf",
+  "branch": "codex/apex-workbench-v0-2-c",
+  "delivery_revision": "containing documentation commit; exact SHA supplied after push",
+  "source_sha256": {
+    "configs/vehicles/synthetic_dynamic_test_vehicle.yaml": "df1b853d21a1d3efaf858f7e58401151f2c5237793c40e16bb4189ed651f9cf3",
+    "scripts/run_dynamic_bicycle_demo.py": "9aa8bef1f05186d6653752becadcfb72d5698a82355606a7847be6d69171baa3",
+    "scripts/threading_study/config.py": "a50a73015c3ab739c35aa1fd715840364974213bf1c12666269b250264556fc3",
+    "src/apex/__init__.py": "2dd176027291d40716c8c828e8a9994afbf247d22bea1426fac52c259cbbc33b",
+    "src/apex/config.py": "40227b4ed2a38e30ecfb9acc7f308cf9db31b54dc813bb28850b25800877e0ad",
+    "src/apex/state.py": "b2b16555f8ae83f041ee821906305accc56010b643bb3fa514f90a8a17e66862",
+    "src/apex/control/__init__.py": "12878dbd9e38ae415462ea0eccbfc315387856736233a7ea4b2f840b1a53e96a",
+    "src/apex/control/base.py": "119b6cb4235421b9728838b47e4913158402997957956a473009c43435acb870",
+    "src/apex/coordinates/__init__.py": "1c443357b2a8e949a157c09b6fb3b50c170d98c908da8c0e8ebbd7e25f919555",
+    "src/apex/coordinates/angles.py": "2ed31ef5153e42083e727efc10b7875277f7f2641a5e16e9790e3f6073b33d05",
+    "src/apex/coordinates/frenet.py": "5fd10e1648847071561086f394914f6812422b0ad04f81ef2a517968334e17bd",
+    "src/apex/models/__init__.py": "d530a05e192b5d6c8b815c3edb2599a88bc35acac91c83280cd8e22d31a1d0d2",
+    "src/apex/models/base.py": "3bd8085e89978410bbe8581903b6280bd84f1a1ca956f1bb62f974462df7c525",
+    "src/apex/models/constants.py": "1b485d45ad2d74aaa256c1aab00157d7c610db0bea9f744d75376b8e816534be",
+    "src/apex/models/errors.py": "81baff4659f36bb6aea91e6a27327260b4d69e23de22963de6832199e7f1f916",
+    "src/apex/models/frenet.py": "a8c6190bd6be9f2a284c83b5c31e5d6cb2d8ef1f791b49bbebdd3c110a36ee96",
+    "src/apex/models/integration.py": "02009193fb2d25e83560a2da37f216048dfa3ededcb3de8616b90e411473ad51",
+    "src/apex/models/vehicle/__init__.py": "ab6dddf29c21f198a84b17e28f3dcb8b4b1e6543e0ce5533d4166a062d549a9f",
+    "src/apex/models/vehicle/parameters.py": "5cfce45b4a87577b17193b44cfa24f11c8e29c93082564a596f7ddf4e797fbb2",
+    "src/apex/models/vehicle/dynamic_bicycle.py": "c93b674924eed24f9641ebe263863b3422cba5eb1665c0d93dd6cd00bdfd462f",
+    "src/apex/models/vehicle/load_transfer.py": "e96c74199a7d8147866529cb4ecfffbfce74815cb57accb52ea54b407b873be1",
+    "src/apex/models/vehicle/force_allocation.py": "e77d8c87efdaa9c008ec45385ad4dad326cfa2e003798c08e29a5fb9a17647f8",
+    "src/apex/models/tire/__init__.py": "000e7ac305a2f5bb610e6ee9e066a6f8d82a0ac335c2b9253d292a2c3c96907f",
+    "src/apex/models/tire/base.py": "da1b635a6da1de465ac7af61dcf3cad8d23ef406eb6dd7f45dad825bc3f60ccf",
+    "src/apex/models/tire/config.py": "73f7e47ae5768a6961a8ca65aa40a5da7ecd77e412ac6995a459e969daa83877",
+    "src/apex/models/tire/linear.py": "6ae5888b0000cd57a88788463977be1a90fa8e1f6a332f131c66623192ce9cf3",
+    "src/apex/models/tire/grip.py": "e91bab930ee0650578ede2964ef680f77663cfd34d26ab1682c232b34c6d8c90",
+    "src/apex/simulation/__init__.py": "84069322b2562012fcfd863d27f6fc88a0f2d5eaba3a4040f10e896cffc4a513",
+    "src/apex/simulation/runner.py": "99dd44020405dd121433637ccf43d53639451a2b7b595bed255555144802cb34",
+    "src/apex/simulation/timing.py": "1bcd5ac042dc761ff8ed83028d0dde372a1569a9549f84e7f92061e109fa968f",
+    "src/apex/track/__init__.py": "95dd539a129d605aa979952c68c75d633738d520fa66e06a491b5bfb2ef7907c",
+    "src/apex/track/base.py": "c15e48dfa2a08bfd57040c80b1280a6f56234503361a38cb3cda6cb35e93cca1",
+    "src/apex/track/centerline.py": "caf28a32f24198fbfd57a7d6a987822f9b4df88ff6b5f1bca5c1f57e2b79429f",
+    "src/apex/track/closed_track.py": "c14fb27c1a1182dec564a5a679832e67c6480fb382a15c05dd2c998b138a350e",
+    "src/apex/track/io.py": "ee2f5a27740684ddba2f1907c88e8893c6cf0c59150352d35845914d5fd30b65",
+    "src/apex/track/progress.py": "fef18ea7fe610cca1ff80f32acdecf5f756b6d26c1a47e47f0eb23b7ae8dc0d8",
+    "src/apex/track/synthetic.py": "1e7ed0900af9971d6c68ca810570b9177a97eb830361c580724870752f4744c0",
+    "tools/apex_workbench/__init__.py": "194595c8c9d46745693697c8417c2408fbe76e3254ae716f26b50c47f4723396",
+    "tools/apex_workbench/configuration.py": "39b33dcd20be80a188d532c33c3fe33561addff847d298beab626fa9a476dc02",
+    "tools/apex_workbench/jobs.py": "0e14fd1c56f76372677e6408c37f44713ca9af3b1d8b8f4c064f80bd1d23b170",
+    "tools/apex_workbench/worker.py": "065738dab95e685b61c9347c254aeb9e13b0cdbcc605087752d0b6b21601b64e",
+    "tools/apex_workbench/lifecycle.py": "794bd5ada88048a402a2d0946942ec9962e52b0caf2e72d7a8a3a0279f51f05a",
+    "tools/apex_workbench/storage.py": "9486d6339b6dc50d2d4fe9030dfb71940e11c8ce283e838e7614fed80eaeb3cb",
+    "tools/apex_workbench/lab_configuration.py": "41e937fbf8d5f4fb239f2d0a99d39f94e1966f59787a7b4ae1f7f4015ce89abc",
+    "tools/apex_workbench/lab_sources.py": "7b5bef6d440f8a16004de9b4539a43c28dc13b203d7ff2a8a01eca1b74895a84",
+    "tools/apex_workbench/dynamic_lab.py": "65e78ea7a982421837e96ea3bc5b8748ae1e1c6e0e22493fe8ae99df8d67063d",
+    "tools/apex_workbench/lab_reporting.py": "47ecc170f80fb06b99b5ef9a78d70749a22da547c52b4b671eba37eca387b0c2",
+    "tools/apex_workbench/lab_evidence.py": "a3ea1046530bbe13461c87529155d167c83681008c9298268be9167b00dbed73",
+    "tools/apex_workbench/lab_comparison.py": "ae792cb84bd0a10dec62160350f4a79e1397098b3267b2f0f7db9285f798e0cb",
+    "tools/apex_workbench/comparison.py": "5e54bd0d75e830d54c4060c19aa7db725b6402af201aba314fd8e1bc42e14b45",
+    "tools/apex_workbench/plots.py": "091359f6d07fa46105c7575627dc5862203fd2279d77ffa7c0c73b0cca5cc48c",
+    "tools/apex_workbench/app.py": "ea572914ab10d824c93002d56831492fccf45a839520754a8ff4f3fe37b4eea8",
+    "tools/apex_workbench/qualification_math.py": "4511601c8291ea40c68b7fe91763f3251e9dcb195bd373c951ec7a47a5977fbf",
+    "tools/apex_workbench/qualification.py": "ebbde4064962fe4dac9d958860fc271815fd67c804c0d2aff7c5031a2ef577cd",
+    "tools/apex_workbench/qualification_campaign.py": "a191c1cf2e34831755c9d48d71767935c3b1f67bb085f04b3539d22ff7398ac9",
+    "tools/apex_workbench/qualification_reference.py": "a93797ffd5bdf974078c032a55367849a257d92138e1e2630e89bcb8168e3826"
+  },
+  "closure": {
+    "C1": "PASS",
+    "C2": "PASS",
+    "C3": "PASS",
+    "Q1": "PASS after one bounded evidence correction"
+  },
+  "test_command_prefix": "VECLIB_MAXIMUM_THREADS=1 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 PYTHONPATH=.:scripts:src tools/apex_workbench/.venv/bin/python -c 'from threading_study.config import configure_accelerate; configure_accelerate(1); import sys, pytest; raise SystemExit(pytest.main(sys.argv[1:]))'",
+  "primary_work_test_invocations": [
+    {
+      "label": "focused-1",
+      "passed": 224,
+      "failed": 0,
+      "exit_code": 0,
+      "selection": "tools/apex_workbench/tests",
+      "basetemp": "results/apex_workbench_v02c_work_20261029/focused-1",
+      "log": {
+        "path": "results/apex_workbench_v02c_work_20261029/focused-1.log",
+        "sha256": "0032a882771dff4bed36ef7db84fb7640c4f6ce79b0c7aeabf07eed09e26aea1",
+        "bytes": 1019
+      },
+      "scope_note": "initial full Workbench selection before final affected hardening"
+    },
+    {
+      "label": "affected-1",
+      "passed": 149,
+      "failed": 0,
+      "exit_code": 0,
+      "selection": "tools/apex_workbench/tests/test_dynamic_lab.py tools/apex_workbench/tests/test_lab_closure.py tools/apex_workbench/tests/test_qualification.py",
+      "basetemp": "results/apex_workbench_v02c_work_20261029/affected-1",
+      "log": {
+        "path": "results/apex_workbench_v02c_work_20261029/affected-1.log",
+        "sha256": "e2812bacb6e7321be1b80350451e4270d66cb08a1ab050b6f38b6a8e157e8021",
+        "bytes": 261
+      },
+      "scope_note": "affected lab/reader/evaluator after binding hardening"
+    },
+    {
+      "label": "affected-2",
+      "passed": 148,
+      "failed": 1,
+      "exit_code": 1,
+      "selection": "tools/apex_workbench/tests/test_dynamic_lab.py tools/apex_workbench/tests/test_lab_closure.py tools/apex_workbench/tests/test_qualification.py",
+      "basetemp": "results/apex_workbench_v02c_work_20261029/affected-2",
+      "log": {
+        "path": "results/apex_workbench_v02c_work_20261029/affected-2.log",
+        "sha256": "eee9ec167ee29c2aa0ef4f6ce72d6fa0ec2cfe007b8ea8957d796f4f81dc2f05",
+        "bytes": 1429
+      },
+      "scope_note": "per-axis assessment update; fixture changed only nominal yaw and correctly failed numerics"
+    },
+    {
+      "label": "literal-fix",
+      "passed": 1,
+      "failed": 0,
+      "exit_code": 0,
+      "selection": "tools/apex_workbench/tests/test_qualification.py::test_corridor_coverage_and_insufficient_excitation",
+      "basetemp": null,
+      "log": {
+        "path": "results/apex_workbench_v02c_work_20261029/literal-fix.log",
+        "sha256": "5b19689a97d618d5cdfce632de67285a8efa3c57100a80350a5bb7ca9e05ae34",
+        "bytes": 98
+      },
+      "scope_note": "corrected fixture on all three grids; production criteria unchanged"
+    },
+    {
+      "label": "review-q1-fix",
+      "passed": 40,
+      "failed": 0,
+      "exit_code": 0,
+      "selection": "tools/apex_workbench/tests/test_qualification.py",
+      "basetemp": "results/apex_workbench_v02c_work_20261029/review-q1-fix",
+      "log": {
+        "path": "results/apex_workbench_v02c_work_20261029/review-q1-fix.log",
+        "sha256": "4a0574e966a6b17958cf515d6c366366095b39d92ddd7595b1855a2a49d844c4",
+        "bytes": 779
+      },
+      "scope_note": "all affected qualification checks after Q1 correction; two fresh nominal software smokes, no campaign"
+    }
+  ],
+  "test_count_policy": "Separate invocations, no merged total; no old result claimed newly executed. Prior passes retained only for unchanged behavior; final changed evaluator covered by40passes.",
+  "separate_context_review": {
+    "fresh_context": true,
+    "agent": "/root/v02c_review_1",
+    "review_iterations": 2,
+    "substantive_correction_iterations": 1,
+    "human_approval_claimed": false,
+    "iterations": [
+      {
+        "iteration": 1,
+        "source_revision": "a6917a00c2ac48e69d3a28ca4e7c9fbf6d964052",
+        "decision": "FAIL",
+        "report": {
+          "path": "docs/reviews/apex_workbench_v0_2_c/iteration_1/REVIEW.md",
+          "sha256": "ba96fef71d671ee57a1877c80da3f113a0964e57a4c34264cc8f8a6d2722cce9",
+          "bytes": 9613
+        },
+        "record": {
+          "path": "docs/reviews/apex_workbench_v0_2_c/iteration_1/review_record.json",
+          "sha256": "1f722231a841ca1018606a1f37820ee6526e4c00865f88fccf40f5cec547ee8f",
+          "bytes": 2385
+        },
+        "raw_evidence": "results/apex_workbench_v02c_work_20261029/review-1",
+        "fresh_tests": {
+          "passed": 99,
+          "deselected": 2,
+          "exit": 0,
+          "worker_fixture": "retained_copy_override"
+        }
+      },
+      {
+        "iteration": 2,
+        "source_revision": "4897686e79c13757d5ef5b4373b44d4cab99b5bf",
+        "decision": "PASS",
+        "report": {
+          "path": "docs/reviews/apex_workbench_v0_2_c/iteration_2/REVIEW.md",
+          "sha256": "9a0ac3a29c9cf9d2999f34960dfa4131e469451e6e391f40446e4c546b9044de",
+          "bytes": 6873
+        },
+        "record": {
+          "path": "docs/reviews/apex_workbench_v0_2_c/iteration_2/review_record.json",
+          "sha256": "2f1adea7ff3b636191e2e41854144f72041137c6a766d96eaf928a332c0217bc",
+          "bytes": 2129
+        },
+        "raw_evidence": "results/apex_workbench_v02c_work_20261029/review-2",
+        "fresh_tests": {
+          "passed": 40,
+          "deselected": 0,
+          "exit": 0,
+          "worker_fixture": "retained_copy_override"
+        }
+      }
+    ]
+  },
+  "preservation": {
+    "path": "results/apex_workbench_v02c_work_20261029/preservation-corrected.json",
+    "sha256": "57af47fbf1e75ff631e27be69ae1cc4780b9de09294cc3a0e670097ee057b5f7",
+    "bytes": 1069
+  },
+  "static_readiness_first_candidate": {
+    "path": "results/apex_workbench_v02c_work_20261029/static-readiness.json",
+    "sha256": "bdb3edb2a9180a507a45862cc59ed2aa377ce105948e9a52b59cf9ffeef3b145",
+    "bytes": 4722
+  },
+  "final_required_sources_match_reviewed_revision": true,
+  "fixed_campaign_plan": {
+    "schema": "apex-vdl-campaign-plan/1",
+    "protocol": "apex-vdl-provisional-qualification/1",
+    "execution_count": 17,
+    "plant_intervals": 3700,
+    "aggregate_simulation_s": 8.5,
+    "duration_per_execution_s": 0.5,
+    "slots": [
+      {
+        "slot": "VDL1_BASE/nominal",
+        "case_id": "VDL1_BASE",
+        "grid_id": "nominal",
+        "dt_s": 0.005,
+        "steps": 100,
+        "onset_tick": 20,
+        "role": "adapter"
+      },
+      {
+        "slot": "VDL1_BASE/half",
+        "case_id": "VDL1_BASE",
+        "grid_id": "half",
+        "dt_s": 0.0025,
+        "steps": 200,
+        "onset_tick": 40,
+        "role": "adapter"
+      },
+      {
+        "slot": "VDL1_BASE/quarter",
+        "case_id": "VDL1_BASE",
+        "grid_id": "quarter",
+        "dt_s": 0.00125,
+        "steps": 400,
+        "onset_tick": 80,
+        "role": "adapter"
+      },
+      {
+        "slot": "VDL1_IZ_HIGH/nominal",
+        "case_id": "VDL1_IZ_HIGH",
+        "grid_id": "nominal",
+        "dt_s": 0.005,
+        "steps": 100,
+        "onset_tick": 20,
+        "role": "adapter"
+      },
+      {
+        "slot": "VDL1_IZ_HIGH/half",
+        "case_id": "VDL1_IZ_HIGH",
+        "grid_id": "half",
+        "dt_s": 0.0025,
+        "steps": 200,
+        "onset_tick": 40,
+        "role": "adapter"
+      },
+      {
+        "slot": "VDL1_IZ_HIGH/quarter",
+        "case_id": "VDL1_IZ_HIGH",
+        "grid_id": "quarter",
+        "dt_s": 0.00125,
+        "steps": 400,
+        "onset_tick": 80,
+        "role": "adapter"
+      },
+      {
+        "slot": "VDL1_STEER_HIGH/nominal",
+        "case_id": "VDL1_STEER_HIGH",
+        "grid_id": "nominal",
+        "dt_s": 0.005,
+        "steps": 100,
+        "onset_tick": 20,
+        "role": "adapter"
+      },
+      {
+        "slot": "VDL1_STEER_HIGH/half",
+        "case_id": "VDL1_STEER_HIGH",
+        "grid_id": "half",
+        "dt_s": 0.0025,
+        "steps": 200,
+        "onset_tick": 40,
+        "role": "adapter"
+      },
+      {
+        "slot": "VDL1_STEER_HIGH/quarter",
+        "case_id": "VDL1_STEER_HIGH",
+        "grid_id": "quarter",
+        "dt_s": 0.00125,
+        "steps": 400,
+        "onset_tick": 80,
+        "role": "adapter"
+      },
+      {
+        "slot": "VDL1_CF_HIGH/nominal",
+        "case_id": "VDL1_CF_HIGH",
+        "grid_id": "nominal",
+        "dt_s": 0.005,
+        "steps": 100,
+        "onset_tick": 20,
+        "role": "adapter"
+      },
+      {
+        "slot": "VDL1_CF_HIGH/half",
+        "case_id": "VDL1_CF_HIGH",
+        "grid_id": "half",
+        "dt_s": 0.0025,
+        "steps": 200,
+        "onset_tick": 40,
+        "role": "adapter"
+      },
+      {
+        "slot": "VDL1_CF_HIGH/quarter",
+        "case_id": "VDL1_CF_HIGH",
+        "grid_id": "quarter",
+        "dt_s": 0.00125,
+        "steps": 400,
+        "onset_tick": 80,
+        "role": "adapter"
+      },
+      {
+        "slot": "VDL1_CR_HIGH/nominal",
+        "case_id": "VDL1_CR_HIGH",
+        "grid_id": "nominal",
+        "dt_s": 0.005,
+        "steps": 100,
+        "onset_tick": 20,
+        "role": "adapter"
+      },
+      {
+        "slot": "VDL1_CR_HIGH/half",
+        "case_id": "VDL1_CR_HIGH",
+        "grid_id": "half",
+        "dt_s": 0.0025,
+        "steps": 200,
+        "onset_tick": 40,
+        "role": "adapter"
+      },
+      {
+        "slot": "VDL1_CR_HIGH/quarter",
+        "case_id": "VDL1_CR_HIGH",
+        "grid_id": "quarter",
+        "dt_s": 0.00125,
+        "steps": 400,
+        "onset_tick": 80,
+        "role": "adapter"
+      },
+      {
+        "slot": "repeat",
+        "case_id": "VDL1_BASE",
+        "grid_id": "nominal",
+        "dt_s": 0.005,
+        "steps": 100,
+        "onset_tick": 20,
+        "role": "adapter"
+      },
+      {
+        "slot": "reference",
+        "case_id": "VDL1_BASE",
+        "grid_id": "nominal",
+        "dt_s": 0.005,
+        "steps": 100,
+        "onset_tick": 20,
+        "role": "canonical_reference"
+      }
+    ],
+    "execution_authorized_by_plan": false
+  },
+  "plan_evidence": {
+    "path": "results/apex_workbench_v02c_work_20261029/qualification-plan.json",
+    "sha256": "dde98cbf1213551d8ec386cf26b1211f44ca939c097b4beea35b272544a4b87a",
+    "bytes": 3658
+  },
+  "real_qualification_campaign_executed": false,
+  "real_qualification_records_created": 0,
+  "formal_verification_executed": false,
+  "canonical_models_or_original_scripts_modified": false,
+  "accepted_cases_or_thresholds_modified": false,
+  "launcher_modified": false,
+  "historical_evidence_modified": false,
+  "execution_command_document": "docs/apex_workbench_v0_2_c/EXECUTION_PROPOSAL.md",
+  "pending": [
+    "separate scientific execution authorization",
+    "actual17trajectoryevidence and positive publication/applicability",
+    "convergence/repeatability/response-separation assessment",
+    "formal Verification if separately authorized"
+  ],
+  "physical_validity": "not_established"
+}

@@ -5,7 +5,7 @@ See [closure, software tests and review stage](../../docs/apex_workbench_v0_2_c/
 The campaign remains **pending separate execution authorization**. Preparing or printing its plan
 does not qualify the lab or establish physical validity.
 
-**WORK_COMPLETE_PENDING_REVIEW.** Adds the finite `dynamic_lab` adapter under the accepted
+**V0.2-B historical WORK:** Adds the finite `dynamic_lab` adapter under the accepted
 [V0.2-A2 contract](../../docs/apex_workbench_v0_2_a/PROPOSED_CASES.md) at
 `0cc7e4f626311aec05977bd3beda40c346fa4214`. See the
 [implementation evidence, focused tests and remaining gates](../../docs/apex_workbench_v0_2_b/WORK.md).
@@ -98,9 +98,9 @@ Parameters are synthetic, never measured or identified APEX data. Linear tires r
 Lab comparisons allow BASE against one of the four treatments in either order. They show a
 **Controlled candidate** only after checking full resolved snapshots, actual applied controls,
 initial state, schemas/units, source identity, environment, geometry and evidence. Other verified
-pairs are illustrative; corrupt/incomplete records are invalid. The UI never promotes completed
-runs into a qualified synthetic comparison. Observed yaw separation is displayed with numerical
-qualification still unavailable, even when it exceeds the provisional minimum signal floor.
+pairs are illustrative; corrupt/incomplete records are invalid. Without an explicitly selected valid
+qualification record, completed runs remain unqualified. Observed yaw separation alone cannot confer
+qualification, even when it exceeds the provisional minimum signal floor.
 After a separately authorized campaign, an optional qualification record can be selected. It is
 revalidated against all referenced runs, source/environment and exact finite-case exports before
 showing numerical case status and pair eligibility. Sampled interpretation, excitation and physical

@@ -1,0 +1,8 @@
+........................................                                 [100%]
+============================= slowest 5 durations ==============================
+0.06s call     tools/apex_workbench/tests/test_qualification.py::test_bound_manifest_and_source_changes_invalidate
+0.03s call     tools/apex_workbench/tests/test_qualification.py::test_only_heading_wraps_and_shared_times_use_no_interpolation
+0.03s call     tools/apex_workbench/tests/test_qualification.py::test_exact_directory_copy_is_not_a_second_execution
+0.03s call     tools/apex_workbench/tests/test_qualification.py::test_different_recorded_environment_is_not_identical
+0.02s call     tools/apex_workbench/tests/test_qualification.py::test_changed_nonplotted_referenced_artifact_invalidates
+40 passed in 0.38s

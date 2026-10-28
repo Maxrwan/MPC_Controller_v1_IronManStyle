@@ -1,33 +1,47 @@
-# Current handoff — V0.2-C corrective and qualification-preparation candidate
+# Current handoff — V0.2-C qualification preparation delivery
 
-**WORK_COMPLETE_PENDING_REVIEW.** Recorded 29 October 2026. Base/review delivery:
-`4bac7b49f623c13ee90ab7ff79376f3f5ca6b4ec`; unchanged contract:
-`0cc7e4f626311aec05977bd3beda40c346fa4214`. Branch `codex/apex-workbench-v0-2-c`.
-[C1–C3 closure and prepared mechanism](apex_workbench_v0_2_c/WORK.md). Exact committed source candidate
-is supplied after commit for a separate-context review; readiness is not self-certified.
+**V0.2_QUALIFICATION_READY_PENDING_EXECUTION_AUTHORIZATION.** Recorded 29 October 2026.
+Independent software Engineering Review: **PASS** on exact source
+`4897686e79c13757d5ef5b4373b44d4cab99b5bf`, branch `codex/apex-workbench-v0-2-c`.
+Unchanged accepted contract: `0cc7e4f626311aec05977bd3beda40c346fa4214`.
+The containing documentation delivery leaves all reviewed source hashes unchanged; its exact SHA/URL
+is supplied after push. This is not human approval, numerical qualification or formal Verification.
 
-Review iteration 1 of `a6917a00c2ac48e69d3a28ca4e7c9fbf6d964052` passed C1–C3 but failed Q1:
-17 paths could contain a copied execution in place of a fresh repeat. The failed report/probes are
-preserved in `docs/reviews/apex_workbench_v0_2_c/iteration_1/`. The bounded correction now rejects
-duplicate run IDs, verified worker PID/birth identities and manifest hashes before evaluation;
-40 affected qualification tests pass. The corrected exact commit awaits independent re-review.
+[C1–C3 closure, implementation and limits](apex_workbench_v0_2_c/WORK.md),
+[machine evidence record](apex_workbench_v0_2_c/work_record.json),
+[final independent review](reviews/apex_workbench_v0_2_c/iteration_2/REVIEW.md),
+[unexecuted exact campaign command](apex_workbench_v0_2_c/EXECUTION_PROPOSAL.md).
 
-Implemented complete versioned source inventory; diagnostic/input/native-track alias checks; independent
-integration coverage versus process outcome; explicit qualification-only grids; fixed17-slot future
-coordinator; literal reference; pure accepted-criteria evaluator; source-manifest-bound qualification
-records and conservative applicability checks. No accepted case/threshold/physics changes. V0.1 and
-launcher remain preserved. One half-grid rate smoke is explicitly software-test-only; no scientific
-qualification campaign or real qualification record was produced. Fixture calculations have no
-evidence authority. Logs and failed evidence are retained under `results/apex_workbench_v02c_work_20261029/`.
+C1–C3 pass: complete versioned source identity; applied-input/native-track alias consistency;
+independent integration coverage/process outcome/evidence/comparison semantics. Qualification-only
+refinements, integer ticks, pure accepted-criteria evaluation, manifest-bound publication/applicability
+and the fixed serialized 17-slot coordinator are prepared. No case, criterion or canonical equation
+changed. Scientific qualification evidence cannot be created from software-test/interactive fixtures.
 
-Focused results:224 initial Workbench passes;149 affected passes after binding hardening;148 passes
-plus one inconsistent mathematical fixture, then1 passing correction of that fixture. Production
-criteria were unchanged. The independent review must inspect exact candidate/source identity and
-reproduce relevant checks before final readiness. No full-suite Verification, unapproved controller,
-hardware or frozen research campaign ran. Historical review and source evidence are preserved.
+The first independent review failed Q1 on candidate `a6917a00c2ac48e69d3a28ca4e7c9fbf6d964052`:
+17 paths could contain a copied execution. The bounded correction rejects duplicate captured run IDs,
+verified worker PID/birth identities and manifests before calculations. The original failed review,
+probe and raw evidence are preserved. One substantive correction and two exact-SHA reviews were used.
+The separate reviewer ran 99 reader/calculation checks on the first candidate, then 40 affected tests
+and five admission probes on the corrected source, with no new reviewer workers or qualification data.
 
-**Stop before scientific execution.** This candidate next receives the user-authorized bounded review
-loop; final status/command will be recorded after that review, never by launching the campaign here.
+WORK results remain separate: 224 initial Workbench passes; 149 affected passes; then 148 passes/one
+inconsistent mathematical fixture, followed by its one passing correction; final Q1 checks: 40 passed.
+The fixture correction changed no criterion. Reviewer harness-only setup errors are retained separately.
+Raw logs/artifacts: `results/apex_workbench_v02c_work_20261029/`. No merged clean-total claim is made.
+V0.1 original-entry-point parity and lifecycle/integrity passes remain scoped WORK evidence.
+
+All 56 required source paths match reviewed Git blobs. Canonical source/scripts/configs/core tests,
+accepted A2 contracts, dependencies, launcher and old review evidence remain unchanged. All 23,278
+preexisting result files retain size/mtime; no historical content-rehash/backup claim follows.
+No real qualification record, all-case/grid campaign, full Verification, new physics/controller or
+hardware work ran. Real positive publication/applicability, numerical convergence, repeatability and
+yaw separation remain for the separately authorized campaign. Physical validity is not established.
+
+**Stop before scientific execution.** Next gate: separate authorization of the documented fixed
+17-trajectory numerical qualification command against the exact reviewed source. Retain negative,
+partial and inconclusive evidence; no tuning, automatic retry or extra sweeps. Formal Verification
+requires its own authorization.
 
 ---
 
