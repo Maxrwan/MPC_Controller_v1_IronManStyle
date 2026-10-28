@@ -1,3 +1,30 @@
+# Current handoff — V0.2-C corrective and qualification-preparation candidate
+
+**WORK_COMPLETE_PENDING_REVIEW.** Recorded 29 October 2026. Base/review delivery:
+`4bac7b49f623c13ee90ab7ff79376f3f5ca6b4ec`; unchanged contract:
+`0cc7e4f626311aec05977bd3beda40c346fa4214`. Branch `codex/apex-workbench-v0-2-c`.
+[C1–C3 closure and prepared mechanism](apex_workbench_v0_2_c/WORK.md). Exact committed source candidate
+is supplied after commit for a separate-context review; readiness is not self-certified.
+
+Implemented complete versioned source inventory; diagnostic/input/native-track alias checks; independent
+integration coverage versus process outcome; explicit qualification-only grids; fixed17-slot future
+coordinator; literal reference; pure accepted-criteria evaluator; source-manifest-bound qualification
+records and conservative applicability checks. No accepted case/threshold/physics changes. V0.1 and
+launcher remain preserved. One half-grid rate smoke is explicitly software-test-only; no scientific
+qualification campaign or real qualification record was produced. Fixture calculations have no
+evidence authority. Logs and failed evidence are retained under `results/apex_workbench_v02c_work_20261029/`.
+
+Focused results:224 initial Workbench passes;149 affected passes after binding hardening;148 passes
+plus one inconsistent mathematical fixture, then1 passing correction of that fixture. Production
+criteria were unchanged. The independent review must inspect exact candidate/source identity and
+reproduce relevant checks before final readiness. No full-suite Verification, unapproved controller,
+hardware or frozen research campaign ran. Historical review and source evidence are preserved.
+
+**Stop before scientific execution.** This candidate next receives the user-authorized bounded review
+loop; final status/command will be recorded after that review, never by launching the campaign here.
+
+---
+
 # Current handoff — V0.2-B independent Engineering Review
 
 Recorded 29 October 2026.

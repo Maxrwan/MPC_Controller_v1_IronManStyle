@@ -2,16 +2,16 @@
 
 import csv
 import io
-import re
 from math import isfinite
 
 from tools.apex_workbench import storage
-from tools.apex_workbench.lab_configuration import canonical_json, validate_resolved
+from tools.apex_workbench.lab_configuration import GRIDS, canonical_json, validate_resolved
 from tools.apex_workbench.lab_reporting import (
     DIAGNOSTIC_UNITS,
     OPTIONAL_DIAGNOSTIC_UNITS,
     summarize,
 )
+from tools.apex_workbench.lab_sources import validate as validate_inventory
 
 STATE_NAMES = ["vx", "vy", "r", "e_psi", "s_abs", "e_y"]
 STATE_COLUMNS = [
@@ -27,6 +27,8 @@ STATE_COLUMNS = [
     "a_cmd",
 ]
 CONTROL_COLUMNS = ["time", "delta", "a_cmd"]
+TRACK_COLUMNS = ["time", "track_s", "x", "y", "heading", "curvature", "left_width", "right_width"]
+TRACK_UNITS = dict(zip(TRACK_COLUMNS, ["s", "m", "m", "m", "rad", "1/m", "m", "m"]))
 
 
 def _rows(contents, columns, *, optional=()):
@@ -70,7 +72,7 @@ def read_record(directory):
         numerical = storage.artifact_json(directory, "numerical_environment.json")
         if (
             request.get("record_version") != 2
-            or request.get("adapter_version") != "0.2.0"
+            or request.get("adapter_version") != "0.2.1"
             or request.get("entry_point") != "tools/apex_workbench/dynamic_lab.py:execute"
             or request.get("controller") != "none (prescribed integer-tick ZOH input)"
             or provenance["model"] != resolved["composition"]["model"]
@@ -95,41 +97,25 @@ def read_record(directory):
             or not isinstance(numerical, dict)
             or not all(
                 key in numerical
-                for key in ("python", "platform", "threadpools", "thread_environment")
+                for key in (
+                    "python",
+                    "platform",
+                    "platform_details",
+                    "machine",
+                    "threadpools",
+                    "thread_environment",
+                )
             )
             or numerical["python"] != provenance["python_version"]
             or not isinstance(numerical["threadpools"], list)
             or not isinstance(numerical["thread_environment"], dict)
             or not numerical["platform"]
+            or not numerical["platform_details"]
+            or not numerical["machine"]
             or (numerical["platform"] == "darwin" and not numerical.get("native_control"))
         ):
             raise ValueError("Incomplete or inconsistent laboratory composition/numerical identity")
-        sources = request["provenance"]["source_sha256"]
-        required_sources = {
-            "src/apex/models/vehicle/dynamic_bicycle.py",
-            "src/apex/models/integration.py",
-            "src/apex/models/tire/linear.py",
-            "src/apex/models/vehicle/load_transfer.py",
-            "src/apex/models/vehicle/parameters.py",
-            "scripts/run_dynamic_bicycle_demo.py",
-            "configs/vehicles/synthetic_dynamic_test_vehicle.yaml",
-            *(
-                "tools/apex_workbench/" + name
-                for name in (
-                    "lab_configuration.py",
-                    "dynamic_lab.py",
-                    "lab_reporting.py",
-                    "lab_evidence.py",
-                    "lab_comparison.py",
-                    "configuration.py",
-                    "worker.py",
-                )
-            ),
-        }
-        if not required_sources <= set(sources) or any(
-            not isinstance(h, str) or not re.fullmatch("[0-9a-f]{64}", h) for h in sources.values()
-        ):
-            raise ValueError("Incomplete laboratory scientific source identity")
+        validate_inventory(request)
         validate_resolved(
             request["effective"], resolved, vehicle_yaml=request["provenance"]["vehicle_yaml"]
         )
@@ -139,7 +125,7 @@ def read_record(directory):
         units = {"time": "s", **DIAGNOSTIC_UNITS, **OPTIONAL_DIAGNOSTIC_UNITS}
         if (
             contract["schema"] != "apex-workbench-telemetry/1"
-            or contract["lab_schema"] != "apex-vdl-telemetry/1"
+            or contract["lab_schema"] != "apex-vdl-telemetry/2"
             or contract["state_names"] != STATE_NAMES
             or contract["state_units"] != ["m/s", "m/s", "rad/s", "rad", "m", "m"]
             or contract["control_names"] != ["delta", "a_cmd"]
@@ -156,6 +142,10 @@ def read_record(directory):
             or contract["row_semantics"]
             != ("state at tick k; input held over next interval; terminal informational")
             or contract["terminal_input"] != resolved["runner"]["terminal_input"]
+            or contract["track_columns"] != TRACK_COLUMNS
+            or contract["track_units"] != TRACK_UNITS
+            or contract["alias_equality"]
+            != "exact finite float64 values from the same canonical sampled state/input"
         ):
             raise ValueError("Unknown or inconsistent laboratory telemetry schema/units")
         states = _rows(storage.artifact_bytes(directory, "experiment/states.csv"), STATE_COLUMNS)
@@ -167,6 +157,9 @@ def read_record(directory):
             contract["diagnostic_columns"],
             optional=OPTIONAL_DIAGNOSTIC_UNITS,
         )
+        track = _rows(
+            storage.artifact_bytes(directory, "experiment/track_samples.csv"), TRACK_COLUMNS
+        )
         summary = storage.artifact_json(directory, "experiment/summary.json")
         if storage.artifact_json(directory, "worker_result.json") != summary:
             raise ValueError("Worker and runner summaries disagree")
@@ -174,41 +167,68 @@ def read_record(directory):
         if receipt["scientific_outcome"] != status["scientific_outcome"]:
             raise ValueError("Execution receipt and status disagree")
         complete = status["scientific_outcome"] == "completed"
-        if len(states) > 101 or (complete and (len(states), len(controls)) != (101, 100)):
+        h, steps, onset = GRIDS[request["effective"]["grid_id"]]
+        if len(states) > steps + 1 or (
+            summary["horizon_reached"] and (len(states), len(controls)) != (steps + 1, steps)
+        ):
             raise ValueError("Laboratory horizon/row count mismatch")
-        if len(diagnostics) != len(states) or len(controls) not in {len(states), len(states) - 1}:
+        if (
+            len(diagnostics) != len(states)
+            or len(track) != len(states)
+            or len(controls) not in {len(states), len(states) - 1}
+        ):
             raise ValueError("Laboratory diagnostic/control coverage mismatch")
         if [states[0][name] for name in STATE_NAMES] != resolved["initial_state"]:
             raise ValueError("Laboratory initial state mismatch")
         for k, row in enumerate(states):
-            if row["time"] != k * 0.005 or diagnostics[k]["time"] != row["time"]:
+            if (
+                row["time"] != k * h
+                or diagnostics[k]["time"] != row["time"]
+                or track[k]["time"] != row["time"]
+            ):
                 raise ValueError("Retained laboratory tick mismatch")
             if row["boundary_violation"] != (
                 not -row["right_width"] <= row["e_y"] <= row["left_width"]
             ):
                 raise ValueError("Retained corridor flag disagrees with state/widths")
-            delta = 0.0 if k < 20 else resolved["schedule"]["segments"][1]["delta_rad"]
+            delta = 0.0 if k < onset else resolved["schedule"]["segments"][1]["delta_rad"]
             if (row["delta"], row["a_cmd"]) != (delta, 0.0):
                 raise ValueError("State-row laboratory input mismatch")
             if k < len(controls) and controls[k] != {
-                "time": k * 0.005,
+                "time": k * h,
                 "delta": delta,
                 "a_cmd": 0.0,
             }:
                 raise ValueError("Actual applied laboratory input mismatch")
+            if diagnostics[k]["a_cmd"] != row["a_cmd"]:
+                raise ValueError("Diagnostic input alias contradicts the retained command")
+            for key in ("track_s", "curvature"):
+                if diagnostics[k][key] != row[key]:
+                    raise ValueError("Diagnostic geometry alias contradicts state: " + key)
+            for key in ("track_s", "curvature", "left_width", "right_width"):
+                if track[k][key] != row[key]:
+                    raise ValueError("Canonical sampled track record contradicts state: " + key)
+            if (
+                diagnostics[k]["cf"]
+                != resolved["effective_parameters"]["front_cornering_stiffness"]
+                or diagnostics[k]["cr"]
+                != resolved["effective_parameters"]["rear_cornering_stiffness"]
+            ):
+                raise ValueError("Diagnostic nominal stiffness contradicts effective parameters")
         expected = summarize(states, diagnostics, summary["runner_stop_reason"], summary["failure"])
-        if (
-            canonical_json(summary) != canonical_json(expected)
-            or complete != summary["horizon_reached"]
+        if canonical_json(summary) != canonical_json(expected) or (
+            complete and not summary["horizon_reached"]
         ):
             raise ValueError("Laboratory summary/qualification conflicts with retained telemetry")
         return {
+            "directory": directory,
             "request": request,
             "status": status,
             "resolved": resolved,
             "states": states,
             "controls": controls,
             "diagnostics": diagnostics,
+            "track_samples": track,
             "summary": summary,
         }
     except (OSError, ValueError, KeyError, TypeError, AttributeError, UnicodeError) as error:

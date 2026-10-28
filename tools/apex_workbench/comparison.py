@@ -69,7 +69,7 @@ def fingerprint(directory):
     }
 
 
-def eligibility(first, second):
+def eligibility(first, second, *, qualification_record=None):
     try:
         from tools.apex_workbench.jobs import status_for
 
@@ -86,7 +86,7 @@ def eligibility(first, second):
             from tools.apex_workbench.lab_evidence import read_record
 
             if all(r["adapter"] == "dynamic_lab" for r in requests):
-                return lab_eligibility(first, second)
+                return lab_eligibility(first, second, qualification_record=qualification_record)
             for path, request in zip((first, second), requests):
                 read_record(path) if request["adapter"] == "dynamic_lab" else fingerprint(path)
             return {

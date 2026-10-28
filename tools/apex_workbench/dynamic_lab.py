@@ -98,10 +98,11 @@ def construct(resolved):
     )
 
 
-def execute(values, output, *, resolved=None):
+def execute(values, output, *, resolved=None, qualification=False):
     from apex.simulation.runner import RunConfig, SimulationRunner
-    from apex.state import CONTROL_NAMES, STATE_NAMES, state_vector
-    from tools.apex_workbench.worker import export_geometry
+    from apex.state import state_vector
+
+    config.execution_context(values, qualification=qualification)
 
     resolved = (
         config.resolve(values)
@@ -122,14 +123,22 @@ def execute(values, output, *, resolved=None):
         model.track,
         RunConfig(
             duration=0.5,
-            dt_plant=0.005,
-            dt_control=0.005,
+            dt_plant=resolved["schedule"]["dt_plant_s"],
+            dt_control=resolved["schedule"]["dt_plant_s"],
             latency=None,
             target_laps=None,
             stop_on_boundary=False,
         ),
         reset_controller=provider.reset,
     ).run(initial)
+    return export_result(model, result, resolved, output)
+
+
+def export_result(model, result, resolved, output):
+    """Canonical sampled export shared by adapter/reference, never expected dynamics."""
+    from apex.state import CONTROL_NAMES, STATE_NAMES
+    from tools.apex_workbench.worker import export_geometry
+
     result.write_csv(output)  # Retain actual partials before diagnostic/geometry export.
     raw = {
         "runner_stop_reason": result.stop_reason,
@@ -152,23 +161,45 @@ def execute(values, output, *, resolved=None):
         writer = csv.DictWriter(stream, fieldnames=list(diagnostics[0]))
         writer.writeheader()
         writer.writerows(diagnostics)
+    track_rows = []
+    for row in result.states:
+        sample = model.track.sample(row["track_s"])
+        track_rows.append({"time": row["time"], **asdict(sample)})
+    with (output / "track_samples.csv").open("x", newline="") as stream:
+        writer = csv.DictWriter(stream, fieldnames=list(track_rows[0]))
+        writer.writeheader()
+        writer.writerows(track_rows)
     summary = summarize(result.states, diagnostics, result.stop_reason, result.failure)
     if not summary["horizon_reached"] and not summary["failure"]:
         summary["failure"] = "Canonical runner ended before the declared laboratory horizon"
     write_json(output / "summary.json", summary)
     export_geometry(
         "dynamic_lab",
-        values,
+        resolved["configuration"],
         output,
         track=model.track,
         telemetry_extra={
-            "lab_schema": "apex-vdl-telemetry/1",
+            "lab_schema": "apex-vdl-telemetry/2",
             "diagnostic_columns": list(diagnostics[0]),
             "diagnostic_units": {"time": "s", **DIAGNOSTIC_UNITS, **OPTIONAL_DIAGNOSTIC_UNITS},
             "diagnostic_origin": "canonical diagnostics recomputed at retained samples",
             "terminal_input": resolved["runner"]["terminal_input"],
             "row_semantics": (
                 "state at tick k; input held over next interval; terminal informational"
+            ),
+            "track_columns": list(track_rows[0]),
+            "track_units": {
+                "time": "s",
+                "track_s": "m",
+                "x": "m",
+                "y": "m",
+                "heading": "rad",
+                "curvature": "1/m",
+                "left_width": "m",
+                "right_width": "m",
+            },
+            "alias_equality": (
+                "exact finite float64 values from the same canonical sampled state/input"
             ),
         },
     )

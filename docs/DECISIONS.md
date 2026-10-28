@@ -1284,3 +1284,28 @@ separately authorized work. The accepted provisional criteria are recorded uncha
 sliders/sweep framework, canonical/configuration change, rewritten historical artifact, new dependency,
 NMPC/async/hardware campaign or automatic formal Verification is introduced. See
 [implementation scope and retained evidence](apex_workbench_v0_2_b/WORK.md). Stop for Engineering Review.
+
+
+## ADR-174 — Qualification records remain separate from immutable execution evidence
+
+Recorded 29 October 2026. V0.2-C authorizes C1–C3 corrections, qualification infrastructure and
+focused software tests, followed by an exact-candidate separate-context review. It does not authorize
+the17-trajectory campaign or formal Verification. Scientific cases/criteria at
+`0cc7e4f626311aec05977bd3beda40c346fa4214` remain unchanged.
+
+Use an explicit versioned scientific dependency inventory at admission/consumption. Require exact
+equality for redundant canonical sampled aliases, with canonical per-sample track metadata; do not
+calculate new physics in readers. Successful process completion implies valid full coverage, while
+noncompleted processes may retain complete integration data without comparison promotion.
+
+Keep interactive admission nominal-only; refinement/reference runs require an explicit qualification
+purpose. Mark functional refinement tests as software-test-only, ineligible for scientific qualification.
+The future fixed17-slot coordinator reuses existing leased bounded workers; no sweep framework,
+new integrator/controller or automatic tuning/retry mechanism is introduced.
+
+Calculate the accepted shared-time convergence/native-window/yaw criteria independently of evidence
+publication. Fixture arithmetic has no evidence authority. A real qualification document references
+17 distinct verified source-run manifests, exact repeat/reference exports, source/environment and
+unchanged criteria. Numerical case status, interpretation filters, excitation, pair/family decisions
+and physical validity remain distinct. Recheck artifacts/source identities and applicability without
+rewriting source runs. See [V0.2-C WORK](apex_workbench_v0_2_c/WORK.md).

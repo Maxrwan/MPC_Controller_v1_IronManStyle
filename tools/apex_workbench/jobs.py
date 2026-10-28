@@ -241,8 +241,25 @@ def status_for(directory):
         }
 
 
-def start_run(adapter, source, prediction="", *, runs=RUNS):
+def start_run(
+    adapter,
+    source,
+    prediction="",
+    *,
+    runs=RUNS,
+    qualification=False,
+    reference=False,
+    test_only=False,
+):
     effective = validate(adapter, source)
+    if adapter == "dynamic_lab":
+        from tools.apex_workbench.lab_configuration import execution_context
+
+        context = execution_context(
+            effective, qualification=qualification, reference=reference, test_only=test_only
+        )
+    elif qualification or reference or test_only:
+        raise ValueError("Qualification profiles are scoped to dynamic_lab")
     prediction = validate_note(prediction)
     runs = Path(runs)
     runs.mkdir(parents=True, exist_ok=True)
@@ -292,12 +309,15 @@ def start_run(adapter, source, prediction="", *, runs=RUNS):
         }
         if adapter == "dynamic_lab":
             from tools.apex_workbench.lab_configuration import resolve
+            from tools.apex_workbench.lab_sources import from_captured
 
             request.update(
-                adapter_version="0.2.0",
+                adapter_version="0.2.1",
                 controller="none (prescribed integer-tick ZOH input)",
                 entry_point="tools/apex_workbench/dynamic_lab.py:execute",
                 lab_resolved=resolve(effective, vehicle_yaml=request["provenance"]["vehicle_yaml"]),
+                execution_context=context,
+                source_inventory=from_captured(request["provenance"]["source_sha256"]),
             )
         write_json(staging / "request.json", request, exclusive=True)
         write_json(

@@ -121,6 +121,20 @@ for problem in incomplete:
     st.warning("Incomplete record preserved and excluded from selection: " + problem)
 by_id = {p.name: p for p in retained}
 
+
+def qualification_selection(key):
+    root = RUNS.parent / "apex_workbench_qualifications"
+    available = sorted(root.glob("*/qualification/commit.json")) if root.exists() else []
+    if not available:
+        return None
+    return st.selectbox(
+        "Numerical qualification evidence (optional)",
+        [None, *(p.parent for p in available)],
+        key=key,
+        format_func=lambda p: "Unavailable / not selected" if p is None else p.parent.name,
+    )
+
+
 if page == "Capabilities":
     st.subheader("Supported inputs and scientific boundaries")
     st.markdown((Path(__file__).parent / "CAPABILITY_MATRIX.md").read_text())
@@ -131,9 +145,21 @@ if page == "Compare runs":
     selected = st.multiselect("Choose two runs", list(by_id), max_selections=2)
     if len(selected) == 2:
         decision = comparison.eligibility(*(by_id[key] for key in selected))
+        if "numerical_qualification" in decision:
+            selected_qualification = qualification_selection("comparison_qualification")
+            if selected_qualification is not None:
+                decision = comparison.eligibility(
+                    *(by_id[key] for key in selected), qualification_record=selected_qualification
+                )
         label = decision["classification"].upper()
         if label == "CONTROLLED":
             st.success("Controlled comparison: " + decision["reason"])
+        elif label == "QUALIFIED_SYNTHETIC_COMPARISON":
+            st.info("Qualified synthetic comparison: " + decision["reason"])
+            st.caption(
+                "Provisional numerical criteria · sampled model window · no physical validation"
+            )
+            st.json(decision["qualification_evidence"], expanded=False)
         elif label == "CONTROLLED_CANDIDATE":
             st.info("Controlled candidate: " + decision["reason"])
             st.caption("Numerical qualification unavailable · no physical validation")
@@ -172,7 +198,7 @@ if page == "Compare runs":
                     ]
                 for columns, unit in channels:
                     st.plotly_chart(plots.series(pairs, columns, unit), width="stretch")
-                if label == "CONTROLLED_CANDIDATE":
+                if label in {"CONTROLLED_CANDIDATE", "QUALIFIED_SYNTHETIC_COMPARISON"}:
                     for columns, unit in [
                         (["alpha_f", "alpha_r"], "Slip [rad]"),
                         (["fyf", "fyr"], "Lateral axle forces [N]"),
@@ -241,6 +267,13 @@ if request["adapter"] == "dynamic_lab" and status["state"] not in jobs.ACTIVE:
     try:
         if "experiment/summary.json" in storage.artifact_manifest(directory):
             lab = read_record(directory)
+            if lab["request"]["execution_context"]["test_only"]:
+                st.warning("Software-test data: excluded from scientific qualification evidence.")
+            if status.get("scientific_outcome") != "completed":
+                st.warning(
+                    "Retained integration coverage is separate from the unsuccessful process "
+                    "outcome. This record cannot qualify or enter controlled comparisons."
+                )
             st.caption(
                 "Configuration: admissible · Numerics: "
                 + lab["summary"]["numerical_qualification"]
@@ -258,9 +291,21 @@ if request["adapter"] == "dynamic_lab" and status["state"] not in jobs.ACTIVE:
             )
             with st.expander("Resolved laboratory metadata and provisional criteria"):
                 st.json(lab["resolved"])
+            selected_qualification = qualification_selection("run_qualification")
+            if selected_qualification is not None:
+                from tools.apex_workbench.qualification import applicability
+
+                try:
+                    st.json(applicability(selected_qualification, directory), expanded=False)
+                except (storage.IntegrityError, OSError, ValueError) as error:
+                    st.error("Numerical qualification unavailable/inapplicable: " + str(error))
     except storage.IntegrityError as error:
         st.error("Retained laboratory evidence quarantined: " + str(error))
-        st.stop()
+        st.caption(
+            "Scientific plots remain quarantined. Verified raw artifacts and logs are "
+            "retained below for inspection, without interpretation or qualification."
+        )
+        st.code(str(directory), language=None)
 trajectory_tab, states_tab, evidence_tab, notes_tab = st.tabs(
     ["Trajectory", "States & controls", "Evidence & logs", "Learning notes"]
 )

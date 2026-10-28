@@ -1,5 +1,10 @@
 # APEX Workbench V0.2 — Vehicle Dynamics Laboratory WORK
 
+V0.2-C corrects the independent review findings and prepares the accepted numerical protocol.
+See [closure, software tests and review stage](../../docs/apex_workbench_v0_2_c/WORK.md).
+The campaign remains **pending separate execution authorization**. Preparing or printing its plan
+does not qualify the lab or establish physical validity.
+
 **WORK_COMPLETE_PENDING_REVIEW.** Adds the finite `dynamic_lab` adapter under the accepted
 [V0.2-A2 contract](../../docs/apex_workbench_v0_2_a/PROPOSED_CASES.md) at
 `0cc7e4f626311aec05977bd3beda40c346fa4214`. See the
@@ -62,8 +67,9 @@ keep the server bound to loopback.
   [2,0,0,0,0,0], a_cmd=0, a steering step at 0.100 s, duration 0.500 s and plant/input period 0.005 s.
   The four treatments independently change Iz, steering amplitude, Cf or Cr. See
   [exact values/origins](../../docs/apex_workbench_v0_2_a/PROPOSED_CASES.md). There is no arbitrary
-  parameter editor or mass family. Only the nominal execution grid is admitted in this WORK release;
-  refinement grids are retained as provisional criteria for the separately authorized qualification.
+  parameter editor or mass family. The UI admits the nominal grid. The backend admits the accepted
+  refinements only with explicit qualification purpose; software-test profiles are ineligible for
+  scientific qualification evidence.
 - **Dynamic bicycle / open loop:** the unmodified Task004 CLI `main()`; duration and RK4 timestep.
   The original synthetic vehicle, track, initial state, steering and acceleration schedule remain fixed.
 - **LQR/PI / tracking:** the unmodified Task005 `run_case()`; duration, circle/oval track,
@@ -95,6 +101,10 @@ initial state, schemas/units, source identity, environment, geometry and evidenc
 pairs are illustrative; corrupt/incomplete records are invalid. The UI never promotes completed
 runs into a qualified synthetic comparison. Observed yaw separation is displayed with numerical
 qualification still unavailable, even when it exceeds the provisional minimum signal floor.
+After a separately authorized campaign, an optional qualification record can be selected. It is
+revalidated against all referenced runs, source/environment and exact finite-case exports before
+showing numerical case status and pair eligibility. Sampled interpretation, excitation and physical
+validity stay separate; records are never silently attached to or written into old run evidence.
 
 Lab state/control and canonical sample-diagnostic plots show actual retained yaw/lateral/longitudinal
 response, steering/a_cmd, slip, lateral forces, axle loads, nominal/effective stiffness, utilization,

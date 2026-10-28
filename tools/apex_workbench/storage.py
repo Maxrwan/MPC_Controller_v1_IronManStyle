@@ -59,8 +59,11 @@ def read_request(directory, *, verified=False):
         validate(request["adapter"], request["effective"])
         validate_note(request["prediction"])
         if request["adapter"] == "dynamic_lab":
-            from tools.apex_workbench.lab_configuration import validate_resolved
+            from tools.apex_workbench.lab_configuration import validate_context, validate_resolved
+            from tools.apex_workbench.lab_sources import validate as validate_inventory
 
+            validate_context(request["effective"], request["execution_context"])
+            validate_inventory(request)
             validate_resolved(
                 request["effective"],
                 request["lab_resolved"],
@@ -95,6 +98,7 @@ def required_artifacts(request, status):
                 "experiment/controls.csv",
                 "experiment/diagnostics.csv",
                 "experiment/resolved_lab.json",
+                "experiment/track_samples.csv",
                 "request.json",
                 "execution.json",
                 "worker.json",

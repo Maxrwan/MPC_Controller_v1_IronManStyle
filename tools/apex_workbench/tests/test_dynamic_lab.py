@@ -85,8 +85,7 @@ def test_literal_snapshots_canonical_components_and_immediate_oracles(
         ("case_id", True),
         ("contract_id", "unknown"),
         ("runner_profile", "legacy"),
-        ("grid_id", "half"),
-        ("grid_id", "quarter"),
+        ("grid_id", "unknown"),
         ("treatment", "mass"),
         ("case_id", float("nan")),
     ],
@@ -220,23 +219,6 @@ def test_canonical_runner_and_diagnostic_byte_parity(tmp_path):
         execute("dynamic_lab", contract.request_for(), adapted)
 
 
-@pytest.fixture(scope="module")
-def lab_runs(tmp_path_factory):
-    root = tmp_path_factory.mktemp("real-lab-workers")
-    runs = []
-    for case in ("VDL1_BASE", "VDL1_STEER_HIGH"):
-        directory = jobs.start_run(
-            "dynamic_lab",
-            contract.request_for(case),
-            "Software smoke only; no scientific qualification",
-            runs=root,
-        )
-        status = finished(directory)
-        assert status["state"] == "completed", (status, (directory / "stderr.log").read_text())
-        runs.append(directory)
-    return runs
-
-
 def test_real_worker_candidate_and_csv_plots(lab_runs):
     record = read_record(lab_runs[0])
     assert record["summary"]["horizon_reached"]
@@ -303,6 +285,7 @@ def test_false_qualification_extra_changes_and_source_mismatch(lab_runs, tmp_pat
     shutil.copytree(lab_runs[1], source)
     request = storage.read_json(source / "request.json")
     request["provenance"]["source_sha256"]["tools/apex_workbench/dynamic_lab.py"] = "0" * 64
+    request["source_inventory"]["sha256"]["tools/apex_workbench/dynamic_lab.py"] = "0" * 64
     storage.write_json(source / "request.json", request)
     reseal_fixture(source)
     assert comparison.eligibility(lab_runs[0], source)["classification"] == "illustrative"

@@ -42,6 +42,9 @@ TREATMENTS = MappingProxyType(
     }
 )
 CASES = tuple(TREATMENTS)
+GRIDS = MappingProxyType(
+    {"nominal": (0.005, 100, 20), "half": (0.0025, 200, 40), "quarter": (0.00125, 400, 80)}
+)
 CRITERIA = MappingProxyType(
     {
         "version": "apex-vdl-provisional-qualification/1",
@@ -59,14 +62,16 @@ CRITERIA = MappingProxyType(
 )
 
 
-def request_for(case_id="VDL1_BASE"):
+def request_for(case_id="VDL1_BASE", *, grid_id="nominal"):
     if not isinstance(case_id, str) or case_id not in TREATMENTS:
         raise ValueError("Unsupported finite laboratory case")
+    if type(grid_id) is not str or grid_id not in GRIDS:
+        raise ValueError("Unsupported laboratory grid")
     return dict(
         contract_id=CONTRACT,
         runner_profile=PROFILE,
         case_id=case_id,
-        grid_id="nominal",
+        grid_id=grid_id,
         treatment=TREATMENTS[case_id][0],
     )
 
@@ -78,9 +83,47 @@ def validate(values):
         raise ValueError(
             "Lab configuration fields must be strings from the accepted finite registry"
         )
-    expected = request_for(values["case_id"])
+    expected = request_for(values["case_id"], grid_id=values["grid_id"])
     if values != expected:
         raise ValueError("Unsupported lab contract/profile/grid/treatment; qualification is gated")
+    return expected
+
+
+def execution_context(values, *, qualification=False, reference=False, test_only=False):
+    values = validate(values)
+    if any(type(v) is not bool for v in (qualification, reference, test_only)):
+        raise ValueError("Execution purpose must be explicit")
+    if values["grid_id"] != "nominal" and not qualification:
+        raise ValueError("Refinement admission requires explicit qualification execution")
+    if test_only and not qualification:
+        raise ValueError("Test-only refinement context must be explicit")
+    if reference and (
+        not qualification or values["case_id"] != "VDL1_BASE" or values["grid_id"] != "nominal"
+    ):
+        raise ValueError("Independent reference is qualification-only nominal BASE")
+    return {
+        "purpose": "software_test"
+        if test_only
+        else "numerical_qualification"
+        if qualification
+        else "interactive",
+        "protocol": CRITERIA["version"] if qualification else None,
+        "role": "canonical_reference" if reference else "adapter",
+        "test_only": test_only,
+    }
+
+
+def validate_context(values, context):
+    if not isinstance(context, dict):
+        raise ValueError("Missing explicit laboratory execution context")
+    expected = execution_context(
+        values,
+        qualification=context.get("purpose") in {"numerical_qualification", "software_test"},
+        reference=context.get("role") == "canonical_reference",
+        test_only=context.get("test_only"),
+    )
+    if context != expected:
+        raise ValueError("Unknown qualification execution context")
     return expected
 
 
@@ -103,6 +146,7 @@ def resolve(values, *, vehicle_yaml=None):
         overrides[key] = value
         parameters[key] = value
     amplitude = value if key == "post_step_delta" else 0.020
+    h, steps, onset = GRIDS[config["grid_id"]]
     return {
         "configuration": config,
         "accepted_contract_revision": ACCEPTED_REVISION,
@@ -129,12 +173,12 @@ def resolve(values, *, vehicle_yaml=None):
         "initial_state": [2.0, 0.0, 0.0, 0.0, 0.0, 0.0],
         "initial_state_origin": "accepted common synthetic seed; no equilibrium reconstruction",
         "schedule": {
-            "duration_ticks": 100,
-            "dt_plant_s": 0.005,
+            "duration_ticks": steps,
+            "dt_plant_s": h,
             "dt_input_ticks": 1,
             "segments": [
                 {"start_tick": 0, "delta_rad": 0.0, "a_cmd_m_per_s2": 0.0},
-                {"start_tick": 20, "delta_rad": amplitude, "a_cmd_m_per_s2": 0.0},
+                {"start_tick": onset, "delta_rad": amplitude, "a_cmd_m_per_s2": 0.0},
             ],
         },
         "composition": {
@@ -162,7 +206,7 @@ def resolve(values, *, vehicle_yaml=None):
             "target_laps": None,
             "stop_on_boundary": False,
             "duration_s": 0.5,
-            "dt_control_s": 0.005,
+            "dt_control_s": h,
             "terminal_input": "last held command; informational, no terminal interval",
         },
         "qualification_criteria": json.loads(canonical_json(dict(CRITERIA))),
@@ -179,6 +223,10 @@ def validate_resolved(values, snapshot, *, vehicle_yaml=None):
 def verify_captured_sources(request):
     """Fail a lab worker if its captured composition/source has changed since admission."""
     root = Path(__file__).resolve().parents[2]
+    from tools.apex_workbench.lab_sources import validate as validate_inventory
+
+    validate_inventory(request)
+    validate_context(request["effective"], request["execution_context"])
     validate_resolved(
         request["effective"],
         request["lab_resolved"],

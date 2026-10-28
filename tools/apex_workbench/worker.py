@@ -10,7 +10,15 @@ from pathlib import Path
 from tools.apex_workbench.configuration import ROOT, validate
 
 
-def execute(adapter: str, effective: dict, output: Path, *, lab_resolved=None) -> dict:
+def execute(
+    adapter: str,
+    effective: dict,
+    output: Path,
+    *,
+    lab_resolved=None,
+    qualification=False,
+    reference=False,
+) -> dict:
     """Also usable for focused parity checks against the original entry point."""
     effective = validate(adapter, effective)
     if output.exists():
@@ -36,9 +44,15 @@ def execute(adapter: str, effective: dict, output: Path, *, lab_resolved=None) -
         return json.loads((output / "summary.json").read_text())
 
     if adapter == "dynamic_lab":
+        if reference:
+            from tools.apex_workbench.qualification_reference import execute as execute_reference
+
+            return execute_reference(
+                effective, output, resolved=lab_resolved, qualification=qualification
+            )
         from tools.apex_workbench.dynamic_lab import execute as execute_lab
 
-        return execute_lab(effective, output, resolved=lab_resolved)
+        return execute_lab(effective, output, resolved=lab_resolved, qualification=qualification)
 
     if adapter != "lqr_baseline":
         raise ValueError("Unsupported execution adapter")
@@ -149,6 +163,9 @@ def main(directory: Path, lock_fd: int) -> int:
                 request["effective"],
                 directory / "experiment",
                 lab_resolved=request.get("lab_resolved"),
+                qualification=request.get("execution_context", {}).get("purpose")
+                in {"numerical_qualification", "software_test"},
+                reference=request.get("execution_context", {}).get("role") == "canonical_reference",
             )
             if request["adapter"] == "dynamic_lab":
                 verify_captured_sources(request)
@@ -162,6 +179,11 @@ def main(directory: Path, lock_fd: int) -> int:
             traceback.print_exc()
             return 2
         finally:
+            if request["adapter"] == "dynamic_lab":
+                import platform
+
+                environment["platform_details"] = platform.platform()
+                environment["machine"] = platform.machine()
             # Libraries loaded by the entry point may appear only after execution.
             environment["threadpools"] = threadpool_info()
             environment["thread_environment"] = {
