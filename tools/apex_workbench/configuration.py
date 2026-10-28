@@ -5,7 +5,11 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 RUNS = ROOT / "results/apex_workbench"
-ADAPTERS = {"dynamic_demo": "Dynamic bicycle · open loop", "lqr_baseline": "LQR/PI · tracking"}
+ADAPTERS = {
+    "dynamic_demo": "Dynamic bicycle · open loop",
+    "lqr_baseline": "LQR/PI · tracking",
+    "dynamic_lab": "Vehicle Dynamics Laboratory · finite synthetic cases",
+}
 DEFAULTS = {
     "dynamic_demo": {"duration": 10.0, "dt": 0.005},
     "lqr_baseline": {
@@ -27,6 +31,10 @@ BOUNDS = {
 
 
 def validate(adapter: str, values: dict) -> dict:
+    if adapter == "dynamic_lab":
+        from tools.apex_workbench.lab_configuration import validate as validate_lab
+
+        return validate_lab(values)
     if adapter not in DEFAULTS:
         raise ValueError("Unsupported experiment adapter")
     if not isinstance(values, dict) or set(values) != set(DEFAULTS[adapter]):

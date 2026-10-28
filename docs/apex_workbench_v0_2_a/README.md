@@ -1,5 +1,11 @@
 # APEX Workbench V0.2 — Vehicle Dynamics Laboratory design and parameter contract
 
+**V0.2-B update:** Primary accepted the five cases/composition and the numerical/filter criteria as
+provisional, versioned qualification criteria at `0cc7e4f626311aec05977bd3beda40c346fa4214`.
+[Implementation WORK and focused evidence](../apex_workbench_v0_2_b/WORK.md) now await Engineering
+Review. The A2 contract files below are preserved; their earlier pending-review wording is historical.
+No scientific qualification or formal Verification is implied by this acceptance/implementation.
+
 **V0.2_PARAMETER_CONTRACT_PENDING_SCIENTIFIC_ACCEPTANCE.** 28 October 2026.
 V0.2-A2 finalizes proposed finite numerical cases under user-approved D1–D5. No implementation,
 numerical/model import, test/collection, simulation, sweep or launcher execution occurred.

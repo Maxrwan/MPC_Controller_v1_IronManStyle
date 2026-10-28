@@ -22,7 +22,7 @@ h1 {letter-spacing:-.045em} h2,h3 {letter-spacing:-.025em}
 </style>""",
     unsafe_allow_html=True,
 )
-st.caption("APEX / ENGINEERING LABORATORY                                      LOCAL · V0.1")
+st.caption("APEX / ENGINEERING LABORATORY                                      LOCAL · V0.2 WORK")
 st.title("Predict. Run. Understand.")
 st.write("Explore the actual APEX bicycle model and LQR/PI baseline. Every run keeps its evidence.")
 st.caption(
@@ -35,16 +35,38 @@ with st.sidebar:
     if page == "Experiment":
         adapter = st.selectbox("Experiment", list(ADAPTERS), format_func=ADAPTERS.get)
         st.caption(
-            "Existing Task004 demo" if adapter == "dynamic_demo" else "Existing Task005 run_case"
+            {
+                "dynamic_demo": "Existing Task004 demo",
+                "lqr_baseline": "Existing Task005 run_case",
+                "dynamic_lab": "Prescribed open-loop canonical vehicle dynamics",
+            }[adapter]
         )
         with st.form("configuration"):
             values = {}
-            values["duration"] = st.number_input(
-                "Duration [s]",
-                value=DEFAULTS[adapter]["duration"],
-                step=0.01,
-                help="UI resource safeguard: 0.01–20 s. LQR: multiple of 0.005 s.",
-            )
+            if adapter == "dynamic_lab":
+                from tools.apex_workbench.lab_configuration import CASES, request_for, resolve
+
+                values = request_for(st.selectbox("Synthetic laboratory case", CASES))
+                preview = resolve(values)
+                st.caption("0.500 s · 5 ms plant/input ticks · steering step at 0.100 s · a_cmd=0")
+                st.json(
+                    {
+                        "vehicle_parameters_SI": preview["effective_parameters"],
+                        "initial_state_SI": preview["initial_state"],
+                        "schedule": preview["schedule"],
+                    },
+                    expanded=False,
+                )
+                st.caption(
+                    "Finite synthetic cases. Numerical qualification has not been performed."
+                )
+            else:
+                values["duration"] = st.number_input(
+                    "Duration [s]",
+                    value=DEFAULTS[adapter]["duration"],
+                    step=0.01,
+                    help="UI resource safeguard: 0.01–20 s. LQR: multiple of 0.005 s.",
+                )
             if adapter == "dynamic_demo":
                 values["dt"] = st.number_input(
                     "Integration timestep [s]",
@@ -54,7 +76,7 @@ with st.sidebar:
                     help="UI numerical/resource safeguard: 0.001–0.01 s; no accuracy guarantee.",
                 )
                 st.caption("Fixed 2 m/s initial vx; original steering/acceleration schedule.")
-            else:
+            elif adapter == "lqr_baseline":
                 values["track"] = st.selectbox("Synthetic track", ["circle", "oval"])
                 values["speed"] = st.number_input(
                     "Initial / reference speed [m/s]",
@@ -89,7 +111,8 @@ with st.sidebar:
                 st.error(str(error))
     st.divider()
     st.caption(
-        "Vehicle constants, weights, tire selection and latency modes are read-only in V0.1."
+        "Original adapters keep their fixed vehicle and controller. The laboratory offers five "
+        "finite synthetic cases; tire selection and latency modes stay fixed."
     )
 
 RUNS.mkdir(parents=True, exist_ok=True)
@@ -111,6 +134,21 @@ if page == "Compare runs":
         label = decision["classification"].upper()
         if label == "CONTROLLED":
             st.success("Controlled comparison: " + decision["reason"])
+        elif label == "CONTROLLED_CANDIDATE":
+            st.info("Controlled candidate: " + decision["reason"])
+            st.caption("Numerical qualification unavailable · no physical validation")
+            st.json(
+                {
+                    key: decision[key]
+                    for key in (
+                        "declared_treatment",
+                        "numerical_qualification",
+                        "excitation",
+                        "sampled_model_windows",
+                    )
+                },
+                expanded=False,
+            )
         elif label == "ILLUSTRATIVE":
             st.warning("Illustrative comparison only: " + decision["reason"])
         else:
@@ -122,12 +160,27 @@ if page == "Compare runs":
             st.caption("Raw elapsed simulation time; no interpolation or acceptance claim.")
             pairs = [(key, by_id[key]) for key in selected]
             try:
-                for columns, unit in [
+                channels = [
                     (["vx"], "vx [m/s]"),
                     (["e_y"], "e_y [m]"),
                     (["delta"], "Steering [rad]"),
-                ]:
+                ]
+                if "numerical_qualification" in decision:
+                    channels[1:1] = [
+                        (["r"], "Yaw rate [rad/s]"),
+                        (["vy"], "Lateral velocity [m/s]"),
+                    ]
+                for columns, unit in channels:
                     st.plotly_chart(plots.series(pairs, columns, unit), width="stretch")
+                if label == "CONTROLLED_CANDIDATE":
+                    for columns, unit in [
+                        (["alpha_f", "alpha_r"], "Slip [rad]"),
+                        (["fyf", "fyr"], "Lateral axle forces [N]"),
+                    ]:
+                        st.plotly_chart(
+                            plots.series(pairs, columns, unit, source="diagnostics.csv"),
+                            width="stretch",
+                        )
             except storage.IntegrityError as error:
                 st.error("Telemetry quarantined: " + str(error))
     st.stop()
@@ -182,6 +235,32 @@ except (storage.IntegrityError, OSError, ValueError) as error:
 st.caption(f"Viewing {ADAPTERS[request['adapter']]} · effective configuration below")
 st.json(request["effective"], expanded=False)
 expected = storage.required_artifacts(request, status)
+if request["adapter"] == "dynamic_lab" and status["state"] not in jobs.ACTIVE:
+    from tools.apex_workbench.lab_evidence import read_record
+
+    try:
+        if "experiment/summary.json" in storage.artifact_manifest(directory):
+            lab = read_record(directory)
+            st.caption(
+                "Configuration: admissible · Numerics: "
+                + lab["summary"]["numerical_qualification"]
+                + " · Evidence: "
+                + status.get("evidence_state", "unknown")
+            )
+            st.json(
+                {
+                    "sampled_model_window": lab["summary"]["sampled_model_window"],
+                    "excitation": lab["summary"]["excitation"],
+                    "comparison": "requires a permitted baseline/treatment pair",
+                    "limitations": lab["summary"]["limitations"],
+                },
+                expanded=False,
+            )
+            with st.expander("Resolved laboratory metadata and provisional criteria"):
+                st.json(lab["resolved"])
+    except storage.IntegrityError as error:
+        st.error("Retained laboratory evidence quarantined: " + str(error))
+        st.stop()
 trajectory_tab, states_tab, evidence_tab, notes_tab = st.tabs(
     ["Trajectory", "States & controls", "Evidence & logs", "Learning notes"]
 )
@@ -250,6 +329,30 @@ with states_tab:
                 st.write("Sampled CG boundary violations:", int(data.boundary_violation.sum()))
             else:
                 st.caption("Boundary violation metric unavailable in the original dynamic demo.")
+            if request["adapter"] == "dynamic_lab":
+                for columns, unit in [
+                    (["alpha_f", "alpha_r"], "Axle slip angles [rad]"),
+                    (["fyf", "fyr"], "Lateral axle forces [N]"),
+                    (["fzf", "fzr"], "Normal axle loads [N]"),
+                    (["cf", "cr", "cf_eff", "cr_eff"], "Axle stiffness [N/rad]"),
+                    (
+                        ["front_lateral_utilization", "rear_lateral_utilization"],
+                        "Lateral utilization [diagnostic ratio]",
+                    ),
+                    (["frenet_denominator"], "Frenet denominator [dimensionless]"),
+                ]:
+                    try:
+                        st.plotly_chart(
+                            plots.series(pairs, columns, unit, source="diagnostics.csv"),
+                            width="stretch",
+                        )
+                    except storage.IntegrityError as error:
+                        st.error("Telemetry quarantined: " + str(error))
+                st.caption(
+                    "Canonical diagnostics recomputed at retained samples. Provisional "
+                    "sampled filters do not establish physical validity; "
+                    "terminal input is informational."
+                )
     st.info(
         "Solver status/time, injected/measured latency and deadline metrics: unavailable in these "
         "adapters. LQR is not an optimizer; host execution time is shown only in evidence."

@@ -1,3 +1,48 @@
+# Current handoff — Workbench V0.2-B Vehicle Dynamics Laboratory
+
+**WORK_COMPLETE_PENDING_REVIEW.** Recorded 28 October 2026. Accepted scientific contract/base:
+`0cc7e4f626311aec05977bd3beda40c346fa4214`. Branch `codex/apex-workbench-v0-2-b`.
+Containing implementation commit is the delivery revision; exact SHA/URL is reported after push.
+[Review-ready implementation/evidence](apex_workbench_v0_2_b/WORK.md),
+[machine record](apex_workbench_v0_2_b/work_record.json),
+[current launch/use instructions](../tools/apex_workbench/README.md). ADR-173 records the boundary.
+
+Implemented five finite BASE/IZ_HIGH/STEER_HIGH/CF_HIGH/CR_HIGH cases, strict versioned snapshots,
+immutable canonical plant/composition, common seed and integer-tick prescribed step through existing
+SimulationRunner. Genuine retained state/control/diagnostic/XY plots and full effective provenance
+are available. Four BASE/treatment pairs become controlled candidates only. Configuration, execution,
+evidence, numerics, sampled model window, excitation and comparison stay distinct; no physical or
+qualified-synthetic claim. Ownership/resource/native/atomic-publication/integrity safeguards remain.
+Original V0.1 entry points/defaults/scientific outputs and legacy classifications are preserved.
+
+Fresh focused software results: initial lab 44 passed/2 failed; combined 297 passed/1 failed; final
+affected **50 passed/zero failures or errors**, covering all 49 final lab tests plus the failed legacy
+UI regression. Distinct applicable coverage: 49 lab+78 existing Workbench+174 canonical=301 checks
+across retained invocations, not one 301-pass run. Earlier failures were corrected and retained:
+CSV plot float precision, a test selector, and legacy comparison chart count. Remaining passes apply
+to unchanged behavior; final changes reran affected lab/UI checks. Ruff/format/whitespace and static
+preservation/document checks pass. Full logs: `results/apex_workbench_v02b_work_20261028/`.
+
+Independent nominal canonical-runner byte parity passes for every state/control/diagnostic row;
+canonical XY samples match. All five configurations/components and immediate analytical oracles
+pass; refinement scheduling was unit-checked without physics. Nominal BASE/STEER software smokes
+include real owned workers and actual form submission; other treatments have no new full-trajectory
+qualification claim. Fake/missing qualification/evidence is rejected. No 17-trajectory campaign or
+full-suite Verification was run; previous V0.1 acceptance counts are not used as fresh results.
+
+All canonical source/original scripts/core tests/configuration/dependencies/launcher, accepted
+contract files and old reports are unchanged. Before snapshot: 910 tracked files; 19,100 of 19,101
+preexisting result files retain size/mtime. Only `results/.DS_Store` filesystem-view metadata changed
+and is left as observed; scientific result files are unchanged. Detailed hashes/limits are in the
+machine record. No unresolved
+scientific question was found. Nominal admission only; refinement execution/qualification records
+remain a separately authorized stage, using the unchanged provisional criteria.
+
+**Stop for independent Engineering Review.** No self-approval, automatic qualification/Verification,
+new parameter values, NMPC/async/control-performance, hardware or reopened frozen research work.
+
+---
+
 # Current handoff — Workbench V0.2-A2 parameter/timing/validity contract
 
 **V0.2_PARAMETER_CONTRACT_PENDING_SCIENTIFIC_ACCEPTANCE.** Recorded 28 October 2026.

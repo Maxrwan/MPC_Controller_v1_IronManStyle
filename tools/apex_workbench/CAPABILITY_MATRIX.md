@@ -1,3 +1,7 @@
+V0.2-B WORK adds the finite lab below, under the accepted contract; its scientific qualification
+is unavailable. See [WORK evidence and gates](../../docs/apex_workbench_v0_2_b/WORK.md).
+The original V0.1 capability rows remain historical where marked as original-adapter limitations.
+
 This isolated tooling assignment separately authorizes V0.1. Earlier Workbench/VIS-2 deferrals
 remain historical; VIS-2/new tracks, VIS exports, frozen Performance and Efficiency work are not reopened.
 
@@ -5,6 +9,9 @@ All vehicle/track values are **synthetic**, not measured or identified. Status d
 
 | Parameter / capability | Source | Unit | Allowed range | Execution adapter | Validation | Provenance | Status |
 |---|---|---|---|---|---|---|---|
+| Finite vehicle sensitivity cases | Accepted V0.2-A2 contract | SI | Five named cases only; independent Iz, delta, Cf or Cr treatment versus BASE; no continuous range | dynamic_lab | Exact full snapshot/schema/seed/ticks; canonical constructors/guards | Full base/effective/override/origin/source records | WORK implemented; not numerically qualified |
+| Nominal lab execution | Canonical SimulationRunner/RK4 | s | Fixed 0.500 horizon, 0.005 plant/input period, step at0.100 | dynamic_lab | Integer-tick held input; terminal informational | Actual state/control/diagnostic files + hashes | WORK implemented; refinements separately gated |
+| Lab diagnostics and comparison | Canonical diagnostics; accepted single-treatment contract | SI | Four permitted BASE/treatment pairs | dynamic_lab | Verified artifacts/source/environment/geometry; candidate only | Actual sampled plots, provisional filters and separate status axes | WORK implemented; no qualified/physical claim |
 | Duration | Dynamic CLI; LQR run_case | s | 0.01–20 (UI resource safeguard) | Both | Finite; LQR integer 0.005 s multiple | Request source/effective + hashes | Ready |
 | Integration timestep | Dynamic CLI --dt | s | 0.001–0.01 (UI numerical/resource safeguard, not validated accuracy) | Dynamic demo | Finite, bounded | Request + original summary | Ready |
 | Initial/reference speed | LQR run_case speed; LQR_BASELINE_SPEC | m/s | 1–3 (design/reference domain) | LQR/PI | Finite, bounded; plant independently validates | Request + states/controls | Ready |

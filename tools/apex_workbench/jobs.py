@@ -290,6 +290,15 @@ def start_run(adapter, source, prediction="", *, runs=RUNS):
             else "scripts/run_lqr_baseline.py:run_case",
             "provenance": provenance(),
         }
+        if adapter == "dynamic_lab":
+            from tools.apex_workbench.lab_configuration import resolve
+
+            request.update(
+                adapter_version="0.2.0",
+                controller="none (prescribed integer-tick ZOH input)",
+                entry_point="tools/apex_workbench/dynamic_lab.py:execute",
+                lab_resolved=resolve(effective, vehicle_yaml=request["provenance"]["vehicle_yaml"]),
+            )
         write_json(staging / "request.json", request, exclusive=True)
         write_json(
             staging / "status.json",

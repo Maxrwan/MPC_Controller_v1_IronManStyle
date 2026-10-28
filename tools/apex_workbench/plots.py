@@ -20,13 +20,34 @@ def read_frame(directory: Path, name: str):
     )
     if contents is None:
         return pd.DataFrame()
+    if request["adapter"] == "dynamic_lab":
+        from tools.apex_workbench.lab_evidence import read_record
+
+        read_record(directory)
     try:
-        data = pd.read_csv(io.BytesIO(contents))
+        data = pd.read_csv(
+            io.BytesIO(contents),
+            **({"float_precision": "round_trip"} if request["adapter"] == "dynamic_lab" else {}),
+        )
         required = {
             "states.csv": ["time", "vx", "vy", "r", "e_psi", "s_abs", "e_y", "delta", "a_cmd"],
             "controls.csv": ["time", "delta", "a_cmd"],
             "geometry.csv": ["s", "x", "y", "left_x", "left_y", "right_x", "right_y"],
             "trajectory_xy.csv": ["time", "x", "y"],
+            "diagnostics.csv": [
+                "time",
+                "alpha_f",
+                "alpha_r",
+                "fyf",
+                "fyr",
+                "fzf",
+                "fzr",
+                "cf_eff",
+                "cr_eff",
+                "front_lateral_utilization",
+                "rear_lateral_utilization",
+                "frenet_denominator",
+            ],
         }[name]
         if data.empty or not set(required) <= set(data.columns):
             raise IntegrityError("Incomplete telemetry columns/rows: " + name)
@@ -85,10 +106,10 @@ def trajectory(directory):
     return style(figure, "Y [m]", xy=True)
 
 
-def series(runs, columns, ylabel, *, reference=None):
+def series(runs, columns, ylabel, *, reference=None, source="states.csv"):
     figure = go.Figure()
     for label, directory in runs:
-        states = read_frame(directory, "states.csv")
+        states = read_frame(directory, source)
         for column in columns:
             if column in states:
                 figure.add_trace(

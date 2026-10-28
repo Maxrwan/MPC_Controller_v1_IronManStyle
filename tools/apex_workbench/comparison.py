@@ -80,6 +80,21 @@ def eligibility(first, second):
                     "Only completed scientific executions can be compared; "
                     "retain failures individually"
                 )
+        requests = [read_request(path, verified=True) for path in (first, second)]
+        if any(r["adapter"] == "dynamic_lab" for r in requests):
+            from tools.apex_workbench.lab_comparison import eligibility as lab_eligibility
+            from tools.apex_workbench.lab_evidence import read_record
+
+            if all(r["adapter"] == "dynamic_lab" for r in requests):
+                return lab_eligibility(first, second)
+            for path, request in zip((first, second), requests):
+                read_record(path) if request["adapter"] == "dynamic_lab" else fingerprint(path)
+            return {
+                "classification": "illustrative",
+                "reason": "Cross-adapter overlay; no causal ranking",
+                "differences": {"adapter": [r["adapter"] for r in requests]},
+                "varied_inputs": {},
+            }
         a, fa = fingerprint(first)
         b, fb = fingerprint(second)
         varied = {

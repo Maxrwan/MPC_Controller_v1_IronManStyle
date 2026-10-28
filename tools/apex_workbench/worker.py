@@ -10,7 +10,7 @@ from pathlib import Path
 from tools.apex_workbench.configuration import ROOT, validate
 
 
-def execute(adapter: str, effective: dict, output: Path) -> dict:
+def execute(adapter: str, effective: dict, output: Path, *, lab_resolved=None) -> dict:
     """Also usable for focused parity checks against the original entry point."""
     effective = validate(adapter, effective)
     if output.exists():
@@ -35,6 +35,13 @@ def execute(adapter: str, effective: dict, output: Path) -> dict:
             sys.argv = previous
         return json.loads((output / "summary.json").read_text())
 
+    if adapter == "dynamic_lab":
+        from tools.apex_workbench.dynamic_lab import execute as execute_lab
+
+        return execute_lab(effective, output, resolved=lab_resolved)
+
+    if adapter != "lqr_baseline":
+        raise ValueError("Unsupported execution adapter")
     from run_lqr_baseline import run_case
 
     return run_case(
@@ -51,7 +58,7 @@ def execute(adapter: str, effective: dict, output: Path) -> dict:
     )
 
 
-def export_geometry(adapter, effective, output):
+def export_geometry(adapter, effective, output, *, track=None, telemetry_extra=None):
     """Derived display coordinates through the canonical Frenet conversion API."""
     import csv
 
@@ -59,14 +66,18 @@ def export_geometry(adapter, effective, output):
 
     from apex.coordinates.frenet import frenet_to_global
 
-    if adapter == "dynamic_demo":
+    if track is not None and adapter != "dynamic_lab":
+        raise ValueError("Injected export track is scoped to the laboratory")
+    if track is None and adapter == "dynamic_demo":
         from run_dynamic_bicycle_demo import synthetic_track
 
         track = synthetic_track()
-    else:
+    elif track is None and adapter == "lqr_baseline":
         from run_lqr_baseline import make_track
 
         track = make_track(effective["track"])
+    elif track is None:
+        raise ValueError("Laboratory export requires its actual injected track")
     with (output / "states.csv").open() as stream:
         rows = list(csv.DictReader(stream))
     with (output / "trajectory_xy.csv").open("x", newline="") as stream:
@@ -104,6 +115,7 @@ def export_geometry(adapter, effective, output):
             "xy_unit": "m",
             "state_columns": list(rows[0]),
             "control_columns": control_columns,
+            **(telemetry_extra or {}),
         },
         exclusive=True,
     )
@@ -128,9 +140,21 @@ def main(directory: Path, lock_fd: int) -> int:
     with threadpool_limits(limits=1):
         request = json.loads((directory / "request.json").read_text())
         try:
-            summary = execute(request["adapter"], request["effective"], directory / "experiment")
+            if request["adapter"] == "dynamic_lab":
+                from tools.apex_workbench.lab_configuration import verify_captured_sources
+
+                verify_captured_sources(request)
+            summary = execute(
+                request["adapter"],
+                request["effective"],
+                directory / "experiment",
+                lab_resolved=request.get("lab_resolved"),
+            )
+            if request["adapter"] == "dynamic_lab":
+                verify_captured_sources(request)
             (directory / "worker_result.json").write_text(json.dumps(summary, indent=2) + "\n")
-            export_geometry(request["adapter"], request["effective"], directory / "experiment")
+            if request["adapter"] != "dynamic_lab":
+                export_geometry(request["adapter"], request["effective"], directory / "experiment")
             if summary.get("failure"):
                 raise RuntimeError(summary["failure"])
             return 0

@@ -1258,3 +1258,29 @@ This ADR authorizes no implementation/experiment. Primary acceptance/amendment o
 contract precedes separately authorized V0.2-B WORK, bounded qualification, Engineering Review and
 exact-SHA Verification. A2 changes design documentation only; canonical/Workbench/launcher code,
 tests, configurations, frozen profiles, dependencies and historical results remain untouched.
+
+
+## ADR-173 — Finite Vehicle Dynamics Laboratory under provisional qualification criteria
+
+Recorded 28 October 2026. **WORK_COMPLETE_PENDING_REVIEW.** The V0.2-B assignment supplies Primary
+acceptance of contract `0cc7e4f626311aec05977bd3beda40c346fa4214`: five finite synthetic cases and
+the existing composition; timing/refinements, excitation and sampled filters are provisional versioned
+qualification criteria, not established accuracy or physical guarantees. No numerical criterion changes.
+
+Implement a tool-local finite registry, immutable canonical composition and integer-tick prescribed
+provider through SimulationRunner. Preserve legacy entry points/defaults. Capture the full accepted
+snapshot/seed/schedule/base/source identity, verify source stability around lab execution, retain raw
+runner CSVs before derived export and consume lab artifacts under the existing manifest pipeline.
+Use the actual injected track for XY/geometry. No duplicated dynamics or new controller/actuator law.
+
+Only the four explicit BASE/treatment pairs may be controlled candidates. Complete verified evidence,
+exact resolved inputs/source/environment/units and nominal timing are required. Keep numerical
+qualification unavailable; a successful execution or observed signal does not confer it. Read-time
+snapshot/tick/schema/summary checks reject falsely asserted qualification. Independent canonical-runner
+parity and real-worker/UI focused tests are software evidence, not a numerical qualification campaign.
+
+Nominal lab admission is enabled; refinement execution and qualification-record ingestion remain
+separately authorized work. The accepted provisional criteria are recorded unchanged. No arbitrary
+sliders/sweep framework, canonical/configuration change, rewritten historical artifact, new dependency,
+NMPC/async/hardware campaign or automatic formal Verification is introduced. See
+[implementation scope and retained evidence](apex_workbench_v0_2_b/WORK.md). Stop for Engineering Review.

@@ -58,6 +58,14 @@ def read_request(directory, *, verified=False):
     try:
         validate(request["adapter"], request["effective"])
         validate_note(request["prediction"])
+        if request["adapter"] == "dynamic_lab":
+            from tools.apex_workbench.lab_configuration import validate_resolved
+
+            validate_resolved(
+                request["effective"],
+                request["lab_resolved"],
+                vehicle_yaml=request["provenance"]["vehicle_yaml"],
+            )
     except (KeyError, TypeError, ValueError) as error:
         raise IntegrityError(f"Incomplete or invalid request: {error}") from error
     return request
@@ -81,6 +89,20 @@ def required_artifacts(request, status):
     }
     if request["adapter"] == "lqr_baseline":
         expected.add("experiment/controls.csv")
+    if request["adapter"] == "dynamic_lab":
+        expected.update(
+            {
+                "experiment/controls.csv",
+                "experiment/diagnostics.csv",
+                "experiment/resolved_lab.json",
+                "request.json",
+                "execution.json",
+                "worker.json",
+                "supervisor.json",
+                "stdout.log",
+                "stderr.log",
+            }
+        )
     return expected
 
 

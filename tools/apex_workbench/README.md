@@ -1,10 +1,18 @@
-# APEX Workbench V0.1
+# APEX Workbench V0.2 — Vehicle Dynamics Laboratory WORK
+
+**WORK_COMPLETE_PENDING_REVIEW.** Adds the finite `dynamic_lab` adapter under the accepted
+[V0.2-A2 contract](../../docs/apex_workbench_v0_2_a/PROPOSED_CASES.md) at
+`0cc7e4f626311aec05977bd3beda40c346fa4214`. See the
+[implementation evidence, focused tests and remaining gates](../../docs/apex_workbench_v0_2_b/WORK.md).
+Numerical qualification has not run. Provisional sampled teaching filters do not validate vehicle
+physics, numerical error bounds or actuator feasibility. The 17-trajectory campaign and formal
+Verification require separate authorization.
 
 Local engineering tooling: choose an existing experiment, edit supported inputs, predict,
 run real APEX code, inspect retained results, and save your explanation. This workstream is
 separately authorized from the earlier Workbench/VIS-2 deferral. It changes no canonical model,
-controller, profile, scientific exporter, or historical evidence. Delivery status:
-**V0.1_VERIFIED_PENDING_USER_ACCEPTANCE**. Functional Verification on
+controller, profile, scientific exporter, or historical evidence. Historical V0.1 delivery status:
+**V0.1_VERIFIED_PENDING_USER_ACCEPTANCE**. Its functional Verification on
 `77d018b11bbbfc39ab81d98c9bef70e90ab82725`: **855 passed, 17 separately gated G2 tests skipped**.
 See the [final review](../../docs/reviews/apex_workbench_v0_1_stabilization/REVIEW.md) and
 [Verification scope/limits](../../docs/reviews/apex_workbench_v0_1_stabilization/VERIFICATION.md).
@@ -47,6 +55,15 @@ keep the server bound to loopback.
 
 ## Supported experiments
 
+- **Vehicle Dynamics Laboratory / prescribed open loop:** canonical `DynamicBicycle` with default
+  linear axle tires/quasi-static loads, fixed existing track and canonical `SimulationRunner`.
+  Select `VDL1_BASE`, `VDL1_IZ_HIGH`, `VDL1_STEER_HIGH`, `VDL1_CF_HIGH` or `VDL1_CR_HIGH`.
+  Every case shows its full SI parameter snapshot, initial state and held-input schedule. All use
+  [2,0,0,0,0,0], a_cmd=0, a steering step at 0.100 s, duration 0.500 s and plant/input period 0.005 s.
+  The four treatments independently change Iz, steering amplitude, Cf or Cr. See
+  [exact values/origins](../../docs/apex_workbench_v0_2_a/PROPOSED_CASES.md). There is no arbitrary
+  parameter editor or mass family. Only the nominal execution grid is admitted in this WORK release;
+  refinement grids are retained as provisional criteria for the separately authorized qualification.
 - **Dynamic bicycle / open loop:** the unmodified Task004 CLI `main()`; duration and RK4 timestep.
   The original synthetic vehicle, track, initial state, steering and acceleration schedule remain fixed.
 - **LQR/PI / tracking:** the unmodified Task005 `run_case()`; duration, circle/oval track,
@@ -71,6 +88,20 @@ Parameters are synthetic, never measured or identified APEX data. Linear tires r
    composition, geometry, timing, numerical environment and telemetry contracts are compared;
    varied inputs and differences are shown. Documentation-only Git revision differences do not
    exclude an otherwise controlled comparison. Overlays use raw time without interpolation.
+
+Lab comparisons allow BASE against one of the four treatments in either order. They show a
+**Controlled candidate** only after checking full resolved snapshots, actual applied controls,
+initial state, schemas/units, source identity, environment, geometry and evidence. Other verified
+pairs are illustrative; corrupt/incomplete records are invalid. The UI never promotes completed
+runs into a qualified synthetic comparison. Observed yaw separation is displayed with numerical
+qualification still unavailable, even when it exceeds the provisional minimum signal floor.
+
+Lab state/control and canonical sample-diagnostic plots show actual retained yaw/lateral/longitudinal
+response, steering/a_cmd, slip, lateral forces, axle loads, nominal/effective stiffness, utilization,
+Frenet denominator, XY and sampled CG corridor flags. Terminal input/diagnostics are informational.
+Configuration, execution, evidence, numerical qualification, model window, excitation and comparison
+remain distinct. Missing observations are unavailable, never fabricated. The lab does not hold vx
+constant when a_cmd=0 and introduces no steering actuator or feedback law.
 
 Failed, timed-out and cancelled runs stay visible. A `completed` execution means the original
 entry point returned successfully; review boundary violations, model failures and summary criteria
@@ -134,21 +165,28 @@ unknown, nonfinite or out-of-range values and invalid LQR step multiples. `jobs.
 exclusive run directory, captures source identity, holds the execution lock, and starts a fresh
 supervisor/worker with explicit argument arrays and no shell interpolation. `worker.py` applies
 resource/native controls and calls the original Task004 CLI or Task005 function.
+For `dynamic_lab`, the worker checks source/captured composition before and after execution, constructs
+immutable canonical parameters and calls the canonical runner. Its raw CSVs precede diagnostic export;
+`resolved_lab.json`, controls, diagnostics, telemetry units and summaries join the existing manifest.
+Every required lab artifact is verified before scientific display, including a state-only plot.
 
 The original experiment composes the actual `DynamicBicycle`, original tire/load components,
 canonical RK4 integration, track geometry and (for Task005) scheduled LQR/PI plus
 `SimulationRunner`. The controller's linear design stays separate from the nonlinear plant.
 `lifecycle.py` owns the worker lease/identity checks; `storage.py` publishes records and verifies
-selected artifacts; `comparison.py` classifies compatibility. These modules add no scientific
-composition or analysis framework. The Workbench contains no vehicle/tire/controller/integration/solver equations. Derived display
+selected artifacts; `comparison.py` classifies compatibility. Lab modules add the accepted finite
+composition and sampled reporting, with no new simulation or analysis framework. The Workbench
+contains no vehicle/tire/controller/integration/solver equations. Derived display
 coordinates call the canonical Frenet API after execution. `plots.py` reads the retained CSVs;
 no missing telemetry is invented. Learning notes then close the experiment loop without supplying
 an AI explanation.
 
 ## Later work, requiring bounded review
 
-- A model-composition adapter for synthetic vehicle/initial/input overrides, with original-API
-  parity and coupled parameter validation (including wheelbase consistency).
+- Numerical qualification of the accepted lab cases, refinement admission/retained qualification
+  records and exact-SHA Engineering Review/Verification; no auto-qualification from WORK smoke runs.
+- Further finite synthetic mass/initial/input cases after reviewed numerical contracts; no
+  unrestricted slider ranges or invented parameter coupling.
 - Explicit selection of existing kinematic and smooth combined-grip compositions; no hidden swap.
 - Separately bounded NMPC/async adapters after their prerequisite gates, with zero/injected/measured
   latency, continuing plant motion, application staleness, fixed deadlines and failure retention.
