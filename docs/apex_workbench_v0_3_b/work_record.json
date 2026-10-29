@@ -1,10 +1,10 @@
 {
   "schema": "apex-workbench-v03b-work/1",
-  "status": "WORK_COMPLETE_PENDING_REVIEW",
+  "status": "V0.3_B_ENGINEERING_REVIEW_COMPLETE_PENDING_VERIFICATION",
   "recorded_local_date": "2026-10-29",
   "branch": "codex/apex-workbench-v0-3-b",
   "base_sha": "03055a183be0f5d3691714103588d5b263748128",
-  "review_candidate": "containing corrected implementation commit; exact SHA identified in independent iteration2 review",
+  "review_candidate": "ca3ef9605df3472001302dbf70c0e2815c020d1c",
   "accepted_v02_implementation": "4897686e79c13757d5ef5b4373b44d4cab99b5bf",
   "source_sha256": {
     "tools/apex_workbench/workspace.py": "1c6a11be78cf3200d5df8372a3d5bf2d5b63ced1e66e69d000b873df9b0fd789",
@@ -375,7 +375,16 @@
     "results/apex_workbench_v03b_work_20261029/correction-2.log": "d3e64e383e6c9a66e2eef7e82fe2657abcb36b40549d3e415207fef404ad3f3b",
     "results/apex_workbench_v03b_work_20261029/correction-2.xml": "c5cdb9c2db6e886ea92e3901563bca43dd48d68c3b06fdc398409804aa57427c",
     "docs/reviews/apex_workbench_v0_3_b/iteration_2/REVIEW.md": "e302096a5a4aba22431a1989267d0ccd7189690204fb28aad0dd2f245ec605eb",
-    "docs/reviews/apex_workbench_v0_3_b/iteration_2/review_record.json": "8a12e07cbd89c9c825d5ec577f87fbfe62fef55ade5d4028c7b188ec2ae3c2fc"
+    "docs/reviews/apex_workbench_v0_3_b/iteration_2/review_record.json": "8a12e07cbd89c9c825d5ec577f87fbfe62fef55ade5d4028c7b188ec2ae3c2fc",
+    "docs/reviews/apex_workbench_v0_3_b/iteration_3/REVIEW.md": "a2e84de597d4065ea73d49639de0e62d52ba2d02bbe2f1852abbadaaa386d4d5",
+    "docs/reviews/apex_workbench_v0_3_b/iteration_3/review_record.json": "60ccc1af4876d9b412eee2e13162efcba8f794eec3adbbbfb857c64384abfd43",
+    "results/apex_workbench_v03b_work_20261029/reviewer_3/independent.xml": "37c106d5cb6ba49221605b4c05d4333c16a375d204bbfe5939da3ac98ca9fdae",
+    "results/apex_workbench_v03b_work_20261029/reviewer_3/test_independent_review.py": "a617f427e4d4d5d40fa728e8d2c40bdd8672181b2d7cf2a6fd959aa3acc845c4",
+    "results/apex_workbench_v03b_work_20261029/reviewer_3/review_record.json": "60ccc1af4876d9b412eee2e13162efcba8f794eec3adbbbfb857c64384abfd43",
+    "results/apex_workbench_v03b_work_20261029/reviewer_3/test_nearby_cases.py": "83160dc0fcd88cb0bf9031583d014cab90643ce10ee890a96baf8b9fce2affd9",
+    "results/apex_workbench_v03b_work_20261029/reviewer_3/independent.log": "8b9217dfa8ea408804932c4e5b6519ebcb9db5ba51a7f910309677b0f60b77f5",
+    "results/apex_workbench_v03b_work_20261029/reviewer_3/REVIEW.md": "a2e84de597d4065ea73d49639de0e62d52ba2d02bbe2f1852abbadaaa386d4d5",
+    "results/apex_workbench_v03b_work_20261029/final_audit.json": "8dcab494251e58ebb76a8824ae908c0751f4a4ef16e5022df7f405bc2f41b358"
   },
   "commands": {
     "pytest_environment": "VECLIB_MAXIMUM_THREADS=1 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 BLIS_NUM_THREADS=1 NUMEXPR_NUM_THREADS=1 PYTHONHASHSEED=0 MPLCONFIGDIR=results/apex_workbench_v03b_work_20261029/mpl PYTHONPATH=.:scripts:src",
@@ -397,7 +406,7 @@
     "research/hardware work"
   ],
   "independent_review": {
-    "status": "two failed reviews preserved; correction2 candidate pending exact re-review",
+    "status": "PASS",
     "initial_candidate": "889c8084f7632d5f343cd7f0865a3931c3e7e933",
     "preserved_review": "docs/reviews/apex_workbench_v0_3_b/iteration_1/REVIEW.md",
     "preserved_record": "docs/reviews/apex_workbench_v0_3_b/iteration_1/review_record.json",
@@ -413,6 +422,20 @@
       "residual": "R2-A conflicting archive metadata merges distinct source paths",
       "report": "docs/reviews/apex_workbench_v0_3_b/iteration_2/REVIEW.md",
       "record": "docs/reviews/apex_workbench_v0_3_b/iteration_2/review_record.json"
+    },
+    "final": {
+      "candidate": "ca3ef9605df3472001302dbf70c0e2815c020d1c",
+      "outcome": "PASS",
+      "passed": 20,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "duration_s": 24.57,
+      "report": "docs/reviews/apex_workbench_v0_3_b/iteration_3/REVIEW.md",
+      "record": "docs/reviews/apex_workbench_v0_3_b/iteration_3/review_record.json",
+      "blocking_findings": [],
+      "actionable_nonblocking_findings": [],
+      "next_gate": "separately authorized formal functional Verification"
     }
   },
   "stop_target": "V0.3_B_ENGINEERING_REVIEW_COMPLETE_PENDING_VERIFICATION",
@@ -502,5 +525,25 @@
       "tools/apex_workbench/workspace.py": "1c6a11be78cf3200d5df8372a3d5bf2d5b63ced1e66e69d000b873df9b0fd789"
     },
     "new_qualification_trajectories": 0
+  },
+  "reviewed_source_revision": "ca3ef9605df3472001302dbf70c0e2815c020d1c",
+  "delivery_scope": "documentation-only descendant of reviewed ca3ef960; exact delivery SHA/URL supplied after push",
+  "final_recommendation": "Advance exact reviewed source to separately authorized formal functional Verification; no numerical campaign rerun or next MVP stage started",
+  "known_limitations": [
+    "two-run raw-native-time views only",
+    "approved local owned and accepted Q roots only",
+    "view-only archive notes, explicit owned refresh",
+    "macOS/accepted numerical environment checks; no cross-platform or hard real-time certification",
+    "formal Verification and final user acceptance pending"
+  ],
+  "unresolved_scientific_decisions": [],
+  "final_static_checks": {
+    "changed_python_ruff": "PASS",
+    "changed_python_format": "PASS",
+    "launcher_shell_syntax": "PASS",
+    "diff_whitespace": "PASS",
+    "changed_doc_links_fences": "PASS",
+    "post_review_implementation_delta": [],
+    "review_reports_verbatim": true
   }
 }

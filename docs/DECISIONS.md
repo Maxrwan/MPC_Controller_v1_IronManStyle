@@ -1365,3 +1365,10 @@ retain candidate/qualified synthetic/illustrative/invalid distinctions. Optional
 append-only for owned runs. Verified export rechecks artifact bytes and stable status/manifest anchors.
 The launcher changes only the application target and matching-listener identity, preserving owner,
 loopback, reuse, port-conflict and shutdown rules. See [WORK](apex_workbench_v0_3_b/WORK.md).
+
+V0.3-B final independent Engineering Review passes exact `ca3ef9605df3472001302dbf70c0e2815c020d1c`.
+Two bounded correction iterations bind comparison display to evidence/qualification anchors and
+preserve distinct conflicting archive paths with stable unique keys; exact copies still deduplicate.
+All56 frozen scientific sources and accepted qualification remain unchanged. Failed reviews are retained.
+Formal functional Verification remains separately authorized; see the
+[final review](reviews/apex_workbench_v0_3_b/iteration_3/REVIEW.md).

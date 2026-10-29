@@ -1,11 +1,15 @@
 # V0.3-B — Engineering Workspace & Run Inspection
 
-**WORK_COMPLETE_PENDING_REVIEW.** Recorded 29 October 2026. Branch
+**V0.3_B_ENGINEERING_REVIEW_COMPLETE_PENDING_VERIFICATION.** Recorded 29 October 2026.
+
+**PASS** in [final independent Engineering Review](../reviews/apex_workbench_v0_3_b/iteration_3/REVIEW.md)
+on exact source `ca3ef9605df3472001302dbf70c0e2815c020d1c`: **20 independent checks passed**,
+zero failures/errors/skips. All findings closed. The containing delivery changes documentation only. Branch
 `codex/apex-workbench-v0-3-b`, from accepted design `03055a183be0f5d3691714103588d5b263748128`.
 Initial candidate `889c8084f7632d5f343cd7f0865a3931c3e7e933` failed separate-context review.
 The failed review is preserved verbatim in [iteration 1](../reviews/apex_workbench_v0_3_b/iteration_1/REVIEW.md).
 Two bounded correction iterations are implemented; the final containing commit binds the tested files
-and must receive exact-revision independent re-review. This WORK report does not grant formal Verification or user acceptance.
+and received exact-revision independent re-review. Scientific and user acceptance remain separate. This WORK report does not grant formal Verification or user acceptance.
 
 ## Delivered behavior
 
@@ -149,13 +153,21 @@ The [second review](../reviews/apex_workbench_v0_3_b/iteration_2/REVIEW.md), exa
 independently passed 18 probes and failed one nearby archive-to-archive alias case. That failed review
 is preserved verbatim. A second bounded correction keeps distinct archive paths separate when their
 captured identities conflict, uses archive path keys to avoid colliding untrusted run IDs, and retains
-exact-copy deduplication. The final affected-file run passes **24 cases, zero failures/errors/skips**, 16.75 s,
+exact-copy deduplication. The final implementation affected-file run passes **24 cases, zero failures/errors/skips**, 16.75 s,
 `correction-2.log`/JUnit; it preserves both conflicting paths and exact-copy deduplication.
 
 Two bounded correction iterations change only the new presentation/catalog/test modules and docs.
-No scientific contract or inventory changed. The exact corrected candidate must receive separate-context
-Engineering Review. Preserve failed review records
-and re-review any corrected source revision, at most three substantive bounded correction iterations.
+No scientific contract or inventory changed. The exact corrected candidate `ca3ef9605df3472001302dbf70c0e2815c020d1c` received **PASS** in
+[iteration 3](../reviews/apex_workbench_v0_3_b/iteration_3/REVIEW.md), with **20 passed** independently,
+zero failures/errors/skips, 24.57 s. The reviewer tested late first/second/third plot-read replacement,
+selected-Q anchor changes, distinct archive conflicts and stable unique keys, exact-copy deduplication,
+cyclic paths, actual native yaw data, all17 read-only archive source hashes, all56 Git blobs and
+four-pair applicability. No actionable finding remains. No fresh reviewer worker/launcher/campaign ran
+in this final iteration; prior launcher evidence retains its stated scope. Both failed reviews remain
+verbatim. Two substantive correction iterations were used, within the authorized maximum three.
+Any future implementation change requires the applicable exact-revision review.
 The next gate is separately authorized exact-revision formal functional Verification. After that,
 the accepted roadmap's pairwise multi-run/common-time inspection is the next MVP extension; no
 extension starts automatically here.
+
+**Stop: V0.3_B_ENGINEERING_REVIEW_COMPLETE_PENDING_VERIFICATION.**

@@ -1,0 +1,60 @@
+{
+  "schema": "apex-v03b-independent-engineering-review/1",
+  "candidate": "ca3ef9605df3472001302dbf70c0e2815c020d1c",
+  "branch": "codex/apex-workbench-v0-3-b",
+  "correction_iteration": 2,
+  "outcome": "PASS",
+  "status": "V0.3_B_ENGINEERING_REVIEW_COMPLETE_PENDING_VERIFICATION",
+  "previous_failed_candidates": [
+    "889c8084f7632d5f343cd7f0865a3931c3e7e933",
+    "f6a8660f3674ae46a11bd377b807665d765ae00f"
+  ],
+  "finding_closure": {
+    "R1": "PASS",
+    "R2": "PASS",
+    "R2-A": "PASS",
+    "R3": "PASS"
+  },
+  "blocking_findings": [],
+  "actionable_nonblocking_findings": [],
+  "independent_invocation": {
+    "passed": 20,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "duration_s": 24.57,
+    "reviewer_harness_failures": 0,
+    "log": "independent.log",
+    "junit": "independent.xml"
+  },
+  "frozen_source_git_blob_matches": 56,
+  "accepted_source_revision": "4897686e79c13757d5ef5b4373b44d4cab99b5bf",
+  "current_work_source_hashes_match": true,
+  "actual_archive_source_runs_read_only": 17,
+  "actual_archive_before_after_hash_maps_equal": true,
+  "production_four_pair_qualification_applicability": true,
+  "qualification_sha256": "f08ae323e86cdd03964e87b091aef660ac1568e1601e42c43e82dbc0f5e429c8",
+  "late_plot_replacement_boundaries_checked": [
+    1,
+    2,
+    3
+  ],
+  "selected_qualification_epoch_change_checked": true,
+  "conflicting_archive_unique_stable_keys_checked": true,
+  "exact_archive_copy_dedup_and_read_only_ownership_checked": true,
+  "source_modifications": [],
+  "worker_simulations_started": 0,
+  "qualification_campaigns_started": 0,
+  "launcher_smokes_started": 0,
+  "unrelated_listener_touched": false,
+  "formal_verification_run": false,
+  "full_repository_suite_run": false,
+  "next_required_step": "separately authorized exact-reviewed-revision formal functional Verification",
+  "evidence_sha256": {
+    "independent.xml": "37c106d5cb6ba49221605b4c05d4333c16a375d204bbfe5939da3ac98ca9fdae",
+    "test_independent_review.py": "a617f427e4d4d5d40fa728e8d2c40bdd8672181b2d7cf2a6fd959aa3acc845c4",
+    "test_nearby_cases.py": "83160dc0fcd88cb0bf9031583d014cab90643ce10ee890a96baf8b9fce2affd9",
+    "independent.log": "8b9217dfa8ea408804932c4e5b6519ebcb9db5ba51a7f910309677b0f60b77f5",
+    "REVIEW.md": "a2e84de597d4065ea73d49639de0e62d52ba2d02bbe2f1852abbadaaa386d4d5"
+  }
+}

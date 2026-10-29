@@ -1,43 +1,47 @@
-# Current handoff — V0.3-B Engineering Workspace WORK
+# Current handoff — V0.3-B Engineering Workspace and independent review
 
-**WORK_COMPLETE_PENDING_REVIEW.** Recorded 29 October 2026. Dedicated branch
-`codex/apex-workbench-v0-3-b` from accepted design `03055a183be0f5d3691714103588d5b263748128`.
-Initial candidate `889c8084f7632d5f343cd7f0865a3931c3e7e933` failed independent review. Its
-[verbatim review](reviews/apex_workbench_v0_3_b/iteration_1/REVIEW.md) is retained. Two bounded
-correction iterations close stale comparison epochs, unsealed identity bridges and metadata loops.
-The [second failed review](reviews/apex_workbench_v0_3_b/iteration_2/REVIEW.md) is also retained;
-distinct conflicting archive paths now stay separate with unique path keys, while exact copies dedup.
-The exact corrected candidate requires independent re-review; no automatic
-Verification, next MVP stage or final acceptance is authorized.
+**V0.3_B_ENGINEERING_REVIEW_COMPLETE_PENDING_VERIFICATION.** Recorded 29 October 2026. **PASS.**
+Exact reviewed source: `ca3ef9605df3472001302dbf70c0e2815c020d1c`.
+Branch `codex/apex-workbench-v0-3-b`, from design `03055a183be0f5d3691714103588d5b263748128`.
+Containing delivery changes only documentation; exact SHA/URL supplied after push.
 
-Primary launcher now opens additive Home / Run / Inspect / Compare presentation. All three
-accepted execution modes reuse the unchanged backend; notes are optional. Original qualification
-sources are discovered in place read-only and aliases are grouped. Actual configuration, provenance,
-summary fields, telemetry/references/diagnostics, native coverage, logs and verified ZIP are exposed.
-Two-run classification and selected qualification use the accepted readers. Legacy app.py remains
-unchanged and directly launchable on another port. See [WORK](apex_workbench_v0_3_b/WORK.md),
-[machine record](apex_workbench_v0_3_b/work_record.json), updated Workbench README and ADR-176.
+Primary one-click launcher opens Home / Run / Inspect / Compare around the accepted engine.
+Actual archived qualification sources are discovered in place read-only; copied executions dedup,
+conflicting archive paths retain distinct stable keys. Configuration/effective parameters, actual
+telemetry/references/diagnostics, summaries, raw coverage, source/environment, logs and verified export
+are accessible. Notes are optional and append-only for owned runs. Comparisons bind classification
+and display to evidence/qualification anchors and withhold stale labels/plots. Legacy app.py is intact.
+See [WORK](apex_workbench_v0_3_b/WORK.md), [machine record](apex_workbench_v0_3_b/work_record.json),
+[final independent review](reviews/apex_workbench_v0_3_b/iteration_3/REVIEW.md) and ADR-176.
 
-Focused Workbench directory: **254 passed, zero failures/errors/skips**. After a small presentation
-race guard and two added UI checks, final new-view file: **17 passed**. These are separate runs,
-not added counts or a full repository Verification result. After correction, **22 new-view checks
-pass**, including all three reviewer reproductions and a later plot-read replacement. The second
-correction passes **24 cases**, adding distinct-conflicting-archive and exact-copy coverage. Original V0.1
-parity, V0.2 canonical parity,
-lifecycle, cancellation and integrity coverage passed. Actual launcher startup/reuse/owned shutdown,
-port/missing-env errors and refusal to take over the legacy app passed. Initial Streamlit rendering
-failure and audit-invocation setup error are retained and corrected within scope.
+Focused implementation evidence: initial directory **254 passed**, followed by final corrected new-view
+file **24 passed**. These are separate invocations, not added counts. The prior239 backend/legacy
+cases retain unchanged dependencies; affected new presentation is retested. Original V0.1 entry-point/
+owned-worker parity, V0.2 canonical-runner parity, lifecycle/cancellation/integrity passed. Actual
+launcher start/reuse/owned shutdown, port/missing-env errors and legacy-server refusal passed.
 
-All 56 accepted source hashes remain identical to reviewed V0.2 `4897686e79c13757d5ef5b4373b44d4cab99b5bf`.
-Production audit of original qualification revalidates all 17 references/five cases and four accepted
-pairs; record checksum unchanged. No campaign rerun. All 30,389 historical result files retain their
-size/mtime. Evidence root: `results/apex_workbench_v03b_work_20261029/`. No source-inventory relaxation,
-new scientific metric/controller, research integration or hardware. Root tests/full formal suite deferred.
+Separate-context final review on ca3ef960: **20 passed, zero failures/errors/skips**, all findings
+closed. Two prior failed reviews are retained verbatim (889c808 and f6a8660), with their raw failures
+and reviewer harness errors. Two authorized bounded correction iterations fixed stale comparison
+epochs, untrusted identity bridges, archive-path key collisions and cyclic metadata handling.
 
-Next: commit exact candidate, separate-context Engineering Review, bounded corrections/re-review if
-needed, then stop pending separately authorized formal functional Verification. Known limits are
-raw-time/two-run plots, approved local archives only, view-only archive notes and manual owned refresh.
-No unresolved scientific decision is needed for this stage.
+All56 accepted source hashes match V0.2 `4897686e79c13757d5ef5b4373b44d4cab99b5bf`. Canonical
+models/controllers/integrators/configs/dependencies/criteria/profiles and legacy UI/readers/workers are
+unchanged. Production Q audit/final reviewer validates actual17 references and four accepted pairs;
+Q checksum unchanged. Historical30,389 result files retain size/mtime; reviewer confirms full actual-Q
+before/after hashes equal. No campaign rerun. Logs/scripts/JUnit: `results/apex_workbench_v03b_work_20261029/`.
+
+Limits: two-run/raw native time only; approved local archives, view-only archive notes, manual owned
+refresh; no replay, new metric/controller/physical telemetry/Safety authority or research/hardware work.
+macOS/accepted numerical environment only. Complete formal suite is deferred. A separate user-owned
+launcher appeared during independent smoke; it was preserved, and that smoke's partial coverage is
+explicitly distinct from the complete implementation launcher evidence.
+
+Next gate: separately authorized exact-revision formal functional Verification. The subsequent roadmap
+extension is pairwise multi-run/common-time inspection after applicable gates, with no automatic start.
+No unresolved scientific decision or blocking engineering finding remains. No final user acceptance.
+
+**Stop: V0.3_B_ENGINEERING_REVIEW_COMPLETE_PENDING_VERIFICATION.**
 
 ---
 
