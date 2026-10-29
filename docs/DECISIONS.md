@@ -1343,3 +1343,25 @@ See [audit and revision ledger](apex_workbench_v0_3_a/ENGINEERING_CAPABILITY_AUD
 [roadmap](apex_workbench_v0_3_a/MVP_ROADMAP.md) and
 [bounded first task / scientific triggers](apex_workbench_v0_3_a/DECISIONS_AND_NEXT_TASK.md).
 Independent Engineering Review and applicable Verification precede acceptance of future implementation.
+
+
+## ADR-176 — Additive engineering workspace with read-only qualification archives
+
+Recorded 29 October 2026 under the authorized V0.3-B WORK and independent-review scope.
+Implement a thin primary Home / Run / Inspect / Compare workspace using existing Streamlit/Plotly,
+validators, leased workers, verified readers and classification. Preserve all 56 accepted dependency
+files and their current-source enforcement. New presentation modules enter unchanged full provenance;
+they require their own Engineering Review and later Verification. Legacy app.py remains available.
+
+Use a non-authoritative catalog of the owned root and accepted qualification reference paths.
+Group captured execution aliases without creating new executions. Prefer original archive sources;
+disclose conflicting aliases and withhold ambiguous owned lifecycle controls. Archive access is pure
+read-only: no reconciliation, cancel, notes writes, migration or resealing. Use the frozen pure lab
+comparison reader directly so the legacy wrapper cannot mutate archive lifecycle status.
+
+Display existing metrics, actual channels/references and units, source/environment, native rows and
+coverage. No new metric or physics semantics. Compare exactly two records at native timestamps;
+retain candidate/qualified synthetic/illustrative/invalid distinctions. Optional notes remain
+append-only for owned runs. Verified export rechecks artifact bytes and stable status/manifest anchors.
+The launcher changes only the application target and matching-listener identity, preserving owner,
+loopback, reuse, port-conflict and shutdown rules. See [WORK](apex_workbench_v0_3_b/WORK.md).

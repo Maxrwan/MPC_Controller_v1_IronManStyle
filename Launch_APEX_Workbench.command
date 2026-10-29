@@ -47,7 +47,7 @@ def matching_server(root, port):
         app = Path(command[4])
         if not app.is_absolute():
             app = working / app
-        if app.resolve() == root / "tools/apex_workbench/app.py" and process.is_running():
+        if app.resolve() == root / "tools/apex_workbench/workspace.py" and process.is_running():
             return process
     except (OSError, ValueError, psutil.Error, subprocess.TimeoutExpired):
         pass
@@ -96,7 +96,7 @@ def launch(root, port=8501):
     print("Starting APEX Workbench from this project. Your browser will open when ready.", flush=True)
     print("Keep this Terminal window open. Press Control-C here to stop Workbench.", flush=True)
     server = subprocess.Popen(
-        [sys.executable, "-m", "streamlit", "run", str(root / "tools/apex_workbench/app.py"),
+        [sys.executable, "-m", "streamlit", "run", str(root / "tools/apex_workbench/workspace.py"),
          "--server.address", "127.0.0.1", "--server.port", str(port),
          "--server.headless", "true", "--browser.gatherUsageStats", "false"], cwd=root,
     )

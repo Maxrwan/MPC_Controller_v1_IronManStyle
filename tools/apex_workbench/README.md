@@ -1,33 +1,23 @@
-# APEX Workbench V0.2 — Vehicle Dynamics Laboratory WORK
+# APEX Engineering Workspace V0.3-B
 
-V0.2-C corrects the independent review findings and prepares the accepted numerical protocol.
-See [closure, software tests and review stage](../../docs/apex_workbench_v0_2_c/WORK.md).
-The campaign remains **pending separate execution authorization**. Preparing or printing its plan
-does not qualify the lab or establish physical validity.
+The primary local workspace provides **Home / Run / Inspect / Compare** over the accepted
+Workbench engine. Discover retained runs, reopen their original evidence, inspect actual channels
+and compare two records. Engineering notes are optional. See
+[V0.3-B implementation and focused evidence](../../docs/apex_workbench_v0_3_b/WORK.md).
+Formal Verification of this new presentation remains separately gated.
 
-**V0.2-B historical WORK:** Adds the finite `dynamic_lab` adapter under the accepted
-[V0.2-A2 contract](../../docs/apex_workbench_v0_2_a/PROPOSED_CASES.md) at
-`0cc7e4f626311aec05977bd3beda40c346fa4214`. See the
-[implementation evidence, focused tests and remaining gates](../../docs/apex_workbench_v0_2_b/WORK.md).
-Numerical qualification has not run. Provisional sampled teaching filters do not validate vehicle
-physics, numerical error bounds or actuator feasibility. The 17-trajectory campaign and formal
-Verification require separate authorization.
+The five finite synthetic V0.2 cases and four baseline/treatment comparisons were qualified and
+functionally verified before this task. Primary accepted that finite scope in V0.3-A. See the
+[qualification report](../../docs/apex_workbench_v0_2_d/QUALIFICATION.md) and
+[V0.2 Verification](../../docs/reviews/apex_workbench_v0_2_e/VERIFICATION.md).
+This presentation preserves all 56 accepted scientific dependency hashes, including the original
+`app.py` and `plots.py`. It changes no numerical criteria, canonical model or historical evidence.
+Qualification does not establish physical validity, actuator feasibility or hard real-time behavior.
 
-Local engineering tooling: choose an existing experiment, edit supported inputs, predict,
-run real APEX code, inspect retained results, and save your explanation. This workstream is
-separately authorized from the earlier Workbench/VIS-2 deferral. It changes no canonical model,
-controller, profile, scientific exporter, or historical evidence. Historical V0.1 delivery status:
-**V0.1_VERIFIED_PENDING_USER_ACCEPTANCE**. Its functional Verification on
-`77d018b11bbbfc39ab81d98c9bef70e90ab82725`: **855 passed, 17 separately gated G2 tests skipped**.
-See the [final review](../../docs/reviews/apex_workbench_v0_1_stabilization/REVIEW.md) and
-[Verification scope/limits](../../docs/reviews/apex_workbench_v0_1_stabilization/VERIFICATION.md).
-
-R1–R6 corrective WORK uses record version 2. See [correction scope and evidence](CORRECTIONS.md).
-The original [failed Engineering Review](../../docs/reviews/apex_workbench_v0_1/REVIEW.md)
-remains preserved. The stabilized revision has passed separate-context technical review and
-functional Verification; user/scientific acceptance remains separate.
-The [delegated stabilization record](STABILIZATION.md) covers subsequent metadata/missing-evidence
-corrections and their revision-specific review status.
+Historical implementation/review evidence remains in [V0.2-B WORK](../../docs/apex_workbench_v0_2_b/WORK.md),
+[V0.2-C closure](../../docs/apex_workbench_v0_2_c/WORK.md), [R1–R6 corrections](CORRECTIONS.md),
+[original failed review](../../docs/reviews/apex_workbench_v0_1/REVIEW.md) and
+[V0.1 stabilization](STABILIZATION.md).
 
 ## Setup and launch
 
@@ -46,7 +36,7 @@ From the repository root, using Python 3.12 and the existing core environment:
 uv pip freeze --python .venv/bin/python | rg -v '^-e ' > /tmp/apex-workbench-pins.txt
 uv pip install --python tools/apex_workbench/.venv/bin/python -e . \
   -r tools/apex_workbench/requirements.txt --constraint /tmp/apex-workbench-pins.txt
-tools/apex_workbench/.venv/bin/python -m streamlit run tools/apex_workbench/app.py \
+tools/apex_workbench/.venv/bin/python -m streamlit run tools/apex_workbench/workspace.py \
   --server.address 127.0.0.1 --server.port 8501 --server.headless true \
   --browser.gatherUsageStats false
 ```
@@ -57,6 +47,18 @@ are already installed, only the last command is needed. `uv` cache/network acces
 Install pytest in this tool environment to run the focused tests. See [validation](VALIDATION.md)
 for the exact checked environment and evidence. No cloud deployment or authentication is included;
 keep the server bound to loopback.
+
+The one-click launcher opens `workspace.py`. Direct compatibility access to the original accepted
+application is retained. To run it alongside the primary workspace, use a separate port:
+
+```sh
+tools/apex_workbench/.venv/bin/python -m streamlit run tools/apex_workbench/app.py \
+  --server.address 127.0.0.1 --server.port 8502 --server.headless true \
+  --browser.gatherUsageStats false
+```
+
+A legacy app occupying port 8501 is not reused or stopped by the new launcher. Stop it in its own
+Terminal or use the separate port above. The launcher reports a conflict and preserves its owner.
 
 ## Supported experiments
 
@@ -84,16 +86,33 @@ Parameters are synthetic, never measured or identified APEX data. Linear tires r
 
 ## Use
 
-1. Select an experiment in the sidebar and enter supported inputs with units.
-2. Write **My prediction**, then press **Run experiment**.
-3. Inspect status, XY trajectory, states, actual/reference channels where available, and controls.
-4. Read metadata, summaries, stdout/stderr and numerical environment in **Evidence & logs**.
-5. Save **My observation** and **My explanation** in **Learning notes**.
-6. Select retained runs later, download a ZIP, or overlay two completed runs of the same adapter
-   in **Compare runs**. Eligibility is controlled, illustrative, or invalid. Scientific source,
-   composition, geometry, timing, numerical environment and telemetry contracts are compared;
-   varied inputs and differences are shown. Documentation-only Git revision differences do not
-   exclude an otherwise controlled comparison. Overlays use raw time without interpolation.
+1. **Home** shows the three supported modes, explicit unavailable capabilities, adapter/outcome
+   filters and unverified discovery metadata. Inspect a record to establish evidence trust.
+2. **Run** submits the same allowlisted defaults/inputs through the original leased worker. A run
+   note is optional. The laboratory remains nominal-only. Start, leave the page and reopen the run
+   in **Inspect**; active owned runs have explicit refresh/cancel controls.
+3. **Inspect** selects a run from its original path. Read its outcome/evidence status, configuration,
+   effective parameters, source and numerical provenance, actual summary fields and telemetry contract.
+   Choose state/control/diagnostic channels; actual recorded reference channels are overlaid only
+   when present. Each channel has its own declared unit axis. Native rows and XY/track are available.
+4. **Compare** selects exactly two runs. The accepted readers determine candidate, qualified synthetic,
+   illustrative or invalid status and show actual differences and retained summaries. Select the
+   accepted qualification explicitly in the sidebar; discovery alone confers no qualification.
+   Plots use raw timestamps without interpolation or time alignment. Invalid pairs have no overlays.
+5. **Raw records and failure logs** remain available for corrupt/incomplete records with explicit
+   unverified labels. Verified records offer a ZIP of original manifest-listed bytes plus their
+   status/manifest; moving anchors abort export. This is retained evidence, not a new execution.
+6. **Engineering notes** preserve original prediction/observation/explanation records and append-only
+   versions. Only owned runs offer note writes. Qualification archives are read-only.
+
+Discovery is restricted to direct directories in `results/apex_workbench/` and the original source
+runs referenced by `results/apex_workbench_qualifications/v0_2_reviewed_20261029/qualification/`.
+No arbitrary path importer is provided. Paths sharing captured run/worker/manifest identity are
+shown once with aliases; a copied folder never counts as another execution. Conflicting aliases
+are disclosed. The original qualification source can still be independently verified; ambiguous
+owned aliases are quarantined and offer no lifecycle controls. Archived/nonterminal records never
+invoke reconciliation or cancellation. Nothing is copied, resealed or migrated for discovery.
+
 
 Lab comparisons allow BASE against one of the four treatments in either order. They show a
 **Controlled candidate** only after checking full resolved snapshots, actual applied controls,
@@ -101,7 +120,7 @@ initial state, schemas/units, source identity, environment, geometry and evidenc
 pairs are illustrative; corrupt/incomplete records are invalid. Without an explicitly selected valid
 qualification record, completed runs remain unqualified. Observed yaw separation alone cannot confer
 qualification, even when it exceeds the provisional minimum signal floor.
-After a separately authorized campaign, an optional qualification record can be selected. It is
+The retained accepted qualification record can be explicitly selected. It is
 revalidated against all referenced runs, source/environment and exact finite-case exports before
 showing numerical case status and pair eligibility. Sampled interpretation, excitation and physical
 validity stay separate; records are never silently attached to or written into old run evidence.
@@ -193,13 +212,14 @@ an AI explanation.
 
 ## Later work, requiring bounded review
 
-- Numerical qualification of the accepted lab cases, refinement admission/retained qualification
-  records and exact-SHA Engineering Review/Verification; no auto-qualification from WORK smoke runs.
+- Exact-revision formal Verification of the new workspace after independent Engineering Review.
+  Existing numerical qualification is consumed read-only; no auto-qualification from WORK smokes.
 - Further finite synthetic mass/initial/input cases after reviewed numerical contracts; no
   unrestricted slider ranges or invented parameter coupling.
 - Explicit selection of existing kinematic and smooth combined-grip compositions; no hidden swap.
 - Separately bounded NMPC/async adapters after their prerequisite gates, with zero/injected/measured
   latency, continuing plant motion, application staleness, fixed deadlines and failure retention.
-- Exported comparison reports and curated learning experiments.
+- Pairwise multi-run/common-time inspection, recorded replay, explicit legacy archive profiles and
+  useful presentation exports, under the accepted roadmap and separate stage authorization.
 - Review/Verification of later implementation revisions. VIS package ingestion, VIS-2 unseen tracks,
   frozen Performance changes, Efficiency execution and physical vehicle identification remain separate.

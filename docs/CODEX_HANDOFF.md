@@ -1,3 +1,38 @@
+# Current handoff — V0.3-B Engineering Workspace WORK
+
+**WORK_COMPLETE_PENDING_REVIEW.** Recorded 29 October 2026. Dedicated branch
+`codex/apex-workbench-v0-3-b` from accepted design `03055a183be0f5d3691714103588d5b263748128`.
+The exact candidate will be identified by separate-context Engineering Review; no automatic
+Verification, next MVP stage or final acceptance is authorized.
+
+Primary launcher now opens additive Home / Run / Inspect / Compare presentation. All three
+accepted execution modes reuse the unchanged backend; notes are optional. Original qualification
+sources are discovered in place read-only and aliases are grouped. Actual configuration, provenance,
+summary fields, telemetry/references/diagnostics, native coverage, logs and verified ZIP are exposed.
+Two-run classification and selected qualification use the accepted readers. Legacy app.py remains
+unchanged and directly launchable on another port. See [WORK](apex_workbench_v0_3_b/WORK.md),
+[machine record](apex_workbench_v0_3_b/work_record.json), updated Workbench README and ADR-176.
+
+Focused Workbench directory: **254 passed, zero failures/errors/skips**. After a small presentation
+race guard and two added UI checks, final new-view file: **17 passed**. These are separate runs,
+not added counts or a full repository Verification result. Original V0.1 parity, V0.2 canonical parity,
+lifecycle, cancellation and integrity coverage passed. Actual launcher startup/reuse/owned shutdown,
+port/missing-env errors and refusal to take over the legacy app passed. Initial Streamlit rendering
+failure and audit-invocation setup error are retained and corrected within scope.
+
+All 56 accepted source hashes remain identical to reviewed V0.2 `4897686e79c13757d5ef5b4373b44d4cab99b5bf`.
+Production audit of original qualification revalidates all 17 references/five cases and four accepted
+pairs; record checksum unchanged. No campaign rerun. All 30,389 historical result files retain their
+size/mtime. Evidence root: `results/apex_workbench_v03b_work_20261029/`. No source-inventory relaxation,
+new scientific metric/controller, research integration or hardware. Root tests/full formal suite deferred.
+
+Next: commit exact candidate, separate-context Engineering Review, bounded corrections/re-review if
+needed, then stop pending separately authorized formal functional Verification. Known limits are
+raw-time/two-run plots, approved local archives only, view-only archive notes and manual owned refresh.
+No unresolved scientific decision is needed for this stage.
+
+---
+
 # Current handoff — V0.3-A engineering MVP design
 
 **V0.3_ENGINEERING_MVP_DESIGN_COMPLETE_PENDING_REVIEW.** Recorded 29 October 2026.

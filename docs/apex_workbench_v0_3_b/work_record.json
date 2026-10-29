@@ -1,0 +1,347 @@
+{
+  "schema": "apex-workbench-v03b-work/1",
+  "status": "WORK_COMPLETE_PENDING_REVIEW",
+  "recorded_local_date": "2026-10-29",
+  "branch": "codex/apex-workbench-v0-3-b",
+  "base_sha": "03055a183be0f5d3691714103588d5b263748128",
+  "review_candidate": "containing implementation commit; exact SHA supplied in subsequent independent review",
+  "accepted_v02_implementation": "4897686e79c13757d5ef5b4373b44d4cab99b5bf",
+  "source_sha256": {
+    "tools/apex_workbench/workspace.py": "d325ff8e54b6b7a42efeaaaf459514af430d28a7cf957435616a7e55dc0ff6af",
+    "tools/apex_workbench/run_catalog.py": "d8ffb59fe0bab29b28d22f0d7d7ffe0dda9439194b2c2ced8cc9185d23a93e51",
+    "tools/apex_workbench/engineering_views.py": "19a2d540fb5b1afb03b27ef859b8c7cce7452f648dba6fe0dfbd6310a3271504",
+    "tools/apex_workbench/tests/test_engineering_workspace.py": "76daa264f6f380d22575a1aa439f012c94981de379851e1f8f60122614299c8c"
+  },
+  "launcher_sha256": "521e14fb8eb1459e3855c6ef872bd34bdaee764f1c198cad8b2147bf9906599d",
+  "scientific_source_sha256": {
+    "configs/vehicles/synthetic_dynamic_test_vehicle.yaml": "df1b853d21a1d3efaf858f7e58401151f2c5237793c40e16bb4189ed651f9cf3",
+    "scripts/run_dynamic_bicycle_demo.py": "9aa8bef1f05186d6653752becadcfb72d5698a82355606a7847be6d69171baa3",
+    "scripts/threading_study/config.py": "a50a73015c3ab739c35aa1fd715840364974213bf1c12666269b250264556fc3",
+    "src/apex/__init__.py": "2dd176027291d40716c8c828e8a9994afbf247d22bea1426fac52c259cbbc33b",
+    "src/apex/config.py": "40227b4ed2a38e30ecfb9acc7f308cf9db31b54dc813bb28850b25800877e0ad",
+    "src/apex/control/__init__.py": "12878dbd9e38ae415462ea0eccbfc315387856736233a7ea4b2f840b1a53e96a",
+    "src/apex/control/base.py": "119b6cb4235421b9728838b47e4913158402997957956a473009c43435acb870",
+    "src/apex/coordinates/__init__.py": "1c443357b2a8e949a157c09b6fb3b50c170d98c908da8c0e8ebbd7e25f919555",
+    "src/apex/coordinates/angles.py": "2ed31ef5153e42083e727efc10b7875277f7f2641a5e16e9790e3f6073b33d05",
+    "src/apex/coordinates/frenet.py": "5fd10e1648847071561086f394914f6812422b0ad04f81ef2a517968334e17bd",
+    "src/apex/models/__init__.py": "d530a05e192b5d6c8b815c3edb2599a88bc35acac91c83280cd8e22d31a1d0d2",
+    "src/apex/models/base.py": "3bd8085e89978410bbe8581903b6280bd84f1a1ca956f1bb62f974462df7c525",
+    "src/apex/models/constants.py": "1b485d45ad2d74aaa256c1aab00157d7c610db0bea9f744d75376b8e816534be",
+    "src/apex/models/errors.py": "81baff4659f36bb6aea91e6a27327260b4d69e23de22963de6832199e7f1f916",
+    "src/apex/models/frenet.py": "a8c6190bd6be9f2a284c83b5c31e5d6cb2d8ef1f791b49bbebdd3c110a36ee96",
+    "src/apex/models/integration.py": "02009193fb2d25e83560a2da37f216048dfa3ededcb3de8616b90e411473ad51",
+    "src/apex/models/tire/__init__.py": "000e7ac305a2f5bb610e6ee9e066a6f8d82a0ac335c2b9253d292a2c3c96907f",
+    "src/apex/models/tire/base.py": "da1b635a6da1de465ac7af61dcf3cad8d23ef406eb6dd7f45dad825bc3f60ccf",
+    "src/apex/models/tire/config.py": "73f7e47ae5768a6961a8ca65aa40a5da7ecd77e412ac6995a459e969daa83877",
+    "src/apex/models/tire/grip.py": "e91bab930ee0650578ede2964ef680f77663cfd34d26ab1682c232b34c6d8c90",
+    "src/apex/models/tire/linear.py": "6ae5888b0000cd57a88788463977be1a90fa8e1f6a332f131c66623192ce9cf3",
+    "src/apex/models/vehicle/__init__.py": "ab6dddf29c21f198a84b17e28f3dcb8b4b1e6543e0ce5533d4166a062d549a9f",
+    "src/apex/models/vehicle/dynamic_bicycle.py": "c93b674924eed24f9641ebe263863b3422cba5eb1665c0d93dd6cd00bdfd462f",
+    "src/apex/models/vehicle/force_allocation.py": "e77d8c87efdaa9c008ec45385ad4dad326cfa2e003798c08e29a5fb9a17647f8",
+    "src/apex/models/vehicle/load_transfer.py": "e96c74199a7d8147866529cb4ecfffbfce74815cb57accb52ea54b407b873be1",
+    "src/apex/models/vehicle/parameters.py": "5cfce45b4a87577b17193b44cfa24f11c8e29c93082564a596f7ddf4e797fbb2",
+    "src/apex/simulation/__init__.py": "84069322b2562012fcfd863d27f6fc88a0f2d5eaba3a4040f10e896cffc4a513",
+    "src/apex/simulation/runner.py": "99dd44020405dd121433637ccf43d53639451a2b7b595bed255555144802cb34",
+    "src/apex/simulation/timing.py": "1bcd5ac042dc761ff8ed83028d0dde372a1569a9549f84e7f92061e109fa968f",
+    "src/apex/state.py": "b2b16555f8ae83f041ee821906305accc56010b643bb3fa514f90a8a17e66862",
+    "src/apex/track/__init__.py": "95dd539a129d605aa979952c68c75d633738d520fa66e06a491b5bfb2ef7907c",
+    "src/apex/track/base.py": "c15e48dfa2a08bfd57040c80b1280a6f56234503361a38cb3cda6cb35e93cca1",
+    "src/apex/track/centerline.py": "caf28a32f24198fbfd57a7d6a987822f9b4df88ff6b5f1bca5c1f57e2b79429f",
+    "src/apex/track/closed_track.py": "c14fb27c1a1182dec564a5a679832e67c6480fb382a15c05dd2c998b138a350e",
+    "src/apex/track/io.py": "ee2f5a27740684ddba2f1907c88e8893c6cf0c59150352d35845914d5fd30b65",
+    "src/apex/track/progress.py": "fef18ea7fe610cca1ff80f32acdecf5f756b6d26c1a47e47f0eb23b7ae8dc0d8",
+    "src/apex/track/synthetic.py": "1e7ed0900af9971d6c68ca810570b9177a97eb830361c580724870752f4744c0",
+    "tools/apex_workbench/__init__.py": "194595c8c9d46745693697c8417c2408fbe76e3254ae716f26b50c47f4723396",
+    "tools/apex_workbench/app.py": "ea572914ab10d824c93002d56831492fccf45a839520754a8ff4f3fe37b4eea8",
+    "tools/apex_workbench/comparison.py": "5e54bd0d75e830d54c4060c19aa7db725b6402af201aba314fd8e1bc42e14b45",
+    "tools/apex_workbench/configuration.py": "39b33dcd20be80a188d532c33c3fe33561addff847d298beab626fa9a476dc02",
+    "tools/apex_workbench/dynamic_lab.py": "65e78ea7a982421837e96ea3bc5b8748ae1e1c6e0e22493fe8ae99df8d67063d",
+    "tools/apex_workbench/jobs.py": "0e14fd1c56f76372677e6408c37f44713ca9af3b1d8b8f4c064f80bd1d23b170",
+    "tools/apex_workbench/lab_comparison.py": "ae792cb84bd0a10dec62160350f4a79e1397098b3267b2f0f7db9285f798e0cb",
+    "tools/apex_workbench/lab_configuration.py": "41e937fbf8d5f4fb239f2d0a99d39f94e1966f59787a7b4ae1f7f4015ce89abc",
+    "tools/apex_workbench/lab_evidence.py": "a3ea1046530bbe13461c87529155d167c83681008c9298268be9167b00dbed73",
+    "tools/apex_workbench/lab_reporting.py": "47ecc170f80fb06b99b5ef9a78d70749a22da547c52b4b671eba37eca387b0c2",
+    "tools/apex_workbench/lab_sources.py": "7b5bef6d440f8a16004de9b4539a43c28dc13b203d7ff2a8a01eca1b74895a84",
+    "tools/apex_workbench/lifecycle.py": "794bd5ada88048a402a2d0946942ec9962e52b0caf2e72d7a8a3a0279f51f05a",
+    "tools/apex_workbench/plots.py": "091359f6d07fa46105c7575627dc5862203fd2279d77ffa7c0c73b0cca5cc48c",
+    "tools/apex_workbench/qualification.py": "ebbde4064962fe4dac9d958860fc271815fd67c804c0d2aff7c5031a2ef577cd",
+    "tools/apex_workbench/qualification_campaign.py": "a191c1cf2e34831755c9d48d71767935c3b1f67bb085f04b3539d22ff7398ac9",
+    "tools/apex_workbench/qualification_math.py": "4511601c8291ea40c68b7fe91763f3251e9dcb195bd373c951ec7a47a5977fbf",
+    "tools/apex_workbench/qualification_reference.py": "a93797ffd5bdf974078c032a55367849a257d92138e1e2630e89bcb8168e3826",
+    "tools/apex_workbench/storage.py": "9486d6339b6dc50d2d4fe9030dfb71940e11c8ce283e838e7614fed80eaeb3cb",
+    "tools/apex_workbench/worker.py": "065738dab95e685b61c9347c254aeb9e13b0cdbcc605087752d0b6b21601b64e"
+  },
+  "preflight": {
+    "python": "3.12.14 (main, Sep  1 2026, 14:09:38) [Clang 22.1.3 ]",
+    "executable": "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/tools/apex_workbench/.venv/bin/python",
+    "platform": "macOS-26.5.1-arm64-arm-64bit",
+    "native": {
+      "requested_ceiling": 1,
+      "set_status": 0,
+      "blas_threading_mode": 1,
+      "mode_name": "single",
+      "exact_active_thread_count_available": false
+    },
+    "disk_free": 44176400384,
+    "processes": [],
+    "versions": {
+      "numpy": "2.5.3",
+      "scipy": "1.18.1",
+      "streamlit": "1.66.1",
+      "plotly": "6.9.0",
+      "psutil": "7.2.2",
+      "pytest": "9.1.1"
+    }
+  },
+  "focused_checks": [
+    {
+      "id": "new-1",
+      "selection": "tools/apex_workbench/tests/test_engineering_workspace.py",
+      "total_executed": 12,
+      "passed": 11,
+      "failure": 1,
+      "error": 0,
+      "skipped": 0,
+      "exit_code": 1,
+      "log": "results/apex_workbench_v03b_work_20261029/new-1.log",
+      "junit": "results/apex_workbench_v03b_work_20261029/new-1.xml"
+    },
+    {
+      "id": "new-2",
+      "selection": "tools/apex_workbench/tests/test_engineering_workspace.py",
+      "total_executed": 15,
+      "passed": 15,
+      "failure": 0,
+      "error": 0,
+      "skipped": 0,
+      "exit_code": 0,
+      "log": "results/apex_workbench_v03b_work_20261029/new-2.log",
+      "junit": "results/apex_workbench_v03b_work_20261029/new-2.xml"
+    },
+    {
+      "id": "workbench",
+      "selection": "tools/apex_workbench/tests",
+      "total_executed": 254,
+      "passed": 254,
+      "failure": 0,
+      "error": 0,
+      "skipped": 0,
+      "exit_code": 0,
+      "log": "results/apex_workbench_v03b_work_20261029/workbench.log",
+      "junit": "results/apex_workbench_v03b_work_20261029/workbench.xml"
+    },
+    {
+      "id": "new-final",
+      "selection": "tools/apex_workbench/tests/test_engineering_workspace.py",
+      "total_executed": 17,
+      "passed": 17,
+      "failure": 0,
+      "error": 0,
+      "skipped": 0,
+      "exit_code": 0,
+      "log": "results/apex_workbench_v03b_work_20261029/new-final.log",
+      "junit": "results/apex_workbench_v03b_work_20261029/new-final.xml"
+    }
+  ],
+  "test_applicability": {
+    "workbench_run_source": {
+      "tools/apex_workbench/run_catalog.py": "d8ffb59fe0bab29b28d22f0d7d7ffe0dda9439194b2c2ced8cc9185d23a93e51",
+      "tools/apex_workbench/engineering_views.py": "19a2d540fb5b1afb03b27ef859b8c7cce7452f648dba6fe0dfbd6310a3271504",
+      "tools/apex_workbench/workspace.py": "ff8fbadc28a51c745f15cc02586fc28d207b7447aec57c7dab2ec26dba902f03"
+    },
+    "final_new_file_source": {
+      "tools/apex_workbench/workspace.py": "d325ff8e54b6b7a42efeaaaf459514af430d28a7cf957435616a7e55dc0ff6af",
+      "tools/apex_workbench/run_catalog.py": "d8ffb59fe0bab29b28d22f0d7d7ffe0dda9439194b2c2ced8cc9185d23a93e51",
+      "tools/apex_workbench/engineering_views.py": "19a2d540fb5b1afb03b27ef859b8c7cce7452f648dba6fe0dfbd6310a3271504",
+      "tools/apex_workbench/tests/test_engineering_workspace.py": "76daa264f6f380d22575a1aa439f012c94981de379851e1f8f60122614299c8c"
+    },
+    "delta_after_directory_run": "Only new workspace display-race guard and two new UI tests; final 17-case rerun covers changed presentation. The 239 existing backend/legacy tests, fixtures and transitive dependencies remain unchanged. No count aggregation.",
+    "complete_repository_verification_run": false
+  },
+  "launcher": {
+    "schema": "apex-v03b-launcher-audit/1",
+    "launcher_sha256": "521e14fb8eb1459e3855c6ef872bd34bdaee764f1c198cad8b2147bf9906599d",
+    "entrypoint": "tools/apex_workbench/workspace.py",
+    "shell_syntax_passed": true,
+    "checks": [
+      {
+        "check": "second actual launch reuses owned server",
+        "passed": true
+      },
+      {
+        "check": "startup from unrelated working directory and local HTTP",
+        "passed": true,
+        "actual_launcher_default_port": true,
+        "port": 8501,
+        "server_pid": 21968,
+        "server_created": 1793284740.806246,
+        "server_command": [
+          "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/tools/apex_workbench/.venv/bin/python",
+          "-m",
+          "streamlit",
+          "run",
+          "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/tools/apex_workbench/workspace.py",
+          "--server.address",
+          "127.0.0.1",
+          "--server.port",
+          "8501",
+          "--server.headless",
+          "true",
+          "--browser.gatherUsageStats",
+          "false"
+        ],
+        "html_sha256": "961380a1d0f4ec0effca0a0412fd493888f694f138b7b9aa1245686d8d600444"
+      },
+      {
+        "check": "owned server terminates cleanly on interrupt",
+        "passed": true
+      },
+      {
+        "check": "production browser opener returned without manual fallback",
+        "passed": true,
+        "limit": "HTTP availability and opener path observed; no screenshot or human visual acceptance"
+      },
+      {
+        "check": "actual launcher rejects occupied port clearly",
+        "passed": true
+      },
+      {
+        "check": "legacy direct app is usable; new launcher refuses reuse/takeover",
+        "passed": true
+      },
+      {
+        "check": "missing environment message using exact launcher byte copy",
+        "passed": true,
+        "limit": "Original environment was preserved; absent-environment branch exercised in disposable root"
+      }
+    ],
+    "new_scientific_experiments": 0,
+    "preexisting_listener_respected": true,
+    "owned_server_terminated": true
+  },
+  "qualification_audit": {
+    "schema": "apex-v03b-preservation-audit/1",
+    "base": "03055a183be0f5d3691714103588d5b263748128",
+    "checkout": "03055a183be0f5d3691714103588d5b263748128",
+    "scientific_source_files": 56,
+    "scientific_changed": [],
+    "tracked_existing_files": 961,
+    "historical_files_checked": 30389,
+    "historical_changed": [],
+    "qualification_sha256": "f08ae323e86cdd03964e87b091aef660ac1568e1601e42c43e82dbc0f5e429c8",
+    "qualification_source_runs": 17,
+    "numerical_cases": {
+      "VDL1_BASE": true,
+      "VDL1_IZ_HIGH": true,
+      "VDL1_STEER_HIGH": true,
+      "VDL1_CF_HIGH": true,
+      "VDL1_CR_HIGH": true
+    },
+    "pairs": {
+      "VDL1_IZ_HIGH": {
+        "without_record": "controlled_candidate",
+        "with_record": "qualified_synthetic_comparison",
+        "excitation": {
+          "baseline": "VDL1_BASE",
+          "treatment": "VDL1_IZ_HIGH",
+          "peak_yaw_difference_rad_per_s": 0.008904428222327412,
+          "required_signal_rad_per_s": 0.0001,
+          "excitation_sufficient": true,
+          "satisfied": true
+        }
+      },
+      "VDL1_STEER_HIGH": {
+        "without_record": "controlled_candidate",
+        "with_record": "qualified_synthetic_comparison",
+        "excitation": {
+          "baseline": "VDL1_BASE",
+          "treatment": "VDL1_STEER_HIGH",
+          "peak_yaw_difference_rad_per_s": 0.03336394365255693,
+          "required_signal_rad_per_s": 0.0001,
+          "excitation_sufficient": true,
+          "satisfied": true
+        }
+      },
+      "VDL1_CF_HIGH": {
+        "without_record": "controlled_candidate",
+        "with_record": "qualified_synthetic_comparison",
+        "excitation": {
+          "baseline": "VDL1_BASE",
+          "treatment": "VDL1_CF_HIGH",
+          "peak_yaw_difference_rad_per_s": 0.010852414470119351,
+          "required_signal_rad_per_s": 0.0001,
+          "excitation_sufficient": true,
+          "satisfied": true
+        }
+      },
+      "VDL1_CR_HIGH": {
+        "without_record": "controlled_candidate",
+        "with_record": "qualified_synthetic_comparison",
+        "excitation": {
+          "baseline": "VDL1_BASE",
+          "treatment": "VDL1_CR_HIGH",
+          "peak_yaw_difference_rad_per_s": 0.006275476007459452,
+          "required_signal_rad_per_s": 0.0001,
+          "excitation_sufficient": true,
+          "satisfied": true
+        }
+      }
+    },
+    "new_qualification_trajectories": 0
+  },
+  "preservation": {
+    "existing_tracked_files_checked": 961,
+    "authorized_existing_changes": [
+      "Launch_APEX_Workbench.command",
+      "docs/CODEX_HANDOFF.md",
+      "docs/DECISIONS.md",
+      "tools/apex_workbench/README.md"
+    ],
+    "historical_result_files_checked": 30389,
+    "historical_result_changes": [],
+    "scientific_source_changes": []
+  },
+  "evidence_sha256": {
+    "results/apex_workbench_v03b_work_20261029/before.json": "ea929332d82679addbda663dd3664bb79bbb3ad4545c4b519182dfb7279f04c1",
+    "results/apex_workbench_v03b_work_20261029/preflight.json": "6a04dcc2ca036023acfb3ae87180a42de1e8d4cac8dd763955271c52fc1e223f",
+    "results/apex_workbench_v03b_work_20261029/new-1.log": "b626a02afbd6df6272bc891bc3c6bc0604f3001ad793d1df48549e70fd2cb5e1",
+    "results/apex_workbench_v03b_work_20261029/new-1.xml": "fee7db9a4bbb7d62537f80431152a66fdbd35a83e10209fa53d4d27a1bcc1a5a",
+    "results/apex_workbench_v03b_work_20261029/new-2.log": "df44ca0d78d5b9d1c6611531daf8f69ca35ed59e9d8abae5407532660ac9c686",
+    "results/apex_workbench_v03b_work_20261029/new-2.xml": "cb55b2aeb8bb5670559a4798426d74519c55751378efcacb86c77291f1385563",
+    "results/apex_workbench_v03b_work_20261029/workbench.log": "7bd331af407bacb6fa0b7e6632f050ac3c6f5bbdea0a1528630f5fc594236da1",
+    "results/apex_workbench_v03b_work_20261029/workbench.xml": "b2523310b38a2e7f27cd03d7a348e0a82fc101818f217c618f413fd6a2c7ccde",
+    "results/apex_workbench_v03b_work_20261029/new-final.log": "49d6eead19119ad64c866193872ebaa363aabf0d10d33c595b4afe205b715d28",
+    "results/apex_workbench_v03b_work_20261029/new-final.xml": "99395485dea67e1ac871cc152c534bccb4538b4853bfcc14b19310e9a5cec196",
+    "results/apex_workbench_v03b_work_20261029/audit.py": "a6dfc6c42534dba2c9805a525ef15f7261deb75651236d42ef3d6f18fc974710",
+    "results/apex_workbench_v03b_work_20261029/audit.log": "f426e102633012d8494168acabe1a12dd0a88677093d647223480795a86056c7",
+    "results/apex_workbench_v03b_work_20261029/audit-2.log": "ce5dac8ff6a367cd841986cd1e359d1e60fe314a60fa80f58cebd8cfbc1adbc7",
+    "results/apex_workbench_v03b_work_20261029/audit.json": "ce5dac8ff6a367cd841986cd1e359d1e60fe314a60fa80f58cebd8cfbc1adbc7",
+    "results/apex_workbench_v03b_work_20261029/launcher_smoke.py": "4e069bbb0934d77af3db3454c3d820801cd7140c7ef07eaec0708a8101fc4155",
+    "results/apex_workbench_v03b_work_20261029/launcher_smoke.log": "98c955e624fda0e2c8dd5ef749b88975be9296f0c697f55054c1481971826999",
+    "results/apex_workbench_v03b_work_20261029/launcher_audit.json": "e8cc92f04533cd9308b422124e5dcae645422cdfa354299e0a0d6121cab43fef"
+  },
+  "commands": {
+    "pytest_environment": "VECLIB_MAXIMUM_THREADS=1 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 BLIS_NUM_THREADS=1 NUMEXPR_NUM_THREADS=1 PYTHONHASHSEED=0 MPLCONFIGDIR=results/apex_workbench_v03b_work_20261029/mpl PYTHONPATH=.:scripts:src",
+    "pytest_bootstrap": "tools/apex_workbench/.venv/bin/python -u -c 'from threading_study.config import configure_accelerate; configure_accelerate(1); import sys,pytest; raise SystemExit(pytest.main(sys.argv[1:]))'",
+    "pytest_arguments": "-q -x <selection> --basetemp=results/apex_workbench_v03b_work_20261029/<id> --junitxml=results/apex_workbench_v03b_work_20261029/<id>.xml --durations=10 (directory) or 5 (new file); stdout/stderr > <id>.log",
+    "launcher": "tools/apex_workbench/.venv/bin/python results/apex_workbench_v03b_work_20261029/launcher_smoke.py > results/apex_workbench_v03b_work_20261029/launcher_smoke.log 2>&1",
+    "audit": "VECLIB_MAXIMUM_THREADS=1 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 BLIS_NUM_THREADS=1 NUMEXPR_NUM_THREADS=1 PYTHONPATH=.:scripts:src tools/apex_workbench/.venv/bin/python results/apex_workbench_v03b_work_20261029/audit.py > results/apex_workbench_v03b_work_20261029/audit-2.log 2>&1"
+  },
+  "retained_failures": [
+    "new-1: one Streamlit conditional-rendering failure; fixed new presentation only; three unexecuted cases",
+    "audit.log: missing fresh-parent native environment; invocation corrected only",
+    "initial preflight: core .venv lacks Streamlit; used existing approved Workbench .venv, no installs"
+  ],
+  "not_authorized": [
+    "full formal Verification",
+    "17-trajectory qualification campaign",
+    "scientific source/criteria/parameter/inventory changes",
+    "replay/multi-run/new controllers",
+    "research/hardware work"
+  ],
+  "independent_review": {
+    "status": "pending exact candidate commit",
+    "maximum_substantive_correction_iterations": 3
+  },
+  "stop_target": "V0.3_B_ENGINEERING_REVIEW_COMPLETE_PENDING_VERIFICATION"
+}
