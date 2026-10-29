@@ -1,0 +1,54 @@
+{
+  "schema": "apex-v03b-independent-engineering-review/1",
+  "candidate": "f6a8660f3674ae46a11bd377b807665d765ae00f",
+  "branch": "codex/apex-workbench-v0-3-b",
+  "correction_iteration": 1,
+  "outcome": "FAIL",
+  "previous_candidate": "889c8084f7632d5f343cd7f0865a3931c3e7e933",
+  "original_reproductions": {
+    "R1": "PASS",
+    "R2_owned_bridge": "PASS",
+    "R3": "PASS"
+  },
+  "blocking_findings": [
+    {
+      "id": "R2-A",
+      "priority": 2,
+      "title": "Conflicting unverified archived source metadata still hides a distinct source path"
+    }
+  ],
+  "independent_invocation": {
+    "passed": 18,
+    "failed": 1,
+    "skipped": 0,
+    "duration_s": 25.06,
+    "reviewer_harness_failures": 0,
+    "log": "independent.log",
+    "junit": "independent.xml"
+  },
+  "frozen_source_git_blob_matches": 56,
+  "accepted_source_revision": "4897686e79c13757d5ef5b4373b44d4cab99b5bf",
+  "actual_archive_source_runs_read_only": 17,
+  "actual_archive_before_after_hash_maps_equal": true,
+  "production_four_pair_qualification_applicability": true,
+  "late_plot_replacement_boundaries_checked": [
+    1,
+    2,
+    3
+  ],
+  "selected_qualification_epoch_change_checked": true,
+  "source_modifications": [],
+  "worker_simulations_started": 0,
+  "qualification_campaigns_started": 0,
+  "launcher_smokes_started": 0,
+  "formal_verification_run": false,
+  "full_repository_suite_run": false,
+  "next_required_step": "second bounded catalog correction and exact-revision independent Engineering Review",
+  "evidence_sha256": {
+    "independent.xml": "0d491f701c6bb4a794c118715a543eed40cf7743010256b359ea614b73948a9d",
+    "test_independent_review.py": "66f77f37af4911399f36fdc18403f53dea0c05d88e037fc93a149c77787022b9",
+    "test_nearby_cases.py": "a5366ed5ca1f4348671c07b2eaa3cb2f882ef6f6635a0dad7fb8777258ea4479",
+    "independent.log": "055c7d2febba44bcc69a75b22f62e0ad6ec3877591dd2dcb3c814645fe2d1aae",
+    "REVIEW.md": "e302096a5a4aba22431a1989267d0ccd7189690204fb28aad0dd2f245ec605eb"
+  }
+}
