@@ -85,6 +85,27 @@ was stopped. A 1440x1000 desktop layout and default narrow browser layout were i
 temporary viewport override was reset. Native UI observations and screenshot are retained under
 `interactive-ui-final/`. These checks are functional/visual observations, not final user acceptance.
 
+## Bounded correction R1 — pending exact-revision re-review
+
+The independent [iteration-1 FAIL](../reviews/apex_workbench_v0_3_c/iteration_1/REVIEW.md)
+is preserved against exact initial candidate `c57603ea0e80b7b2121648ae687ac2afa03cb33d`.
+Six copied optional-metadata cases were contained by B but raised uncaught C exceptions;
+the separate reviewer also freshly passed the affected 38 tests and 15 adversarial core checks.
+These invocations are distinct and do not replace or erase the failures.
+
+The correction validates the optional object/list/text shapes consumed by the additive snapshot
+and contains expected malformed-data exceptions in its UI boundary. Invalid metadata withholds
+plots/replay with a clear error; native raw records/provenance remain available and no field is
+normalized, repaired or resealed in production. Nine copied genuine legacy-record regressions
+cover the reported top-level/nested cases plus environment/contract/units shapes, requiring the
+frozen reader precondition, no application exception, no scientific plots/cursor, raw access and
+byte-identical retained fixture contents. Valid legacy and VDL paths remain in the affected tests.
+Fresh correction selection: **47 passed**, zero failures/errors/skips, 261.78 s; separate from the
+earlier 276-pass run and initial 38-pass final-view run. No pytest retry. Imported-fixture lint
+suppression was adjusted after formatting; all changed-file Ruff lint/format and diff checks pass.
+No accepted reader/backend/scientific source is changed. This is one substantive correction
+iteration of the authorized maximum three, pending commitment and independent re-review.
+
 ## Scientific preparation and remaining gates
 
 [RACING_SCENARIO_PROPOSALS.md](RACING_SCENARIO_PROPOSALS.md) audits all five requested families and

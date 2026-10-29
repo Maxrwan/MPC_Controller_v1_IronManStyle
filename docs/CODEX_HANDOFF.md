@@ -31,6 +31,13 @@ Retained 17/Q4 audit and historical preservation checks are recorded; no 17-traj
 new track/controller/parameter/threshold, frozen research, hardware, CT or physical telemetry work.
 Evidence under `results/apex_workbench_v03c_work_20261029/`. Root full-suite Verification deferred.
 
+Independent iteration 1 rejected initial `c57603e` for malformed optional legacy metadata crashing
+new presentation code. Its report and six B/C fault reproductions are preserved under
+`docs/reviews/apex_workbench_v0_3_c/iteration_1/`. One bounded additive metadata-shape/exception
+correction now withholds plots/replay while retaining raw access; **47 focused tests pass** including
+nine copied malformed-metadata cases. Exact correction re-review is pending.
+No frozen reader or scientific file changed.
+
 Next: exact-candidate separate-context Engineering Review; up to three bounded correction iterations,
 re-review changed revisions, then stop pending formal Verification AND Primary scenario approval.
 No source-identity migration is needed for the implemented UI; future scientific changes keep their

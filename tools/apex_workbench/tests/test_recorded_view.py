@@ -17,7 +17,7 @@ from tools.apex_workbench.configuration import ADAPTERS, ROOT
 from tools.apex_workbench.experiment_catalog import CASES, EXPERIMENTS
 from tools.apex_workbench.lab_evidence import read_record
 from tools.apex_workbench.lab_reporting import summarize
-from tools.apex_workbench.tests.test_corrections import reseal_fixture
+from tools.apex_workbench.tests.test_corrections import completed_runs, reseal_fixture  # noqa: F401
 from tools.apex_workbench.tests.test_lab_closure import rewrite_csv
 
 Q = run_catalog.QUALIFICATION_ROOT / run_catalog.ACCEPTED_CAMPAIGN / "qualification"
@@ -324,3 +324,71 @@ def test_case_description_and_snapshot_update_before_submission(tmp_path, monkey
     assert any("VDL1_IZ_HIGH" in item.value for item in app.json)
     assert not list((tmp_path / "owned").glob("*/request.json"))
     assert not app.exception and not app.error
+
+
+@pytest.mark.parametrize(
+    "fault",
+    [
+        "execution_context",
+        "provenance",
+        "worker_result",
+        "role",
+        "git_revision",
+        "sampled_model_window",
+        "environment",
+        "telemetry_contract",
+        "diagnostic_units",
+    ],
+)
+def test_malformed_legacy_metadata_withholds_view_and_preserves_raw_access(
+    completed_runs,  # noqa: F811 - imported pytest fixture
+    fault,
+    tmp_path,
+    monkeypatch,
+):
+    owned = tmp_path / "owned"
+    copy = owned / "disposable"
+    shutil.copytree(completed_runs[0], copy)
+    name = "request.json"
+    value = storage.read_json(copy / name)
+    if fault in {"execution_context", "provenance"}:
+        value[fault] = ["literal malformed object"]
+    elif fault == "role":
+        value["execution_context"] = {"role": 123}
+    elif fault == "git_revision":
+        value["provenance"]["git_revision"] = 123
+    elif fault in {"worker_result", "sampled_model_window"}:
+        name = "worker_result.json"
+        value = (
+            ["literal malformed summary"]
+            if fault == "worker_result"
+            else {**storage.read_json(copy / name), "sampled_model_window": []}
+        )
+    elif fault == "environment":
+        name, value = "numerical_environment.json", ["literal malformed environment"]
+    else:
+        name = "experiment/telemetry_contract.json"
+        value = (
+            ["literal malformed contract"]
+            if fault == "telemetry_contract"
+            else {**storage.read_json(copy / name), "diagnostic_units": []}
+        )
+    storage.write_json(copy / name, value)
+    reseal_fixture(copy)
+    before = {str(p.relative_to(copy)): p.read_bytes() for p in copy.rglob("*") if p.is_file()}
+    monkeypatch.setattr(run_catalog, "OWNED_ROOT", owned)
+    monkeypatch.setattr(run_catalog, "QUALIFICATION_ROOT", tmp_path / "no-Q")
+    run = run_catalog.discover().runs[0]
+    assert views.inspect(run).valid  # Reproduce the exact frozen-reader precondition.
+    with pytest.raises(storage.IntegrityError, match="presentation metadata"):
+        recorded.load(run)
+    app = AppTest.from_file(str(WORKSPACE), default_timeout=60).run()
+    app.radio(key="workspace_view").set_value("Inspect").run()
+    assert not app.exception
+    assert any("Scientific view withheld" in item.value for item in app.error)
+    assert not app.get("plotly_chart") and not app.select_slider
+    assert any(item.label == "Configuration and source provenance" for item in app.expander)
+    assert any(item.label == "Raw records and failure logs" for item in app.expander)
+    assert storage.read_json(copy / name) == value
+    after = {str(p.relative_to(copy)): p.read_bytes() for p in copy.rglob("*") if p.is_file()}
+    assert after == before

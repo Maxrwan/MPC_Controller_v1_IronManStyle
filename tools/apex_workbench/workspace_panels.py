@@ -366,7 +366,7 @@ def analysis(runs, key, qualification_record=None, *, mounted_epoch=None):
                     or (q_epoch and not views.comparison_current({"presentation_epoch": q_epoch}))
                 ):
                     raise ValueError("Evidence/qualification changed during display")
-        except (OSError, ValueError, RuntimeError, KeyError) as error:
+        except (OSError, ValueError, RuntimeError, KeyError, TypeError, AttributeError) as error:
             result.empty()
             if key + "_playback" in st.session_state:
                 st.session_state[key + "_playback"]["playing"] = False

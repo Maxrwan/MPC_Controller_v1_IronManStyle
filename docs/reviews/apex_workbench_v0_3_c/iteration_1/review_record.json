@@ -1,0 +1,504 @@
+{
+  "schema": "apex-workbench-v03c-independent-engineering-review/1",
+  "review_date": "2026-10-29",
+  "classification": "FAIL",
+  "status": "ENGINEERING_REVIEW_FAIL_CORRECTION_REQUIRED",
+  "reviewed_candidate": "c57603ea0e80b7b2121648ae687ac2afa03cb33d",
+  "branch": "codex/apex-workbench-v0-3-c",
+  "base_B_delivery": "ccd19549a9b3e25d1a5bd2c037a27090eda8dccf",
+  "B_comparison_workspace_source": "ca3ef9605df3472001302dbf70c0e2815c020d1c",
+  "accepted_scientific_source": "4897686e79c13757d5ef5b4373b44d4cab99b5bf",
+  "candidate_head_unchanged_during_review": true,
+  "candidate_source_and_tests_edited": false,
+  "commits_or_pushes_by_reviewer": false,
+  "independence": "Separate context; implementer assertions treated as evidence. Fresh adversarial and focused checks on fixed candidate.",
+  "environment": {
+    "python": "tools/apex_workbench/.venv/bin/python",
+    "PYTHONPATH": ".:scripts:src",
+    "PYTHONHASHSEED": "0",
+    "native_ceiling_environment": {
+      "VECLIB_MAXIMUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "BLIS_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1"
+    },
+    "MPLCONFIGDIR": "Fresh per-invocation ignored directory",
+    "actual_active_thread_count_claimed": false
+  },
+  "invocations": {
+    "metadata": {
+      "name": "pytest",
+      "errors": "0",
+      "failures": "3",
+      "skipped": "0",
+      "tests": "6",
+      "time": "11.542",
+      "timestamp": "2026-10-29T23:05:35.307256+02:00",
+      "hostname": "Marwans-MacBook-Air.local",
+      "exit_code": 1,
+      "passes": 3,
+      "failed_nodes": [
+        {
+          "node": "results.apex_workbench_v03c_review_20261029.iteration_1.probe_metadata::test_malformed_optional_metadata_is_contained[C-execution_context]",
+          "message": "AssertionError: {'target': 'execution_context', 'revision': 'C', 'reader_valid': True, 'exceptions': [\"'list' object has no attribute 'get'\"], ...}\nassert not ElementList(_list=[Exception(message=\"'list' object has no attribute 'get'\", stack_trace=['File \"/Users/marwansaber/Gr...n    + request.get(\"execution_context\", {}).get(\"role\", \"adapter\")\\n      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^'])])\n +  where ElementList(_list=[Exception(message=\"'list' object has no attribute 'get'\", stack_trace=['File \"/Users/marwansaber/Gr...n    + request.get(\"execution_context\", {}).get(\"role\", \"adapter\")\\n      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^'])]) = AppTest(\\n    _script_path='/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/tools/apex_wor...              3: Caption()\\n            }\\n        ),\\n        2: SpecialBlock(\\n            type='event'\\n        )\\n    }\\n).exception"
+        },
+        {
+          "node": "results.apex_workbench_v03c_review_20261029.iteration_1.probe_metadata::test_malformed_optional_metadata_is_contained[C-provenance]",
+          "message": "AssertionError: {'target': 'provenance', 'revision': 'C', 'reader_valid': True, 'exceptions': [\"'list' object has no attribute 'get'\"], ...}\nassert not ElementList(_list=[Exception(message=\"'list' object has no attribute 'get'\", stack_trace=['File \"/Users/marwansaber/Gr...equest.get(\"provenance\", {}).get(\"git_revision\", \"unknown\")\\n      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^'])])\n +  where ElementList(_list=[Exception(message=\"'list' object has no attribute 'get'\", stack_trace=['File \"/Users/marwansaber/Gr...equest.get(\"provenance\", {}).get(\"git_revision\", \"unknown\")\\n      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^'])]) = AppTest(\\n    _script_path='/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/tools/apex_wor...              3: Caption()\\n            }\\n        ),\\n        2: SpecialBlock(\\n            type='event'\\n        )\\n    }\\n).exception"
+        },
+        {
+          "node": "results.apex_workbench_v03c_review_20261029.iteration_1.probe_metadata::test_malformed_optional_metadata_is_contained[C-worker_result]",
+          "message": "AssertionError: {'target': 'worker_result', 'revision': 'C', 'reader_valid': True, 'exceptions': [\"'list' object has no attribute 'get'\"], ...}\nassert not ElementList(_list=[Exception(message=\"'list' object has no attribute 'get'\", stack_trace=['File \"/Users/marwansaber/Gr... frame\\n    window = snapshot.data.summary.get(\"sampled_model_window\", {})\\n             ^^^^^^^^^^^^^^^^^^^^^^^^^'])])\n +  where ElementList(_list=[Exception(message=\"'list' object has no attribute 'get'\", stack_trace=['File \"/Users/marwansaber/Gr... frame\\n    window = snapshot.data.summary.get(\"sampled_model_window\", {})\\n             ^^^^^^^^^^^^^^^^^^^^^^^^^'])]) = AppTest(\\n    _script_path='/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/tools/apex_wor...              3: Caption()\\n            }\\n        ),\\n        2: SpecialBlock(\\n            type='event'\\n        )\\n    }\\n).exception"
+        }
+      ],
+      "log": "results/apex_workbench_v03c_review_20261029/iteration_1/metadata.log",
+      "junit": "results/apex_workbench_v03c_review_20261029/iteration_1/metadata.xml",
+      "native_api_observation": {
+        "requested_ceiling": 1,
+        "set_status": 0,
+        "blas_threading_mode": 1,
+        "mode_name": "single",
+        "exact_active_thread_count_available": false
+      }
+    },
+    "nested": {
+      "name": "pytest",
+      "errors": "0",
+      "failures": "3",
+      "skipped": "0",
+      "tests": "6",
+      "time": "9.084",
+      "timestamp": "2026-10-29T23:10:01.930485+02:00",
+      "hostname": "Marwans-MacBook-Air.local",
+      "exit_code": 1,
+      "passes": 3,
+      "failed_nodes": [
+        {
+          "node": "results.apex_workbench_v03c_review_20261029.iteration_1.probe_nested_metadata::test_nested_optional_metadata_is_contained[C-context_role]",
+          "message": "AssertionError: {'target': 'context_role', 'revision': 'C', 'reader_valid': True, 'exceptions': ['can only concatenate str (not \"int\") to str'], ...}\nassert not ElementList(_list=[Exception(message='can only concatenate str (not \"int\") to str', stack_trace=['File \"/Users/marwans...v1_IronManStyle/tools/apex_workbench/recorded_view.py\", line 39, in load\\n    effective.get(\"grid_id\", \"original\")'])])\n +  where ElementList(_list=[Exception(message='can only concatenate str (not \"int\") to str', stack_trace=['File \"/Users/marwans...v1_IronManStyle/tools/apex_workbench/recorded_view.py\", line 39, in load\\n    effective.get(\"grid_id\", \"original\")'])]) = AppTest(\\n    _script_path='/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/tools/apex_wor...              3: Caption()\\n            }\\n        ),\\n        2: SpecialBlock(\\n            type='event'\\n        )\\n    }\\n).exception"
+        },
+        {
+          "node": "results.apex_workbench_v03c_review_20261029.iteration_1.probe_nested_metadata::test_nested_optional_metadata_is_contained[C-provenance_git_revision]",
+          "message": "AssertionError: {'target': 'provenance_git_revision', 'revision': 'C', 'reader_valid': True, 'exceptions': ['can only concatenate str (not \"int\") to str'], ...}\nassert not ElementList(_list=[Exception(message='can only concatenate str (not \"int\") to str', stack_trace=['File \"/Users/marwans...Controller_v1_IronManStyle/tools/apex_workbench/workspace_panels.py\", line 290, in frame\\n    \"Snapshot source \u00b7 \"'])])\n +  where ElementList(_list=[Exception(message='can only concatenate str (not \"int\") to str', stack_trace=['File \"/Users/marwans...Controller_v1_IronManStyle/tools/apex_workbench/workspace_panels.py\", line 290, in frame\\n    \"Snapshot source \u00b7 \"'])]) = AppTest(\\n    _script_path='/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/tools/apex_wor...              3: Caption()\\n            }\\n        ),\\n        2: SpecialBlock(\\n            type='event'\\n        )\\n    }\\n).exception"
+        },
+        {
+          "node": "results.apex_workbench_v03c_review_20261029.iteration_1.probe_nested_metadata::test_nested_optional_metadata_is_contained[C-sampled_model_window]",
+          "message": "AssertionError: {'target': 'sampled_model_window', 'revision': 'C', 'reader_valid': True, 'exceptions': [\"'list' object has no attribute 'get'\"], ...}\nassert not ElementList(_list=[Exception(message=\"'list' object has no attribute 'get'\", stack_trace=['File \"/Users/marwansaber/Gr...e_panels.py\", line 305, in frame\\n    if window.get(\"status\") in {\"outside_window\", \"unknown\"}:\\n       ^^^^^^^^^^'])])\n +  where ElementList(_list=[Exception(message=\"'list' object has no attribute 'get'\", stack_trace=['File \"/Users/marwansaber/Gr...e_panels.py\", line 305, in frame\\n    if window.get(\"status\") in {\"outside_window\", \"unknown\"}:\\n       ^^^^^^^^^^'])]) = AppTest(\\n    _script_path='/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/tools/apex_wor...              3: Caption()\\n            }\\n        ),\\n        2: SpecialBlock(\\n            type='event'\\n        )\\n    }\\n).exception"
+        }
+      ],
+      "log": "results/apex_workbench_v03c_review_20261029/iteration_1/nested.log",
+      "junit": "results/apex_workbench_v03c_review_20261029/iteration_1/nested.xml",
+      "native_api_observation": {
+        "requested_ceiling": 1,
+        "set_status": 0,
+        "blas_threading_mode": 1,
+        "mode_name": "single",
+        "exact_active_thread_count_available": false
+      }
+    },
+    "core": {
+      "name": "pytest",
+      "errors": "0",
+      "failures": "0",
+      "skipped": "0",
+      "tests": "15",
+      "time": "131.732",
+      "timestamp": "2026-10-29T23:07:18.768305+02:00",
+      "hostname": "Marwans-MacBook-Air.local",
+      "exit_code": 0,
+      "passes": 15,
+      "failed_nodes": [],
+      "log": "results/apex_workbench_v03c_review_20261029/iteration_1/core.log",
+      "junit": "results/apex_workbench_v03c_review_20261029/iteration_1/core.xml",
+      "native_api_observation": {
+        "requested_ceiling": 1,
+        "set_status": 0,
+        "blas_threading_mode": 1,
+        "mode_name": "single",
+        "exact_active_thread_count_available": false
+      }
+    },
+    "ui38": {
+      "name": "pytest",
+      "errors": "0",
+      "failures": "0",
+      "skipped": "0",
+      "tests": "38",
+      "time": "122.498",
+      "timestamp": "2026-10-29T23:10:36.691427+02:00",
+      "hostname": "Marwans-MacBook-Air.local",
+      "exit_code": 0,
+      "passes": 38,
+      "failed_nodes": [],
+      "log": "results/apex_workbench_v03c_review_20261029/iteration_1/ui38.log",
+      "junit": "results/apex_workbench_v03c_review_20261029/iteration_1/ui38.xml",
+      "native_api_observation": {
+        "requested_ceiling": 1,
+        "set_status": 0,
+        "blas_threading_mode": 1,
+        "mode_name": "single",
+        "exact_active_thread_count_available": false
+      }
+    }
+  },
+  "commands": {
+    "metadata": [
+      "tools/apex_workbench/.venv/bin/python",
+      "-u",
+      "-c",
+      "from threading_study.config import configure_accelerate; print(configure_accelerate(1), flush=True); import sys,pytest; raise SystemExit(pytest.main(sys.argv[1:]))",
+      "-q",
+      "results/apex_workbench_v03c_review_20261029/iteration_1/probe_metadata.py",
+      "--basetemp=results/apex_workbench_v03c_review_20261029/iteration_1/metadata-tmp",
+      "--junitxml=results/apex_workbench_v03c_review_20261029/iteration_1/metadata.xml"
+    ],
+    "nested": [
+      "tools/apex_workbench/.venv/bin/python",
+      "-u",
+      "-c",
+      "from threading_study.config import configure_accelerate; print(configure_accelerate(1), flush=True); import sys,pytest; raise SystemExit(pytest.main(sys.argv[1:]))",
+      "-q",
+      "results/apex_workbench_v03c_review_20261029/iteration_1/probe_nested_metadata.py",
+      "--basetemp=results/apex_workbench_v03c_review_20261029/iteration_1/nested-tmp",
+      "--junitxml=results/apex_workbench_v03c_review_20261029/iteration_1/nested.xml"
+    ],
+    "core": [
+      "tools/apex_workbench/.venv/bin/python",
+      "-u",
+      "-c",
+      "from threading_study.config import configure_accelerate; print(configure_accelerate(1), flush=True); import sys,pytest; raise SystemExit(pytest.main(sys.argv[1:]))",
+      "-q",
+      "results/apex_workbench_v03c_review_20261029/iteration_1/probe_core.py",
+      "--basetemp=results/apex_workbench_v03c_review_20261029/iteration_1/core-tmp",
+      "--junitxml=results/apex_workbench_v03c_review_20261029/iteration_1/core.xml"
+    ],
+    "ui38": [
+      "tools/apex_workbench/.venv/bin/python",
+      "-u",
+      "-c",
+      "from threading_study.config import configure_accelerate; print(configure_accelerate(1), flush=True); import sys,pytest; raise SystemExit(pytest.main(sys.argv[1:]))",
+      "-q",
+      "tools/apex_workbench/tests/test_recorded_view.py",
+      "tools/apex_workbench/tests/test_engineering_workspace.py",
+      "--basetemp=results/apex_workbench_v03c_review_20261029/iteration_1/ui38-tmp",
+      "--junitxml=results/apex_workbench_v03c_review_20261029/iteration_1/ui38.xml"
+    ]
+  },
+  "counts_are_separate_not_aggregated": true,
+  "blocking_findings": [
+    {
+      "id": "R1",
+      "priority": "P2",
+      "title": "Optional non-lab metadata shapes escape additive presentation boundary",
+      "location": [
+        "tools/apex_workbench/recorded_view.py:39",
+        "tools/apex_workbench/workspace_panels.py:290",
+        "tools/apex_workbench/workspace_panels.py:304",
+        "tools/apex_workbench/workspace_panels.py:369"
+      ],
+      "proof": "Six disposable genuine legacy-record faults: B contains each; C raises uncaught AttributeError/TypeError. Each independent invocation retains its own B/C results.",
+      "minimum_correction": "Validate new optional mapping/text assumptions and contain malformed-data exceptions in additive loader/panels, preserve raw details and literal faults, add focused regressions. No frozen dependency edit."
+    }
+  ],
+  "metadata_cases": {
+    "metadata-B-worker_result.json": {
+      "target": "worker_result",
+      "revision": "B",
+      "reader_valid": true,
+      "exceptions": [],
+      "errors": [],
+      "scientific_plot_count": 4
+    },
+    "metadata-C-provenance.json": {
+      "target": "provenance",
+      "revision": "C",
+      "reader_valid": true,
+      "exceptions": [
+        "'list' object has no attribute 'get'"
+      ],
+      "errors": [],
+      "scientific_plot_count": 0
+    },
+    "metadata-C-execution_context.json": {
+      "target": "execution_context",
+      "revision": "C",
+      "reader_valid": true,
+      "exceptions": [
+        "'list' object has no attribute 'get'"
+      ],
+      "errors": [],
+      "scientific_plot_count": 0
+    },
+    "metadata-B-provenance.json": {
+      "target": "provenance",
+      "revision": "B",
+      "reader_valid": true,
+      "exceptions": [],
+      "errors": [],
+      "scientific_plot_count": 4
+    },
+    "metadata-B-execution_context.json": {
+      "target": "execution_context",
+      "revision": "B",
+      "reader_valid": true,
+      "exceptions": [],
+      "errors": [],
+      "scientific_plot_count": 4
+    },
+    "metadata-C-worker_result.json": {
+      "target": "worker_result",
+      "revision": "C",
+      "reader_valid": true,
+      "exceptions": [
+        "'list' object has no attribute 'get'"
+      ],
+      "errors": [],
+      "scientific_plot_count": 0
+    },
+    "nested-B-sampled_model_window.json": {
+      "target": "sampled_model_window",
+      "revision": "B",
+      "reader_valid": true,
+      "exceptions": [],
+      "errors": []
+    },
+    "nested-B-provenance_git_revision.json": {
+      "target": "provenance_git_revision",
+      "revision": "B",
+      "reader_valid": true,
+      "exceptions": [],
+      "errors": []
+    },
+    "nested-C-context_role.json": {
+      "target": "context_role",
+      "revision": "C",
+      "reader_valid": true,
+      "exceptions": [
+        "can only concatenate str (not \"int\") to str"
+      ],
+      "errors": []
+    },
+    "nested-C-provenance_git_revision.json": {
+      "target": "provenance_git_revision",
+      "revision": "C",
+      "reader_valid": true,
+      "exceptions": [
+        "can only concatenate str (not \"int\") to str"
+      ],
+      "errors": []
+    },
+    "nested-B-context_role.json": {
+      "target": "context_role",
+      "revision": "B",
+      "reader_valid": true,
+      "exceptions": [],
+      "errors": []
+    },
+    "nested-C-sampled_model_window.json": {
+      "target": "sampled_model_window",
+      "revision": "C",
+      "reader_valid": true,
+      "exceptions": [
+        "'list' object has no attribute 'get'"
+      ],
+      "errors": []
+    }
+  },
+  "native_samples": {
+    "VDL1_BASE": {
+      "run_id": "20261028T222835751293Z_021826cdd430404a809b24cc72a306df",
+      "source": "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/results/apex_workbench_qualifications/v0_2_reviewed_20261029/runs/20261028T222835751293Z_021826cdd430404a809b24cc72a306df",
+      "time_s": 0.125,
+      "sample_index": 25,
+      "yaw_rate_rad_s": 0.08489185848304563,
+      "steering_rad": 0.02
+    },
+    "VDL1_IZ_HIGH": {
+      "run_id": "20261028T222846828499Z_4d209985d28d4e9ba778e9befb606a77",
+      "source": "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/results/apex_workbench_qualifications/v0_2_reviewed_20261029/runs/20261028T222846828499Z_4d209985d28d4e9ba778e9befb606a77",
+      "time_s": 0.125,
+      "sample_index": 25,
+      "yaw_rate_rad_s": 0.07598743026071822,
+      "steering_rad": 0.02
+    }
+  },
+  "qualification_consumer": {
+    "actual_retained_references": 17,
+    "permitted_pairs_checked": 4,
+    "Q_directory": "results/apex_workbench_qualifications/v0_2_reviewed_20261029/qualification",
+    "Q_sha256": "f08ae323e86cdd03964e87b091aef660ac1568e1601e42c43e82dbc0f5e429c8",
+    "three_run_labels": [
+      "qualified_synthetic_comparison",
+      "qualified_synthetic_comparison",
+      "illustrative"
+    ],
+    "four_run_labels": [
+      "qualified_synthetic_comparison",
+      "qualified_synthetic_comparison",
+      "qualified_synthetic_comparison",
+      "illustrative",
+      "illustrative",
+      "illustrative"
+    ],
+    "group_qualification": false
+  },
+  "scientific_source_sha256": {
+    "configs/vehicles/synthetic_dynamic_test_vehicle.yaml": "df1b853d21a1d3efaf858f7e58401151f2c5237793c40e16bb4189ed651f9cf3",
+    "scripts/run_dynamic_bicycle_demo.py": "9aa8bef1f05186d6653752becadcfb72d5698a82355606a7847be6d69171baa3",
+    "scripts/threading_study/config.py": "a50a73015c3ab739c35aa1fd715840364974213bf1c12666269b250264556fc3",
+    "src/apex/__init__.py": "2dd176027291d40716c8c828e8a9994afbf247d22bea1426fac52c259cbbc33b",
+    "src/apex/config.py": "40227b4ed2a38e30ecfb9acc7f308cf9db31b54dc813bb28850b25800877e0ad",
+    "src/apex/state.py": "b2b16555f8ae83f041ee821906305accc56010b643bb3fa514f90a8a17e66862",
+    "src/apex/control/__init__.py": "12878dbd9e38ae415462ea0eccbfc315387856736233a7ea4b2f840b1a53e96a",
+    "src/apex/control/base.py": "119b6cb4235421b9728838b47e4913158402997957956a473009c43435acb870",
+    "src/apex/coordinates/__init__.py": "1c443357b2a8e949a157c09b6fb3b50c170d98c908da8c0e8ebbd7e25f919555",
+    "src/apex/coordinates/angles.py": "2ed31ef5153e42083e727efc10b7875277f7f2641a5e16e9790e3f6073b33d05",
+    "src/apex/coordinates/frenet.py": "5fd10e1648847071561086f394914f6812422b0ad04f81ef2a517968334e17bd",
+    "src/apex/models/__init__.py": "d530a05e192b5d6c8b815c3edb2599a88bc35acac91c83280cd8e22d31a1d0d2",
+    "src/apex/models/base.py": "3bd8085e89978410bbe8581903b6280bd84f1a1ca956f1bb62f974462df7c525",
+    "src/apex/models/constants.py": "1b485d45ad2d74aaa256c1aab00157d7c610db0bea9f744d75376b8e816534be",
+    "src/apex/models/errors.py": "81baff4659f36bb6aea91e6a27327260b4d69e23de22963de6832199e7f1f916",
+    "src/apex/models/frenet.py": "a8c6190bd6be9f2a284c83b5c31e5d6cb2d8ef1f791b49bbebdd3c110a36ee96",
+    "src/apex/models/integration.py": "02009193fb2d25e83560a2da37f216048dfa3ededcb3de8616b90e411473ad51",
+    "src/apex/models/vehicle/__init__.py": "ab6dddf29c21f198a84b17e28f3dcb8b4b1e6543e0ce5533d4166a062d549a9f",
+    "src/apex/models/vehicle/parameters.py": "5cfce45b4a87577b17193b44cfa24f11c8e29c93082564a596f7ddf4e797fbb2",
+    "src/apex/models/vehicle/dynamic_bicycle.py": "c93b674924eed24f9641ebe263863b3422cba5eb1665c0d93dd6cd00bdfd462f",
+    "src/apex/models/vehicle/load_transfer.py": "e96c74199a7d8147866529cb4ecfffbfce74815cb57accb52ea54b407b873be1",
+    "src/apex/models/vehicle/force_allocation.py": "e77d8c87efdaa9c008ec45385ad4dad326cfa2e003798c08e29a5fb9a17647f8",
+    "src/apex/models/tire/__init__.py": "000e7ac305a2f5bb610e6ee9e066a6f8d82a0ac335c2b9253d292a2c3c96907f",
+    "src/apex/models/tire/base.py": "da1b635a6da1de465ac7af61dcf3cad8d23ef406eb6dd7f45dad825bc3f60ccf",
+    "src/apex/models/tire/config.py": "73f7e47ae5768a6961a8ca65aa40a5da7ecd77e412ac6995a459e969daa83877",
+    "src/apex/models/tire/linear.py": "6ae5888b0000cd57a88788463977be1a90fa8e1f6a332f131c66623192ce9cf3",
+    "src/apex/models/tire/grip.py": "e91bab930ee0650578ede2964ef680f77663cfd34d26ab1682c232b34c6d8c90",
+    "src/apex/simulation/__init__.py": "84069322b2562012fcfd863d27f6fc88a0f2d5eaba3a4040f10e896cffc4a513",
+    "src/apex/simulation/runner.py": "99dd44020405dd121433637ccf43d53639451a2b7b595bed255555144802cb34",
+    "src/apex/simulation/timing.py": "1bcd5ac042dc761ff8ed83028d0dde372a1569a9549f84e7f92061e109fa968f",
+    "src/apex/track/__init__.py": "95dd539a129d605aa979952c68c75d633738d520fa66e06a491b5bfb2ef7907c",
+    "src/apex/track/base.py": "c15e48dfa2a08bfd57040c80b1280a6f56234503361a38cb3cda6cb35e93cca1",
+    "src/apex/track/centerline.py": "caf28a32f24198fbfd57a7d6a987822f9b4df88ff6b5f1bca5c1f57e2b79429f",
+    "src/apex/track/closed_track.py": "c14fb27c1a1182dec564a5a679832e67c6480fb382a15c05dd2c998b138a350e",
+    "src/apex/track/io.py": "ee2f5a27740684ddba2f1907c88e8893c6cf0c59150352d35845914d5fd30b65",
+    "src/apex/track/progress.py": "fef18ea7fe610cca1ff80f32acdecf5f756b6d26c1a47e47f0eb23b7ae8dc0d8",
+    "src/apex/track/synthetic.py": "1e7ed0900af9971d6c68ca810570b9177a97eb830361c580724870752f4744c0",
+    "tools/apex_workbench/__init__.py": "194595c8c9d46745693697c8417c2408fbe76e3254ae716f26b50c47f4723396",
+    "tools/apex_workbench/configuration.py": "39b33dcd20be80a188d532c33c3fe33561addff847d298beab626fa9a476dc02",
+    "tools/apex_workbench/jobs.py": "0e14fd1c56f76372677e6408c37f44713ca9af3b1d8b8f4c064f80bd1d23b170",
+    "tools/apex_workbench/worker.py": "065738dab95e685b61c9347c254aeb9e13b0cdbcc605087752d0b6b21601b64e",
+    "tools/apex_workbench/lifecycle.py": "794bd5ada88048a402a2d0946942ec9962e52b0caf2e72d7a8a3a0279f51f05a",
+    "tools/apex_workbench/storage.py": "9486d6339b6dc50d2d4fe9030dfb71940e11c8ce283e838e7614fed80eaeb3cb",
+    "tools/apex_workbench/lab_configuration.py": "41e937fbf8d5f4fb239f2d0a99d39f94e1966f59787a7b4ae1f7f4015ce89abc",
+    "tools/apex_workbench/lab_sources.py": "7b5bef6d440f8a16004de9b4539a43c28dc13b203d7ff2a8a01eca1b74895a84",
+    "tools/apex_workbench/dynamic_lab.py": "65e78ea7a982421837e96ea3bc5b8748ae1e1c6e0e22493fe8ae99df8d67063d",
+    "tools/apex_workbench/lab_reporting.py": "47ecc170f80fb06b99b5ef9a78d70749a22da547c52b4b671eba37eca387b0c2",
+    "tools/apex_workbench/lab_evidence.py": "a3ea1046530bbe13461c87529155d167c83681008c9298268be9167b00dbed73",
+    "tools/apex_workbench/lab_comparison.py": "ae792cb84bd0a10dec62160350f4a79e1397098b3267b2f0f7db9285f798e0cb",
+    "tools/apex_workbench/comparison.py": "5e54bd0d75e830d54c4060c19aa7db725b6402af201aba314fd8e1bc42e14b45",
+    "tools/apex_workbench/plots.py": "091359f6d07fa46105c7575627dc5862203fd2279d77ffa7c0c73b0cca5cc48c",
+    "tools/apex_workbench/app.py": "ea572914ab10d824c93002d56831492fccf45a839520754a8ff4f3fe37b4eea8",
+    "tools/apex_workbench/qualification_math.py": "4511601c8291ea40c68b7fe91763f3251e9dcb195bd373c951ec7a47a5977fbf",
+    "tools/apex_workbench/qualification.py": "ebbde4064962fe4dac9d958860fc271815fd67c804c0d2aff7c5031a2ef577cd",
+    "tools/apex_workbench/qualification_campaign.py": "a191c1cf2e34831755c9d48d71767935c3b1f67bb085f04b3539d22ff7398ac9",
+    "tools/apex_workbench/qualification_reference.py": "a93797ffd5bdf974078c032a55367849a257d92138e1e2630e89bcb8168e3826"
+  },
+  "preservation": {
+    "scientific_changed": [],
+    "tracked_changed": [],
+    "qualification_changed": [],
+    "historical_results_changed": [],
+    "symlinks_changed": [],
+    "head": "c57603ea0e80b7b2121648ae687ac2afa03cb33d",
+    "git_status": "",
+    "qualification_files": 345,
+    "scientific_files": 56,
+    "historical_files": 42014,
+    "tracked_files": 983,
+    "symlinks": 1256
+  },
+  "candidate_changed_paths": [
+    "docs/CODEX_HANDOFF.md",
+    "docs/DECISIONS.md",
+    "docs/apex_workbench_v0_3_a/MVP_ROADMAP.md",
+    "docs/apex_workbench_v0_3_c/RACING_SCENARIO_PROPOSALS.md",
+    "docs/apex_workbench_v0_3_c/SCIENTIFIC_DECISIONS.md",
+    "docs/apex_workbench_v0_3_c/WORK.md",
+    "docs/apex_workbench_v0_3_c/work_record.json",
+    "tools/apex_workbench/README.md",
+    "tools/apex_workbench/experiment_catalog.py",
+    "tools/apex_workbench/recorded_view.py",
+    "tools/apex_workbench/tests/test_engineering_workspace.py",
+    "tools/apex_workbench/tests/test_recorded_view.py",
+    "tools/apex_workbench/workspace.py",
+    "tools/apex_workbench/workspace_panels.py"
+  ],
+  "candidate_reviewed_file_sha256": {
+    "tools/apex_workbench/recorded_view.py": "6b99394976c5f79a2662852afc7f970fc58234a49cf3101c4059f9b115318e17",
+    "tools/apex_workbench/workspace_panels.py": "a2cdb4efdfd6c25673d8d4f76c5d7d2c682abd65f10d685085d90e976d014935",
+    "tools/apex_workbench/experiment_catalog.py": "9167430fc47c05a15aceda57e192f7846fbf3af789ce013e5d7f52140a969921",
+    "tools/apex_workbench/workspace.py": "2d6a9c06dc73e7487f0813981a6cccf820cc90af944212a3a096cf5521263849",
+    "tools/apex_workbench/tests/test_recorded_view.py": "02755d63ee96878df5c36b5aff404c156d22fe086d243d4861f6cb076eed239a",
+    "tools/apex_workbench/tests/test_engineering_workspace.py": "bccd1811628598d961994bebda2b2d5a0b2bac64fd5ad54cd91be47ced5fd3e9",
+    "docs/apex_workbench_v0_3_c/RACING_SCENARIO_PROPOSALS.md": "50d89447844f9c227ab0ea4d4ab107e61ae754585e72e54b1aac717067959c22",
+    "docs/apex_workbench_v0_3_c/SCIENTIFIC_DECISIONS.md": "7afcf92df953af0a5742ba373ca5194367ce23259820382ee381ed2fd7b9390c"
+  },
+  "scenario_design": {
+    "assessment": "No scientific blocker in static design scope",
+    "G_P_source_identities_separate": true,
+    "families_reviewed": 5,
+    "shortlist": 3,
+    "Primary_decisions_pending": [
+      "S1",
+      "S2",
+      "S3"
+    ],
+    "new_execution_presets": 0,
+    "new_thresholds": 0,
+    "calculations_or_geometry_generation_for_review": 0
+  },
+  "inherited_evidence": [
+    "B complete engine/launcher/browser behavior where source and transitive dependencies unchanged; no new complete-suite claim.",
+    "Implementer desktop screenshot visually inspected as inherited evidence; no fresh reviewer live launcher/browser smoke."
+  ],
+  "deferred": [
+    "Formal full-suite Verification",
+    "17-trajectory campaign rerun",
+    "Proposed racing-scenario execution or qualification",
+    "Independent live launcher/browser smoke",
+    "Physical validation, telemetry, CT, Safety and hardware work"
+  ],
+  "new_qualification_trajectories": 0,
+  "new_racing_scenario_executions": 0,
+  "preserved_non_test_attempts": [
+    {
+      "action": "ps process inspection in sandbox",
+      "result": "operation not permitted",
+      "followup": "Read-only scoped escalation succeeded; no test retry or condition change."
+    }
+  ],
+  "pytest_harness_failures": [],
+  "evidence_root": "results/apex_workbench_v03c_review_20261029/iteration_1",
+  "evidence_sha256": {
+    "results/apex_workbench_v03c_review_20261029/iteration_1/preservation.py": "d0f1bb729ca8fb29214b560d11e6f94600f19b14948e06395ee203dbf3639821",
+    "results/apex_workbench_v03c_review_20261029/iteration_1/probe_metadata.py": "fd1d7bf40e906252c89702da8d1dc3fbb9b03a6543bab22e7529a7b1d7928096",
+    "results/apex_workbench_v03c_review_20261029/iteration_1/probe_nested_metadata.py": "57ee451d103781f3a3a37d94eca743a52af55afeb6bdf8c5a07dfbf8b247d840",
+    "results/apex_workbench_v03c_review_20261029/iteration_1/probe_core.py": "483a873ad26b9717912c92432bf52eb561a9de7916f8a77673dcd9d365ade98d",
+    "results/apex_workbench_v03c_review_20261029/iteration_1/reproduce.sh": "db308f01a802118b619d4309a23e3d32cc27d1a470d8c063789f291fe780c833",
+    "results/apex_workbench_v03c_review_20261029/iteration_1/metadata.log": "c48b89eb6d60711fbe9f70b1b627ea8a4dfbe7fac9eecdd6fd820eb6bb60463e",
+    "results/apex_workbench_v03c_review_20261029/iteration_1/metadata.xml": "4e3c9928a540e10c10511fff9eb04ed9f9642e8e7dc6f2671b1c361567c79bb3",
+    "results/apex_workbench_v03c_review_20261029/iteration_1/nested.log": "0270462a98e135420c181e379363b3d69a98ec964a30d1b77e95443686f3fc2d",
+    "results/apex_workbench_v03c_review_20261029/iteration_1/nested.xml": "04790fabf6a0887ec5cc61ad48f4d3d3275482b8f79c97a247fdb983a11fe1df",
+    "results/apex_workbench_v03c_review_20261029/iteration_1/core.log": "35849d445bafd499d4ac6a97a938170bd525a87bc8be53c774cff8f6aa7a17d2",
+    "results/apex_workbench_v03c_review_20261029/iteration_1/core.xml": "510526fc84ee1d7f5a390bd3370bf3fee4095894c9b32363a1375cec15bba993",
+    "results/apex_workbench_v03c_review_20261029/iteration_1/ui38.log": "f6f13ba53f8bfd31feecbcd59fa9f51208e7d06e4e520f64fd2e5b99bc78fb48",
+    "results/apex_workbench_v03c_review_20261029/iteration_1/ui38.xml": "9f2c276059828e14be27e720e579229febc2263ea24f0b34c1a948814dcebd01",
+    "results/apex_workbench_v03c_review_20261029/iteration_1/native_samples.json": "996c7242724dd5047a5041fd61c5e542ecf6c5c0fd56c1e653459393df70fa7b",
+    "results/apex_workbench_v03c_review_20261029/iteration_1/pairwise.json": "c23da2ea5579aa247eab3f01ab2e71af91c72a55d7ba65adf7b64be05520e01b",
+    "results/apex_workbench_v03c_review_20261029/iteration_1/before.json": "d0e4a27c4200949400979abc48425698d86f1e77315063b160432aff248840b2",
+    "results/apex_workbench_v03c_review_20261029/iteration_1/preservation.json": "a469c38edf8b5fc6bcb7c119937642a79880f114050593c0eb070de5a2bb93f8",
+    "results/apex_workbench_v03c_review_20261029/iteration_1/preservation-before.log": "25ecd80a5ea922fee0fc80ab9ef4a3e05167b974ad79f48829cfea9600eaaa6b",
+    "results/apex_workbench_v03c_review_20261029/iteration_1/preservation-after.log": "a469c38edf8b5fc6bcb7c119937642a79880f114050593c0eb070de5a2bb93f8"
+  },
+  "report_sha256": "43e775e261b3f4b2faa3a547096bee345e1572f450e855ef14deb449eb42ddd7",
+  "next_action": "Bounded ordinary correction R1, exact commit, then independent re-review. No automatic formal Verification or scenario approval."
+}

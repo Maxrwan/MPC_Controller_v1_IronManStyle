@@ -5,15 +5,15 @@
   "repository": "Maxrwan/MPC_Controller_v1_IronManStyle",
   "branch": "codex/apex-workbench-v0-3-c",
   "base_revision": "ccd19549a9b3e25d1a5bd2c037a27090eda8dccf",
-  "candidate": "containing implementation commit; exact SHA identified in separate-context review",
+  "candidate": "containing R1 correction commit; exact SHA to be independently re-reviewed",
   "b_acceptance": "authoritative handoff remains VERIFIED_PENDING_USER_ACCEPTANCE; not inferred from hands-on trial",
   "scientific_source_revision": "4897686e79c13757d5ef5b4373b44d4cab99b5bf",
   "source_sha256": {
     "tools/apex_workbench/workspace.py": "2d6a9c06dc73e7487f0813981a6cccf820cc90af944212a3a096cf5521263849",
-    "tools/apex_workbench/workspace_panels.py": "a2cdb4efdfd6c25673d8d4f76c5d7d2c682abd65f10d685085d90e976d014935",
-    "tools/apex_workbench/recorded_view.py": "6b99394976c5f79a2662852afc7f970fc58234a49cf3101c4059f9b115318e17",
+    "tools/apex_workbench/workspace_panels.py": "989699c5169e060e54cbfd01f4e46e0f072b9035330eec534b8b275271b4cbe4",
+    "tools/apex_workbench/recorded_view.py": "60f280a13c8281705a1f613fc0a6f798666d8d6345b98a51f4733e53830faee2",
     "tools/apex_workbench/experiment_catalog.py": "9167430fc47c05a15aceda57e192f7846fbf3af789ce013e5d7f52140a969921",
-    "tools/apex_workbench/tests/test_recorded_view.py": "02755d63ee96878df5c36b5aff404c156d22fe086d243d4861f6cb076eed239a",
+    "tools/apex_workbench/tests/test_recorded_view.py": "9e16f3bb1f21d28099481cf38ac303239c61ae6e5f1c063100b1640e8e9aaae6",
     "tools/apex_workbench/tests/test_engineering_workspace.py": "bccd1811628598d961994bebda2b2d5a0b2bac64fd5ad54cd91be47ced5fd3e9"
   },
   "scientific_source_sha256": {
@@ -185,12 +185,24 @@
       "exit_code": 0,
       "log": "results/apex_workbench_v03c_work_20261029/candidate-ui.log",
       "junit": "results/apex_workbench_v03c_work_20261029/candidate-ui.xml"
+    },
+    {
+      "id": "correction-1",
+      "executed": 47,
+      "passed": 47,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "exit_code": 0,
+      "duration_s": 261.778,
+      "log": "results/apex_workbench_v03c_work_20261029/correction-1.log",
+      "junit": "results/apex_workbench_v03c_work_20261029/correction-1.xml"
     }
   ],
   "counts_not_aggregated": true,
   "coverage_applicability": {
     "full_focused_directory_run": "workbench-2:276 passed before final caption/case-description/declared-ZOH refinements",
-    "final_affected_file_run": "candidate-ui:38 passed, covers final new14 + existing24 view tests, including original nominal worker/provenance",
+    "final_affected_file_run": "correction-1:47 passed, final existing24 plus new23 including nine genuine legacy copied malformed metadata cases; separate from earlier276pass directory run",
     "unchanged_backend_legacy_cases": 239,
     "why_reused": "Only nonfrozen presentation/description/snapshot/test modules changed; all accepted backend/legacy sources, tests and56 scientific dependencies remain unchanged. No count is combined into an unexecuted277-pass invocation.",
     "root_full_formal_suite_executed": false
@@ -501,9 +513,34 @@
     "frozen_inventory_migration_required": false
   },
   "independent_review": {
-    "status": "pending exact commit",
-    "substantive_correction_iterations_used": 0,
-    "maximum": 3
+    "status": "initial exact candidate FAIL; one bounded correction pending exact-revision re-review",
+    "substantive_correction_iterations_used": 1,
+    "maximum": 3,
+    "initial_reviewed_sha": "c57603ea0e80b7b2121648ae687ac2afa03cb33d",
+    "initial_report": "docs/reviews/apex_workbench_v0_3_c/iteration_1/REVIEW.md",
+    "initial_record": "docs/reviews/apex_workbench_v0_3_c/iteration_1/review_record.json",
+    "initial_report_sha256": "43e775e261b3f4b2faa3a547096bee345e1572f450e855ef14deb449eb42ddd7",
+    "initial_findings": [
+      "R1 malformed optional non-lab metadata escapes new presentation boundary"
+    ],
+    "fresh_independent_counts_not_summed": {
+      "ui": {
+        "passed": 38,
+        "failed": 0
+      },
+      "core": {
+        "passed": 15,
+        "failed": 0
+      },
+      "metadata": {
+        "B_passed": 3,
+        "C_failed": 3
+      },
+      "nested_metadata": {
+        "B_passed": 3,
+        "C_failed": 3
+      }
+    }
   },
   "next_required_gates": [
     "separate-context exact-revision Engineering Review",
@@ -546,7 +583,12 @@
     "results/apex_workbench_v03c_work_20261029/interactive-ui-final/reuse.log": "4b4b88102ced713168c7de0be8070a4e8626922df381beb8a9d0b1d4be426240",
     "results/apex_workbench_v03c_work_20261029/interactive-ui-final/stop": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "results/apex_workbench_v03c_work_20261029/interactive-ui-final/startup.log": "33cfb4bbaf7e2983cd11fc33a8b8bc98aaa10b70cc9b66028fad6849487388eb",
-    "results/apex_workbench_v03c_work_20261029/interactive-ui-final/ready.json": "df343f733f175baf8e7d90d6d83af0b7e3b1ea8d34b84f1a75fb31fd3693cb88"
+    "results/apex_workbench_v03c_work_20261029/interactive-ui-final/ready.json": "df343f733f175baf8e7d90d6d83af0b7e3b1ea8d34b84f1a75fb31fd3693cb88",
+    "results/apex_workbench_v03c_work_20261029/correction-1.log": "5ed09493088b88d493864e805d1815283bb6e10788e0bd15d5c3bac5ec057ae4",
+    "results/apex_workbench_v03c_work_20261029/correction-1.xml": "05324328bebc9af65f0a60e9dbaebb37bfb48e4f37e05674a04576782cf19a6e",
+    "results/apex_workbench_v03c_work_20261029/audit-correction-1.py": "aa06863cb6cc0ac7b9258773a3e700a7ecf7742b079a177b395b243ec98d6060",
+    "results/apex_workbench_v03c_work_20261029/audit-correction-1.log": "7dc96537bccb563b15c39531ecf97c6969cc5ea4b79fe22c5f18f3718901c51b",
+    "results/apex_workbench_v03c_work_20261029/audit-correction-1.json": "7dc96537bccb563b15c39531ecf97c6969cc5ea4b79fe22c5f18f3718901c51b"
   },
   "stop_target": "V0.3_C_ENGINEERING_REVIEW_COMPLETE_PENDING_VERIFICATION_AND_SCENARIO_APPROVAL",
   "test_command_contract": {
@@ -602,5 +644,72 @@
     "ruff_format": "PASS, six files formatted",
     "git_diff_check": "PASS",
     "tool_path_attempt": "tools/apex_workbench/.venv/bin/ruff absent (127); used existing repository .venv/bin/ruff, no installation/change"
+  },
+  "initial_candidate": "c57603ea0e80b7b2121648ae687ac2afa03cb33d",
+  "initial_candidate_source_sha256": {
+    "tools/apex_workbench/workspace.py": "2d6a9c06dc73e7487f0813981a6cccf820cc90af944212a3a096cf5521263849",
+    "tools/apex_workbench/workspace_panels.py": "a2cdb4efdfd6c25673d8d4f76c5d7d2c682abd65f10d685085d90e976d014935",
+    "tools/apex_workbench/recorded_view.py": "6b99394976c5f79a2662852afc7f970fc58234a49cf3101c4059f9b115318e17",
+    "tools/apex_workbench/experiment_catalog.py": "9167430fc47c05a15aceda57e192f7846fbf3af789ce013e5d7f52140a969921",
+    "tools/apex_workbench/tests/test_recorded_view.py": "02755d63ee96878df5c36b5aff404c156d22fe086d243d4861f6cb076eed239a",
+    "tools/apex_workbench/tests/test_engineering_workspace.py": "bccd1811628598d961994bebda2b2d5a0b2bac64fd5ad54cd91be47ced5fd3e9"
+  },
+  "correction_1": {
+    "finding": "R1",
+    "changes": [
+      "additive snapshot metadata object/list/text shape validation",
+      "additive UI expected malformed-data exception containment",
+      "nine copied genuine legacy malformed metadata regressions"
+    ],
+    "preserves_raw_bytes": true,
+    "silently_normalizes_metadata": false,
+    "frozen_reader_or_science_changes": false,
+    "re_review": "pending exact containing commit",
+    "test_command": [
+      "tools/apex_workbench/.venv/bin/python",
+      "-u",
+      "-c",
+      "from threading_study.config import configure_accelerate; configure_accelerate(1); import sys,pytest; raise SystemExit(pytest.main(sys.argv[1:]))",
+      "-q",
+      "-x",
+      "tools/apex_workbench/tests/test_engineering_workspace.py",
+      "tools/apex_workbench/tests/test_recorded_view.py",
+      "--basetemp=results/apex_workbench_v03c_work_20261029/correction-1",
+      "--junitxml=results/apex_workbench_v03c_work_20261029/correction-1.xml",
+      "--durations=5"
+    ],
+    "lint_attempts": "Imported pytest fixture F811 suppression adjusted after formatting; comment-only, all changed-file Ruff lint/format then passed. No pytest retry."
+  },
+  "retained_audit_after_correction": {
+    "evidence": "results/apex_workbench_v03c_work_20261029/audit-correction-1.json",
+    "scientific_files_checked": 56,
+    "historical_files_checked": 37020,
+    "qualification_files_hashed": 345,
+    "all_preserved": true,
+    "retained_references": 17,
+    "four_pairs": {
+      "VDL1_IZ_HIGH": {
+        "without_selected_Q": "controlled_candidate",
+        "with_selected_Q": "qualified_synthetic_comparison"
+      },
+      "VDL1_STEER_HIGH": {
+        "without_selected_Q": "controlled_candidate",
+        "with_selected_Q": "qualified_synthetic_comparison"
+      },
+      "VDL1_CF_HIGH": {
+        "without_selected_Q": "controlled_candidate",
+        "with_selected_Q": "qualified_synthetic_comparison"
+      },
+      "VDL1_CR_HIGH": {
+        "without_selected_Q": "controlled_candidate",
+        "with_selected_Q": "qualified_synthetic_comparison"
+      }
+    },
+    "three_run_labels": [
+      "qualified_synthetic_comparison",
+      "qualified_synthetic_comparison",
+      "illustrative"
+    ],
+    "no_new_qualification_or_racing_trajectories": true
   }
 }

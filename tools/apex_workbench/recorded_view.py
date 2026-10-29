@@ -34,12 +34,42 @@ def load(run):
     if not data.valid:
         raise storage.IntegrityError(data.error or "Evidence unavailable")
     request = data.request
+    # The legacy reader verifies bytes without promising these optional JSON shapes.
+    # Reject malformed presentation metadata; keep the original raw records untouched.
+    objects = {
+        "effective": request["effective"],
+        "execution_context": request.get("execution_context", {}),
+        "provenance": request.get("provenance", {}),
+        "summary": data.summary,
+        "environment": data.environment,
+        "telemetry_contract": data.contract,
+    }
+    for name, value in objects.items():
+        if not isinstance(value, dict):
+            raise storage.IntegrityError("Invalid presentation metadata object: " + name)
+    window = data.summary.get("sampled_model_window", {})
+    if not isinstance(window, dict):
+        raise storage.IntegrityError("Invalid presentation metadata object: sampled_model_window")
+    fields = {
+        "grid_id": request["effective"].get("grid_id", "original"),
+        "execution_context.role": objects["execution_context"].get("role", "adapter"),
+        "provenance.git_revision": objects["provenance"].get("git_revision", "unknown"),
+        "sampled_model_window.status": window.get("status", "unknown"),
+    }
+    for name, value in fields.items():
+        if not isinstance(value, str):
+            raise storage.IntegrityError("Invalid presentation metadata text: " + name)
+    for name in ("state_names", "state_units", "control_names", "control_units"):
+        values = data.contract.get(name, [])
+        if not isinstance(values, list) or any(not isinstance(v, str) for v in values):
+            raise storage.IntegrityError("Invalid presentation metadata list: " + name)
+    units = data.contract.get("diagnostic_units", {})
+    if not isinstance(units, dict) or any(
+        not isinstance(k, str) or not isinstance(v, str) for k, v in units.items()
+    ):
+        raise storage.IntegrityError("Invalid presentation metadata object: diagnostic_units")
     effective = request["effective"]
-    profile = (
-        effective.get("grid_id", "original")
-        + "/"
-        + request.get("execution_context", {}).get("role", "adapter")
-    )
+    profile = fields["grid_id"] + "/" + fields["execution_context.role"]
     if (
         request.get("run_id", run.run_id) != run.run_id
         or request["adapter"] != run.adapter
