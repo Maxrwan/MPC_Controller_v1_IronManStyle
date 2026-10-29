@@ -3,8 +3,10 @@
 **WORK_COMPLETE_PENDING_REVIEW.** Recorded 29 October 2026. Dedicated branch
 `codex/apex-workbench-v0-3-b` from accepted design `03055a183be0f5d3691714103588d5b263748128`.
 Initial candidate `889c8084f7632d5f343cd7f0865a3931c3e7e933` failed independent review. Its
-[verbatim review](reviews/apex_workbench_v0_3_b/iteration_1/REVIEW.md) is retained. One bounded
-correction iteration closes stale comparison epochs, unsealed identity bridges and metadata loops.
+[verbatim review](reviews/apex_workbench_v0_3_b/iteration_1/REVIEW.md) is retained. Two bounded
+correction iterations close stale comparison epochs, unsealed identity bridges and metadata loops.
+The [second failed review](reviews/apex_workbench_v0_3_b/iteration_2/REVIEW.md) is also retained;
+distinct conflicting archive paths now stay separate with unique path keys, while exact copies dedup.
 The exact corrected candidate requires independent re-review; no automatic
 Verification, next MVP stage or final acceptance is authorized.
 
@@ -19,7 +21,8 @@ unchanged and directly launchable on another port. See [WORK](apex_workbench_v0_
 Focused Workbench directory: **254 passed, zero failures/errors/skips**. After a small presentation
 race guard and two added UI checks, final new-view file: **17 passed**. These are separate runs,
 not added counts or a full repository Verification result. After correction, **22 new-view checks
-pass**, including all three reviewer reproductions and a later plot-read replacement. Original V0.1
+pass**, including all three reviewer reproductions and a later plot-read replacement. The second
+correction passes **24 cases**, adding distinct-conflicting-archive and exact-copy coverage. Original V0.1
 parity, V0.2 canonical parity,
 lifecycle, cancellation and integrity coverage passed. Actual launcher startup/reuse/owned shutdown,
 port/missing-env errors and refusal to take over the legacy app passed. Initial Streamlit rendering

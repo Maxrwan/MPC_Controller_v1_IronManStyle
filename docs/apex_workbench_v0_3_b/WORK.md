@@ -4,7 +4,7 @@
 `codex/apex-workbench-v0-3-b`, from accepted design `03055a183be0f5d3691714103588d5b263748128`.
 Initial candidate `889c8084f7632d5f343cd7f0865a3931c3e7e933` failed separate-context review.
 The failed review is preserved verbatim in [iteration 1](../reviews/apex_workbench_v0_3_b/iteration_1/REVIEW.md).
-One bounded correction iteration is implemented; its containing commit binds the final tested files
+Two bounded correction iterations are implemented; the final containing commit binds the tested files
 and must receive exact-revision independent re-review. This WORK report does not grant formal Verification or user acceptance.
 
 ## Delivered behavior
@@ -19,8 +19,9 @@ an unchanged compatibility entrypoint, documented on port 8502.
 `run_catalog.py` discovers direct owned directories and the accepted qualification's original
 17 source-run paths. It does not import arbitrary folders, copy/reseal records, or grant trust.
 Canonical paths and captured run/worker/manifest identities attach aliases to one original anchor.
-Archives anchor discovery before owned candidates; conflicting alias hints cannot transitively merge
-distinct originals or propagate their weak identifiers. Cyclic metadata paths become discovery issues. Conflicts are disclosed;
+Archives anchor discovery before owned candidates; conflicting captured identities at distinct archive
+paths remain separate anchors with path-derived keys, while exact execution copies still deduplicate.
+Conflicting alias hints cannot transitively merge distinct originals or propagate their weak identifiers. Cyclic metadata paths become discovery issues. Conflicts are disclosed;
 owned ambiguous records are withheld from lifecycle controls. Original qualification sources remain
 independently verifiable even if an owned alias conflicts. Archive origins are always read-only,
 including when the same canonical path is also discovered under an owned root.
@@ -144,7 +145,14 @@ partial: a separate user-owned launcher appeared after review-owned shutdown and
 implementation's complete launcher smoke on identical launcher bytes remains separately recorded.
 The failed review/report/scripts/logs are preserved, including reviewer harness corrections.
 
-One bounded correction iteration changes only the new presentation/catalog/test modules and docs.
+The [second review](../reviews/apex_workbench_v0_3_b/iteration_2/REVIEW.md), exact `f6a8660f3674ae46a11bd377b807665d765ae00f`,
+independently passed 18 probes and failed one nearby archive-to-archive alias case. That failed review
+is preserved verbatim. A second bounded correction keeps distinct archive paths separate when their
+captured identities conflict, uses archive path keys to avoid colliding untrusted run IDs, and retains
+exact-copy deduplication. The final affected-file run passes **24 cases, zero failures/errors/skips**, 16.75 s,
+`correction-2.log`/JUnit; it preserves both conflicting paths and exact-copy deduplication.
+
+Two bounded correction iterations change only the new presentation/catalog/test modules and docs.
 No scientific contract or inventory changed. The exact corrected candidate must receive separate-context
 Engineering Review. Preserve failed review records
 and re-review any corrected source revision, at most three substantive bounded correction iterations.

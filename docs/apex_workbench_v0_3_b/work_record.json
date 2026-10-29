@@ -8,9 +8,9 @@
   "accepted_v02_implementation": "4897686e79c13757d5ef5b4373b44d4cab99b5bf",
   "source_sha256": {
     "tools/apex_workbench/workspace.py": "1c6a11be78cf3200d5df8372a3d5bf2d5b63ced1e66e69d000b873df9b0fd789",
-    "tools/apex_workbench/run_catalog.py": "76497cb868caffb684e7abe868704b84355835631136466103af82a75fc6ae09",
+    "tools/apex_workbench/run_catalog.py": "a8f6b770bb63160e19f2535de5dd9178b3e09922ac91bcd12641c936ec24796e",
     "tools/apex_workbench/engineering_views.py": "10ca51921b00aea5d6ebe5be3dbcae9e92da281ebd3633418a698d098512d34b",
-    "tools/apex_workbench/tests/test_engineering_workspace.py": "545b99dd27c286843d727f5b01d8e4382d0df556711297f65a9673b4c92d18d1"
+    "tools/apex_workbench/tests/test_engineering_workspace.py": "e8cdfa92dcf00afa0b1e40288e87224c741f29cc53ec26ed5e94f8e149d3144f"
   },
   "launcher_sha256": "521e14fb8eb1459e3855c6ef872bd34bdaee764f1c198cad8b2147bf9906599d",
   "scientific_source_sha256": {
@@ -153,6 +153,18 @@
       "exit_code": 0,
       "log": "results/apex_workbench_v03b_work_20261029/correction-1.log",
       "junit": "results/apex_workbench_v03b_work_20261029/correction-1.xml"
+    },
+    {
+      "id": "correction-2",
+      "selection": "tools/apex_workbench/tests/test_engineering_workspace.py",
+      "total_executed": 24,
+      "passed": 24,
+      "failure": 0,
+      "error": 0,
+      "skipped": 0,
+      "exit_code": 0,
+      "log": "results/apex_workbench_v03b_work_20261029/correction-2.log",
+      "junit": "results/apex_workbench_v03b_work_20261029/correction-2.xml"
     }
   ],
   "test_applicability": {
@@ -177,11 +189,18 @@
     },
     "corrected_source": {
       "tools/apex_workbench/workspace.py": "1c6a11be78cf3200d5df8372a3d5bf2d5b63ced1e66e69d000b873df9b0fd789",
+      "tools/apex_workbench/run_catalog.py": "a8f6b770bb63160e19f2535de5dd9178b3e09922ac91bcd12641c936ec24796e",
+      "tools/apex_workbench/engineering_views.py": "10ca51921b00aea5d6ebe5be3dbcae9e92da281ebd3633418a698d098512d34b",
+      "tools/apex_workbench/tests/test_engineering_workspace.py": "e8cdfa92dcf00afa0b1e40288e87224c741f29cc53ec26ed5e94f8e149d3144f"
+    },
+    "correction_delta": "New three presentation modules and new tests only; final22-case rerun covers corrections plus nominal owned-worker provenance. All239 preexisting backend/legacy tests and dependencies remain unchanged. Complete launcher bytes unchanged; prior complete smoke and partial independent check remain applicable, not fresh passes.",
+    "correction1_source": {
+      "tools/apex_workbench/workspace.py": "1c6a11be78cf3200d5df8372a3d5bf2d5b63ced1e66e69d000b873df9b0fd789",
       "tools/apex_workbench/run_catalog.py": "76497cb868caffb684e7abe868704b84355835631136466103af82a75fc6ae09",
       "tools/apex_workbench/engineering_views.py": "10ca51921b00aea5d6ebe5be3dbcae9e92da281ebd3633418a698d098512d34b",
       "tools/apex_workbench/tests/test_engineering_workspace.py": "545b99dd27c286843d727f5b01d8e4382d0df556711297f65a9673b4c92d18d1"
     },
-    "correction_delta": "New three presentation modules and new tests only; final22-case rerun covers corrections plus nominal owned-worker provenance. All239 preexisting backend/legacy tests and dependencies remain unchanged. Complete launcher bytes unchanged; prior complete smoke and partial independent check remain applicable, not fresh passes."
+    "correction2_delta": "Only new catalog/test modules plus docs. Archive identity conflict containment and path keys are checked by final24 affected-file cases. Other new view sources and all239 accepted backend/legacy tests/dependencies unchanged; earlier full launcher evidence remains applicable without rerun."
   },
   "launcher": {
     "schema": "apex-v03b-launcher-audit/1",
@@ -324,7 +343,9 @@
     ],
     "historical_result_files_checked": 30389,
     "historical_result_changes": [],
-    "scientific_source_changes": []
+    "scientific_source_changes": [],
+    "correction2_scientific_source_changes": [],
+    "correction2_historical_result_changes": []
   },
   "evidence_sha256": {
     "results/apex_workbench_v03b_work_20261029/before.json": "ea929332d82679addbda663dd3664bb79bbb3ad4545c4b519182dfb7279f04c1",
@@ -350,7 +371,11 @@
     "results/apex_workbench_v03b_work_20261029/audit-correction-1.log": "cd27897da6bc60b2b976d39ee7e84a9e27e2a3aafdc2f3c355ae2d776b3bd87d",
     "results/apex_workbench_v03b_work_20261029/audit-correction-1.json": "cd27897da6bc60b2b976d39ee7e84a9e27e2a3aafdc2f3c355ae2d776b3bd87d",
     "docs/reviews/apex_workbench_v0_3_b/iteration_1/REVIEW.md": "7b363c7eeb47404ead414400a8f9e63febae0f0b464abc1a9437e28312dd6072",
-    "docs/reviews/apex_workbench_v0_3_b/iteration_1/review_record.json": "19dd4df358e91b6dc0f65923dc8d1d83a198def4ac7928fb3df3a76d65872086"
+    "docs/reviews/apex_workbench_v0_3_b/iteration_1/review_record.json": "19dd4df358e91b6dc0f65923dc8d1d83a198def4ac7928fb3df3a76d65872086",
+    "results/apex_workbench_v03b_work_20261029/correction-2.log": "d3e64e383e6c9a66e2eef7e82fe2657abcb36b40549d3e415207fef404ad3f3b",
+    "results/apex_workbench_v03b_work_20261029/correction-2.xml": "c5cdb9c2db6e886ea92e3901563bca43dd48d68c3b06fdc398409804aa57427c",
+    "docs/reviews/apex_workbench_v0_3_b/iteration_2/REVIEW.md": "e302096a5a4aba22431a1989267d0ccd7189690204fb28aad0dd2f245ec605eb",
+    "docs/reviews/apex_workbench_v0_3_b/iteration_2/review_record.json": "8a12e07cbd89c9c825d5ec577f87fbfe62fef55ade5d4028c7b188ec2ae3c2fc"
   },
   "commands": {
     "pytest_environment": "VECLIB_MAXIMUM_THREADS=1 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 BLIS_NUM_THREADS=1 NUMEXPR_NUM_THREADS=1 PYTHONHASHSEED=0 MPLCONFIGDIR=results/apex_workbench_v03b_work_20261029/mpl PYTHONPATH=.:scripts:src",
@@ -372,20 +397,30 @@
     "research/hardware work"
   ],
   "independent_review": {
-    "status": "initial FAIL, corrected exact candidate pending re-review",
+    "status": "two failed reviews preserved; correction2 candidate pending exact re-review",
     "initial_candidate": "889c8084f7632d5f343cd7f0865a3931c3e7e933",
     "preserved_review": "docs/reviews/apex_workbench_v0_3_b/iteration_1/REVIEW.md",
     "preserved_record": "docs/reviews/apex_workbench_v0_3_b/iteration_1/review_record.json",
     "initial_review_unique_passing_probes": 5,
     "initial_review_product_failures": 3,
-    "correction_iterations_used": 1,
-    "maximum_substantive_correction_iterations": 3
+    "correction_iterations_used": 2,
+    "maximum_substantive_correction_iterations": 3,
+    "second_candidate": "f6a8660f3674ae46a11bd377b807665d765ae00f",
+    "second_review": {
+      "outcome": "FAIL",
+      "passed": 18,
+      "failed": 1,
+      "residual": "R2-A conflicting archive metadata merges distinct source paths",
+      "report": "docs/reviews/apex_workbench_v0_3_b/iteration_2/REVIEW.md",
+      "record": "docs/reviews/apex_workbench_v0_3_b/iteration_2/review_record.json"
+    }
   },
   "stop_target": "V0.3_B_ENGINEERING_REVIEW_COMPLETE_PENDING_VERIFICATION",
   "corrections": {
     "R1": "Bind status/manifest/selected-qualification anchors around classification, second inspection and later plot reads; clear stale label/overlays even when replacement remains individually valid",
     "R2": "Archive-first fixed identity anchors; attach each alias once by path/run-ID/worker/manifest priority, never transitively union originals or propagate conflicting alias hints",
-    "R3": "Catch metadata/manifest path resolution loops per record; preserve discovery issues and invalid raw access; contain notes path loops"
+    "R3": "Catch metadata/manifest path resolution loops per record; preserve discovery issues and invalid raw access; contain notes path loops",
+    "R2-A": "Keep distinct archive paths as separate anchors whenever captured identity tuples conflict; archive keys derive from canonical path, avoiding duplicate untrusted run-ID keys. Exact-copy/canonical-path dedup retained."
   },
   "corrected_qualification_audit": {
     "schema": "apex-v03b-preservation-audit/1",

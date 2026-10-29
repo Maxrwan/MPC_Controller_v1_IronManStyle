@@ -151,6 +151,15 @@ def discover(*, owned_root=None, qualification_root=None):
         for group in groups:
             shared = group["tokens"] & candidate["tokens"]
             if shared:
+                if (
+                    candidate["origin"] == "qualification archive"
+                    and "path:" + str(candidate["directory"]) not in shared
+                    and candidate["identity"] != group["rows"][0]["identity"]
+                ):
+                    candidate["issues"].append(
+                        "Conflicting archive identity; distinct source path kept separately"
+                    )
+                    continue
                 rank = min(
                     i
                     for i, prefix in enumerate(priorities)
@@ -179,9 +188,9 @@ def discover(*, owned_root=None, qualification_root=None):
                 "Conflicting alias identities; only the selected original source can be verified"
             )
         run_id = primary["identity"][0] or primary["directory"].name
-        key_material = (
-            "id:" + run_id if primary["identity"][0] else "path:" + str(primary["directory"])
-        )
+        key_material = "path:" + str(primary["directory"])
+        if primary["identity"][0] and primary["origin"] == "owned":
+            key_material = "id:" + run_id
         effective = request.get("effective")
         effective = effective if isinstance(effective, dict) else {}
         context = request.get("execution_context")

@@ -391,3 +391,36 @@ def test_valid_epoch_replacement_withholds_qualified_label_and_all_overlays(
     assert compare(*runs, qualification_record=QUALIFICATION)["classification"] == "illustrative"
     assert not app.exception and app.error and not app.get("plotly_chart")
     assert not any(item.value == "Qualified Synthetic Comparison" for item in app.subheader)
+
+
+@pytest.mark.parametrize("copied_identity", [False, True])
+def test_distinct_archive_conflicts_keep_paths_and_unique_keys(accepted, tmp_path, copied_identity):
+    _, base, treatment = accepted
+    campaign = tmp_path / "qualifications" / run_catalog.ACCEPTED_CAMPAIGN
+    first, second = campaign / "runs/base", campaign / "runs/iz"
+    shutil.copytree(base.directory, first)
+    shutil.copytree(base.directory if copied_identity else treatment.directory, second)
+    if not copied_identity:
+        request = storage.read_json(second / "request.json")
+        request["run_id"] = base.run_id
+        storage.write_json(second / "request.json", request)  # Corrupt copy, never resealed.
+    record = campaign / "qualification"
+    record.mkdir()
+    storage.write_json(record / "commit.json", {})  # Untrusted discovery fixture only.
+    storage.write_json(
+        record / "qualification.json",
+        {
+            "schema": "apex-vdl-qualification/1",
+            "references": {"base": {"directory": str(first)}, "iz": {"directory": str(second)}},
+        },
+    )
+    catalog = run_catalog.discover(
+        owned_root=tmp_path / "empty", qualification_root=campaign.parent
+    )
+    assert len({run.key for run in catalog.runs}) == len(catalog.runs)
+    if copied_identity:
+        assert len(catalog.runs) == 1 and len(catalog.runs[0].aliases) == 2
+    else:
+        assert {first, second} == {run.directory for run in catalog.runs}
+        broken = next(run for run in catalog.runs if run.directory == second)
+        assert broken.issues and not views.inspect(broken).valid
