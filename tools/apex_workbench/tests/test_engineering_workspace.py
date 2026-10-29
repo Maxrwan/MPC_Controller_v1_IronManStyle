@@ -311,3 +311,83 @@ def test_ui_withholds_overlay_if_evidence_changes_after_classification(
         [base.key, treatment.key]
     ).run()
     assert not app.exception and app.error and not app.get("plotly_chart")
+
+
+def test_unsealed_identity_bridge_preserves_distinct_archive_anchors(accepted, tmp_path):
+    _, base, treatment = accepted
+    owned = tmp_path / "owned"
+    bridge = owned / "corrupt-bridge"
+    bridge.mkdir(parents=True)
+    storage.write_json(bridge / "request.json", {"run_id": base.run_id})
+    storage.write_json(
+        bridge / "worker.json", storage.read_json(treatment.directory / "worker.json")
+    )
+    storage.write_json(bridge / "status.json", {"state": "failed"})
+    catalog = run_catalog.discover(owned_root=owned)
+    assert len(catalog.runs) == 17
+    assert {base.directory, treatment.directory} <= {run.directory for run in catalog.runs}
+    selected = next(run for run in catalog.runs if bridge in run.aliases)
+    assert selected.directory == base.directory and selected.conflict and not selected.owned
+    assert selected.issues and views.inspect(selected).valid
+
+
+@pytest.mark.parametrize("name", ["request.json", "artifacts.json"])
+def test_cyclic_metadata_symlinks_remain_discoverable_and_quarantined(tmp_path, name):
+    owned = tmp_path / "owned"
+    corrupt = owned / "corrupt"
+    corrupt.mkdir(parents=True)
+    storage.write_json(corrupt / "status.json", {"state": "failed"})
+    (corrupt / name).symlink_to(name)
+    catalog = run_catalog.discover(owned_root=owned, qualification_root=tmp_path / "no-archives")
+    assert len(catalog.runs) == 1 and catalog.runs[0].issues
+    assert not views.inspect(catalog.runs[0]).valid
+    (corrupt / "notes-loop.json").symlink_to("notes-loop.json")
+    assert views.notes(catalog.runs[0])[1]
+
+
+@pytest.mark.parametrize("swap_boundary", ["comparison_return", "plot_read"])
+def test_valid_epoch_replacement_withholds_qualified_label_and_all_overlays(
+    accepted, tmp_path, monkeypatch, swap_boundary
+):
+    _, base, treatment = accepted
+    owned = tmp_path / "owned"
+    first, second = owned / "first", owned / "second"
+    shutil.copytree(base.directory, first)
+    shutil.copytree(treatment.directory, second)
+    monkeypatch.setattr(run_catalog, "QUALIFICATION_ROOT", tmp_path / "no-archives")
+    catalog = run_catalog.discover(owned_root=owned)
+    runs = [next(r for r in catalog.runs if r.case == case) for case in (base.case, treatment.case)]
+    app = application(monkeypatch, owned)
+    app.radio(key="workspace_view").set_value("Compare").run()
+    compare = views.compare
+    decisions = []
+
+    def swap():
+        # Replace only disposable IZ data with intact, individually valid BASE data.
+        shutil.rmtree(second)
+        shutil.copytree(base.directory, second)
+
+    def classified(first_run, second_run, **kwargs):
+        result = compare(first_run, second_run, qualification_record=QUALIFICATION)
+        decisions.append(result["classification"])
+        if swap_boundary == "comparison_return":
+            swap()
+        return result
+
+    monkeypatch.setattr(views, "compare", classified)
+    if swap_boundary == "plot_read":
+        series = views.plots.series
+
+        def plotted(*args, **kwargs):
+            result = series(*args, **kwargs)
+            swap()
+            return result
+
+        monkeypatch.setattr(views.plots, "series", plotted)
+    next(item for item in app.multiselect if item.label == "Runs").set_value(
+        [run.key for run in runs]
+    ).run()
+    assert decisions == ["qualified_synthetic_comparison"]
+    assert compare(*runs, qualification_record=QUALIFICATION)["classification"] == "illustrative"
+    assert not app.exception and app.error and not app.get("plotly_chart")
+    assert not any(item.value == "Qualified Synthetic Comparison" for item in app.subheader)

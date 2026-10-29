@@ -2,8 +2,10 @@
 
 **WORK_COMPLETE_PENDING_REVIEW.** Recorded 29 October 2026. Branch
 `codex/apex-workbench-v0-3-b`, from accepted design `03055a183be0f5d3691714103588d5b263748128`.
-Exact candidate SHA is recorded by the subsequent independent review; the containing commit binds
-these tested files. This WORK report does not grant formal Verification or user acceptance.
+Initial candidate `889c8084f7632d5f343cd7f0865a3931c3e7e933` failed separate-context review.
+The failed review is preserved verbatim in [iteration 1](../reviews/apex_workbench_v0_3_b/iteration_1/REVIEW.md).
+One bounded correction iteration is implemented; its containing commit binds the final tested files
+and must receive exact-revision independent re-review. This WORK report does not grant formal Verification or user acceptance.
 
 ## Delivered behavior
 
@@ -16,7 +18,9 @@ an unchanged compatibility entrypoint, documented on port 8502.
 
 `run_catalog.py` discovers direct owned directories and the accepted qualification's original
 17 source-run paths. It does not import arbitrary folders, copy/reseal records, or grant trust.
-Canonical paths and captured run/worker/manifest identities group aliases. Conflicts are disclosed;
+Canonical paths and captured run/worker/manifest identities attach aliases to one original anchor.
+Archives anchor discovery before owned candidates; conflicting alias hints cannot transitively merge
+distinct originals or propagate their weak identifiers. Cyclic metadata paths become discovery issues. Conflicts are disclosed;
 owned ambiguous records are withheld from lifecycle controls. Original qualification sources remain
 independently verifiable even if an owned alias conflicts. Archive origins are always read-only,
 including when the same canonical path is also discovered under an owned root.
@@ -32,8 +36,9 @@ channel has its own axis. Plots retain native time without alignment or new metr
 Two selected records use accepted classification and applicability rules. The pure lab reader is
 called directly for archives, avoiding the legacy comparison wrapper's lifecycle reconciliation.
 Mixed archive/owned overlays retain the existing cross-adapter illustrative rule and verify the
-legacy fingerprint. Invalid evidence has raw diagnostic access and no scientific plots. A changed
-record between classification and display withholds the overlay. The verified ZIP preserves original
+legacy fingerprint. Invalid evidence has raw diagnostic access and no scientific plots. Classification and display bind to status/manifest and selected-qualification anchors, checked before
+classification is returned, after display inspection, after path-based plot reads and at the end of
+rendering. A valid-to-valid epoch replacement withholds both the old label and all overlays. The verified ZIP preserves original
 manifest-listed bytes and committed status/manifest anchors; changed anchors abort export. Notes
 remain append-only for owned runs, view-only for archives. No archive reconciliation/cancel/write
 controls are attached.
@@ -68,6 +73,11 @@ Tests use fresh output roots. Numerical workers remain serialized under the orig
   **17 passed, zero failures/errors/skips**, 13.46 s. This is an affected-file rerun, not another
   254-pass run.
   The prior 239 backend/legacy checks retain unchanged dependencies. Counts are not added together.
+- After independent review, the corrected new file passes **22 cases, zero failures/errors/skips**,
+  `correction-1.log`/JUnit, 16.56 s. Five added literal regression cases cover an unsealed identity
+  bridge, request/manifest symlink cycles and valid-to-valid replacement at classification-return
+  and plot-read boundaries. Existing alias/dedup, Q, notes, UI and real nominal-worker checks also pass.
+  No count is combined with the earlier 254 or 17 results.
 - Changed Python Ruff check/format and shell syntax pass. Documentation/scope/whitespace checks
   precede commit. Root `tests/` and the full formal Verification suite are intentionally deferred.
 
@@ -126,7 +136,17 @@ owned status uses explicit refresh; actual exporter summaries remain JSON rather
 scores. Evidence logs are bounded raw text and explicitly unverified for invalid/active records.
 No unresolved scientific decision is required by this scope.
 
-An exact candidate must receive separate-context Engineering Review. Preserve failed review records
+The independent first review reproduced three ordinary software blockers on `889c808`: stale qualified
+labels after valid evidence replacement (R1), transitive unsealed identity bridges hiding an original
+(R2), and uncontained metadata symlink loops (R3). It independently confirmed actual17 archive reads,
+56 Git-blob matches, four-pair Q applicability and genuine yaw traces. Its own launcher coverage was
+partial: a separate user-owned launcher appeared after review-owned shutdown and was preserved. The
+implementation's complete launcher smoke on identical launcher bytes remains separately recorded.
+The failed review/report/scripts/logs are preserved, including reviewer harness corrections.
+
+One bounded correction iteration changes only the new presentation/catalog/test modules and docs.
+No scientific contract or inventory changed. The exact corrected candidate must receive separate-context
+Engineering Review. Preserve failed review records
 and re-review any corrected source revision, at most three substantive bounded correction iterations.
 The next gate is separately authorized exact-revision formal functional Verification. After that,
 the accepted roadmap's pairwise multi-run/common-time inspection is the next MVP extension; no

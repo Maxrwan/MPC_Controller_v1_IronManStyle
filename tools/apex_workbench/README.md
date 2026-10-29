@@ -98,7 +98,9 @@ Parameters are synthetic, never measured or identified APEX data. Linear tires r
 4. **Compare** selects exactly two runs. The accepted readers determine candidate, qualified synthetic,
    illustrative or invalid status and show actual differences and retained summaries. Select the
    accepted qualification explicitly in the sidebar; discovery alone confers no qualification.
-   Plots use raw timestamps without interpolation or time alignment. Invalid pairs have no overlays.
+   Plots use raw timestamps without interpolation or time alignment. Status/manifest and selected-Q
+   identities bind classification to display; changed identities clear labels and overlays. Invalid
+   pairs have no overlays.
 5. **Raw records and failure logs** remain available for corrupt/incomplete records with explicit
    unverified labels. Verified records offer a ZIP of original manifest-listed bytes plus their
    status/manifest; moving anchors abort export. This is retained evidence, not a new execution.
@@ -108,7 +110,9 @@ Parameters are synthetic, never measured or identified APEX data. Linear tires r
 Discovery is restricted to direct directories in `results/apex_workbench/` and the original source
 runs referenced by `results/apex_workbench_qualifications/v0_2_reviewed_20261029/qualification/`.
 No arbitrary path importer is provided. Paths sharing captured run/worker/manifest identity are
-shown once with aliases; a copied folder never counts as another execution. Conflicting aliases
+shown once with aliases; a copied folder never counts as another execution. Original archives anchor
+discovery; conflicting alias hints cannot merge distinct originals. Metadata symlink loops are
+quarantined without blocking the catalog. Conflicting aliases
 are disclosed. The original qualification source can still be independently verified; ambiguous
 owned aliases are quarantined and offer no lifecycle controls. Archived/nonterminal records never
 invoke reconciliation or cancellation. Nothing is copied, resealed or migrated for discovery.

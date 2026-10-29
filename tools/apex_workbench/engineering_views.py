@@ -3,6 +3,7 @@
 import io
 import zipfile
 from dataclasses import dataclass, field
+from pathlib import Path
 
 from tools.apex_workbench import comparison, plots, storage
 
@@ -98,7 +99,42 @@ def qualification(run, directory):
     return applicability(directory, run.directory)
 
 
+def invalid_comparison(reason):
+    return {"classification": "invalid", "reason": reason, "differences": {}, "varied_inputs": {}}
+
+
+def comparison_epoch(runs, qualification_record=None):
+    paths = [run.directory / name for run in runs for name in ("status.json", "artifacts.json")]
+    if qualification_record is not None:
+        paths.extend(
+            Path(qualification_record) / name for name in ("commit.json", "qualification.json")
+        )
+    return tuple((str(path), storage.sha256(path)) for path in paths)
+
+
+def comparison_current(decision):
+    """Bind display to the exact evidence/qualification anchors consumed, not validity alone."""
+    try:
+        anchors = decision.get("presentation_epoch", ())
+        return bool(anchors) and all(
+            storage.sha256(Path(path)) == digest for path, digest in anchors
+        )
+    except (OSError, ValueError, RuntimeError):
+        return False
+
+
 def compare(first, second, *, qualification_record=None):
+    try:
+        before = comparison_epoch((first, second), qualification_record)
+        decision = _compare(first, second, qualification_record=qualification_record)
+        if before != comparison_epoch((first, second), qualification_record):
+            raise storage.IntegrityError("Evidence changed during comparison")
+        return {**decision, "presentation_epoch": before}
+    except (OSError, ValueError, RuntimeError):
+        return invalid_comparison("Evidence unavailable/changed during comparison")
+
+
+def _compare(first, second, *, qualification_record=None):
     try:
         data = [inspect(run) for run in (first, second)]
         for item in data:
@@ -153,9 +189,12 @@ def raw_records(run):
 
 
 def notes(run):
-    for path in run.directory.glob("notes-*.json"):
-        if not path.resolve().is_relative_to(run.directory.resolve()):
-            return {}, ["Unsafe note path withheld"]
+    try:
+        for path in run.directory.glob("notes-*.json"):
+            if not path.resolve().is_relative_to(run.directory.resolve()):
+                return {}, ["Unsafe note path withheld"]
+    except (OSError, RuntimeError) as error:
+        return {}, ["Unreadable note path: " + str(error)]
     return storage.latest_note(run.directory)
 
 

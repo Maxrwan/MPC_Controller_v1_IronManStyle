@@ -4,13 +4,13 @@
   "recorded_local_date": "2026-10-29",
   "branch": "codex/apex-workbench-v0-3-b",
   "base_sha": "03055a183be0f5d3691714103588d5b263748128",
-  "review_candidate": "containing implementation commit; exact SHA supplied in subsequent independent review",
+  "review_candidate": "containing corrected implementation commit; exact SHA identified in independent iteration2 review",
   "accepted_v02_implementation": "4897686e79c13757d5ef5b4373b44d4cab99b5bf",
   "source_sha256": {
-    "tools/apex_workbench/workspace.py": "d325ff8e54b6b7a42efeaaaf459514af430d28a7cf957435616a7e55dc0ff6af",
-    "tools/apex_workbench/run_catalog.py": "d8ffb59fe0bab29b28d22f0d7d7ffe0dda9439194b2c2ced8cc9185d23a93e51",
-    "tools/apex_workbench/engineering_views.py": "19a2d540fb5b1afb03b27ef859b8c7cce7452f648dba6fe0dfbd6310a3271504",
-    "tools/apex_workbench/tests/test_engineering_workspace.py": "76daa264f6f380d22575a1aa439f012c94981de379851e1f8f60122614299c8c"
+    "tools/apex_workbench/workspace.py": "1c6a11be78cf3200d5df8372a3d5bf2d5b63ced1e66e69d000b873df9b0fd789",
+    "tools/apex_workbench/run_catalog.py": "76497cb868caffb684e7abe868704b84355835631136466103af82a75fc6ae09",
+    "tools/apex_workbench/engineering_views.py": "10ca51921b00aea5d6ebe5be3dbcae9e92da281ebd3633418a698d098512d34b",
+    "tools/apex_workbench/tests/test_engineering_workspace.py": "545b99dd27c286843d727f5b01d8e4382d0df556711297f65a9673b4c92d18d1"
   },
   "launcher_sha256": "521e14fb8eb1459e3855c6ef872bd34bdaee764f1c198cad8b2147bf9906599d",
   "scientific_source_sha256": {
@@ -141,6 +141,18 @@
       "exit_code": 0,
       "log": "results/apex_workbench_v03b_work_20261029/new-final.log",
       "junit": "results/apex_workbench_v03b_work_20261029/new-final.xml"
+    },
+    {
+      "id": "correction-1",
+      "selection": "tools/apex_workbench/tests/test_engineering_workspace.py",
+      "total_executed": 22,
+      "passed": 22,
+      "failure": 0,
+      "error": 0,
+      "skipped": 0,
+      "exit_code": 0,
+      "log": "results/apex_workbench_v03b_work_20261029/correction-1.log",
+      "junit": "results/apex_workbench_v03b_work_20261029/correction-1.xml"
     }
   ],
   "test_applicability": {
@@ -156,7 +168,20 @@
       "tools/apex_workbench/tests/test_engineering_workspace.py": "76daa264f6f380d22575a1aa439f012c94981de379851e1f8f60122614299c8c"
     },
     "delta_after_directory_run": "Only new workspace display-race guard and two new UI tests; final 17-case rerun covers changed presentation. The 239 existing backend/legacy tests, fixtures and transitive dependencies remain unchanged. No count aggregation.",
-    "complete_repository_verification_run": false
+    "complete_repository_verification_run": false,
+    "initial_final_new_file_source": {
+      "tools/apex_workbench/workspace.py": "d325ff8e54b6b7a42efeaaaf459514af430d28a7cf957435616a7e55dc0ff6af",
+      "tools/apex_workbench/run_catalog.py": "d8ffb59fe0bab29b28d22f0d7d7ffe0dda9439194b2c2ced8cc9185d23a93e51",
+      "tools/apex_workbench/engineering_views.py": "19a2d540fb5b1afb03b27ef859b8c7cce7452f648dba6fe0dfbd6310a3271504",
+      "tools/apex_workbench/tests/test_engineering_workspace.py": "76daa264f6f380d22575a1aa439f012c94981de379851e1f8f60122614299c8c"
+    },
+    "corrected_source": {
+      "tools/apex_workbench/workspace.py": "1c6a11be78cf3200d5df8372a3d5bf2d5b63ced1e66e69d000b873df9b0fd789",
+      "tools/apex_workbench/run_catalog.py": "76497cb868caffb684e7abe868704b84355835631136466103af82a75fc6ae09",
+      "tools/apex_workbench/engineering_views.py": "10ca51921b00aea5d6ebe5be3dbcae9e92da281ebd3633418a698d098512d34b",
+      "tools/apex_workbench/tests/test_engineering_workspace.py": "545b99dd27c286843d727f5b01d8e4382d0df556711297f65a9673b4c92d18d1"
+    },
+    "correction_delta": "New three presentation modules and new tests only; final22-case rerun covers corrections plus nominal owned-worker provenance. All239 preexisting backend/legacy tests and dependencies remain unchanged. Complete launcher bytes unchanged; prior complete smoke and partial independent check remain applicable, not fresh passes."
   },
   "launcher": {
     "schema": "apex-v03b-launcher-audit/1",
@@ -318,7 +343,14 @@
     "results/apex_workbench_v03b_work_20261029/audit.json": "ce5dac8ff6a367cd841986cd1e359d1e60fe314a60fa80f58cebd8cfbc1adbc7",
     "results/apex_workbench_v03b_work_20261029/launcher_smoke.py": "4e069bbb0934d77af3db3454c3d820801cd7140c7ef07eaec0708a8101fc4155",
     "results/apex_workbench_v03b_work_20261029/launcher_smoke.log": "98c955e624fda0e2c8dd5ef749b88975be9296f0c697f55054c1481971826999",
-    "results/apex_workbench_v03b_work_20261029/launcher_audit.json": "e8cc92f04533cd9308b422124e5dcae645422cdfa354299e0a0d6121cab43fef"
+    "results/apex_workbench_v03b_work_20261029/launcher_audit.json": "e8cc92f04533cd9308b422124e5dcae645422cdfa354299e0a0d6121cab43fef",
+    "results/apex_workbench_v03b_work_20261029/correction-1.log": "04e94543037acbda7b5df5ac036b300775ea403592c5fedb8ec889e83db85819",
+    "results/apex_workbench_v03b_work_20261029/correction-1.xml": "903fcc2b46f7717fbcf5c287309828ed4f7d2bfa67b1addb4e5df3ca0ccf2e9b",
+    "results/apex_workbench_v03b_work_20261029/audit-correction-1.py": "45ff8fb48b4b893fe72f774c759641b3cf600d11ecceb6ff5382c54df40f0421",
+    "results/apex_workbench_v03b_work_20261029/audit-correction-1.log": "cd27897da6bc60b2b976d39ee7e84a9e27e2a3aafdc2f3c355ae2d776b3bd87d",
+    "results/apex_workbench_v03b_work_20261029/audit-correction-1.json": "cd27897da6bc60b2b976d39ee7e84a9e27e2a3aafdc2f3c355ae2d776b3bd87d",
+    "docs/reviews/apex_workbench_v0_3_b/iteration_1/REVIEW.md": "7b363c7eeb47404ead414400a8f9e63febae0f0b464abc1a9437e28312dd6072",
+    "docs/reviews/apex_workbench_v0_3_b/iteration_1/review_record.json": "19dd4df358e91b6dc0f65923dc8d1d83a198def4ac7928fb3df3a76d65872086"
   },
   "commands": {
     "pytest_environment": "VECLIB_MAXIMUM_THREADS=1 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 BLIS_NUM_THREADS=1 NUMEXPR_NUM_THREADS=1 PYTHONHASHSEED=0 MPLCONFIGDIR=results/apex_workbench_v03b_work_20261029/mpl PYTHONPATH=.:scripts:src",
@@ -340,8 +372,100 @@
     "research/hardware work"
   ],
   "independent_review": {
-    "status": "pending exact candidate commit",
+    "status": "initial FAIL, corrected exact candidate pending re-review",
+    "initial_candidate": "889c8084f7632d5f343cd7f0865a3931c3e7e933",
+    "preserved_review": "docs/reviews/apex_workbench_v0_3_b/iteration_1/REVIEW.md",
+    "preserved_record": "docs/reviews/apex_workbench_v0_3_b/iteration_1/review_record.json",
+    "initial_review_unique_passing_probes": 5,
+    "initial_review_product_failures": 3,
+    "correction_iterations_used": 1,
     "maximum_substantive_correction_iterations": 3
   },
-  "stop_target": "V0.3_B_ENGINEERING_REVIEW_COMPLETE_PENDING_VERIFICATION"
+  "stop_target": "V0.3_B_ENGINEERING_REVIEW_COMPLETE_PENDING_VERIFICATION",
+  "corrections": {
+    "R1": "Bind status/manifest/selected-qualification anchors around classification, second inspection and later plot reads; clear stale label/overlays even when replacement remains individually valid",
+    "R2": "Archive-first fixed identity anchors; attach each alias once by path/run-ID/worker/manifest priority, never transitively union originals or propagate conflicting alias hints",
+    "R3": "Catch metadata/manifest path resolution loops per record; preserve discovery issues and invalid raw access; contain notes path loops"
+  },
+  "corrected_qualification_audit": {
+    "schema": "apex-v03b-preservation-audit/1",
+    "base": "03055a183be0f5d3691714103588d5b263748128",
+    "checkout": "49c57e30e184d143eae55846ee5c59f44d52c335",
+    "scientific_source_files": 56,
+    "scientific_changed": [],
+    "tracked_existing_files": 961,
+    "authorized_changed_files": [
+      "Launch_APEX_Workbench.command",
+      "docs/CODEX_HANDOFF.md",
+      "docs/DECISIONS.md",
+      "tools/apex_workbench/README.md"
+    ],
+    "historical_files_checked": 30389,
+    "historical_changed": [],
+    "qualification_sha256": "f08ae323e86cdd03964e87b091aef660ac1568e1601e42c43e82dbc0f5e429c8",
+    "qualification_source_runs": 17,
+    "numerical_cases": {
+      "VDL1_BASE": true,
+      "VDL1_IZ_HIGH": true,
+      "VDL1_STEER_HIGH": true,
+      "VDL1_CF_HIGH": true,
+      "VDL1_CR_HIGH": true
+    },
+    "pairs": {
+      "VDL1_IZ_HIGH": {
+        "without_record": "controlled_candidate",
+        "with_record": "qualified_synthetic_comparison",
+        "excitation": {
+          "baseline": "VDL1_BASE",
+          "treatment": "VDL1_IZ_HIGH",
+          "peak_yaw_difference_rad_per_s": 0.008904428222327412,
+          "required_signal_rad_per_s": 0.0001,
+          "excitation_sufficient": true,
+          "satisfied": true
+        }
+      },
+      "VDL1_STEER_HIGH": {
+        "without_record": "controlled_candidate",
+        "with_record": "qualified_synthetic_comparison",
+        "excitation": {
+          "baseline": "VDL1_BASE",
+          "treatment": "VDL1_STEER_HIGH",
+          "peak_yaw_difference_rad_per_s": 0.03336394365255693,
+          "required_signal_rad_per_s": 0.0001,
+          "excitation_sufficient": true,
+          "satisfied": true
+        }
+      },
+      "VDL1_CF_HIGH": {
+        "without_record": "controlled_candidate",
+        "with_record": "qualified_synthetic_comparison",
+        "excitation": {
+          "baseline": "VDL1_BASE",
+          "treatment": "VDL1_CF_HIGH",
+          "peak_yaw_difference_rad_per_s": 0.010852414470119351,
+          "required_signal_rad_per_s": 0.0001,
+          "excitation_sufficient": true,
+          "satisfied": true
+        }
+      },
+      "VDL1_CR_HIGH": {
+        "without_record": "controlled_candidate",
+        "with_record": "qualified_synthetic_comparison",
+        "excitation": {
+          "baseline": "VDL1_BASE",
+          "treatment": "VDL1_CR_HIGH",
+          "peak_yaw_difference_rad_per_s": 0.006275476007459452,
+          "required_signal_rad_per_s": 0.0001,
+          "excitation_sufficient": true,
+          "satisfied": true
+        }
+      }
+    },
+    "presentation_source_sha256": {
+      "tools/apex_workbench/engineering_views.py": "10ca51921b00aea5d6ebe5be3dbcae9e92da281ebd3633418a698d098512d34b",
+      "tools/apex_workbench/run_catalog.py": "76497cb868caffb684e7abe868704b84355835631136466103af82a75fc6ae09",
+      "tools/apex_workbench/workspace.py": "1c6a11be78cf3200d5df8372a3d5bf2d5b63ced1e66e69d000b873df9b0fd789"
+    },
+    "new_qualification_trajectories": 0
+  }
 }

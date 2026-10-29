@@ -67,7 +67,7 @@ def _candidate(directory, origin):
     for name in ("request", "status", "worker"):
         try:
             values[name] = metadata(directory, name + ".json")
-        except (OSError, ValueError) as error:
+        except (OSError, ValueError, RuntimeError) as error:
             values[name] = {}
             problems.append(f"{name}.json: {error}")
     request, worker = values["request"], values["worker"]
@@ -90,8 +90,8 @@ def _candidate(directory, origin):
         if not path.resolve().is_relative_to(directory) or path.stat().st_size > METADATA_BYTES:
             raise ValueError("Unsafe manifest path/size")
         digest = hashlib.sha256(path.read_bytes()).hexdigest()
-    except (OSError, ValueError):
-        pass  # Discovery includes queued and incomplete records without granting trust.
+    except (OSError, ValueError, RuntimeError) as error:
+        problems.append(f"artifacts.json: {error}")
     tokens = {"path:" + str(directory)}
     tokens.update(
         prefix + value
@@ -138,18 +138,35 @@ def discover(*, owned_root=None, qualification_root=None):
                 if path.is_symlink() or path.resolve().parent != (campaign / "runs").resolve():
                     raise ValueError("Qualification reference outside its approved run root")
                 candidates.append(_candidate(path.resolve(), "qualification archive"))
-        except (OSError, ValueError, KeyError, TypeError) as error:
+        except (OSError, ValueError, RuntimeError, KeyError, TypeError) as error:
             issues.append("Qualification discovery is incomplete/unverified: " + str(error))
-    # Connected identity groups: copies never become additional execution claims.
+    # Original archives anchor groups before untrusted owned aliases. A candidate may attach
+    # to ONE anchor; conflicting metadata must never union two distinct original executions.
     groups = []
-    for candidate in candidates:
-        matches = [g for g in groups if g["tokens"] & candidate["tokens"]]
-        group = {"rows": [candidate], "tokens": set(candidate["tokens"])}
-        for previous in matches:
-            group["rows"].extend(previous["rows"])
-            group["tokens"].update(previous["tokens"])
-            groups.remove(previous)
-        groups.append(group)
+    for candidate in sorted(candidates, key=lambda row: row["origin"] == "owned"):
+        # Canonical path, then run ID, then worker identity, then manifest. Only anchor
+        # identifiers participate: an alias cannot propagate contradictory weak hints.
+        priorities = ("path:", "run:", "worker:", "manifest:")
+        matches = []
+        for group in groups:
+            shared = group["tokens"] & candidate["tokens"]
+            if shared:
+                rank = min(
+                    i
+                    for i, prefix in enumerate(priorities)
+                    if any(token.startswith(prefix) for token in shared)
+                )
+                matches.append((rank, group))
+        if matches:
+            group = min(matches, key=lambda match: match[0])[1]
+            group["rows"].append(candidate)
+            group["tokens"].add("path:" + str(candidate["directory"]))
+            if len(matches) > 1:
+                candidate["issues"].append(
+                    "Alias hints match distinct anchors; attached once without merging originals"
+                )
+        else:
+            groups.append({"rows": [candidate], "tokens": set(candidate["tokens"])})
     runs = []
     for group in groups:
         rows = sorted(group["rows"], key=lambda r: (r["origin"] == "owned", str(r["directory"])))

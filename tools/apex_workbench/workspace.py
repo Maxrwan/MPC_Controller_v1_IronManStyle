@@ -56,14 +56,14 @@ def selector(label, key):
     return by_key[chosen]
 
 
-def show_channels(runs, data, key):
+def show_channels(runs, data, key, *, decision=None):
     common = set(data[0].frames)
     for item in data[1:]:
         common &= set(item.frames)
     sources = [name for name in ("states.csv", "controls.csv", "diagnostics.csv") if name in common]
     if not sources:
         st.info("Scientific telemetry unavailable for this selection.")
-        return
+        return True
     if st.session_state.get(key + "_source") not in sources:
         st.session_state.pop(key + "_source", None)
     source = st.selectbox("Telemetry source", sources, key=key + "_source")
@@ -88,18 +88,20 @@ def show_channels(runs, data, key):
             st.caption(f"{channel}: reference channel unavailable in one or more records.")
             reference = None
         try:
-            st.plotly_chart(
-                plots.series(
-                    [(run.run_id, run.directory) for run in runs],
-                    [channel],
-                    f"{channel} [{units[0]}]",
-                    reference=reference,
-                    source=source,
-                ),
-                width="stretch",
+            figure = plots.series(
+                [(run.run_id, run.directory) for run in runs],
+                [channel],
+                f"{channel} [{units[0]}]",
+                reference=reference,
+                source=source,
             )
+            if decision is not None and not views.comparison_current(decision):
+                return False
+            st.plotly_chart(figure, width="stretch")
         except (OSError, ValueError) as error:
             st.error("Telemetry unavailable/changed: " + str(error))
+            return False
+    return True
 
 
 if page == "Home":
@@ -342,19 +344,31 @@ else:
     if len(selected) == 2:
         runs = [by_key[key] for key in selected]
         decision = views.compare(*runs, qualification_record=selected_qualification)
-        label = decision["classification"]
-        st.subheader(label.replace("_", " ").title())
-        st.write(decision["reason"])
-        st.json(decision, expanded=False)
-        if label == "qualified_synthetic_comparison":
-            st.caption(
-                "Accepted finite numerical criteria · sampled model window · no physical validation"
-            )
-        if label != "invalid":
+        data = []
+        if decision["classification"] != "invalid":
             data = [views.inspect(run) for run in runs]
-            if any(not item.valid for item in data):
-                st.error("Evidence changed after comparison; refresh or inspect the raw records.")
+            if any(not item.valid for item in data) or not views.comparison_current(decision):
+                decision = views.invalid_comparison(
+                    "Evidence changed after comparison; refresh or inspect the raw records."
+                )
+        result = st.empty()
+        stable = True
+        with result.container():
+            label = decision["classification"]
+            st.subheader(label.replace("_", " ").title())
+            st.json(decision, expanded=False)
+            if label == "invalid":
+                st.error(decision["reason"])
+                st.info(
+                    "Scientific overlays withheld. Inspect each record's raw logs to investigate."
+                )
             else:
+                st.write(decision["reason"])
+                if label == "qualified_synthetic_comparison":
+                    st.caption(
+                        "Accepted finite numerical criteria · sampled model window · "
+                        "no physical validation"
+                    )
                 st.write(
                     "Actual configuration, outcome, existing summary values/units and raw coverage"
                 )
@@ -369,6 +383,7 @@ else:
                         },
                         expanded=False,
                     )
-                show_channels(runs, data, "compare")
-        else:
-            st.info("Scientific overlays withheld. Inspect each record's raw logs to investigate.")
+                stable = show_channels(runs, data, "compare", decision=decision)
+        if label != "invalid" and (not stable or not views.comparison_current(decision)):
+            result.empty()
+            st.error("Evidence changed during display; classification and overlays withheld.")
