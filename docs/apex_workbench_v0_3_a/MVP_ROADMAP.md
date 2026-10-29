@@ -1,5 +1,14 @@
 # Prioritized roadmap
 
+Current progress (29 October 2026): M1/V0.3-B is verified with final user acceptance still pending.
+V0.3-C implements compact inspection, M2 pairwise 2–4-run/native-time comparison and the known-record
+portion of M3 play/pause/seek/step, pending its exact-revision independent review and Verification.
+This is not a generic bundle importer or M4 legacy-controller archive profile. See
+[C WORK](../apex_workbench_v0_3_c/WORK.md), [scenario preparation](../apex_workbench_v0_3_c/RACING_SCENARIO_PROPOSALS.md)
+and [Primary decisions](../apex_workbench_v0_3_c/SCIENTIFIC_DECISIONS.md). No new racing execution,
+full formal suite, CT work or hardware is authorized by this progress note. The original proposed
+ordering and future gates below remain historical design context.
+
 Goal: everyday engineering use of accepted simulations and retained evidence. Do not preserve an
 older V0.3 lettering plan or build separate new laboratories. Complexity is qualitative: **Small**
 reuses existing values/views; **Medium** adds a bounded presentation/data contract; **Large** adds

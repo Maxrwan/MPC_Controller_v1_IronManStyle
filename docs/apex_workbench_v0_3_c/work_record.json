@@ -1,0 +1,606 @@
+{
+  "schema": "apex-workbench-v03c-work/1",
+  "status": "WORK_COMPLETE_PENDING_REVIEW",
+  "recorded_local_date": "2026-10-29",
+  "repository": "Maxrwan/MPC_Controller_v1_IronManStyle",
+  "branch": "codex/apex-workbench-v0-3-c",
+  "base_revision": "ccd19549a9b3e25d1a5bd2c037a27090eda8dccf",
+  "candidate": "containing implementation commit; exact SHA identified in separate-context review",
+  "b_acceptance": "authoritative handoff remains VERIFIED_PENDING_USER_ACCEPTANCE; not inferred from hands-on trial",
+  "scientific_source_revision": "4897686e79c13757d5ef5b4373b44d4cab99b5bf",
+  "source_sha256": {
+    "tools/apex_workbench/workspace.py": "2d6a9c06dc73e7487f0813981a6cccf820cc90af944212a3a096cf5521263849",
+    "tools/apex_workbench/workspace_panels.py": "a2cdb4efdfd6c25673d8d4f76c5d7d2c682abd65f10d685085d90e976d014935",
+    "tools/apex_workbench/recorded_view.py": "6b99394976c5f79a2662852afc7f970fc58234a49cf3101c4059f9b115318e17",
+    "tools/apex_workbench/experiment_catalog.py": "9167430fc47c05a15aceda57e192f7846fbf3af789ce013e5d7f52140a969921",
+    "tools/apex_workbench/tests/test_recorded_view.py": "02755d63ee96878df5c36b5aff404c156d22fe086d243d4861f6cb076eed239a",
+    "tools/apex_workbench/tests/test_engineering_workspace.py": "bccd1811628598d961994bebda2b2d5a0b2bac64fd5ad54cd91be47ced5fd3e9"
+  },
+  "scientific_source_sha256": {
+    "configs/vehicles/synthetic_dynamic_test_vehicle.yaml": "df1b853d21a1d3efaf858f7e58401151f2c5237793c40e16bb4189ed651f9cf3",
+    "scripts/run_dynamic_bicycle_demo.py": "9aa8bef1f05186d6653752becadcfb72d5698a82355606a7847be6d69171baa3",
+    "scripts/threading_study/config.py": "a50a73015c3ab739c35aa1fd715840364974213bf1c12666269b250264556fc3",
+    "src/apex/__init__.py": "2dd176027291d40716c8c828e8a9994afbf247d22bea1426fac52c259cbbc33b",
+    "src/apex/config.py": "40227b4ed2a38e30ecfb9acc7f308cf9db31b54dc813bb28850b25800877e0ad",
+    "src/apex/state.py": "b2b16555f8ae83f041ee821906305accc56010b643bb3fa514f90a8a17e66862",
+    "src/apex/control/__init__.py": "12878dbd9e38ae415462ea0eccbfc315387856736233a7ea4b2f840b1a53e96a",
+    "src/apex/control/base.py": "119b6cb4235421b9728838b47e4913158402997957956a473009c43435acb870",
+    "src/apex/coordinates/__init__.py": "1c443357b2a8e949a157c09b6fb3b50c170d98c908da8c0e8ebbd7e25f919555",
+    "src/apex/coordinates/angles.py": "2ed31ef5153e42083e727efc10b7875277f7f2641a5e16e9790e3f6073b33d05",
+    "src/apex/coordinates/frenet.py": "5fd10e1648847071561086f394914f6812422b0ad04f81ef2a517968334e17bd",
+    "src/apex/models/__init__.py": "d530a05e192b5d6c8b815c3edb2599a88bc35acac91c83280cd8e22d31a1d0d2",
+    "src/apex/models/base.py": "3bd8085e89978410bbe8581903b6280bd84f1a1ca956f1bb62f974462df7c525",
+    "src/apex/models/constants.py": "1b485d45ad2d74aaa256c1aab00157d7c610db0bea9f744d75376b8e816534be",
+    "src/apex/models/errors.py": "81baff4659f36bb6aea91e6a27327260b4d69e23de22963de6832199e7f1f916",
+    "src/apex/models/frenet.py": "a8c6190bd6be9f2a284c83b5c31e5d6cb2d8ef1f791b49bbebdd3c110a36ee96",
+    "src/apex/models/integration.py": "02009193fb2d25e83560a2da37f216048dfa3ededcb3de8616b90e411473ad51",
+    "src/apex/models/vehicle/__init__.py": "ab6dddf29c21f198a84b17e28f3dcb8b4b1e6543e0ce5533d4166a062d549a9f",
+    "src/apex/models/vehicle/parameters.py": "5cfce45b4a87577b17193b44cfa24f11c8e29c93082564a596f7ddf4e797fbb2",
+    "src/apex/models/vehicle/dynamic_bicycle.py": "c93b674924eed24f9641ebe263863b3422cba5eb1665c0d93dd6cd00bdfd462f",
+    "src/apex/models/vehicle/load_transfer.py": "e96c74199a7d8147866529cb4ecfffbfce74815cb57accb52ea54b407b873be1",
+    "src/apex/models/vehicle/force_allocation.py": "e77d8c87efdaa9c008ec45385ad4dad326cfa2e003798c08e29a5fb9a17647f8",
+    "src/apex/models/tire/__init__.py": "000e7ac305a2f5bb610e6ee9e066a6f8d82a0ac335c2b9253d292a2c3c96907f",
+    "src/apex/models/tire/base.py": "da1b635a6da1de465ac7af61dcf3cad8d23ef406eb6dd7f45dad825bc3f60ccf",
+    "src/apex/models/tire/config.py": "73f7e47ae5768a6961a8ca65aa40a5da7ecd77e412ac6995a459e969daa83877",
+    "src/apex/models/tire/linear.py": "6ae5888b0000cd57a88788463977be1a90fa8e1f6a332f131c66623192ce9cf3",
+    "src/apex/models/tire/grip.py": "e91bab930ee0650578ede2964ef680f77663cfd34d26ab1682c232b34c6d8c90",
+    "src/apex/simulation/__init__.py": "84069322b2562012fcfd863d27f6fc88a0f2d5eaba3a4040f10e896cffc4a513",
+    "src/apex/simulation/runner.py": "99dd44020405dd121433637ccf43d53639451a2b7b595bed255555144802cb34",
+    "src/apex/simulation/timing.py": "1bcd5ac042dc761ff8ed83028d0dde372a1569a9549f84e7f92061e109fa968f",
+    "src/apex/track/__init__.py": "95dd539a129d605aa979952c68c75d633738d520fa66e06a491b5bfb2ef7907c",
+    "src/apex/track/base.py": "c15e48dfa2a08bfd57040c80b1280a6f56234503361a38cb3cda6cb35e93cca1",
+    "src/apex/track/centerline.py": "caf28a32f24198fbfd57a7d6a987822f9b4df88ff6b5f1bca5c1f57e2b79429f",
+    "src/apex/track/closed_track.py": "c14fb27c1a1182dec564a5a679832e67c6480fb382a15c05dd2c998b138a350e",
+    "src/apex/track/io.py": "ee2f5a27740684ddba2f1907c88e8893c6cf0c59150352d35845914d5fd30b65",
+    "src/apex/track/progress.py": "fef18ea7fe610cca1ff80f32acdecf5f756b6d26c1a47e47f0eb23b7ae8dc0d8",
+    "src/apex/track/synthetic.py": "1e7ed0900af9971d6c68ca810570b9177a97eb830361c580724870752f4744c0",
+    "tools/apex_workbench/__init__.py": "194595c8c9d46745693697c8417c2408fbe76e3254ae716f26b50c47f4723396",
+    "tools/apex_workbench/configuration.py": "39b33dcd20be80a188d532c33c3fe33561addff847d298beab626fa9a476dc02",
+    "tools/apex_workbench/jobs.py": "0e14fd1c56f76372677e6408c37f44713ca9af3b1d8b8f4c064f80bd1d23b170",
+    "tools/apex_workbench/worker.py": "065738dab95e685b61c9347c254aeb9e13b0cdbcc605087752d0b6b21601b64e",
+    "tools/apex_workbench/lifecycle.py": "794bd5ada88048a402a2d0946942ec9962e52b0caf2e72d7a8a3a0279f51f05a",
+    "tools/apex_workbench/storage.py": "9486d6339b6dc50d2d4fe9030dfb71940e11c8ce283e838e7614fed80eaeb3cb",
+    "tools/apex_workbench/lab_configuration.py": "41e937fbf8d5f4fb239f2d0a99d39f94e1966f59787a7b4ae1f7f4015ce89abc",
+    "tools/apex_workbench/lab_sources.py": "7b5bef6d440f8a16004de9b4539a43c28dc13b203d7ff2a8a01eca1b74895a84",
+    "tools/apex_workbench/dynamic_lab.py": "65e78ea7a982421837e96ea3bc5b8748ae1e1c6e0e22493fe8ae99df8d67063d",
+    "tools/apex_workbench/lab_reporting.py": "47ecc170f80fb06b99b5ef9a78d70749a22da547c52b4b671eba37eca387b0c2",
+    "tools/apex_workbench/lab_evidence.py": "a3ea1046530bbe13461c87529155d167c83681008c9298268be9167b00dbed73",
+    "tools/apex_workbench/lab_comparison.py": "ae792cb84bd0a10dec62160350f4a79e1397098b3267b2f0f7db9285f798e0cb",
+    "tools/apex_workbench/comparison.py": "5e54bd0d75e830d54c4060c19aa7db725b6402af201aba314fd8e1bc42e14b45",
+    "tools/apex_workbench/plots.py": "091359f6d07fa46105c7575627dc5862203fd2279d77ffa7c0c73b0cca5cc48c",
+    "tools/apex_workbench/app.py": "ea572914ab10d824c93002d56831492fccf45a839520754a8ff4f3fe37b4eea8",
+    "tools/apex_workbench/qualification_math.py": "4511601c8291ea40c68b7fe91763f3251e9dcb195bd373c951ec7a47a5977fbf",
+    "tools/apex_workbench/qualification.py": "ebbde4064962fe4dac9d958860fc271815fd67c804c0d2aff7c5031a2ef577cd",
+    "tools/apex_workbench/qualification_campaign.py": "a191c1cf2e34831755c9d48d71767935c3b1f67bb085f04b3539d22ff7398ac9",
+    "tools/apex_workbench/qualification_reference.py": "a93797ffd5bdf974078c032a55367849a257d92138e1e2630e89bcb8168e3826"
+  },
+  "launcher_sha256": "521e14fb8eb1459e3855c6ef872bd34bdaee764f1c198cad8b2147bf9906599d",
+  "preflight": {
+    "python": "3.12.14 (main, Sep  1 2026, 14:09:38) [Clang 22.1.3 ]",
+    "executable": "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/tools/apex_workbench/.venv/bin/python",
+    "platform": "macOS-26.5.1-arm64-arm-64bit",
+    "native": {
+      "requested_ceiling": 1,
+      "set_status": 0,
+      "blas_threading_mode": 1,
+      "mode_name": "single",
+      "exact_active_thread_count_available": false
+    },
+    "disk_free": 42726535168,
+    "versions": {
+      "numpy": "2.5.3",
+      "scipy": "1.18.1",
+      "pandas": "3.0.6",
+      "streamlit": "1.66.1",
+      "plotly": "6.9.0",
+      "psutil": "7.2.2",
+      "pytest": "9.1.1"
+    }
+  },
+  "focused_checks": [
+    {
+      "id": "ui-smoke-1",
+      "executed": 1,
+      "passed": 1,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "exit_code": 0,
+      "log": "results/apex_workbench_v03c_work_20261029/ui-smoke-1.log",
+      "junit": "results/apex_workbench_v03c_work_20261029/ui-smoke-1.xml"
+    },
+    {
+      "id": "new-1",
+      "executed": 12,
+      "passed": 11,
+      "failed": 1,
+      "errors": 0,
+      "skipped": 0,
+      "exit_code": 1,
+      "log": "results/apex_workbench_v03c_work_20261029/new-1.log",
+      "junit": "results/apex_workbench_v03c_work_20261029/new-1.xml"
+    },
+    {
+      "id": "new-2",
+      "executed": 12,
+      "passed": 12,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "exit_code": 0,
+      "log": "results/apex_workbench_v03c_work_20261029/new-2.log",
+      "junit": "results/apex_workbench_v03c_work_20261029/new-2.xml"
+    },
+    {
+      "id": "workbench-1",
+      "executed": 122,
+      "passed": 121,
+      "failed": 1,
+      "errors": 0,
+      "skipped": 0,
+      "exit_code": 1,
+      "log": "results/apex_workbench_v03c_work_20261029/workbench-1.log",
+      "junit": "results/apex_workbench_v03c_work_20261029/workbench-1.xml"
+    },
+    {
+      "id": "workbench-2",
+      "executed": 276,
+      "passed": 276,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "exit_code": 0,
+      "log": "results/apex_workbench_v03c_work_20261029/workbench-2.log",
+      "junit": "results/apex_workbench_v03c_work_20261029/workbench-2.xml"
+    },
+    {
+      "id": "final-ui",
+      "executed": 37,
+      "passed": 37,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "exit_code": 0,
+      "log": "results/apex_workbench_v03c_work_20261029/final-ui.log",
+      "junit": "results/apex_workbench_v03c_work_20261029/final-ui.xml"
+    },
+    {
+      "id": "review-ui",
+      "executed": 38,
+      "passed": 38,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "exit_code": 0,
+      "log": "results/apex_workbench_v03c_work_20261029/review-ui.log",
+      "junit": "results/apex_workbench_v03c_work_20261029/review-ui.xml"
+    },
+    {
+      "id": "candidate-ui",
+      "executed": 38,
+      "passed": 38,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "exit_code": 0,
+      "log": "results/apex_workbench_v03c_work_20261029/candidate-ui.log",
+      "junit": "results/apex_workbench_v03c_work_20261029/candidate-ui.xml"
+    }
+  ],
+  "counts_not_aggregated": true,
+  "coverage_applicability": {
+    "full_focused_directory_run": "workbench-2:276 passed before final caption/case-description/declared-ZOH refinements",
+    "final_affected_file_run": "candidate-ui:38 passed, covers final new14 + existing24 view tests, including original nominal worker/provenance",
+    "unchanged_backend_legacy_cases": 239,
+    "why_reused": "Only nonfrozen presentation/description/snapshot/test modules changed; all accepted backend/legacy sources, tests and56 scientific dependencies remain unchanged. No count is combined into an unexecuted277-pass invocation.",
+    "root_full_formal_suite_executed": false
+  },
+  "failed_attempts": [
+    {
+      "id": "new-1",
+      "cause": "Expander.expanded absent in AppTest; harness corrected to proto.expanded;11 passed then1 harness failure"
+    },
+    {
+      "id": "workbench-1",
+      "cause": "Original two-plot comparison assertion did not include new stored-XY pane; changed to3 and explicit X[m] axis assertion;121 passed then1 presentation-harness failure"
+    }
+  ],
+  "scientific_assertions_weakened": false,
+  "ordinary_ui_changes_after_full_focused_run": [
+    "compact captions/path on demand",
+    "case selector outside submit form for immediate preview",
+    "VDL held-step plot styling only for explicit producer ZOH contract, without added samples"
+  ],
+  "playback_contract": {
+    "native_exact_timestamps": true,
+    "no_interpolation_resampling_clock_shift": true,
+    "no_previous_control_inference": true,
+    "no_xy_reconstruction": true,
+    "terminal_partial_semantics_explicit": true,
+    "supported_profile": "known version2 Workbench SI contract; unknown profile static/raw only",
+    "viewer_tick_s": 1.0,
+    "samples_per_tick": [
+      1,
+      5,
+      10
+    ],
+    "not_model_time_or_real_time_guarantee": true,
+    "max_selected_runs": 4,
+    "pairwise_only_qualification": true,
+    "unavailable_event_profiles": true
+  },
+  "live_browser": {
+    "automatic_playback_observed": {
+      "start_index": 19,
+      "start_time_s": 0.095,
+      "observed_index": 35,
+      "observed_time_s": 0.17500000000000002,
+      "paused": true,
+      "interpretation": "Recorded samples only, no job APIs"
+    },
+    "final_layout_seek": {
+      "index": 25,
+      "time_s": 0.125
+    },
+    "desktop_viewport": [
+      1440,
+      1000
+    ],
+    "narrow_default_view_inspected": true,
+    "viewport_restored": true,
+    "screenshot": "results/apex_workbench_v03c_work_20261029/interactive-ui-final/inspection-0125.jpg",
+    "screenshot_scope": "Actual native-time desktop layout; final minor Run-form/declared-ZOH styling checked by candidate-ui tests.",
+    "owned_launcher_smokes": [
+      {
+        "url": "http://127.0.0.1:8501",
+        "actual_default_launcher": true,
+        "listener_pid": 30199,
+        "command": [
+          "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/tools/apex_workbench/.venv/bin/python",
+          "-m",
+          "streamlit",
+          "run",
+          "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/tools/apex_workbench/workspace.py",
+          "--server.address",
+          "127.0.0.1",
+          "--server.port",
+          "8501",
+          "--server.headless",
+          "true",
+          "--browser.gatherUsageStats",
+          "false"
+        ],
+        "owned": true,
+        "reuse": true,
+        "launcher_sha256": "521e14fb8eb1459e3855c6ef872bd34bdaee764f1c198cad8b2147bf9906599d",
+        "clean_owned_shutdown": true,
+        "new_scientific_experiments": 0
+      },
+      {
+        "url": "http://127.0.0.1:8501",
+        "actual_default_launcher": true,
+        "listener_pid": 30398,
+        "command": [
+          "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/tools/apex_workbench/.venv/bin/python",
+          "-m",
+          "streamlit",
+          "run",
+          "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/tools/apex_workbench/workspace.py",
+          "--server.address",
+          "127.0.0.1",
+          "--server.port",
+          "8501",
+          "--server.headless",
+          "true",
+          "--browser.gatherUsageStats",
+          "false"
+        ],
+        "owned": true,
+        "reuse": true,
+        "launcher_sha256": "521e14fb8eb1459e3855c6ef872bd34bdaee764f1c198cad8b2147bf9906599d",
+        "clean_owned_shutdown": true,
+        "new_scientific_experiments": 0
+      }
+    ],
+    "server_restart_reason": "Reload final imported presentation modules after source edits; no user server stopped",
+    "browser_navigation_harness_note": "One locator check selected Run; fresh state observed and visible Inspect label used. No experiment submitted."
+  },
+  "retained_audit": {
+    "schema": "apex-v03c-preservation-audit/1",
+    "base": "ccd19549a9b3e25d1a5bd2c037a27090eda8dccf",
+    "scientific_files_checked": 56,
+    "scientific_changes": [],
+    "historical_files_checked": 37020,
+    "historical_changes": [],
+    "symlink_changes": [],
+    "qualification_files_hashed": 345,
+    "qualification_changes": [],
+    "qualification_sha256": "f08ae323e86cdd03964e87b091aef660ac1568e1601e42c43e82dbc0f5e429c8",
+    "retained_references": 17,
+    "four_pairs": {
+      "VDL1_IZ_HIGH": {
+        "without_selected_Q": "controlled_candidate",
+        "with_selected_Q": "qualified_synthetic_comparison"
+      },
+      "VDL1_STEER_HIGH": {
+        "without_selected_Q": "controlled_candidate",
+        "with_selected_Q": "qualified_synthetic_comparison"
+      },
+      "VDL1_CF_HIGH": {
+        "without_selected_Q": "controlled_candidate",
+        "with_selected_Q": "qualified_synthetic_comparison"
+      },
+      "VDL1_CR_HIGH": {
+        "without_selected_Q": "controlled_candidate",
+        "with_selected_Q": "qualified_synthetic_comparison"
+      }
+    },
+    "three_run_labels": [
+      "qualified_synthetic_comparison",
+      "qualified_synthetic_comparison",
+      "illustrative"
+    ],
+    "native_0125": {
+      "VDL1_BASE": {
+        "state": {
+          "source": "states.csv",
+          "selected_time_s": 0.125,
+          "available": true,
+          "sample_index": 25,
+          "timestamp_s": 0.125,
+          "values": {
+            "vx": 2.0000060042467616,
+            "vy": 0.006564290410768416,
+            "r": 0.08489185848304563,
+            "e_psi": -0.04872250597991368,
+            "s_abs": 0.2497979612518261,
+            "e_y": -0.0061257358739696,
+            "lap_index": 0,
+            "track_s": 0.2497979612518261,
+            "curvature": 0.2000359701597895,
+            "left_width": 0.6,
+            "right_width": 0.9,
+            "boundary_violation": false,
+            "delta": 0.02,
+            "a_cmd": 0.0
+          },
+          "meaning": "state sample; input aliases are not a second applied-control record"
+        },
+        "control": {
+          "source": "controls.csv",
+          "selected_time_s": 0.125,
+          "available": true,
+          "sample_index": 25,
+          "timestamp_s": 0.125,
+          "values": {
+            "delta": 0.02,
+            "a_cmd": 0.0
+          },
+          "meaning": "applied control row; declared ZOH interval [0.125, 0.13) s"
+        }
+      },
+      "VDL1_IZ_HIGH": {
+        "state": {
+          "source": "states.csv",
+          "selected_time_s": 0.125,
+          "available": true,
+          "sample_index": 25,
+          "timestamp_s": 0.125,
+          "values": {
+            "vx": 2.000005429873222,
+            "vy": 0.0068165766797798405,
+            "r": 0.07598743026071822,
+            "e_psi": -0.0488778905910352,
+            "s_abs": 0.24979794440492356,
+            "e_y": -0.0061261481112463755,
+            "lap_index": 0,
+            "track_s": 0.24979794440492356,
+            "curvature": 0.20003597017574204,
+            "left_width": 0.6,
+            "right_width": 0.9,
+            "boundary_violation": false,
+            "delta": 0.02,
+            "a_cmd": 0.0
+          },
+          "meaning": "state sample; input aliases are not a second applied-control record"
+        },
+        "control": {
+          "source": "controls.csv",
+          "selected_time_s": 0.125,
+          "available": true,
+          "sample_index": 25,
+          "timestamp_s": 0.125,
+          "values": {
+            "delta": 0.02,
+            "a_cmd": 0.0
+          },
+          "meaning": "applied control row; declared ZOH interval [0.125, 0.13) s"
+        }
+      },
+      "VDL1_CF_HIGH": {
+        "state": {
+          "source": "states.csv",
+          "selected_time_s": 0.125,
+          "available": true,
+          "sample_index": 25,
+          "timestamp_s": 0.125,
+          "values": {
+            "vx": 2.000007858616134,
+            "vy": 0.007381606414883123,
+            "r": 0.0956001707685,
+            "e_psi": -0.048537884291362854,
+            "s_abs": 0.24979886166002524,
+            "e_y": -0.006107553272771762,
+            "lap_index": 0,
+            "track_s": 0.24979886166002524,
+            "curvature": 0.2000359693071787,
+            "left_width": 0.6,
+            "right_width": 0.9,
+            "boundary_violation": false,
+            "delta": 0.02,
+            "a_cmd": 0.0
+          },
+          "meaning": "state sample; input aliases are not a second applied-control record"
+        },
+        "control": {
+          "source": "controls.csv",
+          "selected_time_s": 0.125,
+          "available": true,
+          "sample_index": 25,
+          "timestamp_s": 0.125,
+          "values": {
+            "delta": 0.02,
+            "a_cmd": 0.0
+          },
+          "meaning": "applied control row; declared ZOH interval [0.125, 0.13) s"
+        }
+      }
+    },
+    "presentation_sha256": {
+      "tools/apex_workbench/workspace.py": "2d6a9c06dc73e7487f0813981a6cccf820cc90af944212a3a096cf5521263849",
+      "tools/apex_workbench/workspace_panels.py": "a2cdb4efdfd6c25673d8d4f76c5d7d2c682abd65f10d685085d90e976d014935",
+      "tools/apex_workbench/recorded_view.py": "6b99394976c5f79a2662852afc7f970fc58234a49cf3101c4059f9b115318e17",
+      "tools/apex_workbench/experiment_catalog.py": "9167430fc47c05a15aceda57e192f7846fbf3af789ce013e5d7f52140a969921"
+    },
+    "new_qualification_trajectories": 0,
+    "new_racing_executions": 0
+  },
+  "preservation": {
+    "tracked_before": 975,
+    "authorized_existing_changes": [
+      "docs/CODEX_HANDOFF.md",
+      "docs/DECISIONS.md",
+      "docs/apex_workbench_v0_3_a/MVP_ROADMAP.md",
+      "tools/apex_workbench/README.md",
+      "tools/apex_workbench/tests/test_engineering_workspace.py",
+      "tools/apex_workbench/workspace.py"
+    ],
+    "historical_files_checked": 37020,
+    "historical_changes": [],
+    "qualification_files_hashed": 345,
+    "qualification_changes": [],
+    "canonical_source_config_dependency_changes": [],
+    "all56_match_accepted_git_blobs": true,
+    "legacy_app_plots_workers_readers_launcher_unchanged": true
+  },
+  "scientific_scenario_package": {
+    "documents": [
+      "docs/apex_workbench_v0_3_c/RACING_SCENARIO_PROPOSALS.md",
+      "docs/apex_workbench_v0_3_c/SCIENTIFIC_DECISIONS.md"
+    ],
+    "families_covered": 5,
+    "shortlist_priorities": 3,
+    "primary_decisions": [
+      "S1 expansion/interpretation",
+      "S2 exact source-bound racing profile",
+      "S3 geometry/excitation/domain/qualification contract"
+    ],
+    "new_executable_scenarios": 0,
+    "new_racing_executions": 0,
+    "new_qualification_campaigns": 0,
+    "frozen_inventory_migration_required": false
+  },
+  "independent_review": {
+    "status": "pending exact commit",
+    "substantive_correction_iterations_used": 0,
+    "maximum": 3
+  },
+  "next_required_gates": [
+    "separate-context exact-revision Engineering Review",
+    "separately authorized formal Verification",
+    "Primary scientific scenario approval before execution"
+  ],
+  "evidence_sha256": {
+    "results/apex_workbench_v03c_work_20261029/before.json": "e75ad2bb4c1035ee0a851c6f1aa57fa3c93d08650cf8f70bcf8a80323eaf8d63",
+    "results/apex_workbench_v03c_work_20261029/interactive_smoke.py": "cf73a6def95a037ca3fdea5c33a7c123135e6080edc69a7e194faba2b8c08384",
+    "results/apex_workbench_v03c_work_20261029/interactive_smoke.log": "f9a5b90904b6bb0b4626b7c50fbcfba0de3ae02fb4967c05de192a119cfc7247",
+    "results/apex_workbench_v03c_work_20261029/audit.json": "7957e0f5e8c8daf1efbf1a0589b6224e98fb1dc72a516cc67ee2ee5bca40b494",
+    "results/apex_workbench_v03c_work_20261029/new-1.xml": "daaf0402de9e6c95160495131faff397870cc3587a8452ad559316ec4ddb0138",
+    "results/apex_workbench_v03c_work_20261029/audit.py": "de18126cb0b7d700f568992abc0f9b8bd61fe7c2348a546dfa52b37cc98cd66d",
+    "results/apex_workbench_v03c_work_20261029/new-2.xml": "7a039ca75dd663a1218e123fbf7e7e109200677b7878fb9a3294e6f914b579c2",
+    "results/apex_workbench_v03c_work_20261029/workbench-1.xml": "78161862e109db883e751d174b4e6e5fa980a700c28153228d6282f625b20e4d",
+    "results/apex_workbench_v03c_work_20261029/final-ui.xml": "93efcb4298c372a579260ec402d67257f42290d3a65269a6afc327e3537d2c68",
+    "results/apex_workbench_v03c_work_20261029/interactive_smoke_final.log": "f9a5b90904b6bb0b4626b7c50fbcfba0de3ae02fb4967c05de192a119cfc7247",
+    "results/apex_workbench_v03c_work_20261029/candidate-ui.xml": "5c6fc5b4fd62e68048f2446cf27b8f65f76092412fa37b9eaf56fafbcdb3af9a",
+    "results/apex_workbench_v03c_work_20261029/ui-smoke-1.xml": "87cf2497cdf342e5d52ec57eda83b6cb27e207f6ad32ea20afdf4da37e7f0ff0",
+    "results/apex_workbench_v03c_work_20261029/workbench-2.xml": "f1430749df005cfb277c88de3b3dd52bee7524118fc2fdcf0ff23ce324e16a9d",
+    "results/apex_workbench_v03c_work_20261029/review-ui.log": "8a5115e75ae27c5196f4be617a998abd9e38edbf756064bfbf2d5d85d2e16c2f",
+    "results/apex_workbench_v03c_work_20261029/workbench-1.log": "91561b630b18ec894fc9b108eb532d4d70a574ea5b5da3fe0313acb7828f0206",
+    "results/apex_workbench_v03c_work_20261029/final-ui.log": "37176be16da9f171a427cbee6c3d5b265403e46f981c59565d5a6fedb1c46647",
+    "results/apex_workbench_v03c_work_20261029/audit.log": "7957e0f5e8c8daf1efbf1a0589b6224e98fb1dc72a516cc67ee2ee5bca40b494",
+    "results/apex_workbench_v03c_work_20261029/ui-smoke-1.log": "e33e1a75089f358bb0af279ab6fa77893616202d3831ea5d74bdc9213b1ac576",
+    "results/apex_workbench_v03c_work_20261029/candidate-ui.log": "1494d31d25d63adf51ee7ed35cd1c526684e2fd534683b9cebca1aa5f9a263f9",
+    "results/apex_workbench_v03c_work_20261029/workbench-2.log": "674dab704b007d38944da560520a02c0c2852fd3e2d3352ae1b11979e6c0e19b",
+    "results/apex_workbench_v03c_work_20261029/review-ui.xml": "4edeb69872b99888512301bdb68994af2e517f4ebd541f2dcf65cdc0f3308100",
+    "results/apex_workbench_v03c_work_20261029/interactive_smoke_final.py": "ab6e3af009e747401a99092a566610a5cab517ac4dd67052cdd08493e0b1aa51",
+    "results/apex_workbench_v03c_work_20261029/preflight.json": "9c90c88fb6cd755852d7f866e4aa26e472896d6e6bd203944d772319128fb870",
+    "results/apex_workbench_v03c_work_20261029/new-1.log": "4df4a4d269b969ebd83f7bda542428c4037b328e5a565b58518c5b82d39b7b10",
+    "results/apex_workbench_v03c_work_20261029/new-2.log": "10dfcd004f9f15ff01efced0885dd7e2e4a67b42f3fe3e866af93cf6af04a7ec",
+    "results/apex_workbench_v03c_work_20261029/interactive-ui/result.json": "508101ec188e7909708a8c15d042a6751029ec37be4592cb16bfc15b7bb42240",
+    "results/apex_workbench_v03c_work_20261029/interactive-ui/reuse.log": "4b4b88102ced713168c7de0be8070a4e8626922df381beb8a9d0b1d4be426240",
+    "results/apex_workbench_v03c_work_20261029/interactive-ui/stop": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "results/apex_workbench_v03c_work_20261029/interactive-ui/startup.log": "3612e2eaefe7e471c666f4cfa5602e41f493ee55bb06213324e33bbf9d928a52",
+    "results/apex_workbench_v03c_work_20261029/interactive-ui/ready.json": "bb57e4618575fa21d607bfa59e18b226c51d3a063e05c7ede420b1d06f97b121",
+    "results/apex_workbench_v03c_work_20261029/interactive-ui-final/result.json": "6da6148c74f330901459667e1bf522b6eb24bd9acef07eceb260161806c5aadd",
+    "results/apex_workbench_v03c_work_20261029/interactive-ui-final/inspection-0125.jpg": "2c4d76c58da116d18bbf45db1d1fb300af2f4196ec04b66fcfa9a37aa602a810",
+    "results/apex_workbench_v03c_work_20261029/interactive-ui-final/reuse.log": "4b4b88102ced713168c7de0be8070a4e8626922df381beb8a9d0b1d4be426240",
+    "results/apex_workbench_v03c_work_20261029/interactive-ui-final/stop": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "results/apex_workbench_v03c_work_20261029/interactive-ui-final/startup.log": "33cfb4bbaf7e2983cd11fc33a8b8bc98aaa10b70cc9b66028fad6849487388eb",
+    "results/apex_workbench_v03c_work_20261029/interactive-ui-final/ready.json": "df343f733f175baf8e7d90d6d83af0b7e3b1ea8d34b84f1a75fb31fd3693cb88"
+  },
+  "stop_target": "V0.3_C_ENGINEERING_REVIEW_COMPLETE_PENDING_VERIFICATION_AND_SCENARIO_APPROVAL",
+  "test_command_contract": {
+    "cwd": "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle",
+    "environment": {
+      "VECLIB_MAXIMUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "BLIS_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1",
+      "PYTHONHASHSEED": "0",
+      "MPLCONFIGDIR": "results/apex_workbench_v03c_work_20261029/mpl",
+      "PYTHONPATH": ".:scripts:src"
+    },
+    "bootstrap_argv": [
+      "tools/apex_workbench/.venv/bin/python",
+      "-u",
+      "-c",
+      "from threading_study.config import configure_accelerate; configure_accelerate(1); import sys,pytest; raise SystemExit(pytest.main(sys.argv[1:]))"
+    ],
+    "focused_directory_argv": [
+      "-q",
+      "-x",
+      "tools/apex_workbench/tests",
+      "--basetemp=results/apex_workbench_v03c_work_20261029/{id}",
+      "--junitxml=results/apex_workbench_v03c_work_20261029/{id}.xml",
+      "--durations=10"
+    ],
+    "final_affected_argv": [
+      "-q",
+      "-x",
+      "tools/apex_workbench/tests/test_engineering_workspace.py",
+      "tools/apex_workbench/tests/test_recorded_view.py",
+      "--basetemp=results/apex_workbench_v03c_work_20261029/candidate-ui",
+      "--junitxml=results/apex_workbench_v03c_work_20261029/candidate-ui.xml",
+      "--durations=5"
+    ],
+    "stdout_stderr": "results/apex_workbench_v03c_work_20261029/{id}.log",
+    "retained_audit_argv": [
+      "tools/apex_workbench/.venv/bin/python",
+      "results/apex_workbench_v03c_work_20261029/audit.py"
+    ],
+    "interactive_launcher_harnesses": [
+      "results/apex_workbench_v03c_work_20261029/interactive_smoke.py",
+      "results/apex_workbench_v03c_work_20261029/interactive_smoke_final.py"
+    ],
+    "single_native_mode": "configure_accelerate(1) confirmed single via native API; exact active count unavailable",
+    "older_attempts": "Historical attempt selectors/logs preserved; full focused workbench argv retained in supervisor.json; final command above describes final affected source run."
+  },
+  "static_checks": {
+    "ruff_check": "PASS via .venv/bin/ruff for all six changed/new Python files",
+    "ruff_format": "PASS, six files formatted",
+    "git_diff_check": "PASS",
+    "tool_path_attempt": "tools/apex_workbench/.venv/bin/ruff absent (127); used existing repository .venv/bin/ruff, no installation/change"
+  }
+}

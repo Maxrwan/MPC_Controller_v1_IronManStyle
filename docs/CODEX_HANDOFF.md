@@ -1,3 +1,45 @@
+# Current handoff — V0.3-C engineering workspace WORK
+
+**WORK_COMPLETE_PENDING_REVIEW.** Recorded 29 October 2026. Branch `codex/apex-workbench-v0-3-c`,
+base B Verification delivery `ccd19549a9b3e25d1a5bd2c037a27090eda8dccf`. Exact candidate is identified
+by the following independent review. B final user acceptance remains pending in the authoritative
+handoff; this explicit C authorization does not record B acceptance or permit new scientific scenarios.
+
+Compact primary status/cursor/plot layout and on-demand diagnostics/evidence/notes; central descriptions
+for the unchanged three adapters/five lab cases. Exact native shared-time inspection, stored XY and
+read-only play/pause/seek/step. Source/sample identity, missing/multirate/terminal/partial meanings are
+explicit, with no interpolation, inferred holds, new XY or dynamics execution. View/Q/source changes
+stop/reset playback or withhold stale science. Two-to-four runs use accepted per-pair labels only;
+BASE/IZ and BASE/CF can qualify with exact Q, IZ/CF stays illustrative. No group-qualified experiment.
+
+[WORK](apex_workbench_v0_3_c/WORK.md), [machine record](apex_workbench_v0_3_c/work_record.json),
+[racing proposals](apex_workbench_v0_3_c/RACING_SCENARIO_PROPOSALS.md),
+[Primary decisions](apex_workbench_v0_3_c/SCIENTIFIC_DECISIONS.md), updated roadmap and ADR-177.
+The scenario package covers all five families and proposes three complementary priorities; no new
+scenario is executable. Historical conservative G and accepted Performance P stay source-distinct.
+
+Focused Workbench directory: 276 passed. After presentation/case-description/declared-ZOH refinements,
+final affected two-file view selection: 38 passed. These are separate invocations, not summed or a full
+Verification claim. All 239 backend/legacy cases retain unchanged dependencies; final view/provenance
+and original nominal-worker checks are fresh. Harness failures (expander API and added XY plot count)
+are preserved; no mathematical assertion or original evidence was altered. Real browser autoplay
+crossed onset and paused; actual launcher started from a different cwd, reused its owned server and
+stopped cleanly. Two owned server instances only; no user server was stopped.
+
+All 56 scientific files and original app.py/plots.py/workers/readers/launcher remain unchanged.
+Retained 17/Q4 audit and historical preservation checks are recorded; no 17-trajectory campaign,
+new track/controller/parameter/threshold, frozen research, hardware, CT or physical telemetry work.
+Evidence under `results/apex_workbench_v03c_work_20261029/`. Root full-suite Verification deferred.
+
+Next: exact-candidate separate-context Engineering Review; up to three bounded correction iterations,
+re-review changed revisions, then stop pending formal Verification AND Primary scenario approval.
+No source-identity migration is needed for the implemented UI; future scientific changes keep their
+gates. Do not automatically start new racing runs, replay archive profiles or the next major stage.
+
+Target: `V0.3_C_ENGINEERING_REVIEW_COMPLETE_PENDING_VERIFICATION_AND_SCENARIO_APPROVAL`.
+
+---
+
 # Current handoff — V0.3-B formal functional Verification
 
 **V0.3_B_VERIFIED_PENDING_USER_ACCEPTANCE.** Recorded 29 October 2026. **PASS.**

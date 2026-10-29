@@ -1372,3 +1372,20 @@ preserve distinct conflicting archive paths with stable unique keys; exact copie
 All56 frozen scientific sources and accepted qualification remain unchanged. Failed reviews are retained.
 Formal functional Verification remains separately authorized; see the
 [final review](reviews/apex_workbench_v0_3_b/iteration_3/REVIEW.md).
+
+
+## ADR-177 — Native recorded-time inspection and bounded pairwise multi-run workspace
+
+Recorded 29 October 2026, V0.3-C WORK. Preserve all 56 accepted scientific dependencies and production
+comparison/qualification policy. Add only presentation, a description catalog and verified snapshot/
+viewer helpers around the unchanged engine. Existing version-2 Workbench SI profiles replay native
+state ticks; each other source requires an exact recorded timestamp. No interpolation, clock shift,
+previous-control inference, coordinate reconstruction or reintegration. Terminal informational and
+partial/attempted input meanings remain explicit. Unknown profiles retain static/raw access.
+
+Use one shared fragment/cursor for signal, control, diagnostic and stored-XY inspection. The viewer
+clock is bounded sample advancement, never a plant/control clock. Bind views to mounted and per-read
+status/manifest/Q epochs, stop on invalidation, and preserve original archive read-only handling.
+Admit 2–4 selected executions with accepted per-pair classifications; no group qualification or new
+metric. Optional owned notes remain append-only. Proposed racing scenarios are design documents,
+with consequential Primary decisions and separate execution authorization. See [WORK](apex_workbench_v0_3_c/WORK.md).

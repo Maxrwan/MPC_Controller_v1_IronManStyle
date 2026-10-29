@@ -236,7 +236,14 @@ def test_actual_compare_ui_candidate_then_qualified(accepted, tmp_path, monkeypa
     assert app.get("plotly_chart")
     app.selectbox(key="compare_source").set_value("diagnostics.csv").run()
     app.multiselect(key="compare_channels").set_value(["alpha_f", "fyf"]).run()
-    assert not app.exception and not app.error and len(app.get("plotly_chart")) == 2
+    # C adds a synchronized stored-XY pane alongside the two native diagnostic plots.
+    assert not app.exception and not app.error and len(app.get("plotly_chart")) == 3
+    import json
+
+    assert (
+        json.loads(app.get("plotly_chart")[0].proto.spec)["layout"]["xaxis"]["title"]["text"]
+        == "X [m]"
+    )
 
 
 def test_invalid_evidence_ui_has_raw_records_no_scientific_plots(accepted, tmp_path, monkeypatch):

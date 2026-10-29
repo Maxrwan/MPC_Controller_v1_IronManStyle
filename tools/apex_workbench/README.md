@@ -1,10 +1,11 @@
-# APEX Engineering Workspace V0.3-B
+# APEX Engineering Workspace V0.3-C
 
 The primary local workspace provides **Home / Run / Inspect / Compare** over the accepted
 Workbench engine. Discover retained runs, reopen their original evidence, inspect actual channels
-and compare two records. Engineering notes are optional. See
-[V0.3-B implementation and focused evidence](../../docs/apex_workbench_v0_3_b/WORK.md).
-Formal Verification of this new presentation remains separately gated.
+and inspect/replay actual native samples across two to four records. Engineering notes are optional.
+See [V0.3-C WORK and evidence](../../docs/apex_workbench_v0_3_c/WORK.md). C Engineering Review and
+formal Verification are separately gated. [B formal Verification](../../docs/reviews/apex_workbench_v0_3_b/VERIFICATION.md)
+passed; its authoritative handoff still records final user acceptance pending.
 
 The five finite synthetic V0.2 cases and four baseline/treatment comparisons were qualified and
 functionally verified before this task. Primary accepted that finite scope in V0.3-A. See the
@@ -27,7 +28,8 @@ It starts the local server and opens your default browser when ready. When start
 keep that Terminal window open; press **Control-C** there to stop it. The launcher works regardless
 of Terminal's current folder and does not run an experiment automatically. A second double-click
 reopens this project's already-running Workbench without starting another server. A listener
-belonging to another application or checkout produces a clear port-conflict message.
+belonging to another application or checkout produces a clear port-conflict message. After updating
+the checkout, stop its old owned server and relaunch to load all changed presentation modules.
 
 From the repository root, using Python 3.12 and the existing core environment:
 
@@ -91,11 +93,13 @@ Parameters are synthetic, never measured or identified APEX data. Linear tires r
 2. **Run** submits the same allowlisted defaults/inputs through the original leased worker. A run
    note is optional. The laboratory remains nominal-only. Start, leave the page and reopen the run
    in **Inspect**; active owned runs have explicit refresh/cancel controls.
-3. **Inspect** selects a run from its original path. Read its outcome/evidence status, configuration,
+3. **Inspect** selects a run from its original path. Primary status and signals come first; diagnostics,
+   raw rows, evidence/provenance and notes are in compact tabs/expanders. Read its outcome/evidence status, configuration,
    effective parameters, source and numerical provenance, actual summary fields and telemetry contract.
    Choose state/control/diagnostic channels; actual recorded reference channels are overlaid only
    when present. Each channel has its own declared unit axis. Native rows and XY/track are available.
-4. **Compare** selects exactly two runs. The accepted readers determine candidate, qualified synthetic,
+4. **Compare** selects two to four runs. Each pair has its own classification; an overlay is never
+   a single qualified multi-way experiment. The accepted readers determine candidate, qualified synthetic,
    illustrative or invalid status and show actual differences and retained summaries. Select the
    accepted qualification explicitly in the sidebar; discovery alone confers no qualification.
    Plots use raw timestamps without interpolation or time alignment. Status/manifest and selected-Q
@@ -106,6 +110,25 @@ Parameters are synthetic, never measured or identified APEX data. Linear tires r
    status/manifest; moving anchors abort export. This is retained evidence, not a new execution.
 6. **Engineering notes** preserve original prediction/observation/explanation records and append-only
    versions. Only owned runs offer note writes. Qualification archives are read-only.
+
+**Common time and recorded replay:** use the native-time slider, exact numeric entry, previous/next
+sample and play/pause. The cursor follows the named run's retained state clock. Other panels join
+only exact timestamps; missing or out-of-coverage state/control/diagnostic/XY samples stay unavailable.
+No interpolation, clock shift, previous-command inference or XY reconstruction is performed. Applied
+control rows remain separate from state-row input aliases. At the terminal lab sample there is no
+new applied interval; diagnostics are informational. Partial last/attempted rows do not establish
+completion. Input plots use held-step styling only for the declared VDL ZOH profile, without adding rows.
+
+Replay reads existing software samples only. Its one-second, render-dependent viewer tick advances
+1/5/10 samples; it never runs dynamics, emits commands or promises real-time speed. Run/timebase/Q
+changes and navigation stop/reset playback; evidence changes withdraw stale plots/labels. Known
+version-2 Workbench SI profiles are supported. Unknown profiles retain verified static/raw access;
+external imports, controller event archives and physical telemetry are not supported. Native raw rows
+remain available on demand. Narrow browser views stack columns; a desktop viewport shows parallel panels.
+
+The [racing-scenario proposals](../../docs/apex_workbench_v0_3_c/RACING_SCENARIO_PROPOSALS.md) and
+[Primary decisions](../../docs/apex_workbench_v0_3_c/SCIENTIFIC_DECISIONS.md) are design-only. They do
+not add executable experiments or authorize new tracks, controllers, thresholds or scientific runs.
 
 Discovery is restricted to direct directories in `results/apex_workbench/` and the original source
 runs referenced by `results/apex_workbench_qualifications/v0_2_reviewed_20261029/qualification/`.

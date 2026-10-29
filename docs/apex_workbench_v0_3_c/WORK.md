@@ -1,0 +1,106 @@
+# V0.3-C — engineering usability, recorded replay and pairwise comparison
+
+**WORK_COMPLETE_PENDING_REVIEW.** 29 October 2026. Branch `codex/apex-workbench-v0-3-c`,
+from B Verification delivery `ccd19549a9b3e25d1a5bd2c037a27090eda8dccf`.
+The authoritative B handoff still says `V0.3_B_VERIFIED_PENDING_USER_ACCEPTANCE`; hands-on feedback
+is not recorded as formal acceptance. This task explicitly authorizes C engineering independently.
+The containing candidate commit binds tested implementation hashes; exact review SHA is supplied in
+the subsequent separate-context report. Formal full-suite Verification is not authorized here.
+
+## Implementation
+
+The same primary `workspace.py` now uses compact status columns, plot columns and a native-time
+control strip. Run/Inspect/Compare remain directly reachable in the sidebar. Configuration, paths,
+source/qualification detail, raw exports and notes are on demand. Warnings and eligibility remain
+visible. Existing execution, validators/defaults, workers, ownership, limits, scientific readers and
+launcher are unchanged. Lab case selection is outside the submission form so its description and
+resolved snapshot update before launch; submission still uses the same finite nominal request.
+
+Three small additive modules:
+
+- `experiment_catalog.py`: descriptions for exactly the three existing adapters and five finite lab
+  cases, including purpose, inputs, observations, composition and synthetic/qualification limits.
+  Proposed racing scenarios are not registered as executable experiments.
+- `recorded_view.py`: verified snapshots tied to committed status/manifest identities, exact native
+  timestamp lookup, literal source/sample identity and bounded deterministic viewer clock. Known
+  version-2 Workbench SI contracts admit replay; unsupported profiles retain verified static/raw access.
+- `workspace_panels.py`: common-time inspection, play/pause/seek/step, stored-XY cursor, compact native
+  values and source panels, and two-to-four-run presentation. The prior inspect_channels warning is
+  removed by using session-state initialization without a competing widget default.
+
+No dynamics, integrator, controller, new scientific metric, reference reconstruction or command path
+is added. Replay reads software evidence. Its one-second viewer tick advances a selected number of
+stored samples once per render tick, without wall-time catch-up; it is not model time or a real-time
+promise. Leaving the page, changing run/timebase/qualification or seeking pauses/resets as appropriate.
+Evidence/qualification changes withdraw the scientific view and stop playback. A fragment's mounted
+epoch is checked before reads; source/profile metadata must match the verified request.
+
+The selected clock is an explicitly named run's native state timebase. Each other source/run joins
+only an exactly equal retained timestamp. Off-grid numeric input is rejected without snapping;
+missing, multirate and out-of-coverage samples stay unavailable. No previous command is inferred.
+For the declared VDL ZOH profile, applied controls describe the recorded next interval only when a
+next state exists. Terminal diagnostics are informational; partial last/attempted rows do not prove
+interval completion. Input traces use held-step styling only for the producer's explicit VDL contract;
+original data/timestamps are not resampled or extended. Position uses stored XY only; XY/state native
+timebases must agree. There is no event reconstruction, physical telemetry or generic archive importer.
+
+Multi-run overlays retain native timestamps and units. Every pair calls the unchanged production
+comparison/qualification reader. BASE/IZ and BASE/CF can qualify with exact applicable Q; IZ/CF is
+illustrative. There is no group-qualified label or causal three-way ranking. Four runs is a UI/resource
+bound, not a scientific operating limit. Ambiguous/corrupt pairs withhold the shared scientific view.
+The verified catalog/alias policy and append-only owned notes remain intact; archives never receive
+reconciliation, cancel or annotation writes. Existing V0.1/V0.2 inputs/entrypoints remain unchanged.
+
+## Evidence and practical scenarios
+
+Local evidence: `results/apex_workbench_v03c_work_20261029/`; commands/logs/JUnit and hashes are in
+[work_record.json](work_record.json). Fresh/disposable outputs only. Tests are software acceptance,
+not new numerical qualification. No newly designed scenario, 17-trajectory campaign, parameter sweep,
+CT/Performance/Efficiency/Safety campaign or hardware activity ran.
+
+| Scenario | Evidence |
+|---|---|
+| A — compact inspection | Primary action/status/cursor strip, side-by-side native signals/stored XY, collapsed provenance/raw details and directly accessible diagnostic/evidence/notes tabs; AppTest plus live desktop/narrow browser inspection |
+| B — transient at 0.125 s | Actual BASE/IZ retained CSV lookup and UI readouts at native state/control sample 25; r differs and actual delta=0.02 rad for both, without interpolated samples |
+| C — three-run comparison | Actual BASE/IZ/CF source paths and Q; two BASE edges qualify, treatment/treatment remains illustrative; original source/profile/units and native coverage retained |
+| D — replay | Deterministic injected viewer-clock checks and real browser automatic playback from sample 19 at 0.095 s across onset to sample 35 at 0.17500000000000002 s, then pause; no execution APIs invoked |
+| E — invalid/partial | Copied checksum/missing/XY mismatch and literal partial fixtures quarantine or retain explicit partial coverage; invalid comparison cannot be promoted |
+| F — preservation | Focused Workbench suite includes original V0.1 byte/worker parity, V0.2 independent canonical-runner parity, locks/SIGKILL/cancellation/integrity and legacy UI; actual unchanged launcher start/reuse/owned shutdown |
+
+All 56 scientific dependencies remain byte-identical to accepted V0.2
+`4897686e79c13757d5ef5b4373b44d4cab99b5bf`, including app.py/plots.py. New presentation modules
+enter unchanged full provenance. The original 17-run qualification is consumed read-only and its
+four accepted conditional pair labels remain applicable. Exact before/after preservation and
+current test outcomes are in the machine record (one 276-pass directory run, then final 38-pass affected-file run); counts from different runs are never summed.
+
+Retained failed attempts are explicit: an AppTest `.expanded` attribute error was a harness error
+(corrected to protobuf state), and an old two-plot comparison assertion needed to account for the
+new stored-XY pane. Its replacement verifies that XY axis as well as the plot count. No scientific
+assertion, threshold or failed original evidence was modified to obtain a pass. Earlier logs remain.
+
+The live launcher smoke used the actual executable from a different cwd, loopback 8501, the exact
+owned listener and a second invocation reusing it. Both smoke servers stopped cleanly. The second
+server restart loaded the final imported presentation modules after layout edits; no user server
+was stopped. A 1440x1000 desktop layout and default narrow browser layout were inspected; the
+temporary viewport override was reset. Native UI observations and screenshot are retained under
+`interactive-ui-final/`. These checks are functional/visual observations, not final user acceptance.
+
+## Scientific preparation and remaining gates
+
+[RACING_SCENARIO_PROPOSALS.md](RACING_SCENARIO_PROPOSALS.md) audits all five requested families and
+recommends three complementary priorities: existing oval LQR/PI use, source-bound retained GP-sector
+investigation, and a separately contracted rolling straight/turn-in open-loop family. Historical
+Task007A conservative G and accepted Performance P identities remain distinct. No proposed scenario
+was added to the execution catalog or run.
+
+[SCIENTIFIC_DECISIONS.md](SCIENTIFIC_DECISIONS.md) asks Primary for three consequential dispositions:
+minimal expansion/interpretation, exact future racing profile/provenance, and the new response
+family's geometry/excitation/domain/qualification contract. Unknown straight geometry or physical
+assumptions are not invented. Source migration is required if a future indispensable change touches
+one of the 56 dependencies; this task needs none.
+
+Next: commit exact candidate, independent Engineering Review and bounded corrections/re-review
+(up to three substantive iterations). Then stop pending separately authorized formal Verification
+and Primary scenario approval. No automatic next MVP stage or new racing execution.
+
+Target: `V0.3_C_ENGINEERING_REVIEW_COMPLETE_PENDING_VERIFICATION_AND_SCENARIO_APPROVAL`.
