@@ -1,3 +1,54 @@
+# Current handoff — V0.3-A engineering MVP design
+
+**V0.3_ENGINEERING_MVP_DESIGN_COMPLETE_PENDING_REVIEW.** Recorded 29 October 2026.
+Primary explicitly accepts V0.2's verified finite synthetic scope and directs an engineering-first
+Workbench; learning remains secondary. Accepted scientific source `4897686e79c13757d5ef5b4373b44d4cab99b5bf`,
+final Verification delivery/design parent `0f74afb9121ee6834509e82f17153b539a59b828` remain unchanged.
+Design branch `codex/apex-workbench-v0-3-a-design`; containing documentation commit SHA/URL supplied
+after push. Older pending-acceptance text below remains historical, not the current Primary decision.
+
+Six compact documents: [capability/source audit](apex_workbench_v0_3_a/ENGINEERING_CAPABILITY_AUDIT.md),
+[MVP scope/gaps](apex_workbench_v0_3_a/MVP_SCOPE_AND_GAPS.md),
+[control-analysis backlog](apex_workbench_v0_3_a/CONTROL_ANALYSIS_BACKLOG.md),
+[two-phase roadmap](apex_workbench_v0_3_a/MVP_ROADMAP.md),
+[five acceptance scenarios](apex_workbench_v0_3_a/ACCEPTANCE_SCENARIOS.md),
+[decisions and concrete next task](apex_workbench_v0_3_a/DECISIONS_AND_NEXT_TASK.md). Proposed ADR-175.
+
+Audit includes actual UI/backend, canonical plant/tire/LQR/NMPC/TVLQR/async/fixed-handoff interfaces,
+retained exports and current clean CT/Safety/detached FC1 worktrees plus Efficiency branch evidence.
+Local research heads matched direct remote reads. No research branch was merged or executed.
+Exact source/status/evidence distinctions are in the audit ledger: frozen Performance acceptance is
+not silently transferred to current optional G1 instrumentation; CT L2B/S1-A remain unverified;
+F clock allowance and physical Perception/Embedded producer contracts remain unresolved.
+
+Key gaps: engineering discovery/catalog, accepted Q runs outside the UI's fixed history root,
+two-run-only comparison, no synchronized inspection/replay/import, limited archive/figure workflows,
+and stale qualification/product-stage copy. Important constraint: app.py/plots.py are among the
+56 qualification dependencies; simple edits invalidate current-source applicability.
+
+**Recommended next WORK:** M1 Engineering Workspace & Run Inspection, using a thin additive primary
+presentation/catalog and the existing launcher/backend. Preserve all 56 files, capture new UI source
+in full provenance, expose Q source runs read-only, show actual existing metrics/references/limits,
+keep notes optional, and make two-run comparison primary. No new controller, metric mathematics,
+telemetry/Safety authority, model or source-inventory relaxation. New presentation requires its own
+focused checks, independent Engineering Review and applicable exact-revision Verification.
+
+Phase I then adds pairwise multi-run/common-time inspection, known-software recorded replay and one
+explicit legacy failure/archive profile plus useful exports. Phase II retains deeper C/F-gated analysis,
+reviewed controller adapters and future read-only physical monitoring. Scientific decision examples
+are separate future triggers; no new scientific assumption blocks the recommended M1 scope.
+
+**Static checks only:** 56 accepted source hashes and prior Verification evidence hashes matched;
+source/interface/assets, links, scope and preservation inspected. The earlier 1,016-pass/17-skip
+result is inherited, not rerun. Static evidence under `results/apex_workbench_v03a_audit_20261029/`.
+No project module import, application/launcher run, scientific test/collection, simulation, benchmark,
+campaign, hardware work or implementation occurred. Canonical sources, accepted evidence, frozen
+profiles and research checkouts remain preserved. No automatic M1 implementation is authorized.
+
+**Stop: V0.3_ENGINEERING_MVP_DESIGN_COMPLETE_PENDING_REVIEW.**
+
+---
+
 # Current handoff — V0.2-E formal functional Verification
 
 **V0.2_VERIFIED_PENDING_USER_ACCEPTANCE.** Recorded 29 October 2026. **PASS.**

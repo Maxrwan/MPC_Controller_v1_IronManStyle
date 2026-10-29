@@ -1311,3 +1311,35 @@ hashes are required independently of path names; copied directories cannot suppl
 Numerical case status, interpretation filters, excitation, pair/family decisions
 and physical validity remain distinct. Recheck artifacts/source identities and applicability without
 rewriting source runs. See [V0.2-C WORK](apex_workbench_v0_2_c/WORK.md).
+
+
+## ADR-175 — Proposed engineering workspace over accepted scientific execution
+
+Recorded 29 October 2026. **PROPOSED DESIGN — V0.3_ENGINEERING_MVP_DESIGN_COMPLETE_PENDING_REVIEW.**
+Primary accepts V0.2 for its verified finite synthetic scope and makes practical engineering the
+Workbench priority: simulation, inspection, comparison, replay, debugging and reproducible export.
+Learning/prediction remains optional supporting functionality. This direction authorizes no new
+implementation or experiment under the V0.3-A documentation assignment.
+
+Propose one coherent Streamlit/Plotly engineering workspace over existing workers, validators,
+verified readers, comparison/qualification and launcher protections. Begin with discovery/run inspection
+and actual existing metrics, then common-time/multi-run comparison, known-software replay, failure
+archives and useful exports. Retain advanced control-theory/profiling and future physical monitoring
+on the roadmap with their own scientific/departmental gates. Do not create another lab-page hierarchy,
+simulator, controller implementation, plugin framework or broad frontend migration.
+
+Current qualification binds 56 source files including the legacy app/plots. The initial implementation
+proposal adds a thin primary presentation/catalog while leaving those files intact, retaining legacy
+compatibility and full provenance of added tooling. It does not relax current-source enforcement or
+inherit presentation verification automatically. Any required frozen-source/provenance migration needs
+a separate explicit disposition; do not silently requalify changed source or repeat a campaign.
+
+Recorded playback is read-only and profile/version-specific, initially consuming existing Workbench
+contracts/native samples/stored XY. Preserve missing/partial/censored data and per-pair scientific
+classification. A canonical plant vector is not a physical sensor schema; future Perception/Embedded
+clocks, frames, measurements and authority are separate contracts. No actuator or Safety-command path.
+
+See [audit and revision ledger](apex_workbench_v0_3_a/ENGINEERING_CAPABILITY_AUDIT.md),
+[roadmap](apex_workbench_v0_3_a/MVP_ROADMAP.md) and
+[bounded first task / scientific triggers](apex_workbench_v0_3_a/DECISIONS_AND_NEXT_TASK.md).
+Independent Engineering Review and applicable Verification precede acceptance of future implementation.
