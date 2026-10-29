@@ -1,0 +1,76 @@
+{
+  "schema": "apex-v03b-independent-engineering-review/1",
+  "candidate": "889c8084f7632d5f343cd7f0865a3931c3e7e933",
+  "branch": "codex/apex-workbench-v0-3-b",
+  "outcome": "FAIL",
+  "blocking_findings": [
+    {
+      "id": "R1",
+      "priority": 1,
+      "title": "Qualified classification survives valid evidence replacement"
+    },
+    {
+      "id": "R2",
+      "priority": 2,
+      "title": "Untrusted identity bridge hides distinct accepted original"
+    },
+    {
+      "id": "R3",
+      "priority": 2,
+      "title": "Cyclic metadata symlink crashes entire catalog"
+    }
+  ],
+  "unique_review_probes": {
+    "confirmed_passing": 5,
+    "candidate_failures": 3
+  },
+  "initial_invocation": {
+    "passed": 4,
+    "failed": 4,
+    "reviewer_harness_failures": 1,
+    "log": "independent.log",
+    "junit": "independent.xml"
+  },
+  "reviewer_harness_correction": {
+    "change": "dt_s to recorded dt_control_s in reviewer test only",
+    "rerun_passed": 1,
+    "rerun_failed": 0,
+    "log": "read-only.log",
+    "junit": "read-only.xml"
+  },
+  "frozen_source_git_blob_matches": 56,
+  "accepted_source_revision": "4897686e79c13757d5ef5b4373b44d4cab99b5bf",
+  "actual_archive_source_runs_read_only": 17,
+  "actual_archive_before_after_hash_maps_equal": true,
+  "production_four_pair_qualification_applicability": true,
+  "launcher_independent_coverage": "PARTIAL: actual startup, loopback HTTP, correct script, reuse and interrupt observed; later bind probes blocked and separate launcher owner preserved; full conflict/legacy checks not reached",
+  "unrelated_listener_preserved": {
+    "pid": 22700,
+    "parent_pid": 22697,
+    "launcher_pid": 22696,
+    "launcher_cwd": "/Users/marwansaber",
+    "created": 1793285463.657147
+  },
+  "source_modifications": [],
+  "worker_simulations_started": 0,
+  "qualification_campaigns_started": 0,
+  "formal_verification_run": false,
+  "full_repository_suite_run": false,
+  "next_required_step": "bounded correction and fresh exact-revision independent Engineering Review",
+  "evidence_sha256": {
+    "independent.xml": "b18f77365fed455e284338310edcfeed9e9e94f2bb51ccb52d460e5da1a5fc24",
+    "read-only.log": "fd18abbf371befb9aaa72bf10b1d53948ccb3264b17fa28c7af3a906a7c6aa06",
+    "launcher_review.log": "26f13eeff702cfb4144ca1a6a60c071f4df424a8d2f926c88278237750ae9d94",
+    "launcher_review-2.log": "310d409a5fec5bbb9fb183149427a2ea80a14205e33e360c67e37bc6dc93af5c",
+    "test_independent_review.py": "53ac73b37c9f89c54cd4c95074a07084220d2cca8d0c546a58afd2a57cff53aa",
+    "launcher_review.initial.py": "c0220360c23d87022a126be952ade2a3cd024aea0be889f1450720c34e9d65bb",
+    "launcher_review.initial.log": "26f13eeff702cfb4144ca1a6a60c071f4df424a8d2f926c88278237750ae9d94",
+    "launcher_review.py": "b2dd8cf205d3f96bd3667ef5b50efa70779b04d25c2ad4a02a444f7adc305572",
+    "launcher-reuse.log": "4b4b88102ced713168c7de0be8070a4e8626922df381beb8a9d0b1d4be426240",
+    "test_independent_review.initial.py": "ea548e12a6ea75643b34ccd4dc67be47ab50818bf517b18342a0055e5ca84a8e",
+    "independent.log": "8b2879f57e51cbf6d8cb8dda0261da8d866c476531f09b4c9ecff8c2c5143534",
+    "REVIEW.md": "7b363c7eeb47404ead414400a8f9e63febae0f0b464abc1a9437e28312dd6072",
+    "read-only.xml": "5c264e64ed92d57633189a88c52d505a498007a67d03e27e90e550c2c1e6849f",
+    "launcher-startup.log": "25b0664ae44ebb1feb3bc00375e4ffd252baecaa35fbd6fdb438a31f6cbc5d93"
+  }
+}
