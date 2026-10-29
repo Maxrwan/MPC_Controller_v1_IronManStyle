@@ -1,3 +1,52 @@
+# Current handoff — V0.3-B formal functional Verification
+
+**V0.3_B_VERIFIED_PENDING_USER_ACCEPTANCE.** Recorded 29 October 2026. **PASS.**
+Verified exact implementation `ca3ef9605df3472001302dbf70c0e2815c020d1c`; clean tested
+review-delivery descendant `95e068d759bebe5fa8116de38c6705e775c1d253`, branch
+`codex/apex-workbench-v0-3-b`. All 435 non-documentation files, including source/tests/launcher,
+match the reviewed revision. Containing delivery changes only Verification/handoff docs; exact SHA/URL
+supplied after push. User acceptance remains pending; no later MVP stage is authorized here.
+
+[Formal Verification report](reviews/apex_workbench_v0_3_b/VERIFICATION.md),
+[machine record](reviews/apex_workbench_v0_3_b/verification_record.json).
+One fresh combined `tests/` + `tools/apex_workbench/tests/` invocation: **1,040 passed, 17 skipped,
+zero failures/errors**, exit 0, 681.59 s. Split: 777 repository + 263 Workbench passes. All 17 skips are
+separately gated G2; no gate variables enabled. Four supplemental late-epoch/Q-anchor/archive-key
+probes pass; a separate actual Plotly state/control/diagnostic payload+SI-axis probe passes. These
+are distinct invocations, with no inherited or aggregated main-suite count. No harness failure/retry.
+
+Home/Run/Inspect/Compare, nominal owned execution/reopening, original 17 archive discovery, aliases,
+conflicting source keys, actual telemetry/references/diagnostics, candidate/qualified labels,
+quarantine, read-only archives, append-only notes, lifecycle/SIGKILL/cancellation and evidence semantics
+pass. Original V0.1 CLI/function/owned-worker parity and V0.2 independent canonical-runner parity pass.
+Actual launcher default 8501 startup from different cwd, correct primary workspace, loopback HTTP/browser
+opening, reuse, owned shutdown, unrelated/legacy-server conflict and disposable missing-env errors pass.
+Legacy app remains byte-identical and serves separately. No user-owned process was stopped.
+
+Actual production qualification consumer revalidates 17 original references and all four accepted
+BASE/treatment pairs: candidates without Q, qualified synthetic only with exact applicable Q.
+Four copied checksum/missing/source/environment faults reject. All 56 accepted scientific files match
+V0.2 `4897686e79c13757d5ef5b4373b44d4cab99b5bf`; canonical source/configs/dependencies unchanged.
+All 345 qualification files retain full before/after hashes; Q checksum is unchanged (full SHA-256 in the machine record).
+All 973 preexisting tracked files stayed unchanged during execution, 34,287 old result files retain
+size/mtime, 856 symlink targets unchanged. Lease released; no workers/servers remain; port 8501 free.
+Evidence: `results/apex_workbench_v03b_verification_20261029/` (fresh logs/JUnit/scripts/hash manifests).
+No 17-trajectory campaign, frozen research campaign, parameter/criteria/inventory change or hardware work.
+
+No blocking finding. Nonblocking N1: Streamlit logs an inspect_channels default/session-state warning
+on source switching; true displayed values/units and no application errors/exceptions are confirmed.
+Source preserved, warning retained in channels.log. Mac/accepted numerical environment only; soft
+worker containment, raw-time/two-run views, approved archives and view-only archive notes remain.
+No physical validation, real-time certification or unsupported controller capability follows.
+
+Recommend user acceptance within the reviewed engineering/finite synthetic scope. No unresolved
+scientific decision remains. Multi-run, replay, CT studies, hardware telemetry and the next MVP stage
+require separate authorization.
+
+**Stop: V0.3_B_VERIFIED_PENDING_USER_ACCEPTANCE.**
+
+---
+
 # Current handoff — V0.3-B Engineering Workspace and independent review
 
 **V0.3_B_ENGINEERING_REVIEW_COMPLETE_PENDING_VERIFICATION.** Recorded 29 October 2026. **PASS.**
