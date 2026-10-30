@@ -1,3 +1,41 @@
+# Current handoff — V0.3-D formal functional Verification
+
+**V0.3_D_VERIFIED_PENDING_USER_ACCEPTANCE_AND_RBT_DECISIONS.** 30 October 2026.
+PASS within the contracted software scope, with an embedded-browser delivery limitation.
+Exact verified implementation `c5f3db6852af8f8ffccf4e5e9e6f11d01fa861b4`; tested clean review
+checkout `49f7eb98fcec6fac5869371f70dc2e7d2daf7dff`, branch `codex/apex-workbench-v0-3-d`.
+Containing delivery is documentation only; all 428 non-documentation behavioral identities match.
+
+[Formal report](reviews/apex_workbench_v0_3_d/VERIFICATION.md),
+[machine evidence](reviews/apex_workbench_v0_3_d/verification_record.json).
+One full `tests/` + `tools/apex_workbench/tests/` invocation: **1,089 passed, 17 separately gated
+G2 skips, zero failures/errors**, exit 0, 747.90 s. Split: 777 repository + 312 Workbench passes;
+no WORK/reviewer counts aggregated. Approved Mac/Accelerate SINGLE, unchanged original deadlines.
+Fresh read-only audits confirm P native clocks/events/diagnostics/nine sectors and historical
+294 scientific/11 exporter hashes. Production qualification retains 17 original references/four
+conditional pairs; four disposable integrity/source/environment faults reject. No campaign rerun.
+
+Actual report generation and local Plotly reopening pass with exact native sector/event/source
+identities and no external script/style dependency. One embedded-browser download returned the
+click in 0.298 s but no new file was observed within 10 s; **automatic delivery NOT CONFIRMED**,
+not counted as a successful download. Native Codex app inspection was tool-restricted. Historical
+1,558.497 s tool delay remains unresolved; no app-latency attribution or performance guarantee.
+
+Unchanged launcher startup/reuse/ownership/refusals pass. Targeted supervisor SIGINT exits 0;
+actual terminal Ctrl-C terminates the foreground shell by SIGINT(2), frees port in 0.513 s and
+leaves no owned survivor. Prior tool exit 1 stays retained without a proven unique cause. Both
+owned loopback servers stopped and execution lease is available. All 56 scientific files match
+accepted V0.2 Git; all 345 Q, 25 GP, 4 oval and 42 prior WORK/review evidence files hash-preserved.
+All 49,675 historical result size/mtime observations and 1,713 links unchanged (metadata audit,
+not a full historical-content rehash).
+
+Recommend user acceptance of this exact source within the single-P inspection scope, retaining
+the embedded-browser download limit. Successful P has no failure/fallback episode; C0 integration
+needs a separate contract. G/C70 unsupported. RBT-S/N/V and numerical budgets remain Primary
+scientific decisions. No RBT/C0/NMPC adapter, CT/Safety/hardware or later-stage progression.
+
+---
+
 # Current handoff — V0.3-D Engineering Review complete
 
 **V0.3_D_ENGINEERING_REVIEW_COMPLETE_PENDING_VERIFICATION_AND_EXPERIMENT_APPROVAL.**
