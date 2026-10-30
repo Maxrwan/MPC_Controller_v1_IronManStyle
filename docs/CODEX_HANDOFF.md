@@ -1,26 +1,35 @@
-# Current handoff — V0.3-D racing evidence WORK
+# Current handoff — V0.3-D Engineering Review complete
 
-**WORK_COMPLETE_PENDING_REVIEW.** 30 October2026, branch `codex/apex-workbench-v0-3-d`.
-Primary C acceptance `7da7100` is recorded and preserved. One externally pinned P/VIS-1R
-controlled_A read-only inspector, source-linked HTML and existing oval-form shortcut are
-implemented after independent contract PASS. Historical worker/export identity8dbd1c5 remains
-separate from current source; no new racing execution or scientific qualification.
+**V0.3_D_ENGINEERING_REVIEW_COMPLETE_PENDING_VERIFICATION_AND_EXPERIMENT_APPROVAL.**
+30 October 2026. Independent **PASS** at exact source
+`c5f3db6852af8f8ffccf4e5e9e6f11d01fa861b4`, branch `codex/apex-workbench-v0-3-d`.
+Final delivery is documentation only. Primary C acceptance `7da7100` remains preserved.
+
+One source-bound P/VIS-1R controlled_A read-only inspector, native sectors/events/diagnostics,
+source-linked offline HTML and existing oval-form shortcut are delivered after independent
+contract PASS. Historical worker/export8dbd1c5 is distinct from current source. No new racing,
+RBT or qualification campaign; no full formal Verification. All56 scientific files,345 original
+qualification files,25 GP files and4 old oval files remain content-hash identical.
 
 [WORK](apex_workbench_v0_3_d/WORK.md), [machine record](apex_workbench_v0_3_d/work_record.json),
-[archive contract](apex_workbench_v0_3_d/ARCHIVE_CONTRACT.md),
-[contract review](reviews/apex_workbench_v0_3_d/contract/REVIEW.md),
-[unimplemented RBT-0.1 proposal](apex_workbench_v0_3_d/ROLLING_RESPONSE_PROPOSAL.md).
-Final focused invocations:59 prior compatibility passes and20 new passes, separately reported.
-Initial13-pass/1-fail catalog-default regression is retained and corrected without test changes.
-All56 scientific files,345 qualification files,25 GP files and4 old oval files hash-preserved.
-Actual production consumer retains17 references/four conditional pairs. Original launcher startup
-from unrelated cwd/browser/shutdown checked; browser download-tool latency1558.497s is retained as
-an unresolved harness observation, not app latency or a guarantee. No full formal suite or campaigns.
+[independent review](reviews/apex_workbench_v0_3_d/iteration_1/REVIEW.md),
+[contract](apex_workbench_v0_3_d/ARCHIVE_CONTRACT.md),
+[unimplemented RBT-0.1](apex_workbench_v0_3_d/ROLLING_RESPONSE_PROPOSAL.md).
+Implementer invocations:59 supplementary prior compatibility passes (earlier gp_panels presentation
+hash during that run) and20 final exact-source new passes, separate counts;
+initial13-pass/1-fail catalog-order regression retained and corrected without test changes.
+Reviewer fresh20 new, seven prior UI and corrected two adversarial probes pass, separately reported;
+initial9-pass/2-reviewer-assertion-error invocation retained. Production consumer retains17 original
+references/four conditional pairs. No material implementation finding remains within reviewed scope.
 
-Exact candidate independent Engineering Review follows. Broader M4 failure inspection is incomplete
-because this successful P case has no failure/fallback episode; G/C70 unsupported. New RBT numerical
-budgets/validity/composition and future G/P execution require separate Primary decisions. Stop at
-D Engineering Review before formal Verification or experiment approval.
+Actual unchanged launcher startup from unrelated cwd, browser inspection/export and owned shutdown
+checked;8501 freed. Control-C terminal exit1 remains unexplained. Download-tool1558.497s return is
+retained as an unresolved interaction/harness observation, not an app latency measurement or guarantee.
+Broader M4 failure inspection remains incomplete: this successful P case has no failure/fallback
+record; G/C70 unsupported. Legacy oval lacks a source-bound retained artifact contract and is not
+promoted to verified evidence. RBT-S/N/V numerical/validity/composition decisions and future G/P
+execution profiles remain separately gated. Recommend exact-source formal functional Verification
+and Primary scientific review of the proposal, with no automatic execution or later-stage work.
 
 ---
 

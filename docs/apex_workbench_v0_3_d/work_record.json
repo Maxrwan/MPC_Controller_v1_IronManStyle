@@ -1,11 +1,11 @@
 {
   "schema": "apex-workbench-v03d-work/1",
-  "status": "WORK_COMPLETE_PENDING_REVIEW",
+  "status": "V0.3_D_ENGINEERING_REVIEW_COMPLETE_PENDING_VERIFICATION_AND_EXPERIMENT_APPROVAL",
   "base_revision": "7da7100fe624481e6066390d503abea5b4292b4d",
   "branch": "codex/apex-workbench-v0-3-d",
   "accepted_c_implementation": "34f98a4894e457900d2fae3b2fd09ead4f5ba5a0",
   "primary_acceptance": "7da7100fe624481e6066390d503abea5b4292b4d",
-  "implementation_identity": "Containing candidate commit; final exact reviewed SHA in independent review record",
+  "implementation_identity": "c5f3db6852af8f8ffccf4e5e9e6f11d01fa861b4; final delivery documentation only",
   "source_sha256": {
     "tools/apex_workbench/gp_archive.py": "71132559f4e119ba35a320c03fda2cd97c0f007a20643bb54aa3e9186c6b32f8",
     "tools/apex_workbench/gp_panels.py": "e18eb99d3bcbda4feb758fbd243ab6fd4b60c2867159313308009cd95a231316",
@@ -62,7 +62,9 @@
       "skips": 0,
       "junit_seconds": "9.118",
       "failed_nodes": [],
-      "counts_aggregated": false
+      "counts_aggregated": false,
+      "exact_final_candidate_source": false,
+      "exit_code": 0
     },
     {
       "label": "prior_initial",
@@ -79,7 +81,9 @@
           "time": "1.074"
         }
       ],
-      "counts_aggregated": false
+      "counts_aggregated": false,
+      "exact_final_candidate_source": false,
+      "exit_code": 1
     },
     {
       "label": "prior_final",
@@ -90,7 +94,10 @@
       "skips": 0,
       "junit_seconds": "92.817",
       "failed_nodes": [],
-      "counts_aggregated": false
+      "counts_aggregated": false,
+      "exact_final_candidate_source": false,
+      "exit_code": 0,
+      "applicability": "Supplementary WORK evidence; earlier gp_panels hash during invocation; not a fresh exact-final59 pass. Independent exact-source20 new +7 targeted prior checks are separate."
     },
     {
       "label": "new_final",
@@ -101,7 +108,9 @@
       "skips": 0,
       "junit_seconds": "9.786",
       "failed_nodes": [],
-      "counts_aggregated": false
+      "counts_aggregated": false,
+      "exact_final_candidate_source": true,
+      "exit_code": 0
     }
   ],
   "test_environment": {
@@ -154,7 +163,9 @@
     "requested_download_timeouts_ms": 10000,
     "download_delay_cause": "unknown; tool/harness observation not app processing measurement",
     "export_sha256": "6a1776f554efc9be3129c4800d21932144ba6fde75fc8371ea190fe12a05a904",
-    "launcher_reuse_conflict_missing_env_freshly_rerun": false
+    "launcher_reuse_conflict_missing_env_freshly_rerun": false,
+    "owned_terminal_exit_code": 1,
+    "owned_cleanup_verified_separately": true
   },
   "bounded_scientific_compatibility_smokes": true,
   "new_racing_experiments": false,
@@ -176,18 +187,45 @@
     "results/apex_workbench_v03d_work_20261030/regression.log": "8fb96c39f6c80fbee1295f7275be502e2e4dfee9cd853a0dba501ade1238df99",
     "results/apex_workbench_v03d_work_20261030/qualification_audit.json": "1692fbf3c24e827b2505cf52e23487ace08a5be3d645eed25374f9980dd91ccc",
     "results/apex_workbench_v03d_work_20261030/new_final.xml": "cf2c9a6430986aa41522934b6811792b5cfedd7a6d14703c56019be76b5dd507",
+    "results/apex_workbench_v03d_work_20261030/process_receipts.json": "9e6021b361d20ce1614a35fbc2a8d7e0a816d2d7e82305941ac79f8cb0de404d",
     "results/apex_workbench_v03d_work_20261030/regression_final.xml": "f8542510ca05625da3a1bac44980fe55db67e73a57a188772b1b153e20c05ea2",
     "results/apex_workbench_v03d_work_20261030/preservation_after.json": "1ce1f227097a73ed8f7ebd9506054478361d89692f95fc725cebc9f4dd4e3032",
     "results/apex_workbench_v03d_work_20261030/new_tests.xml": "dced3d758e80c2afad37ad06c626ed61df90fdc99971db7c2059deee8484eedd",
+    "results/apex_workbench_v03d_work_20261030/browser_launcher_observation.json": "a81f637f67551675c521ef252679c75a457b90533f94818c29fb096113b3713e",
     "results/apex_workbench_v03d_work_20261030/browser_inspection.html": "6a1776f554efc9be3129c4800d21932144ba6fde75fc8371ea190fe12a05a904",
     "results/apex_workbench_v03d_work_20261030/regression_final.log": "375b98aea390a51b68478ae1d68808530344a2f8800eaa93e1f9a8c4492f8982",
     "results/apex_workbench_v03d_work_20261030/new_tests.log": "c4d924b3aa8fd6ee30c68570c12ea2d69db3b560708d4ff3ca209792052e5629",
-    "results/apex_workbench_v03d_work_20261030/record_work.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "results/apex_workbench_v03d_work_20261030/record_work.log": "1ce1f227097a73ed8f7ebd9506054478361d89692f95fc725cebc9f4dd4e3032",
     "results/apex_workbench_v03d_work_20261030/record_work.py": "975688583182025b41a3ca38da9823ddd36ce0fd76bd6e9706870a7c9dde22e4",
     "results/apex_workbench_v03d_work_20261030/regression.xml": "5a1f7c86a2cbfdf3cf4b09b1f29ca5cae6e1b433abfcc758302d52f06b4424b7",
     "results/apex_workbench_v03d_work_20261030/new_final.log": "f4128683787a81ccdc66eeee79ed810591a3bfcd714c2ff1c5744ade54bace12",
     "results/apex_workbench_v03d_work_20261030/qualification_audit.py": "d7761c74c6f47adbfa80d63aab6f779a044c53635a82dcb84374063663841070",
     "results/apex_workbench_v03d_work_20261030/preservation_before.json": "987168c427959492052d506da8179f30ca2f42fa59cc12a76cfd67e9cac3dd57"
   },
-  "next_gate": "Independent exact-source Engineering Review"
+  "next_gate": "Separately authorized formal functional Verification of exact candidate and Primary RBT-S/N/V scientific decisions; no automatic execution",
+  "reviewed_exact_source_revision": "c5f3db6852af8f8ffccf4e5e9e6f11d01fa861b4",
+  "independent_review": {
+    "decision": "PASS",
+    "record": "docs/reviews/apex_workbench_v0_3_d/iteration_1/review_record.json",
+    "record_sha256": "b795608c0492723b74e6aba2cbd295cccc5d2a1f314a35503bc43e990efdd0d2",
+    "source_sha256_match": true,
+    "no_implementation_corrections": true,
+    "fresh_invocations_separate": true
+  },
+  "prior_compatibility_applicability": {
+    "retained_work_invocation": "prior_final",
+    "retained_result": "59 passed; supplementary WORK evidence",
+    "request_path": "results/apex_workbench_v03d_work_20261030/regression_final_tmp/test_real_nominal_run_through_0/20261030T122927168896Z_8083a64846fc42508c6df66c5dbc9045/request.json",
+    "request_sha256": "1cc33f0e782eb26b50cbf0e14ba81a74ef80c7c840a2b61c80841a0ac5ddffdc",
+    "source_entries": 378,
+    "changed_sources_since_invocation": {
+      "tools/apex_workbench/gp_panels.py": {
+        "recorded": "644210701fc3469f8d13182be411efb22fe1cbb88bf928765e94ee20b8526d3e",
+        "current": "e18eb99d3bcbda4feb758fbd243ab6fd4b60c2867159313308009cd95a231316"
+      }
+    },
+    "tests_unchanged_to_base": true,
+    "current_source_checks": "Fresh20 GP plus7 selected prior UI tests, separate invocations",
+    "formal_exact_final_59_claim": false
+  }
 }

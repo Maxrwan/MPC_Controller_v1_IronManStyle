@@ -1,0 +1,337 @@
+{
+  "schema": "apex-workbench-v03d-independent-review/1",
+  "date": "2026-10-30",
+  "recorded_utc": "2026-10-30T13:13:26.489583+00:00",
+  "classification": "PASS",
+  "scope": "Single contracted P/VIS-1R read-only inspector, source-linked HTML, existing oval shortcut and unimplemented RBT proposal",
+  "reviewed_candidate": "c5f3db6852af8f8ffccf4e5e9e6f11d01fa861b4",
+  "base_revision": "7da7100fe624481e6066390d503abea5b4292b4d",
+  "branch": "codex/apex-workbench-v0-3-d",
+  "blocking_findings": [],
+  "implementation_correction_iterations": 0,
+  "source_sha256": {
+    "tools/apex_workbench/gp_archive.py": "71132559f4e119ba35a320c03fda2cd97c0f007a20643bb54aa3e9186c6b32f8",
+    "tools/apex_workbench/gp_panels.py": "e18eb99d3bcbda4feb758fbd243ab6fd4b60c2867159313308009cd95a231316",
+    "tools/apex_workbench/run_catalog.py": "debb8ed97c28856630fe0f835055b6ef7d4619a19dd46519eaf6520c8bf6bee7",
+    "tools/apex_workbench/workspace.py": "2593ae222608ff3b3f7859bce379e214d823aa516f90390c52bbc58986eb2425",
+    "tools/apex_workbench/tests/test_gp_archive.py": "2a4f2cc57e66e1b768d71eeea4239ff14f609f849269919ea1101d3b8850b38a",
+    "tools/apex_workbench/tests/test_gp_workspace.py": "77eb8bcbac83486b906d6b2f514667685675c5697dfd2bf6de88ccd45072d6a6"
+  },
+  "fresh_invocations": {
+    "new_tests": {
+      "selection": [
+        "tools/apex_workbench/tests/test_gp_archive.py",
+        "tools/apex_workbench/tests/test_gp_workspace.py"
+      ],
+      "tests": 20,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "passed": 20,
+      "junit_seconds": 8.783,
+      "exit_code": null,
+      "exit_receipt_note": "Initial orchestration discarded running-session metadata; complete success log and JUnit retained, no separate process exit claim",
+      "log": "results/apex_workbench_v03d_review_20261030/new_tests.log",
+      "junit": "results/apex_workbench_v03d_review_20261030/new_tests.xml",
+      "counts_aggregated": false
+    },
+    "independent": {
+      "selection": [
+        "results/apex_workbench_v03d_review_20261030/review_checks.py"
+      ],
+      "tests": 11,
+      "failures": 2,
+      "errors": 0,
+      "skipped": 0,
+      "passed": 9,
+      "junit_seconds": 8.757,
+      "exit_code": 1,
+      "exit_receipt_note": null,
+      "log": "results/apex_workbench_v03d_review_20261030/independent.log",
+      "junit": "results/apex_workbench_v03d_review_20261030/independent.xml",
+      "counts_aggregated": false,
+      "disposition": "Both failures are incorrect reviewer assertions; retained unchanged. No implementation failure. Only those two corrected probes rerun."
+    },
+    "corrected": {
+      "selection": [
+        "results/apex_workbench_v03d_review_20261030/review_checks_corrected.py::test_offline_html_binds_exact_sector_values_and_historical_limits",
+        "results/apex_workbench_v03d_review_20261030/review_checks_corrected.py::test_gp_to_existing_archive_and_run_forms_preserve_old_ui"
+      ],
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "passed": 2,
+      "junit_seconds": 3.704,
+      "exit_code": 0,
+      "exit_receipt_note": null,
+      "log": "results/apex_workbench_v03d_review_20261030/corrected.log",
+      "junit": "results/apex_workbench_v03d_review_20261030/corrected.xml",
+      "counts_aggregated": false,
+      "corrections": [
+        "Historical source inventory may legitimately name worker.py; test command-free HTML structure rather than forbidding source filenames",
+        "Only LQR form has Track input; assert accepted per-adapter form contract"
+      ]
+    },
+    "prior": {
+      "selection": [
+        "tools/apex_workbench/tests/test_engineering_workspace.py::test_accepted_source_and_new_presentation_provenance",
+        "tools/apex_workbench/tests/test_engineering_workspace.py::test_actual_compare_ui_candidate_then_qualified",
+        "tools/apex_workbench/tests/test_engineering_workspace.py::test_invalid_evidence_ui_has_raw_records_no_scientific_plots",
+        "tools/apex_workbench/tests/test_engineering_workspace.py::test_legacy_mode_forms_use_accepted_defaults",
+        "tools/apex_workbench/tests/test_recorded_view.py::test_replay_controls_cross_onset_read_only_and_reset",
+        "tools/apex_workbench/tests/test_recorded_view.py::test_case_description_and_snapshot_update_before_submission",
+        "tools/apex_workbench/tests/test_responsiveness.py::test_seek_runs_one_comparison_operation_with_original_deadline"
+      ],
+      "tests": 7,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "passed": 7,
+      "junit_seconds": 20.924,
+      "exit_code": 0,
+      "exit_receipt_note": null,
+      "log": "results/apex_workbench_v03d_review_20261030/prior.log",
+      "junit": "results/apex_workbench_v03d_review_20261030/prior.xml",
+      "counts_aggregated": false
+    }
+  },
+  "test_bootstrap": {
+    "runtime": "tools/apex_workbench/.venv/bin/python",
+    "pythonpath": ".:scripts:src",
+    "environment": {
+      "VECLIB_MAXIMUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "BLIS_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1",
+      "PYTHONHASHSEED": "0",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "before_imports": "from threading_study.config import configure_accelerate; print(configure_accelerate(1),flush=True); import sys,pytest; raise SystemExit(pytest.main(sys.argv[1:]))",
+    "common_pytest_args": [
+      "-q",
+      "--basetemp=<fresh invocation directory>",
+      "--junitxml=<invocation.xml>",
+      "--durations=10"
+    ]
+  },
+  "native_environment": {
+    "platform": "macOS-26.5.1-arm64-arm-64bit",
+    "python": "3.12.14 (main, Sep  1 2026, 14:09:38) [Clang 22.1.3 ]",
+    "executable": "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/tools/apex_workbench/.venv/bin/python",
+    "packages": {
+      "numpy": "2.5.3",
+      "scipy": "1.18.1",
+      "pandas": "3.0.6",
+      "matplotlib": "3.11.2",
+      "streamlit": "1.66.1",
+      "plotly": "6.9.0",
+      "psutil": "7.2.2",
+      "pytest": "9.1.1",
+      "threadpoolctl": "3.7.0"
+    },
+    "native_policy": {
+      "requested_ceiling": 1,
+      "set_status": 0,
+      "blas_threading_mode": 1,
+      "mode_name": "single",
+      "exact_active_thread_count_available": false
+    },
+    "loaded_numerical_backends": [],
+    "thread_environment": {
+      "VECLIB_MAXIMUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "BLIS_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1"
+    },
+    "G2_variables_present": []
+  },
+  "source_inventory_audit": {
+    "anchor_sha256": {
+      "configs/performance/apex_performance_synthetic_v1.json": "5299adca29d5c5bd383252cd2c299a392dd6872dc6bb72d1a4dd7ecfb8dd1ebf",
+      "docs/task007e/e2/evidence_links.json": "5e788c428bd706f20792b1852b3400bf0eeb7fe11d93285bbc5bc7accec8fced",
+      "docs/task007d/vis/vis1l/verification.json": "8055a017dbbbf19b0d0143311a8299d97c0c860583f233685270a4980a9d9a67"
+    },
+    "external_inventory_count": 25,
+    "manifest_artifacts": 15,
+    "historical_git_source_audit": {
+      "scientific": {
+        "revision": "8dbd1c5fbc09781411fc762e04f9c2c5cf2d99ae",
+        "files": 294,
+        "mismatches": []
+      },
+      "export": {
+        "revision": "8dbd1c5fbc09781411fc762e04f9c2c5cf2d99ae",
+        "files": 11,
+        "mismatches": []
+      }
+    },
+    "frozen_scientific_files": 56,
+    "frozen_scientific_source_and_accepted_git_bytes_unchanged": true,
+    "unchanged_prior_workbench_test_files": 9,
+    "native_csv_row_counts": {
+      "states": 12448,
+      "controls": 6223,
+      "planning": 3097,
+      "cycles": 622,
+      "events": 14310
+    },
+    "scientific_imports": false,
+    "exporter_invocation": false,
+    "new_simulation": false
+  },
+  "production_qualification": {
+    "references": 17,
+    "comparison_pairs": {
+      "VDL1_IZ_HIGH": {
+        "classification": "qualified_synthetic_comparison",
+        "numerical_qualification": "qualified_synthetic_comparison"
+      },
+      "VDL1_STEER_HIGH": {
+        "classification": "qualified_synthetic_comparison",
+        "numerical_qualification": "qualified_synthetic_comparison"
+      },
+      "VDL1_CF_HIGH": {
+        "classification": "qualified_synthetic_comparison",
+        "numerical_qualification": "qualified_synthetic_comparison"
+      },
+      "VDL1_CR_HIGH": {
+        "classification": "qualified_synthetic_comparison",
+        "numerical_qualification": "qualified_synthetic_comparison"
+      }
+    },
+    "production_consumer": true,
+    "read_only": true,
+    "trajectory_rerun": false,
+    "environment": {
+      "platform": "macOS-26.5.1-arm64-arm-64bit",
+      "python": "3.12.14 (main, Sep  1 2026, 14:09:38) [Clang 22.1.3 ]",
+      "executable": "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/tools/apex_workbench/.venv/bin/python",
+      "packages": {
+        "numpy": "2.5.3",
+        "scipy": "1.18.1",
+        "pandas": "3.0.6",
+        "matplotlib": "3.11.2",
+        "streamlit": "1.66.1",
+        "plotly": "6.9.0",
+        "psutil": "7.2.2",
+        "pytest": "9.1.1",
+        "threadpoolctl": "3.7.0"
+      },
+      "native_policy": {
+        "requested_ceiling": 1,
+        "set_status": 0,
+        "blas_threading_mode": 1,
+        "mode_name": "single",
+        "exact_active_thread_count_available": false
+      },
+      "loaded_numerical_backends": [],
+      "thread_environment": {
+        "VECLIB_MAXIMUM_THREADS": "1",
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "BLIS_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1"
+      },
+      "G2_variables_present": []
+    }
+  },
+  "prior_compatibility_applicability": {
+    "retained_work_invocation": "prior_final",
+    "retained_result": "59 passed; supplementary WORK evidence",
+    "request_path": "results/apex_workbench_v03d_work_20261030/regression_final_tmp/test_real_nominal_run_through_0/20261030T122927168896Z_8083a64846fc42508c6df66c5dbc9045/request.json",
+    "request_sha256": "1cc33f0e782eb26b50cbf0e14ba81a74ef80c7c840a2b61c80841a0ac5ddffdc",
+    "source_entries": 378,
+    "changed_sources_since_invocation": {
+      "tools/apex_workbench/gp_panels.py": {
+        "recorded": "644210701fc3469f8d13182be411efb22fe1cbb88bf928765e94ee20b8526d3e",
+        "current": "e18eb99d3bcbda4feb758fbd243ab6fd4b60c2867159313308009cd95a231316"
+      }
+    },
+    "tests_unchanged_to_base": true,
+    "current_source_checks": "Fresh20 GP plus7 selected prior UI tests, separate invocations",
+    "formal_exact_final_59_claim": false
+  },
+  "preservation": {
+    "candidate_implementation_unchanged": true,
+    "preservation": {
+      "gp_archive_sha256": {
+        "files": 25,
+        "failures": []
+      },
+      "qualification_sha256": {
+        "files": 345,
+        "failures": []
+      },
+      "scientific_source_sha256": {
+        "files": 56,
+        "failures": []
+      },
+      "legacy_oval_sha256": {
+        "files": 4,
+        "failures": []
+      }
+    },
+    "preexisting_tracked_files_changed_during_review": [
+      "docs/CODEX_HANDOFF.md",
+      "docs/apex_workbench_v0_3_d/WORK.md",
+      "docs/apex_workbench_v0_3_d/work_record.json"
+    ],
+    "changed_files_scope": "Collaborator documentation bookkeeping and handoff only; no reviewer implementation edits",
+    "new_reviewer_documents": [
+      "docs/reviews/apex_workbench_v0_3_d/iteration_1/REVIEW.md",
+      "docs/reviews/apex_workbench_v0_3_d/iteration_1/review_record.json"
+    ]
+  },
+  "retained_negative_evidence": [
+    "Implementer prior_initial13 passes/1 catalog failure, corrected59 reported separately",
+    "Independent reviewer9 passes/2 invalid probe assertions; exact original log/script/JUnit retained",
+    "Implementer browser download-tool1558.497s unknown-cause outlier; no app-performance inference",
+    "Implementer launcher PTY exit1 after Ctrl-C with verified owned cleanup; no cause inferred"
+  ],
+  "remaining_limits": [
+    "Successful P controlled_A has no failure/fallback episode; broader M4 failure inspection incomplete",
+    "G and incomplete C70 unsupported; no cross-profile execution or comparison contract",
+    "Old oval evidence lacks source-bound Workbench producer contract",
+    "RBT-S/N/V and component numerical budgets pending Primary scientific decisions",
+    "Full formal Verification and wider acceptance remain separate",
+    "No physical validation, hard-real-time, guaranteed recovery or standstill braking claim"
+  ],
+  "reviewer_implementation_or_candidate_test_edits": false,
+  "reviewer_commits_or_pushes": false,
+  "new_simulations_or_racing_runs": false,
+  "qualification_trajectories_rerun": false,
+  "full_formal_verification_run": false,
+  "next_gate": "V0.3_D_ENGINEERING_REVIEW_COMPLETE_PENDING_VERIFICATION_AND_EXPERIMENT_APPROVAL",
+  "evidence_sha256": {
+    "results/apex_workbench_v03d_review_20261030/corrected.log": "b110bf70faf75306d307b2c42b8ca9e4e3a61d231f48f94152fa822fe54ec302",
+    "results/apex_workbench_v03d_review_20261030/corrected.xml": "f28f84b9526794a3e445aaf88ae04ff73e21ba2a8f8aba5b58a81daf198f0b99",
+    "results/apex_workbench_v03d_review_20261030/corrected_exit.json": "e89df0eae5ec7db81135aed16463968955c578bcc4f2ec43172eff351f080c17",
+    "results/apex_workbench_v03d_review_20261030/independent.log": "bd044446d0e172fd9a74c9ab8485c82f8803c3d74fa1774237473db43fc18957",
+    "results/apex_workbench_v03d_review_20261030/independent.xml": "67703e8ab42771b9872e88e968948c1ad64df234c317a1880d6eb4b202e9cab0",
+    "results/apex_workbench_v03d_review_20261030/independent_exit.json": "5cc319f54b05a38799195a491c303aa686eab7caccfdbbf1e8b8c07405cb7392",
+    "results/apex_workbench_v03d_review_20261030/new_tests.log": "7a8fa74be44800a865feb2471e5e6862e665240fe506805655c18c3653d58f28",
+    "results/apex_workbench_v03d_review_20261030/new_tests.xml": "d96f60ecbaa91cc9ec9103e8ca4b0d423c26f764d0c5231c2e73d2fc5658e46e",
+    "results/apex_workbench_v03d_review_20261030/preservation_after.json": "161589efa53d2b0ae21020d826113eefbc66065889cef27e568563ff9b99eb93",
+    "results/apex_workbench_v03d_review_20261030/preservation_before.json": "27153596b098789372cee6d370d5608e3f43c861eaa1224f4515dc637a822214",
+    "results/apex_workbench_v03d_review_20261030/prior.log": "6fa5eed44a396c3dda6e99287db1732dd3223d4063bddad7a37a5fa8ce1375e2",
+    "results/apex_workbench_v03d_review_20261030/prior.xml": "5119327e49142f020af8a1463d39feec5ad9038bd7d9a4fed2ea3a10cf8468c9",
+    "results/apex_workbench_v03d_review_20261030/prior_applicability.json": "c01eed63dddf499519dca14647c7308aa7aa1aa1a4693e15050efa66cd617f57",
+    "results/apex_workbench_v03d_review_20261030/prior_exit.json": "e89df0eae5ec7db81135aed16463968955c578bcc4f2ec43172eff351f080c17",
+    "results/apex_workbench_v03d_review_20261030/qualification_audit.json": "8bf125518135a7e43c56b436fa1fbde8288a6ae20cc185149ecf8cf66393d341",
+    "results/apex_workbench_v03d_review_20261030/qualification_audit.log": "f54020557603bb1a6beedcfeaf2df249d23ad23ff4514f9e5afc2a20900ef57e",
+    "results/apex_workbench_v03d_review_20261030/qualification_audit.py": "0512bc9afa624ca8b523d8b3bfeb59cb6b73bbfa06bf6d97b02c220ff31e494f",
+    "results/apex_workbench_v03d_review_20261030/qualification_audit_exit.json": "e89df0eae5ec7db81135aed16463968955c578bcc4f2ec43172eff351f080c17",
+    "results/apex_workbench_v03d_review_20261030/review_checks.py": "583b40ce8f6b94764cbfb25991117fceac3a1b898b821a8c0216421b551e370e",
+    "results/apex_workbench_v03d_review_20261030/review_checks_corrected.py": "e2d7552fd011c09f93cf341cfc289f24247a5dd5384decc5fdb92803148cd852",
+    "results/apex_workbench_v03d_review_20261030/source_audit.json": "45c7a4dbdfff51057bb7e830091a7b1883c02151d155426d5fba6ad8085aa15c",
+    "results/apex_workbench_v03d_review_20261030/source_audit.log": "45c7a4dbdfff51057bb7e830091a7b1883c02151d155426d5fba6ad8085aa15c",
+    "results/apex_workbench_v03d_review_20261030/source_audit.py": "defbb00b3ed375a2763e601d2f3cf7d2408e13120036c85b51066216bb318402",
+    "results/apex_workbench_v03d_review_20261030/source_audit_exit.json": "e89df0eae5ec7db81135aed16463968955c578bcc4f2ec43172eff351f080c17"
+  }
+}
