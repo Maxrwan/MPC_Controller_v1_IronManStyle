@@ -1389,3 +1389,11 @@ status/manifest/Q epochs, stop on invalidation, and preserve original archive re
 Admit 2–4 selected executions with accepted per-pair classifications; no group qualification or new
 metric. Optional owned notes remain append-only. Proposed racing scenarios are design documents,
 with consequential Primary decisions and separate execution authorization. See [WORK](apex_workbench_v0_3_c/WORK.md).
+
+
+V0.3-C independent review passes with conditions at `8cff10bca8475f0992221d2cebf8862414210056`.
+One bounded correction validates optional metadata shapes in the additive snapshot and contains
+malformed-data exceptions while retaining literal raw/export access; frozen readers stay unchanged.
+N1 retains two UI deadline failures and the separate bounded completion evidence for formal
+Verification. No responsiveness criterion or source-identity migration is introduced. See the
+[final review](reviews/apex_workbench_v0_3_c/iteration_2/REVIEW.md).

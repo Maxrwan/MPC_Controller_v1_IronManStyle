@@ -1,0 +1,886 @@
+{
+  "schema": "apex-workbench-v03c-independent-engineering-review/2",
+  "review_finalized_date": "2026-10-30",
+  "reviewed_candidate": "8cff10bca8475f0992221d2cebf8862414210056",
+  "branch": "codex/apex-workbench-v0-3-c",
+  "classification": "PASS WITH CONDITIONS",
+  "status": "V0.3_C_ENGINEERING_REVIEW_COMPLETE_PENDING_VERIFICATION_AND_SCENARIO_APPROVAL",
+  "prior_failed_candidate": "c57603ea0e80b7b2121648ae687ac2afa03cb33d",
+  "accepted_scientific_source": "4897686e79c13757d5ef5b4373b44d4cab99b5bf",
+  "substantive_corrections_used": 1,
+  "authorized_substantive_correction_limit": 3,
+  "independence": "Separate-context review; implementing agent results treated as evidence, not proof. Reviewer did not edit application source/tests or commit/push.",
+  "candidate_source_and_tests_edited_by_reviewer": false,
+  "commits_or_pushes_by_reviewer": false,
+  "blocking_findings": [],
+  "resolved_findings": [
+    {
+      "id": "R1",
+      "status": "CLOSED",
+      "proof": "All six original fault shapes now withhold new scientific plots/cursor, expose clear errors and retain raw/provenance/export access and literal bytes. Fresh independent26 include nearby metadata and actualQ checks.",
+      "implementation_scope": "Additive loader metadata guards and panel exception containment; no frozen reader changes."
+    }
+  ],
+  "conditions": [
+    {
+      "id": "N1",
+      "blocking_for_engineering_review": false,
+      "title": "Retained UI deadline failures and material Q-selection responsiveness limitation",
+      "evidence": "Fresh affected47 invocation remains failed:45passes and2AppTest deadline failures at60/45s. Authorized two-scenario supplemental execution with unchanged assertions completes under120s/render and420s aggregate cap. One Q-selection render takes89.8861350419902s.",
+      "cause": "UNRESOLVED; no host, OS, library or application cause inferred",
+      "next_gate_requirement": "At separately authorized formal Verification, retain/reconcile timeout evidence, declare a bounded UI harness/deadline policy and assess long Q selection. Do not claim47reviewer passes, compliance with original45/60s deadlines, responsive UI or real-time behavior from the supplemental result.",
+      "no_new_responsiveness_acceptance_threshold_invented": true
+    }
+  ],
+  "fresh_invocations": {
+    "correction": {
+      "name": "pytest",
+      "errors": "0",
+      "failures": "0",
+      "skipped": "0",
+      "tests": "26",
+      "time": "134.372",
+      "timestamp": "2026-10-29T23:25:48.218589+02:00",
+      "hostname": "Marwans-MacBook-Air.local",
+      "passes": 26,
+      "exit_code": 0,
+      "pytest_stdout_summary": "26 passed in 134.27s",
+      "failed_nodes": [],
+      "log": "results/apex_workbench_v03c_review_20261029/iteration_2/correction.log",
+      "junit": "results/apex_workbench_v03c_review_20261029/iteration_2/correction.xml",
+      "native_api_observation": {
+        "requested_ceiling": 1,
+        "set_status": 0,
+        "blas_threading_mode": 1,
+        "mode_name": "single",
+        "exact_active_thread_count_available": false
+      }
+    },
+    "ui47": {
+      "name": "pytest",
+      "errors": "0",
+      "failures": "2",
+      "skipped": "0",
+      "tests": "47",
+      "time": "317.364",
+      "timestamp": "2026-10-29T23:29:09.324302+02:00",
+      "hostname": "Marwans-MacBook-Air.local",
+      "passes": 45,
+      "exit_code": 1,
+      "pytest_stdout_summary": "2 failed, 45 passed in 317.36s",
+      "failed_nodes": [
+        {
+          "node": "tools.apex_workbench.tests.test_recorded_view::test_three_run_ui_0125_and_pair_labels",
+          "message": "RuntimeError: AppTest script run timed out after 60(s)",
+          "kind": "AppTest render deadline; source of delay unresolved"
+        },
+        {
+          "node": "tools.apex_workbench.tests.test_engineering_workspace::test_actual_compare_ui_candidate_then_qualified",
+          "message": "RuntimeError: AppTest script run timed out after 45(s)",
+          "kind": "AppTest render deadline; source of delay unresolved"
+        }
+      ],
+      "log": "results/apex_workbench_v03c_review_20261029/iteration_2/ui47.log",
+      "junit": "results/apex_workbench_v03c_review_20261029/iteration_2/ui47.xml",
+      "native_api_observation": {
+        "requested_ceiling": 1,
+        "set_status": 0,
+        "blas_threading_mode": 1,
+        "mode_name": "single",
+        "exact_active_thread_count_available": false
+      }
+    },
+    "ui-completion": {
+      "name": "pytest",
+      "errors": "0",
+      "failures": "0",
+      "skipped": "0",
+      "tests": "2",
+      "time": "137.269",
+      "timestamp": "2026-10-29T23:37:24.655564+02:00",
+      "hostname": "Marwans-MacBook-Air.local",
+      "passes": 2,
+      "exit_code": 0,
+      "pytest_stdout_summary": "2 passed in 137.02s",
+      "failed_nodes": [],
+      "log": "results/apex_workbench_v03c_review_20261029/iteration_2/ui-completion.log",
+      "junit": "results/apex_workbench_v03c_review_20261029/iteration_2/ui-completion.xml",
+      "native_api_observation": {
+        "requested_ceiling": 1,
+        "set_status": 0,
+        "blas_threading_mode": 1,
+        "mode_name": "single",
+        "exact_active_thread_count_available": false
+      }
+    }
+  },
+  "counts_are_separate_not_aggregated": true,
+  "failed47_remains_failed": true,
+  "supplement_does_not_replace_failed_selection": true,
+  "supplemental_authorization": "Parent authorized exactly the two failed functional scenarios, at most120s/render and420s aggregate cap; no implementation/test/assertion edits or full rerun.",
+  "supplemental_budget": {
+    "command": [
+      "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/tools/apex_workbench/.venv/bin/python",
+      "-u",
+      "-c",
+      "from threading_study.config import configure_accelerate; print(configure_accelerate(1), flush=True); import sys,pytest; raise SystemExit(pytest.main(sys.argv[1:]))",
+      "-q",
+      "-s",
+      "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/results/apex_workbench_v03c_review_20261029/iteration_2/probe_ui_completion.py",
+      "--basetemp=/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/results/apex_workbench_v03c_review_20261029/iteration_2/ui-completion-tmp",
+      "--junitxml=/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/results/apex_workbench_v03c_review_20261029/iteration_2/ui-completion.xml"
+    ],
+    "render_budget_s": 120,
+    "original_render_budgets_s": {
+      "three_run": 60,
+      "two_run": 45
+    },
+    "aggregate_wall_cap_s": 420,
+    "aggregate_cap_hit": false,
+    "elapsed_wall_s": 163.32644683298713,
+    "exit_code": 0,
+    "application_source_or_tests_edited": false,
+    "assertion_bodies": [
+      "tools/apex_workbench/tests/test_recorded_view.py::test_three_run_ui_0125_and_pair_labels",
+      "tools/apex_workbench/tests/test_engineering_workspace.py::test_actual_compare_ui_candidate_then_qualified"
+    ],
+    "failed47_remains_failed": true
+  },
+  "per_render_observations": {
+    "test_original_three_run_assertions_with_120s_render_budget-renders.json": [
+      {
+        "test": "test_original_three_run_assertions_with_120s_render_budget",
+        "render": 1,
+        "render_budget_s": 120,
+        "elapsed_wall_s": 1.8468770000035875,
+        "raised": false
+      },
+      {
+        "test": "test_original_three_run_assertions_with_120s_render_budget",
+        "render": 2,
+        "render_budget_s": 120,
+        "elapsed_wall_s": 0.046505207996233366,
+        "raised": false
+      },
+      {
+        "test": "test_original_three_run_assertions_with_120s_render_budget",
+        "render": 3,
+        "render_budget_s": 120,
+        "elapsed_wall_s": 2.8933520419959677,
+        "raised": false
+      },
+      {
+        "test": "test_original_three_run_assertions_with_120s_render_budget",
+        "render": 4,
+        "render_budget_s": 120,
+        "elapsed_wall_s": 5.39521145800245,
+        "raised": false
+      },
+      {
+        "test": "test_original_three_run_assertions_with_120s_render_budget",
+        "render": 5,
+        "render_budget_s": 120,
+        "elapsed_wall_s": 5.180912708005053,
+        "raised": false
+      },
+      {
+        "test": "test_original_three_run_assertions_with_120s_render_budget",
+        "render": 6,
+        "render_budget_s": 120,
+        "elapsed_wall_s": 9.458097915994585,
+        "raised": false
+      }
+    ],
+    "test_original_two_run_assertions_with_120s_render_budget-renders.json": [
+      {
+        "test": "test_original_two_run_assertions_with_120s_render_budget",
+        "render": 1,
+        "render_budget_s": 120,
+        "elapsed_wall_s": 0.8892222089925781,
+        "raised": false
+      },
+      {
+        "test": "test_original_two_run_assertions_with_120s_render_budget",
+        "render": 2,
+        "render_budget_s": 120,
+        "elapsed_wall_s": 0.04251258399744984,
+        "raised": false
+      },
+      {
+        "test": "test_original_two_run_assertions_with_120s_render_budget",
+        "render": 3,
+        "render_budget_s": 120,
+        "elapsed_wall_s": 1.4556565829989268,
+        "raised": false
+      },
+      {
+        "test": "test_original_two_run_assertions_with_120s_render_budget",
+        "render": 4,
+        "render_budget_s": 120,
+        "elapsed_wall_s": 89.8861350419902,
+        "raised": false
+      },
+      {
+        "test": "test_original_two_run_assertions_with_120s_render_budget",
+        "render": 5,
+        "render_budget_s": 120,
+        "elapsed_wall_s": 3.856838207997498,
+        "raised": false
+      },
+      {
+        "test": "test_original_two_run_assertions_with_120s_render_budget",
+        "render": 6,
+        "render_budget_s": 120,
+        "elapsed_wall_s": 2.8142029590089805,
+        "raised": false
+      }
+    ]
+  },
+  "longest_observed_render_wall_s": 89.8861350419902,
+  "metadata_case_dispositions": {
+    "withheld": 18,
+    "safe_optional_absent_empty": 4,
+    "unsupported_profile_static_raw_only": 3
+  },
+  "metadata_cases": {
+    "metadata-sampled_window_status_null.json": {
+      "case": "sampled_window_status_null",
+      "expected_behavior": "withhold",
+      "exception_count": 0,
+      "errors": [
+        "Scientific view withheld: Invalid presentation metadata text: sampled_model_window.status"
+      ],
+      "warnings": [],
+      "plots": 0,
+      "cursor_count": 0,
+      "raw_and_provenance_access": true,
+      "literal_bundle_bytes_preserved": true,
+      "fixture_bytes_unchanged": true
+    },
+    "metadata-worker_result_list.json": {
+      "case": "worker_result_list",
+      "expected_behavior": "withhold",
+      "exception_count": 0,
+      "errors": [
+        "Scientific view withheld: Invalid presentation metadata object: summary"
+      ],
+      "warnings": [],
+      "plots": 0,
+      "cursor_count": 0,
+      "raw_and_provenance_access": true,
+      "literal_bundle_bytes_preserved": true,
+      "fixture_bytes_unchanged": true
+    },
+    "metadata-sampled_model_window_list.json": {
+      "case": "sampled_model_window_list",
+      "expected_behavior": "withhold",
+      "exception_count": 0,
+      "errors": [
+        "Scientific view withheld: Invalid presentation metadata object: sampled_model_window"
+      ],
+      "warnings": [],
+      "plots": 0,
+      "cursor_count": 0,
+      "raw_and_provenance_access": true,
+      "literal_bundle_bytes_preserved": true,
+      "fixture_bytes_unchanged": true
+    },
+    "metadata-context_role_null.json": {
+      "case": "context_role_null",
+      "expected_behavior": "withhold",
+      "exception_count": 0,
+      "errors": [
+        "Scientific view withheld: Invalid presentation metadata text: execution_context.role"
+      ],
+      "warnings": [],
+      "plots": 0,
+      "cursor_count": 0,
+      "raw_and_provenance_access": true,
+      "literal_bundle_bytes_preserved": true,
+      "fixture_bytes_unchanged": true
+    },
+    "metadata-git_revision_integer.json": {
+      "case": "git_revision_integer",
+      "expected_behavior": "withhold",
+      "exception_count": 0,
+      "errors": [
+        "Scientific view withheld: Invalid presentation metadata text: provenance.git_revision"
+      ],
+      "warnings": [],
+      "plots": 0,
+      "cursor_count": 0,
+      "raw_and_provenance_access": true,
+      "literal_bundle_bytes_preserved": true,
+      "fixture_bytes_unchanged": true
+    },
+    "metadata-diagnostic_units_list.json": {
+      "case": "diagnostic_units_list",
+      "expected_behavior": "withhold",
+      "exception_count": 0,
+      "errors": [
+        "Scientific view withheld: Invalid presentation metadata object: diagnostic_units"
+      ],
+      "warnings": [],
+      "plots": 0,
+      "cursor_count": 0,
+      "raw_and_provenance_access": true,
+      "literal_bundle_bytes_preserved": true,
+      "fixture_bytes_unchanged": true
+    },
+    "metadata-null_environment.json": {
+      "case": "null_environment",
+      "expected_behavior": "safe_optional",
+      "exception_count": 0,
+      "errors": [],
+      "warnings": [],
+      "plots": 4,
+      "cursor_count": 1,
+      "raw_and_provenance_access": true,
+      "literal_bundle_bytes_preserved": true,
+      "fixture_bytes_unchanged": true
+    },
+    "metadata-null_contract.json": {
+      "case": "null_contract",
+      "expected_behavior": "unsupported",
+      "exception_count": 0,
+      "errors": [],
+      "warnings": [
+        "Replay profile unsupported; verified native plots/raw data only."
+      ],
+      "plots": 4,
+      "cursor_count": 0,
+      "raw_and_provenance_access": true,
+      "literal_bundle_bytes_preserved": true,
+      "fixture_bytes_unchanged": true
+    },
+    "metadata-execution_context_list.json": {
+      "case": "execution_context_list",
+      "expected_behavior": "withhold",
+      "exception_count": 0,
+      "errors": [
+        "Scientific view withheld: Invalid presentation metadata object: execution_context"
+      ],
+      "warnings": [],
+      "plots": 0,
+      "cursor_count": 0,
+      "raw_and_provenance_access": true,
+      "literal_bundle_bytes_preserved": true,
+      "fixture_bytes_unchanged": true
+    },
+    "metadata-execution_context_null.json": {
+      "case": "execution_context_null",
+      "expected_behavior": "withhold",
+      "exception_count": 0,
+      "errors": [
+        "Scientific view withheld: Invalid presentation metadata object: execution_context"
+      ],
+      "warnings": [],
+      "plots": 0,
+      "cursor_count": 0,
+      "raw_and_provenance_access": true,
+      "literal_bundle_bytes_preserved": true,
+      "fixture_bytes_unchanged": true
+    },
+    "metadata-state_units_nontext.json": {
+      "case": "state_units_nontext",
+      "expected_behavior": "withhold",
+      "exception_count": 0,
+      "errors": [
+        "Scientific view withheld: Invalid presentation metadata list: state_units"
+      ],
+      "warnings": [],
+      "plots": 0,
+      "cursor_count": 0,
+      "raw_and_provenance_access": true,
+      "literal_bundle_bytes_preserved": true,
+      "fixture_bytes_unchanged": true
+    },
+    "metadata-empty_state_names.json": {
+      "case": "empty_state_names",
+      "expected_behavior": "unsupported",
+      "exception_count": 0,
+      "errors": [],
+      "warnings": [
+        "Replay profile unsupported; verified native plots/raw data only."
+      ],
+      "plots": 4,
+      "cursor_count": 0,
+      "raw_and_provenance_access": true,
+      "literal_bundle_bytes_preserved": true,
+      "fixture_bytes_unchanged": true
+    },
+    "metadata-empty_provenance.json": {
+      "case": "empty_provenance",
+      "expected_behavior": "safe_optional",
+      "exception_count": 0,
+      "errors": [],
+      "warnings": [],
+      "plots": 4,
+      "cursor_count": 1,
+      "raw_and_provenance_access": true,
+      "literal_bundle_bytes_preserved": true,
+      "fixture_bytes_unchanged": true
+    },
+    "metadata-provenance_null.json": {
+      "case": "provenance_null",
+      "expected_behavior": "withhold",
+      "exception_count": 0,
+      "errors": [
+        "Scientific view withheld: Invalid presentation metadata object: provenance"
+      ],
+      "warnings": [],
+      "plots": 0,
+      "cursor_count": 0,
+      "raw_and_provenance_access": true,
+      "literal_bundle_bytes_preserved": true,
+      "fixture_bytes_unchanged": true
+    },
+    "metadata-provenance_list.json": {
+      "case": "provenance_list",
+      "expected_behavior": "withhold",
+      "exception_count": 0,
+      "errors": [
+        "Scientific view withheld: Invalid presentation metadata object: provenance"
+      ],
+      "warnings": [],
+      "plots": 0,
+      "cursor_count": 0,
+      "raw_and_provenance_access": true,
+      "literal_bundle_bytes_preserved": true,
+      "fixture_bytes_unchanged": true
+    },
+    "metadata-summary_integer.json": {
+      "case": "summary_integer",
+      "expected_behavior": "withhold",
+      "exception_count": 0,
+      "errors": [
+        "Scientific view withheld: Invalid presentation metadata object: summary"
+      ],
+      "warnings": [],
+      "plots": 0,
+      "cursor_count": 0,
+      "raw_and_provenance_access": true,
+      "literal_bundle_bytes_preserved": true,
+      "fixture_bytes_unchanged": true
+    },
+    "metadata-sampled_window_null.json": {
+      "case": "sampled_window_null",
+      "expected_behavior": "withhold",
+      "exception_count": 0,
+      "errors": [
+        "Scientific view withheld: Invalid presentation metadata object: sampled_model_window"
+      ],
+      "warnings": [],
+      "plots": 0,
+      "cursor_count": 0,
+      "raw_and_provenance_access": true,
+      "literal_bundle_bytes_preserved": true,
+      "fixture_bytes_unchanged": true
+    },
+    "metadata-telemetry_contract_list.json": {
+      "case": "telemetry_contract_list",
+      "expected_behavior": "withhold",
+      "exception_count": 0,
+      "errors": [
+        "Scientific view withheld: Invalid presentation metadata object: telemetry_contract"
+      ],
+      "warnings": [],
+      "plots": 0,
+      "cursor_count": 0,
+      "raw_and_provenance_access": true,
+      "literal_bundle_bytes_preserved": true,
+      "fixture_bytes_unchanged": true
+    },
+    "metadata-state_names_null.json": {
+      "case": "state_names_null",
+      "expected_behavior": "withhold",
+      "exception_count": 0,
+      "errors": [
+        "Scientific view withheld: Invalid presentation metadata list: state_names"
+      ],
+      "warnings": [],
+      "plots": 0,
+      "cursor_count": 0,
+      "raw_and_provenance_access": true,
+      "literal_bundle_bytes_preserved": true,
+      "fixture_bytes_unchanged": true
+    },
+    "metadata-empty_contract.json": {
+      "case": "empty_contract",
+      "expected_behavior": "unsupported",
+      "exception_count": 0,
+      "errors": [],
+      "warnings": [
+        "Replay profile unsupported; verified native plots/raw data only."
+      ],
+      "plots": 4,
+      "cursor_count": 0,
+      "raw_and_provenance_access": true,
+      "literal_bundle_bytes_preserved": true,
+      "fixture_bytes_unchanged": true
+    },
+    "metadata-empty_context.json": {
+      "case": "empty_context",
+      "expected_behavior": "safe_optional",
+      "exception_count": 0,
+      "errors": [],
+      "warnings": [],
+      "plots": 4,
+      "cursor_count": 1,
+      "raw_and_provenance_access": true,
+      "literal_bundle_bytes_preserved": true,
+      "fixture_bytes_unchanged": true
+    },
+    "metadata-empty_summary_list.json": {
+      "case": "empty_summary_list",
+      "expected_behavior": "safe_optional",
+      "exception_count": 0,
+      "errors": [],
+      "warnings": [],
+      "plots": 4,
+      "cursor_count": 1,
+      "raw_and_provenance_access": true,
+      "literal_bundle_bytes_preserved": true,
+      "fixture_bytes_unchanged": true
+    },
+    "metadata-context_role_integer.json": {
+      "case": "context_role_integer",
+      "expected_behavior": "withhold",
+      "exception_count": 0,
+      "errors": [
+        "Scientific view withheld: Invalid presentation metadata text: execution_context.role"
+      ],
+      "warnings": [],
+      "plots": 0,
+      "cursor_count": 0,
+      "raw_and_provenance_access": true,
+      "literal_bundle_bytes_preserved": true,
+      "fixture_bytes_unchanged": true
+    },
+    "metadata-git_revision_null.json": {
+      "case": "git_revision_null",
+      "expected_behavior": "withhold",
+      "exception_count": 0,
+      "errors": [
+        "Scientific view withheld: Invalid presentation metadata text: provenance.git_revision"
+      ],
+      "warnings": [],
+      "plots": 0,
+      "cursor_count": 0,
+      "raw_and_provenance_access": true,
+      "literal_bundle_bytes_preserved": true,
+      "fixture_bytes_unchanged": true
+    },
+    "metadata-environment_list.json": {
+      "case": "environment_list",
+      "expected_behavior": "withhold",
+      "exception_count": 0,
+      "errors": [
+        "Scientific view withheld: Invalid presentation metadata object: environment"
+      ],
+      "warnings": [],
+      "plots": 0,
+      "cursor_count": 0,
+      "raw_and_provenance_access": true,
+      "literal_bundle_bytes_preserved": true,
+      "fixture_bytes_unchanged": true
+    }
+  },
+  "actual_Q_samples": {
+    "VDL1_BASE": {
+      "run_id": "20261028T222930399552Z_aea9dc071d4945f78dd9fb4430cd3d85",
+      "directory": "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/results/apex_workbench_qualifications/v0_2_reviewed_20261029/runs/20261028T222930399552Z_aea9dc071d4945f78dd9fb4430cd3d85",
+      "time_s": 0.125,
+      "sample_index": 25,
+      "yaw_rate_rad_s": 0.08489185848304563,
+      "steering_rad": 0.02,
+      "all_four_native_sources_at_0125": true
+    },
+    "VDL1_IZ_HIGH": {
+      "run_id": "20261028T222846828499Z_4d209985d28d4e9ba778e9befb606a77",
+      "directory": "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/results/apex_workbench_qualifications/v0_2_reviewed_20261029/runs/20261028T222846828499Z_4d209985d28d4e9ba778e9befb606a77",
+      "time_s": 0.125,
+      "sample_index": 25,
+      "yaw_rate_rad_s": 0.07598743026071822,
+      "steering_rad": 0.02,
+      "all_four_native_sources_at_0125": true
+    },
+    "VDL1_CF_HIGH": {
+      "run_id": "20261028T222908631528Z_e848f1103e284fdd84a628ab08f6ebd1",
+      "directory": "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/results/apex_workbench_qualifications/v0_2_reviewed_20261029/runs/20261028T222908631528Z_e848f1103e284fdd84a628ab08f6ebd1",
+      "time_s": 0.125,
+      "sample_index": 25,
+      "yaw_rate_rad_s": 0.0956001707685,
+      "steering_rad": 0.02,
+      "all_four_native_sources_at_0125": true
+    }
+  },
+  "current_three_run_classifications": [
+    "qualified_synthetic_comparison",
+    "qualified_synthetic_comparison",
+    "illustrative"
+  ],
+  "qualification": {
+    "actual_original_references_revalidated_by_production_reader": 17,
+    "fresh_selected_runs": [
+      "VDL1_BASE",
+      "VDL1_IZ_HIGH",
+      "VDL1_CF_HIGH"
+    ],
+    "group_qualification": false,
+    "four_permitted_pairs_evidence": "Inherited original independent core evidence; comparison readers/Q/criteria unchanged; all original Q bytes preserved.",
+    "Q_directory": "results/apex_workbench_qualifications/v0_2_reviewed_20261029/qualification",
+    "Q_sha256": "f08ae323e86cdd03964e87b091aef660ac1568e1601e42c43e82dbc0f5e429c8"
+  },
+  "inherited_core_applicability": {
+    "prior_exact_source": "c57603ea0e80b7b2121648ae687ac2afa03cb33d",
+    "new_exact_source": "8cff10bca8475f0992221d2cebf8862414210056",
+    "inherited_core_invocation": {
+      "name": "pytest",
+      "errors": "0",
+      "failures": "0",
+      "skipped": "0",
+      "tests": "15",
+      "time": "131.732",
+      "timestamp": "2026-10-29T23:07:18.768305+02:00",
+      "hostname": "Marwans-MacBook-Air.local",
+      "exit_code": 0,
+      "passes": 15,
+      "failed_nodes": [],
+      "log": "results/apex_workbench_v03c_review_20261029/iteration_1/core.log",
+      "junit": "results/apex_workbench_v03c_review_20261029/iteration_1/core.xml",
+      "native_api_observation": {
+        "requested_ceiling": 1,
+        "set_status": 0,
+        "blas_threading_mode": 1,
+        "mode_name": "single",
+        "exact_active_thread_count_available": false
+      }
+    },
+    "unchanged_recorded_view_function_AST": {
+      "supports_replay": true,
+      "times": true,
+      "sample": true,
+      "matrix": true,
+      "step": true,
+      "tick": true
+    },
+    "unchanged_dependencies_sha256": {
+      "tools/apex_workbench/engineering_views.py": "10ca51921b00aea5d6ebe5be3dbcae9e92da281ebd3633418a698d098512d34b",
+      "tools/apex_workbench/run_catalog.py": "a8f6b770bb63160e19f2535de5dd9178b3e09922ac91bcd12641c936ec24796e",
+      "tools/apex_workbench/experiment_catalog.py": "9167430fc47c05a15aceda57e192f7846fbf3af789ce013e5d7f52140a969921",
+      "tools/apex_workbench/workspace.py": "2d6a9c06dc73e7487f0813981a6cccf820cc90af944212a3a096cf5521263849",
+      "tools/apex_workbench/qualification.py": "ebbde4064962fe4dac9d958860fc271815fd67c804c0d2aff7c5031a2ef577cd",
+      "tools/apex_workbench/lab_evidence.py": "a3ea1046530bbe13461c87529155d167c83681008c9298268be9167b00dbed73",
+      "tools/apex_workbench/plots.py": "091359f6d07fa46105c7575627dc5862203fd2279d77ffa7c0c73b0cca5cc48c",
+      "tools/apex_workbench/storage.py": "9486d6339b6dc50d2d4fe9030dfb71940e11c8ce283e838e7614fed80eaeb3cb",
+      "tools/apex_workbench/lab_comparison.py": "ae792cb84bd0a10dec62160350f4a79e1397098b3267b2f0f7db9285f798e0cb",
+      "tools/apex_workbench/comparison.py": "5e54bd0d75e830d54c4060c19aa7db725b6402af201aba314fd8e1bc42e14b45",
+      "tools/apex_workbench/jobs.py": "0e14fd1c56f76372677e6408c37f44713ca9af3b1d8b8f4c064f80bd1d23b170",
+      "tools/apex_workbench/worker.py": "065738dab95e685b61c9347c254aeb9e13b0cdbcc605087752d0b6b21601b64e",
+      "tools/apex_workbench/lifecycle.py": "794bd5ada88048a402a2d0946942ec9962e52b0caf2e72d7a8a3a0279f51f05a",
+      "tools/apex_workbench/tests/test_engineering_workspace.py": "bccd1811628598d961994bebda2b2d5a0b2bac64fd5ad54cd91be47ced5fd3e9",
+      "tools/apex_workbench/requirements.txt": "5140d1eb1196f17eeefb645da49b4ec0d4bff4918e58951c506ec4a99fb48b01",
+      "pyproject.toml": "c8ea69a3a486c9794b6cf88ac26566211c6f1bb7b7286d86dbaa36a191353d41",
+      "uv.lock": "8cf85868a456415a898643dbb226d146b0b90e5c98982136cf2abf2465fa16ec",
+      "Launch_APEX_Workbench.command": "521e14fb8eb1459e3855c6ef872bd34bdaee764f1c198cad8b2147bf9906599d",
+      "docs/apex_workbench_v0_3_c/RACING_SCENARIO_PROPOSALS.md": "50d89447844f9c227ab0ea4d4ab107e61ae754585e72e54b1aac717067959c22",
+      "docs/apex_workbench_v0_3_c/SCIENTIFIC_DECISIONS.md": "7afcf92df953af0a5742ba373ca5194367ce23259820382ee381ed2fd7b9390c"
+    },
+    "prior_declared_evidence_hashes_unchanged": true,
+    "remaining_delta": "recorded.load adds shape guards; panels.analysis widens expected malformed-data exception handling. No success-path mathematical/sample/clock/epoch logic changes.",
+    "fresh_compensation": "Independent current actual-Q/load/sample/matrix probe and final affected47 include loader and panel callers; new metadata contract is tested separately.",
+    "counts": "Prior15 not rerun or summed with fresh results."
+  },
+  "prior_core_15_not_rerun_or_counted_as_fresh": true,
+  "scenario_design": {
+    "prior_static_assessment_applicable": true,
+    "scenario_documents_and_canonical_sources_unchanged": true,
+    "Primary_decisions_pending": [
+      "S1",
+      "S2",
+      "S3"
+    ],
+    "new_presets": 0,
+    "new_geometry_or_controller_or_numerical_threshold": false,
+    "new_execution_authorized_by_review": false
+  },
+  "environment": {
+    "python": "tools/apex_workbench/.venv/bin/python",
+    "PYTHONPATH": ".:scripts:src",
+    "PYTHONHASHSEED": "0",
+    "MPLCONFIGDIR": "Fresh per-invocation ignored roots",
+    "native_environment": {
+      "VECLIB_MAXIMUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "BLIS_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1"
+    },
+    "fresh_native_api_bootstrap_before_numerical_imports": true,
+    "actual_active_native_thread_count_claimed": false,
+    "same_dedicated_environment_used_for_prior_and_current_review": true,
+    "requirements_and_lock_unchanged": true
+  },
+  "scientific_source_sha256": {
+    "configs/vehicles/synthetic_dynamic_test_vehicle.yaml": "df1b853d21a1d3efaf858f7e58401151f2c5237793c40e16bb4189ed651f9cf3",
+    "scripts/run_dynamic_bicycle_demo.py": "9aa8bef1f05186d6653752becadcfb72d5698a82355606a7847be6d69171baa3",
+    "scripts/threading_study/config.py": "a50a73015c3ab739c35aa1fd715840364974213bf1c12666269b250264556fc3",
+    "src/apex/__init__.py": "2dd176027291d40716c8c828e8a9994afbf247d22bea1426fac52c259cbbc33b",
+    "src/apex/config.py": "40227b4ed2a38e30ecfb9acc7f308cf9db31b54dc813bb28850b25800877e0ad",
+    "src/apex/state.py": "b2b16555f8ae83f041ee821906305accc56010b643bb3fa514f90a8a17e66862",
+    "src/apex/control/__init__.py": "12878dbd9e38ae415462ea0eccbfc315387856736233a7ea4b2f840b1a53e96a",
+    "src/apex/control/base.py": "119b6cb4235421b9728838b47e4913158402997957956a473009c43435acb870",
+    "src/apex/coordinates/__init__.py": "1c443357b2a8e949a157c09b6fb3b50c170d98c908da8c0e8ebbd7e25f919555",
+    "src/apex/coordinates/angles.py": "2ed31ef5153e42083e727efc10b7875277f7f2641a5e16e9790e3f6073b33d05",
+    "src/apex/coordinates/frenet.py": "5fd10e1648847071561086f394914f6812422b0ad04f81ef2a517968334e17bd",
+    "src/apex/models/__init__.py": "d530a05e192b5d6c8b815c3edb2599a88bc35acac91c83280cd8e22d31a1d0d2",
+    "src/apex/models/base.py": "3bd8085e89978410bbe8581903b6280bd84f1a1ca956f1bb62f974462df7c525",
+    "src/apex/models/constants.py": "1b485d45ad2d74aaa256c1aab00157d7c610db0bea9f744d75376b8e816534be",
+    "src/apex/models/errors.py": "81baff4659f36bb6aea91e6a27327260b4d69e23de22963de6832199e7f1f916",
+    "src/apex/models/frenet.py": "a8c6190bd6be9f2a284c83b5c31e5d6cb2d8ef1f791b49bbebdd3c110a36ee96",
+    "src/apex/models/integration.py": "02009193fb2d25e83560a2da37f216048dfa3ededcb3de8616b90e411473ad51",
+    "src/apex/models/vehicle/__init__.py": "ab6dddf29c21f198a84b17e28f3dcb8b4b1e6543e0ce5533d4166a062d549a9f",
+    "src/apex/models/vehicle/parameters.py": "5cfce45b4a87577b17193b44cfa24f11c8e29c93082564a596f7ddf4e797fbb2",
+    "src/apex/models/vehicle/dynamic_bicycle.py": "c93b674924eed24f9641ebe263863b3422cba5eb1665c0d93dd6cd00bdfd462f",
+    "src/apex/models/vehicle/load_transfer.py": "e96c74199a7d8147866529cb4ecfffbfce74815cb57accb52ea54b407b873be1",
+    "src/apex/models/vehicle/force_allocation.py": "e77d8c87efdaa9c008ec45385ad4dad326cfa2e003798c08e29a5fb9a17647f8",
+    "src/apex/models/tire/__init__.py": "000e7ac305a2f5bb610e6ee9e066a6f8d82a0ac335c2b9253d292a2c3c96907f",
+    "src/apex/models/tire/base.py": "da1b635a6da1de465ac7af61dcf3cad8d23ef406eb6dd7f45dad825bc3f60ccf",
+    "src/apex/models/tire/config.py": "73f7e47ae5768a6961a8ca65aa40a5da7ecd77e412ac6995a459e969daa83877",
+    "src/apex/models/tire/linear.py": "6ae5888b0000cd57a88788463977be1a90fa8e1f6a332f131c66623192ce9cf3",
+    "src/apex/models/tire/grip.py": "e91bab930ee0650578ede2964ef680f77663cfd34d26ab1682c232b34c6d8c90",
+    "src/apex/simulation/__init__.py": "84069322b2562012fcfd863d27f6fc88a0f2d5eaba3a4040f10e896cffc4a513",
+    "src/apex/simulation/runner.py": "99dd44020405dd121433637ccf43d53639451a2b7b595bed255555144802cb34",
+    "src/apex/simulation/timing.py": "1bcd5ac042dc761ff8ed83028d0dde372a1569a9549f84e7f92061e109fa968f",
+    "src/apex/track/__init__.py": "95dd539a129d605aa979952c68c75d633738d520fa66e06a491b5bfb2ef7907c",
+    "src/apex/track/base.py": "c15e48dfa2a08bfd57040c80b1280a6f56234503361a38cb3cda6cb35e93cca1",
+    "src/apex/track/centerline.py": "caf28a32f24198fbfd57a7d6a987822f9b4df88ff6b5f1bca5c1f57e2b79429f",
+    "src/apex/track/closed_track.py": "c14fb27c1a1182dec564a5a679832e67c6480fb382a15c05dd2c998b138a350e",
+    "src/apex/track/io.py": "ee2f5a27740684ddba2f1907c88e8893c6cf0c59150352d35845914d5fd30b65",
+    "src/apex/track/progress.py": "fef18ea7fe610cca1ff80f32acdecf5f756b6d26c1a47e47f0eb23b7ae8dc0d8",
+    "src/apex/track/synthetic.py": "1e7ed0900af9971d6c68ca810570b9177a97eb830361c580724870752f4744c0",
+    "tools/apex_workbench/__init__.py": "194595c8c9d46745693697c8417c2408fbe76e3254ae716f26b50c47f4723396",
+    "tools/apex_workbench/configuration.py": "39b33dcd20be80a188d532c33c3fe33561addff847d298beab626fa9a476dc02",
+    "tools/apex_workbench/jobs.py": "0e14fd1c56f76372677e6408c37f44713ca9af3b1d8b8f4c064f80bd1d23b170",
+    "tools/apex_workbench/worker.py": "065738dab95e685b61c9347c254aeb9e13b0cdbcc605087752d0b6b21601b64e",
+    "tools/apex_workbench/lifecycle.py": "794bd5ada88048a402a2d0946942ec9962e52b0caf2e72d7a8a3a0279f51f05a",
+    "tools/apex_workbench/storage.py": "9486d6339b6dc50d2d4fe9030dfb71940e11c8ce283e838e7614fed80eaeb3cb",
+    "tools/apex_workbench/lab_configuration.py": "41e937fbf8d5f4fb239f2d0a99d39f94e1966f59787a7b4ae1f7f4015ce89abc",
+    "tools/apex_workbench/lab_sources.py": "7b5bef6d440f8a16004de9b4539a43c28dc13b203d7ff2a8a01eca1b74895a84",
+    "tools/apex_workbench/dynamic_lab.py": "65e78ea7a982421837e96ea3bc5b8748ae1e1c6e0e22493fe8ae99df8d67063d",
+    "tools/apex_workbench/lab_reporting.py": "47ecc170f80fb06b99b5ef9a78d70749a22da547c52b4b671eba37eca387b0c2",
+    "tools/apex_workbench/lab_evidence.py": "a3ea1046530bbe13461c87529155d167c83681008c9298268be9167b00dbed73",
+    "tools/apex_workbench/lab_comparison.py": "ae792cb84bd0a10dec62160350f4a79e1397098b3267b2f0f7db9285f798e0cb",
+    "tools/apex_workbench/comparison.py": "5e54bd0d75e830d54c4060c19aa7db725b6402af201aba314fd8e1bc42e14b45",
+    "tools/apex_workbench/plots.py": "091359f6d07fa46105c7575627dc5862203fd2279d77ffa7c0c73b0cca5cc48c",
+    "tools/apex_workbench/app.py": "ea572914ab10d824c93002d56831492fccf45a839520754a8ff4f3fe37b4eea8",
+    "tools/apex_workbench/qualification_math.py": "4511601c8291ea40c68b7fe91763f3251e9dcb195bd373c951ec7a47a5977fbf",
+    "tools/apex_workbench/qualification.py": "ebbde4064962fe4dac9d958860fc271815fd67c804c0d2aff7c5031a2ef577cd",
+    "tools/apex_workbench/qualification_campaign.py": "a191c1cf2e34831755c9d48d71767935c3b1f67bb085f04b3539d22ff7398ac9",
+    "tools/apex_workbench/qualification_reference.py": "a93797ffd5bdf974078c032a55367849a257d92138e1e2630e89bcb8168e3826"
+  },
+  "preservation": {
+    "scientific_changed": [],
+    "tracked_changed": [],
+    "qualification_changed": [],
+    "historical_results_changed": [],
+    "symlinks_changed": [],
+    "prior_iteration_1_changed": [],
+    "head": "8cff10bca8475f0992221d2cebf8862414210056",
+    "git_status": "",
+    "qualification_files": 345,
+    "scientific_files": 56,
+    "historical_files": 42566,
+    "tracked_files": 985,
+    "symlinks": 1293,
+    "prior_iteration_1_files_hashed": 741,
+    "after_exit_code": 0,
+    "historical_result_audit_is_size_mtime_not_full_content_hash": true
+  },
+  "current_reviewed_file_sha256": {
+    "tools/apex_workbench/recorded_view.py": "60f280a13c8281705a1f613fc0a6f798666d8d6345b98a51f4733e53830faee2",
+    "tools/apex_workbench/workspace_panels.py": "989699c5169e060e54cbfd01f4e46e0f072b9035330eec534b8b275271b4cbe4",
+    "tools/apex_workbench/experiment_catalog.py": "9167430fc47c05a15aceda57e192f7846fbf3af789ce013e5d7f52140a969921",
+    "tools/apex_workbench/workspace.py": "2d6a9c06dc73e7487f0813981a6cccf820cc90af944212a3a096cf5521263849",
+    "tools/apex_workbench/tests/test_recorded_view.py": "9e16f3bb1f21d28099481cf38ac303239c61ae6e5f1c063100b1640e8e9aaae6",
+    "tools/apex_workbench/tests/test_engineering_workspace.py": "bccd1811628598d961994bebda2b2d5a0b2bac64fd5ad54cd91be47ced5fd3e9",
+    "docs/apex_workbench_v0_3_c/RACING_SCENARIO_PROPOSALS.md": "50d89447844f9c227ab0ea4d4ab107e61ae754585e72e54b1aac717067959c22",
+    "docs/apex_workbench_v0_3_c/SCIENTIFIC_DECISIONS.md": "7afcf92df953af0a5742ba373ca5194367ce23259820382ee381ed2fd7b9390c"
+  },
+  "candidate_diff_from_prior_failed_review": [
+    "docs/CODEX_HANDOFF.md",
+    "docs/apex_workbench_v0_3_c/WORK.md",
+    "docs/apex_workbench_v0_3_c/work_record.json",
+    "docs/reviews/apex_workbench_v0_3_c/iteration_1/REVIEW.md",
+    "docs/reviews/apex_workbench_v0_3_c/iteration_1/review_record.json",
+    "tools/apex_workbench/recorded_view.py",
+    "tools/apex_workbench/tests/test_recorded_view.py",
+    "tools/apex_workbench/workspace_panels.py"
+  ],
+  "reproduction": {
+    "ordinary_affected_selection": "See iteration_2/reproduce.sh; it refuses old output roots and does not hide failure status.",
+    "authorized_supplemental": "See probe_ui_completion.py and run_ui_completion.py. Copy into a fresh authorized output root for reproduction; supervisor refuses to overwrite an earlier log.",
+    "all_original_failed_attempts_preserved": true
+  },
+  "evidence_root": "results/apex_workbench_v03c_review_20261029/iteration_2",
+  "evidence_sha256": {
+    "results/apex_workbench_v03c_review_20261029/iteration_2/actual_Q_samples.json": "7d901cc58843ac7ebfb30715a7d936b1de0196cc581cc2ba130711ba56896c57",
+    "results/apex_workbench_v03c_review_20261029/iteration_2/before.json": "7eb6ccf36c003f153c96ac76f7a3109d7c1248b704f4c5a0d574f31ef07a015a",
+    "results/apex_workbench_v03c_review_20261029/iteration_2/correction.log": "5925280b04d88c41a9a7ed396cb557d9af8ccd26d15e22cb0929ad824055aa65",
+    "results/apex_workbench_v03c_review_20261029/iteration_2/correction.xml": "63d9fcf5152981bbff883e238c33e99d8f7424987c87afa22534f6c06a983b55",
+    "results/apex_workbench_v03c_review_20261029/iteration_2/metadata-context_role_integer.json": "72490fd4ec47a28fa57c5d2f6c4d6f08b7791126787256cada24243d399c6fa2",
+    "results/apex_workbench_v03c_review_20261029/iteration_2/metadata-context_role_null.json": "51cad21b16ee71710225765d0f906c54db500cc208538900e0fe26538a4cfb3f",
+    "results/apex_workbench_v03c_review_20261029/iteration_2/metadata-diagnostic_units_list.json": "ca21b8ce04d8d9602804ed948e2df83a15c0edeb40d866c6d520aa5e469ee245",
+    "results/apex_workbench_v03c_review_20261029/iteration_2/metadata-empty_context.json": "05d46622424c7909606e2320f7bf60b4dbaeeefce67ff7a5eaeacbb72643d181",
+    "results/apex_workbench_v03c_review_20261029/iteration_2/metadata-empty_contract.json": "95cc69ca11c4f0185cebb2510fc690b20707eddecbbf377d08e73946a6ad352f",
+    "results/apex_workbench_v03c_review_20261029/iteration_2/metadata-empty_provenance.json": "6fe67d34abb4ac2b7f725fa0d959add9047d9489a06ae2536c71b22846905a7f",
+    "results/apex_workbench_v03c_review_20261029/iteration_2/metadata-empty_state_names.json": "49a0936512dd4270ca3e32739e40127cba8ca067c953f4e3a9315c87d094e324",
+    "results/apex_workbench_v03c_review_20261029/iteration_2/metadata-empty_summary_list.json": "aafb95caa54e08b95fd78168f177c6d807504d391469230dde5b4cdabf934127",
+    "results/apex_workbench_v03c_review_20261029/iteration_2/metadata-environment_list.json": "d77892eedf72ec10e2df59debd1682b94e840a79b1104b7ba4f8705d23e36da8",
+    "results/apex_workbench_v03c_review_20261029/iteration_2/metadata-execution_context_list.json": "a6a7a94824a79eb544bf7cf53c58a4702830dcedee8850e4b6838584e1673c53",
+    "results/apex_workbench_v03c_review_20261029/iteration_2/metadata-execution_context_null.json": "d28f6ab466204ff0d1e259b09ef50c1bc0f6ed555930dba775b362d875f170f4",
+    "results/apex_workbench_v03c_review_20261029/iteration_2/metadata-git_revision_integer.json": "c6d89e1c562f480914e6055bddcec8a7d479425a8ac50fac129c396dcd066d17",
+    "results/apex_workbench_v03c_review_20261029/iteration_2/metadata-git_revision_null.json": "e17656f3d9d6a58185b991b969575bb5058e546fd39447afd40ad6de3140e459",
+    "results/apex_workbench_v03c_review_20261029/iteration_2/metadata-null_contract.json": "c637006bf829319d6f8655868a9758a3f99f7f9d78ff059afe8c8a6fc894f361",
+    "results/apex_workbench_v03c_review_20261029/iteration_2/metadata-null_environment.json": "1f3b13417eb98e77d24eb66e551c07d8a7a66e8d5263a60a64d308a17d4dfe51",
+    "results/apex_workbench_v03c_review_20261029/iteration_2/metadata-provenance_list.json": "587ad346450639c46dc444c5734670f3918c1ef2982543621585acd1672acc54",
+    "results/apex_workbench_v03c_review_20261029/iteration_2/metadata-provenance_null.json": "29d71ab776ae09a73696b0e975929c0277f3e851a304bebda49316fba677ed6b",
+    "results/apex_workbench_v03c_review_20261029/iteration_2/metadata-sampled_model_window_list.json": "f2a2ae490f9991d71662db237d27b2e2436eea4a1bcebf4372dff3a8471fcf00",
+    "results/apex_workbench_v03c_review_20261029/iteration_2/metadata-sampled_window_null.json": "4c2b9f668c09c5e54547f5381369d147f3569d1ca9efaa0808a23c4f78dbdc22",
+    "results/apex_workbench_v03c_review_20261029/iteration_2/metadata-sampled_window_status_null.json": "067d85908105eda060eae8576e4b4cfff3fc4471edfd44046ec9873e11931de6",
+    "results/apex_workbench_v03c_review_20261029/iteration_2/metadata-state_names_null.json": "f60f136115af875c431e0c01442027e67254b2ad7b3f4e7c786b9811741ee267",
+    "results/apex_workbench_v03c_review_20261029/iteration_2/metadata-state_units_nontext.json": "683c14521384646ae26009aa2afd95e0f06c4270a98dc50f7bff8a7a0b1c8ca5",
+    "results/apex_workbench_v03c_review_20261029/iteration_2/metadata-summary_integer.json": "099ede1dc96c98aad806638e01d2491c8c041af0972b36f0e97dfe377544573e",
+    "results/apex_workbench_v03c_review_20261029/iteration_2/metadata-telemetry_contract_list.json": "f267de8ea1bc97171585091992add76e443d89b345fe1375b9477859ebf7bc0c",
+    "results/apex_workbench_v03c_review_20261029/iteration_2/metadata-worker_result_list.json": "54b483bae94e61627caa00979f5ae8d40943bd1e70040322c51e0f608f3e7cb4",
+    "results/apex_workbench_v03c_review_20261029/iteration_2/preservation-after-exit.json": "b6e109139803e363efbc0ac04858a78eebfa3afa8d416daabc6feb9e757bd58d",
+    "results/apex_workbench_v03c_review_20261029/iteration_2/preservation-after.log": "7e7ea524345c69ac75500e4bfc766a0ede8da5bd284453a94f2666a9ce6dc570",
+    "results/apex_workbench_v03c_review_20261029/iteration_2/preservation-before.log": "7f869fb4bc73a4db777ce192b754a099f07d3abcdbedfcfa36646318f91a434c",
+    "results/apex_workbench_v03c_review_20261029/iteration_2/preservation.json": "7e7ea524345c69ac75500e4bfc766a0ede8da5bd284453a94f2666a9ce6dc570",
+    "results/apex_workbench_v03c_review_20261029/iteration_2/preservation.py": "6d2459a6e3f5d8bb8799bcaac43bd2f25397008973e7ac7a54ef39ebdb455e9e",
+    "results/apex_workbench_v03c_review_20261029/iteration_2/probe_correction.py": "2d5043bbdc67e184a389748da75ddfe2120ab1472b27313acc429f501e6f0083",
+    "results/apex_workbench_v03c_review_20261029/iteration_2/probe_ui_completion.py": "bf6229883e4706e393693a4ff6c106c527277464d185aea393d05b97407222fb",
+    "results/apex_workbench_v03c_review_20261029/iteration_2/reproduce.sh": "72ca3f8b459b73174ad84d9d598cf0c254f76414d32f9642905067d9db3a9f43",
+    "results/apex_workbench_v03c_review_20261029/iteration_2/reuse_applicability.json": "47e8464a6a2c7c2a8815e31f09bad68768d55418ae7e09c9eb7a63d2751032bd",
+    "results/apex_workbench_v03c_review_20261029/iteration_2/run_ui_completion.py": "b31fbeb4855e8229c10a6b262ed855c020ce2bc732f2a8c4469b1e3d9e1ce145",
+    "results/apex_workbench_v03c_review_20261029/iteration_2/test_original_three_run_assertions_with_120s_render_budget-renders.json": "cb251cd0463f7e2c57603c5ca011864a96ecd634c8a7685cba6b09693fc0f80a",
+    "results/apex_workbench_v03c_review_20261029/iteration_2/test_original_two_run_assertions_with_120s_render_budget-renders.json": "3f5b78869cd27856d19325338260b0065312b75956133713af4158120b0c8302",
+    "results/apex_workbench_v03c_review_20261029/iteration_2/ui-completion-budget.json": "ea0b4ce99f51432bd5fade3719ee357878e0b588b8f534c472265d96029309e9",
+    "results/apex_workbench_v03c_review_20261029/iteration_2/ui-completion-supervisor.log": "ea0b4ce99f51432bd5fade3719ee357878e0b588b8f534c472265d96029309e9",
+    "results/apex_workbench_v03c_review_20261029/iteration_2/ui-completion.log": "4e4d7eceba68ed4afaac8d148031e984ce85c4f68b9af519fa4f1b5f6f0b2b88",
+    "results/apex_workbench_v03c_review_20261029/iteration_2/ui-completion.xml": "029bd7a9d941936d6482fcdd3ea4c7037287a3f07d5d76042398b712dd653e30",
+    "results/apex_workbench_v03c_review_20261029/iteration_2/ui47.log": "bf32a1e756d20724348c06f2f2a982c87b78c80c21b938c019b1c951046be59c",
+    "results/apex_workbench_v03c_review_20261029/iteration_2/ui47.xml": "649a4ec657dd24bd7360bbce9d89660257c67492accfe56b196cf9ddc9ba56c9"
+  },
+  "report_sha256": "cc3d48a5509d7ba991afe8214c487cbabf694aa04ab56f128408189308cd3822",
+  "formal_verification": "NOT_RUN_NOT_PASS",
+  "formal_full_suite_not_run": true,
+  "new_qualification_trajectories": 0,
+  "new_racing_scenario_executions": 0,
+  "archive_writes": 0,
+  "new_physical_or_CT_or_Safety_work": false,
+  "after_interruption_resume": "Read-only completion/audit checks and review artifact creation only; no test invocation repeated.",
+  "next_authorized_gate": "None inferred. Stop pending separately authorized formal Verification and Primary scenario approval; B final user acceptance remains separate."
+}

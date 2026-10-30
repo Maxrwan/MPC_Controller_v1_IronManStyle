@@ -1,49 +1,54 @@
-# Current handoff — V0.3-C engineering workspace WORK
+# Current handoff — V0.3-C Engineering Review complete
 
-**WORK_COMPLETE_PENDING_REVIEW.** Recorded 29 October 2026. Branch `codex/apex-workbench-v0-3-c`,
-base B Verification delivery `ccd19549a9b3e25d1a5bd2c037a27090eda8dccf`. Exact candidate is identified
-by the following independent review. B final user acceptance remains pending in the authoritative
-handoff; this explicit C authorization does not record B acceptance or permit new scientific scenarios.
+**V0.3_C_ENGINEERING_REVIEW_COMPLETE_PENDING_VERIFICATION_AND_SCENARIO_APPROVAL.**
+Finalized 30 October 2026, branch `codex/apex-workbench-v0-3-c`. Independent **PASS WITH CONDITIONS**
+at exact implementation `8cff10bca8475f0992221d2cebf8862414210056`; base B Verification delivery
+`ccd19549a9b3e25d1a5bd2c037a27090eda8dccf`. This delivery changes documentation only after review.
+B final user acceptance remains pending; this task does not record it or approve new scenarios.
 
-Compact primary status/cursor/plot layout and on-demand diagnostics/evidence/notes; central descriptions
-for the unchanged three adapters/five lab cases. Exact native shared-time inspection, stored XY and
-read-only play/pause/seek/step. Source/sample identity, missing/multirate/terminal/partial meanings are
-explicit, with no interpolation, inferred holds, new XY or dynamics execution. View/Q/source changes
-stop/reset playback or withhold stale science. Two-to-four runs use accepted per-pair labels only;
-BASE/IZ and BASE/CF can qualify with exact Q, IZ/CF stays illustrative. No group-qualified experiment.
+Compact primary actions/status, native-time cursor, read-only play/pause/seek/step, stored XY,
+central descriptions for the three actual adapters/five lab cases, and pairwise two-to-four-run
+comparison are implemented. Exact timestamps, source/sample identities, units and partial/terminal
+meanings remain explicit. No interpolation, inferred hold, new XY, dynamics or group qualification.
+Configuration/provenance/raw data/notes stay accessible on demand; archives stay read-only.
 
 [WORK](apex_workbench_v0_3_c/WORK.md), [machine record](apex_workbench_v0_3_c/work_record.json),
-[racing proposals](apex_workbench_v0_3_c/RACING_SCENARIO_PROPOSALS.md),
-[Primary decisions](apex_workbench_v0_3_c/SCIENTIFIC_DECISIONS.md), updated roadmap and ADR-177.
-The scenario package covers all five families and proposes three complementary priorities; no new
-scenario is executable. Historical conservative G and accepted Performance P stay source-distinct.
+[final independent review](reviews/apex_workbench_v0_3_c/iteration_2/REVIEW.md),
+[review machine record](reviews/apex_workbench_v0_3_c/iteration_2/review_record.json).
+Initial `c57603e` FAIL and its six B/C metadata fault reproductions are preserved verbatim in
+[iteration 1](reviews/apex_workbench_v0_3_c/iteration_1/REVIEW.md). One substantive correction
+validates additive presentation metadata and contains malformed-data exceptions while preserving
+raw/provenance/export access and literal bytes. R1 is independently closed; no blocker remains.
 
-Focused Workbench directory: 276 passed. After presentation/case-description/declared-ZOH refinements,
-final affected two-file view selection: 38 passed. These are separate invocations, not summed or a full
-Verification claim. All 239 backend/legacy cases retain unchanged dependencies; final view/provenance
-and original nominal-worker checks are fresh. Harness failures (expander API and added XY plot count)
-are preserved; no mathematical assertion or original evidence was altered. Real browser autoplay
-crossed onset and paused; actual launcher started from a different cwd, reused its owned server and
-stopped cleanly. Two owned server instances only; no user server was stopped.
+Separate results, never aggregated: initial focused Workbench directory 276 passes; final implementer
+correction selection 47 passes; final independent metadata/Q probe 26 passes; independent affected
+47-test invocation **45 passes / 2 AppTest deadline failures**. The same two original assertion bodies
+pass in one supplemental bounded probe (120 s/render, 420 s overall cap, not hit). This does not turn
+the failed invocation into 47 passes or demonstrate compliance with its 45/60 s deadlines.
 
-All 56 scientific files and original app.py/plots.py/workers/readers/launcher remain unchanged.
-Retained 17/Q4 audit and historical preservation checks are recorded; no 17-trajectory campaign,
-new track/controller/parameter/threshold, frozen research, hardware, CT or physical telemetry work.
-Evidence under `results/apex_workbench_v03c_work_20261029/`. Root full-suite Verification deferred.
+**N1 remains material and nonblocking for Engineering Review:** one Q-selection AppTest render took
+89.886 s. Cause unresolved. Separately authorized formal Verification must retain/reconcile this
+evidence, declare a bounded UI harness/deadline policy and assess the long render. No responsiveness
+or real-time guarantee, new acceptance threshold or installed harness policy follows from review.
 
-Independent iteration 1 rejected initial `c57603e` for malformed optional legacy metadata crashing
-new presentation code. Its report and six B/C fault reproductions are preserved under
-`docs/reviews/apex_workbench_v0_3_c/iteration_1/`. One bounded additive metadata-shape/exception
-correction now withholds plots/replay while retaining raw access; **47 focused tests pass** including
-nine copied malformed-metadata cases. Exact correction re-review is pending.
-No frozen reader or scientific file changed.
+All 56 scientific dependencies, original app.py/plots.py, workers/readers and launcher remain unchanged.
+Original qualification: 17 retained references, four accepted conditional pairs, all 345 files unchanged.
+Independent preservation also checks tracked bytes, historical result size/mtime, symlink targets and
+initial failed evidence. Actual launcher/browser startup, reuse, owned shutdown and native replay
+observations remain recorded in WORK; no user server was stopped. Environment versions rechecked
+unchanged on 30 October. No full formal suite or 17-trajectory/new racing campaign ran in this task.
 
-Next: exact-candidate separate-context Engineering Review; up to three bounded correction iterations,
-re-review changed revisions, then stop pending formal Verification AND Primary scenario approval.
-No source-identity migration is needed for the implemented UI; future scientific changes keep their
-gates. Do not automatically start new racing runs, replay archive profiles or the next major stage.
+[Racing proposals](apex_workbench_v0_3_c/RACING_SCENARIO_PROPOSALS.md) cover five families with three
+priorities; [S1/S2/S3](apex_workbench_v0_3_c/SCIENTIFIC_DECISIONS.md) require Primary scientific review.
+Historical conservative G and accepted Performance P remain distinct. No new scenario is executable.
+Roadmap and ADR-177 record the bounded delivery. Evidence is under
+`results/apex_workbench_v03c_work_20261029/` and `results/apex_workbench_v03c_review_20261029/`.
 
-Target: `V0.3_C_ENGINEERING_REVIEW_COMPLETE_PENDING_VERIFICATION_AND_SCENARIO_APPROVAL`.
+Next gates require separate authorization: formal Verification (including N1 disposition) and Primary
+scenario contract approval before implementation/execution. Do not start new racing runs, CT/Safety/
+hardware work, generic archive profiles or the next major stage automatically.
+
+**Stop: V0.3_C_ENGINEERING_REVIEW_COMPLETE_PENDING_VERIFICATION_AND_SCENARIO_APPROVAL.**
 
 ---
 

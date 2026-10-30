@@ -3,8 +3,12 @@
 The primary local workspace provides **Home / Run / Inspect / Compare** over the accepted
 Workbench engine. Discover retained runs, reopen their original evidence, inspect actual channels
 and inspect/replay actual native samples across two to four records. Engineering notes are optional.
-See [V0.3-C WORK and evidence](../../docs/apex_workbench_v0_3_c/WORK.md). C Engineering Review and
-formal Verification are separately gated. [B formal Verification](../../docs/reviews/apex_workbench_v0_3_b/VERIFICATION.md)
+See [V0.3-C WORK and evidence](../../docs/apex_workbench_v0_3_c/WORK.md).
+[C independent review](../../docs/reviews/apex_workbench_v0_3_c/iteration_2/REVIEW.md) is **PASS WITH CONDITIONS**;
+formal Verification still requires separate authorization. Two AppTest deadlines failed in review; the same
+assertions completed in a separate bounded probe, including an 89.886 s Q-selection render. Its cause
+and UI harness policy remain unresolved for Verification; no responsiveness guarantee follows.
+[B formal Verification](../../docs/reviews/apex_workbench_v0_3_b/VERIFICATION.md)
 passed; its authoritative handoff still records final user acceptance pending.
 
 The five finite synthetic V0.2 cases and four baseline/treatment comparisons were qualified and

@@ -1,11 +1,11 @@
 {
   "schema": "apex-workbench-v03c-work/1",
-  "status": "WORK_COMPLETE_PENDING_REVIEW",
+  "status": "V0.3_C_ENGINEERING_REVIEW_COMPLETE_PENDING_VERIFICATION_AND_SCENARIO_APPROVAL",
   "recorded_local_date": "2026-10-29",
   "repository": "Maxrwan/MPC_Controller_v1_IronManStyle",
   "branch": "codex/apex-workbench-v0-3-c",
   "base_revision": "ccd19549a9b3e25d1a5bd2c037a27090eda8dccf",
-  "candidate": "containing R1 correction commit; exact SHA to be independently re-reviewed",
+  "candidate": "8cff10bca8475f0992221d2cebf8862414210056",
   "b_acceptance": "authoritative handoff remains VERIFIED_PENDING_USER_ACCEPTANCE; not inferred from hands-on trial",
   "scientific_source_revision": "4897686e79c13757d5ef5b4373b44d4cab99b5bf",
   "source_sha256": {
@@ -513,7 +513,7 @@
     "frozen_inventory_migration_required": false
   },
   "independent_review": {
-    "status": "initial exact candidate FAIL; one bounded correction pending exact-revision re-review",
+    "status": "PASS WITH CONDITIONS",
     "substantive_correction_iterations_used": 1,
     "maximum": 3,
     "initial_reviewed_sha": "c57603ea0e80b7b2121648ae687ac2afa03cb33d",
@@ -540,12 +540,116 @@
         "B_passed": 3,
         "C_failed": 3
       }
-    }
+    },
+    "reviewed_sha": "8cff10bca8475f0992221d2cebf8862414210056",
+    "final_report": "docs/reviews/apex_workbench_v0_3_c/iteration_2/REVIEW.md",
+    "final_record": "docs/reviews/apex_workbench_v0_3_c/iteration_2/review_record.json",
+    "final_report_sha256": "cc3d48a5509d7ba991afe8214c487cbabf694aa04ab56f128408189308cd3822",
+    "final_record_sha256": "99e73725a3e1f903efb52d5b5eebf88d6943c9c4bd7d2d8ea4a39dd3ed3ca882",
+    "blocking_findings": [],
+    "resolved_findings": [
+      "R1"
+    ],
+    "conditions": [
+      {
+        "id": "N1",
+        "blocking_for_engineering_review": false,
+        "title": "Retained UI deadline failures and material Q-selection responsiveness limitation",
+        "evidence": "Fresh affected47 invocation remains failed:45passes and2AppTest deadline failures at60/45s. Authorized two-scenario supplemental execution with unchanged assertions completes under120s/render and420s aggregate cap. One Q-selection render takes89.8861350419902s.",
+        "cause": "UNRESOLVED; no host, OS, library or application cause inferred",
+        "next_gate_requirement": "At separately authorized formal Verification, retain/reconcile timeout evidence, declare a bounded UI harness/deadline policy and assess long Q selection. Do not claim47reviewer passes, compliance with original45/60s deadlines, responsive UI or real-time behavior from the supplemental result.",
+        "no_new_responsiveness_acceptance_threshold_invented": true
+      }
+    ],
+    "fresh_final_invocations": {
+      "correction": {
+        "name": "pytest",
+        "errors": "0",
+        "failures": "0",
+        "skipped": "0",
+        "tests": "26",
+        "time": "134.372",
+        "timestamp": "2026-10-29T23:25:48.218589+02:00",
+        "hostname": "Marwans-MacBook-Air.local",
+        "passes": 26,
+        "exit_code": 0,
+        "pytest_stdout_summary": "26 passed in 134.27s",
+        "failed_nodes": [],
+        "log": "results/apex_workbench_v03c_review_20261029/iteration_2/correction.log",
+        "junit": "results/apex_workbench_v03c_review_20261029/iteration_2/correction.xml",
+        "native_api_observation": {
+          "requested_ceiling": 1,
+          "set_status": 0,
+          "blas_threading_mode": 1,
+          "mode_name": "single",
+          "exact_active_thread_count_available": false
+        }
+      },
+      "ui47": {
+        "name": "pytest",
+        "errors": "0",
+        "failures": "2",
+        "skipped": "0",
+        "tests": "47",
+        "time": "317.364",
+        "timestamp": "2026-10-29T23:29:09.324302+02:00",
+        "hostname": "Marwans-MacBook-Air.local",
+        "passes": 45,
+        "exit_code": 1,
+        "pytest_stdout_summary": "2 failed, 45 passed in 317.36s",
+        "failed_nodes": [
+          {
+            "node": "tools.apex_workbench.tests.test_recorded_view::test_three_run_ui_0125_and_pair_labels",
+            "message": "RuntimeError: AppTest script run timed out after 60(s)",
+            "kind": "AppTest render deadline; source of delay unresolved"
+          },
+          {
+            "node": "tools.apex_workbench.tests.test_engineering_workspace::test_actual_compare_ui_candidate_then_qualified",
+            "message": "RuntimeError: AppTest script run timed out after 45(s)",
+            "kind": "AppTest render deadline; source of delay unresolved"
+          }
+        ],
+        "log": "results/apex_workbench_v03c_review_20261029/iteration_2/ui47.log",
+        "junit": "results/apex_workbench_v03c_review_20261029/iteration_2/ui47.xml",
+        "native_api_observation": {
+          "requested_ceiling": 1,
+          "set_status": 0,
+          "blas_threading_mode": 1,
+          "mode_name": "single",
+          "exact_active_thread_count_available": false
+        }
+      },
+      "ui-completion": {
+        "name": "pytest",
+        "errors": "0",
+        "failures": "0",
+        "skipped": "0",
+        "tests": "2",
+        "time": "137.269",
+        "timestamp": "2026-10-29T23:37:24.655564+02:00",
+        "hostname": "Marwans-MacBook-Air.local",
+        "passes": 2,
+        "exit_code": 0,
+        "pytest_stdout_summary": "2 passed in 137.02s",
+        "failed_nodes": [],
+        "log": "results/apex_workbench_v03c_review_20261029/iteration_2/ui-completion.log",
+        "junit": "results/apex_workbench_v03c_review_20261029/iteration_2/ui-completion.xml",
+        "native_api_observation": {
+          "requested_ceiling": 1,
+          "set_status": 0,
+          "blas_threading_mode": 1,
+          "mode_name": "single",
+          "exact_active_thread_count_available": false
+        }
+      }
+    },
+    "counts_not_aggregated": true,
+    "failed47_remains_failed": true,
+    "supplement_does_not_replace_failed_selection": true
   },
   "next_required_gates": [
-    "separate-context exact-revision Engineering Review",
-    "separately authorized formal Verification",
-    "Primary scientific scenario approval before execution"
+    "separately authorized formal Verification, retaining N1 failed UI attempt and declaring bounded harness policy",
+    "Primary scientific scenario contract approval before implementation/execution"
   ],
   "evidence_sha256": {
     "results/apex_workbench_v03c_work_20261029/before.json": "e75ad2bb4c1035ee0a851c6f1aa57fa3c93d08650cf8f70bcf8a80323eaf8d63",
@@ -664,7 +768,7 @@
     "preserves_raw_bytes": true,
     "silently_normalizes_metadata": false,
     "frozen_reader_or_science_changes": false,
-    "re_review": "pending exact containing commit",
+    "re_review": "PASS WITH CONDITIONS at 8cff10bca8475f0992221d2cebf8862414210056",
     "test_command": [
       "tools/apex_workbench/.venv/bin/python",
       "-u",
@@ -711,5 +815,47 @@
       "illustrative"
     ],
     "no_new_qualification_or_racing_trajectories": true
+  },
+  "delivery_finalized_date": "2026-10-30",
+  "reviewed_implementation": "8cff10bca8475f0992221d2cebf8862414210056",
+  "delivery_scope": "documentation-only descendant after independent review; exact delivery SHA supplied after push",
+  "formal_verification_performed": false,
+  "unresolved_risks": [
+    {
+      "id": "N1",
+      "blocking_for_engineering_review": false,
+      "title": "Retained UI deadline failures and material Q-selection responsiveness limitation",
+      "evidence": "Fresh affected47 invocation remains failed:45passes and2AppTest deadline failures at60/45s. Authorized two-scenario supplemental execution with unchanged assertions completes under120s/render and420s aggregate cap. One Q-selection render takes89.8861350419902s.",
+      "cause": "UNRESOLVED; no host, OS, library or application cause inferred",
+      "next_gate_requirement": "At separately authorized formal Verification, retain/reconcile timeout evidence, declare a bounded UI harness/deadline policy and assess long Q selection. Do not claim47reviewer passes, compliance with original45/60s deadlines, responsive UI or real-time behavior from the supplemental result.",
+      "no_new_responsiveness_acceptance_threshold_invented": true
+    }
+  ],
+  "retained_review_preservation": {
+    "scientific_changed": [],
+    "tracked_changed": [],
+    "qualification_changed": [],
+    "historical_results_changed": [],
+    "symlinks_changed": [],
+    "prior_iteration_1_changed": [],
+    "head": "8cff10bca8475f0992221d2cebf8862414210056",
+    "git_status": "",
+    "qualification_files": 345,
+    "scientific_files": 56,
+    "historical_files": 42566,
+    "tracked_files": 985,
+    "symlinks": 1293,
+    "prior_iteration_1_files_hashed": 741,
+    "after_exit_code": 0,
+    "historical_result_audit_is_size_mtime_not_full_content_hash": true
+  },
+  "continuation_environment_check": {
+    "date": "2026-10-30",
+    "tested_python_and_package_versions_unchanged": true,
+    "new_test_invocations": 0
+  },
+  "source_identity_after_review": {
+    "all_recorded_source_and_test_hashes_current": true,
+    "behavior_test_launcher_changes_after_review": false
   }
 }

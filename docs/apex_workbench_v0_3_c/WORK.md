@@ -1,11 +1,12 @@
 # V0.3-C — engineering usability, recorded replay and pairwise comparison
 
-**WORK_COMPLETE_PENDING_REVIEW.** 29 October 2026. Branch `codex/apex-workbench-v0-3-c`,
+**ENGINEERING REVIEW: PASS WITH CONDITIONS.** Finalized 30 October 2026; tests executed 29 October.
+Reviewed implementation `8cff10bca8475f0992221d2cebf8862414210056`, branch `codex/apex-workbench-v0-3-c`,
 from B Verification delivery `ccd19549a9b3e25d1a5bd2c037a27090eda8dccf`.
 The authoritative B handoff still says `V0.3_B_VERIFIED_PENDING_USER_ACCEPTANCE`; hands-on feedback
 is not recorded as formal acceptance. This task explicitly authorizes C engineering independently.
-The containing candidate commit binds tested implementation hashes; exact review SHA is supplied in
-the subsequent separate-context report. Formal full-suite Verification is not authorized here.
+The containing delivery changes documentation only after the exact-revision independent review.
+Formal full-suite Verification is not authorized here.
 
 ## Implementation
 
@@ -85,7 +86,7 @@ was stopped. A 1440x1000 desktop layout and default narrow browser layout were i
 temporary viewport override was reset. Native UI observations and screenshot are retained under
 `interactive-ui-final/`. These checks are functional/visual observations, not final user acceptance.
 
-## Bounded correction R1 — pending exact-revision re-review
+## Bounded correction R1 — independently closed
 
 The independent [iteration-1 FAIL](../reviews/apex_workbench_v0_3_c/iteration_1/REVIEW.md)
 is preserved against exact initial candidate `c57603ea0e80b7b2121648ae687ac2afa03cb33d`.
@@ -104,7 +105,36 @@ Fresh correction selection: **47 passed**, zero failures/errors/skips, 261.78 s;
 earlier 276-pass run and initial 38-pass final-view run. No pytest retry. Imported-fixture lint
 suppression was adjusted after formatting; all changed-file Ruff lint/format and diff checks pass.
 No accepted reader/backend/scientific source is changed. This is one substantive correction
-iteration of the authorized maximum three, pending commitment and independent re-review.
+iteration of the authorized maximum three, independently closed by the
+[final review](../reviews/apex_workbench_v0_3_c/iteration_2/REVIEW.md) at `8cff10bca8475f0992221d2cebf8862414210056`.
+
+## Independent review outcome and retained condition
+
+Separate-context Engineering Review is **PASS WITH CONDITIONS**. R1 is closed with fresh fault
+reproductions and literal-byte/raw/export preservation. The initial FAIL report remains verbatim.
+The final [review record](../reviews/apex_workbench_v0_3_c/iteration_2/review_record.json) retains
+all exact commands, evidence hashes and distinct outcomes:
+
+| Final independent invocation | Outcome |
+|---|---|
+| Correction/actual-Q/native-sample probe | 26 passed |
+| Exact candidate affected two-file selection | 45 passed, 2 AppTest timeout failures; exit 1 |
+| One authorized supplemental check of those same two original assertion bodies | 2 passed separately; 120 s/render, 420 s aggregate cap not hit |
+
+The failed 47-test invocation stays failed. The supplemental result changes no committed source,
+test or assertion; it demonstrates semantic completion, not the original 45/60 s deadlines. One
+Q-selection render took **89.886 s**, a material practical limitation with unresolved cause. N1 is
+nonblocking for this bounded Engineering Review; formal Verification must retain/reconcile the
+failure evidence, declare a bounded UI harness/deadline policy and assess the long render. No
+responsiveness guarantee or new scientific/latency acceptance criterion is installed by this task.
+The prior 15-pass independent core is inherited only where exact AST/dependency identity is recorded;
+it is not newly executed or added to current counts.
+
+Independent final preservation checks all 56 scientific files, 985 preexisting tracked files,
+345 original qualification files and 741 prior-iteration files by SHA-256; 42,566 historical result
+files by size/mtime and 1,293 symlink targets. All remain unchanged before review-doc delivery.
+Current Python/package versions also match the tested environment on 30 October. No test reran
+after the interrupted reviewer turn resumed; only audit/completion documentation was finalized.
 
 ## Scientific preparation and remaining gates
 
@@ -120,8 +150,8 @@ family's geometry/excitation/domain/qualification contract. Unknown straight geo
 assumptions are not invented. Source migration is required if a future indispensable change touches
 one of the 56 dependencies; this task needs none.
 
-Next: commit exact candidate, independent Engineering Review and bounded corrections/re-review
-(up to three substantive iterations). Then stop pending separately authorized formal Verification
-and Primary scenario approval. No automatic next MVP stage or new racing execution.
+Next: separately authorized formal Verification, including N1 disposition, and Primary scenario
+contract approval. Engineering Review is complete with conditions after one bounded correction.
+No automatic next MVP stage or new racing execution.
 
-Target: `V0.3_C_ENGINEERING_REVIEW_COMPLETE_PENDING_VERIFICATION_AND_SCENARIO_APPROVAL`.
+**Stop: V0.3_C_ENGINEERING_REVIEW_COMPLETE_PENDING_VERIFICATION_AND_SCENARIO_APPROVAL.**

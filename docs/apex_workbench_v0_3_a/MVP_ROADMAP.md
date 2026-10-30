@@ -1,8 +1,10 @@
 # Prioritized roadmap
 
-Current progress (29 October 2026): M1/V0.3-B is verified with final user acceptance still pending.
+Current progress (30 October 2026): M1/V0.3-B is verified with final user acceptance still pending.
 V0.3-C implements compact inspection, M2 pairwise 2–4-run/native-time comparison and the known-record
-portion of M3 play/pause/seek/step, pending its exact-revision independent review and Verification.
+portion of M3 play/pause/seek/step. Independent review is PASS WITH CONDITIONS at `8cff10b`;
+formal Verification remains pending. N1 retains two AppTest deadline failures and a long Q-selection
+render for explicit disposition; no performance guarantee or new deadline policy is installed.
 This is not a generic bundle importer or M4 legacy-controller archive profile. See
 [C WORK](../apex_workbench_v0_3_c/WORK.md), [scenario preparation](../apex_workbench_v0_3_c/RACING_SCENARIO_PROPOSALS.md)
 and [Primary decisions](../apex_workbench_v0_3_c/SCIENTIFIC_DECISIONS.md). No new racing execution,
