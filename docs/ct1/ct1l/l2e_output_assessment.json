@@ -1,0 +1,205 @@
+{
+  "task": "APEX-CT-1L-L2D-L2E",
+  "stage": "CODE_ONLY_CORRECTION_AND_STATIC_RESOURCE_REVIEW",
+  "status": "WORK_COMPLETE_PENDING_REVIEW",
+  "base_sha": "265d02f479b7bb759baff9205156635f2da45887",
+  "implementation_revision_binding": {
+    "method": "EXACT_CONTAINING_GIT_COMMIT",
+    "base_sha": "265d02f479b7bb759baff9205156635f2da45887",
+    "resolve": "git log -1 --format=%H -- docs/ct1/ct1l/l2de_l3_execution_request.md",
+    "constraint": "Resolve to the exact delivery SHA reported after commit/push; future grant implementation_sha must equal it. A tracked document cannot contain its own Git SHA. No descendant or floating HEAD is automatically authorized."
+  },
+  "execution_authorized": false,
+  "tests_status": "UNEXECUTED",
+  "numerical_status": "NOT_EXECUTED",
+  "L3_readiness": "BLOCKED",
+  "schema": "apex-ct1l-l2e-output-review/1",
+  "assessment_kind": "STATIC_STRUCTURE_AND_EXPLICIT_ASSUMPTIONS_ONLY",
+  "science_schema_path": "docs/ct1/ct1l/scientific_evidence.schema.json",
+  "science_schema_sha256": "e42c443ad60b153a900352adf76fa03382c530994e5c0774508590d759977004",
+  "unchanged_workload_plan_sha256": "0358736b70ef72d539cbefe3bbcb9d3e65d7b53362c3c05930ec1bc4d1a9920a",
+  "record_counts_by_class": {
+    "qualification": 144,
+    "linearization": 2112,
+    "finite_difference": 576,
+    "linear_system": 432,
+    "riccati": 12,
+    "closed_loop": 3024,
+    "defect": 1008,
+    "product_including_unavailable_reserve": 4680,
+    "worker_event": 813,
+    "manifest": 1,
+    "environment": 1,
+    "coverage": 1,
+    "resource_poll_planning_bound": 3001,
+    "supervisor_event": 1,
+    "index": 1
+  },
+  "record_count_planning_bound": 15807,
+  "count_caveats": [
+    "Original L2B conservative envelope retained; preflight/startup failures usually reduce scientific rows.",
+    "The monitor count is a planning bound for 0.1s samples inside300s, not OS scheduling/cleanup proof.",
+    "CLI stdout summaries, own markers, preworker failure JSON and external-owner logs are additional overhead, not silently included as scientific rows."
+  ],
+  "fixed_identity_payload": {
+    "source_binding_count": 395,
+    "one_binding_array_exact_UTF8_bytes_under_current_producer": 58944,
+    "serialization": "json.dumps(fixed [{path,sha256,json_pointer:null},...], separators=(comma,colon)), default ensure_ascii=True; excludes surrounding field name/envelope and newline. This is static identity data, NOT an evaluated row.",
+    "conditional_payload_for_15807_rows_bytes": 931727808,
+    "extra_binding_copies_inside_manifest_and_environment_data_bytes": 117888,
+    "binding_arrays_total_bytes_if_full_population_written": 931845696,
+    "remaining_to_1GiB_before_all_other_content_bytes": 141896128,
+    "remaining_to_95percent_stop_before_all_other_content_bytes": 88209036,
+    "binding_arrays_MiB": 888.6773071289062
+  },
+  "schema_and_producer_size_analysis": {
+    "matrix_dimensions_and_counts": {
+      "full": {
+        "n": 6,
+        "m": 2,
+        "A_shape": [
+          6,
+          6
+        ],
+        "B_shape": [
+          6,
+          2
+        ],
+        "C_shape": [
+          6,
+          12
+        ],
+        "PBH_real_and_imag_shape": [
+          6,
+          8
+        ],
+        "PBH_modes": 6,
+        "matrix_coefficient_count_linear_system_record": 816,
+        "product_Phi_coefficients": 36
+      },
+      "lateral": {
+        "n": 4,
+        "m": 1,
+        "A_shape": [
+          4,
+          4
+        ],
+        "B_shape": [
+          4,
+          1
+        ],
+        "C_shape": [
+          4,
+          4
+        ],
+        "PBH_real_and_imag_shape": [
+          4,
+          5
+        ],
+        "PBH_modes": 4,
+        "matrix_coefficient_count_linear_system_record": 244,
+        "product_Phi_coefficients": 16
+      },
+      "speed": {
+        "n": 1,
+        "m": 1,
+        "A_shape": [
+          1,
+          1
+        ],
+        "B_shape": [
+          1,
+          1
+        ],
+        "C_shape": [
+          1,
+          1
+        ],
+        "PBH_real_and_imag_shape": [
+          1,
+          2
+        ],
+        "PBH_modes": 1,
+        "matrix_coefficient_count_linear_system_record": 16,
+        "product_Phi_coefficients": 1
+      }
+    },
+    "finite_float_token_assumption": "At most32 ASCII bytes per finite binary64 numeric token is a conservative trusted-CPython producer sizing assumption, not a schema-wide maximum (JSON number also admits arbitrary integer magnitude).",
+    "product_numeric_coefficients_bytes_under_assumption": 1152,
+    "full_linear_system_matrix_coefficients_bytes_under_assumption": 26112,
+    "bounded_array_cardinalities": "Canonical state6/input2/gain4, n<=6,m<=2; source support<=80; selected endpoints<=4608; up to80 source-matrix IDs/gain indices per product; finite grid/scaling loops bounded by unchanged producers.",
+    "fixed_fields": [
+      "record/schema/status/map/subsystem enum labels",
+      "frozen source path/hash array contents",
+      "fixed state/control names/units under current source",
+      "accepted finite array shapes and loop-based counts"
+    ],
+    "variable_or_unbounded_fields": [
+      "schema strings generally have no maxLength: record_id/run_id/source pointers/reason detail/threshold strings/native mode/package/platform fields",
+      "event termination_reason is nullable string and contains nested JSON text without a byte limit",
+      "many arrays have no maxItems in schema even where trusted current producers have loop bounds",
+      "raw serialized JSON numeric magnitudes/integers have no schema byte limit",
+      "test/JUnit exception text/stdout/stderr/cache/temp files and external monitoring logs lack deterministic content-length bounds",
+      "worker stdout is later read by unchanged supervisor record parsing; no measured memory/output cost is assumed"
+    ],
+    "true_maxima_justified": "The fixed binding byte count and trusted producer coefficient/cardinality counts above are exact under fixed inputs/dimensions. A deterministic maximum FULL ROW or WHOLE RUN byte size is NOT justified by the schema/source field-length contracts.",
+    "whole_run_deterministic_maximum_bytes": null,
+    "whole_run_bound_status": "UNBOUNDED_OR_UNKNOWN_LENGTH_FIELDS"
+  },
+  "illustrative_nonmeasured_scenarios": [
+    {
+      "assumed_average_nonbinding_row_bytes": 4096,
+      "fixed_binding_arrays_plus_assumed_payload_bytes": 996591168,
+      "MiB": 950.4234008789062,
+      "above_1GiB": false,
+      "above_95percent_stop": false,
+      "excludes_test_log_cache_temp_external_overhead": true,
+      "basis": "Hypothetical average additive bytes, NOT measured actual row size/throughput."
+    },
+    {
+      "assumed_average_nonbinding_row_bytes": 16384,
+      "fixed_binding_arrays_plus_assumed_payload_bytes": 1190827584,
+      "MiB": 1135.6616821289062,
+      "above_1GiB": true,
+      "above_95percent_stop": true,
+      "excludes_test_log_cache_temp_external_overhead": true,
+      "basis": "Hypothetical average additive bytes, NOT measured actual row size/throughput."
+    },
+    {
+      "assumed_average_nonbinding_row_bytes": 32768,
+      "fixed_binding_arrays_plus_assumed_payload_bytes": 1449809472,
+      "MiB": 1382.6460571289062,
+      "above_1GiB": true,
+      "above_95percent_stop": true,
+      "excludes_test_log_cache_temp_external_overhead": true,
+      "basis": "Hypothetical average additive bytes, NOT measured actual row size/throughput."
+    }
+  ],
+  "non_scientific_overhead": [
+    "worker.stdout.log and worker.stderr.log",
+    "test JUnit XML, pytest cache and basetemp",
+    "temporary serialization/cache/MPL artifacts",
+    "MEASURED_ACTIVE/MEASURED_COMPLETED marker and index file listing/hashes/torn-tail metadata",
+    "CLI stdout/stderr including preworker failures before an owned worker root exists",
+    "separately proposed external watchdog/ownership/time/RSS/output logs and cleanup evidence"
+  ],
+  "output_reservation_bytes": 1073741824,
+  "output_no_new_work_threshold_bytes": 1020054732,
+  "risk": "MATERIAL: repeated identities alone consume most of1GiB at the full planning population; modest additional payload plus logs may cross95% or1GiB. Sampling is not proof of a hard bound, and a positive row-count bound does not bound unbounded field lengths.",
+  "time_feasibility": "UNKNOWN; no throughput, library initialization cost, test duration, serialization rate, compression ratio or benchmark measurement is invented. Counts alone do not establish either300s feasibility or inevitable infeasibility.",
+  "L3_readiness_reason": "BLOCKED: external whole-command envelope unresolved; deterministic output maximum absent and resource feasibility/runtime environment remain unqualified.",
+  "documentation_only_future_options": [
+    {
+      "option": "lossless content-addressed identity dictionary",
+      "proposal": "Write immutable binding set once, reference its hash from rows, retain exact resolver/validation and provenance. Requires separately reviewed worker/evidence/schema changes; NOT implemented."
+    },
+    {
+      "option": "lossless bounded streaming logs/index reads",
+      "proposal": "Stream logs and indexes under one shared reservation with declared limits/retention. Never drop negative/partial/censored results. Requires separate scope; NOT implemented."
+    },
+    {
+      "option": "further predeclared deterministic scientific panel",
+      "proposal": "Only if Primary changes scientific scope before execution: reduce selected populations/intervals independent of all outcomes, retaining exact omission accounting. Accepted L2B selection remains unchanged here."
+    }
+  ]
+}

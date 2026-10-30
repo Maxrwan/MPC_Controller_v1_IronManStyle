@@ -23,6 +23,8 @@ def test_evidence_rejects_nonfinite_and_backfilled_prefix():
             }
         )
 
+    _preworker_evidence_literals()
+
 
 def test_closed_schema_and_complex_representation():
     import pytest
@@ -117,3 +119,43 @@ def test_partial_selected_coverage_counts_omissions_separately():
         for row in missing
     )
     assert len(completed) == 1  # Failed/missing endpoints never replace completed evidence.
+
+
+def _preworker_evidence_literals():
+    from types import SimpleNamespace
+
+    from ct1.guards import _AggregateDeadline, _cli_result_exit_code, _preworker_evidence
+
+    d = _AggregateDeadline(0.0, 300.0)
+    record = _preworker_evidence(
+        d,
+        operation="run",
+        phase="source_verification",
+        termination="SOURCE_IDENTITY_FAILURE",
+        reasons=[{"code": "SOURCE_IDENTITY_FAILURE", "detail": "literal pinned hash mismatch"}],
+        source_verified=False,
+        grant_validated=False,
+        observed_monotonic_s=296.0,
+    )
+    assert record["worker_started"] is False and record["worker_rss_bytes"] is None
+    assert record["reasons"] == [
+        {"code": "SOURCE_IDENTITY_FAILURE", "detail": "literal pinned hash mismatch"}
+    ]
+    assert record["elapsed_cli_s"] == 296.0 and record["remaining_total_s"] == 4.0
+    assert record["remaining_work_s"] == 0.0 and record["finalization_reserve_s"] == 5
+    assert record["worker_rss_observation"] == "NOT_OBSERVED" and not record["hard_RSS_enforcement"]
+    assert record["whole_command_envelope"] == "UNRESOLVED"
+    assert json.loads(json.dumps(record, allow_nan=False)) == record
+    for code, termination, expected in (
+        (None, "RESOURCE_CENSORED", 2),
+        (None, "NUMERICAL_FAILURE", 2),
+        (None, "MISSING_COVERAGE", 2),
+        (0, "SOURCE_IDENTITY_FAILURE", 2),
+        (0, "MISSING_COVERAGE", 2),
+        (0, "COMPLETE", 0),
+        (3, "COMPLETE", 3),
+    ):
+        assert (
+            _cli_result_exit_code(SimpleNamespace(worker_exit_code=code, termination=termination))
+            == expected
+        )

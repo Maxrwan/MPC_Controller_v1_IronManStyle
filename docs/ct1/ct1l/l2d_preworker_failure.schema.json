@@ -1,0 +1,141 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:apex:ct1l:l2d-preworker-failure:1",
+  "title": "CLI preworker failure facts, not scientific execution evidence",
+  "type": "object",
+  "properties": {
+    "schema": {
+      "const": "apex-ct1l-preworker-failure/1"
+    },
+    "operation": {
+      "enum": [
+        "run",
+        "preflight-static"
+      ]
+    },
+    "timing_scope": {
+      "const": "CLI_MONOTONIC_SAMPLE_BEFORE_STDOUT_AND_RETURN"
+    },
+    "phase": {
+      "type": "string"
+    },
+    "termination": {
+      "enum": [
+        "AUTHORIZATION_FAILURE",
+        "SOURCE_IDENTITY_FAILURE",
+        "RESOURCE_PREFLIGHT_FAILED",
+        "ENVIRONMENT_FAILURE",
+        "RESOURCE_CENSORED",
+        "NUMERICAL_FAILURE",
+        "MISSING_COVERAGE"
+      ]
+    },
+    "worker_started": {
+      "const": false
+    },
+    "source_verified": {
+      "type": "boolean"
+    },
+    "primary_grant_validated": {
+      "type": "boolean"
+    },
+    "implementation_sha": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "output_root_requested": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "allocation_s": {
+      "const": 300
+    },
+    "finalization_reserve_s": {
+      "const": 5
+    },
+    "worker_rss_bytes": {
+      "type": "null"
+    },
+    "worker_rss_observation": {
+      "const": "NOT_OBSERVED"
+    },
+    "hard_RSS_enforcement": {
+      "const": false
+    },
+    "whole_command_envelope": {
+      "const": "UNRESOLVED"
+    },
+    "reasons": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "detail": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "code",
+          "detail"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "cli_start_monotonic_s": {
+      "type": "number"
+    },
+    "deadline_monotonic_s": {
+      "type": "number"
+    },
+    "observed_monotonic_s": {
+      "type": "number"
+    },
+    "elapsed_cli_s": {
+      "type": "number"
+    },
+    "remaining_work_s": {
+      "type": "number"
+    },
+    "remaining_total_s": {
+      "type": "number"
+    },
+    "overrun_s": {
+      "type": "number"
+    }
+  },
+  "required": [
+    "schema",
+    "operation",
+    "timing_scope",
+    "phase",
+    "termination",
+    "worker_started",
+    "source_verified",
+    "primary_grant_validated",
+    "implementation_sha",
+    "output_root_requested",
+    "allocation_s",
+    "finalization_reserve_s",
+    "worker_rss_bytes",
+    "worker_rss_observation",
+    "hard_RSS_enforcement",
+    "whole_command_envelope",
+    "reasons",
+    "cli_start_monotonic_s",
+    "deadline_monotonic_s",
+    "observed_monotonic_s",
+    "elapsed_cli_s",
+    "remaining_work_s",
+    "remaining_total_s",
+    "overrun_s"
+  ],
+  "additionalProperties": false,
+  "$comment": "Finite numeric/time consistency and D=S+300 checked separately. No worker or RSS is fabricated. Schema creation does not authorize execution."
+}

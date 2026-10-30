@@ -1,0 +1,61 @@
+{
+  "task": "APEX-CT-1L-L2D-L2E",
+  "stage": "CODE_ONLY_CORRECTION_AND_STATIC_RESOURCE_REVIEW",
+  "status": "WORK_COMPLETE_PENDING_REVIEW",
+  "base_sha": "265d02f479b7bb759baff9205156635f2da45887",
+  "implementation_revision_binding": {
+    "method": "EXACT_CONTAINING_GIT_COMMIT",
+    "base_sha": "265d02f479b7bb759baff9205156635f2da45887",
+    "resolve": "git log -1 --format=%H -- docs/ct1/ct1l/l2de_l3_execution_request.md",
+    "constraint": "Resolve to the exact delivery SHA reported after commit/push; future grant implementation_sha must equal it. A tracked document cannot contain its own Git SHA. No descendant or floating HEAD is automatically authorized."
+  },
+  "execution_authorized": false,
+  "tests_status": "UNEXECUTED",
+  "numerical_status": "NOT_EXECUTED",
+  "L3_readiness": "BLOCKED",
+  "schema": "apex-ct1l-l2de-manifest/1",
+  "allowed_modified_paths": [
+    "scripts/ct1/cli.py",
+    "scripts/ct1/guards.py",
+    "tests/ct1l/test_guards.py",
+    "tests/ct1l/test_contracts.py",
+    "tests/ct1l/test_evidence.py"
+  ],
+  "created_documents": [
+    "docs/ct1/ct1l/l2d_deadline_correction.md",
+    "docs/ct1/ct1l/l2d_change_manifest.json",
+    "docs/ct1/ct1l/l2d_regression_inventory.json",
+    "docs/ct1/ct1l/l2d_preworker_failure.schema.json",
+    "docs/ct1/ct1l/l2e_output_assessment.json",
+    "docs/ct1/ct1l/l2e_environment_archive_readiness.json",
+    "docs/ct1/ct1l/l2de_l3_execution_request.md",
+    "docs/ct1/ct1l/l2de_external_supervision_proposal.md",
+    "docs/ct1/ct1l/l2de_static_validation.json",
+    "docs/ct1/ct1l/l2de_handoff.md"
+  ],
+  "modified_file_sha256": {
+    "scripts/ct1/cli.py": "41a7c8799f41129a628cb34a26798e71024c3316878b5e1f45b3630105ccdcf1",
+    "scripts/ct1/guards.py": "2dd48549235e3a976ec86caf7d6ea16a956ac3173d82a515ddddcb6e3995f37c",
+    "tests/ct1l/test_guards.py": "57f5610e4b915ac97fd08b70c8ff92c6803d210ba95d1675a077278c1b1f6382",
+    "tests/ct1l/test_contracts.py": "0bec1ee4f351df7e80636936a7fde95fb49761ae3c43b86f82021410fded52d1",
+    "tests/ct1l/test_evidence.py": "31ff839616111e46195dc44c1a3dfe6ee7d252c38d11e792e70d02bfefb4ecd3"
+  },
+  "changed_API_arguments": {
+    "scripts/ct1/cli.py": {
+      "main": "argv: Sequence[str] | None=None"
+    },
+    "scripts/ct1/guards.py": {
+      "_preworker_evidence": "deadline, *, operation, phase, termination, reasons, source_verified, grant_validated, implementation_sha=None, output_root_requested=None, observed_monotonic_s=None",
+      "_cli_result_exit_code": "report",
+      "check_execution_grant": "grant_path: Path, inputs: VerifiedInputs, budget: Budget, *, deadline: _AggregateDeadline | None=None",
+      "preflight_resources": "inputs: VerifiedInputs, grant: ExecutionGrant, budget: Budget, *, deadline: _AggregateDeadline",
+      "configure_native_single": "backend: BackendIdentity",
+      "_resource_stop": "now, deadline, rss, written, free, budget",
+      "supervise_worker": "command: tuple[str, ...], output_root: Path, grant: ExecutionGrant, budget: Budget, *, deadline: _AggregateDeadline, inputs: VerifiedInputs, grant_path: Path"
+    }
+  },
+  "all_other_tracked_CT1_files_immutable": true,
+  "worker_and_accepted_L2B_policy_unchanged": true,
+  "historical_L1_L2B_evidence_unchanged": true,
+  "general_handoff_and_decisions": "Newest exact source/document scope excludes docs/CODEX_HANDOFF.md and docs/DECISIONS.md; this new scoped handoff records the correction."
+}

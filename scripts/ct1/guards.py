@@ -10,7 +10,9 @@ import signal
 import subprocess
 import sys
 import time
+from dataclasses import dataclass
 from datetime import datetime, timezone
+from math import isfinite
 from pathlib import Path
 
 from .contracts import (
@@ -28,10 +30,121 @@ from .contracts import (
 from .inputs import _git, _plain, _read
 
 
+@dataclass(frozen=True)
+class _AggregateDeadline:
+    """One immutable CLI-origin allocation. No supervisor/phase may restart it."""
+
+    cli_start_monotonic_s: float
+    deadline_monotonic_s: float
+
+    def __post_init__(self):
+        values = (self.cli_start_monotonic_s, self.deadline_monotonic_s)
+        if any(
+            isinstance(v, bool) or not isinstance(v, (int, float)) or not isfinite(v)
+            for v in values
+        ):
+            raise ValueError("Finite monotonic timestamps required")
+        if (
+            self.cli_start_monotonic_s < 0
+            or self.deadline_monotonic_s != self.cli_start_monotonic_s + 300
+        ):
+            raise ValueError("Exactly one reviewed 300-second CLI allocation required")
+        object.__setattr__(self, "cli_start_monotonic_s", float(self.cli_start_monotonic_s))
+        object.__setattr__(self, "deadline_monotonic_s", float(self.deadline_monotonic_s))
+
+    def validate_for(self, grant, budget):
+        if budget.wall_s != 300 or grant.host_seconds != 300 or grant.authorized_stage != "L3":
+            raise PermissionError("Primary 300-second L3 allocation cannot be enlarged or bypassed")
+
+    def work_remaining_s(self, phase):
+        now = time.monotonic()
+        if not isfinite(now) or now < self.cli_start_monotonic_s:
+            raise PermissionError("Untrusted monotonic clock/origin")
+        remaining = self.deadline_monotonic_s - 5 - now
+        if remaining <= 0:
+            raise _DeadlineExpired(phase, now)
+        return remaining
+
+    def finalization_remaining_s(self):
+        return max(0.0, self.deadline_monotonic_s - time.monotonic())
+
+
+class _DeadlineExpired(TimeoutError):
+    def __init__(self, phase, observed_monotonic_s):
+        super().__init__("Original CLI deadline reached its no-new-work boundary during " + phase)
+        self.phase = phase
+        self.observed_monotonic_s = observed_monotonic_s
+
+
+def _preworker_evidence(
+    deadline,
+    *,
+    operation,
+    phase,
+    termination,
+    reasons,
+    source_verified,
+    grant_validated,
+    implementation_sha=None,
+    output_root_requested=None,
+    observed_monotonic_s=None,
+):
+    """Available failure metadata only; never fabricate worker/source/RSS results.
+
+    CLI failures print this JSON even if no grant permits creating an output root.
+    A reviewed external owner must retain stdout/stderr to persist that early record.
+    """
+    now = time.monotonic() if observed_monotonic_s is None else observed_monotonic_s
+    if not isfinite(now) or now < deadline.cli_start_monotonic_s:
+        raise ValueError("Invalid failure timestamp")
+    return {
+        "schema": "apex-ct1l-preworker-failure/1",
+        "operation": operation,
+        "timing_scope": "CLI_MONOTONIC_SAMPLE_BEFORE_STDOUT_AND_RETURN",
+        "phase": phase,
+        "termination": termination,
+        "worker_started": False,
+        "source_verified": bool(source_verified),
+        "primary_grant_validated": bool(grant_validated),
+        "implementation_sha": implementation_sha,
+        "output_root_requested": str(output_root_requested)
+        if output_root_requested is not None
+        else None,
+        "cli_start_monotonic_s": deadline.cli_start_monotonic_s,
+        "deadline_monotonic_s": deadline.deadline_monotonic_s,
+        "observed_monotonic_s": now,
+        "elapsed_cli_s": now - deadline.cli_start_monotonic_s,
+        "remaining_work_s": max(0.0, deadline.deadline_monotonic_s - 5 - now),
+        "remaining_total_s": max(0.0, deadline.deadline_monotonic_s - now),
+        "overrun_s": max(0.0, now - deadline.deadline_monotonic_s),
+        "allocation_s": 300,
+        "finalization_reserve_s": 5,
+        "reasons": list(reasons),
+        "worker_rss_bytes": None,
+        "worker_rss_observation": "NOT_OBSERVED",
+        "hard_RSS_enforcement": False,
+        "whole_command_envelope": "UNRESOLVED",
+    }
+
+
+def _cli_result_exit_code(report):
+    if report.termination == "COMPLETE" and report.worker_exit_code == 0:
+        return 0
+    return report.worker_exit_code if report.worker_exit_code not in (None, 0) else 2
+
+
 def check_execution_grant(
-    grant_path: Path, inputs: VerifiedInputs, budget: Budget
+    grant_path: Path,
+    inputs: VerifiedInputs,
+    budget: Budget,
+    *,
+    deadline: _AggregateDeadline | None = None,
 ) -> Outcome[ExecutionGrant]:
     try:
+        if deadline is not None:
+            if budget.wall_s != 300:
+                raise ValueError("Reviewed deadline budget must remain 300 seconds")
+            deadline.work_remaining_s("grant validation")
         raw = _read(grant_path)
         if (
             raw.get("primary_authorized") is not True
@@ -80,6 +193,8 @@ def check_execution_grant(
                 or marker.get("stage") != "L3"
             ):
                 raise ValueError("Fresh output required outside the owning supervised child")
+        if deadline is not None:
+            deadline.work_remaining_s("grant validation completed")
         return Outcome.available(
             ExecutionGrant(
                 raw["assignment_sha"],
@@ -91,17 +206,22 @@ def check_execution_grant(
                 out,
             )
         )
+    except TimeoutError:
+        raise
     except (KeyError, ValueError, OSError) as exc:
         return Outcome.unavailable("L3_AUTHORIZATION_REQUIRED", str(exc))
 
 
 def preflight_resources(
-    inputs: VerifiedInputs, grant: ExecutionGrant, budget: Budget
+    inputs: VerifiedInputs, grant: ExecutionGrant, budget: Budget, *, deadline: _AggregateDeadline
 ) -> Outcome[ResourcePreflight]:
     try:
-        # This body is never called for L1 static checks.
+        # L3 only: all probes consume the same already-authenticated CLI allocation.
+        deadline.validate_for(grant, budget)
+        deadline.work_remaining_s("resource preflight")
         ancestor = grant.output_root.parent
         while not ancestor.exists():
+            deadline.work_remaining_s("output ancestor inspection")
             ancestor = ancestor.parent
         free = shutil.disk_usage(ancestor).free
         if free < budget.initial_free_bytes:
@@ -116,9 +236,14 @@ def preflight_resources(
             if not result.exists():
                 continue
             for p in result.rglob("*"):
+                deadline.work_remaining_s("measurement guard inventory")
                 if p.name in ("MEASURED_ACTIVE", "D3_ACTIVE") and p.is_file():
                     guards.append(GuardOwner(p, None, None, p.stat().st_mtime_ns, "ACTIVE"))
-        inventory = subprocess.check_output(["ps", "-axo", "pid=,ppid=,command="], text=True)
+        inventory = subprocess.check_output(
+            ["ps", "-axo", "pid=,ppid=,command="],
+            text=True,
+            timeout=deadline.work_remaining_s("process inventory"),
+        )
         own = {os.getpid(), os.getppid()}
         competing = []
         for line in inventory.splitlines():
@@ -148,6 +273,7 @@ def preflight_resources(
             )
         import psutil
 
+        deadline.work_remaining_s("resource preflight completed")
         return Outcome.available(
             ResourcePreflight(
                 free,
@@ -159,6 +285,10 @@ def preflight_resources(
                 grant.host_seconds,
             )
         )
+    except subprocess.TimeoutExpired as exc:
+        raise _DeadlineExpired("process inventory timeout", time.monotonic()) from exc
+    except TimeoutError:
+        raise
     except (OSError, ValueError, ImportError, subprocess.SubprocessError) as exc:
         return Outcome.unavailable("RESOURCE_PREFLIGHT_FAILED", str(exc))
 
@@ -199,39 +329,69 @@ def _resource_stop(now, deadline, rss, written, free, budget):
 
 
 def supervise_worker(
-    command: tuple[str, ...], output_root: Path, grant: ExecutionGrant, budget: Budget
+    command: tuple[str, ...],
+    output_root: Path,
+    grant: ExecutionGrant,
+    budget: Budget,
+    *,
+    deadline: _AggregateDeadline,
+    inputs: VerifiedInputs,
+    grant_path: Path,
 ) -> SupervisorReport:
+    deadline.validate_for(grant, budget)
+    if Path(output_root).resolve() != grant.output_root:
+        raise PermissionError("Reviewed supervisor output allocation mismatch")
+    repo = Path(command[command.index("--repo-root") + 1]).resolve()
+    if (
+        repo != inputs.spec.repo_root.resolve()
+        or Path(command[command.index("--grant") + 1]).resolve() != Path(grant_path).resolve()
+    ):
+        raise PermissionError("Command source/grant does not match authenticated CLI inputs")
+    try:
+        deadline.work_remaining_s("supervisor authorization boundary")
+        checked = check_execution_grant(grant_path, inputs, budget, deadline=deadline)
+        if checked.value != grant:
+            raise PermissionError("Primary grant revalidation failed before supervisor startup")
+        deadline.work_remaining_s("supervisor startup")
+    except _DeadlineExpired as exc:
+        return SupervisorReport(
+            None,
+            "RESOURCE_CENSORED",
+            time.monotonic() - deadline.cli_start_monotonic_s,
+            0,
+            False,
+            0.0,
+            None,
+            ("worker_not_started:" + str(exc),),
+        )
     import psutil
 
     from .contracts import EvidenceWriter
     from .evidence import append_record, finalize_run
 
-    if (
-        grant.authorized_stage != "L3"
-        or grant.host_seconds != budget.wall_s
-        or Path(output_root).resolve() != grant.output_root
-    ):
-        raise PermissionError("Reviewed supervisor grant/output allocation mismatch")
     root = Path(output_root)
     root.mkdir(parents=True, exist_ok=False)
-    repo = Path(command[command.index("--repo-root") + 1]).resolve()
-    begin = time.monotonic()
-    deadline = begin + budget.wall_s
+    timeline = deadline
+    begin = timeline.cli_start_monotonic_s
+    deadline = timeline.deadline_monotonic_s
     peak = 0
     gap = 0.0
-    previous = begin
-    termination = "COMPLETE"
+    previous = time.monotonic()  # Monitor gap baseline only; not a new allocation origin.
+    termination = "NUMERICAL_FAILURE"
     process = None
     final_index = None
     missing = []
     samples = 0
     cpu = None
+    rss_observed = False
+    code = None
     env = os.environ.copy()
     env.update(
         VECLIB_MAXIMUM_THREADS="1",
         PYTHONDONTWRITEBYTECODE="1",
         PYTHONHASHSEED="0",
         CT1L_DEADLINE_MONOTONIC=str(deadline),
+        CT1L_CLI_START_MONOTONIC=str(begin),
     )
     env.update(
         TMPDIR=str(root), MPLCONFIGDIR=str(root / "mpl-cache"), XDG_CACHE_HOME=str(root / "cache")
@@ -243,6 +403,8 @@ def supervise_worker(
                 "owner_pid": os.getpid(),
                 "implementation_sha": grant.implementation_sha,
                 "stage": "L3",
+                "cli_start_monotonic_s": begin,
+                "deadline_monotonic_s": deadline,
             }
         )
         + "\n"
@@ -268,14 +430,17 @@ def supervise_worker(
         return append_record(writer, kind, observation).value
 
     try:
+        timeline.work_remaining_s("supervisor output setup")
         with (
             (root / "worker.stdout.log").open("xb") as stdout,
             (root / "worker.stderr.log").open("xb") as stderr,
         ):
             try:
+                timeline.work_remaining_s("worker process creation")
                 process = subprocess.Popen(
                     command, cwd=repo, env=env, stdout=stdout, stderr=stderr, start_new_session=True
                 )
+                termination = "COMPLETE"
                 monitored = psutil.Process(process.pid)
                 while process.poll() is None:
                     now = time.monotonic()
@@ -291,6 +456,7 @@ def supervise_worker(
                     except psutil.NoSuchProcess:
                         pass
                     if rss is not None:
+                        rss_observed = True
                         peak = max(peak, rss)
                     written = sum(p.stat().st_size for p in root.rglob("*") if p.is_file())
                     free = shutil.disk_usage(root).free
@@ -357,13 +523,15 @@ def supervise_worker(
                     "MISSING_COVERAGE",
                     "SOURCE_IDENTITY_FAILURE",
                 ):
-                    termination = report["termination"]
+                    reported = report["termination"]
+                    termination = (
+                        "NUMERICAL_FAILURE" if reported == "COMPLETE" and code != 0 else reported
+                    )
                     break
         if not (root / "coverage.json").exists():
             missing.append("coverage")
-            termination = (
-                "RESOURCE_CENSORED" if termination == "RESOURCE_CENSORED" else "MISSING_COVERAGE"
-            )
+            if termination == "COMPLETE":
+                termination = "MISSING_COVERAGE"
         record(
             "event",
             "cpu-observation",
@@ -376,44 +544,85 @@ def supervise_worker(
                 + "; samples="
                 + str(samples)
                 + "; exact active BLAS thread count unavailable",
-                "retention_action": "RSS and CPU observations are sampled; no hard memory cap claim",
+                "retention_action": (
+                    "RSS and CPU observations are sampled; no hard memory cap claim"
+                ),
             },
         )
-    except (OSError, ValueError, KeyError, psutil.Error) as exc:
+    except _DeadlineExpired as exc:
         termination = "RESOURCE_CENSORED"
-        missing.append("supervisor:" + str(exc))
+        missing.append("aggregate_deadline:" + str(exc))
+        code = process.returncode if process else None
+    except (OSError, ValueError, KeyError, psutil.Error) as exc:
+        termination = "NUMERICAL_FAILURE"
+        missing.append("supervisor_environment_or_integrity:" + str(exc))
         code = process.returncode if process else None
     finally:
-        if process is not None and process.poll() is None:
-            try:
-                os.killpg(process.pid, signal.SIGKILL)
-            except ProcessLookupError:
-                pass
-            process.wait()
-        # Rename only our own marker. Other measurement guards are never removed.
-        marker.write_text(
-            json.dumps(
-                {
-                    "owner_pid": os.getpid(),
-                    "state": "COMPLETED",
-                    "termination": termination,
-                    "peak_observed_worker_rss_bytes": peak,
-                    "hard_memory_cap": False,
-                    "monitoring_gap_max_s": gap,
-                }
+        try:
+            if process is not None and process.poll() is None:
+                try:
+                    os.killpg(process.pid, signal.SIGKILL)
+                except ProcessLookupError:
+                    pass
+                process.wait()
+        except (OSError, ValueError) as exc:
+            missing.append("worker_cleanup_incomplete:" + str(exc))
+            if termination == "COMPLETE":
+                termination = "NUMERICAL_FAILURE"
+        if process is not None:
+            code = process.returncode
+            if code is None:
+                missing.append("worker_exit_status_NOT_OBSERVED")
+        if not rss_observed:
+            missing.append("worker_RSS_NOT_OBSERVED")
+        try:
+            if process is None:
+                # Only this already-authenticated fresh root may receive a preworker failure file.
+                failure = _preworker_evidence(
+                    timeline,
+                    operation="run",
+                    phase="supervisor_before_worker",
+                    termination=termination,
+                    reasons=[{"code": "WORKER_NOT_STARTED", "detail": r} for r in missing],
+                    source_verified=True,
+                    grant_validated=True,
+                    implementation_sha=grant.implementation_sha,
+                    output_root_requested=root,
+                )
+                with (root / "preworker_failure.json").open("x") as stream:
+                    json.dump(failure, stream, allow_nan=False, separators=(",", ":"))
+                    stream.write("\n")
+            # Rename only our own marker. Other measurement guards are never removed.
+            marker.write_text(
+                json.dumps(
+                    {
+                        "owner_pid": os.getpid(),
+                        "state": "COMPLETED",
+                        "termination": termination,
+                        "peak_observed_worker_rss_bytes": peak if rss_observed else None,
+                        "hard_memory_cap": False,
+                        "worker_rss_observed": rss_observed,
+                        "monitoring_gap_max_s": gap,
+                    }
+                )
+                + "\n"
             )
-            + "\n"
-        )
-        marker.rename(root / "MEASURED_COMPLETED")
-        writer._final_measurements = {
-            "wall_elapsed_s": time.monotonic() - begin,
-            "peak_observed_worker_rss_bytes": peak,
-        }
-        writer._final_deadline = deadline
-        indexed = finalize_run(writer, (), termination)
-        if indexed.value is not None:
-            final_index = record("index", "index", indexed.value)
+            marker.rename(root / "MEASURED_COMPLETED")
+            writer._final_measurements = {
+                "wall_elapsed_s": time.monotonic() - begin,
+                "peak_observed_worker_rss_bytes": peak if rss_observed else None,
+            }
+            writer._final_deadline = deadline
+            indexed = finalize_run(writer, (), termination)
+            if indexed.value is not None:
+                final_index = record("index", "index", indexed.value)
+        except (OSError, ValueError, KeyError) as exc:
+            missing.append("supervisor_finalization_incomplete:" + str(exc))
+            if termination == "COMPLETE":
+                termination = "NUMERICAL_FAILURE"
         if final_index is None:
+            if termination == "COMPLETE":
+                termination = "MISSING_COVERAGE"
             missing.append(
                 "index: manifest/context or finalization unavailable; partial files retained"
             )

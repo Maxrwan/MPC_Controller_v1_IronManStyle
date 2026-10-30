@@ -1,0 +1,251 @@
+{
+  "task": "APEX-CT-1L-L2D-L2E",
+  "stage": "CODE_ONLY_CORRECTION_AND_STATIC_RESOURCE_REVIEW",
+  "status": "WORK_COMPLETE_PENDING_REVIEW",
+  "base_sha": "265d02f479b7bb759baff9205156635f2da45887",
+  "implementation_revision_binding": {
+    "method": "EXACT_CONTAINING_GIT_COMMIT",
+    "base_sha": "265d02f479b7bb759baff9205156635f2da45887",
+    "resolve": "git log -1 --format=%H -- docs/ct1/ct1l/l2de_l3_execution_request.md",
+    "constraint": "Resolve to the exact delivery SHA reported after commit/push; future grant implementation_sha must equal it. A tracked document cannot contain its own Git SHA. No descendant or floating HEAD is automatically authorized."
+  },
+  "execution_authorized": false,
+  "tests_status": "UNEXECUTED",
+  "numerical_status": "NOT_EXECUTED",
+  "L3_readiness": "BLOCKED",
+  "schema": "apex-ct1l-l2de-static-validation/1",
+  "static_status": "PASS_STATIC_ONLY",
+  "behavioral_status": "NOT_RUN_NOT_PASS",
+  "checks": {
+    "AST_and_compile_without_execution": {
+      "python_files": 31,
+      "paths": [
+        "scripts/ct1/__init__.py",
+        "scripts/ct1/analytic.py",
+        "scripts/ct1/cli.py",
+        "scripts/ct1/closed_loop.py",
+        "scripts/ct1/contracts.py",
+        "scripts/ct1/crosscheck_numpy.py",
+        "scripts/ct1/evidence.py",
+        "scripts/ct1/finite_difference.py",
+        "scripts/ct1/geometry.py",
+        "scripts/ct1/guards.py",
+        "scripts/ct1/inputs.py",
+        "scripts/ct1/linear_systems.py",
+        "scripts/ct1/qualification.py",
+        "scripts/ct1/riccati.py",
+        "scripts/ct1/rk4.py",
+        "scripts/ct1/source_adapter.py",
+        "scripts/ct1/worker.py",
+        "tests/ct1l/conftest.py",
+        "tests/ct1l/test_analytic.py",
+        "tests/ct1l/test_applicability.py",
+        "tests/ct1l/test_closed_loop.py",
+        "tests/ct1l/test_contracts.py",
+        "tests/ct1l/test_derivative_parity.py",
+        "tests/ct1l/test_evidence.py",
+        "tests/ct1l/test_geometry.py",
+        "tests/ct1l/test_guards.py",
+        "tests/ct1l/test_inputs.py",
+        "tests/ct1l/test_linear_systems.py",
+        "tests/ct1l/test_qualification.py",
+        "tests/ct1l/test_riccati.py",
+        "tests/ct1l/test_rk4.py"
+      ]
+    },
+    "exact_scope": {
+      "modified_count": 5,
+      "new_document_count": 10,
+      "unauthorized_paths": []
+    },
+    "API_deadline_propagation": "PASS_STATIC_ONLY",
+    "unchanged_native_and_resource_predicate_AST": true,
+    "Primary_grant_checks": "Retained old raw Primary/sha/expiry/ceiling/test/output ownership checks; supervisor now revalidates actual grant before root/Popen. Source inspection only.",
+    "diagnostic_schema_field_consistency": {
+      "closed": true,
+      "exact_fields": [
+        "schema",
+        "operation",
+        "timing_scope",
+        "phase",
+        "termination",
+        "worker_started",
+        "source_verified",
+        "primary_grant_validated",
+        "implementation_sha",
+        "output_root_requested",
+        "cli_start_monotonic_s",
+        "deadline_monotonic_s",
+        "observed_monotonic_s",
+        "elapsed_cli_s",
+        "remaining_work_s",
+        "remaining_total_s",
+        "overrun_s",
+        "allocation_s",
+        "finalization_reserve_s",
+        "reasons",
+        "worker_rss_bytes",
+        "worker_rss_observation",
+        "hard_RSS_enforcement",
+        "whole_command_envelope"
+      ],
+      "scientific_schema_unchanged": true
+    },
+    "strict_JSON_parse": {
+      "file_count": 27,
+      "duplicate_and_nonfinite_rejection": true
+    },
+    "regression_declarations": {
+      "paths": 13,
+      "unexpanded_selectors": 59,
+      "new_helpers": 4,
+      "inventory_categories": 13,
+      "collected": false,
+      "executed": false
+    },
+    "fixed_output_identity_arithmetic": {
+      "bindings": 395,
+      "bytes_per_binding_array": 58944,
+      "planned_records": 15807,
+      "binding_bytes_including_two_extra_copies": 931845696
+    },
+    "static_tools": [
+      {
+        "check": "Ruff source lint",
+        "exit_code": 0,
+        "stdout": "All checks passed!",
+        "stderr": ""
+      },
+      {
+        "check": "Ruff format check",
+        "exit_code": 0,
+        "stdout": "5 files already formatted",
+        "stderr": ""
+      },
+      {
+        "check": "Git whitespace",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      }
+    ]
+  },
+  "preservation": {
+    "approved_base_sha": "265d02f479b7bb759baff9205156635f2da45887",
+    "frozen_source_content_hash_matches": 305,
+    "accepted_archive_content_hash_matches": 90,
+    "additional_read_only_binding_hash_matches": 4,
+    "all_other_tracked_CT1_paths_unchanged": true,
+    "historical_result_metadata_entries_before": 52758,
+    "historical_result_metadata_changed": 0,
+    "historical_result_metadata_new_during_work": [
+      "results/apex_workbench_c0_contract_20261030/audit_inventory_corrected.json",
+      "results/apex_workbench_c0_contract_20261030/inspect_archive_corrected.py",
+      "results/apex_workbench_c0_contract_20261030/inspection_corrected.log",
+      "results/apex_workbench_c0_descriptive_review_20261030/documentation_checks.json",
+      "results/apex_workbench_c0_descriptive_review_20261030/inspection.json",
+      "results/apex_workbench_c0_descriptive_review_20261030/preservation_after.json",
+      "results/apex_workbench_c0_descriptive_review_20261030/preservation_before.json"
+    ],
+    "unrelated_workspace_comparisons": {
+      "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle": {
+        "head_before": "f80a105d9ab3c1fcf5e28e97a0876fcb422c1c60",
+        "head_after": "02e7a3e82d8baf0c90719d876ce5c6662cc52fb2",
+        "status_before": " M docs/CODEX_HANDOFF.md\n M docs/apex_workbench_v0_3_a/MVP_ROADMAP.md\n?? docs/apex_workbench_v0_3_d/c0_contract/",
+        "status_after": "",
+        "changed_tracked_paths": [
+          "docs/CODEX_HANDOFF.md"
+        ],
+        "added_tracked_paths": [
+          "docs/apex_workbench_v0_3_d/c0_contract/AUDIT.md",
+          "docs/apex_workbench_v0_3_d/c0_contract/CONTRACT.md",
+          "docs/apex_workbench_v0_3_d/c0_contract/CONTRACT_DESCRIPTIVE_ONLY_V1.md",
+          "docs/apex_workbench_v0_3_d/c0_contract/INDEPENDENT_REVIEW_REQUEST.md",
+          "docs/apex_workbench_v0_3_d/c0_contract/evidence_inventory.json",
+          "docs/reviews/apex_workbench_v0_3_d/c0_descriptive_contract/iteration_1/REVIEW.md",
+          "docs/reviews/apex_workbench_v0_3_d/c0_descriptive_contract/iteration_1/review_record.json"
+        ],
+        "removed_tracked_paths": []
+      },
+      "/Users/marwansaber/.codex/worktrees/safety-s0/MPC_Controller_v1_IronManStyle": {
+        "head_before": "24cd70ca18b3efa56a9412d7cef9a86466091721",
+        "head_after": "24cd70ca18b3efa56a9412d7cef9a86466091721",
+        "status_before": "",
+        "status_after": "",
+        "changed_tracked_paths": [],
+        "added_tracked_paths": [],
+        "removed_tracked_paths": []
+      },
+      "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle_FC1_c99b9df": {
+        "head_before": "c99b9dfdc981cb13ccd2e5ff53af98a3b568f70a",
+        "head_after": "c99b9dfdc981cb13ccd2e5ff53af98a3b568f70a",
+        "status_before": "",
+        "status_after": "",
+        "changed_tracked_paths": [],
+        "added_tracked_paths": [],
+        "removed_tracked_paths": []
+      }
+    },
+    "protected_Performance_commit": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+    "protected_refs_unchanged": [
+      "refs/heads/main",
+      "refs/heads/release/performance-synthetic-v1",
+      "refs/remotes/origin/main",
+      "refs/remotes/origin/release/performance-synthetic-v1",
+      "refs/tags/performance-synthetic-v1"
+    ],
+    "other_ref_drift_during_work": {
+      "refs/codex/turn-diffs/captures/1793386189329/36c286fc-6973-403e-a811-6c281b9aad81/base": {
+        "before": "d1b20c9e301816513120c2406d0997b56051fd7a",
+        "after": null
+      },
+      "refs/codex/turn-diffs/captures/1793386914199/059ba136-f8df-438d-921c-09dbe73161c0/base": {
+        "before": "e45b23b6839de500e938d57c5b8cb22231559550",
+        "after": null
+      },
+      "refs/codex/turn-diffs/captures/1793387116075/6fbc0c98-cfb1-4150-956e-45493813f769/base": {
+        "before": "359f0ac955881e749bb80bccbc090885a9347810",
+        "after": null
+      },
+      "refs/codex/turn-diffs/checkpoints/3476e89077a6b110e99df3fa2e9e97a2/3943a6def017f1167adbeea991446fcf/1793386059236/6b61e80b-9624-41e3-8ce2-2c5ad6b9e2c3": {
+        "before": "d1b20c9e301816513120c2406d0997b56051fd7a",
+        "after": null
+      },
+      "refs/heads/codex/apex-workbench-v0-3-d": {
+        "before": "f80a105d9ab3c1fcf5e28e97a0876fcb422c1c60",
+        "after": "acf34015157d237a979fd11263982be6b82c523c"
+      },
+      "refs/remotes/origin/codex/apex-workbench-v0-3-d": {
+        "before": "f80a105d9ab3c1fcf5e28e97a0876fcb422c1c60",
+        "after": "acf34015157d237a979fd11263982be6b82c523c"
+      }
+    }
+  },
+  "prohibited_actions_executed": {
+    "project_or_numerical_import": false,
+    "pytest_collection": false,
+    "test_function_call": false,
+    "worker_launch": false,
+    "environment_probe": false,
+    "numerical_calculation": false,
+    "simulation_or_benchmark": false,
+    "external_supervisor_script_creation_or_execution": false
+  },
+  "limitations": [
+    "Static checks do not validate runtime behavior or certify any hard timing/resource bound.",
+    "Whole-command launch-through-cleanup envelope remains UNRESOLVED; L3 BLOCKED.",
+    "Output whole-run maximum and 300-second feasibility are unqualified.",
+    "Commit/push SHA and remote visibility are verified after the containing commit; exact SHA is in final delivery."
+  ],
+  "static_tooling_notes": [
+    "An initial independent audit script referenced a nonexistent workload-plan key and stopped with KeyError before completion. Corrected the audit lookup to combined_scientific_record_planning_bound; no project/test code ran.",
+    "Unrelated workspace heads/status/ref observations were sampled separately during concurrent work and are not an atomic global snapshot.",
+    "An initial Ruff pass flagged the long retention_action string; split it within the authorized guards file. Final Ruff checks pass."
+  ],
+  "precommit_remote_visibility": {
+    "research/control-theory-ct1": "265d02f479b7bb759baff9205156635f2da45887",
+    "main_and_release_and_peeled_Performance_tag": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+    "Performance_tag_object": "76d9eaa65af02efb0263916adc75d5247a0e778f",
+    "method": "git ls-remote origin exact refs; frozen identities confirmed before delivery"
+  }
+}

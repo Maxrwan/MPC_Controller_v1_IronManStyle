@@ -1,0 +1,190 @@
+{
+  "task": "APEX-CT-1L-L2D-L2E",
+  "stage": "CODE_ONLY_CORRECTION_AND_STATIC_RESOURCE_REVIEW",
+  "status": "WORK_COMPLETE_PENDING_REVIEW",
+  "base_sha": "265d02f479b7bb759baff9205156635f2da45887",
+  "implementation_revision_binding": {
+    "method": "EXACT_CONTAINING_GIT_COMMIT",
+    "base_sha": "265d02f479b7bb759baff9205156635f2da45887",
+    "resolve": "git log -1 --format=%H -- docs/ct1/ct1l/l2de_l3_execution_request.md",
+    "constraint": "Resolve to the exact delivery SHA reported after commit/push; future grant implementation_sha must equal it. A tracked document cannot contain its own Git SHA. No descendant or floating HEAD is automatically authorized."
+  },
+  "execution_authorized": false,
+  "tests_status": "UNEXECUTED",
+  "numerical_status": "NOT_EXECUTED",
+  "L3_readiness": "BLOCKED",
+  "schema": "apex-ct1l-l2d-regressions/1",
+  "node_inventory_strategy": "Extend existing permitted nodes via four literal/fake helpers; no new top-level test_* nodes. The immutable worker can still validate the exact 59 selectors.",
+  "test_paths": [
+    "tests/ct1l/test_contracts.py",
+    "tests/ct1l/test_inputs.py",
+    "tests/ct1l/test_geometry.py",
+    "tests/ct1l/test_analytic.py",
+    "tests/ct1l/test_rk4.py",
+    "tests/ct1l/test_derivative_parity.py",
+    "tests/ct1l/test_qualification.py",
+    "tests/ct1l/test_linear_systems.py",
+    "tests/ct1l/test_riccati.py",
+    "tests/ct1l/test_closed_loop.py",
+    "tests/ct1l/test_applicability.py",
+    "tests/ct1l/test_evidence.py",
+    "tests/ct1l/test_guards.py"
+  ],
+  "node_selectors": [
+    "tests/ct1l/test_contracts.py::test_canonical_contracts",
+    "tests/ct1l/test_contracts.py::test_owned_linearization_buffers",
+    "tests/ct1l/test_contracts.py::test_frozen_result_projection_is_deeply_owned",
+    "tests/ct1l/test_inputs.py::test_source_identity_and_panel",
+    "tests/ct1l/test_inputs.py::test_path_escape_rejected",
+    "tests/ct1l/test_inputs.py::test_wrong_revision_rejects_before_numeric_constructor",
+    "tests/ct1l/test_geometry.py::test_parabola_arc_derivative",
+    "tests/ct1l/test_geometry.py::test_c2_knot_is_not_averaged",
+    "tests/ct1l/test_geometry.py::test_heading_local_lift",
+    "tests/ct1l/test_geometry.py::test_read_only_source_snapshot",
+    "tests/ct1l/test_geometry.py::test_circle_local_jet_not_a_global_cubic_circle",
+    "tests/ct1l/test_analytic.py::test_exact_zero_slip_partials",
+    "tests/ct1l/test_analytic.py::test_nonzero_slip_acceleration_derivative",
+    "tests/ct1l/test_analytic.py::test_invalid_capacity_not_regularized",
+    "tests/ct1l/test_analytic.py::test_mixed_steering_acceleration_slope",
+    "tests/ct1l/test_rk4.py::test_double_integrator_tangent",
+    "tests/ct1l/test_rk4.py::test_scalar_quartic_not_euler",
+    "tests/ct1l/test_derivative_parity.py::test_manual_and_independent_fd",
+    "tests/ct1l/test_derivative_parity.py::test_original_ad_matches_manual",
+    "tests/ct1l/test_derivative_parity.py::test_actual_frozen_curvature_is_one_scalar_across_stencil",
+    "tests/ct1l/test_qualification.py::test_fixed_stencil_refusal",
+    "tests/ct1l/test_qualification.py::test_invalid_original_point_is_invalid",
+    "tests/ct1l/test_linear_systems.py::test_literal_singular_spectra",
+    "tests/ct1l/test_linear_systems.py::test_rank_tolerance_is_not_exact_deficiency",
+    "tests/ct1l/test_linear_systems.py::test_pbh_stable_uncontrollable_and_marginal",
+    "tests/ct1l/test_riccati.py::test_scalar_terminal_and_finite_step",
+    "tests/ct1l/test_riccati.py::test_gain_corruption_preserved",
+    "tests/ct1l/test_riccati.py::test_nonpositive_h_not_regularized",
+    "tests/ct1l/test_closed_loop.py::test_noncommuting_product_order",
+    "tests/ct1l/test_closed_loop.py::test_normalized_transient_norm_is_unit_dependent",
+    "tests/ct1l/test_closed_loop.py::test_nominal_defect_sign",
+    "tests/ct1l/test_closed_loop.py::test_full_feedback_ignores_progress",
+    "tests/ct1l/test_closed_loop.py::test_affine_forced_convolution_has_declared_sign",
+    "tests/ct1l/test_closed_loop.py::test_censored_prefix_does_not_backfill_endpoint",
+    "tests/ct1l/test_closed_loop.py::test_predeclared_interval_indices_literal_short_medium_and_80",
+    "tests/ct1l/test_closed_loop.py::test_short_panel_never_clips_an_unavailable_window",
+    "tests/ct1l/test_closed_loop.py::test_population_metadata_is_never_substituted",
+    "tests/ct1l/test_closed_loop.py::test_original_authority_keeps_only_complete_original_factors",
+    "tests/ct1l/test_closed_loop.py::test_full_selected_interval_scans_actual_prefix_peak",
+    "tests/ct1l/test_closed_loop.py::test_exact_four_normalization_populations_without_retuning",
+    "tests/ct1l/test_applicability.py::test_original_pending_evidence_is_not_assumed_complete",
+    "tests/ct1l/test_applicability.py::test_literal_actuator_and_authority_branches",
+    "tests/ct1l/test_evidence.py::test_evidence_rejects_nonfinite_and_backfilled_prefix",
+    "tests/ct1l/test_evidence.py::test_closed_schema_and_complex_representation",
+    "tests/ct1l/test_evidence.py::test_truncated_record_tail_retained",
+    "tests/ct1l/test_evidence.py::test_broken_common_evidence_stops_candidate_dispatch",
+    "tests/ct1l/test_evidence.py::test_partial_selected_coverage_counts_omissions_separately",
+    "tests/ct1l/test_guards.py::test_no_grant_no_execution",
+    "tests/ct1l/test_guards.py::test_budget_reserves_and_refuses_gain_overflow",
+    "tests/ct1l/test_guards.py::test_unsupported_backend_fails_closed",
+    "tests/ct1l/test_guards.py::test_fake_resource_stops",
+    "tests/ct1l/test_guards.py::test_conflicting_guard_is_preserved",
+    "tests/ct1l/test_guards.py::test_wrong_sha_or_expired_grant_rejects",
+    "tests/ct1l/test_guards.py::test_local_invalid_then_independent_valid_without_retry_or_replacement",
+    "tests/ct1l/test_guards.py::test_global_or_unknown_failure_stops_immediately",
+    "tests/ct1l/test_guards.py::test_map_local_failure_continues_other_original_map",
+    "tests/ct1l/test_guards.py::test_failed_common_trust_is_not_downgraded_by_local_handler",
+    "tests/ct1l/test_guards.py::test_common_source_outcome_cannot_become_local_unavailability",
+    "tests/ct1l/test_guards.py::test_failed_gain_audit_prevents_dependent_conclusion_only"
+  ],
+  "node_selector_count": 59,
+  "helper_subcases": [
+    {
+      "id": "one_cli_origin",
+      "existing_node": "tests/ct1l/test_guards.py::test_budget_reserves_and_refuses_gain_overflow",
+      "helper": "_deadline_cli_literals",
+      "independent_literal_expectation": "S=1000,D=1300; git timeout295; source ends1040, grant1060, resource1080, supervisor receives identical object and remaining215.",
+      "status": "UNEXECUTED"
+    },
+    {
+      "id": "preflight_expired",
+      "existing_node": "tests/ct1l/test_guards.py::test_budget_reserves_and_refuses_gain_overflow",
+      "helper": "_deadline_cli_literals",
+      "independent_literal_expectation": "Source returns at1296: elapsed296, work0,total4; no grant bypass, worker call or fresh output creation.",
+      "status": "UNEXECUTED"
+    },
+    {
+      "id": "failure_identity",
+      "existing_node": "tests/ct1l/test_guards.py::test_budget_reserves_and_refuses_gain_overflow",
+      "helper": "_deadline_cli_literals",
+      "independent_literal_expectation": "Missing/invalid grant, changed source, failed resource preflight and literal ImportError remain distinct failure outcomes with available reasons and no worker.",
+      "status": "UNEXECUTED"
+    },
+    {
+      "id": "startup_deducted",
+      "existing_node": "tests/ct1l/test_guards.py::test_budget_reserves_and_refuses_gain_overflow",
+      "helper": "_deadline_supervisor_literals",
+      "independent_literal_expectation": "Original S=0,D=300; supervisor enters40, fake startup completes80; env D=300, final elapsed80, never340/380.",
+      "status": "UNEXECUTED"
+    },
+    {
+      "id": "reserve_and_grace",
+      "existing_node": "tests/ct1l/test_guards.py::test_budget_reserves_and_refuses_gain_overflow",
+      "helper": "_deadline_supervisor_literals",
+      "independent_literal_expectation": "Startup completes299.5; TERM grace exactly0.5, finalize deadline300; no extra reserve/interval.",
+      "status": "UNEXECUTED"
+    },
+    {
+      "id": "expired_supervisor",
+      "existing_node": "tests/ct1l/test_guards.py::test_budget_reserves_and_refuses_gain_overflow",
+      "helper": "_deadline_supervisor_literals",
+      "independent_literal_expectation": "Supervisor starts296: no psutil/worker/output startup, RESOURCE_CENSORED, exit not success.",
+      "status": "UNEXECUTED"
+    },
+    {
+      "id": "primary_revalidation",
+      "existing_node": "tests/ct1l/test_guards.py::test_budget_reserves_and_refuses_gain_overflow",
+      "helper": "_deadline_supervisor_literals",
+      "independent_literal_expectation": "Supervisor primary revalidation denies literal invalid grant before Popen or output creation.",
+      "status": "UNEXECUTED"
+    },
+    {
+      "id": "immutable_allocation",
+      "existing_node": "tests/ct1l/test_contracts.py::test_canonical_contracts",
+      "helper": "_deadline_contract_literals",
+      "independent_literal_expectation": "S=10,D=310 immutable; reject D311/D610, negative/nonfinite origins/deadlines, host301, budget301 and non-L3.",
+      "status": "UNEXECUTED"
+    },
+    {
+      "id": "available_failure_evidence",
+      "existing_node": "tests/ct1l/test_evidence.py::test_evidence_rejects_nonfinite_and_backfilled_prefix",
+      "helper": "_preworker_evidence_literals",
+      "independent_literal_expectation": "At296 retain exact source mismatch, no worker, null RSS, original D300, remaining4,reserve5; strict JSON round trip.",
+      "status": "UNEXECUTED"
+    },
+    {
+      "id": "no_false_success",
+      "existing_node": "tests/ct1l/test_evidence.py::test_evidence_rejects_nonfinite_and_backfilled_prefix",
+      "helper": "_preworker_evidence_literals",
+      "independent_literal_expectation": "None/resource or numerical failure ->2; zero/source or missing coverage ->2; zero/COMPLETE ->0; nonzero3 remains3.",
+      "status": "UNEXECUTED"
+    },
+    {
+      "id": "sampled_not_hard",
+      "existing_node": "tests/ct1l/test_evidence.py::test_evidence_rejects_nonfinite_and_backfilled_prefix",
+      "helper": "_preworker_evidence_literals",
+      "independent_literal_expectation": "NOT_OBSERVED null RSS and hard_RSS_enforcement=false; whole command UNRESOLVED.",
+      "status": "UNEXECUTED"
+    },
+    {
+      "id": "deadline_during_output_setup",
+      "existing_node": "tests/ct1l/test_guards.py::test_budget_reserves_and_refuses_gain_overflow",
+      "helper": "_deadline_supervisor_literals",
+      "independent_literal_expectation": "Own mkdir advances clock40->296: no Popen, RESOURCE_CENSORED, owned preworker_failure.json has D300/remaining4/null RSS; finalization uses D300.",
+      "status": "UNEXECUTED"
+    },
+    {
+      "id": "poststart_finalization_failure",
+      "existing_node": "tests/ct1l/test_guards.py::test_budget_reserves_and_refuses_gain_overflow",
+      "helper": "_deadline_supervisor_literals",
+      "independent_literal_expectation": "Child returned0 but has no coverage; fake index write raises OSError. Retain worker exit0, MISSING_COVERAGE and explicit finalization-incomplete diagnostic rather than a no-worker record or success.",
+      "status": "UNEXECUTED"
+    }
+  ],
+  "independence": "Literal clock values, fake producer outcomes, fake process/psutil objects and captured environment; no numerical model/backend required for deadline logic. Existing mathematical tests remain unexecuted and retain their expectations.",
+  "collection_or_execution": "NOT_EXECUTED"
+}
