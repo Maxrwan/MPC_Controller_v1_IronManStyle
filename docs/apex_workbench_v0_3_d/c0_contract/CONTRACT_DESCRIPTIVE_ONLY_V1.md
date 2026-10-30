@@ -2,7 +2,7 @@
 
 **Contract identifier:** `c0-original155-descriptive-only/1` (contemporary proposed inspection contract; **not** an original producer schema).
 **Admission/profile:** `descriptive_only / source_unverified`.
-**Disposition:** **DRAFT — INDEPENDENT CONTRACT REVIEW PENDING.** No implementation, adapter admission, qualification, scientific execution or approval is implied.
+**Disposition:** **DRAFT — R1–R4 CORRECTED; INDEPENDENT CONTRACT RE-REVIEW PENDING.** No implementation, adapter admission, qualification, scientific execution or approval is implied.
 **Authority:** Primary APEX's conditional amendment to Section A; audit revision `acf34015157d237a979fd11263982be6b82c523c` (30 October 2026).
 
 This document is the narrower successor to the original [blocked contract](CONTRACT.md). The original [Section A audit](AUDIT.md) and [contemporary inventory](evidence_inventory.json) remain historical evidence, unchanged. **G1 capture-time producer/source provenance remains OPEN**; this contract does not resolve it or promote a final-delivery reference revision into a capture identity.
@@ -30,14 +30,14 @@ Every admissible value in a view, tooltip, table, plot, report, figure, exported
 
 | Layer | Permissible statement | Impermissible promotion |
 |---|---|---|
-| **L0 — literal recorded** | `fallbacks[0]` contains a recorded reason string `"trajectory_exhausted"` and a timestamp token `0.400` (if those exact source lexemes are present); `fixed_handoffs[0].status = "missed"` | "APEX failed because the accepted solver/controller did X" |
+| **L0 — literal recorded** | `/fallbacks/0/reason` contains the recorded string `"trajectory_exhausted"` and `/fallbacks/0/time` the timestamp token `0.4`; `/fixed_handoffs/0/status = "missed"` | "APEX failed because the accepted solver/controller did X" |
 | **L1 — contemporary structural audit** | "The pinned record contains 120 `states` rows and 60 `controls` rows; Section A found no duplicate members or nonfinite numbers" | "A verified historical controller generated those samples" |
 | **L2 — later source/reference interpretation** | "Reference code describes `a_cmd` as `Fx/m` and the nominal vector ordering as `[vx,vy,r,e_psi,s_abs,e_y]`; applicability at original capture is **unverified**" | Source-qualified SI physical measurements, control semantics or computational performance |
 | **Unknown** | Capture source/config/backend/environment/receipt, physical truth, world XY, terminal state, causal cross-stream tie order and actual optimizer activity are unavailable/unknown | Fill, reconstruct, interpolate, infer or certify |
 
 **Required persistent banner**, including any standalone exported HTML: **"DESCRIPTIVE ONLY · SOURCE UNVERIFIED — exact retained JSON; capture-time producer, configuration and environment unknown. Plots show recorded numbers, not qualified scientific/controller-performance evidence."**
 
-For each plot axis or derived display label, mark whether the unit/frame is **literal within the artifact**, **reference-derived and unverified**, or **not declared**. The reference's units are **not embedded source-bound metadata**. Present the raw field name and original numeric token as authoritative; optional SI annotations must read `[reference interpretation — unverified for capture]`. No unqualified "physical time [s]", "measured yaw [rad/s]", "optimizer latency", "true controller fallback" or similar labels. A literal control field called `latency` is still only a recorded value; its original meaning is not authenticated.
+For each plot axis or derived display label, mark whether the unit/frame is **literal within the artifact**, **reference-derived and unverified**, or **not declared**. The reference's units are **not embedded source-bound metadata**. Present the raw field name and original numeric token as authoritative; optional SI annotations must read `[reference interpretation — unverified for capture]`. No unqualified "physical time [s]", "measured yaw [rad/s]", "optimizer latency", "true controller fallback" or similar labels. The original control keys are `time`, `application_time` and `physical_latency` (`/controls/i/time`, `/controls/i/application_time`, `/controls/i/physical_latency`, where `i` is the original row index). Each is only a recorded field; interpreting `time` as a computation clock or `physical_latency` as physical latency is reference-derived and unverified for the original capture, regardless of the key's wording.
 
 Do not repackage descriptive rows as a current verified Workbench execution, `apex-run/0.1.0`, Performance P/VIS, V0.2 Q, historical amended-C source verification, controller acceptance or numerical qualification.
 
@@ -47,28 +47,30 @@ Treat the exact original root (18 observed keys) and field/type/optional/null in
 
 | Group | Observed retained information | Descriptive-only rule |
 |---|---|---|
-| `states`, `reserves` | 120 rows each, first through last recorded `time` values 0 through 0.595 | Show literal state/reserve fields, original indices and exact recorded time tokens. No invented 0.600 state or inferred actuator/sensor/ground-truth stream |
-| `controls` | 60 rows, time 0 through 0.590, recorded computation/application/latency fields | Separate fields and preserve original row identities. Coincident times/zero latencies in this record are *observations*, not a general system clock contract |
+| `states`, `reserves` | 120 rows each, first through last recorded `time` tokens `0.0` through `0.595` | Show literal state/reserve fields, original indices and exact recorded time tokens. No invented `0.6` state or inferred actuator/sensor/ground-truth stream |
+| `controls` | 60 rows, `time` tokens `0.0` through `0.59`, with original `time`, `application_time` and `physical_latency` keys | Separate fields and preserve original row identities. Coincident times/zero recorded `physical_latency` values are *observations*, not a general system clock contract |
 | `plans`, `packets` | Three each; `plans[].status="test_success"`; packet 0 lacks `valid_from` | Show raw plan/packet fields as test-fixture-like records; do not label an IPOPT result or reconstruct omitted validity/authority times |
-| `fixed_handoffs` | Two `"missed"` records, with null acceptance/use fields | Display deadline, readiness, late-discard and null fields distinctly; null is not zero, failure, or a time to be estimated |
-| `urgent_demands` | One `"fallback"` record | Display its literal trigger/idle/release/busy/grid fields and missing acceptance; no inferred authority sequence |
+| `fixed_handoffs` | Two `"missed"` records, with present-null acceptance/use fields | Display deadline, readiness, late-discard and null fields distinctly; null is not zero, failure, or a time to be estimated |
+| `urgent_demands` | One `"fallback"` record, with present-null acceptance/authority fields | Display its literal trigger/idle/release/busy/grid fields and null acceptance/authority; no inferred authority sequence |
 | `triggers`, `releases`, `misses`, `fallbacks` | Original arrays and their own source order | `misses` includes planner-busy skips distinct from fixed-hand-off missed records; do not merge event categories into one causal timeline |
 | `handoffs`, `lap_times`, `codriver_misses` | Empty arrays | "No rows recorded in this collection"; do not assert absence of an event in a real system |
-| `failure`, `stop_reason`, `end_time`, `pending_at_end` | `null`, `"duration"`, `0.600`, `false` | Recorded disposition only; `failure=null` does not establish controller availability, successful optimization or scientific validity |
+| `failure`, `stop_reason`, `end_time`, `pending_at_end` | `null`, `"duration"`, `0.6`, `false` | Recorded disposition only; `failure=null` does not establish controller availability, successful optimization or scientific validity |
 
 Maintain the exact JSON array order, JSON pointers (`/collection/index/field`), original numeric lexemes (including trailing zeros or extended float representations where present), integer versus real token forms, text, booleans, nulls and **field absence**. Never normalize absent to null, null to zero, zero to missing, empty to not-applicable, or round recorded timestamps in authoritative display/export. A parsed numeric plot may position a marker, but must retain the exact source lexeme and pointer for user inspection and export; no reserialized float may masquerade as the original token.
 
-Allow differing startup/runtime packet/plan field sets **only as actually declared in the pinned observed-shape inventory**. For packet 0, `valid_from` is absent, not `null`; other fields and empty curvature previews retain their original shapes/meaninglessness. Preserve `states`, `controls` and `reserves` independent end coverage; the declared `end_time` is not a native terminal state.
+Allow differing startup/runtime packet/plan field sets **only as actually declared in the pinned observed-shape inventory**. `/packets/0/valid_from` and `/triggers/0/busy` are **absent**, not `null`; other fields and empty curvature previews retain their original shapes/meaninglessness. `/fixed_handoffs/0/t_accept`, `/fixed_handoffs/1/t_accept`, `/fixed_handoffs/0/first_TVLQR_use` and `/fixed_handoffs/1/first_TVLQR_use` are all **present-null**. `/urgent_demands/0/trigger_to_authority`, `/urgent_demands/0/accepted_time` and `/urgent_demands/0/accepted_plan_id` are also **present-null**; authority/use is unavailable, not absent or zero. Preserve `states`, `controls` and `reserves` independent end coverage; the declared `end_time` is not a native terminal state.
+
+For example, `/states/0/time = 0.0` and `/reserves/0/time = 0.0` are real-number tokens, while `/plans/0/release_time = 0` is an integer token. `/controls/0/acceleration_correction = -0.0` retains its signed zero. None may be normalized to another token form.
 
 ## 4. Recorded chronology without causal reconstruction
 
 A literal-row chronology table may display the following **exact field contents** side by side with their original collection/index/field and source order; decimal display must preserve tokens from the original JSON:
 
-- Fixed handoffs: recorded targets `0.170`, `0.330`; readiness/late discard `0.255`, `0.41500000000000004`.
-- Urgent demand: trigger `0.160`, idle `0.255`, release `0.260`; busy/grid waits separately recorded (e.g. `0.095` and `0.0050000000000000044`).
-- Planner-busy nominal skip rows `0.200`, `0.300`, `0.400` are distinct from fixed deadline missed rows.
-- Fallback entry `0.400` with literal reason `"trajectory_exhausted"` and `valid_domain=true` **as recorded**; no claim of safety, verified model domain, recovery, optimization failure or physical effectiveness.
-- The record ends by declaration at `0.600`; last retained state/reserve is `0.595`, last control `0.590`. No final new state, command, acceptance or feedback row can be invented.
+- Fixed handoffs: `/fixed_handoffs/0/valid_from = 0.17`, `/fixed_handoffs/1/valid_from = 0.33`; corresponding `t_ready` and `late_discard_time` tokens `0.255`, `0.41500000000000004`.
+- Urgent demand: `/urgent_demands/0/trigger_time = 0.16`, `/urgent_demands/0/eligible_time = 0.255`, `/urgent_demands/0/release_time = 0.26`; `/urgent_demands/0/planner_busy_wait = 0.095` and `/urgent_demands/0/grid_alignment_wait = 0.0050000000000000044` remain separate recorded fields.
+- Planner-busy nominal skip rows `/misses/0/time = 0.2`, `/misses/1/time = 0.3`, `/misses/2/time = 0.4` are distinct from fixed deadline missed rows.
+- Fallback entry `/fallbacks/0/time = 0.4` with literal reason `"trajectory_exhausted"` and `valid_domain=true` **as recorded**; no claim of safety, verified model domain, recovery, optimization failure or physical effectiveness.
+- The record ends by declaration at `/end_time = 0.6`; last retained state/reserve is `/states/119/time = 0.595` and `/reserves/119/time = 0.595`, last control `/controls/59/time = 0.59`. No final new state, command, acceptance or feedback row can be invented.
 
 Any combined chronology is a **visual index of per-collection records**, not an authoritative total order. Preserve original per-array order and explicit ties/unknown interstream ordering. Time tokens are raw fields; a `[reference-source seconds, unverified]` annotation is permitted but not a capture-authenticated measurement unit. Do not derive new event classes, interpolation, nearest-neighbor matching, held inputs, elapsed response time, causality, reliability/failure rates or comparison scores.
 
@@ -78,9 +80,9 @@ For fallback, reference code may explain `baseline_fallback` nominal/reference s
 
 `test_success` is a **literal status string**. The later reference fixture describes an injected `StraightPlanner`, NOT an IPOPT solver result. Display: "recorded status `test_success`; reference source suggests an injected test planner, capture implementation unverified." Do not print `optimizer succeeded`, `MPC converged` or `controller accepted`.
 
-The record's `planner_total_time=0.017`, `planner_cpu_time=0.017` and packet timing fields are **not qualified measured optimizer performance**. Later reference source describes injected constants (including `0.010` packet solve duration). Present them under raw recorded values and a reference-derived "fixture-imposed timing; not a measured optimizer benchmark" note. Do not convert host timing names into measured physical latency or combine them into end-to-end compute time.
+The record's `planner_total_time=0.017`, `planner_cpu_time=0.017` and packet timing fields are **not qualified measured optimizer performance**. Later reference source describes injected constants (including the recorded `/packets/0/solve_duration = 0.01`). Present them under raw recorded values and a reference-derived "fixture-imposed timing; not a measured optimizer benchmark" note. Do not convert host timing names into measured physical latency or combine them into end-to-end compute time.
 
-`fixed_handoffs` missed targets, `urgent_demands` fallback, and `misses` busy skips are distinct JSON records; `t_accept=null`, missing `first_TVLQR_use`, missing trigger-to-authority fields and unavailable controller acceptance must remain explicit. No shared-controller availability statistic may be inferred.
+`fixed_handoffs` missed targets, `urgent_demands` fallback, and `misses` busy skips are distinct JSON records. Both fixed-handoff `t_accept` and `first_TVLQR_use` fields, and the urgent-demand `trigger_to_authority`, `accepted_time` and `accepted_plan_id` fields, are **present-null**, at the exact pointers listed in Section 3; controller acceptance/use is unavailable. The absent startup `valid_from` and original trigger `busy` fields are a different category. No shared-controller availability statistic may be inferred.
 
 ## 6. Permitted views, prohibited claims and exports
 
@@ -104,15 +106,16 @@ Any later admission must follow all of these, in order:
 
 | Input / attempted statement | Required descriptive outcome |
 |---|---|
-| Correct bytes and `fixed_handoffs[0].t_accept = null` | Show **null**, source path and JSON pointer; "acceptance time unavailable in record", not a zero-time acceptance |
+| Exact allowlisted `original155.json`, 152,600 bytes and the Section 1 SHA-256; contemporary inspection contract `c0-original155-descriptive-only/1`; **G1 OPEN**, historical JSON unversioned and capture producer/schema/environment unknown | **Admit for descriptive inspection only**, subject to Section 7 checks, as `descriptive_record_valid_source_unverified`, retaining raw lexemes/pointers and the persistent provenance banner. Unknown capture provenance is expected, not a rejection condition; no source-qualified status or historical producer identity is assigned |
+| Correct bytes and `/fixed_handoffs/0/t_accept = null` | Show **present-null**, source path and JSON pointer; "acceptance time unavailable in record", not a zero-time acceptance |
 | `plans[1].status = "test_success"` | Show exact string; warn **reference test planner; no verified optimizer success** |
-| `fallbacks[0]` records `trajectory_exhausted` at `0.400`, `valid_domain=true` | Show literal fields, provenance banner; **no authenticated source, successful recovery or physical safety** |
-| `packets[0]` omits `valid_from` | Show **absent**; do not infer null, time zero or immediate packet authority |
-| User requests world XY or a terminal state at `0.600` | Show **unavailable**, do not reconstruct geometry, resample or extrapolate |
+| `/fallbacks/0/time = 0.4`, with recorded `reason="trajectory_exhausted"`, `valid_domain=true` | Show literal fields, provenance banner; **no authenticated source, successful recovery or physical safety** |
+| `/packets/0/valid_from` or `/triggers/0/busy` is omitted | Show **absent**; do not infer null, time zero or immediate packet authority |
+| User requests world XY or a terminal state at the recorded `/end_time = 0.6` | Show **unavailable**, do not reconstruct geometry, resample or extrapolate |
 | `states` shown with `[m/s, rad/s]` | Only if clearly marked **reference-derived SI/frame interpretation, unverified for capture**; raw field/vector remains primary |
 | Report prints `IPOPT solved in 0.017 s` | **Reject**; the named timing is not an authenticated optimizer measurement |
 | Data changed, even if same size/mtime or JSON is re-sealed | **Quarantine** on SHA mismatch; no plots, accepted labels or export |
-| Unsupported second archive, unknown producer or schema | **Reject**; no generic import and no fallback to reference source |
+| Unlisted/other artifact, incorrect size/hash, unsupported contemporary inspection-contract identity or unsupported inspection-contract version | **Reject**; no generic import and no fallback to reference source. This does not reject the exact admitted historically unversioned JSON for its expected unknown capture producer/schema/environment |
 
 ## 9. Review gate and stop
 
