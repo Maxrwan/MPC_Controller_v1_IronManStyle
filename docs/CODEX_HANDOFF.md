@@ -1,3 +1,13 @@
+# Current handoff — Primary APEX formal V0.3-C acceptance
+
+**V0.3_C_ACCEPTED_WITHIN_VERIFIED_SCOPE.** Primary recorded the user-requested acceptance on 30 October 2026 after checking the exact reviewed implementation `34f98a4894e457900d2fae3b2fd09ead4f5ba5a0`, independent PASS and single formal Verification (1,069 passed; 17 G2 gated skips; no failures/errors). See [formal acceptance](reviews/apex_workbench_v0_3_c/PRIMARY_ACCEPTANCE.md) and the preserved [Verification record](reviews/apex_workbench_v0_3_c/RESPONSIVENESS.md).
+
+Scope: local engineering workspace over accepted finite synthetic Workbench experiments and existing recorded evidence; read-only native replay and bounded pairwise comparison, with current scientific and resource limitations. Historical failures remain retained; no real-time/physical validity, NMPC execution adapter, generic telemetry importer or hardware command path is accepted.
+
+**S1/S2/S3 racing scenario decisions remain pending and independently gated.** V0.3-D may proceed via a scoped M4 engineering task (specific C0/asynchronous archive inspection and useful source-linked exports). Review new archive profile/timebase/provenance semantics before implementation; no new racing simulation, scientific qualification or frozen-source change is implied. Preserve the prior Verification handoff below as historical evidence.
+
+---
+
 # Current handoff — V0.3-C corrected responsiveness and formal Verification
 
 **V0.3_C_VERIFIED_PENDING_USER_ACCEPTANCE_AND_SCENARIO_DECISION.** 30 October 2026. **PASS.**

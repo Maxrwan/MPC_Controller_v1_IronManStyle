@@ -1404,3 +1404,10 @@ presentation operation and moves cursor actions into callbacks, preserving artif
 Compare provenance loads explicitly on demand. No persistent qualification cache, frozen-reader
 change or new acceptance criterion. Profiling separates workspace work from AppTest overhead;
 original deadlines stay intact. See [responsiveness report](reviews/apex_workbench_v0_3_c/RESPONSIVENESS.md).
+
+
+## ADR-178 — Primary acceptance of V0.3-C within verified engineering scope
+
+Recorded 30 October 2026. **V0.3_C_ACCEPTED_WITHIN_VERIFIED_SCOPE.** Primary APEX accepts corrected Workbench V0.3-C at exact reviewed code revision `34f98a4894e457900d2fae3b2fd09ead4f5ba5a0`, following independent N1 PASS and one complete formal Verification: 1,069 passed, 17 separately gated G2 skips, zero failures/errors. Acceptance is limited to local Run/Inspect/Compare, supported native software replay, pairwise two-to-four-run comparisons, retained source/evidence handling and previously accepted finite synthetic experiment scope. Original failed timing evidence remains retained and does not yield a hard responsiveness/real-time claim. See [Primary acceptance](reviews/apex_workbench_v0_3_c/PRIMARY_ACCEPTANCE.md).
+
+S1/S2/S3 new racing scenario decisions remain **pending**. No newly qualified NMPC/TVLQR runtime adapter, vehicle telemetry ingestion, physical Safety path, numerical racing experiment, tuning or expanded scientific claim is approved. V0.3-D may advance through separately scoped M4 engineering WORK for source-bound C0/async archive inspection and practical exported engineering evidence; exact archive profile semantics require independent review before implementation. Preserve frozen main/Performance and normal WORK → Engineering Review → Verification.
