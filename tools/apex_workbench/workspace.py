@@ -9,7 +9,12 @@ import streamlit as st
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 
 from tools.apex_workbench import engineering_views as views  # noqa: E402
-from tools.apex_workbench import jobs, run_catalog  # noqa: E402
+from tools.apex_workbench import (  # noqa: E402  # noqa: E402
+    gp_archive,
+    gp_panels,
+    jobs,
+    run_catalog,
+)
 from tools.apex_workbench import recorded_view as recorded  # noqa: E402
 from tools.apex_workbench import workspace_panels as panels
 from tools.apex_workbench.configuration import (  # noqa: E402
@@ -25,7 +30,11 @@ st.title("APEX Engineering Workspace")
 st.caption("Synthetic models · accepted finite numerical scope · no physical validation")
 if "next_view" in st.session_state:
     st.session_state["workspace_view"] = st.session_state.pop("next_view")
-catalog = run_catalog.discover()
+if st.session_state.pop("prepare_oval", False):
+    st.session_state["execution_mode"] = "lqr_baseline"
+    for name, value in {**DEFAULTS["lqr_baseline"], "track": "oval"}.items():
+        st.session_state["lqr_baseline_" + name] = value
+catalog = run_catalog.discover(include_racing=True)
 by_key = {run.key: run for run in catalog.runs}
 pending = st.session_state.pop("pending_directory", None)
 if pending:
@@ -67,6 +76,19 @@ def selector(label, key):
 
 if page == "Home":
     st.subheader("Engineering home")
+    if st.button("Inspect retained Performance P GP archive"):
+        st.session_state["inspect_run"] = "gp-" + gp_archive.MANIFEST_SHA256
+        st.session_state["next_view"] = "Inspect"
+        st.rerun()
+    if st.button("Prepare 2 m/s oval LQR/PI"):
+        st.session_state["prepare_oval"] = True
+        st.session_state["next_view"] = "Run"
+        st.rerun()
+    st.caption(
+        "Oval shortcut prepares the existing 12 s / 2 m/s / zero-error interface; Start run "
+        "remains explicit. Historical results/lqr_baseline/oval_2mps is preserved, but lacks "
+        "the source-bound Workbench integrity contract and is not promoted to verified evidence."
+    )
     st.write("Supported execution modes")
     for name, label in ADAPTERS.items():
         st.write(f"• {label} ({name})")
@@ -92,7 +114,7 @@ if page == "Home":
     st.caption(
         f"Free local disk: {shutil.disk_usage(ROOT).free:,} bytes. Owned root: {catalog.owned_root}"
     )
-    adapter_filter = st.selectbox("Adapter filter", ["All", *ADAPTERS])
+    adapter_filter = st.selectbox("Adapter filter", ["All", *ADAPTERS, gp_archive.ADAPTER])
     state_filter = st.selectbox(
         "Outcome filter", ["All", *sorted({r.outcome for r in catalog.runs})]
     )
@@ -132,7 +154,9 @@ if page == "Home":
 
 elif page == "Run":
     st.subheader("Run an accepted experiment")
-    adapter = st.selectbox("Execution mode", list(ADAPTERS), format_func=ADAPTERS.get)
+    adapter = st.selectbox(
+        "Execution mode", list(ADAPTERS), format_func=ADAPTERS.get, key="execution_mode"
+    )
     if adapter == "dynamic_lab":
         from tools.apex_workbench.lab_configuration import CASES, request_for, resolve
 
@@ -156,7 +180,9 @@ elif page == "Run":
             for input_index, name in enumerate(values):
                 with form_columns[input_index % 2]:
                     if name == "track":
-                        values[name] = st.selectbox("Track", ["circle", "oval"])
+                        values[name] = st.selectbox(
+                            "Track", ["circle", "oval"], key=adapter + "_track"
+                        )
                     else:
                         labels = {
                             "duration": "Duration [s]",
@@ -194,6 +220,9 @@ elif page == "Run":
 elif page == "Inspect":
     st.subheader("Inspect a retained run")
     run = selector("Run", "inspect_run")
+    if run and run.adapter == gp_archive.ADAPTER:
+        gp_panels.inspect(run)
+        st.stop()
     if run:
         try:
             mounted = views.comparison_epoch((run,), selected_qualification)
@@ -248,13 +277,14 @@ elif page == "Inspect":
 
 else:
     st.subheader("Compare retained runs")
+    compare_keys = [key for key in by_key if by_key[key].adapter != gp_archive.ADAPTER]
     if "compare_runs" in st.session_state:
         st.session_state["compare_runs"] = [
-            key for key in st.session_state["compare_runs"] if key in by_key
+            key for key in st.session_state["compare_runs"] if key in compare_keys
         ][: recorded.MAX_RUNS]
     selected = st.multiselect(
         "Runs",
-        list(by_key),
+        compare_keys,
         max_selections=recorded.MAX_RUNS,
         format_func=lambda key: by_key[key].label,
         key="compare_runs",
@@ -262,6 +292,10 @@ else:
     st.caption(
         "Two to four original executions · pairwise eligibility, no group qualification. "
         "Native timestamps only; no resampling or causal ranking of illustrative pairs."
+    )
+    st.caption(
+        "Historical GP profile P has no accepted cross-profile comparison contract; "
+        "inspect separately."
     )
     if len(selected) >= 2:
         runs = [by_key[key] for key in selected]

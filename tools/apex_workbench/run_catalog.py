@@ -108,7 +108,7 @@ def _candidate(directory, origin):
     )
 
 
-def discover(*, owned_root=None, qualification_root=None):
+def discover(*, owned_root=None, qualification_root=None, include_racing=False):
     """Only configured owned runs and the accepted qualification's original run directories."""
     owned = Path(OWNED_ROOT if owned_root is None else owned_root).resolve()
     qualified = Path(
@@ -218,8 +218,28 @@ def discover(*, owned_root=None, qualification_root=None):
                 + text(context.get("role", "adapter")),
             )
         )
+    if include_racing:
+        from tools.apex_workbench import gp_archive
+
+        # One declared historical identity, no recursive import or copies counted as executions.
+        runs.append(
+            Run(
+                "gp-" + gp_archive.MANIFEST_SHA256,
+                gp_archive.DIRECTORY,
+                ("P historical archive",),
+                (gp_archive.DIRECTORY,),
+                "controlled_A",
+                gp_archive.ADAPTER,
+                "controlled_A",
+                "historical",
+                "unverified discovery",
+                "inspect to verify",
+                (),
+                profile=gp_archive.PROFILE,
+            )
+        )
     return Catalog(
-        tuple(sorted(runs, key=lambda r: r.run_id, reverse=True)),
+        tuple(sorted(runs, key=lambda r: (r.adapter != "gp_archive", r.run_id), reverse=True)),
         tuple(qualifications),
         tuple(issues),
         owned,

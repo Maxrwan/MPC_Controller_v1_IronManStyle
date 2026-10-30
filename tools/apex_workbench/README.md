@@ -243,6 +243,36 @@ coordinates call the canonical Frenet API after execution. `plots.py` reads the 
 no missing telemetry is invented. Learning notes then close the experiment loop without supplying
 an AI explanation.
 
+## Historical GP evidence and oval shortcut (V0.3-D)
+
+Use **Inspect retained Performance P GP archive** on Home for the one read-only P/VIS-1R
+profile. It reads only `results/task007d/vis/vis1r_c699057/controlled_A` (`apex-run/0.1.0`),
+verifying all25 files against externally pinned historical evidence on each operation and before
+publication. No controller, worker, repair/exporter or Safety command path is invoked. Missing or
+corrupt files quarantine the view. G and incomplete C70 archives remain unsupported. This successful
+P case contains no fallback/failure episode; broader M4 failure inspection remains incomplete.
+
+Select full run or an original named sector, vehicle/reference, tracking, controls, diagnostics
+or planner/solver events. Sector filters use native state/Planning progress and retain whole-run
+identity; controls/events/cycles remain full-run. Separate visits use markers. Applied controls use
+`application_time`, requests use computation `time`; both are SI seconds. Event payloads retain
+actual solver status and unspecified same-time ordering. Stored XY/reference sampling are labeled
+producer reconstructions. No new samples, events, scores or cross-profile qualification are produced.
+**Prepare source-linked HTML inspection** exports the displayed verified view, provenance and
+inventory as a derived inspection document, never a new execution/evidence package. Downloaded
+HTML works offline.
+
+**Prepare 2 m/s oval LQR/PI** opens the existing form with oval, 12 s, 2 m/s and zero initial
+tracking errors. **Start run** remains explicit and uses unchanged safeguards. Owned results reopen
+through Inspect. Older `results/lqr_baseline/oval_2mps` bytes remain untouched and lack a source-bound
+Workbench artifact contract; their historical verification JSON is not promoted to current verified
+evidence. Original launcher and `app.py` paths remain available.
+
+See [archive contract](../../docs/apex_workbench_v0_3_d/ARCHIVE_CONTRACT.md),
+[WORK report](../../docs/apex_workbench_v0_3_d/WORK.md) and
+[unimplemented RBT-0.1 proposal](../../docs/apex_workbench_v0_3_d/ROLLING_RESPONSE_PROPOSAL.md).
+New racing execution, RBT implementation/qualification and full formal Verification require separate gates.
+
 ## Later work, requiring bounded review
 
 - Exact-revision formal Verification of the new workspace after independent Engineering Review.

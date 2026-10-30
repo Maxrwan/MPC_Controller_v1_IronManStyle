@@ -1,3 +1,29 @@
+# Current handoff — V0.3-D racing evidence WORK
+
+**WORK_COMPLETE_PENDING_REVIEW.** 30 October2026, branch `codex/apex-workbench-v0-3-d`.
+Primary C acceptance `7da7100` is recorded and preserved. One externally pinned P/VIS-1R
+controlled_A read-only inspector, source-linked HTML and existing oval-form shortcut are
+implemented after independent contract PASS. Historical worker/export identity8dbd1c5 remains
+separate from current source; no new racing execution or scientific qualification.
+
+[WORK](apex_workbench_v0_3_d/WORK.md), [machine record](apex_workbench_v0_3_d/work_record.json),
+[archive contract](apex_workbench_v0_3_d/ARCHIVE_CONTRACT.md),
+[contract review](reviews/apex_workbench_v0_3_d/contract/REVIEW.md),
+[unimplemented RBT-0.1 proposal](apex_workbench_v0_3_d/ROLLING_RESPONSE_PROPOSAL.md).
+Final focused invocations:59 prior compatibility passes and20 new passes, separately reported.
+Initial13-pass/1-fail catalog-default regression is retained and corrected without test changes.
+All56 scientific files,345 qualification files,25 GP files and4 old oval files hash-preserved.
+Actual production consumer retains17 references/four conditional pairs. Original launcher startup
+from unrelated cwd/browser/shutdown checked; browser download-tool latency1558.497s is retained as
+an unresolved harness observation, not app latency or a guarantee. No full formal suite or campaigns.
+
+Exact candidate independent Engineering Review follows. Broader M4 failure inspection is incomplete
+because this successful P case has no failure/fallback episode; G/C70 unsupported. New RBT numerical
+budgets/validity/composition and future G/P execution require separate Primary decisions. Stop at
+D Engineering Review before formal Verification or experiment approval.
+
+---
+
 # Current handoff — Primary APEX formal V0.3-C acceptance
 
 **V0.3_C_ACCEPTED_WITHIN_VERIFIED_SCOPE.** Primary recorded the user-requested acceptance on 30 October 2026 after checking the exact reviewed implementation `34f98a4894e457900d2fae3b2fd09ead4f5ba5a0`, independent PASS and single formal Verification (1,069 passed; 17 G2 gated skips; no failures/errors). See [formal acceptance](reviews/apex_workbench_v0_3_c/PRIMARY_ACCEPTANCE.md) and the preserved [Verification record](reviews/apex_workbench_v0_3_c/RESPONSIVENESS.md).

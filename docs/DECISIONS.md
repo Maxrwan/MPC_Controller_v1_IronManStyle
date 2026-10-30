@@ -1411,3 +1411,23 @@ original deadlines stay intact. See [responsiveness report](reviews/apex_workben
 Recorded 30 October 2026. **V0.3_C_ACCEPTED_WITHIN_VERIFIED_SCOPE.** Primary APEX accepts corrected Workbench V0.3-C at exact reviewed code revision `34f98a4894e457900d2fae3b2fd09ead4f5ba5a0`, following independent N1 PASS and one complete formal Verification: 1,069 passed, 17 separately gated G2 skips, zero failures/errors. Acceptance is limited to local Run/Inspect/Compare, supported native software replay, pairwise two-to-four-run comparisons, retained source/evidence handling and previously accepted finite synthetic experiment scope. Original failed timing evidence remains retained and does not yield a hard responsiveness/real-time claim. See [Primary acceptance](reviews/apex_workbench_v0_3_c/PRIMARY_ACCEPTANCE.md).
 
 S1/S2/S3 new racing scenario decisions remain **pending**. No newly qualified NMPC/TVLQR runtime adapter, vehicle telemetry ingestion, physical Safety path, numerical racing experiment, tuning or expanded scientific claim is approved. V0.3-D may advance through separately scoped M4 engineering WORK for source-bound C0/async archive inspection and practical exported engineering evidence; exact archive profile semantics require independent review before implementation. Preserve frozen main/Performance and normal WORK → Engineering Review → Verification.
+
+## ADR-179 — One source-bound historical P archive inspection profile
+
+30 October 2026. V0.3-D adds a read-only `apex-run/0.1.0` presentation adapter for the exact
+P/VIS-1R `controlled_A` archive after [independent contract review](reviews/apex_workbench_v0_3_d/contract/REVIEW.md).
+The externally pinned25-file inventory binds original manifest/raw/export/fixture bytes, with
+full rehash before publication and no persistent cache. Historical8dbd1c5 source is distinct from
+current Workbench source. Native state and independent computation/application clocks, producer
+reconstructions, partial event ordering and original coverage remain explicit. Sector selection
+filters original progress samples; unconnected sector markers avoid false continuity, while
+streams without native progress remain full-run. No execution, lifecycle, qualification-reader,
+scientific equations, replay-derived event or accepted-data changes. Copies remain the same
+historical identity; G/C70 and cross-profile comparisons stay unavailable.
+
+Source-linked offline HTML is a derived inspection document with exact view/source provenance,
+not a new evidence package or scientific execution. A Home oval shortcut only prepares the
+existing accepted LQR/PI interface. RBT-0.1 remains an unimplemented [scientific proposal](apex_workbench_v0_3_d/ROLLING_RESPONSE_PROPOSAL.md);
+new component accuracy budgets and scientific scope need Primary review. The successful P case
+does not close broader M4 failure-archive inspection. Exact-source Engineering Review and
+separate formal Verification remain required; no new scientific campaign is authorized.
