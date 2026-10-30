@@ -22,6 +22,50 @@ def description(adapter, case=None):
         st.json(item, expanded=True)
 
 
+def _series(snapshots, channel, ylabel, *, reference=None, source="states.csv"):
+    """Build native traces from this operation's verified snapshots, without rereading files."""
+    figure = go.Figure()
+    for snapshot in snapshots:
+        frame = snapshot.data.frames[source]
+        if channel in frame:
+            figure.add_trace(
+                go.Scatter(
+                    x=frame.time,
+                    y=frame[channel],
+                    name=f"{snapshot.run.run_id} · {channel}",
+                )
+            )
+        controls = snapshot.data.frames.get("controls.csv", {})
+        if reference and reference in controls:
+            figure.add_trace(
+                go.Scatter(
+                    x=controls.time,
+                    y=controls[reference],
+                    name=f"{snapshot.run.run_id} · {reference}",
+                    line=dict(dash="dash"),
+                )
+            )
+    return plots.style(figure, ylabel)
+
+
+def _trajectory(snapshot):
+    geometry = snapshot.data.frames["geometry.csv"]
+    xy = snapshot.data.frames["trajectory_xy.csv"]
+    figure = go.Figure()
+    for x, y, name, color in (
+        ("x", "y", "Centerline", "#8495ad"),
+        ("left_x", "left_y", "Left boundary", "#455c76"),
+        ("right_x", "right_y", "Right boundary", "#455c76"),
+    ):
+        figure.add_trace(
+            go.Scatter(x=geometry[x], y=geometry[y], name=name, line=dict(color=color, dash="dot"))
+        )
+    figure.add_trace(
+        go.Scatter(x=xy.x, y=xy.y, name="Plant trajectory", line=dict(color="#3ee0b2", width=3))
+    )
+    return plots.style(figure, "Y [m]", xy=True)
+
+
 def channels(snapshots, key, selected_time, decisions=()):
     data = [s.data for s in snapshots]
     common = set(data[0].frames)
@@ -57,9 +101,9 @@ def channels(snapshots, key, selected_time, decisions=()):
             st.caption(f"{channel}: reference channel unavailable in one or more records.")
             reference = None
         try:
-            figure = plots.series(
-                [(s.run.run_id, s.run.directory) for s in snapshots],
-                [channel],
+            figure = _series(
+                snapshots,
+                channel,
                 f"{channel} [{units[0]}]",
                 reference=reference,
                 source=source,
@@ -132,49 +176,69 @@ def cursor(snapshots, key, identity):
         st.session_state[state_key].update(index=timestamps.index(value), playing=False)
         st.session_state.pop(key + "_seek_error", None)
 
+    def seek_exact():
+        cursor_state = st.session_state[state_key]
+        cursor_state["playing"] = False
+        requested = st.session_state[key + "_requested_time"]
+        if requested in timestamps:
+            cursor_state["index"] = timestamps.index(requested)
+            st.session_state.pop(key + "_seek_error", None)
+        else:
+            st.session_state[key + "_seek_error"] = (
+                "No exact native state timestamp; no interpolation or snapping applied."
+            )
+
+    def move(count):
+        cursor_state = st.session_state[state_key]
+        cursor_state.update(
+            index=recorded.step(cursor_state["index"], len(timestamps), count), playing=False
+        )
+
+    def play(playing):
+        st.session_state[state_key].update(playing=playing, last_tick=viewer_now())
+
     timeline, entry, seek = st.columns([4, 2, 1])
     with timeline:
         st.select_slider("Selected time [s]", timestamps, key=key + "_time", on_change=seek_slider)
     with entry:
-        requested = st.number_input(
-            "Exact time entry [s]", key=key + "_requested_time", format="%.9f"
-        )
+        st.number_input("Exact time entry [s]", key=key + "_requested_time", format="%.9f")
     with seek:
-        if st.button("Seek exact time", key=key + "_seek"):
-            state["playing"] = False
-            if requested in timestamps:
-                state["index"] = timestamps.index(requested)
-                st.session_state.pop(key + "_seek_error", None)
-            else:
-                st.session_state[key + "_seek_error"] = (
-                    "No exact native state timestamp; no interpolation or snapping applied."
-                )
-            st.rerun()
+        st.button("Seek exact time", key=key + "_seek", on_click=seek_exact)
     if key + "_seek_error" in st.session_state:
         st.error(st.session_state[key + "_seek_error"])
     buttons = st.columns(4)
     with buttons[0]:
-        if st.button("Previous sample", key=key + "_previous", disabled=state["index"] == 0):
-            state.update(index=recorded.step(state["index"], len(timestamps), -1), playing=False)
-            st.rerun()
+        st.button(
+            "Previous sample",
+            key=key + "_previous",
+            disabled=state["index"] == 0,
+            on_click=move,
+            args=(-1,),
+        )
     with buttons[1]:
-        if st.button(
-            "Next sample", key=key + "_next", disabled=state["index"] == len(timestamps) - 1
-        ):
-            state.update(index=recorded.step(state["index"], len(timestamps), 1), playing=False)
-            st.rerun()
+        st.button(
+            "Next sample",
+            key=key + "_next",
+            disabled=state["index"] == len(timestamps) - 1,
+            on_click=move,
+            args=(1,),
+        )
     with buttons[2]:
-        if st.button(
+        st.button(
             "Play recorded samples",
             key=key + "_play",
             disabled=state["index"] == len(timestamps) - 1 or state["playing"],
-        ):
-            state.update(playing=True, last_tick=viewer_now())
-            st.rerun()
+            on_click=play,
+            args=(True,),
+        )
     with buttons[3]:
-        if st.button("Pause", key=key + "_pause", disabled=not state["playing"]):
-            state["playing"] = False
-            st.rerun()
+        st.button(
+            "Pause",
+            key=key + "_pause",
+            disabled=not state["playing"],
+            on_click=play,
+            args=(False,),
+        )
     st.caption(
         "Recorded synthetic software replay · viewer tick 1 s (render dependent), "
         "not plant time, live telemetry or a real-time guarantee. No dynamics/control is executed."
@@ -233,7 +297,7 @@ def trajectory(snapshot, selected_time):
     if not all(name in snapshot.data.frames for name in ("geometry.csv", "trajectory_xy.csv")):
         st.info("Stored track/XY unavailable; no position reconstructed.")
         return
-    figure = plots.trajectory(snapshot.run.directory)
+    figure = _trajectory(snapshot)
     point = (
         recorded.sample(snapshot, "trajectory_xy.csv", selected_time)
         if selected_time is not None
@@ -263,6 +327,8 @@ def analysis(runs, key, qualification_record=None, *, mounted_epoch=None):
 
     @st.fragment(run_every=1.0 if running else None)
     def frame():
+        if st.session_state.get(key + "_playback", {}).get("playing", False) != running:
+            st.rerun()  # Install/remove the timer before any costly scientific reads.
         result = st.empty()
         try:
             if mounted_epoch is None or mounted_epoch != views.comparison_epoch(

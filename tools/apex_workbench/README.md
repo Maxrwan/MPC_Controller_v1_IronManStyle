@@ -3,6 +3,10 @@
 The primary local workspace provides **Home / Run / Inspect / Compare** over the accepted
 Workbench engine. Discover retained runs, reopen their original evidence, inspect actual channels
 and inspect/replay actual native samples across two to four records. Engineering notes are optional.
+N1 corrective WORK is awaiting exact-revision independent review; see the
+[responsiveness report](../../docs/reviews/apex_workbench_v0_3_c/RESPONSIVENESS.md). Original timeout
+evidence stays retained, and formal Verification is conditional on a new PASS.
+
 See [V0.3-C WORK and evidence](../../docs/apex_workbench_v0_3_c/WORK.md).
 [C independent review](../../docs/reviews/apex_workbench_v0_3_c/iteration_2/REVIEW.md) is **PASS WITH CONDITIONS**;
 formal Verification still requires separate authorization. Two AppTest deadlines failed in review; the same

@@ -1,3 +1,26 @@
+# Current handoff — V0.3-C N1 corrective WORK
+
+**WORK_COMPLETE_PENDING_REVIEW.** 30 October 2026. Same branch `codex/apex-workbench-v0-3-c`;
+base delivery `ad69feadc126448a025f1204cc9ee9dd7307f864`. User now authorizes bounded N1 correction,
+exact independent review, and formal Verification only after PASS with no material response issue.
+[Combined report](reviews/apex_workbench_v0_3_c/RESPONSIVENESS.md) and
+[machine record](reviews/apex_workbench_v0_3_c/responsiveness_record.json) retain diagnosis and tests.
+
+Measured redundant seek reruns and file rereads were removed through operation-local verified-frame
+plotting and callbacks; Compare secondary details load on demand. No persistent scientific cache or
+qualification-policy change. Baseline/final cold Q: 2.943/2.427 s; warm Q: 2.878/2.349 s;
+three-run seek: 9.903/4.869 s. Original 89.886 s spike was not reproduced or uniquely explained.
+Real browser observed Q results in 1.259/1.351 s and native .125 seek in 4.817 s. These are bounded
+observations, no real-time guarantee. Original 45/60 s test defaults/assertions stay unchanged;
+52 focused passes precede the final detail toggle, then 3 final caller/original-regression passes.
+All invocations/evidence are distinct; historical failures remain verbatim.
+
+All 56 scientific files, original qualification and racing-design documents stay unchanged. Current
+candidate requires separate-context exact-revision review before the conditional full suite. Do not
+start the full suite early, rerun the qualification campaign, or implement scenarios/CT/hardware.
+
+---
+
 # Current handoff — V0.3-C Engineering Review complete
 
 **V0.3_C_ENGINEERING_REVIEW_COMPLETE_PENDING_VERIFICATION_AND_SCENARIO_APPROVAL.**

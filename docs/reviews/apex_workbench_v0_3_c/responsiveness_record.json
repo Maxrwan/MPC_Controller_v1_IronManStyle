@@ -1,0 +1,683 @@
+{
+  "schema": "apex-v03c-responsiveness-verification/1",
+  "status": "WORK_COMPLETE_PENDING_REVIEW",
+  "date": "2026-10-30",
+  "branch": "codex/apex-workbench-v0-3-c",
+  "base_delivery": "ad69feadc126448a025f1204cc9ee9dd7307f864",
+  "starting_reviewed_source": "8cff10bca8475f0992221d2cebf8862414210056",
+  "candidate": "containing correction commit; exact SHA in independent review",
+  "source_sha256": {
+    "tools/apex_workbench/workspace.py": "0d780442090963af09a697a1bb1c0a05c0c7d9542c35794e19b18d2dfc461985",
+    "tools/apex_workbench/workspace_panels.py": "5922dfe518aca30c2c8fc0680a0bd800c3c90913732273f14e0bf94f2319acac",
+    "tools/apex_workbench/tests/test_engineering_workspace.py": "d9bde43c2dc9bb508dffc3d50f7758f2779bb0199de6bc586bcbade0a8727c69",
+    "tools/apex_workbench/tests/test_responsiveness.py": "c03d0c6ee2e9dff73a9841a9cc4bbffce7b5ff1650bfca89a524e7fb8fa21d8b"
+  },
+  "scientific_source_sha256": {
+    "configs/vehicles/synthetic_dynamic_test_vehicle.yaml": "df1b853d21a1d3efaf858f7e58401151f2c5237793c40e16bb4189ed651f9cf3",
+    "scripts/run_dynamic_bicycle_demo.py": "9aa8bef1f05186d6653752becadcfb72d5698a82355606a7847be6d69171baa3",
+    "scripts/threading_study/config.py": "a50a73015c3ab739c35aa1fd715840364974213bf1c12666269b250264556fc3",
+    "src/apex/__init__.py": "2dd176027291d40716c8c828e8a9994afbf247d22bea1426fac52c259cbbc33b",
+    "src/apex/config.py": "40227b4ed2a38e30ecfb9acc7f308cf9db31b54dc813bb28850b25800877e0ad",
+    "src/apex/state.py": "b2b16555f8ae83f041ee821906305accc56010b643bb3fa514f90a8a17e66862",
+    "src/apex/control/__init__.py": "12878dbd9e38ae415462ea0eccbfc315387856736233a7ea4b2f840b1a53e96a",
+    "src/apex/control/base.py": "119b6cb4235421b9728838b47e4913158402997957956a473009c43435acb870",
+    "src/apex/coordinates/__init__.py": "1c443357b2a8e949a157c09b6fb3b50c170d98c908da8c0e8ebbd7e25f919555",
+    "src/apex/coordinates/angles.py": "2ed31ef5153e42083e727efc10b7875277f7f2641a5e16e9790e3f6073b33d05",
+    "src/apex/coordinates/frenet.py": "5fd10e1648847071561086f394914f6812422b0ad04f81ef2a517968334e17bd",
+    "src/apex/models/__init__.py": "d530a05e192b5d6c8b815c3edb2599a88bc35acac91c83280cd8e22d31a1d0d2",
+    "src/apex/models/base.py": "3bd8085e89978410bbe8581903b6280bd84f1a1ca956f1bb62f974462df7c525",
+    "src/apex/models/constants.py": "1b485d45ad2d74aaa256c1aab00157d7c610db0bea9f744d75376b8e816534be",
+    "src/apex/models/errors.py": "81baff4659f36bb6aea91e6a27327260b4d69e23de22963de6832199e7f1f916",
+    "src/apex/models/frenet.py": "a8c6190bd6be9f2a284c83b5c31e5d6cb2d8ef1f791b49bbebdd3c110a36ee96",
+    "src/apex/models/integration.py": "02009193fb2d25e83560a2da37f216048dfa3ededcb3de8616b90e411473ad51",
+    "src/apex/models/vehicle/__init__.py": "ab6dddf29c21f198a84b17e28f3dcb8b4b1e6543e0ce5533d4166a062d549a9f",
+    "src/apex/models/vehicle/parameters.py": "5cfce45b4a87577b17193b44cfa24f11c8e29c93082564a596f7ddf4e797fbb2",
+    "src/apex/models/vehicle/dynamic_bicycle.py": "c93b674924eed24f9641ebe263863b3422cba5eb1665c0d93dd6cd00bdfd462f",
+    "src/apex/models/vehicle/load_transfer.py": "e96c74199a7d8147866529cb4ecfffbfce74815cb57accb52ea54b407b873be1",
+    "src/apex/models/vehicle/force_allocation.py": "e77d8c87efdaa9c008ec45385ad4dad326cfa2e003798c08e29a5fb9a17647f8",
+    "src/apex/models/tire/__init__.py": "000e7ac305a2f5bb610e6ee9e066a6f8d82a0ac335c2b9253d292a2c3c96907f",
+    "src/apex/models/tire/base.py": "da1b635a6da1de465ac7af61dcf3cad8d23ef406eb6dd7f45dad825bc3f60ccf",
+    "src/apex/models/tire/config.py": "73f7e47ae5768a6961a8ca65aa40a5da7ecd77e412ac6995a459e969daa83877",
+    "src/apex/models/tire/linear.py": "6ae5888b0000cd57a88788463977be1a90fa8e1f6a332f131c66623192ce9cf3",
+    "src/apex/models/tire/grip.py": "e91bab930ee0650578ede2964ef680f77663cfd34d26ab1682c232b34c6d8c90",
+    "src/apex/simulation/__init__.py": "84069322b2562012fcfd863d27f6fc88a0f2d5eaba3a4040f10e896cffc4a513",
+    "src/apex/simulation/runner.py": "99dd44020405dd121433637ccf43d53639451a2b7b595bed255555144802cb34",
+    "src/apex/simulation/timing.py": "1bcd5ac042dc761ff8ed83028d0dde372a1569a9549f84e7f92061e109fa968f",
+    "src/apex/track/__init__.py": "95dd539a129d605aa979952c68c75d633738d520fa66e06a491b5bfb2ef7907c",
+    "src/apex/track/base.py": "c15e48dfa2a08bfd57040c80b1280a6f56234503361a38cb3cda6cb35e93cca1",
+    "src/apex/track/centerline.py": "caf28a32f24198fbfd57a7d6a987822f9b4df88ff6b5f1bca5c1f57e2b79429f",
+    "src/apex/track/closed_track.py": "c14fb27c1a1182dec564a5a679832e67c6480fb382a15c05dd2c998b138a350e",
+    "src/apex/track/io.py": "ee2f5a27740684ddba2f1907c88e8893c6cf0c59150352d35845914d5fd30b65",
+    "src/apex/track/progress.py": "fef18ea7fe610cca1ff80f32acdecf5f756b6d26c1a47e47f0eb23b7ae8dc0d8",
+    "src/apex/track/synthetic.py": "1e7ed0900af9971d6c68ca810570b9177a97eb830361c580724870752f4744c0",
+    "tools/apex_workbench/__init__.py": "194595c8c9d46745693697c8417c2408fbe76e3254ae716f26b50c47f4723396",
+    "tools/apex_workbench/configuration.py": "39b33dcd20be80a188d532c33c3fe33561addff847d298beab626fa9a476dc02",
+    "tools/apex_workbench/jobs.py": "0e14fd1c56f76372677e6408c37f44713ca9af3b1d8b8f4c064f80bd1d23b170",
+    "tools/apex_workbench/worker.py": "065738dab95e685b61c9347c254aeb9e13b0cdbcc605087752d0b6b21601b64e",
+    "tools/apex_workbench/lifecycle.py": "794bd5ada88048a402a2d0946942ec9962e52b0caf2e72d7a8a3a0279f51f05a",
+    "tools/apex_workbench/storage.py": "9486d6339b6dc50d2d4fe9030dfb71940e11c8ce283e838e7614fed80eaeb3cb",
+    "tools/apex_workbench/lab_configuration.py": "41e937fbf8d5f4fb239f2d0a99d39f94e1966f59787a7b4ae1f7f4015ce89abc",
+    "tools/apex_workbench/lab_sources.py": "7b5bef6d440f8a16004de9b4539a43c28dc13b203d7ff2a8a01eca1b74895a84",
+    "tools/apex_workbench/dynamic_lab.py": "65e78ea7a982421837e96ea3bc5b8748ae1e1c6e0e22493fe8ae99df8d67063d",
+    "tools/apex_workbench/lab_reporting.py": "47ecc170f80fb06b99b5ef9a78d70749a22da547c52b4b671eba37eca387b0c2",
+    "tools/apex_workbench/lab_evidence.py": "a3ea1046530bbe13461c87529155d167c83681008c9298268be9167b00dbed73",
+    "tools/apex_workbench/lab_comparison.py": "ae792cb84bd0a10dec62160350f4a79e1397098b3267b2f0f7db9285f798e0cb",
+    "tools/apex_workbench/comparison.py": "5e54bd0d75e830d54c4060c19aa7db725b6402af201aba314fd8e1bc42e14b45",
+    "tools/apex_workbench/plots.py": "091359f6d07fa46105c7575627dc5862203fd2279d77ffa7c0c73b0cca5cc48c",
+    "tools/apex_workbench/app.py": "ea572914ab10d824c93002d56831492fccf45a839520754a8ff4f3fe37b4eea8",
+    "tools/apex_workbench/qualification_math.py": "4511601c8291ea40c68b7fe91763f3251e9dcb195bd373c951ec7a47a5977fbf",
+    "tools/apex_workbench/qualification.py": "ebbde4064962fe4dac9d958860fc271815fd67c804c0d2aff7c5031a2ef577cd",
+    "tools/apex_workbench/qualification_campaign.py": "a191c1cf2e34831755c9d48d71767935c3b1f67bb085f04b3539d22ff7398ac9",
+    "tools/apex_workbench/qualification_reference.py": "a93797ffd5bdf974078c032a55367849a257d92138e1e2630e89bcb8168e3826"
+  },
+  "scenario_sha256": {
+    "docs/apex_workbench_v0_3_c/SCIENTIFIC_DECISIONS.md": "7afcf92df953af0a5742ba373ca5194367ce23259820382ee381ed2fd7b9390c",
+    "docs/apex_workbench_v0_3_c/RACING_SCENARIO_PROPOSALS.md": "50d89447844f9c227ab0ea4d4ab107e61ae754585e72e54b1aac717067959c22"
+  },
+  "original_deadline_and_assertion_ast_unchanged": {
+    "tools/apex_workbench/tests/test_engineering_workspace.py::application": true,
+    "tools/apex_workbench/tests/test_engineering_workspace.py::test_actual_compare_ui_candidate_then_qualified": true,
+    "tools/apex_workbench/tests/test_recorded_view.py::app_for": true,
+    "tools/apex_workbench/tests/test_recorded_view.py::test_three_run_ui_0125_and_pair_labels": true
+  },
+  "diagnosis": {
+    "historical_89s_outlier_reproduced": false,
+    "historical_unique_cause_established": false,
+    "observed_redundancy": "duplicate seek rerun, repeated verified file reads for figures, eager collapsed details",
+    "baseline_Q": {
+      "phase": "two_Q_cold",
+      "total_wall_s": 2.9429730830015615,
+      "script_wall_s": 2.902791625005193,
+      "outside_script_wall_s": 0.04018145799636841,
+      "error": null,
+      "operations": {
+        "run_catalog.discover": {
+          "calls": 1,
+          "wall_s": 0.018784084008075297,
+          "self_wall_s": 0.018784084008075297,
+          "cpu_s": 0.018753459
+        },
+        "storage.sha256": {
+          "calls": 300,
+          "wall_s": 0.0216241899470333,
+          "self_wall_s": 0.0216241899470333,
+          "cpu_s": 0.013983465000000174
+        },
+        "engineering_views.comparison_epoch": {
+          "calls": 9,
+          "wall_s": 0.0035676249535754323,
+          "self_wall_s": 0.0008159589488059282,
+          "cpu_s": 0.002767709000000264
+        },
+        "storage.artifact_manifest": {
+          "calls": 3698,
+          "wall_s": 0.3930858089006506,
+          "self_wall_s": 0.3930858089006506,
+          "cpu_s": 0.39523419700000445
+        },
+        "storage._checked_bytes": {
+          "calls": 3528,
+          "wall_s": 0.20091390938614495,
+          "self_wall_s": 0.20091390938614495,
+          "cpu_s": 0.18236130099998668
+        },
+        "storage.artifact_bytes": {
+          "calls": 3528,
+          "wall_s": 1.2239630701078568,
+          "self_wall_s": 0.648542510723928,
+          "cpu_s": 1.202210277999991
+        },
+        "storage.check_required_artifacts": {
+          "calls": 128,
+          "wall_s": 0.25500500114867464,
+          "self_wall_s": 0.2413951733324211,
+          "cpu_s": 0.25401595499999857
+        },
+        "lab_evidence.read_record": {
+          "calls": 44,
+          "wall_s": 0.8934081229672302,
+          "self_wall_s": 0.4016800841782242,
+          "cpu_s": 0.8916452110000026
+        },
+        "plots.read_frame": {
+          "calls": 38,
+          "wall_s": 0.9928720410971437,
+          "self_wall_s": 0.11799078620970249,
+          "cpu_s": 0.9909590059999993
+        },
+        "engineering_views.inspect": {
+          "calls": 6,
+          "wall_s": 0.9641372499754652,
+          "self_wall_s": 0.008536916866432875,
+          "cpu_s": 0.9622768329999998
+        },
+        "lab_comparison.read_record": {
+          "calls": 2,
+          "wall_s": 0.04100075000314973,
+          "self_wall_s": 0.01818454303429462,
+          "cpu_s": 0.040890708
+        },
+        "qualification.read_record": {
+          "calls": 38,
+          "wall_s": 1.0864050779200625,
+          "self_wall_s": 0.6012919939821586,
+          "cpu_s": 1.0646224219999998
+        },
+        "qualification.bind_run": {
+          "calls": 36,
+          "wall_s": 1.2626900830073282,
+          "self_wall_s": 0.007905539154307917,
+          "cpu_s": 1.2405006669999996
+        },
+        "qualification.calculate": {
+          "calls": 2,
+          "wall_s": 0.06155350001063198,
+          "self_wall_s": 0.06155350001063198,
+          "cpu_s": 0.06152299899999991
+        },
+        "qualification.evaluate_references": {
+          "calls": 2,
+          "wall_s": 1.33591379201971,
+          "self_wall_s": 0.009231249248841777,
+          "cpu_s": 1.313679167
+        },
+        "qualification.check_current_source": {
+          "calls": 2,
+          "wall_s": 0.015492582984734327,
+          "self_wall_s": 0.00282463597250171,
+          "cpu_s": 0.008447042000000016
+        },
+        "qualification.read_qualification": {
+          "calls": 2,
+          "wall_s": 1.353001082985429,
+          "self_wall_s": 0.001594707980984822,
+          "cpu_s": 1.3237192500000001
+        },
+        "qualification.applicability": {
+          "calls": 2,
+          "wall_s": 1.456336207978893,
+          "self_wall_s": 0.00047791999531909823,
+          "cpu_s": 1.426831751
+        },
+        "lab_comparison.eligibility": {
+          "calls": 1,
+          "wall_s": 1.4998112919856794,
+          "self_wall_s": 0.0004157919611316174,
+          "cpu_s": 1.470188167
+        },
+        "engineering_views.compare": {
+          "calls": 1,
+          "wall_s": 1.8217289589811116,
+          "self_wall_s": 0.00014787496183998883,
+          "cpu_s": 1.791569708
+        },
+        "engineering_views.comparison_current": {
+          "calls": 26,
+          "wall_s": 0.0034640429948922247,
+          "self_wall_s": 0.0004045010427944362,
+          "cpu_s": 0.0034713720000008053
+        },
+        "Snapshot.current": {
+          "calls": 10,
+          "wall_s": 0.05898141601937823,
+          "self_wall_s": 0.00032423713128082454,
+          "cpu_s": 0.058823666999999524
+        },
+        "recorded_view.load": {
+          "calls": 2,
+          "wall_s": 0.33351720799691975,
+          "self_wall_s": 0.0012287080171518028,
+          "cpu_s": 0.332941833
+        },
+        "recorded_view.matrix": {
+          "calls": 1,
+          "wall_s": 2.1562917909759562,
+          "self_wall_s": 2.2958003683015704e-05,
+          "cpu_s": 2.125552708
+        },
+        "workspace_panels.selected_samples": {
+          "calls": 1,
+          "wall_s": 0.004479458002606407,
+          "self_wall_s": 0.004479458002606407,
+          "cpu_s": 0.004481499999999805
+        },
+        "plots.trajectory": {
+          "calls": 1,
+          "wall_s": 0.07918445797986351,
+          "self_wall_s": 0.026495124970097095,
+          "cpu_s": 0.07904320799999986
+        },
+        "streamlit.plotly_chart": {
+          "calls": 4,
+          "wall_s": 0.01595862495014444,
+          "self_wall_s": 0.01595862495014444,
+          "cpu_s": 0.015949376000000015
+        },
+        "workspace_panels.trajectory": {
+          "calls": 1,
+          "wall_s": 0.08435158300562762,
+          "self_wall_s": 0.0007620420365128666,
+          "cpu_s": 0.08419604099999978
+        },
+        "plots.series": {
+          "calls": 3,
+          "wall_s": 0.22826008300762624,
+          "self_wall_s": 0.07011712397797965,
+          "cpu_s": 0.2278575420000002
+        },
+        "workspace_panels.channels": {
+          "calls": 1,
+          "wall_s": 0.28814266598783433,
+          "self_wall_s": 0.011804334004409611,
+          "cpu_s": 0.2876087089999997
+        }
+      }
+    },
+    "baseline_seek": {
+      "phase": "three_seek_0125",
+      "total_wall_s": 9.902048249990912,
+      "script_wall_s": 9.86162950101425,
+      "outside_script_wall_s": 0.040418748976662755,
+      "error": null,
+      "operations": {
+        "run_catalog.discover": {
+          "calls": 2,
+          "wall_s": 0.037535000999923795,
+          "self_wall_s": 0.037535000999923795,
+          "cpu_s": 0.037433208000000155
+        },
+        "storage.sha256": {
+          "calls": 1078,
+          "wall_s": 0.04431676372769289,
+          "self_wall_s": 0.04431676372769289,
+          "cpu_s": 0.04488650899999846
+        },
+        "engineering_views.comparison_epoch": {
+          "calls": 28,
+          "wall_s": 0.009423416020581499,
+          "self_wall_s": 0.00284487524186261,
+          "cpu_s": 0.009429499000000549
+        },
+        "storage.artifact_manifest": {
+          "calls": 13241,
+          "wall_s": 1.3218679295678157,
+          "self_wall_s": 1.3218679295678157,
+          "cpu_s": 1.3292989669999802
+        },
+        "storage._checked_bytes": {
+          "calls": 12638,
+          "wall_s": 0.6322150526684709,
+          "self_wall_s": 0.6322150526684709,
+          "cpu_s": 0.6386623029999399
+        },
+        "storage.artifact_bytes": {
+          "calls": 12638,
+          "wall_s": 4.212933788832743,
+          "self_wall_s": 2.3246485310955904,
+          "cpu_s": 4.206984912000005
+        },
+        "storage.check_required_artifacts": {
+          "calls": 438,
+          "wall_s": 0.8733172047359403,
+          "self_wall_s": 0.8269741086405702,
+          "cpu_s": 0.8705557920000032
+        },
+        "lab_evidence.read_record": {
+          "calls": 137,
+          "wall_s": 2.784549829259049,
+          "self_wall_s": 1.251563854078995,
+          "cpu_s": 2.779110122999993
+        },
+        "plots.read_frame": {
+          "calls": 116,
+          "wall_s": 3.0301765850163065,
+          "self_wall_s": 0.35666213565855287,
+          "cpu_s": 3.0241781259999883
+        },
+        "engineering_views.inspect": {
+          "calls": 21,
+          "wall_s": 3.378737914026715,
+          "self_wall_s": 0.029803832294419408,
+          "cpu_s": 3.3720014969999963
+        },
+        "lab_comparison.read_record": {
+          "calls": 12,
+          "wall_s": 0.24578583289985545,
+          "self_wall_s": 0.10955112203373574,
+          "cpu_s": 0.245400415999998
+        },
+        "qualification.read_record": {
+          "calls": 152,
+          "wall_s": 4.166111001075478,
+          "self_wall_s": 2.426348119886825,
+          "cpu_s": 4.160057409000002
+        },
+        "qualification.bind_run": {
+          "calls": 144,
+          "wall_s": 4.875494632055052,
+          "self_wall_s": 0.0314718936861027,
+          "cpu_s": 4.867519164999996
+        },
+        "qualification.calculate": {
+          "calls": 8,
+          "wall_s": 0.24419203997240402,
+          "self_wall_s": 0.24419203997240402,
+          "cpu_s": 0.24403845899999976
+        },
+        "qualification.evaluate_references": {
+          "calls": 8,
+          "wall_s": 5.165092872979585,
+          "self_wall_s": 0.03673978292499669,
+          "cpu_s": 5.156763374
+        },
+        "qualification.check_current_source": {
+          "calls": 8,
+          "wall_s": 0.02822675005882047,
+          "self_wall_s": 0.010596660082228482,
+          "cpu_s": 0.028157750999999953
+        },
+        "qualification.read_qualification": {
+          "calls": 8,
+          "wall_s": 5.199560208042385,
+          "self_wall_s": 0.006240585003979504,
+          "cpu_s": 5.191156832999999
+        },
+        "qualification.applicability": {
+          "calls": 8,
+          "wall_s": 5.611931376042776,
+          "self_wall_s": 0.0019246289157308638,
+          "cpu_s": 5.602744375999999
+        },
+        "lab_comparison.eligibility": {
+          "calls": 6,
+          "wall_s": 5.872345458978089,
+          "self_wall_s": 0.002057709061773494,
+          "cpu_s": 5.862722873999998
+        },
+        "engineering_views.compare": {
+          "calls": 6,
+          "wall_s": 7.806352457992034,
+          "self_wall_s": 0.0008359180355910212,
+          "cpu_s": 7.793170748999999
+        },
+        "engineering_views.comparison_current": {
+          "calls": 55,
+          "wall_s": 0.008437211101409048,
+          "self_wall_s": 0.0009635422611609101,
+          "cpu_s": 0.008422712999995419
+        },
+        "Snapshot.current": {
+          "calls": 18,
+          "wall_s": 0.1058108729775995,
+          "self_wall_s": 0.0005832472234033048,
+          "cpu_s": 0.105451709000004
+        },
+        "recorded_view.load": {
+          "calls": 6,
+          "wall_s": 1.0025791240041144,
+          "self_wall_s": 0.003568251966498792,
+          "cpu_s": 1.000848958999998
+        },
+        "recorded_view.matrix": {
+          "calls": 2,
+          "wall_s": 8.812460832996294,
+          "self_wall_s": 7.158302469179034e-05,
+          "cpu_s": 8.797536124
+        },
+        "workspace_panels.selected_samples": {
+          "calls": 1,
+          "wall_s": 0.005691083992132917,
+          "self_wall_s": 0.005691083992132917,
+          "cpu_s": 0.005686624999999168
+        },
+        "plots.trajectory": {
+          "calls": 1,
+          "wall_s": 0.07885883300332353,
+          "self_wall_s": 0.02663045801455155,
+          "cpu_s": 0.07871216700000083
+        },
+        "streamlit.plotly_chart": {
+          "calls": 4,
+          "wall_s": 0.016165458975592628,
+          "self_wall_s": 0.016165458975592628,
+          "cpu_s": 0.016154459999997428
+        },
+        "workspace_panels.trajectory": {
+          "calls": 1,
+          "wall_s": 0.08395241701509804,
+          "self_wall_s": 0.0007768340001348406,
+          "cpu_s": 0.08379416700000064
+        },
+        "plots.series": {
+          "calls": 3,
+          "wall_s": 0.3103699999919627,
+          "self_wall_s": 0.07216429099207744,
+          "cpu_s": 0.3095637499999988
+        },
+        "workspace_panels.channels": {
+          "calls": 1,
+          "wall_s": 0.38992458299617283,
+          "self_wall_s": 0.012208459025714546,
+          "cpu_s": 0.38884599999999914
+        }
+      }
+    }
+  },
+  "timings": {
+    "two_Q_cold": {
+      "before": {
+        "total_wall_s": 2.9429730830015615,
+        "script_wall_s": 2.902791625005193,
+        "outside_script_wall_s": 0.04018145799636841
+      },
+      "after": {
+        "total_wall_s": 2.4265970829874277,
+        "script_wall_s": 2.3871723749907687,
+        "outside_script_wall_s": 0.03942470799665898
+      }
+    },
+    "two_Q_warm": {
+      "before": {
+        "total_wall_s": 2.8775607499992475,
+        "script_wall_s": 2.837960042001214,
+        "outside_script_wall_s": 0.03960070799803361
+      },
+      "after": {
+        "total_wall_s": 2.3493442089820746,
+        "script_wall_s": 2.3098618749936577,
+        "outside_script_wall_s": 0.03948233398841694
+      }
+    },
+    "three_Q": {
+      "before": {
+        "total_wall_s": 5.479688457999146,
+        "script_wall_s": 5.439409332990181,
+        "outside_script_wall_s": 0.04027912500896491
+      },
+      "after": {
+        "total_wall_s": 4.702669332997175,
+        "script_wall_s": 4.662808207998751,
+        "outside_script_wall_s": 0.0398611249984242
+      }
+    },
+    "three_seek_0125": {
+      "before": {
+        "total_wall_s": 9.902048249990912,
+        "script_wall_s": 9.86162950101425,
+        "outside_script_wall_s": 0.040418748976662755
+      },
+      "after": {
+        "total_wall_s": 4.868656542006647,
+        "script_wall_s": 4.828461249999236,
+        "outside_script_wall_s": 0.0401952920074109
+      }
+    }
+  },
+  "profile_environment": {
+    "definition": "process-cold Q selection; OS cache state uncontrolled; warm repeats same active evidence/selection",
+    "native": {
+      "requested_ceiling": 1,
+      "set_status": 0,
+      "blas_threading_mode": 1,
+      "mode_name": "single",
+      "exact_active_thread_count_available": false
+    },
+    "python": "3.12.14 (main, Sep  1 2026, 14:09:38) [Clang 22.1.3 ]",
+    "platform": "macOS-26.5.1-arm64-arm-64bit",
+    "versions": {
+      "numpy": "2.5.3",
+      "scipy": "1.18.1",
+      "streamlit": "1.66.1",
+      "plotly": "6.9.0",
+      "pytest": "9.1.1"
+    },
+    "source": "ad69feadc126448a025f1204cc9ee9dd7307f864"
+  },
+  "focused_invocations_not_summed": [
+    {
+      "id": "focused-1",
+      "tests": 52,
+      "failures": 0,
+      "errors": 0,
+      "skips": 0,
+      "passes": 52,
+      "junit_time_s": 60.013,
+      "log": "results/apex_workbench_v03c_n1_20261030/focused-1.log",
+      "junit": "results/apex_workbench_v03c_n1_20261030/focused-1.xml"
+    },
+    {
+      "id": "final-actions",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skips": 0,
+      "passes": 3,
+      "junit_time_s": 13.445,
+      "log": "results/apex_workbench_v03c_n1_20261030/final-actions.log",
+      "junit": "results/apex_workbench_v03c_n1_20261030/final-actions.xml"
+    }
+  ],
+  "browser": {
+    "times": [
+      {
+        "interaction": "two_Q_first_selection",
+        "observable": "click to visible qualified heading",
+        "wall_ms": 1259
+      },
+      {
+        "interaction": "two_Q_repeat_selection",
+        "observable": "click to visible qualified heading",
+        "wall_ms": 1351
+      },
+      {
+        "interaction": "three_seek_0125",
+        "observable": "click to visible native sample-25 caption",
+        "wall_ms": 4817
+      }
+    ],
+    "meaning": "Click to newly visible heading/native caption; includes browser protocol and polling, not a pure server duration or full render budget",
+    "viewport_override": false,
+    "harness_notes": [
+      "Initial text click did not select radio; used current AX radio",
+      "Popup masked heading until dismissed",
+      "Two locator waits ended before the later DOM showed completed output",
+      "No application exception observed; final native sample25/.125, three selected original source IDs and storedXY marker confirmed"
+    ],
+    "scientific_executions": 0
+  },
+  "launcher_work_smoke": {
+    "url": "http://127.0.0.1:8501",
+    "actual_default_launcher": true,
+    "listener_pid": 42570,
+    "command": [
+      "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/tools/apex_workbench/.venv/bin/python",
+      "-m",
+      "streamlit",
+      "run",
+      "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/tools/apex_workbench/workspace.py",
+      "--server.address",
+      "127.0.0.1",
+      "--server.port",
+      "8501",
+      "--server.headless",
+      "true",
+      "--browser.gatherUsageStats",
+      "false"
+    ],
+    "owned": true,
+    "reuse": true,
+    "launcher_sha256": "521e14fb8eb1459e3855c6ef872bd34bdaee764f1c198cad8b2147bf9906599d",
+    "clean_owned_shutdown": true,
+    "new_scientific_experiments": 0
+  },
+  "preservation_before_review": {
+    "base": "ad69feadc126448a025f1204cc9ee9dd7307f864",
+    "head": "ad69feadc126448a025f1204cc9ee9dd7307f864",
+    "science_files": 56,
+    "qualification_files": 345,
+    "historical_result_stat_files": 44303,
+    "symlinks": 1382,
+    "tracked_before": 987,
+    "authorized_changes": [
+      "tools/apex_workbench/tests/test_engineering_workspace.py",
+      "tools/apex_workbench/workspace.py",
+      "tools/apex_workbench/workspace_panels.py"
+    ],
+    "scientific_changes": [],
+    "qualification_changes": [],
+    "historical_changes": [],
+    "symlink_changes": [],
+    "scenario_changes": [],
+    "unexpected_changes": [],
+    "launcher_sha256": "521e14fb8eb1459e3855c6ef872bd34bdaee764f1c198cad8b2147bf9906599d"
+  },
+  "independent_review": {
+    "status": "pending",
+    "maximum_iterations": 3
+  },
+  "formal_verification": {
+    "authorized_only_after_exact_PASS_without_material_responsiveness_issue": true,
+    "executed": false,
+    "planned_complete_command_selection": [
+      "tests",
+      "tools/apex_workbench/tests"
+    ],
+    "gated_G2_skips_must_remain": 17
+  },
+  "new_qualification_campaign": false,
+  "new_racing_executions": 0,
+  "cache_scope": "No persistent cache; only already verified in-memory frames within current operation",
+  "evidence_sha256": {
+    "results/apex_workbench_v03c_n1_20261030/before.json": "68e9ebb909cd312a2eff0cdac402de13af818d8bdb97005063175e771c1c304c",
+    "results/apex_workbench_v03c_n1_20261030/profile_ui.py": "8c6662d9f8a376f967740f68762a49ec95bfded37dbc48fcd0b5af3bff22a501",
+    "results/apex_workbench_v03c_n1_20261030/after-1.log": "adbb35f1d9af8e62c5f0086207fc39062561fcb84eff22b5871286bc33ba13ec",
+    "results/apex_workbench_v03c_n1_20261030/focused-1.xml": "36990164c9afbd7b1719e05d7829f9be87756d80402e787acb886f34ac893e6f",
+    "results/apex_workbench_v03c_n1_20261030/pre-review-preservation.json": "d7b951ecf1b61a4d2469d472c00f1ce867aedd55086adbf5fecb76169803172e",
+    "results/apex_workbench_v03c_n1_20261030/baseline-exit.json": "c8e9be393be3f05cf8817477d6d146eac6598fc32d06fea0263935abc4a0a836",
+    "results/apex_workbench_v03c_n1_20261030/final-actions.xml": "4054b5c88cdfa8b4ceac2a514eca18de58c1d19861270c7bb15c120688a6a228",
+    "results/apex_workbench_v03c_n1_20261030/after-final.log": "4963cbc10eacb89e38d626056ad670494dbfefc6c7be123e4fef2e2ae5fa7840",
+    "results/apex_workbench_v03c_n1_20261030/baseline.log": "7a9a5231446ee575170cd2262c6390560d4020d0d320f84259d4c473a2b53302",
+    "results/apex_workbench_v03c_n1_20261030/final-actions.log": "b162e941dba8150790c470ad6eb588edde6d489bf2e3419a8c3ef33be60e4c9e",
+    "results/apex_workbench_v03c_n1_20261030/preserve.py": "5d6b0998914941b541903e93f906115675ea07046770df7b1959df5ae2dd3f57",
+    "results/apex_workbench_v03c_n1_20261030/after-final-exit.json": "62dea3764c6e2fbe85ff091b0e51a3f888e4f7b1872e7628d9155bc3825c7a7f",
+    "results/apex_workbench_v03c_n1_20261030/pre-review-preservation.log": "d7b951ecf1b61a4d2469d472c00f1ce867aedd55086adbf5fecb76169803172e",
+    "results/apex_workbench_v03c_n1_20261030/browser_work.py": "95bf2bf6c1ab9f1f3e4076e7b2d8c7945b25a23e71ea045a077765c6dda60242",
+    "results/apex_workbench_v03c_n1_20261030/browser-work.log": "f9a5b90904b6bb0b4626b7c50fbcfba0de3ae02fb4967c05de192a119cfc7247",
+    "results/apex_workbench_v03c_n1_20261030/after-1-exit.json": "72b1bb65e0f8c850d07ab75ff8e1a54bf24f3f13a3fa2726da8d87c541004fae",
+    "results/apex_workbench_v03c_n1_20261030/focused-1.log": "13eec5b8515e41069bd0b07426098084d4de3d22bb0adc2b00a758ac4ebccc8a",
+    "results/apex_workbench_v03c_n1_20261030/baseline/observations.json": "a13341792a463635134f178aae7768baea9b94c4bf3f718a798e304d76795077",
+    "results/apex_workbench_v03c_n1_20261030/baseline/environment.json": "8745bf07b25780a313483bbffd43f744698f58fe72c2e0152ca8aaa3a385bbe7",
+    "results/apex_workbench_v03c_n1_20261030/after-1/observations.json": "134cc4ba1b887a1d82e72566dc89c70b5681b2fe4a9ce03bb0e4a8ec503b79bf",
+    "results/apex_workbench_v03c_n1_20261030/after-1/environment.json": "8745bf07b25780a313483bbffd43f744698f58fe72c2e0152ca8aaa3a385bbe7",
+    "results/apex_workbench_v03c_n1_20261030/browser-work/browser-observations.json": "223b29b4498c879897e13762322ea439cb4f5c8327358203f537021d2252c725",
+    "results/apex_workbench_v03c_n1_20261030/browser-work/result.json": "429fb99187fa2c94b40194e564f862afda5204a69795d20e9f10437d2bda54f1",
+    "results/apex_workbench_v03c_n1_20261030/browser-work/reuse.log": "4b4b88102ced713168c7de0be8070a4e8626922df381beb8a9d0b1d4be426240",
+    "results/apex_workbench_v03c_n1_20261030/browser-work/stop": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "results/apex_workbench_v03c_n1_20261030/browser-work/startup.log": "8f9ba52b9944728baf9582a54b5f22e4623bb645ff0501e85fa6baaeaa117b41",
+    "results/apex_workbench_v03c_n1_20261030/browser-work/native-0125.png": "3a54912337493c4b6e9b9d5cd4a2248ffdb388a46519f22e16597889c07cafad",
+    "results/apex_workbench_v03c_n1_20261030/browser-work/ready.json": "615e9643807fafb1866ccc774bc4a195939de2f43d90c242736ab76c403e68a9",
+    "results/apex_workbench_v03c_n1_20261030/browser-work/native-0125-dom.txt": "3356d010e87c8ceed12369c80f3642185679004209748f745cc2a0197c17e0c9",
+    "results/apex_workbench_v03c_n1_20261030/after-final/observations.json": "4dd22ec9cd16b80edc3f7a0ea110e8fa76818ca47cd26e2b77d20febb84d7a36",
+    "results/apex_workbench_v03c_n1_20261030/after-final/environment.json": "8745bf07b25780a313483bbffd43f744698f58fe72c2e0152ca8aaa3a385bbe7"
+  }
+}

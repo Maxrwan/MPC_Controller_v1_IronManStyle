@@ -1397,3 +1397,10 @@ malformed-data exceptions while retaining literal raw/export access; frozen read
 N1 retains two UI deadline failures and the separate bounded completion evidence for formal
 Verification. No responsiveness criterion or source-identity migration is introduced. See the
 [final review](reviews/apex_workbench_v0_3_c/iteration_2/REVIEW.md).
+
+
+V0.3-C N1 correction (30 October 2026) reuses verified native frames only during the current
+presentation operation and moves cursor actions into callbacks, preserving artifact/epoch guards.
+Compare provenance loads explicitly on demand. No persistent qualification cache, frozen-reader
+change or new acceptance criterion. Profiling separates workspace work from AppTest overhead;
+original deadlines stay intact. See [responsiveness report](reviews/apex_workbench_v0_3_c/RESPONSIVENESS.md).

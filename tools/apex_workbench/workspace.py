@@ -266,7 +266,9 @@ else:
     if len(selected) >= 2:
         runs = [by_key[key] for key in selected]
         panels.analysis(runs, "compare", selected_qualification)
-        with st.expander("Selected configurations, provenance and original summaries"):
+        if st.toggle(
+            "Selected configurations, provenance and original summaries", key="compare_details"
+        ):
             for run in runs:
                 data = views.inspect(run)
                 st.json(

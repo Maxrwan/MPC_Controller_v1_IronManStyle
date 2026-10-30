@@ -383,14 +383,16 @@ def test_valid_epoch_replacement_withholds_qualified_label_and_all_overlays(
 
     monkeypatch.setattr(views, "compare", classified)
     if swap_boundary == "plot_read":
-        series = views.plots.series
+        from tools.apex_workbench import workspace_panels
+
+        series = workspace_panels._series
 
         def plotted(*args, **kwargs):
             result = series(*args, **kwargs)
             swap()
             return result
 
-        monkeypatch.setattr(views.plots, "series", plotted)
+        monkeypatch.setattr(workspace_panels, "_series", plotted)
     next(item for item in app.multiselect if item.label == "Runs").set_value(
         [run.key for run in runs]
     ).run()
