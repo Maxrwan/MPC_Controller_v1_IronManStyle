@@ -1,3 +1,60 @@
+# Current handoff — C0 descriptive contract independent re-review PASS
+
+**C0_DESCRIPTIVE_CONTRACT_REVIEW_COMPLETE_PENDING_PRIMARY_WORK_DECISION. Outcome: PASS.**
+31 October 2026. A fresh independent context reviewed exact corrected candidate
+`5bf6cce22816bc8fd5a7d7bf84cefef87c69e358` on
+`codex/apex-workbench-c0-descriptive-contract-v1`.
+[Iteration-2 review](reviews/apex_workbench_v0_3_d/c0_descriptive_contract/iteration_2/REVIEW.md),
+[machine record](reviews/apex_workbench_v0_3_d/c0_descriptive_contract/iteration_2/review_record.json).
+R1–R4 all PASS; no new contradictory normative statements found. Contract SHA-256 remains
+`31afeefac753dead492df26f90b5b6aa1d822de705e3a86c97dfba2a0f72fd62`.
+This delivery adds review/handoff documentation only and does not amend the reviewed contract.
+
+Independent inspection confirmed exact tokens, present-null/absent pointers, original control
+keys and narrowly permitted unversioned/source-unverified admission. Original fixture, Section A
+audit/blocked contract/inventory, iteration-1 BLOCKED review, scientific sources, tests and
+Workbench application sources remain preserved. Only static documentation/JSON/hash/Git checks
+ran; no project imports, tests, simulations, controllers, qualification or adapter implementation.
+The interrupted reviewer resumed and confirmed its final decision; no partial check was promoted
+to PASS. [PR #1](https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/pull/1) remains a draft.
+
+**G1 capture-time producer provenance remains OPEN.** PASS is for the descriptive contract only,
+not software Verification or scientific acceptance. Stop here: any adapter or tests require a
+subsequent bounded Primary WORK assignment. All other scientific gates remain unchanged.
+
+---
+
+# Current handoff — C0 descriptive contract R1–R4 correction
+
+**C0_DESCRIPTIVE_CONTRACT_SUBMITTED_PENDING_INDEPENDENT_REVIEW.** 30 October 2026.
+Primary authorized documentation corrections only on
+`codex/apex-workbench-c0-descriptive-contract-v1`; [PR #1](https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/pull/1)
+remains a draft. The containing commit supplies the exact revised candidate for independent review.
+[Corrected contract](apex_workbench_v0_3_d/c0_contract/CONTRACT_DESCRIPTIVE_ONLY_V1.md).
+Original candidate `5f73ce324d698568d8ca03f881cbeb3c9d621406` and the independent
+[iteration-1 BLOCKED review](https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/blob/02e7a3e82d8baf0c90719d876ce5c6662cc52fb2/docs/reviews/apex_workbench_v0_3_d/c0_descriptive_contract/iteration_1/REVIEW.md)
+remain unchanged in Git; no review finding is erased or retroactively changed.
+
+R1 corrects literal numeric lexemes throughout, including integer/real and signed-zero examples.
+R2 identifies seven present-null fields and two absent fields at exact original JSON pointers.
+R3 uses `time`, `application_time`, `physical_latency`, with clock/latency interpretations still
+reference-derived and capture-unverified. R4 expressly admits only the exact 152,600-byte,
+SHA-pinned, historically unversioned artifact with **G1 OPEN**; other artifacts, incorrect bytes and
+unsupported contemporary contract identities/versions reject. No historical source/schema is invented.
+
+Read-only standard-library JSON token/pointer/hash inspection confirmed 25 numeric pointer/token
+cases, seven present-null fields, two absent fields, unchanged original155 bytes/SHA-256 2bd7d238…,
+all 1,398 prior protected paths, all 888 Section A protected paths and all 428 accepted behavioral
+identities. Whitespace/diff checks passed. No project imports, tests, simulations, controller runs,
+qualification, adapter implementation or campaigns ran. Original Section A audit/blocked contract,
+inventory, fixture, scientific sources, tests and Workbench application sources remain untouched.
+
+Next: independent-context review of the exact revised commit, reassessing R1–R4 and contradictory
+normative statements. Stop after PASS / PASS WITH CONDITIONS / BLOCKED. Even PASS authorizes no
+adapter; a subsequent bounded Primary WORK assignment is required. **G1 remains OPEN throughout.**
+
+---
+
 # Current handoff — C0 Section A source/archive audit blocked
 
 **C0_ARCHIVE_CONTRACT_BLOCKED_PENDING_DECISION.** 30 October 2026. Section A only, based on

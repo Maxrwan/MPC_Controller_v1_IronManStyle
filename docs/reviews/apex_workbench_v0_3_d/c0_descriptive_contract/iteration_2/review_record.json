@@ -1,0 +1,215 @@
+{
+  "schema": "apex-c0-descriptive-contract-independent-review/2",
+  "date": "2026-10-31",
+  "stage": "ENGINEERING_REVIEW_DOCUMENTATION_ONLY",
+  "status": "C0_DESCRIPTIVE_CONTRACT_REVIEW_COMPLETE_PENDING_PRIMARY_WORK_DECISION",
+  "outcome": "PASS",
+  "reviewer_independent_context": true,
+  "reviewer_authored_or_amended_candidate": false,
+  "reviewed_revision": "5bf6cce22816bc8fd5a7d7bf84cefef87c69e358",
+  "reviewed_branch": "codex/apex-workbench-c0-descriptive-contract-v1",
+  "contract": {
+    "path": "docs/apex_workbench_v0_3_d/c0_contract/CONTRACT_DESCRIPTIVE_ONLY_V1.md",
+    "sha256": "31afeefac753dead492df26f90b5b6aa1d822de705e3a86c97dfba2a0f72fd62",
+    "identifier": "c0-original155-descriptive-only/1",
+    "profile": "descriptive_only / source_unverified",
+    "working_bytes_equal_reviewed_git": true
+  },
+  "original_candidate": "5f73ce324d698568d8ca03f881cbeb3c9d621406",
+  "original_blocked_review": {
+    "immutable_commit": "02e7a3e82d8baf0c90719d876ce5c6662cc52fb2",
+    "outcome_remains": "BLOCKED",
+    "files": {
+      "docs/reviews/apex_workbench_v0_3_d/c0_descriptive_contract/iteration_1/REVIEW.md": {
+        "bytes": 14701,
+        "sha256": "d096072006df247806052598b8639dba71b11daca24cf40178826a32eb747964"
+      },
+      "docs/reviews/apex_workbench_v0_3_d/c0_descriptive_contract/iteration_1/review_record.json": {
+        "bytes": 12320,
+        "sha256": "3d6ce8716b3b98cf919c5c77bf3eedbc79abbdcb3b759b5591a932c32b8ba7bc"
+      }
+    }
+  },
+  "artifact": {
+    "path": "results/task007d/c/amended/c0_export/original155.json",
+    "bytes": 152600,
+    "sha256": "2bd7d2385e7e2072a04e5d952eff9af8861eb7e63f016138d5289573c411f2d5",
+    "is_symlink": false,
+    "initial_and_final_identity_match": true
+  },
+  "findings": [
+    {
+      "id": "R1",
+      "decision": "PASS",
+      "contract_lines": [
+        33,
+        50,
+        51,
+        57,
+        59,
+        63,
+        69,
+        70,
+        71,
+        72,
+        73,
+        83,
+        112,
+        114
+      ],
+      "evidence": "25 independently inspected JSON numeric tokens match; lexical retention remains mandatory."
+    },
+    {
+      "id": "R2",
+      "decision": "PASS",
+      "contract_lines": [
+        59,
+        61,
+        85,
+        110,
+        113
+      ],
+      "evidence": "Seven specified present-null members and two absent members match direct pointer inspection."
+    },
+    {
+      "id": "R3",
+      "decision": "PASS",
+      "contract_lines": [
+        40,
+        51
+      ],
+      "evidence": "All 60 control rows contain time/application_time/physical_latency; no latency key. Meaning remains reference-derived and capture-unverified."
+    },
+    {
+      "id": "R4",
+      "decision": "PASS",
+      "contract_lines": [
+        12,
+        21,
+        23,
+        25,
+        97,
+        109,
+        118
+      ],
+      "evidence": "Exact pinned historical unversioned record explicitly admitted with G1 OPEN; other/wrong bytes and unsupported contemporary inspection contract identities/versions reject."
+    }
+  ],
+  "checked_numeric_lexemes": {
+    "/fallbacks/0/time": "0.4",
+    "/fixed_handoffs/0/valid_from": "0.17",
+    "/fixed_handoffs/1/valid_from": "0.33",
+    "/fixed_handoffs/0/t_ready": "0.255",
+    "/fixed_handoffs/0/late_discard_time": "0.255",
+    "/fixed_handoffs/1/t_ready": "0.41500000000000004",
+    "/fixed_handoffs/1/late_discard_time": "0.41500000000000004",
+    "/urgent_demands/0/trigger_time": "0.16",
+    "/urgent_demands/0/eligible_time": "0.255",
+    "/urgent_demands/0/release_time": "0.26",
+    "/urgent_demands/0/planner_busy_wait": "0.095",
+    "/urgent_demands/0/grid_alignment_wait": "0.0050000000000000044",
+    "/misses/0/time": "0.2",
+    "/misses/1/time": "0.3",
+    "/misses/2/time": "0.4",
+    "/end_time": "0.6",
+    "/states/0/time": "0.0",
+    "/reserves/0/time": "0.0",
+    "/controls/0/time": "0.0",
+    "/states/119/time": "0.595",
+    "/reserves/119/time": "0.595",
+    "/controls/59/time": "0.59",
+    "/plans/0/release_time": "0",
+    "/controls/0/acceleration_correction": "-0.0",
+    "/packets/0/solve_duration": "0.01"
+  },
+  "checked_numeric_lexemes_match": true,
+  "numeric_token_inspection_method": "stdlib json.loads parse_int and parse_float retain original number strings; values are not reserialized float evidence.",
+  "present_null_pointers": [
+    "/fixed_handoffs/0/t_accept",
+    "/fixed_handoffs/1/t_accept",
+    "/fixed_handoffs/0/first_TVLQR_use",
+    "/fixed_handoffs/1/first_TVLQR_use",
+    "/urgent_demands/0/trigger_to_authority",
+    "/urgent_demands/0/accepted_time",
+    "/urgent_demands/0/accepted_plan_id"
+  ],
+  "all_seven_present_and_null": true,
+  "absent_pointers": [
+    "/packets/0/valid_from",
+    "/triggers/0/busy"
+  ],
+  "control_key_check": {
+    "rows": 60,
+    "all_have_time_application_time_physical_latency": true,
+    "latency_key_present": false
+  },
+  "new_contradictory_normative_statement_found": false,
+  "raw_lexeme_retention_weakened": false,
+  "G1": "OPEN",
+  "capture_source_binding_established": false,
+  "remaining_limits": [
+    "Capture source/configuration/environment/receipt remain unknown; retained-byte identity is not scientific provenance.",
+    "Admission/currentness/quarantine are written requirements, not implemented or behaviorally verified.",
+    "Historical field unions/counts are not a complete per-index schema; separately authorized WORK must specify actual conditional key sets and nested dimensions without weakening the hash gate.",
+    "No source-qualified scientific, optimizer/controller-performance, physical, causal-total-order or safety conclusion is supported."
+  ],
+  "static_inventory_check": {
+    "root_keys": 18,
+    "root_key_order_matches": true,
+    "duplicate_members": false,
+    "nonstandard_constants": false,
+    "nonfinite_paths": [],
+    "field_type_absence_null_count_time_mismatches": [],
+    "packet_dimensions": "3 packets; 5 timestamps, 5x6 states, 4x2 controls, 4 gain rows of length 4; empty curvatures"
+  },
+  "section_a_preservation": {
+    "docs/apex_workbench_v0_3_d/c0_contract/AUDIT.md": {
+      "sha256": "d2bb2312de160134cc9054ec7fb5c3f14d6619cd2c6ef323bc5bc8535e0ac5d1",
+      "matches_section_a_acf34015157d237a979fd11263982be6b82c523c": true,
+      "matches_original_candidate": true
+    },
+    "docs/apex_workbench_v0_3_d/c0_contract/CONTRACT.md": {
+      "sha256": "af1951d660c80aee7706b38bc79be51c7e126e1ab7457865b65963a9bb46676c",
+      "matches_section_a_acf34015157d237a979fd11263982be6b82c523c": true,
+      "matches_original_candidate": true
+    },
+    "docs/apex_workbench_v0_3_d/c0_contract/evidence_inventory.json": {
+      "sha256": "2f2aa9f503011e4c8ce4383ef622ef5003472438ab7782b825fb038e5c23b8c4",
+      "matches_section_a_acf34015157d237a979fd11263982be6b82c523c": true,
+      "matches_original_candidate": true
+    }
+  },
+  "candidate_changed_paths": [
+    "docs/CODEX_HANDOFF.md",
+    "docs/apex_workbench_v0_3_d/c0_contract/CONTRACT_DESCRIPTIVE_ONLY_V1.md"
+  ],
+  "static_inspection_failure_retained": {
+    "attempt": "Inventory comparison first addressed nonexistent collection_inventory key.",
+    "result": "KeyError: collection_inventory",
+    "disposition": "Corrected to actual collections key; independent comparison then returned zero mismatches. No project code executed or protected file changed."
+  },
+  "execution": {
+    "stdlib_json_hash_git_text_only": true,
+    "project_imports": false,
+    "tests": false,
+    "simulations": false,
+    "controllers": false,
+    "numerical_work": false,
+    "qualification": false,
+    "adapter_or_application": false,
+    "producer": false,
+    "fault_fixtures": false
+  },
+  "formal_verification": false,
+  "scientific_acceptance": false,
+  "implementation_authorized": false,
+  "reviewer_written_paths": [
+    "docs/reviews/apex_workbench_v0_3_d/c0_descriptive_contract/iteration_2/REVIEW.md",
+    "docs/reviews/apex_workbench_v0_3_d/c0_descriptive_contract/iteration_2/review_record.json"
+  ],
+  "review_report_sha256": "55b475888733c86a4cf241d996d3f40487e26df226846903b6e8153352e07fa5",
+  "delivery": "Parent integrates review documentation; reviewer did not commit/push or change branch.",
+  "next_gate": "Separate explicit Primary bounded WORK decision; no automatic adapter, tests or Verification.",
+  "static_inspection_date": "2026-10-30",
+  "record_finalization_date": "2026-10-31"
+}
