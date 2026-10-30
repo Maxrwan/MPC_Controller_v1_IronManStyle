@@ -1,0 +1,480 @@
+{
+  "schema": "apex-workbench-v03c-n1-independent-review/1",
+  "date": "2026-10-30",
+  "classification": "PASS",
+  "reviewed_candidate": "34f98a4894e457900d2fae3b2fd09ead4f5ba5a0",
+  "branch": "codex/apex-workbench-v0-3-c",
+  "base_reviewed_candidate": "8cff10bca8475f0992221d2cebf8862414210056",
+  "base_delivery": "ad69feadc126448a025f1204cc9ee9dd7307f864",
+  "accepted_scientific_source": "4897686e79c13757d5ef5b4373b44d4cab99b5bf",
+  "N1": {
+    "status": "CLOSED_FOR_AUTHORIZED_BOUNDED_RESPONSIVENESS_GATE",
+    "material_unresolved_responsiveness_issues": [],
+    "historical_failed47_remains_failed": true,
+    "historical_longest_Q_s": 89.8861350419902,
+    "historical_spike_reproduced": false,
+    "unique_historical_cause_established": false,
+    "no_host_or_OS_cause_inferred": true,
+    "no_new_latency_scientific_threshold": true
+  },
+  "conditional_formal_verification_gate_satisfied": true,
+  "formal_verification_run_by_reviewer": false,
+  "implementation_or_candidate_test_edits_by_reviewer": false,
+  "commits_or_pushes_by_reviewer": false,
+  "fresh_invocations": {
+    "focused": {
+      "name": "pytest",
+      "errors": "0",
+      "failures": "0",
+      "skipped": "0",
+      "tests": "53",
+      "time": "63.975",
+      "timestamp": "2026-10-30T12:58:03.755274+02:00",
+      "hostname": "Marwans-MacBook-Air.local",
+      "exit_code": 0,
+      "log": "results/apex_workbench_v03c_n1_review_20261030/focused.log",
+      "junit": "results/apex_workbench_v03c_n1_review_20261030/focused.xml",
+      "passes": 53,
+      "failed_nodes": []
+    },
+    "integrity": {
+      "name": "pytest",
+      "errors": "0",
+      "failures": "1",
+      "skipped": "0",
+      "tests": "11",
+      "time": "20.663",
+      "timestamp": "2026-10-30T13:01:35.382172+02:00",
+      "hostname": "Marwans-MacBook-Air.local",
+      "exit_code": 1,
+      "log": "results/apex_workbench_v03c_n1_review_20261030/integrity.log",
+      "junit": "results/apex_workbench_v03c_n1_review_20261030/integrity.xml",
+      "passes": 10,
+      "failed_nodes": [
+        {
+          "node": "results.apex_workbench_v03c_n1_review_20261030.probe_integrity::test_figure_payloads_preserve_references_and_all_native_sources",
+          "message": "KeyError: 'controls.csv'"
+        }
+      ]
+    },
+    "payload": {
+      "name": "pytest",
+      "errors": "0",
+      "failures": "0",
+      "skipped": "0",
+      "tests": "1",
+      "time": "3.876",
+      "timestamp": "2026-10-30T13:03:01.993370+02:00",
+      "hostname": "Marwans-MacBook-Air.local",
+      "exit_code": 0,
+      "log": "results/apex_workbench_v03c_n1_review_20261030/payload.log",
+      "junit": "results/apex_workbench_v03c_n1_review_20261030/payload.xml",
+      "passes": 1,
+      "failed_nodes": []
+    }
+  },
+  "counts_not_aggregated": true,
+  "reviewer_harness_failures": [
+    {
+      "invocation": "integrity",
+      "node": "test_figure_payloads_preserve_references_and_all_native_sources",
+      "cause": "Reviewer indexed optional legacy controls.csv; genuine dynamic_demo seed has none. Application uses optional-source lookup.",
+      "retained_failed_invocation": true,
+      "correction": "Only corrected payload probe intersects available sources and uses optional controls; one payload-only invocation passed. No candidate source/test change or fault-case retry."
+    }
+  ],
+  "UI_harness_caveat": {
+    "initial_probe_preconsumed_Q_in_setup": true,
+    "first_UI_selection_not_process_cold": true,
+    "initial_UI_observations_retained": true,
+    "dedicated_cold_probe_reason": "Remove setup preconsumption, assert zero full Q reads before selection; no application timing failure or favorable retry."
+  },
+  "cold_warm": {
+    "definition": "First full Q consumption in a fresh process, after imports and unqualified two-run UI setup; OS cache uncontrolled. Warm repeats same selection.",
+    "native": {
+      "requested_ceiling": 1,
+      "set_status": 0,
+      "blas_threading_mode": 1,
+      "mode_name": "single",
+      "exact_active_thread_count_available": false
+    },
+    "observations": [
+      {
+        "phase": "process_cold_Q",
+        "wall_s": 1.2148422920145094,
+        "process_cpu_s": 1.194851,
+        "counts": {
+          "matrix": 1,
+          "Q": 2
+        },
+        "error": null
+      },
+      {
+        "phase": "warm_Q",
+        "wall_s": 1.1672587920038495,
+        "process_cpu_s": 1.167798,
+        "counts": {
+          "matrix": 1,
+          "Q": 2
+        },
+        "error": null
+      }
+    ],
+    "reason_for_separate_probe": "Prior UI harness prevalidated Q during setup, so its first UI timing cannot be called process-cold. That evidence remains retained.",
+    "new_scientific_executions": 0
+  },
+  "two_three_four_UI_observations": [
+    {
+      "operation": "home",
+      "wall_s": 0.6805878329905681,
+      "process_cpu_s": 0.6355970000000001,
+      "counts": {
+        "matrix": 0,
+        "read_qualification": 0
+      },
+      "error": null
+    },
+    {
+      "operation": "compare_empty",
+      "wall_s": 0.02473712500068359,
+      "process_cpu_s": 0.024829999999999908,
+      "counts": {
+        "matrix": 0,
+        "read_qualification": 0
+      },
+      "error": null
+    },
+    {
+      "operation": "two_candidate",
+      "wall_s": 0.5660948330187239,
+      "process_cpu_s": 0.5371410000000001,
+      "counts": {
+        "matrix": 1,
+        "read_qualification": 0
+      },
+      "error": null
+    },
+    {
+      "operation": "two_Q_process_cold",
+      "wall_s": 1.2029613330087159,
+      "process_cpu_s": 1.203856,
+      "counts": {
+        "matrix": 1,
+        "read_qualification": 2
+      },
+      "error": null
+    },
+    {
+      "operation": "two_Q_warm",
+      "wall_s": 1.159033082978567,
+      "process_cpu_s": 1.1620890000000004,
+      "counts": {
+        "matrix": 1,
+        "read_qualification": 2
+      },
+      "error": null
+    },
+    {
+      "operation": "three_Q",
+      "wall_s": 2.3445131670159753,
+      "process_cpu_s": 2.3489009999999997,
+      "counts": {
+        "matrix": 1,
+        "read_qualification": 4
+      },
+      "error": null
+    },
+    {
+      "operation": "three_entry",
+      "wall_s": 2.442903416987974,
+      "process_cpu_s": 2.441019,
+      "counts": {
+        "matrix": 1,
+        "read_qualification": 4
+      },
+      "error": null
+    },
+    {
+      "operation": "three_seek_0125",
+      "wall_s": 2.446408624993637,
+      "process_cpu_s": 2.446149,
+      "counts": {
+        "matrix": 1,
+        "read_qualification": 4
+      },
+      "error": null
+    },
+    {
+      "operation": "four_Q",
+      "wall_s": 3.739501125004608,
+      "process_cpu_s": 3.753577,
+      "counts": {
+        "matrix": 1,
+        "read_qualification": 6
+      },
+      "error": null
+    },
+    {
+      "operation": "four_entry",
+      "wall_s": 3.7532166250166483,
+      "process_cpu_s": 3.766227999999998,
+      "counts": {
+        "matrix": 1,
+        "read_qualification": 6
+      },
+      "error": null
+    },
+    {
+      "operation": "four_seek_0125",
+      "wall_s": 3.8219526250031777,
+      "process_cpu_s": 3.828334999999999,
+      "counts": {
+        "matrix": 1,
+        "read_qualification": 6
+      },
+      "error": null
+    }
+  ],
+  "four_run_six_pairs": [
+    {
+      "left": "VDL1_BASE",
+      "left_run_id": "20261028T222930399552Z_aea9dc071d4945f78dd9fb4430cd3d85",
+      "right": "VDL1_IZ_HIGH",
+      "right_run_id": "20261028T222846828499Z_4d209985d28d4e9ba778e9befb606a77",
+      "classification": "qualified_synthetic_comparison",
+      "reason": "Verified accepted provisional numerical protocol; no physical validation"
+    },
+    {
+      "left": "VDL1_BASE",
+      "left_run_id": "20261028T222930399552Z_aea9dc071d4945f78dd9fb4430cd3d85",
+      "right": "VDL1_CF_HIGH",
+      "right_run_id": "20261028T222908631528Z_e848f1103e284fdd84a628ab08f6ebd1",
+      "classification": "qualified_synthetic_comparison",
+      "reason": "Verified accepted provisional numerical protocol; no physical validation"
+    },
+    {
+      "left": "VDL1_BASE",
+      "left_run_id": "20261028T222930399552Z_aea9dc071d4945f78dd9fb4430cd3d85",
+      "right": "VDL1_CR_HIGH",
+      "right_run_id": "20261028T222919465430Z_c8169a8a05004229aeb9fb7a7bcb9053",
+      "classification": "qualified_synthetic_comparison",
+      "reason": "Verified accepted provisional numerical protocol; no physical validation"
+    },
+    {
+      "left": "VDL1_IZ_HIGH",
+      "left_run_id": "20261028T222846828499Z_4d209985d28d4e9ba778e9befb606a77",
+      "right": "VDL1_CF_HIGH",
+      "right_run_id": "20261028T222908631528Z_e848f1103e284fdd84a628ab08f6ebd1",
+      "classification": "illustrative",
+      "reason": "Not one of the four same-source baseline/treatment pairs; no causal ranking"
+    },
+    {
+      "left": "VDL1_IZ_HIGH",
+      "left_run_id": "20261028T222846828499Z_4d209985d28d4e9ba778e9befb606a77",
+      "right": "VDL1_CR_HIGH",
+      "right_run_id": "20261028T222919465430Z_c8169a8a05004229aeb9fb7a7bcb9053",
+      "classification": "illustrative",
+      "reason": "Not one of the four same-source baseline/treatment pairs; no causal ranking"
+    },
+    {
+      "left": "VDL1_CF_HIGH",
+      "left_run_id": "20261028T222908631528Z_e848f1103e284fdd84a628ab08f6ebd1",
+      "right": "VDL1_CR_HIGH",
+      "right_run_id": "20261028T222919465430Z_c8169a8a05004229aeb9fb7a7bcb9053",
+      "classification": "illustrative",
+      "reason": "Not one of the four same-source baseline/treatment pairs; no causal ranking"
+    }
+  ],
+  "environment": {
+    "native": {
+      "requested_ceiling": 1,
+      "set_status": 0,
+      "blas_threading_mode": 1,
+      "mode_name": "single",
+      "exact_active_thread_count_available": false
+    },
+    "versions": {
+      "numpy": "2.5.3",
+      "scipy": "1.18.1",
+      "streamlit": "1.66.1",
+      "plotly": "6.9.0",
+      "pytest": "9.1.1"
+    },
+    "python": "3.12.14 (main, Sep  1 2026, 14:09:38) [Clang 22.1.3 ]",
+    "platform": "macOS-26.5.1-arm64-arm-64bit"
+  },
+  "measurement_scope": "Single serialized bounded AppTest sequences; OS cache uncontrolled; no percentile, browser-paint or real-time claim. Reviewer light counters differ from implementer nested profiler.",
+  "payload_parity": {
+    "native_channel_figures": 79,
+    "stored_geometry_XY_figures": 3,
+    "complete_plotly_JSON_equal": true,
+    "report": "results/apex_workbench_v03c_n1_review_20261030/payload_result.json"
+  },
+  "fresh_fault_coverage": [
+    "six_original_R1_metadata_shapes",
+    "late_telemetry_mutation",
+    "late_artifact_manifest_mutation",
+    "late_Q_anchor_mutation",
+    "next_Q_consumption_after_disposable_scientific_source_change"
+  ],
+  "source_currentness_scope": "Frozen consumer revalidates on every Q consumption; no new continuous filesystem watcher claim.",
+  "cache_review": "No persistent frames or memoized scientific decisions. Operation-local verified frames only; existing epoch/artifact checks retained. Full Q validation scales with qualified pairs (2/4/6 complete reads observed for 2/3/4 runs).",
+  "preservation": {
+    "head": "34f98a4894e457900d2fae3b2fd09ead4f5ba5a0",
+    "tracked_changed": [],
+    "science_changed": [],
+    "qualification_changed": [],
+    "historical_result_stats_changed": [],
+    "symlinks_changed": [],
+    "scenario_changed": [],
+    "counts": {
+      "tracked": 990,
+      "science": 56,
+      "qualification": 345,
+      "historical_results": 44960,
+      "symlinks": 1426,
+      "scenario": 2
+    },
+    "original_test_AST_equal": {
+      "test_actual_compare_ui_candidate_then_qualified": true,
+      "test_three_run_ui_0125_and_pair_labels": true
+    },
+    "recorded_view_test_file_byte_equal": true,
+    "scenario_documents_match_original_reviewed_candidate": {
+      "docs/apex_workbench_v0_3_c/RACING_SCENARIO_PROPOSALS.md": true,
+      "docs/apex_workbench_v0_3_c/SCIENTIFIC_DECISIONS.md": true
+    },
+    "original_review_declared_evidence_hash_checks": {
+      "results/apex_workbench_v03c_review_20261029/iteration_1/preservation.py": true,
+      "results/apex_workbench_v03c_review_20261029/iteration_1/probe_metadata.py": true,
+      "results/apex_workbench_v03c_review_20261029/iteration_1/probe_nested_metadata.py": true,
+      "results/apex_workbench_v03c_review_20261029/iteration_1/probe_core.py": true,
+      "results/apex_workbench_v03c_review_20261029/iteration_1/reproduce.sh": true,
+      "results/apex_workbench_v03c_review_20261029/iteration_1/metadata.log": true,
+      "results/apex_workbench_v03c_review_20261029/iteration_1/metadata.xml": true,
+      "results/apex_workbench_v03c_review_20261029/iteration_1/nested.log": true,
+      "results/apex_workbench_v03c_review_20261029/iteration_1/nested.xml": true,
+      "results/apex_workbench_v03c_review_20261029/iteration_1/core.log": true,
+      "results/apex_workbench_v03c_review_20261029/iteration_1/core.xml": true,
+      "results/apex_workbench_v03c_review_20261029/iteration_1/ui38.log": true,
+      "results/apex_workbench_v03c_review_20261029/iteration_1/ui38.xml": true,
+      "results/apex_workbench_v03c_review_20261029/iteration_1/native_samples.json": true,
+      "results/apex_workbench_v03c_review_20261029/iteration_1/pairwise.json": true,
+      "results/apex_workbench_v03c_review_20261029/iteration_1/before.json": true,
+      "results/apex_workbench_v03c_review_20261029/iteration_1/preservation.json": true,
+      "results/apex_workbench_v03c_review_20261029/iteration_1/preservation-before.log": true,
+      "results/apex_workbench_v03c_review_20261029/iteration_1/preservation-after.log": true,
+      "results/apex_workbench_v03c_review_20261029/iteration_2/actual_Q_samples.json": true,
+      "results/apex_workbench_v03c_review_20261029/iteration_2/before.json": true,
+      "results/apex_workbench_v03c_review_20261029/iteration_2/correction.log": true,
+      "results/apex_workbench_v03c_review_20261029/iteration_2/correction.xml": true,
+      "results/apex_workbench_v03c_review_20261029/iteration_2/metadata-context_role_integer.json": true,
+      "results/apex_workbench_v03c_review_20261029/iteration_2/metadata-context_role_null.json": true,
+      "results/apex_workbench_v03c_review_20261029/iteration_2/metadata-diagnostic_units_list.json": true,
+      "results/apex_workbench_v03c_review_20261029/iteration_2/metadata-empty_context.json": true,
+      "results/apex_workbench_v03c_review_20261029/iteration_2/metadata-empty_contract.json": true,
+      "results/apex_workbench_v03c_review_20261029/iteration_2/metadata-empty_provenance.json": true,
+      "results/apex_workbench_v03c_review_20261029/iteration_2/metadata-empty_state_names.json": true,
+      "results/apex_workbench_v03c_review_20261029/iteration_2/metadata-empty_summary_list.json": true,
+      "results/apex_workbench_v03c_review_20261029/iteration_2/metadata-environment_list.json": true,
+      "results/apex_workbench_v03c_review_20261029/iteration_2/metadata-execution_context_list.json": true,
+      "results/apex_workbench_v03c_review_20261029/iteration_2/metadata-execution_context_null.json": true,
+      "results/apex_workbench_v03c_review_20261029/iteration_2/metadata-git_revision_integer.json": true,
+      "results/apex_workbench_v03c_review_20261029/iteration_2/metadata-git_revision_null.json": true,
+      "results/apex_workbench_v03c_review_20261029/iteration_2/metadata-null_contract.json": true,
+      "results/apex_workbench_v03c_review_20261029/iteration_2/metadata-null_environment.json": true,
+      "results/apex_workbench_v03c_review_20261029/iteration_2/metadata-provenance_list.json": true,
+      "results/apex_workbench_v03c_review_20261029/iteration_2/metadata-provenance_null.json": true,
+      "results/apex_workbench_v03c_review_20261029/iteration_2/metadata-sampled_model_window_list.json": true,
+      "results/apex_workbench_v03c_review_20261029/iteration_2/metadata-sampled_window_null.json": true,
+      "results/apex_workbench_v03c_review_20261029/iteration_2/metadata-sampled_window_status_null.json": true,
+      "results/apex_workbench_v03c_review_20261029/iteration_2/metadata-state_names_null.json": true,
+      "results/apex_workbench_v03c_review_20261029/iteration_2/metadata-state_units_nontext.json": true,
+      "results/apex_workbench_v03c_review_20261029/iteration_2/metadata-summary_integer.json": true,
+      "results/apex_workbench_v03c_review_20261029/iteration_2/metadata-telemetry_contract_list.json": true,
+      "results/apex_workbench_v03c_review_20261029/iteration_2/metadata-worker_result_list.json": true,
+      "results/apex_workbench_v03c_review_20261029/iteration_2/preservation-after-exit.json": true,
+      "results/apex_workbench_v03c_review_20261029/iteration_2/preservation-after.log": true,
+      "results/apex_workbench_v03c_review_20261029/iteration_2/preservation-before.log": true,
+      "results/apex_workbench_v03c_review_20261029/iteration_2/preservation.json": true,
+      "results/apex_workbench_v03c_review_20261029/iteration_2/preservation.py": true,
+      "results/apex_workbench_v03c_review_20261029/iteration_2/probe_correction.py": true,
+      "results/apex_workbench_v03c_review_20261029/iteration_2/probe_ui_completion.py": true,
+      "results/apex_workbench_v03c_review_20261029/iteration_2/reproduce.sh": true,
+      "results/apex_workbench_v03c_review_20261029/iteration_2/reuse_applicability.json": true,
+      "results/apex_workbench_v03c_review_20261029/iteration_2/run_ui_completion.py": true,
+      "results/apex_workbench_v03c_review_20261029/iteration_2/test_original_three_run_assertions_with_120s_render_budget-renders.json": true,
+      "results/apex_workbench_v03c_review_20261029/iteration_2/test_original_two_run_assertions_with_120s_render_budget-renders.json": true,
+      "results/apex_workbench_v03c_review_20261029/iteration_2/ui-completion-budget.json": true,
+      "results/apex_workbench_v03c_review_20261029/iteration_2/ui-completion-supervisor.log": true,
+      "results/apex_workbench_v03c_review_20261029/iteration_2/ui-completion.log": true,
+      "results/apex_workbench_v03c_review_20261029/iteration_2/ui-completion.xml": true,
+      "results/apex_workbench_v03c_review_20261029/iteration_2/ui47.log": true,
+      "results/apex_workbench_v03c_review_20261029/iteration_2/ui47.xml": true
+    }
+  },
+  "scientific_inventory_reference": "docs/reviews/apex_workbench_v0_3_b/verification_record.json:scientific_source_sha256",
+  "science_matches_accepted_git_blobs": true,
+  "current_source_sha256": {
+    "tools/apex_workbench/workspace.py": "0d780442090963af09a697a1bb1c0a05c0c7d9542c35794e19b18d2dfc461985",
+    "tools/apex_workbench/workspace_panels.py": "5922dfe518aca30c2c8fc0680a0bd800c3c90913732273f14e0bf94f2319acac",
+    "tools/apex_workbench/recorded_view.py": "60f280a13c8281705a1f613fc0a6f798666d8d6345b98a51f4733e53830faee2",
+    "tools/apex_workbench/engineering_views.py": "10ca51921b00aea5d6ebe5be3dbcae9e92da281ebd3633418a698d098512d34b",
+    "tools/apex_workbench/qualification.py": "ebbde4064962fe4dac9d958860fc271815fd67c804c0d2aff7c5031a2ef577cd",
+    "tools/apex_workbench/plots.py": "091359f6d07fa46105c7575627dc5862203fd2279d77ffa7c0c73b0cca5cc48c",
+    "tools/apex_workbench/tests/test_engineering_workspace.py": "d9bde43c2dc9bb508dffc3d50f7758f2779bb0199de6bc586bcbade0a8727c69",
+    "tools/apex_workbench/tests/test_recorded_view.py": "9e16f3bb1f21d28099481cf38ac303239c61ae6e5f1c063100b1640e8e9aaae6",
+    "tools/apex_workbench/tests/test_responsiveness.py": "c03d0c6ee2e9dff73a9841a9cc4bbffce7b5ff1650bfca89a524e7fb8fa21d8b"
+  },
+  "implementer_evidence_hashes_matched": 31,
+  "original_review_evidence_hashes_matched": 66,
+  "browser_launcher_evidence": "Inherited implementer smoke/DOM/screenshot inspected and declared hashes verified; no fresh reviewer browser/launcher session.",
+  "commands": {
+    "focused": "VECLIB_MAXIMUM_THREADS=1 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 BLIS_NUM_THREADS=1 NUMEXPR_NUM_THREADS=1 PYTHONHASHSEED=0 MPLCONFIGDIR=results/apex_workbench_v03c_n1_review_20261030/focused-mpl PYTHONPATH=.:scripts:src tools/apex_workbench/.venv/bin/python -u -c 'from threading_study.config import configure_accelerate; print(configure_accelerate(1),flush=True); import sys,pytest; raise SystemExit(pytest.main(sys.argv[1:]))' -q tools/apex_workbench/tests/test_engineering_workspace.py tools/apex_workbench/tests/test_recorded_view.py tools/apex_workbench/tests/test_responsiveness.py --basetemp=results/apex_workbench_v03c_n1_review_20261030/focused-tmp --junitxml=results/apex_workbench_v03c_n1_review_20261030/focused.xml > results/apex_workbench_v03c_n1_review_20261030/focused.log 2>&1",
+    "integrity": "VECLIB_MAXIMUM_THREADS=1 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 BLIS_NUM_THREADS=1 NUMEXPR_NUM_THREADS=1 PYTHONHASHSEED=0 MPLCONFIGDIR=results/apex_workbench_v03c_n1_review_20261030/integrity-mpl PYTHONPATH=.:scripts:src tools/apex_workbench/.venv/bin/python -u -c 'from threading_study.config import configure_accelerate; print(configure_accelerate(1),flush=True); import sys,pytest; raise SystemExit(pytest.main(sys.argv[1:]))' -q results/apex_workbench_v03c_n1_review_20261030/probe_integrity.py --basetemp=results/apex_workbench_v03c_n1_review_20261030/integrity-tmp --junitxml=results/apex_workbench_v03c_n1_review_20261030/integrity.xml > results/apex_workbench_v03c_n1_review_20261030/integrity.log 2>&1",
+    "payload": "VECLIB_MAXIMUM_THREADS=1 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 BLIS_NUM_THREADS=1 NUMEXPR_NUM_THREADS=1 PYTHONHASHSEED=0 MPLCONFIGDIR=results/apex_workbench_v03c_n1_review_20261030/payload-mpl PYTHONPATH=.:scripts:src tools/apex_workbench/.venv/bin/python -u -c 'from threading_study.config import configure_accelerate; print(configure_accelerate(1),flush=True); import sys,pytest; raise SystemExit(pytest.main(sys.argv[1:]))' -q results/apex_workbench_v03c_n1_review_20261030/probe_payload.py --basetemp=results/apex_workbench_v03c_n1_review_20261030/payload-tmp --junitxml=results/apex_workbench_v03c_n1_review_20261030/payload.xml > results/apex_workbench_v03c_n1_review_20261030/payload.log 2>&1",
+    "ui": "VECLIB_MAXIMUM_THREADS=1 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 BLIS_NUM_THREADS=1 NUMEXPR_NUM_THREADS=1 PYTHONHASHSEED=0 MPLCONFIGDIR=results/apex_workbench_v03c_n1_review_20261030/ui-mpl PYTHONPATH=.:scripts:src tools/apex_workbench/.venv/bin/python -u results/apex_workbench_v03c_n1_review_20261030/probe_ui.py > results/apex_workbench_v03c_n1_review_20261030/ui.log 2>&1",
+    "cold": "VECLIB_MAXIMUM_THREADS=1 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 BLIS_NUM_THREADS=1 NUMEXPR_NUM_THREADS=1 PYTHONHASHSEED=0 MPLCONFIGDIR=results/apex_workbench_v03c_n1_review_20261030/cold-mpl PYTHONPATH=.:scripts:src tools/apex_workbench/.venv/bin/python -u results/apex_workbench_v03c_n1_review_20261030/probe_cold.py > results/apex_workbench_v03c_n1_review_20261030/cold.log 2>&1"
+  },
+  "evidence_root": "results/apex_workbench_v03c_n1_review_20261030",
+  "evidence_sha256": {
+    "results/apex_workbench_v03c_n1_review_20261030/before.json": "a5195fa2d56d4d29740fa93936a0829111435d0dd14fe09e0d61c36caa60fab1",
+    "results/apex_workbench_v03c_n1_review_20261030/cold_observations.json": "9d688a7b25b1aeba946a06a468f89c79ed107e552420362e06039e3399b3e3a2",
+    "results/apex_workbench_v03c_n1_review_20261030/metadata-window.json": "92bd3a53f223a5b4ba5b808bcb998dd3f923629f2f5445139b03a417520655a4",
+    "results/apex_workbench_v03c_n1_review_20261030/ui.log": "65176a44bbef37a88bd4022f960ec2d97c142b8c6a652420830e13f48f6b5a81",
+    "results/apex_workbench_v03c_n1_review_20261030/process-before.txt": "3d5ef9bd40e4fd2f87368f23b4149eb7904e862eb48e4411dbff1ac6959c93e8",
+    "results/apex_workbench_v03c_n1_review_20261030/probe_integrity.py": "f2be5a83adbb7fa7a286f1fc07721148502eb477567ced71cb0b0a3a7bcc4736",
+    "results/apex_workbench_v03c_n1_review_20261030/metadata-summary.json": "0b7c7789f04b534774b0f8bd0e453056fc135bc388cbae74ab84ac09328ee927",
+    "results/apex_workbench_v03c_n1_review_20261030/focused.xml": "fb964f9eecae34250f1682778b4fe57d71e4dafa67f4043f3c5697cc870fb1f4",
+    "results/apex_workbench_v03c_n1_review_20261030/payload.log": "4c675f98ccca6bbac05376cd994cf5afe96a3e44f735cdf971a0617aaf2eb174",
+    "results/apex_workbench_v03c_n1_review_20261030/process-after.txt": "0fd4b3c029c23312ed2e246e949c855884583d19218223347e0746c934423d98",
+    "results/apex_workbench_v03c_n1_review_20261030/probe_ui.py": "a9695f20a81ef4e4354915a19f1e6ada06eddc0ad8bcbc4ddaa180567ed6bad7",
+    "results/apex_workbench_v03c_n1_review_20261030/late-manifest.json": "c6c623cb35ea406b685a6542dc22365f31bf3ffa6a3dbce2484bef5880c00b0d",
+    "results/apex_workbench_v03c_n1_review_20261030/ui_result.json": "050f6617e89e88f93ab0a0e708db6f1ce658af6a928553204e535c2a75e3581b",
+    "results/apex_workbench_v03c_n1_review_20261030/probe_payload.py": "0773c06cf6e4cd63fb9aacf190e04b1198fe41e40cfcd260b315358a6155979e",
+    "results/apex_workbench_v03c_n1_review_20261030/integrity.log": "72e0de0d0c67ded76b0fedd7f8950eb508046f7da37fc508f6f65693ef5addfe",
+    "results/apex_workbench_v03c_n1_review_20261030/cold.log": "2d1a946d936694b47e0d8bd15770411ed28df84b92acea59adda48cc61c493e2",
+    "results/apex_workbench_v03c_n1_review_20261030/preservation.json": "6937dab41f569e3f8321b965a46b9c28030f1b0ef11f626ea841bbb1f5195858",
+    "results/apex_workbench_v03c_n1_review_20261030/late-qualification.json": "3af2649566332624ecb896d70b680894e2f489fbc88a6fb04fc37db52047f212",
+    "results/apex_workbench_v03c_n1_review_20261030/late-artifact.json": "d90091d48bf5720441b0887fc6ddd087e8a4f58fa3de6526351e28458e698518",
+    "results/apex_workbench_v03c_n1_review_20261030/implementer_evidence_hashes.json": "3c71a27304de46782417c6cc0d78f6f7352af5c0174a1200073e8c361d4035c0",
+    "results/apex_workbench_v03c_n1_review_20261030/commands.json": "680e6e045e6bc952ba7e83c605f9b3ef8ff2c150ffbd1e4221d57e4e82a08c83",
+    "results/apex_workbench_v03c_n1_review_20261030/integrity.xml": "b2202b5a3f4883dad42c23e5d74ceb04b217898db0be66c824a11aa3f07badcc",
+    "results/apex_workbench_v03c_n1_review_20261030/metadata-context.json": "40823ec669ae67b928b8ae26b1df710ea08819248ed85543b912cb61f59c4834",
+    "results/apex_workbench_v03c_n1_review_20261030/probe_cold.py": "110af075717c71fa164ba5d1d48f80d2d505c4cf43b25e969defb25f35196307",
+    "results/apex_workbench_v03c_n1_review_20261030/metadata-provenance.json": "0f4ac4c2f11bb1c389036d2b58dc197d8e4c407932a447c55bfcb80edbd8d9c3",
+    "results/apex_workbench_v03c_n1_review_20261030/payload_result.json": "c08f2ef695d2231b9a8d0a203537a78db556fe2bae4d1b82824d10281e5ba187",
+    "results/apex_workbench_v03c_n1_review_20261030/metadata-role.json": "6251bf2af9ced57842a50e2e9ed442f29c8eb1e37e46d3b3f9e340e4acdbc561",
+    "results/apex_workbench_v03c_n1_review_20261030/changed-source.json": "fe9d5c7c9666352c711bf6cae8eed61ed255cdd37d82ddc575a8fd19cf9e46ce",
+    "results/apex_workbench_v03c_n1_review_20261030/focused.log": "2607c64eefc3e18d7dfbcf2043204003125f35d29b4bc9efc8882c8bcb52da24",
+    "results/apex_workbench_v03c_n1_review_20261030/ui_observations.json": "16bc8f33f3480cf15ea30095843ffe4b52c1973f935170bcfcc42a980fe8eda3",
+    "results/apex_workbench_v03c_n1_review_20261030/payload.xml": "bc85430559ae13a9bf7a7fa10f71e71431f944c00e109da9c557d6b10366ea45",
+    "results/apex_workbench_v03c_n1_review_20261030/metadata-git_revision.json": "1efbbea10fdb7c08dd09268395bebfe252a6e738366a67343e3fefe254d9d5b6"
+  },
+  "report_sha256": "93816656593d7923d683f8b99aad0202ef2a84d5a23d2a792d81971e8b0b3349",
+  "new_qualification_campaign": false,
+  "new_racing_or_scientific_trajectories_in_independent_probes": 0,
+  "candidate_focused_tests_include_preexisting_bounded_software_execution_fixtures": true,
+  "primary_scenario_decisions_unchanged_and_unapproved": true,
+  "next_gate": "Parent may perform the separately authorized complete Verification once on this exact implementation; retain all failures, exact source identity and required acceptance checks. No full suite by reviewer."
+}

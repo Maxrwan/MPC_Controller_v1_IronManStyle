@@ -1,11 +1,11 @@
 {
   "schema": "apex-v03c-responsiveness-verification/1",
-  "status": "WORK_COMPLETE_PENDING_REVIEW",
+  "status": "INDEPENDENT_REVIEW_PASS_FORMAL_VERIFICATION_AUTHORIZED",
   "date": "2026-10-30",
   "branch": "codex/apex-workbench-v0-3-c",
   "base_delivery": "ad69feadc126448a025f1204cc9ee9dd7307f864",
   "starting_reviewed_source": "8cff10bca8475f0992221d2cebf8862414210056",
-  "candidate": "containing correction commit; exact SHA in independent review",
+  "candidate": "34f98a4894e457900d2fae3b2fd09ead4f5ba5a0",
   "source_sha256": {
     "tools/apex_workbench/workspace.py": "0d780442090963af09a697a1bb1c0a05c0c7d9542c35794e19b18d2dfc461985",
     "tools/apex_workbench/workspace_panels.py": "5922dfe518aca30c2c8fc0680a0bd800c3c90913732273f14e0bf94f2319acac",
@@ -632,7 +632,222 @@
     "launcher_sha256": "521e14fb8eb1459e3855c6ef872bd34bdaee764f1c198cad8b2147bf9906599d"
   },
   "independent_review": {
-    "status": "pending",
+    "status": "PASS",
+    "reviewed_source": "34f98a4894e457900d2fae3b2fd09ead4f5ba5a0",
+    "report": "docs/reviews/apex_workbench_v0_3_c/responsiveness/iteration_1/REVIEW.md",
+    "record": "docs/reviews/apex_workbench_v0_3_c/responsiveness/iteration_1/review_record.json",
+    "record_sha256": "4ba67021be231ee0f570b7e91501b115a115c86444afdfad6bef77ec44dc7b76",
+    "material_responsiveness_issue_remaining": false,
+    "conditional_gate_satisfied": true,
+    "fresh_invocations": {
+      "focused": {
+        "name": "pytest",
+        "errors": "0",
+        "failures": "0",
+        "skipped": "0",
+        "tests": "53",
+        "time": "63.975",
+        "timestamp": "2026-10-30T12:58:03.755274+02:00",
+        "hostname": "Marwans-MacBook-Air.local",
+        "exit_code": 0,
+        "log": "results/apex_workbench_v03c_n1_review_20261030/focused.log",
+        "junit": "results/apex_workbench_v03c_n1_review_20261030/focused.xml",
+        "passes": 53,
+        "failed_nodes": []
+      },
+      "integrity": {
+        "name": "pytest",
+        "errors": "0",
+        "failures": "1",
+        "skipped": "0",
+        "tests": "11",
+        "time": "20.663",
+        "timestamp": "2026-10-30T13:01:35.382172+02:00",
+        "hostname": "Marwans-MacBook-Air.local",
+        "exit_code": 1,
+        "log": "results/apex_workbench_v03c_n1_review_20261030/integrity.log",
+        "junit": "results/apex_workbench_v03c_n1_review_20261030/integrity.xml",
+        "passes": 10,
+        "failed_nodes": [
+          {
+            "node": "results.apex_workbench_v03c_n1_review_20261030.probe_integrity::test_figure_payloads_preserve_references_and_all_native_sources",
+            "message": "KeyError: 'controls.csv'"
+          }
+        ]
+      },
+      "payload": {
+        "name": "pytest",
+        "errors": "0",
+        "failures": "0",
+        "skipped": "0",
+        "tests": "1",
+        "time": "3.876",
+        "timestamp": "2026-10-30T13:03:01.993370+02:00",
+        "hostname": "Marwans-MacBook-Air.local",
+        "exit_code": 0,
+        "log": "results/apex_workbench_v03c_n1_review_20261030/payload.log",
+        "junit": "results/apex_workbench_v03c_n1_review_20261030/payload.xml",
+        "passes": 1,
+        "failed_nodes": []
+      }
+    },
+    "cold_warm": {
+      "definition": "First full Q consumption in a fresh process, after imports and unqualified two-run UI setup; OS cache uncontrolled. Warm repeats same selection.",
+      "native": {
+        "requested_ceiling": 1,
+        "set_status": 0,
+        "blas_threading_mode": 1,
+        "mode_name": "single",
+        "exact_active_thread_count_available": false
+      },
+      "observations": [
+        {
+          "phase": "process_cold_Q",
+          "wall_s": 1.2148422920145094,
+          "process_cpu_s": 1.194851,
+          "counts": {
+            "matrix": 1,
+            "Q": 2
+          },
+          "error": null
+        },
+        {
+          "phase": "warm_Q",
+          "wall_s": 1.1672587920038495,
+          "process_cpu_s": 1.167798,
+          "counts": {
+            "matrix": 1,
+            "Q": 2
+          },
+          "error": null
+        }
+      ],
+      "reason_for_separate_probe": "Prior UI harness prevalidated Q during setup, so its first UI timing cannot be called process-cold. That evidence remains retained.",
+      "new_scientific_executions": 0
+    },
+    "four_run_observations": [
+      {
+        "operation": "home",
+        "wall_s": 0.6805878329905681,
+        "process_cpu_s": 0.6355970000000001,
+        "counts": {
+          "matrix": 0,
+          "read_qualification": 0
+        },
+        "error": null
+      },
+      {
+        "operation": "compare_empty",
+        "wall_s": 0.02473712500068359,
+        "process_cpu_s": 0.024829999999999908,
+        "counts": {
+          "matrix": 0,
+          "read_qualification": 0
+        },
+        "error": null
+      },
+      {
+        "operation": "two_candidate",
+        "wall_s": 0.5660948330187239,
+        "process_cpu_s": 0.5371410000000001,
+        "counts": {
+          "matrix": 1,
+          "read_qualification": 0
+        },
+        "error": null
+      },
+      {
+        "operation": "two_Q_process_cold",
+        "wall_s": 1.2029613330087159,
+        "process_cpu_s": 1.203856,
+        "counts": {
+          "matrix": 1,
+          "read_qualification": 2
+        },
+        "error": null
+      },
+      {
+        "operation": "two_Q_warm",
+        "wall_s": 1.159033082978567,
+        "process_cpu_s": 1.1620890000000004,
+        "counts": {
+          "matrix": 1,
+          "read_qualification": 2
+        },
+        "error": null
+      },
+      {
+        "operation": "three_Q",
+        "wall_s": 2.3445131670159753,
+        "process_cpu_s": 2.3489009999999997,
+        "counts": {
+          "matrix": 1,
+          "read_qualification": 4
+        },
+        "error": null
+      },
+      {
+        "operation": "three_entry",
+        "wall_s": 2.442903416987974,
+        "process_cpu_s": 2.441019,
+        "counts": {
+          "matrix": 1,
+          "read_qualification": 4
+        },
+        "error": null
+      },
+      {
+        "operation": "three_seek_0125",
+        "wall_s": 2.446408624993637,
+        "process_cpu_s": 2.446149,
+        "counts": {
+          "matrix": 1,
+          "read_qualification": 4
+        },
+        "error": null
+      },
+      {
+        "operation": "four_Q",
+        "wall_s": 3.739501125004608,
+        "process_cpu_s": 3.753577,
+        "counts": {
+          "matrix": 1,
+          "read_qualification": 6
+        },
+        "error": null
+      },
+      {
+        "operation": "four_entry",
+        "wall_s": 3.7532166250166483,
+        "process_cpu_s": 3.766227999999998,
+        "counts": {
+          "matrix": 1,
+          "read_qualification": 6
+        },
+        "error": null
+      },
+      {
+        "operation": "four_seek_0125",
+        "wall_s": 3.8219526250031777,
+        "process_cpu_s": 3.828334999999999,
+        "counts": {
+          "matrix": 1,
+          "read_qualification": 6
+        },
+        "error": null
+      }
+    ],
+    "harness_failures_preserved": [
+      {
+        "invocation": "integrity",
+        "node": "test_figure_payloads_preserve_references_and_all_native_sources",
+        "cause": "Reviewer indexed optional legacy controls.csv; genuine dynamic_demo seed has none. Application uses optional-source lookup.",
+        "retained_failed_invocation": true,
+        "correction": "Only corrected payload probe intersects available sources and uses optional controls; one payload-only invocation passed. No candidate source/test change or fault-case retry."
+      }
+    ],
+    "counts_not_summed": true,
+    "iterations_used": 1,
     "maximum_iterations": 3
   },
   "formal_verification": {
@@ -642,7 +857,8 @@
       "tests",
       "tools/apex_workbench/tests"
     ],
-    "gated_G2_skips_must_remain": 17
+    "gated_G2_skips_must_remain": 17,
+    "status": "AUTHORIZED_NOT_YET_EXECUTED"
   },
   "new_qualification_campaign": false,
   "new_racing_executions": 0,

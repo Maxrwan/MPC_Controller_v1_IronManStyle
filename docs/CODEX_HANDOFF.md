@@ -1,23 +1,18 @@
-# Current handoff — V0.3-C N1 corrective WORK
+# Current handoff — V0.3-C N1 independent PASS, formal Verification authorized
 
-**WORK_COMPLETE_PENDING_REVIEW.** 30 October 2026. Same branch `codex/apex-workbench-v0-3-c`;
-base delivery `ad69feadc126448a025f1204cc9ee9dd7307f864`. User now authorizes bounded N1 correction,
-exact independent review, and formal Verification only after PASS with no material response issue.
-[Combined report](reviews/apex_workbench_v0_3_c/RESPONSIVENESS.md) and
-[machine record](reviews/apex_workbench_v0_3_c/responsiveness_record.json) retain diagnosis and tests.
+30 October 2026. Exact reviewed source `34f98a4894e457900d2fae3b2fd09ead4f5ba5a0`, same branch.
+[Independent review](reviews/apex_workbench_v0_3_c/responsiveness/iteration_1/REVIEW.md) is **PASS**:
+N1 closed for the bounded gate, no material response issue remains. Original 45/60 s tests unchanged;
+fresh independent53 passes. Cold/warm Q1.215/1.167 s; four-run seek3.822 s. Historical failures and
+89.886 s unknown-cause observation remain preserved. Full Q/source/manifest/artifact semantics hold.
 
-Measured redundant seek reruns and file rereads were removed through operation-local verified-frame
-plotting and callbacks; Compare secondary details load on demand. No persistent scientific cache or
-qualification-policy change. Baseline/final cold Q: 2.943/2.427 s; warm Q: 2.878/2.349 s;
-three-run seek: 9.903/4.869 s. Original 89.886 s spike was not reproduced or uniquely explained.
-Real browser observed Q results in 1.259/1.351 s and native .125 seek in 4.817 s. These are bounded
-observations, no real-time guarantee. Original 45/60 s test defaults/assertions stay unchanged;
-52 focused passes precede the final detail toggle, then 3 final caller/original-regression passes.
-All invocations/evidence are distinct; historical failures remain verbatim.
+The user's conditional formal Verification is now authorized: one complete applicable repository+
+Workbench suite, keeping17G2 skips, then production retained-Q/launcher/compatibility/preservation
+acceptance. No formal result is claimed yet. [Combined report](reviews/apex_workbench_v0_3_c/RESPONSIVENESS.md)
+and [machine record](reviews/apex_workbench_v0_3_c/responsiveness_record.json) retain the progression.
+This delivery changes documentation only after reviewed source34f98a4. No code/test/scientific edits.
+No 17-trajectory campaign, frozen research, racing scenario, CT or hardware execution is authorized.
 
-All 56 scientific files, original qualification and racing-design documents stay unchanged. Current
-candidate requires separate-context exact-revision review before the conditional full suite. Do not
-start the full suite early, rerun the qualification campaign, or implement scenarios/CT/hardware.
 
 ---
 

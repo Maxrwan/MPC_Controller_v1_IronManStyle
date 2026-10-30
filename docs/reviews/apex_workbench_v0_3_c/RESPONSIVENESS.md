@@ -1,9 +1,9 @@
 # V0.3-C responsiveness correction and conditional Verification
 
-**WORK_COMPLETE_PENDING_REVIEW.** 30 October 2026. Base delivery `ad69feadc126448a025f1204cc9ee9dd7307f864`;
-reviewed starting source `8cff10bca8475f0992221d2cebf8862414210056`. The containing correction commit
-pins the candidate. Branch `codex/apex-workbench-v0-3-c`. No formal full suite has run at this point.
-The new task authorizes it only after independent exact-revision PASS with no material response issue.
+**INDEPENDENT REVIEW PASS — FORMAL VERIFICATION AUTHORIZED.** 30 October 2026. Base delivery `ad69feadc126448a025f1204cc9ee9dd7307f864`;
+reviewed starting source `8cff10bca8475f0992221d2cebf8862414210056`. Exact reviewed correction `34f98a4894e457900d2fae3b2fd09ead4f5ba5a0`
+pins the candidate. Branch `codex/apex-workbench-v0-3-c`. Independent review has satisfied the user's condition. The one complete formal invocation is next; no
+formal result is claimed yet.
 
 ## Measured diagnosis and correction
 
@@ -66,7 +66,17 @@ design documents remain unchanged. Before/after hashes and historical metadata p
 environment and preservation). No 17-trajectory campaign, new geometry/profile/adapter, CT, frozen
 research or hardware work ran. Existing approved simulations occur only in bounded software tests.
 
-Next: commit exact candidate and obtain independent-context review. Formal Verification remains
-conditional on PASS without an unresolved material responsiveness issue, then one complete applicable
-suite and the required launcher/retained-evidence acceptance checks. Primary scenario decisions and
-final user acceptance remain separate; no new scenario work is authorized.
+## Independent gate and conditional formal Verification
+
+[Independent review](responsiveness/iteration_1/REVIEW.md): **PASS** at exact `34f98a4894e457900d2fae3b2fd09ead4f5ba5a0`.
+Fresh unchanged-deadline selection: **53 passed**, 63.98 s. Separate independent cold/warm Q:
+1.215/1.167 s; three seek 2.446 s; four-Q/seek 3.740/3.822 s. No material responsiveness finding
+remains within the bounded gate. The historical 89.886 s cause remains unexplained; no tail/real-time
+guarantee follows. Independent negative probes and 79 channel/3 XY payload comparisons support PASS.
+One reviewer probe mistakenly assumed optional legacy controls existed; its 10-pass/1-harness-failure
+result remains failed, with a separate corrected payload-only pass. Counts are never combined.
+
+The user-authorized conditional full Verification may now run once against the reviewed source.
+This review delivery changes documentation only; source/tests/launcher remain exact. Formal suite,
+retained qualification, launcher and compatibility results will be recorded here after execution.
+No new scientific campaign or scenario work is authorized.
