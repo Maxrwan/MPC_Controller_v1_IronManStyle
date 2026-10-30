@@ -1,15 +1,13 @@
 # Prioritized roadmap
 
-Current progress (30 October 2026): M1/V0.3-B is verified with final user acceptance still pending.
-V0.3-C implements compact inspection, M2 pairwise 2–4-run/native-time comparison and the known-record
-portion of M3 play/pause/seek/step. Independent review is PASS WITH CONDITIONS at `8cff10b`;
-formal Verification remains pending. N1 retains two AppTest deadline failures and a long Q-selection
-render for explicit disposition; no performance guarantee or new deadline policy is installed.
-This is not a generic bundle importer or M4 legacy-controller archive profile. See
-[C WORK](../apex_workbench_v0_3_c/WORK.md), [scenario preparation](../apex_workbench_v0_3_c/RACING_SCENARIO_PROPOSALS.md)
-and [Primary decisions](../apex_workbench_v0_3_c/SCIENTIFIC_DECISIONS.md). No new racing execution,
-full formal suite, CT work or hardware is authorized by this progress note. The original proposed
-ordering and future gates below remain historical design context.
+Current progress (30 October 2026): M1/V0.3-B remains verified with acceptance not inferred.
+V0.3-C compact inspection, M2 pairwise 2–4/native-time comparison and known-record M3 replay are
+formally verified at exact `34f98a4894e457900d2fae3b2fd09ead4f5ba5a0` after independent N1 PASS. One complete
+suite: 1,069 passed / 17 gated G2 skips. User acceptance and unchanged Primary S1/S2/S3 scenario decisions
+remain pending. [Combined report](../reviews/apex_workbench_v0_3_c/RESPONSIVENESS.md) retains all
+original failure/timing evidence and bounded response/verification limits. No generic telemetry
+importer/M4 controller archive adapter, new scenario, CT or hardware stage follows automatically.
+The original ordering/gates below remain historical design context.
 
 Goal: everyday engineering use of accepted simulations and retained evidence. Do not preserve an
 older V0.3 lettering plan or build separate new laboratories. Complexity is qualitative: **Small**

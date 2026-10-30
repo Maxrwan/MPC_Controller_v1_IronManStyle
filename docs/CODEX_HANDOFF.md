@@ -1,18 +1,43 @@
-# Current handoff — V0.3-C N1 independent PASS, formal Verification authorized
+# Current handoff — V0.3-C corrected responsiveness and formal Verification
 
-30 October 2026. Exact reviewed source `34f98a4894e457900d2fae3b2fd09ead4f5ba5a0`, same branch.
-[Independent review](reviews/apex_workbench_v0_3_c/responsiveness/iteration_1/REVIEW.md) is **PASS**:
-N1 closed for the bounded gate, no material response issue remains. Original 45/60 s tests unchanged;
-fresh independent53 passes. Cold/warm Q1.215/1.167 s; four-run seek3.822 s. Historical failures and
-89.886 s unknown-cause observation remain preserved. Full Q/source/manifest/artifact semantics hold.
+**V0.3_C_VERIFIED_PENDING_USER_ACCEPTANCE_AND_SCENARIO_DECISION.** 30 October 2026. **PASS.**
+Verified exact source `34f98a4894e457900d2fae3b2fd09ead4f5ba5a0`; clean tested documentation-only descendant
+`d603575d5c399d261c458288f5efef8079353ccb`, branch `codex/apex-workbench-v0-3-c`.
+Containing delivery changes documentation only. User acceptance and Primary scenario decisions remain pending.
 
-The user's conditional formal Verification is now authorized: one complete applicable repository+
-Workbench suite, keeping17G2 skips, then production retained-Q/launcher/compatibility/preservation
-acceptance. No formal result is claimed yet. [Combined report](reviews/apex_workbench_v0_3_c/RESPONSIVENESS.md)
-and [machine record](reviews/apex_workbench_v0_3_c/responsiveness_record.json) retain the progression.
-This delivery changes documentation only after reviewed source34f98a4. No code/test/scientific edits.
-No 17-trajectory campaign, frozen research, racing scenario, CT or hardware execution is authorized.
+[Combined correction/Verification report](reviews/apex_workbench_v0_3_c/RESPONSIVENESS.md),
+[machine record](reviews/apex_workbench_v0_3_c/responsiveness_record.json),
+[independent PASS](reviews/apex_workbench_v0_3_c/responsiveness/iteration_1/REVIEW.md).
+N1 is closed for the bounded reference gate. Native frames are reused only within the current
+presentation operation; callback seek avoids a duplicate rerun and secondary Compare details load
+on demand. No persistent scientific cache, reader change or reduced integrity check. Original 45/60 s
+test defaults/assertions remain unchanged. Original failures and89.886 s unknown-cause observation
+stay preserved. Same profiler before/final Q cold 2.943/2.427 s, Q warm 2.878/2.349 s, three-run seek 9.903/4.869 s;
+independent cold/warm 1.215/1.167 s and four-run seek 3.822 s. These are bounded observations, not guarantees.
 
+One fresh full suite: **1,069 passed, 17 separately gated G2 skips, zero failures/errors**, exit0,
+735.12 s. Split: 777 repository + 292 Workbench; counts include no earlier WORK/reviewer passes. No full
+retry, threshold/deadline adjustment or unreviewed code change. Native Accelerate API SINGLE and
+reference package versions confirmed; G2 variables absent. All compatibility, native replay/sample,
+comparison, corruption/metadata, lifecycle/cancellation/locks and source preservation tests pass.
+
+Actual production consumer revalidates 17 original references/four accepted pairs; six four-run edges
+stay 3 qualified BASE / 3 illustrative treatment. Four disposable checksum/missing/source/environment
+faults reject. Actual .125 samples and storedXY remain correct. No qualification trajectory rerun.
+Formal launcher default 8501 startup/reuse/owned shutdown/error paths and legacy compatibility pass.
+Actual automatic browser replay 19/.095 → 28/.140, then paused/stable 17.071 s; no execution commands.
+All 425 reviewed behavioral hashes, 56 accepted scientific Git blobs, 345 Q-file hashes, 98 original
+review evidence hashes and unchanged scenario documents pass. Old 44,303 result stats / 1,382 symlinks
+unchanged; no owned worker/server remains, execution lease released, 8501 free. Raw evidence under
+`results/apex_workbench_v03c_n1_20261030/` and independent review root.
+
+Recommend user acceptance within verified local engineering/accepted finite synthetic scope. No
+material responsiveness or blocking functional finding remains in this bounded Verification. Mac/
+soft-containment/render-dependent replay limits remain; no physical or hard real-time claim. B final
+acceptance has not been inferred. The unchanged S1/S2/S3 scientific choices require Primary decision;
+no new geometry/scenario/profile/adapter, frozen campaign, CT, telemetry or hardware progression.
+
+**Stop: V0.3_C_VERIFIED_PENDING_USER_ACCEPTANCE_AND_SCENARIO_DECISION.**
 
 ---
 

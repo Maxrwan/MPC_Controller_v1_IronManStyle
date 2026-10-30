@@ -1,19 +1,17 @@
 # APEX Engineering Workspace V0.3-C
 
 The primary local workspace provides **Home / Run / Inspect / Compare** over the accepted
-Workbench engine. Discover retained runs, reopen their original evidence, inspect actual channels
-and inspect/replay actual native samples across two to four records. Engineering notes are optional.
-N1 corrective WORK is awaiting exact-revision independent review; see the
-[responsiveness report](../../docs/reviews/apex_workbench_v0_3_c/RESPONSIVENESS.md). Original timeout
-evidence stays retained, and formal Verification is conditional on a new PASS.
+Workbench engine. Inspect actual native samples, use read-only replay, compare two to four retained
+runs with pairwise eligibility, and open detailed configuration/provenance on demand.
 
-See [V0.3-C WORK and evidence](../../docs/apex_workbench_v0_3_c/WORK.md).
-[C independent review](../../docs/reviews/apex_workbench_v0_3_c/iteration_2/REVIEW.md) is **PASS WITH CONDITIONS**;
-formal Verification still requires separate authorization. Two AppTest deadlines failed in review; the same
-assertions completed in a separate bounded probe, including an 89.886 s Q-selection render. Its cause
-and UI harness policy remain unresolved for Verification; no responsiveness guarantee follows.
-[B formal Verification](../../docs/reviews/apex_workbench_v0_3_b/VERIFICATION.md)
-passed; its authoritative handoff still records final user acceptance pending.
+Corrected source `34f98a4894e457900d2fae3b2fd09ead4f5ba5a0` passed independent Engineering Review and formal
+functional Verification: **1,069 passed, 17 separately gated G2 skips**, zero failures/errors in one
+complete invocation. Original 45/60 s UI deadlines remain unchanged. N1 is closed within the bounded
+reference checks; original failures and the unexplained historical 89.886 s observation are preserved.
+See [correction/Verification report](../../docs/reviews/apex_workbench_v0_3_c/RESPONSIVENESS.md),
+[independent PASS](../../docs/reviews/apex_workbench_v0_3_c/responsiveness/iteration_1/REVIEW.md)
+and [original WORK](../../docs/apex_workbench_v0_3_c/WORK.md). Final user acceptance and Primary
+scenario decisions remain pending. Timings are observations; no general latency guarantee follows.
 
 The five finite synthetic V0.2 cases and four baseline/treatment comparisons were qualified and
 functionally verified before this task. Primary accepted that finite scope in V0.3-A. See the
