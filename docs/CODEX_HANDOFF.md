@@ -1,3 +1,32 @@
+# Current handoff — C0 Section A source/archive audit blocked
+
+**C0_ARCHIVE_CONTRACT_BLOCKED_PENDING_DECISION.** 30 October 2026. Section A only, based on
+accepted `f80a105d9ab3c1fcf5e28e97a0876fcb422c1c60`, branch `codex/apex-workbench-v0-3-d`.
+[Audit/gaps](apex_workbench_v0_3_d/c0_contract/AUDIT.md),
+[blocked draft contract](apex_workbench_v0_3_d/c0_contract/CONTRACT.md),
+[source/evidence/type inventory](apex_workbench_v0_3_d/c0_contract/evidence_inventory.json).
+
+Original155 is intact at152,600 bytes/SHA2562bd7d238…; native120 state/reserve and60 control rows,
+fixed misses, busy skips, fallback and null acceptance are documented. All16 final-delivery source
+hashes match immutable44e047;69 files form a conservative static reference import set, not capture
+provenance. The raw file/three-file export directory has no capture revision, source closure or
+environment/receipt. Neighboring pilot runtime hashes differ from final44e and belong to another
+run; original blocked C0 metadata describes a different variable-handoff0.8s case. These sources
+cannot authenticate the amended fixture's exact capture. The known byte hash does not close G1.
+
+No Workbench admission or source-verified scientific view is authorized by this draft. Next decision:
+locate an existing authoritative capture/source binding, or have Primary separately consider a
+narrower descriptive-only/unverified-source scope; neither decision is inferred here. Independent
+contract review and explicitly assigned WORK remain ahead of any adapter. V0.3-D acceptance and
+RBT-S/N/V, future G/P execution, scientific/frozen/CT/Safety/hardware gates remain unchanged.
+
+Only read-only standard-library JSON/hash/AST and Git inspection ran. No project/scientific imports,
+pytest, Workbench import, parser/adapter implementation, fixture/exporter/worker or simulation.
+Original evidence/source is preserved; raw audit materials are in
+`results/apex_workbench_c0_contract_20261030/`. Stop after scoped documentation commit/push.
+
+---
+
 # Current handoff — V0.3-D accepted; next C0 task prepared
 
 **V0.3_D_ACCEPTED_WITHIN_VERIFIED_SCOPE.** 30 October 2026. The user formally accepts exact

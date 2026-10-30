@@ -1,0 +1,1823 @@
+{
+  "schema": "apex-c0-archive-contract-audit/1",
+  "role": "contemporary read-only audit, not historical capture provenance",
+  "status": "C0_ARCHIVE_CONTRACT_BLOCKED_PENDING_DECISION",
+  "authorized_base": "f80a105d9ab3c1fcf5e28e97a0876fcb422c1c60",
+  "candidate": {
+    "path": "results/task007d/c/amended/c0_export/original155.json",
+    "sha256": "2bd7d2385e7e2072a04e5d952eff9af8861eb7e63f016138d5289573c411f2d5",
+    "bytes": 152600,
+    "top_level_keys": [
+      "fixed_handoffs",
+      "urgent_demands",
+      "states",
+      "controls",
+      "plans",
+      "packets",
+      "triggers",
+      "fallbacks",
+      "handoffs",
+      "releases",
+      "misses",
+      "reserves",
+      "failure",
+      "stop_reason",
+      "lap_times",
+      "end_time",
+      "pending_at_end",
+      "codriver_misses"
+    ],
+    "all_numbers_finite": true,
+    "duplicate_JSON_members": false,
+    "historical_schema_version": null,
+    "capture_source_revision": null,
+    "capture_source_sha256": null,
+    "capture_environment": null,
+    "capture_revision_authoritatively_bound": false
+  },
+  "reference_delivery": {
+    "revision": "44e0471680bb22ea1ee790173d1f2481a905f386",
+    "tree": "f4af6a2825970bb643ad4b570b850f17d4c79fb3",
+    "role": "Immutable documented producer/reference semantics; not proven capture revision",
+    "committed_final_source_hashes_matching_Git": {
+      "scripts/run_task007dc.py": true,
+      "scripts/task007d/forensics.py": true,
+      "scripts/task007dc/__init__.py": true,
+      "scripts/task007dc/analysis.py": true,
+      "scripts/task007dc/c0.py": true,
+      "scripts/task007dc/ecdf.py": true,
+      "scripts/task007dc/export.py": true,
+      "scripts/task007dc/figures.py": true,
+      "scripts/task007dc/metric_tables.py": true,
+      "scripts/task007dc/partition_check.py": true,
+      "scripts/task007dc/worker.py": true,
+      "src/apex/control/trajectory/packet.py": true,
+      "src/apex/simulation/asynchronous.py": true,
+      "src/apex/simulation/fixed_handoff.py": true,
+      "tests/unit/test_fixed_handoff_analysis.py": true,
+      "tests/unit/test_fixed_handoff_scheduler.py": true
+    },
+    "static_import_reference_source_set": {
+      "tests/unit/test_async_chronology.py": {
+        "sha256": "e06e33ed3b0ee3e2185a196e4a3e6b1fd2ab36b0d6b98f043451cf3050719f4b",
+        "bytes": 6538,
+        "current_checkout_sha256": "e06e33ed3b0ee3e2185a196e4a3e6b1fd2ab36b0d6b98f043451cf3050719f4b"
+      },
+      "src/apex/simulation/asynchronous.py": {
+        "sha256": "7d14395aa27707f2561bf6bdb32cd613bc2508ab12d6fe617bf45855d378f018",
+        "bytes": 27690,
+        "current_checkout_sha256": "89183d4333aee5420980ac9635a00eb3c35fc2857ff4129513b79b5ebe1c55fe"
+      },
+      "src/apex/__init__.py": {
+        "sha256": "2dd176027291d40716c8c828e8a9994afbf247d22bea1426fac52c259cbbc33b",
+        "bytes": 67,
+        "current_checkout_sha256": "2dd176027291d40716c8c828e8a9994afbf247d22bea1426fac52c259cbbc33b"
+      },
+      "src/apex/simulation/__init__.py": {
+        "sha256": "84069322b2562012fcfd863d27f6fc88a0f2d5eaba3a4040f10e896cffc4a513",
+        "bytes": 65,
+        "current_checkout_sha256": "84069322b2562012fcfd863d27f6fc88a0f2d5eaba3a4040f10e896cffc4a513"
+      },
+      "src/apex/state.py": {
+        "sha256": "b2b16555f8ae83f041ee821906305accc56010b643bb3fa514f90a8a17e66862",
+        "bytes": 1311,
+        "current_checkout_sha256": "b2b16555f8ae83f041ee821906305accc56010b643bb3fa514f90a8a17e66862"
+      },
+      "src/apex/simulation/prediction_capture.py": {
+        "sha256": "f8f4d7d840a73744aebbe85dc09d817b79e839022bd7298bbde792ee061d4a29",
+        "bytes": 1859,
+        "current_checkout_sha256": "f8f4d7d840a73744aebbe85dc09d817b79e839022bd7298bbde792ee061d4a29"
+      },
+      "src/apex/models/vehicle/parameters.py": {
+        "sha256": "5cfce45b4a87577b17193b44cfa24f11c8e29c93082564a596f7ddf4e797fbb2",
+        "bytes": 3299,
+        "current_checkout_sha256": "5cfce45b4a87577b17193b44cfa24f11c8e29c93082564a596f7ddf4e797fbb2"
+      },
+      "src/apex/models/__init__.py": {
+        "sha256": "d530a05e192b5d6c8b815c3edb2599a88bc35acac91c83280cd8e22d31a1d0d2",
+        "bytes": 81,
+        "current_checkout_sha256": "d530a05e192b5d6c8b815c3edb2599a88bc35acac91c83280cd8e22d31a1d0d2"
+      },
+      "src/apex/models/vehicle/__init__.py": {
+        "sha256": "ab6dddf29c21f198a84b17e28f3dcb8b4b1e6543e0ce5533d4166a062d549a9f",
+        "bytes": 92,
+        "current_checkout_sha256": "ab6dddf29c21f198a84b17e28f3dcb8b4b1e6543e0ce5533d4166a062d549a9f"
+      },
+      "src/apex/control/trajectory/tracker.py": {
+        "sha256": "ffa5d9968650c97411121ba3dedd89a5de04a1a9ce832c50efa351763567ef27",
+        "bytes": 4703,
+        "current_checkout_sha256": "8da7535836bb194f6d0242201b73960a47f24146bf5fdf59f51503f6c869721d"
+      },
+      "src/apex/control/__init__.py": {
+        "sha256": "12878dbd9e38ae415462ea0eccbfc315387856736233a7ea4b2f840b1a53e96a",
+        "bytes": 62,
+        "current_checkout_sha256": "12878dbd9e38ae415462ea0eccbfc315387856736233a7ea4b2f840b1a53e96a"
+      },
+      "src/apex/control/trajectory/__init__.py": {
+        "sha256": "cea577e6cbeb9df27efdf9b96497e94b61c6e135717bdbbe2704312072b2a238",
+        "bytes": 76,
+        "current_checkout_sha256": "cea577e6cbeb9df27efdf9b96497e94b61c6e135717bdbbe2704312072b2a238"
+      },
+      "src/apex/coordinates/angles.py": {
+        "sha256": "2ed31ef5153e42083e727efc10b7875277f7f2641a5e16e9790e3f6073b33d05",
+        "bytes": 365,
+        "current_checkout_sha256": "2ed31ef5153e42083e727efc10b7875277f7f2641a5e16e9790e3f6073b33d05"
+      },
+      "src/apex/coordinates/__init__.py": {
+        "sha256": "1c443357b2a8e949a157c09b6fb3b50c170d98c908da8c0e8ebbd7e25f919555",
+        "bytes": 69,
+        "current_checkout_sha256": "1c443357b2a8e949a157c09b6fb3b50c170d98c908da8c0e8ebbd7e25f919555"
+      },
+      "src/apex/control/baseline/lqr.py": {
+        "sha256": "68e191235e03dda744cc9894ca0981a8df8bd9f1bd0e6331f7872148014cf818",
+        "bytes": 3163,
+        "current_checkout_sha256": "68e191235e03dda744cc9894ca0981a8df8bd9f1bd0e6331f7872148014cf818"
+      },
+      "src/apex/control/baseline/__init__.py": {
+        "sha256": "2759255fac566e141a1632b0ba734ef840ae4462054f20246ca958c175ea4398",
+        "bytes": 276,
+        "current_checkout_sha256": "2759255fac566e141a1632b0ba734ef840ae4462054f20246ca958c175ea4398"
+      },
+      "src/apex/control/baseline/references.py": {
+        "sha256": "9fa0f4c67d8fdd4a535bca5fa43854cf85660d70b6246632ec711f469ad2b081",
+        "bytes": 1607,
+        "current_checkout_sha256": "9fa0f4c67d8fdd4a535bca5fa43854cf85660d70b6246632ec711f469ad2b081"
+      },
+      "src/apex/control/baseline/controller.py": {
+        "sha256": "1d738265c24e8ff6fc557ff8d4f82669978fe12e212dcd70dc45eb94cf438ec4",
+        "bytes": 4310,
+        "current_checkout_sha256": "1d738265c24e8ff6fc557ff8d4f82669978fe12e212dcd70dc45eb94cf438ec4"
+      },
+      "src/apex/track/progress.py": {
+        "sha256": "fef18ea7fe610cca1ff80f32acdecf5f756b6d26c1a47e47f0eb23b7ae8dc0d8",
+        "bytes": 2446,
+        "current_checkout_sha256": "fef18ea7fe610cca1ff80f32acdecf5f756b6d26c1a47e47f0eb23b7ae8dc0d8"
+      },
+      "src/apex/track/__init__.py": {
+        "sha256": "95dd539a129d605aa979952c68c75d633738d520fa66e06a491b5bfb2ef7907c",
+        "bytes": 224,
+        "current_checkout_sha256": "95dd539a129d605aa979952c68c75d633738d520fa66e06a491b5bfb2ef7907c"
+      },
+      "src/apex/track/io.py": {
+        "sha256": "ee2f5a27740684ddba2f1907c88e8893c6cf0c59150352d35845914d5fd30b65",
+        "bytes": 1424,
+        "current_checkout_sha256": "ee2f5a27740684ddba2f1907c88e8893c6cf0c59150352d35845914d5fd30b65"
+      },
+      "src/apex/track/closed_track.py": {
+        "sha256": "c14fb27c1a1182dec564a5a679832e67c6480fb382a15c05dd2c998b138a350e",
+        "bytes": 1769,
+        "current_checkout_sha256": "c14fb27c1a1182dec564a5a679832e67c6480fb382a15c05dd2c998b138a350e"
+      },
+      "src/apex/track/centerline.py": {
+        "sha256": "caf28a32f24198fbfd57a7d6a987822f9b4df88ff6b5f1bca5c1f57e2b79429f",
+        "bytes": 7551,
+        "current_checkout_sha256": "caf28a32f24198fbfd57a7d6a987822f9b4df88ff6b5f1bca5c1f57e2b79429f"
+      },
+      "src/apex/track/base.py": {
+        "sha256": "c15e48dfa2a08bfd57040c80b1280a6f56234503361a38cb3cda6cb35e93cca1",
+        "bytes": 1027,
+        "current_checkout_sha256": "c15e48dfa2a08bfd57040c80b1280a6f56234503361a38cb3cda6cb35e93cca1"
+      },
+      "src/apex/control/baseline/speed.py": {
+        "sha256": "5a41c32eaa491f5bf8fdec49827bac3d9aafd78924f10786fd4000d3a0ec941f",
+        "bytes": 1808,
+        "current_checkout_sha256": "5a41c32eaa491f5bf8fdec49827bac3d9aafd78924f10786fd4000d3a0ec941f"
+      },
+      "src/apex/control/trajectory/prediction.py": {
+        "sha256": "0013fd74299a68993dabbc381ca384837f09b862011956a94fd1d3b138b839ab",
+        "bytes": 9429,
+        "current_checkout_sha256": "0013fd74299a68993dabbc381ca384837f09b862011956a94fd1d3b138b839ab"
+      },
+      "src/apex/control/trajectory/packet.py": {
+        "sha256": "00830d2ced67321547add91a4e241664689cdeed57d57f0b9b2d95552b9fd704",
+        "bytes": 8569,
+        "current_checkout_sha256": "00830d2ced67321547add91a4e241664689cdeed57d57f0b9b2d95552b9fd704"
+      },
+      "src/apex/simulation/fixed_handoff.py": {
+        "sha256": "8f0bc766b6a7c446f36b6a49f6214864906acbb067c57c977469b54e3ff07c12",
+        "bytes": 4947,
+        "current_checkout_sha256": "8f0bc766b6a7c446f36b6a49f6214864906acbb067c57c977469b54e3ff07c12"
+      },
+      "src/apex/simulation/diagnostic_timing.py": {
+        "sha256": "373c20d762328880c7fa25856f474f49d534b50c176a72f0df97a2f3838bf23f",
+        "bytes": 1831,
+        "current_checkout_sha256": "373c20d762328880c7fa25856f474f49d534b50c176a72f0df97a2f3838bf23f"
+      },
+      "src/apex/models/errors.py": {
+        "sha256": "81baff4659f36bb6aea91e6a27327260b4d69e23de22963de6832199e7f1f916",
+        "bytes": 599,
+        "current_checkout_sha256": "81baff4659f36bb6aea91e6a27327260b4d69e23de22963de6832199e7f1f916"
+      },
+      "src/apex/models/vehicle/dynamic_bicycle.py": {
+        "sha256": "c93b674924eed24f9641ebe263863b3422cba5eb1665c0d93dd6cd00bdfd462f",
+        "bytes": 11558,
+        "current_checkout_sha256": "c93b674924eed24f9641ebe263863b3422cba5eb1665c0d93dd6cd00bdfd462f"
+      },
+      "src/apex/models/vehicle/load_transfer.py": {
+        "sha256": "e96c74199a7d8147866529cb4ecfffbfce74815cb57accb52ea54b407b873be1",
+        "bytes": 2499,
+        "current_checkout_sha256": "e96c74199a7d8147866529cb4ecfffbfce74815cb57accb52ea54b407b873be1"
+      },
+      "src/apex/models/constants.py": {
+        "sha256": "1b485d45ad2d74aaa256c1aab00157d7c610db0bea9f744d75376b8e816534be",
+        "bytes": 135,
+        "current_checkout_sha256": "1b485d45ad2d74aaa256c1aab00157d7c610db0bea9f744d75376b8e816534be"
+      },
+      "src/apex/models/vehicle/force_allocation.py": {
+        "sha256": "e77d8c87efdaa9c008ec45385ad4dad326cfa2e003798c08e29a5fb9a17647f8",
+        "bytes": 795,
+        "current_checkout_sha256": "e77d8c87efdaa9c008ec45385ad4dad326cfa2e003798c08e29a5fb9a17647f8"
+      },
+      "src/apex/models/tire/linear.py": {
+        "sha256": "6ae5888b0000cd57a88788463977be1a90fa8e1f6a332f131c66623192ce9cf3",
+        "bytes": 1188,
+        "current_checkout_sha256": "6ae5888b0000cd57a88788463977be1a90fa8e1f6a332f131c66623192ce9cf3"
+      },
+      "src/apex/models/tire/__init__.py": {
+        "sha256": "000e7ac305a2f5bb610e6ee9e066a6f8d82a0ac335c2b9253d292a2c3c96907f",
+        "bytes": 379,
+        "current_checkout_sha256": "000e7ac305a2f5bb610e6ee9e066a6f8d82a0ac335c2b9253d292a2c3c96907f"
+      },
+      "src/apex/models/tire/grip.py": {
+        "sha256": "e91bab930ee0650578ede2964ef680f77663cfd34d26ab1682c232b34c6d8c90",
+        "bytes": 1659,
+        "current_checkout_sha256": "e91bab930ee0650578ede2964ef680f77663cfd34d26ab1682c232b34c6d8c90"
+      },
+      "src/apex/models/tire/base.py": {
+        "sha256": "da1b635a6da1de465ac7af61dcf3cad8d23ef406eb6dd7f45dad825bc3f60ccf",
+        "bytes": 872,
+        "current_checkout_sha256": "da1b635a6da1de465ac7af61dcf3cad8d23ef406eb6dd7f45dad825bc3f60ccf"
+      },
+      "src/apex/models/tire/config.py": {
+        "sha256": "73f7e47ae5768a6961a8ca65aa40a5da7ecd77e412ac6995a459e969daa83877",
+        "bytes": 808,
+        "current_checkout_sha256": "73f7e47ae5768a6961a8ca65aa40a5da7ecd77e412ac6995a459e969daa83877"
+      },
+      "src/apex/models/integration.py": {
+        "sha256": "02009193fb2d25e83560a2da37f216048dfa3ededcb3de8616b90e411473ad51",
+        "bytes": 719,
+        "current_checkout_sha256": "02009193fb2d25e83560a2da37f216048dfa3ededcb3de8616b90e411473ad51"
+      },
+      "src/apex/models/frenet.py": {
+        "sha256": "a8c6190bd6be9f2a284c83b5c31e5d6cb2d8ef1f791b49bbebdd3c110a36ee96",
+        "bytes": 1093,
+        "current_checkout_sha256": "a8c6190bd6be9f2a284c83b5c31e5d6cb2d8ef1f791b49bbebdd3c110a36ee96"
+      },
+      "tests/unit/test_fixed_handoff_scheduler.py": {
+        "sha256": "ac50fff996f4b24e620e90ad1a04f8ba64e410f197b16e99d22ab010f3ab2b89",
+        "bytes": 11693,
+        "current_checkout_sha256": "ac50fff996f4b24e620e90ad1a04f8ba64e410f197b16e99d22ab010f3ab2b89"
+      },
+      "tests/unit/test_committed_prefix_runtime.py": {
+        "sha256": "2746d74d75bebf27e8c52b48876a5a06306281c74a5011ddd06da0c211062698",
+        "bytes": 16642,
+        "current_checkout_sha256": "2746d74d75bebf27e8c52b48876a5a06306281c74a5011ddd06da0c211062698"
+      },
+      "src/apex/control/trajectory/planner.py": {
+        "sha256": "6dcc8abe959fa65d7036f90379179703f54091c55a54bedee4db9a47d4622e44",
+        "bytes": 4303,
+        "current_checkout_sha256": "f4795ece7ec380fa933553c7ba50e29eb58225eb5ba0b458306f506d875c9fe3"
+      },
+      "src/apex/control/mpc/problem.py": {
+        "sha256": "b0560718155ff04074633aa92c4374a15ec975f21f5e3a022f4e94d52636087e",
+        "bytes": 11153,
+        "current_checkout_sha256": "b0560718155ff04074633aa92c4374a15ec975f21f5e3a022f4e94d52636087e"
+      },
+      "src/apex/control/mpc/__init__.py": {
+        "sha256": "d91fd708ea7a53f7a8a23f558b5724832304b8508dd57828e4bfcaa946bac124",
+        "bytes": 269,
+        "current_checkout_sha256": "d91fd708ea7a53f7a8a23f558b5724832304b8508dd57828e4bfcaa946bac124"
+      },
+      "src/apex/control/mpc/controller.py": {
+        "sha256": "63e17bd863dcd8d649d9f382a545f5c004e982fd87e837aa6b283ec1b1206b82",
+        "bytes": 10100,
+        "current_checkout_sha256": "0b1344f6ff6fe05e6c35de1406fd1204997da00857aa81cd16839487ee1336d8"
+      },
+      "src/apex/optimization/solvers/ipopt.py": {
+        "sha256": "3897eb4e5c2cf55b33b96e361e0c83e43ce783172e7095f59daf72785473c728",
+        "bytes": 2985,
+        "current_checkout_sha256": "87c57294407d71d959af8154cca6d45c76c31605eb713f0aba1b9cd0c73db9fa"
+      },
+      "src/apex/optimization/__init__.py": {
+        "sha256": "3af529201789579819dc40831ba819d7651a18d5df5b905928aa3ebf9dc09a55",
+        "bytes": 67,
+        "current_checkout_sha256": "3af529201789579819dc40831ba819d7651a18d5df5b905928aa3ebf9dc09a55"
+      },
+      "src/apex/optimization/solvers/__init__.py": {
+        "sha256": "10e2109b93a14616b4c0f083fc40b374c4ad77cd73150e090b8c95f891d3e7a0",
+        "bytes": 75,
+        "current_checkout_sha256": "10e2109b93a14616b4c0f083fc40b374c4ad77cd73150e090b8c95f891d3e7a0"
+      },
+      "src/apex/optimization/base.py": {
+        "sha256": "f4b2368f5055cc9283ed9eab481a8667f4152a751162a22d72f2ed44e87b942b",
+        "bytes": 654,
+        "current_checkout_sha256": "f4b2368f5055cc9283ed9eab481a8667f4152a751162a22d72f2ed44e87b942b"
+      },
+      "src/apex/control/mpc/warm_start.py": {
+        "sha256": "0faab03574394c3ecebe071a7c5f4e9e01d704a7d9b625fb6d0c122cc4cb34ed",
+        "bytes": 382,
+        "current_checkout_sha256": "0faab03574394c3ecebe071a7c5f4e9e01d704a7d9b625fb6d0c122cc4cb34ed"
+      },
+      "src/apex/control/mpc/preview.py": {
+        "sha256": "c3e74f7c197ed42961f3494b6be8061570d294d790214e2e27401a2771a418cf",
+        "bytes": 2852,
+        "current_checkout_sha256": "c09f7ce073fd3fe59b689c2a64ac7632a57dac1720ecd9c7b8970b3c98d94da1"
+      },
+      "src/apex/control/mpc/cost.py": {
+        "sha256": "1b8367af3a41c72fc24573a92d9dba526100e53985e33d2626084b1222c5623b",
+        "bytes": 3672,
+        "current_checkout_sha256": "1b8367af3a41c72fc24573a92d9dba526100e53985e33d2626084b1222c5623b"
+      },
+      "src/apex/control/mpc/symbolic_model.py": {
+        "sha256": "99b82ead0f7fae2c1451f8e938853fa25a8b74f040b0b22df5225fba5b5e0a6d",
+        "bytes": 4106,
+        "current_checkout_sha256": "99b82ead0f7fae2c1451f8e938853fa25a8b74f040b0b22df5225fba5b5e0a6d"
+      },
+      "tests/conftest.py": {
+        "sha256": "33f0ce8f7ddf2645c3fccac0da666c07a6a81e4185b5793324f160a057d5efe4",
+        "bytes": 2304,
+        "current_checkout_sha256": "33f0ce8f7ddf2645c3fccac0da666c07a6a81e4185b5793324f160a057d5efe4"
+      },
+      "src/apex/config.py": {
+        "sha256": "40227b4ed2a38e30ecfb9acc7f308cf9db31b54dc813bb28850b25800877e0ad",
+        "bytes": 1587,
+        "current_checkout_sha256": "40227b4ed2a38e30ecfb9acc7f308cf9db31b54dc813bb28850b25800877e0ad"
+      },
+      "src/apex/track/synthetic.py": {
+        "sha256": "1e7ed0900af9971d6c68ca810570b9177a97eb830361c580724870752f4744c0",
+        "bytes": 754,
+        "current_checkout_sha256": "1e7ed0900af9971d6c68ca810570b9177a97eb830361c580724870752f4744c0"
+      },
+      "scripts/threading_study/config.py": {
+        "sha256": "a50a73015c3ab739c35aa1fd715840364974213bf1c12666269b250264556fc3",
+        "bytes": 2154,
+        "current_checkout_sha256": "a50a73015c3ab739c35aa1fd715840364974213bf1c12666269b250264556fc3"
+      },
+      "scripts/task007d/worker.py": {
+        "sha256": "d85f08e2d8e1dc52fc22714c7c81dd69c7a17f1847c36d492a9cc83df311b0e5",
+        "bytes": 6998,
+        "current_checkout_sha256": "d85f08e2d8e1dc52fc22714c7c81dd69c7a17f1847c36d492a9cc83df311b0e5"
+      },
+      "src/apex/planning_reference/track.py": {
+        "sha256": "a80943d00203e83b11557bf254df66394db466969462ec22a3ae370780a6543d",
+        "bytes": 471,
+        "current_checkout_sha256": "a80943d00203e83b11557bf254df66394db466969462ec22a3ae370780a6543d"
+      },
+      "src/apex/planning_reference/__init__.py": {
+        "sha256": "a0bd2fea9b52abc64271cd57e2b26857c67b148246b2f6ce1baa988349b0899f",
+        "bytes": 75,
+        "current_checkout_sha256": "a0bd2fea9b52abc64271cd57e2b26857c67b148246b2f6ce1baa988349b0899f"
+      },
+      "src/apex/planning_reference/reference.py": {
+        "sha256": "d147a6eb193b37e3c7773261d19550c1383528b7aad6f204818f432325b327e3",
+        "bytes": 11369,
+        "current_checkout_sha256": "d147a6eb193b37e3c7773261d19550c1383528b7aad6f204818f432325b327e3"
+      },
+      "src/apex/planning_reference/speed_polynomial.py": {
+        "sha256": "a11d69b8dae53b62b4841ac522843decd7f54f5d78a63f4613c2d29478106ade",
+        "bytes": 1895,
+        "current_checkout_sha256": "a11d69b8dae53b62b4841ac522843decd7f54f5d78a63f4613c2d29478106ade"
+      },
+      "scripts/task007d/metrics.py": {
+        "sha256": "d4d8bc3c260f3e3701348da330b87cbe2172dc2d5d20882fb21bf480cdf56992",
+        "bytes": 8475,
+        "current_checkout_sha256": "d4d8bc3c260f3e3701348da330b87cbe2172dc2d5d20882fb21bf480cdf56992"
+      },
+      "scripts/task007d/diagnostics.py": {
+        "sha256": "efcc422e7fe1b83ef5ff1312a1ae275f5576005a5e8173fcac306ebac533cfc6",
+        "bytes": 6980,
+        "current_checkout_sha256": "efcc422e7fe1b83ef5ff1312a1ae275f5576005a5e8173fcac306ebac533cfc6"
+      },
+      "scripts/task007dc/c0.py": {
+        "sha256": "6fc96c19922eb9601a1428bfd9635d37159fc42df7904151f9e94f7997f18f82",
+        "bytes": 1801,
+        "current_checkout_sha256": "6fc96c19922eb9601a1428bfd9635d37159fc42df7904151f9e94f7997f18f82"
+      },
+      "scripts/task007dc/__init__.py": {
+        "sha256": "0cd3e223075d120f3e4c14f8bd7995b894c43cc04df2209325f6c8f905e836cb",
+        "bytes": 88,
+        "current_checkout_sha256": "0cd3e223075d120f3e4c14f8bd7995b894c43cc04df2209325f6c8f905e836cb"
+      },
+      "configs/vehicles/synthetic_dynamic_test_vehicle.yaml": {
+        "sha256": "df1b853d21a1d3efaf858f7e58401151f2c5237793c40e16bb4189ed651f9cf3",
+        "bytes": 1044,
+        "current_checkout_sha256": "df1b853d21a1d3efaf858f7e58401151f2c5237793c40e16bb4189ed651f9cf3"
+      }
+    },
+    "static_import_method": "AST of all syntactically reachable local imports from six roots, plus package initializers and vehicle YAML; conservative reference superset, not a certified runtime/capture closure",
+    "external_module_roots_observed": [
+      "argparse",
+      "casadi",
+      "collections",
+      "csv",
+      "ctypes",
+      "dataclasses",
+      "enum",
+      "hashlib",
+      "inspect",
+      "json",
+      "math",
+      "numpy",
+      "os",
+      "pandas",
+      "pathlib",
+      "platform",
+      "psutil",
+      "pytest",
+      "scipy",
+      "shutil",
+      "subprocess",
+      "sys",
+      "threadpoolctl",
+      "time",
+      "typing",
+      "yaml"
+    ],
+    "external_root_classification_note": "Local module-member symbols and implicit local namespace-package roots excluded; this is a static reference list, not a capture environment inventory."
+  },
+  "context_evidence": {
+    "results/task007d/c/amended/c0_export/original155.json": {
+      "sha256": "2bd7d2385e7e2072a04e5d952eff9af8861eb7e63f016138d5289573c411f2d5",
+      "bytes": 152600,
+      "role": "audit context, not an inferred C0 capture manifest"
+    },
+    "results/task007d/c/amended/c0_export/summary.json": {
+      "sha256": "473cdc9fd1b3457e1e77cd7a6a132531341ace91a6d3695310700dda27a4acaf",
+      "bytes": 6244,
+      "role": "audit context, not an inferred C0 capture manifest"
+    },
+    "results/task007d/c/amended/c0_export/recovery35.json": {
+      "sha256": "d3ee257d34fda47d0eebf9eec7913ef8a9874c605454fe5cc94cbc463c2e31bd",
+      "bytes": 167945,
+      "role": "audit context, not an inferred C0 capture manifest"
+    },
+    "docs/task007d/c/c0_summary.json": {
+      "sha256": "ad81379480c6faf2c55e3055d6edc2624218f42ccf79977a7645e48a003d08c6",
+      "bytes": 5016,
+      "role": "audit context, not an inferred C0 capture manifest"
+    },
+    "docs/task007d/c/verification.json": {
+      "sha256": "3efe49efb563312ddc7f4c84e1dfbd5286af138608bfac3ec126f309270ce845",
+      "bytes": 10278,
+      "role": "audit context, not an inferred C0 capture manifest"
+    },
+    "docs/task007d/c/amended/c0_summary.json": {
+      "sha256": "473cdc9fd1b3457e1e77cd7a6a132531341ace91a6d3695310700dda27a4acaf",
+      "bytes": 6244,
+      "role": "audit context, not an inferred C0 capture manifest"
+    },
+    "docs/task007d/c/amended/verification.json": {
+      "sha256": "cba43aae7040ecb256a4cecbdd34b98a1179b5919b6e84d9d9f7abb5c5ec2f77",
+      "bytes": 4693,
+      "role": "audit context, not an inferred C0 capture manifest"
+    },
+    "docs/TASK007D_C_FIXED_HANDOFF.md": {
+      "sha256": "3b3ac640567efd6118724f2d8d9fdcfae81854e9015e3a16f794feae60c361c4",
+      "bytes": 16690,
+      "role": "audit context, not an inferred C0 capture manifest"
+    },
+    "docs/TASK007D_C_RESULTS.md": {
+      "sha256": "8c85508234ca562b5ba958b042463b4a4bbe7ff86419d2a0d5250aa65452b280",
+      "bytes": 32196,
+      "role": "audit context, not an inferred C0 capture manifest"
+    },
+    "docs/TASK007D_C_REPRODUCTION.md": {
+      "sha256": "9355a413ec3191980b6f31b1b14f95e2bbf31db3d441a58dbf31715374a1c6a2",
+      "bytes": 11721,
+      "role": "audit context, not an inferred C0 capture manifest"
+    },
+    "docs/task007d/cx/formal/verification.json": {
+      "sha256": "dc92de1ab7c330140fe83de712ede91343500f71a48776aadf23226a07cd2422",
+      "bytes": 33904,
+      "role": "audit context, not an inferred C0 capture manifest"
+    },
+    "docs/TASK007D_CX_VERIFICATION.md": {
+      "sha256": "781b1dbfeadaacd03866c8bd70bb9b10f17b02fee56bfa86089c76c9c0fd2e15",
+      "bytes": 12149,
+      "role": "audit context, not an inferred C0 capture manifest"
+    },
+    "docs/apex_workbench_v0_3_a/ACCEPTANCE_SCENARIOS.md": {
+      "sha256": "db1b978843a829d5270a769a110d49ab59472d0f09730acaef389f5616875d87",
+      "bytes": 8467,
+      "role": "audit context, not an inferred C0 capture manifest"
+    },
+    "results/task007d/cx/formal_935e98b/before.json": {
+      "sha256": "7037afc4a7fa0585807862c37eb43badde8edc1f6c81d3d24761919b72f67143",
+      "bytes": 1396427,
+      "role": "audit context, not an inferred C0 capture manifest"
+    },
+    "results/task007d/c/amended/C1_steady/summary.json": {
+      "sha256": "fcf20ed145358877bb352ac2aa970542ca1db9e0ebf6f965994f763ada4845ef",
+      "bytes": 19267,
+      "role": "audit context, not an inferred C0 capture manifest"
+    }
+  },
+  "same_original155_compact_summary_matches": true,
+  "collections": {
+    "fixed_handoffs": {
+      "rows": 2,
+      "fields": {
+        "consecutive_misses": {
+          "observed_types": [
+            "int"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "deadline_margin": {
+          "observed_types": [
+            "float"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "expiry": {
+          "observed_types": [
+            "float"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "first_TVLQR_use": {
+          "observed_types": [
+            "NoneType"
+          ],
+          "absent_rows": 0,
+          "null_rows": 2
+        },
+        "late_discard_time": {
+          "observed_types": [
+            "float"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "miss_time": {
+          "observed_types": [
+            "float"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "packet_age": {
+          "observed_types": [
+            "NoneType"
+          ],
+          "absent_rows": 0,
+          "null_rows": 2
+        },
+        "plan_id": {
+          "observed_types": [
+            "int"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "preparation_duration": {
+          "observed_types": [
+            "float"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "reserve_at_acceptance": {
+          "observed_types": [
+            "NoneType"
+          ],
+          "absent_rows": 0,
+          "null_rows": 2
+        },
+        "status": {
+          "observed_types": [
+            "str"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "t_accept": {
+          "observed_types": [
+            "NoneType"
+          ],
+          "absent_rows": 0,
+          "null_rows": 2
+        },
+        "t_ready": {
+          "observed_types": [
+            "float"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "t_release": {
+          "observed_types": [
+            "float"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "valid_from": {
+          "observed_types": [
+            "float"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "wait_duration": {
+          "observed_types": [
+            "float"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        }
+      }
+    },
+    "urgent_demands": {
+      "rows": 1,
+      "fields": {
+        "accepted_plan_id": {
+          "observed_types": [
+            "NoneType"
+          ],
+          "absent_rows": 0,
+          "null_rows": 1
+        },
+        "accepted_time": {
+          "observed_types": [
+            "NoneType"
+          ],
+          "absent_rows": 0,
+          "null_rows": 1
+        },
+        "coalesced_nominal": {
+          "observed_types": [
+            "bool"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "coalesced_trigger_times": {
+          "observed_types": [
+            "list"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "eligible_time": {
+          "observed_types": [
+            "float"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "fixed_offset": {
+          "observed_types": [
+            "float"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "grid_alignment_wait": {
+          "observed_types": [
+            "float"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "planner_busy_wait": {
+          "observed_types": [
+            "float"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "release_time": {
+          "observed_types": [
+            "float"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "serviced_by_plan_id": {
+          "observed_types": [
+            "int"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "status": {
+          "observed_types": [
+            "str"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "trigger_time": {
+          "observed_types": [
+            "float"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "trigger_to_authority": {
+          "observed_types": [
+            "NoneType"
+          ],
+          "absent_rows": 0,
+          "null_rows": 1
+        }
+      }
+    },
+    "states": {
+      "rows": 120,
+      "fields": {
+        "a_cmd": {
+          "observed_types": [
+            "float"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "boundary_violation": {
+          "observed_types": [
+            "bool"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "delta": {
+          "observed_types": [
+            "float"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "e_psi": {
+          "observed_types": [
+            "float"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "e_y": {
+          "observed_types": [
+            "float"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "front_utilization": {
+          "observed_types": [
+            "float"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "mode": {
+          "observed_types": [
+            "str"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "plan_id": {
+          "observed_types": [
+            "int"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "r": {
+          "observed_types": [
+            "float"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "rear_utilization": {
+          "observed_types": [
+            "float"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "s_abs": {
+          "observed_types": [
+            "float"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "time": {
+          "observed_types": [
+            "float"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "vx": {
+          "observed_types": [
+            "float"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "vy": {
+          "observed_types": [
+            "float"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        }
+      },
+      "first_time": 0.0,
+      "last_time": 0.595
+    },
+    "controls": {
+      "rows": 60,
+      "fields": {
+        "a_cmd": {
+          "observed_types": [
+            "float"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "acceleration_correction": {
+          "observed_types": [
+            "float"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "application_time": {
+          "observed_types": [
+            "float"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "command_validation_time": {
+          "observed_types": [
+            "float"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "computational_deadline_exceeded": {
+          "observed_types": [
+            "bool"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "cpu_time": {
+          "observed_types": [
+            "float"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "delta": {
+          "observed_types": [
+            "float"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "delta_correction": {
+          "observed_types": [
+            "float"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "error_e_psi": {
+          "observed_types": [
+            "float"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "error_e_y": {
+          "observed_types": [
+            "float"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "error_r": {
+          "observed_types": [
+            "float"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "error_s_abs": {
+          "observed_types": [
+            "float"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "error_vx": {
+          "observed_types": [
+            "float"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "error_vy": {
+          "observed_types": [
+            "float"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "feedback_time": {
+          "observed_types": [
+            "float"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "interpolation_time": {
+          "observed_types": [
+            "float"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "kernel_time": {
+          "observed_types": [
+            "float"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "mode": {
+          "observed_types": [
+            "str"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "nominal_a_cmd": {
+          "observed_types": [
+            "float"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "nominal_delta": {
+          "observed_types": [
+            "float"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "physical_latency": {
+          "observed_types": [
+            "float"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "plan_id": {
+          "observed_types": [
+            "int"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "reference_e_psi": {
+          "observed_types": [
+            "float"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "reference_e_y": {
+          "observed_types": [
+            "float"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "reference_r": {
+          "observed_types": [
+            "float"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "reference_s_abs": {
+          "observed_types": [
+            "float"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "reference_vx": {
+          "observed_types": [
+            "float"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "reference_vy": {
+          "observed_types": [
+            "float"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "requested_a_cmd": {
+          "observed_types": [
+            "float"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "requested_delta": {
+          "observed_types": [
+            "float"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "reserve": {
+          "observed_types": [
+            "float"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "time": {
+          "observed_types": [
+            "float"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "total_time": {
+          "observed_types": [
+            "float"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        }
+      },
+      "first_time": 0.0,
+      "last_time": 0.59
+    },
+    "plans": {
+      "rows": 3,
+      "fields": {
+        "active_reserve_at_completion": {
+          "observed_types": [
+            "float"
+          ],
+          "absent_rows": 1,
+          "null_rows": 0
+        },
+        "actual_state": {
+          "observed_types": [
+            "list"
+          ],
+          "absent_rows": 1,
+          "null_rows": 0
+        },
+        "completed": {
+          "observed_types": [
+            "bool"
+          ],
+          "absent_rows": 1,
+          "null_rows": 0
+        },
+        "completion_time": {
+          "observed_types": [
+            "float"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "delay_estimation_error": {
+          "observed_types": [
+            "float"
+          ],
+          "absent_rows": 1,
+          "null_rows": 0
+        },
+        "estimated_delay": {
+          "observed_types": [
+            "float",
+            "int"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "fixed_handoff_offset": {
+          "observed_types": [
+            "float"
+          ],
+          "absent_rows": 1,
+          "null_rows": 0
+        },
+        "forecast_duration": {
+          "observed_types": [
+            "float"
+          ],
+          "absent_rows": 1,
+          "null_rows": 0
+        },
+        "new_reserve_at_completion": {
+          "observed_types": [
+            "float"
+          ],
+          "absent_rows": 1,
+          "null_rows": 0
+        },
+        "pending_application_time": {
+          "observed_types": [
+            "NoneType",
+            "float"
+          ],
+          "absent_rows": 0,
+          "null_rows": 1
+        },
+        "physical_delay": {
+          "observed_types": [
+            "float"
+          ],
+          "absent_rows": 1,
+          "null_rows": 0
+        },
+        "plan_id": {
+          "observed_types": [
+            "int"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "planner_cpu_time": {
+          "observed_types": [
+            "float"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "planner_total_time": {
+          "observed_types": [
+            "float"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "predicted_state": {
+          "observed_types": [
+            "list"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "prediction_architecture": {
+          "observed_types": [
+            "str"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "prediction_error": {
+          "observed_types": [
+            "list"
+          ],
+          "absent_rows": 1,
+          "null_rows": 0
+        },
+        "prepositioned_control": {
+          "observed_types": [
+            "list"
+          ],
+          "absent_rows": 2,
+          "null_rows": 0
+        },
+        "release_command_pending": {
+          "observed_types": [
+            "bool"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "release_time": {
+          "observed_types": [
+            "float",
+            "int"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "rolling_delay_estimate": {
+          "observed_types": [
+            "float"
+          ],
+          "absent_rows": 1,
+          "null_rows": 0
+        },
+        "startup": {
+          "observed_types": [
+            "bool"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "status": {
+          "observed_types": [
+            "str"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "success": {
+          "observed_types": [
+            "bool"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "urgent": {
+          "observed_types": [
+            "bool"
+          ],
+          "absent_rows": 1,
+          "null_rows": 0
+        },
+        "valid_from": {
+          "observed_types": [
+            "float"
+          ],
+          "absent_rows": 1,
+          "null_rows": 0
+        }
+      }
+    },
+    "packets": {
+      "rows": 3,
+      "fields": {
+        "actual_completion_time": {
+          "observed_types": [
+            "float"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "controls": {
+          "observed_types": [
+            "list"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "curvatures": {
+          "observed_types": [
+            "list"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "gain_times": {
+          "observed_types": [
+            "list"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "gains": {
+          "observed_types": [
+            "list"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "horizon_end_time": {
+          "observed_types": [
+            "float"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "intended_handoff_time": {
+          "observed_types": [
+            "float",
+            "int"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "plan_id": {
+          "observed_types": [
+            "int"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "planner_release_time": {
+          "observed_types": [
+            "float",
+            "int"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "planner_sample_time": {
+          "observed_types": [
+            "float",
+            "int"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "predicted_handoff_state": {
+          "observed_types": [
+            "list"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "remaining_reserve_at_completion": {
+          "observed_types": [
+            "float"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "solve_duration": {
+          "observed_types": [
+            "float"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "solver_status": {
+          "observed_types": [
+            "str"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "source_sampled_state": {
+          "observed_types": [
+            "list"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "states": {
+          "observed_types": [
+            "list"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "timestamps": {
+          "observed_types": [
+            "list"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "total_computation_duration": {
+          "observed_types": [
+            "float"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "valid": {
+          "observed_types": [
+            "bool"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "valid_from": {
+          "observed_types": [
+            "float"
+          ],
+          "absent_rows": 1,
+          "null_rows": 0
+        },
+        "validation_reason": {
+          "observed_types": [
+            "str"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        }
+      }
+    },
+    "triggers": {
+      "rows": 2,
+      "fields": {
+        "busy": {
+          "observed_types": [
+            "bool"
+          ],
+          "absent_rows": 1,
+          "null_rows": 0
+        },
+        "kind": {
+          "observed_types": [
+            "str"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "time": {
+          "observed_types": [
+            "float"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        }
+      },
+      "first_time": 0.15,
+      "last_time": 0.16
+    },
+    "fallbacks": {
+      "rows": 1,
+      "fields": {
+        "reason": {
+          "observed_types": [
+            "str"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "time": {
+          "observed_types": [
+            "float"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "valid_domain": {
+          "observed_types": [
+            "bool"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        }
+      },
+      "first_time": 0.4,
+      "last_time": 0.4
+    },
+    "handoffs": {
+      "rows": 0
+    },
+    "releases": {
+      "rows": 2,
+      "fields": {
+        "plan_id": {
+          "observed_types": [
+            "int"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "time": {
+          "observed_types": [
+            "float"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "urgent": {
+          "observed_types": [
+            "bool"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        }
+      },
+      "first_time": 0.1,
+      "last_time": 0.26
+    },
+    "misses": {
+      "rows": 3,
+      "fields": {
+        "reason": {
+          "observed_types": [
+            "str"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "time": {
+          "observed_types": [
+            "float"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        }
+      },
+      "first_time": 0.2,
+      "last_time": 0.4
+    },
+    "reserves": {
+      "rows": 120,
+      "fields": {
+        "category": {
+          "observed_types": [
+            "str"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "plan_id": {
+          "observed_types": [
+            "int"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "reserve": {
+          "observed_types": [
+            "float"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        },
+        "time": {
+          "observed_types": [
+            "float"
+          ],
+          "absent_rows": 0,
+          "null_rows": 0
+        }
+      },
+      "first_time": 0.0,
+      "last_time": 0.595
+    },
+    "lap_times": {
+      "rows": 0
+    },
+    "codriver_misses": {
+      "rows": 0
+    }
+  },
+  "packet_shapes": [
+    {
+      "plan_id": 0,
+      "timestamps": 5,
+      "states": [
+        5,
+        6
+      ],
+      "controls": [
+        4,
+        2
+      ],
+      "gains": [
+        4,
+        4
+      ],
+      "has_valid_from": false
+    },
+    {
+      "plan_id": 1,
+      "timestamps": 5,
+      "states": [
+        5,
+        6
+      ],
+      "controls": [
+        4,
+        2
+      ],
+      "gains": [
+        4,
+        4
+      ],
+      "has_valid_from": true
+    },
+    {
+      "plan_id": 2,
+      "timestamps": 5,
+      "states": [
+        5,
+        6
+      ],
+      "controls": [
+        4,
+        2
+      ],
+      "gains": [
+        4,
+        4
+      ],
+      "has_valid_from": true
+    }
+  ],
+  "literal_chronology": {
+    "fixed_handoffs": [
+      {
+        "plan_id": 1,
+        "t_release": 0.1,
+        "t_ready": 0.255,
+        "valid_from": 0.17,
+        "t_accept": null,
+        "first_TVLQR_use": null,
+        "expiry": 0.5700000000000001,
+        "preparation_duration": 0.155,
+        "wait_duration": 0.0,
+        "deadline_margin": -0.08499999999999999,
+        "status": "missed",
+        "miss_time": 0.17,
+        "late_discard_time": 0.255,
+        "packet_age": null,
+        "reserve_at_acceptance": null,
+        "consecutive_misses": 1
+      },
+      {
+        "plan_id": 2,
+        "t_release": 0.26,
+        "t_ready": 0.41500000000000004,
+        "valid_from": 0.33,
+        "t_accept": null,
+        "first_TVLQR_use": null,
+        "expiry": 0.73,
+        "preparation_duration": 0.15500000000000003,
+        "wait_duration": 0.0,
+        "deadline_margin": -0.08500000000000002,
+        "status": "missed",
+        "miss_time": 0.33,
+        "late_discard_time": 0.41500000000000004,
+        "packet_age": null,
+        "reserve_at_acceptance": null,
+        "consecutive_misses": 2
+      }
+    ],
+    "urgent_demands": [
+      {
+        "trigger_time": 0.16,
+        "coalesced_trigger_times": [],
+        "eligible_time": 0.255,
+        "release_time": 0.26,
+        "planner_busy_wait": 0.095,
+        "grid_alignment_wait": 0.0050000000000000044,
+        "fixed_offset": 0.07,
+        "serviced_by_plan_id": 2,
+        "coalesced_nominal": false,
+        "accepted_plan_id": null,
+        "accepted_time": null,
+        "trigger_to_authority": null,
+        "status": "fallback"
+      }
+    ],
+    "releases": [
+      {
+        "time": 0.1,
+        "plan_id": 1,
+        "urgent": false
+      },
+      {
+        "time": 0.26,
+        "plan_id": 2,
+        "urgent": true
+      }
+    ],
+    "planner_busy_skips": [
+      {
+        "time": 0.2,
+        "reason": "planner_busy"
+      },
+      {
+        "time": 0.3,
+        "reason": "planner_busy"
+      },
+      {
+        "time": 0.4,
+        "reason": "planner_busy"
+      }
+    ],
+    "fallbacks": [
+      {
+        "time": 0.4,
+        "reason": "trajectory_exhausted",
+        "valid_domain": true
+      }
+    ],
+    "triggers": [
+      {
+        "time": 0.15,
+        "kind": "approved_state_perturbation"
+      },
+      {
+        "time": 0.16,
+        "kind": "urgent_replan",
+        "busy": true
+      }
+    ],
+    "failure": null,
+    "stop_reason": "duration",
+    "end_time": 0.6,
+    "pending_at_end": false
+  },
+  "all_control_application_times_equal_computation_times": true,
+  "planner_statuses": [
+    "test_success",
+    "test_success",
+    "test_success"
+  ],
+  "mode_counts": {
+    "states": {
+      "trajectory": 80,
+      "baseline_fallback": 40
+    },
+    "controls": {
+      "trajectory": 40,
+      "baseline_fallback": 20
+    }
+  },
+  "fallback_reference_semantics_observation": {
+    "all_fallback_error_and_correction_fields_are_zero": true,
+    "reference_source_explanation": "Reference Git44e AsyncRunner sets fallback reference=x, nominal=proposed, error/correction=zeros; do not claim independent target/perfect tracking"
+  },
+  "neighbor_pilot_vs_reference_delivery": {
+    "src/apex/simulation/asynchronous.py": {
+      "neighbor_pilot_hash": "38b6e352684a5fbe63117b2698c905e58af99ce268baa62e36c96dd9eb358175",
+      "reference_delivery_hash": "7d14395aa27707f2561bf6bdb32cd613bc2508ab12d6fe617bf45855d378f018",
+      "equal": false
+    },
+    "src/apex/simulation/fixed_handoff.py": {
+      "neighbor_pilot_hash": "84c607589882f630e74cfcc5326a55f2da0a1d0476c669097e593674e174f4a9",
+      "reference_delivery_hash": "8f0bc766b6a7c446f36b6a49f6214864906acbb067c57c977469b54e3ff07c12",
+      "equal": false
+    }
+  },
+  "unresolved_gaps": [
+    {
+      "id": "G1",
+      "blocking": true,
+      "description": "No capture-time revision/source snapshot/closure manifest binds original155 complete bytes to the exact runtime/test-fixture/serializer code. Export-entrypoint introduction/final16-source inventory do not identify capture state; neighboring pilot has different runtime hashes and is a different run."
+    },
+    {
+      "id": "G2",
+      "blocking": "for reproducibility and measured-performance claims",
+      "description": "No original C0 package/backend/platform/settings or process/command receipt. Requested SINGLE in reference source is not retained C0 runtime observation."
+    },
+    {
+      "id": "G3",
+      "blocking": false,
+      "description": "No native world XY/serialized geometry/actual optimizer result/terminal0.600 state. Must remain unavailable; cannot reconstruct."
+    }
+  ],
+  "scientific_imports": false,
+  "project_modules_imported": false,
+  "simulations_or_exporters_executed": false,
+  "pytest_or_numerical_tests_executed": false,
+  "adapter_implemented_or_Workbench_imported": false,
+  "independent_contract_review_performed": false,
+  "read_notes": [
+    "Initial AST external-root classification included unresolved from-import symbols of local modules; corrected by resolving the local root. Reference source set is unchanged. No project code executed.",
+    "Initial reference lookup of baseline.py found the baseline package instead; package import paths resolved from the immutable Git tree. No code executed.",
+    "Final descriptive inventory also excludes implicit local namespace-package roots identified by reference source paths; raw inspection outputs are retained."
+  ],
+  "preservation": {
+    "protected_original_files": 888,
+    "changed": [],
+    "candidate_sha256_after": "2bd7d2385e7e2072a04e5d952eff9af8861eb7e63f016138d5289573c411f2d5",
+    "behavioral_git_diff_to_authorized_base": ""
+  },
+  "inspection_invocations": [
+    {
+      "command": [
+        "python3",
+        "results/apex_workbench_c0_contract_20261030/inspect_archive.py"
+      ],
+      "exit_code": 0,
+      "note": "Initial static local-module symbol roots overclassified as external; retained, no source-set effect"
+    },
+    {
+      "command": [
+        "python3",
+        "results/apex_workbench_c0_contract_20261030/inspect_archive_corrected.py"
+      ],
+      "exit_code": 0,
+      "note": "External/local-root classification corrected; no project execution and same69 reference hashes"
+    }
+  ],
+  "raw_audit_evidence_sha256": {
+    "results/apex_workbench_c0_contract_20261030/inspect_archive.py": "4d8a95e7e814eb2e92d8bf879bc1ddb2eb2a09f798ae155f3bc3cda02c7f0962",
+    "results/apex_workbench_c0_contract_20261030/inspection_corrected.log": "a8c5026a0c7bd6916b4d38d93b9f3ddfa6d2967498d4b5ae54d5717a6c6fa556",
+    "results/apex_workbench_c0_contract_20261030/preservation_after.json": "7be9a4804b5328aa071b9172bfdf1b021ca961c074f79cd098d991ae43fc5973",
+    "results/apex_workbench_c0_contract_20261030/inspect_archive_corrected.py": "65065b2657a892cf9a811c4cbdaf483adcbdf30d39f0f906167e3325357865bb",
+    "results/apex_workbench_c0_contract_20261030/audit_inventory.json": "4932064375feea57b1e6c135e516147397a22f325c628b1a23ce0814f4504c65",
+    "results/apex_workbench_c0_contract_20261030/audit_inventory_corrected.json": "a46afdcf95f0bf4995565852b341e9eae96f7a76fa5dc119ed0fc26333a5e03d",
+    "results/apex_workbench_c0_contract_20261030/inspection.log": "a8c5026a0c7bd6916b4d38d93b9f3ddfa6d2967498d4b5ae54d5717a6c6fa556",
+    "results/apex_workbench_c0_contract_20261030/preservation_before.json": "157cb52503dd5f7111f7ee24c45c20bb8e7289178e8f7a611647fc8040da03a5"
+  },
+  "draft_contract_sha256": "af1951d660c80aee7706b38bc79be51c7e126e1ab7457865b65963a9bb46676c",
+  "gap_report_sha256": "d2bb2312de160134cc9054ec7fb5c3f14d6619cd2c6ef323bc5bc8535e0ac5d1",
+  "containing_delivery": "Documentation only; exact SHA/URL supplied after commit/push"
+}

@@ -6,8 +6,10 @@ accepted within scope by Primary record `7da7100`. V0.3-D at exact implementatio
 after one Verification with 1,089 passes / 17 gated G2 skips. M4's single P archive inspection,
 source-linked HTML and oval shortcut are accepted only within that verified scope, retaining the
 download and terminal observations. The [next C0 task](../apex_workbench_v0_3_d/NEXT_C0_TASK.md)
-is prepared, not started: producer/archive contract audit and independent review precede adapter WORK.
-M4 controller-failure inspection remains incomplete. RBT-S/N/V, S1/S2/S3, future G/P execution,
+has completed its initial Section A audit with a [source-binding blocker](../apex_workbench_v0_3_d/c0_contract/AUDIT.md):
+known artifact bytes/reference sources do not establish the exact capture producer. Contract review
+and explicit adapter WORK remain ahead; M4 controller-failure inspection is incomplete.
+RBT-S/N/V, S1/S2/S3, future G/P execution,
 new scientific experiments, generic telemetry, CT and hardware remain separately gated.
 The original ordering/gates below remain historical design context.
 
