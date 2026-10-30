@@ -1,3 +1,29 @@
+# Current handoff — C0 descriptive contract independent re-review PASS
+
+**C0_DESCRIPTIVE_CONTRACT_REVIEW_COMPLETE_PENDING_PRIMARY_WORK_DECISION. Outcome: PASS.**
+31 October 2026. A fresh independent context reviewed exact corrected candidate
+`5bf6cce22816bc8fd5a7d7bf84cefef87c69e358` on
+`codex/apex-workbench-c0-descriptive-contract-v1`.
+[Iteration-2 review](reviews/apex_workbench_v0_3_d/c0_descriptive_contract/iteration_2/REVIEW.md),
+[machine record](reviews/apex_workbench_v0_3_d/c0_descriptive_contract/iteration_2/review_record.json).
+R1–R4 all PASS; no new contradictory normative statements found. Contract SHA-256 remains
+`31afeefac753dead492df26f90b5b6aa1d822de705e3a86c97dfba2a0f72fd62`.
+This delivery adds review/handoff documentation only and does not amend the reviewed contract.
+
+Independent inspection confirmed exact tokens, present-null/absent pointers, original control
+keys and narrowly permitted unversioned/source-unverified admission. Original fixture, Section A
+audit/blocked contract/inventory, iteration-1 BLOCKED review, scientific sources, tests and
+Workbench application sources remain preserved. Only static documentation/JSON/hash/Git checks
+ran; no project imports, tests, simulations, controllers, qualification or adapter implementation.
+The interrupted reviewer resumed and confirmed its final decision; no partial check was promoted
+to PASS. [PR #1](https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/pull/1) remains a draft.
+
+**G1 capture-time producer provenance remains OPEN.** PASS is for the descriptive contract only,
+not software Verification or scientific acceptance. Stop here: any adapter or tests require a
+subsequent bounded Primary WORK assignment. All other scientific gates remain unchanged.
+
+---
+
 # Current handoff — C0 descriptive contract R1–R4 correction
 
 **C0_DESCRIPTIVE_CONTRACT_SUBMITTED_PENDING_INDEPENDENT_REVIEW.** 30 October 2026.
