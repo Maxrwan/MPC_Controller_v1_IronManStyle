@@ -1431,3 +1431,21 @@ existing accepted LQR/PI interface. RBT-0.1 remains an unimplemented [scientific
 new component accuracy budgets and scientific scope need Primary review. The successful P case
 does not close broader M4 failure-archive inspection. Exact-source Engineering Review and
 separate formal Verification remain required; no new scientific campaign is authorized.
+
+## ADR-180 — User acceptance of V0.3-D and bounded C0 task preparation
+
+30 October 2026. **V0.3_D_ACCEPTED_WITHIN_VERIFIED_SCOPE.** The user formally accepts exact
+implementation `c5f3db6852af8f8ffccf4e5e9e6f11d01fa861b4` after independent review and one full
+formal Verification: 1,089 passed, 17 separately gated G2 skips, no failures/errors. Acceptance is
+limited to the verified software scope; [acceptance](reviews/apex_workbench_v0_3_d/PRIMARY_ACCEPTANCE.md)
+and [machine record](reviews/apex_workbench_v0_3_d/primary_acceptance.json) retain the embedded-browser
+automatic-download limitation and route-dependent terminal exit/signal observations. Local HTML
+generation/reopening and safe owned launcher cleanup are verified. Historical observations are not
+assigned a wider cause or guarantee, and the original Verification reports remain unchanged.
+
+The [prepared next task](apex_workbench_v0_3_d/NEXT_C0_TASK.md) targets the original retained
+synthetic C0 availability-failure fixture. Its first assignment is read-only producer/archive
+contract audit, followed by separate independent contract review before an explicitly assigned
+adapter WORK stage. Preparation does not execute that task or approve its unresolved provenance.
+Reuse existing Workbench infrastructure; no new simulation or scientific campaign. RBT-S/N/V,
+numerical budgets, future G/P execution and frozen/hardware work remain separately gated.

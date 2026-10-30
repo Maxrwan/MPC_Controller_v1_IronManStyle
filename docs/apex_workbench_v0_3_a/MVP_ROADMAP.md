@@ -1,12 +1,14 @@
 # Prioritized roadmap
 
-Current progress (30 October 2026): M1/V0.3-B remains verified with acceptance not inferred.
-V0.3-C compact inspection, M2 pairwise 2–4/native-time comparison and known-record M3 replay are
-formally verified at exact `34f98a4894e457900d2fae3b2fd09ead4f5ba5a0` after independent N1 PASS. One complete
-suite: 1,069 passed / 17 gated G2 skips. User acceptance and unchanged Primary S1/S2/S3 scenario decisions
-remain pending. [Combined report](../reviews/apex_workbench_v0_3_c/RESPONSIVENESS.md) retains all
-original failure/timing evidence and bounded response/verification limits. No generic telemetry
-importer/M4 controller archive adapter, new scenario, CT or hardware stage follows automatically.
+Current progress (30 October 2026): M1/V0.3-B's separate acceptance is not inferred. V0.3-C is
+accepted within scope by Primary record `7da7100`. V0.3-D at exact implementation
+`c5f3db6852af8f8ffccf4e5e9e6f11d01fa861b4` is now [formally accepted by the user](../reviews/apex_workbench_v0_3_d/PRIMARY_ACCEPTANCE.md)
+after one Verification with 1,089 passes / 17 gated G2 skips. M4's single P archive inspection,
+source-linked HTML and oval shortcut are accepted only within that verified scope, retaining the
+download and terminal observations. The [next C0 task](../apex_workbench_v0_3_d/NEXT_C0_TASK.md)
+is prepared, not started: producer/archive contract audit and independent review precede adapter WORK.
+M4 controller-failure inspection remains incomplete. RBT-S/N/V, S1/S2/S3, future G/P execution,
+new scientific experiments, generic telemetry, CT and hardware remain separately gated.
 The original ordering/gates below remain historical design context.
 
 Goal: everyday engineering use of accepted simulations and retained evidence. Do not preserve an

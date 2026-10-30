@@ -1,0 +1,66 @@
+{
+  "schema": "apex-workbench-primary-acceptance/1",
+  "date": "2026-10-30",
+  "decision": "V0.3_D_ACCEPTED_WITHIN_VERIFIED_SCOPE",
+  "authority": "Explicit formal acceptance directly from the user in this chat",
+  "accepted_exact_implementation": "c5f3db6852af8f8ffccf4e5e9e6f11d01fa861b4",
+  "engineering_review_delivery": "49f7eb98fcec6fac5869371f70dc2e7d2daf7dff",
+  "formal_verification_delivery": "af9311ed19e41045aa16dd1029d7191f8eae9c45",
+  "branch": "codex/apex-workbench-v0-3-d",
+  "reported_single_verification": {
+    "passed": 1089,
+    "separately_gated_skips": 17,
+    "failures": 0,
+    "errors": 0,
+    "newly_executed_in_acceptance_task": false
+  },
+  "retained_limitations": {
+    "embedded_browser_automatic_download": "Not confirmed within10s; native Codex dialog inspection tool-restricted; historical1558.497s unique cause unknown; no app-processing or improvement inference",
+    "HTML_generation_and_local_reopening": "Verified and accepted",
+    "safe_launcher_cleanup": "Verified and accepted",
+    "launcher_exit_status": "Targeted supervisor SIGINT exit0; terminal Ctrl-C foreground shell SIGINT(2), port released/no survivor; earlier tool exit1 retained, unique cause unknown; no universal exit-code or failure implication"
+  },
+  "separately_gated": [
+    "RBT-S",
+    "RBT-N",
+    "RBT-V",
+    "component numerical budgets",
+    "future G/P controller execution",
+    "new scientific experiments",
+    "frozen research campaigns",
+    "hardware work"
+  ],
+  "next_authorized_preparation": "Prepare a bounded original-evidence C0/asynchronous controller-availability failure-inspection task with separately audited and independently reviewed producer/archive contract before implementation",
+  "next_task_executed": false,
+  "scientific_or_implementation_changes_authorized_by_this_record": false,
+  "new_tests_or_simulations_in_this_task": false,
+  "verification_report_sha256": "52fcff9ab6e12e0b649604138e9b146a6def1a235915b3cf07e08c849589a1fa",
+  "verification_record_sha256": "7c6196001e5edc7a48fa91cc12de52bc75110542f146e66c9a5e8a0c95dc9f44",
+  "independent_review_record_sha256": "b795608c0492723b74e6aba2cbd295cccc5d2a1f314a35503bc43e990efdd0d2",
+  "acceptance_document": "docs/reviews/apex_workbench_v0_3_d/PRIMARY_ACCEPTANCE.md",
+  "prepared_next_task": "docs/apex_workbench_v0_3_d/NEXT_C0_TASK.md",
+  "acceptance_document_sha256": "5f847d1d3997193ddbc7cce567436b20138042ea3a4afeb29d9aab097f955a15",
+  "prepared_next_task_sha256": "e17026f5f052eacca1e761313e1138789c8a512fa5aa8a30d8907d5a2e3c7e5d",
+  "next_task_preparation": {
+    "fixture_path": "results/task007d/c/amended/c0_export/original155.json",
+    "fixture_sha256": "2bd7d2385e7e2072a04e5d952eff9af8861eb7e63f016138d5289573c411f2d5",
+    "bytes": 152600,
+    "states": 120,
+    "controls": 60,
+    "recorded_end_time": 0.6,
+    "embedded_schema_or_source_envelope": false,
+    "producer_source_contract_approved": false,
+    "read_only_file_and_source_inspection_only": true,
+    "scientific_modules_imported_or_executed": false,
+    "existing_fixture_generator_run": false,
+    "independent_contract_review_performed": false,
+    "adapter_implementation_started": false
+  },
+  "documentation_checks": {
+    "retained_Verification_and_review_record_hashes_unchanged": true,
+    "reviewed_behavioral_files_unchanged": 428,
+    "candidate_matches_prior_MVP_fixture_hash": true,
+    "new_test_or_experiment_execution": false,
+    "validation_scope": "Static documentation/JSON/links, file hashes, Git scope and recorded-results consistency only"
+  }
+}

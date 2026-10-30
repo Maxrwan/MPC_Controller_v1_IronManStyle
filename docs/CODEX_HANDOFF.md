@@ -1,3 +1,34 @@
+# Current handoff — V0.3-D accepted; next C0 task prepared
+
+**V0.3_D_ACCEPTED_WITHIN_VERIFIED_SCOPE.** 30 October 2026. The user formally accepts exact
+implementation `c5f3db6852af8f8ffccf4e5e9e6f11d01fa861b4`, following independent Engineering
+Review and the single formal Verification delivery `af9311ed19e41045aa16dd1029d7191f8eae9c45`:
+1,089 passed, 17 separately gated G2 skips, no failures/errors, preserved scientific evidence.
+These are retained results, not new tests in this documentation task.
+
+[Acceptance](reviews/apex_workbench_v0_3_d/PRIMARY_ACCEPTANCE.md),
+[machine acceptance](reviews/apex_workbench_v0_3_d/primary_acceptance.json).
+Local HTML generation/reopening and safe owned launcher cleanup are verified and accepted.
+Embedded-browser automatic download remains unconfirmed within 10 s; native dialog inspection was
+tool-restricted and the historical 1,558.497 s unique cause is unknown. Targeted supervisor SIGINT
+exit 0, terminal foreground SIGINT(2) and prior tool exit 1 remain distinct route-specific observations,
+without expanded failure, cleanup, latency or guarantee implications. Original reports stay unchanged.
+
+**NEXT_C0_TASK_PREPARED_NOT_STARTED.** [Prepared assignment](apex_workbench_v0_3_d/NEXT_C0_TASK.md)
+targets only original retained synthetic `original155.json` (known SHA256 2bd7d238…); its injected
+planner reports `test_success`, while recorded deadlines miss and fallback occurs. This is software
+availability evidence, not an IPOPT or physical failure. Initial read-only inspection confirms the
+prior hash, native coverage and lack of an embedded schema/source envelope; it is task preparation,
+not a completed contract audit. Next gate is a separately assigned producer/archive contract audit
+and independent contract review before explicitly assigned read-only adapter WORK. No next-task
+implementation, numerical test, exporter invocation, simulation or campaign ran here.
+
+RBT-S/N/V and numerical budgets, future G/P controller execution, new scientific experiments and
+frozen/CT/Safety/hardware work remain separately gated. Stop after this acceptance/preparation
+documentation commit/push; no automatic progression. ADR-180 and roadmap record the same boundary.
+
+---
+
 # Current handoff — V0.3-D formal functional Verification
 
 **V0.3_D_VERIFIED_PENDING_USER_ACCEPTANCE_AND_RBT_DECISIONS.** 30 October 2026.
