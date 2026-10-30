@@ -1,0 +1,274 @@
+{
+  "schema": "apex-c0-descriptive-contract-independent-review/1",
+  "date": "2026-10-30",
+  "stage": "ENGINEERING_REVIEW_DOCUMENTATION_ONLY",
+  "status": "C0_DESCRIPTIVE_CONTRACT_REVIEW_COMPLETE_PENDING_PRIMARY_WORK_DECISION",
+  "outcome": "BLOCKED",
+  "reviewer_independent_context": true,
+  "reviewer_authored_candidate_contract": false,
+  "reviewed_revision": "5f73ce324d698568d8ca03f881cbeb3c9d621406",
+  "reviewed_branch": "codex/apex-workbench-c0-descriptive-contract-v1",
+  "pull_request": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/pull/1",
+  "pull_request_observed": {
+    "head_revision": "5f73ce324d698568d8ca03f881cbeb3c9d621406",
+    "draft": true,
+    "state": "open",
+    "merged": false
+  },
+  "delivery_branch": "codex/apex-workbench-c0-independent-review",
+  "section_a_revision": "acf34015157d237a979fd11263982be6b82c523c",
+  "contract": {
+    "path": "docs/apex_workbench_v0_3_d/c0_contract/CONTRACT_DESCRIPTIVE_ONLY_V1.md",
+    "sha256": "d85e41e91c0b768071434b24d78b8ca4bc3e945c6d94771b3d75e493c1d73070",
+    "identifier": "c0-original155-descriptive-only/1",
+    "proposed_profile": "descriptive_only / source_unverified"
+  },
+  "review_request_sha256": "b89b155d483a3610eaf0844e3950df782bac6b43d358d8ae1a86dd49d02b1ab3",
+  "artifact": {
+    "path": "results/task007d/c/amended/c0_export/original155.json",
+    "bytes": 152600,
+    "sha256": "2bd7d2385e7e2072a04e5d952eff9af8861eb7e63f016138d5289573c411f2d5",
+    "is_symlink": false,
+    "root_keys_in_original_order": [
+      "fixed_handoffs",
+      "urgent_demands",
+      "states",
+      "controls",
+      "plans",
+      "packets",
+      "triggers",
+      "fallbacks",
+      "handoffs",
+      "releases",
+      "misses",
+      "reserves",
+      "failure",
+      "stop_reason",
+      "lap_times",
+      "end_time",
+      "pending_at_end",
+      "codriver_misses"
+    ],
+    "duplicate_members": [],
+    "nonstandard_constants": [],
+    "nonfinite_paths": []
+  },
+  "G1": "OPEN",
+  "G2": "Capture environment and receipt unresolved; no reproduction or measured-performance qualification",
+  "G3": "Unavailable channels remain unavailable; no reconstruction",
+  "meaningful_descriptive_profile_feasible": true,
+  "exact_reviewed_contract_suitable_for_bounded_WORK": false,
+  "suitability_condition": "Resolve R1-R4 in successor documentation, independently review the new exact revision, then obtain separate explicit Primary bounded WORK authorization. G1 need not be closed for the expressly source-unverified descriptive scope.",
+  "findings": [
+    {
+      "id": "R1",
+      "priority": 1,
+      "contract_lines": [
+        50,
+        51,
+        57,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        109
+      ],
+      "summary": "Examples asserting exact field contents use padded numeric tokens absent from original JSON.",
+      "status": "OPEN",
+      "file": "docs/apex_workbench_v0_3_d/c0_contract/CONTRACT_DESCRIPTIVE_ONLY_V1.md",
+      "required_correction": "Use actual pointer-specific JSON number tokens; distinguish explanatory notation; preserve the original audit and bytes."
+    },
+    {
+      "id": "R2",
+      "priority": 2,
+      "contract_lines": [
+        83
+      ],
+      "summary": "Present-null first_TVLQR_use and trigger_to_authority fields are called missing.",
+      "status": "OPEN",
+      "file": "docs/apex_workbench_v0_3_d/c0_contract/CONTRACT_DESCRIPTIVE_ONLY_V1.md",
+      "required_correction": "Describe present-null first_TVLQR_use, accepted fields and trigger_to_authority as null, keeping genuinely absent members distinct."
+    },
+    {
+      "id": "R3",
+      "priority": 2,
+      "contract_lines": [
+        40
+      ],
+      "summary": "The literal control key is physical_latency, not latency.",
+      "status": "OPEN",
+      "file": "docs/apex_workbench_v0_3_d/c0_contract/CONTRACT_DESCRIPTIVE_ONLY_V1.md",
+      "required_correction": "Use original controls[i].physical_latency, time and application_time keys with unverified reference interpretation."
+    },
+    {
+      "id": "R4",
+      "priority": 2,
+      "contract_lines": [
+        115
+      ],
+      "summary": "Rejecting an unknown producer/schema is ambiguous for the explicitly admitted source-unverified unversioned record.",
+      "status": "OPEN",
+      "file": "docs/apex_workbench_v0_3_d/c0_contract/CONTRACT_DESCRIPTIVE_ONLY_V1.md",
+      "required_correction": "Reject unlisted/changed bytes or unsupported contemporary contract; explicitly allow pinned source-unverified unversioned bytes with G1 OPEN."
+    }
+  ],
+  "original_numeric_tokens": {
+    "/fixed_handoffs/0/valid_from": "0.17",
+    "/fixed_handoffs/1/valid_from": "0.33",
+    "/fixed_handoffs/0/t_accept": null,
+    "/fixed_handoffs/0/first_TVLQR_use": null,
+    "/fixed_handoffs/1/first_TVLQR_use": null,
+    "/fixed_handoffs/1/t_ready": "0.41500000000000004",
+    "/urgent_demands/0/trigger_time": "0.16",
+    "/urgent_demands/0/eligible_time": "0.255",
+    "/urgent_demands/0/release_time": "0.26",
+    "/urgent_demands/0/planner_busy_wait": "0.095",
+    "/urgent_demands/0/grid_alignment_wait": "0.0050000000000000044",
+    "/urgent_demands/0/trigger_to_authority": null,
+    "/misses/0/time": "0.2",
+    "/misses/1/time": "0.3",
+    "/misses/2/time": "0.4",
+    "/fallbacks/0/time": "0.4",
+    "/fallbacks/0/reason": "trajectory_exhausted",
+    "/fallbacks/0/valid_domain": true,
+    "/end_time": "0.6",
+    "/states/0/time": "0.0",
+    "/states/119/time": "0.595",
+    "/controls/59/time": "0.59",
+    "/controls/0/acceleration_correction": "-0.0",
+    "/plans/0/release_time": "0",
+    "/plans/1/status": "test_success",
+    "/plans/1/planner_total_time": "0.017",
+    "/packets/0/solve_duration": "0.01",
+    "/packets/0/solver_status": "test_success",
+    "/packets/0/validation_reason": "solver_and_model_valid"
+  },
+  "numeric_token_representation_note": "Numeric values in selected_original_tokens_and_values are original JSON numeric tokens returned unchanged by stdlib json parse_int=str / parse_float=str. Text strings are selected raw text; null/bool retain types. No reserialized float is evidence of a source token.",
+  "literal_control_field_identities": {
+    "latency_present": false,
+    "physical_latency_present_in_all_rows": true,
+    "raw_time_equals_application_time_in_all_rows": true
+  },
+  "inventory_audit": {
+    "root_keys": 18,
+    "collection_inventory_mismatches": [],
+    "collection_counts": {
+      "fixed_handoffs": 2,
+      "urgent_demands": 1,
+      "states": 120,
+      "controls": 60,
+      "plans": 3,
+      "packets": 3,
+      "triggers": 2,
+      "fallbacks": 1,
+      "handoffs": 0,
+      "releases": 2,
+      "misses": 3,
+      "reserves": 120,
+      "lap_times": 0,
+      "codriver_misses": 0
+    },
+    "packet_shapes": "3 packets; 5 timestamps, 5x6 states, 4x2 controls, 4 flattened gain rows of length 4; empty curvatures",
+    "conditional_null_absence": {
+      "packets/0/valid_from": "absent",
+      "triggers/0/busy": "absent",
+      "fixed_handoffs/0/first_TVLQR_use": null,
+      "urgent_demands/0/trigger_to_authority": null
+    },
+    "compact_summary_matches_raw": true,
+    "context_files": 15,
+    "context_hash_mismatches": []
+  },
+  "reference_identity_audit": {
+    "reference_revision": "44e0471680bb22ea1ee790173d1f2481a905f386",
+    "static_reference_files": 69,
+    "static_reference_mismatches": [],
+    "final_delivery_source_files": 16,
+    "final_delivery_source_mismatches": [],
+    "capture_source_binding_established": false,
+    "reference_limits": {
+      "neighbor_pilot_git_sha": "c56e5095105cd1c70649127e246c48ee70c26428",
+      "neighbor_runtime_vs_reference": {
+        "src/apex/simulation/asynchronous.py": {
+          "neighbor": "38b6e352684a5fbe63117b2698c905e58af99ce268baa62e36c96dd9eb358175",
+          "reference": "7d14395aa27707f2561bf6bdb32cd613bc2508ab12d6fe617bf45855d378f018"
+        },
+        "src/apex/simulation/fixed_handoff.py": {
+          "neighbor": "84c607589882f630e74cfcc5326a55f2da0a1d0476c669097e593674e174f4a9",
+          "reference": "8f0bc766b6a7c446f36b6a49f6214864906acbb067c57c977469b54e3ff07c12"
+        }
+      },
+      "CX_before_original155": [
+        152600,
+        1791817181584262576
+      ],
+      "CX_entry_semantics": "size and mtime only, not source receipt",
+      "old_blocked_c0_duration": 0.8,
+      "V03A_anchor_revision": "03055a183be0f5d3691714103588d5b263748128",
+      "V03A_anchor_role": "Retained byte identity, not capture-time source binding"
+    }
+  },
+  "positive_negative_examples": {
+    "107": "Correct present-null example",
+    "108": "Exact literal status, appropriate unverified reference warning",
+    "109": "Reason and bool match; timestamp token fails R1",
+    "110": "Correct absent startup valid_from",
+    "111": "Correct unavailable XY and terminal-state refusal; request notation is not a source token",
+    "112": "Only visibly unverified reference SI/frame interpretation",
+    "113": "Correctly prohibit authenticated IPOPT timing assertion",
+    "114": "Correct written SHA-quarantine requirement; no behavioral fault injection",
+    "115": "Unsupported archive rejection correct; unknown-source rejection ambiguous under R4"
+  },
+  "fail_closed_requirements_assessed": "Written requirements only: exact path/size/hash before parse, strict bounded structure, no linked/escaping roots, operation-local bytes, evidence-currentness checks, quarantine and stale-export withholding. Not implemented or behaviorally verified.",
+  "future_specification_clarification": "Historical inventory is field unions/counts; a later separately authorized specification should explicitly enumerate conditional row key sets and nested dimensions without editing the historical inventory or weakening the exact hash gate.",
+  "preservation": {
+    "reviewed_revision": "5f73ce324d698568d8ca03f881cbeb3c9d621406",
+    "protected_file_count": 1398,
+    "changed": [],
+    "missing": [],
+    "original_section_a_protection_paths": 888,
+    "original_section_a_paths_covered": 888,
+    "candidate_documents_match_git": {
+      "docs/apex_workbench_v0_3_d/c0_contract/CONTRACT_DESCRIPTIVE_ONLY_V1.md": true,
+      "docs/apex_workbench_v0_3_d/c0_contract/INDEPENDENT_REVIEW_REQUEST.md": true
+    }
+  },
+  "execution": {
+    "stdlib_json_hash_git_inspection": true,
+    "project_imports": false,
+    "tests": false,
+    "fixtures_or_producers": false,
+    "simulations": false,
+    "numerical_qualification": false,
+    "fault_injection": false
+  },
+  "software_tests_run": false,
+  "scientific_acceptance": false,
+  "formal_verification": false,
+  "implementation_authorized": false,
+  "contract_corrected_by_reviewer": false,
+  "pull_request_merged": false,
+  "pull_request_review_or_comment_posted": false,
+  "changed_tracked_scope": [
+    "docs/CODEX_HANDOFF.md",
+    "docs/reviews/apex_workbench_v0_3_d/c0_descriptive_contract/iteration_1/REVIEW.md",
+    "docs/reviews/apex_workbench_v0_3_d/c0_descriptive_contract/iteration_1/review_record.json"
+  ],
+  "evidence_sha256": {
+    "results/apex_workbench_c0_descriptive_review_20261030/inspection.json": "46f17aefb311c307175a5eefb4486b0eb75c52857fdc207c7dd0770c487ac5b0",
+    "results/apex_workbench_c0_descriptive_review_20261030/preservation_before.json": "35013adce77230c19a814d8d41ddff8fd3338ef10d1dfd7018556e1327e9721c",
+    "results/apex_workbench_c0_descriptive_review_20261030/preservation_after.json": "252c0ab754d9529316fb91b952df67ec0f14a7df6d6c7630ed316fdc5c6194af"
+  },
+  "review_report_sha256": "d096072006df247806052598b8639dba71b11daca24cf40178826a32eb747964",
+  "next_gate": "Primary decision on documentation corrections; independently review corrected exact revision before separate bounded WORK authorization",
+  "containing_delivery": "Documentation only; delivery SHA and remote visibility reported after commit and push",
+  "documentation_checks": {
+    "path": "results/apex_workbench_c0_descriptive_review_20261030/documentation_checks.json",
+    "sha256": "f2380eacfe9952fec12ec13364ce6c4fb3d95dfbab427271a5e6553cddf92000",
+    "scope": "JSON, relative links, outcome/revision/hash consistency and protected-file preservation; no tests",
+    "git_whitespace_check": "git diff --cached --check: exit 0 on the three explicit documentation paths; no software or scientific tests"
+  }
+}

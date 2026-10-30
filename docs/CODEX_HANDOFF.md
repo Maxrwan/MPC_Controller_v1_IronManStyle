@@ -1,3 +1,35 @@
+# Current handoff — independent C0 descriptive contract review
+
+**C0_DESCRIPTIVE_CONTRACT_REVIEW_COMPLETE_PENDING_PRIMARY_WORK_DECISION. Outcome: BLOCKED.**
+30 October 2026. Independent documentation review of exact contract revision
+`5f73ce324d698568d8ca03f881cbeb3c9d621406`, branch
+`codex/apex-workbench-c0-descriptive-contract-v1`, [draft PR #1](https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/pull/1).
+[Review/findings](reviews/apex_workbench_v0_3_d/c0_descriptive_contract/iteration_1/REVIEW.md),
+[machine record](reviews/apex_workbench_v0_3_d/c0_descriptive_contract/iteration_1/review_record.json).
+Delivery uses separate branch `codex/apex-workbench-c0-independent-review`; the candidate contract,
+review request, PR branch and original Section A evidence remain unchanged.
+
+Four open findings: R1/P1 normative examples invent trailing-zero numeric tokens; R2/P2 calls
+present-null authority/use fields missing; R3/P2 names `latency` instead of `physical_latency`;
+R4/P2 rejects unknown producer/schema without excluding the admitted unversioned, source-unverified
+record. **G1 remains OPEN.** A meaningful descriptive-only profile remains feasible, but this exact
+revision is unsuitable as an implementation contract pending corrections and exact-revision review.
+No requirement to recover capture provenance is added for the narrower descriptive profile.
+
+Fresh read-only JSON/hash/Git inspection confirms original155's 152,600 bytes/SHA256 2bd7d238…,
+all observed inventory fields/types/null/absence counts, 69 historical reference hashes and 16
+final-delivery source hashes. These authenticate reference/retained bytes only. All 1,398 protected
+preexisting files, including Section A's 888 paths, remain unchanged. Audit evidence:
+`results/apex_workbench_c0_descriptive_review_20261030/`. Documentation consistency, links,
+JSON and whitespace checks only; no tests, imports, adapter/parser implementation, Workbench,
+producer/exporter, simulation, numerical qualification, scientific/frozen-source or hardware work.
+
+Stop after documentation commit/push. Primary must decide separately on contract corrections,
+subsequent independent review and any bounded WORK assignment. No implementation authorization,
+formal Verification, scientific acceptance, PR merge or next-stage progression is granted.
+
+---
+
 # Current handoff — C0 Section A source/archive audit blocked
 
 **C0_ARCHIVE_CONTRACT_BLOCKED_PENDING_DECISION.** 30 October 2026. Section A only, based on
