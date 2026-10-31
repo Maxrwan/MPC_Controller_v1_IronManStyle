@@ -1449,3 +1449,24 @@ contract audit, followed by separate independent contract review before an expli
 adapter WORK stage. Preparation does not execute that task or approve its unresolved provenance.
 Reuse existing Workbench infrastructure; no new simulation or scientific campaign. RBT-S/N/V,
 numerical budgets, future G/P execution and frozen/hardware work remain separately gated.
+
+## ADR-181 — One descriptive-only C0 record, separate from scientific executions
+
+31 October 2026. Primary authorizes bounded adapter WORK against the independently reviewed
+`c0-original155-descriptive-only/1` contract at `5bf6cce22816bc8fd5a7d7bf84cefef87c69e358`,
+review delivery `79c450f28a2715e3a5284c8815b49e0b07bd9123`. G1 remains OPEN.
+An additive Home/Inspect path reads only the pinned original155 bytes. It does not manufacture a
+Workbench execution identity, enter the run catalog or offer comparison/qualification. Existing
+execution, P inspection, native replay, comparison and legacy entrypoints retain their interfaces.
+
+The standard-library reader verifies bytes plus contemporary contract/review/profile identities,
+then validates explicit conditional key sets, scalar types and nested dimensions. Numeric tokens,
+source pointers, source order, present-null and absence remain distinct. Operation-local bytes
+feed marker-only plots, literal tables and standalone HTML using the existing Streamlit/Plotly
+surface. Rehashes before publication and after rendering/export withdraw the scoped view on any
+change. No cache, producer, scientific model, worker or controller is used by this inspector.
+The structural profile is contemporary parsing metadata, never a historical producer schema.
+
+Focused software tests and independent exact-candidate Engineering Review precede the separately
+authorized formal Verification gate. No contract/scientific change, simulation, qualification,
+RBT, frozen campaign or hardware work follows. Draft PR #1 remains unmerged.

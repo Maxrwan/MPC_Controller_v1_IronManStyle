@@ -1,0 +1,569 @@
+{
+  "identifier": "c0-original155-descriptive-only/1",
+  "kind": "contemporary_exact_record_shape_not_historical_producer_schema",
+  "array_segments": "start inclusive, stop exclusive; every index must be covered once in source order",
+  "shape": {
+    "fixed_handoffs": {
+      "length": 2,
+      "segments": [
+        {
+          "start": 0,
+          "stop": 2,
+          "item": {
+            "plan_id": "integer",
+            "t_release": "real",
+            "t_ready": "real",
+            "valid_from": "real",
+            "t_accept": "null",
+            "first_TVLQR_use": "null",
+            "expiry": "real",
+            "preparation_duration": "real",
+            "wait_duration": "real",
+            "deadline_margin": "real",
+            "status": "string",
+            "miss_time": "real",
+            "late_discard_time": "real",
+            "packet_age": "null",
+            "reserve_at_acceptance": "null",
+            "consecutive_misses": "integer"
+          }
+        }
+      ]
+    },
+    "urgent_demands": {
+      "length": 1,
+      "segments": [
+        {
+          "start": 0,
+          "stop": 1,
+          "item": {
+            "trigger_time": "real",
+            "coalesced_trigger_times": {
+              "length": 0,
+              "segments": []
+            },
+            "eligible_time": "real",
+            "release_time": "real",
+            "planner_busy_wait": "real",
+            "grid_alignment_wait": "real",
+            "fixed_offset": "real",
+            "serviced_by_plan_id": "integer",
+            "coalesced_nominal": "boolean",
+            "accepted_plan_id": "null",
+            "accepted_time": "null",
+            "trigger_to_authority": "null",
+            "status": "string"
+          }
+        }
+      ]
+    },
+    "states": {
+      "length": 120,
+      "segments": [
+        {
+          "start": 0,
+          "stop": 120,
+          "item": {
+            "time": "real",
+            "vx": "real",
+            "vy": "real",
+            "r": "real",
+            "e_psi": "real",
+            "s_abs": "real",
+            "e_y": "real",
+            "delta": "real",
+            "a_cmd": "real",
+            "plan_id": "integer",
+            "mode": "string",
+            "front_utilization": "real",
+            "rear_utilization": "real",
+            "boundary_violation": "boolean"
+          }
+        }
+      ]
+    },
+    "controls": {
+      "length": 60,
+      "segments": [
+        {
+          "start": 0,
+          "stop": 60,
+          "item": {
+            "time": "real",
+            "plan_id": "integer",
+            "mode": "string",
+            "requested_delta": "real",
+            "requested_a_cmd": "real",
+            "reserve": "real",
+            "interpolation_time": "real",
+            "feedback_time": "real",
+            "command_validation_time": "real",
+            "kernel_time": "real",
+            "cpu_time": "real",
+            "total_time": "real",
+            "error_vx": "real",
+            "error_vy": "real",
+            "error_r": "real",
+            "error_e_psi": "real",
+            "error_s_abs": "real",
+            "error_e_y": "real",
+            "reference_vx": "real",
+            "reference_vy": "real",
+            "reference_r": "real",
+            "reference_e_psi": "real",
+            "reference_s_abs": "real",
+            "reference_e_y": "real",
+            "nominal_delta": "real",
+            "nominal_a_cmd": "real",
+            "delta_correction": "real",
+            "acceleration_correction": "real",
+            "computational_deadline_exceeded": "boolean",
+            "physical_latency": "real",
+            "application_time": "real",
+            "delta": "real",
+            "a_cmd": "real"
+          }
+        }
+      ]
+    },
+    "plans": {
+      "length": 3,
+      "segments": [
+        {
+          "start": 0,
+          "stop": 1,
+          "item": {
+            "plan_id": "integer",
+            "release_time": "integer",
+            "estimated_delay": "integer",
+            "predicted_state": {
+              "length": 6,
+              "segments": [
+                {
+                  "start": 0,
+                  "stop": 6,
+                  "item": "real"
+                }
+              ]
+            },
+            "success": "boolean",
+            "status": "string",
+            "planner_total_time": "real",
+            "planner_cpu_time": "real",
+            "completion_time": "real",
+            "startup": "boolean",
+            "prediction_architecture": "string",
+            "release_command_pending": "boolean",
+            "pending_application_time": "null",
+            "prepositioned_control": {
+              "length": 2,
+              "segments": [
+                {
+                  "start": 0,
+                  "stop": 2,
+                  "item": "real"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "start": 1,
+          "stop": 3,
+          "item": {
+            "plan_id": "integer",
+            "release_time": "real",
+            "estimated_delay": "real",
+            "predicted_state": {
+              "length": 6,
+              "segments": [
+                {
+                  "start": 0,
+                  "stop": 6,
+                  "item": "real"
+                }
+              ]
+            },
+            "success": "boolean",
+            "status": "string",
+            "planner_total_time": "real",
+            "planner_cpu_time": "real",
+            "completion_time": "real",
+            "physical_delay": "real",
+            "startup": "boolean",
+            "urgent": "boolean",
+            "delay_estimation_error": "real",
+            "prediction_architecture": "string",
+            "release_command_pending": "boolean",
+            "pending_application_time": "real",
+            "fixed_handoff_offset": "real",
+            "valid_from": "real",
+            "rolling_delay_estimate": "real",
+            "forecast_duration": "real",
+            "completed": "boolean",
+            "actual_state": {
+              "length": 6,
+              "segments": [
+                {
+                  "start": 0,
+                  "stop": 6,
+                  "item": "real"
+                }
+              ]
+            },
+            "prediction_error": {
+              "length": 6,
+              "segments": [
+                {
+                  "start": 0,
+                  "stop": 6,
+                  "item": "real"
+                }
+              ]
+            },
+            "active_reserve_at_completion": "real",
+            "new_reserve_at_completion": "real"
+          }
+        }
+      ]
+    },
+    "packets": {
+      "length": 3,
+      "segments": [
+        {
+          "start": 0,
+          "stop": 1,
+          "item": {
+            "plan_id": "integer",
+            "planner_release_time": "integer",
+            "planner_sample_time": "integer",
+            "intended_handoff_time": "integer",
+            "actual_completion_time": "real",
+            "timestamps": {
+              "length": 5,
+              "segments": [
+                {
+                  "start": 0,
+                  "stop": 5,
+                  "item": "real"
+                }
+              ]
+            },
+            "states": {
+              "length": 5,
+              "segments": [
+                {
+                  "start": 0,
+                  "stop": 5,
+                  "item": {
+                    "length": 6,
+                    "segments": [
+                      {
+                        "start": 0,
+                        "stop": 6,
+                        "item": "real"
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            "controls": {
+              "length": 4,
+              "segments": [
+                {
+                  "start": 0,
+                  "stop": 4,
+                  "item": {
+                    "length": 2,
+                    "segments": [
+                      {
+                        "start": 0,
+                        "stop": 2,
+                        "item": "real"
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            "source_sampled_state": {
+              "length": 6,
+              "segments": [
+                {
+                  "start": 0,
+                  "stop": 6,
+                  "item": "real"
+                }
+              ]
+            },
+            "predicted_handoff_state": {
+              "length": 6,
+              "segments": [
+                {
+                  "start": 0,
+                  "stop": 6,
+                  "item": "real"
+                }
+              ]
+            },
+            "solver_status": "string",
+            "solve_duration": "real",
+            "total_computation_duration": "real",
+            "gain_times": {
+              "length": 4,
+              "segments": [
+                {
+                  "start": 0,
+                  "stop": 4,
+                  "item": "real"
+                }
+              ]
+            },
+            "gains": {
+              "length": 4,
+              "segments": [
+                {
+                  "start": 0,
+                  "stop": 4,
+                  "item": {
+                    "length": 4,
+                    "segments": [
+                      {
+                        "start": 0,
+                        "stop": 4,
+                        "item": "real"
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            "curvatures": {
+              "length": 0,
+              "segments": []
+            },
+            "valid": "boolean",
+            "validation_reason": "string",
+            "horizon_end_time": "real",
+            "remaining_reserve_at_completion": "real"
+          }
+        },
+        {
+          "start": 1,
+          "stop": 3,
+          "item": {
+            "plan_id": "integer",
+            "planner_release_time": "real",
+            "planner_sample_time": "real",
+            "intended_handoff_time": "real",
+            "actual_completion_time": "real",
+            "timestamps": {
+              "length": 5,
+              "segments": [
+                {
+                  "start": 0,
+                  "stop": 5,
+                  "item": "real"
+                }
+              ]
+            },
+            "states": {
+              "length": 5,
+              "segments": [
+                {
+                  "start": 0,
+                  "stop": 5,
+                  "item": {
+                    "length": 6,
+                    "segments": [
+                      {
+                        "start": 0,
+                        "stop": 6,
+                        "item": "real"
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            "controls": {
+              "length": 4,
+              "segments": [
+                {
+                  "start": 0,
+                  "stop": 4,
+                  "item": {
+                    "length": 2,
+                    "segments": [
+                      {
+                        "start": 0,
+                        "stop": 2,
+                        "item": "real"
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            "source_sampled_state": {
+              "length": 6,
+              "segments": [
+                {
+                  "start": 0,
+                  "stop": 6,
+                  "item": "real"
+                }
+              ]
+            },
+            "predicted_handoff_state": {
+              "length": 6,
+              "segments": [
+                {
+                  "start": 0,
+                  "stop": 6,
+                  "item": "real"
+                }
+              ]
+            },
+            "solver_status": "string",
+            "solve_duration": "real",
+            "total_computation_duration": "real",
+            "gain_times": {
+              "length": 4,
+              "segments": [
+                {
+                  "start": 0,
+                  "stop": 4,
+                  "item": "real"
+                }
+              ]
+            },
+            "gains": {
+              "length": 4,
+              "segments": [
+                {
+                  "start": 0,
+                  "stop": 4,
+                  "item": {
+                    "length": 4,
+                    "segments": [
+                      {
+                        "start": 0,
+                        "stop": 4,
+                        "item": "real"
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            "curvatures": {
+              "length": 0,
+              "segments": []
+            },
+            "valid": "boolean",
+            "validation_reason": "string",
+            "valid_from": "real",
+            "horizon_end_time": "real",
+            "remaining_reserve_at_completion": "real"
+          }
+        }
+      ]
+    },
+    "triggers": {
+      "length": 2,
+      "segments": [
+        {
+          "start": 0,
+          "stop": 1,
+          "item": {
+            "time": "real",
+            "kind": "string"
+          }
+        },
+        {
+          "start": 1,
+          "stop": 2,
+          "item": {
+            "time": "real",
+            "kind": "string",
+            "busy": "boolean"
+          }
+        }
+      ]
+    },
+    "fallbacks": {
+      "length": 1,
+      "segments": [
+        {
+          "start": 0,
+          "stop": 1,
+          "item": {
+            "time": "real",
+            "reason": "string",
+            "valid_domain": "boolean"
+          }
+        }
+      ]
+    },
+    "handoffs": {
+      "length": 0,
+      "segments": []
+    },
+    "releases": {
+      "length": 2,
+      "segments": [
+        {
+          "start": 0,
+          "stop": 2,
+          "item": {
+            "time": "real",
+            "plan_id": "integer",
+            "urgent": "boolean"
+          }
+        }
+      ]
+    },
+    "misses": {
+      "length": 3,
+      "segments": [
+        {
+          "start": 0,
+          "stop": 3,
+          "item": {
+            "time": "real",
+            "reason": "string"
+          }
+        }
+      ]
+    },
+    "reserves": {
+      "length": 120,
+      "segments": [
+        {
+          "start": 0,
+          "stop": 120,
+          "item": {
+            "time": "real",
+            "reserve": "real",
+            "category": "string",
+            "plan_id": "integer"
+          }
+        }
+      ]
+    },
+    "failure": "null",
+    "stop_reason": "string",
+    "lap_times": {
+      "length": 0,
+      "segments": []
+    },
+    "end_time": "real",
+    "pending_at_end": "boolean",
+    "codriver_misses": {
+      "length": 0,
+      "segments": []
+    }
+  }
+}

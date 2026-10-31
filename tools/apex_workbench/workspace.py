@@ -8,13 +8,14 @@ import streamlit as st
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 
-from tools.apex_workbench import engineering_views as views  # noqa: E402
 from tools.apex_workbench import (  # noqa: E402  # noqa: E402
+    c0_panels,
     gp_archive,
     gp_panels,
     jobs,
     run_catalog,
 )
+from tools.apex_workbench import engineering_views as views  # noqa: E402
 from tools.apex_workbench import recorded_view as recorded  # noqa: E402
 from tools.apex_workbench import workspace_panels as panels
 from tools.apex_workbench.configuration import (  # noqa: E402
@@ -41,6 +42,7 @@ if pending:
     match = next((run for run in catalog.runs if str(run.directory) == pending), None)
     if match:
         st.session_state["inspect_run"] = match.key
+        st.session_state["inspect_archive"] = "Workbench / P retained runs"
 with st.sidebar:
     page = st.radio("Workspace", ["Home", "Run", "Inspect", "Compare"], key="workspace_view")
     st.button("Refresh catalog")
@@ -76,8 +78,13 @@ def selector(label, key):
 
 if page == "Home":
     st.subheader("Engineering home")
+    if st.button("Inspect retained C0 descriptive-only archive"):
+        st.session_state["next_view"] = "Inspect"
+        st.session_state["inspect_archive"] = "C0 descriptive-only record"
+        st.rerun()
     if st.button("Inspect retained Performance P GP archive"):
         st.session_state["inspect_run"] = "gp-" + gp_archive.MANIFEST_SHA256
+        st.session_state["inspect_archive"] = "Workbench / P retained runs"
         st.session_state["next_view"] = "Inspect"
         st.rerun()
     if st.button("Prepare 2 m/s oval LQR/PI"):
@@ -219,6 +226,14 @@ elif page == "Run":
 
 elif page == "Inspect":
     st.subheader("Inspect a retained run")
+    archive_kind = st.radio(
+        "Inspection source",
+        ["Workbench / P retained runs", "C0 descriptive-only record"],
+        key="inspect_archive",
+    )
+    if archive_kind == "C0 descriptive-only record":
+        c0_panels.inspect()
+        st.stop()
     run = selector("Run", "inspect_run")
     if run and run.adapter == gp_archive.ADAPTER:
         gp_panels.inspect(run)

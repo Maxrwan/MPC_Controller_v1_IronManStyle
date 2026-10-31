@@ -1,3 +1,31 @@
+# Current handoff — C0 descriptive-only adapter WORK pending review
+
+**WORK_COMPLETE_PENDING_REVIEW.** 31 October 2026. Primary authorized one additive read-only C0
+inspector on `codex/apex-workbench-c0-descriptive-adapter`, based on approved contract delivery
+`79c450f28a2715e3a5284c8815b49e0b07bd9123`; contract `5bf6cce…` remains unchanged.
+[WORK](apex_workbench_v0_3_d/c0_adapter/WORK.md),
+[machine/evidence inventory](apex_workbench_v0_3_d/c0_adapter/work_record.json).
+The containing commit is the candidate for independent review. PR #1 remains draft/unmerged.
+
+Home/Inspect offer a separate C0 descriptive-only record with literal state/control fields,
+chronology, missingness, original JSON and standalone HTML. Fixed byte/size/shape/authority gates,
+exact numeric lexemes/pointers and late-render/export currentness checks quarantine changed
+evidence. No execution identity, controller/worker path, comparison or qualification is added.
+**G1 remains OPEN; all reference interpretations remain capture-unverified.**
+
+Focused invocations: **67 new C0 passes** and **24 compatibility passes**, separately recorded,
+zero failures/errors/skips; no combined-suite claim. AppTest covers actual navigation, no execution,
+and real disposable evidence changes during rendering/export. All 56 scientific files, 345 retained
+qualification files, 25 P files, 4 legacy oval files, original fixture, contract and earlier failed
+reviews remain preserved. Initial static-harness/lint issues are retained and corrected; no failed
+functional run or scientific rerun. No simulation, controller, campaign or full Verification ran.
+
+Next: independent exact-candidate Engineering Review; at most two bounded routine correction
+iterations. Stop after review pending separately authorized formal Verification. No automatic
+PR merge, scientific acceptance, provenance closure or subsequent work.
+
+---
+
 # Current handoff — C0 descriptive contract independent re-review PASS
 
 **C0_DESCRIPTIVE_CONTRACT_REVIEW_COMPLETE_PENDING_PRIMARY_WORK_DECISION. Outcome: PASS.**

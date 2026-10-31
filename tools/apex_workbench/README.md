@@ -94,6 +94,19 @@ Parameters are synthetic, never measured or identified APEX data. Linear tires r
 
 ## Use
 
+**C0 descriptive-only historical inspection:** choose **Inspect retained C0 descriptive-only
+archive** on Home, or **Inspect → Inspection source → C0 descriptive-only record**. This separate
+read-only view accepts only the original 152,600-byte, SHA-pinned `original155.json`. It is not a
+run or comparison candidate. G1 capture-time producer provenance remains OPEN: the persistent
+DESCRIPTIVE ONLY / SOURCE UNVERIFIED banner applies to every view and HTML export. Inspect exact
+numeric tokens and JSON pointers, independent collection chronology, null/absent fields and the
+original JSON. Plots are recorded markers with undeclared units; optional reference explanations
+are capture-unverified. No geometry, terminal state, held controls or missing events are inferred.
+**Prepare C0 descriptive HTML inspection** offers self-contained local HTML with original JSON,
+tokens, missingness and the same limitations. Changed evidence or contract/review identities
+quarantine the view and withhold export. This is software WORK pending independent review/formal
+Verification, not authenticated controller evidence, scientific qualification or physical data.
+
 1. **Home** shows the three supported modes, explicit unavailable capabilities, adapter/outcome
    filters and unverified discovery metadata. Inspect a record to establish evidence trust.
 2. **Run** submits the same allowlisted defaults/inputs through the original leased worker. A run
@@ -129,7 +142,8 @@ Replay reads existing software samples only. Its one-second, render-dependent vi
 1/5/10 samples; it never runs dynamics, emits commands or promises real-time speed. Run/timebase/Q
 changes and navigation stop/reset playback; evidence changes withdraw stale plots/labels. Known
 version-2 Workbench SI profiles are supported. Unknown profiles retain verified static/raw access;
-external imports, controller event archives and physical telemetry are not supported. Native raw rows
+external imports, general controller event archives and physical telemetry are not supported. The
+single fixed C0 descriptive profile above is separate from these verified replay profiles. Native raw rows
 remain available on demand. Narrow browser views stack columns; a desktop viewport shows parallel panels.
 
 The [racing-scenario proposals](../../docs/apex_workbench_v0_3_c/RACING_SCENARIO_PROPOSALS.md) and

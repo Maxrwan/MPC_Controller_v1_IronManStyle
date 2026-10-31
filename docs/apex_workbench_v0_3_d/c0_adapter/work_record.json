@@ -1,0 +1,133 @@
+{
+  "schema": "apex-c0-descriptive-adapter-work/1",
+  "date": "2026-10-31",
+  "status": "WORK_COMPLETE_PENDING_REVIEW",
+  "classification": "BOUNDED_SOFTWARE_WORK",
+  "base_revision": "79c450f28a2715e3a5284c8815b49e0b07bd9123",
+  "candidate_revision": "containing WORK commit; exact tested source hashes below",
+  "branch": "codex/apex-workbench-c0-descriptive-adapter",
+  "primary_authority": "31 October 2026 bounded descriptive-only adapter WORK brief",
+  "approved_contract_revision": "5bf6cce22816bc8fd5a7d7bf84cefef87c69e358",
+  "approved_contract_sha256": "31afeefac753dead492df26f90b5b6aa1d822de705e3a86c97dfba2a0f72fd62",
+  "G1": "OPEN",
+  "profile": "descriptive_only / source_unverified",
+  "artifact": {
+    "path": "results/task007d/c/amended/c0_export/original155.json",
+    "bytes": 152600,
+    "sha256": "2bd7d2385e7e2072a04e5d952eff9af8861eb7e63f016138d5289573c411f2d5"
+  },
+  "tested_source_sha256": {
+    "tools/apex_workbench/c0_archive.py": "811a2c8efe34705d31650d9f78a3e7a514b35a6fd4f53ee86ff29e158d7df7d0",
+    "tools/apex_workbench/c0_panels.py": "2884b6ff72eddafd4239dc6f973d350c7d5ce6e8a1665d692ee31ad8ed89e275",
+    "tools/apex_workbench/c0_shape.json": "5acfa2535daeed22bfd3d5033dd74f84d579507136d6088b87caa716b40fe4a6",
+    "tools/apex_workbench/workspace.py": "d01ac49f9a0bcff9fc78ac0b029131540ebad94d73c0742b69712ebf3ac9a7cb",
+    "tools/apex_workbench/tests/test_c0_archive.py": "a38a8b8f7c6842d4fe90bfe4aa1d997d0f9f4c5f106e7a7a67919e77539145d3",
+    "tools/apex_workbench/tests/test_c0_workspace.py": "d9f0dbc00f98a1f4d42b7764634b65a996c75aeafb679b8889d64e2dc29da103"
+  },
+  "environment": {
+    "python": "3.12.14 (main, Sep  1 2026, 14:09:38) [Clang 22.1.3 ]",
+    "platform": "macOS-26.5.1-arm64-arm-64bit",
+    "test_python": "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/tools/apex_workbench/.venv/bin/python",
+    "thread_policy": "VECLIB_MAXIMUM_THREADS=1; configure_accelerate(1) before pytest imports; exact active thread count not claimed",
+    "packages": {
+      "numpy": "2.5.3",
+      "scipy": "1.18.1",
+      "streamlit": "1.66.1",
+      "plotly": "6.9.0",
+      "pytest": "9.1.1",
+      "pandas": "3.0.6"
+    }
+  },
+  "test_invocations": [
+    {
+      "id": "focused_1",
+      "command": "VECLIB_MAXIMUM_THREADS=1 PYTHONPATH=scripts:src tools/apex_workbench/.venv/bin/python -c 'from threading_study.config import configure_accelerate; configure_accelerate(1); import sys,pytest; raise SystemExit(pytest.main(sys.argv[1:]))' -q tools/apex_workbench/tests/test_c0_archive.py tools/apex_workbench/tests/test_c0_workspace.py --basetemp=results/apex_workbench_c0_adapter_20261031/tmp_focused_1 --junitxml=results/apex_workbench_c0_adapter_20261031/focused_1.xml --durations=10 > results/apex_workbench_c0_adapter_20261031/focused_1.log 2>&1",
+      "exit_status": 0,
+      "tests": 67,
+      "failures": 0,
+      "errors": 0,
+      "skips": 0,
+      "seconds": 7.359,
+      "timestamp": "2026-10-31T19:16:00.514269+02:00",
+      "junit": "results/apex_workbench_c0_adapter_20261031/focused_1.xml",
+      "log": "results/apex_workbench_c0_adapter_20261031/focused_1.log"
+    },
+    {
+      "id": "compatibility_1",
+      "command": "VECLIB_MAXIMUM_THREADS=1 PYTHONPATH=scripts:src tools/apex_workbench/.venv/bin/python -c 'from threading_study.config import configure_accelerate; configure_accelerate(1); import sys,pytest; raise SystemExit(pytest.main(sys.argv[1:]))' -q tools/apex_workbench/tests/test_gp_archive.py tools/apex_workbench/tests/test_gp_workspace.py tools/apex_workbench/tests/test_engineering_workspace.py::test_home_and_actual_inspect_view tools/apex_workbench/tests/test_engineering_workspace.py::test_actual_compare_ui_candidate_then_qualified tools/apex_workbench/tests/test_engineering_workspace.py::test_legacy_mode_forms_use_accepted_defaults tools/apex_workbench/tests/test_recorded_view.py::test_exact_0125_state_control_diagnostic_and_stored_xy --basetemp=results/apex_workbench_c0_adapter_20261031/tmp_compatibility_1 --junitxml=results/apex_workbench_c0_adapter_20261031/compatibility_1.xml --durations=10 > results/apex_workbench_c0_adapter_20261031/compatibility_1.log 2>&1",
+      "exit_status": 0,
+      "tests": 24,
+      "failures": 0,
+      "errors": 0,
+      "skips": 0,
+      "seconds": 16.834,
+      "timestamp": "2026-10-31T19:16:36.699013+02:00",
+      "junit": "results/apex_workbench_c0_adapter_20261031/compatibility_1.xml",
+      "log": "results/apex_workbench_c0_adapter_20261031/compatibility_1.log"
+    }
+  ],
+  "test_counts_combined_into_single_suite": false,
+  "preservation": {
+    "base_revision": "79c450f28a2715e3a5284c8815b49e0b07bd9123",
+    "protected_paths": 1401,
+    "authorized_modified_paths": [
+      "docs/DECISIONS.md",
+      "tools/apex_workbench/README.md",
+      "tools/apex_workbench/workspace.py"
+    ],
+    "unexpected_changes": [],
+    "groups": {
+      "gp_archive_sha256": {
+        "files": 25,
+        "unchanged": true
+      },
+      "qualification_sha256": {
+        "files": 345,
+        "unchanged": true
+      },
+      "scientific_source_sha256": {
+        "files": 56,
+        "unchanged": true
+      },
+      "legacy_oval_sha256": {
+        "files": 4,
+        "unchanged": true
+      }
+    },
+    "original155_sha256": "2bd7d2385e7e2072a04e5d952eff9af8861eb7e63f016138d5289573c411f2d5"
+  },
+  "evidence_sha256": {
+    "results/apex_workbench_c0_adapter_20261031/lint_final.txt": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+    "results/apex_workbench_c0_adapter_20261031/initial_harness_failure.txt": "51dec9fad5267fae3ae75e110f3d51deece83c60c009d04d276db6e7a698dd9a",
+    "results/apex_workbench_c0_adapter_20261031/preservation_after.json": "5fb18a415ae936da245996c63558884742d9bbf9c13086315d65b2bdfddc5b60",
+    "results/apex_workbench_c0_adapter_20261031/focused_1.xml": "e2b27f9aa56383018cf692efc4623b74d8b60993734d499f3025d6f3a4c84676",
+    "results/apex_workbench_c0_adapter_20261031/compatibility_1.log": "24d533edfa58af9d4ccbbe8ab79eac7be9a202bc72eb237d302aa7e48f883443",
+    "results/apex_workbench_c0_adapter_20261031/lint_initial.txt": "bb9d269429427c00ed38ff90c84bd46eacaa57c86b5ee937eebcf820d3e47544",
+    "results/apex_workbench_c0_adapter_20261031/focused_1.log": "ffaa73e3b68b32d535e5449adaf873d056e55a0f18b3ec5cc88e65d432c8279d",
+    "results/apex_workbench_c0_adapter_20261031/compatibility_1.xml": "738d7786a0336f2f31ad74ec5c02e6cc46aef6036ada5790739f7c4c42a22eff",
+    "results/apex_workbench_c0_adapter_20261031/tested_source_sha256.json": "b64c4071c3518dc817e3aea2a5a24d52e273bf7dd7498170878fe82adad60034",
+    "results/apex_workbench_c0_adapter_20261031/environment.json": "404594e6e19f40b28fe8789d1e7660d21646c20bd5949faf54afb3dd8bee4565",
+    "results/apex_workbench_c0_adapter_20261031/preservation_before.json": "a5c58cee8cc4035d53759f6100c50b60b45f3cc31ba168832b28611228e558e4"
+  },
+  "shape_profile": "tools/apex_workbench/c0_shape.json; contemporary per-index conditional types/order/dimensions, not producer schema",
+  "scientific_or_descriptive_contract_changes": false,
+  "canonical_or_dependency_changes": false,
+  "simulation_or_controller_execution": false,
+  "numerical_experiments_or_qualification_reruns": false,
+  "full_formal_verification": false,
+  "native_browser_download_delivery_checked": false,
+  "initial_negative_outcomes": [
+    "two preservation-map setup assertions before baseline write; corrected without project/evidence changes",
+    "host Python metadata probe lacked streamlit; actual venv recorded without test rerun",
+    "early lint/format issues corrected before focused tests; logs retained"
+  ],
+  "independent_review": "PENDING exact-candidate review, up to two bounded routine correction iterations",
+  "contract_pr_1": "remains draft; no merge",
+  "remaining_limits": [
+    "G1 capture source/configuration/environment/receipt unknown",
+    "No authenticated optimizer/controller/causal/recovery/physical/Safety/numerical qualification claim",
+    "Only one exact record; no generic importer, execution identity or scientific comparison",
+    "Native browser download and unchanged launcher are not newly verified by this WORK"
+  ],
+  "next_gate": "Independent Engineering Review, then stop pending separately authorized formal Verification"
+}
