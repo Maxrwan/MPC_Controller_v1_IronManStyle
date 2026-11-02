@@ -104,8 +104,9 @@ original JSON. Plots are recorded markers with undeclared units; optional refere
 are capture-unverified. No geometry, terminal state, held controls or missing events are inferred.
 **Prepare C0 descriptive HTML inspection** offers self-contained local HTML with original JSON,
 tokens, missingness and the same limitations. Changed evidence or contract/review identities
-quarantine the view and withhold export. This is software WORK pending independent review/formal
-Verification, not authenticated controller evidence, scientific qualification or physical data.
+quarantine the view and withhold export. This software WORK passed independent Engineering Review
+at `d246f1e9639737e4ecbbd12f8bd0c9b2f1574712`; formal Verification remains separately gated.
+It does not establish authenticated controller evidence, scientific qualification or physical data.
 The C0 view uses static tables/plain text and disables Plotly's native export controls in both
 live and HTML plots. Its only offered output action is the explicitly prepared HTML download.
 

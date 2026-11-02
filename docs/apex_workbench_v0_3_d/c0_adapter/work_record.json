@@ -1,10 +1,10 @@
 {
   "schema": "apex-c0-descriptive-adapter-work/1",
   "date": "2026-10-31",
-  "status": "WORK_COMPLETE_PENDING_REVIEW",
+  "status": "C0_DESCRIPTIVE_ADAPTER_ENGINEERING_REVIEW_COMPLETE_PENDING_VERIFICATION",
   "classification": "BOUNDED_SOFTWARE_WORK",
   "base_revision": "79c450f28a2715e3a5284c8815b49e0b07bd9123",
-  "candidate_revision": "containing WORK commit; exact tested source hashes below",
+  "candidate_revision": "d246f1e9639737e4ecbbd12f8bd0c9b2f1574712",
   "branch": "codex/apex-workbench-c0-descriptive-adapter",
   "primary_authority": "31 October 2026 bounded descriptive-only adapter WORK brief",
   "approved_contract_revision": "5bf6cce22816bc8fd5a7d7bf84cefef87c69e358",
@@ -121,7 +121,22 @@
     "host Python metadata probe lacked streamlit; actual venv recorded without test rerun",
     "early lint/format issues corrected before focused tests; logs retained"
   ],
-  "independent_review": "iteration_1 BLOCKED R1 preserved; correction1 exact-revision re-review pending",
+  "independent_review": {
+    "outcome": "PASS",
+    "reviewed_revision": "d246f1e9639737e4ecbbd12f8bd0c9b2f1574712",
+    "report": "docs/reviews/apex_workbench_v0_3_d/c0_adapter/iteration_2/REVIEW.md",
+    "report_sha256": "f502a07d81dbb1c7bdf7fa37b3c93e1d3d6c03c23802e62332f039f374821ec4",
+    "record": "docs/reviews/apex_workbench_v0_3_d/c0_adapter/iteration_2/review_record.json",
+    "record_sha256": "65a5c192d6f65840edbcb7d5a3660b2e2d35a64cb1aa2c6b1a3f8730d77ad151",
+    "independent_probe_checks": 4,
+    "focused_tests": 8,
+    "failures": 0,
+    "errors": 0,
+    "skips": 0,
+    "counts_aggregated": false,
+    "G1": "OPEN",
+    "new_blocking_findings": []
+  },
   "contract_pr_1": "remains draft; no merge",
   "remaining_limits": [
     "G1 capture source/configuration/environment/receipt unknown",
@@ -129,11 +144,11 @@
     "Only one exact record; no generic importer, execution identity or scientific comparison",
     "Native browser download and unchanged launcher are not newly verified by this WORK"
   ],
-  "next_gate": "Independent Engineering Review, then stop pending separately authorized formal Verification",
+  "next_gate": "Separately authorized formal Verification; stop after independent Engineering Review, no automatic merge or scientific acceptance",
   "initial_candidate_revision": "7f78df15470c99968ebd9ca473080a8822d81da7",
   "correction_1": {
     "date": "2026-11-02",
-    "candidate_revision": "containing correction1 commit",
+    "candidate_revision": "d246f1e9639737e4ecbbd12f8bd0c9b2f1574712",
     "failed_review_commit": "f60c523af69aed920e25a578ae94dbd34b3db11c",
     "scope": "new C0 presentation + focused tests only; remove native image/CSV/clipboard output actions",
     "runtime_reader_shape_workspace_unchanged_from_initial_candidate": true,
@@ -221,10 +236,13 @@
       "results/apex_workbench_c0_adapter_correction1_20261102/lint.txt": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
       "results/apex_workbench_c0_adapter_correction1_20261102/tested_source_sha256.json": "2b206a04a07a670fb26307b114763e3422d42ccd1de500033757d4707542a4a2",
       "results/apex_workbench_c0_adapter_correction1_20261102/environment.json": "816109c63e2d00686ebbdf6d9959551a17d96cb84e3e255fde99beba7a1965ac",
-      "results/apex_workbench_c0_adapter_correction1_20261102/focused.log": "93cbfe0fe916340aaa3fa2185f903cabd97504e140d64f543721164d6af3c89b"
+      "results/apex_workbench_c0_adapter_correction1_20261102/focused.log": "93cbfe0fe916340aaa3fa2185f903cabd97504e140d64f543721164d6af3c89b",
+      "results/apex_workbench_c0_adapter_correction1_20261102/final_delivery_preservation.json": "3a87683b17e9b222bbe5d2167c155323b968877f0795d16362b6e3346bc2aa67"
     },
     "routine_correction_iterations_used": 1,
     "allowance": 2,
     "earlier_24_compatibility_result": "Retained supplementary evidence at initial candidate, not newly executed on correction; unaffected existing modules/routes unchanged; corrected C0-to-P navigation freshly tested."
-  }
+  },
+  "reviewed_exact_source_revision": "d246f1e9639737e4ecbbd12f8bd0c9b2f1574712",
+  "delivery_scope": "Documentation only after exact reviewed candidate; runtime, tests, shape, contract and launcher unchanged."
 }

@@ -1,3 +1,29 @@
+# Current handoff — C0 descriptive adapter Engineering Review PASS
+
+**C0_DESCRIPTIVE_ADAPTER_ENGINEERING_REVIEW_COMPLETE_PENDING_VERIFICATION.** 2 November 2026.
+Independent PASS at exact corrected implementation `d246f1e9639737e4ecbbd12f8bd0c9b2f1574712`,
+branch `codex/apex-workbench-c0-descriptive-adapter`.
+[WORK](apex_workbench_v0_3_d/c0_adapter/WORK.md),
+[machine/evidence inventory](apex_workbench_v0_3_d/c0_adapter/work_record.json),
+[independent iteration-2 review](reviews/apex_workbench_v0_3_d/c0_adapter/iteration_2/REVIEW.md).
+This final delivery changes documentation only; runtime, tests, shape, contract and launcher
+remain identical to the reviewed candidate. PR #1 stays draft/unmerged on its separate branch.
+
+One bounded correction closed the initial BLOCKED R1: C0 has no native image/CSV/clipboard action;
+only explicitly prepared, metadata-bearing HTML is offered. Initial `7f78df1…` BLOCKED review and
+68-pass/1-fail text-display correction attempt remain retained. Final author focused run: 69 passed,
+zero failures/errors/skips. Independent re-review: four probes and eight focused tests passed,
+separate invocations. Earlier 67/24 author counts and reviewer 67 are historical, not aggregated.
+All 56 scientific, 345 qualification, 25 P and 4 legacy oval files remain hash-preserved, along with
+original155, Section A, the approved contract and earlier reviews. No scientific or controller
+execution, campaign, qualification rerun or full formal Verification occurred.
+
+**G1 remains OPEN; descriptive_only / source_unverified remains mandatory for this profile.**
+Native browser delivery is not newly verified here. Stop pending separately authorized formal
+Verification; no automatic acceptance, merge, provenance promotion or additional work.
+
+---
+
 # Current handoff — C0 adapter correction 1 pending independent re-review
 
 **WORK_COMPLETE_PENDING_REVIEW.** 2 November 2026. On
