@@ -216,7 +216,14 @@ def fixture_run(tmp_path, preflights, preset="nominal"):
     root = tmp_path / "runs"
     directory = root / ("software_fixture_" + preset)
     directory.mkdir(parents=True)
-    gate = {"resolved_snapshots": {p: r["resolved"] for p, r in preflights.items()}}
+    gate = {
+        "status": "SOFTWARE_GATES_PASSED",
+        "source": lab.SOURCE,
+        "profile_sha256": lab.PROFILE_SHA,
+        "adapter_sha256": lab.adapter_hashes(),
+        "environment": preflights[preset]["environment"],
+        "resolved_snapshots": {p: r["resolved"] for p, r in preflights.items()},
+    }
     storage.write_json(tmp_path / "software_gate.json", gate)
     (tmp_path / "claims").mkdir(exist_ok=True)
     storage.write_json(
@@ -234,6 +241,8 @@ def fixture_run(tmp_path, preflights, preset="nominal"):
             "source": lab.SOURCE,
             "profile_sha256": lab.PROFILE_SHA,
             "source_sha256": lab.source_hashes(),
+            "adapter_sha256": lab.adapter_hashes(),
+            "environment": preflights[preset]["environment"],
             "resolved": preflights[preset]["resolved"],
             "software_gate_sha256": storage.sha256(tmp_path / "software_gate.json"),
         },

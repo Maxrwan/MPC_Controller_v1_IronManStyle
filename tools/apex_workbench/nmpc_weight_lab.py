@@ -122,7 +122,7 @@ def claim_path(preset, identifier=SUCCESSOR):
     return safe(authority_root(identifier) / "claims" / (preset + ".json"))
 
 
-def verify_successor():
+def verify_successor(*, check_current=True, allow_blocked=False):
     """Explicit Primary successor, exact corrective PASS and unchanged original failure anchors."""
     root = authority_root()
     for name, digest in ORIGINAL_ANCHORS.items():
@@ -141,7 +141,8 @@ def verify_successor():
         or authority.get("maximum_attempts") != {"nominal": 1, "exploratory": 1}
         or authority.get("corrective_review_sha256") != storage.sha256(review_path)
         or review.get("outcome") != "PASS"
-        or review.get("adapter_sha256") != adapter_hashes()
+        or (check_current and review.get("adapter_sha256") != adapter_hashes())
+        or set(review.get("adapter_sha256", {})) != set(PRODUCERS)
         or review.get("scientific_source") != SOURCE
         or not re.fullmatch(r"[0-9a-f]{40}", review.get("candidate", ""))
         or git("rev-parse", review["candidate"] + "^{commit}").decode().strip()
@@ -155,7 +156,7 @@ def verify_successor():
     for name, digest in review["evidence_sha256"].items():
         if storage.sha256(safe(root / name)) != digest:
             raise ValueError("Corrective review evidence changed")
-    if (root / "BLOCKED.json").exists():
+    if not allow_blocked and (root / "BLOCKED.json").exists():
         raise ValueError("Successor attempt blocked; no further execution")
     return authority
 
@@ -425,6 +426,10 @@ def owned_run(selected):
         != "run-" + hashlib.sha256(("id:" + directory.name).encode()).hexdigest()[:20]
     ):
         raise ValueError("M0 selected record is foreign, aliased or conflicting")
+    # Reconciliation/finalization can touch any member. Reject links before reading status,
+    # including links whose target stays inside the record (atomic replace still mutates it).
+    for member in directory.rglob("*"):
+        safe(member, directory)
     request = storage.read_json(safe(directory / "request.json", directory))
     effective = validate(request["effective"])
     if (
@@ -436,19 +441,43 @@ def owned_run(selected):
     captured = request["nmpc_capture"]
     identifier = captured.get("authorization_id", "original")
     claim = storage.read_json(claim_path(effective["preset"], identifier))
+    selected_gate = gate_path(identifier)
+    gate = storage.read_json(selected_gate)
     if (
         claim.get("run_id") != selected.run_id
         or claim.get("source") != SOURCE
         or claim.get("preset") != effective["preset"]
         or captured.get("source") != SOURCE
         or captured.get("profile_sha256") != PROFILE_SHA
-        or storage.sha256(gate_path(identifier)) != captured["software_gate_sha256"]
+        or storage.sha256(selected_gate) != captured["software_gate_sha256"]
+        or gate.get("status") != "SOFTWARE_GATES_PASSED"
+        or gate.get("source") != SOURCE
+        or gate.get("profile_sha256") != PROFILE_SHA
+        or captured.get("adapter_sha256") != gate.get("adapter_sha256")
+        or set(captured.get("adapter_sha256", {})) != set(PRODUCERS)
+        or captured.get("source_sha256") != source_hashes()
     ):
         raise ValueError("M0 original ownership/authority disagrees")
+    same_configuration(captured["resolved"], gate["resolved_snapshots"][effective["preset"]])
+    same_configuration(captured["environment"], gate["environment"])
+    verify_runtime(captured["runtime"], captured["source_sha256"])
+    if identifier == "original":
+        if storage.sha256(selected_gate) != ORIGINAL_ANCHORS["software_gate.json"]:
+            raise ValueError("Original historical software gate is not the approved identity")
     if identifier != "original":
+        verify_successor(check_current=False, allow_blocked=True)
+        review = storage.read_json(safe(authority_root(identifier) / "corrective_review.json"))
         digest = storage.sha256(safe(authority_root(identifier) / "authorization.json"))
-        if claim.get("authorization_id") != identifier or not (
-            claim.get("authorization_sha256") == captured.get("authorization_sha256") == digest
+        if (
+            claim.get("authorization_id") != identifier
+            or gate.get("implementation_revision") != review["candidate"]
+            or gate.get("adapter_sha256") != review["adapter_sha256"]
+            or not (
+                claim.get("authorization_sha256")
+                == captured.get("authorization_sha256")
+                == gate.get("authorization_sha256")
+                == digest
+            )
         ):
             raise ValueError("M0 successor ownership identity disagrees")
     return directory, storage.sha256(directory / "request.json")

@@ -1184,7 +1184,7 @@
     "primary_decision_sha256": "8c5147b33c8da3270558ee43a140a10dd69397bdd9258fb091db24bfb03eb1f8",
     "status": "M0_R1_R2_WORK_COMPLETE_PENDING_INDEPENDENT_REVIEW",
     "source_sha256": {
-      "tools/apex_workbench/nmpc_weight_lab.py": "b8a10ae74444cdc646da87ec0a2b4a0754dc2be3c817b96517b446901847e8fb",
+      "tools/apex_workbench/nmpc_weight_lab.py": "1a606f87aed89c75a4d18094bb8abee50b6f4e54c2509c32516b2a3564ab10e1",
       "tools/apex_workbench/nmpc_weight_worker.py": "d1051d60263936f173e4b691f1407a2b8fbb801f4825ff926e75112eda18ef01",
       "tools/apex_workbench/nmpc_weight_panels.py": "8ff944147ce43073289f4be1f4413167b584afc7bb7286d706f800f42b3495e9",
       "tools/apex_workbench/configuration.py": "ed1611b0d15f17daeb515b7e6167863c49ee9c6ccd96c16403d3f55e5ac38dd3",
@@ -1192,8 +1192,8 @@
       "tools/apex_workbench/jobs.py": "af11d309d15b879859488b75858af87489c42783a02dd04482cff17ead6116c5",
       "tools/apex_workbench/workspace.py": "60410157b2c6111628e7caeca8da2fb95fcbb74d40c3b1d827e0469778619a05",
       "tools/apex_workbench/run_catalog.py": "4e974ea40940b2990f9b4416f97b8fe5fbde2ce6b335d3e49df3f4c422587f6d",
-      "tools/apex_workbench/tests/test_nmpc_weight_lab.py": "3e5e006cbb7247ddec48cac2c4775b133593524b861f7b0f5a7268a705860cf2",
-      "tools/apex_workbench/tests/test_nmpc_weight_workspace.py": "ca89f727695f053e41a7eb12789d9e46440c1846557a0fd145357dbfb4e263b0"
+      "tools/apex_workbench/tests/test_nmpc_weight_lab.py": "a06ac52fc8c77c7181d0eaee8e04264d40b41bda82ab68921a158b7723bd859d",
+      "tools/apex_workbench/tests/test_nmpc_weight_workspace.py": "4ea56851470961cd51f4ff52cad3a149bd2e9157f6808dbf458427c9b13bed3d"
     },
     "changed_paths_from_workbench_base": [
       "docs/CODEX_HANDOFF.md",
@@ -1242,6 +1242,21 @@
           "hostname": "Marwans-MacBook-Air.local"
         },
         "exit_status": 0
+      },
+      {
+        "id": "tests_3",
+        "command": "PYTHONDONTWRITEBYTECODE=1 VECLIB_MAXIMUM_THREADS=1 PYTHONPATH=.:scripts:src /Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/tools/apex_workbench/.venv/bin/python -B -c 'from threading_study.config import configure_accelerate; configure_accelerate(1); import sys,pytest; raise SystemExit(pytest.main(sys.argv[1:]))' -q -p no:cacheprovider tools/apex_workbench/tests/test_nmpc_weight_lab.py tools/apex_workbench/tests/test_nmpc_weight_workspace.py --basetemp=results/apex_workbench_nmpc_weights/corrective_20261102/tests_3 --junitxml=results/apex_workbench_nmpc_weights/corrective_20261102/tests_3.xml --durations=12 > results/apex_workbench_nmpc_weights/corrective_20261102/tests_3.log 2>&1",
+        "junit": {
+          "name": "pytest",
+          "errors": "0",
+          "failures": "0",
+          "skipped": "0",
+          "tests": "66",
+          "time": "91.114",
+          "timestamp": "2026-11-02T21:25:47.936879+02:00",
+          "hostname": "Marwans-MacBook-Air.local"
+        },
+        "exit_status": 0
       }
     ],
     "counts_aggregated": false,
@@ -1252,7 +1267,7 @@
     "nonallowlisted_tracked_files_unchanged": 1023,
     "jobs_py_changed": false,
     "new_numerical_attempts_started": 0,
-    "independent_corrective_review": "PENDING exact containing commit",
+    "independent_corrective_review": "PENDING exact revision-2 containing commit; first candidate BLOCKED",
     "formal_verification_authorized": false,
     "successor_authority_id": "primary-r1-r2-20261102",
     "admission_conditions": "Exact Primary decision, immutable original anchors, exact producer/Git independent corrective PASS, software/environment gate; exclusive new nominal claim then exploratory only after completed intact nominal",
@@ -1270,7 +1285,95 @@
       "results/apex_workbench_nmpc_weights/corrective_20261102/lint_final.log": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
       "results/apex_workbench_nmpc_weights/corrective_20261102/tests_2.log": "824db0f3ccd3ec970480a545c7faa6b009f50e3873a939fd1b53aef8f4899458",
       "results/apex_workbench_nmpc_weights/corrective_20261102/tests_1.log": "9cbdcd4cac688ec193f2c5f0a8b19174f7483984ae4d2171dc841c9feec0f610",
-      "results/apex_workbench_nmpc_weights/corrective_20261102/preservation_before.json": "8a09e72fa7c9f0c2e6a0ebc4a54eba7267729da8846ffc7874cd1549b21b5679"
-    }
+      "results/apex_workbench_nmpc_weights/corrective_20261102/preservation_before.json": "8a09e72fa7c9f0c2e6a0ebc4a54eba7267729da8846ffc7874cd1549b21b5679",
+      "results/apex_workbench_nmpc_weights/corrective_20261102/tests_3.xml": "f10fb057143ea8ab1ce7bb99c451b174b067e1bb458c0d5652d8b060ec73db05",
+      "results/apex_workbench_nmpc_weights/corrective_20261102/original_owned_identity.log": "765a8a8641703cc67f88e3fc5befa9d75d164d55cae65250728e14c27e8e781c",
+      "results/apex_workbench_nmpc_weights/corrective_20261102/lint_r2.log": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+      "results/apex_workbench_nmpc_weights/corrective_20261102/tests_3.log": "84d3f4d235c5f5d24a7e82d5b568f2c01a57be9a3e61beb702ed01a9d0f9da5b",
+      "results/apex_workbench_nmpc_weights/corrective_20261102/format_r2.log": "878d50bf4ab752ab41ae942ac518b87e744d994b21bb15dca142ed7a470b3b3a",
+      "results/apex_workbench_nmpc_weights/corrective_20261102/review_1/REVIEW.md": "65f54cbae6e2ac166a0f971f2e13b9e52c9c0356fe8220afa043c4eaa3ee038b",
+      "results/apex_workbench_nmpc_weights/corrective_20261102/review_1/corrective_review.json": "5f77fa1b704383493c180305923ccf8ae0816357faf97183aea1c783ef4422a6",
+      "results/apex_workbench_nmpc_weights/corrective_20261102/review_1/probe_r2.py": "50ee755b24815e69f3aaeed49036f65a48bebf358cedce2af4178bac24ea179a",
+      "results/apex_workbench_nmpc_weights/corrective_20261102/review_1/probe_r2_result.json": "15a711bc52906c5959190eb848842dddb052bc16fd0ee48855fad537101d9e11",
+      "results/apex_workbench_nmpc_weights/corrective_20261102/review_1/probe_r2.log": "104702f1143b0eefe1b9d1eed633fecdec7e5443b1471dbf09d1eb8fe46287f9",
+      "results/apex_workbench_nmpc_weights/corrective_20261102/review_1/focused.xml": "d04f5cff5574c259b5a0f08d44f18f361427a2e290dcee33615c942b2f4d3262",
+      "results/apex_workbench_nmpc_weights/corrective_20261102/review_1/focused.log": "483097636ccd78c9737d17e10fae0d9ff4d7342b736bb3c068c4448649eee7de"
+    },
+    "independent_reviews": [
+      {
+        "candidate": "7d95098b4b9466fc344fd3eda3655696cf00f657",
+        "outcome": "BLOCKED",
+        "R1": "PASS_WITHIN_FOCUSED_SOFTWARE_SCOPE",
+        "R2": "BLOCKED_P1",
+        "findings": [
+          {
+            "id": "R2a",
+            "priority": "P1",
+            "file": "tools/apex_workbench/nmpc_weight_lab.py",
+            "line": 410,
+            "title": "Captured adapter/source/configuration identity is not authenticated before lifecycle calls",
+            "evidence": "probe_r2_result.json:forged_adapter_hash",
+            "actual_lifecycle_mutations": [
+              "status.json",
+              "execution.json",
+              "artifacts.json"
+            ],
+            "minimum_correction": "Authenticate complete capture and adapter identity against trusted historical gate/source and applicable successor authority before status/reconcile/cancel."
+          },
+          {
+            "id": "R2b",
+            "priority": "P1",
+            "file": "tools/apex_workbench/nmpc_weight_lab.py",
+            "line": 416,
+            "title": "Linked lifecycle evidence passes ownership and is replaced during reconciliation",
+            "evidence": "probe_r2_result.json:symlink_status",
+            "actual_lifecycle_mutations": [
+              "status.json",
+              "execution.json",
+              "artifacts.json"
+            ],
+            "minimum_correction": "Reject symlink/escaping members throughout the lifecycle-consumed run tree before any potentially mutating lifecycle call; negative test must preserve bytes and reach zero lifecycle calls."
+          }
+        ],
+        "independent_tests": {
+          "passed": 13,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "seconds": 60.821,
+          "log": "focused.log",
+          "junit": "focused.xml",
+          "launcher": "run_focused.py",
+          "probe_log_redirection_only": true
+        },
+        "independent_r2_probes": {
+          "count": 2,
+          "outcome": "BOTH_DEMONSTRATE_REMAINING_P1",
+          "harness": "probe_r2.py",
+          "results": "probe_r2_result.json",
+          "real_status_reconciliation_used": true,
+          "workers_launched": 0,
+          "optimizer_solves": 0,
+          "plant_steps": 0
+        },
+        "conditional_science_permitted": false,
+        "raw_record_sha256": "5f77fa1b704383493c180305923ccf8ae0816357faf97183aea1c783ef4422a6",
+        "raw_report_sha256": "65f54cbae6e2ac166a0f971f2e13b9e52c9c0356fe8220afa043c4eaa3ee038b"
+      }
+    ],
+    "pre_revision_2_source_sha256": {
+      "tools/apex_workbench/nmpc_weight_lab.py": "b8a10ae74444cdc646da87ec0a2b4a0754dc2be3c817b96517b446901847e8fb",
+      "tools/apex_workbench/nmpc_weight_worker.py": "d1051d60263936f173e4b691f1407a2b8fbb801f4825ff926e75112eda18ef01",
+      "tools/apex_workbench/nmpc_weight_panels.py": "8ff944147ce43073289f4be1f4413167b584afc7bb7286d706f800f42b3495e9",
+      "tools/apex_workbench/configuration.py": "ed1611b0d15f17daeb515b7e6167863c49ee9c6ccd96c16403d3f55e5ac38dd3",
+      "tools/apex_workbench/worker.py": "bfd180f451585ff357a17735cae44e507507dff1718ef034624f9c821d058091",
+      "tools/apex_workbench/jobs.py": "af11d309d15b879859488b75858af87489c42783a02dd04482cff17ead6116c5",
+      "tools/apex_workbench/workspace.py": "60410157b2c6111628e7caeca8da2fb95fcbb74d40c3b1d827e0469778619a05",
+      "tools/apex_workbench/run_catalog.py": "4e974ea40940b2990f9b4416f97b8fe5fbde2ce6b335d3e49df3f4c422587f6d",
+      "tools/apex_workbench/tests/test_nmpc_weight_lab.py": "3e5e006cbb7247ddec48cac2c4775b133593524b861f7b0f5a7268a705860cf2",
+      "tools/apex_workbench/tests/test_nmpc_weight_workspace.py": "ca89f727695f053e41a7eb12789d9e46440c1846557a0fd145357dbfb4e263b0"
+    },
+    "revision_2_reason": "Independent actual reconciliation proved forged capture and linked status were not authenticated; tightened complete trusted capture and all-member symlink guard before lifecycle, preserving the failed review",
+    "original_failed_run_identity_pure_read": "PASS; original_owned_identity.log, no lifecycle call"
   }
 }

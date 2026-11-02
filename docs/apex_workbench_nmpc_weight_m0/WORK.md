@@ -22,13 +22,32 @@ nominal coverage. A successor failure blocks further execution without replacing
 This is authorization bookkeeping in the presentation/composition adapter, not a new scientific
 contract. No original numerical allowance is reset or reused.
 
-Focused suite: **56 passed**, no failures/errors/skips, 97.08 s. The earlier 53-pass/two-failure
+Revision-1 focused suite: **56 passed**, no failures/errors/skips, 97.08 s. The earlier 53-pass/two-failure
 invocation and its disposable fixture-root correction remain retained; counts are not combined.
 Actual capture-to-worker positive/negative checks perform zero optimizer solves and plant steps.
 AST/Ruff and scoped preservation checks pass; all 545 preexisting M0 output files and 1,023
 nonallowlisted tracked baseline files are unchanged. Independent corrective review must PASS
 before any replacement attempt. Formal Verification remains unauthorized. Exact commands, source/evidence hashes and
 outcomes are recorded in `work_record.json`; generated outputs stay under the original ignored root.
+
+Corrective review iteration 1 at `7d95098b4b9466fc344fd3eda3655696cf00f657` was **BLOCKED**:
+R1 passed 13 independently executed focused checks, while R2 still allowed real reconciliation
+to create `execution.json`/`artifacts.json` and change `status.json` on disposable forged-capture
+and symlink-status fixtures. The raw report and reproductions remain in
+`corrective_20261102/review_1/`; no real worker, solve or plant step occurred, and originals were
+preserved. No replacement numerical attempt followed that review.
+
+The second R2 revision authenticates captured adapter/source/environment/configuration against
+the pinned original gate or the exact corrective-review-bound successor authority. It verifies
+the frozen runtime and rejects symlinks throughout the lifecycle-consumed record before any
+mutating call, including internal-target links. Read-only historical authority checks permit an
+already BLOCKED outcome to remain inspectable; admission still requires current source identities
+and refuses a successor BLOCKED marker. Additional fixture negatives cover forged captures and
+status/worker/supervisor/execution/manifest/nested links. Re-review of the exact new revision is
+required; the first candidate's review is not reused as approval.
+Revision-2 focused suite: **66 passed**, no failures/errors/skips, 91.12 s; counts remain separate.
+The genuine original failed M0 record also passes the stricter ownership authentication with pure
+reads and no lifecycle call. The original 545 output-file inventory still matches.
 
 ## Original blocked delivery — preserved history
 

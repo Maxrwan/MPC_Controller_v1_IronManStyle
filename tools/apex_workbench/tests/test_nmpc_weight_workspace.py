@@ -130,6 +130,14 @@ def owned_fixture(tmp_path, monkeypatch, preflights):  # noqa: F811
     directory = fixture_run(tmp_path, preflights)
     monkeypatch.setattr(lab, "OUTPUT", tmp_path)
     monkeypatch.setattr(lab, "RUNS", tmp_path / "runs")
+    monkeypatch.setattr(
+        lab,
+        "ORIGINAL_ANCHORS",
+        {
+            **lab.ORIGINAL_ANCHORS,
+            "software_gate.json": storage.sha256(tmp_path / "software_gate.json"),
+        },
+    )
     catalog = run_catalog.discover(
         owned_root=tmp_path / "legacy", qualification_root=tmp_path / "none", include_nmpc=True
     )
@@ -150,6 +158,16 @@ def owned_fixture(tmp_path, monkeypatch, preflights):  # noqa: F811
         "request_adapter",
         "case",
         "claim",
+        "captured_adapter",
+        "captured_source",
+        "captured_config",
+        "captured_environment",
+        "symlink_status",
+        "symlink_worker",
+        "symlink_supervisor",
+        "symlink_execution",
+        "symlink_manifest",
+        "symlink_nested",
     ],
 )
 def test_invalid_inspection_never_reaches_lifecycle(
@@ -187,6 +205,31 @@ def test_invalid_inspection_never_reaches_lifecycle(
         selected = replace(selected, case="exploratory")
     elif fault == "claim":
         storage.write_json(tmp_path / "claims/nominal.json", {"run_id": "forged"})
+    elif fault.startswith("captured_"):
+        request = storage.read_json(directory / "request.json")
+        captured = request["nmpc_capture"]
+        if fault == "captured_adapter":
+            captured["adapter_sha256"][lab.PRODUCERS[0]] = "0" * 64
+        elif fault == "captured_source":
+            captured["source_sha256"][next(iter(captured["source_sha256"]))] = "0" * 64
+        elif fault == "captured_config":
+            captured["resolved"]["vehicle"]["mass"] += 1
+        else:
+            captured["environment"]["python"] = "forged"
+        storage.write_json(directory / "request.json", request)
+    elif fault.startswith("symlink_"):
+        name = {
+            "status": "status.json",
+            "worker": "worker.json",
+            "supervisor": "supervisor.json",
+            "execution": "execution.json",
+            "manifest": "artifacts.json",
+            "nested": "experiment/plant_segments.jsonl",
+        }[fault.removeprefix("symlink_")]
+        path = directory / name
+        other = tmp_path / ("outside_" + path.name)
+        path.rename(other)
+        path.symlink_to(other)
     # Compare every fixture byte and prohibit all potentially mutating entry points.
     before = {str(p): p.read_bytes() for p in tmp_path.rglob("*") if p.is_file()}
 
