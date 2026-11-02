@@ -1,0 +1,262 @@
+{
+  "schema": "apex-c0-adapter-independent-engineering-review/1",
+  "outcome": "BLOCKED",
+  "status": "BLOCKED_PENDING_BOUNDED_PRESENTATION_CORRECTION",
+  "inspection_date": "2026-10-31",
+  "finalized_date": "2026-11-02",
+  "reviewer_independent_context": true,
+  "reviewer_authored_or_amended_candidate": false,
+  "reviewed_revision": "7f78df15470c99968ebd9ca473080a8822d81da7",
+  "branch": "codex/apex-workbench-c0-descriptive-adapter",
+  "base_review_delivery": "79c450f28a2715e3a5284c8815b49e0b07bd9123",
+  "binding_contract_revision": "5bf6cce22816bc8fd5a7d7bf84cefef87c69e358",
+  "binding_contract_sha256": "31afeefac753dead492df26f90b5b6aa1d822de705e3a86c97dfba2a0f72fd62",
+  "artifact": {
+    "path": "results/task007d/c/amended/c0_export/original155.json",
+    "bytes": 152600,
+    "sha256": "2bd7d2385e7e2072a04e5d952eff9af8861eb7e63f016138d5289573c411f2d5"
+  },
+  "G1": "OPEN",
+  "profile": "descriptive_only / source_unverified",
+  "findings": [
+    {
+      "id": "R1",
+      "priority": "P1",
+      "blocking": true,
+      "file": "tools/apex_workbench/c0_panels.py",
+      "lines": [
+        98,
+        127,
+        131,
+        136,
+        138,
+        144,
+        162
+      ],
+      "summary": "Native Plotly image, dataframe CSV and code/JSON-subtree clipboard paths bypass governed currentness/context-bearing outputs.",
+      "contract_sections": [
+        2,
+        3,
+        6,
+        7
+      ],
+      "live_plotly_config": {},
+      "standalone_html_plotly_config": {
+        "responsive": true
+      },
+      "native_browser_download_or_clipboard_delivery_exercised": false,
+      "proof": "Actual AppTest chart/table payloads plus exact installed frontend handler snippets/hashes. Clipboard static call chain; no claim of exact native copied whitespace.",
+      "minimum_correction": "Remove native bare download/copy controls only in new C0 presentation; disable Plotly export live/HTML; static tables/plain text or equivalently scoped display; retain checked metadata-bearing HTML; focused output/configuration assertions.",
+      "semantic_contract_change_required": false
+    }
+  ],
+  "independent_checks": {
+    "checks": [
+      {
+        "check": "complete independent lexical/type/order comparison",
+        "passed": true,
+        "details": {
+          "numbers": 4034,
+          "objects": 318,
+          "arrays": 86,
+          "nulls": 13
+        }
+      },
+      {
+        "check": "independently regenerated complete per-index shape and nested dimensions",
+        "passed": true,
+        "details": null
+      },
+      {
+        "check": "all row null/absence and original control identities; independent endpoints",
+        "passed": true,
+        "details": 29
+      },
+      {
+        "check": "literal per-stream chronology without total-order promotion",
+        "passed": true,
+        "details": 42
+      },
+      {
+        "check": "same-size replacement rejects fresh/current at original and all five authority anchors",
+        "passed": true,
+        "details": null
+      },
+      {
+        "check": "disposable linked file/ancestor/root, missing, directory and oversize are withheld",
+        "passed": true,
+        "details": null
+      },
+      {
+        "check": "absolute and traversal paths reject",
+        "passed": true,
+        "details": null
+      },
+      {
+        "check": "standalone original bytes, tokens, classification and offline Plotly bytes",
+        "passed": true,
+        "details": null
+      },
+      {
+        "check": "reader standard-library import boundary",
+        "passed": true,
+        "details": [
+          "hashlib",
+          "json",
+          "math",
+          "stat",
+          "dataclasses",
+          "pathlib"
+        ]
+      },
+      {
+        "check": "actual route has labels, no lifecycle call and no comparison candidate",
+        "passed": true,
+        "details": null
+      },
+      {
+        "check": "late authority replacement clears all scoped figures/banners/tables/downloads",
+        "passed": true,
+        "details": null
+      }
+    ],
+    "check_count": 11,
+    "findings": [
+      "R1: unchecked Plotly toImage live/HTML and native dataframe CSV exports remain enabled"
+    ]
+  },
+  "invocations": [
+    {
+      "id": "independent_checks_3",
+      "command": "VECLIB_MAXIMUM_THREADS=1 PYTHONPATH=scripts:src tools/apex_workbench/.venv/bin/python3.12 -c 'from threading_study.config import configure_accelerate; configure_accelerate(1); import runpy; runpy.run_path(\"results/apex_workbench_c0_adapter_review_20261031/independent_checks_3.py\",run_name=\"__main__\")' > results/apex_workbench_c0_adapter_review_20261031/independent_checks_3.log 2>&1",
+      "exit_status": 0,
+      "completed_checks": 11,
+      "finding_reproduced": "R1",
+      "log": "results/apex_workbench_c0_adapter_review_20261031/independent_checks_3.log",
+      "rerun_requires": "fresh ignored disposable output directory; original fault copies are preserved"
+    },
+    {
+      "id": "focused_1",
+      "command": "VECLIB_MAXIMUM_THREADS=1 PYTHONPATH=scripts:src tools/apex_workbench/.venv/bin/python3.12 -c 'from threading_study.config import configure_accelerate; configure_accelerate(1); import sys,pytest; raise SystemExit(pytest.main(sys.argv[1:]))' -q tools/apex_workbench/tests/test_c0_archive.py tools/apex_workbench/tests/test_c0_workspace.py --basetemp=results/apex_workbench_c0_adapter_review_20261031/tmp_focused_1 --junitxml=results/apex_workbench_c0_adapter_review_20261031/focused_1.xml --durations=10 > results/apex_workbench_c0_adapter_review_20261031/focused_1.log 2>&1",
+      "exit_status": 0,
+      "tests": 67,
+      "failures": 0,
+      "errors": 0,
+      "skips": 0,
+      "junit_seconds": 6.993,
+      "timestamp": "2026-10-31T19:26:26.446564+02:00",
+      "log": "results/apex_workbench_c0_adapter_review_20261031/focused_1.log",
+      "junit": "results/apex_workbench_c0_adapter_review_20261031/focused_1.xml"
+    }
+  ],
+  "counts_aggregated": false,
+  "author_compatibility_results_inherited_as_fresh": false,
+  "environment": {
+    "python": "3.12.14 (main, Sep  1 2026, 14:09:38) [Clang 22.1.3 ]",
+    "executable": "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/tools/apex_workbench/.venv/bin/python3.12",
+    "platform": "macOS-26.5.1-arm64-arm-64bit",
+    "thread_policy": "VECLIB_MAXIMUM_THREADS=1; configure_accelerate(1) before importing pytest/project numerical dependencies; no parallel execution claim"
+  },
+  "tested_source_sha256": {
+    "tools/apex_workbench/c0_archive.py": "811a2c8efe34705d31650d9f78a3e7a514b35a6fd4f53ee86ff29e158d7df7d0",
+    "tools/apex_workbench/c0_panels.py": "2884b6ff72eddafd4239dc6f973d350c7d5ce6e8a1665d692ee31ad8ed89e275",
+    "tools/apex_workbench/c0_shape.json": "5acfa2535daeed22bfd3d5033dd74f84d579507136d6088b87caa716b40fe4a6",
+    "tools/apex_workbench/workspace.py": "d01ac49f9a0bcff9fc78ac0b029131540ebad94d73c0742b69712ebf3ac9a7cb",
+    "tools/apex_workbench/tests/test_c0_archive.py": "a38a8b8f7c6842d4fe90bfe4aa1d997d0f9f4c5f106e7a7a67919e77539145d3",
+    "tools/apex_workbench/tests/test_c0_workspace.py": "d9f0dbc00f98a1f4d42b7764634b65a996c75aeafb679b8889d64e2dc29da103"
+  },
+  "preservation": {
+    "compared_paths": 1410,
+    "changes_during_independent_review": {},
+    "base_preservation_selection": 1401,
+    "base_preserved_paths_excluding_three_authorized_modified_files": 1398,
+    "base_mismatch": [],
+    "candidate_unchanged": true,
+    "tested_sources_equal_reviewed_git": true,
+    "source_sha256": {
+      "tools/apex_workbench/c0_archive.py": "811a2c8efe34705d31650d9f78a3e7a514b35a6fd4f53ee86ff29e158d7df7d0",
+      "tools/apex_workbench/c0_panels.py": "2884b6ff72eddafd4239dc6f973d350c7d5ce6e8a1665d692ee31ad8ed89e275",
+      "tools/apex_workbench/c0_shape.json": "5acfa2535daeed22bfd3d5033dd74f84d579507136d6088b87caa716b40fe4a6",
+      "tools/apex_workbench/workspace.py": "d01ac49f9a0bcff9fc78ac0b029131540ebad94d73c0742b69712ebf3ac9a7cb",
+      "tools/apex_workbench/tests/test_c0_archive.py": "a38a8b8f7c6842d4fe90bfe4aa1d997d0f9f4c5f106e7a7a67919e77539145d3",
+      "tools/apex_workbench/tests/test_c0_workspace.py": "d9f0dbc00f98a1f4d42b7764634b65a996c75aeafb679b8889d64e2dc29da103"
+    }
+  },
+  "resume_preservation": {
+    "date": "2026-11-02",
+    "reviewed_revision": "7f78df15470c99968ebd9ca473080a8822d81da7",
+    "current_revision": "7f78df15470c99968ebd9ca473080a8822d81da7",
+    "compared_paths": 1410,
+    "changes": [],
+    "verified_groups": {
+      "scientific_source_sha256": {
+        "files": 56,
+        "mismatches": []
+      }
+    },
+    "original155_sha256": "2bd7d2385e7e2072a04e5d952eff9af8861eb7e63f016138d5289573c411f2d5"
+  },
+  "failed_harness_attempts": [
+    {
+      "id": "independent_checks",
+      "exit_status": 1,
+      "reason": "Overbroad c0 substring matched existing comparison run UUID; script/log preserved."
+    },
+    {
+      "id": "independent_checks_2",
+      "exit_status": 1,
+      "reason": "Report-wide modeBarButtonsToRemove search matched bundled default definition; script/log preserved."
+    },
+    {
+      "id": "export_surface_probe",
+      "exit_status": 1,
+      "reason": "Strict equality of st.code payload and original byte string failed; partial retained, no exact copied-byte assertion promoted."
+    }
+  ],
+  "all_failed_attempts_retained": true,
+  "review_report_sha256": "1a9f38fbc0bdb4294527171e46c243cc3194369388be4f32bb79d1ea26965b00",
+  "evidence_sha256": {
+    "results/apex_workbench_c0_adapter_review_20261031/chronology_payload_columns.csv": "0bd17a980d793fa7e403809669d2dca831317dac18879d509250bef0809d2806",
+    "results/apex_workbench_c0_adapter_review_20261031/clipboard_button_route.json": "9da30e1291fb28ad23ed2cbd1cad3d782410953a19e721845c0a12d0c2c190a6",
+    "results/apex_workbench_c0_adapter_review_20261031/clipboard_code_inspection.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+    "results/apex_workbench_c0_adapter_review_20261031/clipboard_code_inspection_2.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+    "results/apex_workbench_c0_adapter_review_20261031/clipboard_code_route.json": "f046005233668935681529e7902f375a199a011e92af210fa293f3d6e3163014",
+    "results/apex_workbench_c0_adapter_review_20261031/clipboard_source_inspection.json": "c032b6ab67213a12c92d81344227bb0ffaa498fe5ac16c421114f0c081c32c6d",
+    "results/apex_workbench_c0_adapter_review_20261031/clipboard_source_inspection_2.json": "a844483e6504b399df2668ff14ed58fc57fc1021e69d67e5cd14e07298b31f47",
+    "results/apex_workbench_c0_adapter_review_20261031/comparison_diagnostic.log": "89974af8997dd12f521e5b8f4c8466b1b7ffb6dcbcd3c33546aeeb37e7731c62",
+    "results/apex_workbench_c0_adapter_review_20261031/environment.json": "32078e3d5111607549a0eee21d00ca6ef34d9dfed28cba6eee219e76bb4ddb64",
+    "results/apex_workbench_c0_adapter_review_20261031/export_surface_probe.log": "878b3aa392cabab45a895fea886ebe5366acf89b55e78e3e7024ffc819856d30",
+    "results/apex_workbench_c0_adapter_review_20261031/focused_1.log": "4c24612daad903d2aaafd7690746b53519cc3dab034b136c68c8b4e1c92c1339",
+    "results/apex_workbench_c0_adapter_review_20261031/focused_1.xml": "f2da6d21d9e4ef0801cc9438a704e55d10f1066f40dd8f4cfe5bb4d4f2cfbd75",
+    "results/apex_workbench_c0_adapter_review_20261031/independent_checks.json": "32ad7bc4849ed20a7441e2c169c857a53655bfd85167e34a511849f9a78c4d6f",
+    "results/apex_workbench_c0_adapter_review_20261031/independent_checks.log": "2faeccc35438a8258913f70922b71a49411d852025c8a1a7b3fa487cfcf07181",
+    "results/apex_workbench_c0_adapter_review_20261031/independent_checks.py": "458f95bf7031dfe0dacadb4e425fc49f1d5bfcac352728f33d2d51ed8a34aebe",
+    "results/apex_workbench_c0_adapter_review_20261031/independent_checks_2.log": "1bda82c10e34064a9aec5e978a7405b663f6cb149bc6a821a1505141904dd93b",
+    "results/apex_workbench_c0_adapter_review_20261031/independent_checks_2.py": "38f4719615881fc5ad5c078205a6dff054a8050f92ac12f45000a47a110beb03",
+    "results/apex_workbench_c0_adapter_review_20261031/independent_checks_3.log": "41880d9a2ecb03f8759a94ec168c7c4d80c4f567230a2f957feb96a5e87334e0",
+    "results/apex_workbench_c0_adapter_review_20261031/independent_checks_3.py": "0898e5018954446c621adfb63b15939221c119b6d566665d40fb634341aac19d",
+    "results/apex_workbench_c0_adapter_review_20261031/independent_report.html": "db8a8060a303f171af378647fb0c79e5c1766354fd79d41172605a9c93bce601",
+    "results/apex_workbench_c0_adapter_review_20261031/initial_harness_failure.txt": "e878ef47e17ebec5ddce9c866efef273796e131d1694b8fed7143b2a6a9c7166",
+    "results/apex_workbench_c0_adapter_review_20261031/inspection_notes.txt": "6d5e2df2025474b962fd4b5216495b044399e1217a9de39f1f3cd9d0d18acc5b",
+    "results/apex_workbench_c0_adapter_review_20261031/plotly_export_reproduction.json": "64b4605143b9447ced0a3ee0bcfcef2ebfb0c8220a7b88221cbace1e7968d5ed",
+    "results/apex_workbench_c0_adapter_review_20261031/preservation_after.json": "2f5c36750bbcc2d2e197203775935ac4859774334210e28acdd4be2bfc6880b8",
+    "results/apex_workbench_c0_adapter_review_20261031/preservation_before.json": "8c2309ea8e835ba005e6a69ee5659c13bb878916007b2859e321f24cf590bca2",
+    "results/apex_workbench_c0_adapter_review_20261031/reproduce_export_surface.py": "4d78d434cc8766401474c77225dc27893c0184f0b72d6c14fc54f140f87e200f",
+    "results/apex_workbench_c0_adapter_review_20261031/resume_preservation.json": "78aeda180a7e2bbc2f8e0b4c2a10df0088dfaf8cf732b61494a71380a6517f2d"
+  },
+  "reviewer_written_paths": [
+    "docs/reviews/apex_workbench_v0_3_d/c0_adapter/iteration_1/REVIEW.md",
+    "docs/reviews/apex_workbench_v0_3_d/c0_adapter/iteration_1/review_record.json",
+    "results/apex_workbench_c0_adapter_review_20261031/**"
+  ],
+  "implementation_contract_tests_handoff_modified": false,
+  "simulation_producer_controller_execution": false,
+  "numerical_experiments_or_qualification_campaign": false,
+  "full_regression_or_formal_verification": false,
+  "scientific_acceptance": false,
+  "native_browser_download_delivery_checked": false,
+  "clipboard_invoked": false,
+  "branch_changed": false,
+  "reviewer_commit_or_push": false,
+  "next_gate": "Already authorized bounded presentation-only correction, then independent exact-revision re-review; no automatic Verification or later phase."
+}
