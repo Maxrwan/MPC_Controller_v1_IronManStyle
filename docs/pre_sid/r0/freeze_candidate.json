@@ -1,0 +1,396 @@
+{
+  "schema": "apex-pre-sid-r0-freeze-candidate/1.0.0",
+  "task": "PRE-SID-R0-W1",
+  "designation": "Pre-SID Synthetic R0 release candidate proposal",
+  "proposed_release_status": "PROPOSED_NOT_ACCEPTED",
+  "recovery_status": "RECOVERY_INCOMPLETE",
+  "work_status": "WORK_COMPLETE_PENDING_ENGINEERING_REVIEW",
+  "frozen_E4_acceptance": {
+    "revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+    "tree_sha1": "63c9165d7b5286240ee5d9e020978cfe0090a1b7",
+    "decision": {
+      "path": "docs/task007e/e4/primary_acceptance.json",
+      "source_revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "sha256": "5bcdaeecd342ed758b3907e2ff17dcb05d9ac1aa4ba777f0d44298911002de76",
+      "bytes": 13583,
+      "git_blob_sha1": "457b25cee95f5d317d99debf732cd09bd38b9ba1"
+    },
+    "accepted_designation": "APEX Performance Synthetic v1",
+    "scope": "Existing bounded synthetic Primary acceptance only; no new R0 acceptance."
+  },
+  "identity_ledger": {
+    "frozen_E4_acceptance": {
+      "commit_sha1": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "tree_sha1": "63c9165d7b5286240ee5d9e020978cfe0090a1b7",
+      "parents": [
+        "ecbbc5cdb6d182557dfdd0bca7caa215cc1355c9"
+      ],
+      "commit_object_sha256": "b7d976bc9c305a11f4b6357fc86a116222a5e2ff1e6173d18ad2feb4a85c3f04",
+      "commit_object_bytes": 280,
+      "object_available": true,
+      "ancestor_of_E4": true
+    },
+    "E4_parent_E3_delivery": {
+      "commit_sha1": "ecbbc5cdb6d182557dfdd0bca7caa215cc1355c9",
+      "tree_sha1": "deeee1c6289359b0a22767a36bb5849faf5e03fa",
+      "parents": [
+        "e603672b209985f11ed26b6f44d3949ffd5675c5"
+      ],
+      "commit_object_sha256": "3158e6514a07e07f30ab6460d7c107d2ebf99ac57add3a670406fd7b60764f3e",
+      "commit_object_bytes": 272,
+      "object_available": true,
+      "ancestor_of_E4": true
+    },
+    "verified_performance_manifest_and_E3_tested_source": {
+      "commit_sha1": "e603672b209985f11ed26b6f44d3949ffd5675c5",
+      "tree_sha1": "81441f292d255a053ae97e263bf9483e002262dd",
+      "parents": [
+        "835eefb0aafe2f982a0ba05847d4e731079ff52d"
+      ],
+      "commit_object_sha256": "2dd23ca36e43ec9fa182b6964c2298bdc8fc07f1e24b15bc9ac0e618bdef6992",
+      "commit_object_bytes": 274,
+      "object_available": true,
+      "ancestor_of_E4": true
+    },
+    "scientific_VIS_worker": {
+      "commit_sha1": "8dbd1c5fbc09781411fc762e04f9c2c5cf2d99ae",
+      "tree_sha1": "a1db0538fdaa0ecb7fa71f885bf0e8fea65db95e",
+      "parents": [
+        "b1ef4fd1ad872189d073dcbaed2b78089c22ec41"
+      ],
+      "commit_object_sha256": "393e3144f854be6fb5fa7187fddc67ee4b667f385d76de381387b486f3eefc11",
+      "commit_object_bytes": 272,
+      "object_available": true,
+      "ancestor_of_E4": true
+    },
+    "frozen_executable_ancestor": {
+      "commit_sha1": "c6990572045e61ee443dc715de9e8c44396e5b41",
+      "tree_sha1": "20c09f0c308b09a4a3ecbf0521f63fafa36f253f",
+      "parents": [
+        "d55d7b299217d6b62efc90cb525c2493224a7cca"
+      ],
+      "commit_object_sha256": "2ed17928884af2257857d26071e94ec4d0bacd1d9f7e5c5e8e49b05749266dca",
+      "commit_object_bytes": 284,
+      "object_available": true,
+      "ancestor_of_E4": true
+    },
+    "later_offline_report": {
+      "commit_sha1": "d55f203aac1a04be598ebce4c38be51a4883e0ba",
+      "tree_sha1": "3d02a08a9a36ab4722ebc82d349bc452e53261f3",
+      "parents": [
+        "8dbd1c5fbc09781411fc762e04f9c2c5cf2d99ae"
+      ],
+      "commit_object_sha256": "5b743e132efa109fe1c4bee57765cbda353332bd799b8532f40385c160e8c495",
+      "commit_object_bytes": 281,
+      "object_available": true,
+      "ancestor_of_E4": true
+    },
+    "manifest_preparation_base": {
+      "commit_sha1": "835eefb0aafe2f982a0ba05847d4e731079ff52d",
+      "tree_sha1": "6337777e3afdb42786f62e98852c6450f6d4ced3",
+      "parents": [
+        "529459090021d06a869378e72e4abec6e7f00d3d"
+      ],
+      "commit_object_sha256": "0240c1d5ea2291c66e5e29e21613eee4e7c67ef21203621ac5396846e2d6dbe8",
+      "commit_object_bytes": 276,
+      "object_available": true,
+      "ancestor_of_E4": true
+    }
+  },
+  "documentation_overlay": {
+    "commit_sha1": null,
+    "identity_resolution": "The containing W1 documentation commit, supplied as an exact SHA/URL in the final delivery handoff. In a clean checkout use git rev-parse HEAD and confirm its sole parent is frozen_source_revision; do not substitute E4 for the overlay. No circular self-embedded commit identity."
+  },
+  "future_release_identity": {
+    "status": "PROPOSED_NOT_ACCEPTED",
+    "commit_sha1": null,
+    "tag": null,
+    "release_created": false,
+    "identity_assignment": "Future explicit Primary release decision only; W1 overlay is not an accepted release."
+  },
+  "unchanged_configuration": {
+    "performance_manifest": {
+      "path": "configs/performance/apex_performance_synthetic_v1.json",
+      "source_revision": "e603672b209985f11ed26b6f44d3949ffd5675c5",
+      "sha256": "5299adca29d5c5bd383252cd2c299a392dd6872dc6bb72d1a4dd7ecfb8dd1ebf",
+      "bytes": 29740,
+      "git_blob_sha1": "da6745b851ff879cb0ca2c89dceed51d16a0c09c"
+    },
+    "historical_flags_preserved": {
+      "tested_synthetic_formulation": true,
+      "proposed_performance_designation": true,
+      "formal_verification_pending": true,
+      "primary_acceptance_pending": true,
+      "hardware_certification_available": false,
+      "frozen": false,
+      "runtime_auto_load": false,
+      "production_default_changed": false
+    },
+    "runtime_auto_load": false,
+    "binding": "Complete existing manifest and original source configuration; no derivative profile, loader, production-default or mathematical changes.",
+    "evaluation_conditions": [
+      "one synthetic circuit",
+      "one controlled A full lap and one measured A full lap",
+      "first crossing from rolling start is partial",
+      "center clearance is recorded CG clearance, not swept-body certification",
+      "Mac timing is descriptive, not embedded worst-case certification"
+    ]
+  },
+  "scientific_source": {
+    "record": "docs/task007d/vis/vis1l/evidence/controlled_A/summary.json",
+    "pointer": "/source_sha256",
+    "count": 294,
+    "historical_source_revision": "8dbd1c5fbc09781411fc762e04f9c2c5cf2d99ae",
+    "comparison": "All 294 recorded SHA-256 values match bytes at the worker Git revision and frozen E4; all four retained case input inventories equal the literal 294-entry map.",
+    "entries": "committed_artifacts records with roles containing scientific_source_inventory"
+  },
+  "dependencies": {
+    "lock": {
+      "path": "uv.lock",
+      "source_revision": "8dbd1c5fbc09781411fc762e04f9c2c5cf2d99ae",
+      "sha256": "8cf85868a456415a898643dbb226d146b0b90e5c98982136cf2abf2465fa16ec",
+      "bytes": 176924,
+      "git_blob_sha1": "7aaa8ac7fc51f0c5eba5ea7811e7f626c717cef1"
+    },
+    "project": {
+      "path": "pyproject.toml",
+      "source_revision": "8dbd1c5fbc09781411fc762e04f9c2c5cf2d99ae",
+      "sha256": "c8ea69a3a486c9794b6cf88ac26566211c6f1bb7b7286d86dbaa36a191353d41",
+      "bytes": 803,
+      "git_blob_sha1": "e5b342f10c38e05bb1d45e1ad67a0fb345c3f754"
+    },
+    "python_selector": {
+      "path": ".python-version",
+      "source_revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "sha256": "7b55f8e67b5623c4bef3fa691288da9437d79d3aba156de48d481db32ac7d16d",
+      "bytes": 5,
+      "git_blob_sha1": "e4fba2183587225f216eeada4c78dfab6b2e65f5"
+    },
+    "recorded_environment": {
+      "tested": {
+        "python": "3.12.14 (main, Sep  1 2026, 14:09:38) [Clang 22.1.3 ]",
+        "platform": "macOS-26.5.1-arm64-arm-64bit",
+        "packages": {
+          "numpy": "2.5.3",
+          "scipy": "1.18.1",
+          "casadi": "3.8.1",
+          "pytest": "9.1.1",
+          "psutil": "7.2.2",
+          "threadpoolctl": "3.7.0",
+          "pandas": "3.0.6"
+        }
+      },
+      "native_configuration": {
+        "requested_ceiling": 1,
+        "set_status": 0,
+        "blas_threading_mode": 1,
+        "mode_name": "single",
+        "exact_active_thread_count_available": false
+      },
+      "observed_process_thread_counts": [
+        1
+      ],
+      "threadpool_inventory": [],
+      "policy": "fresh sequential process; environment(1) then configure_accelerate(1) before numerical imports; VECLIB_MAXIMUM_THREADS=1 and PYTHONHASHSEED=0; remove competing backend variables",
+      "observation_limit": "process threads sampled before/after preparation; exact continuously active BLAS count unavailable; empty threadpoolctl inventory is not proof of no backend",
+      "source": {
+        "path": "scripts/threading_study/config.py",
+        "sha256": "a50a73015c3ab739c35aa1fd715840364974213bf1c12666269b250264556fc3"
+      },
+      "lock_binding": "uv.lock binds all platform resolutions and distribution hashes; recorded installed numerical versions identify tested arm64 environment; no environment reinstall during E2"
+    },
+    "binary_environment_recovered": false
+  },
+  "vehicle": {
+    "path": "configs/vehicles/synthetic_dynamic_test_vehicle.yaml",
+    "source_revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+    "sha256": "df1b853d21a1d3efaf858f7e58401151f2c5237793c40e16bb4189ed651f9cf3",
+    "bytes": 1044,
+    "git_blob_sha1": "e89ebb3250d4d323e56c8d8946e945a228b3ec4c"
+  },
+  "planning_fixture": {
+    "planning_manifest.json": {
+      "path": "configs/planning/task007b/gamma_2p000/planning_manifest.json",
+      "source_revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "sha256": "5e7bccf1a300fb6737fc6b6b6e0c9aa921c110b11ffc5762a73f57f830a8660c",
+      "bytes": 1921,
+      "git_blob_sha1": "2ab16303675054134a5a55f46556267dba35ef74"
+    },
+    "planning_reference.csv": {
+      "path": "configs/planning/task007b/gamma_2p000/planning_reference.csv",
+      "source_revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "sha256": "6206e18ce3cb105d58d0923564336e28c00ec44aee3fd8a06ff7a37bcf84e2df",
+      "bytes": 415410,
+      "git_blob_sha1": "8446d5f13dd07d4df4b6a220987d782164913375"
+    },
+    "planning_validation.json": {
+      "path": "configs/planning/task007b/gamma_2p000/planning_validation.json",
+      "source_revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "sha256": "279582d2dcf37fdf4008ddc7f926109ef3d730a0e64c188d7003755d08871fa7",
+      "bytes": 1306,
+      "git_blob_sha1": "e3421d1ebcfbd6fe469be1b60fbb5a1e8d8a0f59"
+    },
+    "speed_polynomial.json": {
+      "path": "configs/planning/task007b/gamma_2p000/speed_polynomial.json",
+      "source_revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "sha256": "f335e78fc6c735c952f49078077a573ee989dd2be71497e90451e34a79f2c7ea",
+      "bytes": 308696,
+      "git_blob_sha1": "258978a2cb92bd6a4f40a38db6813fdbb2b72813"
+    },
+    "track_source.json": {
+      "path": "configs/planning/task007b/gamma_2p000/track_source.json",
+      "source_revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "sha256": "5f4d1734d7fec7de56d346e8f90bf272a3de9c05ac42f76cd49004e7f9183e55",
+      "bytes": 918,
+      "git_blob_sha1": "72b1f77e064ce116c07e8e5ee0d5a4becf107575"
+    }
+  },
+  "required_recoverability_evidence": {
+    "inventory": {
+      "path": "docs/pre_sid/r0/recovery_inventory.json",
+      "sha256": "f8ff5c5251815b25326d2d57bd3d1ecb622d06684c88adb45fb224df7db0a3e4",
+      "bytes": 1306699
+    },
+    "instructions": {
+      "path": "docs/pre_sid/r0/recovery_instructions.md",
+      "sha256": "eeb8f28ffb09098413c9a2ad528847fde027cb3fd67d10d401cc5f360b3aa420",
+      "bytes": 16452
+    },
+    "E3_verification": {
+      "path": "docs/task007e/e3/verification.json",
+      "source_revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "sha256": "f018caa6adb4acc5bf050184953234efa5a6e45359057ce96dda908f7b858c80",
+      "bytes": 66420,
+      "git_blob_sha1": "65a79e69d2096384e14fd9eff0cc077a30bb70b7"
+    },
+    "E3_limitations": {
+      "path": "docs/task007e/e3/remaining_limitations.json",
+      "source_revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "sha256": "07ff41e520f5e3babfa21698fb0389bda287bbc3c4336e56cb2830742e843e3b",
+      "bytes": 31838,
+      "git_blob_sha1": "cc397400b03095575b1a538bac0cd86bd8f89108"
+    },
+    "E2_evidence_index": {
+      "path": "docs/task007e/e2/evidence_links.json",
+      "source_revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "sha256": "5e788c428bd706f20792b1852b3400bf0eeb7fe11d93285bbc5bc7accec8fced",
+      "bytes": 22119,
+      "git_blob_sha1": "bcd2471e92366848d8764bddc1a19cb0f65dcfb9"
+    },
+    "positive_negative_and_censored_raw": "Exact external_artifacts in the recovery inventory; archive independently and authenticate actual bytes. Compact records do not replace raw data."
+  },
+  "existing_synthetic_limitations": [
+    "No guaranteed trajectory availability or recovery.",
+    "Fallback admission requires vx in [1,3] m/s and vehicle-center corridor containment; this is not a verified nonlinear recovery region.",
+    "Reserve warnings and critical thresholds do not provide proactive reserve-triggered rescue.",
+    "No independently verified application-time fallback-domain eligibility; delayed asynchronous fallback-transition coverage remains incomplete.",
+    "No emergency braking-to-standstill capability.",
+    "No independent hardware watchdog or safety supervisor.",
+    "No continuous swept-body, collision-safety or corridor-invariance guarantee.",
+    "Synthetic vehicle/tire parameters are not physically identified; footprint and hardware uncertainty remain unresolved.",
+    "Measured C70 retains its exhaustion stop and incomplete scientific export; no completed measured C70 lap or complete VIS package acceptance.",
+    "No unseen-track generalization or embedded timing certification.",
+    "Independent historical IPOPT/linear-solver build identity remains unavailable; locked CasADi and explicit options do not establish portable binary/timing equivalence."
+  ],
+  "prehardware_gates": {
+    "version": "apex-prehardware-gates/1.0.0",
+    "implemented_in_E2": false,
+    "items": [
+      {
+        "id": "HW01",
+        "status": "REQUIRED_FUTURE_REVIEW_NOT_IMPLEMENTED",
+        "requirement": "Identify vehicle, tire, actuator and estimator uncertainty across intended envelope"
+      },
+      {
+        "id": "HW02",
+        "status": "REQUIRED_FUTURE_REVIEW_NOT_IMPLEMENTED",
+        "requirement": "Define and verify recovery or safe-stop domain, including braking to standstill"
+      },
+      {
+        "id": "HW03",
+        "status": "REQUIRED_FUTURE_REVIEW_NOT_IMPLEMENTED",
+        "requirement": "Application-time freshness, state/control validity and held-input reachability; expiry/pending-command ownership"
+      },
+      {
+        "id": "HW04",
+        "status": "REQUIRED_FUTURE_REVIEW_NOT_IMPLEMENTED",
+        "requirement": "Independent watchdog, communication/solver fault handling and fail-safe actuation"
+      },
+      {
+        "id": "HW05",
+        "status": "REQUIRED_FUTURE_REVIEW_NOT_IMPLEMENTED",
+        "requirement": "Continuous swept-body/obstacle clearance and stopping-distance validation"
+      },
+      {
+        "id": "HW06",
+        "status": "REQUIRED_FUTURE_REVIEW_NOT_IMPLEMENTED",
+        "requirement": "Target hardware timing, overrun/fault injection and end-to-end physical safety tests"
+      },
+      {
+        "id": "HW07",
+        "status": "REQUIRED_FUTURE_REVIEW_NOT_IMPLEMENTED",
+        "requirement": "Review E1 missing asynchronous fallback transitions, domain edges, busy ticks and honest fallback telemetry"
+      }
+    ]
+  },
+  "unavailable_evidence_and_provenance": [
+    {
+      "id": "R0-G01",
+      "essential_to_complete_recoverability": true,
+      "deficiency": "Required raw histories, scientific exports, launcher prerequisite files and complete E3 logs are authenticated only at the original local checkout; independent durable retrieval is unqualified.",
+      "evidence": "external_artifacts entries with independent_retrieval=UNVERIFIED_NO_DURABLE_EXTERNAL_LOCATION_DOCUMENTED; E4 archival obligation.",
+      "consequence": "A Git-only recipient cannot recover or audit the full accepted evidence. Local accessibility does not establish independent recoverability.",
+      "minimum_future_action": "Obtain an authorized immutable archive/transfer of existing required bytes, retain each per-file SHA-256 and byte size, record archive SHA-256/size and retrieval location/custodian, and have an independent recipient retrieve and authenticate it. Do not regenerate evidence."
+    },
+    {
+      "id": "R0-G02",
+      "essential_to_complete_recoverability": true,
+      "deficiency": "Exact historical Python/OS/Accelerate and IPOPT/linear-solver binary provenance is incomplete; dependency distribution references are recorded but were not retrieved/authenticated in W1. Historical uv/build-tool identity is incomplete.",
+      "evidence": "E3 /environment_identity/IPOPT_linear_solver_build; E4 limitations; environment_and_archival_artifacts; locked_distribution_candidates.",
+      "consequence": "The locked source/dependency metadata does not establish reconstruction of the exact historical executable environment or portable timing equivalence.",
+      "minimum_future_action": "Retrieve authentic historical environment/build records or explicitly agree a separately qualified target environment and unresolved provenance boundary at review. Obtain and hash selected distribution bytes against uv.lock without changing the lock. Any environment installation or execution requires separate authorization; never infer historical identity from a current install."
+    },
+    {
+      "id": "R0-G03",
+      "essential_to_complete_recoverability": false,
+      "deficiency": "Four measured_C70_1 finalization outputs are absent; two later cases were never executed. Failed-worker direct summary/native-thread/forecast-match/wall/CPU/RSS observations remain unavailable.",
+      "evidence": "missing_artifacts and E3 /scientific_evidence/C70_terminal; E4 accepted nonblocking limitations.",
+      "consequence": "No complete VIS package or measured C70 lap claim is supported. This does not revoke accepted bounded Architecture A scope.",
+      "minimum_future_action": "Retain the historical absences and nulls. Recover only genuine preexisting records if they exist; any export repair/new run is a separate proposal and cannot replace the historical failure."
+    },
+    {
+      "id": "R0-G04",
+      "essential_to_complete_recoverability": false,
+      "deficiency": "Task007A/B/C/CR source_snapshot.zip files match SHA-256 values in local provenance files, but those local provenance files have no independently authenticated historical digest in the inspected E4 bindings.",
+      "evidence": "Eight AVAILABLE_NOT_FULLY_AUTHENTICATED external_artifacts.",
+      "consequence": "Historical ZIP bytes are identified and locally self-consistent; their independent historical provenance is incomplete. Exact Git-bound source is the authoritative recovery route.",
+      "minimum_future_action": "Obtain independent historical provenance for the original ZIPs or retain their supporting-context limitation; no replacement ZIP is needed for the Git-bound scientific source."
+    },
+    {
+      "id": "R0-G05",
+      "essential_to_complete_recoverability": false,
+      "prerequisite_for_executable_reproduction": true,
+      "deficiency": "Executable reproduction has not been attempted; historical launchers require fresh prerequisite gates, strict case order and new outputs. The E3 wrapper asserts clean exact e603672 HEAD and fixed output paths.",
+      "evidence": "Authenticated scripts/run_task007dvis.py, protocol.py and retained run_verification.py read as text only.",
+      "consequence": "Historical command transcripts cannot be rerun safely in the R0 documentation checkout or over retained evidence. Independent reproduction is unestablished.",
+      "minimum_future_action": "Engineering Review must define exact source checkouts, environment, fresh evidence destinations, prerequisite regeneration authorization, stop gates and budget. Authorize any execution separately; preserve original records and record new provenance."
+    }
+  ],
+  "independent_reproduction_prerequisites": [
+    "Exact E4/worker/E3 source identities and separate role-specific checkouts",
+    "Independent retrieval and byte authentication of required raw histories, prerequisite gates and verification records",
+    "Explicit historical binary-provenance disposition and separately authorized target environment recovery",
+    "Existing accepted configuration and source inventory preserved; no fabricated CLI arguments or inputs",
+    "Separately reviewed fresh-output and launcher-prerequisite/stop-gate plan",
+    "Separate execution authorization and exact-revision Engineering Review/Verification gates"
+  ],
+  "new_execution_results": null,
+  "release_created": false,
+  "git_tag_created": false,
+  "physical_readiness_claimed": false,
+  "integrated_Safety_qualified": false,
+  "ROS_2_qualified": false,
+  "measured_embedded_real_time_qualified": false,
+  "independent_execution_success_claimed": false,
+  "stop_boundary": "WORK_COMPLETE_PENDING_ENGINEERING_REVIEW"
+}
