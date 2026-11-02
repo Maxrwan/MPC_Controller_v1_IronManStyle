@@ -1,3 +1,13 @@
+# Current handoff — Primary C0 descriptive adapter acceptance recorded
+
+**C0_DESCRIPTIVE_ADAPTER_ACCEPTED_WITHIN_VERIFIED_SCOPE.** Primary APEX accepted the exact implementation `d246f1e9639737e4ecbbd12f8bd0c9b2f1574712` on 2 November 2026, based on independent [Engineering Review](reviews/apex_workbench_v0_3_d/c0_adapter/iteration_2/REVIEW.md) and [formal scoped Verification](reviews/apex_workbench_v0_3_d/c0_adapter/VERIFICATION.md), verification delivery `d14f9ade48e9fdd3c9bb904cd9b58fd504e73035`. The [Primary acceptance record](reviews/apex_workbench_v0_3_d/c0_adapter/PRIMARY_ACCEPTANCE.md) is authoritative for the accepted scope and limitations.
+
+Single non-simulation functional regression: **209 passed, 17 G2 skipped, 172 simulation-dependent deselected**, zero failures/errors, including **all 69 C0 tests passed**. No full new scientific/controller regression or simulation. Original historical file is admitted **descriptively only** with `G1 OPEN` and **`descriptive_only / source_unverified`**; no capture-source verification, numerical qualification or physical/controller-performance claims. HTML generation/reopening passed; **automatic browser delivery remains unconfirmed** within 10 seconds. Launcher supervision SIGINT status 0 versus terminal Ctrl-C SIGINT(2) are separate route-specific observations without generalized timing/exit guarantees.
+
+Acceptance recording is documentation only; source/tests/dependencies, exact C0 evidence, frozen Control, 56 scientific/345 qualification/25 P/4 oval preserved evidence, prior BLOCKED outcomes and failed logs are not modified or requalified. Draft PR #1 stays unmerged; no release tag. Next task is **M5-A source-isolated genuine NMPC/TVLQR weight-lab planning only**. No implementation, simulation, scientific experiment, R0 or hardware work authorized. **STOP: C0 ACCEPTANCE RECORDED — NEXT WORKBENCH WORK PENDING PRIMARY AUTHORIZATION.**
+
+---
+
 # Current handoff — C0 descriptive adapter formal Verification PASS
 
 **C0_DESCRIPTIVE_ADAPTER_VERIFIED_PENDING_PRIMARY_ACCEPTANCE.** 2 November 2026.
