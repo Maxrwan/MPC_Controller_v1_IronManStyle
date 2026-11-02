@@ -1,3 +1,118 @@
+# PRE-SID-R0-W1-C1 — provenance locator correction
+
+**WORK_COMPLETE_PENDING_ENGINEERING_REVIEW**
+
+Bounded documentation correction, 2026-11-02. Recovery remains **RECOVERY_INCOMPLETE**;
+the proposed candidate remains **PROPOSED_NOT_ACCEPTED**. G01–G05 remain unchanged and open
+under their existing dispositions. This WORK receipt does not approve the correction or
+perform Engineering Review or Verification.
+
+## Correction identity and lineage
+
+- Existing branch: `codex/pre-sid-r0-w1-recovery`.
+- Exact reviewed W1 correction base and sole C1 delivery parent: `6acd42ec10ec6835e90bc7af157713204899ae6c`.
+- Frozen E4 scientific reference, unchanged: `48adbdf64d492592d15e23c917aca71fa58aa8a5`.
+- Original W1 delivery: [the exact reviewed commit](https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle/commit/6acd42ec10ec6835e90bc7af157713204899ae6c); its sole parent is E4.
+- C1 delivery revision: the containing correction commit, with its exact SHA and GitHub URL
+  supplied in the final delivery handoff after commit/push. In the C1 checkout,
+  `git rev-parse HEAD^` must equal the W1 base above. No circular self-embedded SHA is used.
+
+Original W1 identity/ancestry descriptions in the inventory, candidate, unchanged recovery
+guide and historical report below continue to describe the original W1 commit `6acd42ec10ec6835e90bc7af157713204899ae6c`.
+They do not assert that C1 directly parents E4. C1 descends through W1; E4 remains the
+scientific source. The original guide is unchanged and remains interpreted in that W1
+historical context. No release identity, tag or accepted status is assigned by C1.
+
+## ER1 R1 disposition and bounded edits
+
+ER1 reported 388 malformed locators among 728 digest-claim records. Individual JSON object
+keys containing `/` had been split into path segments. C1 corrects those key tokens with
+RFC 6901 encoding: escape `~` as `~0` first, then `/` as `~1`. For example,
+`/source_sha256/src/apex/config.py` becomes `/source_sha256/src~1apex~1config.py`.
+
+All 728 record references were inspected against their actual historical JSON structure:
+Git-committed JSON was read at frozen E4, and the four original local ZIP-provenance JSON
+files were read as accessible bytes. Whole-document references use the empty JSON Pointer.
+The authoring reader reconstructed malformed paths from real dictionary keys and required
+one unambiguous target; it did not rely on a regular-expression replacement. A separate
+strict decoder then checked the written locators and their exact digest bindings.
+
+- Corrected locators: **388**.
+- Previously valid locators retained literally: **340**.
+- Digest-claim locators required to resolve after writing: **728 / 728**.
+- Intended SHA-256 values and complete resolved JSON target values: unchanged.
+- Additional source-inventory record plus `/source_sha256` pointer: resolves to the
+  unchanged 294-entry historical source map.
+- The 31 distribution citations are unchanged plain references to `uv.lock` metadata,
+  not JSON Pointer locators; no distribution bytes were fetched or installed.
+
+Only locator strings changed in `recovery_inventory.json`; all other parsed inventory
+fields remain identical to W1. Scientific/artifact/dependency identities, expected and
+actual hashes, sizes, source attribution, availability classifications and G01–G05 are
+unchanged. `freeze_candidate.json` changes only the inventory SHA-256 and byte-size binding.
+`recovery_instructions.md` remains byte-identical.
+
+Corrected inventory ordinary SHA-256: `96ebe7bb2dcad903ba25f693b311e946c8f48b42e69578127f2a592423b25185`.
+Corrected inventory byte size: **1307491**.
+
+## Static WORK validation and preservation
+
+| Static WORK check | Result |
+|---|---|
+| Strict JSON parsing of both deliverables | PASS; duplicate members and nonstandard constants rejected |
+| Separate strict pointer resolution against 16 actual historical JSON records | PASS: 728/728 digest-claim locators |
+| Malformed locators corrected / originally valid locators preserved literally | 388 / 340; no unresolved locator |
+| Changed-locator groups | 292 source-inventory, 62 VIS-verification and 34 parity references |
+| Intended digests and complete resolved JSON target values | PASS: all 728 unchanged |
+| Scope of inventory changes | PASS: only the 388 `digest_claims[].record` strings; all other fields unchanged |
+| Additional structured source-inventory pointer | PASS: original 294-entry literal map |
+| Scientific source byte identities | PASS: all 294 SHA-256 values at both original worker and frozen E4 |
+| Candidate content bindings | PASS: all 17; only the inventory digest and size updated |
+| Accepted classification and gap preservation | PASS: RECOVERY_INCOMPLETE, PROPOSED_NOT_ACCEPTED and G01–G05 unchanged |
+| E4 source/tree preservation | PASS: all 827 original Git object/mode entries unchanged; no scientific-path diff |
+| Other W1 file preservation | PASS: all 828 paths outside the three-file allowlist byte-identical, including the recovery guide |
+| Original checkout preservation | PASS: 1,029 tracked-file hashes, HEAD and starting status unchanged |
+| Accessible historical external evidence | PASS: all 204 selected file-content SHA-256 values unchanged |
+| Historical results metadata | PASS: all 54,162 size/mtime pairs unchanged; this metadata is not whole-archive byte authentication |
+| Existing refs before the authorized commit | PASS: unchanged; only the W1 documentation branch and corresponding remote ref advance for delivery |
+| Changed paths and whitespace | PASS: exactly the three authorized files; `git diff --check` |
+| Original W1 WORK history | PASS: preserved verbatim below this correction receipt |
+
+The independent static reader does not import or reuse the authoring reader. It resolves
+corrected pointers with a separate decoder and derives intended historical targets from
+literal artifact keys in the actual JSON maps. For a group-level reference it verifies
+the specific artifact-key binding, rather than merely finding the digest somewhere in a
+record. Recorded source bytes, expected values, target objects and historical local JSON
+bytes remain unchanged. These are WORK checks, not Engineering Review or Verification.
+
+The only changed paths relative to W1 are:
+
+- `docs/pre_sid/r0/recovery_inventory.json`
+- `docs/pre_sid/r0/freeze_candidate.json`
+- `docs/pre_sid/r0/WORK.md`
+
+Temporary static-reader receipts live under `/private/tmp/apex-pre-sid-r0-w1-c1` and are
+not new scientific evidence, independently qualified archives or required recovery inputs.
+No source/test/configuration/dependency file, historical record, instruction, branch other
+than the existing authorized documentation branch, or release tag is changed by C1.
+No scientific execution, test collection/execution, simulation, numerical imports,
+dependency installation, evidence regeneration, merges, SID or architecture work occurred.
+
+## Continuing review boundary
+
+R1 is corrected as a WORK proposal pending exact-revision Engineering Review. Review must
+inspect all locator resolutions, unchanged intended values and candidate inventory binding,
+the three-path diff, W1/E4 ancestry and preservation. Separate explicit authorization is
+required for Verification or further WORK. G01–G05 are not closed by this correction.
+
+Stop: **WORK_COMPLETE_PENDING_ENGINEERING_REVIEW**.
+
+---
+
+The original W1 WORK report follows verbatim as historical delivery context. Its source,
+counts, checks, single-commit/direct-E4 relationship and delivery instructions concern the
+original W1 revision, not the C1 correction revision.
+
 # PRE-SID-R0-W1 WORK report
 
 **WORK_COMPLETE_PENDING_ENGINEERING_REVIEW**

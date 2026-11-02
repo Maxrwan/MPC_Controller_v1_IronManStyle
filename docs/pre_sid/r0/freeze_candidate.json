@@ -248,8 +248,8 @@
   "required_recoverability_evidence": {
     "inventory": {
       "path": "docs/pre_sid/r0/recovery_inventory.json",
-      "sha256": "f8ff5c5251815b25326d2d57bd3d1ecb622d06684c88adb45fb224df7db0a3e4",
-      "bytes": 1306699
+      "sha256": "96ebe7bb2dcad903ba25f693b311e946c8f48b42e69578127f2a592423b25185",
+      "bytes": 1307491
     },
     "instructions": {
       "path": "docs/pre_sid/r0/recovery_instructions.md",
