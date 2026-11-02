@@ -94,6 +94,15 @@ Parameters are synthetic, never measured or identified APEX data. Linear tires r
 
 ## Use
 
+**M0 prototype status: BLOCKED pending Primary decision.** At reviewed source
+`c745726fee6f4e33259aef3781ee5181d02afe08`, the single nominal worker attempt failed its
+configuration snapshot guard before controller construction, optimizer solve or plant motion.
+Its failure evidence and consumed claim remain retained; exploratory was not run. Independent
+review also found that M0 inspection can reach lifecycle writes before archive ownership validation.
+Do not use this prototype for execution or archive inspection until separately authorized
+corrections and review. No genuine nominal/treatment result or formal Verification is claimed.
+The following describes the implemented interface, whose acceptance remains blocked.
+
 **Experimental NMPC Weight Lab M0:** Home → **Open experimental NMPC Weight Lab M0**, or Run →
 **NMPC Weight Lab M0**. Exactly two presets use the genuine frozen Architecture-A NMPC/TVLQR
 controller on the same synthetic GP gamma2 / N8 / dt0.1 / RK4×4 / 2.0 s scenario. Nominal uses

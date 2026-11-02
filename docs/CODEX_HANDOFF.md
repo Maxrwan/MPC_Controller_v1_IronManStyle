@@ -1,4 +1,33 @@
-# Current handoff — M5-A software gates passed; bounded experiments pending
+# Current handoff — M5-A blocked before controller execution
+
+**NMPC_WEIGHT_LAB_M0_BLOCKED_PENDING_PRIMARY_DECISION.** Exact implementation
+`c745726fee6f4e33259aef3781ee5181d02afe08`, branch `codex/m5a-nmpc-weight-m0`.
+[WORK/failure](apex_workbench_nmpc_weight_m0/WORK.md),
+[machine record](apex_workbench_nmpc_weight_m0/work_record.json).
+Nominal worker `20261102T183317195331Z_2c738f769a2d412cb23c036e850b182f` failed the
+actual-versus-captured resolved-configuration guard before controller/plant construction. Its
+failed outcome, valid retained failure manifest, nominal claim and global BLOCKED marker remain.
+No optimizer solve, plant step, native result or simulated endpoint. Exploratory NOT RUN; no retry.
+
+Read-only analysis identifies a sufficient tuple-versus-JSON-array snapshot mismatch at
+simulation.failed_plan_ids. No complete actual resolved snapshot was retained on rejection.
+Independent-context static Engineering Review of that exact candidate is **BLOCKED**, with two
+P1 findings: R1, serialization-consistent comparison plus pre-construction round-trip/negative
+tests is required; R2, M0 inspection reaches lifecycle reconciliation/cancellation before validating
+canonical owned root, archive origin and alias conflicts. No historical archive alteration was
+observed. Minimum corrections must preserve scientific values/guards and keep invalid/archive
+routes pure reads. Full findings, evidence hashes and reviewer record are in the linked WORK/record.
+No implementation correction or further project/scientific execution follows this blocker.
+All 333 frozen runtime members/54 imported APEX module hashes and adapter/environment flags remain intact;
+recorded processes are gone and the lease is available. Earlier software passes do not establish
+genuine NMPC execution. Primary must decide on bounded R1/R2 correction and a replacement execution
+grant; never erase/reset the failed claim. Not eligible for formal Verification. No M5-B, R0,
+SID/Safety or hardware work. The final delivery is documentation only; implementation stays at
+the exact reviewed SHA above. Historical checkpoints below do not authorize their pending steps.
+
+---
+
+# Historical checkpoint — M5-A software gates passed; bounded experiments pending
 
 **M0_SOFTWARE_GATES_PASSED_PENDING_BOUNDED_EXPERIMENTS.** Primary authorizes bounded WORK on
 isolated `codex/m5a-nmpc-weight-m0` from exact base `5831f22f8d64a69efd119edd181802adcd82dde2`.

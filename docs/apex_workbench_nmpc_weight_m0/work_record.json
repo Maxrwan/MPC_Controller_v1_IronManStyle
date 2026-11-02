@@ -1,6 +1,6 @@
 {
   "schema": "apex-nmpc-weight-m0-work/1",
-  "status": "M0_SOFTWARE_GATES_PASSED_PENDING_BOUNDED_EXPERIMENTS",
+  "status": "NMPC_WEIGHT_LAB_M0_BLOCKED_PENDING_PRIMARY_DECISION",
   "base_revision": "5831f22f8d64a69efd119edd181802adcd82dde2",
   "branch": "codex/m5a-nmpc-weight-m0",
   "worktree": "/Users/marwansaber/.codex/worktrees/nmpc-weight-m0/MPC_Controller_v1_IronManStyle",
@@ -697,7 +697,7 @@
     },
     {
       "id": "format_recheck",
-      "command": "PYTHONDONTWRITEBYTECODE=1 VECLIB_MAXIMUM_THREADS=1 PYTHONPATH=.:scripts:src <Workbench venv>/python -B -m pytest -q -p no:cacheprovider tools/apex_workbench/tests/test_nmpc_weight_lab.py::test_native_tracker_proposal_is_not_relabeled_as_applied --basetemp=results/apex_workbench_nmpc_weights/format_recheck --junitxml=results/apex_workbench_nmpc_weights/format_recheck.xml",
+      "command": "PYTHONDONTWRITEBYTECODE=1 VECLIB_MAXIMUM_THREADS=1 PYTHONPATH=.:scripts:src /Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/tools/apex_workbench/.venv/bin/python -B -m pytest -q -p no:cacheprovider tools/apex_workbench/tests/test_nmpc_weight_lab.py::test_native_tracker_proposal_is_not_relabeled_as_applied --basetemp=results/apex_workbench_nmpc_weights/format_recheck --junitxml=results/apex_workbench_nmpc_weights/format_recheck.xml",
       "tests": 1,
       "failures": 0,
       "errors": 0,
@@ -732,13 +732,214 @@
       "exploratory": 1
     },
     "duration_s": 2.0,
-    "started": 0,
-    "automatic_retry": false
+    "started": 1,
+    "automatic_retry": false,
+    "started_definition": "claimed numerical worker attempt; controller construction was not reached",
+    "consumed_claims": {
+      "nominal": 1,
+      "exploratory": 0
+    },
+    "genuine_closed_loop_runs_completed": 0,
+    "optimizer_solves": 0,
+    "plant_steps": 0,
+    "simulated_end_time": null,
+    "exploratory_status": "NOT_RUN_BLOCKED",
+    "replacement_grant_required": true
   },
-  "independent_review": "PENDING exact candidate after bounded outcomes; raw review under allowed ignored output root",
+  "independent_review": {
+    "outcome": "BLOCKED",
+    "reviewed_revision": "c745726fee6f4e33259aef3781ee5181d02afe08",
+    "context": "Separate independent reviewer context; post-failure static-only audit",
+    "record": {
+      "actual_full_resolved_snapshot_retained": false,
+      "actual_nominal_frontier": "Resolved-configuration guard, before make_mpc, controller/runner construction, any optimizer solve or plant step",
+      "base": "5831f22f8d64a69efd119edd181802adcd82dde2",
+      "bounded_work_suitability": "BLOCKED_PENDING_PRIMARY_DECISION; weight-only representation and source isolation have static support, but implementation cannot admit the genuine experiment and archive lifecycle routing is unsafe",
+      "branch": "codex/m5a-nmpc-weight-m0",
+      "candidate": "c745726fee6f4e33259aef3781ee5181d02afe08",
+      "deferred": [
+        "Genuine nominal/exploratory NMPC/TVLQR closed-loop outcomes",
+        "Actual objective-component/solver-event association",
+        "Applied-command chronology and coverage validation",
+        "Real cancellation/owner-loss/resource failure behavior on corrected revision",
+        "Formal Verification and acceptance"
+      ],
+      "delivery_status_note": "Three concurrent tracked documentation changes were observed after the clean candidate audit; this reviewer wrote only the three authorized ignored review files.",
+      "evidence_sha256": {
+        "REVIEW.md": "b8d004a00b08e36467485f4a8a9e4b98fa9cae8ab2a79219a88f5e6cb4a1a097",
+        "static_audit.json": "fc895a8fd58a0db241023e64acc14a1f57d2326e2f5aa3aa377d7a99c960d6b4"
+      },
+      "existing_m0_outputs_preserved_during_review_writes": true,
+      "existing_output_file_count": 541,
+      "existing_output_inventory_sha256": "2fac1eff37fa89795621aae945f7aa3ad34566579c76a924e1292e67ca0b270a",
+      "exploratory_executed": false,
+      "findings": [
+        {
+          "classification": "STATIC_CAUSE_SUFFICIENT_NOT_FULL_ACTUAL_SNAPSHOT",
+          "correction": "Use one explicit finite JSON-compatible snapshot schema at capture and execution; no-solve boundary coverage; do not relax other identity checks.",
+          "file": "tools/apex_workbench/nmpc_weight_worker.py",
+          "id": "R1",
+          "lines": [
+            297,
+            298
+          ],
+          "priority": "P1",
+          "support": [
+            "tools/apex_workbench/nmpc_weight_worker.py:173-176",
+            "tools/apex_workbench/nmpc_weight_worker.py:444",
+            "tools/apex_workbench/nmpc_weight_lab.py:214",
+            "48adbdf64d492592d15e23c917aca71fa58aa8a5:src/apex/simulation/asynchronous.py:32"
+          ],
+          "title": "Native resolved tuple versus captured JSON list blocks the supported scenario"
+        },
+        {
+          "classification": "STATIC_REACHABLE_FAILURE_PATH_NOT_RUNTIME_EXERCISED",
+          "correction": "Validate canonical M0 directory and nonconflicting owned origin before any lifecycle call; archives/invalid records remain pure reads without cancellation; add negative routing software checks.",
+          "file": "tools/apex_workbench/nmpc_weight_panels.py",
+          "id": "R2",
+          "lines": [
+            98,
+            117
+          ],
+          "observed_archive_alteration": false,
+          "priority": "P1",
+          "support": [
+            "tools/apex_workbench/workspace.py:258-260",
+            "tools/apex_workbench/run_catalog.py:143-150,219",
+            "tools/apex_workbench/jobs.py:232-239,203-228,141-184"
+          ],
+          "title": "Lifecycle reconciliation precedes M0 ownership and read-only archive validation"
+        }
+      ],
+      "formal_verification_performed": false,
+      "further_execution_authorized": false,
+      "minimum_next_authority": "Explicit Primary decision for bounded code corrections and any new experiment budget; retain original claim, failure and BLOCKED evidence",
+      "nominal_attempt_consumed": true,
+      "nominal_retry_authorized": false,
+      "only_written_paths": [
+        "results/apex_workbench_nmpc_weights/independent_review/REVIEW.md",
+        "results/apex_workbench_nmpc_weights/independent_review/review_record.json",
+        "results/apex_workbench_nmpc_weights/independent_review/static_audit.json"
+      ],
+      "outcome": "BLOCKED",
+      "preservation_scope_limit": "Independent hashes cover frozen runtime, nonallowlisted tracked baseline and retained M0/gate/test/failure outputs; prior aggregate primary-history preservation counts are not a new full primary-tree baseline audit.",
+      "prior_software_evidence": {
+        "admission_passed": 8,
+        "admission_source": "c745726fee6f4e33259aef3781ee5181d02afe08",
+        "counts_combined": false,
+        "initial_passed": 26,
+        "initial_source": "df889dd7e447c69b0c6df7924d068a58527587ee",
+        "repeated_in_review": false
+      },
+      "review_mode": "INDEPENDENT_CONTEXT_STATIC_ONLY",
+      "review_performed_project_imports_tests_probes_solvers_plants_ui": false,
+      "schema": "apex-m0-independent-engineering-review/1",
+      "scientific_source": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "stop_status": "NMPC_WEIGHT_LAB_M0_BLOCKED_PENDING_PRIMARY_DECISION",
+      "tracked_status_at_delivery": " M docs/CODEX_HANDOFF.md\n M docs/apex_workbench_nmpc_weight_m0/WORK.md\n M docs/apex_workbench_nmpc_weight_m0/work_record.json\n"
+    },
+    "static_audit_summary": {
+      "ast_parsed_changed_python_files": 10,
+      "candidate_worktree_file_mismatches": [],
+      "frozen_archive_members": 333,
+      "nonallowlisted_before_files": 1023,
+      "nonallowlisted_preservation_mismatches": [],
+      "profile_sha256": "5299adca29d5c5bd383252cd2c299a392dd6872dc6bb72d1a4dd7ecfb8dd1ebf",
+      "post_import_identities": {
+        "other_file_modules": 997,
+        "other_namespace_modules": 2,
+        "scientific_file_modules": 63,
+        "scientific_namespace_modules": 2
+      },
+      "module_hash_mismatches": [],
+      "packages": {
+        "casadi": {
+          "installed_count_matches": true,
+          "installed_file_count": 2371,
+          "installed_tree_matches": true,
+          "record_matches": true,
+          "record_member_mismatch_count": 0
+        },
+        "matplotlib": {
+          "installed_count_matches": true,
+          "installed_file_count": 603,
+          "installed_tree_matches": true,
+          "record_matches": true,
+          "record_member_mismatch_count": 0
+        },
+        "numpy": {
+          "installed_count_matches": true,
+          "installed_file_count": 926,
+          "installed_tree_matches": true,
+          "record_matches": true,
+          "record_member_mismatch_count": 0
+        },
+        "osqp": {
+          "installed_count_matches": true,
+          "installed_file_count": 97,
+          "installed_tree_matches": true,
+          "record_matches": true,
+          "record_member_mismatch_count": 0
+        },
+        "pandas": {
+          "installed_count_matches": true,
+          "installed_file_count": 1522,
+          "installed_tree_matches": true,
+          "record_matches": true,
+          "record_member_mismatch_count": 0
+        },
+        "psutil": {
+          "installed_count_matches": true,
+          "installed_file_count": 17,
+          "installed_tree_matches": true,
+          "record_matches": true,
+          "record_member_mismatch_count": 0
+        },
+        "pytest": {
+          "installed_count_matches": true,
+          "installed_file_count": 92,
+          "installed_tree_matches": true,
+          "record_matches": true,
+          "record_member_mismatch_count": 0
+        },
+        "pyyaml": {
+          "installed_count_matches": true,
+          "installed_file_count": 25,
+          "installed_tree_matches": true,
+          "record_matches": true,
+          "record_member_mismatch_count": 0
+        },
+        "scipy": {
+          "installed_count_matches": true,
+          "installed_file_count": 1430,
+          "installed_tree_matches": true,
+          "record_matches": true,
+          "record_member_mismatch_count": 0
+        },
+        "threadpoolctl": {
+          "installed_count_matches": true,
+          "installed_file_count": 6,
+          "installed_tree_matches": true,
+          "record_matches": true,
+          "record_member_mismatch_count": 0
+        }
+      },
+      "package_mismatches": [],
+      "gate_evidence_mismatches": [],
+      "run_manifest_members": 7,
+      "run_manifest_mismatches": [],
+      "status_manifest_hash_matches": true,
+      "unexpected_changed_paths": []
+    },
+    "raw_files_sha256": {
+      "results/apex_workbench_nmpc_weights/independent_review/REVIEW.md": "b8d004a00b08e36467485f4a8a9e4b98fa9cae8ab2a79219a88f5e6cb4a1a097",
+      "results/apex_workbench_nmpc_weights/independent_review/review_record.json": "121256a1530eca3b055257a71b7d676f622af744e65599da03d659cdf4b7d750",
+      "results/apex_workbench_nmpc_weights/independent_review/static_audit.json": "fc895a8fd58a0db241023e64acc14a1f57d2326e2f5aa3aa377d7a99c960d6b4"
+    }
+  },
   "formal_verification_executed": false,
   "full_campaign_or_R0_work": false,
-  "next_step": "Commit tested source, seal software gate, one nominal attempt; inspect before at most one exploratory attempt.",
+  "next_step": "Primary bounded corrective decision and explicit replacement numerical authority; no automatic nominal retry or exploratory execution",
   "evidence_sha256": {
     "results/apex_workbench_nmpc_weights/software_tests_2.log": "0d709a773e5275f353b283764f9257f676b08c864d81ec44d532cdcaff869cd0",
     "results/apex_workbench_nmpc_weights/lint_initial.log": "d48e54adedb65461ba503947fd8d6d34658c4f93971e826b61178cf50f5a361b",
@@ -769,7 +970,19 @@
     "results/apex_workbench_nmpc_weights/nominal_attempt_driver.log": "7a7fac99a2be4ec9111afa0c4d417927f7ad7ed95d7b1f8ec1075edb2e10cd3e",
     "results/apex_workbench_nmpc_weights/admission_fix_tests.xml": "23669fd9130918fd5372f9add11f51f3cfb7a9055cfe3bfaa4e75fc247b0a9e5",
     "results/apex_workbench_nmpc_weights/admission_fix_tests.log": "88f6208647928a39a46a16685bb5996494f5d238a106aafbd9a641f54b8ac64b",
-    "results/apex_workbench_nmpc_weights/admission_fix_lint.log": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18"
+    "results/apex_workbench_nmpc_weights/admission_fix_lint.log": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+    "results/apex_workbench_nmpc_weights/software_gate.json": "1be5c19db51b82dcc4815f0a716ac306b145865d4bb7bb96b1f907ffb557357f",
+    "results/apex_workbench_nmpc_weights/BLOCKED.json": "66089de1966846b8a50c0238200fb92130ccd46be6a7f0935eb6b78ca02f457d",
+    "results/apex_workbench_nmpc_weights/claims/nominal.json": "eee9e7d515b319b91c54264db8f14350bbdfab6770914028f41a68cc9df63abf",
+    "results/apex_workbench_nmpc_weights/nominal_execution_driver.log": "560228c9be00a6ed08e4dcf976435aadd69e3130f5dc9f8f5563b7e4380b176a",
+    "results/apex_workbench_nmpc_weights/nominal_attempt_ref.json": "34d2351570bcf5fd7c992a66bf61d06f19379c8a6605beea465e77dfb59b0541",
+    "results/apex_workbench_nmpc_weights/blocked_audit/native_failure_stderr.txt": "37c6e7508513f611a9ebe896c418183741af1e7b3e43989fdf12d2532c43cbca",
+    "results/apex_workbench_nmpc_weights/blocked_audit/artifact_manifest.sha256": "396fa3972ddaac1d32bbcbe8d221a4bd67bc93fcbefe63db7cfcc817163c91c6",
+    "results/apex_workbench_nmpc_weights/blocked_audit/failure_analysis.json": "2134e0822996ae7fa484c8db2eb05bb418e426afa04474327b513041b7949808",
+    "results/apex_workbench_nmpc_weights/independent_review/static_audit.json": "fc895a8fd58a0db241023e64acc14a1f57d2326e2f5aa3aa377d7a99c960d6b4",
+    "results/apex_workbench_nmpc_weights/independent_review/review_record.json": "121256a1530eca3b055257a71b7d676f622af744e65599da03d659cdf4b7d750",
+    "results/apex_workbench_nmpc_weights/independent_review/REVIEW.md": "b8d004a00b08e36467485f4a8a9e4b98fa9cae8ab2a79219a88f5e6cb4a1a097",
+    "results/apex_workbench_nmpc_weights/blocked_audit/final_preservation.json": "b205c282d2678bfa488c26a143bd4b268e375f314f5f75bf7cb3673fcc4cf726"
   },
   "pre_execution_admission_correction": {
     "failure_log": "results/apex_workbench_nmpc_weights/nominal_attempt_driver.log",
@@ -796,5 +1009,172 @@
     "tools/apex_workbench/run_catalog.py": "4e974ea40940b2990f9b4416f97b8fe5fbde2ce6b335d3e49df3f4c422587f6d",
     "tools/apex_workbench/tests/test_nmpc_weight_lab.py": "7a81da8e9ad8b4d64cb583a6567e2e7069e776a62cb0a1f2b80688512c35c0b1",
     "tools/apex_workbench/tests/test_nmpc_weight_workspace.py": "4d9362d6e3a3ff9f085c0f1c49962a780262645765993684e6fb32afff7c299a"
+  },
+  "implementation_revision": "c745726fee6f4e33259aef3781ee5181d02afe08",
+  "nominal_worker_failure": {
+    "directory": "/Users/marwansaber/.codex/worktrees/nmpc-weight-m0/MPC_Controller_v1_IronManStyle/results/apex_workbench_nmpc_weights/runs/20261102T183317195331Z_2c738f769a2d412cb23c036e850b182f",
+    "run_id": "20261102T183317195331Z_2c738f769a2d412cb23c036e850b182f",
+    "source_revision": "c745726fee6f4e33259aef3781ee5181d02afe08",
+    "status": {
+      "record_version": 2,
+      "state": "failed",
+      "scientific_outcome": "failed",
+      "evidence_state": "valid",
+      "updated_utc": "2026-11-02T18:33:41.356855+00:00",
+      "error": "Worker exited 2",
+      "returncode": 2,
+      "wall_runtime_s": 11.755145791976247,
+      "sampled_peak_worker_rss_bytes": 212582400,
+      "sampled_peak_worker_threads": 4,
+      "sampling_note": "100 ms supervisor samples; worker guard polls at 50 ms; soft bounds",
+      "manifest_sha256": "5a2a9fd32be7c4aaba6a50aab69338521725759a1bcc8657ab20e76b75aa965c"
+    },
+    "source_of_stop": "worker resolved configuration guard, before make_mpc/plant/tracker/AsyncRunner construction",
+    "blocked_marker_sha256": "66089de1966846b8a50c0238200fb92130ccd46be6a7f0935eb6b78ca02f457d",
+    "claim_sha256": "eee9e7d515b319b91c54264db8f14350bbdfab6770914028f41a68cc9df63abf",
+    "software_gate_sha256": "1be5c19db51b82dcc4815f0a716ac306b145865d4bb7bb96b1f907ffb557357f",
+    "actual_native_result_available": false,
+    "no_simulated_endpoint_invented": true,
+    "failure_analysis": "results/apex_workbench_nmpc_weights/blocked_audit/failure_analysis.json",
+    "minimum_proposed_correction": "Canonical snapshot serialization on both sides; no change to scientific objects/parameters; test worker pre-construction request round-trip and non-treatment negatives",
+    "full_actual_resolved_diff": "UNAVAILABLE; sufficient tuple/list mismatch established statically and by stdlib serialization example",
+    "exception": "ValueError: Actual frozen resolved configuration differs from captured request",
+    "stderr_text": "Traceback (most recent call last):\n  File \"/Users/marwansaber/.codex/worktrees/nmpc-weight-m0/MPC_Controller_v1_IronManStyle/tools/apex_workbench/worker.py\", line 152, in main\n    summary = run_weight(directory, request[\"nmpc_capture\"])\n              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/marwansaber/.codex/worktrees/nmpc-weight-m0/MPC_Controller_v1_IronManStyle/tools/apex_workbench/nmpc_weight_worker.py\", line 298, in run\n    raise ValueError(\"Actual frozen resolved configuration differs from captured request\")\nValueError: Actual frozen resolved configuration differs from captured request\n"
+  },
+  "formal_verification_eligible": false,
+  "nominal_worker_artifact_sha256": {
+    "results/apex_workbench_nmpc_weights/runs/20261102T183317195331Z_2c738f769a2d412cb23c036e850b182f/request.json": "e6f58bf761688c7709a9bfbc4a7d98bb9bc62150762b81c801bf97de33dc4bfc",
+    "results/apex_workbench_nmpc_weights/runs/20261102T183317195331Z_2c738f769a2d412cb23c036e850b182f/stderr.log": "37c6e7508513f611a9ebe896c418183741af1e7b3e43989fdf12d2532c43cbca",
+    "results/apex_workbench_nmpc_weights/runs/20261102T183317195331Z_2c738f769a2d412cb23c036e850b182f/supervisor.json": "2777866b60ce9ef3c4bedf2f19c828d84eb9328fd99907d88717acb1de437cef",
+    "results/apex_workbench_nmpc_weights/runs/20261102T183317195331Z_2c738f769a2d412cb23c036e850b182f/worker.json": "b3ae0263cf2f9495fda4fd39b7bea19f0222acc5e35b1e8dc786128386a20f3f",
+    "results/apex_workbench_nmpc_weights/runs/20261102T183317195331Z_2c738f769a2d412cb23c036e850b182f/stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "results/apex_workbench_nmpc_weights/runs/20261102T183317195331Z_2c738f769a2d412cb23c036e850b182f/supervisor.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "results/apex_workbench_nmpc_weights/runs/20261102T183317195331Z_2c738f769a2d412cb23c036e850b182f/status.json": "18dd000d35d4c2a19ea618eb2a42f38ffff7eb864aa9d38bd40cfbc6607b9fe2",
+    "results/apex_workbench_nmpc_weights/runs/20261102T183317195331Z_2c738f769a2d412cb23c036e850b182f/execution.json": "6813cf84e72f6b83edebe8e3e782bedd997889f6dc4ca2dea68d6d84739d54f9",
+    "results/apex_workbench_nmpc_weights/runs/20261102T183317195331Z_2c738f769a2d412cb23c036e850b182f/artifacts.json": "5a2a9fd32be7c4aaba6a50aab69338521725759a1bcc8657ab20e76b75aa965c",
+    "results/apex_workbench_nmpc_weights/runs/20261102T183317195331Z_2c738f769a2d412cb23c036e850b182f/experiment/post_execution_identity.json": "3bf014711ce96e396bb9b50e53409303ce74a737c0e69923fad1cba96161deef"
+  },
+  "final_static_preservation": {
+    "schema": "apex-m0-blocked-final-static-preservation/1",
+    "mode": "STDLIB_FILE_HASH_AND_GIT_ONLY_NO_PROJECT_IMPORTS_TESTS_OR_EXECUTION",
+    "implementation_revision": "c745726fee6f4e33259aef3781ee5181d02afe08",
+    "base_revision": "5831f22f8d64a69efd119edd181802adcd82dde2",
+    "nonallowlisted_tracked": {
+      "count": 1023,
+      "mismatches": []
+    },
+    "frozen_runtime": {
+      "count": 333,
+      "mismatches": [],
+      "symlinks": []
+    },
+    "frozen_git_archive": {
+      "members": 333,
+      "exact_record_match": true
+    },
+    "reviewed_behavioral_source": {
+      "count": 10,
+      "working_bytes_mismatches": [],
+      "git_commit_mismatches": []
+    },
+    "original_primary_groups": {
+      "scientific_source_sha256": {
+        "count": 56,
+        "mismatches": []
+      },
+      "qualification_sha256": {
+        "count": 345,
+        "mismatches": []
+      },
+      "gp_archive_sha256": {
+        "count": 25,
+        "mismatches": []
+      },
+      "legacy_oval_sha256": {
+        "count": 4,
+        "mismatches": []
+      }
+    },
+    "original_C0": {
+      "bytes": 152600,
+      "sha256": "2bd7d2385e7e2072a04e5d952eff9af8861eb7e63f016138d5289573c411f2d5",
+      "matches": true
+    },
+    "retained_evidence_mismatches": [],
+    "nominal_artifact_mismatches": [],
+    "independent_review_sha256": {
+      "results/apex_workbench_nmpc_weights/independent_review/REVIEW.md": "b8d004a00b08e36467485f4a8a9e4b98fa9cae8ab2a79219a88f5e6cb4a1a097",
+      "results/apex_workbench_nmpc_weights/independent_review/review_record.json": "121256a1530eca3b055257a71b7d676f622af744e65599da03d659cdf4b7d750",
+      "results/apex_workbench_nmpc_weights/independent_review/static_audit.json": "fc895a8fd58a0db241023e64acc14a1f57d2326e2f5aa3aa377d7a99c960d6b4"
+    },
+    "claims": [
+      "nominal.json"
+    ],
+    "run_directories": [
+      "20261102T183317195331Z_2c738f769a2d412cb23c036e850b182f"
+    ],
+    "pre_sid_context": {
+      "path": "/Users/marwansaber/.codex/worktrees/pre-sid-r0-w1/MPC_Controller_v1_IronManStyle",
+      "initial_head": "b72c9f4d1b393d3071eb14ddbab8653fa15d1a98",
+      "current_head": "b72c9f4d1b393d3071eb14ddbab8653fa15d1a98",
+      "initial_tracked_diff_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "current_tracked_diff_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scope": "Read-only Git observation; another active thread can advance its HEAD. No R0 source or output writes by this task."
+    },
+    "changes_since_review": [
+      "docs/CODEX_HANDOFF.md",
+      "docs/apex_workbench_nmpc_weight_m0/WORK.md",
+      "docs/apex_workbench_nmpc_weight_m0/work_record.json",
+      "tools/apex_workbench/README.md"
+    ],
+    "unexpected_delivery_paths": [],
+    "all_scoped_byte_checks_pass": true
+  },
+  "delivery_scope": {
+    "containing_commit": "Documentation-only blocked outcome and independent review delivery",
+    "implementation_unchanged_since_review": true,
+    "changed_paths_since_review": [
+      "docs/CODEX_HANDOFF.md",
+      "docs/apex_workbench_nmpc_weight_m0/WORK.md",
+      "docs/apex_workbench_nmpc_weight_m0/work_record.json",
+      "tools/apex_workbench/README.md"
+    ],
+    "no_further_project_imports_tests_or_experiments_after_worker_failure": true,
+    "reviewed_candidate_is_not_accepted": true
+  },
+  "minimum_next_authority": {
+    "decision": "Primary bounded R1/R2 correction decision and explicit replacement numerical execution grant",
+    "R1": "Canonical JSON-compatible comparison snapshots and no-solve positive serialization/negative non-treatment mutation checks before controller construction; keep scientific values and identity checks",
+    "R2": "Validate canonical owned M0 directory, approved origin and absence of alias conflicts before any reconciliation/cancellation; archives and invalid records stay pure reads with negative route coverage",
+    "preserve": [
+      "Consumed nominal claim",
+      "Failed run and original exception",
+      "Original software gate",
+      "Global BLOCKED marker",
+      "Independent BLOCKED review"
+    ],
+    "repeat_nominal_under_existing_grant": false,
+    "exploratory_after_current_blocker": false,
+    "exact_new_revision_review_required": true
+  },
+  "minimum_formal_verification_recommendation": {
+    "currently_eligible": false,
+    "current_task_authorizes_formal_verification": false,
+    "prerequisites": [
+      "Separately authorized bounded corrections",
+      "Independent Engineering Review of exact corrected implementation",
+      "Separately authorized replacement genuine numerical outcomes and native evidence review",
+      "Explicit formal Verification authorization"
+    ],
+    "scope": [
+      "Applicable accepted Workbench, P and C0 functional regression",
+      "Frozen source, actual import, dependency and configuration identity",
+      "Native objective/successful-plan association, original requested/applied clocks and coverage when actually retained",
+      "Evidence hashes, same-size replacement invalidation and fail-closed currentness",
+      "Owned-root/origin/conflict routing, read-only archives and invalid evidence containment",
+      "Cancellation, owner-loss, resource limits, partial/failure preservation",
+      "Frozen scientific source and original historical evidence preservation"
+    ],
+    "no_automatic_campaign_or_retry": true
   }
 }

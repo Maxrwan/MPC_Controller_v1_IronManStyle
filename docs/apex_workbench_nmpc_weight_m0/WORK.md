@@ -1,5 +1,96 @@
 # M5-A / NMPC Weight Lab M0 — bounded WORK
 
+**Current outcome: NMPC_WEIGHT_LAB_M0_BLOCKED_PENDING_PRIMARY_DECISION.** The nominal worker
+launched at `c745726fee6f4e33259aef3781ee5181d02afe08` failed its resolved-configuration guard
+before `make_mpc`, tracker/plant construction or `AsyncRunner.run`. Its claim is consumed and its
+failed outcome/evidence remain intact. No optimizer solve or plant step occurred; no native raw
+result or simulated endpoint exists. The exploratory attempt is **NOT RUN — BLOCKED**. No retry,
+claim reset or further numerical execution is permitted under this delivery.
+
+Run identity: `20261102T183317195331Z_2c738f769a2d412cb23c036e850b182f` under the allowed ignored
+root's `runs/`. `status.json` and `execution.json` retain `failed`, return code 2; evidence_state
+is `valid` because failure artifacts were committed successfully. This is a software setup failure,
+not an observed NMPC/TVLQR, physical or controller-performance failure. The 11.755 s supervisor
+wall observation includes initialization/rejection/cleanup and is not a solver timing measurement.
+
+Read-only failure analysis in `blocked_audit/failure_analysis.json` establishes a sufficient
+serialization mismatch: frozen `AsyncConfig.failed_plan_ids` defaults to tuple `()`, which
+`dataclasses.asdict(sim)` preserves, while the probe/request JSON represents it as list `[]`.
+The worker compares these two representations directly. The full actual in-memory resolved object
+was not saved on rejection, so this is not an invented complete observed parameter diff.
+The minimum proposed correction is canonical snapshot serialization at both comparison boundaries,
+with positive round-trip and negative non-treatment-difference tests before controller construction;
+do not change the actual frozen configuration, equations, thresholds or parameters.
+
+All 333 frozen runtime members and 54 imported APEX module hashes remain correct. Post-record flags
+confirm unchanged adapter/environment. Native pre-execution identity/result/journals are absent
+because rejection preceded their recording frontier. The two recorded processes are gone and the
+execution lease is free. The global `BLOCKED.json` and nominal claim remain unchanged.
+
+## Independent Engineering Review — BLOCKED
+
+A separate reviewer context inspected exact candidate `c745726fee6f4e33259aef3781ee5181d02afe08`.
+The post-failure review used only static source/Git and standard-library JSON/XML/AST/hash inspection;
+it performed no project imports, tests, UI execution, controller construction, solves or plant steps.
+Its findings and evidence are embedded in [the machine record](work_record.json).
+
+| Finding | Decision and direct evidence | Minimum proposed correction, not implemented |
+|---|---|---|
+| R1 / P1: native tuple versus captured JSON list | BLOCKED. `nmpc_weight_worker.py:173-176,297-298,444` compares native `asdict(sim)` with decoded captured JSON. Frozen `asynchronous.py:32` defaults `failed_plan_ids` to `()`, while the retained request has `[]`. The real worker stopped at this guard. This is a sufficient cause; the full rejected native snapshot was not retained. | One finite JSON-compatible comparison schema at capture and execution, with a positive real serialization-boundary check and negative non-treatment mutation checks before `make_mpc`. Preserve scientific objects and identity guards. |
+| R2 / P1: lifecycle writes before archive ownership validation | BLOCKED. `workspace.py:258-260` routes by unverified adapter metadata; `nmpc_weight_panels.py:98-117` calls `jobs.status_for` and offers cancellation before `lab.read_run` checks the path. `jobs.py:232-239,203-228,141-184` can reconcile/finalize a nonterminal non-owned record before quarantine. This is a statically reachable defect; no historical archive alteration was observed or attempted. | Validate canonical M0 owned root, origin and absence of alias conflicts before any status reconciliation/cancellation. Invalid/archive routes must remain pure reads. Add negative routing coverage. |
+
+The reviewer rehashed all 333 frozen runtime members, 1,023 nonallowlisted tracked baseline files,
+1,064 retained import identities and ten dependency inventories. No mismatches were found. The
+63 scientific file identities plus two scientific namespaces include frozen script helpers; the
+54 APEX-only file count above is the narrower `src/apex` subset. All 541 preexisting M0 output
+files were preserved during review. The seven manifest members and failure manifest anchor matched.
+These checks establish source/evidence integrity within their stated scope, not successful execution.
+
+The parent's final static preservation audit separately rehashed the original primary groups:
+56 accepted scientific files, 345 qualification files, 25 P-archive files, four legacy oval files
+and the original 152,600-byte C0 artifact. All match their preserved baselines. The 1,023
+nonallowlisted tracked files and all 333 frozen runtime members also match, and all ten behavioral
+source/test files still match the reviewed commit. The active Pre-SID R0 HEAD and tracked diff
+match their initial read-only observation; no R0 files or artifacts were modified by this task.
+This is a scoped content audit, not a claim to have rehashed every historical result or established
+successful new simulation behavior. `blocked_audit/final_preservation.json` has SHA-256
+`b205c282d2678bfa488c26a143bd4b268e375f314f5f75bf7cb3673fcc4cf726` under the ignored M0 root;
+its contents and hash are retained in the machine record.
+
+The retained software evidence is 26 passes at the initial producer and eight separately passed
+affected admission checks at this candidate. They are not a combined 34-case invocation. Stubbed
+worker coverage missed the actual serialized/native boundary; these passes cannot establish a
+genuine NMPC run, native objective association or applied-command chronology. The review also
+withholds an unrestricted archive-read-only/ownership compatibility pass because of R2.
+
+Raw independent files remain under ignored
+`results/apex_workbench_nmpc_weights/independent_review/`:
+
+- `REVIEW.md`: SHA-256 `b8d004a00b08e36467485f4a8a9e4b98fa9cae8ab2a79219a88f5e6cb4a1a097`.
+- `review_record.json`: SHA-256 `121256a1530eca3b055257a71b7d676f622af744e65599da03d659cdf4b7d750`.
+- `static_audit.json`: SHA-256 `fc895a8fd58a0db241023e64acc14a1f57d2326e2f5aa3aa377d7a99c960d6b4`.
+
+## Required Primary decision and deferred Verification
+
+This candidate is **not eligible for formal Verification**. Primary must separately authorize
+bounded R1/R2 corrections and any replacement execution budget. Preserve the consumed nominal
+claim, failure, gate and original BLOCKED marker; exploratory execution remains blocked. This
+delivery makes documentation changes only after the failed worker and exact-candidate review.
+
+After authorized corrections, request review of the exact new revision and focused no-solve
+serialization/ownership negatives. Only a new explicit experiment grant can establish genuine
+nominal/treatment native outcomes, objective/plan association, requested/applied chronology and
+coverage. If review then permits a separately authorized formal Verification, its minimum scope
+includes applicable Workbench/P/C0 functional regression, source/import/dependency/currentness and
+artifact checks, archive ownership/read-only routing, cancellation/owner-loss/partial-result
+handling and preservation. No old pass count substitutes for these outstanding checks. No full
+Verification, qualification campaign or later feature work started here.
+
+## Historical software-gate checkpoint
+
+The following sections preserve the pre-execution checkpoint and admission correction. Their
+then-pending experiment statements are superseded by the failed outcome and BLOCKED review above.
+
 **Software gates passed; bounded numerical attempts not started in this initial source delivery.**
 Workbench base `5831f22f8d64a69efd119edd181802adcd82dde2`; isolated branch
 `codex/m5a-nmpc-weight-m0`. Frozen scientific source `48adbdf64d492592d15e23c917aca71fa58aa8a5`.
