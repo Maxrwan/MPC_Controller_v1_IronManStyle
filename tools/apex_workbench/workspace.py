@@ -9,10 +9,12 @@ import streamlit as st
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 
 from tools.apex_workbench import (  # noqa: E402  # noqa: E402
+    c0_archive,
     c0_panels,
     gp_archive,
     gp_panels,
     jobs,
+    nmpc_weight_panels,
     run_catalog,
 )
 from tools.apex_workbench import engineering_views as views  # noqa: E402
@@ -20,11 +22,16 @@ from tools.apex_workbench import recorded_view as recorded  # noqa: E402
 from tools.apex_workbench import workspace_panels as panels
 from tools.apex_workbench.configuration import (  # noqa: E402
     ADAPTERS,
+    ARCHIVE_ROOT,
     BOUNDS,
     DEFAULTS,
     ROOT,
     validate,
 )
+
+# Fixed C0 hashes/contract checks remain unchanged; this is a read-only evidence mount.
+# It never adds the primary checkout's src/scripts to scientific worker search paths.
+c0_archive.ROOT = ARCHIVE_ROOT
 
 st.set_page_config(page_title="APEX Engineering Workspace", page_icon="🏎", layout="wide")
 st.title("APEX Engineering Workspace")
@@ -35,7 +42,7 @@ if st.session_state.pop("prepare_oval", False):
     st.session_state["execution_mode"] = "lqr_baseline"
     for name, value in {**DEFAULTS["lqr_baseline"], "track": "oval"}.items():
         st.session_state["lqr_baseline_" + name] = value
-catalog = run_catalog.discover(include_racing=True)
+catalog = run_catalog.discover(include_racing=True, include_nmpc=True)
 by_key = {run.key: run for run in catalog.runs}
 pending = st.session_state.pop("pending_directory", None)
 if pending:
@@ -78,6 +85,10 @@ def selector(label, key):
 
 if page == "Home":
     st.subheader("Engineering home")
+    if st.button("Open experimental NMPC Weight Lab M0"):
+        st.session_state["execution_mode"] = "nmpc_weight_lab"
+        st.session_state["next_view"] = "Run"
+        st.rerun()
     if st.button("Inspect retained C0 descriptive-only archive"):
         st.session_state["next_view"] = "Inspect"
         st.session_state["inspect_archive"] = "C0 descriptive-only record"
@@ -106,9 +117,15 @@ if page == "Home":
     with st.expander("Experiment descriptions"):
         for adapter in ADAPTERS:
             st.write(ADAPTERS[adapter])
-            panels.description(adapter)
+            if adapter == "nmpc_weight_lab":
+                st.caption(
+                    "Genuine source-isolated NMPC/TVLQR; one fixed two-preset "
+                    "experimental M0 authorization, no qualification."
+                )
+            else:
+                panels.description(adapter)
     st.info(
-        "Unavailable here: NMPC/TVLQR/async execution, arbitrary telemetry import, "
+        "Unavailable here: unrestricted NMPC/TVLQR/async execution, arbitrary telemetry import, "
         "physical telemetry, Safety commands and proposed racing-scenario execution."
     )
     try:
@@ -164,6 +181,9 @@ elif page == "Run":
     adapter = st.selectbox(
         "Execution mode", list(ADAPTERS), format_func=ADAPTERS.get, key="execution_mode"
     )
+    if adapter == "nmpc_weight_lab":
+        nmpc_weight_panels.run_panel()
+        st.stop()
     if adapter == "dynamic_lab":
         from tools.apex_workbench.lab_configuration import CASES, request_for, resolve
 
@@ -235,6 +255,9 @@ elif page == "Inspect":
         c0_panels.inspect()
         st.stop()
     run = selector("Run", "inspect_run")
+    if run and run.adapter == "nmpc_weight_lab":
+        nmpc_weight_panels.inspect(run.directory)
+        st.stop()
     if run and run.adapter == gp_archive.ADAPTER:
         gp_panels.inspect(run)
         st.stop()
@@ -292,7 +315,15 @@ elif page == "Inspect":
 
 else:
     st.subheader("Compare retained runs")
-    compare_keys = [key for key in by_key if by_key[key].adapter != gp_archive.ADAPTER]
+    comparison_source = st.radio(
+        "Comparison source", ["Accepted Workbench runs", "NMPC Weight Lab M0 (unqualified)"]
+    )
+    if comparison_source == "NMPC Weight Lab M0 (unqualified)":
+        nmpc_weight_panels.compare_panel()
+        st.stop()
+    compare_keys = [
+        key for key in by_key if by_key[key].adapter not in {gp_archive.ADAPTER, "nmpc_weight_lab"}
+    ]
     if "compare_runs" in st.session_state:
         st.session_state["compare_runs"] = [
             key for key in st.session_state["compare_runs"] if key in compare_keys

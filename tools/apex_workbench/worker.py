@@ -143,6 +143,27 @@ def main(directory: Path, lock_fd: int) -> int:
 
     # This guard and the inherited lock remain effective until this process exits.
     start_guard(directory, lock_fd)
+    request = json.loads((directory / "request.json").read_text())
+    if request["adapter"] == "nmpc_weight_lab":
+        # Branch BEFORE Workbench src/scripts or any numerical module is imported.
+        from tools.apex_workbench.nmpc_weight_worker import run as run_weight
+
+        try:
+            summary = run_weight(directory, request["nmpc_capture"])
+            (directory / "worker_result.json").write_text(json.dumps(summary, indent=2) + "\n")
+            return 0
+        except Exception as error:
+            if isinstance(error, (ValueError, ImportError)):
+                from tools.apex_workbench.nmpc_weight_lab import OUTPUT
+                from tools.apex_workbench.storage import write_json
+
+                blocked = OUTPUT / "BLOCKED.json"
+                if not blocked.exists():
+                    write_json(
+                        blocked, {"run": str(directory), "reason": repr(error)}, exclusive=True
+                    )
+            traceback.print_exc()
+            return 2
     sys.path[:0] = [str(ROOT / "scripts"), str(ROOT / "src")]
     environment = {"python": sys.version, "platform": sys.platform}
     if sys.platform == "darwin":

@@ -94,6 +94,28 @@ Parameters are synthetic, never measured or identified APEX data. Linear tires r
 
 ## Use
 
+**Experimental NMPC Weight Lab M0:** Home → **Open experimental NMPC Weight Lab M0**, or Run →
+**NMPC Weight Lab M0**. Exactly two presets use the genuine frozen Architecture-A NMPC/TVLQR
+controller on the same synthetic GP gamma2 / N8 / dt0.1 / RK4×4 / 2.0 s scenario. Nominal uses
+stage lateral/heading scale2; exploratory uses scale1. Terminal, plant, tires, constraints,
+TVLQR, reference and solver/warm-start configuration stay unchanged. Complete actual configuration,
+frozen source/module/dependency identities and the software gate precede admission. Each preset
+has one append-only authorized attempt; consumed/failed attempts cannot be retried automatically.
+All new M0 outputs, runtime copies and the checkout's shared execution lease live under
+`results/apex_workbench_nmpc_weights/`. The existing worker/ownership/resource guards are reused;
+restart older Workbench processes before using this changed checkout. Original output paths for
+other modes stay unchanged. Managed worktrees read accepted archives from the primary checkout
+read-only; that directory is never a scientific import root for M0.
+
+Inspect retains native state/command histories, separate requested/application clocks, optimizer
+events and controller-native post-solve objective components. It shows failed/partial coverage and
+retained callback journals without reconstructing missing results. Compare → **NMPC Weight Lab M0
+(unqualified)** offers only the nominal/exploratory pair with identical non-treatment snapshots;
+differently weighted objective totals are not compared as a performance score. All outputs remain
+**EXPERIMENTAL / UNQUALIFIED — synthetic**. This is not physical or controller-performance
+qualification. See the [bounded contract](../../docs/apex_workbench_nmpc_weight_m0/EXPERIMENT_CONTRACT.md)
+and [WORK record](../../docs/apex_workbench_nmpc_weight_m0/WORK.md). No M5-B, SID or hardware capability.
+
 **C0 descriptive-only historical inspection:** choose **Inspect retained C0 descriptive-only
 archive** on Home, or **Inspect → Inspection source → C0 descriptive-only record**. This separate
 read-only view accepts only the original 152,600-byte, SHA-pinned `original155.json`. It is not a

@@ -1,14 +1,29 @@
 """Small, explicit input contract for existing experiment entry points."""
 
 import math
+import subprocess
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
+
+
+def archive_root():
+    """Read-only retained artifacts in the primary checkout; never a scientific import root."""
+    common = subprocess.check_output(
+        ["git", "rev-parse", "--git-common-dir"], cwd=ROOT, text=True
+    ).strip()
+    directory = Path(common)
+    directory = directory if directory.is_absolute() else ROOT / directory
+    return directory.resolve().parent
+
+
+ARCHIVE_ROOT = archive_root()
 RUNS = ROOT / "results/apex_workbench"
 ADAPTERS = {
     "dynamic_demo": "Dynamic bicycle · open loop",
     "lqr_baseline": "LQR/PI · tracking",
     "dynamic_lab": "Vehicle Dynamics Laboratory · finite synthetic cases",
+    "nmpc_weight_lab": "NMPC Weight Lab M0 · experimental / unqualified",
 }
 DEFAULTS = {
     "dynamic_demo": {"duration": 10.0, "dt": 0.005},
@@ -31,6 +46,10 @@ BOUNDS = {
 
 
 def validate(adapter: str, values: dict) -> dict:
+    if adapter == "nmpc_weight_lab":
+        from tools.apex_workbench.nmpc_weight_lab import validate as validate_weight
+
+        return validate_weight(values)
     if adapter == "dynamic_lab":
         from tools.apex_workbench.lab_configuration import validate as validate_lab
 

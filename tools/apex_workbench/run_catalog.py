@@ -6,10 +6,10 @@ from dataclasses import dataclass
 from math import isfinite
 from pathlib import Path
 
-from tools.apex_workbench.configuration import ROOT, RUNS
+from tools.apex_workbench.configuration import ARCHIVE_ROOT, RUNS
 
 OWNED_ROOT = RUNS
-QUALIFICATION_ROOT = ROOT / "results/apex_workbench_qualifications"
+QUALIFICATION_ROOT = ARCHIVE_ROOT / "results/apex_workbench_qualifications"
 ACCEPTED_CAMPAIGN = "v0_2_reviewed_20261029"
 METADATA_BYTES = 16 * 1024**2  # Existing worker single-file ceiling; an I/O safeguard only.
 
@@ -108,13 +108,23 @@ def _candidate(directory, origin):
     )
 
 
-def discover(*, owned_root=None, qualification_root=None, include_racing=False):
+def discover(*, owned_root=None, qualification_root=None, include_racing=False, include_nmpc=False):
     """Only configured owned runs and the accepted qualification's original run directories."""
     owned = Path(OWNED_ROOT if owned_root is None else owned_root).resolve()
     qualified = Path(
         QUALIFICATION_ROOT if qualification_root is None else qualification_root
     ).resolve()
     candidates, issues, qualifications = [], [], []
+    if include_nmpc:
+        from tools.apex_workbench.nmpc_weight_lab import RUNS as weight_runs
+
+        if weight_runs.is_dir() and not weight_runs.is_symlink():
+            for path in sorted(weight_runs.iterdir(), reverse=True):
+                if path.is_dir() and not path.name.startswith("."):
+                    if path.is_symlink() or path.resolve().parent != weight_runs.resolve():
+                        issues.append("Excluded linked M0 directory: " + str(path))
+                    else:
+                        candidates.append(_candidate(path.resolve(), "owned"))
     if owned.is_dir():
         for path in sorted(owned.iterdir(), reverse=True):
             if path.is_dir() and not path.name.startswith("."):
@@ -207,7 +217,7 @@ def discover(*, owned_root=None, qualification_root=None, include_racing=False):
                 tuple(sorted({r["directory"] for r in rows})),
                 run_id,
                 text(request.get("adapter")),
-                text(effective.get("case_id", "")),
+                text(effective.get("case_id", effective.get("preset", ""))),
                 text(status.get("state")),
                 text(status.get("scientific_outcome")),
                 text(status.get("evidence_state")),
@@ -222,12 +232,13 @@ def discover(*, owned_root=None, qualification_root=None, include_racing=False):
         from tools.apex_workbench import gp_archive
 
         # One declared historical identity, no recursive import or copies counted as executions.
+        gp_directory = ARCHIVE_ROOT / "results/task007d/vis/vis1r_c699057/controlled_A"
         runs.append(
             Run(
                 "gp-" + gp_archive.MANIFEST_SHA256,
-                gp_archive.DIRECTORY,
+                gp_directory,
                 ("P historical archive",),
-                (gp_archive.DIRECTORY,),
+                (gp_directory,),
                 "controlled_A",
                 gp_archive.ADAPTER,
                 "controlled_A",

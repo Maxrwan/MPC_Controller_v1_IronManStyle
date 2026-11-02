@@ -1,3 +1,29 @@
+# Current handoff — M5-A software gates passed; bounded experiments pending
+
+**M0_SOFTWARE_GATES_PASSED_PENDING_BOUNDED_EXPERIMENTS.** Primary authorizes bounded WORK on
+isolated `codex/m5a-nmpc-weight-m0` from exact base `5831f22f8d64a69efd119edd181802adcd82dde2`.
+[Contract](apex_workbench_nmpc_weight_m0/EXPERIMENT_CONTRACT.md),
+[WORK](apex_workbench_nmpc_weight_m0/WORK.md),
+[machine record](apex_workbench_nmpc_weight_m0/work_record.json).
+Source-isolated frozen controller `48adbdf…`; nominal CostScales.lateral2 versus exploratory1,
+with only stage heading/lateral coefficients changed. Native objective evaluation/association,
+unchanged constraints, correct source/import/environment identities and owned guard order checked.
+
+Final focused software invocation: 26 passed, zero failures/errors/skips. Earlier 16-pass/6-setup-error,
+22-pass and24-pass invocations remain separate; a literal-only line-wrap check passed one callback
+test separately. No numerical optimizer solve or plant step has run yet.
+All outputs/runtime copies are under ignored `results/apex_workbench_nmpc_weights/`. Existing P/C0
+viewers operate on original retained evidence read-only; accepted C0 G1 remains OPEN. Active
+Pre-SID paths and frozen scientific source are untouched. Scope-specific architecture is documented
+in the allowed experiment contract/WORK; docs/DECISIONS.md is outside this task's exact allowlist.
+
+Next within this same authorized WORK: one nominal2.0s attempt, inspect its outcome, then at most
+one exploratory2.0s attempt if no source/scientific-contract blocker. No retries/retuning; preserve
+all failures/partials and request exact-candidate independent review afterwards. No full formal
+Verification, M5-B, SID, Safety or hardware. PR #1 stays draft/unmerged.
+
+---
+
 # Current handoff — Primary C0 descriptive adapter acceptance recorded
 
 **C0_DESCRIPTIVE_ADAPTER_ACCEPTED_WITHIN_VERIFIED_SCOPE.** Primary APEX accepted the exact implementation `d246f1e9639737e4ecbbd12f8bd0c9b2f1574712` on 2 November 2026, based on independent [Engineering Review](reviews/apex_workbench_v0_3_d/c0_adapter/iteration_2/REVIEW.md) and [formal scoped Verification](reviews/apex_workbench_v0_3_d/c0_adapter/VERIFICATION.md), verification delivery `d14f9ade48e9fdd3c9bb904cd9b58fd504e73035`. The [Primary acceptance record](reviews/apex_workbench_v0_3_d/c0_adapter/PRIMARY_ACCEPTANCE.md) is authoritative for the accepted scope and limitations.

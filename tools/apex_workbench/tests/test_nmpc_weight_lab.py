@@ -1,0 +1,312 @@
+"""M0 source/configuration/accounting and disposable evidence checks; never solve/run a plant."""
+
+import copy
+import os
+from pathlib import Path
+
+import pytest
+
+from tools.apex_workbench import jobs, lifecycle, storage
+from tools.apex_workbench import nmpc_weight_lab as lab
+from tools.apex_workbench import nmpc_weight_worker as worker
+from tools.apex_workbench.configuration import validate
+
+
+@pytest.fixture(scope="session")
+def preflights():
+    result = {p: lab.probe(p, checks=True) for p in lab.PRESETS}
+    for preset, report in result.items():
+        storage.write_json(lab.OUTPUT / (preset + "_software_probe.json"), report)
+    return result
+
+
+def test_actual_frozen_imports_dependencies_and_algebra(preflights):
+    expected = lab.source_hashes()
+    for report in preflights.values():
+        assert report["software_checks"] == {
+            "stage_unit_error_tracking": [409.0, 209.0],
+            "terminal_same_input": 8.0,
+            "bounds_identical": True,
+            "optimizer_solves": 0,
+            "plant_steps": 0,
+            "fixture": "algebraic unit-error cost test, not a physical trajectory",
+        }
+        assert report["native"]["mode_name"] == "single" and report["native"]["set_status"] == 0
+        assert report["environment"]["packages"]["casadi"]["version"] == "3.8.1"
+        assert report["environment"]["packages"]["numpy"]["installed_files"] > 0
+        modules = report["imports"]
+        for name, identity in modules.items():
+            if name.split(".")[0] not in worker.PREFIXES:
+                continue
+            if "path" in identity:
+                path = Path(identity["path"])
+                assert path.is_relative_to(lab.RUNTIME)
+                assert expected[str(path.relative_to(lab.RUNTIME))] == identity["sha256"]
+            else:
+                assert all(Path(p).is_relative_to(lab.RUNTIME) for p in identity["namespace_paths"])
+        assert "apex.control.mpc.controller" in modules
+        assert "apex.simulation.asynchronous" in modules
+        assert modules["numpy"]["path"] != str(lab.ROOT / "src/numpy.py")
+
+
+def test_exact_only_treatment_and_original_scenario(preflights):
+    a, b = [copy.deepcopy(preflights[p]["resolved"]) for p in lab.PRESETS]
+    assert a["stage_coefficients"] == [4, 4, 1, 200, 200] and b["stage_coefficients"] == [
+        4,
+        4,
+        1,
+        100,
+        100,
+    ]
+    assert (
+        a["configuration"]["costs"]["lateral"] == 2.0
+        and b["configuration"]["costs"]["lateral"] == 1.0
+    )
+    for resolved in (a, b):
+        assert resolved["configuration"]["horizon"] == 8 and resolved["configuration"]["dt"] == 0.1
+        assert (
+            resolved["configuration"]["substeps"] == 4
+            and resolved["configuration"]["costs"]["terminal"] == 1
+        )
+        assert (
+            resolved["simulation"]["duration"] == 2.0
+            and resolved["simulation"]["committed_prefix_prediction"] is False
+        )
+        assert resolved["timing"]["planner_pattern_s"] == [0.035, 0.055, 0.045, 0.025]
+        assert resolved["timing"]["codriver_delay_s"] == 0.005
+        assert resolved["initial_state"] == [
+            5.253846582838669,
+            0.0,
+            0.9966576677921577,
+            0.034598592705642695,
+            1.0,
+            -0.11268618155631815,
+        ]
+        assert resolved["warm_start"] is True
+        resolved.pop("preset")
+        resolved.pop("stage_coefficients")
+        resolved["configuration"]["costs"].pop("lateral")
+    assert a == b
+
+
+@pytest.mark.parametrize(
+    "values",
+    [
+        {},
+        {"preset": "other"},
+        {"preset": []},
+        {"preset": "nominal", "lateral": 3},
+        {"preset": "../nominal"},
+    ],
+)
+def test_unsupported_configuration_is_rejected(values):
+    with pytest.raises(ValueError):
+        validate(lab.ADAPTER, values)
+
+
+def test_import_guards_reject_other_checkout_namespace_and_dependency(tmp_path):
+    path = tmp_path / "src/apex/example.py"
+    path.parent.mkdir(parents=True)
+    path.write_text("value=1\n")
+    expected = {"src/apex/example.py": storage.sha256(path)}
+    guard = worker.FrozenImports(tmp_path, expected)
+    guard.check(path)
+    with pytest.raises(ImportError):
+        guard.check(lab.ROOT / "src/apex/control/mpc/controller.py")
+    with pytest.raises(ImportError):
+        guard.namespace([str(path.parent), str(lab.ROOT / "src/apex")])
+    with pytest.raises(ImportError):
+        guard.namespace([str(lab.ROOT / "src/apex")])
+    with pytest.raises(ImportError):
+        guard.check_dependency(path)
+    path.write_text("value=2\n")
+    with pytest.raises(ImportError):
+        guard.check(path)
+
+
+def test_runtime_change_and_missing_file_reject_disposable_copy(tmp_path, monkeypatch):
+    monkeypatch.setattr(lab, "RUNTIME", tmp_path)
+    path = tmp_path / "example.py"
+    path.write_text("original\n")
+    expected = {"example.py": storage.sha256(path)}
+    lab.verify_runtime(tmp_path, expected)
+    path.write_text("altered!\n")
+    with pytest.raises(ValueError):
+        lab.verify_runtime(tmp_path, expected)
+    path.unlink()
+    with pytest.raises(ValueError):
+        lab.verify_runtime(tmp_path, expected)
+
+
+def test_one_attempt_claim_each_and_no_retry(tmp_path, monkeypatch):
+    monkeypatch.setattr(lab, "OUTPUT", tmp_path)
+    monkeypatch.setattr(lab, "verify_gate", lambda: {})
+    lab.claim("nominal", "fixture_nominal")
+    with pytest.raises(FileExistsError):
+        lab.claim("nominal", "fixture_retry")
+    lab.claim("exploratory", "fixture_exploratory")
+    with pytest.raises(ValueError):
+        lab.claim("../outside", "bad")
+    assert len(list((tmp_path / "claims").glob("*.json"))) == 2
+
+
+def test_objective_accounting_never_carries_stale_success_to_failure():
+    event = {
+        "plan_id": 3,
+        "solver_attempted": True,
+        "success": True,
+        "release_time": 0.3,
+        "status": "Solve_Succeeded",
+        "objective_components": {"state_tracking": 2.0, "total": 2.0},
+    }
+    prediction = {"states": [[1, 0, 0, 0, 0, 0]], "controls": [[0, 0]]}
+    observed = worker.solution_observation(event, prediction)
+    assert (
+        observed["plan_id"] == 3
+        and observed["objective_components"] == event["objective_components"]
+    )
+    assert observed["prediction"] == prediction and "not native IPOPT" in observed["accounting"]
+    for failed in [
+        dict(event, plan_id=4, success=False),
+        dict(event, plan_id=5, solver_attempted=False),
+    ]:
+        result = worker.solution_observation(failed, prediction)
+        assert result["objective_components"] is None and "prediction" not in result
+
+
+def test_native_tracker_proposal_is_not_relabeled_as_applied():
+    diagnostics = {"desired": [0.02, 0.0], "error": [0, 0, 0, 0, 0, 0]}
+    record = worker.request_observation(0.1, 3, [0.01, 0.0], diagnostics)
+    assert record["time"] == 0.1 and record["plan_id"] == 3 and record["proposed"] == [0.01, 0.0]
+    assert record["diagnostics"] is diagnostics
+    assert "not an applied command" in record["availability"]
+    assert "application_time" not in record and "applied" not in record
+
+
+def test_native_early_stop_is_distinct_from_requested_duration_completion():
+    assert lab.coverage({"end_time": 2.0, "stop_reason": "duration", "failure": None})[
+        "requested_duration_completed"
+    ]
+    assert not lab.coverage(
+        {"end_time": 0.8, "stop_reason": "fallback_outside_validity_domain", "failure": None}
+    )["requested_duration_completed"]
+    assert lab.coverage({"failure": "source/native failure"})["native_end_time_s"] is None
+
+
+def test_shared_lease_and_actual_pid_birth_identity(tmp_path, monkeypatch):
+    monkeypatch.setattr(jobs, "LEASE_ROOT", tmp_path)
+    with jobs.execution_lock() as lease:
+        assert os.fstat(lease.fileno()).st_ino == (tmp_path / ".execution.lock").stat().st_ino
+        with pytest.raises(RuntimeError):
+            jobs.execution_lock()
+    record = lifecycle.identity(os.getpid(), "jobs", tmp_path)
+    assert lifecycle.owned_process(record, "jobs", tmp_path) is not None
+    assert (
+        lifecycle.owned_process(dict(record, created=record["created"] - 1), "jobs", tmp_path)
+        is None
+    )
+    assert lifecycle.owned_process(record, "jobs", tmp_path / "other") is None
+
+
+def fixture_run(tmp_path, preflights, preset="nominal"):
+    root = tmp_path / "runs"
+    directory = root / ("software_fixture_" + preset)
+    directory.mkdir(parents=True)
+    gate = {"resolved_snapshots": {p: r["resolved"] for p, r in preflights.items()}}
+    storage.write_json(tmp_path / "software_gate.json", gate)
+    (tmp_path / "claims").mkdir(exist_ok=True)
+    storage.write_json(
+        tmp_path / "claims" / (preset + ".json"), {"run_id": directory.name, "source": lab.SOURCE}
+    )
+    request = {
+        "record_version": 2,
+        "run_id": directory.name,
+        "adapter": lab.ADAPTER,
+        "effective": {"preset": preset},
+        "prediction": "software fixture; no scientific execution",
+        "nmpc_capture": {
+            "runtime": str(lab.RUNTIME),
+            "source": lab.SOURCE,
+            "profile_sha256": lab.PROFILE_SHA,
+            "source_sha256": lab.source_hashes(),
+            "resolved": preflights[preset]["resolved"],
+            "software_gate_sha256": storage.sha256(tmp_path / "software_gate.json"),
+        },
+    }
+    for name, value in [("request.json", request), ("worker.json", {}), ("supervisor.json", {})]:
+        storage.write_json(directory / name, value)
+    (directory / "experiment").mkdir()
+    (directory / "experiment/plant_segments.jsonl").write_text('{"software_fixture":true}\n')
+    jobs.finalize(directory, "cancelled", error="software fixture cancellation; no controller")
+    return directory
+
+
+def test_partial_cancellation_and_fresh_hash_currentness(tmp_path, monkeypatch, preflights):
+    directory = fixture_run(tmp_path, preflights)
+    monkeypatch.setattr(lab, "OUTPUT", tmp_path)
+    monkeypatch.setattr(lab, "RUNS", tmp_path / "runs")
+    view = lab.read_run(directory)
+    assert view["raw"] is None and view["status"]["state"] == "cancelled"
+    lab.current(view)
+    path = directory / "experiment/plant_segments.jsonl"
+    info = path.stat()
+    path.write_bytes(path.read_bytes().replace(b"true", b"null"))
+    os.utime(path, ns=(info.st_atime_ns, info.st_mtime_ns))
+    with pytest.raises(ValueError):
+        lab.current(view)
+
+
+def test_external_authority_and_claim_changes_quarantine(tmp_path, monkeypatch, preflights):
+    directory = fixture_run(tmp_path, preflights)
+    monkeypatch.setattr(lab, "OUTPUT", tmp_path)
+    monkeypatch.setattr(lab, "RUNS", tmp_path / "runs")
+    view = lab.read_run(directory)
+    claim = tmp_path / "claims/nominal.json"
+    claim.write_text("{}")
+    with pytest.raises(ValueError):
+        lab.current(view)
+
+
+def test_completed_missing_native_result_cannot_be_promoted(tmp_path, monkeypatch, preflights):
+    directory = fixture_run(tmp_path, preflights)
+    monkeypatch.setattr(lab, "OUTPUT", tmp_path)
+    monkeypatch.setattr(lab, "RUNS", tmp_path / "runs")
+    status = storage.read_json(directory / "status.json")
+    status.update(state="completed", scientific_outcome="completed")
+    storage.write_json(directory / "status.json", status)
+    with pytest.raises(ValueError):
+        lab.read_run(directory)
+
+
+@pytest.mark.parametrize("failure", [False, True])
+def test_worker_guard_precedes_isolated_branch_and_source_failure_blocks(
+    tmp_path, monkeypatch, failure
+):
+    from tools.apex_workbench import worker as entry
+
+    directory = tmp_path / "software_worker_fixture"
+    directory.mkdir()
+    storage.write_json(directory / "request.json", {"adapter": lab.ADAPTER, "nmpc_capture": {}})
+    monkeypatch.setattr(jobs, "LEASE_ROOT", tmp_path)
+    monkeypatch.setattr(lab, "OUTPUT", tmp_path)
+    monkeypatch.setattr(entry.resource, "setrlimit", lambda *args: None)
+    events = []
+    with jobs.execution_lock() as lease:
+
+        def guarded(path, fd):
+            assert os.fstat(fd).st_ino == os.fstat(lease.fileno()).st_ino
+            events.append("guard")
+
+        def isolated(path, captured):
+            assert events == ["guard"]
+            events.append("frozen_adapter")
+            if failure:
+                raise ValueError("software fixture source mismatch; no numeric execution")
+            return {"software_fixture": True}
+
+        monkeypatch.setattr(lifecycle, "start_guard", guarded)
+        monkeypatch.setattr(worker, "run", isolated)
+        assert entry.main(directory, lease.fileno()) == (2 if failure else 0)
+    assert events == ["guard", "frozen_adapter"]
+    assert (tmp_path / "BLOCKED.json").exists() is failure
+    assert (directory / "worker_result.json").exists() is not failure

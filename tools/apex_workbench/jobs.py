@@ -25,6 +25,9 @@ LIMITS = {
     "sampled_output_bytes": 64 * 1024**2,
     "single_file_bytes": 16 * 1024**2,
 }
+# One shared lease for every adapter in this checkout. M0 operational writes stay in
+# its authorized ignored root; legacy output directories and scientific limits do not change.
+LEASE_ROOT = ROOT / "results/apex_workbench_nmpc_weights"
 
 
 def timestamp():
@@ -113,7 +116,11 @@ def worker_environment(directory):
         PYTHONPATH=os.pathsep.join((str(ROOT), str(ROOT / "scripts"), str(ROOT / "src"))),
         PYTHONHASHSEED="0",
         MPLCONFIGDIR=str(directory / "matplotlib-cache"),
+        PYTHONDONTWRITEBYTECODE="1",
     )
+    request_path = directory / "request.json"
+    if request_path.exists() and read_json(request_path).get("adapter") == "nmpc_weight_lab":
+        env["PYTHONPATH"] = str(ROOT)
     return env
 
 
@@ -121,8 +128,8 @@ ACTIVE = {"queued", "running", "finalizing"}
 
 
 def execution_lock():
-    RUNS.mkdir(parents=True, exist_ok=True)
-    lock = (RUNS / ".execution.lock").open("a+")
+    LEASE_ROOT.mkdir(parents=True, exist_ok=True)
+    lock = (LEASE_ROOT / ".execution.lock").open("a+")
     try:
         fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
     except BlockingIOError as error:
@@ -262,6 +269,12 @@ def start_run(
         raise ValueError("Qualification profiles are scoped to dynamic_lab")
     prediction = validate_note(prediction)
     runs = Path(runs)
+    if adapter == "nmpc_weight_lab":
+        from tools.apex_workbench import nmpc_weight_lab as weight_lab
+
+        if qualification or reference or test_only:
+            raise ValueError("M0 is experimental only; no qualification/test numerical role")
+        runs = weight_lab.RUNS
     runs.mkdir(parents=True, exist_ok=True)
     with execution_lock() as lock:
         preflight()
@@ -298,7 +311,7 @@ def start_run(
             "source_configuration": source,
             "effective": effective,
             "prediction": prediction,
-            "execution_lock": str((RUNS / ".execution.lock").resolve()),
+            "execution_lock": str((LEASE_ROOT / ".execution.lock").resolve()),
             "controller": "none (predetermined command)"
             if adapter == "dynamic_demo"
             else "Task005 BaselineController / scheduled LQR + PI",
@@ -307,6 +320,21 @@ def start_run(
             else "scripts/run_lqr_baseline.py:run_case",
             "provenance": provenance(),
         }
+        if adapter == "nmpc_weight_lab":
+            request.update(
+                adapter_version="M0/1",
+                controller="frozen NMPC + TVLQR / experimental",
+                entry_point="frozen AsyncRunner.run via nmpc_weight_worker",
+                nmpc_capture=weight_lab.capture(effective),
+            )
+            request["provenance"].update(
+                role="Workbench adapter provenance, not scientific import provenance",
+                model="frozen canonical DynamicBicycle",
+                tire="frozen combined-grip tires",
+                timing_mode="controlled VIS imposed availability; host timings separately measured",
+                scientific_source=weight_lab.SOURCE,
+            )
+            weight_lab.claim(effective["preset"], run_id, captured=True)
         if adapter == "dynamic_lab":
             from tools.apex_workbench.lab_configuration import resolve
             from tools.apex_workbench.lab_sources import from_captured
