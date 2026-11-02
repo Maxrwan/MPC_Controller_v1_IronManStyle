@@ -280,6 +280,10 @@ def start_run(
         preflight()
         # With no lease holder, reconcile abandoned records before admission.
         for parent in {RUNS.resolve(), runs.resolve()}:
+            if not parent.exists():
+                continue  # A fresh isolated checkout may have no legacy run root.
+            if not parent.is_dir():
+                raise RuntimeError("Retained run root is not a directory: " + str(parent))
             # UI quarantine must not hide a legacy active owner from admission checks.
             for previous in storage.run_directories(parent):
                 if not any(

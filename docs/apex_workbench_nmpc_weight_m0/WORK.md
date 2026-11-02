@@ -81,3 +81,16 @@ candidate. Because of the exact write allowlist, reviewer raw reports live under
 output root and are incorporated into this allowed WORK/record delivery, not an extra review path.
 Final stop is `NMPC_WEIGHT_LAB_M0_ENGINEERING_REVIEW_COMPLETE_PENDING_VERIFICATION`, or
 `NMPC_WEIGHT_LAB_M0_BLOCKED_PENDING_PRIMARY_DECISION` on a genuine blocking condition.
+
+## Pre-execution admission correction
+
+The first admission call at `df889dd…` failed while scanning the absent legacy run root in this
+fresh worktree. It reached no source capture, claim, supervisor or numerical worker; both
+numerical allowances remained unused. `nominal_attempt_driver.log` preserves the complete failure.
+The minimum supervisor correction skips an absent historical root and still rejects an existing
+non-directory root. Eight affected admission/lease/ownership/gate/P/C0 checks passed separately
+(1.61 s). Frozen imports, configuration, cost/constraint algebra, scientific source, worker,
+viewers and environment are unchanged, so their earlier26-case evidence remains applicable;
+counts are not combined into a fictitious34-test invocation. The unconsumed first software gate
+is archived byte-for-byte before sealing a successor against the corrected source. No failed
+numerical experiment is retried; numerical execution has not started at this point.

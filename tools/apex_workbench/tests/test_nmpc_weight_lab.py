@@ -310,3 +310,31 @@ def test_worker_guard_precedes_isolated_branch_and_source_failure_blocks(
     assert events == ["guard", "frozen_adapter"]
     assert (tmp_path / "BLOCKED.json").exists() is failure
     assert (directory / "worker_result.json").exists() is not failure
+
+
+@pytest.mark.parametrize("legacy_kind", ["absent", "invalid_file"])
+def test_m0_admission_with_absent_legacy_root_never_launches_before_capture(
+    tmp_path, monkeypatch, legacy_kind
+):
+    legacy = tmp_path / "legacy"
+    if legacy_kind == "invalid_file":
+        legacy.write_text("invalid retained root")
+    monkeypatch.setattr(jobs, "RUNS", legacy)
+    monkeypatch.setattr(jobs, "LEASE_ROOT", tmp_path / "lease")
+    monkeypatch.setattr(lab, "RUNS", tmp_path / "m0")
+    monkeypatch.setattr(jobs, "provenance", lambda: {"limits": jobs.LIMITS})
+    called = []
+
+    def captured(values):
+        called.append(values)
+        raise RuntimeError("software sentinel before claim or numerical launch")
+
+    def forbidden(*args, **kwargs):
+        raise AssertionError("No worker may launch before validated source capture")
+
+    monkeypatch.setattr(lab, "capture", captured)
+    monkeypatch.setattr(jobs.subprocess, "Popen", forbidden)
+    match = "software sentinel" if legacy_kind == "absent" else "not a directory"
+    with pytest.raises(RuntimeError, match=match):
+        jobs.start_run(lab.ADAPTER, {"preset": "nominal"}, runs=lab.RUNS)
+    assert bool(called) is (legacy_kind == "absent")

@@ -22,6 +22,12 @@ one exploratory2.0s attempt if no source/scientific-contract blocker. No retries
 all failures/partials and request exact-candidate independent review afterwards. No full formal
 Verification, M5-B, SID, Safety or hardware. PR #1 stays draft/unmerged.
 
+Pre-execution correction: first admission failed on an absent legacy output root, before any
+claim or worker. Its full log is retained. The supervisor now skips only absent historical roots;
+eight affected software checks pass separately. Original26-case frozen/configuration evidence
+remains applicable to unchanged components. The unused first software gate is preserved before
+resealing against the corrected source. Both numerical allowances remain unused here.
+
 ---
 
 # Current handoff — Primary C0 descriptive adapter acceptance recorded

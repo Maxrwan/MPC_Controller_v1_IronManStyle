@@ -7,17 +7,17 @@
   "scientific_source": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
   "profile_path": "configs/performance/apex_performance_synthetic_v1.json",
   "profile_sha256": "5299adca29d5c5bd383252cd2c299a392dd6872dc6bb72d1a4dd7ecfb8dd1ebf",
-  "initial_implementation_revision": "containing initial source commit; exact tested hashes below",
+  "initial_implementation_revision": "df889dd7e447c69b0c6df7924d068a58527587ee",
   "tested_source_sha256": {
     "tools/apex_workbench/nmpc_weight_lab.py": "bfcc1ff1eebb798721a39f72687acccef0c76bbdc6d08ecf1a068e0af070a784",
     "tools/apex_workbench/nmpc_weight_worker.py": "31dd40da94115e96eee0a777808d741c105bf19b1768ae05f0d5db346c8ce1e0",
     "tools/apex_workbench/nmpc_weight_panels.py": "f286ca5d6b140b617204d0b0cc09bf415d7f554411b2831c41c3066b20a6e08f",
     "tools/apex_workbench/configuration.py": "ed1611b0d15f17daeb515b7e6167863c49ee9c6ccd96c16403d3f55e5ac38dd3",
     "tools/apex_workbench/worker.py": "5c20535d9ac267d0c0a2df1ee0dfc5c2448e15df57fcab2cd9de621cd0a0d759",
-    "tools/apex_workbench/jobs.py": "058bdce80c79bc2f9d52cd2add3a0704cf421035e81ce4dddc22f8228cc3761d",
+    "tools/apex_workbench/jobs.py": "af11d309d15b879859488b75858af87489c42783a02dd04482cff17ead6116c5",
     "tools/apex_workbench/workspace.py": "3f456e73057667ffd607bf01c4209aafe2f9817fc39e8e03fcdfbb2df240f6a5",
     "tools/apex_workbench/run_catalog.py": "4e974ea40940b2990f9b4416f97b8fe5fbde2ce6b335d3e49df3f4c422587f6d",
-    "tools/apex_workbench/tests/test_nmpc_weight_lab.py": "7a81da8e9ad8b4d64cb583a6567e2e7069e776a62cb0a1f2b80688512c35c0b1",
+    "tools/apex_workbench/tests/test_nmpc_weight_lab.py": "996996c2919a828ef47d6ceb9d7b22cba3c584a8449822c6fadd716c226c9963",
     "tools/apex_workbench/tests/test_nmpc_weight_workspace.py": "4d9362d6e3a3ff9f085c0f1c49962a780262645765993684e6fb32afff7c299a"
   },
   "frozen_source_sha256": {
@@ -764,6 +764,37 @@
     "results/apex_workbench_nmpc_weights/setup_failure.txt": "c0c36438bcac59248159e96bdd8c4cb0e8dc4378098e4b34f5659b7969ffdbba",
     "results/apex_workbench_nmpc_weights/software_tests_final_v2.log": "2890b3fe00653b926e2c77c8fc3f6477c3e6d3fd263dfac947ce489958ce20bf",
     "results/apex_workbench_nmpc_weights/nominal_software_probe.json": "b71b886862ea9b3b792d973d6dcc8fccbed45e6081f23fc64b56c731ce848a1c",
-    "results/apex_workbench_nmpc_weights/preservation_before.json": "326f26d6607658f2e4cebd207a8f19e387133d6594198b2831d9ea91d3af5088"
+    "results/apex_workbench_nmpc_weights/preservation_before.json": "326f26d6607658f2e4cebd207a8f19e387133d6594198b2831d9ea91d3af5088",
+    "results/apex_workbench_nmpc_weights/gate_evidence/df889dd7e447c69b0c6df7924d068a58527587ee/software_gate_before_admission_fix.json": "75b3f81e68fc992ab93383f48012fb2fb992d8a6208050fdc5ebd72db0c460ef",
+    "results/apex_workbench_nmpc_weights/nominal_attempt_driver.log": "7a7fac99a2be4ec9111afa0c4d417927f7ad7ed95d7b1f8ec1075edb2e10cd3e",
+    "results/apex_workbench_nmpc_weights/admission_fix_tests.xml": "23669fd9130918fd5372f9add11f51f3cfb7a9055cfe3bfaa4e75fc247b0a9e5",
+    "results/apex_workbench_nmpc_weights/admission_fix_tests.log": "88f6208647928a39a46a16685bb5996494f5d238a106aafbd9a641f54b8ac64b",
+    "results/apex_workbench_nmpc_weights/admission_fix_lint.log": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18"
+  },
+  "pre_execution_admission_correction": {
+    "failure_log": "results/apex_workbench_nmpc_weights/nominal_attempt_driver.log",
+    "numeric_workers_launched": 0,
+    "claims_consumed": 0,
+    "fix": "skip absent historical root, reject existing non-directory root",
+    "tests": 8,
+    "failures": 0,
+    "errors": 0,
+    "skips": 0,
+    "seconds": 1.613,
+    "original_software_gate_sha256": "75b3f81e68fc992ab93383f48012fb2fb992d8a6208050fdc5ebd72db0c460ef",
+    "original_gate_retained": "results/apex_workbench_nmpc_weights/gate_evidence/df889dd7e447c69b0c6df7924d068a58527587ee/software_gate_before_admission_fix.json",
+    "prior_26_applicability": "Only jobs.start_run historical-root scan and its test changed; frozen/runtime/worker/configuration/accounting/evidence/viewer components and dependencies unchanged."
+  },
+  "pre_admission_fix_tested_source_sha256": {
+    "tools/apex_workbench/nmpc_weight_lab.py": "bfcc1ff1eebb798721a39f72687acccef0c76bbdc6d08ecf1a068e0af070a784",
+    "tools/apex_workbench/nmpc_weight_worker.py": "31dd40da94115e96eee0a777808d741c105bf19b1768ae05f0d5db346c8ce1e0",
+    "tools/apex_workbench/nmpc_weight_panels.py": "f286ca5d6b140b617204d0b0cc09bf415d7f554411b2831c41c3066b20a6e08f",
+    "tools/apex_workbench/configuration.py": "ed1611b0d15f17daeb515b7e6167863c49ee9c6ccd96c16403d3f55e5ac38dd3",
+    "tools/apex_workbench/worker.py": "5c20535d9ac267d0c0a2df1ee0dfc5c2448e15df57fcab2cd9de621cd0a0d759",
+    "tools/apex_workbench/jobs.py": "058bdce80c79bc2f9d52cd2add3a0704cf421035e81ce4dddc22f8228cc3761d",
+    "tools/apex_workbench/workspace.py": "3f456e73057667ffd607bf01c4209aafe2f9817fc39e8e03fcdfbb2df240f6a5",
+    "tools/apex_workbench/run_catalog.py": "4e974ea40940b2990f9b4416f97b8fe5fbde2ce6b335d3e49df3f4c422587f6d",
+    "tools/apex_workbench/tests/test_nmpc_weight_lab.py": "7a81da8e9ad8b4d64cb583a6567e2e7069e776a62cb0a1f2b80688512c35c0b1",
+    "tools/apex_workbench/tests/test_nmpc_weight_workspace.py": "4d9362d6e3a3ff9f085c0f1c49962a780262645765993684e6fb32afff7c299a"
   }
 }
