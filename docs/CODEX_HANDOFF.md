@@ -1,3 +1,42 @@
+# Current handoff — C0 descriptive adapter formal Verification PASS
+
+**C0_DESCRIPTIVE_ADAPTER_VERIFIED_PENDING_PRIMARY_ACCEPTANCE.** 2 November 2026.
+PASS within the explicitly authorized non-simulation software scope. Exact implementation
+`d246f1e9639737e4ecbbd12f8bd0c9b2f1574712`; tested clean documentation-only review delivery
+`dd0ff721ac88456f0111e1fc3eaf22d984e83250`, branch
+`codex/apex-workbench-c0-descriptive-adapter`.
+[Formal report](reviews/apex_workbench_v0_3_d/c0_adapter/VERIFICATION.md),
+[machine record](reviews/apex_workbench_v0_3_d/c0_adapter/verification_record.json).
+This containing delivery changes only report/record/handoff documentation; all 433 reviewed
+behavioral/test/configuration/dependency/launcher identities remain unchanged.
+
+One applicable functional invocation: **209 passed, 17 G2 skipped, 172 deselected**, zero
+failures/errors, exit 0; all 69 C0 tests and 140 other Workbench cases passed. Simulation-dependent
+cases were explicitly deselected before fixture setup under Primary's no-simulation restriction;
+the scientific/model/controller repository suite did not run. No new full-repository numerical
+regression or aggregation with WORK/reviewer counts is claimed. Exact commands, environment,
+JUnit, exclusions and logs are retained in `results/apex_workbench_c0_verification_20261102/`.
+
+Original 152,600-byte/SHA256 2bd7d238… C0 admission, all 4,034 original numeric tokens, pointers,
+null/absence, chronology, source-unverified labels, fail-closed disposable faults/currentness and
+removed native image/CSV/clipboard controls pass. Actual governed HTML generation and local browser
+reopening pass. One live download click returned, but automatic file delivery was not confirmed
+within 10 seconds; retain this platform limitation separately from core generation/reopening.
+Launcher startup/ownership/reuse/error branches and both predetermined interrupt routes pass owned
+cleanup; terminal shell SIGINT(2) remains distinct from supervisor exit 0. No owned server remains.
+
+All 1,734 selected preexisting protected files retain hashes after execution, including all
+56 scientific, 345 qualification, 25 P and 4 legacy oval files. All 53,515 historical result
+size/mtime observations and 1,945 symlink targets are unchanged; metadata is not a full historical
+content rehash. Prior BLOCKED reviews and failed correction logs remain preserved.
+
+**G1 OPEN; descriptive_only / source_unverified remains mandatory.** No implementation repair,
+controller simulation, scientific campaign, original qualification rerun, frozen-source change,
+PR merge, release promotion, scientific reclassification, M5-A or later feature work occurred.
+Stop for Primary acceptance with the stated regression scope and browser-delivery limitation.
+
+---
+
 # Current handoff — C0 descriptive adapter Engineering Review PASS
 
 **C0_DESCRIPTIVE_ADAPTER_ENGINEERING_REVIEW_COMPLETE_PENDING_VERIFICATION.** 2 November 2026.
