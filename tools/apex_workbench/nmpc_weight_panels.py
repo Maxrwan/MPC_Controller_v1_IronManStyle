@@ -20,7 +20,7 @@ def run_panel():
         "Stage tracking coefficients: "
         + str([4, 4, 1, 100 * lab.PRESETS[preset], 100 * lab.PRESETS[preset]])
     )
-    preview = lab.OUTPUT / (preset + "_software_probe.json")
+    preview = lab.authority_root() / (preset + "_software_probe.json")
     if preview.exists():
         report = storage.read_json(preview)
         with st.expander("Complete source-isolated effective configuration and import identities"):
@@ -95,9 +95,12 @@ def commands(raw, channel="delta"):
     return plot
 
 
-def _inspect(directory):
+def _inspect(selected):
     st.warning(lab.BANNER)
+    directory, anchor = lab.owned_run(selected)
     status = jobs.status_for(directory)
+    if lab.owned_run(selected) != (directory, anchor):
+        raise ValueError("M0 ownership changed during lifecycle inspection")
     st.write(
         "Execution: "
         + status.get("state", "unknown")
@@ -107,6 +110,8 @@ def _inspect(directory):
     if status.get("state") in jobs.ACTIVE:
         st.button("Refresh M0 owned run")
         if st.button("Cancel M0 owned run"):
+            if lab.owned_run(selected) != (directory, anchor):
+                raise ValueError("M0 ownership changed before cancellation")
             jobs.cancel_run(directory)
             st.rerun()
         st.caption(
@@ -192,11 +197,11 @@ def _inspect(directory):
     lab.current(view)
 
 
-def inspect(directory):
+def inspect(selected):
     scope = st.empty()
     try:
         with scope.container():
-            _inspect(directory)
+            _inspect(selected)
     except (OSError, ValueError, KeyError, TypeError, RuntimeError) as error:
         scope.empty()
         scope.error("M0 evidence quarantined/unavailable: " + str(error))

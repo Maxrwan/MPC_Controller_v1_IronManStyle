@@ -64,3 +64,37 @@ Only focused software checks, the two bounded experiments and independent Engine
 authorized. No full formal Verification, active Pre-SID R0 change, M5-B, SID, Safety or hardware.
 Successful stop: `NMPC_WEIGHT_LAB_M0_ENGINEERING_REVIEW_COMPLETE_PENDING_VERIFICATION`.
 Blocking stop: `NMPC_WEIGHT_LAB_M0_BLOCKED_PENDING_PRIMARY_DECISION`.
+
+## Primary R1/R2 corrective continuation — 2 November 2026
+
+Primary's new decision (SHA-256
+`8c5147b33c8da3270558ee43a140a10dd69397bdd9258fb091db24bfb03eb1f8`) authorizes localized
+R1/R2 correction and a conditional replacement budget. The original failed nominal claim,
+`BLOCKED.json`, gate, logs and independent BLOCKED review remain immutable. Nothing in this
+amendment changes the frozen scientific source, scenario, duration, values or resource limits.
+
+R1 uses a single finite JSON-compatible snapshot representation at capture and execution.
+Tuple/list sequence representation is normalized; scientific dataclass objects remain intact.
+Strict serialized equality still distinguishes numbers from booleans/strings, integer/float
+representations and signed zero, and rejects nonfinite/unsupported/malformed values or genuine
+non-treatment changes. A fresh no-solve subprocess exercises the actual execution-boundary helper.
+
+R2 authenticates the selected catalog record, canonical immediate M0 run directory, original
+claim, adapter, preset, origin and absence of alias conflicts before refresh/reconciliation or
+cancellation. Foreign/archive/symlink/forged/conflicting records are quarantined with pure reads.
+The UI passes the full selected record. `jobs.py` and existing P/C0 viewers remain unchanged.
+
+New admission uses an append-only successor namespace,
+`authorizations/primary-r1-r2-20261102/`, under the same ignored output root. It requires the
+exact Primary decision, unchanged original failure anchors, an independent corrective-review
+**PASS** bound to the exact producer hashes/Git commit, and a fresh source/environment/software
+gate. Missing/stale review or authority blocks admission. Original evidence readers retain their
+original gate/claim namespace. Each successor preset still has an exclusive single claim; a new
+failure writes a successor BLOCKED marker without changing the original.
+
+Only after that PASS may one NEW nominal 2.0 s attempt run. The sole exploratory attempt may
+follow only if the nominal has a completed, intact, comparable result under the unchanged
+contract. Any genuine scientific/solver/runtime/integrity failure stops the continuation with
+all evidence preserved. No retry, search, extra scenario or formal Verification is authorized.
+After execution, obtain a separate independent assessment of the exact implementation/evidence
+and stop at the existing successful or blocked status above.

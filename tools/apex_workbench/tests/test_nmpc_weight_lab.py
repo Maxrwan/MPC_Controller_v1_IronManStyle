@@ -1,7 +1,9 @@
 """M0 source/configuration/accounting and disposable evidence checks; never solve/run a plant."""
 
 import copy
+import json
 import os
+import subprocess
 from pathlib import Path
 
 import pytest
@@ -15,8 +17,6 @@ from tools.apex_workbench.configuration import validate
 @pytest.fixture(scope="session")
 def preflights():
     result = {p: lab.probe(p, checks=True) for p in lab.PRESETS}
-    for preset, report in result.items():
-        storage.write_json(lab.OUTPUT / (preset + "_software_probe.json"), report)
     return result
 
 
@@ -140,14 +140,18 @@ def test_runtime_change_and_missing_file_reject_disposable_copy(tmp_path, monkey
 
 def test_one_attempt_claim_each_and_no_retry(tmp_path, monkeypatch):
     monkeypatch.setattr(lab, "OUTPUT", tmp_path)
-    monkeypatch.setattr(lab, "verify_gate", lambda: {})
+    monkeypatch.setattr(lab, "verify_gate", lambda **kwargs: {})
+    authority = lab.authority_root()
+    authority.mkdir(parents=True)
+    storage.write_json(authority / "authorization.json", {"software_fixture": True})
     lab.claim("nominal", "fixture_nominal")
     with pytest.raises(FileExistsError):
         lab.claim("nominal", "fixture_retry")
-    lab.claim("exploratory", "fixture_exploratory")
+    with pytest.raises(FileNotFoundError):
+        lab.claim("exploratory", "fixture_exploratory")
     with pytest.raises(ValueError):
         lab.claim("../outside", "bad")
-    assert len(list((tmp_path / "claims").glob("*.json"))) == 2
+    assert len(list((authority / "claims").glob("*.json"))) == 1
 
 
 def test_objective_accounting_never_carries_stale_success_to_failure():
@@ -216,7 +220,8 @@ def fixture_run(tmp_path, preflights, preset="nominal"):
     storage.write_json(tmp_path / "software_gate.json", gate)
     (tmp_path / "claims").mkdir(exist_ok=True)
     storage.write_json(
-        tmp_path / "claims" / (preset + ".json"), {"run_id": directory.name, "source": lab.SOURCE}
+        tmp_path / "claims" / (preset + ".json"),
+        {"preset": preset, "run_id": directory.name, "source": lab.SOURCE},
     )
     request = {
         "record_version": 2,
@@ -338,3 +343,150 @@ def test_m0_admission_with_absent_legacy_root_never_launches_before_capture(
     with pytest.raises(RuntimeError, match=match):
         jobs.start_run(lab.ADAPTER, {"preset": "nominal"}, runs=lab.RUNS)
     assert bool(called) is (legacy_kind == "absent")
+
+
+def test_real_capture_to_execution_boundary_without_optimizer(tmp_path, monkeypatch, preflights):
+    """Actual capture uses a fresh frozen probe; the fresh worker calls run's exact helper."""
+    gate = {
+        "resolved_snapshots": {p: r["resolved"] for p, r in preflights.items()},
+        "environment": preflights["nominal"]["environment"],
+    }
+    root = tmp_path / "authority"
+    root.mkdir()
+    storage.write_json(root / "software_gate.json", gate)
+    storage.write_json(root / "authorization.json", {"software_fixture_only": True})
+    monkeypatch.setattr(lab, "verify_gate", lambda: gate)
+    monkeypatch.setattr(lab, "authority_root", lambda identifier=lab.SUCCESSOR: root)
+    captured = json.loads(json.dumps(lab.capture({"preset": "nominal"})))
+    assert captured["resolved"]["simulation"]["failed_plan_ids"] == []
+    report = lab.probe("nominal", captured=captured)
+    assert report["boundary"] == {
+        "native_failed_plan_ids_is_tuple": True,
+        "optimizer_solves": 0,
+        "plant_steps": 0,
+    }
+    lab.same_configuration(report["resolved"], captured["resolved"])
+    changed = copy.deepcopy(captured)
+    changed["resolved"]["vehicle"]["mass"] += 1
+    with pytest.raises(RuntimeError, match="Actual frozen resolved configuration differs"):
+        lab.probe("nominal", captured=changed)
+
+
+@pytest.mark.parametrize("replacement", [True, "2.0", 3.0, None, float("nan"), float("inf")])
+def test_strict_configuration_rejects_non_treatment_mutations(preflights, replacement):
+    native = copy.deepcopy(preflights["nominal"]["resolved"])
+    captured = copy.deepcopy(native)
+    native["simulation"]["failed_plan_ids"] = ()
+    lab.same_configuration(native, captured)
+    captured["vehicle"]["mass"] = replacement
+    with pytest.raises(ValueError):
+        lab.same_configuration(native, captured)
+
+
+@pytest.mark.parametrize("malformed", [{1: 0}, {"x": {1, 2}}, {"x": object()}, [], None])
+def test_malformed_configuration_representations_rejected(malformed):
+    with pytest.raises(ValueError):
+        lab.canonical_snapshot(malformed)
+
+
+def test_canonical_snapshot_keeps_numeric_identity():
+    assert lab.canonical_snapshot({"x": (0.0, -0.0, 1, 1.0)}) == {"x": [0.0, -0.0, 1, 1.0]}
+    for a, b in [(1, True), (1, 1.0), (0.0, -0.0)]:
+        with pytest.raises(ValueError):
+            lab.same_configuration({"x": a}, {"x": b})
+
+
+def test_successor_requires_review_and_preserves_original_block(tmp_path, monkeypatch):
+    monkeypatch.setattr(lab, "OUTPUT", tmp_path)
+    blocked = tmp_path / "BLOCKED.json"
+    blocked.write_text('{"original":"immutable"}')
+    monkeypatch.setattr(lab, "ORIGINAL_ANCHORS", {"BLOCKED.json": storage.sha256(blocked)})
+    with pytest.raises(FileNotFoundError):
+        lab.verify_successor()
+    root = lab.authority_root()
+    root.mkdir(parents=True)
+    decision = root / "PRIMARY_DECISION.md"
+    decision.write_text("explicit software fixture authority")
+    monkeypatch.setattr(lab, "PRIMARY_DECISION_SHA", storage.sha256(decision))
+    storage.write_json(root / "authorization.json", {})
+    storage.write_json(root / "corrective_review.json", {"outcome": "BLOCKED"})
+    with pytest.raises(ValueError):
+        lab.verify_successor()
+    lab.record_block(
+        tmp_path / "runs/new", RuntimeError("retained"), {"authorization_id": lab.SUCCESSOR}
+    )
+    assert storage.read_json(root / "BLOCKED.json")["reason"] == "RuntimeError('retained')"
+    assert blocked.read_text() == '{"original":"immutable"}'
+
+
+def test_successor_positive_gate_exact_git_binding_and_consumed_claim(tmp_path, monkeypatch):
+    """Disposable real Git source identities and fake authority; never a real execution grant."""
+    source = tmp_path / "source"
+    source.mkdir()
+    for name in lab.PRODUCERS:
+        target = source / name
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_bytes((lab.ROOT / name).read_bytes())
+
+    def git(*args):
+        return subprocess.check_output(["git", *args], cwd=source)
+
+    git("init", "-q")
+    git("add", *lab.PRODUCERS)
+    git(
+        "-c",
+        "user.name=M0 fixture",
+        "-c",
+        "user.email=fixture@example.invalid",
+        "commit",
+        "-qm",
+        "Disposable source identity only",
+    )
+    candidate = git("rev-parse", "HEAD").decode().strip()
+    monkeypatch.setattr(lab, "git", git)
+    monkeypatch.setattr(lab, "OUTPUT", tmp_path)
+    blocked = tmp_path / "BLOCKED.json"
+    storage.write_json(blocked, {"original": "unchanged"})
+    monkeypatch.setattr(lab, "ORIGINAL_ANCHORS", {"BLOCKED.json": storage.sha256(blocked)})
+    root = lab.authority_root()
+    root.mkdir(parents=True)
+    decision = root / "PRIMARY_DECISION.md"
+    decision.write_text("explicit disposable fixture; no numerical authority")
+    monkeypatch.setattr(lab, "PRIMARY_DECISION_SHA", storage.sha256(decision))
+    review = {
+        "candidate": candidate,
+        "outcome": "PASS",
+        "scientific_source": lab.SOURCE,
+        "adapter_sha256": lab.adapter_hashes(),
+        "evidence_sha256": {},
+    }
+    storage.write_json(root / "corrective_review.json", review)
+    authority = {
+        "schema": "apex-m0-successor-authorization/1",
+        "id": lab.SUCCESSOR,
+        "primary_decision_sha256": lab.PRIMARY_DECISION_SHA,
+        "original_anchors": lab.ORIGINAL_ANCHORS,
+        "maximum_attempts": {"nominal": 1, "exploratory": 1},
+        "corrective_review_sha256": storage.sha256(root / "corrective_review.json"),
+    }
+    storage.write_json(root / "authorization.json", authority)
+    gate = {
+        "status": "SOFTWARE_GATES_PASSED",
+        "source": lab.SOURCE,
+        "adapter_sha256": lab.adapter_hashes(),
+        "implementation_revision": candidate,
+        "authorization_sha256": storage.sha256(root / "authorization.json"),
+        "evidence_sha256": {},
+    }
+    storage.write_json(root / "software_gate.json", gate)
+    assert lab.verify_gate(check_environment=False) == gate
+    lab.claim("nominal", "disposable_successor_nominal", captured=True)
+    with pytest.raises(FileExistsError):
+        lab.claim("nominal", "forbidden_retry", captured=True)
+    with pytest.raises(FileNotFoundError):
+        lab.claim("exploratory", "no_valid_nominal_result", captured=True)
+    changed = dict(review, outcome="BLOCKED")
+    storage.write_json(root / "corrective_review.json", changed)
+    with pytest.raises(ValueError):
+        lab.verify_gate(check_environment=False)
+    assert storage.read_json(blocked) == {"original": "unchanged"}

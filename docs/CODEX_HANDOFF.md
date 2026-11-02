@@ -1,4 +1,25 @@
-# Current handoff — M5-A blocked before controller execution
+# Current handoff — M5-A R1/R2 corrective WORK
+
+Primary authorizes bounded correction from `52c5f55c253ef88bc0bc66fb9504eef5af21d2b5` on
+`codex/m5a-nmpc-weight-m0`; decision SHA-256
+`8c5147b33c8da3270558ee43a140a10dd69397bdd9258fb091db24bfb03eb1f8`.
+[WORK](apex_workbench_nmpc_weight_m0/WORK.md),
+[record](apex_workbench_nmpc_weight_m0/work_record.json),
+[contract amendment](apex_workbench_nmpc_weight_m0/EXPERIMENT_CONTRACT.md).
+R1 uses strict finite canonical capture/worker snapshots, preserving scientific dataclasses/values.
+R2 authenticates selected record, canonical owned directory, origin/alias/adapter/claim identity
+before any lifecycle call. `jobs.py` and frozen science remain unchanged.
+
+Focused software checks precede independent exact-candidate corrective review. No numerical
+execution until documented PASS. The new successor authorization preserves the original failed
+claim/gate/BLOCKED unchanged and requires the exact grant plus corrective PASS/source/environment
+checks. Only one NEW nominal2.0s attempt, then one exploratory2.0s if nominal is valid/comparable.
+Any new genuine failure stops execution; no retry or formal Verification. After execution obtain
+an independent exact-implementation/evidence assessment. No R0, M5-B or later work authorized.
+
+---
+
+# Historical handoff — M5-A blocked before controller execution
 
 **NMPC_WEIGHT_LAB_M0_BLOCKED_PENDING_PRIMARY_DECISION.** Exact implementation
 `c745726fee6f4e33259aef3781ee5181d02afe08`, branch `codex/m5a-nmpc-weight-m0`.

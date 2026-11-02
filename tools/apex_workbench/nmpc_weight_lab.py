@@ -5,6 +5,7 @@ import hashlib
 import importlib.metadata
 import io
 import json
+import math
 import os
 import platform
 import re
@@ -27,6 +28,13 @@ RUNS = OUTPUT / "runs"
 RUNTIME = OUTPUT / "runtime/source"
 ADAPTER = "nmpc_weight_lab"
 PRESETS = {"nominal": 2.0, "exploratory": 1.0}
+SUCCESSOR = "primary-r1-r2-20261102"
+PRIMARY_DECISION_SHA = "8c5147b33c8da3270558ee43a140a10dd69397bdd9258fb091db24bfb03eb1f8"
+ORIGINAL_ANCHORS = {
+    "BLOCKED.json": "66089de1966846b8a50c0238200fb92130ccd46be6a7f0935eb6b78ca02f457d",
+    "claims/nominal.json": "eee9e7d515b319b91c54264db8f14350bbdfab6770914028f41a68cc9df63abf",
+    "software_gate.json": "1be5c19db51b82dcc4815f0a716ac306b145865d4bb7bb96b1f907ffb557357f",
+}
 BANNER = (
     "EXPERIMENTAL / UNQUALIFIED — synthetic NMPC/TVLQR; no physical or performance qualification"
 )
@@ -57,11 +65,106 @@ def validate(values):
     return {"preset": values["preset"]}
 
 
-def safe(path, root=OUTPUT):
-    path, root = Path(path).absolute(), Path(root).absolute()
-    if not path.is_relative_to(root) or any(p.is_symlink() for p in (path, *path.parents)):
+def safe(path, root=None):
+    path, root = Path(path).absolute(), Path(OUTPUT if root is None else root).absolute()
+    if (
+        ".." in path.parts
+        or not path.is_relative_to(root)
+        or any(p.is_symlink() for p in (path, *path.parents))
+    ):
         raise ValueError("Unsafe M0 output/runtime path")
     return path
+
+
+def canonical_snapshot(value):
+    """One finite JSON representation; only sequence tuple/list representation is normalized."""
+
+    def convert(item):
+        if item is None or type(item) in (str, bool, int):
+            return item
+        if isinstance(item, float) and math.isfinite(item):
+            return float(item)
+        if type(item) in (list, tuple):
+            return [convert(v) for v in item]
+        if type(item) is dict and all(type(k) is str for k in item):
+            return {k: convert(v) for k, v in item.items()}
+        raise ValueError("Unsupported/nonfinite configuration representation")
+
+    if type(value) is not dict:
+        raise ValueError("Configuration snapshot must be an object")
+    return convert(value)
+
+
+def same_configuration(actual, captured):
+    actual, captured = canonical_snapshot(actual), canonical_snapshot(captured)
+    # Serialized comparison also distinguishes bool/int/float and signed zero.
+    if json.dumps(actual, sort_keys=True, allow_nan=False) != json.dumps(
+        captured, sort_keys=True, allow_nan=False
+    ):
+        raise ValueError("Actual frozen resolved configuration differs from captured request")
+    return actual
+
+
+def authority_root(identifier=SUCCESSOR):
+    if identifier == "original":
+        return OUTPUT
+    if identifier != SUCCESSOR:
+        raise ValueError("Unsupported M0 authorization identity")
+    return safe(OUTPUT / "authorizations" / identifier)
+
+
+def gate_path(identifier=SUCCESSOR):
+    return safe(authority_root(identifier) / "software_gate.json")
+
+
+def claim_path(preset, identifier=SUCCESSOR):
+    validate({"preset": preset})
+    return safe(authority_root(identifier) / "claims" / (preset + ".json"))
+
+
+def verify_successor():
+    """Explicit Primary successor, exact corrective PASS and unchanged original failure anchors."""
+    root = authority_root()
+    for name, digest in ORIGINAL_ANCHORS.items():
+        if storage.sha256(safe(OUTPUT / name)) != digest:
+            raise ValueError("Original failed authority/evidence changed")
+    if storage.sha256(safe(root / "PRIMARY_DECISION.md")) != PRIMARY_DECISION_SHA:
+        raise ValueError("Primary replacement decision absent or changed")
+    authority = storage.read_json(safe(root / "authorization.json"))
+    review_path = safe(root / "corrective_review.json")
+    review = storage.read_json(review_path)
+    if (
+        authority.get("schema") != "apex-m0-successor-authorization/1"
+        or authority.get("id") != SUCCESSOR
+        or authority.get("primary_decision_sha256") != PRIMARY_DECISION_SHA
+        or authority.get("original_anchors") != ORIGINAL_ANCHORS
+        or authority.get("maximum_attempts") != {"nominal": 1, "exploratory": 1}
+        or authority.get("corrective_review_sha256") != storage.sha256(review_path)
+        or review.get("outcome") != "PASS"
+        or review.get("adapter_sha256") != adapter_hashes()
+        or review.get("scientific_source") != SOURCE
+        or not re.fullmatch(r"[0-9a-f]{40}", review.get("candidate", ""))
+        or git("rev-parse", review["candidate"] + "^{commit}").decode().strip()
+        != review["candidate"]
+        or any(
+            hashlib.sha256(git("show", review["candidate"] + ":" + name)).hexdigest() != digest
+            for name, digest in review["adapter_sha256"].items()
+        )
+    ):
+        raise ValueError("Primary successor or exact corrective-review PASS absent/stale")
+    for name, digest in review["evidence_sha256"].items():
+        if storage.sha256(safe(root / name)) != digest:
+            raise ValueError("Corrective review evidence changed")
+    if (root / "BLOCKED.json").exists():
+        raise ValueError("Successor attempt blocked; no further execution")
+    return authority
+
+
+def record_block(directory, error, captured):
+    root = authority_root(captured.get("authorization_id", "original"))
+    path = root / "BLOCKED.json"
+    if not path.exists():
+        storage.write_json(path, {"reason": repr(error), "run": str(directory)}, exclusive=True)
 
 
 def git(*args):
@@ -108,7 +211,7 @@ def prepare_runtime():
 
 
 def verify_runtime(runtime, expected=None):
-    runtime = safe(runtime)
+    runtime = safe(runtime, RUNTIME)
     if runtime != RUNTIME:
         raise ValueError("Unsupported M0 runtime root")
     expected = source_hashes() if expected is None else expected
@@ -181,7 +284,7 @@ def environment_identity():
     return {"python": sys.version, "executable": sys.executable, "packages": packages}
 
 
-def probe(preset, *, checks=False):
+def probe(preset, *, checks=False, captured=None):
     validate({"preset": preset})
     runtime = prepare_runtime()
     command = [
@@ -189,14 +292,22 @@ def probe(preset, *, checks=False):
         "-I",
         "-B",
         str(ROOT / "tools/apex_workbench/nmpc_weight_worker.py"),
-        "--check" if checks else "--probe",
+        "--boundary" if captured is not None else "--check" if checks else "--probe",
         preset,
         str(runtime),
     ]
     env = os.environ.copy()
     env["VECLIB_MAXIMUM_THREADS"] = "1"
     env["PYTHONDONTWRITEBYTECODE"] = "1"
-    result = subprocess.run(command, capture_output=True, text=True, cwd=ROOT, timeout=60, env=env)
+    result = subprocess.run(
+        command,
+        capture_output=True,
+        text=True,
+        cwd=ROOT,
+        timeout=60,
+        env=env,
+        input=json.dumps(captured, allow_nan=False) if captured is not None else None,
+    )
     logs = OUTPUT / "software_probes"
     logs.mkdir(parents=True, exist_ok=True)
     storage.write_json(
@@ -215,11 +326,15 @@ def probe(preset, *, checks=False):
 
 
 def verify_gate(*, check_environment=True):
-    if (OUTPUT / "BLOCKED.json").exists():
-        raise ValueError("M0 is blocked; retain outcomes and request Primary decision")
-    gate = storage.read_json(safe(OUTPUT / "software_gate.json"))
+    authority = verify_successor()
+    gate = storage.read_json(gate_path())
     if (
         gate.get("status") != "SOFTWARE_GATES_PASSED"
+        or gate.get("authorization_sha256")
+        != storage.sha256(authority_root() / "authorization.json")
+        or gate.get("implementation_revision")
+        != storage.read_json(authority_root() / "corrective_review.json")["candidate"]
+        or authority.get("id") != SUCCESSOR
         or gate.get("source") != SOURCE
         or gate.get("adapter_sha256") != adapter_hashes()
         or (check_environment and gate.get("environment") != environment_identity())
@@ -235,8 +350,7 @@ def capture(values):
     values = validate(values)
     gate = verify_gate()
     report = probe(values["preset"])
-    if report["resolved"] != gate["resolved_snapshots"][values["preset"]]:
-        raise ValueError("Resolved configuration differs from passed software gate")
+    same_configuration(report["resolved"], gate["resolved_snapshots"][values["preset"]])
     if report["environment"] != gate["environment"]:
         raise ValueError("Actual isolated environment differs from passed software gate")
     return {
@@ -246,8 +360,10 @@ def capture(values):
         "source_sha256": source_hashes(),
         "adapter_sha256": adapter_hashes(),
         "environment": report["environment"],
-        "resolved": report["resolved"],
-        "software_gate_sha256": storage.sha256(OUTPUT / "software_gate.json"),
+        "resolved": canonical_snapshot(report["resolved"]),
+        "authorization_id": SUCCESSOR,
+        "authorization_sha256": storage.sha256(authority_root() / "authorization.json"),
+        "software_gate_sha256": storage.sha256(gate_path()),
     }
 
 
@@ -258,13 +374,84 @@ def claim(preset, run_id, *, captured=False):
         verify_gate(check_environment=False)
     else:
         verify_gate()
-    path = safe(OUTPUT / "claims" / (preset + ".json"))
+    # The exploratory claim requires a completed, intact and comparable successor nominal.
+    if preset == "exploratory":
+        nominal = storage.read_json(claim_path("nominal"))
+        view = read_run(RUNS / nominal["run_id"])
+        if (
+            view["status"]["scientific_outcome"] != "completed"
+            or view["raw"] is None
+            or not coverage(view["raw"])["requested_duration_completed"]
+        ):
+            raise ValueError("Replacement nominal has no valid comparable result")
+        same_configuration(
+            view["request"]["nmpc_capture"]["resolved"],
+            verify_gate(check_environment=False)["resolved_snapshots"]["nominal"],
+        )
+    path = claim_path(preset)
     path.parent.mkdir(parents=True, exist_ok=True)
-    storage.write_json(path, {"preset": preset, "run_id": run_id, "source": SOURCE}, exclusive=True)
+    storage.write_json(
+        path,
+        {
+            "preset": preset,
+            "run_id": run_id,
+            "source": SOURCE,
+            "authorization_id": SUCCESSOR,
+            "authorization_sha256": storage.sha256(authority_root() / "authorization.json"),
+        },
+        exclusive=True,
+    )
 
 
 def available(preset):
-    return not (OUTPUT / "claims" / (preset + ".json")).exists()
+    return not claim_path(preset).exists()
+
+
+def owned_run(selected):
+    """Pure authentication before any UI lifecycle call; discovery alone conveys no ownership."""
+    from tools.apex_workbench.run_catalog import Run
+
+    if not isinstance(selected, Run):
+        raise ValueError("M0 inspection requires the selected catalog identity")
+    directory = safe(selected.directory, RUNS)
+    if (
+        directory.parent != RUNS
+        or directory != directory.resolve(strict=True)
+        or not selected.owned
+        or selected.aliases != (directory,)
+        or selected.adapter != ADAPTER
+        or selected.run_id != directory.name
+        or selected.key
+        != "run-" + hashlib.sha256(("id:" + directory.name).encode()).hexdigest()[:20]
+    ):
+        raise ValueError("M0 selected record is foreign, aliased or conflicting")
+    request = storage.read_json(safe(directory / "request.json", directory))
+    effective = validate(request["effective"])
+    if (
+        request.get("adapter") != ADAPTER
+        or request.get("run_id") != selected.run_id
+        or selected.case != effective["preset"]
+    ):
+        raise ValueError("M0 selected request identity/adapter changed")
+    captured = request["nmpc_capture"]
+    identifier = captured.get("authorization_id", "original")
+    claim = storage.read_json(claim_path(effective["preset"], identifier))
+    if (
+        claim.get("run_id") != selected.run_id
+        or claim.get("source") != SOURCE
+        or claim.get("preset") != effective["preset"]
+        or captured.get("source") != SOURCE
+        or captured.get("profile_sha256") != PROFILE_SHA
+        or storage.sha256(gate_path(identifier)) != captured["software_gate_sha256"]
+    ):
+        raise ValueError("M0 original ownership/authority disagrees")
+    if identifier != "original":
+        digest = storage.sha256(safe(authority_root(identifier) / "authorization.json"))
+        if claim.get("authorization_id") != identifier or not (
+            claim.get("authorization_sha256") == captured.get("authorization_sha256") == digest
+        ):
+            raise ValueError("M0 successor ownership identity disagrees")
+    return directory, storage.sha256(directory / "request.json")
 
 
 def read_run(directory):
@@ -277,14 +464,16 @@ def read_run(directory):
         raise ValueError("M0 alias does not identify its original owned run")
     captured = request["nmpc_capture"]
     verify_runtime(captured["runtime"], captured["source_sha256"])
-    gate_path = safe(OUTPUT / "software_gate.json")
-    if storage.sha256(gate_path) != captured["software_gate_sha256"]:
+    identifier = captured.get("authorization_id", "original")
+    selected_gate = gate_path(identifier)
+    if storage.sha256(selected_gate) != captured["software_gate_sha256"]:
         raise ValueError("M0 external software/configuration authority changed")
-    gate = storage.read_json(gate_path)
-    if captured["resolved"] != gate["resolved_snapshots"][request["effective"]["preset"]]:
-        raise ValueError("M0 evidence has inconsistent effective parameter snapshot")
-    claim_path = safe(OUTPUT / "claims" / (request["effective"]["preset"] + ".json"))
-    claim_record = storage.read_json(claim_path)
+    gate = storage.read_json(selected_gate)
+    same_configuration(
+        captured["resolved"], gate["resolved_snapshots"][request["effective"]["preset"]]
+    )
+    selected_claim = claim_path(request["effective"]["preset"], identifier)
+    claim_record = storage.read_json(selected_claim)
     if claim_record.get("run_id") != request["run_id"] or claim_record.get("source") != SOURCE:
         raise ValueError("M0 original attempt identity/authorization disagrees")
     if (
@@ -338,8 +527,8 @@ def read_run(directory):
         name: storage.sha256(directory / name)
         for name in ("request.json", "status.json", "artifacts.json")
     }
-    anchor["software_gate"] = storage.sha256(gate_path)
-    anchor["attempt_claim"] = storage.sha256(claim_path)
+    anchor["software_gate"] = storage.sha256(selected_gate)
+    anchor["attempt_claim"] = storage.sha256(selected_claim)
     raw = storage.artifact_json(directory, "experiment/raw.json", optional=True)
     return {
         "directory": directory,

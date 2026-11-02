@@ -256,7 +256,7 @@ elif page == "Inspect":
         st.stop()
     run = selector("Run", "inspect_run")
     if run and run.adapter == "nmpc_weight_lab":
-        nmpc_weight_panels.inspect(run.directory)
+        nmpc_weight_panels.inspect(run)
         st.stop()
     if run and run.adapter == gp_archive.ADAPTER:
         gp_panels.inspect(run)

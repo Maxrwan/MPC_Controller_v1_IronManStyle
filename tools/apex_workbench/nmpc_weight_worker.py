@@ -192,6 +192,13 @@ def resolve(preset):
     return track, reference, parameters, config, sim, timing, initial, resolved
 
 
+def execution_configuration(preset, captured):
+    """Real capture-to-worker boundary, shared by execution and the no-solve boundary probe."""
+    parts = resolve(preset)
+    resolved = lab.same_configuration(parts[-1], captured["resolved"])
+    return (*parts[:-1], resolved)
+
+
 def software_checks(parameters, config):
     """Cost/constraint algebra checks only. Never solve or run/step a plant/controller."""
     import casadi as ca
@@ -291,11 +298,11 @@ def run(directory, captured):
             or environment != captured["environment"]
         ):
             raise ValueError("Execution adapter/environment changed after admission")
-        track, reference, parameters, config, sim, timing, initial, resolved = resolve(
-            storage.read_json(directory / "request.json")["effective"]["preset"]
+        track, reference, parameters, config, sim, timing, initial, resolved = (
+            execution_configuration(
+                storage.read_json(directory / "request.json")["effective"]["preset"], captured
+            )
         )
-        if resolved != captured["resolved"]:
-            raise ValueError("Actual frozen resolved configuration differs from captured request")
         import psutil
         from task007dcx.worker import RecordedPlant
         from threadpoolctl import threadpool_info
@@ -395,15 +402,7 @@ def run(directory, captured):
             raise RuntimeError("Native early termination retained: " + str(raw.get("stop_reason")))
         return summary
     except BaseException as error:
-        if (
-            isinstance(error, (ValueError, ImportError))
-            and not (lab.OUTPUT / "BLOCKED.json").exists()
-        ):
-            storage.write_json(
-                lab.OUTPUT / "BLOCKED.json",
-                {"reason": repr(error), "run": str(directory)},
-                exclusive=True,
-            )
+        lab.record_block(directory, error, captured)
         raise
     finally:
         post_environment = lab.environment_identity()
@@ -430,15 +429,25 @@ def run(directory, captured):
 def main():
     mode, preset, runtime = sys.argv[1:]
     guard, native, environment = bootstrap(runtime)
-    _, _, parameters, config, _, _, _, resolved = resolve(preset)
+    if mode == "--boundary":
+        parts = execution_configuration(preset, json.load(sys.stdin))
+    else:
+        parts = resolve(preset)
+    _, _, parameters, config, sim, _, _, resolved = parts
     result = {
-        "resolved": resolved,
+        "resolved": lab.canonical_snapshot(resolved),
         "imports": guard.audit(),
         "native": native,
         "environment": environment,
     }
     if mode == "--check":
         result["software_checks"] = software_checks(parameters, config)
+    elif mode == "--boundary":
+        result["boundary"] = {
+            "native_failed_plan_ids_is_tuple": type(sim.failed_plan_ids) is tuple,
+            "optimizer_solves": 0,
+            "plant_steps": 0,
+        }
     elif mode != "--probe":
         raise ValueError("Unknown software preflight mode")
     print(json.dumps(result, allow_nan=False))

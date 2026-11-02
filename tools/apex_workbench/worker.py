@@ -153,15 +153,9 @@ def main(directory: Path, lock_fd: int) -> int:
             (directory / "worker_result.json").write_text(json.dumps(summary, indent=2) + "\n")
             return 0
         except Exception as error:
-            if isinstance(error, (ValueError, ImportError)):
-                from tools.apex_workbench.nmpc_weight_lab import OUTPUT
-                from tools.apex_workbench.storage import write_json
+            from tools.apex_workbench.nmpc_weight_lab import record_block
 
-                blocked = OUTPUT / "BLOCKED.json"
-                if not blocked.exists():
-                    write_json(
-                        blocked, {"run": str(directory), "reason": repr(error)}, exclusive=True
-                    )
+            record_block(directory, error, request["nmpc_capture"])
             traceback.print_exc()
             return 2
     sys.path[:0] = [str(ROOT / "scripts"), str(ROOT / "src")]

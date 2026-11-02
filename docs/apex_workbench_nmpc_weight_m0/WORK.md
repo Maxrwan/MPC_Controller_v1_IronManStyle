@@ -1,5 +1,37 @@
 # M5-A / NMPC Weight Lab M0 — bounded WORK
 
+## R1/R2 corrective continuation — current WORK
+
+Primary authorized bounded R1/R2 correction on 2 November 2026 from blocked delivery
+`52c5f55c253ef88bc0bc66fb9504eef5af21d2b5`. Decision SHA-256:
+`8c5147b33c8da3270558ee43a140a10dd69397bdd9258fb091db24bfb03eb1f8`.
+The original outcome and independent BLOCKED review below remain historical evidence.
+
+R1 now canonicalizes only JSON representation at the capture/worker boundary; original scientific
+dataclasses/values remain unchanged. Both actual execution and a fresh no-solve boundary probe use
+the same strict equality helper. Nonfinite/unsupported/malformed values, numeric type changes and
+genuine non-treatment differences are rejected. R2 passes the selected catalog record and
+authenticates canonical owned directory, adapter/request/claim identity, origin and aliases before
+any lifecycle call; cancellation reauthenticates. `jobs.py` is unchanged.
+
+The original gate/claim/BLOCKED bytes cannot admit a replacement. An append-only successor authority
+therefore binds the exact new Primary decision, those immutable anchors, exact independently
+reviewed producer hashes/Git revision, software evidence and numerical environment. It has one NEW
+nominal claim and at most one exploratory claim; exploratory admission requires intact completed
+nominal coverage. A successor failure blocks further execution without replacing original evidence.
+This is authorization bookkeeping in the presentation/composition adapter, not a new scientific
+contract. No original numerical allowance is reset or reused.
+
+Focused suite: **56 passed**, no failures/errors/skips, 97.08 s. The earlier 53-pass/two-failure
+invocation and its disposable fixture-root correction remain retained; counts are not combined.
+Actual capture-to-worker positive/negative checks perform zero optimizer solves and plant steps.
+AST/Ruff and scoped preservation checks pass; all 545 preexisting M0 output files and 1,023
+nonallowlisted tracked baseline files are unchanged. Independent corrective review must PASS
+before any replacement attempt. Formal Verification remains unauthorized. Exact commands, source/evidence hashes and
+outcomes are recorded in `work_record.json`; generated outputs stay under the original ignored root.
+
+## Original blocked delivery — preserved history
+
 **Current outcome: NMPC_WEIGHT_LAB_M0_BLOCKED_PENDING_PRIMARY_DECISION.** The nominal worker
 launched at `c745726fee6f4e33259aef3781ee5181d02afe08` failed its resolved-configuration guard
 before `make_mpc`, tracker/plant construction or `AsyncRunner.run`. Its claim is consumed and its

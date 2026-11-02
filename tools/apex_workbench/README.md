@@ -94,13 +94,16 @@ Parameters are synthetic, never measured or identified APEX data. Linear tires r
 
 ## Use
 
-**M0 prototype status: BLOCKED pending Primary decision.** At reviewed source
+**M0 prototype status: R1/R2 corrective WORK, pending independent review.** Primary authorized
+localized fixes and conditional replacement execution on 2 November 2026. No new attempt may run
+before corrective-review PASS; the separate successor authority retains the original failed claim,
+gate and BLOCKED bytes. At the original reviewed source
 `c745726fee6f4e33259aef3781ee5181d02afe08`, the single nominal worker attempt failed its
 configuration snapshot guard before controller construction, optimizer solve or plant motion.
 Its failure evidence and consumed claim remain retained; exploratory was not run. Independent
 review also found that M0 inspection can reach lifecycle writes before archive ownership validation.
-Do not use this prototype for execution or archive inspection until separately authorized
-corrections and review. No genuine nominal/treatment result or formal Verification is claimed.
+Do not use this prototype for execution or archive inspection until corrective review passes.
+No genuine nominal/treatment result or formal Verification is claimed at this WORK checkpoint.
 The following describes the implemented interface, whose acceptance remains blocked.
 
 **Experimental NMPC Weight Lab M0:** Home → **Open experimental NMPC Weight Lab M0**, or Run →
