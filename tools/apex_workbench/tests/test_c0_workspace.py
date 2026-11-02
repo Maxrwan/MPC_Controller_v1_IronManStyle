@@ -1,5 +1,6 @@
 """Actual Workbench paths over read-only C0; disposable negative evidence only."""
 
+import json
 import shutil
 
 import pytest
@@ -52,10 +53,10 @@ def test_real_c0_navigation_tokens_missingness_and_no_execution(monkeypatch, tmp
     widget(app.selectbox, "C0 recorded signal collection").select("controls").run()
     widget(app.selectbox, "C0 recorded field").select("physical_latency").run()
     widget(app.selectbox, "C0 raw collection").select("controls").run()
-    raw = app.dataframe[2].value.set_index("pointer")
+    raw = app.table[2].value.set_index("pointer")
     assert raw.loc["/controls/0/acceleration_correction", "json_literal"] == "-0.0"
     assert raw.loc["/controls/0/physical_latency", "json_literal"] == "0.0"
-    missing = app.dataframe[1].value.set_index("pointer")
+    missing = app.table[1].value.set_index("pointer")
     assert missing.loc["/fixed_handoffs/0/first_TVLQR_use", "presence"] == "present-null"
     assert missing.loc["/packets/0/valid_from", "presence"] == "absent"
     widget(app.button, "Prepare C0 descriptive HTML inspection").click().run()
@@ -102,7 +103,7 @@ def test_real_late_render_change_clears_all_scoped_content(disposable, monkeypat
     app = open_c0(application(monkeypatch, tmp_path))
     assert "descriptive_record_quarantined" in app.error[0].value
     assert not app.get("plotly_chart") and not app.get("download_button")
-    assert not app.dataframe and not app.warning and not app.success
+    assert not app.table and not app.warning and not app.success
 
 
 def test_replacement_during_download_preparation_clears_export(disposable, monkeypatch, tmp_path):
@@ -119,3 +120,19 @@ def test_replacement_during_download_preparation_clears_export(disposable, monke
     widget(app.button, "Prepare C0 descriptive HTML inspection").click().run()
     assert not app.exception and "descriptive_record_quarantined" in app.error[0].value
     assert not app.get("download_button") and not app.get("plotly_chart")
+
+
+def test_c0_has_no_native_image_csv_or_clipboard_output_actions(monkeypatch, tmp_path):
+    app = open_c0(application(monkeypatch, tmp_path))
+    config = json.loads(app.get("plotly_chart")[0].proto.config)
+    assert config["displayModeBar"] is False
+    assert "toImage" in config["modeBarButtonsToRemove"]
+    assert config["displaylogo"] is False and config["showSendToCloud"] is False
+    assert len(app.table) == 3
+    assert not app.dataframe and not app.code and not app.json
+    expected = "BEGIN ORIGINAL JSON\n" + (c0.ROOT / c0.RELATIVE).read_text() + "\nEND ORIGINAL JSON"
+    assert any(item.value == expected for item in app.text)
+    assert not app.get("download_button")
+    widget(app.button, "Prepare C0 descriptive HTML inspection").click().run()
+    assert not app.exception and len(app.get("download_button")) == 1
+    assert not app.dataframe and not app.code and not app.json

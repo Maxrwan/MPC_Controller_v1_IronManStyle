@@ -121,7 +121,7 @@
     "host Python metadata probe lacked streamlit; actual venv recorded without test rerun",
     "early lint/format issues corrected before focused tests; logs retained"
   ],
-  "independent_review": "PENDING exact-candidate review, up to two bounded routine correction iterations",
+  "independent_review": "iteration_1 BLOCKED R1 preserved; correction1 exact-revision re-review pending",
   "contract_pr_1": "remains draft; no merge",
   "remaining_limits": [
     "G1 capture source/configuration/environment/receipt unknown",
@@ -129,5 +129,102 @@
     "Only one exact record; no generic importer, execution identity or scientific comparison",
     "Native browser download and unchanged launcher are not newly verified by this WORK"
   ],
-  "next_gate": "Independent Engineering Review, then stop pending separately authorized formal Verification"
+  "next_gate": "Independent Engineering Review, then stop pending separately authorized formal Verification",
+  "initial_candidate_revision": "7f78df15470c99968ebd9ca473080a8822d81da7",
+  "correction_1": {
+    "date": "2026-11-02",
+    "candidate_revision": "containing correction1 commit",
+    "failed_review_commit": "f60c523af69aed920e25a578ae94dbd34b3db11c",
+    "scope": "new C0 presentation + focused tests only; remove native image/CSV/clipboard output actions",
+    "runtime_reader_shape_workspace_unchanged_from_initial_candidate": true,
+    "tested_source_sha256": {
+      "tools/apex_workbench/c0_archive.py": "811a2c8efe34705d31650d9f78a3e7a514b35a6fd4f53ee86ff29e158d7df7d0",
+      "tools/apex_workbench/c0_panels.py": "81843840ca072098ce9fd8c88ee33229e0b5461d59af1c39645b6912448fb4c1",
+      "tools/apex_workbench/c0_shape.json": "5acfa2535daeed22bfd3d5033dd74f84d579507136d6088b87caa716b40fe4a6",
+      "tools/apex_workbench/workspace.py": "d01ac49f9a0bcff9fc78ac0b029131540ebad94d73c0742b69712ebf3ac9a7cb",
+      "tools/apex_workbench/tests/test_c0_archive.py": "d52659d97e215157641c58a1665b4b1737c36186d8a9cc0eff5c6a65e1f13d11",
+      "tools/apex_workbench/tests/test_c0_workspace.py": "1539ec302158ec438a36c29ba29f711990550d8fd5eb70715b794a804118ce33"
+    },
+    "environment": {
+      "python": "3.12.14 (main, Sep  1 2026, 14:09:38) [Clang 22.1.3 ]",
+      "platform": "macOS-26.5.1-arm64-arm-64bit",
+      "test_python": "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/tools/apex_workbench/.venv/bin/python",
+      "thread_policy": "VECLIB_MAXIMUM_THREADS=1; configure_accelerate(1) before pytest; no exact active thread count claim",
+      "packages": {
+        "numpy": "2.5.3",
+        "scipy": "1.18.1",
+        "pandas": "3.0.6",
+        "streamlit": "1.66.1",
+        "plotly": "6.9.0",
+        "pytest": "9.1.1"
+      }
+    },
+    "test_invocations": [
+      {
+        "id": "correction1_focused",
+        "command": "VECLIB_MAXIMUM_THREADS=1 PYTHONPATH=scripts:src tools/apex_workbench/.venv/bin/python -c 'from threading_study.config import configure_accelerate; configure_accelerate(1); import sys,pytest; raise SystemExit(pytest.main(sys.argv[1:]))' -q tools/apex_workbench/tests/test_c0_archive.py tools/apex_workbench/tests/test_c0_workspace.py --basetemp=results/apex_workbench_c0_adapter_correction1_20261102/tmp_focused --junitxml=results/apex_workbench_c0_adapter_correction1_20261102/focused.xml --durations=10 > results/apex_workbench_c0_adapter_correction1_20261102/focused.log 2>&1",
+        "exit_status": 1,
+        "tests": 69,
+        "failures": 1,
+        "errors": 0,
+        "skips": 0,
+        "seconds": 9.164,
+        "timestamp": "2026-11-02T14:46:58.983699+02:00",
+        "note": "Final adds raw-text display boundaries and exact wrapped-source assertion; failed invocation source differs only in that boundary/expectation block."
+      },
+      {
+        "id": "correction1_focused_final",
+        "command": "VECLIB_MAXIMUM_THREADS=1 PYTHONPATH=scripts:src tools/apex_workbench/.venv/bin/python -c 'from threading_study.config import configure_accelerate; configure_accelerate(1); import sys,pytest; raise SystemExit(pytest.main(sys.argv[1:]))' -q tools/apex_workbench/tests/test_c0_archive.py tools/apex_workbench/tests/test_c0_workspace.py --basetemp=results/apex_workbench_c0_adapter_correction1_20261102/tmp_focused_final --junitxml=results/apex_workbench_c0_adapter_correction1_20261102/focused_final.xml --durations=10 > results/apex_workbench_c0_adapter_correction1_20261102/focused_final.log 2>&1",
+        "exit_status": 0,
+        "tests": 69,
+        "failures": 0,
+        "errors": 0,
+        "skips": 0,
+        "seconds": 8.121,
+        "timestamp": "2026-11-02T14:48:10.113730+02:00",
+        "note": "Exact source hashes in correction1 tested_source_sha256."
+      }
+    ],
+    "preservation": {
+      "protected_paths": 1401,
+      "authorized_changed_paths": [
+        "docs/DECISIONS.md",
+        "tools/apex_workbench/README.md",
+        "tools/apex_workbench/workspace.py"
+      ],
+      "unexpected_changes": [],
+      "G1": "OPEN",
+      "groups": {
+        "gp_archive_sha256": {
+          "files": 25,
+          "unchanged": true
+        },
+        "qualification_sha256": {
+          "files": 345,
+          "unchanged": true
+        },
+        "scientific_source_sha256": {
+          "files": 56,
+          "unchanged": true
+        },
+        "legacy_oval_sha256": {
+          "files": 4,
+          "unchanged": true
+        }
+      }
+    },
+    "evidence_sha256": {
+      "results/apex_workbench_c0_adapter_correction1_20261102/focused.xml": "6e0c16a901e26c2fe6dc93ca97bb79c19cae5bfa6584ec8652e93670bf86974b",
+      "results/apex_workbench_c0_adapter_correction1_20261102/preservation.json": "b6415d71233ed722cdcf71f2e149df36f5b31d24c624ba7151032ea991b9229f",
+      "results/apex_workbench_c0_adapter_correction1_20261102/focused_final.log": "52fd6621b8f3dcaf113746b53dce9effc0ac8a04da652e4cbb6f1c222f0311d8",
+      "results/apex_workbench_c0_adapter_correction1_20261102/focused_final.xml": "0834ee69b89e2bb361eb2d44361f6a2feddd46d687eda380bfb15fdebb90a36a",
+      "results/apex_workbench_c0_adapter_correction1_20261102/lint.txt": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+      "results/apex_workbench_c0_adapter_correction1_20261102/tested_source_sha256.json": "2b206a04a07a670fb26307b114763e3422d42ccd1de500033757d4707542a4a2",
+      "results/apex_workbench_c0_adapter_correction1_20261102/environment.json": "816109c63e2d00686ebbdf6d9959551a17d96cb84e3e255fde99beba7a1965ac",
+      "results/apex_workbench_c0_adapter_correction1_20261102/focused.log": "93cbfe0fe916340aaa3fa2185f903cabd97504e140d64f543721164d6af3c89b"
+    },
+    "routine_correction_iterations_used": 1,
+    "allowance": 2,
+    "earlier_24_compatibility_result": "Retained supplementary evidence at initial candidate, not newly executed on correction; unaffected existing modules/routes unchanged; corrected C0-to-P navigation freshly tested."
+  }
 }

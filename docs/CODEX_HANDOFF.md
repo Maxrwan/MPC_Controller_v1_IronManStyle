@@ -1,3 +1,26 @@
+# Current handoff — C0 adapter correction 1 pending independent re-review
+
+**WORK_COMPLETE_PENDING_REVIEW.** 2 November 2026. On
+`codex/apex-workbench-c0-descriptive-adapter`, initial candidate `7f78df1…` received independent
+BLOCKED R1 for native image/CSV/clipboard output actions; the unchanged failed review is preserved
+in `f60c523…` and [iteration 1](reviews/apex_workbench_v0_3_d/c0_adapter/iteration_1/REVIEW.md).
+[WORK/correction](apex_workbench_v0_3_d/c0_adapter/WORK.md),
+[machine evidence](apex_workbench_v0_3_d/c0_adapter/work_record.json).
+
+Correction 1 disables native C0 Plotly exports and replaces interactive export/copy components
+with static tables/plain text, retaining only the checked, metadata-bearing HTML path. Raw JSON
+display boundaries preserve original whitespace. The reader, shape and approved contract are
+unchanged. First correction run: 68 passed/1 failed (text trimming); retained. Final focused run:
+69 passed, zero failures/errors/skips. Prior 67/24 counts remain separate historical invocations.
+No simulation, controller, numerical campaign or formal Verification. G1 remains OPEN.
+
+The containing commit is the corrected candidate for independent re-review. Stop after Engineering
+Review pending separately authorized Verification; no merge or scientific acceptance. Original
+56 scientific/345 qualification/25 P/4 legacy files and all earlier findings remain preserved.
+PR #1 remains draft. One of two bounded routine correction iterations used.
+
+---
+
 # Current handoff — C0 descriptive-only adapter WORK pending review
 
 **WORK_COMPLETE_PENDING_REVIEW.** 31 October 2026. Primary authorized one additive read-only C0

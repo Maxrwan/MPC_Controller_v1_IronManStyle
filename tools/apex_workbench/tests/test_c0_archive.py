@@ -282,6 +282,15 @@ def test_standalone_html_retains_original_bytes_tokens_and_limits(original):
     assert "<script src=" not in content
 
 
+def test_standalone_html_has_no_nested_image_export(original):
+    content = c0_panels.report(original, "states", "vx").decode()
+    # Inspect the actual generated call, not matching Plotly's bundled defaults.
+    call = content.rsplit("Plotly.newPlot(", 1)[1]
+    assert '"displayModeBar": false' in call
+    assert '"modeBarButtonsToRemove": ["toImage"]' in call
+    assert '"showSendToCloud": false' in call and '"displaylogo": false' in call
+
+
 def test_export_rechecks_real_disposable_replacement_after_serialization(disposable, monkeypatch):
     snapshot = c0.read()
     original = c0_panels.go.Figure.to_html

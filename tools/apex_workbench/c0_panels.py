@@ -19,6 +19,14 @@ ORDERING = (
     "Cross-stream ties/order remain unknown. Null, absent, zero and empty are distinct; "
     "no interpolation, held-input inference or elapsed-response metrics."
 )
+# Only explicitly prepared metadata-bearing HTML is an offered output action.
+# Native image/CSV/clipboard actions cannot perform our server-side currentness check.
+PLOT_CONFIG = {
+    "displayModeBar": False,
+    "modeBarButtonsToRemove": ["toImage"],
+    "displaylogo": False,
+    "showSendToCloud": False,
+}
 
 
 def figure(data, collection, channel):
@@ -95,7 +103,7 @@ def report(snapshot, collection, channel):
         + "</p><p>"
         + html.escape(ORDERING)
         + "</p>"
-        + plot.to_html(full_html=False, include_plotlyjs=True)
+        + plot.to_html(full_html=False, include_plotlyjs=True, config=PLOT_CONFIG)
         + "<h2>Contemporary inspection identity and limits</h2><pre>"
         + html.escape(json.dumps(meta, indent=2, ensure_ascii=False))
         + "</pre><h2>Literal chronology: pointers and tokens</h2><pre>"
@@ -124,24 +132,25 @@ def _inspect():
     st.caption("descriptive_record_valid_source_unverified · G1 OPEN · read-only archive")
     st.info(LIMITS)
     st.caption("Selected V0.2 qualification does not apply; no worker or controller path.")
-    st.json(provenance(), expanded=False)
+    with st.expander("Record identity and provenance limitations"):
+        st.text(json.dumps(provenance(), indent=2, ensure_ascii=False))
     st.caption(
         "Markers show only recorded numbers; exact tokens/pointers/hash are in hover and tables."
     )
-    st.plotly_chart(plot, width="stretch")
+    st.plotly_chart(plot, width="stretch", config=PLOT_CONFIG)
     st.caption(ORDERING)
     with st.expander(
         "Literal chronology: readiness, misses, late discards, urgent demand and fallback"
     ):
-        st.dataframe(archive.chronology(data), hide_index=True, width="stretch")
+        st.table(archive.chronology(data), hide_index=True, width="stretch")
     with st.expander("Present-null and absent fields"):
-        st.dataframe(archive.missingness(data), hide_index=True, width="stretch")
+        st.table(archive.missingness(data), hide_index=True, width="stretch")
     with st.expander("Original rows, pointers and numerical tokens"):
         collections = [key for key, value in data.items() if isinstance(value, list)]
         selected = st.selectbox("C0 raw collection", collections)
         if data[selected]:
             index = st.number_input("C0 original array index", 0, len(data[selected]) - 1, 0, 1)
-            st.dataframe(archive.fields(data, selected, index), hide_index=True, width="stretch")
+            st.table(archive.fields(data, selected, index), hide_index=True, width="stretch")
         else:
             st.write("No rows recorded in this collection; no real-system absence is established.")
     with st.expander("Reference-only explanations — unverified for the original capture"):
@@ -159,7 +168,8 @@ def _inspect():
             "not capture identity."
         )
     with st.expander("Original JSON — literal bytes"):
-        st.code(snapshot.raw.decode("utf-8"), language="json")
+        # Display boundaries keep st.text's outer-whitespace trimming outside the raw JSON.
+        st.text("BEGIN ORIGINAL JSON\n" + snapshot.raw.decode("utf-8") + "\nEND ORIGINAL JSON")
     if st.button("Prepare C0 descriptive HTML inspection"):
         content = report(snapshot, collection, channel)
         st.download_button(

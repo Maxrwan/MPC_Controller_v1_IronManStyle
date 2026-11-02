@@ -80,3 +80,31 @@ correction iterations are authorized; preserve failed findings. After review sto
 `C0_DESCRIPTIVE_ADAPTER_ENGINEERING_REVIEW_COMPLETE_PENDING_VERIFICATION`, or
 `C0_DESCRIPTIVE_ADAPTER_BLOCKED_PENDING_PRIMARY_DECISION` if blocking. Formal Verification needs
 separate Primary authorization; no automatic merge, scientific acceptance or later work.
+
+## Bounded correction 1 — native output surfaces
+
+2 November 2026. The [independent iteration-1 review](../../reviews/apex_workbench_v0_3_d/c0_adapter/iteration_1/REVIEW.md)
+BLOCKED initial candidate `7f78df15470c99968ebd9ca473080a8822d81da7` on R1: default Plotly image,
+dataframe CSV and code/JSON clipboard actions bypassed the context-bearing checked output path.
+The failed review is preserved at `f60c523…`; its own 67 passing tests do not erase this finding.
+
+Only the new C0 presentation and its focused assertions change: live/HTML Plotly modebar/image/cloud
+actions are disabled; bounded rows use static tables; provenance/raw JSON use plain text. Explicit
+raw-JSON display boundaries retain original outer whitespace despite Streamlit's text trimming.
+Only the checked, metadata-bearing HTML download remains an offered output action. Ordinary browser
+text selection is outside this controlled-output correction. Reader, shape profile, approved
+contract, all scientific sources, worker/lifecycle and original evidence remain unchanged.
+
+Correction evidence is in `results/apex_workbench_c0_adapter_correction1_20261102/`. The first
+focused run had **68 passes / 1 failure** because the new test exposed outer-whitespace trimming
+in the raw text surface. That log/JUnit remains intact; adding display boundaries fixed the actual
+surface rather than weakening the assertion. Final focused invocation: **69 passed**, zero
+failures/errors/skips, 8.12 s. It directly checks actual widget/Plotly configuration, the generated
+HTML's invocation configuration, absence of native CSV/clipboard components, exact decoded source,
+and existing late-change quarantine. No counts across invocations are combined.
+
+The earlier 24 compatibility passes remain supplementary evidence at `7f78df1`, not newly executed
+on the correction. Existing P/scientific workspace modules and routes are unchanged; the corrected
+C0-to-P navigation is freshly included in the 69 tests. No full Verification or scientific run.
+Submit the containing correction commit for independent exact-revision re-review. This is the
+first of the two permitted routine correction iterations. **G1 OPEN; descriptive-only throughout.**

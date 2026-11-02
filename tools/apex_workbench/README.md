@@ -106,6 +106,8 @@ are capture-unverified. No geometry, terminal state, held controls or missing ev
 tokens, missingness and the same limitations. Changed evidence or contract/review identities
 quarantine the view and withhold export. This is software WORK pending independent review/formal
 Verification, not authenticated controller evidence, scientific qualification or physical data.
+The C0 view uses static tables/plain text and disables Plotly's native export controls in both
+live and HTML plots. Its only offered output action is the explicitly prepared HTML download.
 
 1. **Home** shows the three supported modes, explicit unavailable capabilities, adapter/outcome
    filters and unverified discovery metadata. Inspect a record to establish evidence trust.
