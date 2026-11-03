@@ -1,6 +1,8 @@
 """Actual workspace routes and retained viewers; no experimental execution before the gate."""
 
 import copy
+import hashlib
+import shutil
 from dataclasses import replace
 
 import pytest
@@ -130,12 +132,14 @@ def owned_fixture(tmp_path, monkeypatch, preflights):  # noqa: F811
     directory = fixture_run(tmp_path, preflights)
     monkeypatch.setattr(lab, "OUTPUT", tmp_path)
     monkeypatch.setattr(lab, "RUNS", tmp_path / "runs")
+    storage.write_json(tmp_path / "BLOCKED.json", {"software_fixture_original_block": True})
     monkeypatch.setattr(
         lab,
         "ORIGINAL_ANCHORS",
         {
-            **lab.ORIGINAL_ANCHORS,
             "software_gate.json": storage.sha256(tmp_path / "software_gate.json"),
+            "claims/nominal.json": storage.sha256(tmp_path / "claims/nominal.json"),
+            "BLOCKED.json": storage.sha256(tmp_path / "BLOCKED.json"),
         },
     )
     catalog = run_catalog.discover(
@@ -158,6 +162,8 @@ def owned_fixture(tmp_path, monkeypatch, preflights):  # noqa: F811
         "request_adapter",
         "case",
         "claim",
+        "original_claim_rebind",
+        "original_claim_extra",
         "captured_adapter",
         "captured_source",
         "captured_config",
@@ -205,6 +211,24 @@ def test_invalid_inspection_never_reaches_lifecycle(
         selected = replace(selected, case="exploratory")
     elif fault == "claim":
         storage.write_json(tmp_path / "claims/nominal.json", {"run_id": "forged"})
+    elif fault in {"original_claim_rebind", "original_claim_extra"}:
+        claim = storage.read_json(tmp_path / "claims/nominal.json")
+        if fault == "original_claim_rebind":
+            copied = directory.with_name("copied_original_identity")
+            shutil.copytree(directory, copied)
+            request = storage.read_json(copied / "request.json")
+            storage.write_json(copied / "request.json", dict(request, run_id=copied.name))
+            claim["run_id"] = copied.name
+            selected = replace(
+                selected,
+                directory=copied,
+                aliases=(copied,),
+                run_id=copied.name,
+                key="run-" + hashlib.sha256(("id:" + copied.name).encode()).hexdigest()[:20],
+            )
+        else:
+            claim["unsupported_extra"] = "changed original bytes"
+        storage.write_json(tmp_path / "claims/nominal.json", claim)
     elif fault.startswith("captured_"):
         request = storage.read_json(directory / "request.json")
         captured = request["nmpc_capture"]

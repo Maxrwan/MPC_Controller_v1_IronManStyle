@@ -49,6 +49,19 @@ Revision-2 focused suite: **66 passed**, no failures/errors/skips, 91.12 s; coun
 The genuine original failed M0 record also passes the stricter ownership authentication with pure
 reads and no lifecycle call. The original 545 output-file inventory still matches.
 
+Re-review of `e1fe6666daaa7e85eb0dc29a80e969291a1afa48` independently rejected seven capture/link/gate
+negatives and preserved legitimate cancellation, but demonstrated one remaining original-claim
+rebinding path using a copied disposable record. The reviewer's final report was interrupted by
+a service usage limit; its raw script/log/result and communicated BLOCKED finding remain in
+`corrective_20261102/review_2/`. No PASS or numerical admission was inferred from that interruption.
+
+The final localized change applies all existing `ORIGINAL_ANCHORS` pins, including the original
+nominal claim, before lifecycle access. It changes no scientific value, worker, gate-admission
+semantics or `jobs.py`. New tests retain a copied-record/rebound-claim negative and a same-fields,
+changed-bytes claim negative. The affected workspace invocation passed **32 tests**, no failures,
+errors or skips, 28.20 s. The prior 66-case invocation and R1 evidence remain separate and apply
+only to unchanged functions/dependencies. A fresh independent exact-revision review is pending.
+
 ## Original blocked delivery — preserved history
 
 **Current outcome: NMPC_WEIGHT_LAB_M0_BLOCKED_PENDING_PRIMARY_DECISION.** The nominal worker

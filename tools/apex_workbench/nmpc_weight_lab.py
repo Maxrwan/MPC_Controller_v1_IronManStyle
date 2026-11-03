@@ -462,8 +462,9 @@ def owned_run(selected):
     same_configuration(captured["environment"], gate["environment"])
     verify_runtime(captured["runtime"], captured["source_sha256"])
     if identifier == "original":
-        if storage.sha256(selected_gate) != ORIGINAL_ANCHORS["software_gate.json"]:
-            raise ValueError("Original historical software gate is not the approved identity")
+        for name, digest in ORIGINAL_ANCHORS.items():
+            if storage.sha256(safe(OUTPUT / name)) != digest:
+                raise ValueError("Original historical authority/claim is not the approved identity")
     if identifier != "original":
         verify_successor(check_current=False, allow_blocked=True)
         review = storage.read_json(safe(authority_root(identifier) / "corrective_review.json"))

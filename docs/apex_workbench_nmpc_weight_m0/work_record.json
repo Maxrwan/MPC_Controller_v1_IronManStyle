@@ -1184,7 +1184,7 @@
     "primary_decision_sha256": "8c5147b33c8da3270558ee43a140a10dd69397bdd9258fb091db24bfb03eb1f8",
     "status": "M0_R1_R2_WORK_COMPLETE_PENDING_INDEPENDENT_REVIEW",
     "source_sha256": {
-      "tools/apex_workbench/nmpc_weight_lab.py": "1a606f87aed89c75a4d18094bb8abee50b6f4e54c2509c32516b2a3564ab10e1",
+      "tools/apex_workbench/nmpc_weight_lab.py": "13d2114ab6c379d1e5e10f1f56d5bfc9168835fea2160b148cffbb3e9d4d0167",
       "tools/apex_workbench/nmpc_weight_worker.py": "d1051d60263936f173e4b691f1407a2b8fbb801f4825ff926e75112eda18ef01",
       "tools/apex_workbench/nmpc_weight_panels.py": "8ff944147ce43073289f4be1f4413167b584afc7bb7286d706f800f42b3495e9",
       "tools/apex_workbench/configuration.py": "ed1611b0d15f17daeb515b7e6167863c49ee9c6ccd96c16403d3f55e5ac38dd3",
@@ -1193,7 +1193,7 @@
       "tools/apex_workbench/workspace.py": "60410157b2c6111628e7caeca8da2fb95fcbb74d40c3b1d827e0469778619a05",
       "tools/apex_workbench/run_catalog.py": "4e974ea40940b2990f9b4416f97b8fe5fbde2ce6b335d3e49df3f4c422587f6d",
       "tools/apex_workbench/tests/test_nmpc_weight_lab.py": "a06ac52fc8c77c7181d0eaee8e04264d40b41bda82ab68921a158b7723bd859d",
-      "tools/apex_workbench/tests/test_nmpc_weight_workspace.py": "4ea56851470961cd51f4ff52cad3a149bd2e9157f6808dbf458427c9b13bed3d"
+      "tools/apex_workbench/tests/test_nmpc_weight_workspace.py": "36e56f2929b5d98241f9409056e4d46726fb4694042c7378857dca10e03054bb"
     },
     "changed_paths_from_workbench_base": [
       "docs/CODEX_HANDOFF.md",
@@ -1257,6 +1257,21 @@
           "hostname": "Marwans-MacBook-Air.local"
         },
         "exit_status": 0
+      },
+      {
+        "id": "tests_4",
+        "command": "PYTHONDONTWRITEBYTECODE=1 VECLIB_MAXIMUM_THREADS=1 PYTHONPATH=.:scripts:src /Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/tools/apex_workbench/.venv/bin/python -B -c 'from threading_study.config import configure_accelerate; configure_accelerate(1); import sys,pytest; raise SystemExit(pytest.main(sys.argv[1:]))' -q -p no:cacheprovider tools/apex_workbench/tests/test_nmpc_weight_workspace.py --basetemp=results/apex_workbench_nmpc_weights/corrective_20261102/tests_4 --junitxml=results/apex_workbench_nmpc_weights/corrective_20261102/tests_4.xml --durations=8 > results/apex_workbench_nmpc_weights/corrective_20261102/tests_4.log 2>&1",
+        "junit": {
+          "name": "pytest",
+          "errors": "0",
+          "failures": "0",
+          "skipped": "0",
+          "tests": "32",
+          "time": "28.204",
+          "timestamp": "2026-11-03T11:12:17.378780+02:00",
+          "hostname": "Marwans-MacBook-Air.local"
+        },
+        "exit_status": 0
       }
     ],
     "counts_aggregated": false,
@@ -1267,7 +1282,7 @@
     "nonallowlisted_tracked_files_unchanged": 1023,
     "jobs_py_changed": false,
     "new_numerical_attempts_started": 0,
-    "independent_corrective_review": "PENDING exact revision-2 containing commit; first candidate BLOCKED",
+    "independent_corrective_review": "PENDING fresh exact revision-3 independent context",
     "formal_verification_authorized": false,
     "successor_authority_id": "primary-r1-r2-20261102",
     "admission_conditions": "Exact Primary decision, immutable original anchors, exact producer/Git independent corrective PASS, software/environment gate; exclusive new nominal claim then exploratory only after completed intact nominal",
@@ -1297,7 +1312,12 @@
       "results/apex_workbench_nmpc_weights/corrective_20261102/review_1/probe_r2_result.json": "15a711bc52906c5959190eb848842dddb052bc16fd0ee48855fad537101d9e11",
       "results/apex_workbench_nmpc_weights/corrective_20261102/review_1/probe_r2.log": "104702f1143b0eefe1b9d1eed633fecdec7e5443b1471dbf09d1eb8fe46287f9",
       "results/apex_workbench_nmpc_weights/corrective_20261102/review_1/focused.xml": "d04f5cff5574c259b5a0f08d44f18f361427a2e290dcee33615c942b2f4d3262",
-      "results/apex_workbench_nmpc_weights/corrective_20261102/review_1/focused.log": "483097636ccd78c9737d17e10fae0d9ff4d7342b736bb3c068c4448649eee7de"
+      "results/apex_workbench_nmpc_weights/corrective_20261102/review_1/focused.log": "483097636ccd78c9737d17e10fae0d9ff4d7342b736bb3c068c4448649eee7de",
+      "results/apex_workbench_nmpc_weights/corrective_20261102/tests_4.xml": "b174253f1d68281cfda8c7262d25a83e322ab96d9ede4328e76330cf0047a2d3",
+      "results/apex_workbench_nmpc_weights/corrective_20261102/resource_preparation.json": "28416888a5f9092956e3fc6470bfe0bdb38809bc10580e5ab3b6ced7d5266dea",
+      "results/apex_workbench_nmpc_weights/corrective_20261102/lint_r2_claim.log": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+      "results/apex_workbench_nmpc_weights/corrective_20261102/format_r2_claim.log": "10869b88a75066aa23546ef1f95fcd4678c3fb92a56ed46ef91688052b67976a",
+      "results/apex_workbench_nmpc_weights/corrective_20261102/tests_4.log": "5a0d54c64a6d2eed39a716131da64966aa63446632757910eeca7dddebb6fb2a"
     },
     "independent_reviews": [
       {
@@ -1359,6 +1379,124 @@
         "conditional_science_permitted": false,
         "raw_record_sha256": "5f77fa1b704383493c180305923ccf8ae0816357faf97183aea1c783ef4422a6",
         "raw_report_sha256": "65f54cbae6e2ac166a0f971f2e13b9e52c9c0356fe8220afa043c4eaa3ee038b"
+      },
+      {
+        "candidate": "e1fe6666daaa7e85eb0dc29a80e969291a1afa48",
+        "outcome": "BLOCKED",
+        "final_report_completed": false,
+        "interruption": "Reviewer service usage limit after retained sufficient reproduction and communicated BLOCKED finding",
+        "raw_probes": {
+          "candidate": "e1fe6666daaa7e85eb0dc29a80e969291a1afa48",
+          "native_bootstrap": {
+            "requested_ceiling": 1,
+            "set_status": 0,
+            "blas_threading_mode": 1,
+            "mode_name": "single",
+            "exact_active_thread_count_available": false
+          },
+          "negative_probes": [
+            {
+              "fault": "forged_adapter_hash",
+              "owned_run_rejected": true,
+              "ownership_error": "M0 original ownership/authority disagrees",
+              "lifecycle_calls": [],
+              "bytes_and_symlinks_preserved": true,
+              "changed_files": [],
+              "expected_rejection_before_lifecycle": true
+            },
+            {
+              "fault": "symlink_status",
+              "owned_run_rejected": true,
+              "ownership_error": "Unsafe M0 output/runtime path",
+              "lifecycle_calls": [],
+              "bytes_and_symlinks_preserved": true,
+              "changed_files": [],
+              "expected_rejection_before_lifecycle": true
+            },
+            {
+              "fault": "symlink_nested",
+              "owned_run_rejected": true,
+              "ownership_error": "Unsafe M0 output/runtime path",
+              "lifecycle_calls": [],
+              "bytes_and_symlinks_preserved": true,
+              "changed_files": [],
+              "expected_rejection_before_lifecycle": true
+            },
+            {
+              "fault": "captured_source",
+              "owned_run_rejected": true,
+              "ownership_error": "M0 original ownership/authority disagrees",
+              "lifecycle_calls": [],
+              "bytes_and_symlinks_preserved": true,
+              "changed_files": [],
+              "expected_rejection_before_lifecycle": true
+            },
+            {
+              "fault": "captured_environment",
+              "owned_run_rejected": true,
+              "ownership_error": "Actual frozen resolved configuration differs from captured request",
+              "lifecycle_calls": [],
+              "bytes_and_symlinks_preserved": true,
+              "changed_files": [],
+              "expected_rejection_before_lifecycle": true
+            },
+            {
+              "fault": "captured_configuration",
+              "owned_run_rejected": true,
+              "ownership_error": "Actual frozen resolved configuration differs from captured request",
+              "lifecycle_calls": [],
+              "bytes_and_symlinks_preserved": true,
+              "changed_files": [],
+              "expected_rejection_before_lifecycle": true
+            },
+            {
+              "fault": "rewritten_original_gate",
+              "owned_run_rejected": true,
+              "ownership_error": "Original historical software gate is not the approved identity",
+              "lifecycle_calls": [],
+              "bytes_and_symlinks_preserved": true,
+              "changed_files": [],
+              "expected_rejection_before_lifecycle": true
+            },
+            {
+              "fault": "rewritten_original_claim",
+              "owned_run_rejected": false,
+              "ownership_error": null,
+              "lifecycle_calls": [
+                "/Users/marwansaber/.codex/worktrees/nmpc-weight-m0/MPC_Controller_v1_IronManStyle/results/apex_workbench_nmpc_weights/corrective_20261102/review_2/fixture_rewritten_original_claim/runs/forged_new_original_identity"
+              ],
+              "bytes_and_symlinks_preserved": false,
+              "changed_files": [
+                "lease/.execution.lock",
+                "runs/forged_new_original_identity/artifacts.json",
+                "runs/forged_new_original_identity/execution.json",
+                "runs/forged_new_original_identity/status.json"
+              ],
+              "expected_rejection_before_lifecycle": false
+            }
+          ],
+          "valid_owned_active": {
+            "events": [
+              "status",
+              "status",
+              "rerun"
+            ],
+            "cancel_marker_created": true,
+            "preexisting_bytes_preserved": true,
+            "status_response": "software running fixture; no worker launched"
+          },
+          "genuine_original_owned_identity": "(PosixPath('/Users/marwansaber/.codex/worktrees/nmpc-weight-m0/MPC_Controller_v1_IronManStyle/results/apex_workbench_nmpc_weights/runs/20261102T183317195331Z_2c738f769a2d412cb23c036e850b182f'), 'e6f58bf761688c7709a9bfbc4a7d98bb9bc62150762b81c801bf97de33dc4bfc')",
+          "workers_launched": 0,
+          "optimizer_solves": 0,
+          "plant_steps": 0
+        },
+        "minimum_correction": "Enforce original nominal claim SHA from existing ORIGINAL_ANCHORS before all lifecycle calls",
+        "raw_evidence_sha256": {
+          "results/apex_workbench_nmpc_weights/corrective_20261102/review_2/probe_r2_result.json": "a13296ee09e29f447b47968f4fc363c09a1805d6b599626c1ddd67fbf7fa84a3",
+          "results/apex_workbench_nmpc_weights/corrective_20261102/review_2/audit_before.json": "5edcd75f82a51b539c045e6d08bc76502ffb7d0fa74da5e7cc8397761bedaa4c",
+          "results/apex_workbench_nmpc_weights/corrective_20261102/review_2/probe_r2.py": "61eb779dfdfd6879b4f1ac23d541e13f1678d10524c1d760a01ef43b0771e2b0",
+          "results/apex_workbench_nmpc_weights/corrective_20261102/review_2/probe_r2.log": "c57c4dc1173846d0e5ec371a0ec58ab7b73015478b7aa20db12159384b4396e6"
+        }
       }
     ],
     "pre_revision_2_source_sha256": {
@@ -1374,6 +1512,20 @@
       "tools/apex_workbench/tests/test_nmpc_weight_workspace.py": "ca89f727695f053e41a7eb12789d9e46440c1846557a0fd145357dbfb4e263b0"
     },
     "revision_2_reason": "Independent actual reconciliation proved forged capture and linked status were not authenticated; tightened complete trusted capture and all-member symlink guard before lifecycle, preserving the failed review",
-    "original_failed_run_identity_pure_read": "PASS; original_owned_identity.log, no lifecycle call"
+    "original_failed_run_identity_pure_read": "PASS; original_owned_identity.log, no lifecycle call",
+    "pre_revision_3_source_sha256": {
+      "tools/apex_workbench/nmpc_weight_lab.py": "1a606f87aed89c75a4d18094bb8abee50b6f4e54c2509c32516b2a3564ab10e1",
+      "tools/apex_workbench/nmpc_weight_worker.py": "d1051d60263936f173e4b691f1407a2b8fbb801f4825ff926e75112eda18ef01",
+      "tools/apex_workbench/nmpc_weight_panels.py": "8ff944147ce43073289f4be1f4413167b584afc7bb7286d706f800f42b3495e9",
+      "tools/apex_workbench/configuration.py": "ed1611b0d15f17daeb515b7e6167863c49ee9c6ccd96c16403d3f55e5ac38dd3",
+      "tools/apex_workbench/worker.py": "bfd180f451585ff357a17735cae44e507507dff1718ef034624f9c821d058091",
+      "tools/apex_workbench/jobs.py": "af11d309d15b879859488b75858af87489c42783a02dd04482cff17ead6116c5",
+      "tools/apex_workbench/workspace.py": "60410157b2c6111628e7caeca8da2fb95fcbb74d40c3b1d827e0469778619a05",
+      "tools/apex_workbench/run_catalog.py": "4e974ea40940b2990f9b4416f97b8fe5fbde2ce6b335d3e49df3f4c422587f6d",
+      "tools/apex_workbench/tests/test_nmpc_weight_lab.py": "a06ac52fc8c77c7181d0eaee8e04264d40b41bda82ab68921a158b7723bd859d",
+      "tools/apex_workbench/tests/test_nmpc_weight_workspace.py": "4ea56851470961cd51f4ff52cad3a149bd2e9157f6808dbf458427c9b13bed3d"
+    },
+    "revision_3_reason": "Enforce immutable original claim/gate/BLOCKED byte pins before lifecycle; copied record with rebound claim is rejected",
+    "revision_3_R1_unchanged_AST": true
   }
 }

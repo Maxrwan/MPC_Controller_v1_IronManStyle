@@ -17,6 +17,12 @@ checks. Only one NEW nominal2.0s attempt, then one exploratory2.0s if nominal is
 Any new genuine failure stops execution; no retry or formal Verification. After execution obtain
 an independent exact-implementation/evidence assessment. No R0, M5-B or later work authorized.
 
+Corrective review history is retained: `7d95098b` BLOCKED for capture/link authentication;
+`e1fe6666` independently reproduced original-claim rebinding (raw evidence retained; final report
+interrupted by service usage limit). The final local fix enforces all existing original authority
+hash pins before lifecycle access. Affected workspace regression: 32 passed; earlier 66-case and
+R1 passes remain separate. Fresh independent review is pending; zero new numerical attempts.
+
 ---
 
 # Historical handoff — M5-A blocked before controller execution
