@@ -1,10 +1,23 @@
 {
   "schema": "apex-preintegration-work/1",
-  "status": "FAILED_G0_PRODUCER_CHECKPOINT",
+  "status": "WORK_COMPLETE_PENDING_REVIEW",
   "scientific": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
   "approved_plan": "63d56fc366de7464e1c71a4f831c87ec03d31a2f",
-  "executed_from": "planning HEAD plus recorded dirty runtime/test byte map; containing checkpoint commit binds those same bytes retrospectively",
-  "runtime_hashes": {
+  "failed_executable_producer": "bec56302891c2a136126c8be486c4f166b402d27",
+  "candidate_revision": "Containing final delivery commit; exact SHA provided after push, not self-embedded",
+  "activities": {
+    "A01": "IMPLEMENTED_SOURCE_ENVIRONMENT_CONFIGURATION_CHECKED",
+    "A02": "IMPLEMENTED_SOFTWARE_CHECKED",
+    "A03": "IMPLEMENTED_SOFTWARE_CHECKED",
+    "A04": "IMPLEMENTED_SOFTWARE_CHECKED_NO_PHYSICAL_AUTHORITY",
+    "A05": "IMPLEMENTED_SOFTWARE_CHECKED",
+    "A06": "CORRECTED_SOFTWARE_CHECKED_GENUINE_NOT_REVALIDATED",
+    "A07": "IMPLEMENTED_BUT_G0_FAILED_G1_AND_SMOKE_NOT_RUN",
+    "A08": "DOCUMENTED_WORK_DELIVERY_IDENTITY_AND_PUSH_READBACK_IN_FINAL_HANDOFF"
+  },
+  "milestone_candidate_met": false,
+  "feasibility": "INSUFFICIENT_EVIDENCE",
+  "execution_runtime_sha256": {
     "scripts/preintegration/__init__.py": "c359d55be6bf1e2f49c847ad5a6902a1edac47e6ef2bba566038233301f41ca5",
     "scripts/preintegration/evidence.py": "4249eb9a8b3e0691d7562af8cd2b165a019a28810ba0e0572ac628c28747a9b9",
     "scripts/preintegration/launch.py": "535c83e8de92004695851eb445cca0295ec7bd4ee0163e3163d7040bd50fa643",
@@ -22,22 +35,264 @@
     "tests/unit/test_preintegration_session.py": "56e5c171585e8ef12a31293b139685e9ae7677ac78206a255974a0c2e7382b8d",
     "tests/unit/test_preintegration_validation.py": "ceea3253a7ae2aa5dba8756474f5f130169d6b542a91e37baff90b4f6a8815da"
   },
-  "raw_root": "results/preintegration/w1/work-20261103T123702Z-532aa226",
+  "candidate_runtime_sha256": {
+    "scripts/preintegration/__init__.py": "c359d55be6bf1e2f49c847ad5a6902a1edac47e6ef2bba566038233301f41ca5",
+    "scripts/preintegration/evidence.py": "4249eb9a8b3e0691d7562af8cd2b165a019a28810ba0e0572ac628c28747a9b9",
+    "scripts/preintegration/launch.py": "a45caf4d94c7befd02274165dd2d3a39d9f06d06ec803f1a42632cba476ce09a",
+    "scripts/preintegration/worker.py": "e8adbda937c4e39f2ff9f260a8b99804cc4baefb1feb8f2f6363f2cf169262e1",
+    "src/apex/preintegration/__init__.py": "40ffba17a7cc3ceb051567af7be4aa39c88ae875f629b6ee1c48c295f784897d",
+    "src/apex/preintegration/local.py": "dda7d415a9474c2c47f3e5a58962a3c2e84966dbb06d228709b5626f88e11c6c",
+    "src/apex/preintegration/profile.py": "b4cb3411e586df225775b08a8bfa5414e6b73741e9bbae594ce5d639e4cdd093",
+    "src/apex/preintegration/records.py": "3224967ca26d3bc37af14e08a0308e25e59f00dfeb22b4395f3c7c97ac8c5d66",
+    "src/apex/preintegration/session.py": "c52205678b8cffa67d3a685cb1be5c9fd0aa31922f37cad5444a4b2e4dc6e924",
+    "src/apex/preintegration/validation.py": "5e20e706da76281e499fa0010ccfefb2770796e07c601e8a19c5cad29270c2ef",
+    "tests/integration/test_preintegration_genuine.py": "134fd84abbc308fbeeca83f5a4a681aabc59141d282d32e42ff19fa76c0deae3",
+    "tests/integration/test_preintegration_local.py": "968574516c5ec3bcaed60ed2d05dc39959b3c4fb4c6472657e4d99d25c00f57e",
+    "tests/unit/test_preintegration_evidence.py": "a23fd04c1df3a5698de91d546ab5f736d38ed3558ea7fed881c87462db75073f",
+    "tests/unit/test_preintegration_profile.py": "063b6bb17eaedab98cacd78c2bcbba0f62ffbb841b46db9a9d643d2bfe2b5c11",
+    "tests/unit/test_preintegration_session.py": "1f1898b233f80bb7a69cda056de3a248b9a52ff609f99ba4776d3ef6e820ea01",
+    "tests/unit/test_preintegration_validation.py": "ceea3253a7ae2aa5dba8756474f5f130169d6b542a91e37baff90b4f6a8815da"
+  },
+  "frozen_preservation": {
+    "original_files": 827,
+    "unchanged_outside_two_authorized_documentation_paths": 825,
+    "mismatches": [],
+    "original_scientific_source_entries": 294,
+    "approved_plan_unchanged": true,
+    "manifest_sha256": "5299adca29d5c5bd383252cd2c299a392dd6872dc6bb72d1a4dd7ecfb8dd1ebf",
+    "lock_sha256": "8cf85868a456415a898643dbb226d146b0b90e5c98982136cf2abf2465fa16ec",
+    "project_sha256": "c8ea69a3a486c9794b6cf88ac26566211c6f1bb7b7286d86dbaa36a191353d41",
+    "planning": [
+      {
+        "path": "configs/planning/task007b/gamma_2p000/planning_manifest.json",
+        "sha256": "5e7bccf1a300fb6737fc6b6b6e0c9aa921c110b11ffc5762a73f57f830a8660c"
+      },
+      {
+        "path": "configs/planning/task007b/gamma_2p000/planning_reference.csv",
+        "sha256": "6206e18ce3cb105d58d0923564336e28c00ec44aee3fd8a06ff7a37bcf84e2df"
+      },
+      {
+        "path": "configs/planning/task007b/gamma_2p000/planning_validation.json",
+        "sha256": "279582d2dcf37fdf4008ddc7f926109ef3d730a0e64c188d7003755d08871fa7"
+      },
+      {
+        "path": "configs/planning/task007b/gamma_2p000/speed_polynomial.json",
+        "sha256": "f335e78fc6c735c952f49078077a573ee989dd2be71497e90451e34a79f2c7ea"
+      },
+      {
+        "path": "configs/planning/task007b/gamma_2p000/track_source.json",
+        "sha256": "5f4d1734d7fec7de56d346e8f90bf272a3de9c05ac42f76cd49004e7f9183e55"
+      }
+    ]
+  },
+  "software_checks_separate_invocations": [
+    {
+      "invocation": "software-001",
+      "exit_code": 0,
+      "tests": 175,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "log": "results/preintegration/w1/work-20261103T123702Z-532aa226/software-001.log",
+      "log_sha256": "331086f04bcdba36606c7d5ed341009fe76ed4df548323c7889814ca3434d1f1",
+      "junit_sha256": "50e232ea2df3a687173337d5489b9f1baa544ba10bcbb8c575a381bc2b625543"
+    },
+    {
+      "invocation": "software-002",
+      "exit_code": 1,
+      "tests": 3,
+      "failures": 1,
+      "errors": 0,
+      "skipped": 0,
+      "log": "results/preintegration/w1/work-20261103T123702Z-532aa226/software-002.log",
+      "log_sha256": "d40cb9e1d05e744aa097091733ac0dd89b9cd24c355500404cb252ce1a202bf8",
+      "junit_sha256": "f097629b650609458fbb3f1ff59fe7a5a1e715c4eddd17124931e42c0cf2fc35"
+    },
+    {
+      "invocation": "software-003",
+      "exit_code": 0,
+      "tests": 43,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "log": "results/preintegration/w1/work-20261103T123702Z-532aa226/software-003.log",
+      "log_sha256": "13e61d2ebb594385da2499039effe7c2c57707a0dbe5e00536c373c0dd960b72",
+      "junit_sha256": "489d284a81b70d2ad1011bf92cac75f43547a517c90166e8d3007c2e5b8a9333"
+    },
+    {
+      "invocation": "software-004",
+      "exit_code": 0,
+      "tests": 45,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "log": "results/preintegration/w1/work-20261103T123702Z-532aa226/software-004.log",
+      "log_sha256": "73a9ae3b5cf8e56cba2507e3994a9c976527bbaf1d2b099c54d6d89ed2637748",
+      "junit_sha256": "d4c0ece01b2cd2f056ad2a414a84fe67514acf4fdb4cf275bad40934ac57f13a"
+    },
+    {
+      "invocation": "software-005",
+      "exit_code": 0,
+      "tests": 11,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "log": "results/preintegration/w1/work-20261103T123702Z-532aa226/software-005.log",
+      "log_sha256": "34dc1820488d189b266562816b3c9e2245a1df61359f5523b4ea57d225341fac",
+      "junit_sha256": "df6799ce679383b80ace8cbda3c9dded95aab5bbbe2c7956675abc7081e46b10"
+    },
+    {
+      "invocation": "software-006",
+      "exit_code": 0,
+      "tests": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "log": "results/preintegration/w1/work-20261103T123702Z-532aa226/software-006.log",
+      "log_sha256": "276218ddcb1b2b81b9d86c815c069888dcb42ba297987eec4b459abc9cb848ae",
+      "junit_sha256": "7c51ea6fbf12cb02e6df28a4861bdd790a401e7ada33eb4a6eb8652dd1b75290"
+    },
+    {
+      "invocation": "software-007",
+      "exit_code": 0,
+      "tests": 46,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "log": "results/preintegration/w1/work-20261103T123702Z-532aa226/software-007.log",
+      "log_sha256": "f13759783350a290a9e33f083ac5a62577c34342ebccc7ee64a6495a4295bb66",
+      "junit_sha256": "b1ddac8bae1a01a1430c0694b2c29d473358235fe09b3386d61f0f674441b500"
+    },
+    {
+      "invocation": "software-008",
+      "exit_code": 0,
+      "tests": 40,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "log": "results/preintegration/w1/work-20261103T123702Z-532aa226/software-008.log",
+      "log_sha256": "5792b3e99084b64c63d54aaabb4161ba210a1a051a0bc0efa5f0c8c15102ffd4",
+      "junit_sha256": "7c2c69740cec82373342fb8bdb223adc9470c03d3604d22c9db13df8601d9cb1"
+    },
+    {
+      "invocation": "software-009",
+      "exit_code": 4,
+      "tests": 1,
+      "failures": 0,
+      "errors": 1,
+      "skipped": 0,
+      "log": "results/preintegration/w1/work-20261103T123702Z-532aa226/software-009.log",
+      "log_sha256": "3d1527a4a564fdfa1ac037c65bd09a094a263b4812128b1a5dab48e0ac6fd336",
+      "junit_sha256": "e99fa613841ac3af788f1c94caf6183f10e6fc6298f5f8d52ed6860ea76e76c2"
+    },
+    {
+      "invocation": "software-010",
+      "exit_code": 0,
+      "tests": 41,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "log": "results/preintegration/w1/work-20261103T123702Z-532aa226/software-010.log",
+      "log_sha256": "1f9639e25e72dc1edb7e016e9c6eb55026b548549becbf25f40cfdd4db792fd6",
+      "junit_sha256": "2883f94d9c93879e67254646ba34d1338344452aaf5a8777407bc4e859c7e04f"
+    },
+    {
+      "invocation": "software-011",
+      "exit_code": 1,
+      "tests": 8,
+      "failures": 1,
+      "errors": 0,
+      "skipped": 0,
+      "log": "results/preintegration/w1/work-20261103T123702Z-532aa226/software-011.log",
+      "log_sha256": "1f2800962cc7f09b08567e82c2b04833bf329229566df5d054877242abd1fd32",
+      "junit_sha256": "ef80a2d2636c66536deadfbb826be04c5d459226c220d3ea258412e011a364ba"
+    },
+    {
+      "invocation": "software-012",
+      "exit_code": 0,
+      "tests": 11,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "log": "results/preintegration/w1/work-20261103T123702Z-532aa226/software-012.log",
+      "log_sha256": "34dc1820488d189b266562816b3c9e2245a1df61359f5523b4ea57d225341fac",
+      "junit_sha256": "76d928b1aab5453718ac85e140141b370c1a04568321ae15ac858c24c86760be"
+    },
+    {
+      "invocation": "g0-check",
+      "exit_code": 1,
+      "tests": 1,
+      "failures": 1,
+      "errors": 0,
+      "skipped": 0,
+      "log": "results/preintegration/w1/work-20261103T123702Z-532aa226/g0-check.log",
+      "log_sha256": "f9ac6683cab03cd80f1345d75dbddc92157b2c31048350eacff68c8d821da850",
+      "junit_sha256": "3a0bc568635bbfae750e461365158b31b4734fb5f4d1f5ce4da2c7c8052d459a"
+    },
+    {
+      "invocation": "g0-admitted",
+      "exit_code": 1,
+      "tests": 1,
+      "failures": 1,
+      "errors": 0,
+      "skipped": 0,
+      "log": "results/preintegration/w1/work-20261103T123702Z-532aa226/g0-admitted.log",
+      "log_sha256": "8d10ebe9ac88cc627d16ba44be0f27d0cc9b6fe90c507c839bb3b2c3f2fb92f2",
+      "junit_sha256": "9be03f006f4f148546818e5c62ee1fe657f50ed8ea8894d67a6ddaff13789b6c"
+    }
+  ],
   "g0": {
-    "output": "results/preintegration/w1/g0-7e39088ca7ab458599d3ac72df79a61c",
     "complete": false,
     "claim_consumed": true,
-    "observed_simulated_segment_end_s": 0.1,
-    "segments": 20,
-    "nominal_proposals": 11,
+    "worker_launches": 1,
     "native_startup_preparations": 1,
     "native_recurring_preparations": 0,
+    "nominal_proposals": 11,
+    "segments": 20,
+    "last_observed_segment_end_s": 0.1,
+    "raw_returned": false,
+    "stop": "TypeError: Prediction capture requires the TVLQR tracker",
+    "native_startup_preparation_s": 0.08126112504396588,
+    "startup_boundary_envelope_s": 0.08591633301693946,
+    "tracker_samples": 11,
     "supervisor_wall_s": 18.64127587497933,
-    "process_tree_cpu_s": 15.459226
+    "process_tree_cpu_s": 15.459226,
+    "resource_samples": 481,
+    "max_sampled_worker_tree_rss_bytes": 236126208,
+    "sampled_process_thread_counts": [
+      1
+    ],
+    "supervisor_rss_at_failed_producer": "NOT_OBSERVED_SEPARATELY",
+    "parent_child_pid_birth_at_failed_producer": "NOT_RETAINED",
+    "source_git_head_at_execution": "63d56fc366de7464e1c71a4f831c87ec03d31a2f",
+    "executed_dirty_runtime_map_bound_retrospectively_to_commit": "bec56302891c2a136126c8be486c4f166b402d27"
   },
   "g1": "NOT_RUN_PREREQUISITE_FAILED",
   "measured_smoke": "NOT_RUN_PREREQUISITE_FAILED",
-  "feasibility": "INSUFFICIENT_EVIDENCE",
-  "milestone_candidate_met": false,
-  "independent_raw_retrieval": "NOT_QUALIFIED"
+  "raw_evidence": {
+    "work_root": "results/preintegration/w1/work-20261103T123702Z-532aa226",
+    "g0": "results/preintegration/w1/g0-7e39088ca7ab458599d3ac72df79a61c",
+    "preworker_sandbox_failure": "results/preintegration/w1/g0-9ee62089ff7047738e1b3d08567a7d79",
+    "retrieval": "LOCAL_WORKSPACE_AVAILABLE; independent backup/retrieval NOT_QUALIFIED",
+    "indexes": [
+      "results/preintegration/w1/work-20261103T123702Z-532aa226/delivery-index.json",
+      "results/preintegration/w1/g0-7e39088ca7ab458599d3ac72df79a61c/index.json",
+      "results/preintegration/w1/g0-9ee62089ff7047738e1b3d08567a7d79/index.json"
+    ],
+    "index_sha256": {
+      "results/preintegration/w1/work-20261103T123702Z-532aa226/delivery-index.json": "d2f30b6ac2e6460f74f602f5d71405ec4904729b8f613193dff15dd6cea2edc3",
+      "results/preintegration/w1/g0-7e39088ca7ab458599d3ac72df79a61c/index.json": "56ef86bd3dbfc1ed029dae499b3afe429f35367b6958d7ad0b2515ac19d56507",
+      "results/preintegration/w1/g0-9ee62089ff7047738e1b3d08567a7d79/index.json": "779d811c0d2c4ab12ed50252ffc5dd5598e3753f9b173065dc92947c825e6449"
+    },
+    "work_files_indexed": 415,
+    "work_bytes_indexed": 41479647
+  },
+  "limits": [
+    "No numerical retry after the sole genuine worker",
+    "No genuine closed-loop validation of corrected candidate",
+    "Legacy application observations do not establish application-check enforcement",
+    "No physical Safety/onboard timing claim",
+    "Installed RECORD consistency is not historical wheel/plugin-build equivalence"
+  ],
+  "final_preservation_artifact": "results/preintegration/w1/work-20261103T123702Z-532aa226/final-preservation.json"
 }

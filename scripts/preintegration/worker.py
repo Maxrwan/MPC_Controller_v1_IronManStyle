@@ -1,6 +1,7 @@
 """One admitted genuine controller attempt. No automatic retry or fallback promotion."""
 
 import argparse
+import os
 import resource
 import sys
 import time
@@ -27,15 +28,21 @@ def main():
         admitted = bootstrap(
             ROOT, Path(sys.executable).parent.parent / "lib/python3.12/site-packages"
         )
+        import psutil
+
         write(
             output / "worker-admission.json",
             {
                 "source": admitted.source,
                 "environment": admitted.environment,
                 "native": admitted.native,
+                "worker_identity": {
+                    "pid": os.getpid(),
+                    "parent_pid": os.getppid(),
+                    "birth": psutil.Process().create_time(),
+                },
             },
         )
-        import psutil
         from threadpoolctl import threadpool_info
 
         from apex.models.errors import ModelValidationError
@@ -96,7 +103,7 @@ def main():
             estimator=comp.estimator,
             release_observer=releases.append,
         )
-        comp.urgent = runner.urgent
+        session.bind_urgent(runner.urgent)
         wall, cpu = time.perf_counter(), time.process_time()
         raw = runner.run(initial)
         run_wall, run_cpu = time.perf_counter() - wall, time.process_time() - cpu

@@ -1,13 +1,21 @@
 """Scripted chronology and mock application endpoint; not genuine NMPC evidence."""
 
+import sys
+from pathlib import Path
+
 import numpy as np
-from test_async_chronology import StraightPlanner
-from test_preintegration_session import factory, fb, ready
 
 from apex.models.tire.config import RACING_TIRE_PHYSICS
 from apex.models.vehicle.dynamic_bicycle import DynamicBicycle
 from apex.preintegration.local import LocalAdapters
 from apex.simulation.asynchronous import AsyncConfig, AsyncRunner
+
+# Existing unit fixtures are explicit local test inputs, independent of collection order.
+UNIT = Path(__file__).resolve().parents[1] / "unit"
+if str(UNIT) not in sys.path:
+    sys.path.insert(0, str(UNIT))
+from test_async_chronology import StraightPlanner  # noqa: E402
+from test_preintegration_session import factory, fb, ready  # noqa: E402
 
 
 def test_native_and_local_delegates_preserve_scripted_chronology(
@@ -22,10 +30,12 @@ def test_native_and_local_delegates_preserve_scripted_chronology(
             dynamic_vehicle,
             straight_geometry,
         )
+        comp.tracker.parameters = dynamic_vehicle
         plant = DynamicBicycle(dynamic_vehicle, straight_geometry, tire_physics=RACING_TIRE_PHYSICS)
         comp.validator = plant.diagnostics
         session = ControlSession(lambda: comp)
         local = LocalAdapters(session)
+        releases = []
         runner = AsyncRunner(
             plant,
             local.planner if adapted else comp.planner,
@@ -35,8 +45,11 @@ def test_native_and_local_delegates_preserve_scripted_chronology(
                 duration=0.24, latency_mode="injected", injected_delay=0.06, codriver_delay=0.025
             ),
             estimator=comp.estimator,
+            release_observer=releases.append,
         )
         result = runner.run([2, 0, 0, 0, 0, 0])
+        assert releases and releases[0].parameters is dynamic_vehicle
+        assert releases[0].prefix.release_time == 0.1
         return result, local, session
 
     native, _, _ = run(False)
@@ -85,3 +98,30 @@ def test_genuine_guard_stops_on_scripted_preparation_failure_before_continuation
         )
     assert session.buffer.active is None
     assert session.events[-1].status == "REJECTED"
+
+
+def test_frozen_release_capture_accepts_typed_delegate_and_bound_runtime_state(dynamic_vehicle):
+    """Pure callback regression with a literal packet: zero solves and zero plant steps."""
+    from test_preintegration_session import packet
+
+    from apex.control.trajectory.packet import TrajectoryBuffer
+    from apex.control.trajectory.prediction import CommittedControlPrefix, UrgentReplan
+    from apex.control.trajectory.tracker import TrajectoryTracker
+    from apex.preintegration.session import ControlSession
+    from apex.simulation.prediction_capture import PredictionRelease
+
+    comp = factory()
+    comp.tracker.parameters = dynamic_vehicle
+    session = ControlSession(lambda: comp)
+    buffer, urgent = TrajectoryBuffer(), UrgentReplan()
+    session.bind_buffer(buffer)
+    session.bind_urgent(urgent)
+    assert buffer.insert(packet(), 0)[0]
+    local = LocalAdapters(session)
+    prefix = CommittedControlPrefix(0.1, (0, 0), 0.09, (0, 0), 0.125)
+    release = PredictionRelease.capture(1, fb(0.1).state, 0.06, prefix, buffer, local.tracker)
+    assert isinstance(local.tracker, TrajectoryTracker)
+    assert release.parameters is dynamic_vehicle and release.prefix == prefix
+    assert release.packet.plan_id == 0 and release.state == fb(0.1).state
+    assert session.components.urgent is urgent and session.buffer is buffer
+    assert local.tracker.clone() is not comp.tracker

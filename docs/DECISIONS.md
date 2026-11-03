@@ -1041,3 +1041,8 @@ state/authority; do not export recovery or stop policies. Preserve the original 
 and distinguish its observations from a separate explicit application-check API. New W1 artifacts
 have new provenance. No S1-A/runtime, scientific formulation, external contract or physical policy
 is adopted. See `docs/pre_sid/preintegration/LOCAL_INTERFACE.md` and the W1 WORK report.
+
+
+W1 outcome: the first genuine G0 failed on the diagnostic tracker's type boundary after startup.
+The typed-adapter correction is software checked only; G1/smoke remain unrun and the milestone
+candidate is not met. No scientific acceptance or replacement numerical budget is implied.

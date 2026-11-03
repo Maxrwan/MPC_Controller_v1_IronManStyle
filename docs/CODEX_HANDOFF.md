@@ -1,7 +1,23 @@
-# PRE-INT-W1 — G0 failed; numerical path stopped
+# PRE-INT-W1 — local nominal-control WORK
 
-One genuine G0 worker failed at 0.1 s on the release-observer tracker type check. Claim consumed; G1/smoke not run, milestone not met. WORK continues nonnumerically. See [WORK](pre_sid/preintegration/WORK.md). Frozen science unchanged.
+**WORK_COMPLETE_PENDING_REVIEW. Milestone candidate NOT MET.**
+Frozen science `48adbdf64d492592d15e23c917aca71fa58aa8a5`; approved plan
+`63d56fc366de7464e1c71a4f831c87ec03d31a2f`; failed executable producer
+`bec56302891c2a136126c8be486c4f166b402d27`. The containing delivery is the corrected
+candidate, software checked but not genuinely revalidated. Exact delivery SHA/URL follow push.
 
+G0's sole genuine worker failed at 0.1 s at the native release-observer tracker type check:
+one startup preparation, 20 segments and 11 nominal proposals retained. Claim consumed;
+G1 and measured smoke NOT RUN. Feasibility INSUFFICIENT_EVIDENCE; no physical Safety claim.
+Typed adapter and lifecycle/supervision corrections have focused software evidence, not a
+replacement genuine run. Final targeted invocations: 41 passed and 11 passed, separately;
+earlier broad 175-pass selection and all failures remain retained. Complete regression deferred.
+
+All original E4 scientific files and approved planning bytes are preserved; only the exact
+21-path allowlist changed. No research merge, dependency installation, formal Verification,
+external integration, SID or Efficiency progression. Review the [WORK report](pre_sid/preintegration/WORK.md),
+[local API](pre_sid/preintegration/LOCAL_INTERFACE.md) and [machine evidence](pre_sid/preintegration/evidence.json).
+A new explicit numerical budget is required after Primary review; preserve the consumed claim.
 
 ---
 

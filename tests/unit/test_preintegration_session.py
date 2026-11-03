@@ -185,3 +185,31 @@ def test_native_gain_failure_discards_scripted_success_without_optimizer(monkeyp
     )
     assert result is None and event["success"] is False
     assert event["preparation"] == "prediction_or_gain_validation_failed"
+
+
+def test_factory_failure_during_reset_cannot_reuse_old_authority():
+    session = ready()
+    old_buffer = session.buffer
+
+    def broken():
+        raise RuntimeError("injected reset construction failure")
+
+    session.factory = broken
+    with pytest.raises(RuntimeError, match="reset construction failure"):
+        session.reset()
+    assert session.inhibited and old_buffer.active is None
+    assert session.propose(fb(0.01, 1), 0.01, [0, 0]).command is None
+
+
+def test_live_sessions_and_resets_reject_shared_mutable_components():
+    comp = factory()
+    session = ControlSession(lambda: comp)
+    with pytest.raises(ValueError, match="ALREADY_OWNED"):
+        ControlSession(lambda: comp)
+    with pytest.raises(ValueError, match="FRESH_COMPONENT"):
+        session.reset()
+    assert session.inhibited
+    other = ready()
+    fresh = ready()
+    with pytest.raises(ValueError, match="Cannot replace live"):
+        other.bind_buffer(fresh.buffer)

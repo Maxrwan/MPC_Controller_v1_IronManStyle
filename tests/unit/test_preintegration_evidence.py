@@ -139,6 +139,9 @@ def test_supervisor_owned_lifecycle_and_duplicate_claim_without_controller(
     code = launch.main(["--case", "G0", "--output", str(first)])
     result = json.loads((first / "supervisor-result.json").read_text())
     assert result["complete"] is (limit is None)
+    assert result["samples"][0]["rss_bytes"] == 2048
+    assert result["samples"][0]["supervisor_rss_bytes"] == 1024
+    assert json.loads((first / "worker-start.json").read_text())["pid"] == 987654321
     assert code == (0 if limit is None else 1)
     assert bool(kills) is (limit is not None)
     assert not json.loads((work / "MEASURED_ACTIVE").read_text())["active"]

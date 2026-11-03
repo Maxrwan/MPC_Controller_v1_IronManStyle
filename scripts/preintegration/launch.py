@@ -248,6 +248,7 @@ def main(argv=None):
                 "utc": datetime.now(timezone.utc).isoformat(),
                 "monotonic_origin": START,
                 "free_disk_bytes": free,
+                "supervisor_identity": {"pid": me.pid, "birth": me.create_time()},
                 "native": admitted.native,
                 "caps": {
                     "wall_s": 60,
@@ -270,6 +271,13 @@ def main(argv=None):
                 start_new_session=True,
             )
             _owned_worker = process
+            try:
+                birth = psutil.Process(process.pid).create_time()
+            except psutil.NoSuchProcess:
+                birth = None
+            write(
+                output / "worker-start.json", {"pid": process.pid, "birth": birth, "argv": command}
+            )
             observed_cpu = {}
             while process.poll() is None:
                 members = []
@@ -291,11 +299,20 @@ def main(argv=None):
                     except psutil.AccessDenied:
                         unavailable.append(member.pid)
                 cpu = time.process_time() - cpu_origin + sum(observed_cpu.values())
+                worker_rss = rss
+                try:
+                    supervisor_rss = me.memory_info().rss
+                    rss += supervisor_rss
+                except psutil.AccessDenied:
+                    supervisor_rss = None
+                    unavailable.append(me.pid)
                 row = {
                     "wall_s": time.monotonic() - START,
                     "cpu_s": cpu,
                     "rss_bytes": rss if members and not unavailable else None,
                     "thread_counts": threads,
+                    "worker_tree_rss_bytes": worker_rss,
+                    "supervisor_rss_bytes": supervisor_rss,
                     "unavailable_pids": unavailable,
                     "exited_between_samples": departed,
                 }
@@ -327,7 +344,16 @@ def main(argv=None):
             os.killpg(process.pid, signal.SIGKILL)
             process.wait(timeout=1)
         if guard is not None:
-            write(guard, {"active": False, "case": args.case, "output": str(output)})
+            write(
+                guard,
+                {
+                    "active": False,
+                    "case": args.case,
+                    "output": str(output),
+                    "pid": me.pid,
+                    "birth": me.create_time(),
+                },
+            )
         if lock is not None:
             lock.close()
     child_usage = resource.getrusage(resource.RUSAGE_CHILDREN)

@@ -1,5 +1,10 @@
 # W1 local nominal-control interface
 
+**WORK_COMPLETE_PENDING_REVIEW — G0 failed; G1/smoke NOT RUN.**
+The corrected candidate has software evidence only. The G0 claim is consumed; commands below
+are interface documentation, not permission to execute another numerical attempt. Primary review
+and a new explicit budget are required. Implementation milestone candidate: NOT MET.
+
 WORK implementation; not formal Verification or physical Safety acceptance.
 Scientific source: `48adbdf64d492592d15e23c917aca71fa58aa8a5`.
 Approved specification: `63d56fc366de7464e1c71a4f831c87ec03d31a2f`.
@@ -27,7 +32,8 @@ record; `complete(token,feedback,now)` resolves and offers it; `offer_waiting` a
 nominal start arrives; `propose(feedback,now,applied)` calls the original tracker;
 `check_application(proposal,feedback,now,applied,last_application)` checks the original source and
 current state and uses the existing elapsed steering clamp. `observe_applied` records only a
-caller assertion. `reset` creates fresh components/session and invalidates all old tokens;
+caller assertion. `reset` requires fresh independently owned components/session, inhibits if construction fails,
+and invalidates all old tokens;
 `close` leaves no output. Instances are single-owner; callers supply actual preceding applied
 input and scheduling. The API never steps a plant or makes blocking preparation concurrent.
 

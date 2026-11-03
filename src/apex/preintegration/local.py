@@ -2,6 +2,8 @@
 
 from time import perf_counter
 
+from apex.control.trajectory.tracker import TrajectoryTracker
+
 from .records import Feedback, Prepared
 
 
@@ -72,8 +74,12 @@ class PlannerDelegate:
         return result.packet, event
 
 
-class TrackerDelegate:
+class TrackerDelegate(TrajectoryTracker):
     def __init__(self, owner):
+        # The frozen release observer accepts TVLQR trackers via isinstance. All state and
+        # calculations stay in the already constructed native tracker; do not initialize a copy.
+        if not isinstance(owner.session.components.tracker, TrajectoryTracker):
+            raise TypeError("Local adapter requires the accepted TVLQR tracker")
         self.owner = owner
 
     @property

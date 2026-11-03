@@ -4,9 +4,28 @@ import traceback
 from dataclasses import replace
 from math import isfinite
 from uuid import uuid4
+from weakref import WeakValueDictionary
 
 from . import validation as v
 from .records import Event, Output, Prepared, freeze
+
+_owners = WeakValueDictionary()
+_owned_fields = ("controller", "planner", "tracker", "buffer", "estimator", "urgent")
+
+
+def _claim(owner, candidate, previous):
+    for name in _owned_fields:
+        value = getattr(candidate, name)
+        prior_owner = _owners.get((name, id(value)))
+        if prior_owner is not None and prior_owner is not owner:
+            raise ValueError("MUTABLE_COMPONENT_ALREADY_OWNED: " + name)
+        if previous is not None and value is getattr(previous, name):
+            raise ValueError("RESET_REQUIRES_FRESH_COMPONENT: " + name)
+    if previous is not None:
+        for name in _owned_fields:
+            _owners.pop((name, id(getattr(previous, name))), None)
+    for name in _owned_fields:
+        _owners[(name, id(getattr(candidate, name)))] = owner
 
 
 class ControlSession:
@@ -19,16 +38,26 @@ class ControlSession:
         self.reset()
 
     def reset(self):
+        previous = getattr(self, "components", None)
         self.session_id = uuid4().hex
-        self.closed, self.inhibited = False, False
+        self.closed, self.inhibited = False, True
+        if previous is not None:
+            previous.buffer.active = None
         self.last_time, self.last_sample = -1.0, None
         self.request_id, self.proposal_id = 0, 0
         self.pending, self.waiting = None, None
         self.issued, self.consumed = {}, set()
         self.checked, self.observed = {}, set()
-        self.components = self.factory()
+        try:
+            candidate = self.factory()
+            _claim(self, candidate, previous)
+        except Exception as error:
+            self._failure("reset", None, error)
+            raise
+        self.components = candidate
         self.buffer = self.components.buffer
         self.last_tracker_diagnostics = {}
+        self.inhibited, self.evidence_valid = False, True
         self._event("reset", None, "NOT_READY")
         return self.session_id
 
@@ -88,8 +117,22 @@ class ControlSession:
         """Local runner supplies its sole buffer before startup; never a shadow authority."""
         if self.pending is not None or self.issued or self.buffer.active is not None:
             raise ValueError("Cannot replace live authority buffer")
+        self._bind("buffer", buffer)
         self.buffer = buffer
-        self.components.buffer = buffer
+
+    def _bind(self, name, value):
+        owner = _owners.get((name, id(value)))
+        if owner is not None and owner is not self:
+            raise ValueError("MUTABLE_COMPONENT_ALREADY_OWNED: " + name)
+        _owners.pop((name, id(getattr(self.components, name))), None)
+        setattr(self.components, name, value)
+        _owners[(name, id(value))] = self
+
+    def bind_urgent(self, urgent):
+        """The local runner owns scheduling; bind its sole urgent state before startup."""
+        if self.pending is not None or self.issued or self.buffer.active is not None:
+            raise ValueError("Cannot replace live scheduling state")
+        self._bind("urgent", urgent)
 
     def prepare(self, feedback, now, estimate, *, plan_id, applied, startup=False):
         try:
