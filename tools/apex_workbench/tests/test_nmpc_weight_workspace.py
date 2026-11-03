@@ -151,6 +151,52 @@ def test_preview_atomic_replace_and_failed_write_preserve_evidence(monkeypatch, 
     assert not list(preview.parent.glob(".pending-*"))
 
 
+@pytest.mark.parametrize("swap_at", ["directory_open", "temporary_open", "replace"])
+def test_preview_directory_swap_cannot_redirect_to_sealed_claim(monkeypatch, tmp_path, swap_at):
+    monkeypatch.setattr(lab, "OUTPUT", tmp_path / "m0")
+    sealed = lab.authority_root() / "claims/nominal.json"
+    sealed.parent.mkdir(parents=True)
+    storage.write_json(sealed, {"sealed_claim": "must stay unchanged"})
+    before = sealed.read_bytes()
+    preview = panels.preview_path("nominal")
+    preview.parent.mkdir(parents=True)
+    moved = preview.parent.with_name("detached_preview_namespace")
+    swapped = []
+
+    def swap():
+        preview.parent.rename(moved)
+        preview.parent.symlink_to(sealed.parent, target_is_directory=True)
+        swapped.append(True)
+
+    original_open, original_replace = os.open, os.replace
+
+    def swap_open(name, flags, *args, **kwargs):
+        if not swapped and (
+            (swap_at == "directory_open" and name == lab.SUCCESSOR and flags & os.O_DIRECTORY)
+            or (swap_at == "temporary_open" and str(name).startswith(".pending-"))
+        ):
+            swap()
+        return original_open(name, flags, *args, **kwargs)
+
+    def swap_replace(*args, **kwargs):
+        if swap_at == "replace" and not swapped:
+            swap()
+        return original_replace(*args, **kwargs)
+
+    monkeypatch.setattr(panels.os, "open", swap_open)
+    monkeypatch.setattr(panels.os, "replace", swap_replace)
+    with pytest.raises((OSError, ValueError)):
+        panels.publish_preview("nominal", {"mutable": "must never reach sealed claim"})
+    assert swapped == [True]
+    assert sealed.read_bytes() == before
+    assert list(sealed.parent.iterdir()) == [sealed]
+    assert not list(moved.glob(".pending-*"))
+    if swap_at != "directory_open":
+        assert storage.read_json(moved / "nominal.json") == {
+            "mutable": "must never reach sealed claim"
+        }
+
+
 def test_preview_does_not_bypass_strict_evidence_or_source_gate(tmp_path, monkeypatch):
     root, gate, review, _ = successor_authority_fixture(tmp_path, monkeypatch)
     # Seal one disposable fixture evidence file; never reseal actual retained authority.

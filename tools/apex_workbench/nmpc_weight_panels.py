@@ -1,6 +1,8 @@
 """Compact experimental NMPC presentation; no scientific imports or numerical execution here."""
 
 import json
+import os
+import uuid
 
 import plotly.graph_objects as go
 import streamlit as st
@@ -17,11 +19,56 @@ def preview_path(preset):
     return lab.safe(lab.OUTPUT / "previews" / lab.SUCCESSOR / (preset + ".json"))
 
 
+def _preview_directory(path):
+    """Open each directory without following links, including during namespace replacement."""
+    flags = os.O_RDONLY | os.O_DIRECTORY | os.O_NOFOLLOW
+    create_from = len(lab.safe(lab.OUTPUT).parts) - 1
+    descriptor = os.open(path.anchor, flags)
+    try:
+        for index, name in enumerate(path.parts[1:], start=1):
+            if index >= create_from:
+                try:
+                    os.mkdir(name, dir_fd=descriptor)
+                except FileExistsError:
+                    pass
+            child = os.open(name, flags, dir_fd=descriptor)
+            os.close(descriptor)
+            descriptor = child
+        return descriptor
+    except BaseException:
+        os.close(descriptor)
+        raise
+
+
 def publish_preview(preset, report):
     path = preview_path(preset)
-    path.parent.mkdir(parents=True, exist_ok=True)
-    # Recheck after directory creation; never fall back to sealed authority evidence.
-    storage.write_json(preview_path(preset), report)
+    data = (json.dumps(report, indent=2, allow_nan=False) + "\n").encode("utf-8")
+    descriptor = _preview_directory(path.parent)
+    temporary = None
+    try:
+        flags = os.O_WRONLY | os.O_CREAT | os.O_EXCL | os.O_NOFOLLOW
+        name = ".pending-" + uuid.uuid4().hex + ".tmp"
+        stream = os.open(name, flags, 0o600, dir_fd=descriptor)
+        temporary = name
+        with os.fdopen(stream, "wb") as output:
+            output.write(data)
+            output.flush()
+            os.fsync(output.fileno())
+        # The same pinned directory owns both names even if its pathname is swapped.
+        os.replace(temporary, path.name, src_dir_fd=descriptor, dst_dir_fd=descriptor)
+        os.fsync(descriptor)
+        visible, pinned = preview_path(preset).parent.stat(), os.fstat(descriptor)
+        if (visible.st_dev, visible.st_ino) != (pinned.st_dev, pinned.st_ino):
+            raise ValueError("Preview namespace changed during publication")
+    finally:
+        try:
+            if temporary is not None:
+                try:
+                    os.unlink(temporary, dir_fd=descriptor)
+                except FileNotFoundError:
+                    pass
+        finally:
+            os.close(descriptor)
 
 
 def run_panel():

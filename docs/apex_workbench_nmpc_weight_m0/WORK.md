@@ -5,13 +5,20 @@
 **WORK_COMPLETE_PENDING_REVIEW.** Primary's bounded V1 grant (SHA-256
 `c7e884e4bcf6b2b7115b8b39e56a5d6d49a0d3dbac464c0639bc85d71f92f2b0`) supersedes the
 prior stop only for this correction/recovery/review. Base delivery `9d0525a1af70153833b87ccb18077e446793e00a`;
-reviewed predecessor `96be0969703f0675060208843c9920bca2187e3e`. The containing first V1 commit
-is the exact review candidate; independent review has not yet occurred. Earlier WORK and failed
+reviewed predecessor `96be0969703f0675060208843c9920bca2187e3e`. The first V1 candidate
+`cab78f47ae4d21243b5f522aa5f46e631aede1d5` failed independent review: a deterministic directory
+swap after the final pathname check redirected a preview write into a disposable sealed claim.
+That failed revision/reproduction remains preserved (BLOCKED review record SHA-256
+`2fa9516f6139ecb0f2cfec0443c6f8140462d8352a6916ef4d4f09dc23820393`). The containing second V1 correction commit
+is the next exact review candidate; its new independent review is pending. Earlier WORK and failed
 [Verification](../reviews/apex_workbench_nmpc_weight_m0/VERIFICATION.md) remain historical.
 
 The Run panel previously published mutable previews into sealed authority evidence. It now
 validates the preset and publishes atomically to `previews/primary-r1-r2-20261102/<preset>.json`
-under the existing M0 output root. Linked destinations reject; malformed previews are contained.
+under the existing M0 output root. It walks directories with O_DIRECTORY/O_NOFOLLOW and creates
+and replaces names relative to one pinned directory descriptor. Namespace swaps cannot redirect
+publication; post-publication pathname identity changes report failure. Linked destinations reject;
+malformed previews are contained.
 The preview is explicitly non-authoritative. Admission, gate checksums, source-currentness,
 ownership, configuration and scientific code are unchanged. No fallback to authority files exists.
 
@@ -28,9 +35,10 @@ O_NOFOLLOW directory handle, observed-hash recheck and atomic replacement. Final
 matches the existing gate; no gate/authority/claim was resealed. The writer of the mismatch remains
 unknown. Recovery neither erases that failure nor proves capture authorship or scientific validity.
 
-Final focused **non-simulation** invocation: **44 passed, zero failures/errors/skips, 31 deselected**,
-10.85 s. Initial invocation: 43 passed separately before adding atomic/hard-link failure coverage;
-counts are not combined. Fresh probes, controller/plant imports, capture/admission and numerical
+Final focused **non-simulation** invocation: **47 passed, zero failures/errors/skips, 31 deselected**,
+11.36 s, including three deterministic directory swaps (directory open, temporary open, replace).
+Earlier 43/44-pass invocations and the first reviewer's 40-pass subset remain separate; passing
+software subsets did not invalidate that reviewer's reproduced race. Counts are not combined. Fresh probes, controller/plant imports, capture/admission and numerical
 workers were guarded out. Existing ownership assertions use explicitly retained configuration
 fixtures instead of the controller-constructing preflight fixture. New AppTest checks repeat both
 preset preview actions; strict evidence/source negatives, forged/copied/linked/foreign records,
@@ -50,8 +58,8 @@ and original C0 bytes match; G1 remains OPEN.
 Exact commands, JUnit, logs, isolated candidate, observed snapshot, independent authentication and
 recovery audit live locally under ignored `results/apex_workbench_nmpc_weights/v1_corrective_20261103/`;
 full hashes are in [work_record.json](work_record.json). Raw evidence is not independently retrievable
-from GitHub merely because its hash is committed. Pending: independent exact-revision corrective
-review. No automatic formal Verification, new experiment, tuning or later stage is authorized.
+from GitHub merely because its hash is committed. Pending: new independent exact-revision corrective
+review after the reproduced race correction. No automatic formal Verification, new experiment, tuning or later stage is authorized.
 
 ## Historical R1/R2 final corrective delivery — 3 November 2026
 

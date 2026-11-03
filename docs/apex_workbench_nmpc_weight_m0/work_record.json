@@ -3259,7 +3259,7 @@
     "base_revision": "9d0525a1af70153833b87ccb18077e446793e00a",
     "predecessor_source_revision": "96be0969703f0675060208843c9920bca2187e3e",
     "implementation_revision": null,
-    "implementation_revision_note": "Containing first V1 correction commit; exact SHA will be recorded with independent review delivery",
+    "implementation_revision_note": "Containing second V1 correction commit; exact SHA recorded with re-review delivery",
     "changed_paths": [
       "tools/apex_workbench/nmpc_weight_panels.py",
       "tools/apex_workbench/tests/test_nmpc_weight_workspace.py",
@@ -3268,8 +3268,8 @@
       "docs/CODEX_HANDOFF.md"
     ],
     "source_sha256": {
-      "tools/apex_workbench/nmpc_weight_panels.py": "9875bf6b83c6e800eb27e8b4de110f9634fb637d026f6bf1eaa60f48cec573e3",
-      "tools/apex_workbench/tests/test_nmpc_weight_workspace.py": "c41e916db5f3c3036efe0381f961c6199f6416de858c3546c6b32dc40529b753"
+      "tools/apex_workbench/nmpc_weight_panels.py": "8b0e1723cbe1d8428c223e2b4c2fa998823096e68998fe5a592c2b2c85581b0a",
+      "tools/apex_workbench/tests/test_nmpc_weight_workspace.py": "9537c54cc0dda88d03191816225dbe65061a3103d8e03d6633866da94015551c"
     },
     "preview_namespace": "results/apex_workbench_nmpc_weights/previews/primary-r1-r2-20261102/<preset>.json",
     "recovery": {
@@ -3323,6 +3323,19 @@
         },
         "deselected": 31,
         "role": "focused WORK software-only; retained configuration data, scientific imports and fresh probes prohibited"
+      },
+      {
+        "log": "results/apex_workbench_nmpc_weights/v1_corrective_20261103/iteration2/focused.log",
+        "junit": "results/apex_workbench_nmpc_weights/v1_corrective_20261103/iteration2/focused.xml",
+        "counts": {
+          "tests": 47,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "deselected": 31,
+        "elapsed_observed_s": 11.36,
+        "role": "Second candidate focused WORK software-only; guards/retained fixture method unchanged; directory-swap regressions added"
       }
     ],
     "preservation_audit": {
@@ -3340,6 +3353,9 @@
       "changed_links": [],
       "tracked_inventory_files": 1040,
       "changed_tracked_paths": [
+        "docs/CODEX_HANDOFF.md",
+        "docs/apex_workbench_nmpc_weight_m0/WORK.md",
+        "docs/apex_workbench_nmpc_weight_m0/work_record.json",
         "tools/apex_workbench/nmpc_weight_panels.py",
         "tools/apex_workbench/tests/test_nmpc_weight_workspace.py"
       ],
@@ -3416,14 +3432,14 @@
       },
       "final_focused_invocation": {
         "counts": {
-          "tests": 44,
+          "tests": 47,
           "failures": 0,
           "errors": 0,
           "skipped": 0
         },
         "deselected": 31,
-        "log": "/Users/marwansaber/.codex/worktrees/nmpc-weight-m0/MPC_Controller_v1_IronManStyle/results/apex_workbench_nmpc_weights/v1_corrective_20261103/focused_final.log",
-        "junit_sha256": "587d6e021ce3154eec2b336c61a84c522a8b44ec54af422019249e8b1188326f"
+        "log": "/Users/marwansaber/.codex/worktrees/nmpc-weight-m0/MPC_Controller_v1_IronManStyle/results/apex_workbench_nmpc_weights/v1_corrective_20261103/iteration2/focused.log",
+        "junit_sha256": "8251e38f637545e08afe3e7b9b4ace86c5d5cf940dea7fa4d8621c842bc735db"
       },
       "static_commands": [
         {
@@ -3487,7 +3503,28 @@
       "results/apex_workbench_nmpc_weights/v1_corrective_20261103/additional_lint_failure.json": "e3305afc98ad4b515d0a3e422105eb97e4cfaf6dafd219a18b8c4f702271d96f",
       "results/apex_workbench_nmpc_weights/v1_corrective_20261103/preservation_audit.py": "607f370d7d1efffe699648905e8a7bd110e639403c7b413bfc87fafbccc0d4f3",
       "results/apex_workbench_nmpc_weights/v1_corrective_20261103/preservation_audit.log": "d3f9c10cd5a6e4763a30cb2805caead69272db8495f4559f05fc3bf4e8cc221c",
-      "results/apex_workbench_nmpc_weights/v1_corrective_20261103/preservation_after.json": "01f81cbedfc816cf11319869126bb74e60ac3a89819572cd132aee0f098677f0"
+      "results/apex_workbench_nmpc_weights/v1_corrective_20261103/preservation_after.json": "01f81cbedfc816cf11319869126bb74e60ac3a89819572cd132aee0f098677f0",
+      "results/apex_workbench_nmpc_weights/v1_corrective_20261103/iteration2/checks_runner.py": "739ac22690139bea9151f5d5fd67f0a23d312118bff5274cf51e960ce44e25c6",
+      "results/apex_workbench_nmpc_weights/v1_corrective_20261103/iteration2/focused.log": "47d080ee60b0fc4ccfe99b67c42e2ab00a025dc06925917815212bd1051721c1",
+      "results/apex_workbench_nmpc_weights/v1_corrective_20261103/iteration2/focused.xml": "8251e38f637545e08afe3e7b9b4ace86c5d5cf940dea7fa4d8621c842bc735db",
+      "results/apex_workbench_nmpc_weights/v1_corrective_20261103/iteration2/focused_command.json": "675ce5e1ad6d44c36075d8b20dbe9f41fd881ed5df5aaa82b706a0295c88ac18",
+      "results/apex_workbench_nmpc_weights/v1_corrective_20261103/iteration2/preservation_audit.py": "081e2fd6ffc9ba74a84556d53e8ab3776631e2de31a338fe57a14d991a6fe4de",
+      "results/apex_workbench_nmpc_weights/v1_corrective_20261103/iteration2/preservation_audit.log": "b09d12fe1a976f246c0003341dc1b0dd750f4676e9dd55dd2aaec6b96507491f",
+      "results/apex_workbench_nmpc_weights/v1_corrective_20261103/iteration2/preservation_after.json": "d63e54d2cb55bd47c222ead58f611c88a67635761985a96807828a3a806f249b",
+      "results/apex_workbench_nmpc_weights/v1_corrective_20261103/iteration2/documentation_harness_failure.json": "65821ff76b875186d1ccfc0c6d36890184eceeada97b6cb7995a86d95fef782c",
+      "results/apex_workbench_nmpc_weights/v1_corrective_20261103/review/race_probe.py": "751c7e7a651951f573f72de016aa2dca6105e29801d91880ca42b10e77710a7e",
+      "results/apex_workbench_nmpc_weights/v1_corrective_20261103/review/race_probe_result.json": "0c3d74b69cb517c19abef608151aacb8b8e493e7354ceb7b2b2c3a4c7dc38d0d",
+      "results/apex_workbench_nmpc_weights/v1_corrective_20261103/review/selected.log": "4b509fe0160a417dd8ed2b77ead4acb9375056de1bc7c6d62753ce191088e6af",
+      "results/apex_workbench_nmpc_weights/v1_corrective_20261103/review/selected.xml": "b0ee91bfce21f612d2a3038b846b2ba1b08eed66c0e310fe9b4644af4951f63f",
+      "results/apex_workbench_nmpc_weights/v1_corrective_20261103/review/selected_command.json": "f1ece7da6d9bf40b661a7efe847f1c82465a80a63f9d814704d5e0d751287717",
+      "results/apex_workbench_nmpc_weights/v1_corrective_20261103/review/selected_result.json": "ecf05d3ec4df7ff1008382215a22a0e63ae336945216c200f09b2f41dfe8a679",
+      "results/apex_workbench_nmpc_weights/v1_corrective_20261103/review/independent_reconstruction.json": "dac35d357e64ef0e30702650ddef2b130503fab643315170cbfb80c4a53acb3e",
+      "results/apex_workbench_nmpc_weights/v1_corrective_20261103/review/metadata_audit.py": "e264480ca2cb23198ef04dfe4faecf89d3c16e76e3784a2498bbae3412855fc9",
+      "results/apex_workbench_nmpc_weights/v1_corrective_20261103/review/metadata_audit.json": "ae3857fda03f408853a7f4f0f2c049d9ba831231d2a1c9c27119047ed03f05f0",
+      "results/apex_workbench_nmpc_weights/v1_corrective_20261103/review/consumer_audit.py": "6b6496d84815258115aeee97dcf09ef748eeb765446bc92e7e91213242ea8120",
+      "results/apex_workbench_nmpc_weights/v1_corrective_20261103/review/consumer_audit.json": "c783d4b8b7abb7bbf7c671cbf9812199f68fea04f9d0180cf9ff1a6bb780f37e",
+      "results/apex_workbench_nmpc_weights/v1_corrective_20261103/review/REPORT.md": "b714cf46af415b6518ad58bc7211755504e7de0d0e7e863dbc2415ff98f3fa16",
+      "results/apex_workbench_nmpc_weights/v1_corrective_20261103/review/review_record.json": "2fa9516f6139ecb0f2cfec0443c6f8140462d8352a6916ef4d4f09dc23820393"
     },
     "historical_fields_note": "Other WORK fields retain original/R1-R2 history; prior independent PASS and73passes are not new V1 results",
     "formal_verification": "NOT_RUN_NOT_AUTHORIZED",
@@ -3509,6 +3546,22 @@
       "One focused applicable software regression including ownership/lifecycle/failure/currentness and P/C0/compatibility; scientific imports/controller construction remain separately gated",
       "Read-only production historical consumers and exact artifact/source/environment audit; expect older execution gate to reject changed source",
       "No new experiments or qualification campaign; do not reopen consumed claims"
-    ]
+    ],
+    "prior_candidate": {
+      "revision": "cab78f47ae4d21243b5f522aa5f46e631aede1d5",
+      "disposition": "BLOCKED",
+      "finding": "V1-ER1-P1 path-based temporary publication can follow a swapped preview namespace to sealed claims",
+      "reproduction": "results/apex_workbench_nmpc_weights/v1_corrective_20261103/review/race_probe_result.json",
+      "review_record_sha256": "2fa9516f6139ecb0f2cfec0443c6f8140462d8352a6916ef4d4f09dc23820393",
+      "review_report_sha256": "b714cf46af415b6518ad58bc7211755504e7de0d0e7e863dbc2415ff98f3fa16",
+      "original_failure_preserved": true,
+      "review_subset": {
+        "passed": 40,
+        "deselected": 35,
+        "elapsed_s": 10.41,
+        "outcome": "Does not override the reproduced P1 failure"
+      }
+    },
+    "publication_revision2": "O_NOFOLLOW directory component walk; exclusive temporary file and atomic replacement relative to same directory descriptor; fsync and post-publication visible-directory identity check"
   }
 }
