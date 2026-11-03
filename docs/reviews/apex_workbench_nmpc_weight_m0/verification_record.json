@@ -1,0 +1,480 @@
+{
+  "schema": "apex-m5a-formal-software-verification/1",
+  "date": "2026-11-03",
+  "outcome": "BLOCKED",
+  "status": "NMPC_WEIGHT_LAB_M0_VERIFICATION_BLOCKED_PENDING_PRIMARY_DECISION",
+  "authorization": {
+    "source_file": "/Users/marwansaber/.codex/attachments/589e9f53-e2ad-43c4-87ab-fa134b52cf55/Pasted text.txt",
+    "sha256": "aefb3d420da8658bad422274642406bc122189421167427d8ba084b6d51529a8",
+    "scope": "One proportional bounded software Verification, no new genuine NMPC/TVLQR experiments; stop on blocking integrity defect"
+  },
+  "reviewed_implementation_revision": "96be0969703f0675060208843c9920bca2187e3e",
+  "tested_documentation_delivery": "d4315b74f643238fd6b6a49f8922fda3351188da",
+  "verification_delivery_revision": "Containing documentation-only commit; exact SHA and remote URL in final handoff, avoiding self-reference",
+  "branch": "codex/m5a-nmpc-weight-m0",
+  "source_authentication": {
+    "source": "96be0969703f0675060208843c9920bca2187e3e",
+    "tested_delivery": "d4315b74f643238fd6b6a49f8922fda3351188da",
+    "documentation_only_changes": [
+      "docs/CODEX_HANDOFF.md",
+      "docs/apex_workbench_nmpc_weight_m0/WORK.md",
+      "docs/apex_workbench_nmpc_weight_m0/work_record.json",
+      "tools/apex_workbench/README.md"
+    ],
+    "guards": [],
+    "related_processes": [],
+    "disk_free_bytes": 13789786112,
+    "tracked_file_count": 1038,
+    "preserved_m0_regular_file_count": 3283,
+    "preserved_m0_symlink_count": 191,
+    "producer_sha256": {
+      "tools/apex_workbench/nmpc_weight_lab.py": "8751fdfea3c1071fed61dc463d0827894b876295c1a5810647320964c6be1700",
+      "tools/apex_workbench/nmpc_weight_worker.py": "d1051d60263936f173e4b691f1407a2b8fbb801f4825ff926e75112eda18ef01",
+      "tools/apex_workbench/nmpc_weight_panels.py": "8ff944147ce43073289f4be1f4413167b584afc7bb7286d706f800f42b3495e9",
+      "tools/apex_workbench/configuration.py": "ed1611b0d15f17daeb515b7e6167863c49ee9c6ccd96c16403d3f55e5ac38dd3",
+      "tools/apex_workbench/worker.py": "bfd180f451585ff357a17735cae44e507507dff1718ef034624f9c821d058091",
+      "tools/apex_workbench/jobs.py": "9415eb09fa5680e45fab5575ddb03e454eab797632bc13cba49c4964fb5b9040",
+      "tools/apex_workbench/workspace.py": "60410157b2c6111628e7caeca8da2fb95fcbb74d40c3b1d827e0469778619a05",
+      "tools/apex_workbench/run_catalog.py": "4e974ea40940b2990f9b4416f97b8fe5fbde2ce6b335d3e49df3f4c422587f6d"
+    }
+  },
+  "failure_environment_context": {
+    "collection_scope": "Read-only failure context after formal Verification stopped; no regression or numerical execution",
+    "python": "3.12.14 (main, Sep  1 2026, 14:09:38) [Clang 22.1.3 ]",
+    "executable": "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/tools/apex_workbench/.venv/bin/python",
+    "platform": "macOS-26.5.1-arm64-arm-64bit",
+    "environment": {
+      "python": "3.12.14 (main, Sep  1 2026, 14:09:38) [Clang 22.1.3 ]",
+      "executable": "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/tools/apex_workbench/.venv/bin/python",
+      "packages": {
+        "numpy": {
+          "version": "2.5.3",
+          "record": "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/tools/apex_workbench/.venv/lib/python3.12/site-packages/numpy-2.5.3.dist-info/RECORD",
+          "record_sha256": "f40137e1d127da2b0b55e962f46e77bdcbd04f70c176e1ba07337fb8463033d8",
+          "installed_files": 926,
+          "installed_tree_sha256": "1ffabdb2d76e2e840cf806740b1861cf1352b7b03e5682e8fa1d142e3f348bdb"
+        },
+        "scipy": {
+          "version": "1.18.1",
+          "record": "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/tools/apex_workbench/.venv/lib/python3.12/site-packages/scipy-1.18.1.dist-info/RECORD",
+          "record_sha256": "d95b7aa2c03940de0bec301021a5753ff3577b5b7ce28e6342d59f9d8556258a",
+          "installed_files": 1430,
+          "installed_tree_sha256": "aae042b8a1ed12230dae0c48094930d32d2ccd7288483b7590315c7d2b7b574a"
+        },
+        "casadi": {
+          "version": "3.8.1",
+          "record": "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/tools/apex_workbench/.venv/lib/python3.12/site-packages/casadi-3.8.1.dist-info/RECORD",
+          "record_sha256": "b8d456077705b2dbdc5c32b2e8969d191d3c7b402fdcbe92aba9e60af88eaa5b",
+          "installed_files": 2371,
+          "installed_tree_sha256": "29c76a1c0deaae29b27384cf373aca2dca55e4a86b57d01eccb6513f1ef3466a"
+        },
+        "pytest": {
+          "version": "9.1.1",
+          "record": "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/tools/apex_workbench/.venv/lib/python3.12/site-packages/pytest-9.1.1.dist-info/RECORD",
+          "record_sha256": "7db50449560cd6bdac63c97c548c38bf10ef3eb3eb52c6ac326dbf7c8cadcee1",
+          "installed_files": 92,
+          "installed_tree_sha256": "827f606459a716306abc135684cee619e30582ceecde33b7443e796cac868278"
+        },
+        "psutil": {
+          "version": "7.2.2",
+          "record": "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/tools/apex_workbench/.venv/lib/python3.12/site-packages/psutil-7.2.2.dist-info/RECORD",
+          "record_sha256": "82a0585abe618fd6b841c095e45a9970cb4c8ace9aab3209d3602a8a1233ed49",
+          "installed_files": 17,
+          "installed_tree_sha256": "3f8aaae8b6c141f24d7a80c98d777ed4d8a5678a08fa022f2d2a2f3ad6168675"
+        },
+        "threadpoolctl": {
+          "version": "3.7.0",
+          "record": "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/tools/apex_workbench/.venv/lib/python3.12/site-packages/threadpoolctl-3.7.0.dist-info/RECORD",
+          "record_sha256": "271378a6666651adc5c620731081b466a07024b75d7728b9d61b8335b45d7225",
+          "installed_files": 6,
+          "installed_tree_sha256": "a7f34703eb189e5053d677a8a065661f8f902d38cd66b50bb4123af6e490c455"
+        },
+        "pandas": {
+          "version": "3.0.6",
+          "record": "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/tools/apex_workbench/.venv/lib/python3.12/site-packages/pandas-3.0.6.dist-info/RECORD",
+          "record_sha256": "daeee3e7f48ab290d9508b7d3f6038fe2fe591d76d4e40345a85ba7b92ba04d7",
+          "installed_files": 1522,
+          "installed_tree_sha256": "b8183c323c523942eda1026c11c8bec1a8bafc93cb1c95b9292a583b6c5ca274"
+        },
+        "matplotlib": {
+          "version": "3.11.2",
+          "record": "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/tools/apex_workbench/.venv/lib/python3.12/site-packages/matplotlib-3.11.2.dist-info/RECORD",
+          "record_sha256": "3c4ede6ad4ccbdbb55955c225c771432e24462f5c0b73c4ebfaaf2a4506859d2",
+          "installed_files": 603,
+          "installed_tree_sha256": "663dfae9a2d9ec57113d518ddbae9aec382447c788c2f6baa939cb1a72d0aaf0"
+        },
+        "pyyaml": {
+          "version": "6.0.3",
+          "record": "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/tools/apex_workbench/.venv/lib/python3.12/site-packages/pyyaml-6.0.3.dist-info/RECORD",
+          "record_sha256": "4e259774348bac93724047fa3547e03b71cbe2b7d37ca39be41513355d9cf36a",
+          "installed_files": 25,
+          "installed_tree_sha256": "b526710dd77250944fe3b064ab73ae2035c35e6fb9b119ce7d53a3fc0dc31b8d"
+        },
+        "osqp": {
+          "version": "1.1.3",
+          "record": "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/tools/apex_workbench/.venv/lib/python3.12/site-packages/osqp-1.1.3.dist-info/RECORD",
+          "record_sha256": "3ba24448906bf24af8708a76053ef37b00058bc6fe07f2dbe7496ab8bd5c118e",
+          "installed_files": 97,
+          "installed_tree_sha256": "2c71afb75a444bc9977976cf1b98d4833e847c08164eea96e92847f64bb4bf79"
+        }
+      }
+    },
+    "environment_matches_pinned_gate": true,
+    "runtime_files_match_frozen_source": 333,
+    "source": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+    "profile_sha256": "5299adca29d5c5bd383252cd2c299a392dd6872dc6bb72d1a4dd7ecfb8dd1ebf",
+    "G2_environment_present": [],
+    "native_backend_control_test": "NOT_RUN: regression never started; no new numerical initialization claimed"
+  },
+  "blocking_findings": [
+    {
+      "id": "V1",
+      "classification": "BLOCKING_EVIDENCE_INTEGRITY",
+      "title": "Retained exploratory gate evidence differs from the independently pinned byte identity",
+      "requirement": "Immutable gate evidence/content hashes required before formal regression",
+      "file": "/Users/marwansaber/.codex/worktrees/nmpc-weight-m0/MPC_Controller_v1_IronManStyle/results/apex_workbench_nmpc_weights/authorizations/primary-r1-r2-20261102/exploratory_software_probe.json",
+      "expected_sha256": "dac35d357e64ef0e30702650ddef2b130503fab643315170cbfb80c4a53acb3e",
+      "observed_sha256": "443c09d57db08eefeef2ae9ebc35d83767845b3161bbe4d461b90b23dcb237a4",
+      "mismatch_preexisted_verification": true,
+      "source_guard": "tools/apex_workbench/nmpc_weight_lab.py:345-347",
+      "guard_behavior": "Correctly fails closed; no guard or authority weakened",
+      "forensics": {
+        "decoded_sorted_values_identical_to_retained_original": true,
+        "original_wrapper": "/Users/marwansaber/.codex/worktrees/nmpc-weight-m0/MPC_Controller_v1_IronManStyle/results/apex_workbench_nmpc_weights/software_probes/exploratory_57aaa300ae574127806360f5917d0c6b.json",
+        "original_wrapper_sha256": "391b3edfa666c1a0e79bba025452b9ec9f64ee13acc6845ac5e1972c7c83443f",
+        "original_stdout_reencoded_sha256": "dac35d357e64ef0e30702650ddef2b130503fab643315170cbfb80c4a53acb3e",
+        "ordering_change_pointer": "/imports",
+        "first_key_order_difference_index": 149,
+        "original_key_at_index149": "numpy.ma.core",
+        "observed_key_at_index149": "numpy.rec",
+        "writer_identity_or_action_provenance": "UNKNOWN; no attribution inferred"
+      }
+    },
+    {
+      "id": "V1-WRITE-PATH",
+      "classification": "STATIC_REACHABLE_COLLISION_SUPPORTING_CORRECTIVE_RECOMMENDATION",
+      "file": "tools/apex_workbench/nmpc_weight_panels.py",
+      "lines": [
+        23,
+        34,
+        36,
+        37
+      ],
+      "observation": "Production Validate configuration preview reuses an authority probe path pinned by gate evidence and writes it without exclusive publication",
+      "causal_attribution": "This is a concrete reachable overwrite path, not proof of the writer/action that caused the observed incident; no destructive live reproduction performed"
+    }
+  ],
+  "regression": {
+    "invocations_executed": 0,
+    "status": "NOT_RUN_BLOCKED_AT_READ_ONLY_ADMISSION",
+    "passed": null,
+    "failed": null,
+    "skipped": null,
+    "deselected": null,
+    "junit_created": false,
+    "old_73_pass_result": "Historical Engineering WORK evidence only; not newly executed"
+  },
+  "selection_prepared_only": {
+    "status": "PREPARED_NOT_EXECUTED",
+    "scope": "M5-A formal software Verification: all applicable non-simulation Workbench tests, controlled failure/process harness, unchanged G2 gates; no new NMPC/TVLQR or model trajectories",
+    "test_paths": [
+      "tools/apex_workbench/tests/",
+      "tests/integration/test_profile1_parity.py",
+      "/Users/marwansaber/.codex/worktrees/nmpc-weight-m0/MPC_Controller_v1_IronManStyle/results/apex_workbench_nmpc_weights/verification_20261103/test_verification_controls.py"
+    ],
+    "excluded_fixture_closures": [
+      "lab_runs",
+      "completed_runs"
+    ],
+    "execution_capable_test_prefixes": [
+      {
+        "node_prefix": "tools/apex_workbench/tests/test_workbench.py::test_dynamic_original_cli_byte_parity",
+        "reason": "No scientific/controller simulation or producer execution authorized; execution-capable regression case",
+        "observed_calls": [
+          "execute"
+        ]
+      },
+      {
+        "node_prefix": "tools/apex_workbench/tests/test_workbench.py::test_lqr_original_function_byte_parity",
+        "reason": "No scientific/controller simulation or producer execution authorized; execution-capable regression case",
+        "observed_calls": [
+          "execute",
+          "run_case"
+        ]
+      },
+      {
+        "node_prefix": "tools/apex_workbench/tests/test_workbench.py::test_global_lock_and_notes_are_append_only",
+        "reason": "No scientific/controller simulation or producer execution authorized; execution-capable regression case",
+        "observed_calls": [
+          "jobs.start_run"
+        ]
+      },
+      {
+        "node_prefix": "tools/apex_workbench/tests/test_workbench.py::test_cancel_and_unique_run_directories",
+        "reason": "No scientific/controller simulation or producer execution authorized; execution-capable regression case",
+        "observed_calls": [
+          "jobs.start_run"
+        ]
+      },
+      {
+        "node_prefix": "tools/apex_workbench/tests/test_workbench.py::test_failure_logs_and_timeout_retained",
+        "reason": "No scientific/controller simulation or producer execution authorized; execution-capable regression case",
+        "observed_calls": [
+          "jobs.supervise"
+        ]
+      },
+      {
+        "node_prefix": "tools/apex_workbench/tests/test_workbench.py::test_plot_reads_actual_csv_and_leaves_missing_metrics_empty",
+        "reason": "No scientific/controller simulation or producer execution authorized; execution-capable regression case",
+        "observed_calls": [
+          "jobs.start_run"
+        ]
+      },
+      {
+        "node_prefix": "tools/apex_workbench/tests/test_workbench.py::test_ui_real_run_and_invalid_input",
+        "reason": "No scientific/controller simulation or producer execution authorized; execution-capable regression case",
+        "observed_calls": []
+      },
+      {
+        "node_prefix": "tools/apex_workbench/tests/test_engineering_workspace.py::test_real_nominal_run_through_workspace_and_reopen",
+        "reason": "No scientific/controller simulation or producer execution authorized; execution-capable regression case",
+        "observed_calls": []
+      },
+      {
+        "node_prefix": "tools/apex_workbench/tests/test_dynamic_lab.py::test_canonical_runner_and_diagnostic_byte_parity",
+        "reason": "No scientific/controller simulation or producer execution authorized; execution-capable regression case",
+        "observed_calls": [
+          "SimulationRunner",
+          "execute"
+        ]
+      },
+      {
+        "node_prefix": "tools/apex_workbench/tests/test_dynamic_lab.py::test_handled_canonical_failure_retains_partial_without_terminal",
+        "reason": "No scientific/controller simulation or producer execution authorized; execution-capable regression case",
+        "observed_calls": [
+          "execute"
+        ]
+      },
+      {
+        "node_prefix": "tools/apex_workbench/tests/test_dynamic_lab.py::test_real_worker_rejects_conflicting_snapshot_before_physics",
+        "reason": "No scientific/controller simulation or producer execution authorized; execution-capable regression case",
+        "observed_calls": [
+          "jobs.supervise"
+        ]
+      },
+      {
+        "node_prefix": "tools/apex_workbench/tests/test_lab_closure.py::test_one_refinement_software_smoke_cannot_become_qualification",
+        "reason": "No scientific/controller simulation or producer execution authorized; execution-capable regression case",
+        "observed_calls": [
+          "jobs.start_run"
+        ]
+      },
+      {
+        "node_prefix": "tools/apex_workbench/tests/test_corrections.py::test_r1_real_sigkill_keeps_worker_lease_and_recovers",
+        "reason": "No scientific/controller simulation or producer execution authorized; execution-capable regression case",
+        "observed_calls": [
+          "jobs.start_run"
+        ]
+      },
+      {
+        "node_prefix": "tools/apex_workbench/tests/test_corrections.py::test_r2_two_sessions_during_initial_publication",
+        "reason": "No scientific/controller simulation or producer execution authorized; execution-capable regression case",
+        "observed_calls": [
+          "jobs.start_run"
+        ]
+      },
+      {
+        "node_prefix": "tools/apex_workbench/tests/test_corrections.py::test_r5_hash_failure_keeps_scientific_outcome_separate",
+        "reason": "No scientific/controller simulation or producer execution authorized; execution-capable regression case",
+        "observed_calls": [
+          "jobs.supervise"
+        ]
+      },
+      {
+        "node_prefix": "tools/apex_workbench/tests/test_corrections.py::test_existing_lqr_still_executes_under_owned_worker",
+        "reason": "No scientific/controller simulation or producer execution authorized; execution-capable regression case",
+        "observed_calls": [
+          "execute",
+          "jobs.start_run"
+        ]
+      },
+      {
+        "node_prefix": "tools/apex_workbench/tests/test_corrections.py::test_full_worker_dynamic_parity",
+        "reason": "No scientific/controller simulation or producer execution authorized; execution-capable regression case",
+        "observed_calls": [
+          "execute"
+        ]
+      }
+    ],
+    "G2_variables_must_be_absent": true,
+    "G2_existing_skip_logic_preserved": true,
+    "scientific_qualification_campaigns_prohibited": true,
+    "controller_simulations_prohibited": true,
+    "no_test_implementation_or_expectation_changes": true,
+    "selection_rationale": "Current explicit no-simulation authorization controls. Exclusions are recorded per node at collection before fixture setup. Prior unchanged execution tests remain historical evidence, never a fresh pass.",
+    "controlled_prelaunch_tests_included": [
+      "test_exact_plan_and_execution_ack_gate_without_workers",
+      "test_malformed_legacy_status_cannot_admit_over_live_process",
+      "test_r2_interrupted_initial_publication_is_not_selectable",
+      "test_refinements_require_explicit_admission_without_launch",
+      "test_ui_quarantine_does_not_hide_legacy_active_owner"
+    ]
+  },
+  "G2": "No enabling variables present; original gates untouched. No collection/execution occurred, so no fresh skip count or identities are claimed.",
+  "exact_gate_failure_command": {
+    "executed_argv": [
+      "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/tools/apex_workbench/.venv/bin/python",
+      "-B",
+      "-"
+    ],
+    "stdin_exact_body_file": "blocked_gate_reproduction_stdin.py",
+    "cwd": "/Users/marwansaber/.codex/worktrees/nmpc-weight-m0/MPC_Controller_v1_IronManStyle",
+    "environment_overrides": {
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "PYTHONPATH": "."
+    },
+    "stdout_stderr": "blocked_gate_reproduction.log",
+    "observed_exit_code": 2,
+    "regression_or_scientific_execution": false
+  },
+  "native_evidence_partial_assessment": {
+    "nominal": {
+      "directory": "/Users/marwansaber/.codex/worktrees/nmpc-weight-m0/MPC_Controller_v1_IronManStyle/results/apex_workbench_nmpc_weights/runs/20261103T092919578650Z_8db96af73edb48afa17b8d608c9cb7a9",
+      "raw_path": "/Users/marwansaber/.codex/worktrees/nmpc-weight-m0/MPC_Controller_v1_IronManStyle/results/apex_workbench_nmpc_weights/runs/20261103T092919578650Z_8db96af73edb48afa17b8d608c9cb7a9/experiment/raw.json",
+      "raw_bytes": 955790,
+      "raw_sha256": "e81b5df5e10164eed1feccc3217292718391f1c0eb89d123cfb70e3b47a13263",
+      "raw_matches_delivery_inventory": true,
+      "manifest_sha256": "bc4f53a95fcae849e11537eb7c25f9b9d1480be4be8f2f88e33d212f283f0933",
+      "manifest_matches_delivery_inventory": true,
+      "observed_status": {
+        "record_version": 2,
+        "state": "completed",
+        "scientific_outcome": "completed",
+        "evidence_state": "valid",
+        "updated_utc": "2026-11-03T09:41:13.919863+00:00",
+        "error": null,
+        "returncode": 0,
+        "wall_runtime_s": 16.24771441699704,
+        "sampled_peak_worker_rss_bytes": 241745920,
+        "sampled_peak_worker_threads": 4,
+        "sampling_note": "100 ms supervisor samples; worker guard polls at 50 ms; soft bounds",
+        "manifest_sha256": "bc4f53a95fcae849e11537eb7c25f9b9d1480be4be8f2f88e33d212f283f0933"
+      },
+      "raw_git_tracked": false,
+      "retrieval": "Actually read locally in ignored directory; no off-host raw archive retrieval established"
+    },
+    "exploratory": {
+      "directory": "/Users/marwansaber/.codex/worktrees/nmpc-weight-m0/MPC_Controller_v1_IronManStyle/results/apex_workbench_nmpc_weights/runs/20261103T092919578903Z_67d4ffe6c44b4628adc58505ca43b50c",
+      "raw_path": "/Users/marwansaber/.codex/worktrees/nmpc-weight-m0/MPC_Controller_v1_IronManStyle/results/apex_workbench_nmpc_weights/runs/20261103T092919578903Z_67d4ffe6c44b4628adc58505ca43b50c/experiment/raw.json",
+      "raw_bytes": 955960,
+      "raw_sha256": "95c3a927ac3203c1a4316a89257fc3f86cf754daac789ec07245c3450bcae792",
+      "raw_matches_delivery_inventory": true,
+      "manifest_sha256": "dc74308fa3fd16edfd600ab1bf1b31c4b56df2070284a8936d7c5b6a78fe6f31",
+      "manifest_matches_delivery_inventory": true,
+      "observed_status": {
+        "record_version": 2,
+        "state": "completed",
+        "scientific_outcome": "completed",
+        "evidence_state": "valid",
+        "updated_utc": "2026-11-03T09:42:23.864368+00:00",
+        "error": null,
+        "returncode": 0,
+        "wall_runtime_s": 16.037122457986698,
+        "sampled_peak_worker_rss_bytes": 240746496,
+        "sampled_peak_worker_threads": 4,
+        "sampling_note": "100 ms supervisor samples; worker guard polls at 50 ms; soft bounds",
+        "manifest_sha256": "dc74308fa3fd16edfd600ab1bf1b31c4b56df2070284a8936d7c5b6a78fe6f31"
+      },
+      "raw_git_tracked": false,
+      "retrieval": "Actually read locally in ignored directory; no off-host raw archive retrieval established"
+    }
+  },
+  "raw_retrieval_limitation": "The two raw JSON files were actually read at the recorded absolute ignored-local paths and hash-match delivered inventories. Git contains reports/inventories, not independently retrievable raw archives; no off-host archive/persistence guarantee. Full native semantic/association Verification was not completed after the gate stop.",
+  "preservation_since_start": {
+    "m0_regular_files": 3283,
+    "m0_symlinks": 191,
+    "changed_files": [],
+    "changed_links": []
+  },
+  "proof_snapshot": {
+    "file": "/Users/marwansaber/.codex/worktrees/nmpc-weight-m0/MPC_Controller_v1_IronManStyle/results/apex_workbench_nmpc_weights/verification_20261103/preservation_before.json",
+    "sha256": "8cdeb633979e7d75edd159932181df088bd5a80d5a38f3b806ea3e9ca7e421d3"
+  },
+  "implementation_tests_scientific_source_changes": false,
+  "source_or_evidence_repairs_performed": false,
+  "gate_or_authority_resealed": false,
+  "new_experiments_or_regenerated_scenarios": 0,
+  "operational_notes": [
+    {
+      "operation": "Create ignored Verification-only non-scientific regression harness",
+      "executed": false,
+      "failure": "Automatic approval review could not complete because of service usage limit; not an unsafe-action determination",
+      "disposition": "User said continue; retry the same scoped require_escalated path; never bypass review",
+      "formal_regression_invocations_executed": 0
+    },
+    {
+      "executed_regression": false,
+      "failure": "TypeError: verify_runtime() missing required runtime argument",
+      "scope": "Read-only preflight harness invocation; no reviewed implementation defect, no evidence mutation",
+      "correction": "Pass lab.RUNTIME explicitly; retain this failure"
+    }
+  ],
+  "requirements_not_completed": [
+    "Formal software regression and exact actual selected/skipped/deselected results",
+    "Fresh R1/R2 positive/negative behavioral suite",
+    "Cancellation, owner loss, resource-stop controlled process checks",
+    "Full native record/optimizer/packet/command/plant semantic Verification",
+    "Applicable Workbench/P/C0 functional regression",
+    "Full cross-archive preservation audit beyond the scoped starting snapshot and333 frozen runtime check"
+  ],
+  "prior_evidence_role": "Engineering WORK73-pass suite and independent PASS records remain historical and preserved; none counted as newly executed Verification results",
+  "recommendation": [
+    "Primary bounded corrective decision: preserve observed mismatch and original wrappers; do not overwrite or reseal during Verification",
+    "Separate mutable configuration-preview output from immutable gate evidence and test preview action cannot mutate sealed authority files",
+    "Primary decide exact-byte evidence recovery or reviewed append-only reconciliation; no new scenarios needed or authorized",
+    "Independent Engineering Review of any changed implementation, then explicit decision on a fresh bounded formal Verification"
+  ],
+  "limitations": [
+    "Actual writer and time/action provenance not established",
+    "Decoded probe values/types match the authenticated original wrapper; only /imports member ordering differs, but exact byte authority remains unsatisfied",
+    "No physical or statistical performance conclusion",
+    "This is an incomplete BLOCKED formal Verification, not software acceptance or a new controller failure"
+  ],
+  "evidence_sha256": {
+    "results/apex_workbench_nmpc_weights/verification_20261103/supervisor_control.py": "5bfc3492aae38177c8740110c1e0defc0aa929c35339ecdaf927613e876e4b82",
+    "results/apex_workbench_nmpc_weights/verification_20261103/blocked_gate_reproduction.log": "6a11c7a96fc19640030d4e7972aad098d8188bb4a7ae8e69bf92d858d454f89f",
+    "results/apex_workbench_nmpc_weights/verification_20261103/blocked_gate_reproduction_command.json": "a298afd7153dd437b71e9abcfc2a1a70146563d27445ae950264b4193c710ed3",
+    "results/apex_workbench_nmpc_weights/verification_20261103/blocking_evidence.json": "1139ea915a2885f79d4f90ab7eca3569369a35007de17f9d0248d43b8de02619",
+    "results/apex_workbench_nmpc_weights/verification_20261103/selection_prepared.json": "fd24c293fd6d54bb6e6572807fad03b66e48f158b8d73906457300f115682400",
+    "results/apex_workbench_nmpc_weights/verification_20261103/preflight_harness_failure.json": "4edf629c16f3a5859b7b6b079fcb50d9daef3914b047ca9a748857dca334cd98",
+    "results/apex_workbench_nmpc_weights/verification_20261103/failure_environment_context.json": "e316dbe06a0578b798797cbf0f46b8b31fb365a67c88c07e6f3e3e12bdd3d15f",
+    "results/apex_workbench_nmpc_weights/verification_20261103/test_verification_controls.py": "0064a0c89c3d06156e0ece1679ef5208bdd50630ef23b952644ebc95d322646a",
+    "results/apex_workbench_nmpc_weights/verification_20261103/functional_suite.py": "9352b7bacaac37cec07637329faaf6db31c8f18af997fbc39e8da78bbfd4d044",
+    "results/apex_workbench_nmpc_weights/verification_20261103/preflight.json": "fcdb3128a444da8ccef6373579611a7f019d7a82451026a00d2ed2754f6785b4",
+    "results/apex_workbench_nmpc_weights/verification_20261103/blocked_gate_reproduction_stdin.py": "e619d81fa5d76bc3fd1adc673a8072c301232131603b542f4f5b059960f5e629",
+    "results/apex_workbench_nmpc_weights/verification_20261103/approval_review_note.json": "092fc97d0a3f23bf53300fea2127567f81e1a9404465852eaaca6665bf396208",
+    "results/apex_workbench_nmpc_weights/verification_20261103/preservation_before.json": "8cdeb633979e7d75edd159932181df088bd5a80d5a38f3b806ea3e9ca7e421d3",
+    "results/apex_workbench_nmpc_weights/verification_20261103/failed_evidence/original_probe_wrapper.json": "391b3edfa666c1a0e79bba025452b9ec9f64ee13acc6845ac5e1972c7c83443f",
+    "results/apex_workbench_nmpc_weights/verification_20261103/failed_evidence/software_gate.unchanged.json": "19217b49b7b49129e565078a6fdfaccc27bad8878f42c87a5c56fb8bb1fde857",
+    "results/apex_workbench_nmpc_weights/verification_20261103/failed_evidence/matching_observed_probe_wrapper.json": "768ed22a79b3f33557bbc94096b752de624fff7438d51c3c6594f4b5df9f1c86",
+    "results/apex_workbench_nmpc_weights/verification_20261103/failed_evidence/authorization.unchanged.json": "47ce382539021089742e59fa799227f531b761f2117bce4bd30095d3e8f4fbca",
+    "results/apex_workbench_nmpc_weights/verification_20261103/failed_evidence/exploratory_software_probe.observed.json": "443c09d57db08eefeef2ae9ebc35d83767845b3161bbe4d461b90b23dcb237a4"
+  },
+  "formal_report_sha256": "5d177c1866af52fcce55d176819e7b46397efcab0dc2e6d8c1da6ab763472dbf",
+  "verification_authority_sha256": "aefb3d420da8658bad422274642406bc122189421167427d8ba084b6d51529a8",
+  "delivery_preservation": {
+    "original_tracked_files": 1038,
+    "authorized_existing_document_changes": [
+      "docs/CODEX_HANDOFF.md",
+      "tools/apex_workbench/README.md"
+    ],
+    "new_documentation_files": [
+      "docs/reviews/apex_workbench_nmpc_weight_m0/VERIFICATION.md",
+      "docs/reviews/apex_workbench_nmpc_weight_m0/verification_record.json"
+    ],
+    "reviewed_source_and_tests_unchanged": true,
+    "preexisting_m0_files_unchanged": 3283,
+    "preexisting_m0_links_unchanged": 191,
+    "regression_invocations": 0
+  }
+}

@@ -94,13 +94,16 @@ Parameters are synthetic, never measured or identified APEX data. Linear tires r
 
 ## Use
 
-**M0 status: Engineering Review PASS, pending separately authorized formal Verification.**
+**M0 status: formal Verification BLOCKED at retained-evidence admission.**
 Exact implementation `96be0969703f0675060208843c9920bca2187e3e`. R1/R2 corrections passed independent
 review before one new nominal and one exploratory native 2.0 s attempt; both completed with valid
 retained evidence and passed final independent assessment. These are synthetic, experimental and
 unqualified results. Both successor attempts are consumed; further execution requires a new Primary
-authorization. Inspect/Compare remain available. Original failed attempt, claim/gate/BLOCKED,
-negative reviews and logs are preserved. Formal Verification and acceptance have not occurred.
+authorization. The subsequent formal check found an exploratory software-probe hash mismatch and
+correctly stopped before regression. Its decoded values are unchanged, but exact authority bytes
+do not match. [Verification report](../../docs/reviews/apex_workbench_nmpc_weight_m0/VERIFICATION.md).
+Original failed attempt, claim/gate/BLOCKED, negative reviews and logs are preserved. No evidence
+was repaired/resealed. Formal Verification is incomplete and acceptance has not occurred.
 See the linked WORK/record for exact gate, source, environment, native outcomes and limitations.
 
 **Experimental NMPC Weight Lab M0:** Home → **Open experimental NMPC Weight Lab M0**, or Run →

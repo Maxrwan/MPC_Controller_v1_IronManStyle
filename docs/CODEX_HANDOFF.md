@@ -1,4 +1,35 @@
-# Current handoff — M5-A Engineering Review PASS; Verification pending
+# Current handoff — M5-A formal Verification BLOCKED at evidence admission
+
+**NMPC_WEIGHT_LAB_M0_VERIFICATION_BLOCKED_PENDING_PRIMARY_DECISION.** 3 November 2026.
+Reviewed implementation `96be0969703f0675060208843c9920bca2187e3e`; tested documentation-only
+delivery `d4315b74f643238fd6b6a49f8922fda3351188da`, branch `codex/m5a-nmpc-weight-m0`.
+[Formal BLOCKED report](reviews/apex_workbench_nmpc_weight_m0/VERIFICATION.md),
+[machine evidence](reviews/apex_workbench_nmpc_weight_m0/verification_record.json).
+
+Production `verify_gate()` rejects changed retained exploratory software-probe bytes. Expected
+SHA256 `dac35d357e64ef0e30702650ddef2b130503fab643315170cbfb80c4a53acb3e`; observed
+`443c09d57db08eefeef2ae9ebc35d83767845b3161bbe4d461b90b23dcb237a4`. The mismatch preexisted this
+Verification. Decoded values/types match an authenticated retained original wrapper, but `/imports`
+member ordering differs. Gate/authority hashes remain unchanged; no file was restored or resealed.
+The Run-panel Validate action statically reuses this gate-bound filename for a mutable preview;
+the actual writer/action is unknown and was not inferred.
+
+Formal regression invocations **zero**: no pytest collection/JUnit/new passes/skips/deselections.
+Prior73 WORK passes and independent PASS reports remain historical, not new Verification results.
+333 frozen runtime files and actual approved dependency identities match. Both native raw files
+and manifests remain locally readable and hash-match delivered inventories; they are ignored local
+evidence, not independently retrievable raw archives on GitHub. Full semantic/functional Verification
+is incomplete. All3283 starting regular M0 files and191 links remain unchanged by this task.
+
+Only this final documentation delivery changes tracked files. No implementation/test changes,
+scientific execution, restored evidence, authority reseal, claim reset or later phase occurred.
+Primary must decide on bounded preview/immutable-evidence correction and evidence recovery or
+append-only reconciliation, followed by independent Engineering Review and a new Verification
+decision. Preserve this failure. No new numerical experiment is needed or authorized by this report.
+
+---
+
+# Historical handoff — M5-A Engineering Review PASS; Verification pending
 
 **NMPC_WEIGHT_LAB_M0_ENGINEERING_REVIEW_COMPLETE_PENDING_VERIFICATION.** 3 November 2026.
 Exact corrected implementation `96be0969703f0675060208843c9920bca2187e3e`, branch
