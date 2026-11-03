@@ -1,3 +1,10 @@
+# PRE-INT-W1 — G0 failed; numerical path stopped
+
+One genuine G0 worker failed at 0.1 s on the release-observer tracker type check. Claim consumed; G1/smoke not run, milestone not met. WORK continues nonnumerically. See [WORK](pre_sid/preintegration/WORK.md). Frozen science unchanged.
+
+
+---
+
 # Current handoff — Task007E-4 Primary acceptance record
 
 **WORK_COMPLETE_PENDING_REVIEW — documentation/status delivery.** Primary APEX already accepted

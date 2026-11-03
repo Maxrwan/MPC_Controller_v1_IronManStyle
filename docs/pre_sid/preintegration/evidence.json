@@ -1,0 +1,43 @@
+{
+  "schema": "apex-preintegration-work/1",
+  "status": "FAILED_G0_PRODUCER_CHECKPOINT",
+  "scientific": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+  "approved_plan": "63d56fc366de7464e1c71a4f831c87ec03d31a2f",
+  "executed_from": "planning HEAD plus recorded dirty runtime/test byte map; containing checkpoint commit binds those same bytes retrospectively",
+  "runtime_hashes": {
+    "scripts/preintegration/__init__.py": "c359d55be6bf1e2f49c847ad5a6902a1edac47e6ef2bba566038233301f41ca5",
+    "scripts/preintegration/evidence.py": "4249eb9a8b3e0691d7562af8cd2b165a019a28810ba0e0572ac628c28747a9b9",
+    "scripts/preintegration/launch.py": "535c83e8de92004695851eb445cca0295ec7bd4ee0163e3163d7040bd50fa643",
+    "scripts/preintegration/worker.py": "ec426683b3567d3a16e07545b9d7bab8597a39c85ef2a436e5aac2b96ecbeebf",
+    "src/apex/preintegration/__init__.py": "40ffba17a7cc3ceb051567af7be4aa39c88ae875f629b6ee1c48c295f784897d",
+    "src/apex/preintegration/local.py": "45d17da9b9d94f8449d9347d6f76dc0a1ebd72c21d2e803ca611484ea11cffe0",
+    "src/apex/preintegration/profile.py": "b4cb3411e586df225775b08a8bfa5414e6b73741e9bbae594ce5d639e4cdd093",
+    "src/apex/preintegration/records.py": "3224967ca26d3bc37af14e08a0308e25e59f00dfeb22b4395f3c7c97ac8c5d66",
+    "src/apex/preintegration/session.py": "421173fba838408d03f505dcc16a6188dfafe4c1e5e085e90e55def9bb18020b",
+    "src/apex/preintegration/validation.py": "5e20e706da76281e499fa0010ccfefb2770796e07c601e8a19c5cad29270c2ef",
+    "tests/integration/test_preintegration_genuine.py": "134fd84abbc308fbeeca83f5a4a681aabc59141d282d32e42ff19fa76c0deae3",
+    "tests/integration/test_preintegration_local.py": "2ed9bde8d17fce7857ed4210028f5b6cf75eb28d8953556997bbd9935e0ad9b2",
+    "tests/unit/test_preintegration_evidence.py": "80ab157f86b14853b0854ac1b834457e7cc8961c361350c045c634c0c5fe3cdd",
+    "tests/unit/test_preintegration_profile.py": "063b6bb17eaedab98cacd78c2bcbba0f62ffbb841b46db9a9d643d2bfe2b5c11",
+    "tests/unit/test_preintegration_session.py": "56e5c171585e8ef12a31293b139685e9ae7677ac78206a255974a0c2e7382b8d",
+    "tests/unit/test_preintegration_validation.py": "ceea3253a7ae2aa5dba8756474f5f130169d6b542a91e37baff90b4f6a8815da"
+  },
+  "raw_root": "results/preintegration/w1/work-20261103T123702Z-532aa226",
+  "g0": {
+    "output": "results/preintegration/w1/g0-7e39088ca7ab458599d3ac72df79a61c",
+    "complete": false,
+    "claim_consumed": true,
+    "observed_simulated_segment_end_s": 0.1,
+    "segments": 20,
+    "nominal_proposals": 11,
+    "native_startup_preparations": 1,
+    "native_recurring_preparations": 0,
+    "supervisor_wall_s": 18.64127587497933,
+    "process_tree_cpu_s": 15.459226
+  },
+  "g1": "NOT_RUN_PREREQUISITE_FAILED",
+  "measured_smoke": "NOT_RUN_PREREQUISITE_FAILED",
+  "feasibility": "INSUFFICIENT_EVIDENCE",
+  "milestone_candidate_met": false,
+  "independent_raw_retrieval": "NOT_QUALIFIED"
+}

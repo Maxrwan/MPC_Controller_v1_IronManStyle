@@ -1032,3 +1032,12 @@ Efficiency specification is next only under separate authorization; shared Safet
 Workbench and VIS-2 remain deferred. See [acceptance report](TASK007E4_PERFORMANCE_ACCEPTANCE.md).
 This resolves Primary acceptance for Synthetic v1 without accepting broader VIS package completeness
 or authorizing a new execution stage.
+
+## ADR-165 — W1 local nominal-output boundary
+
+Under the separately approved PRE-INT-W1 plan, add a local Python lifecycle/validation facade
+around unchanged Performance Synthetic v1. Return explicit no output on invalid nominal
+state/authority; do not export recovery or stop policies. Preserve the original runner chronology
+and distinguish its observations from a separate explicit application-check API. New W1 artifacts
+have new provenance. No S1-A/runtime, scientific formulation, external contract or physical policy
+is adopted. See `docs/pre_sid/preintegration/LOCAL_INTERFACE.md` and the W1 WORK report.
