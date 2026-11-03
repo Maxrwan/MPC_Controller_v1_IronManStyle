@@ -13,6 +13,22 @@ from tools.apex_workbench import nmpc_weight_lab as lab
 from tools.apex_workbench import nmpc_weight_worker as worker
 from tools.apex_workbench.configuration import validate
 
+FIXTURE_IDS = {
+    "nominal": "20261103T000000000000Z_" + "a" * 32,
+    "exploratory": "20261103T000000000000Z_" + "b" * 32,
+}
+
+
+def fixture_authority(tmp_path, monkeypatch):
+    monkeypatch.setattr(
+        lab,
+        "ORIGINAL_ANCHORS",
+        {
+            name: storage.sha256(tmp_path / name)
+            for name in ("BLOCKED.json", "claims/nominal.json", "software_gate.json")
+        },
+    )
+
 
 @pytest.fixture(scope="session")
 def preflights():
@@ -140,15 +156,17 @@ def test_runtime_change_and_missing_file_reject_disposable_copy(tmp_path, monkey
 
 def test_one_attempt_claim_each_and_no_retry(tmp_path, monkeypatch):
     monkeypatch.setattr(lab, "OUTPUT", tmp_path)
-    monkeypatch.setattr(lab, "verify_gate", lambda **kwargs: {})
+    monkeypatch.setattr(lab, "verify_gate", lambda **kwargs: {"run_ids": FIXTURE_IDS})
     authority = lab.authority_root()
     authority.mkdir(parents=True)
     storage.write_json(authority / "authorization.json", {"software_fixture": True})
-    lab.claim("nominal", "fixture_nominal")
+    lab.claim("nominal", FIXTURE_IDS["nominal"])
     with pytest.raises(FileExistsError):
-        lab.claim("nominal", "fixture_retry")
+        lab.claim("nominal", FIXTURE_IDS["nominal"])
+    with pytest.raises(ValueError):
+        lab.claim("nominal", "unreserved_identity")
     with pytest.raises(FileNotFoundError):
-        lab.claim("exploratory", "fixture_exploratory")
+        lab.claim("exploratory", FIXTURE_IDS["exploratory"])
     with pytest.raises(ValueError):
         lab.claim("../outside", "bad")
     assert len(list((authority / "claims").glob("*.json"))) == 1
@@ -230,6 +248,7 @@ def fixture_run(tmp_path, preflights, preset="nominal"):
         tmp_path / "claims" / (preset + ".json"),
         {"preset": preset, "run_id": directory.name, "source": lab.SOURCE},
     )
+    storage.write_json(tmp_path / "BLOCKED.json", {"software_fixture_original_block": True})
     request = {
         "record_version": 2,
         "run_id": directory.name,
@@ -259,6 +278,7 @@ def test_partial_cancellation_and_fresh_hash_currentness(tmp_path, monkeypatch, 
     directory = fixture_run(tmp_path, preflights)
     monkeypatch.setattr(lab, "OUTPUT", tmp_path)
     monkeypatch.setattr(lab, "RUNS", tmp_path / "runs")
+    fixture_authority(tmp_path, monkeypatch)
     view = lab.read_run(directory)
     assert view["raw"] is None and view["status"]["state"] == "cancelled"
     lab.current(view)
@@ -274,6 +294,7 @@ def test_external_authority_and_claim_changes_quarantine(tmp_path, monkeypatch, 
     directory = fixture_run(tmp_path, preflights)
     monkeypatch.setattr(lab, "OUTPUT", tmp_path)
     monkeypatch.setattr(lab, "RUNS", tmp_path / "runs")
+    fixture_authority(tmp_path, monkeypatch)
     view = lab.read_run(directory)
     claim = tmp_path / "claims/nominal.json"
     claim.write_text("{}")
@@ -285,6 +306,7 @@ def test_completed_missing_native_result_cannot_be_promoted(tmp_path, monkeypatc
     directory = fixture_run(tmp_path, preflights)
     monkeypatch.setattr(lab, "OUTPUT", tmp_path)
     monkeypatch.setattr(lab, "RUNS", tmp_path / "runs")
+    fixture_authority(tmp_path, monkeypatch)
     status = storage.read_json(directory / "status.json")
     status.update(state="completed", scientific_outcome="completed")
     storage.write_json(directory / "status.json", status)
@@ -336,6 +358,7 @@ def test_m0_admission_with_absent_legacy_root_never_launches_before_capture(
     monkeypatch.setattr(jobs, "RUNS", legacy)
     monkeypatch.setattr(jobs, "LEASE_ROOT", tmp_path / "lease")
     monkeypatch.setattr(lab, "RUNS", tmp_path / "m0")
+    monkeypatch.setattr(lab, "authorized_run_id", lambda preset: FIXTURE_IDS[preset])
     monkeypatch.setattr(jobs, "provenance", lambda: {"limits": jobs.LIMITS})
     called = []
 
@@ -428,8 +451,9 @@ def test_successor_requires_review_and_preserves_original_block(tmp_path, monkey
     assert blocked.read_text() == '{"original":"immutable"}'
 
 
-def test_successor_positive_gate_exact_git_binding_and_consumed_claim(tmp_path, monkeypatch):
+def successor_authority_fixture(tmp_path, monkeypatch, preflights=None):
     """Disposable real Git source identities and fake authority; never a real execution grant."""
+    frozen = lab.source_hashes()
     source = tmp_path / "source"
     source.mkdir()
     for name in lab.PRODUCERS:
@@ -453,6 +477,7 @@ def test_successor_positive_gate_exact_git_binding_and_consumed_claim(tmp_path, 
     )
     candidate = git("rev-parse", "HEAD").decode().strip()
     monkeypatch.setattr(lab, "git", git)
+    monkeypatch.setattr(lab, "source_hashes", lambda: frozen)
     monkeypatch.setattr(lab, "OUTPUT", tmp_path)
     blocked = tmp_path / "BLOCKED.json"
     storage.write_json(blocked, {"original": "unchanged"})
@@ -462,12 +487,25 @@ def test_successor_positive_gate_exact_git_binding_and_consumed_claim(tmp_path, 
     decision = root / "PRIMARY_DECISION.md"
     decision.write_text("explicit disposable fixture; no numerical authority")
     monkeypatch.setattr(lab, "PRIMARY_DECISION_SHA", storage.sha256(decision))
+    gate = {
+        "status": "SOFTWARE_GATES_PASSED",
+        "source": lab.SOURCE,
+        "adapter_sha256": lab.adapter_hashes(),
+        "implementation_revision": candidate,
+        "run_ids": FIXTURE_IDS,
+        "evidence_sha256": {},
+        "profile_sha256": lab.PROFILE_SHA,
+        "environment": preflights["nominal"]["environment"] if preflights else {},
+        "resolved_snapshots": {p: r["resolved"] for p, r in (preflights or {}).items()},
+    }
+    storage.write_json(root / "software_gate.json", gate)
     review = {
         "candidate": candidate,
         "outcome": "PASS",
         "scientific_source": lab.SOURCE,
         "adapter_sha256": lab.adapter_hashes(),
         "evidence_sha256": {},
+        "software_gate_sha256": storage.sha256(root / "software_gate.json"),
     }
     storage.write_json(root / "corrective_review.json", review)
     authority = {
@@ -479,21 +517,22 @@ def test_successor_positive_gate_exact_git_binding_and_consumed_claim(tmp_path, 
         "corrective_review_sha256": storage.sha256(root / "corrective_review.json"),
     }
     storage.write_json(root / "authorization.json", authority)
-    gate = {
-        "status": "SOFTWARE_GATES_PASSED",
-        "source": lab.SOURCE,
-        "adapter_sha256": lab.adapter_hashes(),
-        "implementation_revision": candidate,
-        "authorization_sha256": storage.sha256(root / "authorization.json"),
-        "evidence_sha256": {},
-    }
-    storage.write_json(root / "software_gate.json", gate)
+    return root, gate, review, blocked
+
+
+def test_successor_positive_gate_exact_git_binding_and_consumed_claim(tmp_path, monkeypatch):
+    root, gate, review, blocked = successor_authority_fixture(tmp_path, monkeypatch)
     assert lab.verify_gate(check_environment=False) == gate
-    lab.claim("nominal", "disposable_successor_nominal", captured=True)
+    assert lab.authorized_run_id("nominal") == FIXTURE_IDS["nominal"]
+    lab.claim("nominal", FIXTURE_IDS["nominal"], captured=True)
     with pytest.raises(FileExistsError):
-        lab.claim("nominal", "forbidden_retry", captured=True)
+        lab.claim("nominal", FIXTURE_IDS["nominal"], captured=True)
     with pytest.raises(FileNotFoundError):
-        lab.claim("exploratory", "no_valid_nominal_result", captured=True)
+        lab.claim("exploratory", FIXTURE_IDS["exploratory"], captured=True)
+    storage.write_json(root / "software_gate.json", dict(gate, environment={"forged": True}))
+    with pytest.raises(ValueError, match="independently reviewed identity"):
+        lab.verify_gate(check_environment=False)
+    storage.write_json(root / "software_gate.json", gate)
     changed = dict(review, outcome="BLOCKED")
     storage.write_json(root / "corrective_review.json", changed)
     with pytest.raises(ValueError):

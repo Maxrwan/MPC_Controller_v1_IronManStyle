@@ -302,6 +302,10 @@ def start_run(
                 if status["state"] in ACTIVE:
                     _reconcile_locked(previous, status)
         run_id = datetime.now(UTC).strftime("%Y%m%dT%H%M%S%fZ") + "_" + uuid.uuid4().hex
+        if adapter == "nmpc_weight_lab":
+            # R2: the independent gate reserves both IDs; a copied/rebound claim cannot
+            # authorize a third identity. Other adapters keep their original allocation.
+            run_id = weight_lab.authorized_run_id(effective["preset"])
         directory = runs / run_id
         staging = runs / (".pending-" + run_id)
         staging.mkdir(exist_ok=False)

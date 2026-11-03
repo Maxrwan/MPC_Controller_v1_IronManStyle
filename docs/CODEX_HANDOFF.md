@@ -8,7 +8,9 @@ Primary authorizes bounded correction from `52c5f55c253ef88bc0bc66fb9504eef5af21
 [contract amendment](apex_workbench_nmpc_weight_m0/EXPERIMENT_CONTRACT.md).
 R1 uses strict finite canonical capture/worker snapshots, preserving scientific dataclasses/values.
 R2 authenticates selected record, canonical owned directory, origin/alias/adapter/claim identity
-before any lifecycle call. `jobs.py` and frozen science remain unchanged.
+before any lifecycle call. Frozen science remains unchanged. The sole M0-only `jobs.py` hook now
+allocates one of the two run IDs reserved by the independent gate, preventing copied claim identities;
+other adapters and lifecycle/resource mechanics remain unchanged.
 
 Focused software checks precede independent exact-candidate corrective review. No numerical
 execution until documented PASS. The new successor authorization preserves the original failed
@@ -22,6 +24,11 @@ Corrective review history is retained: `7d95098b` BLOCKED for capture/link authe
 interrupted by service usage limit). The final local fix enforces all existing original authority
 hash pins before lifecycle access. Affected workspace regression: 32 passed; earlier 66-case and
 R1 passes remain separate. Fresh independent review is pending; zero new numerical attempts.
+
+`d5be43a` review also BLOCKED successor gate/request rebinding; its complete independent report
+and actual disposable mutation evidence are retained. The next candidate requires an independent
+pin of the prebuilt gate bytes, with no cyclic authority reference, and binds both claims to its
+two reserved identities. New admission/inspection negatives cover that full successor chain.
 
 ---
 

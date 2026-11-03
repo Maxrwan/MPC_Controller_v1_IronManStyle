@@ -156,6 +156,8 @@ def verify_successor(*, check_current=True, allow_blocked=False):
     for name, digest in review["evidence_sha256"].items():
         if storage.sha256(safe(root / name)) != digest:
             raise ValueError("Corrective review evidence changed")
+    if storage.sha256(gate_path()) != review.get("software_gate_sha256"):
+        raise ValueError("Software gate is not the independently reviewed identity")
     if not allow_blocked and (root / "BLOCKED.json").exists():
         raise ValueError("Successor attempt blocked; no further execution")
     return authority
@@ -331,8 +333,6 @@ def verify_gate(*, check_environment=True):
     gate = storage.read_json(gate_path())
     if (
         gate.get("status") != "SOFTWARE_GATES_PASSED"
-        or gate.get("authorization_sha256")
-        != storage.sha256(authority_root() / "authorization.json")
         or gate.get("implementation_revision")
         != storage.read_json(authority_root() / "corrective_review.json")["candidate"]
         or authority.get("id") != SUCCESSOR
@@ -341,10 +341,31 @@ def verify_gate(*, check_environment=True):
         or (check_environment and gate.get("environment") != environment_identity())
     ):
         raise ValueError("Software/source/environment gate absent or stale")
+    validate_run_ids(gate)
     for name, digest in gate["evidence_sha256"].items():
         if storage.sha256(safe(OUTPUT / name)) != digest:
             raise ValueError("Software gate evidence changed")
     return gate
+
+
+def validate_run_ids(gate):
+    values = gate.get("run_ids")
+    if (
+        type(values) is not dict
+        or set(values) != set(PRESETS)
+        or any(
+            type(v) is not str or not re.fullmatch(r"[0-9]{8}T[0-9]{12}Z_[0-9a-f]{32}", v)
+            for v in values.values()
+        )
+        or len(set(values.values())) != 2
+    ):
+        raise ValueError("Gate must reserve exactly two distinct canonical M0 run identities")
+    return values
+
+
+def authorized_run_id(preset):
+    validate({"preset": preset})
+    return validate_run_ids(verify_gate(check_environment=False))[preset]
 
 
 def capture(values):
@@ -372,9 +393,11 @@ def claim(preset, run_id, *, captured=False):
     """Called under the inherited shared execution lease, before numerical worker launch."""
     validate({"preset": preset})
     if captured:
-        verify_gate(check_environment=False)
+        gate = verify_gate(check_environment=False)
     else:
-        verify_gate()
+        gate = verify_gate()
+    if run_id != validate_run_ids(gate)[preset]:
+        raise ValueError("Run identity is not the independently authorized reservation")
     # The exploratory claim requires a completed, intact and comparable successor nominal.
     if preset == "exploratory":
         nominal = storage.read_json(claim_path("nominal"))
@@ -408,6 +431,42 @@ def available(preset):
     return not claim_path(preset).exists()
 
 
+def retained_authority(request):
+    """Pure external authority binding, shared by ownership and evidence readers."""
+    captured = request["nmpc_capture"]
+    identifier = captured.get("authorization_id", "original")
+    preset = validate(request["effective"])["preset"]
+    selected_gate, selected_claim = gate_path(identifier), claim_path(preset, identifier)
+    if identifier == "original":
+        for name, digest in ORIGINAL_ANCHORS.items():
+            if storage.sha256(safe(OUTPUT / name)) != digest:
+                raise ValueError("Original historical authority/claim is not the approved identity")
+    else:
+        verify_successor(check_current=False, allow_blocked=True)
+    gate, claim_record = storage.read_json(selected_gate), storage.read_json(selected_claim)
+    if storage.sha256(selected_gate) != captured["software_gate_sha256"]:
+        raise ValueError("M0 external software/configuration authority changed")
+    if identifier != "original":
+        review = storage.read_json(safe(authority_root(identifier) / "corrective_review.json"))
+        digest = storage.sha256(safe(authority_root(identifier) / "authorization.json"))
+        expected_claim = {
+            "preset": preset,
+            "run_id": validate_run_ids(gate)[preset],
+            "source": SOURCE,
+            "authorization_id": identifier,
+            "authorization_sha256": digest,
+        }
+        if (
+            gate.get("implementation_revision") != review["candidate"]
+            or gate.get("adapter_sha256") != review["adapter_sha256"]
+            or captured.get("authorization_sha256") != digest
+            or claim_record != expected_claim
+            or request.get("run_id") != expected_claim["run_id"]
+        ):
+            raise ValueError("M0 successor gate/claim/reserved identity disagrees")
+    return selected_gate, selected_claim, gate, claim_record
+
+
 def owned_run(selected):
     """Pure authentication before any UI lifecycle call; discovery alone conveys no ownership."""
     from tools.apex_workbench.run_catalog import Run
@@ -439,10 +498,7 @@ def owned_run(selected):
     ):
         raise ValueError("M0 selected request identity/adapter changed")
     captured = request["nmpc_capture"]
-    identifier = captured.get("authorization_id", "original")
-    claim = storage.read_json(claim_path(effective["preset"], identifier))
-    selected_gate = gate_path(identifier)
-    gate = storage.read_json(selected_gate)
+    selected_gate, _, gate, claim = retained_authority(request)
     if (
         claim.get("run_id") != selected.run_id
         or claim.get("source") != SOURCE
@@ -461,26 +517,6 @@ def owned_run(selected):
     same_configuration(captured["resolved"], gate["resolved_snapshots"][effective["preset"]])
     same_configuration(captured["environment"], gate["environment"])
     verify_runtime(captured["runtime"], captured["source_sha256"])
-    if identifier == "original":
-        for name, digest in ORIGINAL_ANCHORS.items():
-            if storage.sha256(safe(OUTPUT / name)) != digest:
-                raise ValueError("Original historical authority/claim is not the approved identity")
-    if identifier != "original":
-        verify_successor(check_current=False, allow_blocked=True)
-        review = storage.read_json(safe(authority_root(identifier) / "corrective_review.json"))
-        digest = storage.sha256(safe(authority_root(identifier) / "authorization.json"))
-        if (
-            claim.get("authorization_id") != identifier
-            or gate.get("implementation_revision") != review["candidate"]
-            or gate.get("adapter_sha256") != review["adapter_sha256"]
-            or not (
-                claim.get("authorization_sha256")
-                == captured.get("authorization_sha256")
-                == gate.get("authorization_sha256")
-                == digest
-            )
-        ):
-            raise ValueError("M0 successor ownership identity disagrees")
     return directory, storage.sha256(directory / "request.json")
 
 
@@ -494,16 +530,10 @@ def read_run(directory):
         raise ValueError("M0 alias does not identify its original owned run")
     captured = request["nmpc_capture"]
     verify_runtime(captured["runtime"], captured["source_sha256"])
-    identifier = captured.get("authorization_id", "original")
-    selected_gate = gate_path(identifier)
-    if storage.sha256(selected_gate) != captured["software_gate_sha256"]:
-        raise ValueError("M0 external software/configuration authority changed")
-    gate = storage.read_json(selected_gate)
+    selected_gate, selected_claim, gate, claim_record = retained_authority(request)
     same_configuration(
         captured["resolved"], gate["resolved_snapshots"][request["effective"]["preset"]]
     )
-    selected_claim = claim_path(request["effective"]["preset"], identifier)
-    claim_record = storage.read_json(selected_claim)
     if claim_record.get("run_id") != request["run_id"] or claim_record.get("source") != SOURCE:
         raise ValueError("M0 original attempt identity/authorization disagrees")
     if (

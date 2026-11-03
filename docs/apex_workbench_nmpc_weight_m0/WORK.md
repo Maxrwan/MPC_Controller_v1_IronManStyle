@@ -12,7 +12,8 @@ dataclasses/values remain unchanged. Both actual execution and a fresh no-solve 
 the same strict equality helper. Nonfinite/unsupported/malformed values, numeric type changes and
 genuine non-treatment differences are rejected. R2 passes the selected catalog record and
 authenticates canonical owned directory, adapter/request/claim identity, origin and aliases before
-any lifecycle call; cancellation reauthenticates. `jobs.py` is unchanged.
+any lifecycle call; cancellation reauthenticates. The final `jobs.py` change is only an M0 run-ID
+allocation hook, justified below; scientific execution and lifecycle/resource mechanics are unchanged.
 
 The original gate/claim/BLOCKED bytes cannot admit a replacement. An append-only successor authority
 therefore binds the exact new Primary decision, those immutable anchors, exact independently
@@ -61,6 +62,26 @@ semantics or `jobs.py`. New tests retain a copied-record/rebound-claim negative 
 changed-bytes claim negative. The affected workspace invocation passed **32 tests**, no failures,
 errors or skips, 28.20 s. The prior 66-case invocation and R1 evidence remain separate and apply
 only to unchanged functions/dependencies. A fresh independent exact-revision review is pending.
+
+The fresh review at `d5be43aef27226e6449f2adac03bf645141988f2` was **BLOCKED**: all 14 original
+negatives passed, but successor gate configuration/environment plus request hashes could be
+rebound together and reach real reconciliation on disposable fixtures. Four focused software
+checks passed separately. Exact report and reproductions remain in `corrective_20261102/review_3/`.
+No actual successor authority, claim or numerical attempt was created.
+
+The next localized correction makes the gate an input to independent review: the review pins
+its exact bytes, and the successor authority binds that review. Removing the gate's authority-SHA
+back-reference avoids a circular hash dependency. The gate also reserves exactly two run IDs;
+claims and selected records must match those reservations. A four-line M0-only `jobs.py` hook is
+strictly necessary to use these reserved identities instead of allocating an unbound third ID.
+Other adapters retain their existing IDs, locks, cancellation and resource mechanics. Retained
+evidence and ownership share the same pure authority check. New fixtures prove changed gate plus
+request, changed environment, changed reservation, rebound successor claim and added claim fields
+cannot reach lifecycle calls, starting from an actually authenticating disposable authority chain.
+The scientific contract, model construction and optimizer are unchanged.
+Current focused invocation: **73 passed**, zero failures/errors/skips, 86.03 s. Its count is not
+combined with prior invocations. Original 545-output preservation and Ruff checks pass; new
+independent review must pin the exact candidate gate before any attempt.
 
 ## Original blocked delivery — preserved history
 

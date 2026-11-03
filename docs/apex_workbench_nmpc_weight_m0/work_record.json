@@ -1184,16 +1184,16 @@
     "primary_decision_sha256": "8c5147b33c8da3270558ee43a140a10dd69397bdd9258fb091db24bfb03eb1f8",
     "status": "M0_R1_R2_WORK_COMPLETE_PENDING_INDEPENDENT_REVIEW",
     "source_sha256": {
-      "tools/apex_workbench/nmpc_weight_lab.py": "13d2114ab6c379d1e5e10f1f56d5bfc9168835fea2160b148cffbb3e9d4d0167",
+      "tools/apex_workbench/nmpc_weight_lab.py": "8751fdfea3c1071fed61dc463d0827894b876295c1a5810647320964c6be1700",
       "tools/apex_workbench/nmpc_weight_worker.py": "d1051d60263936f173e4b691f1407a2b8fbb801f4825ff926e75112eda18ef01",
       "tools/apex_workbench/nmpc_weight_panels.py": "8ff944147ce43073289f4be1f4413167b584afc7bb7286d706f800f42b3495e9",
       "tools/apex_workbench/configuration.py": "ed1611b0d15f17daeb515b7e6167863c49ee9c6ccd96c16403d3f55e5ac38dd3",
       "tools/apex_workbench/worker.py": "bfd180f451585ff357a17735cae44e507507dff1718ef034624f9c821d058091",
-      "tools/apex_workbench/jobs.py": "af11d309d15b879859488b75858af87489c42783a02dd04482cff17ead6116c5",
+      "tools/apex_workbench/jobs.py": "9415eb09fa5680e45fab5575ddb03e454eab797632bc13cba49c4964fb5b9040",
       "tools/apex_workbench/workspace.py": "60410157b2c6111628e7caeca8da2fb95fcbb74d40c3b1d827e0469778619a05",
       "tools/apex_workbench/run_catalog.py": "4e974ea40940b2990f9b4416f97b8fe5fbde2ce6b335d3e49df3f4c422587f6d",
-      "tools/apex_workbench/tests/test_nmpc_weight_lab.py": "a06ac52fc8c77c7181d0eaee8e04264d40b41bda82ab68921a158b7723bd859d",
-      "tools/apex_workbench/tests/test_nmpc_weight_workspace.py": "36e56f2929b5d98241f9409056e4d46726fb4694042c7378857dca10e03054bb"
+      "tools/apex_workbench/tests/test_nmpc_weight_lab.py": "bf0d7d7b858ac83dfcd66edf68e5b0ca4b19d77501ea570b2b00363a341b155b",
+      "tools/apex_workbench/tests/test_nmpc_weight_workspace.py": "b480a011ce723f98990ef28ea5353f1ae288ba28aff316657d0deb980b50f654"
     },
     "changed_paths_from_workbench_base": [
       "docs/CODEX_HANDOFF.md",
@@ -1272,6 +1272,21 @@
           "hostname": "Marwans-MacBook-Air.local"
         },
         "exit_status": 0
+      },
+      {
+        "id": "tests_5",
+        "command": "PYTHONDONTWRITEBYTECODE=1 VECLIB_MAXIMUM_THREADS=1 PYTHONPATH=.:scripts:src /Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/tools/apex_workbench/.venv/bin/python -B -c 'from threading_study.config import configure_accelerate; configure_accelerate(1); import sys,pytest; raise SystemExit(pytest.main(sys.argv[1:]))' -q -p no:cacheprovider tools/apex_workbench/tests/test_nmpc_weight_lab.py tools/apex_workbench/tests/test_nmpc_weight_workspace.py --basetemp=results/apex_workbench_nmpc_weights/corrective_20261102/tests_5 --junitxml=results/apex_workbench_nmpc_weights/corrective_20261102/tests_5.xml --durations=10 > results/apex_workbench_nmpc_weights/corrective_20261102/tests_5.log 2>&1",
+        "junit": {
+          "name": "pytest",
+          "errors": "0",
+          "failures": "0",
+          "skipped": "0",
+          "tests": "73",
+          "time": "86.033",
+          "timestamp": "2026-11-03T11:24:50.042830+02:00",
+          "hostname": "Marwans-MacBook-Air.local"
+        },
+        "exit_status": 0
       }
     ],
     "counts_aggregated": false,
@@ -1280,9 +1295,9 @@
     "preserved_preexisting_m0_output_files": 545,
     "preexisting_output_mismatches": [],
     "nonallowlisted_tracked_files_unchanged": 1023,
-    "jobs_py_changed": false,
+    "jobs_py_changed": true,
     "new_numerical_attempts_started": 0,
-    "independent_corrective_review": "PENDING fresh exact revision-3 independent context",
+    "independent_corrective_review": "PENDING exact gate-pinned candidate and prebuilt gate",
     "formal_verification_authorized": false,
     "successor_authority_id": "primary-r1-r2-20261102",
     "admission_conditions": "Exact Primary decision, immutable original anchors, exact producer/Git independent corrective PASS, software/environment gate; exclusive new nominal claim then exploratory only after completed intact nominal",
@@ -1317,7 +1332,17 @@
       "results/apex_workbench_nmpc_weights/corrective_20261102/resource_preparation.json": "28416888a5f9092956e3fc6470bfe0bdb38809bc10580e5ab3b6ced7d5266dea",
       "results/apex_workbench_nmpc_weights/corrective_20261102/lint_r2_claim.log": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
       "results/apex_workbench_nmpc_weights/corrective_20261102/format_r2_claim.log": "10869b88a75066aa23546ef1f95fcd4678c3fb92a56ed46ef91688052b67976a",
-      "results/apex_workbench_nmpc_weights/corrective_20261102/tests_4.log": "5a0d54c64a6d2eed39a716131da64966aa63446632757910eeca7dddebb6fb2a"
+      "results/apex_workbench_nmpc_weights/corrective_20261102/tests_4.log": "5a0d54c64a6d2eed39a716131da64966aa63446632757910eeca7dddebb6fb2a",
+      "results/apex_workbench_nmpc_weights/corrective_20261102/tests_5.xml": "8e260664ba90b566e235028a2e51a4aec9dcdc5b770cf815ebdc99760b48cda8",
+      "results/apex_workbench_nmpc_weights/corrective_20261102/lint_gate_pin.log": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+      "results/apex_workbench_nmpc_weights/corrective_20261102/run_once.py": "9bfb9006df671b7b16d9d8af685a838de9c884b0004d3b66f4312f3045c77f88",
+      "results/apex_workbench_nmpc_weights/corrective_20261102/format_gate_pin.log": "1dc6a19feae160e87088a6a505f8844ac8bfdaf9001c9c3cc558beceb0f6c9d9",
+      "results/apex_workbench_nmpc_weights/corrective_20261102/tests_5.log": "02842b6c8b918fbad7023d137fc565e464d6f02385bec4dec727262a6efe16a3",
+      "results/apex_workbench_nmpc_weights/corrective_20261102/review_3/REVIEW.md": "0c6e22f1cb4e9fc5926bf6bb45c7211b8752e68deb09ab44206f2ae8322324bf",
+      "results/apex_workbench_nmpc_weights/corrective_20261102/review_3/corrective_review.json": "63dab35ecd19bbd70d497337d7dca9e2106a72afa85b3a45edcce352658b27d7",
+      "results/apex_workbench_nmpc_weights/corrective_20261102/review_3/probe_r2_result.json": "b1a69350af102812f3ebaf494d403ad6dc4db9ec0901ee35251abb2a820a63f1",
+      "results/apex_workbench_nmpc_weights/corrective_20261102/review_3/probe_r2.py": "1a8e5acf80d6a37c1bedb5d27e05263fe58d088ec97bbde8cd371ef4f6d6503d",
+      "results/apex_workbench_nmpc_weights/corrective_20261102/review_3/probe_r2.log": "9d61e9dbf1fa2fa664de954f4bde322ee456f0a4337ae46cd6e7caabfc1709c0"
     },
     "independent_reviews": [
       {
@@ -1497,6 +1522,49 @@
           "results/apex_workbench_nmpc_weights/corrective_20261102/review_2/probe_r2.py": "61eb779dfdfd6879b4f1ac23d541e13f1678d10524c1d760a01ef43b0771e2b0",
           "results/apex_workbench_nmpc_weights/corrective_20261102/review_2/probe_r2.log": "c57c4dc1173846d0e5ec371a0ec58ab7b73015478b7aa20db12159384b4396e6"
         }
+      },
+      {
+        "candidate": "d5be43aef27226e6449f2adac03bf645141988f2",
+        "outcome": "BLOCKED",
+        "findings": [
+          {
+            "id": "R2-successor-gate-capture-rebinding",
+            "priority": "P1",
+            "title": "Successor gate/capture consensus is not independently authenticated before lifecycle mutation",
+            "file": "tools/apex_workbench/nmpc_weight_lab.py",
+            "line": 461,
+            "source_lines": [
+              452,
+              461,
+              462,
+              468,
+              469,
+              470,
+              471,
+              472,
+              473,
+              474,
+              475,
+              476,
+              477,
+              478,
+              479,
+              480,
+              481,
+              482,
+              483
+            ],
+            "observed_cases": [
+              "rewritten_successor_gate_config",
+              "rewritten_successor_gate_environment"
+            ],
+            "observed_result": "owned_run accepts; actual inspect/status_for reconciliation writes execution.json/artifacts.json/status.json and disposable lock",
+            "evidence": "probe_r2_result.json",
+            "minimum_correction": "Authenticate exact successor gate and expected configuration/environment against an independent immutable identity before lifecycle. Retain all original anchors, exact-source PASS, legitimate read/cancel semantics and one-attempt budget."
+          }
+        ],
+        "record_sha256": "63dab35ecd19bbd70d497337d7dca9e2106a72afa85b3a45edcce352658b27d7",
+        "report_sha256": "0c6e22f1cb4e9fc5926bf6bb45c7211b8752e68deb09ab44206f2ae8322324bf"
       }
     ],
     "pre_revision_2_source_sha256": {
@@ -1526,6 +1594,20 @@
       "tools/apex_workbench/tests/test_nmpc_weight_workspace.py": "4ea56851470961cd51f4ff52cad3a149bd2e9157f6808dbf458427c9b13bed3d"
     },
     "revision_3_reason": "Enforce immutable original claim/gate/BLOCKED byte pins before lifecycle; copied record with rebound claim is rejected",
-    "revision_3_R1_unchanged_AST": true
+    "revision_3_R1_unchanged_AST": true,
+    "pre_gate_pin_source_sha256": {
+      "tools/apex_workbench/nmpc_weight_lab.py": "13d2114ab6c379d1e5e10f1f56d5bfc9168835fea2160b148cffbb3e9d4d0167",
+      "tools/apex_workbench/nmpc_weight_worker.py": "d1051d60263936f173e4b691f1407a2b8fbb801f4825ff926e75112eda18ef01",
+      "tools/apex_workbench/nmpc_weight_panels.py": "8ff944147ce43073289f4be1f4413167b584afc7bb7286d706f800f42b3495e9",
+      "tools/apex_workbench/configuration.py": "ed1611b0d15f17daeb515b7e6167863c49ee9c6ccd96c16403d3f55e5ac38dd3",
+      "tools/apex_workbench/worker.py": "bfd180f451585ff357a17735cae44e507507dff1718ef034624f9c821d058091",
+      "tools/apex_workbench/jobs.py": "af11d309d15b879859488b75858af87489c42783a02dd04482cff17ead6116c5",
+      "tools/apex_workbench/workspace.py": "60410157b2c6111628e7caeca8da2fb95fcbb74d40c3b1d827e0469778619a05",
+      "tools/apex_workbench/run_catalog.py": "4e974ea40940b2990f9b4416f97b8fe5fbde2ce6b335d3e49df3f4c422587f6d",
+      "tools/apex_workbench/tests/test_nmpc_weight_lab.py": "a06ac52fc8c77c7181d0eaee8e04264d40b41bda82ab68921a158b7723bd859d",
+      "tools/apex_workbench/tests/test_nmpc_weight_workspace.py": "36e56f2929b5d98241f9409056e4d46726fb4694042c7378857dca10e03054bb"
+    },
+    "jobs_change_justification": "M0-only allocation of one of two independently pinned gate run-ID reservations; prevents successor claim rebinding into a third identity; other adapter/lifecycle/resource behavior unchanged",
+    "current_gate_design": "Gate prepared before review, independent report pins exact gate SHA, authority binds review; no gate-to-authority back-reference/hash cycle; exact two run-ID reservations and strict successor claim shape; shared pure retained authority checker"
   }
 }

@@ -82,7 +82,9 @@ non-treatment changes. A fresh no-solve subprocess exercises the actual executio
 R2 authenticates the selected catalog record, canonical immediate M0 run directory, original
 claim, adapter, preset, origin and absence of alias conflicts before refresh/reconciliation or
 cancellation. Foreign/archive/symlink/forged/conflicting records are quarantined with pure reads.
-The UI passes the full selected record. `jobs.py` and existing P/C0 viewers remain unchanged.
+The UI passes the full selected record. Existing P/C0 viewers remain unchanged. The sole
+`jobs.py` correction allocates M0 IDs from the independently pinned gate's two reservations;
+other adapters keep their original ID allocation and all lifecycle/resource mechanics.
 
 New admission uses an append-only successor namespace,
 `authorizations/primary-r1-r2-20261102/`, under the same ignored output root. It requires the
@@ -91,6 +93,13 @@ exact Primary decision, unchanged original failure anchors, an independent corre
 gate. Missing/stale review or authority blocks admission. Original evidence readers retain their
 original gate/claim namespace. Each successor preset still has an exclusive single claim; a new
 failure writes a successor BLOCKED marker without changing the original.
+
+The gate is prepared before corrective review, without an authority-hash back-reference. The
+independent report pins its exact SHA-256, including scientific snapshots, environment, producer
+identities, test evidence and two reserved run IDs. The successor authorization then binds that
+review. Both admission and retained inspection verify this external pin; a request cannot supply
+its own authority by rebinding a changed gate hash. Claims must exactly match their preset's
+reserved identity and authority. This acyclic chain also rejects copied successor aliases.
 
 Only after that PASS may one NEW nominal 2.0 s attempt run. The sole exploratory attempt may
 follow only if the nominal has a completed, intact, comparable result under the unchanged

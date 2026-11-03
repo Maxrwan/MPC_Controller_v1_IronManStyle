@@ -12,7 +12,11 @@ from tools.apex_workbench import jobs, run_catalog, storage
 from tools.apex_workbench import nmpc_weight_lab as lab
 from tools.apex_workbench import nmpc_weight_panels as panels
 from tools.apex_workbench.configuration import ADAPTERS, ROOT
-from tools.apex_workbench.tests.test_nmpc_weight_lab import fixture_run, preflights  # noqa: F401
+from tools.apex_workbench.tests.test_nmpc_weight_lab import (  # noqa: F401
+    fixture_run,
+    preflights,
+    successor_authority_fixture,
+)
 
 
 def widget(items, label):
@@ -304,3 +308,92 @@ def test_owned_active_refresh_and_cancel_keep_partial_bytes(tmp_path, monkeypatc
     assert (directory / "cancel.request").exists()
     assert (directory / "experiment/plant_segments.jsonl").read_bytes() == before
     assert events == ["status", "status", "rerun"]
+
+
+@pytest.mark.parametrize(
+    "fault", ["gate_config", "gate_environment", "gate_id", "claim_rebind", "claim_extra"]
+)
+def test_successor_rebinding_never_reaches_lifecycle(tmp_path, monkeypatch, preflights, fault):  # noqa: F811
+    root, gate, _, _ = successor_authority_fixture(tmp_path, monkeypatch, preflights)
+    monkeypatch.setattr(lab, "RUNS", tmp_path / "runs")
+    run_id = gate["run_ids"]["nominal"]
+    directory = lab.RUNS / run_id
+    directory.mkdir(parents=True)
+    lab.claim("nominal", run_id, captured=True)
+    captured = {
+        "source": lab.SOURCE,
+        "profile_sha256": lab.PROFILE_SHA,
+        "runtime": str(lab.RUNTIME),
+        "source_sha256": lab.source_hashes(),
+        "adapter_sha256": gate["adapter_sha256"],
+        "environment": copy.deepcopy(gate["environment"]),
+        "resolved": copy.deepcopy(gate["resolved_snapshots"]["nominal"]),
+        "authorization_id": lab.SUCCESSOR,
+        "authorization_sha256": storage.sha256(root / "authorization.json"),
+        "software_gate_sha256": storage.sha256(root / "software_gate.json"),
+    }
+    request = {
+        "run_id": run_id,
+        "adapter": lab.ADAPTER,
+        "effective": {"preset": "nominal"},
+        "nmpc_capture": captured,
+    }
+    storage.write_json(directory / "request.json", request)
+    storage.write_json(directory / "status.json", {"state": "running"})
+    selected = run_catalog.Run(
+        "run-" + hashlib.sha256(("id:" + run_id).encode()).hexdigest()[:20],
+        directory,
+        ("owned",),
+        (directory,),
+        run_id,
+        lab.ADAPTER,
+        "nominal",
+        "running",
+        "running",
+        "pending",
+        (),
+    )
+    assert lab.owned_run(selected)[0] == directory  # The unmodified chain really authenticates.
+    if fault.startswith("gate_"):
+        changed = copy.deepcopy(gate)
+        if fault == "gate_config":
+            changed["resolved_snapshots"]["nominal"]["vehicle"]["mass"] += 1
+            captured["resolved"] = changed["resolved_snapshots"]["nominal"]
+        elif fault == "gate_environment":
+            changed["environment"]["python"] = "forged"
+            captured["environment"] = changed["environment"]
+        else:
+            changed["run_ids"]["nominal"] = "20261103T000000000000Z_" + "c" * 32
+        storage.write_json(root / "software_gate.json", changed)
+        captured["software_gate_sha256"] = storage.sha256(root / "software_gate.json")
+        storage.write_json(directory / "request.json", request)
+    else:
+        path = lab.claim_path("nominal")
+        claim = storage.read_json(path)
+        if fault == "claim_extra":
+            claim["unsupported_extra"] = True
+        else:
+            new_id = "20261103T000000000000Z_" + "c" * 32
+            copied = directory.with_name(new_id)
+            shutil.copytree(directory, copied)
+            request["run_id"] = claim["run_id"] = new_id
+            storage.write_json(copied / "request.json", request)
+            selected = replace(
+                selected,
+                directory=copied,
+                aliases=(copied,),
+                run_id=new_id,
+                key="run-" + hashlib.sha256(("id:" + new_id).encode()).hexdigest()[:20],
+            )
+        storage.write_json(path, claim)
+    before = {str(p): p.read_bytes() for p in tmp_path.rglob("*") if p.is_file()}
+
+    def forbidden(*args, **kwargs):
+        raise AssertionError("Rebound successor reached a lifecycle call")
+
+    for name in ("status_for", "cancel_run", "_reconcile_locked", "finalize"):
+        monkeypatch.setattr(jobs, name, forbidden)
+    panels.inspect(selected)
+    with pytest.raises(ValueError):
+        lab.retained_authority(storage.read_json(selected.directory / "request.json"))
+    assert before == {str(p): p.read_bytes() for p in tmp_path.rglob("*") if p.is_file()}
