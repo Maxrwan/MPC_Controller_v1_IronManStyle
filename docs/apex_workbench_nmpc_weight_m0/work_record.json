@@ -1,6 +1,6 @@
 {
   "schema": "apex-nmpc-weight-m0-work/1",
-  "status": "M0_R1_R2_WORK_COMPLETE_PENDING_INDEPENDENT_REVIEW",
+  "status": "NMPC_WEIGHT_LAB_M0_ENGINEERING_REVIEW_COMPLETE_PENDING_VERIFICATION",
   "base_revision": "5831f22f8d64a69efd119edd181802adcd82dde2",
   "branch": "codex/m5a-nmpc-weight-m0",
   "worktree": "/Users/marwansaber/.codex/worktrees/nmpc-weight-m0/MPC_Controller_v1_IronManStyle",
@@ -9,16 +9,16 @@
   "profile_sha256": "5299adca29d5c5bd383252cd2c299a392dd6872dc6bb72d1a4dd7ecfb8dd1ebf",
   "initial_implementation_revision": "df889dd7e447c69b0c6df7924d068a58527587ee",
   "tested_source_sha256": {
-    "tools/apex_workbench/nmpc_weight_lab.py": "bfcc1ff1eebb798721a39f72687acccef0c76bbdc6d08ecf1a068e0af070a784",
-    "tools/apex_workbench/nmpc_weight_worker.py": "31dd40da94115e96eee0a777808d741c105bf19b1768ae05f0d5db346c8ce1e0",
-    "tools/apex_workbench/nmpc_weight_panels.py": "f286ca5d6b140b617204d0b0cc09bf415d7f554411b2831c41c3066b20a6e08f",
+    "tools/apex_workbench/nmpc_weight_lab.py": "8751fdfea3c1071fed61dc463d0827894b876295c1a5810647320964c6be1700",
+    "tools/apex_workbench/nmpc_weight_worker.py": "d1051d60263936f173e4b691f1407a2b8fbb801f4825ff926e75112eda18ef01",
+    "tools/apex_workbench/nmpc_weight_panels.py": "8ff944147ce43073289f4be1f4413167b584afc7bb7286d706f800f42b3495e9",
     "tools/apex_workbench/configuration.py": "ed1611b0d15f17daeb515b7e6167863c49ee9c6ccd96c16403d3f55e5ac38dd3",
-    "tools/apex_workbench/worker.py": "5c20535d9ac267d0c0a2df1ee0dfc5c2448e15df57fcab2cd9de621cd0a0d759",
-    "tools/apex_workbench/jobs.py": "af11d309d15b879859488b75858af87489c42783a02dd04482cff17ead6116c5",
-    "tools/apex_workbench/workspace.py": "3f456e73057667ffd607bf01c4209aafe2f9817fc39e8e03fcdfbb2df240f6a5",
+    "tools/apex_workbench/worker.py": "bfd180f451585ff357a17735cae44e507507dff1718ef034624f9c821d058091",
+    "tools/apex_workbench/jobs.py": "9415eb09fa5680e45fab5575ddb03e454eab797632bc13cba49c4964fb5b9040",
+    "tools/apex_workbench/workspace.py": "60410157b2c6111628e7caeca8da2fb95fcbb74d40c3b1d827e0469778619a05",
     "tools/apex_workbench/run_catalog.py": "4e974ea40940b2990f9b4416f97b8fe5fbde2ce6b335d3e49df3f4c422587f6d",
-    "tools/apex_workbench/tests/test_nmpc_weight_lab.py": "996996c2919a828ef47d6ceb9d7b22cba3c584a8449822c6fadd716c226c9963",
-    "tools/apex_workbench/tests/test_nmpc_weight_workspace.py": "4d9362d6e3a3ff9f085c0f1c49962a780262645765993684e6fb32afff7c299a"
+    "tools/apex_workbench/tests/test_nmpc_weight_lab.py": "bf0d7d7b858ac83dfcd66edf68e5b0ca4b19d77501ea570b2b00363a341b155b",
+    "tools/apex_workbench/tests/test_nmpc_weight_workspace.py": "b480a011ce723f98990ef28ea5353f1ae288ba28aff316657d0deb980b50f654"
   },
   "frozen_source_sha256": {
     "configs/controllers/README.md": "56d6b69e8515b8d45203f22fc455d33e73bdf999b7f63673fe0787a189464a96",
@@ -727,219 +727,43 @@
     "Initial lint issues corrected, logs retained"
   ],
   "numerical_authorization": {
+    "scope": "Separate Primary R1/R2 corrective successor authorization",
+    "primary_decision_sha256": "8c5147b33c8da3270558ee43a140a10dd69397bdd9258fb091db24bfb03eb1f8",
     "maximum_attempts": {
       "nominal": 1,
       "exploratory": 1
     },
-    "duration_s": 2.0,
-    "started": 1,
-    "automatic_retry": false,
-    "started_definition": "claimed numerical worker attempt; controller construction was not reached",
     "consumed_claims": {
       "nominal": 1,
-      "exploratory": 0
+      "exploratory": 1
     },
-    "genuine_closed_loop_runs_completed": 0,
-    "optimizer_solves": 0,
-    "plant_steps": 0,
-    "simulated_end_time": null,
-    "exploratory_status": "NOT_RUN_BLOCKED",
-    "replacement_grant_required": true
+    "new_attempts_started": 2,
+    "genuine_closed_loop_runs_completed": 2,
+    "successful_native_solver_events": {
+      "nominal": 20,
+      "exploratory": 20
+    },
+    "native_plant_segments": {
+      "nominal": 400,
+      "exploratory": 400
+    },
+    "requested_duration_s": 2.0,
+    "native_end_clock_s": 1.9999999999999787,
+    "automatic_retry": false,
+    "remaining_new_attempt_budget": 0,
+    "original_failed_nominal_claim_preserved": true
   },
   "independent_review": {
-    "outcome": "BLOCKED",
-    "reviewed_revision": "c745726fee6f4e33259aef3781ee5181d02afe08",
-    "context": "Separate independent reviewer context; post-failure static-only audit",
-    "record": {
-      "actual_full_resolved_snapshot_retained": false,
-      "actual_nominal_frontier": "Resolved-configuration guard, before make_mpc, controller/runner construction, any optimizer solve or plant step",
-      "base": "5831f22f8d64a69efd119edd181802adcd82dde2",
-      "bounded_work_suitability": "BLOCKED_PENDING_PRIMARY_DECISION; weight-only representation and source isolation have static support, but implementation cannot admit the genuine experiment and archive lifecycle routing is unsafe",
-      "branch": "codex/m5a-nmpc-weight-m0",
-      "candidate": "c745726fee6f4e33259aef3781ee5181d02afe08",
-      "deferred": [
-        "Genuine nominal/exploratory NMPC/TVLQR closed-loop outcomes",
-        "Actual objective-component/solver-event association",
-        "Applied-command chronology and coverage validation",
-        "Real cancellation/owner-loss/resource failure behavior on corrected revision",
-        "Formal Verification and acceptance"
-      ],
-      "delivery_status_note": "Three concurrent tracked documentation changes were observed after the clean candidate audit; this reviewer wrote only the three authorized ignored review files.",
-      "evidence_sha256": {
-        "REVIEW.md": "b8d004a00b08e36467485f4a8a9e4b98fa9cae8ab2a79219a88f5e6cb4a1a097",
-        "static_audit.json": "fc895a8fd58a0db241023e64acc14a1f57d2326e2f5aa3aa377d7a99c960d6b4"
-      },
-      "existing_m0_outputs_preserved_during_review_writes": true,
-      "existing_output_file_count": 541,
-      "existing_output_inventory_sha256": "2fac1eff37fa89795621aae945f7aa3ad34566579c76a924e1292e67ca0b270a",
-      "exploratory_executed": false,
-      "findings": [
-        {
-          "classification": "STATIC_CAUSE_SUFFICIENT_NOT_FULL_ACTUAL_SNAPSHOT",
-          "correction": "Use one explicit finite JSON-compatible snapshot schema at capture and execution; no-solve boundary coverage; do not relax other identity checks.",
-          "file": "tools/apex_workbench/nmpc_weight_worker.py",
-          "id": "R1",
-          "lines": [
-            297,
-            298
-          ],
-          "priority": "P1",
-          "support": [
-            "tools/apex_workbench/nmpc_weight_worker.py:173-176",
-            "tools/apex_workbench/nmpc_weight_worker.py:444",
-            "tools/apex_workbench/nmpc_weight_lab.py:214",
-            "48adbdf64d492592d15e23c917aca71fa58aa8a5:src/apex/simulation/asynchronous.py:32"
-          ],
-          "title": "Native resolved tuple versus captured JSON list blocks the supported scenario"
-        },
-        {
-          "classification": "STATIC_REACHABLE_FAILURE_PATH_NOT_RUNTIME_EXERCISED",
-          "correction": "Validate canonical M0 directory and nonconflicting owned origin before any lifecycle call; archives/invalid records remain pure reads without cancellation; add negative routing software checks.",
-          "file": "tools/apex_workbench/nmpc_weight_panels.py",
-          "id": "R2",
-          "lines": [
-            98,
-            117
-          ],
-          "observed_archive_alteration": false,
-          "priority": "P1",
-          "support": [
-            "tools/apex_workbench/workspace.py:258-260",
-            "tools/apex_workbench/run_catalog.py:143-150,219",
-            "tools/apex_workbench/jobs.py:232-239,203-228,141-184"
-          ],
-          "title": "Lifecycle reconciliation precedes M0 ownership and read-only archive validation"
-        }
-      ],
-      "formal_verification_performed": false,
-      "further_execution_authorized": false,
-      "minimum_next_authority": "Explicit Primary decision for bounded code corrections and any new experiment budget; retain original claim, failure and BLOCKED evidence",
-      "nominal_attempt_consumed": true,
-      "nominal_retry_authorized": false,
-      "only_written_paths": [
-        "results/apex_workbench_nmpc_weights/independent_review/REVIEW.md",
-        "results/apex_workbench_nmpc_weights/independent_review/review_record.json",
-        "results/apex_workbench_nmpc_weights/independent_review/static_audit.json"
-      ],
-      "outcome": "BLOCKED",
-      "preservation_scope_limit": "Independent hashes cover frozen runtime, nonallowlisted tracked baseline and retained M0/gate/test/failure outputs; prior aggregate primary-history preservation counts are not a new full primary-tree baseline audit.",
-      "prior_software_evidence": {
-        "admission_passed": 8,
-        "admission_source": "c745726fee6f4e33259aef3781ee5181d02afe08",
-        "counts_combined": false,
-        "initial_passed": 26,
-        "initial_source": "df889dd7e447c69b0c6df7924d068a58527587ee",
-        "repeated_in_review": false
-      },
-      "review_mode": "INDEPENDENT_CONTEXT_STATIC_ONLY",
-      "review_performed_project_imports_tests_probes_solvers_plants_ui": false,
-      "schema": "apex-m0-independent-engineering-review/1",
-      "scientific_source": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
-      "stop_status": "NMPC_WEIGHT_LAB_M0_BLOCKED_PENDING_PRIMARY_DECISION",
-      "tracked_status_at_delivery": " M docs/CODEX_HANDOFF.md\n M docs/apex_workbench_nmpc_weight_m0/WORK.md\n M docs/apex_workbench_nmpc_weight_m0/work_record.json\n"
-    },
-    "static_audit_summary": {
-      "ast_parsed_changed_python_files": 10,
-      "candidate_worktree_file_mismatches": [],
-      "frozen_archive_members": 333,
-      "nonallowlisted_before_files": 1023,
-      "nonallowlisted_preservation_mismatches": [],
-      "profile_sha256": "5299adca29d5c5bd383252cd2c299a392dd6872dc6bb72d1a4dd7ecfb8dd1ebf",
-      "post_import_identities": {
-        "other_file_modules": 997,
-        "other_namespace_modules": 2,
-        "scientific_file_modules": 63,
-        "scientific_namespace_modules": 2
-      },
-      "module_hash_mismatches": [],
-      "packages": {
-        "casadi": {
-          "installed_count_matches": true,
-          "installed_file_count": 2371,
-          "installed_tree_matches": true,
-          "record_matches": true,
-          "record_member_mismatch_count": 0
-        },
-        "matplotlib": {
-          "installed_count_matches": true,
-          "installed_file_count": 603,
-          "installed_tree_matches": true,
-          "record_matches": true,
-          "record_member_mismatch_count": 0
-        },
-        "numpy": {
-          "installed_count_matches": true,
-          "installed_file_count": 926,
-          "installed_tree_matches": true,
-          "record_matches": true,
-          "record_member_mismatch_count": 0
-        },
-        "osqp": {
-          "installed_count_matches": true,
-          "installed_file_count": 97,
-          "installed_tree_matches": true,
-          "record_matches": true,
-          "record_member_mismatch_count": 0
-        },
-        "pandas": {
-          "installed_count_matches": true,
-          "installed_file_count": 1522,
-          "installed_tree_matches": true,
-          "record_matches": true,
-          "record_member_mismatch_count": 0
-        },
-        "psutil": {
-          "installed_count_matches": true,
-          "installed_file_count": 17,
-          "installed_tree_matches": true,
-          "record_matches": true,
-          "record_member_mismatch_count": 0
-        },
-        "pytest": {
-          "installed_count_matches": true,
-          "installed_file_count": 92,
-          "installed_tree_matches": true,
-          "record_matches": true,
-          "record_member_mismatch_count": 0
-        },
-        "pyyaml": {
-          "installed_count_matches": true,
-          "installed_file_count": 25,
-          "installed_tree_matches": true,
-          "record_matches": true,
-          "record_member_mismatch_count": 0
-        },
-        "scipy": {
-          "installed_count_matches": true,
-          "installed_file_count": 1430,
-          "installed_tree_matches": true,
-          "record_matches": true,
-          "record_member_mismatch_count": 0
-        },
-        "threadpoolctl": {
-          "installed_count_matches": true,
-          "installed_file_count": 6,
-          "installed_tree_matches": true,
-          "record_matches": true,
-          "record_member_mismatch_count": 0
-        }
-      },
-      "package_mismatches": [],
-      "gate_evidence_mismatches": [],
-      "run_manifest_members": 7,
-      "run_manifest_mismatches": [],
-      "status_manifest_hash_matches": true,
-      "unexpected_changed_paths": []
-    },
-    "raw_files_sha256": {
-      "results/apex_workbench_nmpc_weights/independent_review/REVIEW.md": "b8d004a00b08e36467485f4a8a9e4b98fa9cae8ab2a79219a88f5e6cb4a1a097",
-      "results/apex_workbench_nmpc_weights/independent_review/review_record.json": "121256a1530eca3b055257a71b7d676f622af744e65599da03d659cdf4b7d750",
-      "results/apex_workbench_nmpc_weights/independent_review/static_audit.json": "fc895a8fd58a0db241023e64acc14a1f57d2326e2f5aa3aa377d7a99c960d6b4"
-    }
+    "outcome": "PASS",
+    "candidate": "96be0969703f0675060208843c9920bca2187e3e",
+    "final_record_sha256": "ccc604f4c573825d11a51c5fab02b6d7b840ab1baf53471f0942ac014128a23c",
+    "final_report_sha256": "e9f836c7b9980666b220e28214fbb88255f03f9ed0815092f38ce82f7b0fac7e",
+    "record_path": "/Users/marwansaber/.codex/worktrees/nmpc-weight-m0/MPC_Controller_v1_IronManStyle/results/apex_workbench_nmpc_weights/corrective_20261102/final_review/final_review.json",
+    "scope": "Independent final assessment of exact implementation and both original retained successor attempts; not formal Verification"
   },
   "formal_verification_executed": false,
   "full_campaign_or_R0_work": false,
-  "next_step": "Primary bounded corrective decision and explicit replacement numerical authority; no automatic nominal retry or exploratory execution",
+  "next_step": "Primary decision on separately authorized formal Verification of exact96be source and retained evidence; no further numerical attempts under consumed grant",
   "evidence_sha256": {
     "results/apex_workbench_nmpc_weights/software_tests_2.log": "0d709a773e5275f353b283764f9257f676b08c864d81ec44d532cdcaff869cd0",
     "results/apex_workbench_nmpc_weights/lint_initial.log": "d48e54adedb65461ba503947fd8d6d34658c4f93971e826b61178cf50f5a361b",
@@ -1010,7 +834,7 @@
     "tools/apex_workbench/tests/test_nmpc_weight_lab.py": "7a81da8e9ad8b4d64cb583a6567e2e7069e776a62cb0a1f2b80688512c35c0b1",
     "tools/apex_workbench/tests/test_nmpc_weight_workspace.py": "4d9362d6e3a3ff9f085c0f1c49962a780262645765993684e6fb32afff7c299a"
   },
-  "implementation_revision": "c745726fee6f4e33259aef3781ee5181d02afe08",
+  "implementation_revision": "96be0969703f0675060208843c9920bca2187e3e",
   "nominal_worker_failure": {
     "directory": "/Users/marwansaber/.codex/worktrees/nmpc-weight-m0/MPC_Controller_v1_IronManStyle/results/apex_workbench_nmpc_weights/runs/20261102T183317195331Z_2c738f769a2d412cb23c036e850b182f",
     "run_id": "20261102T183317195331Z_2c738f769a2d412cb23c036e850b182f",
@@ -1041,7 +865,7 @@
     "exception": "ValueError: Actual frozen resolved configuration differs from captured request",
     "stderr_text": "Traceback (most recent call last):\n  File \"/Users/marwansaber/.codex/worktrees/nmpc-weight-m0/MPC_Controller_v1_IronManStyle/tools/apex_workbench/worker.py\", line 152, in main\n    summary = run_weight(directory, request[\"nmpc_capture\"])\n              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/marwansaber/.codex/worktrees/nmpc-weight-m0/MPC_Controller_v1_IronManStyle/tools/apex_workbench/nmpc_weight_worker.py\", line 298, in run\n    raise ValueError(\"Actual frozen resolved configuration differs from captured request\")\nValueError: Actual frozen resolved configuration differs from captured request\n"
   },
-  "formal_verification_eligible": false,
+  "formal_verification_eligible": true,
   "nominal_worker_artifact_sha256": {
     "results/apex_workbench_nmpc_weights/runs/20261102T183317195331Z_2c738f769a2d412cb23c036e850b182f/request.json": "e6f58bf761688c7709a9bfbc4a7d98bb9bc62150762b81c801bf97de33dc4bfc",
     "results/apex_workbench_nmpc_weights/runs/20261102T183317195331Z_2c738f769a2d412cb23c036e850b182f/stderr.log": "37c6e7508513f611a9ebe896c418183741af1e7b3e43989fdf12d2532c43cbca",
@@ -1131,58 +955,33 @@
     "all_scoped_byte_checks_pass": true
   },
   "delivery_scope": {
-    "containing_commit": "Documentation-only blocked outcome and independent review delivery",
-    "implementation_unchanged_since_review": true,
-    "changed_paths_since_review": [
-      "docs/CODEX_HANDOFF.md",
-      "docs/apex_workbench_nmpc_weight_m0/WORK.md",
-      "docs/apex_workbench_nmpc_weight_m0/work_record.json",
-      "tools/apex_workbench/README.md"
-    ],
-    "no_further_project_imports_tests_or_experiments_after_worker_failure": true,
-    "reviewed_candidate_is_not_accepted": true
+    "containing_commit": "Final documentation and evidence-index delivery only",
+    "implementation_revision": "96be0969703f0675060208843c9920bca2187e3e",
+    "behavioral_source_tests_and_science_unchanged_after_final_review": true,
+    "raw_evidence_location": "Ignored results/apex_workbench_nmpc_weights/ retained locally; committed documentation contains SHA-256 inventory, not uploaded raw archives"
   },
   "minimum_next_authority": {
-    "decision": "Primary bounded R1/R2 correction decision and explicit replacement numerical execution grant",
-    "R1": "Canonical JSON-compatible comparison snapshots and no-solve positive serialization/negative non-treatment mutation checks before controller construction; keep scientific values and identity checks",
-    "R2": "Validate canonical owned M0 directory, approved origin and absence of alias conflicts before any reconciliation/cancellation; archives and invalid records stay pure reads with negative route coverage",
-    "preserve": [
-      "Consumed nominal claim",
-      "Failed run and original exception",
-      "Original software gate",
-      "Global BLOCKED marker",
-      "Independent BLOCKED review"
-    ],
-    "repeat_nominal_under_existing_grant": false,
-    "exploratory_after_current_blocker": false,
-    "exact_new_revision_review_required": true
+    "decision": "Separately authorize scoped formal Verification of exact96be implementation; no current experimental budget remains",
+    "automatic_formal_verification": false,
+    "additional_numerical_attempts_authorized": false
   },
   "minimum_formal_verification_recommendation": {
-    "currently_eligible": false,
-    "current_task_authorizes_formal_verification": false,
-    "prerequisites": [
-      "Separately authorized bounded corrections",
-      "Independent Engineering Review of exact corrected implementation",
-      "Separately authorized replacement genuine numerical outcomes and native evidence review",
-      "Explicit formal Verification authorization"
-    ],
+    "currently_eligible_for_primary_decision": true,
+    "authorized_or_performed_in_this_task": false,
     "scope": [
-      "Applicable accepted Workbench, P and C0 functional regression",
-      "Frozen source, actual import, dependency and configuration identity",
-      "Native objective/successful-plan association, original requested/applied clocks and coverage when actually retained",
-      "Evidence hashes, same-size replacement invalidation and fail-closed currentness",
-      "Owned-root/origin/conflict routing, read-only archives and invalid evidence containment",
-      "Cancellation, owner-loss, resource limits, partial/failure preservation",
-      "Frozen scientific source and original historical evidence preservation"
+      "Separately authorize exact final reviewed delivery with current producer/gate/authority/runtime and artifact/currentness checks.",
+      "Run applicable scoped Workbench/P/C0 read-only functional regression and isolated M0 admission/cancel/owner-loss/partial/failure/resource fixtures.",
+      "Reuse unchanged applicable checks; no repetition or new numerical campaign is authorized by this review."
     ],
-    "no_automatic_campaign_or_retry": true
+    "preserve_frozen_gated_skips": true,
+    "no_automatic_numerical_repetition": true
   },
-  "implementation_revision_role": "Original blocked implementation; corrective source bound by corrective_continuation.source_sha256 and containing correction commit",
-  "delivery_scope_role": "Original BLOCKED delivery checkpoint; superseded only by the separately authorized corrective_continuation",
+  "implementation_revision_role": "Exact corrected implementation reviewed before conditional execution and in final independent assessment; final delivery changes documentation only",
+  "delivery_scope_role": "Current final documentation-only handoff; original blocked scope retained separately",
   "corrective_continuation": {
     "base_revision": "52c5f55c253ef88bc0bc66fb9504eef5af21d2b5",
     "primary_decision_sha256": "8c5147b33c8da3270558ee43a140a10dd69397bdd9258fb091db24bfb03eb1f8",
-    "status": "M0_R1_R2_WORK_COMPLETE_PENDING_INDEPENDENT_REVIEW",
+    "status": "NMPC_WEIGHT_LAB_M0_ENGINEERING_REVIEW_COMPLETE_PENDING_VERIFICATION",
     "source_sha256": {
       "tools/apex_workbench/nmpc_weight_lab.py": "8751fdfea3c1071fed61dc463d0827894b876295c1a5810647320964c6be1700",
       "tools/apex_workbench/nmpc_weight_worker.py": "d1051d60263936f173e4b691f1407a2b8fbb801f4825ff926e75112eda18ef01",
@@ -1296,16 +1095,186 @@
     "preexisting_output_mismatches": [],
     "nonallowlisted_tracked_files_unchanged": 1023,
     "jobs_py_changed": true,
-    "new_numerical_attempts_started": 0,
-    "independent_corrective_review": "PENDING exact gate-pinned candidate and prebuilt gate",
+    "new_numerical_attempts_started": 2,
+    "independent_corrective_review": {
+      "outcome": "PASS",
+      "candidate": "96be0969703f0675060208843c9920bca2187e3e",
+      "gate_sha256": "19217b49b7b49129e565078a6fdfaccc27bad8878f42c87a5c56fb8bb1fde857",
+      "record_sha256": "0d5d4092e100809b162398de7df6dd32160097d117bb5f1c9a550a6293b6cdb8",
+      "report_sha256": "bbbe93913226dd431cef3485272e0a6501e58056e26386b4064a4a74dd624e55",
+      "record": {
+        "schema": "apex-m0-corrective-engineering-review/1",
+        "outcome": "PASS",
+        "candidate": "96be0969703f0675060208843c9920bca2187e3e",
+        "branch": "codex/m5a-nmpc-weight-m0",
+        "repository": "Maxrwan/MPC_Controller_v1_IronManStyle",
+        "scientific_source": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+        "software_gate_sha256": "19217b49b7b49129e565078a6fdfaccc27bad8878f42c87a5c56fb8bb1fde857",
+        "primary_decision_sha256": "8c5147b33c8da3270558ee43a140a10dd69397bdd9258fb091db24bfb03eb1f8",
+        "adapter_sha256": {
+          "tools/apex_workbench/nmpc_weight_lab.py": "8751fdfea3c1071fed61dc463d0827894b876295c1a5810647320964c6be1700",
+          "tools/apex_workbench/nmpc_weight_worker.py": "d1051d60263936f173e4b691f1407a2b8fbb801f4825ff926e75112eda18ef01",
+          "tools/apex_workbench/nmpc_weight_panels.py": "8ff944147ce43073289f4be1f4413167b584afc7bb7286d706f800f42b3495e9",
+          "tools/apex_workbench/configuration.py": "ed1611b0d15f17daeb515b7e6167863c49ee9c6ccd96c16403d3f55e5ac38dd3",
+          "tools/apex_workbench/worker.py": "bfd180f451585ff357a17735cae44e507507dff1718ef034624f9c821d058091",
+          "tools/apex_workbench/jobs.py": "9415eb09fa5680e45fab5575ddb03e454eab797632bc13cba49c4964fb5b9040",
+          "tools/apex_workbench/workspace.py": "60410157b2c6111628e7caeca8da2fb95fcbb74d40c3b1d827e0469778619a05",
+          "tools/apex_workbench/run_catalog.py": "4e974ea40940b2990f9b4416f97b8fe5fbde2ce6b335d3e49df3f4c422587f6d"
+        },
+        "findings": [],
+        "closed_findings": [
+          "R1 strict finite JSON capture/worker serialization boundary",
+          "R2 selected identity/root/origin/alias/source/adapter/configuration authentication before lifecycle",
+          "R2 symlinked lifecycle and authority records",
+          "R2 original claim/gate/BLOCKED anchor rebinding",
+          "R2 successor gate/capture configuration and environment rebinding",
+          "R2 successor reservation/claim rebinding and unsupported claim fields"
+        ],
+        "observations": {
+          "independent_negative_cases": 28,
+          "independent_negatives_passed": 28,
+          "each_negative_started_from_authenticating_chain": true,
+          "invalid_lifecycle_calls": 0,
+          "invalid_fixture_bytes_and_links_preserved": true,
+          "positive_controls": [
+            {
+              "kind": "real_reconciliation",
+              "state": "interrupted",
+              "scientific_outcome": "interrupted",
+              "evidence_state": "valid",
+              "created_execution_and_manifest": true,
+              "request_preserved": true
+            },
+            {
+              "kind": "owned_active_cancel",
+              "events": [
+                "status",
+                "status",
+                "rerun"
+              ],
+              "cancel_marker_created": true,
+              "preexisting_bytes_preserved": true,
+              "active_status_stub_only": true
+            }
+          ],
+          "malformed_reservation_negatives": 8,
+          "actual_disposable_nominal_claim_written_once": true,
+          "duplicate_nominal_denied": true,
+          "wrong_reservation_denied": true,
+          "exploratory_with_incomplete_nominal_denied": true,
+          "actual_jobs_reserved_id_hook_reached_staging_then_stopped_before_capture": true,
+          "successor_blocked_admission_denied_historical_ownership_preserved": true,
+          "genuine_original_read_outcome": "failed",
+          "real_admission_closed_missing_authority": true,
+          "author_tests_5": {
+            "passed": 73,
+            "failures": 0,
+            "errors": 0,
+            "skips": 0,
+            "duration_s": 86.033
+          },
+          "retained_independent_r1_passes": 13,
+          "counts_aggregated": false
+        },
+        "operational_harness_failures": [
+          {
+            "file": "probe_reservations.log",
+            "cause": "Harness patched shared subprocess.Popen and accidentally blocked its own required read-only Git lookup. No worker or capture reached.",
+            "correction": "Preserved v1 script/log; v2 permits only git rev-parse/show and denies worker launches; v2 passes."
+          },
+          {
+            "file": "preservation_initial_failure.json",
+            "cause": "Broad final set-equality assertion observed a new parent-authored preparation audit outside review_4. All baseline bytes/links remained intact.",
+            "resolution": "Parent confirmed authorized concurrent stdlib read/hash audit and exact expected digest; final preservation separates new addition from baseline changes."
+          }
+        ],
+        "static_audit_summary": {
+          "gate_and_evidence_verified": true,
+          "live_environment_matches_gate": true,
+          "snapshots_match_original_immutable_gate": true,
+          "probe_import_identities_per_preset": 1064,
+          "science_file_imports_per_preset": 63,
+          "science_namespace_imports_per_preset": 2,
+          "runtime_files_exact_git": 333,
+          "R1_relevant_AST_unchanged": true,
+          "jobs_only_M0_reserved_ID_hook": true,
+          "source_isolation_unchanged": true
+        },
+        "preservation": {
+          "candidate": "96be0969703f0675060208843c9920bca2187e3e",
+          "branch": "codex/m5a-nmpc-weight-m0",
+          "remote": "https://github.com/Maxrwan/MPC_Controller_v1_IronManStyle.git",
+          "tracked_status": "",
+          "preexisting_regular_file_count": 2521,
+          "preexisting_link_count": 183,
+          "preexisting_regular_files_preserved": true,
+          "preexisting_links_preserved": true,
+          "preexisting_regular_file_changes": {},
+          "outside_review_4_additions": {
+            "corrective_20261102/preservation_pre_execution.json": "325b80ee50198ae68f9b6975a33fa4d579973d7f5a8430757f8dfd769b36f212"
+          },
+          "outside_addition_attribution": "Parent confirmed creating preservation_pre_execution.json concurrently via authorized standard-library-only read/hash preparation audit; reviewer did not create it. Its exact expected digest is retained.",
+          "tracked_file_count": 1038,
+          "tracked_file_mismatches": [],
+          "gate_sha256_unchanged": true
+        },
+        "scope": {
+          "classification": "Independent bounded corrective Engineering Review",
+          "tracked_edits": false,
+          "project_git_mutations": false,
+          "actual_authority_claim_gate_mutations": false,
+          "workers_launched": 0,
+          "optimizer_solves": 0,
+          "plant_steps": 0,
+          "numerical_attempts": 0,
+          "formal_verification": false,
+          "output_root": "/Users/marwansaber/.codex/worktrees/nmpc-weight-m0/MPC_Controller_v1_IronManStyle/results/apex_workbench_nmpc_weights/corrective_20261102/review_4"
+        },
+        "commands": {
+          "ownership": "PYTHONDONTWRITEBYTECODE=1 VECLIB_MAXIMUM_THREADS=1 PYTHONPATH=.:scripts:src /Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/tools/apex_workbench/.venv/bin/python -B results/apex_workbench_nmpc_weights/corrective_20261102/review_4/probe_r2.py",
+          "source_gate_audit": "PYTHONDONTWRITEBYTECODE=1 VECLIB_MAXIMUM_THREADS=1 PYTHONPATH=.:scripts:src /Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/tools/apex_workbench/.venv/bin/python -B results/apex_workbench_nmpc_weights/corrective_20261102/review_4/static_audit.py",
+          "reservation_probe_initial_failed": "PYTHONDONTWRITEBYTECODE=1 VECLIB_MAXIMUM_THREADS=1 PYTHONPATH=.:scripts:src /Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/tools/apex_workbench/.venv/bin/python -B results/apex_workbench_nmpc_weights/corrective_20261102/review_4/probe_reservations.py",
+          "reservation_probe_corrected": "PYTHONDONTWRITEBYTECODE=1 VECLIB_MAXIMUM_THREADS=1 PYTHONPATH=.:scripts:src /Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/tools/apex_workbench/.venv/bin/python -B results/apex_workbench_nmpc_weights/corrective_20261102/review_4/probe_reservations_v2.py"
+        },
+        "limits": [
+          "PASS is corrective Engineering Review only, not formal Verification or acceptance.",
+          "No numerical worker, optimizer/controller/plant execution, or numerical outcome exists from this review.",
+          "Applicable unchanged actual R1 boundary/P/C0 viewer evidence retained rather than rerun solely for pass counts.",
+          "Retained probe import identities rehashed; no new probe generation by reviewer.",
+          "No full primary historical archive rehash or filesystem concurrency qualification by reviewer."
+        ],
+        "continuation_constraints": [
+          "Install only exact reviewed report/evidence/source and unchanged reviewed gate.",
+          "One new exclusive reserved nominal attempt only after full actual authority/admission guards pass.",
+          "At most one exploratory attempt only after completed intact comparable nominal under unchanged contract.",
+          "Preserve all original and successor failures/partials; no retries or favorable-result replacement.",
+          "Separate exact implementation/evidence review after conditional execution; no automatic formal Verification or later scope."
+        ],
+        "evidence_sha256": {
+          "REVIEW.md": "bbbe93913226dd431cef3485272e0a6501e58056e26386b4064a4a74dd624e55",
+          "audit_before.json": "0c66e2e729f0c8bd425521bdc678586a497a6325b92996f3e1460bc0c88d64f5",
+          "static_audit.py": "f686c56d8aef84abaadea89cc0414cb2478b24e2132cb22506c83921483a4d0f",
+          "static_audit.log": "b3a7695d90fa71376ae6c8bed50a51f38206d0c63af51bc982d64105e5bfe22d",
+          "static_audit.json": "b3a7695d90fa71376ae6c8bed50a51f38206d0c63af51bc982d64105e5bfe22d",
+          "preservation.json": "e995226d7149284e23592931dcddd7f1816b22fd535a191533a09c03e2477296",
+          "preservation_initial_failure.json": "b5bd4bfe3b29bf64c44af6362a9d2f8c6ebc05460d927e56f0da47247514723c",
+          "probe_r2.py": "d641c7d7fe942f9e7cdfae4c25ff6681d8b11673bcdc331b3d5eefd45a0005a9",
+          "probe_r2.log": "1931f595db620814fce74d944c756cf0bdca2eb5c6fde17d8ccb4054f4123f4b",
+          "probe_r2_result.json": "ffc89acfef4908756f99d163bb342b5a736d14e222be3742c3e3911122e1329a",
+          "probe_reservations.py": "546e3c5121b35c630455de5da6491b3e4ce0a30612772d2f850fc87083b5b00a",
+          "probe_reservations.log": "3fc7887dff373c459dd2ee59c2fa9025971d714fc244a27df9e96ccc20f35120",
+          "probe_reservations_v2.py": "5db49d82547cbc139e71807c0616d39e5e4d3e864483a23b64dfe8548587f4bb",
+          "probe_reservations_v2.log": "1cf0fbb7e1eaf561e32e41b01612a7bd7e17dde63ed3c8e77334bfa005e56a35",
+          "probe_reservations_v2_result.json": "1cf0fbb7e1eaf561e32e41b01612a7bd7e17dde63ed3c8e77334bfa005e56a35"
+        }
+      }
+    },
     "formal_verification_authorized": false,
     "successor_authority_id": "primary-r1-r2-20261102",
     "admission_conditions": "Exact Primary decision, immutable original anchors, exact producer/Git independent corrective PASS, software/environment gate; exclusive new nominal claim then exploratory only after completed intact nominal",
     "deferred": [
-      "Independent corrective review",
-      "Conditionally authorized nominal replacement",
-      "Exploratory only after valid comparable nominal",
-      "Independent final implementation/evidence review"
+      "Separately authorized formal Verification",
+      "Primary acceptance; no later feature or scientific campaign automatically authorized"
     ],
     "evidence_sha256": {
       "results/apex_workbench_nmpc_weights/corrective_20261102/tests_2.xml": "4c62f4a83054f25a278ba8bd7392e39c7fe184823ffe7ea2496f7831787d9406",
@@ -1342,7 +1311,117 @@
       "results/apex_workbench_nmpc_weights/corrective_20261102/review_3/corrective_review.json": "63dab35ecd19bbd70d497337d7dca9e2106a72afa85b3a45edcce352658b27d7",
       "results/apex_workbench_nmpc_weights/corrective_20261102/review_3/probe_r2_result.json": "b1a69350af102812f3ebaf494d403ad6dc4db9ec0901ee35251abb2a820a63f1",
       "results/apex_workbench_nmpc_weights/corrective_20261102/review_3/probe_r2.py": "1a8e5acf80d6a37c1bedb5d27e05263fe58d088ec97bbde8cd371ef4f6d6503d",
-      "results/apex_workbench_nmpc_weights/corrective_20261102/review_3/probe_r2.log": "9d61e9dbf1fa2fa664de954f4bde322ee456f0a4337ae46cd6e7caabfc1709c0"
+      "results/apex_workbench_nmpc_weights/corrective_20261102/review_3/probe_r2.log": "9d61e9dbf1fa2fa664de954f4bde322ee456f0a4337ae46cd6e7caabfc1709c0",
+      "results/apex_workbench_nmpc_weights/corrective_20261102/resource_successor_exploratory.json": "0f50752240534cf4d7443ad1c534aa05c8eec4a54fa1cadb68bf9f7752e1abc2",
+      "results/apex_workbench_nmpc_weights/corrective_20261102/gate_preparation.log": "e218ba90b71189d25356a09a9c2f7f178dd6703afa2d260e5a0014fdd7df7fdc",
+      "results/apex_workbench_nmpc_weights/corrective_20261102/preservation_pre_execution.json": "325b80ee50198ae68f9b6975a33fa4d579973d7f5a8430757f8dfd769b36f212",
+      "results/apex_workbench_nmpc_weights/corrective_20261102/successor_exploratory_driver.log": "fbab9a788917699dd5076bd3439c42a08f4f5b111f228331face03fc569c5b08",
+      "results/apex_workbench_nmpc_weights/corrective_20261102/label_overview_plot.py": "029ee67f1f9f1527797e473d58cdedbbc464dc735bfbfcab3d39c9960da63342",
+      "results/apex_workbench_nmpc_weights/corrective_20261102/label_objective_plot.log": "60a4f5134cc6aef20064318ad1b2473f53e88304f4ee968f547c6b0d062f7c73",
+      "results/apex_workbench_nmpc_weights/corrective_20261102/label_objective_plot.py": "25d5e43802d532f7a74af51bac1f415525893c8fcaada94ed26c6555e60b7dbb",
+      "results/apex_workbench_nmpc_weights/corrective_20261102/successor_exploratory_observation.json": "a926ab3fe9d7847143f6968b4c21d7b119f2c1b54fb9e1b17967d5c0ad015723",
+      "results/apex_workbench_nmpc_weights/corrective_20261102/authority_seal.log": "4482ecd9d9ef2bbd9f9658bec491f3d983194675becaa652fa2bef3d55bec07a",
+      "results/apex_workbench_nmpc_weights/corrective_20261102/retained_analysis_v2.log": "6a1e704852cd05962a2c05646b46c430fd87b63382bf69fac64e8c07fc9026ed",
+      "results/apex_workbench_nmpc_weights/corrective_20261102/resource_successor_nominal.json": "0f50752240534cf4d7443ad1c534aa05c8eec4a54fa1cadb68bf9f7752e1abc2",
+      "results/apex_workbench_nmpc_weights/corrective_20261102/analyze_retained_v2.py": "edd9a75a216f7cf3aea8e2f697754751870f2dd5ea8384a728ec89d9edd94d83",
+      "results/apex_workbench_nmpc_weights/corrective_20261102/successor_nominal_observation.json": "ac172b00497eaced6db18210ff97c783316f0fc7aefdac78aafa4d31cb836672",
+      "results/apex_workbench_nmpc_weights/corrective_20261102/successor_nominal_driver.log": "778a81469dbda821b389e1f3814081c42f67e6e8bf88ad20a5e8d1df8102695c",
+      "results/apex_workbench_nmpc_weights/corrective_20261102/successor_exploratory_attempt_ref.json": "bbc615563eea85d43ffb0534242ebc6d6727c13275fed8a537618ee4a398aff5",
+      "results/apex_workbench_nmpc_weights/corrective_20261102/analyze_retained.py": "ccc2ec12947e3af09e3266c1fea60a18d3952310b32a16f447e5c25088a71fe7",
+      "results/apex_workbench_nmpc_weights/corrective_20261102/final_parent_audit.json": "de31b44ab861325d1aac12b3c651d436d009e0f7018e72a9999b74cd0405d077",
+      "results/apex_workbench_nmpc_weights/corrective_20261102/retained_analysis.log": "2d45d948a2552e53e8b8d6cbc25cd0386a1bc1412777608c53c6e679017bcb17",
+      "results/apex_workbench_nmpc_weights/corrective_20261102/successor_nominal_attempt_ref.json": "f51ef9a3dd80703de4e934129eda8ead5df71d510a2012a9050f03d8e27392a8",
+      "results/apex_workbench_nmpc_weights/corrective_20261102/label_overview_plot.log": "476e4a09595b4bb0d16bb4277b34a069af9be853f40cb374bd0d55c35dc02a83",
+      "results/apex_workbench_nmpc_weights/corrective_20261102/review_4/probe_reservations_v2.log": "1cf0fbb7e1eaf561e32e41b01612a7bd7e17dde63ed3c8e77334bfa005e56a35",
+      "results/apex_workbench_nmpc_weights/corrective_20261102/review_4/static_audit.py": "f686c56d8aef84abaadea89cc0414cb2478b24e2132cb22506c83921483a4d0f",
+      "results/apex_workbench_nmpc_weights/corrective_20261102/review_4/probe_r2_result.json": "ffc89acfef4908756f99d163bb342b5a736d14e222be3742c3e3911122e1329a",
+      "results/apex_workbench_nmpc_weights/corrective_20261102/review_4/static_audit.log": "b3a7695d90fa71376ae6c8bed50a51f38206d0c63af51bc982d64105e5bfe22d",
+      "results/apex_workbench_nmpc_weights/corrective_20261102/review_4/preservation.json": "e995226d7149284e23592931dcddd7f1816b22fd535a191533a09c03e2477296",
+      "results/apex_workbench_nmpc_weights/corrective_20261102/review_4/audit_before.json": "0c66e2e729f0c8bd425521bdc678586a497a6325b92996f3e1460bc0c88d64f5",
+      "results/apex_workbench_nmpc_weights/corrective_20261102/review_4/probe_reservations_v2_result.json": "1cf0fbb7e1eaf561e32e41b01612a7bd7e17dde63ed3c8e77334bfa005e56a35",
+      "results/apex_workbench_nmpc_weights/corrective_20261102/review_4/probe_reservations.log": "3fc7887dff373c459dd2ee59c2fa9025971d714fc244a27df9e96ccc20f35120",
+      "results/apex_workbench_nmpc_weights/corrective_20261102/review_4/corrective_review.json": "0d5d4092e100809b162398de7df6dd32160097d117bb5f1c9a550a6293b6cdb8",
+      "results/apex_workbench_nmpc_weights/corrective_20261102/review_4/preservation_initial_failure.json": "b5bd4bfe3b29bf64c44af6362a9d2f8c6ebc05460d927e56f0da47247514723c",
+      "results/apex_workbench_nmpc_weights/corrective_20261102/review_4/probe_r2.py": "d641c7d7fe942f9e7cdfae4c25ff6681d8b11673bcdc331b3d5eefd45a0005a9",
+      "results/apex_workbench_nmpc_weights/corrective_20261102/review_4/static_audit.json": "b3a7695d90fa71376ae6c8bed50a51f38206d0c63af51bc982d64105e5bfe22d",
+      "results/apex_workbench_nmpc_weights/corrective_20261102/review_4/probe_reservations_v2.py": "5db49d82547cbc139e71807c0616d39e5e4d3e864483a23b64dfe8548587f4bb",
+      "results/apex_workbench_nmpc_weights/corrective_20261102/review_4/REVIEW.md": "bbbe93913226dd431cef3485272e0a6501e58056e26386b4064a4a74dd624e55",
+      "results/apex_workbench_nmpc_weights/corrective_20261102/review_4/probe_reservations.py": "546e3c5121b35c630455de5da6491b3e4ce0a30612772d2f850fc87083b5b00a",
+      "results/apex_workbench_nmpc_weights/corrective_20261102/review_4/probe_r2.log": "1931f595db620814fce74d944c756cf0bdca2eb5c6fde17d8ccb4054f4123f4b",
+      "results/apex_workbench_nmpc_weights/corrective_20261102/final_review/retained_audit_v2.json": "65ca0da7c6dc5c817233ced364c9f8b6cf417498472566ff3949e8e5fb5b1005",
+      "results/apex_workbench_nmpc_weights/corrective_20261102/final_review/presentation_audit.json": "d81b928f71bb73ed48f9163689e987df927e230b1b0bb221106f9b51858a5872",
+      "results/apex_workbench_nmpc_weights/corrective_20261102/final_review/preservation.json": "c45b6808ba6e4d6aa7c8afa8d7d60f3d68e63f2dae3b44e1c312123f33148dc8",
+      "results/apex_workbench_nmpc_weights/corrective_20261102/final_review/final_review.json": "ccc604f4c573825d11a51c5fab02b6d7b840ab1baf53471f0942ac014128a23c",
+      "results/apex_workbench_nmpc_weights/corrective_20261102/final_review/retained_audit_v2.log": "65ca0da7c6dc5c817233ced364c9f8b6cf417498472566ff3949e8e5fb5b1005",
+      "results/apex_workbench_nmpc_weights/corrective_20261102/final_review/audit_before.json": "a73bd55d09f70caadf21cb12698ae6256cc2a6e2bc9f30525ac5340c359f6d28",
+      "results/apex_workbench_nmpc_weights/corrective_20261102/final_review/scenario_audit.json": "64ef5d838d88154b1702a04a373b4d27185ef88b89c9c949a3cae3b1196a5c69",
+      "results/apex_workbench_nmpc_weights/corrective_20261102/final_review/audit_retained.py": "f34b29db0c69321f9560026f765afd40867f8719f5abbeaebfc1b74d82146407",
+      "results/apex_workbench_nmpc_weights/corrective_20261102/final_review/readonly_ui.py": "863e9c9fec3604c27ddc94d512a9316429a72c364ded0220044747473a0c6621",
+      "results/apex_workbench_nmpc_weights/corrective_20261102/final_review/audit_retained_v2.py": "6531bf3749be7535b1489d6f9d0d4d3d91d139696b9b01996591f5982f8240b9",
+      "results/apex_workbench_nmpc_weights/corrective_20261102/final_review/readonly_ui.log": "1ce5b1f40518df45456215b2c7544c130f7e5ebcb9b3679428ecb63469765e10",
+      "results/apex_workbench_nmpc_weights/corrective_20261102/final_review/readonly_ui_result.json": "9844b48f98b4803c0416c054faf9b61de973ee8b35ba1bfdf0d669930f45b2f3",
+      "results/apex_workbench_nmpc_weights/corrective_20261102/final_review/REVIEW.md": "e9f836c7b9980666b220e28214fbb88255f03f9ed0815092f38ce82f7b0fac7e",
+      "results/apex_workbench_nmpc_weights/corrective_20261102/final_review/presentation_audit_v2.json": "786998796820f8516de0fca705e346d6ab52b20ba6f60f61a005635965768764",
+      "results/apex_workbench_nmpc_weights/corrective_20261102/final_review/retained_audit.log": "cefa4b3a5e0048b05badcd1a92d8800e5e3fabcdbc54aefa1f2208195367c42f",
+      "results/apex_workbench_nmpc_weights/runs/20261103T092919578650Z_8db96af73edb48afa17b8d608c9cb7a9/request.json": "b476dfc3b8b1507e4f3ccc692d99fd994b36ec7eac74560ec750ffaee51c8d38",
+      "results/apex_workbench_nmpc_weights/runs/20261103T092919578650Z_8db96af73edb48afa17b8d608c9cb7a9/stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "results/apex_workbench_nmpc_weights/runs/20261103T092919578650Z_8db96af73edb48afa17b8d608c9cb7a9/supervisor.json": "c54ca44e323e66b3f0a640ae1fa88a38458ee9610fa5cf39a6bded1092dc65e6",
+      "results/apex_workbench_nmpc_weights/runs/20261103T092919578650Z_8db96af73edb48afa17b8d608c9cb7a9/worker.json": "8675578ee8f377379d65d8b8e46324dd7aea78358ff521455bf4f0c40731295c",
+      "results/apex_workbench_nmpc_weights/runs/20261103T092919578650Z_8db96af73edb48afa17b8d608c9cb7a9/stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "results/apex_workbench_nmpc_weights/runs/20261103T092919578650Z_8db96af73edb48afa17b8d608c9cb7a9/worker_result.json": "289e4cead5a450203d0ac548ea4254d4a8b0ea84b30628f6638f6d2e72279d5d",
+      "results/apex_workbench_nmpc_weights/runs/20261103T092919578650Z_8db96af73edb48afa17b8d608c9cb7a9/supervisor.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "results/apex_workbench_nmpc_weights/runs/20261103T092919578650Z_8db96af73edb48afa17b8d608c9cb7a9/status.json": "09299a4c39b6e53397206c86bf5cafd09de458e7656aa0c12748ab934dfe439b",
+      "results/apex_workbench_nmpc_weights/runs/20261103T092919578650Z_8db96af73edb48afa17b8d608c9cb7a9/execution.json": "122750c1a416c658d0a1559a0f9a9a5120815b65fbec76b39a59abc9d1a74f03",
+      "results/apex_workbench_nmpc_weights/runs/20261103T092919578650Z_8db96af73edb48afa17b8d608c9cb7a9/artifacts.json": "bc4f53a95fcae849e11537eb7c25f9b9d1480be4be8f2f88e33d212f283f0933",
+      "results/apex_workbench_nmpc_weights/runs/20261103T092919578650Z_8db96af73edb48afa17b8d608c9cb7a9/experiment/summary.json": "289e4cead5a450203d0ac548ea4254d4a8b0ea84b30628f6638f6d2e72279d5d",
+      "results/apex_workbench_nmpc_weights/runs/20261103T092919578650Z_8db96af73edb48afa17b8d608c9cb7a9/experiment/command_requests.jsonl": "cce854f72bc37c0c8841354d58b94a82ffdf31836a9ddf8c9b7095f57f0efdd2",
+      "results/apex_workbench_nmpc_weights/runs/20261103T092919578650Z_8db96af73edb48afa17b8d608c9cb7a9/experiment/raw.json": "e81b5df5e10164eed1feccc3217292718391f1c0eb89d123cfb70e3b47a13263",
+      "results/apex_workbench_nmpc_weights/runs/20261103T092919578650Z_8db96af73edb48afa17b8d608c9cb7a9/experiment/plant_segments.jsonl": "be2943ef76d77af97c51e8eb123432669b3b5adf1a58f910cad1ebf41ad02554",
+      "results/apex_workbench_nmpc_weights/runs/20261103T092919578650Z_8db96af73edb48afa17b8d608c9cb7a9/experiment/optimizations.jsonl": "f079673dec6fbfebb57375389ea3fd4bb7bca0f67992035a7b0744ab3c6c45d4",
+      "results/apex_workbench_nmpc_weights/runs/20261103T092919578650Z_8db96af73edb48afa17b8d608c9cb7a9/experiment/preparations.jsonl": "8eef491f502cda530cb40c0626e4f2359d693f9eacbe31ea4e652156c39ad5ff",
+      "results/apex_workbench_nmpc_weights/runs/20261103T092919578650Z_8db96af73edb48afa17b8d608c9cb7a9/experiment/post_execution_identity.json": "c37734a6d0fcd31b3b9370d51eb4ab9ce63a092f83a35bc1cc67cbea398601c4",
+      "results/apex_workbench_nmpc_weights/runs/20261103T092919578650Z_8db96af73edb48afa17b8d608c9cb7a9/experiment/pre_execution_identity.json": "b2e3a6fa6d2e5719ec9f650da763b2c9acd5a26918aee07a61fa5252675a4e6d",
+      "results/apex_workbench_nmpc_weights/runs/20261103T092919578903Z_67d4ffe6c44b4628adc58505ca43b50c/request.json": "a038a163ed0217208ce3edd962374b8fc9cdd319e253b21c394da98a62a29f3c",
+      "results/apex_workbench_nmpc_weights/runs/20261103T092919578903Z_67d4ffe6c44b4628adc58505ca43b50c/stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "results/apex_workbench_nmpc_weights/runs/20261103T092919578903Z_67d4ffe6c44b4628adc58505ca43b50c/supervisor.json": "1a78fedbfe64025fc651aa5f03728eb5ead7204c1fb245582ab0a13f47ff04fa",
+      "results/apex_workbench_nmpc_weights/runs/20261103T092919578903Z_67d4ffe6c44b4628adc58505ca43b50c/worker.json": "591e4a50efb903ba3977501ef5deb1ee734ae4320a87212f4efb1f7a9533a3f2",
+      "results/apex_workbench_nmpc_weights/runs/20261103T092919578903Z_67d4ffe6c44b4628adc58505ca43b50c/stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "results/apex_workbench_nmpc_weights/runs/20261103T092919578903Z_67d4ffe6c44b4628adc58505ca43b50c/worker_result.json": "6498abb88c3cc9581732d9cf4a6f49dee9862e07e6b3580b92e00849aedd51a9",
+      "results/apex_workbench_nmpc_weights/runs/20261103T092919578903Z_67d4ffe6c44b4628adc58505ca43b50c/supervisor.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "results/apex_workbench_nmpc_weights/runs/20261103T092919578903Z_67d4ffe6c44b4628adc58505ca43b50c/status.json": "a8b5f045d9aeaa295cbcce7cedefb16378b177861ab6e4d1dff9ed208636683a",
+      "results/apex_workbench_nmpc_weights/runs/20261103T092919578903Z_67d4ffe6c44b4628adc58505ca43b50c/execution.json": "6542892db78b6e2eea9ee2a7bd97490cecc8c8eec0822f62e04777c9a3b060e3",
+      "results/apex_workbench_nmpc_weights/runs/20261103T092919578903Z_67d4ffe6c44b4628adc58505ca43b50c/artifacts.json": "dc74308fa3fd16edfd600ab1bf1b31c4b56df2070284a8936d7c5b6a78fe6f31",
+      "results/apex_workbench_nmpc_weights/runs/20261103T092919578903Z_67d4ffe6c44b4628adc58505ca43b50c/experiment/summary.json": "6498abb88c3cc9581732d9cf4a6f49dee9862e07e6b3580b92e00849aedd51a9",
+      "results/apex_workbench_nmpc_weights/runs/20261103T092919578903Z_67d4ffe6c44b4628adc58505ca43b50c/experiment/command_requests.jsonl": "29d271d061f21ce1668bf5742e988a44356eda467c55b3591bbf4b16293ca519",
+      "results/apex_workbench_nmpc_weights/runs/20261103T092919578903Z_67d4ffe6c44b4628adc58505ca43b50c/experiment/raw.json": "95c3a927ac3203c1a4316a89257fc3f86cf754daac789ec07245c3450bcae792",
+      "results/apex_workbench_nmpc_weights/runs/20261103T092919578903Z_67d4ffe6c44b4628adc58505ca43b50c/experiment/plant_segments.jsonl": "fc4a9885d8c950087b041bb140f5b3999e8b122ba7b9872e21e6a9e230507120",
+      "results/apex_workbench_nmpc_weights/runs/20261103T092919578903Z_67d4ffe6c44b4628adc58505ca43b50c/experiment/optimizations.jsonl": "896a2c7f8f88179adfe4256969f750c0fe78b72925039fc1d49833bdace82ef7",
+      "results/apex_workbench_nmpc_weights/runs/20261103T092919578903Z_67d4ffe6c44b4628adc58505ca43b50c/experiment/preparations.jsonl": "9b23b3bb5af2f7dd4a8d0dc28709b5deb0d704a2f2976141ac293aed7eeb0456",
+      "results/apex_workbench_nmpc_weights/runs/20261103T092919578903Z_67d4ffe6c44b4628adc58505ca43b50c/experiment/post_execution_identity.json": "c37734a6d0fcd31b3b9370d51eb4ab9ce63a092f83a35bc1cc67cbea398601c4",
+      "results/apex_workbench_nmpc_weights/runs/20261103T092919578903Z_67d4ffe6c44b4628adc58505ca43b50c/experiment/pre_execution_identity.json": "a34c1df1b57d992082f6888cdeca03bd614179485f3abe4ee2eb315384a1d644",
+      "results/apex_workbench_nmpc_weights/authorizations/primary-r1-r2-20261102/probe_reservations_v2.log": "1cf0fbb7e1eaf561e32e41b01612a7bd7e17dde63ed3c8e77334bfa005e56a35",
+      "results/apex_workbench_nmpc_weights/authorizations/primary-r1-r2-20261102/static_audit.py": "f686c56d8aef84abaadea89cc0414cb2478b24e2132cb22506c83921483a4d0f",
+      "results/apex_workbench_nmpc_weights/authorizations/primary-r1-r2-20261102/probe_r2_result.json": "ffc89acfef4908756f99d163bb342b5a736d14e222be3742c3e3911122e1329a",
+      "results/apex_workbench_nmpc_weights/authorizations/primary-r1-r2-20261102/static_audit.log": "b3a7695d90fa71376ae6c8bed50a51f38206d0c63af51bc982d64105e5bfe22d",
+      "results/apex_workbench_nmpc_weights/authorizations/primary-r1-r2-20261102/preservation.json": "e995226d7149284e23592931dcddd7f1816b22fd535a191533a09c03e2477296",
+      "results/apex_workbench_nmpc_weights/authorizations/primary-r1-r2-20261102/audit_before.json": "0c66e2e729f0c8bd425521bdc678586a497a6325b92996f3e1460bc0c88d64f5",
+      "results/apex_workbench_nmpc_weights/authorizations/primary-r1-r2-20261102/probe_reservations_v2_result.json": "1cf0fbb7e1eaf561e32e41b01612a7bd7e17dde63ed3c8e77334bfa005e56a35",
+      "results/apex_workbench_nmpc_weights/authorizations/primary-r1-r2-20261102/probe_reservations.log": "3fc7887dff373c459dd2ee59c2fa9025971d714fc244a27df9e96ccc20f35120",
+      "results/apex_workbench_nmpc_weights/authorizations/primary-r1-r2-20261102/authorization.json": "47ce382539021089742e59fa799227f531b761f2117bce4bd30095d3e8f4fbca",
+      "results/apex_workbench_nmpc_weights/authorizations/primary-r1-r2-20261102/corrective_review.json": "0d5d4092e100809b162398de7df6dd32160097d117bb5f1c9a550a6293b6cdb8",
+      "results/apex_workbench_nmpc_weights/authorizations/primary-r1-r2-20261102/preservation_initial_failure.json": "b5bd4bfe3b29bf64c44af6362a9d2f8c6ebc05460d927e56f0da47247514723c",
+      "results/apex_workbench_nmpc_weights/authorizations/primary-r1-r2-20261102/probe_r2.py": "d641c7d7fe942f9e7cdfae4c25ff6681d8b11673bcdc331b3d5eefd45a0005a9",
+      "results/apex_workbench_nmpc_weights/authorizations/primary-r1-r2-20261102/static_audit.json": "b3a7695d90fa71376ae6c8bed50a51f38206d0c63af51bc982d64105e5bfe22d",
+      "results/apex_workbench_nmpc_weights/authorizations/primary-r1-r2-20261102/PRIMARY_DECISION.md": "8c5147b33c8da3270558ee43a140a10dd69397bdd9258fb091db24bfb03eb1f8",
+      "results/apex_workbench_nmpc_weights/authorizations/primary-r1-r2-20261102/probe_reservations_v2.py": "5db49d82547cbc139e71807c0616d39e5e4d3e864483a23b64dfe8548587f4bb",
+      "results/apex_workbench_nmpc_weights/authorizations/primary-r1-r2-20261102/exploratory_software_probe.json": "dac35d357e64ef0e30702650ddef2b130503fab643315170cbfb80c4a53acb3e",
+      "results/apex_workbench_nmpc_weights/authorizations/primary-r1-r2-20261102/REVIEW.md": "bbbe93913226dd431cef3485272e0a6501e58056e26386b4064a4a74dd624e55",
+      "results/apex_workbench_nmpc_weights/authorizations/primary-r1-r2-20261102/probe_reservations.py": "546e3c5121b35c630455de5da6491b3e4ce0a30612772d2f850fc87083b5b00a",
+      "results/apex_workbench_nmpc_weights/authorizations/primary-r1-r2-20261102/nominal_software_probe.json": "acd207fdfdb64ac0b5dce42e2b6624bab79f4b6d08667e00daeff680eb08364a",
+      "results/apex_workbench_nmpc_weights/authorizations/primary-r1-r2-20261102/probe_r2.log": "1931f595db620814fce74d944c756cf0bdca2eb5c6fde17d8ccb4054f4123f4b",
+      "results/apex_workbench_nmpc_weights/authorizations/primary-r1-r2-20261102/software_gate.json": "19217b49b7b49129e565078a6fdfaccc27bad8878f42c87a5c56fb8bb1fde857",
+      "results/apex_workbench_nmpc_weights/authorizations/primary-r1-r2-20261102/claims/nominal.json": "debafd8d705c56c7ec0b6d4a2ff6b5f6ba01822feb7bb92332872e5e4acc006b",
+      "results/apex_workbench_nmpc_weights/authorizations/primary-r1-r2-20261102/claims/exploratory.json": "1251b4127ce4c29c34c2c41f6db098919519866c142accd0e6962b4edc44ba31"
     },
     "independent_reviews": [
       {
@@ -1608,6 +1687,1570 @@
       "tools/apex_workbench/tests/test_nmpc_weight_workspace.py": "36e56f2929b5d98241f9409056e4d46726fb4694042c7378857dca10e03054bb"
     },
     "jobs_change_justification": "M0-only allocation of one of two independently pinned gate run-ID reservations; prevents successor claim rebinding into a third identity; other adapter/lifecycle/resource behavior unchanged",
-    "current_gate_design": "Gate prepared before review, independent report pins exact gate SHA, authority binds review; no gate-to-authority back-reference/hash cycle; exact two run-ID reservations and strict successor claim shape; shared pure retained authority checker"
+    "current_gate_design": "Gate prepared before review, independent report pins exact gate SHA, authority binds review; no gate-to-authority back-reference/hash cycle; exact two run-ID reservations and strict successor claim shape; shared pure retained authority checker",
+    "implementation_revision": "96be0969703f0675060208843c9920bca2187e3e",
+    "final_independent_review": {
+      "schema": "apex-m0-final-engineering-review/1",
+      "outcome": "PASS",
+      "stop_status": "NMPC_WEIGHT_LAB_M0_ENGINEERING_REVIEW_COMPLETE_PENDING_VERIFICATION",
+      "candidate": "96be0969703f0675060208843c9920bca2187e3e",
+      "branch": "codex/m5a-nmpc-weight-m0",
+      "repository": "Maxrwan/MPC_Controller_v1_IronManStyle",
+      "scientific_source": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "software_gate_sha256": "19217b49b7b49129e565078a6fdfaccc27bad8878f42c87a5c56fb8bb1fde857",
+      "successor_authority_sha256": "47ce382539021089742e59fa799227f531b761f2117bce4bd30095d3e8f4fbca",
+      "corrective_review_sha256": "0d5d4092e100809b162398de7df6dd32160097d117bb5f1c9a550a6293b6cdb8",
+      "adapter_sha256": {
+        "tools/apex_workbench/nmpc_weight_lab.py": "8751fdfea3c1071fed61dc463d0827894b876295c1a5810647320964c6be1700",
+        "tools/apex_workbench/nmpc_weight_worker.py": "d1051d60263936f173e4b691f1407a2b8fbb801f4825ff926e75112eda18ef01",
+        "tools/apex_workbench/nmpc_weight_panels.py": "8ff944147ce43073289f4be1f4413167b584afc7bb7286d706f800f42b3495e9",
+        "tools/apex_workbench/configuration.py": "ed1611b0d15f17daeb515b7e6167863c49ee9c6ccd96c16403d3f55e5ac38dd3",
+        "tools/apex_workbench/worker.py": "bfd180f451585ff357a17735cae44e507507dff1718ef034624f9c821d058091",
+        "tools/apex_workbench/jobs.py": "9415eb09fa5680e45fab5575ddb03e454eab797632bc13cba49c4964fb5b9040",
+        "tools/apex_workbench/workspace.py": "60410157b2c6111628e7caeca8da2fb95fcbb74d40c3b1d827e0469778619a05",
+        "tools/apex_workbench/run_catalog.py": "4e974ea40940b2990f9b4416f97b8fe5fbde2ce6b335d3e49df3f4c422587f6d"
+      },
+      "findings": [],
+      "resolved_findings": [
+        {
+          "id": "DERIVED_BOOLEAN_MISSINGNESS",
+          "priority": "P2",
+          "status": "CLOSED_IN_PRESERVED_SUCCESSOR_DERIVATIVE",
+          "observation": "v2 numeric helper excluded bool and reported400 unavailable native boundary flags per case",
+          "resolution": "v3 exact true/false/unavailable counts independently verified; all other numeric fields preserved",
+          "artifact": "corrective_20261102/diagnostics_v3/analysis.json"
+        },
+        {
+          "id": "STANDALONE_PLOT_CLASSIFICATION",
+          "priority": "P2",
+          "status": "CLOSED_IN_PRESERVED_SUCCESSOR_DERIVATIVES",
+          "observation": "Old standalone PNGs omitted some required synthetic/unqualified labeling",
+          "resolution": "New v3 overview/objective PNGs explicitly labeled; raw hashes/provenance/source/native traces preserved and visually inspected"
+        }
+      ],
+      "runs": {
+        "nominal": {
+          "run_id": "20261103T092919578650Z_8db96af73edb48afa17b8d608c9cb7a9",
+          "directory": "/Users/marwansaber/.codex/worktrees/nmpc-weight-m0/MPC_Controller_v1_IronManStyle/results/apex_workbench_nmpc_weights/runs/20261103T092919578650Z_8db96af73edb48afa17b8d608c9cb7a9",
+          "request_sha256": "b476dfc3b8b1507e4f3ccc692d99fd994b36ec7eac74560ec750ffaee51c8d38",
+          "manifest_sha256": "bc4f53a95fcae849e11537eb7c25f9b9d1480be4be8f2f88e33d212f283f0933",
+          "raw_sha256": "e81b5df5e10164eed1feccc3217292718391f1c0eb89d123cfb70e3b47a13263",
+          "artifact_count": 15,
+          "all_artifact_bytes_and_hashes_match": true,
+          "status": {
+            "record_version": 2,
+            "state": "completed",
+            "scientific_outcome": "completed",
+            "evidence_state": "valid",
+            "updated_utc": "2026-11-03T09:41:13.919863+00:00",
+            "error": null,
+            "returncode": 0,
+            "wall_runtime_s": 16.24771441699704,
+            "sampled_peak_worker_rss_bytes": 241745920,
+            "sampled_peak_worker_threads": 4,
+            "sampling_note": "100 ms supervisor samples; worker guard polls at 50 ms; soft bounds",
+            "manifest_sha256": "bc4f53a95fcae849e11537eb7c25f9b9d1480be4be8f2f88e33d212f283f0933"
+          },
+          "request_timestamp_utc": "2026-11-03T09:40:45.249785+00:00",
+          "coverage": {
+            "requested_duration_s": 2.0,
+            "native_end_time_s": 1.9999999999999787,
+            "native_stop_reason": "duration",
+            "requested_duration_completed": true,
+            "rule": "Native duration termination without a failure; no inferred endpoint state"
+          },
+          "counts": {
+            "states": 400,
+            "controls": 200,
+            "plans": 20,
+            "packets": 20,
+            "triggers": 0,
+            "fallbacks": 0,
+            "handoffs": 19,
+            "releases": 19,
+            "misses": 0,
+            "reserves": 400,
+            "lap_times": 0,
+            "codriver_misses": 0
+          },
+          "native_last_state_time_s": 1.9949999999999788,
+          "native_plant_journal_end_s": 1.9999999999999787,
+          "native_raw_endpoint_row_created": false,
+          "native_objective_prediction_packet_associations": 20,
+          "native_preparation_event_associations": 20,
+          "native_proposal_requested_applied_associations": 200,
+          "plant_continuity_segments": 400,
+          "planner_pending_motion_windows": 19,
+          "codriver_pending_motion_windows": 200,
+          "requested_vs_applied_differing_rows": 6,
+          "objective_component_sum_max_roundoff_residual": 3.552713678800501e-15,
+          "solver_objective_component_total_literal_differences": [
+            {
+              "plan_id": 13,
+              "solver_objective": 0.22254253907223012,
+              "component_total": 0.22254253907223015,
+              "difference": 2.7755575615628914e-17,
+              "ulps_of_solver_objective": 1.0
+            },
+            {
+              "plan_id": 15,
+              "solver_objective": 0.10742605345352056,
+              "component_total": 0.10742605345352058,
+              "difference": 1.3877787807814457e-17,
+              "ulps_of_solver_objective": 1.0
+            },
+            {
+              "plan_id": 17,
+              "solver_objective": 0.0981545105903646,
+              "component_total": 0.09815451059036459,
+              "difference": -1.3877787807814457e-17,
+              "ulps_of_solver_objective": -1.0
+            }
+          ],
+          "boundary_boolean_counts": {
+            "total_rows": 400,
+            "recorded_boolean": 400,
+            "true_flags": 0,
+            "false_flags": 400,
+            "missing_or_nonboolean": 0
+          },
+          "common_metrics": {
+            "raw_Frenet_e_y_rms_m": 0.033214838001299665,
+            "raw_Frenet_e_psi_rms_rad": 0.03661460956125865,
+            "TVLQR_active_trajectory_error_e_y_rms_m": 0.0006746883273349105,
+            "TVLQR_active_trajectory_error_e_psi_rms_rad": 0.004477961375947072
+          },
+          "solver_native_ranges": {
+            "solve_time": {
+              "min": 0.030917749973013997,
+              "max": 0.044722374994307756
+            },
+            "iterations": {
+              "min": 12,
+              "max": 18
+            },
+            "primal_infeasibility": {
+              "min": 9.930778421818331e-12,
+              "max": 1.2654932407540898e-08
+            },
+            "max_slack": {
+              "min": 9.090909092670772e-11,
+              "max": 9.091525285379717e-11
+            }
+          },
+          "native_combined_utilization_ranges": {
+            "front_utilization": {
+              "min": 0.009036771436938597,
+              "max": 0.33734855084513626
+            },
+            "rear_utilization": {
+              "min": 0.012036347823266695,
+              "max": 0.36460086857346896
+            }
+          },
+          "native_reserve_min_s": 0.667,
+          "codriver_host_deadline_exceeded_rows": 0,
+          "host_runner_timing": {
+            "host_wall_seconds": 3.731579250015784,
+            "host_cpu_seconds": 3.886683999999999,
+            "cpu_wall_ratio": 1.041565444438453,
+            "observed_process_thread_counts": [
+              3
+            ]
+          },
+          "native_control": {
+            "requested_ceiling": 1,
+            "set_status": 0,
+            "blas_threading_mode": 1,
+            "mode_name": "single",
+            "exact_active_thread_count_available": false
+          },
+          "threadpoolctl_inventory": [],
+          "import_checks": {
+            "pre": {
+              "reported_modules": 1066,
+              "scientific_files": 65,
+              "scientific_namespaces": 2,
+              "mismatches": []
+            },
+            "post": {
+              "reported_modules": 1066,
+              "scientific_files": 65,
+              "scientific_namespaces": 2,
+              "mismatches": []
+            }
+          },
+          "owned_processes_alive": {
+            "worker": false,
+            "supervisor": false
+          },
+          "claim_sha256": "debafd8d705c56c7ec0b6d4a2ff6b5f6ba01822feb7bb92332872e5e4acc006b"
+        },
+        "exploratory": {
+          "run_id": "20261103T092919578903Z_67d4ffe6c44b4628adc58505ca43b50c",
+          "directory": "/Users/marwansaber/.codex/worktrees/nmpc-weight-m0/MPC_Controller_v1_IronManStyle/results/apex_workbench_nmpc_weights/runs/20261103T092919578903Z_67d4ffe6c44b4628adc58505ca43b50c",
+          "request_sha256": "a038a163ed0217208ce3edd962374b8fc9cdd319e253b21c394da98a62a29f3c",
+          "manifest_sha256": "dc74308fa3fd16edfd600ab1bf1b31c4b56df2070284a8936d7c5b6a78fe6f31",
+          "raw_sha256": "95c3a927ac3203c1a4316a89257fc3f86cf754daac789ec07245c3450bcae792",
+          "artifact_count": 15,
+          "all_artifact_bytes_and_hashes_match": true,
+          "status": {
+            "record_version": 2,
+            "state": "completed",
+            "scientific_outcome": "completed",
+            "evidence_state": "valid",
+            "updated_utc": "2026-11-03T09:42:23.864368+00:00",
+            "error": null,
+            "returncode": 0,
+            "wall_runtime_s": 16.037122457986698,
+            "sampled_peak_worker_rss_bytes": 240746496,
+            "sampled_peak_worker_threads": 4,
+            "sampling_note": "100 ms supervisor samples; worker guard polls at 50 ms; soft bounds",
+            "manifest_sha256": "dc74308fa3fd16edfd600ab1bf1b31c4b56df2070284a8936d7c5b6a78fe6f31"
+          },
+          "request_timestamp_utc": "2026-11-03T09:41:55.099382+00:00",
+          "coverage": {
+            "requested_duration_s": 2.0,
+            "native_end_time_s": 1.9999999999999787,
+            "native_stop_reason": "duration",
+            "requested_duration_completed": true,
+            "rule": "Native duration termination without a failure; no inferred endpoint state"
+          },
+          "counts": {
+            "states": 400,
+            "controls": 200,
+            "plans": 20,
+            "packets": 20,
+            "triggers": 0,
+            "fallbacks": 0,
+            "handoffs": 19,
+            "releases": 19,
+            "misses": 0,
+            "reserves": 400,
+            "lap_times": 0,
+            "codriver_misses": 0
+          },
+          "native_last_state_time_s": 1.9949999999999788,
+          "native_plant_journal_end_s": 1.9999999999999787,
+          "native_raw_endpoint_row_created": false,
+          "native_objective_prediction_packet_associations": 20,
+          "native_preparation_event_associations": 20,
+          "native_proposal_requested_applied_associations": 200,
+          "plant_continuity_segments": 400,
+          "planner_pending_motion_windows": 19,
+          "codriver_pending_motion_windows": 200,
+          "requested_vs_applied_differing_rows": 3,
+          "objective_component_sum_max_roundoff_residual": 8.881784197001252e-16,
+          "solver_objective_component_total_literal_differences": [
+            {
+              "plan_id": 0,
+              "solver_objective": 7.511176945892128,
+              "component_total": 7.511176945892129,
+              "difference": 8.881784197001252e-16,
+              "ulps_of_solver_objective": 1.0
+            },
+            {
+              "plan_id": 1,
+              "solver_objective": 6.976360787314249,
+              "component_total": 6.976360787314248,
+              "difference": -8.881784197001252e-16,
+              "ulps_of_solver_objective": -1.0
+            },
+            {
+              "plan_id": 6,
+              "solver_objective": 1.8954329435347108,
+              "component_total": 1.8954329435347106,
+              "difference": -2.220446049250313e-16,
+              "ulps_of_solver_objective": -1.0
+            },
+            {
+              "plan_id": 13,
+              "solver_objective": 0.19559848656305534,
+              "component_total": 0.19559848656305537,
+              "difference": 2.7755575615628914e-17,
+              "ulps_of_solver_objective": 1.0
+            },
+            {
+              "plan_id": 18,
+              "solver_objective": 0.41503870837731105,
+              "component_total": 0.4150387083773111,
+              "difference": 5.551115123125783e-17,
+              "ulps_of_solver_objective": 1.0
+            }
+          ],
+          "boundary_boolean_counts": {
+            "total_rows": 400,
+            "recorded_boolean": 400,
+            "true_flags": 0,
+            "false_flags": 400,
+            "missing_or_nonboolean": 0
+          },
+          "common_metrics": {
+            "raw_Frenet_e_y_rms_m": 0.03420883421140883,
+            "raw_Frenet_e_psi_rms_rad": 0.03493905907875456,
+            "TVLQR_active_trajectory_error_e_y_rms_m": 0.0005263907568285608,
+            "TVLQR_active_trajectory_error_e_psi_rms_rad": 0.0030992693828768084
+          },
+          "solver_native_ranges": {
+            "solve_time": {
+              "min": 0.030823916953522712,
+              "max": 0.044565459014847875
+            },
+            "iterations": {
+              "min": 12,
+              "max": 18
+            },
+            "primal_infeasibility": {
+              "min": 9.986247939686166e-12,
+              "max": 1.048299799744079e-08
+            },
+            "max_slack": {
+              "min": 9.09090909266966e-11,
+              "max": 9.091525285379717e-11
+            }
+          },
+          "native_combined_utilization_ranges": {
+            "front_utilization": {
+              "min": 0.008584057896597325,
+              "max": 0.3165030985104174
+            },
+            "rear_utilization": {
+              "min": 0.011947640731262147,
+              "max": 0.3434746456615577
+            }
+          },
+          "native_reserve_min_s": 0.667,
+          "codriver_host_deadline_exceeded_rows": 0,
+          "host_runner_timing": {
+            "host_wall_seconds": 3.729115957976319,
+            "host_cpu_seconds": 3.8998990000000013,
+            "cpu_wall_ratio": 1.0457971926720029,
+            "observed_process_thread_counts": [
+              3
+            ]
+          },
+          "native_control": {
+            "requested_ceiling": 1,
+            "set_status": 0,
+            "blas_threading_mode": 1,
+            "mode_name": "single",
+            "exact_active_thread_count_available": false
+          },
+          "threadpoolctl_inventory": [],
+          "import_checks": {
+            "pre": {
+              "reported_modules": 1066,
+              "scientific_files": 65,
+              "scientific_namespaces": 2,
+              "mismatches": []
+            },
+            "post": {
+              "reported_modules": 1066,
+              "scientific_files": 65,
+              "scientific_namespaces": 2,
+              "mismatches": []
+            }
+          },
+          "owned_processes_alive": {
+            "worker": false,
+            "supervisor": false
+          },
+          "claim_sha256": "1251b4127ce4c29c34c2c41f6db098919519866c142accd0e6962b4edc44ba31"
+        }
+      },
+      "configuration_differences": [
+        {
+          "path": "/stage_coefficients/3",
+          "nominal": 200.0,
+          "exploratory": 100.0
+        },
+        {
+          "path": "/stage_coefficients/4",
+          "nominal": 200.0,
+          "exploratory": 100.0
+        },
+        {
+          "path": "/preset",
+          "nominal": "nominal",
+          "exploratory": "exploratory"
+        },
+        {
+          "path": "/configuration/costs/lateral",
+          "nominal": 2.0,
+          "exploratory": 1.0
+        }
+      ],
+      "authority": {
+        "sha256": "47ce382539021089742e59fa799227f531b761f2117bce4bd30095d3e8f4fbca",
+        "gate_sha256": "19217b49b7b49129e565078a6fdfaccc27bad8878f42c87a5c56fb8bb1fde857",
+        "corrective_review_sha256": "0d5d4092e100809b162398de7df6dd32160097d117bb5f1c9a550a6293b6cdb8",
+        "corrective_review_and_15_evidence_files_copied_byte_identically": true,
+        "successor_claims": {
+          "nominal": {
+            "preset": "nominal",
+            "run_id": "20261103T092919578650Z_8db96af73edb48afa17b8d608c9cb7a9",
+            "source": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+            "authorization_id": "primary-r1-r2-20261102",
+            "authorization_sha256": "47ce382539021089742e59fa799227f531b761f2117bce4bd30095d3e8f4fbca"
+          },
+          "exploratory": {
+            "preset": "exploratory",
+            "run_id": "20261103T092919578903Z_67d4ffe6c44b4628adc58505ca43b50c",
+            "source": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+            "authorization_id": "primary-r1-r2-20261102",
+            "authorization_sha256": "47ce382539021089742e59fa799227f531b761f2117bce4bd30095d3e8f4fbca"
+          }
+        },
+        "successor_claim_count": 2,
+        "original_claim_count": 1,
+        "run_directories_total_including_original_failure": 3,
+        "scientific_source": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+        "adapter_sha256": {
+          "tools/apex_workbench/nmpc_weight_lab.py": "8751fdfea3c1071fed61dc463d0827894b876295c1a5810647320964c6be1700",
+          "tools/apex_workbench/nmpc_weight_worker.py": "d1051d60263936f173e4b691f1407a2b8fbb801f4825ff926e75112eda18ef01",
+          "tools/apex_workbench/nmpc_weight_panels.py": "8ff944147ce43073289f4be1f4413167b584afc7bb7286d706f800f42b3495e9",
+          "tools/apex_workbench/configuration.py": "ed1611b0d15f17daeb515b7e6167863c49ee9c6ccd96c16403d3f55e5ac38dd3",
+          "tools/apex_workbench/worker.py": "bfd180f451585ff357a17735cae44e507507dff1718ef034624f9c821d058091",
+          "tools/apex_workbench/jobs.py": "9415eb09fa5680e45fab5575ddb03e454eab797632bc13cba49c4964fb5b9040",
+          "tools/apex_workbench/workspace.py": "60410157b2c6111628e7caeca8da2fb95fcbb74d40c3b1d827e0469778619a05",
+          "tools/apex_workbench/run_catalog.py": "4e974ea40940b2990f9b4416f97b8fe5fbde2ce6b335d3e49df3f4c422587f6d"
+        }
+      },
+      "original_preservation": {
+        "primary_groups": {
+          "scientific_source_sha256": {
+            "files": 56,
+            "mismatches": []
+          },
+          "qualification_sha256": {
+            "files": 345,
+            "mismatches": []
+          },
+          "gp_archive_sha256": {
+            "files": 25,
+            "mismatches": []
+          },
+          "legacy_oval_sha256": {
+            "files": 4,
+            "mismatches": []
+          }
+        },
+        "C0_bytes": 152600,
+        "C0_sha256": "2bd7d2385e7e2072a04e5d952eff9af8861eb7e63f016138d5289573c411f2d5",
+        "protected_tracked_files": 1023,
+        "original_M0_files": 545,
+        "frozen_runtime_files": 333,
+        "original_anchors": {
+          "BLOCKED.json": "66089de1966846b8a50c0238200fb92130ccd46be6a7f0935eb6b78ca02f457d",
+          "claims/nominal.json": "eee9e7d515b319b91c54264db8f14350bbdfab6770914028f41a68cc9df63abf",
+          "software_gate.json": "1be5c19db51b82dcc4815f0a716ac306b145865d4bb7bb96b1f907ffb557357f"
+        }
+      },
+      "preservation_during_review": {
+        "candidate": "96be0969703f0675060208843c9920bca2187e3e",
+        "branch": "codex/m5a-nmpc-weight-m0",
+        "tracked_status": "",
+        "preexisting_regular_file_count": 3252,
+        "preexisting_link_count": 191,
+        "preexisting_regular_files_preserved": true,
+        "preexisting_links_preserved": true,
+        "preexisting_regular_file_changes": {},
+        "parent_authorized_additions_during_review": {
+          "corrective_20261102/label_overview_plot.py": "029ee67f1f9f1527797e473d58cdedbbc464dc735bfbfcab3d39c9960da63342",
+          "corrective_20261102/label_objective_plot.log": "60a4f5134cc6aef20064318ad1b2473f53e88304f4ee968f547c6b0d062f7c73",
+          "corrective_20261102/label_objective_plot.py": "25d5e43802d532f7a74af51bac1f415525893c8fcaada94ed26c6555e60b7dbb",
+          "corrective_20261102/final_parent_audit.json": "de31b44ab861325d1aac12b3c651d436d009e0f7018e72a9999b74cd0405d077",
+          "corrective_20261102/label_overview_plot.log": "476e4a09595b4bb0d16bb4277b34a069af9be853f40cb374bd0d55c35dc02a83",
+          "corrective_20261102/diagnostics_v3/boolean_correction.json": "f07abd25036b71b8f8a1f2c2f5e709e0d9c8a264befad69189fbeefeef105df3",
+          "corrective_20261102/diagnostics_v3/plot_provenance.json": "bac80c3256c4899582e3f07dfb28fdb80fd13cf5ef77d2525978a3ffee8c16d9",
+          "corrective_20261102/diagnostics_v3/native_diagnostics_synthetic.png": "bf1b1fe239e24da17c0cfbe0514a81f917091fbf1b12d243a04d48ec0e944704",
+          "corrective_20261102/diagnostics_v3/native_objective_components_unqualified.png": "6f00813a1e669cb3c3451d8bcbe6df72f5c31626a2e16730c8f2216a540ef750",
+          "corrective_20261102/diagnostics_v3/analysis.json": "55505711a11d1a8a643a094984bb79a90b6201bba8723ea1cf60c1f92584a120",
+          "corrective_20261102/diagnostics_v3/overview_plot_provenance.json": "69f531def1f8e20718b9ad05d2d41eff4ac0ba0b38f264d9107b547bd64c54d0",
+          "corrective_20261102/diagnostics_v3/matplotlib-cache/fontlist-v3.11.0.json": "d60256413ac260d17934c3897bb976830a0940547163c2a21b34b3e16042bea6",
+          "corrective_20261102/diagnostics_v3/overview-matplotlib-cache/fontlist-v3.11.0.json": "d597dfa8ccae604f9ad47ef639a15935965f97f9b2548f50481704ace30f312c"
+        },
+        "addition_attribution": "Parent announced new stdlib-only final_parent_audit.json and new derived-only diagnostics_v3 Boolean correction/labeled PNGs/provenance/scripts/logs/cache files. Reviewer writes remained confined to final_review.",
+        "tracked_file_count": 1038,
+        "tracked_file_mismatches": []
+      },
+      "software_checks": {
+        "retained_strict_JSON_manifests_import_config_and_native_associations": "PASS",
+        "read_only_AppTest": {
+          "candidate": "96be0969703f0675060208843c9920bca2187e3e",
+          "native_bootstrap": {
+            "requested_ceiling": 1,
+            "set_status": 0,
+            "blas_threading_mode": 1,
+            "mode_name": "single",
+            "exact_active_thread_count_available": false
+          },
+          "normal_AppTest_timeout_s": 45,
+          "inspect": {
+            "nominal": {
+              "run_id": "20261103T092919578650Z_8db96af73edb48afa17b8d608c9cb7a9",
+              "plotly_charts": 2,
+              "exceptions": 0,
+              "errors": 0,
+              "unqualified_banner": true,
+              "cancel_action_offered": false
+            },
+            "exploratory": {
+              "run_id": "20261103T092919578903Z_67d4ffe6c44b4628adc58505ca43b50c",
+              "plotly_charts": 2,
+              "exceptions": 0,
+              "errors": 0,
+              "unqualified_banner": true,
+              "cancel_action_offered": false
+            }
+          },
+          "compare": {
+            "selected_run_ids": [
+              "20261103T092919578650Z_8db96af73edb48afa17b8d608c9cb7a9",
+              "20261103T092919578903Z_67d4ffe6c44b4628adc58505ca43b50c"
+            ],
+            "plotly_charts": 1,
+            "exceptions": 0,
+            "errors": 0,
+            "unqualified_banner": true,
+            "no_objective_total_ranking_caption": true
+          },
+          "terminal_status_read_calls": [
+            "/Users/marwansaber/.codex/worktrees/nmpc-weight-m0/MPC_Controller_v1_IronManStyle/results/apex_workbench_nmpc_weights/runs/20261103T092919578903Z_67d4ffe6c44b4628adc58505ca43b50c",
+            "/Users/marwansaber/.codex/worktrees/nmpc-weight-m0/MPC_Controller_v1_IronManStyle/results/apex_workbench_nmpc_weights/runs/20261103T092919578650Z_8db96af73edb48afa17b8d608c9cb7a9",
+            "/Users/marwansaber/.codex/worktrees/nmpc-weight-m0/MPC_Controller_v1_IronManStyle/results/apex_workbench_nmpc_weights/runs/20261103T092919578903Z_67d4ffe6c44b4628adc58505ca43b50c"
+          ],
+          "retained_run_bytes_preserved": true,
+          "run_or_cancel_actions_invoked": 0,
+          "optimizer_solves": 0,
+          "plant_steps": 0
+        },
+        "native_scenario_clock_checks": "scenario_audit.json",
+        "presentation_checks": "presentation_audit_v2.json",
+        "counts_aggregated": false,
+        "no_broad_suite_repetition": true
+      },
+      "operational_review_harness_failure": {
+        "file": "retained_audit.log",
+        "classification": "Audit assertion too strict for separate floating expression evaluations; not a scientific failure",
+        "retained": true,
+        "successor": "retained_audit_v2.json",
+        "literal_differences_preserved": true
+      },
+      "reviewer_execution_scope": {
+        "source_edits": 0,
+        "project_git_mutations": 0,
+        "actual_authority_claim_gate_mutations": 0,
+        "new_numerical_attempts": 0,
+        "optimizer_solves": 0,
+        "plant_steps": 0,
+        "controller_execution": false,
+        "formal_verification": false,
+        "output_root": "/Users/marwansaber/.codex/worktrees/nmpc-weight-m0/MPC_Controller_v1_IronManStyle/results/apex_workbench_nmpc_weights/corrective_20261102/final_review"
+      },
+      "limitations": [
+        "One native2.0s synthetic pair, one attempt per preset; no general performance ranking or physical validation.",
+        "Raw state rows end at1.9949999999999788; no invented raw endpoint row; native final plant segment remains separate.",
+        "TVLQR errors are to active native trajectory, not offline Planning residuals; native Frenet states differ in meaning.",
+        "Objective contributions are frozen-controller post-solve expressions, not native IPOPT instrumentation or proof of application.",
+        "Imposed availability/simulated plant movement differs from host solver durations and real-time physical concurrency.",
+        "Native SINGLE control retained; exact active numerical threads unavailable and threadpoolctl inventory empty; process-thread samples do not prove parallelism.",
+        "No full formal Verification or acceptance performed."
+      ],
+      "formal_verification_recommendation": [
+        "Separately authorize exact final reviewed delivery with current producer/gate/authority/runtime and artifact/currentness checks.",
+        "Run applicable scoped Workbench/P/C0 read-only functional regression and isolated M0 admission/cancel/owner-loss/partial/failure/resource fixtures.",
+        "Reuse unchanged applicable checks; no repetition or new numerical campaign is authorized by this review."
+      ],
+      "commands": {
+        "retained_audit_initial_failed": "PYTHONDONTWRITEBYTECODE=1 VECLIB_MAXIMUM_THREADS=1 PYTHONPATH=.:scripts:src approved Python -B corrective_20261102/final_review/audit_retained.py",
+        "retained_audit_final": "PYTHONDONTWRITEBYTECODE=1 VECLIB_MAXIMUM_THREADS=1 PYTHONPATH=.:scripts:src approved Python -B corrective_20261102/final_review/audit_retained_v2.py",
+        "readonly_ui": "PYTHONDONTWRITEBYTECODE=1 VECLIB_MAXIMUM_THREADS=1 PYTHONPATH=.:scripts:src approved Python -B corrective_20261102/final_review/readonly_ui.py",
+        "approved_interpreter": "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/tools/apex_workbench/.venv/bin/python"
+      },
+      "reviewed_native_artifacts_sha256_relative_M0_root": {
+        "runs/20261103T092919578650Z_8db96af73edb48afa17b8d608c9cb7a9/request.json": "b476dfc3b8b1507e4f3ccc692d99fd994b36ec7eac74560ec750ffaee51c8d38",
+        "runs/20261103T092919578650Z_8db96af73edb48afa17b8d608c9cb7a9/stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "runs/20261103T092919578650Z_8db96af73edb48afa17b8d608c9cb7a9/supervisor.json": "c54ca44e323e66b3f0a640ae1fa88a38458ee9610fa5cf39a6bded1092dc65e6",
+        "runs/20261103T092919578650Z_8db96af73edb48afa17b8d608c9cb7a9/worker.json": "8675578ee8f377379d65d8b8e46324dd7aea78358ff521455bf4f0c40731295c",
+        "runs/20261103T092919578650Z_8db96af73edb48afa17b8d608c9cb7a9/stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "runs/20261103T092919578650Z_8db96af73edb48afa17b8d608c9cb7a9/worker_result.json": "289e4cead5a450203d0ac548ea4254d4a8b0ea84b30628f6638f6d2e72279d5d",
+        "runs/20261103T092919578650Z_8db96af73edb48afa17b8d608c9cb7a9/execution.json": "122750c1a416c658d0a1559a0f9a9a5120815b65fbec76b39a59abc9d1a74f03",
+        "runs/20261103T092919578650Z_8db96af73edb48afa17b8d608c9cb7a9/experiment/summary.json": "289e4cead5a450203d0ac548ea4254d4a8b0ea84b30628f6638f6d2e72279d5d",
+        "runs/20261103T092919578650Z_8db96af73edb48afa17b8d608c9cb7a9/experiment/command_requests.jsonl": "cce854f72bc37c0c8841354d58b94a82ffdf31836a9ddf8c9b7095f57f0efdd2",
+        "runs/20261103T092919578650Z_8db96af73edb48afa17b8d608c9cb7a9/experiment/raw.json": "e81b5df5e10164eed1feccc3217292718391f1c0eb89d123cfb70e3b47a13263",
+        "runs/20261103T092919578650Z_8db96af73edb48afa17b8d608c9cb7a9/experiment/plant_segments.jsonl": "be2943ef76d77af97c51e8eb123432669b3b5adf1a58f910cad1ebf41ad02554",
+        "runs/20261103T092919578650Z_8db96af73edb48afa17b8d608c9cb7a9/experiment/optimizations.jsonl": "f079673dec6fbfebb57375389ea3fd4bb7bca0f67992035a7b0744ab3c6c45d4",
+        "runs/20261103T092919578650Z_8db96af73edb48afa17b8d608c9cb7a9/experiment/preparations.jsonl": "8eef491f502cda530cb40c0626e4f2359d693f9eacbe31ea4e652156c39ad5ff",
+        "runs/20261103T092919578650Z_8db96af73edb48afa17b8d608c9cb7a9/experiment/post_execution_identity.json": "c37734a6d0fcd31b3b9370d51eb4ab9ce63a092f83a35bc1cc67cbea398601c4",
+        "runs/20261103T092919578650Z_8db96af73edb48afa17b8d608c9cb7a9/experiment/pre_execution_identity.json": "b2e3a6fa6d2e5719ec9f650da763b2c9acd5a26918aee07a61fa5252675a4e6d",
+        "runs/20261103T092919578650Z_8db96af73edb48afa17b8d608c9cb7a9/status.json": "09299a4c39b6e53397206c86bf5cafd09de458e7656aa0c12748ab934dfe439b",
+        "runs/20261103T092919578650Z_8db96af73edb48afa17b8d608c9cb7a9/artifacts.json": "bc4f53a95fcae849e11537eb7c25f9b9d1480be4be8f2f88e33d212f283f0933",
+        "runs/20261103T092919578903Z_67d4ffe6c44b4628adc58505ca43b50c/request.json": "a038a163ed0217208ce3edd962374b8fc9cdd319e253b21c394da98a62a29f3c",
+        "runs/20261103T092919578903Z_67d4ffe6c44b4628adc58505ca43b50c/stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "runs/20261103T092919578903Z_67d4ffe6c44b4628adc58505ca43b50c/supervisor.json": "1a78fedbfe64025fc651aa5f03728eb5ead7204c1fb245582ab0a13f47ff04fa",
+        "runs/20261103T092919578903Z_67d4ffe6c44b4628adc58505ca43b50c/worker.json": "591e4a50efb903ba3977501ef5deb1ee734ae4320a87212f4efb1f7a9533a3f2",
+        "runs/20261103T092919578903Z_67d4ffe6c44b4628adc58505ca43b50c/stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "runs/20261103T092919578903Z_67d4ffe6c44b4628adc58505ca43b50c/worker_result.json": "6498abb88c3cc9581732d9cf4a6f49dee9862e07e6b3580b92e00849aedd51a9",
+        "runs/20261103T092919578903Z_67d4ffe6c44b4628adc58505ca43b50c/execution.json": "6542892db78b6e2eea9ee2a7bd97490cecc8c8eec0822f62e04777c9a3b060e3",
+        "runs/20261103T092919578903Z_67d4ffe6c44b4628adc58505ca43b50c/experiment/summary.json": "6498abb88c3cc9581732d9cf4a6f49dee9862e07e6b3580b92e00849aedd51a9",
+        "runs/20261103T092919578903Z_67d4ffe6c44b4628adc58505ca43b50c/experiment/command_requests.jsonl": "29d271d061f21ce1668bf5742e988a44356eda467c55b3591bbf4b16293ca519",
+        "runs/20261103T092919578903Z_67d4ffe6c44b4628adc58505ca43b50c/experiment/raw.json": "95c3a927ac3203c1a4316a89257fc3f86cf754daac789ec07245c3450bcae792",
+        "runs/20261103T092919578903Z_67d4ffe6c44b4628adc58505ca43b50c/experiment/plant_segments.jsonl": "fc4a9885d8c950087b041bb140f5b3999e8b122ba7b9872e21e6a9e230507120",
+        "runs/20261103T092919578903Z_67d4ffe6c44b4628adc58505ca43b50c/experiment/optimizations.jsonl": "896a2c7f8f88179adfe4256969f750c0fe78b72925039fc1d49833bdace82ef7",
+        "runs/20261103T092919578903Z_67d4ffe6c44b4628adc58505ca43b50c/experiment/preparations.jsonl": "9b23b3bb5af2f7dd4a8d0dc28709b5deb0d704a2f2976141ac293aed7eeb0456",
+        "runs/20261103T092919578903Z_67d4ffe6c44b4628adc58505ca43b50c/experiment/post_execution_identity.json": "c37734a6d0fcd31b3b9370d51eb4ab9ce63a092f83a35bc1cc67cbea398601c4",
+        "runs/20261103T092919578903Z_67d4ffe6c44b4628adc58505ca43b50c/experiment/pre_execution_identity.json": "a34c1df1b57d992082f6888cdeca03bd614179485f3abe4ee2eb315384a1d644",
+        "runs/20261103T092919578903Z_67d4ffe6c44b4628adc58505ca43b50c/status.json": "a8b5f045d9aeaa295cbcce7cedefb16378b177861ab6e4d1dff9ed208636683a",
+        "runs/20261103T092919578903Z_67d4ffe6c44b4628adc58505ca43b50c/artifacts.json": "dc74308fa3fd16edfd600ab1bf1b31c4b56df2070284a8936d7c5b6a78fe6f31"
+      },
+      "reviewed_presentation_artifacts_sha256_relative_corrective_root": {
+        "diagnostics_v2/analysis.json": "4dc1a1c5c05c10a155e24f86ccc9eb8617e8a02cbb29b2da1f13ef14d8de0a2c",
+        "diagnostics_v2/native_diagnostics.png": "2ec51da25c77037dcf160e7a84517b11f41925bbd51b432a8506c92e26359d42",
+        "diagnostics_v2/native_objective_components.png": "e43a671c2c10dd0dd41ed582626ac7a3d3ffad13a7835aae13447c325da14caa",
+        "diagnostics_v2/native_diagnostics.html": "67e4a153b5fbaf146ce3d02eb02fbd813863151f9c551fc1abef180f46357c09",
+        "diagnostics_v3/analysis.json": "55505711a11d1a8a643a094984bb79a90b6201bba8723ea1cf60c1f92584a120",
+        "diagnostics_v3/boolean_correction.json": "f07abd25036b71b8f8a1f2c2f5e709e0d9c8a264befad69189fbeefeef105df3",
+        "diagnostics_v3/native_objective_components_unqualified.png": "6f00813a1e669cb3c3451d8bcbe6df72f5c31626a2e16730c8f2216a540ef750",
+        "diagnostics_v3/plot_provenance.json": "bac80c3256c4899582e3f07dfb28fdb80fd13cf5ef77d2525978a3ffee8c16d9",
+        "diagnostics_v3/native_diagnostics_synthetic.png": "bf1b1fe239e24da17c0cfbe0514a81f917091fbf1b12d243a04d48ec0e944704",
+        "diagnostics_v3/overview_plot_provenance.json": "69f531def1f8e20718b9ad05d2d41eff4ac0ba0b38f264d9107b547bd64c54d0"
+      },
+      "evidence_sha256": {
+        "REVIEW.md": "e9f836c7b9980666b220e28214fbb88255f03f9ed0815092f38ce82f7b0fac7e",
+        "audit_before.json": "a73bd55d09f70caadf21cb12698ae6256cc2a6e2bc9f30525ac5340c359f6d28",
+        "audit_retained.py": "f34b29db0c69321f9560026f765afd40867f8719f5abbeaebfc1b74d82146407",
+        "retained_audit.log": "cefa4b3a5e0048b05badcd1a92d8800e5e3fabcdbc54aefa1f2208195367c42f",
+        "audit_retained_v2.py": "6531bf3749be7535b1489d6f9d0d4d3d91d139696b9b01996591f5982f8240b9",
+        "retained_audit_v2.log": "65ca0da7c6dc5c817233ced364c9f8b6cf417498472566ff3949e8e5fb5b1005",
+        "retained_audit_v2.json": "65ca0da7c6dc5c817233ced364c9f8b6cf417498472566ff3949e8e5fb5b1005",
+        "readonly_ui.py": "863e9c9fec3604c27ddc94d512a9316429a72c364ded0220044747473a0c6621",
+        "readonly_ui.log": "1ce5b1f40518df45456215b2c7544c130f7e5ebcb9b3679428ecb63469765e10",
+        "readonly_ui_result.json": "9844b48f98b4803c0416c054faf9b61de973ee8b35ba1bfdf0d669930f45b2f3",
+        "presentation_audit.json": "d81b928f71bb73ed48f9163689e987df927e230b1b0bb221106f9b51858a5872",
+        "presentation_audit_v2.json": "786998796820f8516de0fca705e346d6ab52b20ba6f60f61a005635965768764",
+        "scenario_audit.json": "64ef5d838d88154b1702a04a373b4d27185ef88b89c9c949a3cae3b1196a5c69",
+        "preservation.json": "c45b6808ba6e4d6aa7c8afa8d7d60f3d68e63f2dae3b44e1c312123f33148dc8"
+      }
+    },
+    "remaining_numerical_attempt_budget": 0,
+    "successor_authority_sha256": "47ce382539021089742e59fa799227f531b761f2117bce4bd30095d3e8f4fbca",
+    "successor_gate_sha256": "19217b49b7b49129e565078a6fdfaccc27bad8878f42c87a5c56fb8bb1fde857",
+    "effective_snapshots": {
+      "nominal": {
+        "preset": "nominal",
+        "configuration": {
+          "tire_physics": {
+            "model": "smooth_combined_grip",
+            "longitudinal_allocation": "normal_load_proportional"
+          },
+          "costs": {
+            "lateral": 2.0,
+            "dynamic": 1.0,
+            "speed": 1.0,
+            "control": 1.0,
+            "rate": 1.0,
+            "terminal": 1.0,
+            "alpha_vy": 1.0,
+            "alpha_r": 1.0
+          },
+          "horizon": 8,
+          "dt": 0.1,
+          "substeps": 4,
+          "steering_rate": 1.0,
+          "minimum_speed": 0.5,
+          "denominator_margin": 0.01,
+          "minimum_axle_load": 1e-06,
+          "tracker_margin": 0.08,
+          "racing_reference": true,
+          "progress_weight": 0
+        },
+        "simulation": {
+          "planner_dt": 0.1,
+          "tracker_dt": 0.01,
+          "plant_dt": 0.005,
+          "duration": 2.0,
+          "laps": 2,
+          "latency_mode": "injected",
+          "injected_delay": 0.0,
+          "spike_plan_id": -1,
+          "spike_delay": 0.15,
+          "failed_plan_ids": [],
+          "disturbance_time": null,
+          "disturbance_ey": 0.08,
+          "disturbance_heading": -0.04,
+          "urgent": true,
+          "codriver_delay": 0.005,
+          "committed_prefix_prediction": false,
+          "fixed_handoff_offset": null
+        },
+        "initial_state": [
+          5.253846582838669,
+          0.0,
+          0.9966576677921577,
+          0.034598592705642695,
+          1.0,
+          -0.11268618155631815
+        ],
+        "vehicle": {
+          "name": "synthetic_dynamic_test_vehicle",
+          "mass": 2.0,
+          "yaw_inertia": 0.025,
+          "wheelbase": 0.3,
+          "lf": 0.15,
+          "lr": 0.15,
+          "cg_height": 0.04,
+          "vehicle_width": null,
+          "vehicle_length": null,
+          "front_cornering_stiffness": 45.0,
+          "rear_cornering_stiffness": 45.0,
+          "tire_road_friction_coefficient": 1.0,
+          "maximum_steering_angle": 0.4,
+          "maximum_steering_rate": null,
+          "maximum_acceleration": 2.0,
+          "maximum_braking_deceleration": 3.0,
+          "maximum_speed": 6.0
+        },
+        "timing": {
+          "mode": "replay",
+          "planner_pattern_s": [
+            0.035,
+            0.055,
+            0.045,
+            0.025
+          ],
+          "history_length": 8001,
+          "codriver_delay_s": 0.005,
+          "startup": "prelaunch; no imposed replay entry consumed"
+        },
+        "solver_options": {
+          "ipopt.warm_start_init_point": "yes"
+        },
+        "warm_start": true,
+        "architecture": "A/original predictor",
+        "gamma": 2.0,
+        "stage_coefficients": [
+          4,
+          4,
+          1,
+          200.0,
+          200.0
+        ]
+      },
+      "exploratory": {
+        "preset": "exploratory",
+        "configuration": {
+          "tire_physics": {
+            "model": "smooth_combined_grip",
+            "longitudinal_allocation": "normal_load_proportional"
+          },
+          "costs": {
+            "lateral": 1.0,
+            "dynamic": 1.0,
+            "speed": 1.0,
+            "control": 1.0,
+            "rate": 1.0,
+            "terminal": 1.0,
+            "alpha_vy": 1.0,
+            "alpha_r": 1.0
+          },
+          "horizon": 8,
+          "dt": 0.1,
+          "substeps": 4,
+          "steering_rate": 1.0,
+          "minimum_speed": 0.5,
+          "denominator_margin": 0.01,
+          "minimum_axle_load": 1e-06,
+          "tracker_margin": 0.08,
+          "racing_reference": true,
+          "progress_weight": 0
+        },
+        "simulation": {
+          "planner_dt": 0.1,
+          "tracker_dt": 0.01,
+          "plant_dt": 0.005,
+          "duration": 2.0,
+          "laps": 2,
+          "latency_mode": "injected",
+          "injected_delay": 0.0,
+          "spike_plan_id": -1,
+          "spike_delay": 0.15,
+          "failed_plan_ids": [],
+          "disturbance_time": null,
+          "disturbance_ey": 0.08,
+          "disturbance_heading": -0.04,
+          "urgent": true,
+          "codriver_delay": 0.005,
+          "committed_prefix_prediction": false,
+          "fixed_handoff_offset": null
+        },
+        "initial_state": [
+          5.253846582838669,
+          0.0,
+          0.9966576677921577,
+          0.034598592705642695,
+          1.0,
+          -0.11268618155631815
+        ],
+        "vehicle": {
+          "name": "synthetic_dynamic_test_vehicle",
+          "mass": 2.0,
+          "yaw_inertia": 0.025,
+          "wheelbase": 0.3,
+          "lf": 0.15,
+          "lr": 0.15,
+          "cg_height": 0.04,
+          "vehicle_width": null,
+          "vehicle_length": null,
+          "front_cornering_stiffness": 45.0,
+          "rear_cornering_stiffness": 45.0,
+          "tire_road_friction_coefficient": 1.0,
+          "maximum_steering_angle": 0.4,
+          "maximum_steering_rate": null,
+          "maximum_acceleration": 2.0,
+          "maximum_braking_deceleration": 3.0,
+          "maximum_speed": 6.0
+        },
+        "timing": {
+          "mode": "replay",
+          "planner_pattern_s": [
+            0.035,
+            0.055,
+            0.045,
+            0.025
+          ],
+          "history_length": 8001,
+          "codriver_delay_s": 0.005,
+          "startup": "prelaunch; no imposed replay entry consumed"
+        },
+        "solver_options": {
+          "ipopt.warm_start_init_point": "yes"
+        },
+        "warm_start": true,
+        "architecture": "A/original predictor",
+        "gamma": 2.0,
+        "stage_coefficients": [
+          4,
+          4,
+          1,
+          100.0,
+          100.0
+        ]
+      }
+    },
+    "configuration_differences": [
+      {
+        "path": "/stage_coefficients/3",
+        "nominal": 200.0,
+        "exploratory": 100.0
+      },
+      {
+        "path": "/stage_coefficients/4",
+        "nominal": 200.0,
+        "exploratory": 100.0
+      },
+      {
+        "path": "/preset",
+        "nominal": "nominal",
+        "exploratory": "exploratory"
+      },
+      {
+        "path": "/configuration/costs/lateral",
+        "nominal": 2.0,
+        "exploratory": 1.0
+      }
+    ],
+    "results": {
+      "nominal": {
+        "directory": "/Users/marwansaber/.codex/worktrees/nmpc-weight-m0/MPC_Controller_v1_IronManStyle/results/apex_workbench_nmpc_weights/runs/20261103T092919578650Z_8db96af73edb48afa17b8d608c9cb7a9",
+        "run_id": "20261103T092919578650Z_8db96af73edb48afa17b8d608c9cb7a9",
+        "status": {
+          "record_version": 2,
+          "state": "completed",
+          "scientific_outcome": "completed",
+          "evidence_state": "valid",
+          "updated_utc": "2026-11-03T09:41:13.919863+00:00",
+          "error": null,
+          "returncode": 0,
+          "wall_runtime_s": 16.24771441699704,
+          "sampled_peak_worker_rss_bytes": 241745920,
+          "sampled_peak_worker_threads": 4,
+          "sampling_note": "100 ms supervisor samples; worker guard polls at 50 ms; soft bounds",
+          "manifest_sha256": "bc4f53a95fcae849e11537eb7c25f9b9d1480be4be8f2f88e33d212f283f0933"
+        },
+        "summary": {
+          "failure": null,
+          "stop_reason": "duration",
+          "end_time": 1.9999999999999787,
+          "pending_at_end": false,
+          "host_wall_seconds": 3.731579250015784,
+          "host_cpu_seconds": 3.886683999999999,
+          "cpu_wall_ratio": 1.041565444438453,
+          "observed_process_thread_counts": [
+            3
+          ],
+          "classification": "EXPERIMENTAL / UNQUALIFIED \u2014 synthetic NMPC/TVLQR; no physical or performance qualification",
+          "metrics": {
+            "state_samples": 400,
+            "first_time_s": 0.0,
+            "last_time_s": 1.9949999999999788,
+            "rms_e_y_m": 0.033214838001299665,
+            "rms_e_psi_rad": 0.03661460956125865,
+            "definition": "Equal-weight RMS over native retained state rows; no interpolation; e_y/e_psi are native Frenet states, not a new racing-reference residual."
+          },
+          "modeled_delays_are_not_host_timings": true,
+          "coverage": {
+            "requested_duration_s": 2.0,
+            "native_end_time_s": 1.9999999999999787,
+            "native_stop_reason": "duration",
+            "requested_duration_completed": true,
+            "rule": "Native duration termination without a failure; no inferred endpoint state"
+          }
+        },
+        "state_metrics": {
+          "state_samples": 400,
+          "first_time_s": 0.0,
+          "last_time_s": 1.9949999999999788,
+          "rms_e_y_m": 0.033214838001299665,
+          "rms_e_psi_rad": 0.03661460956125865,
+          "definition": "Equal-weight RMS over native retained state rows; no interpolation; e_y/e_psi are native Frenet states, not a new racing-reference residual."
+        },
+        "native_state_diagnostics": {
+          "front_utilization": {
+            "total_rows": 400,
+            "available_finite": 400,
+            "missing_or_nonfinite": 0,
+            "min": 0.009036771436938597,
+            "max": 0.33734855084513626,
+            "rms_native_samples": 0.1007346060486708
+          },
+          "rear_utilization": {
+            "total_rows": 400,
+            "available_finite": 400,
+            "missing_or_nonfinite": 0,
+            "min": 0.012036347823266695,
+            "max": 0.36460086857346896,
+            "rms_native_samples": 0.11850456038813234
+          },
+          "boundary_violation": {
+            "total_rows": 400,
+            "recorded_boolean": 400,
+            "true_flags": 0,
+            "false_flags": 400,
+            "missing_or_nonboolean": 0,
+            "definition": "Native Boolean boundary flags counted literally; no inferred boundary margin or physical safety claim"
+          }
+        },
+        "native_control_channels": {
+          "error_e_y": {
+            "total_rows": 200,
+            "available_finite": 200,
+            "missing_or_nonfinite": 0,
+            "min": -0.00024748690802166295,
+            "max": 0.0038598564960227386,
+            "rms_native_samples": 0.0006746883273349105
+          },
+          "error_e_psi": {
+            "total_rows": 200,
+            "available_finite": 200,
+            "missing_or_nonfinite": 0,
+            "min": -0.0062032480993186034,
+            "max": 0.021660569617978798,
+            "rms_native_samples": 0.004477961375947072
+          },
+          "delta": {
+            "total_rows": 200,
+            "available_finite": 200,
+            "missing_or_nonfinite": 0,
+            "min": -0.05997250406504999,
+            "max": 0.05630260694604239,
+            "rms_native_samples": 0.015916575785675766
+          },
+          "a_cmd": {
+            "total_rows": 200,
+            "available_finite": 200,
+            "missing_or_nonfinite": 0,
+            "min": -0.09677654803946295,
+            "max": 0.9365010035491795,
+            "rms_native_samples": 0.4801161115265639
+          },
+          "physical_latency": {
+            "total_rows": 200,
+            "available_finite": 200,
+            "missing_or_nonfinite": 0,
+            "min": 0.005,
+            "max": 0.005,
+            "rms_native_samples": 0.005
+          }
+        },
+        "native_optimizer_channels": {
+          "primal_infeasibility": {
+            "total_rows": 20,
+            "available_finite": 20,
+            "missing_or_nonfinite": 0,
+            "min": 9.930778421818331e-12,
+            "max": 1.2654932407540898e-08,
+            "rms_native_samples": 4.876767139347208e-09
+          },
+          "max_slack": {
+            "total_rows": 20,
+            "available_finite": 20,
+            "missing_or_nonfinite": 0,
+            "min": 9.090909092670772e-11,
+            "max": 9.091525285379717e-11,
+            "rms_native_samples": 9.091000764473283e-11
+          },
+          "solve_time": {
+            "total_rows": 20,
+            "available_finite": 20,
+            "missing_or_nonfinite": 0,
+            "min": 0.030917749973013997,
+            "max": 0.044722374994307756,
+            "rms_native_samples": 0.04032482081199808
+          },
+          "iterations": {
+            "total_rows": 20,
+            "available_finite": 20,
+            "missing_or_nonfinite": 0,
+            "min": 12,
+            "max": 18,
+            "rms_native_samples": 16.0312195418814
+          }
+        },
+        "solver_success_count": 20,
+        "native_objective_plan_association_verified": 20,
+        "requested_command_native_association_verified": 200,
+        "coverage": {
+          "requested_duration_s": 2.0,
+          "native_end_time_s": 1.9999999999999787,
+          "native_stop_reason": "duration",
+          "requested_duration_completed": true,
+          "rule": "Native duration termination without a failure; no inferred endpoint state"
+        },
+        "missingness_note": "State samples end before native duration clock; no endpoint state created. TVLQR error fields refer to active native trajectory, not a new offline reference residual.",
+        "native_artifact_sha256": {
+          "request.json": "b476dfc3b8b1507e4f3ccc692d99fd994b36ec7eac74560ec750ffaee51c8d38",
+          "stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "supervisor.json": "c54ca44e323e66b3f0a640ae1fa88a38458ee9610fa5cf39a6bded1092dc65e6",
+          "worker.json": "8675578ee8f377379d65d8b8e46324dd7aea78358ff521455bf4f0c40731295c",
+          "stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "worker_result.json": "289e4cead5a450203d0ac548ea4254d4a8b0ea84b30628f6638f6d2e72279d5d",
+          "execution.json": "122750c1a416c658d0a1559a0f9a9a5120815b65fbec76b39a59abc9d1a74f03",
+          "experiment/summary.json": "289e4cead5a450203d0ac548ea4254d4a8b0ea84b30628f6638f6d2e72279d5d",
+          "experiment/command_requests.jsonl": "cce854f72bc37c0c8841354d58b94a82ffdf31836a9ddf8c9b7095f57f0efdd2",
+          "experiment/raw.json": "e81b5df5e10164eed1feccc3217292718391f1c0eb89d123cfb70e3b47a13263",
+          "experiment/plant_segments.jsonl": "be2943ef76d77af97c51e8eb123432669b3b5adf1a58f910cad1ebf41ad02554",
+          "experiment/optimizations.jsonl": "f079673dec6fbfebb57375389ea3fd4bb7bca0f67992035a7b0744ab3c6c45d4",
+          "experiment/preparations.jsonl": "8eef491f502cda530cb40c0626e4f2359d693f9eacbe31ea4e652156c39ad5ff",
+          "experiment/post_execution_identity.json": "c37734a6d0fcd31b3b9370d51eb4ab9ce63a092f83a35bc1cc67cbea398601c4",
+          "experiment/pre_execution_identity.json": "b2e3a6fa6d2e5719ec9f650da763b2c9acd5a26918aee07a61fa5252675a4e6d"
+        },
+        "manifest_sha256": "bc4f53a95fcae849e11537eb7c25f9b9d1480be4be8f2f88e33d212f283f0933"
+      },
+      "exploratory": {
+        "directory": "/Users/marwansaber/.codex/worktrees/nmpc-weight-m0/MPC_Controller_v1_IronManStyle/results/apex_workbench_nmpc_weights/runs/20261103T092919578903Z_67d4ffe6c44b4628adc58505ca43b50c",
+        "run_id": "20261103T092919578903Z_67d4ffe6c44b4628adc58505ca43b50c",
+        "status": {
+          "record_version": 2,
+          "state": "completed",
+          "scientific_outcome": "completed",
+          "evidence_state": "valid",
+          "updated_utc": "2026-11-03T09:42:23.864368+00:00",
+          "error": null,
+          "returncode": 0,
+          "wall_runtime_s": 16.037122457986698,
+          "sampled_peak_worker_rss_bytes": 240746496,
+          "sampled_peak_worker_threads": 4,
+          "sampling_note": "100 ms supervisor samples; worker guard polls at 50 ms; soft bounds",
+          "manifest_sha256": "dc74308fa3fd16edfd600ab1bf1b31c4b56df2070284a8936d7c5b6a78fe6f31"
+        },
+        "summary": {
+          "failure": null,
+          "stop_reason": "duration",
+          "end_time": 1.9999999999999787,
+          "pending_at_end": false,
+          "host_wall_seconds": 3.729115957976319,
+          "host_cpu_seconds": 3.8998990000000013,
+          "cpu_wall_ratio": 1.0457971926720029,
+          "observed_process_thread_counts": [
+            3
+          ],
+          "classification": "EXPERIMENTAL / UNQUALIFIED \u2014 synthetic NMPC/TVLQR; no physical or performance qualification",
+          "metrics": {
+            "state_samples": 400,
+            "first_time_s": 0.0,
+            "last_time_s": 1.9949999999999788,
+            "rms_e_y_m": 0.03420883421140883,
+            "rms_e_psi_rad": 0.03493905907875456,
+            "definition": "Equal-weight RMS over native retained state rows; no interpolation; e_y/e_psi are native Frenet states, not a new racing-reference residual."
+          },
+          "modeled_delays_are_not_host_timings": true,
+          "coverage": {
+            "requested_duration_s": 2.0,
+            "native_end_time_s": 1.9999999999999787,
+            "native_stop_reason": "duration",
+            "requested_duration_completed": true,
+            "rule": "Native duration termination without a failure; no inferred endpoint state"
+          }
+        },
+        "state_metrics": {
+          "state_samples": 400,
+          "first_time_s": 0.0,
+          "last_time_s": 1.9949999999999788,
+          "rms_e_y_m": 0.03420883421140883,
+          "rms_e_psi_rad": 0.03493905907875456,
+          "definition": "Equal-weight RMS over native retained state rows; no interpolation; e_y/e_psi are native Frenet states, not a new racing-reference residual."
+        },
+        "native_state_diagnostics": {
+          "front_utilization": {
+            "total_rows": 400,
+            "available_finite": 400,
+            "missing_or_nonfinite": 0,
+            "min": 0.008584057896597325,
+            "max": 0.3165030985104174,
+            "rms_native_samples": 0.09797832409255824
+          },
+          "rear_utilization": {
+            "total_rows": 400,
+            "available_finite": 400,
+            "missing_or_nonfinite": 0,
+            "min": 0.011947640731262147,
+            "max": 0.3434746456615577,
+            "rms_native_samples": 0.11504971259312963
+          },
+          "boundary_violation": {
+            "total_rows": 400,
+            "recorded_boolean": 400,
+            "true_flags": 0,
+            "false_flags": 400,
+            "missing_or_nonboolean": 0,
+            "definition": "Native Boolean boundary flags counted literally; no inferred boundary margin or physical safety claim"
+          }
+        },
+        "native_control_channels": {
+          "error_e_y": {
+            "total_rows": 200,
+            "available_finite": 200,
+            "missing_or_nonfinite": 0,
+            "min": -0.00012895639756893562,
+            "max": 0.0024250611883438883,
+            "rms_native_samples": 0.0005263907568285608
+          },
+          "error_e_psi": {
+            "total_rows": 200,
+            "available_finite": 200,
+            "missing_or_nonfinite": 0,
+            "min": -0.0008623859136012157,
+            "max": 0.015339897911581524,
+            "rms_native_samples": 0.0030992693828768084
+          },
+          "delta": {
+            "total_rows": 200,
+            "available_finite": 200,
+            "missing_or_nonfinite": 0,
+            "min": -0.03522384851480429,
+            "max": 0.05068480786197826,
+            "rms_native_samples": 0.013086432710178243
+          },
+          "a_cmd": {
+            "total_rows": 200,
+            "available_finite": 200,
+            "missing_or_nonfinite": 0,
+            "min": -0.0965914613532607,
+            "max": 0.9232852002979597,
+            "rms_native_samples": 0.4786992007982695
+          },
+          "physical_latency": {
+            "total_rows": 200,
+            "available_finite": 200,
+            "missing_or_nonfinite": 0,
+            "min": 0.005,
+            "max": 0.005,
+            "rms_native_samples": 0.005
+          }
+        },
+        "native_optimizer_channels": {
+          "primal_infeasibility": {
+            "total_rows": 20,
+            "available_finite": 20,
+            "missing_or_nonfinite": 0,
+            "min": 9.986247939686166e-12,
+            "max": 1.048299799744079e-08,
+            "rms_native_samples": 3.804331002745548e-09
+          },
+          "max_slack": {
+            "total_rows": 20,
+            "available_finite": 20,
+            "missing_or_nonfinite": 0,
+            "min": 9.09090909266966e-11,
+            "max": 9.091525285379717e-11,
+            "rms_native_samples": 9.09097060679988e-11
+          },
+          "solve_time": {
+            "total_rows": 20,
+            "available_finite": 20,
+            "missing_or_nonfinite": 0,
+            "min": 0.030823916953522712,
+            "max": 0.044565459014847875,
+            "rms_native_samples": 0.04007064756631245
+          },
+          "iterations": {
+            "total_rows": 20,
+            "available_finite": 20,
+            "missing_or_nonfinite": 0,
+            "min": 12,
+            "max": 18,
+            "rms_native_samples": 16.0312195418814
+          }
+        },
+        "solver_success_count": 20,
+        "native_objective_plan_association_verified": 20,
+        "requested_command_native_association_verified": 200,
+        "coverage": {
+          "requested_duration_s": 2.0,
+          "native_end_time_s": 1.9999999999999787,
+          "native_stop_reason": "duration",
+          "requested_duration_completed": true,
+          "rule": "Native duration termination without a failure; no inferred endpoint state"
+        },
+        "missingness_note": "State samples end before native duration clock; no endpoint state created. TVLQR error fields refer to active native trajectory, not a new offline reference residual.",
+        "native_artifact_sha256": {
+          "request.json": "a038a163ed0217208ce3edd962374b8fc9cdd319e253b21c394da98a62a29f3c",
+          "stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "supervisor.json": "1a78fedbfe64025fc651aa5f03728eb5ead7204c1fb245582ab0a13f47ff04fa",
+          "worker.json": "591e4a50efb903ba3977501ef5deb1ee734ae4320a87212f4efb1f7a9533a3f2",
+          "stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "worker_result.json": "6498abb88c3cc9581732d9cf4a6f49dee9862e07e6b3580b92e00849aedd51a9",
+          "execution.json": "6542892db78b6e2eea9ee2a7bd97490cecc8c8eec0822f62e04777c9a3b060e3",
+          "experiment/summary.json": "6498abb88c3cc9581732d9cf4a6f49dee9862e07e6b3580b92e00849aedd51a9",
+          "experiment/command_requests.jsonl": "29d271d061f21ce1668bf5742e988a44356eda467c55b3591bbf4b16293ca519",
+          "experiment/raw.json": "95c3a927ac3203c1a4316a89257fc3f86cf754daac789ec07245c3450bcae792",
+          "experiment/plant_segments.jsonl": "fc4a9885d8c950087b041bb140f5b3999e8b122ba7b9872e21e6a9e230507120",
+          "experiment/optimizations.jsonl": "896a2c7f8f88179adfe4256969f750c0fe78b72925039fc1d49833bdace82ef7",
+          "experiment/preparations.jsonl": "9b23b3bb5af2f7dd4a8d0dc28709b5deb0d704a2f2976141ac293aed7eeb0456",
+          "experiment/post_execution_identity.json": "c37734a6d0fcd31b3b9370d51eb4ab9ce63a092f83a35bc1cc67cbea398601c4",
+          "experiment/pre_execution_identity.json": "a34c1df1b57d992082f6888cdeca03bd614179485f3abe4ee2eb315384a1d644"
+        },
+        "manifest_sha256": "dc74308fa3fd16edfd600ab1bf1b31c4b56df2070284a8936d7c5b6a78fe6f31"
+      }
+    },
+    "comparison_classification": "Experimental / unqualified nominal\u2013exploratory pair; native independent coverage, no objective-total ranking",
+    "final_preservation": {
+      "primary_groups": {
+        "scientific_source_sha256": {
+          "files": 56,
+          "mismatches": []
+        },
+        "qualification_sha256": {
+          "files": 345,
+          "mismatches": []
+        },
+        "gp_archive_sha256": {
+          "files": 25,
+          "mismatches": []
+        },
+        "legacy_oval_sha256": {
+          "files": 4,
+          "mismatches": []
+        }
+      },
+      "C0_bytes": 152600,
+      "C0_sha256": "2bd7d2385e7e2072a04e5d952eff9af8861eb7e63f016138d5289573c411f2d5",
+      "protected_tracked_files": 1023,
+      "original_M0_files": 545,
+      "frozen_runtime_files": 333,
+      "original_anchors": {
+        "BLOCKED.json": "66089de1966846b8a50c0238200fb92130ccd46be6a7f0935eb6b78ca02f457d",
+        "claims/nominal.json": "eee9e7d515b319b91c54264db8f14350bbdfab6770914028f41a68cc9df63abf",
+        "software_gate.json": "1be5c19db51b82dcc4815f0a716ac306b145865d4bb7bb96b1f907ffb557357f"
+      }
+    },
+    "derived_corrections": [
+      "Initial plotting harness omitted parent VECLIB setting; failed script/log retained and read-only plotting rerun in v2, no scientific retry",
+      "v2 numeric helper falsely marked Boolean boundary flags missing; v3 counts400 false/0 true/0 missing per case; v2 retained",
+      "Standalone v2 PNG labels incomplete; new v3 PNGs explicitly synthetic/experimental/unqualified; numeric points and v2 retained",
+      "Independent exact solver/component scalar equality assertion was too strict; original failed auditor/log retained; literal ULP/sum residuals reported, no native values repaired"
+    ],
+    "accepted_derived_outputs": {
+      "results/apex_workbench_nmpc_weights/corrective_20261102/diagnostics_v3/analysis.json": "55505711a11d1a8a643a094984bb79a90b6201bba8723ea1cf60c1f92584a120",
+      "results/apex_workbench_nmpc_weights/corrective_20261102/diagnostics_v3/native_diagnostics_synthetic.png": "bf1b1fe239e24da17c0cfbe0514a81f917091fbf1b12d243a04d48ec0e944704",
+      "results/apex_workbench_nmpc_weights/corrective_20261102/diagnostics_v3/native_objective_components_unqualified.png": "6f00813a1e669cb3c3451d8bcbe6df72f5c31626a2e16730c8f2216a540ef750",
+      "results/apex_workbench_nmpc_weights/corrective_20261102/diagnostics_v3/boolean_correction.json": "f07abd25036b71b8f8a1f2c2f5e709e0d9c8a264befad69189fbeefeef105df3",
+      "results/apex_workbench_nmpc_weights/corrective_20261102/diagnostics_v3/plot_provenance.json": "bac80c3256c4899582e3f07dfb28fdb80fd13cf5ef77d2525978a3ffee8c16d9",
+      "results/apex_workbench_nmpc_weights/corrective_20261102/diagnostics_v3/overview_plot_provenance.json": "69f531def1f8e20718b9ad05d2d41eff4ac0ba0b38f264d9107b547bd64c54d0",
+      "results/apex_workbench_nmpc_weights/corrective_20261102/diagnostics_v2/native_diagnostics.html": "67e4a153b5fbaf146ce3d02eb02fbd813863151f9c551fc1abef180f46357c09"
+    },
+    "exact_execution_commands": [
+      "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=. /Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/tools/apex_workbench/.venv/bin/python -B results/apex_workbench_nmpc_weights/corrective_20261102/run_once.py nominal > results/apex_workbench_nmpc_weights/corrective_20261102/successor_nominal_driver.log 2>&1",
+      "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=. /Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/tools/apex_workbench/.venv/bin/python -B results/apex_workbench_nmpc_weights/corrective_20261102/run_once.py exploratory > results/apex_workbench_nmpc_weights/corrective_20261102/successor_exploratory_driver.log 2>&1"
+    ],
+    "changed_paths_from_blocked_delivery": [
+      "docs/CODEX_HANDOFF.md",
+      "docs/apex_workbench_nmpc_weight_m0/EXPERIMENT_CONTRACT.md",
+      "docs/apex_workbench_nmpc_weight_m0/WORK.md",
+      "docs/apex_workbench_nmpc_weight_m0/work_record.json",
+      "tools/apex_workbench/README.md",
+      "tools/apex_workbench/jobs.py",
+      "tools/apex_workbench/nmpc_weight_lab.py",
+      "tools/apex_workbench/nmpc_weight_panels.py",
+      "tools/apex_workbench/nmpc_weight_worker.py",
+      "tools/apex_workbench/tests/test_nmpc_weight_lab.py",
+      "tools/apex_workbench/tests/test_nmpc_weight_workspace.py",
+      "tools/apex_workbench/worker.py",
+      "tools/apex_workbench/workspace.py"
+    ]
+  },
+  "original_blocked_implementation_revision": "c745726fee6f4e33259aef3781ee5181d02afe08",
+  "original_blocked_independent_review": {
+    "outcome": "BLOCKED",
+    "reviewed_revision": "c745726fee6f4e33259aef3781ee5181d02afe08",
+    "context": "Separate independent reviewer context; post-failure static-only audit",
+    "record": {
+      "actual_full_resolved_snapshot_retained": false,
+      "actual_nominal_frontier": "Resolved-configuration guard, before make_mpc, controller/runner construction, any optimizer solve or plant step",
+      "base": "5831f22f8d64a69efd119edd181802adcd82dde2",
+      "bounded_work_suitability": "BLOCKED_PENDING_PRIMARY_DECISION; weight-only representation and source isolation have static support, but implementation cannot admit the genuine experiment and archive lifecycle routing is unsafe",
+      "branch": "codex/m5a-nmpc-weight-m0",
+      "candidate": "c745726fee6f4e33259aef3781ee5181d02afe08",
+      "deferred": [
+        "Genuine nominal/exploratory NMPC/TVLQR closed-loop outcomes",
+        "Actual objective-component/solver-event association",
+        "Applied-command chronology and coverage validation",
+        "Real cancellation/owner-loss/resource failure behavior on corrected revision",
+        "Formal Verification and acceptance"
+      ],
+      "delivery_status_note": "Three concurrent tracked documentation changes were observed after the clean candidate audit; this reviewer wrote only the three authorized ignored review files.",
+      "evidence_sha256": {
+        "REVIEW.md": "b8d004a00b08e36467485f4a8a9e4b98fa9cae8ab2a79219a88f5e6cb4a1a097",
+        "static_audit.json": "fc895a8fd58a0db241023e64acc14a1f57d2326e2f5aa3aa377d7a99c960d6b4"
+      },
+      "existing_m0_outputs_preserved_during_review_writes": true,
+      "existing_output_file_count": 541,
+      "existing_output_inventory_sha256": "2fac1eff37fa89795621aae945f7aa3ad34566579c76a924e1292e67ca0b270a",
+      "exploratory_executed": false,
+      "findings": [
+        {
+          "classification": "STATIC_CAUSE_SUFFICIENT_NOT_FULL_ACTUAL_SNAPSHOT",
+          "correction": "Use one explicit finite JSON-compatible snapshot schema at capture and execution; no-solve boundary coverage; do not relax other identity checks.",
+          "file": "tools/apex_workbench/nmpc_weight_worker.py",
+          "id": "R1",
+          "lines": [
+            297,
+            298
+          ],
+          "priority": "P1",
+          "support": [
+            "tools/apex_workbench/nmpc_weight_worker.py:173-176",
+            "tools/apex_workbench/nmpc_weight_worker.py:444",
+            "tools/apex_workbench/nmpc_weight_lab.py:214",
+            "48adbdf64d492592d15e23c917aca71fa58aa8a5:src/apex/simulation/asynchronous.py:32"
+          ],
+          "title": "Native resolved tuple versus captured JSON list blocks the supported scenario"
+        },
+        {
+          "classification": "STATIC_REACHABLE_FAILURE_PATH_NOT_RUNTIME_EXERCISED",
+          "correction": "Validate canonical M0 directory and nonconflicting owned origin before any lifecycle call; archives/invalid records remain pure reads without cancellation; add negative routing software checks.",
+          "file": "tools/apex_workbench/nmpc_weight_panels.py",
+          "id": "R2",
+          "lines": [
+            98,
+            117
+          ],
+          "observed_archive_alteration": false,
+          "priority": "P1",
+          "support": [
+            "tools/apex_workbench/workspace.py:258-260",
+            "tools/apex_workbench/run_catalog.py:143-150,219",
+            "tools/apex_workbench/jobs.py:232-239,203-228,141-184"
+          ],
+          "title": "Lifecycle reconciliation precedes M0 ownership and read-only archive validation"
+        }
+      ],
+      "formal_verification_performed": false,
+      "further_execution_authorized": false,
+      "minimum_next_authority": "Explicit Primary decision for bounded code corrections and any new experiment budget; retain original claim, failure and BLOCKED evidence",
+      "nominal_attempt_consumed": true,
+      "nominal_retry_authorized": false,
+      "only_written_paths": [
+        "results/apex_workbench_nmpc_weights/independent_review/REVIEW.md",
+        "results/apex_workbench_nmpc_weights/independent_review/review_record.json",
+        "results/apex_workbench_nmpc_weights/independent_review/static_audit.json"
+      ],
+      "outcome": "BLOCKED",
+      "preservation_scope_limit": "Independent hashes cover frozen runtime, nonallowlisted tracked baseline and retained M0/gate/test/failure outputs; prior aggregate primary-history preservation counts are not a new full primary-tree baseline audit.",
+      "prior_software_evidence": {
+        "admission_passed": 8,
+        "admission_source": "c745726fee6f4e33259aef3781ee5181d02afe08",
+        "counts_combined": false,
+        "initial_passed": 26,
+        "initial_source": "df889dd7e447c69b0c6df7924d068a58527587ee",
+        "repeated_in_review": false
+      },
+      "review_mode": "INDEPENDENT_CONTEXT_STATIC_ONLY",
+      "review_performed_project_imports_tests_probes_solvers_plants_ui": false,
+      "schema": "apex-m0-independent-engineering-review/1",
+      "scientific_source": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "stop_status": "NMPC_WEIGHT_LAB_M0_BLOCKED_PENDING_PRIMARY_DECISION",
+      "tracked_status_at_delivery": " M docs/CODEX_HANDOFF.md\n M docs/apex_workbench_nmpc_weight_m0/WORK.md\n M docs/apex_workbench_nmpc_weight_m0/work_record.json\n"
+    },
+    "static_audit_summary": {
+      "ast_parsed_changed_python_files": 10,
+      "candidate_worktree_file_mismatches": [],
+      "frozen_archive_members": 333,
+      "nonallowlisted_before_files": 1023,
+      "nonallowlisted_preservation_mismatches": [],
+      "profile_sha256": "5299adca29d5c5bd383252cd2c299a392dd6872dc6bb72d1a4dd7ecfb8dd1ebf",
+      "post_import_identities": {
+        "other_file_modules": 997,
+        "other_namespace_modules": 2,
+        "scientific_file_modules": 63,
+        "scientific_namespace_modules": 2
+      },
+      "module_hash_mismatches": [],
+      "packages": {
+        "casadi": {
+          "installed_count_matches": true,
+          "installed_file_count": 2371,
+          "installed_tree_matches": true,
+          "record_matches": true,
+          "record_member_mismatch_count": 0
+        },
+        "matplotlib": {
+          "installed_count_matches": true,
+          "installed_file_count": 603,
+          "installed_tree_matches": true,
+          "record_matches": true,
+          "record_member_mismatch_count": 0
+        },
+        "numpy": {
+          "installed_count_matches": true,
+          "installed_file_count": 926,
+          "installed_tree_matches": true,
+          "record_matches": true,
+          "record_member_mismatch_count": 0
+        },
+        "osqp": {
+          "installed_count_matches": true,
+          "installed_file_count": 97,
+          "installed_tree_matches": true,
+          "record_matches": true,
+          "record_member_mismatch_count": 0
+        },
+        "pandas": {
+          "installed_count_matches": true,
+          "installed_file_count": 1522,
+          "installed_tree_matches": true,
+          "record_matches": true,
+          "record_member_mismatch_count": 0
+        },
+        "psutil": {
+          "installed_count_matches": true,
+          "installed_file_count": 17,
+          "installed_tree_matches": true,
+          "record_matches": true,
+          "record_member_mismatch_count": 0
+        },
+        "pytest": {
+          "installed_count_matches": true,
+          "installed_file_count": 92,
+          "installed_tree_matches": true,
+          "record_matches": true,
+          "record_member_mismatch_count": 0
+        },
+        "pyyaml": {
+          "installed_count_matches": true,
+          "installed_file_count": 25,
+          "installed_tree_matches": true,
+          "record_matches": true,
+          "record_member_mismatch_count": 0
+        },
+        "scipy": {
+          "installed_count_matches": true,
+          "installed_file_count": 1430,
+          "installed_tree_matches": true,
+          "record_matches": true,
+          "record_member_mismatch_count": 0
+        },
+        "threadpoolctl": {
+          "installed_count_matches": true,
+          "installed_file_count": 6,
+          "installed_tree_matches": true,
+          "record_matches": true,
+          "record_member_mismatch_count": 0
+        }
+      },
+      "package_mismatches": [],
+      "gate_evidence_mismatches": [],
+      "run_manifest_members": 7,
+      "run_manifest_mismatches": [],
+      "status_manifest_hash_matches": true,
+      "unexpected_changed_paths": []
+    },
+    "raw_files_sha256": {
+      "results/apex_workbench_nmpc_weights/independent_review/REVIEW.md": "b8d004a00b08e36467485f4a8a9e4b98fa9cae8ab2a79219a88f5e6cb4a1a097",
+      "results/apex_workbench_nmpc_weights/independent_review/review_record.json": "121256a1530eca3b055257a71b7d676f622af744e65599da03d659cdf4b7d750",
+      "results/apex_workbench_nmpc_weights/independent_review/static_audit.json": "fc895a8fd58a0db241023e64acc14a1f57d2326e2f5aa3aa377d7a99c960d6b4"
+    }
+  },
+  "original_numerical_authorization": {
+    "maximum_attempts": {
+      "nominal": 1,
+      "exploratory": 1
+    },
+    "duration_s": 2.0,
+    "started": 1,
+    "automatic_retry": false,
+    "started_definition": "claimed numerical worker attempt; controller construction was not reached",
+    "consumed_claims": {
+      "nominal": 1,
+      "exploratory": 0
+    },
+    "genuine_closed_loop_runs_completed": 0,
+    "optimizer_solves": 0,
+    "plant_steps": 0,
+    "simulated_end_time": null,
+    "exploratory_status": "NOT_RUN_BLOCKED",
+    "replacement_grant_required": true
+  },
+  "original_blocked_tested_source_sha256": {
+    "tools/apex_workbench/nmpc_weight_lab.py": "bfcc1ff1eebb798721a39f72687acccef0c76bbdc6d08ecf1a068e0af070a784",
+    "tools/apex_workbench/nmpc_weight_worker.py": "31dd40da94115e96eee0a777808d741c105bf19b1768ae05f0d5db346c8ce1e0",
+    "tools/apex_workbench/nmpc_weight_panels.py": "f286ca5d6b140b617204d0b0cc09bf415d7f554411b2831c41c3066b20a6e08f",
+    "tools/apex_workbench/configuration.py": "ed1611b0d15f17daeb515b7e6167863c49ee9c6ccd96c16403d3f55e5ac38dd3",
+    "tools/apex_workbench/worker.py": "5c20535d9ac267d0c0a2df1ee0dfc5c2448e15df57fcab2cd9de621cd0a0d759",
+    "tools/apex_workbench/jobs.py": "af11d309d15b879859488b75858af87489c42783a02dd04482cff17ead6116c5",
+    "tools/apex_workbench/workspace.py": "3f456e73057667ffd607bf01c4209aafe2f9817fc39e8e03fcdfbb2df240f6a5",
+    "tools/apex_workbench/run_catalog.py": "4e974ea40940b2990f9b4416f97b8fe5fbde2ce6b335d3e49df3f4c422587f6d",
+    "tools/apex_workbench/tests/test_nmpc_weight_lab.py": "996996c2919a828ef47d6ceb9d7b22cba3c584a8449822c6fadd716c226c9963",
+    "tools/apex_workbench/tests/test_nmpc_weight_workspace.py": "4d9362d6e3a3ff9f085c0f1c49962a780262645765993684e6fb32afff7c299a"
+  },
+  "software_invocations_role": "Original pre-correction WORK history; current corrective invocations remain separate under corrective_continuation",
+  "formal_verification_eligibility_meaning": "Eligible for a separate Primary authorization decision only; no formal Verification performed or automatically permitted",
+  "original_blocked_delivery_scope": {
+    "containing_commit": "Documentation-only blocked outcome and independent review delivery",
+    "implementation_unchanged_since_review": true,
+    "changed_paths_since_review": [
+      "docs/CODEX_HANDOFF.md",
+      "docs/apex_workbench_nmpc_weight_m0/WORK.md",
+      "docs/apex_workbench_nmpc_weight_m0/work_record.json",
+      "tools/apex_workbench/README.md"
+    ],
+    "no_further_project_imports_tests_or_experiments_after_worker_failure": true,
+    "reviewed_candidate_is_not_accepted": true
+  },
+  "original_blocked_minimum_next_authority": {
+    "decision": "Primary bounded R1/R2 correction decision and explicit replacement numerical execution grant",
+    "R1": "Canonical JSON-compatible comparison snapshots and no-solve positive serialization/negative non-treatment mutation checks before controller construction; keep scientific values and identity checks",
+    "R2": "Validate canonical owned M0 directory, approved origin and absence of alias conflicts before any reconciliation/cancellation; archives and invalid records stay pure reads with negative route coverage",
+    "preserve": [
+      "Consumed nominal claim",
+      "Failed run and original exception",
+      "Original software gate",
+      "Global BLOCKED marker",
+      "Independent BLOCKED review"
+    ],
+    "repeat_nominal_under_existing_grant": false,
+    "exploratory_after_current_blocker": false,
+    "exact_new_revision_review_required": true
   }
 }

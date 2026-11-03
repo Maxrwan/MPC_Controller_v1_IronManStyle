@@ -1,4 +1,35 @@
-# Current handoff — M5-A R1/R2 corrective WORK
+# Current handoff — M5-A Engineering Review PASS; Verification pending
+
+**NMPC_WEIGHT_LAB_M0_ENGINEERING_REVIEW_COMPLETE_PENDING_VERIFICATION.** 3 November 2026.
+Exact corrected implementation `96be0969703f0675060208843c9920bca2187e3e`, branch
+`codex/m5a-nmpc-weight-m0`. Independent corrective and final retained-evidence reviews **PASS**.
+[Final WORK/report](apex_workbench_nmpc_weight_m0/WORK.md),
+[machine evidence](apex_workbench_nmpc_weight_m0/work_record.json).
+This containing final commit is documentation only; code/tests and frozen science remain at the
+reviewed identities. Current focused suite: 73 passed, zero failures/errors/skips; earlier counts
+and failures remain separate. No formal Verification or final acceptance performed.
+
+One NEW nominal lateral2.0 and one exploratory lateral1.0 attempt completed with valid evidence:
+400 native states, 200 controls and 20 successful solver events each. Native duration end clock
+1.9999999999999787s; last raw state1.9949999999999788s, without invented endpoint. Source, sole
+treatment, imported identities, objective/prediction and command/plant-clock associations verified.
+Actual read-only Inspect/Compare passes. Results remain synthetic / experimental / unqualified.
+Both successor claims consumed; original failed nominal claim/gate/BLOCKED and prior reviews intact.
+
+Final PASS record SHA256 ccc604f4c573825d11a51c5fab02b6d7b840ab1baf53471f0942ac014128a23c;
+gate19217b49… and authority47ce3825… remain fixed. Raw cases, logs, reviews and diagnostic plots live
+under ignored results/apex_workbench_nmpc_weights/; current derived JSON/labeled PNGs are v3, with
+the valid v2 HTML companion. Superseded Boolean-count/label artifacts and all harness negatives
+remain preserved. Full hashes/commands/13 changed paths are in the record.
+
+333 frozen runtime,1023 protected tracked,545 original M0,56 scientific,345 qualification,25 P,
+4 oval and C0 original152600-byte preservation checks pass. G1 remains OPEN. No owned processes
+remain; lease free. Primary must separately authorize formal Verification. No extra numerical
+attempts, campaigns, M5-B, R0/SID/Safety, ROS 2 or hardware work are authorized by this delivery.
+
+---
+
+# Historical handoff — M5-A R1/R2 corrective WORK
 
 Primary authorizes bounded correction from `52c5f55c253ef88bc0bc66fb9504eef5af21d2b5` on
 `codex/m5a-nmpc-weight-m0`; decision SHA-256

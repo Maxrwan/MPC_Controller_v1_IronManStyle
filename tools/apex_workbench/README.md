@@ -94,17 +94,14 @@ Parameters are synthetic, never measured or identified APEX data. Linear tires r
 
 ## Use
 
-**M0 prototype status: R1/R2 corrective WORK, pending independent review.** Primary authorized
-localized fixes and conditional replacement execution on 2 November 2026. No new attempt may run
-before corrective-review PASS; the separate successor authority retains the original failed claim,
-gate and BLOCKED bytes. At the original reviewed source
-`c745726fee6f4e33259aef3781ee5181d02afe08`, the single nominal worker attempt failed its
-configuration snapshot guard before controller construction, optimizer solve or plant motion.
-Its failure evidence and consumed claim remain retained; exploratory was not run. Independent
-review also found that M0 inspection can reach lifecycle writes before archive ownership validation.
-Do not use this prototype for execution or archive inspection until corrective review passes.
-No genuine nominal/treatment result or formal Verification is claimed at this WORK checkpoint.
-The following describes the implemented interface, whose acceptance remains blocked.
+**M0 status: Engineering Review PASS, pending separately authorized formal Verification.**
+Exact implementation `96be0969703f0675060208843c9920bca2187e3e`. R1/R2 corrections passed independent
+review before one new nominal and one exploratory native 2.0 s attempt; both completed with valid
+retained evidence and passed final independent assessment. These are synthetic, experimental and
+unqualified results. Both successor attempts are consumed; further execution requires a new Primary
+authorization. Inspect/Compare remain available. Original failed attempt, claim/gate/BLOCKED,
+negative reviews and logs are preserved. Formal Verification and acceptance have not occurred.
+See the linked WORK/record for exact gate, source, environment, native outcomes and limitations.
 
 **Experimental NMPC Weight Lab M0:** Home → **Open experimental NMPC Weight Lab M0**, or Run →
 **NMPC Weight Lab M0**. Exactly two presets use the genuine frozen Architecture-A NMPC/TVLQR

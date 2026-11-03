@@ -1,6 +1,87 @@
 # M5-A / NMPC Weight Lab M0 — bounded WORK
 
-## R1/R2 corrective continuation — current WORK
+## Final corrective delivery — 3 November 2026
+
+**NMPC_WEIGHT_LAB_M0_ENGINEERING_REVIEW_COMPLETE_PENDING_VERIFICATION.**
+Independent corrective review and final implementation/evidence assessment both **PASS** at
+`96be0969703f0675060208843c9920bca2187e3e`, branch `codex/m5a-nmpc-weight-m0`.
+This containing final delivery changes documentation only. No formal Verification or acceptance
+is claimed. [Machine evidence record](work_record.json), [bounded contract](EXPERIMENT_CONTRACT.md).
+
+R1 uses the same finite canonical JSON snapshot at capture and the real worker boundary;
+scientific dataclasses/values are preserved and genuine mismatches still reject. R2 authenticates
+selected identity, canonical owned root, all lifecycle members, original authority pins and the
+independently pinned successor gate before mutation. The gate reserves exactly two run IDs and
+strict claims cannot authorize copies or a third identity. The sole `jobs.py` change is the
+four-line M0-only reserved-ID hook. All 13 changed paths from blocked delivery are in the record.
+Frozen scientific source remains `48adbdf64d492592d15e23c917aca71fa58aa8a5`; terminal, plant, tire,
+constraints, TVLQR, reference, solver and warm-start settings remain unchanged.
+
+The final corrective software invocation passed **73 tests**, zero failures/errors/skips,
+86.033 s, in the approved Python 3.12.14/macOS Accelerate SINGLE environment. Earlier invocations,
+failed checks and independent probes remain separate; no counts are combined. Independent
+corrective review verified 28 authentic-chain ownership negatives, eight malformed reservations,
+valid cancellation/reconciliation and the reserved-ID hook. Actual post-execution AppTest renders
+both Inspect views and Compare at the unchanged 45 s deadline, with no mutating action.
+
+| Authorized successor | Exact run ID | Native result | Retained rows/events |
+|---|---|---|---|
+| Nominal, lateral 2.0 | `20261103T092919578650Z_8db96af73edb48afa17b8d608c9cb7a9` | completed / valid / return 0 | 400 states, 200 controls, 20 successful solver events |
+| Exploratory, lateral 1.0 | `20261103T092919578903Z_67d4ffe6c44b4628adc58505ca43b50c` | completed / valid / return 0 | 400 states, 200 controls, 20 successful solver events |
+
+Exactly one NEW attempt per preset ran after corrective PASS. Both native stop reasons are
+`duration`, failure is null and no planner remains pending. Native end clock is
+`1.9999999999999787` s; the last state row is `1.9949999999999788` s. The separate native plant
+journal retains its final segment; no endpoint state or interpolated telemetry was created.
+There were no recorded fallback, planner-miss or codriver-miss events. All 20 objective/prediction/
+packet associations, 200 proposal/request/application associations and 400 contiguous native plant
+segments per run were independently checked. Imposed pending windows retain simulated plant motion;
+host solver durations are separate and do not establish physical real-time concurrency.
+
+Only preset metadata, lateral stage multiplier 2.0→1.0 and its two derived coefficients
+200.0→100.0 differ. Native Frenet-state RMS is 0.0332148380 / 0.0342088342 m for `e_y` and
+0.0366146096 / 0.0349390591 rad for `e_psi` (nominal / exploratory, 400 rows each). Native TVLQR
+errors refer to each active optimized trajectory; they are distinct from these states and from
+offline Planning residuals. Objective contributions are validated native-controller post-solve
+expression evaluations, not native IPOPT instrumentation; differently weighted totals are not
+ranked. One synthetic pair does not establish improved vehicle behavior or physical validity.
+
+All outputs are retained locally under ignored `results/apex_workbench_nmpc_weights/`; hashes and
+commands are committed in the record. Current derived outputs under `corrective_20261102/` are
+`diagnostics_v3/analysis.json`, `native_diagnostics_synthetic.png` and
+`native_objective_components_unqualified.png` in that v3 directory, plus the self-contained
+`diagnostics_v2/native_diagnostics.html`. New standalone plots explicitly state synthetic /
+EXPERIMENTAL / UNQUALIFIED. The numeric overview distinguishes native states, active-trajectory
+error, requested/application clocks, applied `a_cmd=Fx/m` and host solver duration.
+
+Superseded derived outputs remain intact: the first plotting harness lacked the parent thread
+setting; v2 numeric statistics incorrectly counted Boolean boundary flags as missing; older PNGs
+had incomplete standalone labels. Corrected v3 counts are 400 recorded false, zero true and zero
+missing flags per run, without inferring clearance or safety. The independent auditor's initial
+overstrict scalar-objective equality failure is also retained; literal floating residuals are
+reported without changing native values or scientific tolerances. None caused a scientific retry.
+
+Corrective PASS record SHA-256: `0d5d4092e100809b162398de7df6dd32160097d117bb5f1c9a550a6293b6cdb8`.
+Final independent PASS record: `ccc604f4c573825d11a51c5fab02b6d7b840ab1baf53471f0942ac014128a23c`;
+report: `e9f836c7b9980666b220e28214fbb88255f03f9ed0815092f38ce82f7b0fac7e`.
+Gate: `19217b49b7b49129e565078a6fdfaccc27bad8878f42c87a5c56fb8bb1fde857`;
+successor authority: `47ce382539021089742e59fa799227f531b761f2117bce4bd30095d3e8f4fbca`.
+Both 15-member manifests, 1,066 import identities per pre/post record and live environment match.
+
+Fresh independent preservation hashes match 333 frozen runtime members, 1,023 protected tracked
+files, 545 original M0 outputs, 56 accepted scientific files, 345 qualification files, 25 P-archive
+files, four oval files and the original 152,600-byte C0 artifact. G1 remains OPEN. The original
+failed nominal claim/gate/BLOCKED, all failed reviews and logs remain unchanged. Both new claims
+are consumed; no further attempt is available. All owned processes are gone and the lease is free.
+
+Next gate: Primary may separately authorize scoped formal Verification of this exact implementation,
+source/authority/artifact/currentness checks, applicable Workbench/P/C0 regression and isolated
+admission/cancel/owner-loss/partial/failure/resource fixtures. Preserve frozen gated skips and reuse
+only demonstrably applicable evidence. No automatic repetition, qualification campaign, M5-B,
+R0/SID/Safety, ROS 2 or hardware work. SINGLE control and sampled resource observations are not
+exact thread-count, hard real-time or absolute memory/output guarantees.
+
+## R1/R2 corrective implementation history — superseded checkpoints
 
 Primary authorized bounded R1/R2 correction on 2 November 2026 from blocked delivery
 `52c5f55c253ef88bc0bc66fb9504eef5af21d2b5`. Decision SHA-256:
