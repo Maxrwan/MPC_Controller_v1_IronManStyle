@@ -2,6 +2,7 @@
 
 import copy
 import hashlib
+import os
 import shutil
 from dataclasses import replace
 
@@ -47,6 +48,134 @@ def test_m0_configuration_gate_and_no_implicit_execution(monkeypatch, tmp_path):
     widget(app.selectbox, "M0 preset").select("exploratory").run()
     assert not app.exception and widget(app.button, "Run one authorized M0 attempt").disabled
     assert any("100.0" in e.value for e in app.markdown)
+
+
+def test_repeated_preview_actions_preserve_sealed_evidence(monkeypatch, tmp_path):
+    app = application(monkeypatch, tmp_path)
+    protected = [
+        "authorizations/" + lab.SUCCESSOR + "/" + name
+        for name in (
+            "exploratory_software_probe.json",
+            "nominal_software_probe.json",
+            "software_gate.json",
+            "authorization.json",
+            "claims/nominal.json",
+            "claims/exploratory.json",
+            "corrective_review.json",
+        )
+    ] + [
+        "BLOCKED.json",
+        "claims/nominal.json",
+        "software_gate.json",
+        "runs/original_failed/status.json",
+        "runs/native_nominal/manifest.json",
+        "runs/native_nominal/experiment/raw.json",
+        "runs/native_exploratory/manifest.json",
+        "runs/native_exploratory/experiment/raw.json",
+        "verification_20261103/blocking_evidence.json",
+    ]
+    for name in protected:
+        path = lab.OUTPUT / name
+        path.parent.mkdir(parents=True, exist_ok=True)
+        storage.write_json(path, {"sealed_fixture": name})
+    before = {name: (lab.OUTPUT / name).read_bytes() for name in protected}
+    reports = []
+
+    def preview_only(preset):
+        # Intentionally vary member ordering; no scientific probe/controller is constructed.
+        keys = ("a", "b") if len(reports) % 2 else ("b", "a")
+        report = {"preset": preset, "imports": dict.fromkeys(keys, "software fixture")}
+        reports.append(report)
+        return report
+
+    monkeypatch.setattr(lab, "probe", preview_only)
+    widget(app.button, "Open experimental NMPC Weight Lab M0").click().run()
+    for preset in ("exploratory", "exploratory", "nominal", "nominal"):
+        widget(app.selectbox, "M0 preset").select(preset).run()
+        widget(app.button, "Validate frozen configuration (no solve)").click().run()
+        assert not app.exception and not app.error
+        path = panels.preview_path(preset)
+        assert path == lab.OUTPUT / "previews" / lab.SUCCESSOR / (preset + ".json")
+        assert storage.read_json(path) == reports[-1]
+        assert any("non-authoritative" in e.value for e in app.caption)
+        assert widget(app.button, "Run one authorized M0 attempt").disabled
+        assert {name: (lab.OUTPUT / name).read_bytes() for name in protected} == before
+    assert len(reports) == 4
+    assert not list((lab.OUTPUT / "previews").rglob(".pending-*"))
+
+
+@pytest.mark.parametrize("link", ["previews", "namespace", "file"])
+def test_preview_rejects_linked_destinations(monkeypatch, tmp_path, link):
+    monkeypatch.setattr(lab, "OUTPUT", tmp_path / "m0")
+    sealed = lab.authority_root() / "nominal_software_probe.json"
+    sealed.parent.mkdir(parents=True)
+    storage.write_json(sealed, {"sealed": True})
+    before = sealed.read_bytes()
+    path = lab.OUTPUT / "previews"
+    if link == "namespace":
+        path.mkdir()
+        path = path / lab.SUCCESSOR
+    elif link == "file":
+        path = path / lab.SUCCESSOR / "nominal.json"
+        path.parent.mkdir(parents=True)
+    path.symlink_to(sealed if link == "file" else sealed.parent)
+    with pytest.raises(ValueError, match="Unsafe M0"):
+        panels.publish_preview("nominal", {"mutable": True})
+    assert sealed.read_bytes() == before
+
+
+def test_preview_rejects_unknown_preset(monkeypatch, tmp_path):
+    monkeypatch.setattr(lab, "OUTPUT", tmp_path / "m0")
+    with pytest.raises(ValueError, match="M0 accepts only"):
+        panels.publish_preview("../../authorizations", {})
+    assert not lab.OUTPUT.exists()
+
+
+def test_preview_atomic_replace_and_failed_write_preserve_evidence(monkeypatch, tmp_path):
+    monkeypatch.setattr(lab, "OUTPUT", tmp_path / "m0")
+    sealed = lab.authority_root() / "nominal_software_probe.json"
+    sealed.parent.mkdir(parents=True)
+    storage.write_json(sealed, {"sealed": True})
+    before = sealed.read_bytes()
+    preview = panels.preview_path("nominal")
+    preview.parent.mkdir(parents=True)
+    os.link(sealed, preview)
+    panels.publish_preview("nominal", {"mutable": True})
+    assert sealed.read_bytes() == before
+    assert storage.read_json(preview) == {"mutable": True}
+    published = preview.read_bytes()
+    with pytest.raises(ValueError):
+        panels.publish_preview("nominal", {"nonfinite": float("nan")})
+    assert preview.read_bytes() == published
+    assert sealed.read_bytes() == before
+    assert not list(preview.parent.glob(".pending-*"))
+
+
+def test_preview_does_not_bypass_strict_evidence_or_source_gate(tmp_path, monkeypatch):
+    root, gate, review, _ = successor_authority_fixture(tmp_path, monkeypatch)
+    # Seal one disposable fixture evidence file; never reseal actual retained authority.
+    sealed = root / "nominal_software_probe.json"
+    storage.write_json(sealed, {"fixture": "original"})
+    gate["evidence_sha256"] = {str(sealed.relative_to(lab.OUTPUT)): storage.sha256(sealed)}
+    storage.write_json(root / "software_gate.json", gate)
+    review["software_gate_sha256"] = storage.sha256(root / "software_gate.json")
+    storage.write_json(root / "corrective_review.json", review)
+    authority = storage.read_json(root / "authorization.json")
+    authority["corrective_review_sha256"] = storage.sha256(root / "corrective_review.json")
+    storage.write_json(root / "authorization.json", authority)
+    assert lab.verify_gate(check_environment=False) == gate
+    panels.publish_preview("nominal", {"fixture": "changed preview"})
+    assert lab.verify_gate(check_environment=False) == gate
+    original = sealed.read_bytes()
+    storage.write_json(sealed, {"fixture": "changed sealed evidence"})
+    with pytest.raises(ValueError, match="Software gate evidence changed"):
+        lab.verify_gate(check_environment=False)
+    sealed.write_bytes(original)
+    changed = dict(lab.adapter_hashes())
+    changed["tools/apex_workbench/nmpc_weight_panels.py"] = "0" * 64
+    monkeypatch.setattr(lab, "adapter_hashes", lambda: changed)
+    with pytest.raises(ValueError):
+        lab.verify_gate(check_environment=False)
 
 
 def test_existing_legacy_forms_and_lab_stay_available(monkeypatch, tmp_path):

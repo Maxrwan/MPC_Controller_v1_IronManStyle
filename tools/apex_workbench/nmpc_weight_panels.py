@@ -12,6 +12,18 @@ PLOT_CONFIG = {"displayModeBar": False, "modeBarButtonsToRemove": ["toImage"], "
 UNITS = {"vx": "m/s", "vy": "m/s", "r": "rad/s", "e_y": "m", "e_psi": "rad", "s_abs": "m"}
 
 
+def preview_path(preset):
+    lab.validate({"preset": preset})
+    return lab.safe(lab.OUTPUT / "previews" / lab.SUCCESSOR / (preset + ".json"))
+
+
+def publish_preview(preset, report):
+    path = preview_path(preset)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    # Recheck after directory creation; never fall back to sealed authority evidence.
+    storage.write_json(preview_path(preset), report)
+
+
 def run_panel():
     st.warning(lab.BANNER)
     preset = st.selectbox("M0 preset", list(lab.PRESETS))
@@ -20,21 +32,28 @@ def run_panel():
         "Stage tracking coefficients: "
         + str([4, 4, 1, 100 * lab.PRESETS[preset], 100 * lab.PRESETS[preset]])
     )
-    preview = lab.authority_root() / (preset + "_software_probe.json")
-    if preview.exists():
-        report = storage.read_json(preview)
-        with st.expander("Complete source-isolated effective configuration and import identities"):
-            st.text(json.dumps(report, indent=2))
-        st.caption(
-            "Software preflight preview; execution independently repeats "
-            "identity/configuration checks."
-        )
-    else:
-        st.info("No prepared configuration preview; execution is gated until software checks pass.")
+    try:
+        preview = preview_path(preset)
+        if preview.exists():
+            report = storage.read_json(preview)
+            with st.expander(
+                "Complete source-isolated effective configuration and import identities"
+            ):
+                st.text(json.dumps(report, indent=2))
+            st.caption(
+                "Mutable, non-authoritative configuration preview; execution independently repeats "
+                "identity/configuration checks against sealed gate evidence."
+            )
+        else:
+            st.info(
+                "No prepared configuration preview; execution is gated until software checks pass."
+            )
+    except (OSError, ValueError, RuntimeError) as error:
+        st.error("Configuration preview unavailable: " + str(error))
     if st.button("Validate frozen configuration (no solve)"):
         try:
             report = lab.probe(preset)
-            storage.write_json(preview, report)
+            publish_preview(preset, report)
             st.rerun()
         except (OSError, ValueError, RuntimeError) as error:
             st.error(str(error))

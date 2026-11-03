@@ -1,4 +1,29 @@
-# Current handoff — M5-A formal Verification BLOCKED at evidence admission
+# Current handoff — M5-A V1 correction/recovery pending independent review
+
+**WORK_COMPLETE_PENDING_REVIEW.** 3 November 2026; branch `codex/m5a-nmpc-weight-m0`.
+The containing first V1 commit is the candidate for independent review. Only panels, their existing
+workspace tests and existing WORK/record/handoff change. [WORK](apex_workbench_nmpc_weight_m0/WORK.md),
+[machine record](apex_workbench_nmpc_weight_m0/work_record.json).
+
+Mutable previews now publish atomically under a distinct non-authoritative `previews/` namespace.
+Independent pre-restoration authentication PASS reconstructed the exact original exploratory probe;
+its final SHA is `dac35d357e64ef0e30702650ddef2b130503fab643315170cbfb80c4a53acb3e`.
+Observed443c09… bytes, unknown writer/action and the original failed Verification remain preserved.
+No gate, authority, claim, raw experiment or manifest was resealed or changed. Historical readers
+accept both native runs; current admission rejects changed source as intended. Both attempts consumed.
+
+Final focused guarded non-simulation WORK run:44passed, zero failures/errors/skips,31deselected;
+initial43passes remain separate. No fresh probe, controller construction, optimizer solve, plant
+execution or formal Verification. All3,301 prior M0 files/191links checked; only the permitted
+restoration changes.333 frozen runtime and primary56science/345qualification/25P/4oval/C0 match.
+Evidence is ignored/local; committed hashes alone do not establish off-host retrieval. G1 OPEN.
+
+Next: independent review of exact corrected candidate/recovery. Do not resume formal Verification
+without a new Primary assignment, even following PASS. No new experiment, tuning or later stage.
+
+---
+
+# Historical handoff — M5-A formal Verification BLOCKED at evidence admission
 
 **NMPC_WEIGHT_LAB_M0_VERIFICATION_BLOCKED_PENDING_PRIMARY_DECISION.** 3 November 2026.
 Reviewed implementation `96be0969703f0675060208843c9920bca2187e3e`; tested documentation-only
