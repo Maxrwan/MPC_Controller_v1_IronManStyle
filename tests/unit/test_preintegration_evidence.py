@@ -143,7 +143,7 @@ def test_supervisor_owned_lifecycle_and_duplicate_claim_without_controller(
     from pathlib import Path
 
     monkeypatch.setattr(launch.subprocess, "Popen", start)
-    monkeypatch.setattr(launch.os, "killpg", lambda pid, sig: kills.append(pid))
+    monkeypatch.setattr(launch.os, "kill", lambda pid, sig: kills.append(pid))
 
     def limits(*args):
         return (
@@ -275,6 +275,8 @@ def test_successor_requires_reviewed_clean_source_and_witnessed_final_inventory(
     output = tmp_path / "output"
     output.mkdir()
     monkeypatch.setattr(launch, "WORK", work)
+    monkeypatch.setattr(launch, "_driver_child", True)
+    monkeypatch.setattr(launch, "_predecessors", {})
     monkeypatch.setattr(
         launch, "git", lambda root, *args: "SOURCE" if args[0] == "rev-parse" else ""
     )
@@ -305,6 +307,9 @@ def test_successor_requires_reviewed_clean_source_and_witnessed_final_inventory(
     with pytest.raises(FileNotFoundError):
         launch.admit_gate("G1", hashes)
     launch.witness_exit("G0", output, 0, 1, 1)
+    with pytest.raises(ValueError, match="live driver"):
+        launch.admit_gate("G1", hashes)
+    launch._predecessors["G0"] = launch.sha(work / "attempts/G0-exit.json")
     launch.admit_gate("G1", hashes)
     write(output / "supervisor-result.json", {**result, "complete": False})
     with pytest.raises(ValueError, match="raw member changed"):
@@ -314,3 +319,103 @@ def test_successor_requires_reviewed_clean_source_and_witnessed_final_inventory(
     )
     with pytest.raises(ValueError, match="clean committed"):
         launch.admit_gate("G0", hashes)
+
+
+def test_terminated_witness_cannot_restore_live_successor_grant(tmp_path, monkeypatch):
+    import os
+
+    from preintegration import launch
+
+    work = tmp_path / "work"
+    (work / "attempts").mkdir(parents=True)
+    output = tmp_path / "output"
+    output.mkdir()
+    monkeypatch.setattr(launch, "WORK", work)
+    monkeypatch.setattr(launch, "_driver_child", True)
+    monkeypatch.setattr(launch, "_predecessors", {})
+    monkeypatch.setattr(
+        launch, "git", lambda root, *args: "SOURCE" if args[0] == "rev-parse" else ""
+    )
+    review = work / "review.json"
+    write(review, {"verdict": "PASS"})
+    hashes = {"fixture": "literal"}
+    write(
+        work / "software-gate.json",
+        {
+            "passed": True,
+            "hashes": hashes,
+            "producer": "SOURCE",
+            "independent_review": {
+                "verdict": "PASS",
+                "producer": "SOURCE",
+                "report": str(review),
+                "sha256": launch.sha(review),
+            },
+        },
+    )
+    result = {"complete": True, "output": str(output), "hashes": hashes}
+    write(output / "supervisor-result.json", result)
+    write(output / "index.json", inventory(output))
+    write(
+        work / "attempts/G0-result.json",
+        {**result, "index_sha256": launch.sha(output / "index.json")},
+    )
+    pid = os.fork()
+    if pid == 0:
+
+        def terminate(path, data):
+            write(path, data)
+            if path.name == "G0-exit.json":
+                os._exit(137)
+
+        launch.write = terminate
+        launch.witness_exit("G0", output, 0, 1, 1)
+        os._exit(0)
+    _, status = os.waitpid(pid, 0)
+    assert os.waitstatus_to_exitcode(status) == 137
+    assert json.loads((work / "attempts/G0-exit.json").read_text())["complete"]
+    with pytest.raises(ValueError, match="live driver"):
+        launch.admit_gate("G1", hashes)
+
+
+@pytest.mark.parametrize(
+    "failed_case,expected",
+    [(None, ["G0", "G1", "measured-smoke"]), ("G0", ["G0"]), ("G1", ["G0", "G1"])],
+)
+def test_live_conditional_sequence_uses_kernel_exit_and_stops_without_retry(
+    tmp_path, monkeypatch, failed_case, expected
+):
+    from pathlib import Path
+
+    from preintegration import launch
+
+    work = tmp_path / "work"
+    (work / "attempts").mkdir(parents=True)
+    monkeypatch.setattr(launch, "WORK", work)
+    monkeypatch.setattr(launch, "_predecessors", {})
+    monkeypatch.setattr(launch, "git", lambda *a: "SOURCE")
+
+    def stub_main(argv):
+        case, output = argv[1], Path(argv[3])
+        assert launch._driver_child
+        for preceding in launch.CASES[: launch.CASES.index(case)]:
+            assert preceding in launch._predecessors
+        output.mkdir(parents=True)
+        with (work / "attempts" / (case + ".json")).open("x") as stream:
+            json.dump({"output": str(output)}, stream)
+        result = {"complete": True, "output": str(output)}
+        write(output / "supervisor-result.json", result)
+        write(output / "index.json", inventory(output))
+        write(
+            work / "attempts" / (case + "-result.json"),
+            {**result, "index_sha256": launch.sha(output / "index.json")},
+        )
+        return 1 if case == failed_case else 0
+
+    monkeypatch.setattr(launch, "main", stub_main)
+    code = launch.execute(
+        ["--case", "conditional-sequence", "--output", str(tmp_path / "sequence")]
+    )
+    assert code == (0 if failed_case is None else 1)
+    assert [c for c in launch.CASES if (work / "attempts" / (c + ".json")).exists()] == expected
+    assert set(launch._predecessors) == set(expected) - {failed_case}

@@ -57,13 +57,17 @@ Fresh execution, after admission and software gates, uses the existing admitted 
 ```sh
 env -u PYTHONPATH -u PYTHONHOME PYTHONHASHSEED=0 PYTHONDONTWRITEBYTECODE=1 \
   /path/to/admitted/.venv/bin/python -P -S scripts/preintegration/launch.py \
-  --case measured-smoke --output results/preintegration/w1/smoke-UNIQUE
+  --case conditional-sequence --output results/preintegration/w1/replacement-UNIQUE
 ```
 
 The replacement claims use the fresh source-bound ledger under
 `results/preintegration/w1/correction-20261104T160319Z/`. A software gate must bind the
 clean committed producer, runtime hashes and independent PASS report. Predecessors additionally
-require a normal-exit witness bound to their result/index/ledger. The original ledger
+require a normal-exit witness bound to their result/index/ledger plus an in-memory grant
+from the same live sequence driver after all final bookkeeping. Stored receipts alone do not
+grant admission. Run all three conditionally in one invocation; do not resume a terminated
+driver or execute a standalone G1/smoke. Case process groups include supervisor and descendants;
+a surviving descendant fails cleanup. The original ledger
 under `work-20261103T123702Z-532aa226` is preserved and never reset or reused. Existing output
 or consumed case claims reject; this command is not permission to rerun. Each worker has 60 s
 launch-through-cleanup wall, 30 s process-tree CPU, 2 GiB sampled RSS, 128 MiB output and at least

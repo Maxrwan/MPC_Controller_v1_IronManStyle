@@ -315,6 +315,9 @@ def audit_completion(raw, segments, events, track, sim, tracker, releases):
             detail = dict(e.details)
             if e.operation == "prepare":
                 preparations.append(detail["plan_id"])
+                require(
+                    same(e.time, plans[detail["plan_id"]]["release_time"]), path, "EVENT_RELEASE"
+                )
             if e.operation == "completion":
                 completions.append(detail["plan_id"])
                 require(
@@ -443,6 +446,11 @@ def audit_completion(raw, segments, events, track, sim, tracker, releases):
             [r["plan_id"] for r in raw["releases"]] == list(plans)[1:],
             "/releases",
             "RELEASE_PLAN_BINDING",
+        )
+        require(
+            all(same(r["time"], plans[r["plan_id"]]["release_time"]) for r in raw["releases"]),
+            "/releases",
+            "NATIVE_RELEASE_TIME",
         )
         for release, plan in zip(releases, list(plans.values())[1:]):
             require(

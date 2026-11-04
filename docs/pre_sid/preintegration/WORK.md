@@ -16,7 +16,11 @@ original offending artifact locations; raw observations are retained unchanged.
 The supervisor's result/index/ledger remain provisional. A separate waiting parent witnesses
 normal supervisor exit, validates the final inventory/ledger, includes supervisor descendants
 and final bookkeeping in wall/CPU/output disposition, and atomically publishes an exit receipt.
-Successor admission requires that receipt and the same clean committed reviewed producer.
+Successor admission requires that receipt, the same clean committed reviewed producer, and
+a predecessor grant held only by the live conditional driver after all final bookkeeping.
+Supervisors are forked from the still stdlib-only driver; numerical workers remain fresh execs.
+A terminated driver cannot resume successors from stored receipts. Each case owns a process
+group, kernel wait4 supplies its real exit/CPU disposition, and surviving descendants fail cleanup.
 A timeout, termination, missing/corrupt evidence or write/accounting failure cannot qualify.
 Sampled RSS includes worker descendants, supervisor and waiting-parent observations; it is
 not a continuous peak guarantee. Existing 60 s/30 CPU s/2 GiB/128 MiB/1 GiB limits remain.
@@ -26,7 +30,8 @@ Applied-row enclosing runner durations and delegate wall envelopes are separate 
 with original samples, seconds, counts and null missingness retained.
 
 Corrective evidence: `results/preintegration/w1/correction-20261104T160319Z/`.
-Focused invocations are separate: software-001 26 passed; software-002 84 passed.
+Focused invocations are separate: software-001 26 passed; software-002 84 passed;
+software-003 27 passed; software-004 88 passed.
 These include controlled late-timeout/write/resource failures and scripted exact straight
 chronology; zero genuine optimizer calls. Full regression/formal Verification remain deferred.
 
@@ -34,6 +39,11 @@ After independent PASS only, the existing conditional grant permits one replacem
 one G1 only after G0, then one 2.0 s measured smoke only after both. No retry, tuning,
 scientific/frozen-source changes or external/physical integration is authorized. The fresh
 source-bound ledger lives in this corrective evidence root; the original ledger is not reused.
+Independent review 001 rejected checkpoint `1df1767350518e00f7c8781e66d0c09f13b4ee1e`.
+Its controlled termination reproducer retained an exit137 writer and an improperly admitted
+successor. This checkpoint corrects that defect with a live, non-resumable sequence driver and
+adds exact prepare/release-time binding tests. Review report and reproducer remain unchanged.
+Re-review is pending; the conditional numerical budget is still inactive at this checkpoint.
 Final execution outcome and producer/delivery identities belong to the delivery descendant.
 
 ---

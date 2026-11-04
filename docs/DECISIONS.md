@@ -1054,3 +1054,9 @@ finalized result/index/ledger accounting. This is local evidence-boundary engine
 controller mathematics, track limits, simulator scheduling and physical policies are unchanged.
 Native tracker, delegate and runner timing populations are reported separately. Conditional
 replacement execution requires independent corrective review PASS on a clean committed producer.
+
+Review correction: durable result/receipt publication alone cannot grant successors. A single
+live, non-resumable conditional driver retains predecessor grants only after final bookkeeping
+and kernel-observed supervisor exit. A terminated driver leaves consumed claims and evidence,
+with no resumable grant. Numerical workers still initialize in fresh execs; the controller and
+accepted scheduling/scientific policies remain unchanged.

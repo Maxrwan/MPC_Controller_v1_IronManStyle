@@ -1,9 +1,11 @@
 # PRE-INT-W1 corrective checkpoint — independent review pending
 
 Primary APEX authorized correction plus a conditional one-attempt G0/G1/2 s smoke budget.
-The current checkpoint requires independent corrective PASS before execution.
+The current checkpoint requires independent corrective PASS before execution. Review001
+found two in-scope defects; both are corrected and awaiting re-review. The first review and
+zero-controller termination reproducer remain retained.
 Original G0 evidence and consumed ledger remain unchanged. See the current correction section
-of [WORK](pre_sid/preintegration/WORK.md). Software checks: 26 passed and 84 passed separately;
+of [WORK](pre_sid/preintegration/WORK.md). Software checks: 26, 84, 27 and final 88 passed in separate invocations;
 no new genuine controller execution. No formal Verification or external integration.
 
 ---

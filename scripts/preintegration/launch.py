@@ -16,13 +16,15 @@ from pathlib import Path
 START = time.monotonic()
 DEADLINE = START + 60
 _owned_worker = None
+_driver_child = False
+_predecessors = {}
 
 
 def wall_alarm(signum, frame):
     """Cover admission, sampling and final serialization independently of polling."""
     if _owned_worker is not None and _owned_worker.poll() is None:
         try:
-            os.killpg(_owned_worker.pid, signal.SIGKILL)
+            os.kill(_owned_worker.pid, signal.SIGKILL)
         except ProcessLookupError:
             pass
     raise TimeoutError("Launch-through-cleanup wall budget expired")
@@ -83,6 +85,8 @@ def guard_records(paths, owned_root):
 
 
 def admit_gate(case, hashes):
+    if not _driver_child:
+        raise ValueError("Admission requires the live conditional sequence driver")
     gate = json.loads((WORK / "software-gate.json").read_text())
     head = git(ROOT, "rev-parse", "HEAD")
     if (
@@ -98,6 +102,9 @@ def admit_gate(case, hashes):
         raise ValueError("Missing clean committed producer/software/independent-review gate")
     predecessors = {"G0": (), "G1": ("G0",), "measured-smoke": ("G0", "G1")}[case]
     for previous in predecessors:
+        receipt_path = WORK / "attempts" / (previous + "-exit.json")
+        if _predecessors.get(previous) != sha(receipt_path):
+            raise ValueError("Prerequisite not admitted by this live driver: " + previous)
         result = json.loads((WORK / "attempts" / (previous + "-result.json")).read_text())
         if result.get("complete") is not True or result.get("hashes") != hashes:
             raise ValueError("Prerequisite not complete at current executable bytes: " + previous)
@@ -298,7 +305,9 @@ def main(argv=None):
                 env=env,
                 stdout=log,
                 stderr=subprocess.STDOUT,
-                start_new_session=True,
+                # The case supervisor owns a fresh process group. Keep all descendants
+                # in that group so the waiting driver can clean up the complete case.
+                start_new_session=False,
             )
             _owned_worker = process
             try:
@@ -356,7 +365,7 @@ def main(argv=None):
                 if unavailable:
                     reason = reason or "RESOURCE_COVERAGE_LOST"
                 if reason:
-                    os.killpg(process.pid, signal.SIGKILL)
+                    os.kill(process.pid, signal.SIGKILL)
                     break
                 time.sleep(0.02)
             code = process.wait(timeout=max(0.1, 60 - (time.monotonic() - START)))
@@ -375,7 +384,7 @@ def main(argv=None):
         )
     finally:
         if process is not None and process.poll() is None:
-            os.killpg(process.pid, signal.SIGKILL)
+            os.kill(process.pid, signal.SIGKILL)
             process.wait(timeout=1)
         if guard is not None:
             write(
@@ -516,58 +525,75 @@ def witness_exit(case, output, exit_code, elapsed, cpu):
     return receipt
 
 
+def run_case(case, output):
+    """Fresh stdlib-only supervisor child; numerical initialization remains worker exec."""
+    global START, DEADLINE, _driver_child, _owned_worker
+    started, cpu_start = time.monotonic(), time.process_time()
+    sys.stdout.flush()
+    sys.stderr.flush()
+    pid = os.fork()
+    if pid == 0:
+        os.setsid()
+        START, DEADLINE = started, started + 60
+        _driver_child, _owned_worker = True, None
+        try:
+            code = main(["--case", case, "--output", str(output)])
+        except BaseException:
+            traceback.print_exc()
+            code = 1
+        sys.stdout.flush()
+        sys.stderr.flush()
+        os._exit(code)
+    timed_out = False
+    while True:
+        waited, status, usage = os.wait4(pid, os.WNOHANG)
+        if waited:
+            break
+        if time.monotonic() - started >= 60:
+            timed_out = True
+            try:
+                os.killpg(pid, signal.SIGKILL)
+            except ProcessLookupError:
+                os.kill(pid, signal.SIGKILL)
+            _, status, usage = os.wait4(pid, 0)
+            break
+        time.sleep(0.02)
+    # A surviving descendant is incomplete cleanup and cannot qualify, even on exit zero.
+    descendants = False
+    try:
+        os.killpg(pid, signal.SIGKILL)
+        descendants = True
+    except ProcessLookupError:
+        pass
+    code = os.waitstatus_to_exitcode(status)
+    if timed_out or descendants:
+        code = code or 1
+    claim = WORK / "attempts" / (case + ".json")
+    if not claim.is_file() or json.loads(claim.read_text())["output"] != str(output):
+        return False
+    cpu = time.process_time() - cpu_start + usage.ru_utime + usage.ru_stime
+    receipt = witness_exit(case, output, code, time.monotonic() - started, cpu)
+    if receipt["complete"]:
+        # This is the sole successor grant. No persisted receipt can reconstruct it.
+        _predecessors[case] = sha(WORK / "attempts" / (case + "-exit.json"))
+    print(json.dumps(receipt))
+    return receipt["complete"]
+
+
 def execute(argv=None):
-    """Stdlib waiting parent: observe actual supervisor exit, never launch a second worker."""
+    """One non-resumable sequence; terminate on the first failed or incomplete case."""
     parser = argparse.ArgumentParser()
-    parser.add_argument("--case", choices=CASES, required=True)
+    parser.add_argument("--case", choices=(*CASES, "conditional-sequence"), required=True)
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args(argv)
     output = args.output.resolve()
-    before = resource.getrusage(resource.RUSAGE_CHILDREN)
-    cpu_start = time.process_time()
-    command = [
-        sys.executable,
-        "-P",
-        "-S",
-        str(Path(__file__).resolve()),
-        "--supervise",
-        "--case",
-        args.case,
-        "--output",
-        str(output),
-    ]
-    process = subprocess.Popen(command, cwd=ROOT, start_new_session=True)
-    try:
-        code = process.wait(timeout=max(0.001, DEADLINE - time.monotonic()))
-    except subprocess.TimeoutExpired:
-        # The inner alarm kills its owned worker. Trigger it before terminating the group.
-        os.kill(process.pid, signal.SIGALRM)
-        try:
-            process.wait(timeout=1)
-        except subprocess.TimeoutExpired:
-            os.killpg(process.pid, signal.SIGKILL)
-            process.wait()
-        code = -signal.SIGALRM
-    after = resource.getrusage(resource.RUSAGE_CHILDREN)
-    cpu = (
-        time.process_time()
-        - cpu_start
-        + after.ru_utime
-        - before.ru_utime
-        + after.ru_stime
-        - before.ru_stime
-    )
-    # No witness is published on a preclaim failure. A claim stays consumed on any later failure.
-    claim = WORK / "attempts" / (args.case + ".json")
-    if not claim.is_file() or json.loads(claim.read_text())["output"] != str(output):
-        return 1
-    receipt = witness_exit(args.case, output, code, time.monotonic() - START, cpu)
-    print(json.dumps(receipt))
-    return 0 if receipt["complete"] else 1
+    cases = CASES if args.case == "conditional-sequence" else (args.case,)
+    for case in cases:
+        folder = output / case if len(cases) > 1 else output
+        if not run_case(case, folder):
+            return 1
+    return 0
 
 
 if __name__ == "__main__":
-    if "--supervise" in sys.argv:
-        sys.argv.remove("--supervise")
-        raise SystemExit(main())
     raise SystemExit(execute())

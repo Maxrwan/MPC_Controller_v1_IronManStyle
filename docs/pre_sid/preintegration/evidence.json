@@ -313,27 +313,40 @@
       {
         "id": "software-003",
         "passed": 27
+      },
+      {
+        "id": "software-004",
+        "passed": 88
       }
     ],
     "runtime_sha256": {
       "src/apex/preintegration/validation.py": "5e20e706da76281e499fa0010ccfefb2770796e07c601e8a19c5cad29270c2ef",
       "scripts/preintegration/__init__.py": "c359d55be6bf1e2f49c847ad5a6902a1edac47e6ef2bba566038233301f41ca5",
-      "tests/integration/test_preintegration_genuine.py": "134fd84abbc308fbeeca83f5a4a681aabc59141d282d32e42ff19fa76c0deae3",
-      "scripts/preintegration/launch.py": "3127b0d0878b336a14b0415da4b1837b1a02be5a564f7da6c3d2752050619417",
+      "tests/integration/test_preintegration_genuine.py": "f701c24fa5311c98f0c4e904868d1d767f1be4428ccf0b97f37942ef89bf0cb9",
+      "scripts/preintegration/launch.py": "7c414806bc67312cb60f2613ddb16502a4a9ceb9177022879453f5656eeb7148",
       "tests/unit/test_preintegration_session.py": "1f1898b233f80bb7a69cda056de3a248b9a52ff609f99ba4776d3ef6e820ea01",
       "src/apex/preintegration/profile.py": "b4cb3411e586df225775b08a8bfa5414e6b73741e9bbae594ce5d639e4cdd093",
       "src/apex/preintegration/__init__.py": "40ffba17a7cc3ceb051567af7be4aa39c88ae875f629b6ee1c48c295f784897d",
       "tests/unit/test_preintegration_profile.py": "063b6bb17eaedab98cacd78c2bcbba0f62ffbb841b46db9a9d643d2bfe2b5c11",
       "scripts/preintegration/worker.py": "c70dfcc36ab9f5d5895e0aa13a2d092a7211101a882da0d7bff4a1b30eb5b619",
-      "tests/integration/test_preintegration_local.py": "34a632440ad1579a9ab08b10d1b86a8aa224c610fa93d54b0e9dae6304973453",
+      "tests/integration/test_preintegration_local.py": "5a3f09dbfef42a297db3f2fa5cad904e78569957a716b6aa60058aad1d9c1efd",
       "src/apex/preintegration/records.py": "3224967ca26d3bc37af14e08a0308e25e59f00dfeb22b4395f3c7c97ac8c5d66",
-      "tests/unit/test_preintegration_evidence.py": "674ec78302ed246c75fb333bfbb7b2920dcc2ad2d11765d3b513cc4c9f1154df",
-      "scripts/preintegration/evidence.py": "ff084714e61143b11668554497435a516b337688036c7a9cc983b598516f2924",
+      "tests/unit/test_preintegration_evidence.py": "91ddaef1573abbc47b0de23f9be145ac214ff5f5b97f7a5a7463711dbb06f927",
+      "scripts/preintegration/evidence.py": "13e269f83cf38e04fe80933a4bb1b40ce266b7bc0d10e77cfe1e78e473fd8092",
       "tests/unit/test_preintegration_validation.py": "ceea3253a7ae2aa5dba8756474f5f130169d6b542a91e37baff90b4f6a8815da",
       "src/apex/preintegration/session.py": "c52205678b8cffa67d3a685cb1be5c9fd0aa31922f37cad5444a4b2e4dc6e924",
       "src/apex/preintegration/local.py": "dda7d415a9474c2c47f3e5a58962a3c2e84966dbb06d228709b5626f88e11c6c"
     },
     "original_evidence": "PRESERVED_UNCHANGED",
-    "milestone_candidate_met": false
+    "milestone_candidate_met": false,
+    "reviews": [
+      {
+        "producer": "1df1767350518e00f7c8781e66d0c09f13b4ee1e",
+        "verdict": "CHANGES_REQUIRED",
+        "report": "independent-review-001.json",
+        "sha256": "fa7d920441585879a21e21818b9d44917918b28f72a1be764faefc6833bcfb40"
+      }
+    ],
+    "termination_reproducer": "termination-reproducer-result.json"
   }
 }

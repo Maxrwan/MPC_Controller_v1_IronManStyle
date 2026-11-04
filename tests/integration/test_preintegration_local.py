@@ -231,6 +231,7 @@ def test_scientific_completion_audits_scripted_native_chronology(
         lambda r: r["handoffs"][0].update(accepted=False),
         lambda r: r["plans"][0].update(max_slack=0.1),
         lambda r: r["controls"].reverse(),
+        lambda r: r["releases"][0].update(time=0.11),
     ):
         corrupted = copy.deepcopy(raw)
         mutate(corrupted)
@@ -239,6 +240,13 @@ def test_scientific_completion_audits_scripted_native_chronology(
         )["valid_prerequisite"]
     events = session.events.copy()
     events[3] = replace(events[3], time=0.23)
+    assert not audit_completion(
+        raw, segments, events, straight_geometry, sim, comp.tracker, releases
+    )["valid_prerequisite"]
+
+    events = session.events.copy()
+    index = next(i for i, e in enumerate(events) if e.operation == "prepare" and e.time == 0.1)
+    events[index] = replace(events[index], time=0.11)
     assert not audit_completion(
         raw, segments, events, straight_geometry, sim, comp.tracker, releases
     )["valid_prerequisite"]
