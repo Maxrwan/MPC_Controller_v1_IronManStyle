@@ -1,3 +1,24 @@
+# PRE-INT-W1 — formal Verification delivery
+
+**CONTROL_PREINTEGRATION_VERIFIED_PENDING_PRIMARY_ACCEPTANCE — PASS.**
+Independently verified candidate `90e20cbe7abeed3d08c8f55d26886dd28ae75b19`, executable producer
+`e577f2c00bde2092f6bd1bd403b72aa9ca10713a`. No findings or implementation changes.
+Fresh focused software: 130 passed, 1 deliberately deselected; separate state/config/geometry
+regression: 31 passed; static lint/format 16 paths PASS. Frozen/configuration/runtime identities,
+retained genuine results and original failed-G0/claim preservation passed independent audit.
+All 1040 retained W1 files remain unchanged. No G0/G1/smoke repeat, genuine solver/controller run,
+new numerical allowance, campaign, install, tuning, hardware benchmark, merge or integration.
+
+Legacy recorded applications do not prove independent endpoint enforcement. Host realtime,
+onboard/WCET, physical Safety and durable off-host recovery remain unqualified. Primary acceptance
+is pending. See [formal report](pre_sid/preintegration/WORK.md) and
+[machine record](pre_sid/preintegration/evidence.json). Exact documentation-only Verification
+delivery SHA/remote URL accompanies the final handoff. Stop at the status above.
+
+---
+
+Historical WORK handoffs follow; their stage/status statements apply to those earlier deliveries.
+
 # PRE-INT-W1 corrective delivery
 
 **WORK_COMPLETE_PENDING_REVIEW — implementation milestone candidate MET.**

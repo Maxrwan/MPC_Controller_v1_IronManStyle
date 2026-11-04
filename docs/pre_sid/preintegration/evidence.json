@@ -1,13 +1,13 @@
 {
   "schema": "apex-preintegration-corrective-work/2",
-  "status": "WORK_COMPLETE_PENDING_REVIEW",
+  "status": "CONTROL_PREINTEGRATION_VERIFIED_PENDING_PRIMARY_ACCEPTANCE",
   "producer": "e577f2c00bde2092f6bd1bd403b72aa9ca10713a",
   "evidence_delivery_revision": "Containing documentation-only delivery commit; exact SHA/URL in final handoff",
   "scientific": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
   "approved_plan": "63d56fc366de7464e1c71a4f831c87ec03d31a2f",
   "reviewed_start": "4895a37ce151b12e74d8c062f681996c59260639",
   "milestone_candidate_met": true,
-  "formal_verification": "NOT_INITIATED",
+  "formal_verification": "PASS_BOUNDED_INDEPENDENT",
   "primary_acceptance": "PENDING",
   "physical_safety": "NOT_OBSERVED_NOT_VALIDATED",
   "external_integration": "NOT_INITIATED",
@@ -812,5 +812,395 @@
     "sha256": "ef17164becd879f2a4cd6e1e31eeeeff7dbc5a7d7b4281dc8cac44e17d2715b9",
     "members": 544,
     "indexed_bytes": 12344601
+  },
+  "work_delivery_status": "WORK_COMPLETE_PENDING_REVIEW",
+  "verified_evidence_candidate": "90e20cbe7abeed3d08c8f55d26886dd28ae75b19",
+  "verification_delivery_revision": "Containing documentation-only Verification commit; exact SHA/URL in final handoff",
+  "verification": {
+    "independent_record": {
+      "acceptance_checks": [
+        {
+          "evidence": "825 frozen files,294 source bindings,5 Planning hashes; all16 producer Python hashes;8653 unique installed members; actual pre/post imports and full resolved snapshots independently compared. Fresh software/regression admissions bind exact clean90e20 and match all28 retained installed-distribution inventories.",
+          "id": "V01",
+          "requirement": "Frozen source, dependency, actual import, Planning and full configuration identities",
+          "verdict": "PASS"
+        },
+        {
+          "evidence": "Read records/session/local/profile control paths and selected all local session/validation/profile tests. prepare/complete/offer_waiting/propose/check_application/observe_applied/reset/close, fresh ownership, failure reset, journal failure, busy handling and inhibition covered.",
+          "id": "V02",
+          "requirement": "Complete local API lifecycle, ownership and reset/close",
+          "verdict": "PASS"
+        },
+        {
+          "evidence": "Selected negative feedback/control tests; canonical state/control and vehicle config regressions. Missing/stale/future/nonfinite/conflicting/replayed feedback inhibits until fresh reset; identical sample at identical instant remains supported.",
+          "id": "V03",
+          "requirement": "Feedback identity, clock, exact current time and domain",
+          "verdict": "PASS"
+        },
+        {
+          "evidence": "Original packet retained per proposal; expired source denies delayed application after handoff; checks consume each proposal once. Selected packet buffer/trajectory tests and mock endpoint. Independently reconciled232 retained proposal/application pairs and held commands.",
+          "id": "V04",
+          "requirement": "Packet source authority, expiry and single-use application",
+          "verdict": "PASS"
+        },
+        {
+          "evidence": "Read audit_completion and worker completion frontier. Fresh scripted zero/injected positive/negative mutations cover endpoint boundary equality, violation, release/prepare timestamps, packet/source and application order. Stdlib independent audit checked710 segments including terminal state,26 plan/packet bindings,286 events and all retained releases/applications.",
+          "id": "V05",
+          "requirement": "Scientific completion boundary/state/segment/packet/application chronology",
+          "verdict": "PASS"
+        },
+        {
+          "evidence": "Read main/witness_exit/run_case/admit_gate. Fresh controlled supervisor stubs, late write/timeout/CPU/output, fork termination after publication, live conditional-driver and duplicate-claim tests pass. Durable receipts alone cannot restore successor grant; normal kernel exit plus final inventory/ledger required. Retained exits satisfy recorded caps; RSS explicitly sampled.",
+          "id": "V06",
+          "requirement": "Fail-closed finalization, termination, writes and administrative caps",
+          "verdict": "PASS"
+        },
+        {
+          "evidence": "Selected timing-population and deterministic scheduler tests; read native capture before runner mutation. Independently reconstructed12 timing populations and missingness/count/median/p95 values. G1 unfinished preparation remains excluded from completed timing.",
+          "id": "V07",
+          "requirement": "Native solver/full preparation/native tracker/runner timing separation",
+          "verdict": "PASS"
+        },
+        {
+          "evidence": "Fresh9-file controlled software selection130 passed,1 expressly deselected; separate3-file state/config/geometry regression31 passed; no skips/failures. Harness guards recorded zero prohibited solver/controller-worker attempts. Fresh16-file Ruff lint and format check passed.",
+          "id": "V08",
+          "requirement": "Proportionate focused unit/integration/negative/regression checks",
+          "verdict": "PASS"
+        },
+        {
+          "evidence": "601 indexed members,3 complete raw inventories, source-bound consumed claims, result/index/ledger/normal-exit hashes and parent/worker admissions reconciled independently.435 pre-correction historical entries and original failed/consumed G0 unchanged; root baseline/post-check additionally preserves all1040 W1 files.",
+          "id": "V09",
+          "requirement": "Retained G0/G1/smoke authenticity and failed-G0/consumed-claim preservation",
+          "verdict": "PASS"
+        },
+        {
+          "evidence": "LOCAL_INTERFACE, WORK, worker result and feasibility limitations explicitly distinguish local proposal/application API from legacy simulator rows. Formal local verification does not assert external endpoint enforcement, physical actuation, safety, host realtime, WCET, historical binary equivalence, recovery or Primary acceptance.",
+          "id": "V10",
+          "requirement": "Accurate limitations, legacy endpoint and acceptance boundary",
+          "verdict": "PASS"
+        }
+      ],
+      "approved_plan": "63d56fc366de7464e1c71a4f831c87ec03d31a2f",
+      "branch": "codex/pre-int-w1",
+      "candidate": "90e20cbe7abeed3d08c8f55d26886dd28ae75b19",
+      "evidence_files": {
+        "baseline.json": {
+          "bytes": 362448,
+          "sha256": "7a1d30209eac5b1606a40ddc64daff7f4ba96ef7d9c4916f0c82794ad426aa33"
+        },
+        "environment-and-runtime-reuse.json": {
+          "bytes": 2690,
+          "sha256": "6faa998d63921ca8097b01dcffd4e040f4b267d316db676415a29a915e29478f"
+        },
+        "independent-audit.py": {
+          "bytes": 17583,
+          "sha256": "e27f6b5a266379fb0a26a4750f03bea0e677118da6dd38c700cecb4a1606e131"
+        },
+        "independent-static-lint.json": {
+          "bytes": 4093,
+          "sha256": "42053a4499f0133998e8d543165660be8af2b0ae2d2d5d8eb080763d2bf5b177"
+        },
+        "independent-static-lint.log": {
+          "bytes": 46,
+          "sha256": "55d3783c4abb85658c0aabbd4d32749029963821c0da6514d54f41f3c42cf91b"
+        },
+        "independent-static-retained-audit.json": {
+          "bytes": 3494,
+          "sha256": "fb0772586ad9380d8a5e2ed24d9aa67ab35088cde0155c9bba4b5eaa1b996ef6"
+        },
+        "post-software-preservation.json": {
+          "bytes": 227,
+          "sha256": "3c9ce9131451d87db5276e91ebd1445575492a00138f2885816958d12b843708"
+        },
+        "regression-admission.json": {
+          "bytes": 2297255,
+          "sha256": "0ed9f6b58dd9b1a1e79a7324e69d875202f755192e49b42b9bf57d2dad6e9d7a"
+        },
+        "regression-exit.json": {
+          "bytes": 195426,
+          "sha256": "e0de59f7553e7c9251c407830fa15689004ec9a011e4b1d12d2749c2e56c666a"
+        },
+        "regression-invocation.json": {
+          "bytes": 823,
+          "sha256": "7378ad5e69a238cd24d76e25aa6575b4967fd8692118514b5a4d8d8987d13c66"
+        },
+        "regression-verification.py": {
+          "bytes": 2701,
+          "sha256": "1dcf3a01dbb5702c3d82fbfbb5f3c16eee557cfc8fed149ee98714e3cd03b83c"
+        },
+        "regression.log": {
+          "bytes": 1247,
+          "sha256": "e185c4be7bf1fd0dcd75c8389e79ea753b66e8cf5b1620241b1c52ea25ea9c60"
+        },
+        "regression.xml": {
+          "bytes": 3301,
+          "sha256": "a2e899c7c4dc4b4e5a7391dc180fd7ed15720b11eb65fb497f64e4f4535e2f42"
+        },
+        "software-admission.json": {
+          "bytes": 2297255,
+          "sha256": "de815b03fa74db15b583ec1fee3a98ffaa83e9594302394be77083a8d57a5c03"
+        },
+        "software-exit.json": {
+          "bytes": 337465,
+          "sha256": "5f506f134f2932d3029caae3983dda01ecd735bf5ea63b3831c71ef76285d64d"
+        },
+        "software-invocation.json": {
+          "bytes": 1224,
+          "sha256": "38cbb6a16dcde264d8416941ab9606d49037b294d8533a9c7fc10910142e1ea0"
+        },
+        "software-verification.py": {
+          "bytes": 3066,
+          "sha256": "507151d15c9c14799fe495d888a8afd7788dac67fd3ce61d8656381c12b1d821"
+        },
+        "software.log": {
+          "bytes": 195,
+          "sha256": "438962e41f58bdb46cea7c2332165961eb59a0fd2987292f67b2203bd456bcd6"
+        },
+        "software.xml": {
+          "bytes": 17653,
+          "sha256": "f3f56530763def6752ef562f3e37baefc815215f8de949f3fc81619787da9fe2"
+        },
+        "test-results.json": {
+          "bytes": 17357,
+          "sha256": "c8fd33d456ceba474ae4c90dc019728182e4b10b7e12ab9b2086671245086335"
+        }
+      },
+      "executable_producer": "e577f2c00bde2092f6bd1bd403b72aa9ca10713a",
+      "findings": [],
+      "fresh_static_lint": {
+        "candidate": "90e20cbe7abeed3d08c8f55d26886dd28ae75b19",
+        "commands": [
+          {
+            "argv": [
+              "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/.venv/bin/ruff",
+              "check",
+              "--no-cache",
+              "scripts/preintegration/__init__.py",
+              "scripts/preintegration/evidence.py",
+              "scripts/preintegration/launch.py",
+              "scripts/preintegration/worker.py",
+              "src/apex/preintegration/__init__.py",
+              "src/apex/preintegration/local.py",
+              "src/apex/preintegration/profile.py",
+              "src/apex/preintegration/records.py",
+              "src/apex/preintegration/session.py",
+              "src/apex/preintegration/validation.py",
+              "tests/integration/test_preintegration_genuine.py",
+              "tests/integration/test_preintegration_local.py",
+              "tests/unit/test_preintegration_evidence.py",
+              "tests/unit/test_preintegration_profile.py",
+              "tests/unit/test_preintegration_session.py",
+              "tests/unit/test_preintegration_validation.py"
+            ],
+            "exit_code": 0
+          },
+          {
+            "argv": [
+              "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/.venv/bin/ruff",
+              "format",
+              "--check",
+              "--no-cache",
+              "scripts/preintegration/__init__.py",
+              "scripts/preintegration/evidence.py",
+              "scripts/preintegration/launch.py",
+              "scripts/preintegration/worker.py",
+              "src/apex/preintegration/__init__.py",
+              "src/apex/preintegration/local.py",
+              "src/apex/preintegration/profile.py",
+              "src/apex/preintegration/records.py",
+              "src/apex/preintegration/session.py",
+              "src/apex/preintegration/validation.py",
+              "tests/integration/test_preintegration_genuine.py",
+              "tests/integration/test_preintegration_local.py",
+              "tests/unit/test_preintegration_evidence.py",
+              "tests/unit/test_preintegration_profile.py",
+              "tests/unit/test_preintegration_session.py",
+              "tests/unit/test_preintegration_validation.py"
+            ],
+            "exit_code": 0
+          }
+        ],
+        "ruff_sha256": "71f417319c8c4d45562034b44a4ff08e5a1b3dddab5b5c42d5df9800e86a6084",
+        "scope": "Static lint/format only; zero project imports or genuine execution",
+        "source_hashes": {
+          "scripts/preintegration/__init__.py": "c359d55be6bf1e2f49c847ad5a6902a1edac47e6ef2bba566038233301f41ca5",
+          "scripts/preintegration/evidence.py": "13e269f83cf38e04fe80933a4bb1b40ce266b7bc0d10e77cfe1e78e473fd8092",
+          "scripts/preintegration/launch.py": "7c414806bc67312cb60f2613ddb16502a4a9ceb9177022879453f5656eeb7148",
+          "scripts/preintegration/worker.py": "c70dfcc36ab9f5d5895e0aa13a2d092a7211101a882da0d7bff4a1b30eb5b619",
+          "src/apex/preintegration/__init__.py": "40ffba17a7cc3ceb051567af7be4aa39c88ae875f629b6ee1c48c295f784897d",
+          "src/apex/preintegration/local.py": "dda7d415a9474c2c47f3e5a58962a3c2e84966dbb06d228709b5626f88e11c6c",
+          "src/apex/preintegration/profile.py": "b4cb3411e586df225775b08a8bfa5414e6b73741e9bbae594ce5d639e4cdd093",
+          "src/apex/preintegration/records.py": "3224967ca26d3bc37af14e08a0308e25e59f00dfeb22b4395f3c7c97ac8c5d66",
+          "src/apex/preintegration/session.py": "c52205678b8cffa67d3a685cb1be5c9fd0aa31922f37cad5444a4b2e4dc6e924",
+          "src/apex/preintegration/validation.py": "5e20e706da76281e499fa0010ccfefb2770796e07c601e8a19c5cad29270c2ef",
+          "tests/integration/test_preintegration_genuine.py": "f701c24fa5311c98f0c4e904868d1d767f1be4428ccf0b97f37942ef89bf0cb9",
+          "tests/integration/test_preintegration_local.py": "5a3f09dbfef42a297db3f2fa5cad904e78569957a716b6aa60058aad1d9c1efd",
+          "tests/unit/test_preintegration_evidence.py": "91ddaef1573abbc47b0de23f9be145ac214ff5f5b97f7a5a7463711dbb06f927",
+          "tests/unit/test_preintegration_profile.py": "063b6bb17eaedab98cacd78c2bcbba0f62ffbb841b46db9a9d643d2bfe2b5c11",
+          "tests/unit/test_preintegration_session.py": "1f1898b233f80bb7a69cda056de3a248b9a52ff609f99ba4776d3ef6e820ea01",
+          "tests/unit/test_preintegration_validation.py": "ceea3253a7ae2aa5dba8756474f5f130169d6b542a91e37baff90b4f6a8815da"
+        }
+      },
+      "fresh_tests": [
+        {
+          "argv": [
+            "-q",
+            "-p",
+            "no:cacheprovider",
+            "--basetemp=/Users/marwansaber/.codex/worktrees/pre-int-w1/MPC_Controller_v1_IronManStyle/results/preintegration/verification/20261104T215320Z/software-tmp",
+            "--junitxml=/Users/marwansaber/.codex/worktrees/pre-int-w1/MPC_Controller_v1_IronManStyle/results/preintegration/verification/20261104T215320Z/software.xml",
+            "--deselect=tests/unit/test_trajectory_tracker.py::test_gain_failure_discards_successful_nominal_packet",
+            "tests/unit/test_preintegration_profile.py",
+            "tests/unit/test_preintegration_session.py",
+            "tests/unit/test_preintegration_validation.py",
+            "tests/unit/test_preintegration_evidence.py",
+            "tests/integration/test_preintegration_local.py",
+            "tests/unit/test_async_chronology.py",
+            "tests/unit/test_latency.py",
+            "tests/unit/test_diagnostic_timing.py",
+            "tests/unit/test_trajectory_tracker.py"
+          ],
+          "deselected": 1,
+          "errors": 0,
+          "exit_code": 0,
+          "failed": 0,
+          "harness": "software-verification.py",
+          "harness_sha256": "507151d15c9c14799fe495d888a8afd7788dac67fd3ce61d8656381c12b1d821",
+          "log": "software.log",
+          "log_sha256": "438962e41f58bdb46cea7c2332165961eb59a0fd2987292f67b2203bd456bcd6",
+          "name": "software",
+          "passed": 130,
+          "prohibited_calls_observed": false,
+          "pytest_duration_s": 11.109,
+          "skipped": 0,
+          "tested_sha": "90e20cbe7abeed3d08c8f55d26886dd28ae75b19",
+          "xml": "software.xml",
+          "xml_sha256": "f3f56530763def6752ef562f3e37baefc815215f8de949f3fc81619787da9fe2"
+        },
+        {
+          "argv": [
+            "-q",
+            "-s",
+            "-p",
+            "no:cacheprovider",
+            "--basetemp=/Users/marwansaber/.codex/worktrees/pre-int-w1/MPC_Controller_v1_IronManStyle/results/preintegration/verification/20261104T215320Z/regression-tmp",
+            "--junitxml=/Users/marwansaber/.codex/worktrees/pre-int-w1/MPC_Controller_v1_IronManStyle/results/preintegration/verification/20261104T215320Z/regression.xml",
+            "tests/unit/test_state.py",
+            "tests/unit/test_config.py",
+            "tests/regression/test_geometry_accuracy.py"
+          ],
+          "deselected": 0,
+          "errors": 0,
+          "exit_code": 0,
+          "failed": 0,
+          "harness": "regression-verification.py",
+          "harness_sha256": "1dcf3a01dbb5702c3d82fbfbb5f3c16eee557cfc8fed149ee98714e3cd03b83c",
+          "log": "regression.log",
+          "log_sha256": "e185c4be7bf1fd0dcd75c8389e79ea753b66e8cf5b1620241b1c52ea25ea9c60",
+          "name": "regression",
+          "passed": 31,
+          "prohibited_calls_observed": false,
+          "pytest_duration_s": 1.566,
+          "skipped": 0,
+          "tested_sha": "90e20cbe7abeed3d08c8f55d26886dd28ae75b19",
+          "xml": "regression.xml",
+          "xml_sha256": "a2e899c7c4dc4b4e5a7391dc180fd7ed15720b11eb65fb497f64e4f4535e2f42"
+        }
+      ],
+      "genuine_solver_calls": 0,
+      "implementation_changes": 0,
+      "independence": "Fresh formal_verifier context independently selected exact tests, read source and retained observations, ran stdlib evidence audit and static lint, and audited coordinator-run test harness/logs/XML; no earlier PASS was assumed. Coordinator executed agreed controlled tests in admitted source-isolated environment.",
+      "limitations": [
+        "Primary acceptance remains pending; no external Simulation/Planning integration, hardware, physical actuation, Safety qualification, braking/stopping, recovery or next-stage authorization.",
+        "No new genuine NMPC solve/controller campaign, G0/G1/smoke repeat, tuning, benchmark, installation or frozen scientific artifact change. Controlled scripted/native software fixtures are distinct from genuine runs.",
+        "Retained genuine observations are reused only after byte/configuration/dependency/import applicability comparison. They are not freshly rerun numerical experiments.",
+        "Legacy runner application rows do not prove enforcement of check_application; only controlled mock endpoint tests exercise that API before invocation. No external endpoint adapter exists.",
+        "Smoke has19 completed recurring preparations and2.0s simulation coverage; host run wall5.287375583s, ratio2.643687792. Descriptive preliminary feasibility does not establish host realtime, embedded timing or WCET.",
+        "G1 retains one natively computed but modeled unfinished preparation completing0.26s after its0.24s horizon; it is retained and excluded from completed-recurring timing.",
+        "Resource RSS is sampled rather than a continuous peak guarantee; native SINGLE reports supported backend mode and does not assert exact active native threads at every instant.",
+        "Local inventories establish retained file identity and consistency; independently authenticated historical wheel/build equivalence, durable off-host recovery and historical capture provenance are not established.",
+        "The full tests/ tree and genuine integration suites were intentionally not run: frozen unchanged science plus focused controlled interface/negative/regression coverage defines this authorized formal scope."
+      ],
+      "new_numerical_experiments": 0,
+      "next_required_decision": "Primary acceptance or explicit further disposition; this PASS authorizes no subsequent integration, experiment or physical work.",
+      "preservation": {
+        "changed_tracked_files_during_verification": [],
+        "frozen_paths": 825,
+        "historical_baseline_entries": 435,
+        "original_g0": "FAILED_CONSUMED_UNCHANGED",
+        "planning_hashes": 5,
+        "replacement_allowances": "CONSUMED_CLOSED_NO_RETRY",
+        "retained_w1_entries": 1040,
+        "scientific_source_entries": 294,
+        "tracked_paths_unchanged": 847
+      },
+      "prior_evidence_applicability": {
+        "environment": "Current freshly admitted candidate environment equals retained workers for interpreter, all28 installed distributions, native binary inventories and source members; independent script also hashed8653 unique installed members",
+        "fresh_lint_reason": "Historical log lacked exact argv; existing Ruff rerun statically on exact16 paths with argv/hash/log retained",
+        "old_lint_pass_reused": false,
+        "old_software_pass_counts_reused": false,
+        "producer_to_candidate": "Documentation-only5-file descendant; executable source/tests/fixtures/dependencies/config unchanged",
+        "retained_genuine_results": "G0,G1,measured-smoke source/import/environment/config bytes and all inventory/receipt/ledger hashes compared; retained evidence audited, not rerun"
+      },
+      "retained_observations": {
+        "G0": {
+          "classification": "INSUFFICIENT_EVIDENCE",
+          "completed_recurring": 2,
+          "controls": 24,
+          "host_wall_per_simulated_second": 2.1777592000338095,
+          "index_members": 19,
+          "plans": 3,
+          "segments": 49,
+          "unfinished_recurring": 0
+        },
+        "G1": {
+          "classification": "INSUFFICIENT_EVIDENCE",
+          "completed_recurring": 1,
+          "controls": 8,
+          "host_wall_per_simulated_second": 1.961037324993716,
+          "index_members": 19,
+          "plans": 3,
+          "segments": 48,
+          "unfinished_recurring": 1
+        },
+        "measured-smoke": {
+          "classification": "PRELIMINARY_FEASIBILITY_OBSERVED",
+          "completed_recurring": 19,
+          "controls": 200,
+          "host_wall_per_simulated_second": 2.6436877915111836,
+          "index_members": 19,
+          "plans": 20,
+          "segments": 613,
+          "unfinished_recurring": 0
+        }
+      },
+      "schema": "apex-preintegration-independent-formal-verification/1",
+      "scientific": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "status": "CONTROL_PREINTEGRATION_VERIFIED_PENDING_PRIMARY_ACCEPTANCE",
+      "verdict": "PASS",
+      "verification_stage": "FORMAL_LOCAL_PREINTEGRATION_VERIFICATION"
+    },
+    "raw_root": "results/preintegration/verification/20261104T215320Z",
+    "independent_record_file": {
+      "path": "results/preintegration/verification/20261104T215320Z/independent-verification.json",
+      "sha256": "0a736bf414418aae1b6a643fa8e5344b194324b9c5bb8d5b81d4e41c027a8520"
+    },
+    "independent_report_file": {
+      "path": "results/preintegration/verification/20261104T215320Z/independent-verification.md",
+      "sha256": "9f77d696abb93b7804bff36ba5bae68c61f2c8fddf95e80c9a60f7818f1da514"
+    },
+    "test_summary_file": {
+      "path": "results/preintegration/verification/20261104T215320Z/test-results.json",
+      "sha256": "c8fd33d456ceba474ae4c90dc019728182e4b10b7e12ab9b2086671245086335"
+    },
+    "runtime_or_test_changes": false,
+    "new_genuine_runs": 0,
+    "primary_acceptance": "PENDING",
+    "delivery_index": {
+      "path": "results/preintegration/verification/20261104T215320Z/delivery-index.json",
+      "sha256": "52f6184180932a18f39d4de565540af31f95a77790f7517514f825a1a842dc5d",
+      "members": 180,
+      "indexed_bytes": 5648343
+    }
   }
 }

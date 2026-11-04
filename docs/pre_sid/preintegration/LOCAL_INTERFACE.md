@@ -1,12 +1,15 @@
 # W1 local nominal-control interface
 
-**WORK_COMPLETE_PENDING_REVIEW — implementation milestone candidate MET.**
+**CONTROL_PREINTEGRATION_VERIFIED_PENDING_PRIMARY_ACCEPTANCE — bounded formal PASS.**
+Verified evidence candidate `90e20cbe7abeed3d08c8f55d26886dd28ae75b19`; the formal report
+and machine record are in WORK.md and evidence.json. No genuine run was repeated.
 Producer `e577f2c00bde2092f6bd1bd403b72aa9ca10713a` received independent corrective review PASS;
 replacement G0/G1 and the one 2.0 s measured smoke passed. All attempt allowances are consumed.
 The original failed G0 remains failed/consumed. Commands below describe the admitted entry point;
 no current budget permits another run. Full details and limitations are in WORK.md.
 
-WORK implementation; not formal Verification or physical Safety acceptance.
+Local Control software verification is complete within the approved bounded scope. Primary
+acceptance, external integration and physical Safety qualification remain pending.
 Scientific source: `48adbdf64d492592d15e23c917aca71fa58aa8a5`.
 Approved specification: `63d56fc366de7464e1c71a4f831c87ec03d31a2f`.
 

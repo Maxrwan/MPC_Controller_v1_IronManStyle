@@ -1,3 +1,59 @@
+# PRE-INT-W1 — Formal Verification
+
+Independent formal local PRE-INT-W1 Verification: **PASS**. Stop: **CONTROL_PREINTEGRATION_VERIFIED_PENDING_PRIMARY_ACCEPTANCE**.
+
+Exact candidate `90e20cbe7abeed3d08c8f55d26886dd28ae75b19`, branch `codex/pre-int-w1`; executable producer `e577f2c00bde2092f6bd1bd403b72aa9ca10713a`; frozen science `48adbdf64d492592d15e23c917aca71fa58aa8a5`; approved plan `63d56fc366de7464e1c71a4f831c87ec03d31a2f`.
+
+Fresh verifier context independently selected controlled tests, read the source and requirements, audited retained evidence with a separate stdlib-only implementation, and inspected the coordinator-run admitted harness/logs/XML. Prior PASS conclusions were not assumed. No tracked implementation changed.
+
+| Fresh check | Result |
+|---|---|
+| Nine focused local/API/chronology/packet/latency files | 130 passed; 1 explicitly deselected; 0 failed/skipped |
+| Separate state/config/geometry regression selection | 31 passed; 0 failed/skipped |
+| Static Ruff lint and format on exact 16 Python paths | PASS; exact argv and tool/source hashes retained |
+| Independent frozen-source and retained evidence audit | PASS; no findings |
+
+The deselected trajectory gain-failure test constructs a genuine solve. The selected local session test covers its gain-failure path using a scripted backend. Genuine integration, committed-prefix runtime and fixed-handoff real-planner tests and the broad historical scientific suite were excluded. Harness guards deny solver creation/solve and genuine worker launches; no prohibited call was observed.
+
+| Acceptance check | Result |
+|---|---|
+| V01 Frozen source, dependency, actual import, Planning and full configuration identities | PASS |
+| V02 Complete local API lifecycle, ownership and reset/close | PASS |
+| V03 Feedback identity, clock, exact current time and domain | PASS |
+| V04 Packet source authority, expiry and single-use application | PASS |
+| V05 Scientific completion boundary/state/segment/packet/application chronology | PASS |
+| V06 Fail-closed finalization, termination, writes and administrative caps | PASS |
+| V07 Native solver/full preparation/native tracker/runner timing separation | PASS |
+| V08 Proportionate focused unit/integration/negative/regression checks | PASS |
+| V09 Retained G0/G1/smoke authenticity and failed-G0/consumed-claim preservation | PASS |
+| V10 Accurate limitations, legacy endpoint and acceptance boundary | PASS |
+
+The independent retained audit checked 825 frozen paths, 294 source bindings, five Planning hashes, 435 historical entries, 601 indexed members, all 8,653 unique installed members against current bytes, clean runtime admissions, complete resolved configuration, 710 segment endpoints/state rows, 26 packet bindings, 286 events, 232 proposal/application pairs and all timing populations. Root baseline checks additionally preserve all 1,040 retained W1 files and 847 tracked paths. Producer-to-candidate changes are documentation only; retained genuine results remain applicable after actual environment/source/config/import comparisons. Genuine runs were not repeated.
+
+The original failed G0 and its consumed claim remain unchanged. Replacement G0/G1/smoke claims remain consumed and closed. G1's computed preparation with modeled completion at 0.26 s beyond the 0.24 s horizon remains retained and excluded from completed-recurring timing.
+
+The 2.0 s smoke retains 19 completed recurring preparations. Its host run took 5.2874 s (2.6437 host seconds per simulated second). PRELIMINARY_FEASIBILITY_OBSERVED remains descriptive, with no host realtime, onboard, WCET or continuous-RSS claim. Native solver, full preparation, native tracker, delegate and runner populations remain distinct.
+
+Legacy runner application rows do not establish enforcement of the public application-check API at an external endpoint. Controlled mock endpoint tests cover that API. Physical actuation, Safety, stopping/recovery, delayed external feedback/clock integration, historical binary equivalence, durable off-host recovery and Primary acceptance remain outside this result.
+
+Tracked machine record: [evidence.json](evidence.json), under `verification.independent_record`.
+Original independent report/record, source/retained audit, exact test arguments, guarded harnesses,
+admission/exit records, XML, static lint arguments and full logs remain locally inspectable under
+`results/preintegration/verification/20261104T215320Z/`. The machine record binds their SHA256
+identities and final inventory. Ignored raw evidence is not transferred by the source push;
+independent durable off-host retrieval remains unqualified. No new numerical experiment,
+installation, sweep, tuning, benchmark, allowance or frozen artifact change occurred.
+
+The containing Verification delivery is a documentation-only descendant of the exact tested
+candidate. Its SHA and verified GitHub URL accompany the final handoff; it changes no runtime,
+test, configuration, dependency or retained genuine/failed artifact. No implementation correction
+or additional engineering re-review was needed. Primary acceptance remains the next decision.
+
+---
+
+The following is the retained historical WORK delivery. Its stage/status statements describe
+that earlier delivery; the formal disposition above is current.
+
 # PRE-INT-W1 corrective engineering delivery
 
 **WORK_COMPLETE_PENDING_REVIEW. Implementation milestone candidate: MET.**
