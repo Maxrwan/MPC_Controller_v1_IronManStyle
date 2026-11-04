@@ -1,14 +1,27 @@
-# PRE-INT-W1 corrective checkpoint — independent review pending
+# PRE-INT-W1 corrective delivery
 
-Primary APEX authorized correction plus a conditional one-attempt G0/G1/2 s smoke budget.
-The current checkpoint requires independent corrective PASS before execution. Review001
-found two in-scope defects; both are corrected and awaiting re-review. The first review and
-zero-controller termination reproducer remain retained.
-Original G0 evidence and consumed ledger remain unchanged. See the current correction section
-of [WORK](pre_sid/preintegration/WORK.md). Software checks: 26, 84, 27 and final 88 passed in separate invocations;
-no new genuine controller execution. No formal Verification or external integration.
+**WORK_COMPLETE_PENDING_REVIEW — implementation milestone candidate MET.**
+Corrected producer `e577f2c00bde2092f6bd1bd403b72aa9ca10713a` received independent corrective
+Engineering Review PASS before the conditional numerical grant was activated. Exact evidence
+delivery SHA/URL follows normal commit/push; its changes are documentation/evidence only.
+
+Replacement G0(.24 s), G1(.24 s) and one measured smoke(2.0 s) all passed scientific and
+finalization gates, once each. Smoke: 19 recurring preparations, 200 controls, 19 accepted handoffs,
+no busy/fallback/invalidity. Native preparation p95 69.73 ms; native tracker p95 .0453 ms;
+runner control p95 3.60 ms. Full runner wall 5.29 s for 2.0 simulated seconds; no end-to-end
+real-time/embedded claim. Corrective software invocations26/84/27/88 passes are separate.
+
+The two P1 gates and P2 timing classification are resolved, including autonomously corrected
+review001 defects. Original failed G0/consumed claim/dirty-source history and435 historical
+entries remain unchanged. Frozen scientific source `48adbdf64d492592d15e23c917aca71fa58aa8a5`,
+approved plan,294 scientific bindings and five Planning hashes are preserved. All conditional
+allowances are consumed; no retry, formal Verification, external integration or physical Safety
+qualification was initiated. See [WORK](pre_sid/preintegration/WORK.md),
+[local API](pre_sid/preintegration/LOCAL_INTERFACE.md), [evidence](pre_sid/preintegration/evidence.json).
 
 ---
+
+Historical earlier W1 handoff follows; its budget/unrun statements describe that earlier result.
 
 # PRE-INT-W1 — local nominal-control WORK
 

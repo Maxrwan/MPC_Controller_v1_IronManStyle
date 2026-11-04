@@ -1,352 +1,816 @@
 {
-  "schema": "apex-preintegration-work/1",
+  "schema": "apex-preintegration-corrective-work/2",
   "status": "WORK_COMPLETE_PENDING_REVIEW",
+  "producer": "e577f2c00bde2092f6bd1bd403b72aa9ca10713a",
+  "evidence_delivery_revision": "Containing documentation-only delivery commit; exact SHA/URL in final handoff",
   "scientific": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
   "approved_plan": "63d56fc366de7464e1c71a4f831c87ec03d31a2f",
-  "failed_executable_producer": "bec56302891c2a136126c8be486c4f166b402d27",
-  "candidate_revision": "Containing final delivery commit; exact SHA provided after push, not self-embedded",
-  "activities": {
-    "A01": "IMPLEMENTED_SOURCE_ENVIRONMENT_CONFIGURATION_CHECKED",
-    "A02": "IMPLEMENTED_SOFTWARE_CHECKED",
-    "A03": "IMPLEMENTED_SOFTWARE_CHECKED",
-    "A04": "IMPLEMENTED_SOFTWARE_CHECKED_NO_PHYSICAL_AUTHORITY",
-    "A05": "IMPLEMENTED_SOFTWARE_CHECKED",
-    "A06": "CORRECTED_SOFTWARE_CHECKED_GENUINE_NOT_REVALIDATED",
-    "A07": "IMPLEMENTED_BUT_G0_FAILED_G1_AND_SMOKE_NOT_RUN",
-    "A08": "DOCUMENTED_WORK_DELIVERY_IDENTITY_AND_PUSH_READBACK_IN_FINAL_HANDOFF"
-  },
-  "milestone_candidate_met": false,
-  "feasibility": "INSUFFICIENT_EVIDENCE",
-  "execution_runtime_sha256": {
-    "scripts/preintegration/__init__.py": "c359d55be6bf1e2f49c847ad5a6902a1edac47e6ef2bba566038233301f41ca5",
-    "scripts/preintegration/evidence.py": "4249eb9a8b3e0691d7562af8cd2b165a019a28810ba0e0572ac628c28747a9b9",
-    "scripts/preintegration/launch.py": "535c83e8de92004695851eb445cca0295ec7bd4ee0163e3163d7040bd50fa643",
-    "scripts/preintegration/worker.py": "ec426683b3567d3a16e07545b9d7bab8597a39c85ef2a436e5aac2b96ecbeebf",
-    "src/apex/preintegration/__init__.py": "40ffba17a7cc3ceb051567af7be4aa39c88ae875f629b6ee1c48c295f784897d",
-    "src/apex/preintegration/local.py": "45d17da9b9d94f8449d9347d6f76dc0a1ebd72c21d2e803ca611484ea11cffe0",
-    "src/apex/preintegration/profile.py": "b4cb3411e586df225775b08a8bfa5414e6b73741e9bbae594ce5d639e4cdd093",
-    "src/apex/preintegration/records.py": "3224967ca26d3bc37af14e08a0308e25e59f00dfeb22b4395f3c7c97ac8c5d66",
-    "src/apex/preintegration/session.py": "421173fba838408d03f505dcc16a6188dfafe4c1e5e085e90e55def9bb18020b",
-    "src/apex/preintegration/validation.py": "5e20e706da76281e499fa0010ccfefb2770796e07c601e8a19c5cad29270c2ef",
-    "tests/integration/test_preintegration_genuine.py": "134fd84abbc308fbeeca83f5a4a681aabc59141d282d32e42ff19fa76c0deae3",
-    "tests/integration/test_preintegration_local.py": "2ed9bde8d17fce7857ed4210028f5b6cf75eb28d8953556997bbd9935e0ad9b2",
-    "tests/unit/test_preintegration_evidence.py": "80ab157f86b14853b0854ac1b834457e7cc8961c361350c045c634c0c5fe3cdd",
-    "tests/unit/test_preintegration_profile.py": "063b6bb17eaedab98cacd78c2bcbba0f62ffbb841b46db9a9d643d2bfe2b5c11",
-    "tests/unit/test_preintegration_session.py": "56e5c171585e8ef12a31293b139685e9ae7677ac78206a255974a0c2e7382b8d",
-    "tests/unit/test_preintegration_validation.py": "ceea3253a7ae2aa5dba8756474f5f130169d6b542a91e37baff90b4f6a8815da"
-  },
-  "candidate_runtime_sha256": {
-    "scripts/preintegration/__init__.py": "c359d55be6bf1e2f49c847ad5a6902a1edac47e6ef2bba566038233301f41ca5",
-    "scripts/preintegration/evidence.py": "4249eb9a8b3e0691d7562af8cd2b165a019a28810ba0e0572ac628c28747a9b9",
-    "scripts/preintegration/launch.py": "a45caf4d94c7befd02274165dd2d3a39d9f06d06ec803f1a42632cba476ce09a",
-    "scripts/preintegration/worker.py": "e8adbda937c4e39f2ff9f260a8b99804cc4baefb1feb8f2f6363f2cf169262e1",
-    "src/apex/preintegration/__init__.py": "40ffba17a7cc3ceb051567af7be4aa39c88ae875f629b6ee1c48c295f784897d",
-    "src/apex/preintegration/local.py": "dda7d415a9474c2c47f3e5a58962a3c2e84966dbb06d228709b5626f88e11c6c",
-    "src/apex/preintegration/profile.py": "b4cb3411e586df225775b08a8bfa5414e6b73741e9bbae594ce5d639e4cdd093",
-    "src/apex/preintegration/records.py": "3224967ca26d3bc37af14e08a0308e25e59f00dfeb22b4395f3c7c97ac8c5d66",
-    "src/apex/preintegration/session.py": "c52205678b8cffa67d3a685cb1be5c9fd0aa31922f37cad5444a4b2e4dc6e924",
-    "src/apex/preintegration/validation.py": "5e20e706da76281e499fa0010ccfefb2770796e07c601e8a19c5cad29270c2ef",
-    "tests/integration/test_preintegration_genuine.py": "134fd84abbc308fbeeca83f5a4a681aabc59141d282d32e42ff19fa76c0deae3",
-    "tests/integration/test_preintegration_local.py": "968574516c5ec3bcaed60ed2d05dc39959b3c4fb4c6472657e4d99d25c00f57e",
-    "tests/unit/test_preintegration_evidence.py": "a23fd04c1df3a5698de91d546ab5f736d38ed3558ea7fed881c87462db75073f",
-    "tests/unit/test_preintegration_profile.py": "063b6bb17eaedab98cacd78c2bcbba0f62ffbb841b46db9a9d643d2bfe2b5c11",
-    "tests/unit/test_preintegration_session.py": "1f1898b233f80bb7a69cda056de3a248b9a52ff609f99ba4776d3ef6e820ea01",
-    "tests/unit/test_preintegration_validation.py": "ceea3253a7ae2aa5dba8756474f5f130169d6b542a91e37baff90b4f6a8815da"
-  },
-  "frozen_preservation": {
-    "original_files": 827,
-    "unchanged_outside_two_authorized_documentation_paths": 825,
-    "mismatches": [],
-    "original_scientific_source_entries": 294,
-    "approved_plan_unchanged": true,
-    "manifest_sha256": "5299adca29d5c5bd383252cd2c299a392dd6872dc6bb72d1a4dd7ecfb8dd1ebf",
-    "lock_sha256": "8cf85868a456415a898643dbb226d146b0b90e5c98982136cf2abf2465fa16ec",
-    "project_sha256": "c8ea69a3a486c9794b6cf88ac26566211c6f1bb7b7286d86dbaa36a191353d41",
-    "planning": [
-      {
-        "path": "configs/planning/task007b/gamma_2p000/planning_manifest.json",
-        "sha256": "5e7bccf1a300fb6737fc6b6b6e0c9aa921c110b11ffc5762a73f57f830a8660c"
-      },
-      {
-        "path": "configs/planning/task007b/gamma_2p000/planning_reference.csv",
-        "sha256": "6206e18ce3cb105d58d0923564336e28c00ec44aee3fd8a06ff7a37bcf84e2df"
-      },
-      {
-        "path": "configs/planning/task007b/gamma_2p000/planning_validation.json",
-        "sha256": "279582d2dcf37fdf4008ddc7f926109ef3d730a0e64c188d7003755d08871fa7"
-      },
-      {
-        "path": "configs/planning/task007b/gamma_2p000/speed_polynomial.json",
-        "sha256": "f335e78fc6c735c952f49078077a573ee989dd2be71497e90451e34a79f2c7ea"
-      },
-      {
-        "path": "configs/planning/task007b/gamma_2p000/track_source.json",
-        "sha256": "5f4d1734d7fec7de56d346e8f90bf272a3de9c05ac42f76cd49004e7f9183e55"
-      }
-    ]
-  },
-  "software_checks_separate_invocations": [
+  "reviewed_start": "4895a37ce151b12e74d8c062f681996c59260639",
+  "milestone_candidate_met": true,
+  "formal_verification": "NOT_INITIATED",
+  "primary_acceptance": "PENDING",
+  "physical_safety": "NOT_OBSERVED_NOT_VALIDATED",
+  "external_integration": "NOT_INITIATED",
+  "corrective_root": "results/preintegration/w1/correction-20261104T160319Z",
+  "allowances": "CONSUMED_CLOSED_NO_RETRY",
+  "software_invocations": [
     {
-      "invocation": "software-001",
-      "exit_code": 0,
-      "tests": 175,
-      "failures": 0,
-      "errors": 0,
-      "skipped": 0,
-      "log": "results/preintegration/w1/work-20261103T123702Z-532aa226/software-001.log",
-      "log_sha256": "331086f04bcdba36606c7d5ed341009fe76ed4df548323c7889814ca3434d1f1",
-      "junit_sha256": "50e232ea2df3a687173337d5489b9f1baa544ba10bcbb8c575a381bc2b625543"
+      "id": "software-001",
+      "passed": 26
     },
     {
-      "invocation": "software-002",
-      "exit_code": 1,
-      "tests": 3,
-      "failures": 1,
-      "errors": 0,
-      "skipped": 0,
-      "log": "results/preintegration/w1/work-20261103T123702Z-532aa226/software-002.log",
-      "log_sha256": "d40cb9e1d05e744aa097091733ac0dd89b9cd24c355500404cb252ce1a202bf8",
-      "junit_sha256": "f097629b650609458fbb3f1ff59fe7a5a1e715c4eddd17124931e42c0cf2fc35"
+      "id": "software-002",
+      "passed": 84
     },
     {
-      "invocation": "software-003",
-      "exit_code": 0,
-      "tests": 43,
-      "failures": 0,
-      "errors": 0,
-      "skipped": 0,
-      "log": "results/preintegration/w1/work-20261103T123702Z-532aa226/software-003.log",
-      "log_sha256": "13e61d2ebb594385da2499039effe7c2c57707a0dbe5e00536c373c0dd960b72",
-      "junit_sha256": "489d284a81b70d2ad1011bf92cac75f43547a517c90166e8d3007c2e5b8a9333"
+      "id": "software-003",
+      "passed": 27
     },
     {
-      "invocation": "software-004",
-      "exit_code": 0,
-      "tests": 45,
-      "failures": 0,
-      "errors": 0,
-      "skipped": 0,
-      "log": "results/preintegration/w1/work-20261103T123702Z-532aa226/software-004.log",
-      "log_sha256": "73a9ae3b5cf8e56cba2507e3994a9c976527bbaf1d2b099c54d6d89ed2637748",
-      "junit_sha256": "d4c0ece01b2cd2f056ad2a414a84fe67514acf4fdb4cf275bad40934ac57f13a"
-    },
-    {
-      "invocation": "software-005",
-      "exit_code": 0,
-      "tests": 11,
-      "failures": 0,
-      "errors": 0,
-      "skipped": 0,
-      "log": "results/preintegration/w1/work-20261103T123702Z-532aa226/software-005.log",
-      "log_sha256": "34dc1820488d189b266562816b3c9e2245a1df61359f5523b4ea57d225341fac",
-      "junit_sha256": "df6799ce679383b80ace8cbda3c9dded95aab5bbbe2c7956675abc7081e46b10"
-    },
-    {
-      "invocation": "software-006",
-      "exit_code": 0,
-      "tests": 5,
-      "failures": 0,
-      "errors": 0,
-      "skipped": 0,
-      "log": "results/preintegration/w1/work-20261103T123702Z-532aa226/software-006.log",
-      "log_sha256": "276218ddcb1b2b81b9d86c815c069888dcb42ba297987eec4b459abc9cb848ae",
-      "junit_sha256": "7c51ea6fbf12cb02e6df28a4861bdd790a401e7ada33eb4a6eb8652dd1b75290"
-    },
-    {
-      "invocation": "software-007",
-      "exit_code": 0,
-      "tests": 46,
-      "failures": 0,
-      "errors": 0,
-      "skipped": 0,
-      "log": "results/preintegration/w1/work-20261103T123702Z-532aa226/software-007.log",
-      "log_sha256": "f13759783350a290a9e33f083ac5a62577c34342ebccc7ee64a6495a4295bb66",
-      "junit_sha256": "b1ddac8bae1a01a1430c0694b2c29d473358235fe09b3386d61f0f674441b500"
-    },
-    {
-      "invocation": "software-008",
-      "exit_code": 0,
-      "tests": 40,
-      "failures": 0,
-      "errors": 0,
-      "skipped": 0,
-      "log": "results/preintegration/w1/work-20261103T123702Z-532aa226/software-008.log",
-      "log_sha256": "5792b3e99084b64c63d54aaabb4161ba210a1a051a0bc0efa5f0c8c15102ffd4",
-      "junit_sha256": "7c2c69740cec82373342fb8bdb223adc9470c03d3604d22c9db13df8601d9cb1"
-    },
-    {
-      "invocation": "software-009",
-      "exit_code": 4,
-      "tests": 1,
-      "failures": 0,
-      "errors": 1,
-      "skipped": 0,
-      "log": "results/preintegration/w1/work-20261103T123702Z-532aa226/software-009.log",
-      "log_sha256": "3d1527a4a564fdfa1ac037c65bd09a094a263b4812128b1a5dab48e0ac6fd336",
-      "junit_sha256": "e99fa613841ac3af788f1c94caf6183f10e6fc6298f5f8d52ed6860ea76e76c2"
-    },
-    {
-      "invocation": "software-010",
-      "exit_code": 0,
-      "tests": 41,
-      "failures": 0,
-      "errors": 0,
-      "skipped": 0,
-      "log": "results/preintegration/w1/work-20261103T123702Z-532aa226/software-010.log",
-      "log_sha256": "1f9639e25e72dc1edb7e016e9c6eb55026b548549becbf25f40cfdd4db792fd6",
-      "junit_sha256": "2883f94d9c93879e67254646ba34d1338344452aaf5a8777407bc4e859c7e04f"
-    },
-    {
-      "invocation": "software-011",
-      "exit_code": 1,
-      "tests": 8,
-      "failures": 1,
-      "errors": 0,
-      "skipped": 0,
-      "log": "results/preintegration/w1/work-20261103T123702Z-532aa226/software-011.log",
-      "log_sha256": "1f2800962cc7f09b08567e82c2b04833bf329229566df5d054877242abd1fd32",
-      "junit_sha256": "ef80a2d2636c66536deadfbb826be04c5d459226c220d3ea258412e011a364ba"
-    },
-    {
-      "invocation": "software-012",
-      "exit_code": 0,
-      "tests": 11,
-      "failures": 0,
-      "errors": 0,
-      "skipped": 0,
-      "log": "results/preintegration/w1/work-20261103T123702Z-532aa226/software-012.log",
-      "log_sha256": "34dc1820488d189b266562816b3c9e2245a1df61359f5523b4ea57d225341fac",
-      "junit_sha256": "76d928b1aab5453718ac85e140141b370c1a04568321ae15ac858c24c86760be"
-    },
-    {
-      "invocation": "g0-check",
-      "exit_code": 1,
-      "tests": 1,
-      "failures": 1,
-      "errors": 0,
-      "skipped": 0,
-      "log": "results/preintegration/w1/work-20261103T123702Z-532aa226/g0-check.log",
-      "log_sha256": "f9ac6683cab03cd80f1345d75dbddc92157b2c31048350eacff68c8d821da850",
-      "junit_sha256": "3a0bc568635bbfae750e461365158b31b4734fb5f4d1f5ce4da2c7c8052d459a"
-    },
-    {
-      "invocation": "g0-admitted",
-      "exit_code": 1,
-      "tests": 1,
-      "failures": 1,
-      "errors": 0,
-      "skipped": 0,
-      "log": "results/preintegration/w1/work-20261103T123702Z-532aa226/g0-admitted.log",
-      "log_sha256": "8d10ebe9ac88cc627d16ba44be0f27d0cc9b6fe90c507c839bb3b2c3f2fb92f2",
-      "junit_sha256": "9be03f006f4f148546818e5c62ee1fe657f50ed8ea8894d67a6ddaff13789b6c"
+      "id": "software-004",
+      "passed": 88
     }
   ],
-  "g0": {
-    "complete": false,
-    "claim_consumed": true,
-    "worker_launches": 1,
-    "native_startup_preparations": 1,
-    "native_recurring_preparations": 0,
-    "nominal_proposals": 11,
-    "segments": 20,
-    "last_observed_segment_end_s": 0.1,
-    "raw_returned": false,
-    "stop": "TypeError: Prediction capture requires the TVLQR tracker",
-    "native_startup_preparation_s": 0.08126112504396588,
-    "startup_boundary_envelope_s": 0.08591633301693946,
-    "tracker_samples": 11,
-    "supervisor_wall_s": 18.64127587497933,
-    "process_tree_cpu_s": 15.459226,
-    "resource_samples": 481,
-    "max_sampled_worker_tree_rss_bytes": 236126208,
-    "sampled_process_thread_counts": [
-      1
-    ],
-    "supervisor_rss_at_failed_producer": "NOT_OBSERVED_SEPARATELY",
-    "parent_child_pid_birth_at_failed_producer": "NOT_RETAINED",
-    "source_git_head_at_execution": "63d56fc366de7464e1c71a4f831c87ec03d31a2f",
-    "executed_dirty_runtime_map_bound_retrospectively_to_commit": "bec56302891c2a136126c8be486c4f166b402d27"
+  "producer_runtime_sha256": {
+    "src/apex/preintegration/validation.py": "5e20e706da76281e499fa0010ccfefb2770796e07c601e8a19c5cad29270c2ef",
+    "scripts/preintegration/__init__.py": "c359d55be6bf1e2f49c847ad5a6902a1edac47e6ef2bba566038233301f41ca5",
+    "tests/integration/test_preintegration_genuine.py": "f701c24fa5311c98f0c4e904868d1d767f1be4428ccf0b97f37942ef89bf0cb9",
+    "scripts/preintegration/launch.py": "7c414806bc67312cb60f2613ddb16502a4a9ceb9177022879453f5656eeb7148",
+    "tests/unit/test_preintegration_session.py": "1f1898b233f80bb7a69cda056de3a248b9a52ff609f99ba4776d3ef6e820ea01",
+    "src/apex/preintegration/profile.py": "b4cb3411e586df225775b08a8bfa5414e6b73741e9bbae594ce5d639e4cdd093",
+    "src/apex/preintegration/__init__.py": "40ffba17a7cc3ceb051567af7be4aa39c88ae875f629b6ee1c48c295f784897d",
+    "tests/unit/test_preintegration_profile.py": "063b6bb17eaedab98cacd78c2bcbba0f62ffbb841b46db9a9d643d2bfe2b5c11",
+    "scripts/preintegration/worker.py": "c70dfcc36ab9f5d5895e0aa13a2d092a7211101a882da0d7bff4a1b30eb5b619",
+    "tests/integration/test_preintegration_local.py": "5a3f09dbfef42a297db3f2fa5cad904e78569957a716b6aa60058aad1d9c1efd",
+    "src/apex/preintegration/records.py": "3224967ca26d3bc37af14e08a0308e25e59f00dfeb22b4395f3c7c97ac8c5d66",
+    "tests/unit/test_preintegration_evidence.py": "91ddaef1573abbc47b0de23f9be145ac214ff5f5b97f7a5a7463711dbb06f927",
+    "scripts/preintegration/evidence.py": "13e269f83cf38e04fe80933a4bb1b40ce266b7bc0d10e77cfe1e78e473fd8092",
+    "tests/unit/test_preintegration_validation.py": "ceea3253a7ae2aa5dba8756474f5f130169d6b542a91e37baff90b4f6a8815da",
+    "src/apex/preintegration/session.py": "c52205678b8cffa67d3a685cb1be5c9fd0aa31922f37cad5444a4b2e4dc6e924",
+    "src/apex/preintegration/local.py": "dda7d415a9474c2c47f3e5a58962a3c2e84966dbb06d228709b5626f88e11c6c"
   },
-  "g1": "NOT_RUN_PREREQUISITE_FAILED",
-  "measured_smoke": "NOT_RUN_PREREQUISITE_FAILED",
-  "raw_evidence": {
-    "work_root": "results/preintegration/w1/work-20261103T123702Z-532aa226",
-    "g0": "results/preintegration/w1/g0-7e39088ca7ab458599d3ac72df79a61c",
-    "preworker_sandbox_failure": "results/preintegration/w1/g0-9ee62089ff7047738e1b3d08567a7d79",
-    "retrieval": "LOCAL_WORKSPACE_AVAILABLE; independent backup/retrieval NOT_QUALIFIED",
-    "indexes": [
-      "results/preintegration/w1/work-20261103T123702Z-532aa226/delivery-index.json",
-      "results/preintegration/w1/g0-7e39088ca7ab458599d3ac72df79a61c/index.json",
-      "results/preintegration/w1/g0-9ee62089ff7047738e1b3d08567a7d79/index.json"
-    ],
-    "index_sha256": {
-      "results/preintegration/w1/work-20261103T123702Z-532aa226/delivery-index.json": "d2f30b6ac2e6460f74f602f5d71405ec4904729b8f613193dff15dd6cea2edc3",
-      "results/preintegration/w1/g0-7e39088ca7ab458599d3ac72df79a61c/index.json": "56ef86bd3dbfc1ed029dae499b3afe429f35367b6958d7ad0b2515ac19d56507",
-      "results/preintegration/w1/g0-9ee62089ff7047738e1b3d08567a7d79/index.json": "779d811c0d2c4ab12ed50252ffc5dd5598e3753f9b173065dc92947c825e6449"
+  "independent_reviews": [
+    {
+      "producer": "1df1767350518e00f7c8781e66d0c09f13b4ee1e",
+      "verdict": "CHANGES_REQUIRED",
+      "path": "results/preintegration/w1/correction-20261104T160319Z/independent-review-001.json",
+      "sha256": "fa7d920441585879a21e21818b9d44917918b28f72a1be764faefc6833bcfb40"
     },
-    "work_files_indexed": 415,
-    "work_bytes_indexed": 41479647
-  },
-  "limits": [
-    "No numerical retry after the sole genuine worker",
-    "No genuine closed-loop validation of corrected candidate",
-    "Legacy application observations do not establish application-check enforcement",
-    "No physical Safety/onboard timing claim",
-    "Installed RECORD consistency is not historical wheel/plugin-build equivalence"
+    {
+      "producer": "e577f2c00bde2092f6bd1bd403b72aa9ca10713a",
+      "verdict": "PASS",
+      "path": "results/preintegration/w1/correction-20261104T160319Z/independent-review-002.json",
+      "sha256": "2eecc92a25924c19e5d999ba6c6a53708c7096f65831356dc80b6f7e38ece4dd"
+    }
   ],
-  "final_preservation_artifact": "results/preintegration/w1/work-20261103T123702Z-532aa226/final-preservation.json",
-  "corrective_work": {
-    "authorization": "2026-11-04 Primary corrective and conditional replacement grant",
-    "reviewed_start": "4895a37ce151b12e74d8c062f681996c59260639",
-    "root": "results/preintegration/w1/correction-20261104T160319Z",
-    "status": "IMPLEMENTED_PENDING_INDEPENDENT_CORRECTIVE_REVIEW",
-    "numerical_attempts": [],
-    "software_invocations": [
-      {
-        "id": "software-001",
-        "passed": 26
+  "sequence_exit": {
+    "exit_code": 0,
+    "producer": "e577f2c00bde2092f6bd1bd403b72aa9ca10713a",
+    "command": "launch.py --case conditional-sequence --output results/preintegration/w1/replacement-e577f2c-20261104",
+    "automatic_retry": false
+  },
+  "cases": {
+    "G0": {
+      "output": "results/preintegration/w1/replacement-e577f2c-20261104/G0",
+      "index_sha256": "50f53515e7881dc03d18cfa26502bf865678453bc3be6ee5abcfe34e5327fff4",
+      "complete": true,
+      "execution_coverage_s": 0.24,
+      "scientific_audit": {
+        "errors": [],
+        "execution_completed": true,
+        "physical_safety": "NOT_OBSERVED_NOT_VALIDATED",
+        "valid_prerequisite": true
       },
-      {
-        "id": "software-002",
-        "passed": 84
+      "native_counts": {
+        "states": 49,
+        "controls": 24,
+        "plans": 3,
+        "packets": 3,
+        "handoffs": 2,
+        "releases": 2,
+        "misses": 0,
+        "codriver_misses": 0,
+        "fallbacks": 0
       },
-      {
-        "id": "software-003",
-        "passed": 27
+      "all_native_success": true,
+      "max_slack": 9.091525285379717e-11,
+      "solver_statuses": [
+        "Solve_Succeeded"
+      ],
+      "resources": {
+        "construction_wall_s": 7.910509750014171,
+        "run_wall_s": 0.5226622080081142,
+        "run_cpu_s": 0.5111170000000005,
+        "wall_per_simulated_second": 2.1777592000338095,
+        "process_threads": 1,
+        "threadpools": [],
+        "max_sampled_total_rss_bytes": 238927872,
+        "resource_sample_count": 501,
+        "max_sampled_worker_threads": 1,
+        "indexed_output_bytes": 5616381
       },
-      {
-        "id": "software-004",
-        "passed": 88
-      }
-    ],
-    "runtime_sha256": {
-      "src/apex/preintegration/validation.py": "5e20e706da76281e499fa0010ccfefb2770796e07c601e8a19c5cad29270c2ef",
-      "scripts/preintegration/__init__.py": "c359d55be6bf1e2f49c847ad5a6902a1edac47e6ef2bba566038233301f41ca5",
-      "tests/integration/test_preintegration_genuine.py": "f701c24fa5311c98f0c4e904868d1d767f1be4428ccf0b97f37942ef89bf0cb9",
-      "scripts/preintegration/launch.py": "7c414806bc67312cb60f2613ddb16502a4a9ceb9177022879453f5656eeb7148",
-      "tests/unit/test_preintegration_session.py": "1f1898b233f80bb7a69cda056de3a248b9a52ff609f99ba4776d3ef6e820ea01",
-      "src/apex/preintegration/profile.py": "b4cb3411e586df225775b08a8bfa5414e6b73741e9bbae594ce5d639e4cdd093",
-      "src/apex/preintegration/__init__.py": "40ffba17a7cc3ceb051567af7be4aa39c88ae875f629b6ee1c48c295f784897d",
-      "tests/unit/test_preintegration_profile.py": "063b6bb17eaedab98cacd78c2bcbba0f62ffbb841b46db9a9d643d2bfe2b5c11",
-      "scripts/preintegration/worker.py": "c70dfcc36ab9f5d5895e0aa13a2d092a7211101a882da0d7bff4a1b30eb5b619",
-      "tests/integration/test_preintegration_local.py": "5a3f09dbfef42a297db3f2fa5cad904e78569957a716b6aa60058aad1d9c1efd",
-      "src/apex/preintegration/records.py": "3224967ca26d3bc37af14e08a0308e25e59f00dfeb22b4395f3c7c97ac8c5d66",
-      "tests/unit/test_preintegration_evidence.py": "91ddaef1573abbc47b0de23f9be145ac214ff5f5b97f7a5a7463711dbb06f927",
-      "scripts/preintegration/evidence.py": "13e269f83cf38e04fe80933a4bb1b40ce266b7bc0d10e77cfe1e78e473fd8092",
-      "tests/unit/test_preintegration_validation.py": "ceea3253a7ae2aa5dba8756474f5f130169d6b542a91e37baff90b4f6a8815da",
-      "src/apex/preintegration/session.py": "c52205678b8cffa67d3a685cb1be5c9fd0aa31922f37cad5444a4b2e4dc6e924",
-      "src/apex/preintegration/local.py": "dda7d415a9474c2c47f3e5a58962a3c2e84966dbb06d228709b5626f88e11c6c"
+      "witness": {
+        "case": "G0",
+        "complete": true,
+        "exit_code": 0,
+        "guard_reason": null,
+        "index_sha256": "50f53515e7881dc03d18cfa26502bf865678453bc3be6ee5abcfe34e5327fff4",
+        "ledger_sha256": "4c35f510a699e742df25e286e7d9d625f48a442fd8bc5013e9b6ee6a2b2ab6cf",
+        "observed_launch_through_exit_wall_s": 17.733002834022045,
+        "observed_process_tree_cpu_s": 15.795264,
+        "output": "/Users/marwansaber/.codex/worktrees/pre-int-w1/MPC_Controller_v1_IronManStyle/results/preintegration/w1/replacement-e577f2c-20261104/G0",
+        "producer": "e577f2c00bde2092f6bd1bd403b72aa9ca10713a"
+      },
+      "startup_native_preparation_s": 0.06063958298182115,
+      "classification": "INSUFFICIENT_EVIDENCE",
+      "timing": {
+        "native_preparation": {
+          "count": 2,
+          "max": 0.050794542010407895,
+          "median": 0.04898600000888109,
+          "min": 0.04717745800735429,
+          "missing_count": 0,
+          "p95": 0.050794542010407895,
+          "quantile": "nearest-rank ceil(0.95*n)",
+          "status": "OBSERVED"
+        },
+        "native_solve": {
+          "count": 2,
+          "max": 0.03325233404757455,
+          "median": 0.032803625508677214,
+          "min": 0.03235491696977988,
+          "missing_count": 0,
+          "p95": 0.03325233404757455,
+          "quantile": "nearest-rank ceil(0.95*n)",
+          "status": "OBSERVED"
+        },
+        "native_tracker": {
+          "count": 24,
+          "max": 4.6708970330655575e-05,
+          "median": 3.4520518966019154e-05,
+          "min": 3.220798680558801e-05,
+          "missing_count": 0,
+          "p95": 4.175002686679363e-05,
+          "quantile": "nearest-rank ceil(0.95*n)",
+          "status": "OBSERVED"
+        },
+        "runner_control_envelope": {
+          "count": 24,
+          "max": 0.0036407909938134253,
+          "median": 0.0033899375121109188,
+          "min": 0.00331820803694427,
+          "missing_count": 0,
+          "p95": 0.0036063339794054627,
+          "quantile": "nearest-rank ceil(0.95*n)",
+          "status": "OBSERVED"
+        }
+      },
+      "raw_timing_population_artifact": "feasibility.json; original samples_s retained",
+      "unfinished_preparations": [],
+      "claim_sha256": "a2535f3fa5eb16af2c3c90e6c271599d5ffe72d2a012598e09af06d5059a0dda"
     },
-    "original_evidence": "PRESERVED_UNCHANGED",
+    "G1": {
+      "output": "results/preintegration/w1/replacement-e577f2c-20261104/G1",
+      "index_sha256": "b7ac7f40537323e298b34b802eb5f0f2708a52366623fc60eaf436483606be00",
+      "complete": true,
+      "execution_coverage_s": 0.24,
+      "scientific_audit": {
+        "errors": [],
+        "execution_completed": true,
+        "physical_safety": "NOT_OBSERVED_NOT_VALIDATED",
+        "valid_prerequisite": true
+      },
+      "native_counts": {
+        "states": 48,
+        "controls": 8,
+        "plans": 3,
+        "packets": 3,
+        "handoffs": 1,
+        "releases": 2,
+        "misses": 0,
+        "codriver_misses": 16,
+        "fallbacks": 0
+      },
+      "all_native_success": true,
+      "max_slack": 9.091525285379717e-11,
+      "solver_statuses": [
+        "Solve_Succeeded"
+      ],
+      "resources": {
+        "construction_wall_s": 7.663994125032332,
+        "run_wall_s": 0.4706489579984918,
+        "run_cpu_s": 0.46323300000000067,
+        "wall_per_simulated_second": 1.961037324993716,
+        "process_threads": 1,
+        "threadpools": [],
+        "max_sampled_total_rss_bytes": 261586944,
+        "resource_sample_count": 494,
+        "max_sampled_worker_threads": 1,
+        "indexed_output_bytes": 5580871
+      },
+      "witness": {
+        "case": "G1",
+        "complete": true,
+        "exit_code": 0,
+        "guard_reason": null,
+        "index_sha256": "b7ac7f40537323e298b34b802eb5f0f2708a52366623fc60eaf436483606be00",
+        "ledger_sha256": "f8e24c34e758faf131345032c365d3cebc6c75e088d9a6846592fc08a66ea7f2",
+        "observed_launch_through_exit_wall_s": 16.40197983395774,
+        "observed_process_tree_cpu_s": 15.636047000000001,
+        "output": "/Users/marwansaber/.codex/worktrees/pre-int-w1/MPC_Controller_v1_IronManStyle/results/preintegration/w1/replacement-e577f2c-20261104/G1",
+        "producer": "e577f2c00bde2092f6bd1bd403b72aa9ca10713a"
+      },
+      "startup_native_preparation_s": 0.05546858400339261,
+      "classification": "INSUFFICIENT_EVIDENCE",
+      "timing": {
+        "native_preparation": {
+          "count": 1,
+          "max": 0.048182500002440065,
+          "median": 0.048182500002440065,
+          "min": 0.048182500002440065,
+          "missing_count": 0,
+          "p95": 0.048182500002440065,
+          "quantile": "nearest-rank ceil(0.95*n)",
+          "status": "OBSERVED"
+        },
+        "native_solve": {
+          "count": 1,
+          "max": 0.030954583024140447,
+          "median": 0.030954583024140447,
+          "min": 0.030954583024140447,
+          "missing_count": 0,
+          "p95": 0.030954583024140447,
+          "quantile": "nearest-rank ceil(0.95*n)",
+          "status": "OBSERVED"
+        },
+        "native_tracker": {
+          "count": 8,
+          "max": 4.3042004108428955e-05,
+          "median": 3.593749715946615e-05,
+          "min": 3.404199378564954e-05,
+          "missing_count": 0,
+          "p95": 4.3042004108428955e-05,
+          "quantile": "nearest-rank ceil(0.95*n)",
+          "status": "OBSERVED"
+        },
+        "runner_control_envelope": {
+          "count": 8,
+          "max": 0.003698499989695847,
+          "median": 0.0034461460018064827,
+          "min": 0.003407042007893324,
+          "missing_count": 0,
+          "p95": 0.003698499989695847,
+          "quantile": "nearest-rank ceil(0.95*n)",
+          "status": "OBSERVED"
+        }
+      },
+      "raw_timing_population_artifact": "feasibility.json; original samples_s retained",
+      "unfinished_preparations": [
+        {
+          "completed": false,
+          "completion_time": 0.26,
+          "curvature": 0.05128791199858891,
+          "delay_estimation_error": 0.0,
+          "delta_feedforward": -0.0005540354274203422,
+          "estimated_delay": 0.06,
+          "fallback": false,
+          "gain_time": 0.0061659589991904795,
+          "iterations": 13,
+          "max_slack": 9.091516891133656e-11,
+          "nonzero_slack": true,
+          "objective": 10.973657445356432,
+          "objective_components": {
+            "input_increment": 0.023531948235275525,
+            "input_reference": 2.445489829275232,
+            "progress_reward": 0.0,
+            "slack_linear": 1.636472036070293e-05,
+            "slack_quadratic": 1.4878004026890774e-14,
+            "state_tracking": 8.308115496790963,
+            "terminal_tracking": 0.1965038063345889,
+            "total": 10.973657445356432
+          },
+          "parameter_update_time": 2.458400558680296e-05,
+          "pending_application_time": 0.205,
+          "physical_delay": 0.06,
+          "plan_id": 2,
+          "planner_cpu_time": 0.0582849999999997,
+          "planner_total_time": 0.05829833302414045,
+          "postprocessing_time": 0.0002548330230638385,
+          "predicted_completion_time": 0.26,
+          "predicted_previous_control": [
+            -0.023101250568019913,
+            0.8737637372080149
+          ],
+          "predicted_state": [
+            5.4210858905089445,
+            -0.3510633451995308,
+            0.24337568395472384,
+            0.15206497980851805,
+            2.3795153112369216,
+            -0.038710165344892654
+          ],
+          "prediction_architecture": "A",
+          "prediction_mode": "legacy",
+          "prediction_time": 0.010775208997074515,
+          "preparation": "prepared",
+          "preview_geometry_time": 0.006775334011763334,
+          "preview_time": 0.007092875021044165,
+          "primal_infeasibility": 3.752534838419308e-08,
+          "r_ref": -0.010454862170997503,
+          "reference_generation_time": 0.0003008338971994817,
+          "reference_speed": 5.661115111330507,
+          "release_command_pending": true,
+          "release_time": 0.2,
+          "slack_sum": 1.636472036070293e-09,
+          "solve_time": 0.033618582994677126,
+          "solver_adapter_time": 0.03376775002107024,
+          "solver_attempted": true,
+          "source_state": [
+            5.378768996679547,
+            -0.3665974997743556,
+            0.6788174532313904,
+            0.13989549293348613,
+            2.056821036260337,
+            -0.06487216787863517
+          ],
+          "startup": false,
+          "status": "Solve_Succeeded",
+          "success": true,
+          "total_compute_time": 0.04121708299499005,
+          "urgent": false,
+          "vy_ref": 0.0,
+          "warm_start": true,
+          "warm_start_preparation_time": 4.833302227780223e-05
+        }
+      ],
+      "claim_sha256": "9dd006dc9ba1c9c34581d0eff8ede2f0a567f12f52b3a1f6fd90da3a8f279834"
+    },
+    "measured-smoke": {
+      "output": "results/preintegration/w1/replacement-e577f2c-20261104/measured-smoke",
+      "index_sha256": "07b1ae452946dad250d83e954bae97d1c452a291df35b20d5879c3d2313a66dd",
+      "complete": true,
+      "execution_coverage_s": 2.0,
+      "scientific_audit": {
+        "errors": [],
+        "execution_completed": true,
+        "physical_safety": "NOT_OBSERVED_NOT_VALIDATED",
+        "valid_prerequisite": true
+      },
+      "native_counts": {
+        "states": 613,
+        "controls": 200,
+        "plans": 20,
+        "packets": 20,
+        "handoffs": 19,
+        "releases": 19,
+        "misses": 0,
+        "codriver_misses": 0,
+        "fallbacks": 0
+      },
+      "all_native_success": true,
+      "max_slack": 9.091525285379717e-11,
+      "solver_statuses": [
+        "Solve_Succeeded"
+      ],
+      "resources": {
+        "construction_wall_s": 7.422118916991167,
+        "run_wall_s": 5.287375583022367,
+        "run_cpu_s": 5.265772,
+        "wall_per_simulated_second": 2.6436877915111836,
+        "process_threads": 1,
+        "threadpools": [],
+        "max_sampled_total_rss_bytes": 291799040,
+        "resource_sample_count": 744,
+        "max_sampled_worker_threads": 1,
+        "indexed_output_bytes": 7505960
+      },
+      "witness": {
+        "case": "measured-smoke",
+        "complete": true,
+        "exit_code": 0,
+        "guard_reason": null,
+        "index_sha256": "07b1ae452946dad250d83e954bae97d1c452a291df35b20d5879c3d2313a66dd",
+        "ledger_sha256": "f1e17b286a9ed0282b165b9878a978f534ff8f76a345e446dc94a9574a9bfc6a",
+        "observed_launch_through_exit_wall_s": 22.311317540996242,
+        "observed_process_tree_cpu_s": 22.850908999999998,
+        "output": "/Users/marwansaber/.codex/worktrees/pre-int-w1/MPC_Controller_v1_IronManStyle/results/preintegration/w1/replacement-e577f2c-20261104/measured-smoke",
+        "producer": "e577f2c00bde2092f6bd1bd403b72aa9ca10713a"
+      },
+      "startup_native_preparation_s": 0.04561525001190603,
+      "classification": "PRELIMINARY_FEASIBILITY_OBSERVED",
+      "timing": {
+        "native_preparation": {
+          "count": 19,
+          "max": 0.06972883298294619,
+          "median": 0.06620937498519197,
+          "min": 0.04892224998911843,
+          "missing_count": 0,
+          "p95": 0.06972883298294619,
+          "quantile": "nearest-rank ceil(0.95*n)",
+          "status": "OBSERVED"
+        },
+        "native_solve": {
+          "count": 19,
+          "max": 0.04527887498261407,
+          "median": 0.04271199996583164,
+          "min": 0.03133645799243823,
+          "missing_count": 0,
+          "p95": 0.04527887498261407,
+          "quantile": "nearest-rank ceil(0.95*n)",
+          "status": "OBSERVED"
+        },
+        "native_tracker": {
+          "count": 200,
+          "max": 5.5500015150755644e-05,
+          "median": 3.483350155875087e-05,
+          "min": 3.108399687334895e-05,
+          "missing_count": 0,
+          "p95": 4.529202124103904e-05,
+          "quantile": "nearest-rank ceil(0.95*n)",
+          "status": "OBSERVED"
+        },
+        "runner_control_envelope": {
+          "count": 200,
+          "max": 0.005161624983884394,
+          "median": 0.0033545835176482797,
+          "min": 0.002812249993439764,
+          "missing_count": 0,
+          "p95": 0.00360362499486655,
+          "quantile": "nearest-rank ceil(0.95*n)",
+          "status": "OBSERVED"
+        }
+      },
+      "raw_timing_population_artifact": "feasibility.json; original samples_s retained",
+      "unfinished_preparations": [],
+      "claim_sha256": "364b62a9d81367f67964ce53dae99eb405fce946582d5d165637e0b135c98c87"
+    }
+  },
+  "machine": {
+    "observed_after_sequence_utc": "2026-11-04T16:24:01.742194+00:00",
+    "platform": "macOS-26.5.1-arm64-arm-64bit-Mach-O",
+    "python_used_in_run": "3.12.14",
+    "hardware": {
+      "hw.model": {
+        "exit_code": 0,
+        "stdout": "MacBookAir10,1",
+        "stderr": ""
+      },
+      "machdep.cpu.brand_string": {
+        "exit_code": 0,
+        "stdout": "Apple M1",
+        "stderr": ""
+      },
+      "hw.physicalcpu": {
+        "exit_code": 0,
+        "stdout": "8",
+        "stderr": ""
+      },
+      "hw.logicalcpu": {
+        "exit_code": 0,
+        "stdout": "8",
+        "stderr": ""
+      },
+      "hw.memsize": {
+        "exit_code": 0,
+        "stdout": "8589934592",
+        "stderr": ""
+      }
+    },
+    "initial_sandbox_sysctl_access": "DENIED; qualified read-only host query followed; no numerical rerun"
+  },
+  "preservation": {
+    "producer": "e577f2c00bde2092f6bd1bd403b72aa9ca10713a",
+    "source_integrity": true,
+    "protected_frozen_paths_preserved": 825,
+    "historical_entries_preserved": 435,
+    "scientific_source_entries": 294,
+    "planning_hashes_preserved": 5,
+    "all_three_clean_producer_admissions": true,
+    "all_scientific_audits_valid": true,
+    "all_normal_exit_receipts_complete": true,
+    "sequence_exit_code": 0,
+    "no_retries": true,
+    "all_new_claims_consumed": true,
+    "approved_plan_sha256": "fc9a0e771680b41a80eff1af07600d2f63485d5e7411ba948ee7554838f3157b"
+  },
+  "raw_retrieval": "AVAILABLE_LOCAL_WORKTREE; DURABLE_OFF_HOST_BACKUP_NOT_QUALIFIED",
+  "feasibility": "PRELIMINARY_FEASIBILITY_OBSERVED; 19 recurring samples, no embedded/WCET/end-to-end realtime claim",
+  "limitations": [
+    "Full runner5.287375583s wall for2.0 simulated seconds; includes plant, validation, journal and observers",
+    "Legacy applications do not prove separate check_application endpoint enforcement",
+    "Sampled RSS is not continuous peak",
+    "Supported Accelerate SINGLE mode and sampled one worker thread; exact native active thread count unavailable",
+    "Installed RECORD consistency does not establish original wheel/IPOPT build equivalence",
+    "No physical hold/brake/stop/uncertainty policy or new departmental contract"
+  ],
+  "historical_delivery_4895": {
+    "schema": "apex-preintegration-work/1",
+    "status": "WORK_COMPLETE_PENDING_REVIEW",
+    "scientific": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+    "approved_plan": "63d56fc366de7464e1c71a4f831c87ec03d31a2f",
+    "failed_executable_producer": "bec56302891c2a136126c8be486c4f166b402d27",
+    "candidate_revision": "Containing final delivery commit; exact SHA provided after push, not self-embedded",
+    "activities": {
+      "A01": "IMPLEMENTED_SOURCE_ENVIRONMENT_CONFIGURATION_CHECKED",
+      "A02": "IMPLEMENTED_SOFTWARE_CHECKED",
+      "A03": "IMPLEMENTED_SOFTWARE_CHECKED",
+      "A04": "IMPLEMENTED_SOFTWARE_CHECKED_NO_PHYSICAL_AUTHORITY",
+      "A05": "IMPLEMENTED_SOFTWARE_CHECKED",
+      "A06": "CORRECTED_SOFTWARE_CHECKED_GENUINE_NOT_REVALIDATED",
+      "A07": "IMPLEMENTED_BUT_G0_FAILED_G1_AND_SMOKE_NOT_RUN",
+      "A08": "DOCUMENTED_WORK_DELIVERY_IDENTITY_AND_PUSH_READBACK_IN_FINAL_HANDOFF"
+    },
     "milestone_candidate_met": false,
-    "reviews": [
+    "feasibility": "INSUFFICIENT_EVIDENCE",
+    "execution_runtime_sha256": {
+      "scripts/preintegration/__init__.py": "c359d55be6bf1e2f49c847ad5a6902a1edac47e6ef2bba566038233301f41ca5",
+      "scripts/preintegration/evidence.py": "4249eb9a8b3e0691d7562af8cd2b165a019a28810ba0e0572ac628c28747a9b9",
+      "scripts/preintegration/launch.py": "535c83e8de92004695851eb445cca0295ec7bd4ee0163e3163d7040bd50fa643",
+      "scripts/preintegration/worker.py": "ec426683b3567d3a16e07545b9d7bab8597a39c85ef2a436e5aac2b96ecbeebf",
+      "src/apex/preintegration/__init__.py": "40ffba17a7cc3ceb051567af7be4aa39c88ae875f629b6ee1c48c295f784897d",
+      "src/apex/preintegration/local.py": "45d17da9b9d94f8449d9347d6f76dc0a1ebd72c21d2e803ca611484ea11cffe0",
+      "src/apex/preintegration/profile.py": "b4cb3411e586df225775b08a8bfa5414e6b73741e9bbae594ce5d639e4cdd093",
+      "src/apex/preintegration/records.py": "3224967ca26d3bc37af14e08a0308e25e59f00dfeb22b4395f3c7c97ac8c5d66",
+      "src/apex/preintegration/session.py": "421173fba838408d03f505dcc16a6188dfafe4c1e5e085e90e55def9bb18020b",
+      "src/apex/preintegration/validation.py": "5e20e706da76281e499fa0010ccfefb2770796e07c601e8a19c5cad29270c2ef",
+      "tests/integration/test_preintegration_genuine.py": "134fd84abbc308fbeeca83f5a4a681aabc59141d282d32e42ff19fa76c0deae3",
+      "tests/integration/test_preintegration_local.py": "2ed9bde8d17fce7857ed4210028f5b6cf75eb28d8953556997bbd9935e0ad9b2",
+      "tests/unit/test_preintegration_evidence.py": "80ab157f86b14853b0854ac1b834457e7cc8961c361350c045c634c0c5fe3cdd",
+      "tests/unit/test_preintegration_profile.py": "063b6bb17eaedab98cacd78c2bcbba0f62ffbb841b46db9a9d643d2bfe2b5c11",
+      "tests/unit/test_preintegration_session.py": "56e5c171585e8ef12a31293b139685e9ae7677ac78206a255974a0c2e7382b8d",
+      "tests/unit/test_preintegration_validation.py": "ceea3253a7ae2aa5dba8756474f5f130169d6b542a91e37baff90b4f6a8815da"
+    },
+    "candidate_runtime_sha256": {
+      "scripts/preintegration/__init__.py": "c359d55be6bf1e2f49c847ad5a6902a1edac47e6ef2bba566038233301f41ca5",
+      "scripts/preintegration/evidence.py": "4249eb9a8b3e0691d7562af8cd2b165a019a28810ba0e0572ac628c28747a9b9",
+      "scripts/preintegration/launch.py": "a45caf4d94c7befd02274165dd2d3a39d9f06d06ec803f1a42632cba476ce09a",
+      "scripts/preintegration/worker.py": "e8adbda937c4e39f2ff9f260a8b99804cc4baefb1feb8f2f6363f2cf169262e1",
+      "src/apex/preintegration/__init__.py": "40ffba17a7cc3ceb051567af7be4aa39c88ae875f629b6ee1c48c295f784897d",
+      "src/apex/preintegration/local.py": "dda7d415a9474c2c47f3e5a58962a3c2e84966dbb06d228709b5626f88e11c6c",
+      "src/apex/preintegration/profile.py": "b4cb3411e586df225775b08a8bfa5414e6b73741e9bbae594ce5d639e4cdd093",
+      "src/apex/preintegration/records.py": "3224967ca26d3bc37af14e08a0308e25e59f00dfeb22b4395f3c7c97ac8c5d66",
+      "src/apex/preintegration/session.py": "c52205678b8cffa67d3a685cb1be5c9fd0aa31922f37cad5444a4b2e4dc6e924",
+      "src/apex/preintegration/validation.py": "5e20e706da76281e499fa0010ccfefb2770796e07c601e8a19c5cad29270c2ef",
+      "tests/integration/test_preintegration_genuine.py": "134fd84abbc308fbeeca83f5a4a681aabc59141d282d32e42ff19fa76c0deae3",
+      "tests/integration/test_preintegration_local.py": "968574516c5ec3bcaed60ed2d05dc39959b3c4fb4c6472657e4d99d25c00f57e",
+      "tests/unit/test_preintegration_evidence.py": "a23fd04c1df3a5698de91d546ab5f736d38ed3558ea7fed881c87462db75073f",
+      "tests/unit/test_preintegration_profile.py": "063b6bb17eaedab98cacd78c2bcbba0f62ffbb841b46db9a9d643d2bfe2b5c11",
+      "tests/unit/test_preintegration_session.py": "1f1898b233f80bb7a69cda056de3a248b9a52ff609f99ba4776d3ef6e820ea01",
+      "tests/unit/test_preintegration_validation.py": "ceea3253a7ae2aa5dba8756474f5f130169d6b542a91e37baff90b4f6a8815da"
+    },
+    "frozen_preservation": {
+      "original_files": 827,
+      "unchanged_outside_two_authorized_documentation_paths": 825,
+      "mismatches": [],
+      "original_scientific_source_entries": 294,
+      "approved_plan_unchanged": true,
+      "manifest_sha256": "5299adca29d5c5bd383252cd2c299a392dd6872dc6bb72d1a4dd7ecfb8dd1ebf",
+      "lock_sha256": "8cf85868a456415a898643dbb226d146b0b90e5c98982136cf2abf2465fa16ec",
+      "project_sha256": "c8ea69a3a486c9794b6cf88ac26566211c6f1bb7b7286d86dbaa36a191353d41",
+      "planning": [
+        {
+          "path": "configs/planning/task007b/gamma_2p000/planning_manifest.json",
+          "sha256": "5e7bccf1a300fb6737fc6b6b6e0c9aa921c110b11ffc5762a73f57f830a8660c"
+        },
+        {
+          "path": "configs/planning/task007b/gamma_2p000/planning_reference.csv",
+          "sha256": "6206e18ce3cb105d58d0923564336e28c00ec44aee3fd8a06ff7a37bcf84e2df"
+        },
+        {
+          "path": "configs/planning/task007b/gamma_2p000/planning_validation.json",
+          "sha256": "279582d2dcf37fdf4008ddc7f926109ef3d730a0e64c188d7003755d08871fa7"
+        },
+        {
+          "path": "configs/planning/task007b/gamma_2p000/speed_polynomial.json",
+          "sha256": "f335e78fc6c735c952f49078077a573ee989dd2be71497e90451e34a79f2c7ea"
+        },
+        {
+          "path": "configs/planning/task007b/gamma_2p000/track_source.json",
+          "sha256": "5f4d1734d7fec7de56d346e8f90bf272a3de9c05ac42f76cd49004e7f9183e55"
+        }
+      ]
+    },
+    "software_checks_separate_invocations": [
       {
-        "producer": "1df1767350518e00f7c8781e66d0c09f13b4ee1e",
-        "verdict": "CHANGES_REQUIRED",
-        "report": "independent-review-001.json",
-        "sha256": "fa7d920441585879a21e21818b9d44917918b28f72a1be764faefc6833bcfb40"
+        "invocation": "software-001",
+        "exit_code": 0,
+        "tests": 175,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "log": "results/preintegration/w1/work-20261103T123702Z-532aa226/software-001.log",
+        "log_sha256": "331086f04bcdba36606c7d5ed341009fe76ed4df548323c7889814ca3434d1f1",
+        "junit_sha256": "50e232ea2df3a687173337d5489b9f1baa544ba10bcbb8c575a381bc2b625543"
+      },
+      {
+        "invocation": "software-002",
+        "exit_code": 1,
+        "tests": 3,
+        "failures": 1,
+        "errors": 0,
+        "skipped": 0,
+        "log": "results/preintegration/w1/work-20261103T123702Z-532aa226/software-002.log",
+        "log_sha256": "d40cb9e1d05e744aa097091733ac0dd89b9cd24c355500404cb252ce1a202bf8",
+        "junit_sha256": "f097629b650609458fbb3f1ff59fe7a5a1e715c4eddd17124931e42c0cf2fc35"
+      },
+      {
+        "invocation": "software-003",
+        "exit_code": 0,
+        "tests": 43,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "log": "results/preintegration/w1/work-20261103T123702Z-532aa226/software-003.log",
+        "log_sha256": "13e61d2ebb594385da2499039effe7c2c57707a0dbe5e00536c373c0dd960b72",
+        "junit_sha256": "489d284a81b70d2ad1011bf92cac75f43547a517c90166e8d3007c2e5b8a9333"
+      },
+      {
+        "invocation": "software-004",
+        "exit_code": 0,
+        "tests": 45,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "log": "results/preintegration/w1/work-20261103T123702Z-532aa226/software-004.log",
+        "log_sha256": "73a9ae3b5cf8e56cba2507e3994a9c976527bbaf1d2b099c54d6d89ed2637748",
+        "junit_sha256": "d4c0ece01b2cd2f056ad2a414a84fe67514acf4fdb4cf275bad40934ac57f13a"
+      },
+      {
+        "invocation": "software-005",
+        "exit_code": 0,
+        "tests": 11,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "log": "results/preintegration/w1/work-20261103T123702Z-532aa226/software-005.log",
+        "log_sha256": "34dc1820488d189b266562816b3c9e2245a1df61359f5523b4ea57d225341fac",
+        "junit_sha256": "df6799ce679383b80ace8cbda3c9dded95aab5bbbe2c7956675abc7081e46b10"
+      },
+      {
+        "invocation": "software-006",
+        "exit_code": 0,
+        "tests": 5,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "log": "results/preintegration/w1/work-20261103T123702Z-532aa226/software-006.log",
+        "log_sha256": "276218ddcb1b2b81b9d86c815c069888dcb42ba297987eec4b459abc9cb848ae",
+        "junit_sha256": "7c51ea6fbf12cb02e6df28a4861bdd790a401e7ada33eb4a6eb8652dd1b75290"
+      },
+      {
+        "invocation": "software-007",
+        "exit_code": 0,
+        "tests": 46,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "log": "results/preintegration/w1/work-20261103T123702Z-532aa226/software-007.log",
+        "log_sha256": "f13759783350a290a9e33f083ac5a62577c34342ebccc7ee64a6495a4295bb66",
+        "junit_sha256": "b1ddac8bae1a01a1430c0694b2c29d473358235fe09b3386d61f0f674441b500"
+      },
+      {
+        "invocation": "software-008",
+        "exit_code": 0,
+        "tests": 40,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "log": "results/preintegration/w1/work-20261103T123702Z-532aa226/software-008.log",
+        "log_sha256": "5792b3e99084b64c63d54aaabb4161ba210a1a051a0bc0efa5f0c8c15102ffd4",
+        "junit_sha256": "7c2c69740cec82373342fb8bdb223adc9470c03d3604d22c9db13df8601d9cb1"
+      },
+      {
+        "invocation": "software-009",
+        "exit_code": 4,
+        "tests": 1,
+        "failures": 0,
+        "errors": 1,
+        "skipped": 0,
+        "log": "results/preintegration/w1/work-20261103T123702Z-532aa226/software-009.log",
+        "log_sha256": "3d1527a4a564fdfa1ac037c65bd09a094a263b4812128b1a5dab48e0ac6fd336",
+        "junit_sha256": "e99fa613841ac3af788f1c94caf6183f10e6fc6298f5f8d52ed6860ea76e76c2"
+      },
+      {
+        "invocation": "software-010",
+        "exit_code": 0,
+        "tests": 41,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "log": "results/preintegration/w1/work-20261103T123702Z-532aa226/software-010.log",
+        "log_sha256": "1f9639e25e72dc1edb7e016e9c6eb55026b548549becbf25f40cfdd4db792fd6",
+        "junit_sha256": "2883f94d9c93879e67254646ba34d1338344452aaf5a8777407bc4e859c7e04f"
+      },
+      {
+        "invocation": "software-011",
+        "exit_code": 1,
+        "tests": 8,
+        "failures": 1,
+        "errors": 0,
+        "skipped": 0,
+        "log": "results/preintegration/w1/work-20261103T123702Z-532aa226/software-011.log",
+        "log_sha256": "1f2800962cc7f09b08567e82c2b04833bf329229566df5d054877242abd1fd32",
+        "junit_sha256": "ef80a2d2636c66536deadfbb826be04c5d459226c220d3ea258412e011a364ba"
+      },
+      {
+        "invocation": "software-012",
+        "exit_code": 0,
+        "tests": 11,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "log": "results/preintegration/w1/work-20261103T123702Z-532aa226/software-012.log",
+        "log_sha256": "34dc1820488d189b266562816b3c9e2245a1df61359f5523b4ea57d225341fac",
+        "junit_sha256": "76d928b1aab5453718ac85e140141b370c1a04568321ae15ac858c24c86760be"
+      },
+      {
+        "invocation": "g0-check",
+        "exit_code": 1,
+        "tests": 1,
+        "failures": 1,
+        "errors": 0,
+        "skipped": 0,
+        "log": "results/preintegration/w1/work-20261103T123702Z-532aa226/g0-check.log",
+        "log_sha256": "f9ac6683cab03cd80f1345d75dbddc92157b2c31048350eacff68c8d821da850",
+        "junit_sha256": "3a0bc568635bbfae750e461365158b31b4734fb5f4d1f5ce4da2c7c8052d459a"
+      },
+      {
+        "invocation": "g0-admitted",
+        "exit_code": 1,
+        "tests": 1,
+        "failures": 1,
+        "errors": 0,
+        "skipped": 0,
+        "log": "results/preintegration/w1/work-20261103T123702Z-532aa226/g0-admitted.log",
+        "log_sha256": "8d10ebe9ac88cc627d16ba44be0f27d0cc9b6fe90c507c839bb3b2c3f2fb92f2",
+        "junit_sha256": "9be03f006f4f148546818e5c62ee1fe657f50ed8ea8894d67a6ddaff13789b6c"
       }
     ],
-    "termination_reproducer": "termination-reproducer-result.json"
+    "g0": {
+      "complete": false,
+      "claim_consumed": true,
+      "worker_launches": 1,
+      "native_startup_preparations": 1,
+      "native_recurring_preparations": 0,
+      "nominal_proposals": 11,
+      "segments": 20,
+      "last_observed_segment_end_s": 0.1,
+      "raw_returned": false,
+      "stop": "TypeError: Prediction capture requires the TVLQR tracker",
+      "native_startup_preparation_s": 0.08126112504396588,
+      "startup_boundary_envelope_s": 0.08591633301693946,
+      "tracker_samples": 11,
+      "supervisor_wall_s": 18.64127587497933,
+      "process_tree_cpu_s": 15.459226,
+      "resource_samples": 481,
+      "max_sampled_worker_tree_rss_bytes": 236126208,
+      "sampled_process_thread_counts": [
+        1
+      ],
+      "supervisor_rss_at_failed_producer": "NOT_OBSERVED_SEPARATELY",
+      "parent_child_pid_birth_at_failed_producer": "NOT_RETAINED",
+      "source_git_head_at_execution": "63d56fc366de7464e1c71a4f831c87ec03d31a2f",
+      "executed_dirty_runtime_map_bound_retrospectively_to_commit": "bec56302891c2a136126c8be486c4f166b402d27"
+    },
+    "g1": "NOT_RUN_PREREQUISITE_FAILED",
+    "measured_smoke": "NOT_RUN_PREREQUISITE_FAILED",
+    "raw_evidence": {
+      "work_root": "results/preintegration/w1/work-20261103T123702Z-532aa226",
+      "g0": "results/preintegration/w1/g0-7e39088ca7ab458599d3ac72df79a61c",
+      "preworker_sandbox_failure": "results/preintegration/w1/g0-9ee62089ff7047738e1b3d08567a7d79",
+      "retrieval": "LOCAL_WORKSPACE_AVAILABLE; independent backup/retrieval NOT_QUALIFIED",
+      "indexes": [
+        "results/preintegration/w1/work-20261103T123702Z-532aa226/delivery-index.json",
+        "results/preintegration/w1/g0-7e39088ca7ab458599d3ac72df79a61c/index.json",
+        "results/preintegration/w1/g0-9ee62089ff7047738e1b3d08567a7d79/index.json"
+      ],
+      "index_sha256": {
+        "results/preintegration/w1/work-20261103T123702Z-532aa226/delivery-index.json": "d2f30b6ac2e6460f74f602f5d71405ec4904729b8f613193dff15dd6cea2edc3",
+        "results/preintegration/w1/g0-7e39088ca7ab458599d3ac72df79a61c/index.json": "56ef86bd3dbfc1ed029dae499b3afe429f35367b6958d7ad0b2515ac19d56507",
+        "results/preintegration/w1/g0-9ee62089ff7047738e1b3d08567a7d79/index.json": "779d811c0d2c4ab12ed50252ffc5dd5598e3753f9b173065dc92947c825e6449"
+      },
+      "work_files_indexed": 415,
+      "work_bytes_indexed": 41479647
+    },
+    "limits": [
+      "No numerical retry after the sole genuine worker",
+      "No genuine closed-loop validation of corrected candidate",
+      "Legacy application observations do not establish application-check enforcement",
+      "No physical Safety/onboard timing claim",
+      "Installed RECORD consistency is not historical wheel/plugin-build equivalence"
+    ],
+    "final_preservation_artifact": "results/preintegration/w1/work-20261103T123702Z-532aa226/final-preservation.json"
+  },
+  "independent_evidence_audit": {
+    "path": "results/preintegration/w1/correction-20261104T160319Z/independent-evidence-audit.json",
+    "sha256": "547989c43248b7821527eb3a20c60b52ee5da999928dfd6f5b5b6a931fccbfd9",
+    "disposition": "EVIDENCE_RECONCILED",
+    "formal_verification": false
+  },
+  "corrective_delivery_index": {
+    "path": "results/preintegration/w1/correction-20261104T160319Z/delivery-index.json",
+    "sha256": "ef17164becd879f2a4cd6e1e31eeeeff7dbc5a7d7b4281dc8cac44e17d2715b9",
+    "members": 544,
+    "indexed_bytes": 12344601
   }
 }

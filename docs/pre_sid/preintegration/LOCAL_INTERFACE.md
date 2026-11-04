@@ -1,9 +1,10 @@
 # W1 local nominal-control interface
 
-**Corrective WORK checkpoint — independent Engineering Review pending.**
-Primary APEX's 2026-11-04 dispatch authorizes corrections and conditionally authorizes a fresh
-replacement G0/G1/2 s smoke sequence after independent PASS on the clean committed producer.
-The original failed G0 remains consumed. No replacement run has occurred at this checkpoint.
+**WORK_COMPLETE_PENDING_REVIEW — implementation milestone candidate MET.**
+Producer `e577f2c00bde2092f6bd1bd403b72aa9ca10713a` received independent corrective review PASS;
+replacement G0/G1 and the one 2.0 s measured smoke passed. All attempt allowances are consumed.
+The original failed G0 remains failed/consumed. Commands below describe the admitted entry point;
+no current budget permits another run. Full details and limitations are in WORK.md.
 
 WORK implementation; not formal Verification or physical Safety acceptance.
 Scientific source: `48adbdf64d492592d15e23c917aca71fa58aa8a5`.
@@ -52,7 +53,8 @@ new application-check API. Mock-endpoint tests check that operation before invok
 there is no new external endpoint adapter here. No-nominal/fallback during genuine local smoke
 is incomplete, not a qualified recovery.
 
-Fresh execution, after admission and software gates, uses the existing admitted virtualenv:
+The delivered one-shot entry point uses the existing admitted virtualenv. This completed
+dispatch has no remaining execution allowance:
 
 ```sh
 env -u PYTHONPATH -u PYTHONHOME PYTHONHASHSEED=0 PYTHONDONTWRITEBYTECODE=1 \

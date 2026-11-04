@@ -1060,3 +1060,10 @@ live, non-resumable conditional driver retains predecessor grants only after fin
 and kernel-observed supervisor exit. A terminated driver leaves consumed claims and evidence,
 with no resumable grant. Numerical workers still initialize in fresh execs; the controller and
 accepted scheduling/scientific policies remain unchanged.
+
+Corrective result: producer `e577f2c00bde2092f6bd1bd403b72aa9ca10713a` received independent
+corrective Engineering Review PASS, then completed one replacement G0, one G1 and one 2.0 s
+measured smoke with valid scientific/finalization gates. Milestone candidate is met pending
+Engineering/Primary disposition. Original failures and claims remain. No formal Verification,
+external Simulation integration, physical Safety or embedded qualification is implied. All
+conditional numerical allowances are now consumed.

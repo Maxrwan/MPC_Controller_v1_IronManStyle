@@ -1,52 +1,174 @@
-# PRE-INT-W1 corrective WORK — conditional execution preparation
+# PRE-INT-W1 corrective engineering delivery
 
-Primary APEX's 2026-11-04 corrective dispatch supersedes the earlier budget closure below.
-This checkpoint implements the two P1 completion/finalization corrections and P2 timing
-classification within the original 21-path allowlist. Independent corrective Engineering
-Review is pending. No replacement G0, G1 or measured smoke has run at this checkpoint.
-The original failed G0 and consumed ledger remain unchanged.
+**WORK_COMPLETE_PENDING_REVIEW. Implementation milestone candidate: MET.**
 
-The worker writes a separate scientific audit before reporting a valid prerequisite. It
-checks native states and every segment endpoint against exact existing track widths,
-finite values, segment/state continuity, event order, packet/source authority, sampled release
-state, proposal/application binding, native steering application clamp and applied-input hold
-order. Ending at the requested duration does not establish a valid prerequisite. Errors name
-original offending artifact locations; raw observations are retained unchanged.
+The authorized corrective WORK and one-shot conditional numerical sequence are complete.
+Independent corrective Engineering Review passed the exact producer before execution.
+Replacement G0 and G1 passed; the single measured smoke completed 2.0 simulated seconds.
+No genuine retry, tuning, scientific-source change, formal Verification or external integration
+occurred. This is a candidate for `CONTROL_PREINTEGRATION_IMPLEMENTATION_COMPLETE`, pending
+Engineering/Primary disposition; it is not formal Verification, external integration or physical
+Safety acceptance. All new allowances are consumed and closed.
 
-The supervisor's result/index/ledger remain provisional. A separate waiting parent witnesses
-normal supervisor exit, validates the final inventory/ledger, includes supervisor descendants
-and final bookkeeping in wall/CPU/output disposition, and atomically publishes an exit receipt.
-Successor admission requires that receipt, the same clean committed reviewed producer, and
-a predecessor grant held only by the live conditional driver after all final bookkeeping.
-Supervisors are forked from the still stdlib-only driver; numerical workers remain fresh execs.
-A terminated driver cannot resume successors from stored receipts. Each case owns a process
-group, kernel wait4 supplies its real exit/CPU disposition, and surviving descendants fail cleanup.
-A timeout, termination, missing/corrupt evidence or write/accounting failure cannot qualify.
-Sampled RSS includes worker descendants, supervisor and waiting-parent observations; it is
-not a continuous peak guarantee. Existing 60 s/30 CPU s/2 GiB/128 MiB/1 GiB limits remain.
+## Exact source and review
 
-Native tracker durations come from boundary observations captured before runner mutation.
-Applied-row enclosing runner durations and delegate wall envelopes are separate populations,
-with original samples, seconds, counts and null missingness retained.
+- Frozen accepted scientific source: `48adbdf64d492592d15e23c917aca71fa58aa8a5`.
+- Approved plan: `63d56fc366de7464e1c71a4f831c87ec03d31a2f`.
+- Earlier reviewed delivery: `4895a37ce151b12e74d8c062f681996c59260639`.
+- Corrected executable producer: `e577f2c00bde2092f6bd1bd403b72aa9ca10713a`.
+- Evidence-delivery revision: this containing documentation-only descendant; exact SHA and
+  verified remote URL accompany the final GitHub handoff without circular self-hashing.
 
-Corrective evidence: `results/preintegration/w1/correction-20261104T160319Z/`.
-Focused invocations are separate: software-001 26 passed; software-002 84 passed;
-software-003 27 passed; software-004 88 passed.
-These include controlled late-timeout/write/resource failures and scripted exact straight
-chronology; zero genuine optimizer calls. Full regression/formal Verification remain deferred.
+Review001 rejected intermediate producer `1df1767350518e00f7c8781e66d0c09f13b4ee1e`:
+a controlled zero-controller reproducer terminated a receipt writer with exit137 and showed
+erroneous successor admission; prepare/release timestamp binding was also incomplete.
+Both were corrected autonomously. Review002 **PASS** authenticates the final producer, all
+three original findings, source integrity, sound completion checks and fail-closed admission.
+Report SHA256: `2eecc92a25924c19e5d999ba6c6a53708c7096f65831356dc80b6f7e38ece4dd`.
+The rejected report/reproducer and all original failed-G0 records remain unchanged.
+A separate post-run independent artifact audit reconciled all three attempts, 57 indexed raw
+members, timing populations and 435 historical entries without discrepancies. Its SHA256 is
+`547989c43248b7821527eb3a20c60b52ee5da999928dfd6f5b5b6a931fccbfd9`.
+This was evidence reconciliation, not formal Verification or Primary acceptance.
 
-After independent PASS only, the existing conditional grant permits one replacement G0,
-one G1 only after G0, then one 2.0 s measured smoke only after both. No retry, tuning,
-scientific/frozen-source changes or external/physical integration is authorized. The fresh
-source-bound ledger lives in this corrective evidence root; the original ledger is not reused.
-Independent review 001 rejected checkpoint `1df1767350518e00f7c8781e66d0c09f13b4ee1e`.
-Its controlled termination reproducer retained an exit137 writer and an improperly admitted
-successor. This checkpoint corrects that defect with a live, non-resumable sequence driver and
-adds exact prepare/release-time binding tests. Review report and reproducer remain unchanged.
-Re-review is pending; the conditional numerical budget is still inactive at this checkpoint.
-Final execution outcome and producer/delivery identities belong to the delivery descendant.
+## Corrected behavior
+
+1. **P1 completion:** the worker retains raw results first, then writes a separate audit of
+   exact existing track widths (native rows and every segment endpoint), finite states/inputs,
+   continuous segment/state coverage, controller-event chronology, prepare/release/completion
+   times, original packet/source authority, release-state provenance, proposal/application
+   binding, actual recorded application order, original elapsed steering clamp and held inputs.
+   A completed execution with any violation is not a valid prerequisite. Offending records
+   remain inspectable by artifact path. No geometry, simulator or controller math was changed.
+2. **P1 finalization:** inner result/index/ledger are provisional. The waiting stdlib-only
+   driver observes real supervisor exit and kernel child CPU, validates the final inventory,
+   and covers final bookkeeping in wall/CPU/output disposition. Only that same live driver
+   can grant a successor after bookkeeping finishes; stored receipts cannot restore the grant.
+   Driver termination leaves evidence and consumed claims, with no resume/retry. Each case
+   owns its supervisor/descendant process group; surviving descendants fail cleanup. Numerical
+   workers still initialize through fresh isolated execs. Controlled timeout, write failure,
+   post-publication termination, late CPU/output and stopped-sequence tests cover the boundary.
+3. **P2 timing:** native tracker samples are copied from existing boundary observations before
+   runner mutation. Delegate wall envelopes and applied-row runner durations remain separate,
+   with original seconds, samples, population definitions and null missingness preserved.
+
+All A01–A08 now have implementation/software evidence plus genuine prerequisite/smoke evidence.
+The internal API remains [LOCAL_INTERFACE.md](LOCAL_INTERFACE.md): source-admitted genuine
+composition, owned lifecycle/reset, canonical SI state `[vx,vy,r,e_psi,s_abs,e_y]` and control
+`[delta,a_cmd]`, same-instant feedback, nominal authority, explicit no-output inhibition and
+separate application-check/caller-observation operations. Dynamic `a_cmd=Fx/m` remains distinct
+from actual longitudinal acceleration. No new physical hold/brake/stop policy is implied.
+
+## Focused software checks
+
+Each invocation is separately retained under the corrective evidence root; counts are not pooled.
+
+| Invocation | Outcome | Scope |
+|---|---:|---|
+| software-001 | 26 passed | Completion/serialization/limit/timing tests and scripted local chronology |
+| software-002 | 84 passed | Affected profile, lifecycle, validation, evidence, native chronology/timing |
+| software-003 | 27 passed | Final first-checkpoint evidence/local selection |
+| software-004 | 88 passed | Re-review correction, exit137 regression, stopped sequences and affected set |
+
+These are software/scripted checks with zero genuine optimizer calls; real composition uses an
+injected no-solve backend where tested. The direct numerical CLI sequence below is separate.
+Existing immutable tests/source were reused, not changed. Final scoped Ruff lint/format and Git
+whitespace checks pass. Complete regression/formal Verification were not initiated.
+
+## Genuine measured results
+
+All three cases launched from the same clean committed producer. Original accepted configuration
+remains N8/0.1 s/four substeps, gamma2, Architecture A variable availability, fixed TVLQR and
+original solver/model/track/reference. G0 uses zero latency; G1 uses 0.06 s planner and 0.025 s
+codriver injection. Smoke uses the native measured preparation and runner control durations.
+Cases executed serially in one non-resumable conditional sequence, exactly once each.
+
+| Case | Simulated coverage | Native plans incl. startup | Applied controls | Accepted handoffs | Result |
+|---|---:|---:|---:|---:|---|
+| replacement G0 | 0.24 s | 3 | 24 | 2 | PASS |
+| G1 | 0.24 s | 3 | 8 | 1 | PASS; 16 expected injected codriver busy events |
+| measured smoke | 2.0 s | 20 | 200 | 19 | PASS |
+
+Every plan reported `Solve_Succeeded`; maximum recorded slack across each case was
+`9.091525285379717e-11`, below the unchanged `1e-6` gate. All scientific audits have zero errors,
+all normal-exit witnesses are complete, and the enclosing sequence exited zero. There were no
+boundary violations, invalid chronology/authority, numerical failure or fallback. G1 has one
+unfinished preparation at its bounded endpoint (completion scheduled after 0.24 s); it is
+retained and excluded from the completed recurring timing population, not relabeled completed.
+The smoke has 19 completed recurring preparations, no unfinished preparation and no planner or
+codriver busy events. Startup is gated/prelaunch and excluded from recurring timing populations.
+
+The available representative machine was Apple M1 MacBookAir10,1, 8 physical/logical CPUs,
+8 GiB RAM, macOS26.5.1 arm64, existing Python3.12.14 environment. Hardware identifiers were read
+after the sequence and labeled accordingly. No packages were installed/upgraded. Lock versions,
+installed RECORD files, source/import paths and available native binaries were authenticated.
+Accelerate SINGLE was requested/confirmed by its supported control; sampled worker thread count
+was [1]. `threadpoolctl` returned []; exact active native thread count remains unavailable.
+
+Smoke observations (source samples are seconds; table converts to milliseconds):
+
+| Population | n | min ms | median ms | p95 ms | max ms |
+|---|---:|---:|---:|---:|---:|
+| Completed recurring native full preparation | 19 | 48.9223 | 66.2094 | 69.7288 | 69.7288 |
+| Completed recurring native solve | 19 | 31.3365 | 42.7120 | 45.2789 | 45.2789 |
+| Native tracker update, all successful proposals | 200 | 0.0311 | 0.0348 | 0.0453 | 0.0555 |
+| Enclosing runner control, applied rows | 200 | 2.8122 | 3.3546 | 3.6036 | 5.1616 |
+
+p95 uses nearest-rank `ceil(0.95*n)`. Existing comparison opportunities are 100 ms planner release
+and 10 ms tracker period; Architecture A has no invented 70/80 ms fixed handoff deadline.
+Startup native preparation was 45.6153 ms; controller construction was 7.4221 s. The complete
+controller-and-plant loop took **5.2874 host seconds for 2.0 simulated seconds** (2.6437 wall
+seconds per simulated second), including synthetic plant, local validation, journals and observers.
+It did not establish end-to-end host real-time execution. The recorded small-sample controller
+classification is `PRELIMINARY_FEASIBILITY_OBSERVED`, not WCET, embedded feasibility, integrated
+world-clock behavior, or a general performance/scientific qualification.
+
+| Case | Launch-through-exit wall s | Process-tree CPU s | Max sampled total RSS bytes |
+|---|---:|---:|---:|
+| replacement G0 | 17.7330 | 15.7953 | 238927872 |
+| G1 | 16.4020 | 15.6360 | 261586944 |
+| measured smoke | 22.3113 | 22.8509 | 291799040 |
+
+Every case stayed within 60 s wall, 30 s CPU, 2 GiB sampled RSS and 128 MiB output, with >=1 GiB
+free disk at admission. Final receipt/bookkeeping is checked within those caps. RSS is sampled,
+not a continuous peak guarantee. Indexed output was approximately 5.62/5.58/7.51 MB respectively.
+
+## Evidence, preservation and handoff
+
+Corrective root: `results/preintegration/w1/correction-20261104T160319Z/`.
+Genuine raw outputs: `results/preintegration/w1/replacement-e577f2c-20261104/{G0,G1,measured-smoke}/`.
+[Machine evidence](evidence.json) anchors raw inventories, review reports, software invocations,
+claims/result/exit receipts, configuration, machine metadata and source identities. Each raw case
+has its own immutable index; final corrective delivery-index covers the new administrative and
+software evidence. Local retrieval is available. Independent durable/off-host backup is not
+qualified; GitHub carries source and compact evidence references, not the ignored raw datasets.
+
+All 435 historical evidence entries match their baseline size/hash, including the original
+failed/consumed G0 and dirty-source launch history. No historical failure was replaced or repaired.
+All 825 protected frozen paths, 294 scientific source bindings, five Planning hashes and approved
+plan bytes are preserved. The two authorized general docs retain their original E4 text. Only
+11 paths changed in this corrective assignment, all inside the existing 21-path W1 allowlist;
+all 21 overall W1 paths remain authorized. No R0, Safety, Efficiency, CT or Workbench branch was
+merged/modified, and no research source was silently promoted.
+
+Next engineering stage receives the exact producer/delivery revisions, admitted local Python
+entry point and profile, ownership/time/authority API, all three genuine outputs, fault/no-output
+test evidence and retained failures. Negotiate actual Simulation frames/state transforms,
+feedback clocks/age, true worker completion while world physics advances, command transport and
+endpoint behavior on inhibition, reset ownership and result transport. Legacy runner application
+records still do not prove enforcement by the separate `check_application` API. Physical Safety
+is `NOT_OBSERVED_NOT_VALIDATED`; recovery/neutral/braking/stopping, sensor uncertainty, hardware
+watchdogs and calibration/SID remain deferred. Installed RECORD consistency does not recover
+historical wheel/IPOPT build provenance. Full physical R1 is not made a prerequisite to the first
+simulation. Follow the approved roadmap after independent review/explicit Verification and
+actual interdepartmental interface negotiation. No next stage is started by this delivery.
+
+Stop: **WORK_COMPLETE_PENDING_REVIEW**. Milestone candidate **MET**, awaiting disposition.
 
 ---
+
+The following is the retained historical first W1 delivery, before this corrective authorization.
+Its unrun/budget-closed statements apply to that earlier delivery only.
 
 # PRE-INT-W1 — WORK delivery
 
