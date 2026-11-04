@@ -4,6 +4,7 @@ import sys
 from pathlib import Path
 
 import numpy as np
+import pytest
 
 from apex.models.tire.config import RACING_TIRE_PHYSICS
 from apex.models.vehicle.dynamic_bicycle import DynamicBicycle
@@ -125,3 +126,119 @@ def test_frozen_release_capture_accepts_typed_delegate_and_bound_runtime_state(d
     assert release.packet.plan_id == 0 and release.state == fb(0.1).state
     assert session.components.urgent is urgent and session.buffer is buffer
     assert local.tracker.clone() is not comp.tracker
+
+
+@pytest.mark.parametrize("mode", ["zero", "injected"])
+def test_scientific_completion_audits_scripted_native_chronology(
+    dynamic_vehicle, straight_geometry, mode
+):
+    """Analytical straight motion and literal successful packets; no optimizer calls."""
+    from dataclasses import replace
+
+    from preintegration.evidence import audit_completion
+
+    from apex.preintegration.session import ControlSession
+
+    class AuditPlanner(StraightPlanner):
+        def prepare(self, plan_id, state, time, estimate, buffer, tracker, startup=False):
+            packet, event = super().prepare(
+                plan_id, state, time, estimate, buffer, tracker, startup
+            )
+            event.update(
+                max_slack=0.0,
+                predicted_completion_time=time + estimate,
+                source_state=state.tolist(),
+            )
+            return packet, event
+
+    segments = []
+
+    class ObservedPlant(DynamicBicycle):
+        physical_time = 0.0
+
+        def step(self, x, u, dt):
+            end = super().step(x, u, dt)
+            segments.append(
+                dict(
+                    start=self.physical_time,
+                    end=self.physical_time + dt,
+                    dt=dt,
+                    state_before=x.copy(),
+                    state_after=end.copy(),
+                    control=u.copy(),
+                )
+            )
+            self.physical_time += dt
+            return end
+
+    comp = factory()
+    comp.planner, comp.parameters, comp.track = AuditPlanner(), dynamic_vehicle, straight_geometry
+    comp.tracker.parameters = dynamic_vehicle
+    plant = ObservedPlant(dynamic_vehicle, straight_geometry, tire_physics=RACING_TIRE_PHYSICS)
+    comp.validator = plant.diagnostics
+    session = ControlSession(lambda: comp)
+    local, releases = LocalAdapters(session), []
+    sim = AsyncConfig(
+        duration=0.24,
+        latency_mode=mode,
+        injected_delay=0.06 if mode == "injected" else 0,
+        codriver_delay=0.025 if mode == "injected" else 0,
+    )
+    runner = AsyncRunner(
+        plant,
+        local.planner,
+        local.tracker,
+        straight_geometry,
+        sim,
+        estimator=comp.estimator,
+        release_observer=releases.append,
+    )
+    raw = runner.run([2, 0, 0, 0, 0, 0])
+    local.completion()
+    result = audit_completion(
+        raw, segments, session.events, straight_geometry, sim, comp.tracker, releases
+    )
+    assert result["valid_prerequisite"], result
+    assert result["execution_completed"]
+    # An execution ending at the requested time is insufficient if its boundary record is invalid.
+    raw["states"][0]["boundary_violation"] = True
+    bad = audit_completion(
+        raw, segments, session.events, straight_geometry, sim, comp.tracker, releases
+    )
+    assert bad["execution_completed"] and not bad["valid_prerequisite"]
+    assert any(e["reason"] == "RECORDED_BOUNDARY_VIOLATION" for e in bad["errors"])
+    raw["states"][0]["boundary_violation"] = False
+    # Exact existing widths include equality; the terminal endpoint must also be checked.
+    last = segments[-1]["state_after"].copy()
+    segments[-1]["state_after"][5] = 10.0
+    assert audit_completion(
+        raw, segments, session.events, straight_geometry, sim, comp.tracker, releases
+    )["valid_prerequisite"]
+    segments[-1]["state_after"][5] = 10.0 + 1e-8
+    assert not audit_completion(
+        raw, segments, session.events, straight_geometry, sim, comp.tracker, releases
+    )["valid_prerequisite"]
+    segments[-1]["state_after"] = last
+    # Negative expectations follow literal scheduler ordering, not the audit's own output.
+    import copy
+
+    for mutate in (
+        lambda r: r["controls"][0].update(application_time=-0.01),
+        lambda r: r["controls"][0].update(plan_id=999),
+        lambda r: r["controls"][0].update(requested_a_cmd=0.5),
+        lambda r: r["states"][0].update(s_abs=3.0),
+        lambda r: r["packets"][0].update(actual_completion_time=0.2),
+        lambda r: r["handoffs"][0].update(accepted=False),
+        lambda r: r["plans"][0].update(max_slack=0.1),
+        lambda r: r["controls"].reverse(),
+    ):
+        corrupted = copy.deepcopy(raw)
+        mutate(corrupted)
+        assert not audit_completion(
+            corrupted, segments, session.events, straight_geometry, sim, comp.tracker, releases
+        )["valid_prerequisite"]
+    events = session.events.copy()
+    events[3] = replace(events[3], time=0.23)
+    assert not audit_completion(
+        raw, segments, events, straight_geometry, sim, comp.tracker, releases
+    )["valid_prerequisite"]

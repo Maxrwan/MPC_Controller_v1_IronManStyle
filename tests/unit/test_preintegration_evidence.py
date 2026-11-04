@@ -60,9 +60,19 @@ def test_wall_watchdog_is_not_armed_by_import_and_preserves_timeout(monkeypatch)
         launch.wall_alarm(None, None)
 
 
-@pytest.mark.parametrize("limit", [None, "WALL_LIMIT"])
+@pytest.mark.parametrize(
+    "limit,late",
+    [
+        (None, None),
+        ("WALL_LIMIT", None),
+        (None, "supervisor-result.json"),
+        (None, "index.json"),
+        (None, "G0-result.json"),
+        (None, "late-limit"),
+    ],
+)
 def test_supervisor_owned_lifecycle_and_duplicate_claim_without_controller(
-    tmp_path, monkeypatch, limit
+    tmp_path, monkeypatch, limit, late
 ):
     """Observable supervisor behavior with an explicitly stubbed worker; no real launch."""
     import time
@@ -134,21 +144,104 @@ def test_supervisor_owned_lifecycle_and_duplicate_claim_without_controller(
 
     monkeypatch.setattr(launch.subprocess, "Popen", start)
     monkeypatch.setattr(launch.os, "killpg", lambda pid, sig: kills.append(pid))
-    monkeypatch.setattr(launch, "violated", lambda *a: limit)
+
+    def limits(*args):
+        return (
+            "WALL_LIMIT"
+            if late == "late-limit" and (work / "attempts/G0-result.json").exists()
+            else limit
+        )
+
+    monkeypatch.setattr(launch, "violated", limits)
+
+    def final_write(path, data):
+        if Path(path).name == late:
+            raise TimeoutError("Controlled late timeout during final serialization")
+        write(path, data)
+
+    monkeypatch.setattr(launch, "write", final_write)
     first = tmp_path / "results/preintegration/w1/first"
+    if late and late != "late-limit":
+        with pytest.raises(TimeoutError):
+            launch.main(["--case", "G0", "--output", str(first)])
+        assert len(launches) == 1
+        assert (work / "attempts/G0.json").exists()
+        monkeypatch.setattr(launch, "write", write)
+        assert not launch.witness_exit("G0", first, 1, 60.1, 0.1)["complete"]
+        return
     code = launch.main(["--case", "G0", "--output", str(first)])
     result = json.loads((first / "supervisor-result.json").read_text())
     assert result["complete"] is (limit is None)
-    assert result["samples"][0]["rss_bytes"] == 2048
+    assert result["samples"][0]["rss_bytes"] == 3072
     assert result["samples"][0]["supervisor_rss_bytes"] == 1024
     assert json.loads((first / "worker-start.json").read_text())["pid"] == 987654321
-    assert code == (0 if limit is None else 1)
+    assert code == (0 if limit is None and late is None else 1)
     assert bool(kills) is (limit is not None)
     assert not json.loads((work / "MEASURED_ACTIVE").read_text())["active"]
     assert (first / "index.json").is_file() and (work / "attempts/G0.json").is_file()
+    # A PASS file is provisional: a late failure is rejected by its exit witness.
+    receipt = launch.witness_exit("G0", first, code, 1, 0.1)
+    assert receipt["complete"] is (limit is None and late is None)
     second = tmp_path / "results/preintegration/w1/second"
     assert launch.main(["--case", "G0", "--output", str(second)]) == 1
     assert len(launches) == 1
+
+
+def test_native_tracker_and_enclosing_runner_populations_remain_distinct():
+    raw = {"controls": [{"total_time": 0.009, "kernel_time": 0.001}]}
+    boundary = [
+        {"operation": "propose", "native_seconds": 0.001, "wall_seconds": 0.005},
+        {"operation": "propose", "native_seconds": None, "wall_seconds": 0.006},
+    ]
+    report = assess(raw, boundary)
+    assert report["native_tracker"]["samples_s"] == [0.001, None]
+    assert report["native_tracker"]["missing_count"] == 1
+    assert report["runner_control_envelope"]["samples_s"] == [0.009]
+    assert report["boundary_envelopes"] == boundary
+
+
+@pytest.mark.parametrize("failure", ["write", "timeout", "cpu", "output"])
+def test_witness_publication_itself_fails_closed(tmp_path, monkeypatch, failure):
+    from preintegration import launch
+
+    work = tmp_path / "work"
+    (work / "attempts").mkdir(parents=True)
+    output = tmp_path / "output"
+    output.mkdir()
+    monkeypatch.setattr(launch, "WORK", work)
+    monkeypatch.setattr(launch, "git", lambda *a: "STUB")
+    write(output / "supervisor-result.json", {"complete": True, "output": str(output)})
+    write(output / "index.json", inventory(output))
+    write(
+        work / "attempts/G0-result.json",
+        {
+            "complete": True,
+            "output": str(output),
+            "index_sha256": launch.sha(output / "index.json"),
+        },
+    )
+    receipt_path = work / "attempts/G0-exit.json"
+
+    def late_write(path, data):
+        write(path, data)
+        if failure == "write":
+            raise OSError("Controlled write failure after atomic publication")
+
+    monkeypatch.setattr(launch, "write", late_write)
+    if failure == "write":
+        with pytest.raises(OSError):
+            launch.witness_exit("G0", output, 0, 1, 1)
+        assert not receipt_path.exists()
+        assert receipt_path.with_name(receipt_path.name + ".unadmitted").exists()
+    else:
+        clock = iter([0, 61] if failure == "timeout" else [0, 0])
+        monkeypatch.setattr(launch.time, "monotonic", lambda: next(clock))
+        cpu = iter([0, 31] if failure == "cpu" else [0, 0])
+        monkeypatch.setattr(launch.time, "process_time", lambda: next(cpu))
+        if failure == "output":
+            monkeypatch.setattr(launch, "output_bytes", lambda *a: 128 * 1024**2)
+        assert not launch.witness_exit("G0", output, 0, 1, 1)["complete"]
+        assert not json.loads(receipt_path.read_text())["complete"]
 
 
 def test_missing_timing_is_retained_as_null_not_zero():
@@ -170,3 +263,54 @@ def test_owned_inactive_fixture_guard_does_not_hide_foreign_guard(tmp_path):
     assert records[0]["blocking"] is False
     assert records[1]["blocking"] is True
     assert inactive.is_file() and foreign.is_file()
+
+
+def test_successor_requires_reviewed_clean_source_and_witnessed_final_inventory(
+    tmp_path, monkeypatch
+):
+    from preintegration import launch
+
+    work = tmp_path / "work"
+    (work / "attempts").mkdir(parents=True)
+    output = tmp_path / "output"
+    output.mkdir()
+    monkeypatch.setattr(launch, "WORK", work)
+    monkeypatch.setattr(
+        launch, "git", lambda root, *args: "SOURCE" if args[0] == "rev-parse" else ""
+    )
+    report = work / "review.json"
+    write(report, {"verdict": "PASS", "producer": "SOURCE"})
+    hashes = {"fixture": "literal"}
+    gate = {
+        "passed": True,
+        "hashes": hashes,
+        "producer": "SOURCE",
+        "independent_review": {
+            "verdict": "PASS",
+            "producer": "SOURCE",
+            "report": str(report),
+            "sha256": launch.sha(report),
+        },
+    }
+    write(work / "software-gate.json", gate)
+    launch.admit_gate("G0", hashes)
+    # A valid inner PASS plus index/ledger is deliberately insufficient.
+    result = {"complete": True, "output": str(output), "hashes": hashes}
+    write(output / "supervisor-result.json", result)
+    write(output / "index.json", inventory(output))
+    write(
+        work / "attempts/G0-result.json",
+        {**result, "index_sha256": launch.sha(output / "index.json")},
+    )
+    with pytest.raises(FileNotFoundError):
+        launch.admit_gate("G1", hashes)
+    launch.witness_exit("G0", output, 0, 1, 1)
+    launch.admit_gate("G1", hashes)
+    write(output / "supervisor-result.json", {**result, "complete": False})
+    with pytest.raises(ValueError, match="raw member changed"):
+        launch.admit_gate("G1", hashes)
+    monkeypatch.setattr(
+        launch, "git", lambda root, *args: "SOURCE" if args[0] == "rev-parse" else " M dirty.py"
+    )
+    with pytest.raises(ValueError, match="clean committed"):
+        launch.admit_gate("G0", hashes)

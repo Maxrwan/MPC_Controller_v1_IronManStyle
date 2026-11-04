@@ -1,3 +1,43 @@
+# PRE-INT-W1 corrective WORK — conditional execution preparation
+
+Primary APEX's 2026-11-04 corrective dispatch supersedes the earlier budget closure below.
+This checkpoint implements the two P1 completion/finalization corrections and P2 timing
+classification within the original 21-path allowlist. Independent corrective Engineering
+Review is pending. No replacement G0, G1 or measured smoke has run at this checkpoint.
+The original failed G0 and consumed ledger remain unchanged.
+
+The worker writes a separate scientific audit before reporting a valid prerequisite. It
+checks native states and every segment endpoint against exact existing track widths,
+finite values, segment/state continuity, event order, packet/source authority, sampled release
+state, proposal/application binding, native steering application clamp and applied-input hold
+order. Ending at the requested duration does not establish a valid prerequisite. Errors name
+original offending artifact locations; raw observations are retained unchanged.
+
+The supervisor's result/index/ledger remain provisional. A separate waiting parent witnesses
+normal supervisor exit, validates the final inventory/ledger, includes supervisor descendants
+and final bookkeeping in wall/CPU/output disposition, and atomically publishes an exit receipt.
+Successor admission requires that receipt and the same clean committed reviewed producer.
+A timeout, termination, missing/corrupt evidence or write/accounting failure cannot qualify.
+Sampled RSS includes worker descendants, supervisor and waiting-parent observations; it is
+not a continuous peak guarantee. Existing 60 s/30 CPU s/2 GiB/128 MiB/1 GiB limits remain.
+
+Native tracker durations come from boundary observations captured before runner mutation.
+Applied-row enclosing runner durations and delegate wall envelopes are separate populations,
+with original samples, seconds, counts and null missingness retained.
+
+Corrective evidence: `results/preintegration/w1/correction-20261104T160319Z/`.
+Focused invocations are separate: software-001 26 passed; software-002 84 passed.
+These include controlled late-timeout/write/resource failures and scripted exact straight
+chronology; zero genuine optimizer calls. Full regression/formal Verification remain deferred.
+
+After independent PASS only, the existing conditional grant permits one replacement G0,
+one G1 only after G0, then one 2.0 s measured smoke only after both. No retry, tuning,
+scientific/frozen-source changes or external/physical integration is authorized. The fresh
+source-bound ledger lives in this corrective evidence root; the original ledger is not reused.
+Final execution outcome and producer/delivery identities belong to the delivery descendant.
+
+---
+
 # PRE-INT-W1 — WORK delivery
 
 **WORK_COMPLETE_PENDING_REVIEW. Implementation milestone candidate: NOT MET.**

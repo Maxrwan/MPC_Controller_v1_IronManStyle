@@ -29,7 +29,8 @@ def wall_alarm(signum, frame):
 
 
 ROOT = Path(__file__).resolve().parents[2]
-WORK = ROOT / "results/preintegration/w1/work-20261103T123702Z-532aa226"
+WORK = ROOT / "results/preintegration/w1/correction-20261104T160319Z"
+HISTORICAL_WORK = ROOT / "results/preintegration/w1/work-20261103T123702Z-532aa226"
 CASES = ("G0", "G1", "measured-smoke")
 for member in (ROOT / "src", ROOT / "scripts"):
     sys.path.insert(0, str(member))
@@ -83,18 +84,42 @@ def guard_records(paths, owned_root):
 
 def admit_gate(case, hashes):
     gate = json.loads((WORK / "software-gate.json").read_text())
-    if gate.get("passed") is not True or gate.get("hashes") != hashes:
-        raise ValueError("Missing/current software gate")
+    head = git(ROOT, "rev-parse", "HEAD")
+    if (
+        gate.get("passed") is not True
+        or gate.get("hashes") != hashes
+        or gate.get("producer") != head
+        or git(ROOT, "status", "--porcelain")
+        or gate.get("independent_review", {}).get("verdict") != "PASS"
+        or gate["independent_review"].get("producer") != head
+        or sha(Path(gate["independent_review"]["report"]))
+        != gate["independent_review"].get("sha256")
+    ):
+        raise ValueError("Missing clean committed producer/software/independent-review gate")
     predecessors = {"G0": (), "G1": ("G0",), "measured-smoke": ("G0", "G1")}[case]
     for previous in predecessors:
         result = json.loads((WORK / "attempts" / (previous + "-result.json")).read_text())
         if result.get("complete") is not True or result.get("hashes") != hashes:
             raise ValueError("Prerequisite not complete at current executable bytes: " + previous)
         folder = Path(result["output"])
+        witness = json.loads((WORK / "attempts" / (previous + "-exit.json")).read_text())
+        if (
+            witness.get("complete") is not True
+            or witness.get("producer") != head
+            or witness.get("exit_code") != 0
+            or witness.get("ledger_sha256") != sha(WORK / "attempts" / (previous + "-result.json"))
+            or witness.get("index_sha256") != sha(folder / "index.json")
+        ):
+            raise ValueError("Prerequisite lacks normal-exit finalization witness")
         if sha(folder / "index.json") != result["index_sha256"]:
             raise ValueError("Prerequisite inventory changed")
         for p, expected in json.loads((folder / "index.json").read_text()).items():
-            if sha(folder / p) != expected["sha256"]:
+            member = (folder / p).resolve()
+            if (
+                not member.is_relative_to(folder.resolve())
+                or member.stat().st_size != expected["bytes"]
+                or sha(member) != expected["sha256"]
+            ):
                 raise ValueError("Prerequisite raw member changed")
 
 
@@ -130,8 +155,6 @@ def main(argv=None):
                 "hashes": hashes,
             },
         )
-        if args.case == "measured-smoke" and git(ROOT, "status", "--porcelain"):
-            raise ValueError("Measured producer must be clean and committed")
         admit_gate(args.case, hashes)
         import psutil
 
@@ -149,6 +172,7 @@ def main(argv=None):
                         "profile1/run_phase",
                         "nmpc_weight_worker",
                         "preintegration/worker.py",
+                        "preintegration/launch.py",
                     )
                 ):
                     competing.append(p.info)
@@ -169,6 +193,12 @@ def main(argv=None):
                     if p.is_file() and p != WORK / "MEASURED_ACTIVE"
                 )
         guard_observations = guard_records(guards, WORK)
+        # The original inactive owned records are preserved, including fixture guards.
+        for record in guard_observations:
+            path = Path(record["path"])
+            if path.resolve().is_relative_to(HISTORICAL_WORK.resolve()):
+                historical = guard_records([path], HISTORICAL_WORK)[0]
+                record.update(historical)
         write(
             output / "competition.json",
             {
@@ -303,8 +333,11 @@ def main(argv=None):
                 try:
                     supervisor_rss = me.memory_info().rss
                     rss += supervisor_rss
+                    witness_rss = psutil.Process(os.getppid()).memory_info().rss
+                    rss += witness_rss
                 except psutil.AccessDenied:
                     supervisor_rss = None
+                    witness_rss = None
                     unavailable.append(me.pid)
                 row = {
                     "wall_s": time.monotonic() - START,
@@ -313,6 +346,7 @@ def main(argv=None):
                     "thread_counts": threads,
                     "worker_tree_rss_bytes": worker_rss,
                     "supervisor_rss_bytes": supervisor_rss,
+                    "exit_witness_rss_bytes": witness_rss,
                     "unavailable_pids": unavailable,
                     "exited_between_samples": departed,
                 }
@@ -392,10 +426,148 @@ def main(argv=None):
             WORK / "attempts" / (args.case + "-result.json"),
             {**result, "index_sha256": sha(output / "index.json")},
         )
+    # The provisional PASS above is deliberately unusable without an exit witness.
+    # Include all result/index/ledger writes in the final resource disposition.
+    usage = resource.getrusage(resource.RUSAGE_CHILDREN)
+    final_cpu = (
+        time.process_time()
+        - cpu_origin
+        + usage.ru_utime
+        - child_origin.ru_utime
+        + usage.ru_stime
+        - child_origin.ru_stime
+    )
+    final_rss = (
+        me.memory_info().rss + psutil.Process(os.getppid()).memory_info().rss if claimed else None
+    )
+    final_reason = violated(
+        time.monotonic() - START, final_cpu, final_rss, output_bytes(output, args.case)
+    )
     print(json.dumps({k: result[k] for k in ("complete", "case", "guard_reason", "output")}))
     signal.setitimer(signal.ITIMER_REAL, 0)
-    return 0 if result["complete"] else 1
+    return 0 if result["complete"] and final_reason is None else 1
+
+
+def output_bytes(output, case):
+    paths = list(Path(output).rglob("*")) + list((WORK / "attempts").glob(case + "*.json"))
+    return sum(p.stat().st_size for p in paths if p.is_file())
+
+
+def witness_exit(case, output, exit_code, elapsed, cpu):
+    """Called by the waiting parent only AFTER supervisor exit and all its final writes.
+
+    An inner PASS is provisional. No successor may use it without this separate witness.
+    Kernel child CPU includes the supervisor's descendants and final bookkeeping.
+    """
+    output = Path(output)
+    accounting_wall, accounting_cpu = time.monotonic(), time.process_time()
+    ledger = WORK / "attempts" / (case + "-result.json")
+    reason, result = None, None
+    try:
+        result = json.loads(ledger.read_text())
+        index = json.loads((output / "index.json").read_text())
+        if result["output"] != str(output) or result["index_sha256"] != sha(output / "index.json"):
+            raise ValueError("Final index/ledger binding")
+        if index != inventory(output):
+            raise ValueError("Final inventory incomplete or changed")
+        if json.loads((output / "supervisor-result.json").read_text()) != {
+            k: v for k, v in result.items() if k != "index_sha256"
+        }:
+            raise ValueError("Final supervisor/ledger mismatch")
+    except (ValueError, OSError, KeyError) as error:
+        reason = "FINALIZATION_INTEGRITY: " + str(error)
+    reason = reason or violated(elapsed, cpu, None, output_bytes(output, case))
+    if exit_code != 0:
+        reason = reason or "SUPERVISOR_EXIT_NONZERO"
+    receipt = {
+        "complete": exit_code == 0
+        and result is not None
+        and result.get("complete") is True
+        and reason is None,
+        "case": case,
+        "producer": git(ROOT, "rev-parse", "HEAD"),
+        "exit_code": exit_code,
+        "observed_launch_through_exit_wall_s": elapsed,
+        "observed_process_tree_cpu_s": cpu,
+        "guard_reason": reason,
+        "ledger_sha256": sha(ledger) if ledger.is_file() else None,
+        "index_sha256": sha(output / "index.json") if (output / "index.json").is_file() else None,
+        "output": str(output),
+    }
+    path = WORK / "attempts" / (case + "-exit.json")
+    # Serialize in memory before budget disposition. Atomic write failure leaves no witness.
+    extra = len(json.dumps(receipt, indent=2, sort_keys=True).encode()) + 1
+    if output_bytes(output, case) + extra >= 128 * 1024**2:
+        receipt.update(complete=False, guard_reason="OUTPUT_LIMIT")
+    finalized = False
+    try:
+        write(path, receipt)
+        final_wall = elapsed + time.monotonic() - accounting_wall
+        final_cpu = cpu + time.process_time() - accounting_cpu
+        late = violated(final_wall, final_cpu, None, output_bytes(output, case))
+        if late:
+            receipt.update(complete=False, guard_reason=late)
+            write(path, receipt)
+        finalized = True
+    finally:
+        if not finalized and path.exists():
+            # Retain a failed publication for audit, but never as an admission witness.
+            path.replace(path.with_name(path.name + ".unadmitted"))
+    return receipt
+
+
+def execute(argv=None):
+    """Stdlib waiting parent: observe actual supervisor exit, never launch a second worker."""
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--case", choices=CASES, required=True)
+    parser.add_argument("--output", type=Path, required=True)
+    args = parser.parse_args(argv)
+    output = args.output.resolve()
+    before = resource.getrusage(resource.RUSAGE_CHILDREN)
+    cpu_start = time.process_time()
+    command = [
+        sys.executable,
+        "-P",
+        "-S",
+        str(Path(__file__).resolve()),
+        "--supervise",
+        "--case",
+        args.case,
+        "--output",
+        str(output),
+    ]
+    process = subprocess.Popen(command, cwd=ROOT, start_new_session=True)
+    try:
+        code = process.wait(timeout=max(0.001, DEADLINE - time.monotonic()))
+    except subprocess.TimeoutExpired:
+        # The inner alarm kills its owned worker. Trigger it before terminating the group.
+        os.kill(process.pid, signal.SIGALRM)
+        try:
+            process.wait(timeout=1)
+        except subprocess.TimeoutExpired:
+            os.killpg(process.pid, signal.SIGKILL)
+            process.wait()
+        code = -signal.SIGALRM
+    after = resource.getrusage(resource.RUSAGE_CHILDREN)
+    cpu = (
+        time.process_time()
+        - cpu_start
+        + after.ru_utime
+        - before.ru_utime
+        + after.ru_stime
+        - before.ru_stime
+    )
+    # No witness is published on a preclaim failure. A claim stays consumed on any later failure.
+    claim = WORK / "attempts" / (args.case + ".json")
+    if not claim.is_file() or json.loads(claim.read_text())["output"] != str(output):
+        return 1
+    receipt = witness_exit(args.case, output, code, time.monotonic() - START, cpu)
+    print(json.dumps(receipt))
+    return 0 if receipt["complete"] else 1
 
 
 if __name__ == "__main__":
-    raise SystemExit(main())
+    if "--supervise" in sys.argv:
+        sys.argv.remove("--supervise")
+        raise SystemExit(main())
+    raise SystemExit(execute())

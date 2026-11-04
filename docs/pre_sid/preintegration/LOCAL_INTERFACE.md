@@ -1,9 +1,9 @@
 # W1 local nominal-control interface
 
-**WORK_COMPLETE_PENDING_REVIEW — G0 failed; G1/smoke NOT RUN.**
-The corrected candidate has software evidence only. The G0 claim is consumed; commands below
-are interface documentation, not permission to execute another numerical attempt. Primary review
-and a new explicit budget are required. Implementation milestone candidate: NOT MET.
+**Corrective WORK checkpoint — independent Engineering Review pending.**
+Primary APEX's 2026-11-04 dispatch authorizes corrections and conditionally authorizes a fresh
+replacement G0/G1/2 s smoke sequence after independent PASS on the clean committed producer.
+The original failed G0 remains consumed. No replacement run has occurred at this checkpoint.
 
 WORK implementation; not formal Verification or physical Safety acceptance.
 Scientific source: `48adbdf64d492592d15e23c917aca71fa58aa8a5`.
@@ -60,7 +60,11 @@ env -u PYTHONPATH -u PYTHONHOME PYTHONHASHSEED=0 PYTHONDONTWRITEBYTECODE=1 \
   --case measured-smoke --output results/preintegration/w1/smoke-UNIQUE
 ```
 
-The G0/G1/smoke claims are tied to this dispatch under the task evidence root. Existing output
+The replacement claims use the fresh source-bound ledger under
+`results/preintegration/w1/correction-20261104T160319Z/`. A software gate must bind the
+clean committed producer, runtime hashes and independent PASS report. Predecessors additionally
+require a normal-exit witness bound to their result/index/ledger. The original ledger
+under `work-20261103T123702Z-532aa226` is preserved and never reset or reused. Existing output
 or consumed case claims reject; this command is not permission to rerun. Each worker has 60 s
 launch-through-cleanup wall, 30 s process-tree CPU, 2 GiB sampled RSS, 128 MiB output and at least
 1 GiB disk admission. Parent resource sampling and worker CPU limit retain their observation

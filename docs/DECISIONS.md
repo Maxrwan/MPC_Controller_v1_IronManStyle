@@ -1046,3 +1046,11 @@ is adopted. See `docs/pre_sid/preintegration/LOCAL_INTERFACE.md` and the W1 WORK
 W1 outcome: the first genuine G0 failed on the diagnostic tracker's type boundary after startup.
 The typed-adapter correction is software checked only; G1/smoke remain unrun and the milestone
 candidate is not met. No scientific acceptance or replacement numerical budget is implied.
+
+
+PRE-INT-W1 corrective dispatch (2026-11-04): prerequisite admission distinguishes completed
+execution from scientific/authority/chronology checks and requires a normal-exit witness for
+finalized result/index/ledger accounting. This is local evidence-boundary engineering;
+controller mathematics, track limits, simulator scheduling and physical policies are unchanged.
+Native tracker, delegate and runner timing populations are reported separately. Conditional
+replacement execution requires independent corrective review PASS on a clean committed producer.

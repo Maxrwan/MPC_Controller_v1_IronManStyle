@@ -14,7 +14,7 @@ ROOT = Path(__file__).resolve().parents[2]
 for path in (ROOT / "src", ROOT / "scripts"):
     sys.path.insert(0, str(path))
 from apex.preintegration.profile import bootstrap, compose, imported_identities  # noqa: E402
-from preintegration.evidence import Journal, assess, write  # noqa: E402
+from preintegration.evidence import Journal, assess, audit_completion, write  # noqa: E402
 
 
 def main():
@@ -113,7 +113,13 @@ def main():
         write(output / "releases.json", releases)
         adapters.completion()
         write(output / "boundary-times.json", adapters.boundary_times)
-        write(output / "feasibility.json", assess(raw, adapters.boundary_times))
+        scientific = audit_completion(
+            raw, segments, session.events, comp.track, sim, comp.tracker, releases
+        )
+        write(output / "scientific-audit.json", scientific)
+        write(
+            output / "feasibility.json", assess(raw, adapters.boundary_times, scientific=scientific)
+        )
         write(
             output / "resources.json",
             {
@@ -128,22 +134,7 @@ def main():
                 "imports_after_run": imported_identities(ROOT, admitted.environment),
             },
         )
-        complete = (
-            raw.get("failure") is None
-            and raw.get("stop_reason") == "duration"
-            and abs(raw.get("end_time", -1) - sim.duration) <= 1e-9
-            and not raw.get("fallbacks")
-            and session.evidence_valid
-            and len(raw.get("controls", [])) > 0
-            and all(
-                p.get("success") is True
-                and p.get("max_slack") is not None
-                and p["max_slack"] <= 1e-6
-                for p in raw.get("plans", [])
-            )
-        )
-        if args.case == "G1":
-            complete = complete and bool(raw.get("codriver_misses"))
+        complete = scientific["valid_prerequisite"] and session.evidence_valid
     except Exception as error:
         write(
             output / "worker-failure.json",
