@@ -1,6 +1,6 @@
 {
   "schema": "apex-nmpc-weight-m0-work/1",
-  "status": "WORK_COMPLETE_PENDING_REVIEW",
+  "status": "NMPC_WEIGHT_LAB_M0_V1_CORRECTIVE_REVIEW_COMPLETE_PENDING_VERIFICATION_AUTHORIZATION",
   "base_revision": "5831f22f8d64a69efd119edd181802adcd82dde2",
   "branch": "codex/m5a-nmpc-weight-m0",
   "worktree": "/Users/marwansaber/.codex/worktrees/nmpc-weight-m0/MPC_Controller_v1_IronManStyle",
@@ -3254,12 +3254,12 @@
     "exact_new_revision_review_required": true
   },
   "v1_corrective": {
-    "status": "WORK_COMPLETE_PENDING_REVIEW",
+    "status": "NMPC_WEIGHT_LAB_M0_V1_CORRECTIVE_REVIEW_COMPLETE_PENDING_VERIFICATION_AUTHORIZATION",
     "grant_sha256": "c7e884e4bcf6b2b7115b8b39e56a5d6d49a0d3dbac464c0639bc85d71f92f2b0",
     "base_revision": "9d0525a1af70153833b87ccb18077e446793e00a",
     "predecessor_source_revision": "96be0969703f0675060208843c9920bca2187e3e",
-    "implementation_revision": null,
-    "implementation_revision_note": "Containing second V1 correction commit; exact SHA recorded with re-review delivery",
+    "implementation_revision": "77486baad920fa3101ebad37d64f028f4874152c",
+    "implementation_revision_note": "Exact corrected implementation and tests independently reviewed PASS; containing final delivery is documentation only",
     "changed_paths": [
       "tools/apex_workbench/nmpc_weight_panels.py",
       "tools/apex_workbench/tests/test_nmpc_weight_workspace.py",
@@ -3524,7 +3524,22 @@
       "results/apex_workbench_nmpc_weights/v1_corrective_20261103/review/consumer_audit.py": "6b6496d84815258115aeee97dcf09ef748eeb765446bc92e7e91213242ea8120",
       "results/apex_workbench_nmpc_weights/v1_corrective_20261103/review/consumer_audit.json": "c783d4b8b7abb7bbf7c671cbf9812199f68fea04f9d0180cf9ff1a6bb780f37e",
       "results/apex_workbench_nmpc_weights/v1_corrective_20261103/review/REPORT.md": "b714cf46af415b6518ad58bc7211755504e7de0d0e7e863dbc2415ff98f3fa16",
-      "results/apex_workbench_nmpc_weights/v1_corrective_20261103/review/review_record.json": "2fa9516f6139ecb0f2cfec0443c6f8140462d8352a6916ef4d4f09dc23820393"
+      "results/apex_workbench_nmpc_weights/v1_corrective_20261103/review/review_record.json": "2fa9516f6139ecb0f2cfec0443c6f8140462d8352a6916ef4d4f09dc23820393",
+      "results/apex_workbench_nmpc_weights/v1_corrective_20261103/iteration2/review/REPORT.md": "538cd72949e43c12abb49a767086d69ed4f46faa3b1bf17cc2f479a46a312608",
+      "results/apex_workbench_nmpc_weights/v1_corrective_20261103/iteration2/review/adversarial.py": "b816ff651559e5717bdc8fb252cc59ac255d6cff06b033672b465d60994f7a52",
+      "results/apex_workbench_nmpc_weights/v1_corrective_20261103/iteration2/review/adversarial_result.json": "334a8caa78a44c366f54140fa297eacbcce02d735846ac48457dab992ccb9ddf",
+      "results/apex_workbench_nmpc_weights/v1_corrective_20261103/iteration2/review/consumer_audit.json": "64e2aa58940762497f99bc78501974cc451d2d77c5c4fd589c1a5412c15ba307",
+      "results/apex_workbench_nmpc_weights/v1_corrective_20261103/iteration2/review/consumer_audit.py": "1d5d466102309336620d1970b0e33469011dae4008b073df29b6eb93bdcae635",
+      "results/apex_workbench_nmpc_weights/v1_corrective_20261103/iteration2/review/independent_reconstruction.json": "dac35d357e64ef0e30702650ddef2b130503fab643315170cbfb80c4a53acb3e",
+      "results/apex_workbench_nmpc_weights/v1_corrective_20261103/iteration2/review/metadata_audit.json": "d4aa45c195841facbfb3a2412d82061fe3d1cb39f3fb1666841c35c034fba681",
+      "results/apex_workbench_nmpc_weights/v1_corrective_20261103/iteration2/review/metadata_audit.py": "94876b5d2f1a496cf9e80c39f78d89ee5696d2567447026e3e78b2ac925223b0",
+      "results/apex_workbench_nmpc_weights/v1_corrective_20261103/iteration2/review/selected.log": "3e19cd434aa9473795568215c20010dfd07de955868616341e0848d48f2d4516",
+      "results/apex_workbench_nmpc_weights/v1_corrective_20261103/iteration2/review/selected.xml": "12f9496414b633c8447d4bdd38aa5d0e6ff5a92739fe9470a008d095e9c4d1ae",
+      "results/apex_workbench_nmpc_weights/v1_corrective_20261103/iteration2/review/selected_command.json": "317c0968fbd52796452fba444b8a6216a8382f1f93cdf37f539ca3f06d2f3e0d",
+      "results/apex_workbench_nmpc_weights/v1_corrective_20261103/iteration2/review/selected_result.json": "1a111d7ff2c4ad390bb8165fbd564c43975e0e289b243050a661cb20d889ba73",
+      "results/apex_workbench_nmpc_weights/v1_corrective_20261103/iteration2/review/selected_runner.py": "2946d56c0b793ff6735b06e62d6532c456079514d719c34e3e083657ff2b2826",
+      "results/apex_workbench_nmpc_weights/v1_corrective_20261103/iteration2/review/review_record.json": "460cc94da45d175396bd53ad6a1de025a37f49ecc29ca7a90eb2b6dc66e8c1a9",
+      "results/apex_workbench_nmpc_weights/v1_corrective_20261103/final_delivery_confirmation_20261104.json": "073bb29871cdd263740e5276e289048d9d3f527670674afbb29b4d0dc704aeef"
     },
     "historical_fields_note": "Other WORK fields retain original/R1-R2 history; prior independent PASS and73passes are not new V1 results",
     "formal_verification": "NOT_RUN_NOT_AUTHORIZED",
@@ -3532,7 +3547,47 @@
     "new_optimizer_solves": 0,
     "new_plant_steps": 0,
     "independent_corrective_review": {
-      "status": "PENDING"
+      "status": "PASS",
+      "candidate": "77486baad920fa3101ebad37d64f028f4874152c",
+      "record": "results/apex_workbench_nmpc_weights/v1_corrective_20261103/iteration2/review/review_record.json",
+      "record_sha256": "460cc94da45d175396bd53ad6a1de025a37f49ecc29ca7a90eb2b6dc66e8c1a9",
+      "report": "results/apex_workbench_nmpc_weights/v1_corrective_20261103/iteration2/review/REPORT.md",
+      "report_sha256": "538cd72949e43c12abb49a767086d69ed4f46faa3b1bf17cc2f479a46a312608",
+      "findings": [],
+      "closed_findings": [
+        {
+          "id": "V1-ER1-P1",
+          "prior_candidate": "cab78f47ae4d21243b5f522aa5f46e631aede1d5",
+          "closure": "Pinned no-follow directory traversal and descriptor-relative temporary publication/replacement; independently passed7 deterministic adversarial cases",
+          "prior_record_sha256": "2fa9516f6139ecb0f2cfec0443c6f8140462d8352a6916ef4d4f09dc23820393",
+          "prior_report_sha256": "b714cf46af415b6518ad58bc7211755504e7de0d0e7e863dbc2415ff98f3fa16",
+          "all_prior_recorded_evidence_unchanged": true
+        }
+      ],
+      "software_invocation": {
+        "tests": 43,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "deselected": 35,
+        "elapsed_s": 10.92,
+        "result": "selected_result.json",
+        "junit": "selected.xml",
+        "log": "selected.log",
+        "scientific_modules_loaded": []
+      },
+      "adversarial_cases": {
+        "exit_code": 0,
+        "cases": 7,
+        "passed": true,
+        "result": "adversarial_result.json",
+        "all_sealed_bytes_preserved": true,
+        "disposable_only": true
+      },
+      "recovery_outcome": "PASS_WITH_PROVENANCE_LIMITS",
+      "confirmation_date": "2026-11-04",
+      "confirmation_scope": "Reviewer confirmed complete saved disposition and hashes; no new tests/imports/mutations",
+      "interruption": "Usage limit interrupted final reviewer message after complete report/record publication; preserved artifacts confirmed next day"
     },
     "limitations": [
       "Mismatch writer/action unknown",
@@ -3562,6 +3617,30 @@
         "outcome": "Does not override the reproduced P1 failure"
       }
     },
-    "publication_revision2": "O_NOFOLLOW directory component walk; exclusive temporary file and atomic replacement relative to same directory descriptor; fsync and post-publication visible-directory identity check"
+    "publication_revision2": "O_NOFOLLOW directory component walk; exclusive temporary file and atomic replacement relative to same directory descriptor; fsync and post-publication visible-directory identity check",
+    "documentation_delivery": {
+      "date": "2026-11-04",
+      "relative_to": "77486baad920fa3101ebad37d64f028f4874152c",
+      "scope": "Only existing WORK.md, work_record.json and CODEX_HANDOFF.md; no implementation/test/evidence reseal",
+      "containing_commit": "Final documentation delivery commit (reported by Git on push; no self-referential hash)"
+    },
+    "next_gate": "Primary separately authorizes smallest fresh software Verification of exact77486; no automatic resumption or numerical experiment",
+    "final_documentation_checks": {
+      "date": "2026-11-04",
+      "scope": "Static documentation/hash checks only; no tests or project imports",
+      "reviewed_source_and_tests_byte_identical": true,
+      "documentation_only_changed_paths": [
+        "docs/CODEX_HANDOFF.md",
+        "docs/apex_workbench_nmpc_weight_m0/WORK.md",
+        "docs/apex_workbench_nmpc_weight_m0/work_record.json"
+      ],
+      "recorded_v1_evidence_hashes_rechecked": 59,
+      "tracked_baseline_files_checked": 1040,
+      "m0_baseline_regular_files_checked": 3301,
+      "m0_baseline_links_checked": 191,
+      "only_m0_change": "Explicitly recovered exploratory_software_probe.json; expected DAC identity",
+      "local_document_links_valid": true,
+      "git_diff_check": "PASS"
+    }
   }
 }

@@ -1,29 +1,32 @@
-# Current handoff — M5-A V1 correction/recovery pending independent review
+# Current handoff — M5-A V1 corrective review PASS; Verification authorization pending
 
-**WORK_COMPLETE_PENDING_REVIEW.** 3 November 2026; branch `codex/m5a-nmpc-weight-m0`.
-First candidate `cab78f47ae4d21243b5f522aa5f46e631aede1d5` failed independent review on a
-reproduced preview-directory swap race. The failed record remains preserved. The containing second
-V1 correction commit is the next candidate for independent review. Only panels, their existing
-workspace tests and existing WORK/record/handoff change. [WORK](apex_workbench_nmpc_weight_m0/WORK.md),
+**NMPC_WEIGHT_LAB_M0_V1_CORRECTIVE_REVIEW_COMPLETE_PENDING_VERIFICATION_AUTHORIZATION.**
+4 November 2026. Exact corrected implementation/tests `77486baad920fa3101ebad37d64f028f4874152c`,
+branch `codex/m5a-nmpc-weight-m0`; independent review **PASS**, no unresolved blocking findings.
+This containing delivery changes existing documentation only. [WORK](apex_workbench_nmpc_weight_m0/WORK.md),
 [machine record](apex_workbench_nmpc_weight_m0/work_record.json).
 
-Mutable previews now publish under a distinct non-authoritative `previews/` namespace via
-O_NOFOLLOW directory traversal and pinned-descriptor atomic replacement. Three deterministic
-swap regressions preserve sealed claims and report namespace changes.
-Independent pre-restoration authentication PASS reconstructed the exact original exploratory probe;
-its final SHA is `dac35d357e64ef0e30702650ddef2b130503fab643315170cbfb80c4a53acb3e`.
-Observed443c09… bytes, unknown writer/action and the original failed Verification remain preserved.
-No gate, authority, claim, raw experiment or manifest was resealed or changed. Historical readers
-accept both native runs; current admission rejects changed source as intended. Both attempts consumed.
+Mutable previews use a distinct non-authoritative namespace and descriptor-relative no-follow
+atomic publication. First candidate `cab78f47ae4d21243b5f522aa5f46e631aede1d5` and its reproduced
+namespace-swap failure remain preserved. V1-ER1-P1 is closed by the exact corrected revision.
+Independent final PASS record SHA256 `460cc94da45d175396bd53ad6a1de025a37f49ecc29ca7a90eb2b6dc66e8c1a9`.
 
-Final focused guarded non-simulation WORK run:47passed, zero failures/errors/skips,31deselected;
-earlier43/44WORK runs and40review passes remain separate and do not supersede its race finding. No fresh probe, controller construction, optimizer solve, plant
-execution or formal Verification. All3,301 prior M0 files/191links checked; only the permitted
-restoration changes.333 frozen runtime and primary56science/345qualification/25P/4oval/C0 match.
-Evidence is ignored/local; committed hashes alone do not establish off-host retrieval. G1 OPEN.
+Only the authorized exploratory probe was restored after independent authentication:
+SHA256 `dac35d357e64ef0e30702650ddef2b130503fab643315170cbfb80c4a53acb3e`.
+Observed 443c09… bytes, original failed Verification and unknown writer/action remain preserved.
+Gates/authority/claims and both native raw records/manifests remain unchanged. Historical readers
+accept both records; current admission rejects changed source as intended. Both allowances consumed.
 
-Next: independent review of exact corrected candidate/recovery. Do not resume formal Verification
-without a new Primary assignment, even following PASS. No new experiment, tuning or later stage.
+3 November final WORK: 47 passes / 31 deselected; independent review: 43 passes / 35 deselected plus 7 separate
+adversarial cases. Each invocation has zero failures/errors/skips; counts are not combined.
+4 November confirmed saved report/hashes after a reviewer usage interruption; no tests repeated.
+No controller construction, fresh probe, optimizer solve, plant execution or formal Verification.
+All 3,301 baseline M0 files / 191 links checked; only the permitted restoration changes. 333 frozen runtime,
+56 scientific / 345 qualification / 25 P / 4 oval and C0 bytes match. G1 OPEN. Evidence remains ignored
+and local; committed hashes alone do not prove off-host retrieval or historical capture authorship.
+
+Next: Primary separately authorizes smallest fresh software Verification on exact `77486baad920fa3101ebad37d64f028f4874152c`. Preserve
+failure evidence and consumed claims. No automatic Verification, new experiments, tuning or later stage.
 
 ---
 
@@ -190,7 +193,7 @@ resealing against the corrected source. Both numerical allowances remain unused 
 
 Single non-simulation functional regression: **209 passed, 17 G2 skipped, 172 simulation-dependent deselected**, zero failures/errors, including **all 69 C0 tests passed**. No full new scientific/controller regression or simulation. Original historical file is admitted **descriptively only** with `G1 OPEN` and **`descriptive_only / source_unverified`**; no capture-source verification, numerical qualification or physical/controller-performance claims. HTML generation/reopening passed; **automatic browser delivery remains unconfirmed** within 10 seconds. Launcher supervision SIGINT status 0 versus terminal Ctrl-C SIGINT(2) are separate route-specific observations without generalized timing/exit guarantees.
 
-Acceptance recording is documentation only; source/tests/dependencies, exact C0 evidence, frozen Control, 56 scientific/345 qualification/25 P/4 oval preserved evidence, prior BLOCKED outcomes and failed logs are not modified or requalified. Draft PR #1 stays unmerged; no release tag. Next task is **M5-A source-isolated genuine NMPC/TVLQR weight-lab planning only**. No implementation, simulation, scientific experiment, R0 or hardware work authorized. **STOP: C0 ACCEPTANCE RECORDED — NEXT WORKBENCH WORK PENDING PRIMARY AUTHORIZATION.**
+Acceptance recording is documentation only; source/tests/dependencies, exact C0 evidence, frozen Control, 56 scientific/ 345 qualification/ 25 P/ 4 oval preserved evidence, prior BLOCKED outcomes and failed logs are not modified or requalified. Draft PR #1 stays unmerged; no release tag. Next task is **M5-A source-isolated genuine NMPC/TVLQR weight-lab planning only**. No implementation, simulation, scientific experiment, R0 or hardware work authorized. **STOP: C0 ACCEPTANCE RECORDED — NEXT WORKBENCH WORK PENDING PRIMARY AUTHORIZATION.**
 
 ---
 
@@ -277,7 +280,7 @@ No simulation, controller, numerical campaign or formal Verification. G1 remains
 
 The containing commit is the corrected candidate for independent re-review. Stop after Engineering
 Review pending separately authorized Verification; no merge or scientific acceptance. Original
-56 scientific/345 qualification/25 P/4 legacy files and all earlier findings remain preserved.
+56 scientific/ 345 qualification/ 25 P/4 legacy files and all earlier findings remain preserved.
 PR #1 remains draft. One of two bounded routine correction iterations used.
 
 ---
@@ -1516,7 +1519,7 @@ Next: Secondary Engineering Review of this specification, then explicit scoped a
 
 **WORK_COMPLETE_PENDING_REVIEW.** Base/E4 acceptance `48adbdf64d492592d15e23c917aca71fa58aa8a5`.
 Frozen remote branch `release/performance-synthetic-v1` and annotated tag `performance-synthetic-v1`
-resolve exactly to E4. Active exact-ref GitHub rulesets 25418055/25418590 restrict updates, deletion
+resolve exactly to E4. Active exact-ref GitHub rulesets 25418055/ 25418590 restrict updates, deletion
 and force pushes with empty bypass lists. Tag object `76d9eaa65af02efb0263916adc75d5247a0e778f`.
 Development branch `research/efficiency` created from E4; main remains integration/default.
 Specification delivery SHA/URL follow normal commit/push; no circular self-hash.
@@ -1829,7 +1832,7 @@ source `935e98b7af6c2fda8458551f1fbcbddb3bf8932d`. Exact delivery SHA/URL follow
 **Proposal:** Per authorized track, two 2 s parity runs plus six long runs: one controlled A/C70
 pair and two fresh measured pairs with opposite orders; 5 ms imposed codriver throughout.
 Two seam crossings obtain one complete lap after the initial rolling partial traversal; 80 s cap.
-Controlled planner pattern 35/55/45/25 ms is inherited from C3, explicitly synthetic. Estimate
+Controlled planner pattern 35/55/45/ 25 ms is inherited from C3, explicitly synthetic. Estimate
 18–30 minutes of long runs and 1.5 GiB allocated disk per track; these are extrapolations.
 **Reuse/gaps:** Runtime already supports A/C70 and laps. Need later research-only worker, lap-aware
 gate/window/export adapters; current short gate accepts duration only, final crossing state may be
@@ -2004,7 +2007,7 @@ forecast/packet2 .200. Max yaw-rate difference 6.93e-9 rad/s; common-grid differ
 C2: packet 4 missed .470, discarded .475, never used; old plan 3 continues until plan 5 .570.
 Reserve min 0.605 s; lateral tracking RMS/steering TV worsen modestly, retained in the report.
 
-C3 gamma 2.0/1.8: variable versus fixed 70/80 under identical 35/55/45/25 ms readiness and 5 ms driver.
+C3 gamma 2.0/1.8: variable versus fixed 70/80 under identical 35/55/45/ 25 ms readiness and 5 ms driver.
 All 76 fixed C3 commitments accepted; no unexpected misses, boundary/slack/model/solver/fallback
 or chronology gate. All six tracking RMS values improve, but peak heading error worsens. At 70 ms,
 steering TV falls 22.2%/6.36%; 80 ms increases gamma 1.8 steering TV 2.45%. Actual heading TV rises
@@ -2349,7 +2352,7 @@ not the fastest automatic envelope selection. All production defaults remain unc
 - Eight sustained cases all complete three crossings without boundary/solver/fallback/deadline
   failures. First crossing starts at s_abs=1m; only the next TWO are complete geometric laps.
 - Exact fixed N6/N8 repeats pass across physical/NLP channels; candidate control offsets use6(N+1).
-- Four0.8s zero/injected checks pass physical chronology. Injection150ms planner/25ms driver
+- Four0.8s zero/injected checks pass physical chronology. Injection150ms planner/ 25ms driver
   yields4 planner/53 driver misses each, moving physics and application staleness.
 - Native backend audits observe max1 process thread, N6/N8 CPU/wall0.9970/0.9993.
 - Internal physics and measured worst-case dashboards/phase portraits exported and inspected.

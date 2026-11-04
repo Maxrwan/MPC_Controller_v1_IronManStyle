@@ -1,65 +1,82 @@
 # M5-A / NMPC Weight Lab M0 — bounded WORK
 
-## V1 publication-boundary correction and exact-byte recovery — 3 November 2026
+## V1 corrective review delivery — 4 November 2026
 
-**WORK_COMPLETE_PENDING_REVIEW.** Primary's bounded V1 grant (SHA-256
-`c7e884e4bcf6b2b7115b8b39e56a5d6d49a0d3dbac464c0639bc85d71f92f2b0`) supersedes the
-prior stop only for this correction/recovery/review. Base delivery `9d0525a1af70153833b87ccb18077e446793e00a`;
-reviewed predecessor `96be0969703f0675060208843c9920bca2187e3e`. The first V1 candidate
-`cab78f47ae4d21243b5f522aa5f46e631aede1d5` failed independent review: a deterministic directory
-swap after the final pathname check redirected a preview write into a disposable sealed claim.
-That failed revision/reproduction remains preserved (BLOCKED review record SHA-256
-`2fa9516f6139ecb0f2cfec0443c6f8140462d8352a6916ef4d4f09dc23820393`). The containing second V1 correction commit
-is the next exact review candidate; its new independent review is pending. Earlier WORK and failed
-[Verification](../reviews/apex_workbench_nmpc_weight_m0/VERIFICATION.md) remain historical.
+**NMPC_WEIGHT_LAB_M0_V1_CORRECTIVE_REVIEW_COMPLETE_PENDING_VERIFICATION_AUTHORIZATION.**
+Independent Engineering Review **PASS** for exact implementation
+`77486baad920fa3101ebad37d64f028f4874152c`, branch `codex/m5a-nmpc-weight-m0`.
+This containing delivery changes the existing WORK/record/handoff only. Primary's bounded V1 grant
+SHA-256 is `c7e884e4bcf6b2b7115b8b39e56a5d6d49a0d3dbac464c0639bc85d71f92f2b0`.
+The earlier failed [Verification](../reviews/apex_workbench_nmpc_weight_m0/VERIFICATION.md) at
+`9d0525a1af70153833b87ccb18077e446793e00a` remains unchanged. No formal Verification resumed.
 
-The Run panel previously published mutable previews into sealed authority evidence. It now
-validates the preset and publishes atomically to `previews/primary-r1-r2-20261102/<preset>.json`
-under the existing M0 output root. It walks directories with O_DIRECTORY/O_NOFOLLOW and creates
-and replaces names relative to one pinned directory descriptor. Namespace swaps cannot redirect
-publication; post-publication pathname identity changes report failure. Linked destinations reject;
-malformed previews are contained.
-The preview is explicitly non-authoritative. Admission, gate checksums, source-currentness,
-ownership, configuration and scientific code are unchanged. No fallback to authority files exists.
+The localized implementation changes are `nmpc_weight_panels.py` and its existing workspace tests.
+Mutable preview output now uses `previews/primary-r1-r2-20261102/<preset>.json` under the existing
+M0 root, with explicit non-authoritative labeling. Directory components open with O_DIRECTORY /
+O_NOFOLLOW. Exclusive temporary creation, atomic replacement, fsync and cleanup use one pinned
+directory descriptor; visible namespace identity changes report failure. Admission, strict gate
+checksums, configuration validation, source-currentness, ownership and scientific code are unchanged.
 
-Before recovery, the observed 333,179-byte exploratory probe was preserved in a fresh corrective
-snapshot: SHA-256 `443c09d57db08eefeef2ae9ebc35d83767845b3161bbe4d461b90b23dcb237a4`.
-Independent pre-restoration authentication **PASS** reconstructed original wrapper stdout using
-original indent-2 JSON serialization plus LF. Hashlib and independent `shasum` both obtained
-`dac35d357e64ef0e30702650ddef2b130503fab643315170cbfb80c4a53acb3e`.
-Decoded types/values match exactly, including numeric type distinctions and signed zero;
-only `/imports` member ordering differs (58 of 1,064 positions). Original eight producer hashes,
-333 frozen/runtime files, ten dependency RECORD/tree identities and imported-file identities match.
-The exact candidate bytes were then published using an exclusive temporary file, fsync,
-O_NOFOLLOW directory handle, observed-hash recheck and atomic replacement. Final on-disk hash
-matches the existing gate; no gate/authority/claim was resealed. The writer of the mismatch remains
-unknown. Recovery neither erases that failure nor proves capture authorship or scientific validity.
+The first V1 candidate `cab78f47ae4d21243b5f522aa5f46e631aede1d5` failed independent review:
+a directory swap after pathname validation redirected its preview publication into a disposable
+sealed claim. Failed reproduction/report and BLOCKED record remain preserved (record SHA-256
+`2fa9516f6139ecb0f2cfec0443c6f8140462d8352a6916ef4d4f09dc23820393`). The second correction
+closes V1-ER1-P1. Seven independent substitutions/collision checks preserve sealed fixture bytes,
+including output/previews/namespace opens, temporary creation, replacement and final-name insertion.
 
-Final focused **non-simulation** invocation: **47 passed, zero failures/errors/skips, 31 deselected**,
-11.36 s, including three deterministic directory swaps (directory open, temporary open, replace).
-Earlier 43/44-pass invocations and the first reviewer's 40-pass subset remain separate; passing
-software subsets did not invalidate that reviewer's reproduced race. Counts are not combined. Fresh probes, controller/plant imports, capture/admission and numerical
-workers were guarded out. Existing ownership assertions use explicitly retained configuration
-fixtures instead of the controller-constructing preflight fixture. New AppTest checks repeat both
-preset preview actions; strict evidence/source negatives, forged/copied/linked/foreign records,
-owned cancellation, original P/C0 and legacy forms pass. Ruff/check-format and diff checks pass;
-two intermediate line-length failures and their string/name-only corrections are retained.
-These are WORK software checks, not formal Verification, scientific execution or new cost algebra.
+Before recovery, the observed 333,179-byte exploratory probe was preserved with collection identity:
+SHA-256 `443c09d57db08eefeef2ae9ebc35d83767845b3161bbe4d461b90b23dcb237a4`.
+Independent pre-restoration authentication reconstructed original wrapper stdout using the original
+indent-2 JSON plus LF convention. Hashlib and independent `shasum` both obtained the original gate
+expectation `dac35d357e64ef0e30702650ddef2b130503fab643315170cbfb80c4a53acb3e`.
+Decoded types/values match exactly, including numeric distinctions/signed zero. Only `/imports`
+member order differs (58 of 1,064 positions). Authenticated bytes were restored using an exclusive
+temporary file, fsync, O_NOFOLLOW directory handle, observed-hash recheck and atomic replacement.
+Independent re-review repeated reconstruction and matched the actual final on-disk identity.
+No gate, authority or claim was resealed. Recovery does not identify the mismatch writer/action,
+prove capture authorship or erase the historical failure.
 
-Preservation: all 3,301 preexisting regular M0 files and 191 links checked; only the explicitly
-restored file changes. Both native raw records/manifests and original source captures are unchanged.
-Production `read_run()`/`current()` accept both historical runs and their comparison remains
-unqualified. All five original gate evidence files now hash-match. Current `verify_gate()` correctly
-rejects this changed producer source against the older pinned review; it was not resealed to pass.
-Both attempts remain consumed. The tracked inventory contains 1,040 regular files; only the five
-authorized paths change. Primary retained groups (56 scientific, 345 qualification, 25 P, four oval)
-and original C0 bytes match; G1 remains OPEN.
+Tests executed 3 November; 4 November continuation confirmed retained evidence without new tests:
 
-Exact commands, JUnit, logs, isolated candidate, observed snapshot, independent authentication and
-recovery audit live locally under ignored `results/apex_workbench_nmpc_weights/v1_corrective_20261103/`;
-full hashes are in [work_record.json](work_record.json). Raw evidence is not independently retrievable
-from GitHub merely because its hash is committed. Pending: new independent exact-revision corrective
-review after the reproduced race correction. No automatic formal Verification, new experiment, tuning or later stage is authorized.
+| Invocation | Passes | Failures / errors / skips | Deselected | Observed time |
+|---|---:|---|---:|---:|
+| Final focused WORK | 47 | 0 / 0 / 0 | 31 | 11.36 s |
+| Independent final review subset | 43 | 0 / 0 / 0 | 35 | 10.92 s |
+
+Seven additional independent adversarial cases passed separately. Earlier 43/44 WORK invocations
+and the first reviewer's 40-pass subset remain separate and do not supersede its reproduced race.
+Fresh scientific imports/probes, capture/admission and numerical workers were guarded out; retained
+configuration snapshots replaced the controller-constructing preflight fixture. Repeated actual
+Streamlit preview actions, strict source/evidence negatives, forged/copied/foreign/linked lifecycle
+rejection, owned inspection/cancellation, legacy forms and retained P/C0 viewers pass. Ruff/format
+and diff checks pass. Initial lint errors, the documentation-only path-variable harness failure,
+first failed review and reviewer usage interruption remain recorded. No controller construction,
+optimizer solve, plant execution, new cost algebra or numerical qualification occurred.
+
+Preservation: all 3,301 baseline regular M0 files / 191 links checked; only the authorized restored
+file changes. Both original native records and all 15 members of each manifest remain unchanged,
+with their original source/configuration/environment identities. Independent audit matches 333 frozen
+runtime files, eight historical producers, 1,060 imported-file hashes and ten dependency RECORD/tree
+identities. Primary retained groups 56 scientific / 345 qualification / 25 P / 4 oval and C0 original
+bytes match. G1 remains OPEN. The 1,040-file tracked baseline changes only the five authorized paths.
+
+Production historical `read_run()` / `current()` authenticate both runs and comparison remains
+unqualified. All five original gate evidence hashes match. Current `verify_gate()` correctly rejects
+the changed panel against its older pinned review; the gate was not resealed. Both attempts remain
+consumed. Independent PASS record SHA-256:
+`460cc94da45d175396bd53ad6a1de025a37f49ecc29ca7a90eb2b6dc66e8c1a9`;
+report SHA-256 `538cd72949e43c12abb49a767086d69ed4f46faa3b1bf17cc2f479a46a312608`.
+
+[Machine record](work_record.json) retains exact commands, hashes, logs/JUnit and paths under ignored
+`results/apex_workbench_nmpc_weights/v1_corrective_20261103/`. Raw evidence remains locally readable;
+committed hashes do not establish off-host retrieval. Historical process state and writer/capture
+authorship remain unproved. This PASS covers the bounded software correction/recovery only.
+
+Recommended next gate: separately authorize fresh software Verification of exact `77486baad920fa3101ebad37d64f028f4874152c`, covering
+applicable publication/substitution, Workbench/P/C0 compatibility, strict authority/source/evidence
+and ownership/lifecycle/failure checks, plus retained source/environment/artifact audit. Preserve
+frozen gates/failures, expect the older execution gate's source rejection, and do not reopen claims.
+No automatic Verification, new experiment, tuning, M5-B or other scientific/hardware stage is authorized.
 
 ## Historical R1/R2 final corrective delivery — 3 November 2026
 
