@@ -80,7 +80,7 @@ Observer overhead is separately recorded; it never changes imposed simulated ava
 
 ## Focused software evidence and preservation
 
-Final focused pre-review invocation: **96 passed,0 failures/errors/skips,31 deselected,59.90s**.
+Final focused pre-review invocation: **97 passed,0 failures/errors/skips,31 deselected,60.34s**.
 No genuine controller/closed-loop run, optimizer solve or Plant.step occurred. Source-isolated
 configuration/MPCProblem construction and component algebra were permitted. Tests independently
 check all eight overrides reaching native problem/constructor semantics, literal cost expressions,
@@ -95,7 +95,7 @@ Earlier36/37-pass checks remain separate. A selection including a legacy plottin
 was interrupted before that node:24 passes, incomplete selection, zero numerical launches. Its
 interruption, sandboxed process-inspection denial and successful scoped interruption remain recorded.
 Initial lint failures and all corrected attempts/logs/JUnit remain in the ignored WORK directory.
-No historical counts are added to96. Broad scientific/qualified/frozen suites were not run.
+No historical counts are added to97. Broad scientific/qualified/frozen suites were not run.
 
 Pre-review audit:6,329 original M5-A regular files and324 links unchanged, no added historical files;
 333 frozen runtime members match exact Git bytes; no src/scripts/configs/dependency changes. Primary
@@ -104,7 +104,16 @@ This preserves independently verified PRE-INT-W1 and all historical research. Ra
 local/ignored; committed hashes do not establish off-host retrieval. No formal Verification or
 scientific qualification is claimed.
 
-Next: one consolidated independent review of the exact candidate. Only after PASS may the three
+The initial exact candidate01ace08d independently failed V1-ER1-P1: a replacement between data
+ingestion and fresh anchor hashing could be adopted as the new anchor. The failed reproduction,
+BLOCKED record (`f748b788cbf65a48518209b95779b16d889aaca6e68ff4ea791531fe653e5d38`) and original
+96-pass WORK result remain preserved separately. The correction captures status/manifest bytes before
+ingestion, decodes only artifacts verified against that captured manifest, anchors their expected
+hashes and checks that binding before return/render. A deterministic interleaving regression and
+post-render same-size/restored-mtime replacement checks pass. No science/source/parameter change or
+numerical execution occurred. The containing correction commit requires exact-revision re-review.
+
+Next: continue the consolidated independent review on the exact corrected candidate. Only after PASS may the three
 predeclared attempts run, sequentially under unchanged caps, followed by retained-result/UI audit.
 No change to controller mathematics, physical assumptions, accepted architecture, Safety policy,
 frozen source or numerical budget is delegated. Stop after delivery at

@@ -15,14 +15,19 @@ errors, genuine prediction/packet associations and read-only local TVLQR Jacobia
 Metrics distinguish physical errors/effort, native timing/slack/grip, insufficient recovery windows
 and local linear indicators from scientific qualification or nonlinear/hybrid stability guarantees.
 
-Final guarded pre-review software selection:96passes,0failures/errors/skips,31deselected,59.90s.
+Final corrected guarded software selection:97passes,0failures/errors/skips,31deselected,60.34s.
 No genuine closed-loop/optimizer/plant execution. Component algebra/configuration construction ran.
 All prior setup failures, lint negatives and an interrupted selection are retained separately; its
 unwanted legacy numerical test did not execute. Guarded tests now deny all real scientific launches.
 M5-A6,329 baseline files/324links unchanged, no added historical files.333 frozen runtime, primary
 56science/345qualification/25P/4oval and originalC0 match. G1 OPEN. No formal Verification ran.
 
-Next: one independent exact-candidate review. Only after PASS, Primary's current conditional budget
+Initial candidate01ace08d and independent BLOCKED review are preserved: V1-ER1-P1 could adopt
+a replacement artifact hash after ingestion. The correction binds decoded bytes to the captured
+manifest/status and revalidates before return/render. Regression and invalidation checks pass.
+All three numerical attempts remain unused; no access document was created.
+
+Next: exact corrected-candidate re-review in the same independent context. Only after PASS, Primary's current conditional budget
 permits three sequential2.0s Scratch attempts: accepted costs, only lateral2→1, accepted costs plus
 existing+0.08m/−0.04rad state perturbation at0.5s. No retries or additional experiments. Preserve caps
 60s wall/30s CPU/512MiB sampled RSS/64MiB sampled output/16MiB file. After genuine results and bounded

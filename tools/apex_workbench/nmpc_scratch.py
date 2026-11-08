@@ -274,22 +274,61 @@ def read_run(directory):
         raise ValueError("Read the original Scratch directory; aliases are not new executions")
     for path in directory.rglob("*"):
         safe(path)
+    # Bind the presentation epoch before ingesting anything. Never adopt a fresh hash
+    # of an artifact after decoding it: that could bless a concurrent replacement.
+    status_bytes = (directory / "status.json").read_bytes()
+    manifest_bytes = (directory / "artifacts.json").read_bytes()
     status = storage.read_status(directory)
+    if status != json.loads(status_bytes) or status.get("record_version") != 2:
+        raise ValueError("Scratch status changed or has an unsupported version")
     if status.get("evidence_state") != "valid":
         raise ValueError("Partial/uncommitted Scratch evidence; native journals remain retained")
     manifest = storage.artifact_manifest(directory)
-    request = storage.artifact_json(directory, "request.json")
-    if request["adapter"] != ADAPTER or request["run_id"] != directory.name:
+    manifest_hash = hashlib.sha256(manifest_bytes).hexdigest()
+    if manifest != json.loads(manifest_bytes) or manifest_hash != status.get("manifest_sha256"):
+        raise ValueError("Scratch committed manifest changed during ingestion")
+    anchor = {
+        "status.json": hashlib.sha256(status_bytes).hexdigest(),
+        "artifacts.json": manifest_hash,
+    }
+    payloads = {}
+    for name, entry in manifest.items():
+        if (
+            type(name) is not str
+            or type(entry) is not dict
+            or set(entry) != {"sha256", "bytes"}
+            or type(entry["bytes"]) is not int
+            or entry["bytes"] < 0
+            or type(entry["sha256"]) is not str
+            or re.fullmatch(r"[0-9a-f]{64}", entry["sha256"]) is None
+            or name in {"status.json", "artifacts.json"}
+        ):
+            raise ValueError("Malformed Scratch manifest member")
+        path = frozen.safe(directory / name, directory)
+        data = path.read_bytes()
+        if len(data) != entry["bytes"] or hashlib.sha256(data).hexdigest() != entry["sha256"]:
+            raise ValueError("Scratch artifact checksum changed: " + name)
+        anchor[name] = entry["sha256"]
+        payloads[name] = data
+    request = json.loads(payloads["request.json"])
+    if (
+        request["adapter"] != ADAPTER
+        or request["run_id"] != directory.name
+        or request.get("record_version") != 2
+    ):
         raise ValueError("Scratch identity changed")
     validate(request["effective"])
-    storage.check_required_artifacts(directory, request, status)
-    for name in manifest:
-        storage.artifact_bytes(directory, name)
-    raw = storage.artifact_json(directory, "experiment/raw.json", optional=True)
-    presentation = storage.artifact_json(directory, "experiment/presentation.json", optional=True)
+    if not storage.required_artifacts(request, status) <= manifest.keys():
+        raise ValueError("Scratch required evidence is missing")
+    raw = json.loads(payloads["experiment/raw.json"]) if "experiment/raw.json" in payloads else None
+    presentation = (
+        json.loads(payloads["experiment/presentation.json"])
+        if "experiment/presentation.json" in payloads
+        else None
+    )
     if raw is not None:
-        pre = storage.artifact_json(directory, "experiment/pre_execution_identity.json")
-        post = storage.artifact_json(directory, "experiment/post_execution_identity.json")
+        pre = json.loads(payloads["experiment/pre_execution_identity.json"])
+        post = json.loads(payloads["experiment/post_execution_identity.json"])
         captured = request["scratch_capture"]
         if (
             pre["resolved"] != captured["resolved"]
@@ -306,27 +345,26 @@ def read_run(directory):
             or captured["source"] != frozen.SOURCE
         ):
             raise ValueError("Scratch configuration/scientific source disagrees")
-    packet_bytes = storage.artifact_bytes(directory, "experiment/packets.jsonl", optional=True)
+    packet_bytes = payloads.get("experiment/packets.jsonl")
     packets = (
         [json.loads(row) for row in packet_bytes.decode().splitlines()] if packet_bytes else []
     )
-    return {
+    view = {
         "directory": directory,
         "request": request,
         "status": status,
         "raw": raw,
         "presentation": presentation,
         "packets": packets,
-        "anchor": {
-            name: storage.sha256(directory / name)
-            for name in (*manifest, "status.json", "artifacts.json")
-        },
+        "anchor": anchor,
     }
+    current(view)
+    return view
 
 
 def current(view):
     for name, digest in view["anchor"].items():
-        if storage.sha256(safe(view["directory"] / name)) != digest:
+        if storage.sha256(frozen.safe(view["directory"] / name, view["directory"])) != digest:
             raise ValueError("Scratch evidence changed during presentation")
 
 

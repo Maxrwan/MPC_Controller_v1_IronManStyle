@@ -584,7 +584,7 @@ def test_render_withdraws_stale_plots_after_same_size_replacement(
 
     def replace_during_render(view):
         calls.append(True)
-        if len(calls) == 2:
+        if len(calls) == 3:  # read_run return, pre-render, then post-render check.
             path = directory / "experiment/presentation.json"
             stat = path.stat()
             path.write_bytes(path.read_bytes().replace(b"0.02", b"0.03"))
@@ -598,3 +598,35 @@ def test_render_withdraws_stale_plots_after_same_size_replacement(
     ).run()
     assert not app.exception and any("quarantined" in e.value for e in app.error)
     assert not app.get("plotly_chart")
+
+
+def test_anchor_never_adopts_artifact_replaced_after_ingestion(tmp_path, monkeypatch):
+    # Same interleaving as the independently retained failed review; format fixture only.
+    baseline = scratch.defaults()
+    probes = (
+        {
+            "resolved": {
+                "configuration": {"costs": baseline["costs"]},
+                "effective": copy.deepcopy(baseline),
+            }
+        },
+    )
+    directory = render_fixture(tmp_path, monkeypatch, probes)
+    path = directory / "experiment/presentation.json"
+    original = storage.sha256
+    replacements = []
+
+    def replace_at_revalidation(selected):
+        if selected == path and not replacements:
+            data = path.read_bytes()
+            changed = data.replace(b"0.02", b"0.03")
+            assert len(changed) == len(data) and changed != data
+            path.write_bytes(changed)
+            replacements.append(True)
+        return original(selected)
+
+    monkeypatch.setattr(storage, "sha256", replace_at_revalidation)
+    with pytest.raises(ValueError, match="changed|checksum"):
+        view = scratch.read_run(directory)
+        scratch.current(view)
+    assert replacements == [True]
