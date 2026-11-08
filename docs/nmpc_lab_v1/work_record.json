@@ -1,0 +1,149 @@
+{
+  "schema": "apex-nmpc-lab-v1-work/1",
+  "status": "WORK_COMPLETE_PENDING_REVIEW",
+  "date": "2026-11-08",
+  "base_revision": "4f398cfa68bbad3f5d66068888aec70d948e1bb9",
+  "branch": "codex/nmpc-lab-v1",
+  "scientific_source": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+  "grant_sha256": "b2fa6f8e6a9d00bd8986b0d56cc4520a892adc10476f3570b98a731ed0d8d307",
+  "amendment": "MINIMIZE GRAPHICAL PARAMETER CONFIGURATION; only CostScales and one named native disturbance; source-controlled profile references and reviewed versioned selection for future export",
+  "tested_source_sha256": {
+    "tools/apex_workbench/configuration.py": "596846e8dab789c619e00a26679288d73bfac495fc468c7b065e15d6795a33a1",
+    "tools/apex_workbench/jobs.py": "31c82030e644418cb6e3ec88b905d37388291fc00172c45c34e34a5de5684ed4",
+    "tools/apex_workbench/nmpc_analysis.py": "9bf1a7efe44ee4bb9f1199356f58a3f0caa31d7783543e03f26ca6abebc01beb",
+    "tools/apex_workbench/nmpc_scratch.py": "9fe2307301d8f5708c4318f68e204c943a45677e27a066ece283bf3bbae5995e",
+    "tools/apex_workbench/nmpc_scratch_panels.py": "25f8b7225d355001bdd574b58b2c64f32b357f1075c79f6dc11fbb923f6a4c41",
+    "tools/apex_workbench/nmpc_scratch_profile.json": "52ffa7cbb4308bb8814b7512fbb61d685e27fbe9af83b1acec926217b8f42fab",
+    "tools/apex_workbench/nmpc_scratch_worker.py": "d6ee20dcd56f9f2123aed9afa3796bf0bce9f63da21583982470f9a2645737e3",
+    "tools/apex_workbench/run_catalog.py": "f48089c848a9cc2e78102dad23fcbc15be360a9931b4f55d698c0948a1a0908c",
+    "tools/apex_workbench/storage.py": "962ff863823f8fa22edf46530730db3a042328fb940bc51036ba18aa2e221c96",
+    "tools/apex_workbench/tests/scratch_observer_check.py": "ea7df5212d62d307bbcf4f50254625d44cd83b26bb1f229449c49b4cc01b5452",
+    "tools/apex_workbench/tests/test_nmpc_scratch.py": "8570c94162d35ca76b7c81b6d8b1e92bbf5c3801b3e519269ee1bab623cfb9e1",
+    "tools/apex_workbench/tests/test_nmpc_weight_workspace.py": "a12f414acb2bb442740a6ad443c7b8c45afb86615f8311bd3b16491b45d05cc9",
+    "tools/apex_workbench/worker.py": "17293f2fc7775a1601de3f6c95bd28bcafc0766188efca588f8d7894ee8ff91c",
+    "tools/apex_workbench/workspace.py": "85722940dcbc464c4b5f05547278d33e1e3f8c40439dcb4d75c8388e026df2ae"
+  },
+  "software_checks": {
+    "final_command": "results/apex_workbench_nmpc_lab_v1/work/focused_2_command.json",
+    "passed": 96,
+    "failures": 0,
+    "errors": 0,
+    "skips": 0,
+    "deselected": 31,
+    "duration_s": 59.9,
+    "genuine_closed_loop_runs": 0,
+    "optimizer_solves": 0,
+    "plant_steps": 0,
+    "MPCProblem_and_component_algebra": true,
+    "independent_fixtures": true,
+    "parent_scientific_imports_and_real_worker_launches_forbidden": true
+  },
+  "prior_attempts": [
+    {
+      "invocation": "software_1",
+      "passed": 32,
+      "setup_errors": 4,
+      "cause": "missing runtime parent"
+    },
+    {
+      "invocation": "software_2",
+      "passed": 32,
+      "setup_errors": 4,
+      "cause": "original M0 verifier rejects separate cache; ultimately preserve original verifier and reuse original cache read-only"
+    },
+    {
+      "invocation": "software_3",
+      "passed": 36,
+      "duration_s": 41.11
+    },
+    {
+      "invocation": "software_4",
+      "passed": 37,
+      "duration_s": 47.88
+    },
+    {
+      "invocation": "focused_1",
+      "passed": 24,
+      "deselected": 31,
+      "interrupted": true,
+      "unwanted_legacy_node_executed": false
+    }
+  ],
+  "preservation": {
+    "scope": "Pre-review static preservation; no genuine Scratch executions",
+    "m5a_files": 6329,
+    "m5a_links": 324,
+    "changed_m5a_files": [],
+    "changed_m5a_links": [],
+    "new_m5a_files": [],
+    "frozen_runtime_files": 333,
+    "scientific_prefix_diff": "EMPTY",
+    "primary_preservation_groups": {
+      "scientific_source_sha256": 56,
+      "qualification_sha256": 345,
+      "gp_archive_sha256": 25,
+      "legacy_oval_sha256": 4
+    },
+    "c0_sha256": "2bd7d2385e7e2072a04e5d952eff9af8861eb7e63f016138d5289573c411f2d5",
+    "G1": "OPEN",
+    "historical_gate_sha256": "19217b49b7b49129e565078a6fdfaccc27bad8878f42c87a5c56fb8bb1fde857",
+    "historical_authority_sha256": "47ce382539021089742e59fa799227f531b761f2117bce4bd30095d3e8f4fbca"
+  },
+  "evidence_sha256": {
+    "results/apex_workbench_nmpc_lab_v1/work/software_4.xml": "791358def2b9334fa07052e367429ae083350207172ba16d5a80d61d3db91545",
+    "results/apex_workbench_nmpc_lab_v1/work/focused_1_command.json": "a25e9ee475592082bfe6f91cff8f9174c2561fd4e60969aac1829b2937086d5a",
+    "results/apex_workbench_nmpc_lab_v1/work/lint_initial.log": "8da0e07d4004e0f66097368aa3a71f7f633d5a48229f8f1afebce22cd735591c",
+    "results/apex_workbench_nmpc_lab_v1/work/selection_interruption.json": "528a6e9f152d1b8af12bf57faa1e7464842e20a79381650be99a7ce5117dd7fe",
+    "results/apex_workbench_nmpc_lab_v1/work/software_2_command.json": "e01ab81d13a63ad395db59c1f6bab2614cb3ecb4985ebc8baafd00171257ff36",
+    "results/apex_workbench_nmpc_lab_v1/work/software_2.xml": "eefba1a8cc8529c0ab94990afdaf6b34339f6e2ceea9ba134b773128554a3e6a",
+    "results/apex_workbench_nmpc_lab_v1/work/software_3.xml": "00aea5e783d9adfadaea6919c53ac0fdece3f55a04cd7bc88ba07854f244fc5d",
+    "results/apex_workbench_nmpc_lab_v1/work/software_1.xml": "8334d80d2df56346e0cd91792642963471ea1a5775f71b5bac411068c8c3ec69",
+    "results/apex_workbench_nmpc_lab_v1/work/test_m5a_retained.py": "94f4fb203bad3a758c890d8a999ee9eed6154b43c87a3d88c6b3c3cd13a42489",
+    "results/apex_workbench_nmpc_lab_v1/work/software_4_command.json": "6235060792ce72f0fbeee887cb68788aea3f6c14435884a006536b9e7bf315ea",
+    "results/apex_workbench_nmpc_lab_v1/work/software_3_command.json": "d4a8862a1522388d138d077472efe409baef114f4939619e6fed014d2aa66ca8",
+    "results/apex_workbench_nmpc_lab_v1/work/lint_2.log": "bacbca5d94e23451b64aeec4d5787aaec2985c41d165db62b036102fd97716e0",
+    "results/apex_workbench_nmpc_lab_v1/work/lint_3.log": "ef0f0d2b2d7c5b10c65ed5fd3c8d20290637e79fc54a8a297b6d88f220f532e6",
+    "results/apex_workbench_nmpc_lab_v1/work/preservation_pre_review.json": "6aeff61813e33d2b0831140db82d55eeab5c2a9af2b64d9a40d30479f093706f",
+    "results/apex_workbench_nmpc_lab_v1/work/software_3_result.json": "57c345a6ebd1615e7722f814d4f60fa516427ccb9a0f79b77672aec660d74fec",
+    "results/apex_workbench_nmpc_lab_v1/work/lint_4.log": "00793494ccc477a74e1d0ccfda0c7fb39208404dcbf74c6c5a7b6895ca84eb31",
+    "results/apex_workbench_nmpc_lab_v1/work/focused_1.xml": "5e65120e0e9bda4254a46052f63e57d2517dc36ca4fea2dfcb272b6194e2aced",
+    "results/apex_workbench_nmpc_lab_v1/work/focused_2.xml": "934a436e895f900286911356e29b3e3fdfb99c011dd01dbe09b5e9da9edb0096",
+    "results/apex_workbench_nmpc_lab_v1/work/focused_1_result.json": "37edc293d115f10aee06df1787db9abb02c2863664172b72defe73f12533e02d",
+    "results/apex_workbench_nmpc_lab_v1/work/lint_final.log": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+    "results/apex_workbench_nmpc_lab_v1/work/software_1_result.json": "dec4a8c1cb33428ee6344e9e33b2773cab5f410db716165d1b875d6e5b5602f4",
+    "results/apex_workbench_nmpc_lab_v1/work/software_runner.py": "b93e5bff877f42b78ab4c5a58fd8f33c28accca9fff8103c6f11eef31809b191",
+    "results/apex_workbench_nmpc_lab_v1/work/focused_1.log": "ac4966e3b45a9006c2a2c6d20e6c6299c6afb5cee2c6f9a2cf0815647e97fe24",
+    "results/apex_workbench_nmpc_lab_v1/work/software_4_result.json": "57c345a6ebd1615e7722f814d4f60fa516427ccb9a0f79b77672aec660d74fec",
+    "results/apex_workbench_nmpc_lab_v1/work/focused_runner.py": "ef5c67e0769324d1988386a3ee23546c2b0a1ba4b8e40d36fe522ca9620653f7",
+    "results/apex_workbench_nmpc_lab_v1/work/focused_2.log": "b798a81f3921a79ce15b2597bc099905b90a256bb1befad542352d7a133bcb96",
+    "results/apex_workbench_nmpc_lab_v1/work/software_4.log": "bea3524882331fc5856ee77fd2fa818bf667552707c166565a0db16abc934b87",
+    "results/apex_workbench_nmpc_lab_v1/work/focused_2_command.json": "cff9b7c3fc01422e14edcb8cd8030978f9d0194bd2e5a5e68e245daf0e24ea14",
+    "results/apex_workbench_nmpc_lab_v1/work/software_1_command.json": "d6892da27a841b78b6025495891057ed4bcfc942797e33cc7c91c9955583e116",
+    "results/apex_workbench_nmpc_lab_v1/work/software_2.log": "dac9b8e1e1c701cab1f4f6deefee9a39ba45a7929d5aaac69dbb2197a8cb2474",
+    "results/apex_workbench_nmpc_lab_v1/work/software_2_result.json": "dec4a8c1cb33428ee6344e9e33b2773cab5f410db716165d1b875d6e5b5602f4",
+    "results/apex_workbench_nmpc_lab_v1/work/software_3.log": "a6a784c879ab2bd2270560cf95518a4b466333e9dda0a38976c749430a867c6a",
+    "results/apex_workbench_nmpc_lab_v1/work/software_1.log": "ce7bd2af9d6095352817dca3a6c0f14664bf1cc063310e271a1e0751d1235611",
+    "results/apex_workbench_nmpc_lab_v1/work/preservation_before.json": "6349df7912ccab15c15aa813c252c517ecdbe43686817335a7f2b88d12be3367",
+    "results/apex_workbench_nmpc_lab_v1/work/focused_2_result.json": "57c345a6ebd1615e7722f814d4f60fa516427ccb9a0f79b77672aec660d74fec",
+    "results/apex_workbench_nmpc_lab_v1/work/source_observer_evidence.json": "4df895013d870f5f835b3acf5280c6a92d7271cd1c36be2ff2a757b6d3c207b6",
+    "results/apex_workbench_nmpc_lab_v1/work/focused_2_tmp/test_actual_frozen_jacobian_ga0/observer_stdout.json": "7282a9100ac59fdaf9e092b83e20315a76f092425e628c80d5a43d977473c235"
+  },
+  "independent_review": {
+    "status": "PENDING"
+  },
+  "numerical_budget": {
+    "condition": "Independent exact-candidate PASS",
+    "maximum_attempts": 3,
+    "duration_s_each": 2.0,
+    "started": 0,
+    "automatic_retries": false,
+    "disturbance": {
+      "native_mechanism": "AsyncConfig state perturbation",
+      "configured_time_s": 0.5,
+      "e_y_increment_m": 0.08,
+      "heading_increment_rad": -0.04
+    }
+  },
+  "formal_verification": "NOT_AUTHORIZED_NOT_RUN",
+  "future_exporter": "No implementation; explicit selected version/hash/review required; no implicit last-editor export"
+}

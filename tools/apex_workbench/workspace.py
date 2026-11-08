@@ -14,6 +14,7 @@ from tools.apex_workbench import (  # noqa: E402  # noqa: E402
     gp_archive,
     gp_panels,
     jobs,
+    nmpc_scratch_panels,
     nmpc_weight_panels,
     run_catalog,
 )
@@ -51,7 +52,9 @@ if pending:
         st.session_state["inspect_run"] = match.key
         st.session_state["inspect_archive"] = "Workbench / P retained runs"
 with st.sidebar:
-    page = st.radio("Workspace", ["Home", "Run", "Inspect", "Compare"], key="workspace_view")
+    page = st.radio(
+        "Workspace", ["Home", "Run", "Inspect", "Compare", "Analyze"], key="workspace_view"
+    )
     st.button("Refresh catalog")
     if st.session_state.get("selected_qualification") not in (None, *catalog.qualifications):
         st.session_state["selected_qualification"] = None
@@ -65,6 +68,9 @@ with st.sidebar:
         "Discovery is metadata only. Qualification is checked when applied to a verified run."
     )
 if st.session_state.get("previous_workspace_view") != page:
+    for name in list(st.session_state):
+        if name.startswith("scratch_replay_") and name.endswith("_playing"):
+            st.session_state[name] = False
     for name in ("inspect_playback", "compare_playback"):
         if name in st.session_state:
             st.session_state[name]["playing"] = False
@@ -85,6 +91,10 @@ def selector(label, key):
 
 if page == "Home":
     st.subheader("Engineering home")
+    if st.button("Open NMPC Scratch / Control Analysis"):
+        st.session_state["execution_mode"] = "nmpc_scratch"
+        st.session_state["next_view"] = "Run"
+        st.rerun()
     if st.button("Open experimental NMPC Weight Lab M0"):
         st.session_state["execution_mode"] = "nmpc_weight_lab"
         st.session_state["next_view"] = "Run"
@@ -117,7 +127,15 @@ if page == "Home":
     with st.expander("Experiment descriptions"):
         for adapter in ADAPTERS:
             st.write(ADAPTERS[adapter])
-            if adapter == "nmpc_weight_lab":
+            if adapter == "nmpc_scratch":
+                st.caption(
+                    (
+                        "Editable native cost multipliers, fixed synthetic scenario, "
+                        "recorded replay and Control Analysis. Experimental/unqualified; "
+                        "execution budget is separately enforced."
+                    )
+                )
+            elif adapter == "nmpc_weight_lab":
                 st.caption(
                     "Genuine source-isolated NMPC/TVLQR; one fixed two-preset "
                     "experimental M0 authorization, no qualification."
@@ -177,10 +195,13 @@ if page == "Home":
     )
 
 elif page == "Run":
-    st.subheader("Run an accepted experiment")
+    st.subheader("Configure and run an experiment")
     adapter = st.selectbox(
         "Execution mode", list(ADAPTERS), format_func=ADAPTERS.get, key="execution_mode"
     )
+    if adapter == "nmpc_scratch":
+        nmpc_scratch_panels.run_panel()
+        st.stop()
     if adapter == "nmpc_weight_lab":
         nmpc_weight_panels.run_panel()
         st.stop()
@@ -244,6 +265,10 @@ elif page == "Run":
         except (OSError, ValueError, RuntimeError) as error:
             st.error(str(error))
 
+elif page == "Analyze":
+    st.subheader("NMPC Control Analysis Laboratory")
+    nmpc_scratch_panels.analysis_panel()
+
 elif page == "Inspect":
     st.subheader("Inspect a retained run")
     archive_kind = st.radio(
@@ -255,6 +280,9 @@ elif page == "Inspect":
         c0_panels.inspect()
         st.stop()
     run = selector("Run", "inspect_run")
+    if run and run.adapter == "nmpc_scratch":
+        nmpc_scratch_panels.inspect(run)
+        st.stop()
     if run and run.adapter == "nmpc_weight_lab":
         nmpc_weight_panels.inspect(run)
         st.stop()
@@ -316,13 +344,23 @@ elif page == "Inspect":
 else:
     st.subheader("Compare retained runs")
     comparison_source = st.radio(
-        "Comparison source", ["Accepted Workbench runs", "NMPC Weight Lab M0 (unqualified)"]
+        "Comparison source",
+        [
+            "Accepted Workbench runs",
+            "NMPC Weight Lab M0 (unqualified)",
+            "NMPC Scratch (unqualified)",
+        ],
     )
+    if comparison_source == "NMPC Scratch (unqualified)":
+        nmpc_scratch_panels.compare_panel()
+        st.stop()
     if comparison_source == "NMPC Weight Lab M0 (unqualified)":
         nmpc_weight_panels.compare_panel()
         st.stop()
     compare_keys = [
-        key for key in by_key if by_key[key].adapter not in {gp_archive.ADAPTER, "nmpc_weight_lab"}
+        key
+        for key in by_key
+        if by_key[key].adapter not in {gp_archive.ADAPTER, "nmpc_weight_lab", "nmpc_scratch"}
     ]
     if "compare_runs" in st.session_state:
         st.session_state["compare_runs"] = [

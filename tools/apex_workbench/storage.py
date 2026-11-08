@@ -81,6 +81,24 @@ def required_artifacts(request, status):
         or status.get("scientific_outcome", status["state"]) != "completed"
     ):
         return set()
+    if request["adapter"] == "nmpc_scratch":
+        return {
+            "request.json",
+            "execution.json",
+            "worker.json",
+            "supervisor.json",
+            "worker_result.json",
+            "experiment/raw.json",
+            "experiment/summary.json",
+            "experiment/pre_execution_identity.json",
+            "experiment/post_execution_identity.json",
+            "experiment/presentation.json",
+            "experiment/packets.jsonl",
+            "experiment/optimizations.jsonl",
+            "experiment/preparations.jsonl",
+            "experiment/plant_segments.jsonl",
+            "experiment/command_requests.jsonl",
+        }
     expected = {
         "experiment/states.csv",
         "experiment/summary.json",

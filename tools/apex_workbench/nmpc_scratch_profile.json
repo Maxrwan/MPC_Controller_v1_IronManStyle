@@ -1,0 +1,31 @@
+{
+  "schema": "apex-nmpc-experiment-profile/1",
+  "id": "synthetic-gp-gamma2-A-v1",
+  "scientific_source": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+  "configuration_source": "scripts/task007dcx/worker.py:frozen_config",
+  "geometry_source": "scripts/task007dcx/worker.py:geometry",
+  "availability_source": "scripts/task007dvis/protocol.py:availability",
+  "vehicle_source": "configs/vehicles/synthetic_dynamic_test_vehicle.yaml",
+  "planning_source": "configs/planning/task007b/gamma_2p000",
+  "performance_source": "configs/performance/apex_performance_synthetic_v1.json",
+  "architecture": "A",
+  "duration_s": 2.0,
+  "baseline_costs": {
+    "lateral": 2.0, "dynamic": 1.0, "speed": 1.0, "control": 1.0,
+    "rate": 1.0, "terminal": 1.0, "alpha_vy": 1.0, "alpha_r": 1.0
+  },
+  "disturbance": {
+    "id": "lateral_heading_v1",
+    "mechanism": "apex.simulation.asynchronous.AsyncConfig",
+    "time_s": 0.5,
+    "e_y_increment_m": 0.08,
+    "heading_increment_rad": -0.04,
+    "magnitude_source": "Existing AsyncConfig disturbance defaults; time explicitly fixed for V1"
+  },
+  "classification": "SYNTHETIC / EXPERIMENTAL / UNQUALIFIED",
+  "promotion": "Explicit scientific review required for changed assumptions/domain; never replace frozen Performance",
+  "limits": {
+    "wall_s": 60, "cpu_s": 30, "sampled_rss_bytes": 536870912,
+    "sampled_output_bytes": 67108864, "single_file_bytes": 16777216
+  }
+}

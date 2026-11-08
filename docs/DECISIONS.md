@@ -1470,3 +1470,28 @@ The structural profile is contemporary parsing metadata, never a historical prod
 Focused software tests and independent exact-candidate Engineering Review precede the separately
 authorized formal Verification gate. No contract/scientific change, simulation, qualification,
 RBT, frozen campaign or hardware work follows. Draft PR #1 remains unmerged.
+
+
+## ADR-182 — Thin NMPC Scratch profile, native observers and bounded WORK access
+
+8 November 2026. Primary authorizes NMPC Lab V1 from4f398cf with a graphical-scope amendment.
+The editor covers eight existing CostScales fields and one named native disturbance only. A small
+source-controlled experiment profile references frozen configuration/vehicle/tire/Planning sources;
+versioned documents bind profile hash and scientific revision. Canonical dataclasses remain the
+configuration implementation. Broader assumptions/domain and deployment promotion need explicit
+scientific review. No alternate configuration framework or general physical/numerical GUI is added.
+
+Scratch mounts the verified48adbdf frozen scientific cache read-only and writes separate disposable
+outputs. Original M5-A authorization/evidence stay untouched. Existing worker lease, owner identity,
+cancellation, manifest commit and unchanged resource caps are reused. A single flat access document
+records the initial three reviewed WORK attempts; after independent PASS only those attempts may
+run. Repeatable interactive access needs explicit later Primary acceptance; no per-run immutable
+review chains or automatic numerical retries/campaigns are introduced.
+
+Read-only observers retain genuine predictions/packets and the native10ms TVLQR Jacobian/gain
+associations without changing its mathematics. Local F=A−BK products/eigenvalues are nominal-packet
+lateral diagnostics, not nonlinear/hybrid stability guarantees. Canonical geometry/Planning conversion
+produces racing-reference errors at actual recorded progress; raw Frenet and TVLQR-packet errors stay
+distinct. Recorded replay never advances a model. Physical error/effort metrics compare controlled
+cost treatments; differently weighted objective totals are not performance ranks. Source/evidence
+changes withdraw views. No scientific qualification, ROS2 exporter or physical deployment is implied.

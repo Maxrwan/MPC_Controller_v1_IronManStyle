@@ -144,6 +144,17 @@ def main(directory: Path, lock_fd: int) -> int:
     # This guard and the inherited lock remain effective until this process exits.
     start_guard(directory, lock_fd)
     request = json.loads((directory / "request.json").read_text())
+    if request["adapter"] == "nmpc_scratch":
+        # Keep source isolation ahead of all checkout scientific imports.
+        from tools.apex_workbench.nmpc_scratch_worker import run as run_scratch
+
+        try:
+            summary = run_scratch(directory, request["scratch_capture"])
+            (directory / "worker_result.json").write_text(json.dumps(summary, indent=2) + "\n")
+            return 0
+        except Exception:
+            traceback.print_exc()
+            return 2
     if request["adapter"] == "nmpc_weight_lab":
         # Branch BEFORE Workbench src/scripts or any numerical module is imported.
         from tools.apex_workbench.nmpc_weight_worker import run as run_weight

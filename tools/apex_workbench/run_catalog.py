@@ -116,13 +116,16 @@ def discover(*, owned_root=None, qualification_root=None, include_racing=False, 
     ).resolve()
     candidates, issues, qualifications = [], [], []
     if include_nmpc:
+        from tools.apex_workbench.nmpc_scratch import RUNS as scratch_runs
         from tools.apex_workbench.nmpc_weight_lab import RUNS as weight_runs
 
-        if weight_runs.is_dir() and not weight_runs.is_symlink():
-            for path in sorted(weight_runs.iterdir(), reverse=True):
+        for nmpc_runs in (weight_runs, scratch_runs):
+            if not nmpc_runs.is_dir() or nmpc_runs.is_symlink():
+                continue
+            for path in sorted(nmpc_runs.iterdir(), reverse=True):
                 if path.is_dir() and not path.name.startswith("."):
-                    if path.is_symlink() or path.resolve().parent != weight_runs.resolve():
-                        issues.append("Excluded linked M0 directory: " + str(path))
+                    if path.is_symlink() or path.resolve().parent != nmpc_runs.resolve():
+                        issues.append("Excluded linked NMPC directory: " + str(path))
                     else:
                         candidates.append(_candidate(path.resolve(), "owned"))
     if owned.is_dir():

@@ -231,7 +231,13 @@ def test_existing_legacy_forms_and_lab_stay_available(monkeypatch, tmp_path):
         widget(app.selectbox, "Execution mode").select(name).run()
         assert not app.exception
         assert widget(app.button, "Start run")
-    assert set(ADAPTERS) == {"dynamic_demo", "lqr_baseline", "dynamic_lab", "nmpc_weight_lab"}
+    assert set(ADAPTERS) == {
+        "dynamic_demo",
+        "lqr_baseline",
+        "dynamic_lab",
+        "nmpc_weight_lab",
+        "nmpc_scratch",
+    }
 
 
 def test_original_P_and_C0_viewers_use_readonly_original_evidence(monkeypatch, tmp_path):

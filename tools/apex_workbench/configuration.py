@@ -24,6 +24,7 @@ ADAPTERS = {
     "lqr_baseline": "LQR/PI · tracking",
     "dynamic_lab": "Vehicle Dynamics Laboratory · finite synthetic cases",
     "nmpc_weight_lab": "NMPC Weight Lab M0 · experimental / unqualified",
+    "nmpc_scratch": "NMPC Scratch · Control Analysis Laboratory",
 }
 DEFAULTS = {
     "dynamic_demo": {"duration": 10.0, "dt": 0.005},
@@ -46,6 +47,10 @@ BOUNDS = {
 
 
 def validate(adapter: str, values: dict) -> dict:
+    if adapter == "nmpc_scratch":
+        from tools.apex_workbench.nmpc_scratch import validate as validate_scratch
+
+        return validate_scratch(values)
     if adapter == "nmpc_weight_lab":
         from tools.apex_workbench.nmpc_weight_lab import validate as validate_weight
 

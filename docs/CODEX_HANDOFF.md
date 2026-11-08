@@ -1,4 +1,37 @@
-# Current handoff — M5-A V1 corrective review PASS; Verification authorization pending
+# Current handoff — NMPC Lab V1 WORK awaiting independent review
+
+**WORK_COMPLETE_PENDING_REVIEW.** 8 November 2026. Branch `codex/nmpc-lab-v1`, base
+`4f398cfa68bbad3f5d66068888aec70d948e1bb9`; the containing commit is the exact candidate.
+[WORK](nmpc_lab_v1/WORK.md), [record](nmpc_lab_v1/work_record.json).
+
+Small GUI: eight native cost multipliers, baseline reset and one fixed native disturbance selector.
+Scientific source48adbdf is unchanged;333 verified cache files are mounted read-only. Scratch outputs
+and one flat WORK budget are separate from M5-A. No general physical/numerical editor, new model,
+controller equation, second configuration framework or exporter is added. Versioned documents bind
+the profile/source; future deployment must select an exact reviewed version, not last editor state.
+
+Run/Inspect/Compare plus dedicated Analyze support recorded native replay, canonical track/reference
+errors, genuine prediction/packet associations and read-only local TVLQR Jacobian/gain diagnostics.
+Metrics distinguish physical errors/effort, native timing/slack/grip, insufficient recovery windows
+and local linear indicators from scientific qualification or nonlinear/hybrid stability guarantees.
+
+Final guarded pre-review software selection:96passes,0failures/errors/skips,31deselected,59.90s.
+No genuine closed-loop/optimizer/plant execution. Component algebra/configuration construction ran.
+All prior setup failures, lint negatives and an interrupted selection are retained separately; its
+unwanted legacy numerical test did not execute. Guarded tests now deny all real scientific launches.
+M5-A6,329 baseline files/324links unchanged, no added historical files.333 frozen runtime, primary
+56science/345qualification/25P/4oval and originalC0 match. G1 OPEN. No formal Verification ran.
+
+Next: one independent exact-candidate review. Only after PASS, Primary's current conditional budget
+permits three sequential2.0s Scratch attempts: accepted costs, only lateral2→1, accepted costs plus
+existing+0.08m/−0.04rad state perturbation at0.5s. No retries or additional experiments. Preserve caps
+60s wall/30s CPU/512MiB sampled RSS/64MiB sampled output/16MiB file. After genuine results and bounded
+read-only audit, deliver `NMPC_LAB_V1_WORK_COMPLETE_PENDING_PRIMARY_ACCEPTANCE`. No automatic acceptance,
+qualification, new campaigns, exporter, ROS2, SID/Safety/Performance/CT/hardware work follows.
+
+---
+
+# Historical handoff — M5-A V1 corrective review PASS; Verification authorization pending
 
 **NMPC_WEIGHT_LAB_M0_V1_CORRECTIVE_REVIEW_COMPLETE_PENDING_VERIFICATION_AUTHORIZATION.**
 4 November 2026. Exact corrected implementation/tests `77486baad920fa3101ebad37d64f028f4874152c`,

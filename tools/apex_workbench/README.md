@@ -68,6 +68,32 @@ tools/apex_workbench/.venv/bin/python -m streamlit run tools/apex_workbench/app.
 A legacy app occupying port 8501 is not reused or stopped by the new launcher. Stop it in its own
 Terminal or use the separate port above. The launcher reports a conflict and preserves its owner.
 
+## NMPC Scratch / Control Analysis (V1)
+
+Open **NMPC Scratch / Control Analysis** on Home. Run exposes the eight native cost multipliers,
+reset-to-accepted-costs, and one fixed native disturbance selector. It adds no vehicle/tire/constraint,
+horizon/timestep, solver, TVLQR-structure or geometry editor. The single source-controlled
+[nmpc_scratch_profile.json](nmpc_scratch_profile.json) references the existing scientific sources.
+Broader configuration/domain changes require scientific review and a revised profile; frozen
+Performance files are never overwritten. **Inspect effective frozen configuration** is a no-solve
+source/dependency/dataclass check. Saved ID/version drafts live under
+`results/apex_workbench_nmpc_lab_v1/configurations/`; they are unreviewed, not deployment input by default.
+
+The reviewed WORK budget is one baseline, one lateral1.0 treatment and one native state perturbation
+(+0.08m lateral,−0.04rad heading at configured0.5s), each2.0s, only after independent PASS. No retry
+or extra experiment is enabled. Later Primary acceptance is required for repeatable user-triggered
+Scratch within this profile and unchanged worker caps. The historical M5-A budget remains consumed.
+
+Inspect offers actual native-sample replay with canonical track/position and selected packet
+prediction/reference nodes. Analyze displays racing-reference error (not raw e_y), control effort,
+solver/constraint/grip diagnostics, observed-window recovery and local linear indicators. Compare
+shows exact parameter differences/common physical metrics and labels incompatible cases illustrative.
+Everything is synthetic/experimental/unqualified. Local eigenvalues are not complete stability proof;
+insufficient windows do not become successful recovery. [WORK/evidence](../../docs/nmpc_lab_v1/WORK.md).
+
+Future export must explicitly select a versioned configuration and its exact review/hash. No ROS2,
+production exporter or hardware packaging is included. Existing launch and compatibility paths remain.
+
 ## Supported experiments
 
 - **Vehicle Dynamics Laboratory / prescribed open loop:** canonical `DynamicBicycle` with default

@@ -119,7 +119,10 @@ def worker_environment(directory):
         PYTHONDONTWRITEBYTECODE="1",
     )
     request_path = directory / "request.json"
-    if request_path.exists() and read_json(request_path).get("adapter") == "nmpc_weight_lab":
+    if request_path.exists() and read_json(request_path).get("adapter") in {
+        "nmpc_weight_lab",
+        "nmpc_scratch",
+    }:
         env["PYTHONPATH"] = str(ROOT)
     return env
 
@@ -275,6 +278,10 @@ def start_run(
         if qualification or reference or test_only:
             raise ValueError("M0 is experimental only; no qualification/test numerical role")
         runs = weight_lab.RUNS
+    if adapter == "nmpc_scratch":
+        from tools.apex_workbench import nmpc_scratch as scratch
+
+        runs = scratch.safe(scratch.RUNS)
     runs.mkdir(parents=True, exist_ok=True)
     with execution_lock() as lock:
         preflight()
@@ -306,6 +313,8 @@ def start_run(
             # R2: the independent gate reserves both IDs; a copied/rebound claim cannot
             # authorize a third identity. Other adapters keep their original allocation.
             run_id = weight_lab.authorized_run_id(effective["preset"])
+        if adapter == "nmpc_scratch":
+            scratch.access(effective)
         directory = runs / run_id
         staging = runs / (".pending-" + run_id)
         staging.mkdir(exist_ok=False)
@@ -343,6 +352,21 @@ def start_run(
                 scientific_source=weight_lab.SOURCE,
             )
             weight_lab.claim(effective["preset"], run_id, captured=True)
+        if adapter == "nmpc_scratch":
+            request.update(
+                adapter_version="scratch/1",
+                controller="frozen NMPC + TVLQR / Scratch",
+                entry_point="frozen AsyncRunner.run via nmpc_scratch_worker",
+                scratch_capture=scratch.capture(effective),
+            )
+            request["provenance"].update(
+                role="Workbench provenance; scientific imports bound separately",
+                scientific_source=scratch.frozen.SOURCE,
+                model="frozen canonical DynamicBicycle",
+                tire="frozen combined-grip tires",
+                timing_mode="controlled VIS imposed availability; host timings separate",
+            )
+            scratch.consume(effective, run_id)
         if adapter == "dynamic_lab":
             from tools.apex_workbench.lab_configuration import resolve
             from tools.apex_workbench.lab_sources import from_captured
