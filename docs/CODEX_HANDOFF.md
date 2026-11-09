@@ -1,4 +1,28 @@
-# Current handoff — NMPC Lab V1 independently reviewed WORK awaiting Primary acceptance
+# Current handoff — NMPC Lab V1 playback correction awaiting focused review
+
+**WORK_COMPLETE_PENDING_REVIEW.** 9 November2026. Branch `codex/nmpc-lab-v1`, base
+`a7cdc334d76f42ce589e217cd3fb9a7543744b9b`; containing commit is the UX candidate.
+[UX WORK](nmpc_lab_v1/UX_CORRECTION.md). Presentation and read-only replay only.
+
+Old5ms-per400ms playback was80× slow before rendering overhead. A small local browser component
+now uses elapsed wall time, native seek/step, four speeds and Canvas2D, with prediction authority
+kept distinct from historical inspection. Labelled XY display interpolation never enters metrics,
+commands or events; known kicks remain discontinuous. Payload acknowledged once, then hash-checked
+nonce heartbeats; evidence changes unmount/latch quarantine, missing heartbeats expire after4.5s.
+Scratch classification is a restrained caption; real failures and historical restrictions remain.
+
+Focused Python18passes/6.10s and separate11 JS checks; no scientific imports/execution. Earlier
+setup, bare-fragment, mounting and first-frame negative evidence retained. Final browser checks
+and exact-source independent review pending. Original renderer findings/reviews remain historical.
+
+Scientific48adbdf, af3956 three-run evidence, M5-A, PRE-INT and execution safeguards are protected.
+No new numerical attempts and no repeatable Scratch gate enabled. Next: focused UX review and
+Primary user testing; stop on success at `NMPC_LAB_V1_UX_READY_PENDING_PRIMARY_USER_ACCEPTANCE`.
+No acceptance, formal Verification, exporter, ROS2, Docker or unrelated work is authorized.
+
+---
+
+# Historical handoff — NMPC Lab V1 independently reviewed WORK awaiting Primary acceptance
 
 **NMPC_LAB_V1_WORK_COMPLETE_PENDING_PRIMARY_ACCEPTANCE.** 9 November 2026. Branch `codex/nmpc-lab-v1`, base
 `4f398cfa68bbad3f5d66068888aec70d948e1bb9`. Final exact presentation source

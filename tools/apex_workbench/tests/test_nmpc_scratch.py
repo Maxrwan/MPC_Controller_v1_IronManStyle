@@ -521,10 +521,9 @@ def test_render_replay_steps_analysis_and_controlled_comparison(
         default_timeout=45,
     ).run()
     assert not app.exception
-    widget(app.button, "Next sample").click().run()
-    assert not app.exception and widget(app.select_slider, "Native simulated sample").value == 1
-    widget(app.select_slider, "Native simulated sample").set_value(2).run()
-    assert widget(app.select_slider, "Native simulated sample").value == 2
+    # Browser controls use their own elapsed-time clock. Python only mounts the verified payload;
+    # exact seek/step/pacing are exercised by the JS clock tests and real-browser checks.
+    assert len(app.get("component_instance")) == 1
     app = AppTest.from_string(
         "from tools.apex_workbench.nmpc_scratch_panels import analysis_panel\nanalysis_panel()",
         default_timeout=45,

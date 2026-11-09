@@ -85,19 +85,27 @@ completed and retained valid evidence; the three slots are consumed. No retry
 or extra experiment is enabled. Later Primary acceptance is required for repeatable user-triggered
 Scratch within this profile and unchanged worker caps. The historical M5-A budget remains consumed.
 
-Inspect offers actual native-sample replay with canonical track/position and selected packet
-prediction/reference nodes. Analyze displays racing-reference error (not raw e_y), control effort,
+Inspect offers elapsed-time browser playback at0.25×/0.5×/1×/2×, pause/restart, native sample
+steps/seeking, canonical track/position and active or explicitly historical prediction/reference
+nodes. Only the displayed XY marker interpolates; known kicks are not smoothed across. Native
+readouts, controls, packet identity and scientific metrics are never interpolated. Tracking/control
+plots and detailed diagnostics open on demand. Analyze displays racing-reference error (not raw e_y), control effort,
 solver/constraint/grip diagnostics, observed-window recovery and local linear indicators. Compare
 shows exact parameter differences/common physical metrics and labels incompatible cases illustrative.
 Everything is synthetic/experimental/unqualified. Local eigenvalues are not complete stability proof;
 insufficient windows do not become successful recovery. [WORK/evidence](../../docs/nmpc_lab_v1/WORK.md).
 
 The N=8 prediction-node explorer shows nine genuine predicted states/eight nominal controls,
-recorded objective components and completion/validity/handoff diagnostics. Terminal state8 has no
+recorded objective components and completion/validity/handoff diagnostics on demand. Terminal state8 has no
 invented command. Requested/applied clocks and simulated/solver/derived classifications remain
-explicit. The bounded plots use SVG to avoid blank WebGL traces observed in the embedded browser.
+explicit. Replay uses Canvas2D; Analyze retains SVG plots. Original blank-WebGL findings remain preserved.
 This reuses presentation concepts from the read-only Development Bench, without its older
-N=4 controller assumptions, interpolated replay or standalone runtime.
+N=4 controller assumptions, scientific interpolation semantics or standalone runtime.
+
+Ordinary Scratch pages show `Synthetic research mode · Not physically qualified`. Evidence hashes
+are rechecked every second; a change clears and quarantines replay. A missed browser validation
+lease clears the local payload after4.5s. Reopen explicitly after an evidence failure; refresh/reopen
+never qualifies a result. See [UX correction](../../docs/nmpc_lab_v1/UX_CORRECTION.md).
 
 This isolated checkout currently uses the already installed approved environment in the primary
 checkout. Launch its current workspace from Terminal (Control-C stops this owned server):

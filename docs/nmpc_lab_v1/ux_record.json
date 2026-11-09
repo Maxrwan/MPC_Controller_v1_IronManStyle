@@ -1,0 +1,134 @@
+{
+  "schema": "apex-nmpc-lab-v1-ux-work/1",
+  "status": "WORK_COMPLETE_PENDING_REVIEW",
+  "base_revision": "a7cdc334d76f42ce589e217cd3fb9a7543744b9b",
+  "scientific_source": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+  "executed_revision": "af3956fc2dc8c1a88051e87e2eae66010490a2fb",
+  "authorization_sha256": "bc41553248a75efd909f5b56fbf2ef4811968a20c678f866cff5bfd02c542144",
+  "source_sha256": {
+    "tools/apex_workbench/nmpc_scratch_panels.py": "ea08206b4f765c99d7dc7ae48c447d5fcb9a7029a2178e9be9b43d8e031a58e8",
+    "tools/apex_workbench/scratch_replay.py": "519317232826bdf132048172f2df1ed65d8924f0b4f5c2d1c05ef6880f3cce1e",
+    "tools/apex_workbench/tests/test_nmpc_scratch.py": "085030ca1d11e6f5dbec23628ad526868ee16bec006a0e02de33c00896702985",
+    "tools/apex_workbench/tests/test_scratch_replay.py": "28dbbf2a7d5c8462fa63e507409f02b14cda572638d0050a5486ce5272d6e16d",
+    "tools/apex_workbench/tests/test_scratch_replay.mjs": "8dff6f0203616b2b52212728883f327cceb3a50a3192de17c90b69e30988e775",
+    "tools/apex_workbench/scratch_replay_web/clock.mjs": "ff9ba7d4834acc5b5a4ef43eb06fbc6af4dbe13a0c5852cff767391d3084e97a",
+    "tools/apex_workbench/scratch_replay_web/index.html": "7d9ecedef30c7ab088a8a3b38228901f18bc741b88f4b440e92a5d70080657bb",
+    "tools/apex_workbench/scratch_replay_web/viewer.mjs": "5d4a5aabe4eddd4a21f09e37b8da249b0e27582b25395e781589b394b84a4c3d",
+    "tools/apex_workbench/scratch_replay_web/style.css": "20bca79c8f522995b7e64cca7f9a8131a5b7b005b39c89fe93e23f318746f964"
+  },
+  "scientific_executions": 0,
+  "repeatable_execution_enabled": false,
+  "consumed_attempts": 3,
+  "python_tests": {
+    "passed": 18,
+    "failures": 0,
+    "errors": 0,
+    "skips": 0,
+    "duration_s": 6.1,
+    "command": "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/software_5_command.json",
+    "scientific_imports": 0
+  },
+  "javascript_checks": {
+    "passed": 11,
+    "record": "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/clock_unit_final.json",
+    "scope": "display-clock/native-record fixtures only"
+  },
+  "preservation": {
+    "files_checked": 6393,
+    "changed": [],
+    "before_record": "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/preservation_before.json"
+  },
+  "bench_reference": {
+    "repository": "Maxrwan/apex-development-bench",
+    "revision": "35f6fa579adc574d73ea834786e53667eddcb585",
+    "file_sha256": {
+      "web/app.mjs": "682cc56d91c1714e97801ff3876f2760573ffb595fa25b95a27e03a89342aa48",
+      "web/engine.mjs": "9a31d5671b7683d813358c898c6941a20ddbafc94ffd2172fc5bbdffaf7c54ce",
+      "web/canvas.mjs": "5a8cb9dd64b4f938ebbcfeb0ab9fe592fc7db7797a8a77f45f60c547115573cf"
+    },
+    "scope": "read-only interaction and draw cadence; no model/engine copied"
+  },
+  "initial_browser_timing_before_monotonic_first_frame_fix": [
+    {
+      "simulated_s": 1.9949999999999788,
+      "wall_s": 1.9907999999999992,
+      "speed": 1,
+      "frames": 48,
+      "max_gap_ms": 50.02600000000166
+    },
+    {
+      "simulated_s": 1.9949999999999788,
+      "wall_s": 7.987099999976155,
+      "speed": 0.25,
+      "frames": 183,
+      "max_gap_ms": 50.5
+    },
+    {
+      "simulated_s": 1.9949999999999788,
+      "wall_s": 4.000500000023836,
+      "speed": 0.5,
+      "frames": 89,
+      "max_gap_ms": 50.19999999999709
+    },
+    {
+      "simulated_s": 1.9949999999999788,
+      "wall_s": 0.9947999999761523,
+      "speed": 2,
+      "frames": 24,
+      "max_gap_ms": 50.09999999999127
+    }
+  ],
+  "browser_final": "PENDING_FINAL_CLOCK_AND_INVALIDATION_CHECKS",
+  "review": "PENDING_EXACT_REVISION",
+  "formal_verification": "NOT_AUTHORIZED_NOT_RUN",
+  "negative_history": [
+    "software_1 metadata subprocess guard blocked Git before collection",
+    "software_2 bare Streamlit test context did not execute fragments;17passed1failed",
+    "software_3:18passed before stable mounting correction",
+    "software_4:18passed before final heartbeat/metadata additions",
+    "first RAF timestamp backdated anchor; deterministic .02s vs expected.01s, fixed",
+    "temporary container remounted component; direct stable mount replaces it",
+    "identical heartbeat elision expired local lease; nonce added",
+    "Cua frame-label/click/wait provider errors resolved by nativeAX and CSS IDs; no extra simulation"
+  ],
+  "evidence_sha256": {
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/software_4.xml": "ae41edda7b94cad2f1b02ef828b1d4ca71aae60d965618bf281dd1bf580e0513",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/clock_unit_1.json": "d0c26462cb7bb82a196ec612e62ac2a4cd44041b11da5d2315a096699b87b458",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/software_5.xml": "3169b6a4c12318053ad568bb1ac65f9af2ddf88fbf8988dcf56bf1c754f4ec1e",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/software_2_command.json": "2176c3cae8cce8b80270cd8ab2ff51607b238a6f43b1e9cc4843b244e8a0faac",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/software_5_command.json": "533938073ce8da623f7bd4b010b96bf851ec9b86c991698463e6aef86eafaf42",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/software_5_result.json": "c57820779608ffc558772027376aed2c01361ac302922c8c84f34b37c596563f",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/software_2.xml": "1a921eedde74864576ad075b8a7557c8389fa5919a14786b424a9f2f52e387e9",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/software_3.xml": "c7f78e430ea05f77e8fe0312a3e9e2787bfdbc9a4b1378b99e4117d6ec652b61",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/software_4_command.json": "42425fcd15f113d2fbbc69fef3e54a3da576c41d4c9815d0ce55d4ff04c6f70b",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/software_3_command.json": "35ffa1f3a0a9810c1106c42188a983ea296098e4f50ecfbd8b3170beaf3dc408",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/baseline_display.json": "8f42d8a81c2474e7c682a783247ef09713c7d29c2b54ff95407292d1233be853",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/lint_1.log": "84f4f46046012e9fb7ae8ca2d09644585ab25d4b1e7c1fd6bda564af8290c2c8",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/fixture_paths.json": "5d87e0f81da268a55f3262ea90c88436a1aae615e17957325a96349ae9998a6d",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/browser_timing.json": "ffdb19210c36abe39271f55384d0b33d9de2a9a5d95944a1a4365fe2a01aaaf1",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/browser_server_4.log": "600828dcb0b24ca9517e0bb434e5da689da061aa7845349f56e5cd8bd0bfe827",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/software_3_result.json": "c57820779608ffc558772027376aed2c01361ac302922c8c84f34b37c596563f",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/browser_server_1.log": "8390dad8a363e62d93f765b464ebfda30a7cb1eec3b70db888106adc5971f9fc",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/browser_server_3.log": "869f00b5fe25e16d406e2f817424fd4a71dc1bc6264d0597e01e8009d39a3976",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/browser_server_2.log": "0dd87371e878319158802b78f7c40f8977590a5420b3887a6a4964d338f02d82",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/disturbance_display.json": "d89696bd15ed396d27657b362607a9e5f294e96cf5469003ee7c1e17d9fa6694",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/lint_final.log": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/software_1_result.json": "52400a8fbe40ecf3909f37d88cef80402624d0c072d7105f7cd469f5b3a51af6",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/software_runner.py": "9c9546ae8990c2f767deed745db51532c2554846819f6ecba48e95ad513e4a36",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/software_4_result.json": "c57820779608ffc558772027376aed2c01361ac302922c8c84f34b37c596563f",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/software_4.log": "1e2e18b5858597033ae864933b0d25b4fd313f794529c9fac31bd0f0acdeb12a",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/software_5.log": "168379e653dc49259cab84567ee7c989efa012deab13d7830d74229826032684",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/fixture_app.py": "22ed18a0ae45c14587119427b84375f09a8f9159066e0e9848e36d0ef4997c3e",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/browser_interactions_ax.txt": "2bf39247d012a3b5b1e144690e0759269c5001a1d5878bf59d27c97706e1e87a",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/clock_unit_final.json": "d4632dc10b92fa534bf395f3aa000207ac05215a37ac25290f914882411bcfca",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/software_1_command.json": "b38ee46ce794bb0f8b428b136bc71de9086fcc6a8267a549999f3e6d097e268c",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/first_frame_negative.json": "14eed2292d7b9742995b6ea206bd8e1950557bcb52871dc6b16286b43b1c4971",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/browser_interactions.json": "64b7443118b634c336c173d41107929d8d18faf5fd5b45d8331a266a564f6f8e",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/software_2.log": "f064418394b7fd29844e9553ced6bf02b82e8619722e4a68d284e6970638e278",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/software_2_result.json": "0b4c26e1b085ad29c1975f5a7dc9e82048b2e0c54decfc372b339b8bf380f51a",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/lateral_1_display.json": "9b94a0e0e9594b21a09c851867d2fcf826101e56e96e9c17fb758d5cae47f2e5",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/software_3.log": "e5c70cb118703613c204be46d24f2771200e6ef7bbaffbc65db7aee5fa729fba",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/software_1.log": "5fff87713bce82b14ad798d293827c74502f35483f00136098285683ea401934",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/preservation_before.json": "ca180b47ffc3a4ca103110731692e108f77db269086dd14522b6ab3e5dfde2dd"
+  }
+}

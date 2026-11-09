@@ -48,7 +48,7 @@ def label(directory):
 
 
 def run_panel():
-    st.warning(scratch.BANNER)
+    st.caption("Synthetic research mode · Not physically qualified")
     st.caption("Architecture A · synthetic GP gamma2 · 2.0 s · native NMPC/IPOPT + TVLQR")
     baseline = scratch.defaults()
     if st.button("Reset costs to accepted baseline"):
@@ -355,113 +355,22 @@ def packet_details(view, packet, key, sample_time):
 
 
 def replay(directory):
-    key = "scratch_replay_" + directory.name
-    running = st.session_state.get(key + "_playing", False)
+    from tools.apex_workbench import scratch_replay
 
-    @st.fragment(run_every=0.4 if running else None)
-    def render():
-        scope = st.empty()
-        try:
-            view = scratch.read_run(directory)
-            display, raw = view["presentation"], view["raw"]
-            if not raw or not display or not display["states"]:
-                scope.info("Native trajectory unavailable; partial journals remain retained.")
-                return
-            rows = display["states"]
-            sample_key = key + "_sample"
-            if sample_key not in st.session_state:
-                st.session_state[sample_key] = 0
-            index = min(st.session_state[sample_key] + int(running), len(rows) - 1)
-            st.session_state[sample_key] = index
-            with scope.container():
-                buttons = st.columns(3)
-                if buttons[0].button("Previous sample", key=key + "_previous"):
-                    index = max(0, index - 1)
-                    st.session_state[sample_key] = index
-                if buttons[1].button(
-                    "Pause" if running else "Play recorded samples", key=key + "_play"
-                ):
-                    st.session_state[key + "_playing"] = not running
-                    st.rerun()
-                if buttons[2].button("Next sample", key=key + "_next"):
-                    index = min(len(rows) - 1, index + 1)
-                    st.session_state[sample_key] = index
-                index = st.select_slider(
-                    "Native simulated sample",
-                    options=list(range(len(rows))),
-                    format_func=lambda i: f"{rows[i]['time']:.6f} s",
-                    key=key + "_sample",
-                )
-                packets = {p["plan_id"]: p for p in view["packets"] if p.get("packet") is not None}
-                active = raw["states"][index].get("plan_id")
-                chosen = (
-                    st.selectbox(
-                        "Recorded solver/packet event",
-                        list(packets),
-                        index=list(packets).index(active) if active in packets else 0,
-                        key=key + "_packet",
-                    )
-                    if packets
-                    else None
-                )
-                packet = packets.get(chosen)
-                plot = trajectory(display, index, packet)
-                error_plot = series(
-                    rows,
-                    "time",
-                    [
-                        ("racing_error_y_m", "Racing-reference error"),
-                        ("reference_e_y_m", "Reference lateral offset"),
-                    ],
-                    "Lateral distance [m]",
-                )
-                scratch.current(view)
-                st.plotly_chart(plot, width="stretch", config=PLOT_CONFIG)
-                st.plotly_chart(error_plot, width="stretch", config=PLOT_CONFIG)
-                st.plotly_chart(commands(raw, "delta", packet), width="stretch", config=PLOT_CONFIG)
-                st.plotly_chart(commands(raw, "a_cmd", packet), width="stretch", config=PLOT_CONFIG)
-                st.caption(
-                    (
-                        "Native samples only. Geometry/reference conversions use canonical "
-                        "APIs. Prediction nodes belong to the selected preparation, not to "
-                        "an assumed applied trajectory. Viewer playback does not advance "
-                        "the simulator."
-                    )
-                )
-                if packet:
-                    st.caption(packet["capture_phase"])
-                    st.write(
-                        {
-                            "selected_packet_plan_id": chosen,
-                            "plant_active_plan_id": active,
-                            "release_time_s": packet["release_time"],
-                            "prediction_timestamps_s": packet["packet"]["timestamps"],
-                        }
-                    )
-                    packet_details(view, packet, key, rows[index]["time"])
-                scratch.current(view)
-                if running:
-                    if index == len(rows) - 1:
-                        st.session_state[key + "_playing"] = False
-                        st.rerun()
-        except ERRORS as error:
-            st.session_state[key + "_playing"] = False
-            scope.empty()
-            scope.error("Scratch evidence quarantined: " + str(error))
-
-    render()
+    try:
+        scratch_replay.replay(scratch.read_run(directory))
+    except ERRORS as error:
+        st.error("Scratch evidence quarantined: " + str(error))
 
 
 def inspect(selected):
-    st.warning(scratch.BANNER)
+    st.caption("Synthetic research mode · Not physically qualified")
     try:
         directory = scratch.owned(selected)
         status = jobs.status_for(directory)
-        st.write(
-            {
-                "execution": status.get("scientific_outcome"),
-                "evidence": status.get("evidence_state"),
-            }
+        st.caption(
+            f"Execution: {status.get('scientific_outcome')} · "
+            f"Evidence: {status.get('evidence_state')}"
         )
         if status.get("state") in jobs.ACTIVE:
             st.button("Refresh Scratch run")
@@ -489,7 +398,7 @@ def inspect(selected):
 
 
 def analysis_panel():
-    st.warning(scratch.BANNER)
+    st.caption("Synthetic research mode · Not physically qualified")
     directories = records()
     if not directories:
         st.info("No retained Scratch runs. Configure an experiment on Run.")
@@ -666,7 +575,7 @@ def analysis_panel():
 
 
 def compare_panel():
-    st.warning(scratch.BANNER)
+    st.caption("Synthetic research mode · Not physically qualified")
     selected = st.multiselect("Scratch experiments", records(), max_selections=2, format_func=label)
     if len(selected) != 2:
         st.info(

@@ -1501,3 +1501,15 @@ Retained N=8 horizon-node selection, objective breakdown and explicit availabili
 extend existing Streamlit/Plotly panels only. No N=4 assumptions, replay interpolation, alternate
 scientific runtime or new experiment is adopted. Nominal completion prediction errors retain their
 native target/comparison clocks; differently weighted objectives remain explanatory, not rankings.
+
+## ADR-183 — Elapsed browser time for read-only Scratch playback
+
+9 November2026. Replace one-native-sample-per-Streamlit-rerun playback with a small local component
+using the existing Streamlit dependency and Canvas2D. Transfer one verified reduced payload per
+evidence epoch, then nonce-bearing validity heartbeats. Capture/check the original member hashes
+before and after publication; latch invalidation and clear browser data on a missed4.5s lease.
+The browser advances display time independently of30fps rendering. Exact native seek/step and
+discrete state/command/packet channels remain separate from labelled visual XY interpolation;
+known kicks stay discontinuous. No scientific equations, scheduling, optimizer execution, source
+cache, accepted configuration or scientific metrics change. Details render on demand, and ordinary
+research classification uses a restrained caption. Expanded execution and exporter work stay gated.
