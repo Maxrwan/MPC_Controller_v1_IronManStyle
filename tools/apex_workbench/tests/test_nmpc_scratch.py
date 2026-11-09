@@ -538,6 +538,24 @@ def test_render_replay_steps_analysis_and_controlled_comparison(
     assert not app.exception and not app.error
 
 
+def test_retained_n8_horizon_node_has_no_terminal_command_or_interpolation():
+    packet = {
+        "packet": {
+            "timestamps": [i * 0.1 for i in range(9)],
+            "states": [[float(i)] * 6 for i in range(9)],
+            "controls": [[float(i), -float(i)] for i in range(8)],
+        }
+    }
+    assert panels.horizon_node(packet, 7) == (0.7000000000000001, [7.0] * 6, [7.0, -7.0])
+    assert panels.horizon_node(packet, 8) == (0.8, [8.0] * 6, None)
+    for index in (-1, 9, 0.5, True):
+        with pytest.raises(ValueError):
+            panels.horizon_node(packet, index)
+    packet["packet"]["controls"].append([9.0, 9.0])
+    with pytest.raises(ValueError):
+        panels.horizon_node(packet, 8)
+
+
 def test_missing_corrupt_and_replaced_evidence_never_retains_analysis(
     tmp_path, monkeypatch, native_probes
 ):

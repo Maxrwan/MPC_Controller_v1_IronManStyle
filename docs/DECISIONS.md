@@ -1495,3 +1495,9 @@ produces racing-reference errors at actual recorded progress; raw Frenet and TVL
 distinct. Recorded replay never advances a model. Physical error/effort metrics compare controlled
 cost treatments; differently weighted objective totals are not performance ranks. Source/evidence
 changes withdraw views. No scientific qualification, ROS2 exporter or physical deployment is implied.
+
+9 November addendum: the separate Development Bench35f6fa5 is a read-only presentation reference.
+Retained N=8 horizon-node selection, objective breakdown and explicit availability/value classes
+extend existing Streamlit/Plotly panels only. No N=4 assumptions, replay interpolation, alternate
+scientific runtime or new experiment is adopted. Nominal completion prediction errors retain their
+native target/comparison clocks; differently weighted objectives remain explanatory, not rankings.

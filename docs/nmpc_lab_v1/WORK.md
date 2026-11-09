@@ -1,10 +1,12 @@
 # NMPC Lab V1 — bounded WORK
 
-**WORK_COMPLETE_PENDING_REVIEW.** 8 November 2026. Branch `codex/nmpc-lab-v1`, starting
+**WORK_COMPLETE_PENDING_FINAL_REVIEW.** 9 November 2026. Branch `codex/nmpc-lab-v1`, starting
 commit `4f398cfa68bbad3f5d66068888aec70d948e1bb9`; scientific source remains
-`48adbdf64d492592d15e23c917aca71fa58aa8a5`. The containing candidate supplies the exact
-implementation for one independent-context Engineering Review. No genuine Scratch experiment
-has run. [Machine record](work_record.json).
+`48adbdf64d492592d15e23c917aca71fa58aa8a5`. Independently reviewed execution source
+`af3956fc2dc8c1a88051e87e2eae66010490a2fb` produced all three authorized attempts, once each.
+The containing candidate adds only retained-data presentation/tests and documentation after Primary's
+Bench reference addendum; no additional numerical execution is permitted. The same independent
+context is completing consolidated final review. [Machine record](work_record.json).
 
 ## Small configuration contract
 
@@ -34,13 +36,20 @@ M5-A; output/configuration/probes and the initial flat WORK budget live only und
 unchanged. All adapters share the existing lease, cancellation, owner-birth checks and resource
 safeguards:60s wall /30s CPU /512MiB sampled RSS /64MiB sampled output /16MiB single file.
 
-After independent PASS, this assignment conditionally permits exactly three2.0s attempts:
+After exact-source independent PASS, the three authorized2.0s attempts completed with valid evidence:
 
 1. Accepted Performance cost defaults.
 2. Same scenario, only lateral2.0→1.0.
 3. Accepted costs with the existing native state perturbation: +0.08m e_y, −0.04rad heading,
    configured0.5s. These magnitudes are existing AsyncConfig defaults. Native geometry/domain
    configuration is checked before execution; actual trigger time and applied configuration persist.
+
+All ran on8 November UTC (8/9 November Cairo). Native windows contain400 states /200 applied commands,
+0–1.995s samples and end1.9999999999999787s. Supervisor wall times18.039/18.141/17.943s and peak RSS
+242,204,672/229,212,160/240,336,896bytes stayed within unchanged caps. Output was3.55/3.55/3.64MB,
+largest file1.12MB. All three slots are consumed, with no retry, censoring or acceptance enabled.
+Native Accelerate SINGLE controls were verified; four total process threads were sampled. That does
+not establish a single-thread process, parallel execution or a hard real-time guarantee.
 
 One mutable access/budget document binds the reviewed source and records consumption under the
 existing lease; there is no per-experiment immutable authorization chain. No retry/search or extra
@@ -55,6 +64,14 @@ Recorded replay steps actual samples only, with canonical global conversion, tru
 selected nominal packet predictions/reference nodes and separate optimized/requested/applied command
 clocks. Packet observer capture occurs before scheduler completion stamping; actual scheduling is
 read from original raw packet/plan/handoff records. No missing sample, prediction or command is filled.
+
+Read-only design reference: [APEX Development Bench35f6fa5](https://github.com/Maxrwan/apex-development-bench/tree/35f6fa579adc574d73ea834786e53667eddcb585),
+especially `web/app.mjs`25–30 and README value classifications. The small extension exposes actual
+N=8 node selection (nine states/eight commands; no terminal command), objective-component bars,
+native residual/slack/timing and packet completion/validity/handoff records. Plant/SOLVER/DERIVED
+classes remain explicit. Native completion prediction_error keeps its original semantics and both
+target/comparison times; no interpolated prediction-error curve is manufactured. No Bench N=4
+assumption, interpolation, vendor scientific implementation or standalone runtime was copied.
 
 Racing-reference errors subtract original Planning e_y/e_psi at each actual s_abs (heading wrapped
 canonically). Raw Frenet coordinates and active-TVlQR-packet errors stay distinct. Metrics use native
@@ -80,13 +97,13 @@ Observer overhead is separately recorded; it never changes imposed simulated ava
 
 ## Focused software evidence and preservation
 
-Final focused pre-review invocation: **97 passed,0 failures/errors/skips,31 deselected,60.34s**.
+Final focused presentation invocation: **98 passed,0 failures/errors/skips,31 deselected,66.59s**.
 No genuine controller/closed-loop run, optimizer solve or Plant.step occurred. Source-isolated
 configuration/MPCProblem construction and component algebra were permitted. Tests independently
 check all eight overrides reaching native problem/constructor semantics, literal cost expressions,
 canonical geometry/reference conversion on original retained data, finite-difference Jacobian/order
 and native feedback sign, noncommuting time-varying matrices, actual-time metrics/insufficient tails,
-small-editor UI, replay, same-size/restored-mtime corruption withdrawal, lifecycle/budget/failure,
+small-editor UI, N=8 terminal-node handling, replay, same-size/restored-mtime corruption withdrawal, lifecycle/budget/failure,
 and original M5-A/P/C0 behavior. Scientific launches were audit-blocked in the pytest parent.
 
 Earlier32-pass/4-setup-error attempts exposed missing runtime-parent/root coupling. The final design
@@ -95,7 +112,17 @@ Earlier36/37-pass checks remain separate. A selection including a legacy plottin
 was interrupted before that node:24 passes, incomplete selection, zero numerical launches. Its
 interruption, sandboxed process-inspection denial and successful scoped interruption remain recorded.
 Initial lint failures and all corrected attempts/logs/JUnit remain in the ignored WORK directory.
-No historical counts are added to97. Broad scientific/qualified/frozen suites were not run.
+The earlier corrected97-pass gate remains separate. A later harness invocation failed before
+collection because its PYTHONPATH omitted the repository root; log retained, then corrected without
+changing implementation. No historical counts are added to98. Broad scientific/qualified/frozen suites were not run.
+
+Additional actual-retained-data AppTest: **4passed,5.92s**, no scientific imports or launches. It
+exercised replay steps/seek/play/pause, terminal node8, disturbance/local analysis, insufficient
+recovery windows, controlled/illustrative comparison and original M5-A/P/C0 workspace routes.
+Native segment boundaries independently confirm the only jump is exactly the declared state kick
+at0.5s. RMS racing-reference lateral errors were0.008359/0.010243/0.021431m; these three individual
+synthetic observations establish no performance superiority. Disturbance observed-window settling
+was0.465s after application at the descriptive0.01m band/0.25s tail, observed only through1.995s.
 
 Pre-review audit:6,329 original M5-A regular files and324 links unchanged, no added historical files;
 333 frozen runtime members match exact Git bytes; no src/scripts/configs/dependency changes. Primary
@@ -110,11 +137,13 @@ BLOCKED record (`f748b788cbf65a48518209b95779b16d889aaca6e68ff4ea791531fe653e5d3
 96-pass WORK result remain preserved separately. The correction captures status/manifest bytes before
 ingestion, decodes only artifacts verified against that captured manifest, anchors their expected
 hashes and checks that binding before return/render. A deterministic interleaving regression and
-post-render same-size/restored-mtime replacement checks pass. No science/source/parameter change or
-numerical execution occurred. The containing correction commit requires exact-revision re-review.
+post-render same-size/restored-mtime replacement checks pass. Correctedaf3956 received independent
+PASS (`6a6196f99aa4171feaaca9a50e9643697cd8bb018a8b7ad6b241c4539af95557`) before execution.
+The fixed pre-execution review/budget binding stays unchanged. Independent post-execution audits
+verified the actual optimizer/packet/control/plant associations,4880 Jacobian/gain rows, identities,
+once-each budget and historical preservation without rerunning models or experiments.
 
-Next: continue the consolidated independent review on the exact corrected candidate. Only after PASS may the three
-predeclared attempts run, sequentially under unchanged caps, followed by retained-result/UI audit.
+Next: exact final presentation review and final documentation delivery; numerical budget exhausted.
 No change to controller mathematics, physical assumptions, accepted architecture, Safety policy,
 frozen source or numerical budget is delegated. Stop after delivery at
 `NMPC_LAB_V1_WORK_COMPLETE_PENDING_PRIMARY_ACCEPTANCE` if the authorized work succeeds.

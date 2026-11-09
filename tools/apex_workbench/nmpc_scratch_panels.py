@@ -264,6 +264,96 @@ def trajectory(display, index, packet):
     return figure
 
 
+def horizon_node(packet, index):
+    """Select a retained node; the final state has no invented terminal command."""
+    native = packet["packet"]
+    states, controls, times = (native[k] for k in ("states", "controls", "timestamps"))
+    if len(states) != len(times) or len(controls) != len(states) - 1:
+        raise ValueError("Recorded state/control horizon dimensions differ")
+    if type(index) is not int or not 0 <= index < len(states):
+        raise ValueError("Recorded horizon node is out of range")
+    return times[index], states[index], controls[index] if index < len(controls) else None
+
+
+def packet_details(view, packet, key, sample_time):
+    """Bench-inspired inspection using this run's actual N=8 records and clocks."""
+    st.subheader("Retained prediction horizon")
+    node = st.select_slider(
+        "Prediction node", options=list(range(len(packet["packet"]["states"]))), key=key + "_node"
+    )
+    time, state, command = horizon_node(packet, node)
+    st.table(
+        [
+            {"solver-predicted state": name, "value": value, "SI unit": unit}
+            for name, unit, value in zip(
+                ("vx", "vy", "r", "e_psi", "s_abs", "e_y"),
+                ("m/s", "m/s", "rad/s", "rad", "m", "m"),
+                state,
+                strict=True,
+            )
+        ]
+    )
+    st.write(
+        {
+            "prediction_node": node,
+            "native_prediction_time_s": time,
+            "nominal_delta_rad": command[0] if command is not None else None,
+            "nominal_a_cmd_mps2": command[1] if command is not None else None,
+            "terminal_state_without_command": command is None,
+        }
+    )
+    plan_id = packet["plan_id"]
+    plan = next((p for p in view["raw"]["plans"] if p.get("plan_id") == plan_id), {})
+    scheduled = next((p for p in view["raw"]["packets"] if p.get("plan_id") == plan_id), {})
+    completion = scheduled.get("actual_completion_time")
+    st.json(
+        {
+            "selected_plant_sample_time_s": sample_time,
+            "selected_packet_plan_id": plan_id,
+            "recorded_completion_time_s": completion,
+            "recorded_completion_reached_at_sample": sample_time >= completion
+            if analysis.numeric(completion)
+            else None,
+            "recorded_packet_valid": scheduled.get("valid"),
+            "recorded_validation_reason": scheduled.get("validation_reason"),
+            "recorded_handoffs": [
+                p for p in view["raw"]["handoffs"] if p.get("plan_id") == plan_id
+            ],
+            "solver_status": plan.get("status"),
+            "iterations": plan.get("iterations"),
+            "primal_infeasibility": plan.get("primal_infeasibility"),
+            "maximum_soft_margin_slack_m": plan.get("max_slack"),
+            "host_solve_duration_s": plan.get("solve_time"),
+            "host_preparation_duration_s": plan.get("planner_total_time"),
+            "native_prediction_error_at_completion": plan.get("prediction_error"),
+            "prediction_target_time_s": plan.get("predicted_completion_time"),
+            "actual_comparison_time_s": plan.get("completion_time"),
+        },
+        expanded=False,
+    )
+    parts = {
+        k: v
+        for k, v in plan.get("objective_components", {}).items()
+        if k != "total" and analysis.numeric(v)
+    }
+    if parts:
+        plot = go.Figure(go.Bar(x=list(parts), y=list(parts.values())))
+        plot.update_layout(yaxis_title="Recorded weighted objective contribution")
+        st.plotly_chart(plot, width="stretch", config=PLOT_CONFIG)
+    else:
+        st.info("Objective components were not retained for this event.")
+    st.caption(
+        "SIMULATED: recorded plant samples and applied commands. SOLVER: predicted states, "
+        "nominal commands, objective and residuals. DERIVED: global geometry, tracking metrics "
+        "and local linear indicators. A selected prediction is historical inspection, not proof "
+        "of availability or application at the selected plant sample. Completion, validity and "
+        "handoff are distinct. Native completion prediction_error compares actual completion "
+        "state with the original predicted state; target and completion times can differ. "
+        "No interpolated prediction-error curve or active-set flags are invented. Component "
+        "values explain this weighted problem; they do not rank differently weighted runs."
+    )
+
+
 def replay(directory):
     key = "scratch_replay_" + directory.name
     running = st.session_state.get(key + "_playing", False)
@@ -348,6 +438,8 @@ def replay(directory):
                             "prediction_timestamps_s": packet["packet"]["timestamps"],
                         }
                     )
+                    packet_details(view, packet, key, rows[index]["time"])
+                scratch.current(view)
                 if running:
                     if index == len(rows) - 1:
                         st.session_state[key + "_playing"] = False

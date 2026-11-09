@@ -79,8 +79,9 @@ Performance files are never overwritten. **Inspect effective frozen configuratio
 source/dependency/dataclass check. Saved ID/version drafts live under
 `results/apex_workbench_nmpc_lab_v1/configurations/`; they are unreviewed, not deployment input by default.
 
-The reviewed WORK budget is one baseline, one lateral1.0 treatment and one native state perturbation
-(+0.08m lateral,−0.04rad heading at configured0.5s), each2.0s, only after independent PASS. No retry
+The reviewed WORK budget was one baseline, one lateral1.0 treatment and one native state perturbation
+(+0.08m lateral,−0.04rad heading at configured0.5s), each2.0s, after independent PASS. All three
+completed and retained valid evidence; the three slots are consumed. No retry
 or extra experiment is enabled. Later Primary acceptance is required for repeatable user-triggered
 Scratch within this profile and unchanged worker caps. The historical M5-A budget remains consumed.
 
@@ -90,6 +91,23 @@ solver/constraint/grip diagnostics, observed-window recovery and local linear in
 shows exact parameter differences/common physical metrics and labels incompatible cases illustrative.
 Everything is synthetic/experimental/unqualified. Local eigenvalues are not complete stability proof;
 insufficient windows do not become successful recovery. [WORK/evidence](../../docs/nmpc_lab_v1/WORK.md).
+
+The N=8 prediction-node explorer shows nine genuine predicted states/eight nominal controls,
+recorded objective components and completion/validity/handoff diagnostics. Terminal state8 has no
+invented command. Requested/applied clocks and simulated/solver/derived classifications remain
+explicit. This reuses presentation concepts from the read-only Development Bench, without its older
+N=4 controller assumptions, interpolated replay or standalone runtime.
+
+This isolated checkout currently uses the already installed approved environment in the primary
+checkout. Launch its current workspace from Terminal (Control-C stops this owned server):
+
+```sh
+/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/tools/apex_workbench/.venv/bin/python -B -m streamlit run /Users/marwansaber/.codex/worktrees/nmpc-weight-m0/MPC_Controller_v1_IronManStyle/tools/apex_workbench/workspace.py --server.address 127.0.0.1 --server.port 8516 --server.headless true --browser.gatherUsageStats false
+```
+
+Open <http://127.0.0.1:8516>. Retained results remain inspectable while execution is gated. The
+unchanged one-click launcher expects a Workbench environment inside its own checkout; this isolated
+checkout does not currently have that local environment. No environment or launcher was altered.
 
 Future export must explicitly select a versioned configuration and its exact review/hash. No ROS2,
 production exporter or hardware packaging is included. Existing launch and compatibility paths remain.

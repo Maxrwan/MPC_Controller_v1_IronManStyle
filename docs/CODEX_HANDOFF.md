@@ -1,38 +1,40 @@
-# Current handoff — NMPC Lab V1 WORK awaiting independent review
+# Current handoff — NMPC Lab V1 retained-data presentation awaiting final review
 
-**WORK_COMPLETE_PENDING_REVIEW.** 8 November 2026. Branch `codex/nmpc-lab-v1`, base
-`4f398cfa68bbad3f5d66068888aec70d948e1bb9`; the containing commit is the exact candidate.
-[WORK](nmpc_lab_v1/WORK.md), [record](nmpc_lab_v1/work_record.json).
+**WORK_COMPLETE_PENDING_FINAL_REVIEW.** 9 November 2026. Branch `codex/nmpc-lab-v1`, base
+`4f398cfa68bbad3f5d66068888aec70d948e1bb9`. [WORK](nmpc_lab_v1/WORK.md),
+[record](nmpc_lab_v1/work_record.json). Scientific source48adbdf remains unchanged.
 
-Small GUI: eight native cost multipliers, baseline reset and one fixed native disturbance selector.
-Scientific source48adbdf is unchanged;333 verified cache files are mounted read-only. Scratch outputs
-and one flat WORK budget are separate from M5-A. No general physical/numerical editor, new model,
-controller equation, second configuration framework or exporter is added. Versioned documents bind
-the profile/source; future deployment must select an exact reviewed version, not last editor state.
+Exact execution sourceaf3956fc2dc8c1a88051e87e2eae66010490a2fb passed independent review before
+all three once-only2.0s attempts: accepted costs, only lateral2→1, accepted costs plus native
++.08m/−.04rad kick at.5s. All completed with valid retained evidence; no retry or extra run.
+All three slots consumed; repeatable interactive execution remains pending Primary acceptance.
+Source/env identities, packet/optimizer/plant/control associations and historical preservation
+passed independent read-only post-execution audit. Actual native kick confirmed at.5s.
 
-Run/Inspect/Compare plus dedicated Analyze support recorded native replay, canonical track/reference
-errors, genuine prediction/packet associations and read-only local TVLQR Jacobian/gain diagnostics.
-Metrics distinguish physical errors/effort, native timing/slack/grip, insufficient recovery windows
-and local linear indicators from scientific qualification or nonlinear/hybrid stability guarantees.
+The containing presentation candidate adds retained N=8 horizon nodes, objective components and
+completion/validity/handoff/value classifications after Primary's read-only Development Bench
+reference addendum. No N=4 assumptions/interpolation/runtime copied. Small GUI remains eight native
+costs +one named disturbance; no general configuration editor or exporter. Canonical dataclasses,
+source-controlled profile and explicitly versioned future selection remain the configuration path.
 
-Final corrected guarded software selection:97passes,0failures/errors/skips,31deselected,60.34s.
-No genuine closed-loop/optimizer/plant execution. Component algebra/configuration construction ran.
-All prior setup failures, lint negatives and an interrupted selection are retained separately; its
-unwanted legacy numerical test did not execute. Guarded tests now deny all real scientific launches.
-M5-A6,329 baseline files/324links unchanged, no added historical files.333 frozen runtime, primary
-56science/345qualification/25P/4oval and originalC0 match. G1 OPEN. No formal Verification ran.
+Final guarded focused suite98passes/31deselected/66.59s,0failures/errors/skips; zero genuine science
+in that invocation. Separate actual retained UI4passes/5.92s, no scientific imports/launches.
+Prior failures including initial BLOCKED anchor race and all setup/harness negatives are retained.
+The97-pass exactaf pre-execution gate remains separate. No broad scientific or Verification suite.
 
-Initial candidate01ace08d and independent BLOCKED review are preserved: V1-ER1-P1 could adopt
-a replacement artifact hash after ingestion. The correction binds decoded bytes to the captured
-manifest/status and revalidates before return/render. Regression and invalidation checks pass.
-All three numerical attempts remain unused; no access document was created.
+Replay/Analyze/Compare distinguish native states, racing-reference errors, solver predictions,
+requested/applied clocks, descriptive recovery, local TVLQR indicators and comparison compatibility.
+No performance superiority, physical validation, formal stability or hard real-time claim follows.
+Sampled4process threads coexist with verified native Accelerate SINGLE control; no total-thread guarantee.
 
-Next: exact corrected-candidate re-review in the same independent context. Only after PASS, Primary's current conditional budget
-permits three sequential2.0s Scratch attempts: accepted costs, only lateral2→1, accepted costs plus
-existing+0.08m/−0.04rad state perturbation at0.5s. No retries or additional experiments. Preserve caps
-60s wall/30s CPU/512MiB sampled RSS/64MiB sampled output/16MiB file. After genuine results and bounded
-read-only audit, deliver `NMPC_LAB_V1_WORK_COMPLETE_PENDING_PRIMARY_ACCEPTANCE`. No automatic acceptance,
-qualification, new campaigns, exporter, ROS2, SID/Safety/Performance/CT/hardware work follows.
+M5-A6329files/324links,333frozen runtime, primary56science/345qualification/25P/4oval, originalC0
+and independently verified PRE-INT-W1 preserved. G1 OPEN. All results remain local/ignored; hashes
+alone do not establish off-host retrieval. Existing one-click launcher unchanged; current isolated
+checkout uses the installed primary environment via the explicit README Terminal command.
+
+Next: final exact presentation review in the same independent context, then documentation delivery
+at `NMPC_LAB_V1_WORK_COMPLETE_PENDING_PRIMARY_ACCEPTANCE`. No further numerical execution, automatic
+acceptance, formal Verification, campaigns, ROS2/exporter or hardware work is authorized.
 
 ---
 
