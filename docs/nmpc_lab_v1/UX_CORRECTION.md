@@ -1,8 +1,10 @@
 # NMPC Lab V1 — playback and user-acceptance correction
 
-**WORK_COMPLETE_PENDING_REVIEW.** 9 November 2026. Branch `codex/nmpc-lab-v1`, base
-`a7cdc334d76f42ce589e217cd3fb9a7543744b9b`. The containing implementation is the candidate for
-one focused independent Engineering Review. This is presentation/read-only replay WORK only.
+**NMPC_LAB_V1_UX_READY_PENDING_PRIMARY_USER_ACCEPTANCE.** 10 November 2026. Branch `codex/nmpc-lab-v1`, base
+`a7cdc334d76f42ce589e217cd3fb9a7543744b9b`. Exact implementation `447cc1e60c064062c75f879c3c67e611a84cff31`
+received focused independent **PASS**, with no unresolved blocking finding.
+[Review](../reviews/nmpc_lab_v1/ux/REVIEW.md), [record](../reviews/nmpc_lab_v1/ux/review_record.json).
+This containing delivery changes documentation only. This is presentation/read-only replay WORK only.
 The scientific worker and three completed af3956 executions remain unchanged; the three slots
 stay consumed and repeatable Scratch execution is not enabled.
 
@@ -43,11 +45,54 @@ regression and negative observation are retained. Earlier harness guard/bare-fra
 the temporary-container mount issue and identical-heartbeat elision remain recorded separately.
 No broad suite, numerical experiment or formal Verification was run.
 
-Browser validation and final independent disposition are being recorded in
-`results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/`. The initial four-speed measurements
-precede the first-frame monotonic-anchor fix; they are retained and will not be presented as fresh
-final-source results. Original8ee2 blank-WebGL/SVG evidence and reviews remain unchanged.
+Final real-browser measurements on exact447cc1e over the retained1.995s sample window:
 
-Next: finish focused real-browser acceptance, review the exact final source and publish the bounded
-handoff. Stop at `NMPC_LAB_V1_UX_READY_PENDING_PRIMARY_USER_ACCEPTANCE` after success. No numerical
-execution, acceptance, exporter, ROS2, Docker, hardware or unrelated Workbench work follows.
+| Speed | Ideal wall s | Observed wall s | Deviation ms |
+|---|---:|---:|---:|
+|0.25×|7.9800|7.9882|+8.2|
+|0.5×|3.9900|3.9926|+2.6|
+|1×|1.9950|2.0081|+13.1|
+|2×|0.9975|0.9992|+1.7|
+
+Each speed was observed once on the final clock. The two-second run plays in approximately two
+wall seconds at1×; the unrecorded endpoint is not invented. Paint counts23/46/89/180 and maximum
+50.6ms gap describe this local browser only. Payload load stayed1 across heartbeats. Initial
+four-speed measurements before the first-frame anchor fix remain separate historical observations.
+
+Actual browser checks confirmed native steps0↔.005s, seek0.200s/index40 and1.995s/index399, pause,
+restart/end, active packet0 versus manually inspected future packet10, and terminal node8/NULL
+command. A switch during playback starts the selected baseline paused at zero and resets the
+historical selection. Navigation to Analyze removes the iframe. Visible position/horizon captures
+at native0 and.800s match the source, with packet8 active at.800s.
+
+A disposable copy's same-size/restored-mtime byte change removed replay. Restoring bytes did not
+clear the latch; explicit reopen started paused at zero. Stopping its validation service cleared
+browser data/image under the4.5s lease/250ms poll policy; Streamlit's connection modal initially
+obscured the cleared view and was dismissed for inspection. Detection latency was not qualified.
+Both owned servers/tabs are closed, ports8517/8518 refuse connection, the shared lease is free and
+no owned scientific worker remains. Evidence/logs are under
+`results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/`.
+
+Separate independent evidence:11 Python tests passed in4.881s,11 pure JS checks passed, and a
+three-recording audit checked1200 native states/600 request/application rows and input immutability.
+Parent18passes are not added to those counts. A changed legacy display-fixture test also passed
+separately in2.17s using retained source-bound configuration metadata, without another native probe.
+Reviewer setup/path/assertion negatives and the parent's initial M5-link-root audit mistake are
+retained; corrected checks pass. No scientific execution or formal Verification occurred.
+
+All6393 protected regular files,324 historical links, primary56/345/25/4 groups, originalC0 and333
+frozen runtime members match. Scientific/worker/profile/analysis/scheduling differences from the
+UX base are empty. Original8ee2 renderer findings/captures/review remain unchanged. All three
+genuine execution references remainaf3956, with unchanged access policy and no remaining allowance.
+
+Remaining UX limits: reopening starts paused at the first sample; navigating back to Inspect uses
+its existing catalog selection/default, without position persistence. Background/hidden pages pause;
+browser scheduling can reduce frame cadence. Canvas2D and timings were checked in the local embedded
+browser, not qualified across platforms. Detailed local native diagnostics remain descriptive,
+not physical validation, controller real-time guarantees or nonlinear/hybrid stability proofs.
+Raw ignored evidence remains local; published hashes do not create off-host artifact retrieval.
+
+Next: Primary user acceptance of exact447cc1e within this bounded UX/software scope. Repeatable
+Scratch execution remains disabled. Stop at
+`NMPC_LAB_V1_UX_READY_PENDING_PRIMARY_USER_ACCEPTANCE`. No numerical experiment, automatic acceptance,
+exporter, ROS2, Docker, hardware, expansive Verification or unrelated stage is authorized.

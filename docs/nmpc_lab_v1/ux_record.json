@@ -1,6 +1,6 @@
 {
   "schema": "apex-nmpc-lab-v1-ux-work/1",
-  "status": "WORK_COMPLETE_PENDING_REVIEW",
+  "status": "NMPC_LAB_V1_UX_READY_PENDING_PRIMARY_USER_ACCEPTANCE",
   "base_revision": "a7cdc334d76f42ce589e217cd3fb9a7543744b9b",
   "scientific_source": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
   "executed_revision": "af3956fc2dc8c1a88051e87e2eae66010490a2fb",
@@ -78,8 +78,67 @@
       "max_gap_ms": 50.09999999999127
     }
   ],
-  "browser_final": "PENDING_FINAL_CLOCK_AND_INVALIDATION_CHECKS",
-  "review": "PENDING_EXACT_REVISION",
+  "browser_final": {
+    "revision": "447cc1e60c064062c75f879c3c67e611a84cff31",
+    "runs": [
+      {
+        "simulated_s": 1.9949999999999788,
+        "wall_s": 2.0080999999523157,
+        "speed": 1,
+        "frames": 46,
+        "max_gap_ms": 50.399999999999636
+      },
+      {
+        "simulated_s": 1.9949999999999788,
+        "wall_s": 7.988199999952318,
+        "speed": 0.25,
+        "frames": 180,
+        "max_gap_ms": 50.400000000001455
+      },
+      {
+        "simulated_s": 1.9949999999999788,
+        "wall_s": 3.9925999999761554,
+        "speed": 0.5,
+        "frames": 89,
+        "max_gap_ms": 50.599999999998545
+      },
+      {
+        "simulated_s": 1.9949999999999788,
+        "wall_s": 0.9991999999999971,
+        "speed": 2,
+        "frames": 23,
+        "max_gap_ms": 50.099999999998545
+      }
+    ],
+    "payload_status": "Verified native replay \u00b7 20261108T212252292651Z_b70288d94327468a9d2d05586471e76d \u00b7 payload load 1",
+    "scope": "Read-only replay; no scientific execution"
+  },
+  "review": {
+    "outcome": "PASS",
+    "candidate": "447cc1e60c064062c75f879c3c67e611a84cff31",
+    "unresolved_blocking_findings": 0,
+    "report": "docs/reviews/nmpc_lab_v1/ux/REVIEW.md",
+    "report_sha256": "b005b71ab9d696270854e87aa55a459bffa088bae7215ba1023cd64b8b765122",
+    "record": "docs/reviews/nmpc_lab_v1/ux/review_record.json",
+    "record_sha256": "9fd931d9d3236d8cfad5f9e831efe453708ec1609f1ec5ab46a4a64f5aded4e1",
+    "independent_python": {
+      "tests": 11,
+      "failures": 0,
+      "errors": 0,
+      "skips": 0,
+      "junit_duration_s": 4.881,
+      "record": "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/review/software_final_result.json",
+      "scientific_modules": []
+    },
+    "independent_javascript": {
+      "outcome": "PASS",
+      "checks": 11,
+      "scope": "Deterministic display-clock/native authority fixture checks only",
+      "scientific_runs": 0,
+      "revision": "447cc1e60c064062c75f879c3c67e611a84cff31",
+      "independent_fresh_context": true
+    }
+  },
   "formal_verification": "NOT_AUTHORIZED_NOT_RUN",
   "negative_history": [
     "software_1 metadata subprocess guard blocked Git before collection",
@@ -129,6 +188,116 @@
     "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/lateral_1_display.json": "9b94a0e0e9594b21a09c851867d2fcf826101e56e96e9c17fb758d5cae47f2e5",
     "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/software_3.log": "e5c70cb118703613c204be46d24f2771200e6ef7bbaffbc65db7aee5fa729fba",
     "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/software_1.log": "5fff87713bce82b14ad798d293827c74502f35483f00136098285683ea401934",
-    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/preservation_before.json": "ca180b47ffc3a4ca103110731692e108f77db269086dd14522b6ab3e5dfde2dd"
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/preservation_before.json": "ca180b47ffc3a4ca103110731692e108f77db269086dd14522b6ab3e5dfde2dd",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/navigation.json": "b88306e35a23305b313a5d72a44418d2dd72d11a8643eb45359b7d85cb4b6aff",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/fixture_restoration.json": "86c7f8697a5261c8967c3a321d06ff3f4f6b02be4f3ff0b09dfc828854b39624",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/switch_after_ax.txt": "29c2f5c10e6551a9c6c1d9d9eb0364bfd6a09376b07346faad8c495c83f2d783",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/test_existing_fixture.py": "abca4f458fc8242aa8c14c03d48142c7627f808f2428cdaf58ba5147771ed309",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/fixture_server.log": "8285747492e8ef1ef6bf2242df66fcba156075caf06933ca5b72e29bd67038e8",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/lease_expiry_verified.json": "6e13798fc07c676dbb971c9ca812bad5dc12cf32922fb7be9d8888a3b43a2c3d",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/run_switch.json": "f3ff01bdb64d6d5ed05fcdc99c79e91257231935e8f84d8c87f207a90cc5ac95",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/cleanup_preservation.json": "9fe5caa79721e85274dc46559990669d97b48f1b819913f711b32f0dacf41839",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/fixture_latch_ax.txt": "a4b6295d77d737fb137636b1e792c3bd580293639791319cc2f281f1a8ffa333",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/fixture_quarantine_ax.txt": "675bb877bc6195a863021ec319b9000db36d17ce55e753741af42664b5a71024",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/lease_expiry_ax.txt": "e472c9855615e2071f36825d5147853c0132112f48b1fbe39cfcb488ba1a56cf",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/browser_server_final.log": "bc18ad92b2f7bf0e134843214d33b88f0185b8fef4213a16810de7a2ce7db929",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/lint_closed.log": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/viewer_sample160.jpg": "5c210484ff32b8479e1e7ff9227b6937eca37e034471daa2a99447c99fe5ff39",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/existing_fixture.log": "1736591f96825c595673d7486b1a75ab149dbcd669439977e54b1dfca1296bf0",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/fixture_recovery.json": "bb2948aa62ffb4838ee364edaac35c5ce048723e3ba7eb7da80cbab01d4429bf",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/existing_fixture_result.json": "c57820779608ffc558772027376aed2c01361ac302922c8c84f34b37c596563f",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/links_preservation.json": "1d9ac64d7cfac6a42b97a4ebd4f73b14af1db14ed8512fe615c64f1f2dfe7ffe",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/switch_before_ax.txt": "b210df650f5f982304278a03450bdec62afdd1b02084d830a9af9c32c2397d53",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/existing_fixture_command.json": "35b2853aeb9e72d96ea01b4478b8f2f344fe71404b346b8c0581c9bad686525a",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/disposable_raw_original.bin": "08520713ae7d302d8ac87fe5541ef813dd5b8c5e69850f908cebf23bcfe08bde",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/viewer_final.jpg": "048c4743d22b1ce26e90fcecccefc448191686d2a8566f1234b738879998021b",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/lease_expiry.json": "953eb660858bd1eeb242f845ed171a1fd0cbe23b5c29fc196ad7c1b19fbf6ddc",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/fixture_mutation.json": "e205b989b405f5e7ac5c5a31f17f045cce2c0cdac1fa779a5f31df9710b09a99",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/existing_fixture.xml": "289813867cf5c7ca0d5e9ce5c897fee5dfe7432cd97262e0b6a1db92d4689c51",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/lease_expiry_after_dismiss_ax.txt": "7d9fd912fce1a13a88e869a95eeaa1cdc510395c76d61e33e987c1f758f2d09f",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/viewer_final_dom.txt": "224c7c5a7e1b1e4fee074d9972e8200657fdfc698a6f7a66de4506cbbc33a260",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/fixture_quarantine.json": "b7dcfaebea62c1de7aaaf4bcccb4aef3c6aba43477d68325b3d0ebf8f0b4cffc",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/fixture_latch_ready_ax.txt": "47c16d54490be894836697f7665dbd658ed50e8d9c5e6328ffc0154fe9bf307e",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/viewer_sample160_ax.txt": "66df746f0163e0ba76e4e8fdf906c2a443828d696753b7c72d9c633335c10eb5",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/browser_timing_final.json": "0e0e384ad8fb75e8a337f03794e0d72bca2634d0b54b5a68aaaa5e0df958d4e5",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/review/software_runner_final.py": "51412d40dc38a447343710905936eb2fc18d09ac576b12f64018e5956f4220d0",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/review/reviewer_harness_negatives.json": "d2a2c47712a9830e72fb9b3536243bfad7d67a755c9816f067f7f95160b9e61c",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/review/software_final_result.json": "c57820779608ffc558772027376aed2c01361ac302922c8c84f34b37c596563f",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/review/actual_payload_audit_final.py": "2db744cddc1fe1a422f87d0388fa1a7c38cb699ee4a6388bb79b7eec70347ef6",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/review/preservation_audit.json": "66944b31e4871993a7dde5804387da26fc32383e9fbd38ff6aa420ccf8f0e248",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/review/actual_payload_audit.py": "e2f5287eedfffa95721e848f57bb00dd8963cd189f726d41fbb45b58d7d5f4e2",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/review/software.log": "b4bc0c4d06b6867999609e9ec121d608083924f92c698478cbc8553f9584e0b6",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/review/actual_lookup_checks.json": "255c9705f18016d9e0f143d5d0913e064167b7c7b2dbc34b2ab093c2b6082ff1",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/review/audit_initial_negative.json": "5bb8c8d15cc8672824614e070f695a7f1b421dae2b8b3f9224a2395be57137b3",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/review/javascript_checks.json": "4f641c3faa0ec610eec366bf3fb27079be49c17c99668b8e3a61d473c8cc73bf",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/review/preservation_audit_final.py": "ae977de2239932d060ba36c75330898bcf9648b865b3f568351a9f75ec7e47c1",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/review/actual_lookup_checks.mjs": "90051e3481adb3892f721891027da957051c9a06290107a6fc39caf5a7407a8e",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/review/software_command.json": "1222f461267f1af4b0449ce1b873d5c931915447d83074b22a5f2e4cc2b35ac9",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/review/parent_payload_difference.json": "e9116e1053c33ec9367f8087fb8b13b532d53ae420e622d77e550e21f48d214b",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/review/software_final.log": "762454c6fca64707793948571ba24c903bf1b237aff6d2cbcc4080b116f618be",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/review/software_final_command.json": "df365f63f2e30f70a40d376b6de3570bad53047464bf79db3b90112021d7ca79",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/review/links_c0_preservation.json": "09d1e669781f694e30615523ec8b66859857e874a8dd74cd894d9a67cda7d4e4",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/review/actual_payloads.json": "897dbb754f55d689dee00134dbf7187a7760bf9d3d5b145c8e24d72d5869a183",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/review/actual_payload_audit_diagnostic.py": "9e53ddbc71c5cd0b8e0cc46d397fec4219c3a2c07869d0d6a1d4cb07893112a2",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/review/software_runner.py": "e71d1c2744f2ee9839a5471e0c491bd98877429ce76e75ba7ee73e1c9ae13e15",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/review/review_record.json": "9fd931d9d3236d8cfad5f9e831efe453708ec1609f1ec5ab46a4a64f5aded4e1",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/review/software_final.xml": "c97fe95f4d4fcf1af47509f259c2e26fdab1777156f86b36a01f9699cc64123f",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/review/actual_payload_audit.json": "1863f4227721f5866a648aee5bc2e6ddc73dc2092e22b6ee113f94fc215fca37",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/review/old_renderer_preservation.json": "2f88904e39e49cd2f410b6d9423d521213dc18cef958046db36380898f9cdab8",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/review/actual_payload_audit_final.log": "ee8371a6f333e3f3dda881f9f8e6fa0ff60a7f4a4193fbd9dd8a0c24be8335fe",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/review/software_result.json": "52400a8fbe40ecf3909f37d88cef80402624d0c072d7105f7cd469f5b3a51af6",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/review/actual_payload_initial_negative.json": "be597465f6c4034e9e93c4cfe023861ee42b52a87ff449901b5e79cbcc473edd",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/review/REVIEW.md": "b005b71ab9d696270854e87aa55a459bffa088bae7215ba1023cd64b8b765122",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/review/preservation_audit.py": "3db3311527c34572df750c5883ebc0449bfc7e2fa9206e2268fb0d91bd290da1",
+    "docs/reviews/nmpc_lab_v1/ux/review_record.json": "9fd931d9d3236d8cfad5f9e831efe453708ec1609f1ec5ab46a4a64f5aded4e1",
+    "docs/reviews/nmpc_lab_v1/ux/REVIEW.md": "b005b71ab9d696270854e87aa55a459bffa088bae7215ba1023cd64b8b765122"
+  },
+  "implementation_revision": "447cc1e60c064062c75f879c3c67e611a84cff31",
+  "delivery_scope": "Documentation only; implementation/tests/assets/profile identical to447cc1e; final containing delivery SHA supplied externally",
+  "cleanup": {
+    "revision": "447cc1e60c064062c75f879c3c67e611a84cff31",
+    "owned_servers": "All original process sessions stopped with Control-C/exit0; logs retained",
+    "browser_tabs": "Both temporary tabs closed",
+    "ports_connect_ex": {
+      "8517": 61,
+      "8518": 61
+    },
+    "owned_scientific_workers": [],
+    "shared_lease_free": true,
+    "protected_file_hashes_checked": 6393,
+    "changed_protected_files": [],
+    "access_policy_sha256": "628a61998231be7d45be3591236d6debbe8e67ca6d083a86ae874f2786c58f8e",
+    "consumed_cases": {
+      "baseline": "20261108T212141278330Z_330b90fcb81240a99ea28c224ae4c6cb",
+      "lateral_1": "20261108T212211750867Z_6bf349f04ae146f0b4c501eb3c5779d4",
+      "disturbance": "20261108T212252292651Z_b70288d94327468a9d2d05586471e76d"
+    },
+    "new_scientific_runs": 0,
+    "interactive_execution_enabled": false
+  },
+  "link_preservation": {
+    "historical_links": 324,
+    "changed": [],
+    "root": "/Users/marwansaber/.codex/worktrees/nmpc-weight-m0/MPC_Controller_v1_IronManStyle/results/apex_workbench_nmpc_weights",
+    "initial_harness_negative": "First audit resolved M5A-relative link paths against repository root and falsely reported mismatches; corrected root only, no filesystem mutation"
+  },
+  "additional_parent_fixture": {
+    "passed": 1,
+    "duration_s": 2.17,
+    "record": "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/existing_fixture.xml",
+    "native_probe": false,
+    "metadata": "Retained source-bound baseline resolved snapshot"
+  },
+  "primary_acceptance": "PENDING_NOT_RECORDED",
+  "remaining_ux_limits": [
+    "Playback position is not retained across navigation; existing Inspect catalog default can be selected",
+    "Browser may throttle rendering; no generic frame/real-time/detection guarantee",
+    "Streamlit connection modal can obscure cleared viewer until dismissed",
+    "Local ignored evidence is not automatically available off-host"
+  ],
+  "delivery_date": "2026-11-10",
+  "delivery_checks": {
+    "path": "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/delivery_checks.json",
+    "sha256": "99fcea2cc8aa55d00402dacef1c5c088373eb6b67e64171b29b71777d2ef4590"
   }
 }

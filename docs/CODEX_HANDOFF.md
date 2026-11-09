@@ -1,24 +1,36 @@
-# Current handoff — NMPC Lab V1 playback correction awaiting focused review
+# Current handoff — NMPC Lab V1 UX ready for Primary user acceptance
 
-**WORK_COMPLETE_PENDING_REVIEW.** 9 November2026. Branch `codex/nmpc-lab-v1`, base
-`a7cdc334d76f42ce589e217cd3fb9a7543744b9b`; containing commit is the UX candidate.
-[UX WORK](nmpc_lab_v1/UX_CORRECTION.md). Presentation and read-only replay only.
+**NMPC_LAB_V1_UX_READY_PENDING_PRIMARY_USER_ACCEPTANCE.** 10 November2026. Branch
+`codex/nmpc-lab-v1`, UX basea7cdc334d76f42ce589e217cd3fb9a7543744b9b. Exact implementation
+`447cc1e60c064062c75f879c3c67e611a84cff31` received independent **PASS**, no blocking findings.
+[UX report](nmpc_lab_v1/UX_CORRECTION.md), [machine record](nmpc_lab_v1/ux_record.json),
+[independent review](reviews/nmpc_lab_v1/ux/REVIEW.md),
+[review record](reviews/nmpc_lab_v1/ux/review_record.json). This delivery is documentation only.
 
-Old5ms-per400ms playback was80× slow before rendering overhead. A small local browser component
-now uses elapsed wall time, native seek/step, four speeds and Canvas2D, with prediction authority
-kept distinct from historical inspection. Labelled XY display interpolation never enters metrics,
-commands or events; known kicks remain discontinuous. Payload acknowledged once, then hash-checked
-nonce heartbeats; evidence changes unmount/latch quarantine, missing heartbeats expire after4.5s.
-Scratch classification is a restrained caption; real failures and historical restrictions remain.
+Old5ms-per400ms playback was80× slow before figure overhead. The small Canvas2D component uses
+elapsed browser time and four speeds, with native seek/step, pause/restart and active versus
+historical prediction. Labelled XY interpolation never enters metrics, commands or events; kicks
+remain discontinuous. One verified payload, then nonce/hash heartbeats; failures unmount/latch
+quarantine, lost heartbeats clear browser data. Scratch classification is a restrained caption.
 
-Focused Python18passes/6.10s and separate11 JS checks; no scientific imports/execution. Earlier
-setup, bare-fragment, mounting and first-frame negative evidence retained. Final browser checks
-and exact-source independent review pending. Original renderer findings/reviews remain historical.
+Final browser1×:1.995native seconds in2.0081wall seconds (+13.1ms);.25×7.9882s,.5×3.9926s,2×.9992s.
+One observation per speed on finalsource; initial before-fix timings retained separately. Native
+steps/seek, pause/end, packet authority, run switch, navigation, same-size/restored-mtime corruption,
+explicit reopen and service-loss expiry all checked using retained data/disposable copies only.
+Canvas visuals independently inspected. Cadence/detection latency/real-time are not qualified.
 
-Scientific48adbdf, af3956 three-run evidence, M5-A, PRE-INT and execution safeguards are protected.
-No new numerical attempts and no repeatable Scratch gate enabled. Next: focused UX review and
-Primary user testing; stop on success at `NMPC_LAB_V1_UX_READY_PENDING_PRIMARY_USER_ACCEPTANCE`.
-No acceptance, formal Verification, exporter, ROS2, Docker or unrelated work is authorized.
+Parentfocused18passes6.10s, separate11 JS checks and one changed legacy display fixture1pass2.17s;
+independent11Pythonpasses4.881s,11JSchecks and actual3recording/1200state/600command audit. Counts
+are separate. Harness and first-frame negatives remain. No scientific import/execution or broad
+Verification campaign. Original af3956 three genuine attempts stay consumed; no gate reset/enabling.
+
+6393protectedfiles/324historicallinks,333runtime, primary56/345/25/4, C0 and original8ee2 renderer
+findings preserved. Worker/scientific/profile/analysis/scheduling prefixes unchanged from UX base.
+Both owned servers/tabs closed;8517/8518refused, sharedleasefree, no ownedscientificworkers.
+Navigation restarts playback at0; existing Inspect catalog selection/default is retained behavior.
+
+Next: Primary user acceptance of exact447cc1e. No repeatable Scratch, numerical experiment,
+automatic acceptance, formal Verification, exporter, ROS2, Docker or unrelated work is authorized.
 
 ---
 

@@ -1,0 +1,514 @@
+{
+  "schema": "apex-nmpc-lab-v1-ux-independent-review/1",
+  "outcome": "PASS",
+  "status": "NMPC_LAB_V1_UX_READY_PENDING_PRIMARY_USER_ACCEPTANCE",
+  "candidate": "447cc1e60c064062c75f879c3c67e611a84cff31",
+  "branch": "codex/nmpc-lab-v1",
+  "ux_base": "a7cdc334d76f42ce589e217cd3fb9a7543744b9b",
+  "scientific_source": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+  "executed_revision": "af3956fc2dc8c1a88051e87e2eae66010490a2fb",
+  "scope": "One focused independent Engineering Review; presentation/read-only replay only",
+  "findings": [],
+  "unresolved_blocking_findings": 0,
+  "authorization_sha256": "bc41553248a75efd909f5b56fbf2ef4811968a20c678f866cff5bfd02c542144",
+  "source_sha256": {
+    "tools/apex_workbench/nmpc_scratch_panels.py": "ea08206b4f765c99d7dc7ae48c447d5fcb9a7029a2178e9be9b43d8e031a58e8",
+    "tools/apex_workbench/scratch_replay.py": "519317232826bdf132048172f2df1ed65d8924f0b4f5c2d1c05ef6880f3cce1e",
+    "tools/apex_workbench/tests/test_nmpc_scratch.py": "085030ca1d11e6f5dbec23628ad526868ee16bec006a0e02de33c00896702985",
+    "tools/apex_workbench/tests/test_scratch_replay.py": "28dbbf2a7d5c8462fa63e507409f02b14cda572638d0050a5486ce5272d6e16d",
+    "tools/apex_workbench/tests/test_scratch_replay.mjs": "8dff6f0203616b2b52212728883f327cceb3a50a3192de17c90b69e30988e775",
+    "tools/apex_workbench/scratch_replay_web/clock.mjs": "ff9ba7d4834acc5b5a4ef43eb06fbc6af4dbe13a0c5852cff767391d3084e97a",
+    "tools/apex_workbench/scratch_replay_web/index.html": "7d9ecedef30c7ab088a8a3b38228901f18bc741b88f4b440e92a5d70080657bb",
+    "tools/apex_workbench/scratch_replay_web/viewer.mjs": "5d4a5aabe4eddd4a21f09e37b8da249b0e27582b25395e781589b394b84a4c3d",
+    "tools/apex_workbench/scratch_replay_web/style.css": "20bca79c8f522995b7e64cca7f9a8131a5b7b005b39c89fe93e23f318746f964"
+  },
+  "independent_python": {
+    "tests": 11,
+    "failures": 0,
+    "errors": 0,
+    "skips": 0,
+    "junit_duration_s": 4.881,
+    "record": "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/review/software_final_result.json",
+    "scientific_modules": []
+  },
+  "independent_javascript": {
+    "outcome": "PASS",
+    "checks": 11,
+    "scope": "Deterministic display-clock/native authority fixture checks only",
+    "scientific_runs": 0,
+    "revision": "447cc1e60c064062c75f879c3c67e611a84cff31",
+    "independent_fresh_context": true
+  },
+  "independent_retained_native_lookup": {
+    "outcome": "PASS",
+    "scope": "Native retained-data lookup and visual-only interpolation; no model or events generated",
+    "recordings": {
+      "baseline": {
+        "native_states_checked": 400,
+        "request_and_application_rows_checked": 200,
+        "documented_jumps": []
+      },
+      "lateral_1": {
+        "native_states_checked": 400,
+        "request_and_application_rows_checked": 200,
+        "documented_jumps": []
+      },
+      "disturbance": {
+        "native_states_checked": 400,
+        "request_and_application_rows_checked": 200,
+        "documented_jumps": [
+          0.5
+        ]
+      }
+    },
+    "scientific_runs": 0
+  },
+  "older_payload_fixture_difference": {
+    "baseline": {
+      "older_payload_missing_packet_metadata": [
+        "diagnostics"
+      ],
+      "all_other_values_match": true
+    },
+    "lateral_1": {
+      "older_payload_missing_packet_metadata": [
+        "diagnostics"
+      ],
+      "all_other_values_match": true
+    },
+    "disturbance": {
+      "older_payload_missing_packet_metadata": [
+        "diagnostics"
+      ],
+      "all_other_values_match": true
+    }
+  },
+  "parent_software_evidence_separate": {
+    "passed": 18,
+    "failures": 0,
+    "errors": 0,
+    "skips": 0,
+    "duration_s": 6.1,
+    "command": "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/software_5_command.json",
+    "scientific_imports": 0
+  },
+  "final_browser_pacing": {
+    "revision": "447cc1e60c064062c75f879c3c67e611a84cff31",
+    "runs": [
+      {
+        "simulated_s": 1.9949999999999788,
+        "wall_s": 2.0080999999523157,
+        "speed": 1,
+        "frames": 46,
+        "max_gap_ms": 50.399999999999636
+      },
+      {
+        "simulated_s": 1.9949999999999788,
+        "wall_s": 7.988199999952318,
+        "speed": 0.25,
+        "frames": 180,
+        "max_gap_ms": 50.400000000001455
+      },
+      {
+        "simulated_s": 1.9949999999999788,
+        "wall_s": 3.9925999999761554,
+        "speed": 0.5,
+        "frames": 89,
+        "max_gap_ms": 50.599999999998545
+      },
+      {
+        "simulated_s": 1.9949999999999788,
+        "wall_s": 0.9991999999999971,
+        "speed": 2,
+        "frames": 23,
+        "max_gap_ms": 50.099999999998545
+      }
+    ],
+    "payload_status": "Verified native replay \u00b7 20261108T212252292651Z_b70288d94327468a9d2d05586471e76d \u00b7 payload load 1",
+    "scope": "Read-only replay; no scientific execution"
+  },
+  "browser_interactions": {
+    "pause_holds": true,
+    "pause_test_time_s": "0.07684999999403955",
+    "native_forward_s": 0.005,
+    "native_back_s": 0,
+    "seek_end_index": 399,
+    "interior_seek_index": 40,
+    "future_packet": {
+      "active": 0,
+      "inspected": 10,
+      "completion_reached": false
+    },
+    "terminal": {
+      "node": 8,
+      "command": null,
+      "terminal": true
+    },
+    "payload_load_text": "text Verified native replay \u00b7 20261108T212252292651Z_b70288d94327468a9d2d05586471e76d \u00b7 payload load 1"
+  },
+  "final_browser_run_switch": {
+    "old_was_playing": true,
+    "new_baseline": true,
+    "new_paused_at_zero": true,
+    "historical_selection_reset": true
+  },
+  "final_browser_navigation": {
+    "old_playing": true,
+    "analysis_visible": true,
+    "replay_iframe_count": 0
+  },
+  "final_browser_quarantine": {
+    "iframe_count": 0,
+    "error_visible": true,
+    "old_playing_before_mutation": true,
+    "same_size_restored_mtime_fixture": true
+  },
+  "final_browser_recovery": {
+    "restored_bytes_did_not_reopen": true,
+    "latch_required_explicit_reopen": true,
+    "explicit_reopen_paused_at_zero": true
+  },
+  "final_browser_lease_expiry": {
+    "played_before_service_stop": true,
+    "expired_message": true,
+    "native_position_image_visible": false,
+    "connection_modal_dismissed_to_inspect_background": true,
+    "scope": "Owned disposable-fixture service stopped; local payload cleared, no original evidence changed"
+  },
+  "visual_inspection": {
+    "independently_viewed": [
+      "viewer_final.jpg",
+      "viewer_sample160.jpg"
+    ],
+    "observations": [
+      "Canonical track and actual marker/prediction/reference visibly render in Canvas2D",
+      "Marker moves between native0 and native0.800s; matchingAX reports activepacket8",
+      "No live browser control by reviewer; parent final browser records inspected"
+    ],
+    "claim_limit": "Still images support actual rendering; pacing is from separate final browser timing record"
+  },
+  "preservation": {
+    "schema": "apex-nmpc-lab-v1-ux-review-preservation/1",
+    "outcome": "PASS",
+    "candidate": "447cc1e60c064062c75f879c3c67e611a84cff31",
+    "base": "a7cdc334d76f42ce589e217cd3fb9a7543744b9b",
+    "scientific_source": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+    "snapshot": {
+      "record": "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/preservation_before.json",
+      "sha256": "ca180b47ffc3a4ca103110731692e108f77db269086dd14522b6ab3e5dfde2dd",
+      "files": 6393,
+      "changed": [],
+      "missing": []
+    },
+    "access_policy": {
+      "sha256": "628a61998231be7d45be3591236d6debbe8e67ca6d083a86ae874f2786c58f8e",
+      "stage": "reviewed-work",
+      "consumed": {
+        "baseline": "20261108T212141278330Z_330b90fcb81240a99ea28c224ae4c6cb",
+        "lateral_1": "20261108T212211750867Z_6bf349f04ae146f0b4c501eb3c5779d4",
+        "disturbance": "20261108T212252292651Z_b70288d94327468a9d2d05586471e76d"
+      },
+      "executed_revision": "af3956fc2dc8c1a88051e87e2eae66010490a2fb",
+      "gate_sha256": "6a6196f99aa4171feaaca9a50e9643697cd8bb018a8b7ad6b241c4539af95557"
+    },
+    "frozen_scientific_prefix_diff_from_ux_base": "",
+    "preexisting_scientific_prefix_difference_from_source": [
+      "scripts/task007f/profile1/recorder.py",
+      "scripts/task007f/profile1/run_phase_a.py",
+      "src/apex/control/mpc/controller.py",
+      "src/apex/control/mpc/preview.py",
+      "src/apex/control/trajectory/planner.py",
+      "src/apex/control/trajectory/tracker.py",
+      "src/apex/optimization/solvers/ipopt.py",
+      "src/apex/simulation/asynchronous.py"
+    ],
+    "scientific_adapter_diff_from_base": "",
+    "runtime": {
+      "files": 333,
+      "changed": []
+    },
+    "primary_groups": {
+      "scientific_source_sha256": {
+        "root": "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle",
+        "files": 56,
+        "mismatches": []
+      },
+      "qualification_sha256": {
+        "root": "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/results/apex_workbench_qualifications/v0_2_reviewed_20261029",
+        "files": 345,
+        "mismatches": []
+      },
+      "gp_archive_sha256": {
+        "root": "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/results/task007d/vis/vis1r_c699057/controlled_A",
+        "files": 25,
+        "mismatches": []
+      },
+      "legacy_oval_sha256": {
+        "root": "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/results/lqr_baseline/oval_2mps",
+        "files": 4,
+        "mismatches": []
+      }
+    },
+    "old_renderer_review_files_preserved": [
+      "docs/reviews/nmpc_lab_v1/REVIEW.md",
+      "docs/reviews/nmpc_lab_v1/review_record.json"
+    ],
+    "bench_reference": {
+      "revision": "35f6fa579adc574d73ea834786e53667eddcb585",
+      "file_sha256": {
+        "web/app.mjs": "682cc56d91c1714e97801ff3876f2760573ffb595fa25b95a27e03a89342aa48",
+        "web/engine.mjs": "9a31d5671b7683d813358c898c6941a20ddbafc94ffd2172fc5bbdffaf7c54ce",
+        "web/canvas.mjs": "5a8cb9dd64b4f938ebbcfeb0ab9fe592fc7db7797a8a77f45f60c547115573cf"
+      },
+      "changed": []
+    },
+    "source_sha256": {
+      "tools/apex_workbench/nmpc_scratch_panels.py": "ea08206b4f765c99d7dc7ae48c447d5fcb9a7029a2178e9be9b43d8e031a58e8",
+      "tools/apex_workbench/scratch_replay.py": "519317232826bdf132048172f2df1ed65d8924f0b4f5c2d1c05ef6880f3cce1e",
+      "tools/apex_workbench/tests/test_nmpc_scratch.py": "085030ca1d11e6f5dbec23628ad526868ee16bec006a0e02de33c00896702985",
+      "tools/apex_workbench/tests/test_scratch_replay.py": "28dbbf2a7d5c8462fa63e507409f02b14cda572638d0050a5486ce5272d6e16d",
+      "tools/apex_workbench/tests/test_scratch_replay.mjs": "8dff6f0203616b2b52212728883f327cceb3a50a3192de17c90b69e30988e775",
+      "tools/apex_workbench/scratch_replay_web/clock.mjs": "ff9ba7d4834acc5b5a4ef43eb06fbc6af4dbe13a0c5852cff767391d3084e97a",
+      "tools/apex_workbench/scratch_replay_web/index.html": "7d9ecedef30c7ab088a8a3b38228901f18bc741b88f4b440e92a5d70080657bb",
+      "tools/apex_workbench/scratch_replay_web/viewer.mjs": "5d4a5aabe4eddd4a21f09e37b8da249b0e27582b25395e781589b394b84a4c3d",
+      "tools/apex_workbench/scratch_replay_web/style.css": "20bca79c8f522995b7e64cca7f9a8131a5b7b005b39c89fe93e23f318746f964"
+    },
+    "scientific_imports": 0,
+    "new_probes": 0,
+    "optimizer_solves": 0,
+    "plant_steps": 0
+  },
+  "supplemental_preservation": {
+    "outcome": "PASS",
+    "m5a_links": {
+      "checked": 324,
+      "changed": [],
+      "extra": [],
+      "baseline": "results/apex_workbench_nmpc_lab_v1/work/preservation_before.json"
+    },
+    "c0": {
+      "path": "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/results/task007d/c/amended/c0_export/original155.json",
+      "bytes": 152600,
+      "sha256": "2bd7d2385e7e2072a04e5d952eff9af8861eb7e63f016138d5289573c411f2d5"
+    },
+    "scientific_imports": 0,
+    "new_executions": 0
+  },
+  "old_renderer_preservation": {
+    "outcome": "PASS",
+    "old_renderer_capture_files_checked": 8,
+    "changed": [],
+    "sha256": {
+      "results/apex_workbench_nmpc_lab_v1/work/post_execution_svg/browser_disturbance_curve.jpg": "d72822cece8ac38b392f385f8a540efc92542c1354245eb7e63c3e61244869a5",
+      "results/apex_workbench_nmpc_lab_v1/work/post_execution_svg/browser_disturbance_curve_full.jpg": "293f1eafe4e41c8e7996309069be228d289069d2725412aaec5a58d38363339b",
+      "results/apex_workbench_nmpc_lab_v1/work/post_execution_svg/browser_analysis_loaded.jpg": "eca3f6fbc85e43c2ce3f77b9640a4b8ddb8c931dc0b16e2d95a97d9941e09a3b",
+      "results/apex_workbench_nmpc_lab_v1/work/post_execution_svg/browser_replay_dom.txt": "dd24d26d19750e2923e1f54c2146901ee0f644ad232a5e63d344d69df9c2568a",
+      "results/apex_workbench_nmpc_lab_v1/work/post_execution_svg/browser_trajectory.jpg": "e7adc215e308c5f12d636264675ed647310c48bd5c8493d03c706cb09b0bd532",
+      "results/apex_workbench_nmpc_lab_v1/work/post_execution/browser_analysis.jpg": "6d70097d32c2ca40312a10101f26d6567429695fde0490d974c8cb6dc0eb0531",
+      "results/apex_workbench_nmpc_lab_v1/work/post_execution/browser_horizon_committed.jpg": "8a4b67a35dc2f092d17b405f74bf3b15996cc608a2b5455c70a4970e4fdee893",
+      "results/apex_workbench_nmpc_lab_v1/work/post_execution/browser_horizon_dom.txt": "48924bbee09abdb4ef84e6747cf75b0b3ed9058d2abfa66c33a9ea2d09938292"
+    }
+  },
+  "parent_cleanup": {
+    "revision": "447cc1e60c064062c75f879c3c67e611a84cff31",
+    "owned_servers": "All original process sessions stopped with Control-C/exit0; logs retained",
+    "browser_tabs": "Both temporary tabs closed",
+    "ports_connect_ex": {
+      "8517": 61,
+      "8518": 61
+    },
+    "owned_scientific_workers": [],
+    "shared_lease_free": true,
+    "protected_file_hashes_checked": 6393,
+    "changed_protected_files": [],
+    "access_policy_sha256": "628a61998231be7d45be3591236d6debbe8e67ca6d083a86ae874f2786c58f8e",
+    "consumed_cases": {
+      "baseline": "20261108T212141278330Z_330b90fcb81240a99ea28c224ae4c6cb",
+      "lateral_1": "20261108T212211750867Z_6bf349f04ae146f0b4c501eb3c5779d4",
+      "disturbance": "20261108T212252292651Z_b70288d94327468a9d2d05586471e76d"
+    },
+    "new_scientific_runs": 0,
+    "interactive_execution_enabled": false
+  },
+  "negative_history": {
+    "parent": [
+      "software_1 metadata subprocess guard blocked Git before collection",
+      "software_2 bare Streamlit test context did not execute fragments;17passed1failed",
+      "software_3:18passed before stable mounting correction",
+      "software_4:18passed before final heartbeat/metadata additions",
+      "first RAF timestamp backdated anchor; deterministic .02s vs expected.01s, fixed",
+      "temporary container remounted component; direct stable mount replaces it",
+      "identical heartbeat elision expired local lease; nonce added",
+      "Cua frame-label/click/wait provider errors resolved by nativeAX and CSS IDs; no extra simulation"
+    ],
+    "first_frame_negative": {
+      "scope": "Display-clock only",
+      "condition": "First animation-frame timestamp precedes Play event timestamp",
+      "expected_simulated_s": 0.01,
+      "observed_before_fix_s": 0.02,
+      "outcome": "REPRODUCED",
+      "scientific_runs": 0
+    },
+    "earlier_four_speed_measurements": "browser_timing.json predates monotonic first-frame fix; historical only",
+    "lease_modal_negative": "lease_expiry.json retained; modal obscuredAX until dismissal; lease_expiry_verified.json and after-dismissAX support eventualclear",
+    "reviewer": {
+      "scientific_imports": 0,
+      "optimizer_solves": 0,
+      "plant_steps": 0,
+      "negatives": [
+        {
+          "check": "preservation_audit.py",
+          "outcome": "HARNESS_ASSERTION_FAILED",
+          "cause": "Compared whole checkout with scientific48adbdf instead of UXbase;8preexisting differences. Corrected final audit compares UXbase and separately exactfrozen runtime.",
+          "product_defect": false
+        },
+        {
+          "check": "software_runner.py",
+          "outcome": "COLLECTION_ERROR",
+          "exit_code": 4,
+          "tests_executed": 0,
+          "cause": "Reviewer script did not add repo root to sys.path. Preserved software.log/result; final runner adds path.",
+          "product_defect": false
+        },
+        {
+          "check": "actual_payload_audit.py",
+          "outcome": "HARNESS_GUARD_BLOCKED_METADATA",
+          "cause": "Blanket subprocess guard blocked configuration.archive_root read-only gitrev-parse. Corrected guard allows read-onlyGitmetadata.",
+          "product_defect": false
+        },
+        {
+          "check": "actual_payload_audit_final.py",
+          "outcome": "STRICT_EQUALITY_ASSERTION_FAILED",
+          "cause": "Older parentdisplay fixtures omit newly added packetdiagnostics metadata. Allother values independently match; exactcandidate payloads checked separately.",
+          "product_defect": false
+        },
+        {
+          "check": "parent payload difference temporary shell assertion",
+          "outcome": "HARNESS_ASSERTION_FAILED",
+          "cause": "Reviewer initially expected handoffs as extra metadata too; actual soleextra field diagnostics. Corrected difference record shows allother values match.",
+          "product_defect": false
+        },
+        {
+          "check": "node_repl reset tool",
+          "outcome": "TOOL_SCHEMA_ERROR",
+          "cause": "Provided unsupported title field; emptyargs reset succeeded before fresh JSchecks.",
+          "product_defect": false
+        },
+        {
+          "check": "Final evidence binding",
+          "outcome": "HARNESS_PATH_ASSERTION_FAILED",
+          "cause": "Reviewer used wrappertest_existing_fixture.py; actual wrapper file is test_existing_fixture.py. Corrected evidence path only; report modification was kept and record now binds it.",
+          "product_defect": false
+        }
+      ]
+    }
+  },
+  "reviewer_execution": {
+    "scientific_imports": 0,
+    "new_probes": 0,
+    "optimizer_solves": 0,
+    "plant_steps": 0,
+    "new_simulations": 0,
+    "gate_changes": 0,
+    "claim_resets": 0,
+    "reseals": 0,
+    "implementation_edits": 0,
+    "browser_control": 0,
+    "writes": "Fresh ignored review/ directory only"
+  },
+  "formal_verification": "NOT_AUTHORIZED_NOT_RUN",
+  "primary_acceptance": "PENDING",
+  "remaining_attempts": 0,
+  "repeatable_execution_enabled": false,
+  "limits": [
+    "One local final observation per speed, not a guaranteed cadence or hard-real-time qualification",
+    "Only retained0..1.995s states; no invented endpoint",
+    "Configured1s hash-boundary heartbeat and4.5s lease with250ms polling depend on browser/service scheduling; exact detection latency was not measured",
+    "XY display interpolation does not enter metrics or native event/command/authority channels",
+    "Inspection resets to catalog default/paused0 after navigation; persistence not claimed",
+    "Raw ignored evidence remains local; hash bindings do not establish off-host availability",
+    "No numerical, physical, nonlinear/hybrid stability, scientific acceptance or follow-on-stage authority"
+  ],
+  "report_path": "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/review/REVIEW.md",
+  "report_sha256": "b005b71ab9d696270854e87aa55a459bffa088bae7215ba1023cd64b8b765122",
+  "evidence_path_semantics": "All evidence paths are repository-root-relative for exact-copy publication",
+  "evidence_sha256": {
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/browser_interactions.json": "64b7443118b634c336c173d41107929d8d18faf5fd5b45d8331a266a564f6f8e",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/browser_interactions_ax.txt": "2bf39247d012a3b5b1e144690e0759269c5001a1d5878bf59d27c97706e1e87a",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/browser_timing.json": "ffdb19210c36abe39271f55384d0b33d9de2a9a5d95944a1a4365fe2a01aaaf1",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/browser_timing_final.json": "0e0e384ad8fb75e8a337f03794e0d72bca2634d0b54b5a68aaaa5e0df958d4e5",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/cleanup_preservation.json": "9fe5caa79721e85274dc46559990669d97b48f1b819913f711b32f0dacf41839",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/clock_unit_final.json": "d4632dc10b92fa534bf395f3aa000207ac05215a37ac25290f914882411bcfca",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/first_frame_negative.json": "14eed2292d7b9742995b6ea206bd8e1950557bcb52871dc6b16286b43b1c4971",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/fixture_latch_ready_ax.txt": "47c16d54490be894836697f7665dbd658ed50e8d9c5e6328ffc0154fe9bf307e",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/fixture_quarantine.json": "b7dcfaebea62c1de7aaaf4bcccb4aef3c6aba43477d68325b3d0ebf8f0b4cffc",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/fixture_quarantine_ax.txt": "675bb877bc6195a863021ec319b9000db36d17ce55e753741af42664b5a71024",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/fixture_recovery.json": "bb2948aa62ffb4838ee364edaac35c5ce048723e3ba7eb7da80cbab01d4429bf",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/lease_expiry.json": "953eb660858bd1eeb242f845ed171a1fd0cbe23b5c29fc196ad7c1b19fbf6ddc",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/lease_expiry_after_dismiss_ax.txt": "7d9fd912fce1a13a88e869a95eeaa1cdc510395c76d61e33e987c1f758f2d09f",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/lease_expiry_verified.json": "6e13798fc07c676dbb971c9ca812bad5dc12cf32922fb7be9d8888a3b43a2c3d",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/navigation.json": "b88306e35a23305b313a5d72a44418d2dd72d11a8643eb45359b7d85cb4b6aff",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/review/REVIEW.md": "b005b71ab9d696270854e87aa55a459bffa088bae7215ba1023cd64b8b765122",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/review/actual_lookup_checks.json": "255c9705f18016d9e0f143d5d0913e064167b7c7b2dbc34b2ab093c2b6082ff1",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/review/actual_lookup_checks.mjs": "90051e3481adb3892f721891027da957051c9a06290107a6fc39caf5a7407a8e",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/review/actual_payload_audit.json": "1863f4227721f5866a648aee5bc2e6ddc73dc2092e22b6ee113f94fc215fca37",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/review/actual_payload_audit.py": "e2f5287eedfffa95721e848f57bb00dd8963cd189f726d41fbb45b58d7d5f4e2",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/review/actual_payload_audit_diagnostic.py": "9e53ddbc71c5cd0b8e0cc46d397fec4219c3a2c07869d0d6a1d4cb07893112a2",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/review/actual_payload_audit_final.log": "ee8371a6f333e3f3dda881f9f8e6fa0ff60a7f4a4193fbd9dd8a0c24be8335fe",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/review/actual_payload_audit_final.py": "2db744cddc1fe1a422f87d0388fa1a7c38cb699ee4a6388bb79b7eec70347ef6",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/review/actual_payload_initial_negative.json": "be597465f6c4034e9e93c4cfe023861ee42b52a87ff449901b5e79cbcc473edd",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/review/actual_payloads.json": "897dbb754f55d689dee00134dbf7187a7760bf9d3d5b145c8e24d72d5869a183",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/review/audit_initial_negative.json": "5bb8c8d15cc8672824614e070f695a7f1b421dae2b8b3f9224a2395be57137b3",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/review/javascript_checks.json": "4f641c3faa0ec610eec366bf3fb27079be49c17c99668b8e3a61d473c8cc73bf",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/review/links_c0_preservation.json": "09d1e669781f694e30615523ec8b66859857e874a8dd74cd894d9a67cda7d4e4",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/review/old_renderer_preservation.json": "2f88904e39e49cd2f410b6d9423d521213dc18cef958046db36380898f9cdab8",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/review/parent_payload_difference.json": "e9116e1053c33ec9367f8087fb8b13b532d53ae420e622d77e550e21f48d214b",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/review/preservation_audit.json": "66944b31e4871993a7dde5804387da26fc32383e9fbd38ff6aa420ccf8f0e248",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/review/preservation_audit.py": "3db3311527c34572df750c5883ebc0449bfc7e2fa9206e2268fb0d91bd290da1",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/review/preservation_audit_final.py": "ae977de2239932d060ba36c75330898bcf9648b865b3f568351a9f75ec7e47c1",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/review/reviewer_harness_negatives.json": "d2a2c47712a9830e72fb9b3536243bfad7d67a755c9816f067f7f95160b9e61c",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/review/software.log": "b4bc0c4d06b6867999609e9ec121d608083924f92c698478cbc8553f9584e0b6",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/review/software_command.json": "1222f461267f1af4b0449ce1b873d5c931915447d83074b22a5f2e4cc2b35ac9",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/review/software_final.log": "762454c6fca64707793948571ba24c903bf1b237aff6d2cbcc4080b116f618be",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/review/software_final.xml": "c97fe95f4d4fcf1af47509f259c2e26fdab1777156f86b36a01f9699cc64123f",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/review/software_final_command.json": "df365f63f2e30f70a40d376b6de3570bad53047464bf79db3b90112021d7ca79",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/review/software_final_result.json": "c57820779608ffc558772027376aed2c01361ac302922c8c84f34b37c596563f",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/review/software_result.json": "52400a8fbe40ecf3909f37d88cef80402624d0c072d7105f7cd469f5b3a51af6",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/review/software_runner.py": "e71d1c2744f2ee9839a5471e0c491bd98877429ce76e75ba7ee73e1c9ae13e15",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/review/software_runner_final.py": "51412d40dc38a447343710905936eb2fc18d09ac576b12f64018e5956f4220d0",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/run_switch.json": "f3ff01bdb64d6d5ed05fcdc99c79e91257231935e8f84d8c87f207a90cc5ac95",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/software_5.log": "168379e653dc49259cab84567ee7c989efa012deab13d7830d74229826032684",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/software_5.xml": "3169b6a4c12318053ad568bb1ac65f9af2ddf88fbf8988dcf56bf1c754f4ec1e",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/software_5_command.json": "533938073ce8da623f7bd4b010b96bf851ec9b86c991698463e6aef86eafaf42",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/software_5_result.json": "c57820779608ffc558772027376aed2c01361ac302922c8c84f34b37c596563f",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/switch_after_ax.txt": "29c2f5c10e6551a9c6c1d9d9eb0364bfd6a09376b07346faad8c495c83f2d783",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/switch_before_ax.txt": "b210df650f5f982304278a03450bdec62afdd1b02084d830a9af9c32c2397d53",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/viewer_final.jpg": "048c4743d22b1ce26e90fcecccefc448191686d2a8566f1234b738879998021b",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/viewer_final_dom.txt": "224c7c5a7e1b1e4fee074d9972e8200657fdfc698a6f7a66de4506cbbc33a260",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/viewer_sample160.jpg": "5c210484ff32b8479e1e7ff9227b6937eca37e034471daa2a99447c99fe5ff39",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/viewer_sample160_ax.txt": "66df746f0163e0ba76e4e8fdf906c2a443828d696753b7c72d9c633335c10eb5",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/existing_fixture.log": "1736591f96825c595673d7486b1a75ab149dbcd669439977e54b1dfca1296bf0",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/existing_fixture.xml": "289813867cf5c7ca0d5e9ce5c897fee5dfe7432cd97262e0b6a1db92d4689c51",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/existing_fixture_command.json": "35b2853aeb9e72d96ea01b4478b8f2f344fe71404b346b8c0581c9bad686525a",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/existing_fixture_result.json": "c57820779608ffc558772027376aed2c01361ac302922c8c84f34b37c596563f",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/test_existing_fixture.py": "abca4f458fc8242aa8c14c03d48142c7627f808f2428cdaf58ba5147771ed309",
+    "results/apex_workbench_nmpc_lab_v1/ux_correction_20261109/links_preservation.json": "1d9ac64d7cfac6a42b97a4ebd4f73b14af1db14ed8512fe615c64f1f2dfe7ffe"
+  },
+  "parent_additional_retained_ui_fixture": {
+    "passed": 1,
+    "duration_s": 2.17,
+    "failures": 0,
+    "scientific_modules": [],
+    "scope": "Existing retained replay/analysis/comparison fixture uses captured source-bound baseline configuration metadata; no fresh probe/start_run",
+    "result": {
+      "exit_code": 0,
+      "scientific_modules": []
+    }
+  },
+  "parent_links_preservation": {
+    "historical_links": 324,
+    "changed": [],
+    "root": "/Users/marwansaber/.codex/worktrees/nmpc-weight-m0/MPC_Controller_v1_IronManStyle/results/apex_workbench_nmpc_weights",
+    "initial_harness_negative": "First audit resolved M5A-relative link paths against repository root and falsely reported mismatches; corrected root only, no filesystem mutation"
+  }
+}
