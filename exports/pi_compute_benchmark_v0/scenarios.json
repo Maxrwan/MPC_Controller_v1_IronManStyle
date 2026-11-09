@@ -1,0 +1,85 @@
+{
+  "duration_s": 2.0,
+  "track_length_m": 154.76345492731022,
+  "selection": "Stable descending rank on serialized Planning s rows excluding seam duplicate: minimum |track curvature|; maximum |track curvature|; maximum |numpy.gradient(track curvature, s)|. Admit model-valid reference state and feedforward control; distinct starts >=0.1 m.",
+  "windows": [
+    {
+      "name": "straight",
+      "s_track_m": 13.2468719495,
+      "initial_state": [
+        6.0,
+        0.0,
+        -3.1038539636819994e-05,
+        1.017424811067258e-09,
+        13.2468719495,
+        2.94737590701e-11
+      ],
+      "reference": {
+        "e_y_ref_m": 2.94737590701e-11,
+        "e_psi_ref_rad": 1.017424811067258e-09,
+        "kappa_ref_1pm": -5.17308993947e-06,
+        "v_ref_mps": 6.0,
+        "a_ref_mps2": 0.0
+      },
+      "initial_validation_control": [
+        -1.5519269818397538e-06,
+        0.0
+      ],
+      "track_curvature_1pm": -5.110785615136787e-06,
+      "track_curvature_gradient_1pm2": 0.00596968242609322,
+      "serialized_row_index": 265
+    },
+    {
+      "name": "high_curvature",
+      "s_track_m": 23.8443695091,
+      "initial_state": [
+        2.22926927876,
+        0.0,
+        -2.6914648926082867,
+        0.18616585390999996,
+        23.8443695091,
+        -0.126224036176
+      ],
+      "reference": {
+        "e_y_ref_m": -0.126224036176,
+        "e_psi_ref_rad": 0.18616585390999996,
+        "kappa_ref_1pm": -1.2073305447,
+        "v_ref_mps": 2.22926927876,
+        "a_ref_mps2": 0.0
+      },
+      "initial_validation_control": [
+        -0.34750106606053527,
+        0.0
+      ],
+      "track_curvature_1pm": -1.0928787489838756,
+      "track_curvature_gradient_1pm2": 0.06025061512627872,
+      "serialized_row_index": 477
+    },
+    {
+      "name": "curvature_transition",
+      "s_track_m": 24.0943104893,
+      "initial_state": [
+        2.37466084276,
+        0.0,
+        -2.1558536933334125,
+        0.18169936360799976,
+        24.0943104893,
+        -0.0842369408052
+      ],
+      "reference": {
+        "e_y_ref_m": -0.0842369408052,
+        "e_psi_ref_rad": 0.18169936360799976,
+        "kappa_ref_1pm": -0.907857515698,
+        "v_ref_mps": 2.37466084276,
+        "a_ref_mps2": 0.0
+      },
+      "initial_validation_control": [
+        -0.26590761542682795,
+        0.0
+      ],
+      "track_curvature_1pm": -0.8195433557068931,
+      "track_curvature_gradient_1pm2": 1.2253840163229004,
+      "serialized_row_index": 482
+    }
+  ]
+}

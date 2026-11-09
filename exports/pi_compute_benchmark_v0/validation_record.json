@@ -1,0 +1,765 @@
+{
+  "status": "WORK_COMPLETE_PENDING_REVIEW",
+  "stop": "PI COMPUTATIONAL BENCHMARK PACKAGE READY FOR HARDWARE TESTING",
+  "date": "2026-11-09",
+  "base_repository_revision": "d14f9ade48e9fdd3c9bb904cd9b58fd504e73035",
+  "scientific_revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+  "producer_reference": "e577f2c00bde2092f6bd1bd403b72aa9ca10713a",
+  "frozen_file_count": 66,
+  "frozen_python_module_count": 57,
+  "source_bytes_match_git": true,
+  "source_configs_match_at_producer": true,
+  "environment": "Docker Desktop Linux ARM64 VM on Darwin ARM64; not Raspberry Pi",
+  "functional_run": "results/run-20261109T030041Z-nYuu17",
+  "functional_exit_code": 0,
+  "functional_status": "COMPLETE",
+  "focused_tests": {
+    "command": "python -m unittest -v test_package",
+    "passed": 9,
+    "failed": 0,
+    "skipped": 0,
+    "log": "results/package-tests-attempt-2.log",
+    "controlled_cases_are_not_controller_evidence": true
+  },
+  "windows": [
+    {
+      "name": "straight",
+      "status": "COMPLETE",
+      "stop_reason": "duration",
+      "end_simulated_time_s": 2.0,
+      "optimizations": 20,
+      "failed_solver_calls": 0,
+      "unprepared_packets": 0,
+      "tracker_updates": 200,
+      "tracker_misses": 0,
+      "planner_busy_misses": 0,
+      "fallbacks": 0,
+      "sampled_process_thread_counts": [
+        1
+      ],
+      "maximum_sampled_threads_with_cpu_delta": 1,
+      "threadpools": [
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 1,
+          "prefix": "libscipy_openblas",
+          "filepath": "/usr/local/lib/python3.12/site-packages/numpy.libs/libscipy_openblas64_-f552eb69.so",
+          "version": "0.3.34.106.0",
+          "threading_layer": "pthreads",
+          "architecture": "neoversen1"
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 1,
+          "prefix": "libscipy_openblas",
+          "filepath": "/usr/local/lib/python3.12/site-packages/scipy.libs/libscipy_openblas-b7e2810b.so",
+          "version": "0.3.31.dev",
+          "threading_layer": "pthreads",
+          "architecture": "neoversen1"
+        }
+      ],
+      "peak_sampled_rss_bytes": 192286720,
+      "distributions": {
+        "ipopt_all": {
+          "count": 20,
+          "mean_s": 0.03870650834998628,
+          "median_s": 0.03651352099996075,
+          "p95_s": 0.05676047680005924,
+          "p99_s": 0.07459226256001326,
+          "maximum_s": 0.07905020900000181,
+          "period_s": 0.1,
+          "exceeding_period_count": 0,
+          "exceeding_period_proportion": 0.0
+        },
+        "preparation_all": {
+          "count": 20,
+          "mean_s": 0.06763294799999926,
+          "median_s": 0.06400350000001254,
+          "p95_s": 0.09658893989995931,
+          "p99_s": 0.09869258797999692,
+          "maximum_s": 0.09921850000000632,
+          "period_s": 0.1,
+          "exceeding_period_count": 0,
+          "exceeding_period_proportion": 0.0
+        },
+        "ipopt_startup": {
+          "count": 1,
+          "mean_s": 0.07905020900000181,
+          "median_s": 0.07905020900000181,
+          "p95_s": 0.07905020900000181,
+          "p99_s": 0.07905020900000181,
+          "maximum_s": 0.07905020900000181,
+          "period_s": 0.1,
+          "exceeding_period_count": 0,
+          "exceeding_period_proportion": 0.0
+        },
+        "preparation_startup": {
+          "count": 1,
+          "mean_s": 0.09645054199995684,
+          "median_s": 0.09645054199995684,
+          "p95_s": 0.09645054199995684,
+          "p99_s": 0.09645054199995684,
+          "maximum_s": 0.09645054199995684,
+          "period_s": 0.1,
+          "exceeding_period_count": 0,
+          "exceeding_period_proportion": 0.0
+        },
+        "ipopt_recurring": {
+          "count": 19,
+          "mean_s": 0.03658315568419599,
+          "median_s": 0.03599124999993819,
+          "p95_s": 0.04460962080000851,
+          "p99_s": 0.05339179056005151,
+          "maximum_s": 0.055587333000062245,
+          "period_s": 0.1,
+          "exceeding_period_count": 0,
+          "exceeding_period_proportion": 0.0
+        },
+        "preparation_recurring": {
+          "count": 19,
+          "mean_s": 0.06611623252631728,
+          "median_s": 0.06369449999999688,
+          "p95_s": 0.09526881220009499,
+          "p99_s": 0.09842856244002406,
+          "maximum_s": 0.09921850000000632,
+          "period_s": 0.1,
+          "exceeding_period_count": 0,
+          "exceeding_period_proportion": 0.0
+        },
+        "ipopt_warm": {
+          "count": 19,
+          "mean_s": 0.03658315568419599,
+          "median_s": 0.03599124999993819,
+          "p95_s": 0.04460962080000851,
+          "p99_s": 0.05339179056005151,
+          "maximum_s": 0.055587333000062245,
+          "period_s": 0.1,
+          "exceeding_period_count": 0,
+          "exceeding_period_proportion": 0.0
+        },
+        "preparation_warm": {
+          "count": 19,
+          "mean_s": 0.06611623252631728,
+          "median_s": 0.06369449999999688,
+          "p95_s": 0.09526881220009499,
+          "p99_s": 0.09842856244002406,
+          "maximum_s": 0.09921850000000632,
+          "period_s": 0.1,
+          "exceeding_period_count": 0,
+          "exceeding_period_proportion": 0.0
+        },
+        "ipopt_cold": {
+          "count": 1,
+          "mean_s": 0.07905020900000181,
+          "median_s": 0.07905020900000181,
+          "p95_s": 0.07905020900000181,
+          "p99_s": 0.07905020900000181,
+          "maximum_s": 0.07905020900000181,
+          "period_s": 0.1,
+          "exceeding_period_count": 0,
+          "exceeding_period_proportion": 0.0
+        },
+        "preparation_cold": {
+          "count": 1,
+          "mean_s": 0.09645054199995684,
+          "median_s": 0.09645054199995684,
+          "p95_s": 0.09645054199995684,
+          "p99_s": 0.09645054199995684,
+          "maximum_s": 0.09645054199995684,
+          "period_s": 0.1,
+          "exceeding_period_count": 0,
+          "exceeding_period_proportion": 0.0
+        },
+        "tracker_update": {
+          "count": 200,
+          "mean_s": 4.819813999802136e-05,
+          "median_s": 3.9374999971641955e-05,
+          "p95_s": 7.914170006984023e-05,
+          "p99_s": 0.0001697674999002173,
+          "maximum_s": 0.00023937499997828127,
+          "period_s": 0.01,
+          "exceeding_period_count": 0,
+          "exceeding_period_proportion": 0.0
+        },
+        "tracker_validated_applied": {
+          "count": 200,
+          "mean_s": 0.0009586220499966202,
+          "median_s": 0.0009447709999790277,
+          "p95_s": 0.0013564000000030774,
+          "p99_s": 0.0019216040799778962,
+          "maximum_s": 0.0027233330000626665,
+          "period_s": 0.01,
+          "exceeding_period_count": 0,
+          "exceeding_period_proportion": 0.0
+        },
+        "command_validation_applied": {
+          "count": 200,
+          "mean_s": 0.0009049382949950769,
+          "median_s": 0.0009041045000230952,
+          "p95_s": 0.0012701788500237392,
+          "p99_s": 0.0017871282500186673,
+          "maximum_s": 0.002626125000006141,
+          "period_s": 0.01,
+          "exceeding_period_count": 0,
+          "exceeding_period_proportion": 0.0
+        }
+      }
+    },
+    {
+      "name": "high_curvature",
+      "status": "COMPLETE",
+      "stop_reason": "duration",
+      "end_simulated_time_s": 2.0,
+      "optimizations": 20,
+      "failed_solver_calls": 0,
+      "unprepared_packets": 0,
+      "tracker_updates": 199,
+      "tracker_misses": 1,
+      "planner_busy_misses": 0,
+      "fallbacks": 0,
+      "sampled_process_thread_counts": [
+        1
+      ],
+      "maximum_sampled_threads_with_cpu_delta": 1,
+      "threadpools": [
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 1,
+          "prefix": "libscipy_openblas",
+          "filepath": "/usr/local/lib/python3.12/site-packages/numpy.libs/libscipy_openblas64_-f552eb69.so",
+          "version": "0.3.34.106.0",
+          "threading_layer": "pthreads",
+          "architecture": "neoversen1"
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 1,
+          "prefix": "libscipy_openblas",
+          "filepath": "/usr/local/lib/python3.12/site-packages/scipy.libs/libscipy_openblas-b7e2810b.so",
+          "version": "0.3.31.dev",
+          "threading_layer": "pthreads",
+          "architecture": "neoversen1"
+        }
+      ],
+      "peak_sampled_rss_bytes": 192192512,
+      "distributions": {
+        "ipopt_all": {
+          "count": 20,
+          "mean_s": 0.03166338949998817,
+          "median_s": 0.029661895499998536,
+          "p95_s": 0.038193691949987854,
+          "p99_s": 0.040582371190013185,
+          "maximum_s": 0.041179541000019526,
+          "period_s": 0.1,
+          "exceeding_period_count": 0,
+          "exceeding_period_proportion": 0.0
+        },
+        "preparation_all": {
+          "count": 20,
+          "mean_s": 0.06158205000000407,
+          "median_s": 0.05853524999997717,
+          "p95_s": 0.07080846070002168,
+          "p99_s": 0.0881922249399565,
+          "maximum_s": 0.09253816599994025,
+          "period_s": 0.1,
+          "exceeding_period_count": 0,
+          "exceeding_period_proportion": 0.0
+        },
+        "ipopt_startup": {
+          "count": 1,
+          "mean_s": 0.038036541999986184,
+          "median_s": 0.038036541999986184,
+          "p95_s": 0.038036541999986184,
+          "p99_s": 0.038036541999986184,
+          "maximum_s": 0.038036541999986184,
+          "period_s": 0.1,
+          "exceeding_period_count": 0,
+          "exceeding_period_proportion": 0.0
+        },
+        "preparation_startup": {
+          "count": 1,
+          "mean_s": 0.054994333999957234,
+          "median_s": 0.054994333999957234,
+          "p95_s": 0.054994333999957234,
+          "p99_s": 0.054994333999957234,
+          "maximum_s": 0.054994333999957234,
+          "period_s": 0.1,
+          "exceeding_period_count": 0,
+          "exceeding_period_proportion": 0.0
+        },
+        "ipopt_recurring": {
+          "count": 19,
+          "mean_s": 0.031327960421040905,
+          "median_s": 0.02965683299999,
+          "p95_s": 0.038097379399926,
+          "p99_s": 0.04056310868000083,
+          "maximum_s": 0.041179541000019526,
+          "period_s": 0.1,
+          "exceeding_period_count": 0,
+          "exceeding_period_proportion": 0.0
+        },
+        "preparation_recurring": {
+          "count": 19,
+          "mean_s": 0.061928771894743384,
+          "median_s": 0.058539375000009386,
+          "p95_s": 0.07195212940001733,
+          "p99_s": 0.08842095867995568,
+          "maximum_s": 0.09253816599994025,
+          "period_s": 0.1,
+          "exceeding_period_count": 0,
+          "exceeding_period_proportion": 0.0
+        },
+        "ipopt_warm": {
+          "count": 19,
+          "mean_s": 0.031327960421040905,
+          "median_s": 0.02965683299999,
+          "p95_s": 0.038097379399926,
+          "p99_s": 0.04056310868000083,
+          "maximum_s": 0.041179541000019526,
+          "period_s": 0.1,
+          "exceeding_period_count": 0,
+          "exceeding_period_proportion": 0.0
+        },
+        "preparation_warm": {
+          "count": 19,
+          "mean_s": 0.061928771894743384,
+          "median_s": 0.058539375000009386,
+          "p95_s": 0.07195212940001733,
+          "p99_s": 0.08842095867995568,
+          "maximum_s": 0.09253816599994025,
+          "period_s": 0.1,
+          "exceeding_period_count": 0,
+          "exceeding_period_proportion": 0.0
+        },
+        "ipopt_cold": {
+          "count": 1,
+          "mean_s": 0.038036541999986184,
+          "median_s": 0.038036541999986184,
+          "p95_s": 0.038036541999986184,
+          "p99_s": 0.038036541999986184,
+          "maximum_s": 0.038036541999986184,
+          "period_s": 0.1,
+          "exceeding_period_count": 0,
+          "exceeding_period_proportion": 0.0
+        },
+        "preparation_cold": {
+          "count": 1,
+          "mean_s": 0.054994333999957234,
+          "median_s": 0.054994333999957234,
+          "p95_s": 0.054994333999957234,
+          "p99_s": 0.054994333999957234,
+          "maximum_s": 0.054994333999957234,
+          "period_s": 0.1,
+          "exceeding_period_count": 0,
+          "exceeding_period_proportion": 0.0
+        },
+        "tracker_update": {
+          "count": 199,
+          "mean_s": 5.4776180901747614e-05,
+          "median_s": 4.6541000074284966e-05,
+          "p95_s": 9.489580000945352e-05,
+          "p99_s": 0.000277044999984355,
+          "maximum_s": 0.0002977919999693768,
+          "period_s": 0.01,
+          "exceeding_period_count": 0,
+          "exceeding_period_proportion": 0.0
+        },
+        "tracker_validated_applied": {
+          "count": 199,
+          "mean_s": 0.001081470693471583,
+          "median_s": 0.00097091600002841,
+          "p95_s": 0.0011383502999478877,
+          "p99_s": 0.0019301374999645719,
+          "maximum_s": 0.013525084000093557,
+          "period_s": 0.01,
+          "exceeding_period_count": 1,
+          "exceeding_period_proportion": 0.005025125628140704
+        },
+        "command_validation_applied": {
+          "count": 199,
+          "mean_s": 0.0010199606180923005,
+          "median_s": 0.0009172500000431683,
+          "p95_s": 0.0010348916999191715,
+          "p99_s": 0.001787750319972514,
+          "maximum_s": 0.013478749999990214,
+          "period_s": 0.01,
+          "exceeding_period_count": 1,
+          "exceeding_period_proportion": 0.005025125628140704
+        }
+      }
+    },
+    {
+      "name": "curvature_transition",
+      "status": "COMPLETE",
+      "stop_reason": "duration",
+      "end_simulated_time_s": 2.0,
+      "optimizations": 20,
+      "failed_solver_calls": 0,
+      "unprepared_packets": 0,
+      "tracker_updates": 200,
+      "tracker_misses": 0,
+      "planner_busy_misses": 0,
+      "fallbacks": 0,
+      "sampled_process_thread_counts": [
+        1
+      ],
+      "maximum_sampled_threads_with_cpu_delta": 1,
+      "threadpools": [
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 1,
+          "prefix": "libscipy_openblas",
+          "filepath": "/usr/local/lib/python3.12/site-packages/numpy.libs/libscipy_openblas64_-f552eb69.so",
+          "version": "0.3.34.106.0",
+          "threading_layer": "pthreads",
+          "architecture": "neoversen1"
+        },
+        {
+          "user_api": "blas",
+          "internal_api": "openblas",
+          "num_threads": 1,
+          "prefix": "libscipy_openblas",
+          "filepath": "/usr/local/lib/python3.12/site-packages/scipy.libs/libscipy_openblas-b7e2810b.so",
+          "version": "0.3.31.dev",
+          "threading_layer": "pthreads",
+          "architecture": "neoversen1"
+        }
+      ],
+      "peak_sampled_rss_bytes": 192348160,
+      "distributions": {
+        "ipopt_all": {
+          "count": 20,
+          "mean_s": 0.029393631250002272,
+          "median_s": 0.02876554150003585,
+          "p95_s": 0.035439245199995646,
+          "p99_s": 0.04325324904002626,
+          "maximum_s": 0.045206750000033935,
+          "period_s": 0.1,
+          "exceeding_period_count": 0,
+          "exceeding_period_proportion": 0.0
+        },
+        "preparation_all": {
+          "count": 20,
+          "mean_s": 0.05552184595001677,
+          "median_s": 0.05460108350001747,
+          "p95_s": 0.05958254615003966,
+          "p99_s": 0.061946209230057996,
+          "maximum_s": 0.06253712500006259,
+          "period_s": 0.1,
+          "exceeding_period_count": 0,
+          "exceeding_period_proportion": 0.0
+        },
+        "ipopt_startup": {
+          "count": 1,
+          "mean_s": 0.045206750000033935,
+          "median_s": 0.045206750000033935,
+          "p95_s": 0.045206750000033935,
+          "p99_s": 0.045206750000033935,
+          "maximum_s": 0.045206750000033935,
+          "period_s": 0.1,
+          "exceeding_period_count": 0,
+          "exceeding_period_proportion": 0.0
+        },
+        "preparation_startup": {
+          "count": 1,
+          "mean_s": 0.06253712500006259,
+          "median_s": 0.06253712500006259,
+          "p95_s": 0.06253712500006259,
+          "p99_s": 0.06253712500006259,
+          "maximum_s": 0.06253712500006259,
+          "period_s": 0.1,
+          "exceeding_period_count": 0,
+          "exceeding_period_proportion": 0.0
+        },
+        "ipopt_recurring": {
+          "count": 19,
+          "mean_s": 0.028561361842105868,
+          "median_s": 0.02771179200010465,
+          "p95_s": 0.0326588166000306,
+          "p99_s": 0.03447189612000102,
+          "maximum_s": 0.034925165999993624,
+          "period_s": 0.1,
+          "exceeding_period_count": 0,
+          "exceeding_period_proportion": 0.0
+        },
+        "preparation_recurring": {
+          "count": 19,
+          "mean_s": 0.055152620736856464,
+          "median_s": 0.05458095799997409,
+          "p95_s": 0.058850441699962626,
+          "p99_s": 0.05931172194002329,
+          "maximum_s": 0.059427042000038455,
+          "period_s": 0.1,
+          "exceeding_period_count": 0,
+          "exceeding_period_proportion": 0.0
+        },
+        "ipopt_warm": {
+          "count": 19,
+          "mean_s": 0.028561361842105868,
+          "median_s": 0.02771179200010465,
+          "p95_s": 0.0326588166000306,
+          "p99_s": 0.03447189612000102,
+          "maximum_s": 0.034925165999993624,
+          "period_s": 0.1,
+          "exceeding_period_count": 0,
+          "exceeding_period_proportion": 0.0
+        },
+        "preparation_warm": {
+          "count": 19,
+          "mean_s": 0.055152620736856464,
+          "median_s": 0.05458095799997409,
+          "p95_s": 0.058850441699962626,
+          "p99_s": 0.05931172194002329,
+          "maximum_s": 0.059427042000038455,
+          "period_s": 0.1,
+          "exceeding_period_count": 0,
+          "exceeding_period_proportion": 0.0
+        },
+        "ipopt_cold": {
+          "count": 1,
+          "mean_s": 0.045206750000033935,
+          "median_s": 0.045206750000033935,
+          "p95_s": 0.045206750000033935,
+          "p99_s": 0.045206750000033935,
+          "maximum_s": 0.045206750000033935,
+          "period_s": 0.1,
+          "exceeding_period_count": 0,
+          "exceeding_period_proportion": 0.0
+        },
+        "preparation_cold": {
+          "count": 1,
+          "mean_s": 0.06253712500006259,
+          "median_s": 0.06253712500006259,
+          "p95_s": 0.06253712500006259,
+          "p99_s": 0.06253712500006259,
+          "maximum_s": 0.06253712500006259,
+          "period_s": 0.1,
+          "exceeding_period_count": 0,
+          "exceeding_period_proportion": 0.0
+        },
+        "tracker_update": {
+          "count": 200,
+          "mean_s": 4.304519000527307e-05,
+          "median_s": 3.8313000004563946e-05,
+          "p95_s": 6.839790006551992e-05,
+          "p99_s": 9.958624999057955e-05,
+          "maximum_s": 0.00015912499998194107,
+          "period_s": 0.01,
+          "exceeding_period_count": 0,
+          "exceeding_period_proportion": 0.0
+        },
+        "tracker_validated_applied": {
+          "count": 200,
+          "mean_s": 0.0009565577300048744,
+          "median_s": 0.0009437495000383933,
+          "p95_s": 0.0010424160499951539,
+          "p99_s": 0.001158755330076244,
+          "maximum_s": 0.002066208999963237,
+          "period_s": 0.01,
+          "exceeding_period_count": 0,
+          "exceeding_period_proportion": 0.0
+        },
+        "command_validation_applied": {
+          "count": 200,
+          "mean_s": 0.00090935938999678,
+          "median_s": 0.000902270999972643,
+          "p95_s": 0.000985050600093018,
+          "p99_s": 0.0010879735100070302,
+          "maximum_s": 0.0019356669999979204,
+          "period_s": 0.01,
+          "exceeding_period_count": 0,
+          "exceeding_period_proportion": 0.0
+        }
+      }
+    }
+  ],
+  "not_verified": [
+    "Physical Raspberry Pi 4/5 execution, timing, cooling, power, memory and throttling behavior",
+    "WCET or guaranteed real-time performance",
+    "Physical Safety or deployment qualification"
+  ],
+  "timing_comparability": "Local functional observations only. Host ANECompilerService was active; background load and Docker virtualization preclude treating these as controlled board comparison timings.",
+  "measured_executable_sha256": {
+    "benchmark.py": "e09b26e8fb6d0f46af4a4df77504b6a6aea18581eb784dae006ff6a5891bcf4a",
+    "worker.py": "a70c8375d93eecb82a19e1a87097f1331bafc4526850f4fe82002876196c3695",
+    "runtime.py": "b3ae9b925d5a1f217cb154b31bef35e4c844c5796f542a13051b999909bd6e10",
+    "common.py": "0f6cd0552601c64dd1de35925dcad28a2000209e3382a3f66f7b151cd494843e",
+    "test_package.py": "576a9acf14eb8793fd5fb7a68cf7456821551f80fdf10db459650b619b420bc6",
+    "run.sh": "e13811ff375c0adf38136b1ad53cfe44d1c84156eef674aa12fd440183729153",
+    "Dockerfile": "11f1a37cbf04bc610480c581eaf377240d05a386125518adee98bd00225fef29",
+    "requirements.lock": "f9774d6d32cad972a0c5fc86ff7d7b07ce48aa3959903eed2e654dc7153766e5",
+    "scenarios.json": "d414f855020a7d94cc24bee567b4a668cf3ca5e6805d45ed0a7a912af30e52c0",
+    "source_manifest.json": "e84a1691245b1c427a560d28a91477b8a3f8276981f966d33528f16e92960ba6"
+  },
+  "delivery_executable_sha256": {
+    "benchmark.py": "d0908be0d2e4e21c9d85a3b85a4e3e877f6cd302963ffecf3924babea89389d0",
+    "worker.py": "a70c8375d93eecb82a19e1a87097f1331bafc4526850f4fe82002876196c3695",
+    "runtime.py": "b3ae9b925d5a1f217cb154b31bef35e4c844c5796f542a13051b999909bd6e10",
+    "common.py": "0f6cd0552601c64dd1de35925dcad28a2000209e3382a3f66f7b151cd494843e",
+    "test_package.py": "6730db70c8d7e33a985c190b179b08dece8a4756772563aecada3a3f24537e18",
+    "run.sh": "e13811ff375c0adf38136b1ad53cfe44d1c84156eef674aa12fd440183729153",
+    "Dockerfile": "11f1a37cbf04bc610480c581eaf377240d05a386125518adee98bd00225fef29",
+    "requirements.lock": "f9774d6d32cad972a0c5fc86ff7d7b07ce48aa3959903eed2e654dc7153766e5",
+    "scenarios.json": "d414f855020a7d94cc24bee567b4a668cf3ca5e6805d45ed0a7a912af30e52c0",
+    "source_manifest.json": "e84a1691245b1c427a560d28a91477b8a3f8276981f966d33528f16e92960ba6"
+  },
+  "reporting_change": "After the single functional run, summary-only aggregation added command-validation and validated/applied tracker populations from unchanged raw data. Numerical worker/runtime/configuration hashes remain identical. No timing rerun.",
+  "derived_analysis": "results/functional-analysis-v1.json",
+  "additional_focused_test": {
+    "selection": "test_package.EvidenceTests.test_failed_solver_remains_in_population",
+    "passed": 1,
+    "failed": 0,
+    "log": "results/timing-aggregation-test.log",
+    "scope": "summary-only applied/validation populations; prior other tests inherited for unchanged code"
+  },
+  "aggregate_distributions": {
+    "ipopt_all": {
+      "count": 60,
+      "mean_s": 0.03325450969999224,
+      "median_s": 0.031243041499976698,
+      "p95_s": 0.04348071875000414,
+      "p99_s": 0.06520711216003738,
+      "maximum_s": 0.07905020900000181,
+      "period_s": 0.1,
+      "exceeding_period_count": 0,
+      "exceeding_period_proportion": 0.0
+    },
+    "preparation_all": {
+      "count": 60,
+      "mean_s": 0.061578947983340036,
+      "median_s": 0.058440458499944725,
+      "p95_s": 0.09265275559994847,
+      "p99_s": 0.09758540477997711,
+      "maximum_s": 0.09921850000000632,
+      "period_s": 0.1,
+      "exceeding_period_count": 0,
+      "exceeding_period_proportion": 0.0
+    },
+    "ipopt_startup": {
+      "count": 3,
+      "mean_s": 0.05409783366667398,
+      "median_s": 0.045206750000033935,
+      "p95_s": 0.07566586310000503,
+      "p99_s": 0.07837333982000246,
+      "maximum_s": 0.07905020900000181,
+      "period_s": 0.1,
+      "exceeding_period_count": 0,
+      "exceeding_period_proportion": 0.0
+    },
+    "preparation_startup": {
+      "count": 3,
+      "mean_s": 0.07132733366665889,
+      "median_s": 0.06253712500006259,
+      "p95_s": 0.09305920029996742,
+      "p99_s": 0.09577227365995895,
+      "maximum_s": 0.09645054199995684,
+      "period_s": 0.1,
+      "exceeding_period_count": 0,
+      "exceeding_period_proportion": 0.0
+    },
+    "ipopt_recurring": {
+      "count": 57,
+      "mean_s": 0.03215749264911425,
+      "median_s": 0.030718957999965824,
+      "p95_s": 0.041509107800015946,
+      "p99_s": 0.0487567565200288,
+      "maximum_s": 0.055587333000062245,
+      "period_s": 0.1,
+      "exceeding_period_count": 0,
+      "exceeding_period_proportion": 0.0
+    },
+    "preparation_recurring": {
+      "count": 57,
+      "mean_s": 0.061065875052639045,
+      "median_s": 0.058418333999952665,
+      "p95_s": 0.07572206599998017,
+      "p99_s": 0.09676091648006149,
+      "maximum_s": 0.09921850000000632,
+      "period_s": 0.1,
+      "exceeding_period_count": 0,
+      "exceeding_period_proportion": 0.0
+    },
+    "ipopt_warm": {
+      "count": 57,
+      "mean_s": 0.03215749264911425,
+      "median_s": 0.030718957999965824,
+      "p95_s": 0.041509107800015946,
+      "p99_s": 0.0487567565200288,
+      "maximum_s": 0.055587333000062245,
+      "period_s": 0.1,
+      "exceeding_period_count": 0,
+      "exceeding_period_proportion": 0.0
+    },
+    "preparation_warm": {
+      "count": 57,
+      "mean_s": 0.061065875052639045,
+      "median_s": 0.058418333999952665,
+      "p95_s": 0.07572206599998017,
+      "p99_s": 0.09676091648006149,
+      "maximum_s": 0.09921850000000632,
+      "period_s": 0.1,
+      "exceeding_period_count": 0,
+      "exceeding_period_proportion": 0.0
+    },
+    "ipopt_cold": {
+      "count": 3,
+      "mean_s": 0.05409783366667398,
+      "median_s": 0.045206750000033935,
+      "p95_s": 0.07566586310000503,
+      "p99_s": 0.07837333982000246,
+      "maximum_s": 0.07905020900000181,
+      "period_s": 0.1,
+      "exceeding_period_count": 0,
+      "exceeding_period_proportion": 0.0
+    },
+    "preparation_cold": {
+      "count": 3,
+      "mean_s": 0.07132733366665889,
+      "median_s": 0.06253712500006259,
+      "p95_s": 0.09305920029996742,
+      "p99_s": 0.09577227365995895,
+      "maximum_s": 0.09645054199995684,
+      "period_s": 0.1,
+      "exceeding_period_count": 0,
+      "exceeding_period_proportion": 0.0
+    },
+    "tracker_update": {
+      "count": 599,
+      "mean_s": 4.8662981636238166e-05,
+      "median_s": 3.9624999999432475e-05,
+      "p95_s": 8.35500000675893e-05,
+      "p99_s": 0.00016933883991669064,
+      "maximum_s": 0.0002977919999693768,
+      "period_s": 0.01,
+      "exceeding_period_count": 0,
+      "exceeding_period_proportion": 0.0
+    },
+    "tracker_validated_applied": {
+      "count": 599,
+      "mean_s": 0.000998745616028621,
+      "median_s": 0.000949584000068171,
+      "p95_s": 0.0011262877999456578,
+      "p99_s": 0.001850688339964107,
+      "maximum_s": 0.013525084000093557,
+      "period_s": 0.01,
+      "exceeding_period_count": 1,
+      "exceeding_period_proportion": 0.001669449081803005
+    },
+    "command_validation_applied": {
+      "count": 599,
+      "mean_s": 0.0009446272120179285,
+      "median_s": 0.0009067080000022543,
+      "p95_s": 0.0010210038999730387,
+      "p99_s": 0.001711444499972002,
+      "maximum_s": 0.013478749999990214,
+      "period_s": 0.01,
+      "exceeding_period_count": 1,
+      "exceeding_period_proportion": 0.001669449081803005
+    }
+  }
+}

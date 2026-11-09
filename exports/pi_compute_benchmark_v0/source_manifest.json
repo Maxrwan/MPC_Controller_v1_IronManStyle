@@ -1,0 +1,402 @@
+{
+  "scientific_revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+  "producer_reference": "e577f2c00bde2092f6bd1bd403b72aa9ca10713a",
+  "files": {
+    "vendor/configs/performance/apex_performance_synthetic_v1.json": {
+      "sha256": "5299adca29d5c5bd383252cd2c299a392dd6872dc6bb72d1a4dd7ecfb8dd1ebf",
+      "bytes": 29740,
+      "git_revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "git_path": "configs/performance/apex_performance_synthetic_v1.json"
+    },
+    "vendor/configs/planning/task007b/gamma_2p000/planning_manifest.json": {
+      "sha256": "5e7bccf1a300fb6737fc6b6b6e0c9aa921c110b11ffc5762a73f57f830a8660c",
+      "bytes": 1921,
+      "git_revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "git_path": "configs/planning/task007b/gamma_2p000/planning_manifest.json"
+    },
+    "vendor/configs/planning/task007b/gamma_2p000/planning_reference.csv": {
+      "sha256": "6206e18ce3cb105d58d0923564336e28c00ec44aee3fd8a06ff7a37bcf84e2df",
+      "bytes": 415410,
+      "git_revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "git_path": "configs/planning/task007b/gamma_2p000/planning_reference.csv"
+    },
+    "vendor/configs/planning/task007b/gamma_2p000/planning_validation.json": {
+      "sha256": "279582d2dcf37fdf4008ddc7f926109ef3d730a0e64c188d7003755d08871fa7",
+      "bytes": 1306,
+      "git_revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "git_path": "configs/planning/task007b/gamma_2p000/planning_validation.json"
+    },
+    "vendor/configs/planning/task007b/gamma_2p000/speed_polynomial.json": {
+      "sha256": "f335e78fc6c735c952f49078077a573ee989dd2be71497e90451e34a79f2c7ea",
+      "bytes": 308696,
+      "git_revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "git_path": "configs/planning/task007b/gamma_2p000/speed_polynomial.json"
+    },
+    "vendor/configs/planning/task007b/gamma_2p000/track_source.json": {
+      "sha256": "5f4d1734d7fec7de56d346e8f90bf272a3de9c05ac42f76cd49004e7f9183e55",
+      "bytes": 918,
+      "git_revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "git_path": "configs/planning/task007b/gamma_2p000/track_source.json"
+    },
+    "vendor/configs/vehicles/synthetic_dynamic_test_vehicle.yaml": {
+      "sha256": "df1b853d21a1d3efaf858f7e58401151f2c5237793c40e16bb4189ed651f9cf3",
+      "bytes": 1044,
+      "git_revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "git_path": "configs/vehicles/synthetic_dynamic_test_vehicle.yaml"
+    },
+    "vendor/pyproject.toml": {
+      "sha256": "c8ea69a3a486c9794b6cf88ac26566211c6f1bb7b7286d86dbaa36a191353d41",
+      "bytes": 803,
+      "git_revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "git_path": "pyproject.toml"
+    },
+    "vendor/src/apex/__init__.py": {
+      "sha256": "2dd176027291d40716c8c828e8a9994afbf247d22bea1426fac52c259cbbc33b",
+      "bytes": 67,
+      "git_revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "git_path": "src/apex/__init__.py"
+    },
+    "vendor/src/apex/config.py": {
+      "sha256": "40227b4ed2a38e30ecfb9acc7f308cf9db31b54dc813bb28850b25800877e0ad",
+      "bytes": 1587,
+      "git_revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "git_path": "src/apex/config.py"
+    },
+    "vendor/src/apex/control/__init__.py": {
+      "sha256": "12878dbd9e38ae415462ea0eccbfc315387856736233a7ea4b2f840b1a53e96a",
+      "bytes": 62,
+      "git_revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "git_path": "src/apex/control/__init__.py"
+    },
+    "vendor/src/apex/control/baseline/__init__.py": {
+      "sha256": "2759255fac566e141a1632b0ba734ef840ae4462054f20246ca958c175ea4398",
+      "bytes": 276,
+      "git_revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "git_path": "src/apex/control/baseline/__init__.py"
+    },
+    "vendor/src/apex/control/baseline/controller.py": {
+      "sha256": "1d738265c24e8ff6fc557ff8d4f82669978fe12e212dcd70dc45eb94cf438ec4",
+      "bytes": 4310,
+      "git_revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "git_path": "src/apex/control/baseline/controller.py"
+    },
+    "vendor/src/apex/control/baseline/lqr.py": {
+      "sha256": "68e191235e03dda744cc9894ca0981a8df8bd9f1bd0e6331f7872148014cf818",
+      "bytes": 3163,
+      "git_revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "git_path": "src/apex/control/baseline/lqr.py"
+    },
+    "vendor/src/apex/control/baseline/references.py": {
+      "sha256": "9fa0f4c67d8fdd4a535bca5fa43854cf85660d70b6246632ec711f469ad2b081",
+      "bytes": 1607,
+      "git_revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "git_path": "src/apex/control/baseline/references.py"
+    },
+    "vendor/src/apex/control/baseline/speed.py": {
+      "sha256": "5a41c32eaa491f5bf8fdec49827bac3d9aafd78924f10786fd4000d3a0ec941f",
+      "bytes": 1808,
+      "git_revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "git_path": "src/apex/control/baseline/speed.py"
+    },
+    "vendor/src/apex/control/mpc/__init__.py": {
+      "sha256": "d91fd708ea7a53f7a8a23f558b5724832304b8508dd57828e4bfcaa946bac124",
+      "bytes": 269,
+      "git_revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "git_path": "src/apex/control/mpc/__init__.py"
+    },
+    "vendor/src/apex/control/mpc/controller.py": {
+      "sha256": "63e17bd863dcd8d649d9f382a545f5c004e982fd87e837aa6b283ec1b1206b82",
+      "bytes": 10100,
+      "git_revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "git_path": "src/apex/control/mpc/controller.py"
+    },
+    "vendor/src/apex/control/mpc/cost.py": {
+      "sha256": "1b8367af3a41c72fc24573a92d9dba526100e53985e33d2626084b1222c5623b",
+      "bytes": 3672,
+      "git_revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "git_path": "src/apex/control/mpc/cost.py"
+    },
+    "vendor/src/apex/control/mpc/preview.py": {
+      "sha256": "c3e74f7c197ed42961f3494b6be8061570d294d790214e2e27401a2771a418cf",
+      "bytes": 2852,
+      "git_revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "git_path": "src/apex/control/mpc/preview.py"
+    },
+    "vendor/src/apex/control/mpc/problem.py": {
+      "sha256": "b0560718155ff04074633aa92c4374a15ec975f21f5e3a022f4e94d52636087e",
+      "bytes": 11153,
+      "git_revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "git_path": "src/apex/control/mpc/problem.py"
+    },
+    "vendor/src/apex/control/mpc/symbolic_model.py": {
+      "sha256": "99b82ead0f7fae2c1451f8e938853fa25a8b74f040b0b22df5225fba5b5e0a6d",
+      "bytes": 4106,
+      "git_revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "git_path": "src/apex/control/mpc/symbolic_model.py"
+    },
+    "vendor/src/apex/control/mpc/warm_start.py": {
+      "sha256": "0faab03574394c3ecebe071a7c5f4e9e01d704a7d9b625fb6d0c122cc4cb34ed",
+      "bytes": 382,
+      "git_revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "git_path": "src/apex/control/mpc/warm_start.py"
+    },
+    "vendor/src/apex/control/trajectory/__init__.py": {
+      "sha256": "cea577e6cbeb9df27efdf9b96497e94b61c6e135717bdbbe2704312072b2a238",
+      "bytes": 76,
+      "git_revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "git_path": "src/apex/control/trajectory/__init__.py"
+    },
+    "vendor/src/apex/control/trajectory/packet.py": {
+      "sha256": "00830d2ced67321547add91a4e241664689cdeed57d57f0b9b2d95552b9fd704",
+      "bytes": 8569,
+      "git_revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "git_path": "src/apex/control/trajectory/packet.py"
+    },
+    "vendor/src/apex/control/trajectory/planner.py": {
+      "sha256": "6dcc8abe959fa65d7036f90379179703f54091c55a54bedee4db9a47d4622e44",
+      "bytes": 4303,
+      "git_revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "git_path": "src/apex/control/trajectory/planner.py"
+    },
+    "vendor/src/apex/control/trajectory/prediction.py": {
+      "sha256": "0013fd74299a68993dabbc381ca384837f09b862011956a94fd1d3b138b839ab",
+      "bytes": 9429,
+      "git_revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "git_path": "src/apex/control/trajectory/prediction.py"
+    },
+    "vendor/src/apex/control/trajectory/tracker.py": {
+      "sha256": "ffa5d9968650c97411121ba3dedd89a5de04a1a9ce832c50efa351763567ef27",
+      "bytes": 4703,
+      "git_revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "git_path": "src/apex/control/trajectory/tracker.py"
+    },
+    "vendor/src/apex/coordinates/__init__.py": {
+      "sha256": "1c443357b2a8e949a157c09b6fb3b50c170d98c908da8c0e8ebbd7e25f919555",
+      "bytes": 69,
+      "git_revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "git_path": "src/apex/coordinates/__init__.py"
+    },
+    "vendor/src/apex/coordinates/angles.py": {
+      "sha256": "2ed31ef5153e42083e727efc10b7875277f7f2641a5e16e9790e3f6073b33d05",
+      "bytes": 365,
+      "git_revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "git_path": "src/apex/coordinates/angles.py"
+    },
+    "vendor/src/apex/models/__init__.py": {
+      "sha256": "d530a05e192b5d6c8b815c3edb2599a88bc35acac91c83280cd8e22d31a1d0d2",
+      "bytes": 81,
+      "git_revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "git_path": "src/apex/models/__init__.py"
+    },
+    "vendor/src/apex/models/constants.py": {
+      "sha256": "1b485d45ad2d74aaa256c1aab00157d7c610db0bea9f744d75376b8e816534be",
+      "bytes": 135,
+      "git_revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "git_path": "src/apex/models/constants.py"
+    },
+    "vendor/src/apex/models/errors.py": {
+      "sha256": "81baff4659f36bb6aea91e6a27327260b4d69e23de22963de6832199e7f1f916",
+      "bytes": 599,
+      "git_revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "git_path": "src/apex/models/errors.py"
+    },
+    "vendor/src/apex/models/frenet.py": {
+      "sha256": "a8c6190bd6be9f2a284c83b5c31e5d6cb2d8ef1f791b49bbebdd3c110a36ee96",
+      "bytes": 1093,
+      "git_revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "git_path": "src/apex/models/frenet.py"
+    },
+    "vendor/src/apex/models/integration.py": {
+      "sha256": "02009193fb2d25e83560a2da37f216048dfa3ededcb3de8616b90e411473ad51",
+      "bytes": 719,
+      "git_revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "git_path": "src/apex/models/integration.py"
+    },
+    "vendor/src/apex/models/tire/__init__.py": {
+      "sha256": "000e7ac305a2f5bb610e6ee9e066a6f8d82a0ac335c2b9253d292a2c3c96907f",
+      "bytes": 379,
+      "git_revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "git_path": "src/apex/models/tire/__init__.py"
+    },
+    "vendor/src/apex/models/tire/base.py": {
+      "sha256": "da1b635a6da1de465ac7af61dcf3cad8d23ef406eb6dd7f45dad825bc3f60ccf",
+      "bytes": 872,
+      "git_revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "git_path": "src/apex/models/tire/base.py"
+    },
+    "vendor/src/apex/models/tire/config.py": {
+      "sha256": "73f7e47ae5768a6961a8ca65aa40a5da7ecd77e412ac6995a459e969daa83877",
+      "bytes": 808,
+      "git_revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "git_path": "src/apex/models/tire/config.py"
+    },
+    "vendor/src/apex/models/tire/grip.py": {
+      "sha256": "e91bab930ee0650578ede2964ef680f77663cfd34d26ab1682c232b34c6d8c90",
+      "bytes": 1659,
+      "git_revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "git_path": "src/apex/models/tire/grip.py"
+    },
+    "vendor/src/apex/models/tire/linear.py": {
+      "sha256": "6ae5888b0000cd57a88788463977be1a90fa8e1f6a332f131c66623192ce9cf3",
+      "bytes": 1188,
+      "git_revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "git_path": "src/apex/models/tire/linear.py"
+    },
+    "vendor/src/apex/models/vehicle/__init__.py": {
+      "sha256": "ab6dddf29c21f198a84b17e28f3dcb8b4b1e6543e0ce5533d4166a062d549a9f",
+      "bytes": 92,
+      "git_revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "git_path": "src/apex/models/vehicle/__init__.py"
+    },
+    "vendor/src/apex/models/vehicle/dynamic_bicycle.py": {
+      "sha256": "c93b674924eed24f9641ebe263863b3422cba5eb1665c0d93dd6cd00bdfd462f",
+      "bytes": 11558,
+      "git_revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "git_path": "src/apex/models/vehicle/dynamic_bicycle.py"
+    },
+    "vendor/src/apex/models/vehicle/force_allocation.py": {
+      "sha256": "e77d8c87efdaa9c008ec45385ad4dad326cfa2e003798c08e29a5fb9a17647f8",
+      "bytes": 795,
+      "git_revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "git_path": "src/apex/models/vehicle/force_allocation.py"
+    },
+    "vendor/src/apex/models/vehicle/load_transfer.py": {
+      "sha256": "e96c74199a7d8147866529cb4ecfffbfce74815cb57accb52ea54b407b873be1",
+      "bytes": 2499,
+      "git_revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "git_path": "src/apex/models/vehicle/load_transfer.py"
+    },
+    "vendor/src/apex/models/vehicle/parameters.py": {
+      "sha256": "5cfce45b4a87577b17193b44cfa24f11c8e29c93082564a596f7ddf4e797fbb2",
+      "bytes": 3299,
+      "git_revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "git_path": "src/apex/models/vehicle/parameters.py"
+    },
+    "vendor/src/apex/optimization/__init__.py": {
+      "sha256": "3af529201789579819dc40831ba819d7651a18d5df5b905928aa3ebf9dc09a55",
+      "bytes": 67,
+      "git_revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "git_path": "src/apex/optimization/__init__.py"
+    },
+    "vendor/src/apex/optimization/base.py": {
+      "sha256": "f4b2368f5055cc9283ed9eab481a8667f4152a751162a22d72f2ed44e87b942b",
+      "bytes": 654,
+      "git_revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "git_path": "src/apex/optimization/base.py"
+    },
+    "vendor/src/apex/optimization/solvers/__init__.py": {
+      "sha256": "10e2109b93a14616b4c0f083fc40b374c4ad77cd73150e090b8c95f891d3e7a0",
+      "bytes": 75,
+      "git_revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "git_path": "src/apex/optimization/solvers/__init__.py"
+    },
+    "vendor/src/apex/optimization/solvers/ipopt.py": {
+      "sha256": "3897eb4e5c2cf55b33b96e361e0c83e43ce783172e7095f59daf72785473c728",
+      "bytes": 2985,
+      "git_revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "git_path": "src/apex/optimization/solvers/ipopt.py"
+    },
+    "vendor/src/apex/planning_reference/__init__.py": {
+      "sha256": "a0bd2fea9b52abc64271cd57e2b26857c67b148246b2f6ce1baa988349b0899f",
+      "bytes": 75,
+      "git_revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "git_path": "src/apex/planning_reference/__init__.py"
+    },
+    "vendor/src/apex/planning_reference/reference.py": {
+      "sha256": "d147a6eb193b37e3c7773261d19550c1383528b7aad6f204818f432325b327e3",
+      "bytes": 11369,
+      "git_revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "git_path": "src/apex/planning_reference/reference.py"
+    },
+    "vendor/src/apex/planning_reference/speed_polynomial.py": {
+      "sha256": "a11d69b8dae53b62b4841ac522843decd7f54f5d78a63f4613c2d29478106ade",
+      "bytes": 1895,
+      "git_revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "git_path": "src/apex/planning_reference/speed_polynomial.py"
+    },
+    "vendor/src/apex/planning_reference/track.py": {
+      "sha256": "a80943d00203e83b11557bf254df66394db466969462ec22a3ae370780a6543d",
+      "bytes": 471,
+      "git_revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "git_path": "src/apex/planning_reference/track.py"
+    },
+    "vendor/src/apex/simulation/__init__.py": {
+      "sha256": "84069322b2562012fcfd863d27f6fc88a0f2d5eaba3a4040f10e896cffc4a513",
+      "bytes": 65,
+      "git_revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "git_path": "src/apex/simulation/__init__.py"
+    },
+    "vendor/src/apex/simulation/asynchronous.py": {
+      "sha256": "7d14395aa27707f2561bf6bdb32cd613bc2508ab12d6fe617bf45855d378f018",
+      "bytes": 27690,
+      "git_revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "git_path": "src/apex/simulation/asynchronous.py"
+    },
+    "vendor/src/apex/simulation/diagnostic_timing.py": {
+      "sha256": "373c20d762328880c7fa25856f474f49d534b50c176a72f0df97a2f3838bf23f",
+      "bytes": 1831,
+      "git_revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "git_path": "src/apex/simulation/diagnostic_timing.py"
+    },
+    "vendor/src/apex/simulation/fixed_handoff.py": {
+      "sha256": "8f0bc766b6a7c446f36b6a49f6214864906acbb067c57c977469b54e3ff07c12",
+      "bytes": 4947,
+      "git_revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "git_path": "src/apex/simulation/fixed_handoff.py"
+    },
+    "vendor/src/apex/simulation/prediction_capture.py": {
+      "sha256": "f8f4d7d840a73744aebbe85dc09d817b79e839022bd7298bbde792ee061d4a29",
+      "bytes": 1859,
+      "git_revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "git_path": "src/apex/simulation/prediction_capture.py"
+    },
+    "vendor/src/apex/state.py": {
+      "sha256": "b2b16555f8ae83f041ee821906305accc56010b643bb3fa514f90a8a17e66862",
+      "bytes": 1311,
+      "git_revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "git_path": "src/apex/state.py"
+    },
+    "vendor/src/apex/track/__init__.py": {
+      "sha256": "95dd539a129d605aa979952c68c75d633738d520fa66e06a491b5bfb2ef7907c",
+      "bytes": 224,
+      "git_revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "git_path": "src/apex/track/__init__.py"
+    },
+    "vendor/src/apex/track/base.py": {
+      "sha256": "c15e48dfa2a08bfd57040c80b1280a6f56234503361a38cb3cda6cb35e93cca1",
+      "bytes": 1027,
+      "git_revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "git_path": "src/apex/track/base.py"
+    },
+    "vendor/src/apex/track/centerline.py": {
+      "sha256": "caf28a32f24198fbfd57a7d6a987822f9b4df88ff6b5f1bca5c1f57e2b79429f",
+      "bytes": 7551,
+      "git_revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "git_path": "src/apex/track/centerline.py"
+    },
+    "vendor/src/apex/track/closed_track.py": {
+      "sha256": "c14fb27c1a1182dec564a5a679832e67c6480fb382a15c05dd2c998b138a350e",
+      "bytes": 1769,
+      "git_revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "git_path": "src/apex/track/closed_track.py"
+    },
+    "vendor/src/apex/track/io.py": {
+      "sha256": "ee2f5a27740684ddba2f1907c88e8893c6cf0c59150352d35845914d5fd30b65",
+      "bytes": 1424,
+      "git_revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "git_path": "src/apex/track/io.py"
+    },
+    "vendor/src/apex/track/progress.py": {
+      "sha256": "fef18ea7fe610cca1ff80f32acdecf5f756b6d26c1a47e47f0eb23b7ae8dc0d8",
+      "bytes": 2446,
+      "git_revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "git_path": "src/apex/track/progress.py"
+    },
+    "vendor/uv.lock": {
+      "sha256": "8cf85868a456415a898643dbb226d146b0b90e5c98982136cf2abf2465fa16ec",
+      "bytes": 176924,
+      "git_revision": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "git_path": "uv.lock"
+    }
+  }
+}

@@ -1,0 +1,777 @@
+{
+  "schema": "apex-performance-profile/1.0.0",
+  "schema_file": "docs/task007e/e2/performance_profile.schema.json",
+  "profile_id": "apex_performance_synthetic_v1",
+  "designation": "PROPOSED SYNTHETIC APEX PERFORMANCE PROFILE \u2014 AWAITING PRIMARY ACCEPTANCE",
+  "status": "WORK_COMPLETE_PENDING_REVIEW",
+  "flags": {
+    "tested_synthetic_formulation": true,
+    "proposed_performance_designation": true,
+    "formal_verification_pending": true,
+    "primary_acceptance_pending": true,
+    "hardware_certification_available": false,
+    "frozen": false,
+    "runtime_auto_load": false,
+    "production_default_changed": false
+  },
+  "profile": {
+    "architecture": "A",
+    "predictor": "A_legacy",
+    "coordinates": {
+      "state_order": [
+        "vx",
+        "vy",
+        "r",
+        "e_psi",
+        "s_abs",
+        "e_y"
+      ],
+      "state_units": [
+        "m/s",
+        "m/s",
+        "rad/s",
+        "rad",
+        "m",
+        "m"
+      ],
+      "control_order": [
+        "delta",
+        "a_cmd"
+      ],
+      "control_units": [
+        "rad",
+        "m/s^2"
+      ],
+      "control_semantics": "delta is front steering angle; a_cmd=Fx_total/m; dynamic dvx/dt=a_cmd+r*vy",
+      "frame": "world x/y in metres; headings radians counterclockwise; body vx forward, vy left, yaw r counterclockwise",
+      "frenet": "e_y left-positive; e_psi=body heading minus centerline tangent; s_abs nonnegative unwrapped centerline arc progress; track lookup s_abs modulo length",
+      "world_reconstruction": "x=x_center-e_y*sin(psi_center); y=y_center+e_y*cos(psi_center); psi=wrap(psi_center+e_psi)",
+      "angle_convention": "(-pi,pi]; tracking/handoff residuals wrapped; NLP heading locally unwrapped for smooth derivatives"
+    },
+    "vehicle": {
+      "file": {
+        "path": "configs/vehicles/synthetic_dynamic_test_vehicle.yaml",
+        "sha256": "df1b853d21a1d3efaf858f7e58401151f2c5237793c40e16bb4189ed651f9cf3"
+      },
+      "parameters": {
+        "name": "synthetic_dynamic_test_vehicle",
+        "mass": 2.0,
+        "yaw_inertia": 0.025,
+        "wheelbase": 0.3,
+        "lf": 0.15,
+        "lr": 0.15,
+        "cg_height": 0.04,
+        "front_cornering_stiffness": 45.0,
+        "rear_cornering_stiffness": 45.0,
+        "tire_road_friction_coefficient": 1.0,
+        "maximum_steering_angle": 0.4,
+        "maximum_acceleration": 2.0,
+        "maximum_braking_deceleration": 3.0,
+        "maximum_speed": 6.0,
+        "vehicle_width": null,
+        "vehicle_length": null,
+        "maximum_steering_rate": null
+      },
+      "parameter_units": {
+        "name": "identifier",
+        "mass": "kg",
+        "yaw_inertia": "kg*m^2",
+        "wheelbase": "m",
+        "lf": "m",
+        "lr": "m",
+        "cg_height": "m",
+        "vehicle_width": "m",
+        "vehicle_length": "m",
+        "front_cornering_stiffness": "N/rad per axle",
+        "rear_cornering_stiffness": "N/rad per axle",
+        "tire_road_friction_coefficient": "1",
+        "maximum_steering_angle": "rad",
+        "maximum_steering_rate": "rad/s",
+        "maximum_acceleration": "m/s^2",
+        "maximum_braking_deceleration": "m/s^2 positive magnitude",
+        "maximum_speed": "m/s"
+      },
+      "identification": "synthetic validation parameters; not physically identified",
+      "unknown_fields": [
+        "vehicle_width",
+        "vehicle_length",
+        "maximum_steering_rate"
+      ],
+      "rate_source": "1 rad/s from MPCConfig/TrackerConfig; fallback receives a replaced parameter object; YAML rate remains unknown"
+    },
+    "models": {
+      "plant": "apex.models.vehicle.dynamic_bicycle.DynamicBicycle (NumPy)",
+      "prediction": "apex.control.mpc.symbolic_model.SymbolicBicycle (independent CasADi transcription)",
+      "tire_physics": {
+        "model": "smooth_combined_grip",
+        "longitudinal_allocation": "normal_load_proportional"
+      },
+      "gravity_m_s2": 9.81,
+      "plant_integrator": "existing RK4; all stages and final state checked; physical step split at events, at most 0.005 s",
+      "nmpc_integrator": "existing symbolic RK4; 4 substeps of 0.025 s per interval; exogenous preview curvature held per interval",
+      "geometry": "plant resamples track geometry at derivative states; predictor uses curvature sampled at each prediction segment start",
+      "no_new_vehicle_model": true
+    },
+    "planning": {
+      "package": "configs/planning/task007b/gamma_2p000",
+      "gamma": 2.0,
+      "track": "synthetic_grand_prix_v1",
+      "track_length_m": 154.76345492731022,
+      "files": [
+        {
+          "path": "configs/planning/task007b/gamma_2p000/planning_manifest.json",
+          "sha256": "5e7bccf1a300fb6737fc6b6b6e0c9aa921c110b11ffc5762a73f57f830a8660c"
+        },
+        {
+          "path": "configs/planning/task007b/gamma_2p000/planning_reference.csv",
+          "sha256": "6206e18ce3cb105d58d0923564336e28c00ec44aee3fd8a06ff7a37bcf84e2df"
+        },
+        {
+          "path": "configs/planning/task007b/gamma_2p000/planning_validation.json",
+          "sha256": "279582d2dcf37fdf4008ddc7f926109ef3d730a0e64c188d7003755d08871fa7"
+        },
+        {
+          "path": "configs/planning/task007b/gamma_2p000/speed_polynomial.json",
+          "sha256": "f335e78fc6c735c952f49078077a573ee989dd2be71497e90451e34a79f2c7ea"
+        },
+        {
+          "path": "configs/planning/task007b/gamma_2p000/track_source.json",
+          "sha256": "5f4d1734d7fec7de56d346e8f90bf272a3de9c05ac42f76cd49004e7f9183e55"
+        }
+      ],
+      "loader": "PlanningReference(..., feasibility_policy=\"advisory\")",
+      "interpolation": "periodic cubic geometry with serialized speed polynomial; no online reference regeneration",
+      "preview": "11 rows: track curvature,left width,right width,v_ref,vy_ref,r_ref,delta_ff,e_y_ref,e_psi_ref,kappa_ref,a_ref",
+      "pseudo_reference": "vy_ref=0; r_ref=v_ref*kappa_ref; delta_ff=atan(wheelbase*kappa_ref); a_ref=0 because absent from this package",
+      "nominal_progress": "s[k+1]=s[k]+dt*v_ref*cos(e_psi_ref)/(1-kappa_track*e_y_ref), independent of decision variables",
+      "reference_margin_m": 0.08,
+      "warning_policy": "advisory feasibility warnings are retained, not a guarantee of racing-reference dynamic realizability",
+      "track_half_widths_m": {
+        "left": 0.55,
+        "right": 0.55
+      },
+      "geometry_construction": "ClosedTrack.from_waypoints; periodic cubic chord parameter, numerically integrated arc length and inverse queries; constructor source bound by inventory"
+    },
+    "nmpc": {
+      "configuration": {
+        "tire_physics": {
+          "model": "smooth_combined_grip",
+          "longitudinal_allocation": "normal_load_proportional"
+        },
+        "costs": {
+          "lateral": 2,
+          "dynamic": 1.0,
+          "speed": 1.0,
+          "control": 1.0,
+          "rate": 1.0,
+          "terminal": 1.0,
+          "alpha_vy": 1.0,
+          "alpha_r": 1.0
+        },
+        "horizon": 8,
+        "dt": 0.1,
+        "substeps": 4,
+        "steering_rate": 1.0,
+        "minimum_speed": 0.5,
+        "denominator_margin": 0.01,
+        "minimum_axle_load": 1e-06,
+        "tracker_margin": 0.08,
+        "racing_reference": true,
+        "progress_weight": 0
+      },
+      "horizon_seconds": 0.8,
+      "control_parameterization": "full N-stage piecewise-constant two-input sequence; no separate shortened control-horizon parameter or move blocking",
+      "decision_dimensions": {
+        "states": 54,
+        "controls": 16,
+        "slacks": 18,
+        "total": 88,
+        "shooting_equalities": 54
+      },
+      "stage_cost": {
+        "tracking_order": [
+          "vx",
+          "vy",
+          "r",
+          "e_psi",
+          "e_y"
+        ],
+        "Q_diagonal": [
+          4,
+          4,
+          1,
+          200,
+          200
+        ],
+        "R_diagonal": [
+          25,
+          1
+        ],
+        "W_diagonal": [
+          1,
+          0.1
+        ],
+        "Q_excludes_progress": true,
+        "input_reference": [
+          "delta_ff",
+          "a_ref"
+        ],
+        "increment": "u[k]-u[k-1], with predicted preceding command at k=0; no division by dt",
+        "sum_scaling": "unweighted stage sum, no dt multiplier",
+        "lambda_s": 0,
+        "alpha_vy": 1,
+        "alpha_r": 1
+      },
+      "terminal": {
+        "policy": "terminal multiplier times lateral DARE quadratic plus speed error weight 4; no terminal set or terminal equality",
+        "multiplier": 1.0,
+        "lateral_order": [
+          "e_y",
+          "e_psi",
+          "vy",
+          "r"
+        ],
+        "design_dt_s": 0.01,
+        "speed_nodes_m_s": [
+          1,
+          2,
+          3
+        ],
+        "schedule": "linear interpolation of P entries; clamp terminal preview speed to [1,3]",
+        "design_Q_diagonal": [
+          99.99999999999999,
+          99.99999999999999,
+          4.0,
+          1.0
+        ],
+        "design_R_diagonal": [
+          24.999999999999996
+        ],
+        "speed_error_weight": 4,
+        "alpha_vy": 1,
+        "alpha_r": 1,
+        "lateral_scale_2_does_not_rescale_terminal": true,
+        "design_weights_definition": "1 / DesignScales**2; stored values retain binary floating evaluation; conceptually diag(100,100,4,1), R=25"
+      },
+      "constraints": {
+        "vx_m_s": [
+          0.5,
+          6.0
+        ],
+        "s_abs_min_m": 0.0,
+        "denominator_min": 0.01,
+        "minimum_axle_load_N": 1e-06,
+        "control_box": [
+          [
+            -0.4,
+            0.4
+          ],
+          [
+            -3,
+            2
+          ]
+        ],
+        "control_box_order": [
+          "delta",
+          "a_cmd"
+        ],
+        "steering_rate_rad_s": 1.0,
+        "steering_increment_max_per_stage_rad": 0.1,
+        "longitudinal_fraction_bound": 0.999999,
+        "box_tightening": "also grip and minimum axle-load bounds; under this fixture they do not narrow [-3,2]",
+        "soft_corridor": "e_y<=left_width-0.08+slack_left; -e_y<=right_width-0.08+slack_right at N+1 nodes",
+        "slack": {
+          "shape": [
+            2,
+            9
+          ],
+          "lower": 0,
+          "upper": null,
+          "upper_reason": "unbounded above in NLP",
+          "linear_penalty": 10000,
+          "quadratic_penalty": 100000
+        },
+        "domain_checks": "vx and Frenet denominator at nodes and all internal RK4 stages; load and longitudinal grip per input stage",
+        "no_hard_beta_cap": true,
+        "no_continuous_swept_body_constraint": true
+      },
+      "solver": {
+        "adapter": "apex.optimization.solvers.ipopt.IpoptSolver",
+        "backend": "CasADi nlpsol ipopt plugin",
+        "casadi_version": "3.8.1",
+        "explicit_effective_options": {
+          "print_time": false,
+          "error_on_fail": false,
+          "ipopt.print_level": 0,
+          "ipopt.sb": "yes",
+          "ipopt.max_iter": 100,
+          "ipopt.tol": 1e-07,
+          "ipopt.acceptable_tol": 1e-06,
+          "ipopt.constr_viol_tol": 1e-07,
+          "ipopt.bound_relax_factor": 0.0,
+          "ipopt.honor_original_bounds": "yes",
+          "ipopt.warm_start_init_point": "yes"
+        },
+        "other_options": "backend defaults of the locked CasADi distribution; no linear_solver override",
+        "ipopt_standalone_version": null,
+        "ipopt_standalone_version_reason": "not independently recorded; no claim about unrecorded plugin build/linear-solver version",
+        "acceptance": "backend success, finite x/g and bound/constraint infeasibility <=1e-6; controller rechecks shape, finite values, g tolerance 1e-6 and variable bounds tolerance 1e-8",
+        "maximum_wall_time_option": null,
+        "custom_early_suboptimal_termination": false,
+        "acceptable_convergence": "IPOPT normal acceptable_tol=1e-6 path remains; no custom early/suboptimal policy"
+      },
+      "warm_start": {
+        "enabled": true,
+        "ipopt_warm_start_init_point": "yes",
+        "strategy": "shift states/controls/slacks one stage; duplicate terminal column; replace first state with new predicted initial state",
+        "dual_multipliers_supplied": false,
+        "on_failure": "clear retained solution; next solve cold-starts; failure placeholder is not applied by trajectory planner",
+        "cold_start": "preview steering clipped/rate-limited, acceleration zero, symbolic propagation guess; finite/in-bound state fallback and geometric slacks"
+      }
+    },
+    "tracker": {
+      "configuration": {
+        "dt": 0.01,
+        "steering_rate": 1.0,
+        "speed_kp": 1.0,
+        "feedback": true
+      },
+      "lateral_order": [
+        "e_y",
+        "e_psi",
+        "vy",
+        "r"
+      ],
+      "Q_diagonal": [
+        99.99999999999999,
+        99.99999999999999,
+        4.0,
+        1.0
+      ],
+      "R_diagonal": [
+        24.999999999999996
+      ],
+      "gain_policy": "finite-horizon TVLQR along nominal packet at 0.01 s; Jacobians of symbolic RK4 with 2 substeps; final discrete DARE then backward Riccati recursion",
+      "lateral_feedback": "delta_nominal-K*wrapped_lateral_error",
+      "longitudinal_feedback": "a_nominal-speed_kp*(vx-vx_nominal); proportional only, no tracker PI integral",
+      "control_lower": [
+        -0.4,
+        -3
+      ],
+      "control_upper": [
+        0.4,
+        2
+      ],
+      "limits": "box clip then nominal-tick steering slew; actual application additionally clamps by elapsed time since prior physical application"
+    },
+    "scheduling": {
+      "planner_dt_s": 0.1,
+      "tracker_dt_s": 0.01,
+      "maximum_plant_step_s": 0.005,
+      "committed_prefix_prediction": false,
+      "fixed_handoff_offset": null,
+      "policy": "variable availability; no fixed deadline commitment",
+      "prediction_target": "t_release + RollingDelay.estimate(); packet nominal timeline begins at this target, not actual readiness",
+      "delay_estimator": {
+        "initial_s": 0.017,
+        "window_completions": 10,
+        "statistic": "median",
+        "minimum_s": 0,
+        "maximum_s": 0.3,
+        "observation": "physical preparation delay on observed completion only; startup not observed; estimate cap does not bound solve duration"
+      },
+      "predictor": {
+        "integration_max_step_s": 0.005,
+        "tracker_clone": true,
+        "release_active_packet_only": true,
+        "includes_pending_actuator_prefix": false,
+        "future_codriver_latency": "ideal future feedback timing; skipped ticks and future actual computation durations unknown",
+        "target_horizon": "reject beyond active trajectory; no future solver duration or plant truth",
+        "domain": "finite RK4 states/domains; vx [0.5,6], denominator >=0.01"
+      },
+      "startup": "plan 0 prepared at simulated t=0, estimate=0; launch gated; first command prepositioned before motion with unmodelled prelaunch time",
+      "handoff": {
+        "early_readiness": "wait until nominal start",
+        "late_readiness": "may accept if unexpired and valid, without shifting nominal timeline",
+        "continuity_limits": [
+          0.5,
+          0.5,
+          1,
+          0.2,
+          0.75,
+          0.15
+        ],
+        "continuity_order": [
+          "vx",
+          "vy",
+          "r",
+          "e_psi",
+          "s_abs",
+          "e_y"
+        ],
+        "minimum_reserve_s": 0.05,
+        "checks": "valid newer packet; completion and timeline available; wrapped continuity check; nominal plant validity; buffer trim at actual acceptance",
+        "authority": "only accepted buffer packet; state interpolation and ZOH nominal controls/gains; never interpolate IDs or extrapolate expired authority"
+      },
+      "reserve": {
+        "healthy_at_least_s": 0.2,
+        "warning_below_s": 0.2,
+        "critical_below_s": 0.05,
+        "exhausted_at_or_below_s": 1e-10,
+        "warning_or_critical_automatic_rescue": false
+      },
+      "urgent": {
+        "enabled": true,
+        "lateral_threshold_m": 0.05,
+        "heading_threshold_rad": 0.1,
+        "consecutive_samples": 2,
+        "comparison": "strict greater-than OR; trigger only at count==2; latch while busy",
+        "priority": "nominal opportunity first; consumes urgent demand when serviced",
+        "off_grid_release_allowed": true,
+        "reserve_triggered": false
+      },
+      "busy": "single pending preparation; no overlap or cancellation; nominal busy misses recorded; TVLQR and plant continue while valid authority exists",
+      "event_order": [
+        {
+          "phase": 1,
+          "action": "Apply due old actuator request, elapsed steering clamp; preserve request plan_id/mode"
+        },
+        {
+          "phase": 2,
+          "action": "Resolve due planner completion and observe elapsed delay; A accept/wait/reject; C readiness only"
+        },
+        {
+          "phase": 3,
+          "action": "A waiting nominal start; C deadline acceptance/miss"
+        },
+        {
+          "phase": 4,
+          "action": "Optional disturbance, then exhaustion eligibility/termination or fallback latch"
+        },
+        {
+          "phase": 5,
+          "action": "Busy-tick handling or trajectory/fallback control computation and request validation"
+        },
+        {
+          "phase": 6,
+          "action": "Nominal release priority, then eligible latched urgent release; no overlapping solve"
+        },
+        {
+          "phase": 7,
+          "action": "Same-time zero-duration continuation, otherwise applied-pair diagnostics, recording and held-input RK4"
+        }
+      ],
+      "pending_control": "retains original request packet provenance across handoff; held between actual applications; not erased on fallback entry",
+      "readiness_error_limit": "readiness-state mismatch is not aligned target-time prediction error"
+    },
+    "physical_validity": {
+      "finite_state_input": true,
+      "nonnegative_progress": true,
+      "plant_vx_m_s": [
+        0.5,
+        6.0
+      ],
+      "plant_speed_roundoff_tolerance_m_s": 1e-10,
+      "plant_frenet_denominator_strict_min": 0.001,
+      "predictor_frenet_denominator_min": 0.01,
+      "plant_axle_load_strict_min_N": 1e-09,
+      "MPC_axle_load_constraint_N": 1e-06,
+      "longitudinal_fraction_max": "1 - 1e-6 of mu*Fz",
+      "tire": "smooth combined grip; proportional allocation; hard longitudinal validity, smooth lateral envelope",
+      "source": [
+        {
+          "path": "src/apex/models/vehicle/dynamic_bicycle.py",
+          "start": 127,
+          "end": 190
+        },
+        {
+          "path": "src/apex/models/vehicle/dynamic_bicycle.py",
+          "start": 233,
+          "end": 268
+        },
+        {
+          "path": "src/apex/models/frenet.py",
+          "start": 7,
+          "end": 19
+        },
+        {
+          "path": "src/apex/models/vehicle/load_transfer.py",
+          "start": 56,
+          "end": 63
+        },
+        {
+          "path": "src/apex/models/tire/grip.py",
+          "start": 32,
+          "end": 43
+        },
+        {
+          "path": "src/apex/control/trajectory/prediction.py",
+          "start": 172,
+          "end": 185
+        }
+      ]
+    },
+    "fallback": {
+      "admission": {
+        "predicate": "1 <= vx <= 3 and -right_width <= e_y <= left_width",
+        "speed_unit": "m/s",
+        "position_unit": "m",
+        "geometry": "track.sample(s_abs % track.length); CG point only; no 0.08 m margin or footprint shrink",
+        "checked_at": [
+          "trajectory exhaustion after same-time handoffs",
+          "each idle fallback computation tick"
+        ],
+        "not_checked_at": [
+          "every actuator application as a separate fallback eligibility check",
+          "every RK4 stage against baseline speed/corridor domain"
+        ],
+        "source": [
+          {
+            "path": "src/apex/simulation/asynchronous.py",
+            "start": 373,
+            "end": 415
+          }
+        ]
+      },
+      "reference_speed_m_s": 2.0,
+      "reference_path": "centerline",
+      "control": "scheduled linear LQR plus SpeedPI kp=1 ki=0.5; separate from TVLQR",
+      "latched": true,
+      "continued_planner_reentry": false,
+      "invalid_entry_stop": "exhausted_outside_baseline_domain",
+      "invalid_tick_stop": "fallback_outside_validity_domain",
+      "model_failure_stop": "model_or_control_validity_failure",
+      "guaranteed_recovery": false,
+      "braking_to_standstill": false,
+      "continuous_corridor_enforcement": false,
+      "swept_body_safety": false,
+      "application_time_eligibility_recheck": false,
+      "uninterrupted_trajectory_guaranteed": false,
+      "a_exhaustion_observed_in_VIS": false,
+      "a_exhaustion_possible": true,
+      "audit": {
+        "path": "docs/task007e/e1/fallback_domain_register.json",
+        "sha256": "b7dd930df236c6081ee461a5d1e68535ada9ffe172aaa2dabccd3dc588214f4a"
+      }
+    }
+  },
+  "evaluation_protocol": {
+    "scope": "retained VIS evaluation conditions, not production/controller defaults",
+    "codriver_imposed_delay_s": 0.005,
+    "requested_seam_crossings": 2,
+    "maximum_physical_duration_s": 80,
+    "parity_duration_s": 2,
+    "initial_state": [
+      5.253846582838669,
+      0.0,
+      0.9966576677921577,
+      0.034598592705642695,
+      1.0,
+      -0.11268618155631815
+    ],
+    "seed": null,
+    "seed_reason": "deterministic fixture; no random initialization",
+    "controlled_planner_delay_pattern_s": [
+      0.035,
+      0.055,
+      0.045,
+      0.025
+    ],
+    "history_length": 8001,
+    "measured_planner_delay": "full measured TrajectoryPlanner.prepare wall duration; zero/injected modes remain generic implementation options",
+    "startup_cost": "prelaunch and distinct from runtime preparation distribution",
+    "simulation_records": {
+      "controlled_A": {
+        "planner_dt": 0.1,
+        "tracker_dt": 0.01,
+        "plant_dt": 0.005,
+        "duration": 80.0,
+        "laps": 2,
+        "latency_mode": "injected",
+        "injected_delay": 0.0,
+        "spike_plan_id": -1,
+        "spike_delay": 0.15,
+        "failed_plan_ids": [],
+        "disturbance_time": null,
+        "disturbance_ey": 0.08,
+        "disturbance_heading": -0.04,
+        "urgent": true,
+        "codriver_delay": 0.005,
+        "committed_prefix_prediction": false,
+        "fixed_handoff_offset": null
+      },
+      "measured_A_1": {
+        "planner_dt": 0.1,
+        "tracker_dt": 0.01,
+        "plant_dt": 0.005,
+        "duration": 80.0,
+        "laps": 2,
+        "latency_mode": "measured",
+        "injected_delay": 0.0,
+        "spike_plan_id": -1,
+        "spike_delay": 0.15,
+        "failed_plan_ids": [],
+        "disturbance_time": null,
+        "disturbance_ey": 0.08,
+        "disturbance_heading": -0.04,
+        "urgent": true,
+        "codriver_delay": 0.005,
+        "committed_prefix_prediction": false,
+        "fixed_handoff_offset": null
+      }
+    },
+    "scientific_slack_gate_m": 1e-06,
+    "scope_limits": [
+      "one synthetic circuit",
+      "one controlled A full lap and one measured A full lap",
+      "first crossing from rolling start is partial",
+      "center clearance is recorded CG clearance, not swept-body certification",
+      "Mac timing is descriptive, not embedded worst-case certification"
+    ],
+    "protocol_source": {
+      "path": "scripts/task007dvis/protocol.py",
+      "sha256": "47a2cea6b2d0a95e690a8d266c937905820276ccb68d62f7759f94d51861eb37"
+    }
+  },
+  "provenance": {
+    "manifest_preparation_base_revision": "835eefb0aafe2f982a0ba05847d4e731079ff52d",
+    "scientific_worker_revision": "8dbd1c5fbc09781411fc762e04f9c2c5cf2d99ae",
+    "frozen_executable_ancestor": "c6990572045e61ee443dc715de9e8c44396e5b41",
+    "earlier_formal_test_revision": "935e98b7af6c2fda8458551f1fbcbddb3bf8932d",
+    "offline_report_revision": "d55f203aac1a04be598ebce4c38be51a4883e0ba",
+    "current_runtime_source_inventory": {
+      "path": "docs/task007d/vis/vis1l/evidence/controlled_A/summary.json",
+      "sha256": "4840934ea4d425bdccd17b18cbd254f4372ba5275b655189010c223c2be72d71",
+      "json_pointer": "/source_sha256",
+      "entries": 294
+    },
+    "dependency_lock": {
+      "path": "uv.lock",
+      "sha256": "8cf85868a456415a898643dbb226d146b0b90e5c98982136cf2abf2465fa16ec"
+    },
+    "project_dependencies": {
+      "path": "pyproject.toml",
+      "sha256": "c8ea69a3a486c9794b6cf88ac26566211c6f1bb7b7286d86dbaa36a191353d41"
+    },
+    "identity_claim": "current files listed in the 294-entry scientific inventory remain byte-identical; new E2 audit tools/configuration are not a new scientific executable test",
+    "delivery_revision": "containing Git commit; not self-hashed",
+    "no_self_hash": true
+  },
+  "environment": {
+    "tested": {
+      "python": "3.12.14 (main, Sep  1 2026, 14:09:38) [Clang 22.1.3 ]",
+      "platform": "macOS-26.5.1-arm64-arm-64bit",
+      "packages": {
+        "numpy": "2.5.3",
+        "scipy": "1.18.1",
+        "casadi": "3.8.1",
+        "pytest": "9.1.1",
+        "psutil": "7.2.2",
+        "threadpoolctl": "3.7.0",
+        "pandas": "3.0.6"
+      }
+    },
+    "native_configuration": {
+      "requested_ceiling": 1,
+      "set_status": 0,
+      "blas_threading_mode": 1,
+      "mode_name": "single",
+      "exact_active_thread_count_available": false
+    },
+    "observed_process_thread_counts": [
+      1
+    ],
+    "threadpool_inventory": [],
+    "policy": "fresh sequential process; environment(1) then configure_accelerate(1) before numerical imports; VECLIB_MAXIMUM_THREADS=1 and PYTHONHASHSEED=0; remove competing backend variables",
+    "observation_limit": "process threads sampled before/after preparation; exact continuously active BLAS count unavailable; empty threadpoolctl inventory is not proof of no backend",
+    "source": {
+      "path": "scripts/threading_study/config.py",
+      "sha256": "a50a73015c3ab739c35aa1fd715840364974213bf1c12666269b250264556fc3"
+    },
+    "lock_binding": "uv.lock binds all platform resolutions and distribution hashes; recorded installed numerical versions identify tested arm64 environment; no environment reinstall during E2"
+  },
+  "evidence_index": "docs/task007e/e2/evidence_links.json",
+  "verification": {
+    "current_formal_status": "PENDING_SEPARATELY_AUTHORIZED_E3",
+    "previous_evidence": "inherited only for unchanged components; E0 applicability register remains authoritative; no count summation",
+    "applicability_register": {
+      "path": "docs/task007e/e0/verification_applicability.json",
+      "sha256": "3a64a674d1cde0b4247b01a7582de51f9a0398ac41770d1c4840911dcb0b3920"
+    },
+    "required_next": [
+      "review exact proposed manifest and its source/evidence bindings",
+      "authorize exact-revision current numerical/chronology/physical/analysis/export regression and acceptance checks",
+      "disposition known failed C70 export and missing observations without fabricating them",
+      "review delayed fallback application/transition coverage gaps and declared scope limitations",
+      "Primary acceptance before any Performance freeze"
+    ],
+    "new_experiments": 0
+  },
+  "exclusions": [
+    "hardware safety certification",
+    "arbitrary vehicle dynamics or tires",
+    "guaranteed deadline satisfaction",
+    "continuous collision avoidance",
+    "guaranteed recovery after exhaustion",
+    "unseen-track generalization",
+    "production deployment readiness",
+    "C70/B/lightweight predictor selection",
+    "Performance freeze",
+    "Efficiency/System Identification/LMPC/opponent/Workbench work"
+  ],
+  "hardware_gates": {
+    "version": "apex-prehardware-gates/1.0.0",
+    "implemented_in_E2": false,
+    "items": [
+      {
+        "id": "HW01",
+        "status": "REQUIRED_FUTURE_REVIEW_NOT_IMPLEMENTED",
+        "requirement": "Identify vehicle, tire, actuator and estimator uncertainty across intended envelope"
+      },
+      {
+        "id": "HW02",
+        "status": "REQUIRED_FUTURE_REVIEW_NOT_IMPLEMENTED",
+        "requirement": "Define and verify recovery or safe-stop domain, including braking to standstill"
+      },
+      {
+        "id": "HW03",
+        "status": "REQUIRED_FUTURE_REVIEW_NOT_IMPLEMENTED",
+        "requirement": "Application-time freshness, state/control validity and held-input reachability; expiry/pending-command ownership"
+      },
+      {
+        "id": "HW04",
+        "status": "REQUIRED_FUTURE_REVIEW_NOT_IMPLEMENTED",
+        "requirement": "Independent watchdog, communication/solver fault handling and fail-safe actuation"
+      },
+      {
+        "id": "HW05",
+        "status": "REQUIRED_FUTURE_REVIEW_NOT_IMPLEMENTED",
+        "requirement": "Continuous swept-body/obstacle clearance and stopping-distance validation"
+      },
+      {
+        "id": "HW06",
+        "status": "REQUIRED_FUTURE_REVIEW_NOT_IMPLEMENTED",
+        "requirement": "Target hardware timing, overrun/fault injection and end-to-end physical safety tests"
+      },
+      {
+        "id": "HW07",
+        "status": "REQUIRED_FUTURE_REVIEW_NOT_IMPLEMENTED",
+        "requirement": "Review E1 missing asynchronous fallback transitions, domain edges, busy ticks and honest fallback telemetry"
+      }
+    ]
+  },
+  "unresolved": [
+    {
+      "item": "IPOPT internal plugin/linear-solver build version",
+      "disposition": "not separately recorded; locked CasADi package and explicit options supplied; no unsupported build claim"
+    },
+    {
+      "item": "hardware geometry and identification",
+      "disposition": "vehicle width/length and physical identification unavailable; deliberately outside synthetic scope"
+    },
+    {
+      "item": "formal current verification / Primary acceptance",
+      "disposition": "pending; proposed manifest is not an acceptance record"
+    }
+  ]
+}

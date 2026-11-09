@@ -1,3 +1,40 @@
+# Current handoff — Raspberry Pi compute benchmark package v0
+
+**WORK_COMPLETE_PENDING_REVIEW.** 9 November 2026. Primary authorized bounded portable
+benchmark packaging, source-loading checks and short genuine synthetic controller runs.
+Base checkout `d14f9ade48e9fdd3c9bb904cd9b58fd504e73035`; delivery branch
+`codex/pi-compute-benchmark-v0`. The containing commit is the delivery candidate.
+[Portable package and commands](../exports/pi_compute_benchmark_v0/README.md),
+[validation](../exports/pi_compute_benchmark_v0/VALIDATION.md),
+[machine record](../exports/pi_compute_benchmark_v0/validation_record.json).
+
+Added a self-contained ARM64 Docker package under `exports/pi_compute_benchmark_v0/`,
+with 66 byte-identical frozen files (57 Python modules), pinned Python 3.12.14/wheel
+hashes and exact Performance Synthetic v1 composition. Scientific source
+`48adbdf64d492592d15e23c917aca71fa58aa8a5` and producer reference `e577f2c…` remain
+unchanged. Existing Workbench, PRE-INT-W1, scientific results and all other preexisting
+tracked files except this required handoff are untouched.
+
+Linux ARM64 Docker Desktop build/dependency resolution and actual CasADi 3.8.1 IPOPT
+startup solves passed. Nine focused packaging/evidence tests passed cleanly; a later
+summary-only aggregation check passed separately. One launcher invocation ran the three
+2-second closed-loop windows: 60 optimizations (3 cold, 57 warm), 599 TVLQR updates,
+no solver failure/unprepared packet/fallback. One high-curvature `codriver_busy` tick
+is retained: request validation took 13.479 ms; TVLQR took 0.039 ms. Separate validation
+and total applied-control distributions were derived from the unchanged raw data,
+without rerunning the windows. Observed process threads and loaded numerical pools
+were one. All detailed new outputs remain inside the package's ignored `results/`.
+
+These are functional/exploratory observations from a Linux ARM64 VM on a Mac with
+background host load, not Pi timings. Physical Pi 4/5 timing, memory, cooling,
+temperature and throttling behavior remain unverified. No formal scientific
+Verification, full repository regression, PRE-INT one-shot rerun, tuning, physical IO,
+Safety, WCET, guaranteed real-time or deployment qualification is claimed or authorized.
+
+**STOP: PI COMPUTATIONAL BENCHMARK PACKAGE READY FOR HARDWARE TESTING.**
+
+---
+
 # Current handoff — C0 descriptive adapter formal Verification PASS
 
 **C0_DESCRIPTIVE_ADAPTER_VERIFIED_PENDING_PRIMARY_ACCEPTANCE.** 2 November 2026.

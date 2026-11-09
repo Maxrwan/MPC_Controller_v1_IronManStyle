@@ -1,0 +1,16 @@
+# ALL VALUES: synthetic validation data only — not experimentally identified APEX parameters.
+# Chosen as a small software benchmark, NOT a claim about the final APEX vehicle.
+name: synthetic_dynamic_test_vehicle
+mass: 2.0                         # kg, SYNTHETIC
+yaw_inertia: 0.025               # kg m^2, SYNTHETIC
+wheelbase: 0.30                   # m, SYNTHETIC
+lf: 0.15                          # m, SYNTHETIC
+lr: 0.15                          # m, SYNTHETIC
+cg_height: 0.04                   # m, SYNTHETIC
+front_cornering_stiffness: 45.0    # N/rad, FRONT AXLE AGGREGATE, SYNTHETIC
+rear_cornering_stiffness: 45.0     # N/rad, REAR AXLE AGGREGATE, SYNTHETIC
+tire_road_friction_coefficient: 1.0 # dimensionless, diagnostic only, SYNTHETIC
+maximum_steering_angle: 0.4        # rad, SYNTHETIC validation bound
+maximum_acceleration: 2.0          # m/s^2, SYNTHETIC validation bound
+maximum_braking_deceleration: 3.0   # m/s^2 positive magnitude, SYNTHETIC validation bound
+maximum_speed: 6.0                # m/s, SYNTHETIC validation bound
