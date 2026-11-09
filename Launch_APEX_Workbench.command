@@ -2,7 +2,9 @@
 # Double-click in Finder. Resolve paths from this file, not Terminal's working directory.
 set -u
 apex_workbench_root="${0:A:h}"
-apex_workbench_python="$apex_workbench_root/tools/apex_workbench/.venv/bin/python"
+apex_workbench_environment="$apex_workbench_root/tools/apex_workbench/.venv"
+# Resolve a shared environment directory while keeping its venv interpreter (not the base binary).
+apex_workbench_python="${apex_workbench_environment:A}/bin/python"
 
 if [[ ! -x "$apex_workbench_python" ]]; then
     print -r -- "Workbench setup is missing. Follow tools/apex_workbench/README.md first."

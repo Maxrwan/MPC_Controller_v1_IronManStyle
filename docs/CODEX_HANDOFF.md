@@ -1,4 +1,30 @@
-# Current handoff — NMPC Lab V1 UX ready for Primary user acceptance
+# Current handoff — Primary acceptance and operational finalization
+
+**PRIMARY_ACCEPTED_FINALIZATION_PENDING_FOCUSED_REVIEW.** 10 November2026. Branch
+`codex/nmpc-lab-v1`, base6e2d3b7009b637a8f67ec49b326a29c32bff2aa0. Primary explicitly accepted
+447cc1e UX/laboratory for bounded synthetic experimentation. [Decision](nmpc_lab_v1/PRIMARY_ACCEPTANCE.md),
+[acceptance record](nmpc_lab_v1/acceptance_record.json), [Operations](nmpc_lab_v1/OPERATIONS.md).
+
+The existing local policy is accepted-interactive, bound to exact447cc1e producers and both original
+independent PASS records. Only the already-reviewed panel producer differed from af3956; other14
+producer identities match. No access-parser/worker/scientific/profile/renderer/analysis change.
+Old policy628a6199… and all3consumed IDs/cases/grant preserved. No blind source reseal or budget reset.
+Launcher now canonicalizes a shared venv directory; its approved interpreter/dependencies are reused
+through the local ignored environment link. Generic ./Launch_APEX_Workbench.command works; no
+Codex-specific absolute launch command is needed. Main checkout's unrelated branch is untouched.
+
+Focused42passes/9.71s,0failures/errors/skips; zero scientific imports/probes/worker launches.
+Actual normal launch from/private/tmp and owned reuse pass; approved10dependency RECORD trees verified.
+Known test-only isolation delta/preparation negative retained; scientific/source equivalence unchanged.
+
+Next: focused independent exact-candidate operational review. Only after PASS, at most one genuine
+baseline2s interactive smoke, no automatic retry. Preserve its outcome and all previous evidence.
+No broad Verification, scenarios, sweeps, exporter, ROS2, Docker, hardware or unrelated work.
+Final stop: `NMPC_LAB_V1_ACCEPTED_FOR_SYNTHETIC_EXPERIMENTATION`.
+
+---
+
+# Historical handoff — NMPC Lab V1 UX ready for Primary user acceptance
 
 **NMPC_LAB_V1_UX_READY_PENDING_PRIMARY_USER_ACCEPTANCE.** 10 November2026. Branch
 `codex/nmpc-lab-v1`, UX basea7cdc334d76f42ce589e217cd3fb9a7543744b9b. Exact implementation

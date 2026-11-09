@@ -1,0 +1,93 @@
+{
+  "schema": "apex-nmpc-lab-v1-primary-acceptance/1",
+  "decision": "ACCEPTED_FOR_SYNTHETIC_EXPERIMENTATION",
+  "authority": "Primary APEX explicit user instruction, 2026-11-10",
+  "authority_record": "docs/nmpc_lab_v1/PRIMARY_ACCEPTANCE.md",
+  "authority_sha256": "fef20bb2c387ec4bbcf1c1a4a0ef23e8fd85939095921e6ab4e2506b2a322abd",
+  "accepted_implementation": "447cc1e60c064062c75f879c3c67e611a84cff31",
+  "accepted_delivery": "6e2d3b7009b637a8f67ec49b326a29c32bff2aa0",
+  "scientific_execution": "af3956fc2dc8c1a88051e87e2eae66010490a2fb",
+  "frozen_science": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+  "independent_reviews": [
+    {
+      "kind": "engineering",
+      "candidate": "8ee2b868e653d687383d6c4e2d38a3bece31319a",
+      "record_git_delivery": "a7cdc334d76f42ce589e217cd3fb9a7543744b9b",
+      "record_git_path": "docs/reviews/nmpc_lab_v1/review_record.json",
+      "record_copy": "acceptance_20261110/engineering_review.json",
+      "sha256": "9f4794473e8e4b82bcde188b00e9c210b48003b600ff2e3f35a89380729bd96a"
+    },
+    {
+      "kind": "ux",
+      "candidate": "447cc1e60c064062c75f879c3c67e611a84cff31",
+      "record_git_delivery": "6e2d3b7009b637a8f67ec49b326a29c32bff2aa0",
+      "record_git_path": "docs/reviews/nmpc_lab_v1/ux/review_record.json",
+      "record_copy": "acceptance_20261110/ux_review.json",
+      "sha256": "9fd931d9d3236d8cfad5f9e831efe453708ec1609f1ec5ab46a4a64f5aded4e1"
+    }
+  ],
+  "producer_sha256": {
+    "tools/apex_workbench/nmpc_weight_lab.py": "8751fdfea3c1071fed61dc463d0827894b876295c1a5810647320964c6be1700",
+    "tools/apex_workbench/nmpc_weight_worker.py": "d1051d60263936f173e4b691f1407a2b8fbb801f4825ff926e75112eda18ef01",
+    "tools/apex_workbench/nmpc_weight_panels.py": "8b0e1723cbe1d8428c223e2b4c2fa998823096e68998fe5a592c2b2c85581b0a",
+    "tools/apex_workbench/configuration.py": "596846e8dab789c619e00a26679288d73bfac495fc468c7b065e15d6795a33a1",
+    "tools/apex_workbench/worker.py": "17293f2fc7775a1601de3f6c95bd28bcafc0766188efca588f8d7894ee8ff91c",
+    "tools/apex_workbench/jobs.py": "31c82030e644418cb6e3ec88b905d37388291fc00172c45c34e34a5de5684ed4",
+    "tools/apex_workbench/workspace.py": "85722940dcbc464c4b5f05547278d33e1e3f8c40439dcb4d75c8388e026df2ae",
+    "tools/apex_workbench/run_catalog.py": "f48089c848a9cc2e78102dad23fcbc15be360a9931b4f55d698c0948a1a0908c",
+    "tools/apex_workbench/nmpc_scratch.py": "50bd86590980f2abb98f6e7e6a01e169a9e72584fe009b53faabcc357cf72d78",
+    "tools/apex_workbench/nmpc_scratch_worker.py": "d6ee20dcd56f9f2123aed9afa3796bf0bce9f63da21583982470f9a2645737e3",
+    "tools/apex_workbench/nmpc_analysis.py": "9bf1a7efe44ee4bb9f1199356f58a3f0caa31d7783543e03f26ca6abebc01beb",
+    "tools/apex_workbench/nmpc_scratch_panels.py": "ea08206b4f765c99d7dc7ae48c447d5fcb9a7029a2178e9be9b43d8e031a58e8",
+    "tools/apex_workbench/nmpc_scratch_profile.json": "52ffa7cbb4308bb8814b7512fbb61d685e27fbe9af83b1acec926217b8f42fab",
+    "tools/apex_workbench/storage.py": "962ff863823f8fa22edf46530730db3a042328fb940bc51036ba18aa2e221c96",
+    "tools/apex_workbench/lifecycle.py": "794bd5ada88048a402a2d0946942ec9962e52b0caf2e72d7a8a3a0279f51f05a"
+  },
+  "original_ux_source_sha256": {
+    "tools/apex_workbench/nmpc_scratch_panels.py": "ea08206b4f765c99d7dc7ae48c447d5fcb9a7029a2178e9be9b43d8e031a58e8",
+    "tools/apex_workbench/scratch_replay.py": "519317232826bdf132048172f2df1ed65d8924f0b4f5c2d1c05ef6880f3cce1e",
+    "tools/apex_workbench/tests/test_nmpc_scratch.py": "085030ca1d11e6f5dbec23628ad526868ee16bec006a0e02de33c00896702985",
+    "tools/apex_workbench/tests/test_scratch_replay.py": "28dbbf2a7d5c8462fa63e507409f02b14cda572638d0050a5486ce5272d6e16d",
+    "tools/apex_workbench/tests/test_scratch_replay.mjs": "8dff6f0203616b2b52212728883f327cceb3a50a3192de17c90b69e30988e775",
+    "tools/apex_workbench/scratch_replay_web/clock.mjs": "ff9ba7d4834acc5b5a4ef43eb06fbc6af4dbe13a0c5852cff767391d3084e97a",
+    "tools/apex_workbench/scratch_replay_web/index.html": "7d9ecedef30c7ab088a8a3b38228901f18bc741b88f4b440e92a5d70080657bb",
+    "tools/apex_workbench/scratch_replay_web/viewer.mjs": "5d4a5aabe4eddd4a21f09e37b8da249b0e27582b25395e781589b394b84a4c3d",
+    "tools/apex_workbench/scratch_replay_web/style.css": "20bca79c8f522995b7e64cca7f9a8131a5b7b005b39c89fe93e23f318746f964"
+  },
+  "test_only_operational_delta": {
+    "tools/apex_workbench/tests/test_scratch_replay.py": {
+      "reviewed": "28dbbf2a7d5c8462fa63e507409f02b14cda572638d0050a5486ce5272d6e16d",
+      "current": "b7df3fed20371b0999d5890b035c757f5447deaa05817b02308b1029e7089074",
+      "reason": "Deterministically model an unaccepted policy fixture now that production policy becomes accepted; no runtime behavior change"
+    }
+  },
+  "approved_producer_delta": {
+    "tools/apex_workbench/nmpc_scratch_panels.py": {
+      "previous": "25f8b7225d355001bdd574b58b2c64f32b357f1075c79f6dc11fbb923f6a4c41",
+      "accepted": "ea08206b4f765c99d7dc7ae48c447d5fcb9a7029a2178e9be9b43d8e031a58e8"
+    }
+  },
+  "profile_sha256": "52ffa7cbb4308bb8814b7512fbb61d685e27fbe9af83b1acec926217b8f42fab",
+  "profile": "synthetic-gp-gamma2-A-v1",
+  "limits": {
+    "wall_s": 60,
+    "cpu_s": 30,
+    "sampled_rss_bytes": 536870912,
+    "sampled_output_bytes": 67108864,
+    "single_file_bytes": 16777216
+  },
+  "previous_policy_sha256": "628a61998231be7d45be3591236d6debbe8e67ca6d083a86ae874f2786c58f8e",
+  "historical_cases": {
+    "baseline": "ac86d5f42d684dd3465c32ddd7fdb8cb4fd68514c1b63325042aa74e64e9c553",
+    "lateral_1": "ce671985c12be663ef89333870ba6ba894647acbb04061ac4bb9deaa4a6efdbf",
+    "disturbance": "03b1237a3d962dced7c89ac1e0adbbec4d17a976937ed79302bfa0c3d7a83c9f"
+  },
+  "historical_used": {
+    "baseline": "20261108T212141278330Z_330b90fcb81240a99ea28c224ae4c6cb",
+    "lateral_1": "20261108T212211750867Z_6bf349f04ae146f0b4c501eb3c5779d4",
+    "disturbance": "20261108T212252292651Z_b70288d94327468a9d2d05586471e76d"
+  },
+  "ordinary_execution": "Explicitly user-triggered only; eight native costs and fixed disturbance; 2s; experimental/unqualified",
+  "one_agent_smoke": "At most one baseline attempt after focused operational independent PASS; no retry",
+  "launcher_sha256": "f2510dfdd88a5cd3aa1fe97a78b6c87e8ada38477d4bc796ca5abdfb767bca93"
+}

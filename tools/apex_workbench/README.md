@@ -1,4 +1,8 @@
-# APEX Engineering Workspace V0.3-C
+# APEX Engineering Workspace / NMPC Lab V1
+
+Primary accepted NMPC Lab V1 for bounded synthetic experimentation. The configured accepted
+checkout uses `accepted-interactive` admission; [acceptance and operations](../../docs/nmpc_lab_v1/OPERATIONS.md)
+record source/review identities and restrictions. The V0.3-C verification history below is retained.
 
 The primary local workspace provides **Home / Run / Inspect / Compare** over the accepted
 Workbench engine. Inspect actual native samples, use read-only replay, compare two to four retained
@@ -79,11 +83,10 @@ Performance files are never overwritten. **Inspect effective frozen configuratio
 source/dependency/dataclass check. Saved ID/version drafts live under
 `results/apex_workbench_nmpc_lab_v1/configurations/`; they are unreviewed, not deployment input by default.
 
-The reviewed WORK budget was one baseline, one lateral1.0 treatment and one native state perturbation
-(+0.08m lateral,−0.04rad heading at configured0.5s), each2.0s, after independent PASS. All three
-completed and retained valid evidence; the three slots are consumed. No retry
-or extra experiment is enabled. Later Primary acceptance is required for repeatable user-triggered
-Scratch within this profile and unchanged worker caps. The historical M5-A budget remains consumed.
+Primary accepted repeatable, explicitly user-triggered Scratch within this fixed profile and unchanged
+worker caps. The original three WORK runs remain consumed and preserved: baseline, lateral1.0 and
+baseline with native+.08m/−.04rad kick at.5s. Acceptance does not reset them or the historical M5-A
+budget. No automated sweep, background experiment, new scenario or frozen Performance overwrite.
 
 Inspect offers elapsed-time browser playback at0.25×/0.5×/1×/2×, pause/restart, native sample
 steps/seeking, canonical track/position and active or explicitly historical prediction/reference
@@ -107,16 +110,24 @@ are rechecked every second; a change clears and quarantines replay. A missed bro
 lease clears the local payload after4.5s. Reopen explicitly after an evidence failure; refresh/reopen
 never qualifies a result. See [UX correction](../../docs/nmpc_lab_v1/UX_CORRECTION.md).
 
-This isolated checkout currently uses the already installed approved environment in the primary
-checkout. Launch its current workspace from Terminal (Control-C stops this owned server):
+From the accepted `codex/nmpc-lab-v1` checkout, double-click the normal launcher or run:
 
 ```sh
-/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/tools/apex_workbench/.venv/bin/python -B -m streamlit run /Users/marwansaber/.codex/worktrees/nmpc-weight-m0/MPC_Controller_v1_IronManStyle/tools/apex_workbench/workspace.py --server.address 127.0.0.1 --server.port 8516 --server.headless true --browser.gatherUsageStats false
+./Launch_APEX_Workbench.command
 ```
 
-Open <http://127.0.0.1:8516>. Retained results remain inspectable while execution is gated. The
-unchanged one-click launcher expects a Workbench environment inside its own checkout; this isolated
-checkout does not currently have that local environment. No environment or launcher was altered.
+Open <http://127.0.0.1:8501>. This Mac is configured with the approved existing environment; no
+new dependencies are needed. For another Git worktree sharing an already configured primary checkout,
+the minimal one-time environment link (only when the local tool environment is absent) is:
+
+```sh
+apex_shared_checkout="$(dirname "$(git rev-parse --path-format=absolute --git-common-dir)")"
+ln -s "$apex_shared_checkout/tools/apex_workbench/.venv" tools/apex_workbench/.venv
+```
+
+The target must already be the supported approved environment. For an independent installation,
+follow the existing setup section and the per-checkout acceptance/runtime requirements in Operations.
+The launcher never installs dependencies or changes scientific configuration automatically.
 
 Future export must explicitly select a versioned configuration and its exact review/hash. No ROS2,
 production exporter or hardware packaging is included. Existing launch and compatibility paths remain.

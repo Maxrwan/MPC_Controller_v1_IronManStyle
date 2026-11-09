@@ -118,6 +118,11 @@ def test_post_render_replacement_withdraws_the_component(native_view, monkeypatc
 
 
 def test_small_editor_analysis_and_gate_are_preserved(monkeypatch):
+    def unaccepted_fixture(*a, **kw):
+        raise ValueError("Unaccepted policy fixture")
+
+    monkeypatch.setattr(scratch, "access", unaccepted_fixture)
+
     def forbidden(*a, **kw):
         raise AssertionError("No controller execution or probe")
 

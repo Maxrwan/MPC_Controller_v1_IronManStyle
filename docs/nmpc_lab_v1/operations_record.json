@@ -1,0 +1,105 @@
+{
+  "schema": "apex-nmpc-lab-v1-operational/1",
+  "status": "PRIMARY_ACCEPTED_FINALIZATION_PENDING_FOCUSED_REVIEW",
+  "base": "6e2d3b7009b637a8f67ec49b326a29c32bff2aa0",
+  "accepted_lab_source": "447cc1e60c064062c75f879c3c67e611a84cff31",
+  "accepted_scientific_execution": "af3956fc2dc8c1a88051e87e2eae66010490a2fb",
+  "frozen_science": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+  "acceptance_record": "docs/nmpc_lab_v1/acceptance_record.json",
+  "acceptance_sha256": "c829ed9ae0fe5971ba56af632aec8df52a3bf2de7173b9181bb065f2545fd3d2",
+  "policy_transition": {
+    "outcome": "PREPARED_PENDING_FOCUSED_REVIEW",
+    "old_policy_sha256": "628a61998231be7d45be3591236d6debbe8e67ca6d083a86ae874f2786c58f8e",
+    "new_policy_sha256": "9b225470c1ca0dc8436cdd8d87df08ea3666545449f5b3ea73d47b4457627e89",
+    "acceptance_sha256": "c829ed9ae0fe5971ba56af632aec8df52a3bf2de7173b9181bb065f2545fd3d2",
+    "producer_delta": {
+      "tools/apex_workbench/nmpc_scratch_panels.py": {
+        "previous": "25f8b7225d355001bdd574b58b2c64f32b357f1075c79f6dc11fbb923f6a4c41",
+        "accepted": "ea08206b4f765c99d7dc7ae48c447d5fcb9a7029a2178e9be9b43d8e031a58e8"
+      }
+    },
+    "used_unchanged": true,
+    "cases_unchanged": true,
+    "limits": {
+      "wall_s": 60,
+      "cpu_s": 30,
+      "sampled_rss_bytes": 536870912,
+      "sampled_output_bytes": 67108864,
+      "single_file_bytes": 16777216
+    },
+    "reviewed_source": "447cc1e60c064062c75f879c3c67e611a84cff31",
+    "genuine_attempts": 0,
+    "pre_review_note": "Recorded test-fixture formatting updated before focused review; prepared predecessor bytes retained"
+  },
+  "tests": {
+    "passed": 42,
+    "failures": 0,
+    "errors": 0,
+    "skips": 0,
+    "duration_s": 9.71,
+    "command": "results/apex_workbench_nmpc_lab_v1/operational_20261110/focused_1_command.json",
+    "scientific_imports": 0,
+    "scientific_runs": 0
+  },
+  "preservation": {
+    "files": 11135,
+    "links": 500,
+    "authorized_changed_file": "results/apex_workbench_nmpc_lab_v1/access.json",
+    "other_changed_files": []
+  },
+  "launcher": {
+    "cwd_invoked": "/private/tmp",
+    "normal_launcher": "Launch_APEX_Workbench.command",
+    "listener": {
+      "pid": 61980,
+      "created": 1794266066.006268,
+      "cmdline": [
+        "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/tools/apex_workbench/.venv/bin/python",
+        "-m",
+        "streamlit",
+        "run",
+        "/Users/marwansaber/.codex/worktrees/nmpc-weight-m0/MPC_Controller_v1_IronManStyle/tools/apex_workbench/workspace.py",
+        "--server.address",
+        "127.0.0.1",
+        "--server.port",
+        "8501",
+        "--server.headless",
+        "true",
+        "--browser.gatherUsageStats",
+        "false"
+      ],
+      "cwd": "/Users/marwansaber/.codex/worktrees/nmpc-weight-m0/MPC_Controller_v1_IronManStyle"
+    },
+    "health_status": 200,
+    "health_body": "ok",
+    "environment_directory_resolved": true,
+    "genuine_runs": 0
+  },
+  "smoke": {
+    "maximum": 1,
+    "attempts": 0,
+    "condition": "Focused independent exact-candidate operational PASS",
+    "configuration": "Accepted baseline defaults;2s;no disturbance",
+    "automatic_retry": false
+  },
+  "review": "PENDING",
+  "formal_verification": "NOT_AUTHORIZED_NOT_RUN",
+  "evidence_sha256": {
+    "results/apex_workbench_nmpc_lab_v1/operational_20261110/focused_1_command.json": "ad34e1c0ebf4fc4fa93357a13827ec0ea1ef651aa812f2d093acf7801076575c",
+    "results/apex_workbench_nmpc_lab_v1/operational_20261110/lint.log": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+    "results/apex_workbench_nmpc_lab_v1/operational_20261110/launcher_readiness.json": "998926f24f516be1674fbce6ee4ef5b4f9474e1e442e30e589f425cb44745740",
+    "results/apex_workbench_nmpc_lab_v1/operational_20261110/focused_1.xml": "2c11637a6ad840f4573a1444e4752b10685803b556833338ea43ada09ffa8954",
+    "results/apex_workbench_nmpc_lab_v1/operational_20261110/focused_1_result.json": "c57820779608ffc558772027376aed2c01361ac302922c8c84f34b37c596563f",
+    "results/apex_workbench_nmpc_lab_v1/operational_20261110/prepared_policy_before_format.json": "60c20ec690d7abda0eb57fa0a7caf423cdc62a482ee5301d0007cccd6c637bdb",
+    "results/apex_workbench_nmpc_lab_v1/operational_20261110/environment_setup.json": "99abffe91c60bdb4ed02f5422c349349ebd8dddfa04f076d74c823ab24e1bafd",
+    "results/apex_workbench_nmpc_lab_v1/operational_20261110/prepared_acceptance_before_format.json": "be29175fc2d3394d3f6d35eda877182a879a2e19b6ff4b3e83aab6b598454b6d",
+    "results/apex_workbench_nmpc_lab_v1/operational_20261110/software_runner.py": "800616cb380dee551a55a35d16c3949b265bab34cba85d1f633139e85edb57d2",
+    "results/apex_workbench_nmpc_lab_v1/operational_20261110/focused_1.log": "59147a3ffba63623274cc1c7718963c64a6497f79c92e2dabb2a57e3a9570d9f",
+    "results/apex_workbench_nmpc_lab_v1/operational_20261110/launcher_reuse.log": "4b4b88102ced713168c7de0be8070a4e8626922df381beb8a9d0b1d4be426240",
+    "results/apex_workbench_nmpc_lab_v1/operational_20261110/approved_environment.json": "c2b04c7bef046c3cf97acb3b1261ba3347b2e37d0dfa04e7676d800c90c0ad34",
+    "results/apex_workbench_nmpc_lab_v1/operational_20261110/preparation_attempt_1.json": "9a4ecf490ee3d11baea7412f308b3c6b521127021f9c1f3eb17157bb156473a6",
+    "results/apex_workbench_nmpc_lab_v1/operational_20261110/previous_access.json": "628a61998231be7d45be3591236d6debbe8e67ca6d083a86ae874f2786c58f8e",
+    "results/apex_workbench_nmpc_lab_v1/operational_20261110/transition.json": "3a79e45c16ac90dac29091dda56fdf14b52984cc3b04da7f29256da73aa72bb9",
+    "results/apex_workbench_nmpc_lab_v1/operational_20261110/preservation_before.json": "6df3149708b5ffa9500afa49289da495e5cb5202f49e8ed988570f575c310513"
+  }
+}
