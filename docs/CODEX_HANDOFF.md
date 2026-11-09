@@ -17,8 +17,10 @@ reference addendum. No N=4 assumptions/interpolation/runtime copied. Small GUI r
 costs +one named disturbance; no general configuration editor or exporter. Canonical dataclasses,
 source-controlled profile and explicitly versioned future selection remain the configuration path.
 
-Final guarded focused suite98passes/31deselected/66.59s,0failures/errors/skips; zero genuine science
-in that invocation. Separate actual retained UI4passes/5.92s, no scientific imports/launches.
+Pre-SVG132a8e3 guarded focused suite98passes/31deselected/66.59s,0failures/errors/skips; zero genuine science
+in that invocation. Separate retained UI4passes/5.92s before SVG and4passes/6.05s after SVG, no scientific imports/launches.
+Actual embedded-browser blank WebGL traces corrected with identical-data SVG plots; fresh server
+shows15 SVG trace paths/2723 points/noGLcanvases. Original blank screenshots retained.
 Prior failures including initial BLOCKED anchor race and all setup/harness negatives are retained.
 The97-pass exactaf pre-execution gate remains separate. No broad scientific or Verification suite.
 

@@ -95,7 +95,8 @@ insufficient windows do not become successful recovery. [WORK/evidence](../../do
 The N=8 prediction-node explorer shows nine genuine predicted states/eight nominal controls,
 recorded objective components and completion/validity/handoff diagnostics. Terminal state8 has no
 invented command. Requested/applied clocks and simulated/solver/derived classifications remain
-explicit. This reuses presentation concepts from the read-only Development Bench, without its older
+explicit. The bounded plots use SVG to avoid blank WebGL traces observed in the embedded browser.
+This reuses presentation concepts from the read-only Development Bench, without its older
 N=4 controller assumptions, interpolated replay or standalone runtime.
 
 This isolated checkout currently uses the already installed approved environment in the primary

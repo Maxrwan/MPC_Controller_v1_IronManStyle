@@ -12,7 +12,7 @@
     "tools/apex_workbench/jobs.py": "31c82030e644418cb6e3ec88b905d37388291fc00172c45c34e34a5de5684ed4",
     "tools/apex_workbench/nmpc_analysis.py": "9bf1a7efe44ee4bb9f1199356f58a3f0caa31d7783543e03f26ca6abebc01beb",
     "tools/apex_workbench/nmpc_scratch.py": "50bd86590980f2abb98f6e7e6a01e169a9e72584fe009b53faabcc357cf72d78",
-    "tools/apex_workbench/nmpc_scratch_panels.py": "bfb106c4cad2da127fcc580f04e3849fca04425cc44e1ec2431a6df1bcd67822",
+    "tools/apex_workbench/nmpc_scratch_panels.py": "6c69cd0be85fa65ccadb16bf48de144c7f71f19fa4fc0e0b3cc4b3fa10aa539c",
     "tools/apex_workbench/nmpc_scratch_profile.json": "52ffa7cbb4308bb8814b7512fbb61d685e27fbe9af83b1acec926217b8f42fab",
     "tools/apex_workbench/nmpc_scratch_worker.py": "d6ee20dcd56f9f2123aed9afa3796bf0bce9f63da21583982470f9a2645737e3",
     "tools/apex_workbench/run_catalog.py": "f48089c848a9cc2e78102dad23fcbc15be360a9931b4f55d698c0948a1a0908c",
@@ -36,7 +36,9 @@
     "plant_steps": 0,
     "MPCProblem_and_component_algebra": true,
     "independent_fixtures": true,
-    "parent_scientific_imports_and_real_worker_launches_forbidden": true
+    "parent_scientific_imports_and_real_worker_launches_forbidden": true,
+    "revision": "132a8e3374595f76b05a768af0ac044375b75392",
+    "scope_note": "98-pass focused invocation precedes SVG-only renderer change; do not present as freshly run on final SVG revision"
   },
   "prior_attempts": [
     {
@@ -180,7 +182,26 @@
     "results/apex_workbench_nmpc_lab_v1/work/post_execution/analysis.json": "483ec20f35047dbd86bf5b2f4d97cfa4fe7b3a96c0f03df89c561080bf1c12e8",
     "results/apex_workbench_nmpc_lab_v1/work/post_execution/browser_replay_ax.txt": "edd162d20eb404ab294544c203ade551ea2f7ec715e8748dbfeccad7685f0199",
     "results/apex_workbench_nmpc_lab_v1/work/post_execution/ui.xml": "62323742b18ffaef0d09a8ca9cc4bc947bad38bdafc5adeab9653563d0658e90",
-    "results/apex_workbench_nmpc_lab_v1/work/post_execution/browser_server.log": "ef260ed3715e55d89808cc9885bc001c06c8b950a7d949252f4011c2f1c20626"
+    "results/apex_workbench_nmpc_lab_v1/work/post_execution/browser_server.log": "ef260ed3715e55d89808cc9885bc001c06c8b950a7d949252f4011c2f1c20626",
+    "results/apex_workbench_nmpc_lab_v1/work/postprocess_retained.py": "8421db062264232b259d3c0599279cbb57b78371d7275be2f46233dbb8b1270b",
+    "results/apex_workbench_nmpc_lab_v1/work/postprocess_retained.log": "ac2085fae912b3122e383734d6299e0e763010d084586c5b27527b27ab150f0e",
+    "results/apex_workbench_nmpc_lab_v1/work/post_ui.py": "c8903c8c4d5bff621a444eeadbe6efc895ed515d24adfa190c5611a7e1a21b63",
+    "results/apex_workbench_nmpc_lab_v1/work/post_ui_svg.py": "0d811de8f8ec15e6267f26db842855c578806c129b1da29fb5c6fb4da8a15206",
+    "results/apex_workbench_nmpc_lab_v1/work/lint_svg.log": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+    "results/apex_workbench_nmpc_lab_v1/work/post_execution/browser_analysis_dom.txt": "95efd7183d38898e59ae5b9e2f43e3e4fc8a94cc8c68353ad4c346c1d9a2e5d8",
+    "results/apex_workbench_nmpc_lab_v1/work/post_execution/old_m5_physical_parity.json": "dbcba0fc038c7c2564ad3baa3a75571a21167a9fed7210b6565a51daed618f91",
+    "results/apex_workbench_nmpc_lab_v1/work/post_execution/browser_analysis_second.jpg": "6d70097d32c2ca40312a10101f26d6567429695fde0490d974c8cb6dc0eb0531",
+    "results/apex_workbench_nmpc_lab_v1/work/post_execution/browser_analysis.jpg": "6d70097d32c2ca40312a10101f26d6567429695fde0490d974c8cb6dc0eb0531",
+    "results/apex_workbench_nmpc_lab_v1/work/post_execution_svg/ui.log": "5b3ee8414d714c366c8643e85d23971f23af9c63a134db0e6673930461243cc1",
+    "results/apex_workbench_nmpc_lab_v1/work/post_execution_svg/browser_analysis_loaded.jpg": "eca3f6fbc85e43c2ce3f77b9640a4b8ddb8c931dc0b16e2d95a97d9941e09a3b",
+    "results/apex_workbench_nmpc_lab_v1/work/post_execution_svg/browser_svg_counts.json": "aadc7b1a35f3b78954898a331a4b0b299ab2ac49a452ecf26ada88cac59cd69a",
+    "results/apex_workbench_nmpc_lab_v1/work/post_execution_svg/browser_disturbance_curve_full.jpg": "293f1eafe4e41c8e7996309069be228d289069d2725412aaec5a58d38363339b",
+    "results/apex_workbench_nmpc_lab_v1/work/post_execution_svg/ui_result.json": "9dbc08c9d17570e4c20e9ee81beabd72ca104363781778a4e336d21f776e1779",
+    "results/apex_workbench_nmpc_lab_v1/work/post_execution_svg/browser_analysis_dom.txt": "46cc59335ddf230e4c4b213275a71a2b65195ee5b5077ce6eb4a4495a1280396",
+    "results/apex_workbench_nmpc_lab_v1/work/post_execution_svg/browser_disturbance_curve.jpg": "d72822cece8ac38b392f385f8a540efc92542c1354245eb7e63c3e61244869a5",
+    "results/apex_workbench_nmpc_lab_v1/work/post_execution_svg/browser_analysis_loaded_dom.txt": "46cc59335ddf230e4c4b213275a71a2b65195ee5b5077ce6eb4a4495a1280396",
+    "results/apex_workbench_nmpc_lab_v1/work/post_execution_svg/ui.xml": "0b872afb11aa85f6ee62b4649c064fc970483587d87f73e546fc1d899b11da7b",
+    "results/apex_workbench_nmpc_lab_v1/work/post_execution_svg/browser_analysis.jpg": "2c23e312e1db847061548cb099694d31b157431e07ad6347f83b4e9cdf41b9a9"
   },
   "independent_review": {
     "status": "FINAL_PRESENTATION_REVIEW_PENDING",
@@ -453,12 +474,13 @@
     "failures": 0,
     "errors": 0,
     "skips": 0,
-    "duration_s": 5.92,
+    "duration_s": 6.05,
     "warning": "anyio already imported by harness; no test failure",
-    "record": "results/apex_workbench_nmpc_lab_v1/work/post_execution/ui.xml",
+    "record": "results/apex_workbench_nmpc_lab_v1/work/post_execution_svg/ui.xml",
     "numerical_runs": 0,
     "scientific_imports": 0,
-    "interaction_timing_limitation": "Per-interaction timing list in ui_result.json is empty because pytest imported a separate module instance; use actual JUnit case durations only"
+    "interaction_timing_limitation": "Per-interaction timing list in ui_result.json is empty because pytest imported a separate module instance; use actual JUnit case durations only",
+    "source_sha256": "6c69cd0be85fa65ccadb16bf48de144c7f71f19fa4fc0e0b3cc4b3fa10aa539c"
   },
   "reference": {
     "repository": "Maxrwan/apex-development-bench",
@@ -471,5 +493,46 @@
       "web/engine.mjs"
     ],
     "numerical_runs": 0
+  },
+  "pre_svg_tested_source_sha256": {
+    "tools/apex_workbench/configuration.py": "596846e8dab789c619e00a26679288d73bfac495fc468c7b065e15d6795a33a1",
+    "tools/apex_workbench/jobs.py": "31c82030e644418cb6e3ec88b905d37388291fc00172c45c34e34a5de5684ed4",
+    "tools/apex_workbench/nmpc_analysis.py": "9bf1a7efe44ee4bb9f1199356f58a3f0caa31d7783543e03f26ca6abebc01beb",
+    "tools/apex_workbench/nmpc_scratch.py": "50bd86590980f2abb98f6e7e6a01e169a9e72584fe009b53faabcc357cf72d78",
+    "tools/apex_workbench/nmpc_scratch_panels.py": "bfb106c4cad2da127fcc580f04e3849fca04425cc44e1ec2431a6df1bcd67822",
+    "tools/apex_workbench/nmpc_scratch_profile.json": "52ffa7cbb4308bb8814b7512fbb61d685e27fbe9af83b1acec926217b8f42fab",
+    "tools/apex_workbench/nmpc_scratch_worker.py": "d6ee20dcd56f9f2123aed9afa3796bf0bce9f63da21583982470f9a2645737e3",
+    "tools/apex_workbench/run_catalog.py": "f48089c848a9cc2e78102dad23fcbc15be360a9931b4f55d698c0948a1a0908c",
+    "tools/apex_workbench/storage.py": "962ff863823f8fa22edf46530730db3a042328fb940bc51036ba18aa2e221c96",
+    "tools/apex_workbench/tests/scratch_observer_check.py": "ea7df5212d62d307bbcf4f50254625d44cd83b26bb1f229449c49b4cc01b5452",
+    "tools/apex_workbench/tests/test_nmpc_scratch.py": "c22bbe719c6aed7e31df35667becc1529a65ccd603107693b0e5c99bfba97a97",
+    "tools/apex_workbench/tests/test_nmpc_weight_workspace.py": "a12f414acb2bb442740a6ad443c7b8c45afb86615f8311bd3b16491b45d05cc9",
+    "tools/apex_workbench/worker.py": "17293f2fc7775a1601de3f6c95bd28bcafc0766188efca588f8d7894ee8ff91c",
+    "tools/apex_workbench/workspace.py": "85722940dcbc464c4b5f05547278d33e1e3f8c40439dcb4d75c8388e026df2ae"
+  },
+  "pre_svg_retained_UI": {
+    "tests": 4,
+    "failures": 0,
+    "errors": 0,
+    "skips": 0,
+    "duration_s": 5.92,
+    "warning": "anyio already imported by harness; no test failure",
+    "record": "results/apex_workbench_nmpc_lab_v1/work/post_execution/ui.xml",
+    "numerical_runs": 0,
+    "scientific_imports": 0,
+    "interaction_timing_limitation": "Per-interaction timing list in ui_result.json is empty because pytest imported a separate module instance; use actual JUnit case durations only"
+  },
+  "browser_correction": {
+    "finding": "Blank WebGL traces in actual embedded browser despite passing AppTest; retained screenshots",
+    "minimum_change": "Four Scattergl constructors become Scatter; unchanged data arrays/units/clocks; bounded400-sample SVG plots",
+    "root_cause": "Renderer-specific root cause not established",
+    "fresh_server_observation": {
+      "svg_trace_paths": 15,
+      "svg_points": 2723,
+      "GL_canvases": 0,
+      "visible_disturbance_response": true
+    },
+    "stale_server_attempt": "Browser reload alone retained old imported modules; clean owned restart loaded SVG correction; negative screenshots retained",
+    "numerical_executions": 0
   }
 }

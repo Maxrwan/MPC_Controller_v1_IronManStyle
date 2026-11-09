@@ -97,7 +97,7 @@ Observer overhead is separately recorded; it never changes imposed simulated ava
 
 ## Focused software evidence and preservation
 
-Final focused presentation invocation: **98 passed,0 failures/errors/skips,31 deselected,66.59s**.
+Pre-SVG focused presentation invocation on132a8e3: **98 passed,0 failures/errors/skips,31 deselected,66.59s**.
 No genuine controller/closed-loop run, optimizer solve or Plant.step occurred. Source-isolated
 configuration/MPCProblem construction and component algebra were permitted. Tests independently
 check all eight overrides reaching native problem/constructor semantics, literal cost expressions,
@@ -116,12 +116,20 @@ The earlier corrected97-pass gate remains separate. A later harness invocation f
 collection because its PYTHONPATH omitted the repository root; log retained, then corrected without
 changing implementation. No historical counts are added to98. Broad scientific/qualified/frozen suites were not run.
 
-Additional actual-retained-data AppTest: **4passed,5.92s**, no scientific imports or launches. It
+Additional actual-retained-data AppTest: **4passed,5.92s** before the renderer correction;
+final SVG invocation **4passed,6.05s** (separate counts), no scientific imports or launches. It
 exercised replay steps/seek/play/pause, terminal node8, disturbance/local analysis, insufficient
 recovery windows, controlled/illustrative comparison and original M5-A/P/C0 workspace routes.
-Native segment boundaries independently confirm the only jump is exactly the declared state kick
+The real embedded browser exposed blank WebGL traces despite passing AppTest. Original screenshots
+are retained; replacing the four Scattergl constructors with SVG Scatter preserves every data array
+and removes that renderer dependency. A fresh owned server rendered15 SVG trace paths/2723 points
+with no GL canvases; the disturbance response is visibly present. No general browser/GPU guarantee
+is inferred. Hot module reload did not replace the old server imports; clean owned restart was
+required, as already documented. Native segment boundaries independently confirm the only jump is exactly the declared state kick
 at0.5s. RMS racing-reference lateral errors were0.008359/0.010243/0.021431m; these three individual
-synthetic observations establish no performance superiority. Disturbance observed-window settling
+synthetic observations establish no performance superiority. Baseline/lateral physical-state and
+requested/applied-control fields exactly match their original M5-A records (400/200 rows each);
+host timing/observer records are excluded from this retained-data comparison. Disturbance observed-window settling
 was0.465s after application at the descriptive0.01m band/0.25s tail, observed only through1.995s.
 
 Pre-review audit:6,329 original M5-A regular files and324 links unchanged, no added historical files;

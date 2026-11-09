@@ -166,7 +166,7 @@ def series(rows, x, fields, ylabel):
     for field, label in fields:
         valid = [r for r in rows if analysis.numeric(r.get(x)) and analysis.numeric(r.get(field))]
         plot.add_trace(
-            go.Scattergl(
+            go.Scatter(
                 x=[r[x] for r in valid],
                 y=[r[field] for r in valid],
                 mode="lines+markers",
@@ -189,7 +189,7 @@ def commands(raw, channel, packet=None):
             if analysis.numeric(r.get(clock)) and analysis.numeric(r.get(field))
         ]
         plot.add_trace(
-            go.Scattergl(
+            go.Scatter(
                 x=[r[clock] for r in rows],
                 y=[r[field] for r in rows],
                 mode="lines+markers",
@@ -228,7 +228,7 @@ def trajectory(display, index, packet):
             )
         )
     figure.add_trace(
-        go.Scattergl(
+        go.Scatter(
             x=[r["x"] for r in states],
             y=[r["y"] for r in states],
             mode="lines",
@@ -685,7 +685,7 @@ def compare_panel():
         for view in views:
             rows = view["presentation"]["states"]
             plot.add_trace(
-                go.Scattergl(
+                go.Scatter(
                     x=[r["time"] for r in rows],
                     y=[r["racing_error_y_m"] for r in rows],
                     mode="lines+markers",
