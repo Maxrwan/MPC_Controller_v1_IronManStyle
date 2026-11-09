@@ -1,0 +1,1257 @@
+{
+  "schema": "apex-nmpc-lab-v1-consolidated-independent-review/1",
+  "outcome": "PASS",
+  "status": "ENGINEERING_REVIEW_COMPLETE_PENDING_PRIMARY_ACCEPTANCE",
+  "supported_work_status": "NMPC_LAB_V1_WORK_COMPLETE_PENDING_PRIMARY_ACCEPTANCE",
+  "reviewed_revision": "8ee2b868e653d687383d6c4e2d38a3bece31319a",
+  "candidate": "8ee2b868e653d687383d6c4e2d38a3bece31319a",
+  "executed_revision": "af3956fc2dc8c1a88051e87e2eae66010490a2fb",
+  "scientific_source": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+  "branch": "codex/nmpc-lab-v1",
+  "review_scope": "Single consolidated independent-context Engineering Review, corrected software gate, three authorized attempts by parent, final pure retained-data and presentation audit",
+  "unresolved_blocking_findings": [],
+  "closed_findings": [
+    {
+      "id": "V1-ER1-P1",
+      "initial_candidate": "01ace08d3fbb80b56f9b440aa14b43e160fb3af4",
+      "initial_report": "results/apex_workbench_nmpc_lab_v1/work/review/software_gate_review.json",
+      "initial_sha256": "f748b788cbf65a48518209b95779b16d889aaca6e68ff4ea791531fe653e5d38",
+      "closed_on": "af3956fc2dc8c1a88051e87e2eae66010490a2fb",
+      "disposition": "Pre-ingestion manifest/byte binding and revalidation; independent interleaving tests pass"
+    }
+  ],
+  "presentation_negative": {
+    "observed": "Blank traces in actual browser while axes rendered; initial captures retained",
+    "correction": "Four Scattergl to SVG Scatter changes, identical dataarrays, final visible actual curves",
+    "root_cause": "Not established",
+    "final_revision": "8ee2b868e653d687383d6c4e2d38a3bece31319a"
+  },
+  "nonblocking_final_delivery_followups": [
+    {
+      "path": "results/apex_workbench_nmpc_lab_v1/work/post_execution/browser_server.log",
+      "candidate_declared_sha256": "ef260ed3715e55d89808cc9885bc001c06c8b950a7d949252f4011c2f1c20626",
+      "stable_closed_sha256": "086d73cbd63f1f282f874fc65f1031b4598fac810fe0d1bc529b324b560e32c9",
+      "cause": "Owned server stop appended Stopping after candidate metadata capture; raw/gate evidence unchanged",
+      "disposition": "Parent acknowledged planned documentation-only final stable binding; preserve original candidate declaration/history",
+      "parent_note": "results/apex_workbench_nmpc_lab_v1/work/log_finalization_note.json",
+      "parent_note_sha256": "985b2b0f69286ea5237430aebd530990d5747b6256be84a2b94d206d50dd42c1"
+    }
+  ],
+  "source_and_junit_bindings": {
+    "candidate": "8ee2b868e653d687383d6c4e2d38a3bece31319a",
+    "executed_revision": "af3956fc2dc8c1a88051e87e2eae66010490a2fb",
+    "reviewed_source_sha256": {
+      "tools/apex_workbench/configuration.py": "596846e8dab789c619e00a26679288d73bfac495fc468c7b065e15d6795a33a1",
+      "tools/apex_workbench/jobs.py": "31c82030e644418cb6e3ec88b905d37388291fc00172c45c34e34a5de5684ed4",
+      "tools/apex_workbench/nmpc_analysis.py": "9bf1a7efe44ee4bb9f1199356f58a3f0caa31d7783543e03f26ca6abebc01beb",
+      "tools/apex_workbench/nmpc_scratch.py": "50bd86590980f2abb98f6e7e6a01e169a9e72584fe009b53faabcc357cf72d78",
+      "tools/apex_workbench/nmpc_scratch_panels.py": "6c69cd0be85fa65ccadb16bf48de144c7f71f19fa4fc0e0b3cc4b3fa10aa539c",
+      "tools/apex_workbench/nmpc_scratch_profile.json": "52ffa7cbb4308bb8814b7512fbb61d685e27fbe9af83b1acec926217b8f42fab",
+      "tools/apex_workbench/nmpc_scratch_worker.py": "d6ee20dcd56f9f2123aed9afa3796bf0bce9f63da21583982470f9a2645737e3",
+      "tools/apex_workbench/run_catalog.py": "f48089c848a9cc2e78102dad23fcbc15be360a9931b4f55d698c0948a1a0908c",
+      "tools/apex_workbench/storage.py": "962ff863823f8fa22edf46530730db3a042328fb940bc51036ba18aa2e221c96",
+      "tools/apex_workbench/tests/scratch_observer_check.py": "ea7df5212d62d307bbcf4f50254625d44cd83b26bb1f229449c49b4cc01b5452",
+      "tools/apex_workbench/tests/test_nmpc_scratch.py": "c22bbe719c6aed7e31df35667becc1529a65ccd603107693b0e5c99bfba97a97",
+      "tools/apex_workbench/tests/test_nmpc_weight_workspace.py": "a12f414acb2bb442740a6ad443c7b8c45afb86615f8311bd3b16491b45d05cc9",
+      "tools/apex_workbench/worker.py": "17293f2fc7775a1601de3f6c95bd28bcafc0766188efca588f8d7894ee8ff91c",
+      "tools/apex_workbench/workspace.py": "85722940dcbc464c4b5f05547278d33e1e3f8c40439dcb4d75c8388e026df2ae"
+    },
+    "recorded_evidence_hashes_checked": 97,
+    "recorded_evidence_mismatches": [
+      "results/apex_workbench_nmpc_lab_v1/work/post_execution/browser_server.log"
+    ],
+    "scientific_worker_analysis_schema_lifecycle_diff_from_execution": "EMPTY",
+    "renderer_change": "Four Scattergl to Scatter constructors only; x/y arrays unchanged from132a",
+    "inherited_and_independent_junit_separate": {
+      "pre_svg_focused98": [
+        {
+          "name": "pytest",
+          "errors": "0",
+          "failures": "0",
+          "skipped": "0",
+          "tests": "98",
+          "time": "66.587",
+          "timestamp": "2026-11-09T04:48:30.517685+02:00",
+          "hostname": "Marwans-MacBook-Air.local"
+        }
+      ],
+      "final_svg_retained_ui4": [
+        {
+          "name": "pytest",
+          "errors": "0",
+          "failures": "0",
+          "skipped": "0",
+          "tests": "4",
+          "time": "6.052",
+          "timestamp": "2026-11-09T04:56:31.566370+02:00",
+          "hostname": "Marwans-MacBook-Air.local"
+        }
+      ],
+      "independent_final3": [
+        {
+          "name": "pytest",
+          "errors": "0",
+          "failures": "0",
+          "skipped": "0",
+          "tests": "3",
+          "time": "1.657",
+          "timestamp": "2026-11-09T05:00:11.771696+02:00",
+          "hostname": "Marwans-MacBook-Air.local"
+        }
+      ]
+    },
+    "bench_readonly_reference": {
+      "path": "/Users/marwansaber/Grad_proj/The_Project_PREP/apex-development-bench",
+      "revision": "35f6fa579adc574d73ea834786e53667eddcb585",
+      "4_files_match_current_and_exact_git": true,
+      "status": "CLEAN",
+      "borrowed_scope": "Presentation only, no N4/runtime/math imported"
+    },
+    "gate_sha256": "6a6196f99aa4171feaaca9a50e9643697cd8bb018a8b7ad6b241c4539af95557",
+    "all_genuine_run_budget_used": true
+  },
+  "genuine_attempts": {
+    "maximum": 3,
+    "started": 3,
+    "completed": 3,
+    "retries": 0,
+    "remaining": 0,
+    "records": {
+      "baseline": {
+        "run_id": "20261108T212141278330Z_330b90fcb81240a99ea28c224ae4c6cb",
+        "raw_sha256": "0d87cfa78a76243f67da1f4fcc6f339f611907abcafe5976fd67c2713f0337ce",
+        "manifest_sha256": "22d238298e97362600d791c793ce2847cc8f385b423045b2f3fa5019b9b4d5bf",
+        "state_samples": 400,
+        "applied_commands": 200,
+        "plans": 20,
+        "linear_rows": 1600,
+        "local_indicators": [
+          {
+            "plan_id": 0,
+            "rows": 80,
+            "spectral_radius_min": 0.9522345190121728,
+            "spectral_radius_max": 0.9598672141892803,
+            "maximum_mixed_SI_amplification": 13.486798067426836
+          },
+          {
+            "plan_id": 1,
+            "rows": 80,
+            "spectral_radius_min": 0.9543196052699889,
+            "spectral_radius_max": 0.9589730313146205,
+            "maximum_mixed_SI_amplification": 13.461273996186607
+          },
+          {
+            "plan_id": 2,
+            "rows": 80,
+            "spectral_radius_min": 0.9541531912026523,
+            "spectral_radius_max": 0.9565543455527041,
+            "maximum_mixed_SI_amplification": 13.663938970060384
+          },
+          {
+            "plan_id": 3,
+            "rows": 80,
+            "spectral_radius_min": 0.9542084653040912,
+            "spectral_radius_max": 0.9567087750825177,
+            "maximum_mixed_SI_amplification": 13.885272086838807
+          },
+          {
+            "plan_id": 4,
+            "rows": 80,
+            "spectral_radius_min": 0.9546714916827791,
+            "spectral_radius_max": 0.9568236087824326,
+            "maximum_mixed_SI_amplification": 14.00775111194979
+          },
+          {
+            "plan_id": 5,
+            "rows": 80,
+            "spectral_radius_min": 0.9550890571976552,
+            "spectral_radius_max": 0.956915426071396,
+            "maximum_mixed_SI_amplification": 14.104088446551776
+          },
+          {
+            "plan_id": 6,
+            "rows": 80,
+            "spectral_radius_min": 0.9554618061061783,
+            "spectral_radius_max": 0.9569925985788528,
+            "maximum_mixed_SI_amplification": 14.178745062483554
+          },
+          {
+            "plan_id": 7,
+            "rows": 80,
+            "spectral_radius_min": 0.9559551828912782,
+            "spectral_radius_max": 0.9570650154858222,
+            "maximum_mixed_SI_amplification": 14.23824816150565
+          },
+          {
+            "plan_id": 8,
+            "rows": 80,
+            "spectral_radius_min": 0.9563768381778431,
+            "spectral_radius_max": 0.9571252662192363,
+            "maximum_mixed_SI_amplification": 14.280743629507954
+          },
+          {
+            "plan_id": 9,
+            "rows": 80,
+            "spectral_radius_min": 0.9565232218188239,
+            "spectral_radius_max": 0.9571717827222178,
+            "maximum_mixed_SI_amplification": 14.323658921037637
+          },
+          {
+            "plan_id": 10,
+            "rows": 80,
+            "spectral_radius_min": 0.9566401125068624,
+            "spectral_radius_max": 0.9572107960241957,
+            "maximum_mixed_SI_amplification": 14.365034941154638
+          },
+          {
+            "plan_id": 11,
+            "rows": 80,
+            "spectral_radius_min": 0.9567641470986132,
+            "spectral_radius_max": 0.9572472210731683,
+            "maximum_mixed_SI_amplification": 14.402671090341846
+          },
+          {
+            "plan_id": 12,
+            "rows": 80,
+            "spectral_radius_min": 0.9568788054979867,
+            "spectral_radius_max": 0.9572763996803281,
+            "maximum_mixed_SI_amplification": 14.432214697615633
+          },
+          {
+            "plan_id": 13,
+            "rows": 80,
+            "spectral_radius_min": 0.9569572846563782,
+            "spectral_radius_max": 0.9573002624077819,
+            "maximum_mixed_SI_amplification": 14.454865768180422
+          },
+          {
+            "plan_id": 14,
+            "rows": 80,
+            "spectral_radius_min": 0.9570284597025253,
+            "spectral_radius_max": 0.9573205889607734,
+            "maximum_mixed_SI_amplification": 14.473885871412008
+          },
+          {
+            "plan_id": 15,
+            "rows": 80,
+            "spectral_radius_min": 0.9570947132391125,
+            "spectral_radius_max": 0.9573423977498114,
+            "maximum_mixed_SI_amplification": 14.491734591945558
+          },
+          {
+            "plan_id": 16,
+            "rows": 80,
+            "spectral_radius_min": 0.9571514258643186,
+            "spectral_radius_max": 0.9573642224612572,
+            "maximum_mixed_SI_amplification": 14.506154009659033
+          },
+          {
+            "plan_id": 17,
+            "rows": 80,
+            "spectral_radius_min": 0.9572064848196538,
+            "spectral_radius_max": 0.9573494780585561,
+            "maximum_mixed_SI_amplification": 14.518674177784993
+          },
+          {
+            "plan_id": 18,
+            "rows": 80,
+            "spectral_radius_min": 0.9571914364029924,
+            "spectral_radius_max": 0.957362496959341,
+            "maximum_mixed_SI_amplification": 14.529782333215156
+          },
+          {
+            "plan_id": 19,
+            "rows": 80,
+            "spectral_radius_min": 0.9569082151521943,
+            "spectral_radius_max": 0.9573947743390466,
+            "maximum_mixed_SI_amplification": 14.538387637621485
+          }
+        ],
+        "plant_jumps": [],
+        "observed_state_window_s": [
+          0.0,
+          1.9949999999999788
+        ],
+        "native_end_time_s": 1.9999999999999787,
+        "native_duration_completed": true,
+        "observer_host_s": 0.3879888334777206,
+        "run_host_wall_s": 4.0480176659766585,
+        "run_host_cpu_s": 4.231667,
+        "worker_wall_s": 18.039042290998623,
+        "peak_worker_rss_bytes": 242204672,
+        "sampled_process_threads": 4,
+        "sampled_prepare_process_threads": [
+          3
+        ],
+        "accelerate_control": {
+          "requested_ceiling": 1,
+          "set_status": 0,
+          "blas_threading_mode": 1,
+          "mode_name": "single",
+          "exact_active_thread_count_available": false
+        },
+        "verified_imported_paths": 1061,
+        "actual_requested_applied_differences": 6,
+        "fallbacks": 0,
+        "planner_misses": 0,
+        "codriver_misses": 0
+      },
+      "lateral_1": {
+        "run_id": "20261108T212211750867Z_6bf349f04ae146f0b4c501eb3c5779d4",
+        "raw_sha256": "11a58f10c174d12e5b38ec0e8034f53cfa30e64d18733be68ce3b0eecc41ef5d",
+        "manifest_sha256": "66801d1c3fca90335d35b63d4e9518a89475e396ac99ad5fb68a50afdcfb66f0",
+        "state_samples": 400,
+        "applied_commands": 200,
+        "plans": 20,
+        "linear_rows": 1600,
+        "local_indicators": [
+          {
+            "plan_id": 0,
+            "rows": 80,
+            "spectral_radius_min": 0.9523505699656845,
+            "spectral_radius_max": 0.9590589282548321,
+            "maximum_mixed_SI_amplification": 13.511649911702829
+          },
+          {
+            "plan_id": 1,
+            "rows": 80,
+            "spectral_radius_min": 0.9543926296221604,
+            "spectral_radius_max": 0.9583282125120145,
+            "maximum_mixed_SI_amplification": 13.462736127985991
+          },
+          {
+            "plan_id": 2,
+            "rows": 80,
+            "spectral_radius_min": 0.9542606878384444,
+            "spectral_radius_max": 0.9565601734473765,
+            "maximum_mixed_SI_amplification": 13.677491981007655
+          },
+          {
+            "plan_id": 3,
+            "rows": 80,
+            "spectral_radius_min": 0.9542417472226195,
+            "spectral_radius_max": 0.9567113312440815,
+            "maximum_mixed_SI_amplification": 13.878718577565694
+          },
+          {
+            "plan_id": 4,
+            "rows": 80,
+            "spectral_radius_min": 0.9546582621750966,
+            "spectral_radius_max": 0.9568256051773543,
+            "maximum_mixed_SI_amplification": 14.008876738267045
+          },
+          {
+            "plan_id": 5,
+            "rows": 80,
+            "spectral_radius_min": 0.9550801151894901,
+            "spectral_radius_max": 0.9569169429856149,
+            "maximum_mixed_SI_amplification": 14.105268548118058
+          },
+          {
+            "plan_id": 6,
+            "rows": 80,
+            "spectral_radius_min": 0.9554655441244039,
+            "spectral_radius_max": 0.9569934660875696,
+            "maximum_mixed_SI_amplification": 14.178727753847237
+          },
+          {
+            "plan_id": 7,
+            "rows": 80,
+            "spectral_radius_min": 0.9559701414019312,
+            "spectral_radius_max": 0.9570654683604384,
+            "maximum_mixed_SI_amplification": 14.238066767193283
+          },
+          {
+            "plan_id": 8,
+            "rows": 80,
+            "spectral_radius_min": 0.9563771253157421,
+            "spectral_radius_max": 0.9571259235526468,
+            "maximum_mixed_SI_amplification": 14.27995469821803
+          },
+          {
+            "plan_id": 9,
+            "rows": 80,
+            "spectral_radius_min": 0.9565307163632739,
+            "spectral_radius_max": 0.9571725457404621,
+            "maximum_mixed_SI_amplification": 14.323762148102585
+          },
+          {
+            "plan_id": 10,
+            "rows": 80,
+            "spectral_radius_min": 0.9566504772070595,
+            "spectral_radius_max": 0.9572115811425519,
+            "maximum_mixed_SI_amplification": 14.36469796635935
+          },
+          {
+            "plan_id": 11,
+            "rows": 80,
+            "spectral_radius_min": 0.9567713288054788,
+            "spectral_radius_max": 0.9572479604714458,
+            "maximum_mixed_SI_amplification": 14.402540417294027
+          },
+          {
+            "plan_id": 12,
+            "rows": 80,
+            "spectral_radius_min": 0.9568827602879765,
+            "spectral_radius_max": 0.9572770402738414,
+            "maximum_mixed_SI_amplification": 14.43237007215911
+          },
+          {
+            "plan_id": 13,
+            "rows": 80,
+            "spectral_radius_min": 0.9569594243425545,
+            "spectral_radius_max": 0.9573008150294785,
+            "maximum_mixed_SI_amplification": 14.45518288387825
+          },
+          {
+            "plan_id": 14,
+            "rows": 80,
+            "spectral_radius_min": 0.9570296510406461,
+            "spectral_radius_max": 0.957321043079639,
+            "maximum_mixed_SI_amplification": 14.474263836607673
+          },
+          {
+            "plan_id": 15,
+            "rows": 80,
+            "spectral_radius_min": 0.957095565671804,
+            "spectral_radius_max": 0.9573427202437949,
+            "maximum_mixed_SI_amplification": 14.492104449632997
+          },
+          {
+            "plan_id": 16,
+            "rows": 80,
+            "spectral_radius_min": 0.9571523193597247,
+            "spectral_radius_max": 0.9573644256268242,
+            "maximum_mixed_SI_amplification": 14.50646550547327
+          },
+          {
+            "plan_id": 17,
+            "rows": 80,
+            "spectral_radius_min": 0.9572073842024268,
+            "spectral_radius_max": 0.9573485094739282,
+            "maximum_mixed_SI_amplification": 14.518925297819479
+          },
+          {
+            "plan_id": 18,
+            "rows": 80,
+            "spectral_radius_min": 0.9571917169947716,
+            "spectral_radius_max": 0.9573614130001982,
+            "maximum_mixed_SI_amplification": 14.529985837057342
+          },
+          {
+            "plan_id": 19,
+            "rows": 80,
+            "spectral_radius_min": 0.9569084380575542,
+            "spectral_radius_max": 0.9573950776919344,
+            "maximum_mixed_SI_amplification": 14.538578262068585
+          }
+        ],
+        "plant_jumps": [],
+        "observed_state_window_s": [
+          0.0,
+          1.9949999999999788
+        ],
+        "native_end_time_s": 1.9999999999999787,
+        "native_duration_completed": true,
+        "observer_host_s": 0.40073241805657744,
+        "run_host_wall_s": 4.114307333016768,
+        "run_host_cpu_s": 4.300250999999999,
+        "worker_wall_s": 18.140695165959187,
+        "peak_worker_rss_bytes": 229212160,
+        "sampled_process_threads": 4,
+        "sampled_prepare_process_threads": [
+          3
+        ],
+        "accelerate_control": {
+          "requested_ceiling": 1,
+          "set_status": 0,
+          "blas_threading_mode": 1,
+          "mode_name": "single",
+          "exact_active_thread_count_available": false
+        },
+        "verified_imported_paths": 1061,
+        "actual_requested_applied_differences": 3,
+        "fallbacks": 0,
+        "planner_misses": 0,
+        "codriver_misses": 0
+      },
+      "disturbance": {
+        "run_id": "20261108T212252292651Z_b70288d94327468a9d2d05586471e76d",
+        "raw_sha256": "08520713ae7d302d8ac87fe5541ef813dd5b8c5e69850f908cebf23bcfe08bde",
+        "manifest_sha256": "559cd25834fe9dbd4ae37a3708c88a2f434a50c890bd6590a639df28eb7f5505",
+        "state_samples": 400,
+        "applied_commands": 200,
+        "plans": 21,
+        "linear_rows": 1680,
+        "local_indicators": [
+          {
+            "plan_id": 0,
+            "rows": 80,
+            "spectral_radius_min": 0.9522345190121728,
+            "spectral_radius_max": 0.9598672141892803,
+            "maximum_mixed_SI_amplification": 13.486798067426836
+          },
+          {
+            "plan_id": 1,
+            "rows": 80,
+            "spectral_radius_min": 0.9543196052699889,
+            "spectral_radius_max": 0.9589730313146205,
+            "maximum_mixed_SI_amplification": 13.461273996186607
+          },
+          {
+            "plan_id": 2,
+            "rows": 80,
+            "spectral_radius_min": 0.9541531912026523,
+            "spectral_radius_max": 0.9565543455527041,
+            "maximum_mixed_SI_amplification": 13.663938970060384
+          },
+          {
+            "plan_id": 3,
+            "rows": 80,
+            "spectral_radius_min": 0.9542084653040912,
+            "spectral_radius_max": 0.9567087750825177,
+            "maximum_mixed_SI_amplification": 13.885272086838807
+          },
+          {
+            "plan_id": 4,
+            "rows": 80,
+            "spectral_radius_min": 0.9546714916827791,
+            "spectral_radius_max": 0.9568236087824326,
+            "maximum_mixed_SI_amplification": 14.00775111194979
+          },
+          {
+            "plan_id": 5,
+            "rows": 80,
+            "spectral_radius_min": 0.9551063029980494,
+            "spectral_radius_max": 0.9569234822162744,
+            "maximum_mixed_SI_amplification": 14.093311836699572
+          },
+          {
+            "plan_id": 6,
+            "rows": 80,
+            "spectral_radius_min": 0.9552445648938344,
+            "spectral_radius_max": 0.9569474307484587,
+            "maximum_mixed_SI_amplification": 14.117745763118354
+          },
+          {
+            "plan_id": 7,
+            "rows": 80,
+            "spectral_radius_min": 0.9555068369458284,
+            "spectral_radius_max": 0.9570036252968025,
+            "maximum_mixed_SI_amplification": 14.175283590245385
+          },
+          {
+            "plan_id": 8,
+            "rows": 80,
+            "spectral_radius_min": 0.9558682161868775,
+            "spectral_radius_max": 0.9570745814736894,
+            "maximum_mixed_SI_amplification": 14.248448031897118
+          },
+          {
+            "plan_id": 9,
+            "rows": 80,
+            "spectral_radius_min": 0.9561475681315934,
+            "spectral_radius_max": 0.9571293665869379,
+            "maximum_mixed_SI_amplification": 14.297815951610296
+          },
+          {
+            "plan_id": 10,
+            "rows": 80,
+            "spectral_radius_min": 0.9563616513423918,
+            "spectral_radius_max": 0.957174977588647,
+            "maximum_mixed_SI_amplification": 14.33970971434337
+          },
+          {
+            "plan_id": 11,
+            "rows": 80,
+            "spectral_radius_min": 0.9565555483636973,
+            "spectral_radius_max": 0.9572174692197427,
+            "maximum_mixed_SI_amplification": 14.380508481686267
+          },
+          {
+            "plan_id": 12,
+            "rows": 80,
+            "spectral_radius_min": 0.9567273034210709,
+            "spectral_radius_max": 0.9572515406976981,
+            "maximum_mixed_SI_amplification": 14.412491270165335
+          },
+          {
+            "plan_id": 13,
+            "rows": 80,
+            "spectral_radius_min": 0.9568447258160613,
+            "spectral_radius_max": 0.9572787062617908,
+            "maximum_mixed_SI_amplification": 14.436947055945963
+          },
+          {
+            "plan_id": 14,
+            "rows": 80,
+            "spectral_radius_min": 0.9569453309015089,
+            "spectral_radius_max": 0.9573014884008563,
+            "maximum_mixed_SI_amplification": 14.457728962499475
+          },
+          {
+            "plan_id": 15,
+            "rows": 80,
+            "spectral_radius_min": 0.9570340809049253,
+            "spectral_radius_max": 0.9573237678887887,
+            "maximum_mixed_SI_amplification": 14.47756630480302
+          },
+          {
+            "plan_id": 16,
+            "rows": 80,
+            "spectral_radius_min": 0.9571059443179696,
+            "spectral_radius_max": 0.9573446810999121,
+            "maximum_mixed_SI_amplification": 14.493874088037309
+          },
+          {
+            "plan_id": 17,
+            "rows": 80,
+            "spectral_radius_min": 0.9571522545113674,
+            "spectral_radius_max": 0.957364479453412,
+            "maximum_mixed_SI_amplification": 14.506849518158468
+          },
+          {
+            "plan_id": 18,
+            "rows": 80,
+            "spectral_radius_min": 0.9572078805350498,
+            "spectral_radius_max": 0.9573509380063904,
+            "maximum_mixed_SI_amplification": 14.518984931777466
+          },
+          {
+            "plan_id": 19,
+            "rows": 80,
+            "spectral_radius_min": 0.9571819448237905,
+            "spectral_radius_max": 0.9573668882227305,
+            "maximum_mixed_SI_amplification": 14.531937990143467
+          },
+          {
+            "plan_id": 20,
+            "rows": 80,
+            "spectral_radius_min": 0.9568923396264141,
+            "spectral_radius_max": 0.957404771328075,
+            "maximum_mixed_SI_amplification": 14.538686338344046
+          }
+        ],
+        "plant_jumps": [
+          {
+            "time": 0.5,
+            "state_increment": [
+              0.0,
+              0.0,
+              0.0,
+              -0.040000000000000036,
+              0.0,
+              0.08
+            ]
+          }
+        ],
+        "observed_state_window_s": [
+          0.0,
+          1.9949999999999788
+        ],
+        "native_end_time_s": 1.9999999999999787,
+        "native_duration_completed": true,
+        "observer_host_s": 0.41911829309538007,
+        "run_host_wall_s": 4.165671166963875,
+        "run_host_cpu_s": 4.343689999999999,
+        "worker_wall_s": 17.943397667026147,
+        "peak_worker_rss_bytes": 240336896,
+        "sampled_process_threads": 4,
+        "sampled_prepare_process_threads": [
+          3
+        ],
+        "accelerate_control": {
+          "requested_ceiling": 1,
+          "set_status": 0,
+          "blas_threading_mode": 1,
+          "mode_name": "single",
+          "exact_active_thread_count_available": false
+        },
+        "verified_imported_paths": 1061,
+        "actual_requested_applied_differences": 6,
+        "fallbacks": 0,
+        "planner_misses": 0,
+        "codriver_misses": 0
+      }
+    },
+    "gate_record": "results/apex_workbench_nmpc_lab_v1/work/review/correction1/software_gate_review.json",
+    "gate_record_sha256": "6a6196f99aa4171feaaca9a50e9643697cd8bb018a8b7ad6b241c4539af95557",
+    "policy_stage": "reviewed-work",
+    "accepted_interactive_enabled": false
+  },
+  "descriptive_metrics": {
+    "baseline": {
+      "definition": "Equal-weight RMS over actual recorded samples in the displayed native window; no resampling",
+      "observation_window_s": [
+        0.0,
+        1.9949999999999788
+      ],
+      "requested_duration_s": 2.0,
+      "native_end_time_s": 1.9999999999999787,
+      "stop_reason": "duration",
+      "failure": null,
+      "racing_lateral_error_m": {
+        "samples": 400,
+        "peak_abs": 0.023550888209661835,
+        "rms": 0.008359174580179882,
+        "mean": -0.003710929270785746
+      },
+      "racing_heading_error_rad": {
+        "samples": 400,
+        "peak_abs": 0.049984106706955966,
+        "rms": 0.014912854968323251,
+        "mean": 0.000497795683243879
+      },
+      "centerline_e_y_m": {
+        "samples": 400,
+        "peak_abs": 0.11268618155631815,
+        "rms": 0.033214838001299665,
+        "mean": -0.014292415705958132
+      },
+      "active_packet_lateral_error_m": {
+        "samples": 200,
+        "peak_abs": 0.0038598564960227386,
+        "rms": 0.0006746883273349105,
+        "mean": 0.00026062260039456605
+      },
+      "observed_lateral_zero_crossings": 1,
+      "steering_rad": {
+        "samples": 200,
+        "peak_abs": 0.05997250406504999,
+        "rms": 0.015916575785675766,
+        "mean": -0.0014131154943668402,
+        "total_variation": 0.2751498302328905,
+        "maximum_observed_increment_rate": 1.0,
+        "application_window_s": [
+          0.005,
+          1.9949999999999788
+        ],
+        "rows_without_applied_measurement": 0
+      },
+      "longitudinal_a_cmd_mps2": {
+        "samples": 200,
+        "peak_abs": 0.9365010035491795,
+        "rms": 0.4801161115265639,
+        "mean": 0.368493697336195,
+        "total_variation": 1.3284504483011068,
+        "maximum_observed_increment_rate": 10.853304627966866,
+        "application_window_s": [
+          0.005,
+          1.9949999999999788
+        ],
+        "rows_without_applied_measurement": 0
+      },
+      "solver_host_seconds": {
+        "samples": 20,
+        "peak_abs": 0.04530383297242224,
+        "rms": 0.03999452434855827,
+        "mean": 0.03973361646058038
+      },
+      "preparation_host_seconds": {
+        "samples": 20,
+        "peak_abs": 0.06620295799802989,
+        "rms": 0.05946849764172916,
+        "mean": 0.05924397706403397
+      },
+      "iterations": {
+        "samples": 20,
+        "peak_abs": 18,
+        "rms": 16.0312195418814,
+        "mean": 15.9
+      },
+      "successful_native_preparations": 20,
+      "preparation_count": 20,
+      "max_native_slack": 9.091525285379717e-11,
+      "max_primal_infeasibility": 1.2654932407540898e-08,
+      "grip_utilization": {
+        "front": {
+          "samples": 400,
+          "peak_abs": 0.33734855084513626,
+          "rms": 0.10073460604867078,
+          "mean": 0.07691894002461921
+        },
+        "rear": {
+          "samples": 400,
+          "peak_abs": 0.36460086857346896,
+          "rms": 0.11850456038813234,
+          "mean": 0.08458419766155498
+        }
+      },
+      "minimum_combined_utilization_margin": {
+        "front": 0.6626514491548637,
+        "rear": 0.635399131426531
+      },
+      "recorded_boundary_violation_rows": 0,
+      "requested_applied_steering_differences": 6,
+      "settling": {
+        "band_m": 0.01,
+        "minimum_observed_tail_s": 0.25,
+        "target_error_m": 0.0,
+        "settling_time_s": 0.46,
+        "definition": "Observed within-window settling of racing-reference lateral error; not future stability",
+        "status": "observed within-window settling"
+      },
+      "disturbance_recovery": {
+        "status": "No single recorded disturbance application"
+      },
+      "disturbance_response": null,
+      "overshoot": {
+        "value": null,
+        "reason": "No steady reference-step experiment; do not assign step overshoot to a state perturbation"
+      }
+    },
+    "lateral_1": {
+      "definition": "Equal-weight RMS over actual recorded samples in the displayed native window; no resampling",
+      "observation_window_s": [
+        0.0,
+        1.9949999999999788
+      ],
+      "requested_duration_s": 2.0,
+      "native_end_time_s": 1.9999999999999787,
+      "stop_reason": "duration",
+      "failure": null,
+      "racing_lateral_error_m": {
+        "samples": 400,
+        "peak_abs": 0.02795699932264853,
+        "rms": 0.01024348098870903,
+        "mean": -0.005126927248910271
+      },
+      "racing_heading_error_rad": {
+        "samples": 400,
+        "peak_abs": 0.03818189871900879,
+        "rms": 0.013574101633738856,
+        "mean": 0.00042205303406444574
+      },
+      "centerline_e_y_m": {
+        "samples": 400,
+        "peak_abs": 0.11268618155631815,
+        "rms": 0.03420883421140883,
+        "mean": -0.015707869697641413
+      },
+      "active_packet_lateral_error_m": {
+        "samples": 200,
+        "peak_abs": 0.0024250611883438883,
+        "rms": 0.0005263907568285608,
+        "mean": 0.00024175535325906156
+      },
+      "observed_lateral_zero_crossings": 3,
+      "steering_rad": {
+        "samples": 200,
+        "peak_abs": 0.05068480786197826,
+        "rms": 0.013086432710178243,
+        "mean": -0.0013827390749714403,
+        "total_variation": 0.1851706648789386,
+        "maximum_observed_increment_rate": 1.0,
+        "application_window_s": [
+          0.005,
+          1.9949999999999788
+        ],
+        "rows_without_applied_measurement": 0
+      },
+      "longitudinal_a_cmd_mps2": {
+        "samples": 200,
+        "peak_abs": 0.9232852002979597,
+        "rms": 0.4786992007982695,
+        "mean": 0.36789091542964725,
+        "total_variation": 1.3121962611773472,
+        "maximum_observed_increment_rate": 10.867339839757447,
+        "application_window_s": [
+          0.005,
+          1.9949999999999788
+        ],
+        "rows_without_applied_measurement": 0
+      },
+      "solver_host_seconds": {
+        "samples": 20,
+        "peak_abs": 0.04503166698850691,
+        "rms": 0.04036452514460079,
+        "mean": 0.04011466252850369
+      },
+      "preparation_host_seconds": {
+        "samples": 20,
+        "peak_abs": 0.06544229201972485,
+        "rms": 0.05987649126181111,
+        "mean": 0.05966912088915706
+      },
+      "iterations": {
+        "samples": 20,
+        "peak_abs": 18,
+        "rms": 16.0312195418814,
+        "mean": 15.9
+      },
+      "successful_native_preparations": 20,
+      "preparation_count": 20,
+      "max_native_slack": 9.091525285379717e-11,
+      "max_primal_infeasibility": 1.048299799744079e-08,
+      "grip_utilization": {
+        "front": {
+          "samples": 400,
+          "peak_abs": 0.3165030985104174,
+          "rms": 0.09797832409255824,
+          "mean": 0.0766104146082356
+        },
+        "rear": {
+          "samples": 400,
+          "peak_abs": 0.3434746456615577,
+          "rms": 0.11504971259312963,
+          "mean": 0.08427919563925344
+        }
+      },
+      "minimum_combined_utilization_margin": {
+        "front": 0.6834969014895826,
+        "rear": 0.6565253543384423
+      },
+      "recorded_boundary_violation_rows": 0,
+      "requested_applied_steering_differences": 3,
+      "settling": {
+        "band_m": 0.01,
+        "minimum_observed_tail_s": 0.25,
+        "target_error_m": 0.0,
+        "settling_time_s": 0.525,
+        "definition": "Observed within-window settling of racing-reference lateral error; not future stability",
+        "status": "observed within-window settling"
+      },
+      "disturbance_recovery": {
+        "status": "No single recorded disturbance application"
+      },
+      "disturbance_response": null,
+      "overshoot": {
+        "value": null,
+        "reason": "No steady reference-step experiment; do not assign step overshoot to a state perturbation"
+      }
+    },
+    "disturbance": {
+      "definition": "Equal-weight RMS over actual recorded samples in the displayed native window; no resampling",
+      "observation_window_s": [
+        0.0,
+        1.9949999999999788
+      ],
+      "requested_duration_s": 2.0,
+      "native_end_time_s": 1.9999999999999787,
+      "stop_reason": "duration",
+      "failure": null,
+      "racing_lateral_error_m": {
+        "samples": 400,
+        "peak_abs": 0.07271017666762833,
+        "rms": 0.02143062678153339,
+        "mean": 0.005351027288549265
+      },
+      "racing_heading_error_rad": {
+        "samples": 400,
+        "peak_abs": 0.049984106706955966,
+        "rms": 0.0195347725611264,
+        "mean": -0.0044880514298081455
+      },
+      "centerline_e_y_m": {
+        "samples": 400,
+        "peak_abs": 0.11268618155631815,
+        "rms": 0.03857591564083148,
+        "mean": -0.005230453944007797
+      },
+      "active_packet_lateral_error_m": {
+        "samples": 200,
+        "peak_abs": 0.08118863809304117,
+        "rms": 0.011019691344497103,
+        "mean": 0.0016921746751251444
+      },
+      "observed_lateral_zero_crossings": 3,
+      "steering_rad": {
+        "samples": 200,
+        "peak_abs": 0.05997250406504999,
+        "rms": 0.015578714999610627,
+        "mean": -0.000319297783526276,
+        "total_variation": 0.27137767235110777,
+        "maximum_observed_increment_rate": 1.0,
+        "application_window_s": [
+          0.005,
+          1.9949999999999788
+        ],
+        "rows_without_applied_measurement": 0
+      },
+      "longitudinal_a_cmd_mps2": {
+        "samples": 200,
+        "peak_abs": 0.9365010035491795,
+        "rms": 0.4794140935770148,
+        "mean": 0.366621115555568,
+        "total_variation": 1.2825089228451163,
+        "maximum_observed_increment_rate": 10.49639483852495,
+        "application_window_s": [
+          0.005,
+          1.9949999999999788
+        ],
+        "rows_without_applied_measurement": 0
+      },
+      "solver_host_seconds": {
+        "samples": 21,
+        "peak_abs": 0.044623374938964844,
+        "rms": 0.04015873547118186,
+        "mean": 0.03992756346373686
+      },
+      "preparation_host_seconds": {
+        "samples": 21,
+        "peak_abs": 0.06461875000968575,
+        "rms": 0.0600186728218552,
+        "mean": 0.059823813571018125
+      },
+      "iterations": {
+        "samples": 21,
+        "peak_abs": 18,
+        "rms": 15.989579940281942,
+        "mean": 15.857142857142858
+      },
+      "successful_native_preparations": 21,
+      "preparation_count": 21,
+      "max_native_slack": 9.091525285379717e-11,
+      "max_primal_infeasibility": 1.0743846562411008e-08,
+      "grip_utilization": {
+        "front": {
+          "samples": 400,
+          "peak_abs": 0.33734855084513626,
+          "rms": 0.09532611251542215,
+          "mean": 0.06835809025734993
+        },
+        "rear": {
+          "samples": 400,
+          "peak_abs": 0.36460086857346896,
+          "rms": 0.11392323345957123,
+          "mean": 0.07596245711119017
+        }
+      },
+      "minimum_combined_utilization_margin": {
+        "front": 0.6626514491548637,
+        "rear": 0.635399131426531
+      },
+      "recorded_boundary_violation_rows": 0,
+      "requested_applied_steering_differences": 6,
+      "settling": {
+        "band_m": 0.01,
+        "minimum_observed_tail_s": 0.25,
+        "target_error_m": 0.0,
+        "settling_time_s": 0.46499999999999997,
+        "definition": "Observed within-window settling of racing-reference lateral error; not future stability",
+        "status": "observed within-window settling"
+      },
+      "disturbance_recovery": {
+        "band_m": 0.01,
+        "minimum_observed_tail_s": 0.25,
+        "target_error_m": 0.0,
+        "settling_time_s": 0.46499999999999997,
+        "definition": "Observed within-window settling of racing-reference lateral error; not future stability",
+        "status": "observed within-window settling"
+      },
+      "disturbance_response": {
+        "before": {
+          "samples": 100,
+          "peak_abs": 0.023550888209661835,
+          "rms": 0.01646860272568551,
+          "mean": -0.01487065195523038
+        },
+        "after": {
+          "samples": 300,
+          "peak_abs": 0.07271017666762833,
+          "rms": 0.022846386886194565,
+          "mean": 0.012091587036475813
+        }
+      },
+      "overshoot": {
+        "value": null,
+        "reason": "No steady reference-step experiment; do not assign step overshoot to a state perturbation"
+      }
+    }
+  },
+  "retained_data_audit": "results/apex_workbench_nmpc_lab_v1/work/review/final_evidence/retained_audit.json",
+  "preservation": {
+    "schema": "apex-nmpc-lab-v1-final-preservation/1",
+    "outcome": "PASS",
+    "primary_baseline_manifest": "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/results/apex_workbench_v03d_work_20261030/preservation_before.json",
+    "primary_baseline_manifest_sha256": "987168c427959492052d506da8179f30ca2f42fa59cc12a76cfd67e9cac3dd57",
+    "primary_groups": {
+      "scientific_source_sha256": {
+        "root": "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle",
+        "files": 56,
+        "mismatches": []
+      },
+      "qualification_sha256": {
+        "root": "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/results/apex_workbench_qualifications/v0_2_reviewed_20261029",
+        "files": 345,
+        "mismatches": []
+      },
+      "gp_archive_sha256": {
+        "root": "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/results/task007d/vis/vis1r_c699057/controlled_A",
+        "files": 25,
+        "mismatches": []
+      },
+      "legacy_oval_sha256": {
+        "root": "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/results/lqr_baseline/oval_2mps",
+        "files": 4,
+        "mismatches": []
+      }
+    },
+    "c0": {
+      "bytes": 152600,
+      "sha256": "2bd7d2385e7e2072a04e5d952eff9af8861eb7e63f016138d5289573c411f2d5"
+    },
+    "historical_m5a": {
+      "files": 6329,
+      "links": 324,
+      "changed_files": [],
+      "changed_links": [],
+      "extra_files": [],
+      "extra_links": []
+    },
+    "scientific_current_prefix_diff": "",
+    "preint": {
+      "verified_revision": "90e20cbe7abeed3d08c8f55d26886dd28ae75b19",
+      "HEAD": "19073ddb318d136f88b0fe45ca122da48fa0e535",
+      "current_status": "",
+      "protected_prefix_diff": "",
+      "retained_inactive_markers_checked": 66,
+      "marker_changes": [],
+      "scope": "Protected scientific prefixes against verified revision and66 prior host marker bytes; no whole-tree historical artifact inventory was recaptured."
+    },
+    "frozen_runtime": "All333 files also independently matched exact source in retained_audit.json",
+    "gate_sha256": "6a6196f99aa4171feaaca9a50e9643697cd8bb018a8b7ad6b241c4539af95557",
+    "genuine_reviewer_execution": 0
+  },
+  "browser_and_cleanup": {
+    "final_svg_counts": {
+      "glCanvases": 0,
+      "svgTraceLines": 15,
+      "svgTracePoints": 2723
+    },
+    "independent_visual_inspection": [
+      "Original post_execution/browser_analysis.jpg axes without error trace confirmed",
+      "Final post_execution_svg/browser_disturbance_curve.jpg visible actual lateral/heading traces confirmed"
+    ],
+    "root_cause": "Not established; do not infer a specific WebGL defect from blank traces alone",
+    "parent_cleanup": {
+      "source_revision": "8ee2b868e653d687383d6c4e2d38a3bece31319a",
+      "browser": "temporary IAB tab closed",
+      "startup_cwd": "/private/tmp",
+      "url": "http://127.0.0.1:8516",
+      "command": [
+        "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/tools/apex_workbench/.venv/bin/python",
+        "-B",
+        "-m",
+        "streamlit",
+        "run",
+        "/Users/marwansaber/.codex/worktrees/nmpc-weight-m0/MPC_Controller_v1_IronManStyle/tools/apex_workbench/workspace.py",
+        "--server.address",
+        "127.0.0.1",
+        "--server.port",
+        "8516",
+        "--server.headless",
+        "true",
+        "--browser.gatherUsageStats",
+        "false"
+      ],
+      "startup_and_loopback": "actual browser connected and rendered native data",
+      "owned_stop": "Control-C via original owned process session; exit0 and Stopping log",
+      "port_after_stop_connect_ex": 61,
+      "owned_worker_processes": [],
+      "shared_lease_free": true,
+      "used_cases": {
+        "baseline": "20261108T212141278330Z_330b90fcb81240a99ea28c224ae4c6cb",
+        "lateral_1": "20261108T212211750867Z_6bf349f04ae146f0b4c501eb3c5779d4",
+        "disturbance": "20261108T212252292651Z_b70288d94327468a9d2d05586471e76d"
+      },
+      "numerical_runs_during_browser_checks": 0,
+      "launcher": "unchanged; current isolated checkout lacks its local tools environment; approved primary environment used explicitly",
+      "browser_harness_observations": [
+        "AX setValue moved slider client without committing server value; keyboard End committed terminalnode8",
+        "Playwright radio setChecked failed immediate state assertion; currentAX navigation succeeded",
+        "browser reload alone preserved old server modules; ownedrestart loadedSVG; all negativecapturesretained"
+      ]
+    },
+    "cleanup_sha256": "a9d0c7692d0073178bc8f5d941d633ba677f44bba43d3fe5495a07bb575fc5d9"
+  },
+  "reviewer_execution": {
+    "genuine_runs": 0,
+    "optimizer_solves": 0,
+    "plant_steps": 0,
+    "source_model_reruns": 0,
+    "final_scientific_modules_loaded": [],
+    "new_source_model_probes_during_final_audit": 0,
+    "final_checks": "3 pure retained-data/presentation tests; byte/environment/recorded-matrix algebra only"
+  },
+  "earlier_independent_invocations_separate": {
+    "configuration_scenarios": {
+      "passed": 1,
+      "scope": "Three native dataclass probes before genuine attempts, zero solve/plant"
+    },
+    "correction_integrity": {
+      "passed": 7,
+      "seconds": 0.46
+    },
+    "correction_ui": {
+      "passed": 2,
+      "seconds": 1.39
+    },
+    "initial_anchor_negative": {
+      "failed": 1,
+      "preserved": true
+    }
+  },
+  "formal_verification": "NOT_AUTHORIZED_NOT_RUN",
+  "further_numerical_authority": "NONE_ALL_THREE_SLOTS_CONSUMED",
+  "next_conditions": [
+    "Primary acceptance remains required; do not enable accepted-interactive automatically.",
+    "Final documentation delivery should bind stable closed operational-log and cleanup/report hashes while retaining older declarations; no source/test/profile changes are covered by documentation-only reuse.",
+    "Future exporter requires an explicit selected version/hash and review plus separate implementation scope; no exporter/deployment implemented."
+  ],
+  "limitations": [
+    "Single synthetic 2-second observation per case, common actual sample window0..1.995s; no invented endpoint state.",
+    "Local nominal lateral Jacobian/gain diagnostics do not establish nonlinear/hybrid/time-varying stability; mixed-SI norms are coordinate dependent.",
+    "Observed-band recovery does not establish future stabilization or physical safety; no valid step overshoot experiment.",
+    "Controlled imposed availability differs from host solve duration; sampled process thread counts are4, not a one-thread qualification.",
+    "No full regression, formal Verification, physical/performance qualification or hard-real-time/WCET campaign.",
+    "Raw ignored evidence is local; hashes are not off-host artifact availability.",
+    "Local worktree one-click environment is absent; explicit approved-primary-interpreter browser launch was demonstrated."
+  ],
+  "report_path": "results/apex_workbench_nmpc_lab_v1/work/review/FINAL_REPORT.md",
+  "report_sha256": "ea9b9b89de9076b8dde91a5646aa9c32ffe910742aebc7364f357c5070f3fa30",
+  "evidence_path_semantics": "All evidence references are repository-root-relative; exact bytes may be copied to docs/reviews/nmpc_lab_v1 without relocation-dependent Markdown links.",
+  "evidence_sha256": {
+    "results/apex_workbench_nmpc_lab_v1/work/review/final_evidence/retained_audit.py": "a650f5293d8d56c5d5b5204a812053974ec49447f9974245e0af65a52c2448dd",
+    "results/apex_workbench_nmpc_lab_v1/work/review/final_evidence/retained_audit_initial.py": "8f672d93826afb44c9af61d363c1328aa9d300c2715a89c1fb07d0fb24712d67",
+    "results/apex_workbench_nmpc_lab_v1/work/review/final_evidence/retained_audit.log": "c89c9c463ab978afc24e62dcc20cfe3b5ac4f61b41bb4568fbe219ee73cd03bf",
+    "results/apex_workbench_nmpc_lab_v1/work/review/final_evidence/retained_audit_2.log": "28a733050eafb1aa51b345469ee822be01eb0975f446d7434aae4af445c30559",
+    "results/apex_workbench_nmpc_lab_v1/work/review/final_evidence/retained_audit_3.log": "23b7c9cd0ac0c8214eec9d1f9dc9d2348e89320116cdfd8accc4d20ce0972e8c",
+    "results/apex_workbench_nmpc_lab_v1/work/review/final_evidence/retained_audit.json": "98749834930f114c063c9747fb3e62a8606aedcc85b8db2f73ea5b08082f9f65",
+    "results/apex_workbench_nmpc_lab_v1/work/review/final_evidence/descriptive_metrics.json": "7be4e8e88caa70bf7f76b8f5ff87b48b4ac2ada0a70509140815bba3470034ea",
+    "results/apex_workbench_nmpc_lab_v1/work/review/final_evidence/timing_association_audit.json": "43340f23da9bef5d92a3bff107249c8f92bce26e0f2026d14572b5052d2c0819",
+    "results/apex_workbench_nmpc_lab_v1/work/review/final_evidence/preservation_audit.json": "446284c524541d8531ff97ebb7dd9a89fb7b3839131ff99a233f624c6c96fa0b",
+    "results/apex_workbench_nmpc_lab_v1/work/review/final_evidence/independent_old_m5_parity.json": "4535467a40146d396d4b4a0892f7c622e41114739eba1024299d9f920a3edc45",
+    "results/apex_workbench_nmpc_lab_v1/work/review/final_evidence/commands.json": "3cb2e905950f873f326428a3c702a93e54e0deede3bdeeded9653b2be905b6df",
+    "results/apex_workbench_nmpc_lab_v1/work/review/final_evidence/final_source_bindings.json": "d0a964916c73439e9c7efde24aece341e255154662d2a8014d0a75f07f1bc3df",
+    "results/apex_workbench_nmpc_lab_v1/work/review/final_evidence/test_final_presentation.py": "a66ed0153e5e50b7dd7202c317de2cfa3e825c4e660719528416f926b3f407e2",
+    "results/apex_workbench_nmpc_lab_v1/work/review/final_evidence/final_ui_runner.py": "4d0afa279c2ac5b47dbd01f6f336096f09db590ad64d72d6d5140b8306e8a6bd",
+    "results/apex_workbench_nmpc_lab_v1/work/review/final_evidence/final_presentation_command.json": "9561348c6575a7b25d21942f043eece1a99ab728ad19aa9a45467ac7e3aa0305",
+    "results/apex_workbench_nmpc_lab_v1/work/review/final_evidence/final_presentation_result.json": "57c345a6ebd1615e7722f814d4f60fa516427ccb9a0f79b77672aec660d74fec",
+    "results/apex_workbench_nmpc_lab_v1/work/review/final_evidence/final_presentation.log": "179ffc7c10ccc69a5c01d895193e611f8797df220c2b2baf19285cdd7ebf19c8",
+    "results/apex_workbench_nmpc_lab_v1/work/review/final_evidence/final_presentation.xml": "7b49aec9a54288e742fa48d3537864cf93379952c3877b72eff60f8a36177e19",
+    "results/apex_workbench_nmpc_lab_v1/work/review/final_evidence/browser_and_finalization_review.json": "123d971739237c0a0a4af82a27a0cda437a89debb8c3fee6d348661af458a93a",
+    "results/apex_workbench_nmpc_lab_v1/work/post_execution_svg/ui.xml": "0b872afb11aa85f6ee62b4649c064fc970483587d87f73e546fc1d899b11da7b",
+    "results/apex_workbench_nmpc_lab_v1/work/post_execution_svg/ui.log": "5b3ee8414d714c366c8643e85d23971f23af9c63a134db0e6673930461243cc1",
+    "results/apex_workbench_nmpc_lab_v1/work/post_execution_svg/ui_result.json": "9dbc08c9d17570e4c20e9ee81beabd72ca104363781778a4e336d21f776e1779",
+    "results/apex_workbench_nmpc_lab_v1/work/post_execution_svg/browser_svg_counts.json": "aadc7b1a35f3b78954898a331a4b0b299ab2ac49a452ecf26ada88cac59cd69a",
+    "results/apex_workbench_nmpc_lab_v1/work/post_execution_svg/browser_disturbance_curve.jpg": "d72822cece8ac38b392f385f8a540efc92542c1354245eb7e63c3e61244869a5",
+    "results/apex_workbench_nmpc_lab_v1/work/post_execution_svg/browser_disturbance_curve_full.jpg": "293f1eafe4e41c8e7996309069be228d289069d2725412aaec5a58d38363339b",
+    "results/apex_workbench_nmpc_lab_v1/work/post_execution_svg/browser_analysis_loaded.jpg": "eca3f6fbc85e43c2ce3f77b9640a4b8ddb8c931dc0b16e2d95a97d9941e09a3b",
+    "results/apex_workbench_nmpc_lab_v1/work/post_execution_svg/browser_replay_dom.txt": "dd24d26d19750e2923e1f54c2146901ee0f644ad232a5e63d344d69df9c2568a",
+    "results/apex_workbench_nmpc_lab_v1/work/post_execution_svg/browser_trajectory.jpg": "e7adc215e308c5f12d636264675ed647310c48bd5c8493d03c706cb09b0bd532",
+    "results/apex_workbench_nmpc_lab_v1/work/post_execution_svg/browser_cleanup.json": "a9d0c7692d0073178bc8f5d941d633ba677f44bba43d3fe5495a07bb575fc5d9",
+    "results/apex_workbench_nmpc_lab_v1/work/post_execution_svg/browser_server.log": "85611f363a2c9d3aa7d3c7f4a6b1d7b2da2ef84d0de35b111c13d1132109cbcd",
+    "results/apex_workbench_nmpc_lab_v1/work/post_execution/browser_analysis.jpg": "6d70097d32c2ca40312a10101f26d6567429695fde0490d974c8cb6dc0eb0531",
+    "results/apex_workbench_nmpc_lab_v1/work/post_execution/browser_horizon_committed.jpg": "8a4b67a35dc2f092d17b405f74bf3b15996cc608a2b5455c70a4970e4fdee893",
+    "results/apex_workbench_nmpc_lab_v1/work/post_execution/browser_horizon_dom.txt": "48924bbee09abdb4ef84e6747cf75b0b3ed9058d2abfa66c33a9ea2d09938292",
+    "results/apex_workbench_nmpc_lab_v1/work/post_execution/old_m5_physical_parity.json": "dbcba0fc038c7c2564ad3baa3a75571a21167a9fed7210b6565a51daed618f91",
+    "results/apex_workbench_nmpc_lab_v1/work/authorized_attempts.jsonl": "3a314f2dbdadc5a64dcfcceced65d38008dcb70308b22b639a1afe28bb3f9e37",
+    "results/apex_workbench_nmpc_lab_v1/work/disturbance_domain_stdout.json": "eb47b674d3c8cd16aef7dc62ad7e5adf3931d032d45f9cc0857358986fdbfc45",
+    "results/apex_workbench_nmpc_lab_v1/work/bench_reference.json": "811830986f06c17208102080118b56665909af5abb9a00e132808530669fda62",
+    "results/apex_workbench_nmpc_lab_v1/work/log_finalization_note.json": "985b2b0f69286ea5237430aebd530990d5747b6256be84a2b94d206d50dd42c1",
+    "results/apex_workbench_nmpc_lab_v1/work/focused_5_command.json": "58a4a7c19dca6e40eba4fc5372375004399b7516d1c5972d2d097442604caf40",
+    "results/apex_workbench_nmpc_lab_v1/work/focused_5.xml": "149b2194b7ea702bd99e6cca4a0986d34aac50bc81b146069e872a0eff6d00cd",
+    "results/apex_workbench_nmpc_lab_v1/work/focused_5.log": "5c49e086ecad9644aee31fe0e22e39d1c9cc8a8c515e4afbca6d4dac876253c4"
+  }
+}

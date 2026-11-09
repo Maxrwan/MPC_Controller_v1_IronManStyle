@@ -1,12 +1,14 @@
 # NMPC Lab V1 — bounded WORK
 
-**WORK_COMPLETE_PENDING_FINAL_REVIEW.** 9 November 2026. Branch `codex/nmpc-lab-v1`, starting
+**NMPC_LAB_V1_WORK_COMPLETE_PENDING_PRIMARY_ACCEPTANCE.** 9 November 2026. Branch `codex/nmpc-lab-v1`, starting
 commit `4f398cfa68bbad3f5d66068888aec70d948e1bb9`; scientific source remains
 `48adbdf64d492592d15e23c917aca71fa58aa8a5`. Independently reviewed execution source
 `af3956fc2dc8c1a88051e87e2eae66010490a2fb` produced all three authorized attempts, once each.
-The containing candidate adds only retained-data presentation/tests and documentation after Primary's
-Bench reference addendum; no additional numerical execution is permitted. The same independent
-context is completing consolidated final review. [Machine record](work_record.json).
+Final presentation source `8ee2b868e653d687383d6c4e2d38a3bece31319a` received consolidated independent
+**PASS** with no blocking findings. It adds retained-data presentation only after Primary's Bench
+reference addendum. This delivery changes documentation only; no additional numerical execution
+is permitted. [Independent review](../reviews/nmpc_lab_v1/REVIEW.md),
+[review record](../reviews/nmpc_lab_v1/review_record.json), [WORK record](work_record.json).
 
 ## Small configuration contract
 
@@ -151,7 +153,20 @@ The fixed pre-execution review/budget binding stays unchanged. Independent post-
 verified the actual optimizer/packet/control/plant associations,4880 Jacobian/gain rows, identities,
 once-each budget and historical preservation without rerunning models or experiments.
 
-Next: exact final presentation review and final documentation delivery; numerical budget exhausted.
+Final independent retained-data/presentation invocation on exact8ee2: **3passed,1.657s**, zero
+failures/errors/skips and zero scientific imports/execution. These counts are separate from98 and4.
+The original admission gate and initial failed review remain unchanged. Owned browser servers/tab
+are closed; port8516 refuses connection, no owned worker remains and the shared lease is free.
+The review's nonblocking log-finalization note is closed in this documentation delivery: the old
+operational log gained `Stopping...` on owned shutdown, and its final stable hash is now recorded.
+The earlier declaration and finalization negative remain preserved; no raw/controller evidence changed.
+
+Recommended next decision: Primary accepts the bounded NMPC Lab V1 software scope at exact8ee2,
+with the three af3956 synthetic results and stated limitations. Repeatable user-triggered Scratch
+remains disabled until that acceptance is explicitly recorded; no additional attempt is authorized
+now. Subsequent exporter WORK should only consume an explicitly selected version/hash/review,
+reuse the native configuration factory independently of Streamlit, and receive separate bounded
+implementation authority. No exporter or deployment was begun. Numerical budget exhausted.
 No change to controller mathematics, physical assumptions, accepted architecture, Safety policy,
 frozen source or numerical budget is delegated. Stop after delivery at
 `NMPC_LAB_V1_WORK_COMPLETE_PENDING_PRIMARY_ACCEPTANCE` if the authorized work succeeds.

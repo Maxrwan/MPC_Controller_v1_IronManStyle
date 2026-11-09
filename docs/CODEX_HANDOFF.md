@@ -1,7 +1,9 @@
-# Current handoff — NMPC Lab V1 retained-data presentation awaiting final review
+# Current handoff — NMPC Lab V1 independently reviewed WORK awaiting Primary acceptance
 
-**WORK_COMPLETE_PENDING_FINAL_REVIEW.** 9 November 2026. Branch `codex/nmpc-lab-v1`, base
-`4f398cfa68bbad3f5d66068888aec70d948e1bb9`. [WORK](nmpc_lab_v1/WORK.md),
+**NMPC_LAB_V1_WORK_COMPLETE_PENDING_PRIMARY_ACCEPTANCE.** 9 November 2026. Branch `codex/nmpc-lab-v1`, base
+`4f398cfa68bbad3f5d66068888aec70d948e1bb9`. Final exact presentation source
+`8ee2b868e653d687383d6c4e2d38a3bece31319a` independently **PASS**, no blocking findings.
+[Review](reviews/nmpc_lab_v1/REVIEW.md), [review record](reviews/nmpc_lab_v1/review_record.json), [WORK](nmpc_lab_v1/WORK.md),
 [record](nmpc_lab_v1/work_record.json). Scientific source48adbdf remains unchanged.
 
 Exact execution sourceaf3956fc2dc8c1a88051e87e2eae66010490a2fb passed independent review before
@@ -11,7 +13,7 @@ All three slots consumed; repeatable interactive execution remains pending Prima
 Source/env identities, packet/optimizer/plant/control associations and historical preservation
 passed independent read-only post-execution audit. Actual native kick confirmed at.5s.
 
-The containing presentation candidate adds retained N=8 horizon nodes, objective components and
+Reviewed8ee2 adds retained N=8 horizon nodes, objective components and
 completion/validity/handoff/value classifications after Primary's read-only Development Bench
 reference addendum. No N=4 assumptions/interpolation/runtime copied. Small GUI remains eight native
 costs +one named disturbance; no general configuration editor or exporter. Canonical dataclasses,
@@ -34,9 +36,17 @@ and independently verified PRE-INT-W1 preserved. G1 OPEN. All results remain loc
 alone do not establish off-host retrieval. Existing one-click launcher unchanged; current isolated
 checkout uses the installed primary environment via the explicit README Terminal command.
 
-Next: final exact presentation review in the same independent context, then documentation delivery
-at `NMPC_LAB_V1_WORK_COMPLETE_PENDING_PRIMARY_ACCEPTANCE`. No further numerical execution, automatic
-acceptance, formal Verification, campaigns, ROS2/exporter or hardware work is authorized.
+Independent final retained-data/UI3passes/1.657s on exact8ee2, separate from all prior counts.
+This delivery publishes exact-copy consolidated review/report and updates documentation only;
+source/tests/profile/launcher remain identical8ee2. Nonblocking stable operational-log finalization
+is closed with the old checksum/history preserved. Browser servers/tab closed, port8516 refused,
+shared lease free, no owned workers.
+
+Next: Primary's explicit acceptance decision for the bounded software and stated synthetic limits.
+Only later recorded acceptance may enable repeatable user-triggered Scratch within the fixed profile.
+Future exporter work requires a separately scoped assignment and selected reviewed version/hash.
+No further numerical execution, automatic acceptance, formal Verification, campaigns, ROS2/exporter
+or hardware work is authorized.
 
 ---
 
