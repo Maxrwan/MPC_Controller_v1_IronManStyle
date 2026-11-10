@@ -207,3 +207,32 @@ def test_draft_survives_navigation_and_invalid_editor_blocks_stale_run(monkeypat
     app.radio[0].set_value("Run").run()
     assert any("requires correction" in e.value for e in app.error)
     assert not any(b.label == "Run experiment" for b in app.button)
+
+
+@pytest.mark.parametrize("missing", [None, float("nan"), float("inf")])
+def test_optional_plot_missing_values_break_actual_plotly_lines(monkeypatch, missing):
+    figures = []
+    monkeypatch.setattr(ui_views.theme, "chart", figures.append)
+    ui_views.plot(
+        [{"time": 0, "v": 1}, {"time": 1, "v": missing}, {"time": 2, "v": 3}],
+        [("v", "Optional diagnostic")],
+        "Diagnostic [1]",
+    )
+    trace = figures[0].data[0]
+    assert list(trace.x) == [0, 1, 2] and list(trace.y) == [1, None, 3]
+    assert trace.connectgaps is False
+
+
+def test_reduction_preserves_unsampled_missingness_without_mutating_source():
+    rows = [{"time": i, "v": i} for i in range(16000)]
+    rows[4]["v"] = None  # Not one of the uniformly selected display points.
+    rows[10001]["time"] = None
+    before = copy.deepcopy(rows)
+    xs, ys = ui_data.trace(rows, "time", "v")
+    assert len([v for v in ys if v is not None]) <= 2000
+    assert ys[xs.index(4)] is None and None in xs
+    assert xs[0] == 0 and xs[-1] == 15999
+    assert rows == before
+    assert all(
+        (x, y) in [(r["time"], r["v"]) for r in rows] for x, y in zip(xs, ys) if y is not None
+    )

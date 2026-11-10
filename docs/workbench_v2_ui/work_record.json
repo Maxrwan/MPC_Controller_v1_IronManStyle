@@ -1,6 +1,6 @@
 {
   "schema": "apex-workbench-v2-ui-work/1",
-  "stage": "WORK_COMPLETE_PENDING_REVIEW",
+  "stage": "CORRECTED_WORK_COMPLETE_PENDING_EXACT_REVISION_REVIEW",
   "branch": "codex/workbench-v2-ui",
   "base_delivery": "afa85389ccdb532816702f0ab5d3a4a49e54918f",
   "reviewed_long_run_source": "fdd494eb7ddf9b456b88cba243fbc704a4fd83c0",
@@ -29,10 +29,10 @@
     "tools/apex_workbench/lap/panels.py": "72760b1f0eda491f79627b770d75a086b95e861ee46368e50a31cb46c79affb9",
     "tools/apex_workbench/lap/profile.json": "a271bc46655b50d3c1bc921e20a0b951c7004d28110ea7ad111c44c02e731610",
     "tools/apex_workbench/lap/replay.py": "31225fe1f05a5f70af2111162eddc2e30beba0cf55ebaa3a77bcfc29a1c05c61",
-    "tools/apex_workbench/lap/ui_data.py": "b0e1fc2086054b30ce7284895a95880699bde618323cecdf96a1f37591b4de2c",
+    "tools/apex_workbench/lap/ui_data.py": "de176d061f4df507837604110b591a49d19b28058e2a51fb89db4e2febddaced",
     "tools/apex_workbench/lap/ui_replay.py": "ef8d8e7e1104bd3e9f9b6a9e2fc020e42bee5d9c2d912e08e05226cf74cb41f3",
     "tools/apex_workbench/lap/ui_theme.py": "36c9e6755fc510f82c56e8880c3dde910b5e3a9f45981aee09e02bb477d60b05",
-    "tools/apex_workbench/lap/ui_views.py": "68362f4c43775c8a83dc432291252ae377cd9aa413ab28eaf7d40eb2642cfd8c",
+    "tools/apex_workbench/lap/ui_views.py": "d959d1126ff6779b670f64dce902613df3ff40a5f9de5c8b1435c46373834f43",
     "tools/apex_workbench/lap/ui_web/clock.mjs": "ff9ba7d4834acc5b5a4ef43eb06fbc6af4dbe13a0c5852cff767391d3084e97a",
     "tools/apex_workbench/lap/ui_web/host.css": "438265d626c1d0dac6382e8210e4b7f6ed72b11685fd0169df79441e6c1500cf",
     "tools/apex_workbench/lap/ui_web/index.html": "73d6cb2493de29c6d43a156c9fb000f4dacaedb4b80fd910ff6043cfd59d3099",
@@ -61,12 +61,12 @@
     "tools/apex_workbench/workspace.py": "85722940dcbc464c4b5f05547278d33e1e3f8c40439dcb4d75c8388e026df2ae"
   },
   "tests": {
-    "command": "tools/apex_workbench/.venv/bin/python -B -m pytest -q tools/apex_workbench/tests/test_lap_ui.py tools/apex_workbench/tests/test_lap_v2.py tools/apex_workbench/tests/test_scratch_replay.py -k \"not source_isolated_configuration\" --basetemp=/private/tmp/apex-ui-test-candidate --junitxml=results/apex_workbench_v2_ui/candidate.xml > results/apex_workbench_v2_ui/candidate.log 2>&1",
-    "passed": 83,
+    "command": "tools/apex_workbench/.venv/bin/python -B -m pytest -q tools/apex_workbench/tests/test_lap_ui.py tools/apex_workbench/tests/test_lap_v2.py tools/apex_workbench/tests/test_scratch_replay.py -k \"not source_isolated_configuration\" --basetemp=/private/tmp/apex-ui-test-corrected --junitxml=results/apex_workbench_v2_ui/corrected.xml > results/apex_workbench_v2_ui/corrected.log 2>&1",
+    "passed": 87,
     "deselected": 1,
     "failures": 0,
     "skips": 0,
-    "seconds": 8.73,
+    "seconds": 10.58,
     "deselection": "Unchanged native-dataclass composition subprocess; not newly counted.",
     "negative_attempts": [
       {
@@ -174,7 +174,14 @@
     "reuse_exit": 0,
     "owned_cleanup": "pending final teardown"
   },
-  "independent_review": "pending exact committed candidate",
+  "independent_review": {
+    "iteration_1": {
+      "candidate": "cfe1b44081be4acb5ba606063819a7c138dfdd75",
+      "outcome": "PASS WITH CONDITIONS",
+      "record": "docs/reviews/workbench_v2_ui/iteration_1/review_record.json"
+    },
+    "iteration_2": "pending exact corrected commit"
+  },
   "artifacts": {
     "results/apex_workbench_v2_ui/AUDIT.md": {
       "sha256": "b3435a6a5d7b2846c1edd1f0369e86afee08af723c7b72b9ef5ce71a81b06c7b",
@@ -191,6 +198,18 @@
     "results/apex_workbench_v2_ui/candidate.xml": {
       "sha256": "5e0f1e804017236906e7c7c08a4836982fce2fbfd1f452ba0aba2b318470430c",
       "bytes": 12506
+    },
+    "results/apex_workbench_v2_ui/corrected.log": {
+      "sha256": "37e00f96357de0f52958d95e69b4e5be2a5076dd0f405fea2efd7daa358f37c6",
+      "bytes": 194
+    },
+    "results/apex_workbench_v2_ui/corrected.xml": {
+      "sha256": "23a8325c25446b54dcd80b24540b4cdbe4d5c098b5e38bdc60147992ba99e653",
+      "bytes": 13106
+    },
+    "results/apex_workbench_v2_ui/display_projection_reconciliation.json": {
+      "sha256": "a8df227fb20f68bd18498142e148c581f580f3ca35696cabc23c047b844e96ab",
+      "bytes": 1018
     },
     "results/apex_workbench_v2_ui/focused_1.log": {
       "sha256": "e6b9b791f885ed04d984412b5da943c2a2ce2bf6e5931e286525c7b064519724",
@@ -224,6 +243,66 @@
       "sha256": "725e510b829a75f9f67f52dab9da25571a6281171b482b02e6527e92208eb02a",
       "bytes": 12356
     },
+    "results/apex_workbench_v2_ui/independent_review_1/independent_checks.json": {
+      "sha256": "5ffafcdac9467be5f844e8f815dccb76fdbcd75b6d801d96aaa1f4790645cffd",
+      "bytes": 875
+    },
+    "results/apex_workbench_v2_ui/independent_review_1/independent_checks.log": {
+      "sha256": "eda83228bd2764fd05f129cd41082b43bb6dd847c911e51fc4873657d7bb3f89",
+      "bytes": 1066
+    },
+    "results/apex_workbench_v2_ui/independent_review_1/independent_checks.py": {
+      "sha256": "de70ba0e3b4dcfb40e0c9c0a8675154874c33376f828d116b8da08428a5b023e",
+      "bytes": 4329
+    },
+    "results/apex_workbench_v2_ui/independent_review_1/independent_checks_attempt1.log": {
+      "sha256": "619f9b68b9e6a4e58080e30e14a7b7fdabf7ec544d5e004e670c7f4f67e67a60",
+      "bytes": 678
+    },
+    "results/apex_workbench_v2_ui/independent_review_1/independent_checks_attempt1.py": {
+      "sha256": "09bc75f4c3384d505e3e2f67537ddf78a92a0c4ac53f4b2a5747c0767dae8995",
+      "bytes": 3882
+    },
+    "results/apex_workbench_v2_ui/independent_review_1/independent_display.json": {
+      "sha256": "fcca3a65c50077182fde22a36444e58a7d2767615c0e2f725a21e505da2842fc",
+      "bytes": 226
+    },
+    "results/apex_workbench_v2_ui/independent_review_1/independent_display.log": {
+      "sha256": "fcca3a65c50077182fde22a36444e58a7d2767615c0e2f725a21e505da2842fc",
+      "bytes": 226
+    },
+    "results/apex_workbench_v2_ui/independent_review_1/independent_display.mjs": {
+      "sha256": "1df2740e56567ecc671b8769d0e07a8381c6c283872edfd24a108c47113d934d",
+      "bytes": 3360
+    },
+    "results/apex_workbench_v2_ui/independent_review_1/independent_display_attempt1.log": {
+      "sha256": "142cc2c563a8f4a20c2aafd5e7aa85a63b29427da3b21e1ba02474a9c9a91f82",
+      "bytes": 32
+    },
+    "results/apex_workbench_v2_ui/independent_review_1/independent_pilot_payload.json": {
+      "sha256": "928def66422d70292c740a51105d232efd00576a3fa291585fe264d349a6ce91",
+      "bytes": 1875652
+    },
+    "results/apex_workbench_v2_ui/independent_review_1/preservation_review.json": {
+      "sha256": "062ed3113a268a687a37b989df3a06819e03c0669e4aabac31470c74967e11bc",
+      "bytes": 451
+    },
+    "results/apex_workbench_v2_ui/independent_review_1/preservation_review.log": {
+      "sha256": "062ed3113a268a687a37b989df3a06819e03c0669e4aabac31470c74967e11bc",
+      "bytes": 451
+    },
+    "results/apex_workbench_v2_ui/independent_review_1/preservation_review.py": {
+      "sha256": "1d1583b3381552a3c9d327bed0d9dc64850aceb6bf0c94265ba10691f6feda49",
+      "bytes": 2603
+    },
+    "results/apex_workbench_v2_ui/independent_review_1/pytest.log": {
+      "sha256": "765f86333f06e98ffeb1920400d50aafbf79670b84e2942bc64fe3bbc067e66b",
+      "bytes": 193
+    },
+    "results/apex_workbench_v2_ui/independent_review_1/pytest.xml": {
+      "sha256": "859e68e0ec8690536d24de2084c68faf5cb860540124fd6c3c4b82317f4cd5a2",
+      "bytes": 12506
+    },
     "results/apex_workbench_v2_ui/js_checks.json": {
       "sha256": "2c0bfab1f16e1ea5f6924c8c21c73e09d4bcf5af305225372c02d5b0eb3908d3",
       "bytes": 148
@@ -243,6 +322,10 @@
     "results/apex_workbench_v2_ui/pilot_display.json": {
       "sha256": "55491133b658448eb16e839f216aa692390c05542939f05871812675159d9401",
       "bytes": 1875258
+    },
+    "results/apex_workbench_v2_ui/pilot_display_cfe1b44.json": {
+      "sha256": "928def66422d70292c740a51105d232efd00576a3fa291585fe264d349a6ce91",
+      "bytes": 1875652
     },
     "results/apex_workbench_v2_ui/preservation_after.json": {
       "sha256": "ce3ee3beba1ddf1165e5814b58a9f3c0419998178fdb608e468a14f907b8658a",
@@ -318,5 +401,85 @@
     "80-second transport fixture is not scientific evidence and never admitted into RUNS",
     "No broad formal Verification or new scientific qualification",
     "Logs/screenshots local and ignored; hashes do not establish off-host backup"
-  ]
+  ],
+  "previous_candidate": "cfe1b44081be4acb5ba606063819a7c138dfdd75",
+  "initial_candidate_tests": {
+    "command": "tools/apex_workbench/.venv/bin/python -B -m pytest -q tools/apex_workbench/tests/test_lap_ui.py tools/apex_workbench/tests/test_lap_v2.py tools/apex_workbench/tests/test_scratch_replay.py -k \"not source_isolated_configuration\" --basetemp=/private/tmp/apex-ui-test-candidate --junitxml=results/apex_workbench_v2_ui/candidate.xml > results/apex_workbench_v2_ui/candidate.log 2>&1",
+    "passed": 83,
+    "deselected": 1,
+    "failures": 0,
+    "skips": 0,
+    "seconds": 8.73,
+    "deselection": "Unchanged native-dataclass composition subprocess; not newly counted.",
+    "negative_attempts": [
+      {
+        "log": "focused_1.log",
+        "passed": 13,
+        "failed": 1,
+        "reason": "Test message assertion expected positive instead of native positivity wording."
+      },
+      {
+        "log": "focused_2.log",
+        "passed": 79,
+        "failed": 1,
+        "reason": "Original draft UI harness still used old Home/navigation/button labels."
+      }
+    ],
+    "intermediate_passes": [
+      {
+        "log": "focused_3.log",
+        "passed": 80
+      },
+      {
+        "log": "focused_final.log",
+        "passed": 82
+      }
+    ],
+    "counts_not_combined": true
+  },
+  "correction": {
+    "finding": "V2UI-ER1-01",
+    "scope": "Optional values retain None plot gaps before/through display reduction; connectgaps=False. Full scientific metrics/data unchanged.",
+    "new_tests": 4,
+    "projection_reconciliation": {
+      "candidate": "cfe1b44081be4acb5ba606063819a7c138dfdd75",
+      "original_display_projection_sha256": "55491133b658448eb16e839f216aa692390c05542939f05871812675159d9401",
+      "refreshed_display_projection_sha256": "928def66422d70292c740a51105d232efd00576a3fa291585fe264d349a6ce91",
+      "states_controls_packets_reference_identical": true,
+      "old_sector_metadata": [],
+      "new_sector_metadata": [
+        {
+          "sector": 1,
+          "coverage": "incomplete",
+          "start_time_s": null,
+          "end_time_s": null,
+          "time_s": null
+        },
+        {
+          "sector": 2,
+          "coverage": "incomplete",
+          "start_time_s": null,
+          "end_time_s": null,
+          "time_s": null
+        },
+        {
+          "sector": 3,
+          "coverage": "incomplete",
+          "start_time_s": null,
+          "end_time_s": null,
+          "time_s": null
+        },
+        {
+          "sector": 4,
+          "coverage": "incomplete",
+          "start_time_s": null,
+          "end_time_s": null,
+          "time_s": null
+        }
+      ],
+      "original_evidence_touched": false,
+      "scientific_executions": 0
+    },
+    "no_scientific_execution": true
+  }
 }

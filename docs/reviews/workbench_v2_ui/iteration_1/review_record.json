@@ -1,0 +1,341 @@
+{
+  "schema": "apex-workbench-v2-ui-engineering-review/1",
+  "stage": "ENGINEERING_REVIEW_COMPLETE_PENDING_CORRECTION_AND_EXACT_REVISION_REVIEW",
+  "outcome": "PASS WITH CONDITIONS",
+  "candidate": "cfe1b44081be4acb5ba606063819a7c138dfdd75",
+  "branch": "codex/workbench-v2-ui",
+  "base_delivery": "afa85389ccdb532816702f0ab5d3a4a49e54918f",
+  "preceding_reviewed_implementation": "fdd494eb7ddf9b456b88cba243fbc704a4fd83c0",
+  "scientific_source": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+  "reviewer": "fresh independent subagent context",
+  "date": "2026-11-10",
+  "scope": "Focused presentation/UX Engineering Review; native controller, plant, execution core and historical evidence read-only",
+  "findings": [
+    {
+      "id": "V2UI-ER1-01",
+      "priority": "P2",
+      "file": "tools/apex_workbench/lap/ui_views.py",
+      "line": 345,
+      "title": "Preserve missing optional samples as gaps through display reduction",
+      "reproduction": {
+        "input": [
+          {
+            "time": 0,
+            "value": 1
+          },
+          {
+            "time": 1,
+            "value": null
+          },
+          {
+            "time": 2,
+            "value": 3
+          }
+        ],
+        "actual_trace": {
+          "x": [
+            0,
+            2
+          ],
+          "y": [
+            1,
+            3
+          ],
+          "mode": "lines"
+        }
+      },
+      "condition": "Correct presentation-only missing trace continuity and submit exact resulting commit for focused re-review"
+    },
+    {
+      "id": "V2UI-ER1-02",
+      "priority": "evidence applicability note",
+      "file": "results/apex_workbench_v2_ui/pilot_display.json",
+      "title": "Supplied earlier display projection omits incomplete sector metadata",
+      "difference": "Only meta.sectors differs: old export [] versus four incomplete candidate rows; scientific channels and all other metadata match",
+      "condition": "Add fresh read-only candidate projection with both old and new hashes traceable; retain the older export provenance"
+    }
+  ],
+  "focused_tests": {
+    "command": "PYTHONDONTWRITEBYTECODE=1 tools/apex_workbench/.venv/bin/python3.12 -B -m pytest -q tools/apex_workbench/tests/test_lap_ui.py tools/apex_workbench/tests/test_lap_v2.py tools/apex_workbench/tests/test_scratch_replay.py -k 'not source_isolated_configuration' --basetemp=/private/tmp/apex-v2-ui-review.uRcNnd/pytest --junitxml=/private/tmp/apex-v2-ui-review.uRcNnd/pytest.xml",
+    "passed": 83,
+    "deselected": 1,
+    "failures": 0,
+    "skips": 0,
+    "seconds": 8.99,
+    "excluded": "Unchanged source_isolated_configuration native composition subprocess; no new scientific probe authorized",
+    "log": "/private/tmp/apex-v2-ui-review.uRcNnd/pytest.log",
+    "junit": "/private/tmp/apex-v2-ui-review.uRcNnd/pytest.xml"
+  },
+  "reviewer_authored_checks": {
+    "outcome": "PASS",
+    "checks": [
+      "transient_form_uses_exact_original_validated_schema",
+      "transient_accepted_policy_is_available_without_reseal",
+      "transient_navigation_does_not_execute_or_probe",
+      "v2_still_fails_closed_after_transient_navigation",
+      "v1_policy_remains_accepted_interactive",
+      "new_ui_is_separately_bound_in_v2_producers",
+      "v2_policy_rejection_is_source_staleness",
+      "retained_payload_scientific_channels_match_supplied_pilot_export",
+      "supplied_export_only_omits_incomplete_sector_rows",
+      "packet_bound_rejects",
+      "byte_bound_rejects"
+    ],
+    "count": 11,
+    "optional_plot_gap_observation": {
+      "x": [
+        0,
+        2
+      ],
+      "y": [
+        1,
+        3
+      ],
+      "mode": "lines"
+    },
+    "python": "3.12.14 (main, Sep  1 2026, 14:09:38) [Clang 22.1.3 ]",
+    "scientific_runs": 0,
+    "controller_or_plant_imports": []
+  },
+  "independent_js": {
+    "outcome": "PASS",
+    "assertions": 56027,
+    "evaluated_clocks": 8000,
+    "scope": "Independent linear-search oracle on retained native states/request/application edges, plus display-only fixtures",
+    "scientific_runs": 0
+  },
+  "preservation": {
+    "outcome": "PASS",
+    "retained_files": 13279,
+    "retained_links": 573,
+    "changed": [],
+    "changed_links": [],
+    "added": [],
+    "missing": [],
+    "scientific_dependencies": 333,
+    "scientific_cache_changes": [],
+    "canonical_tree_files": 334,
+    "canonical_changes": [],
+    "v1_producer_changes": [],
+    "v2_core_changes": [],
+    "producer_count": 43,
+    "candidate_producer_record_matches": true,
+    "head": "cfe1b44081be4acb5ba606063819a7c138dfdd75"
+  },
+  "transient_route": {
+    "outcome": "PASS within original accepted V1 two-second execution contract",
+    "validated_schema_unchanged": true,
+    "v1_policy_and_producers_unchanged": true,
+    "original_access_capture_worker_guards_preserved": true,
+    "new_v2_files_bound_in_v2_inventory": true,
+    "v2_source_gate_still_stale_after_transient_navigation": true,
+    "actual_execution_button_pressed": false,
+    "meaning": "New UI reuse does not authorize V2 extended/full-lap work or claim old V1 presentation review covers new UI"
+  },
+  "visual_review": {
+    "source": "Supplied primary screenshots and browser observations opened and inspected; not independently recaptured",
+    "independent_browser_attempt": "IAB unavailable: Browser is not available: iab; no fallback browser used",
+    "steps": [
+      {
+        "number": 1,
+        "description": "Configure",
+        "health": "Clear fixed-profile eight-field editor",
+        "captures": [
+          "04-configure-desktop.jpg"
+        ]
+      },
+      {
+        "number": 2,
+        "description": "Run",
+        "health": "Source/resource gate visible and V2 execution disabled",
+        "captures": [
+          "05-run-gate.jpg"
+        ]
+      },
+      {
+        "number": 3,
+        "description": "Replay desktop/mobile/instruments",
+        "health": "Readable hierarchy, labels and reflow in supplied captures",
+        "captures": [
+          "01-replay-desktop.jpg",
+          "02-replay-mobile.jpg",
+          "03-instruments-mobile.jpg"
+        ]
+      },
+      {
+        "number": 4,
+        "description": "Analyze",
+        "health": "Clear SI/native metrics; missing-line condition remains",
+        "captures": [
+          "06-analyze-desktop.jpg"
+        ]
+      },
+      {
+        "number": 5,
+        "description": "Compare",
+        "health": "Experimental eligibility and two selected recordings visible",
+        "captures": [
+          "07-compare-desktop.jpg"
+        ]
+      },
+      {
+        "number": 6,
+        "description": "Long transport fixture",
+        "health": "Explicit non-scientific fixture and window coverage",
+        "captures": [
+          "08-long-transport-fixture.jpg"
+        ]
+      },
+      {
+        "number": 7,
+        "description": "Heartbeat loss",
+        "health": "Replay cleared with visible failure",
+        "captures": [
+          "09-heartbeat-quarantine.jpg"
+        ]
+      }
+    ],
+    "accessibility_limit": "No independent keyboard, assistive-technology, zoom or WCAG compliance claim"
+  },
+  "negative_attempts": [
+    {
+      "log": "/private/tmp/apex-v2-ui-review.uRcNnd/independent_checks_attempt1.log",
+      "exit": 1,
+      "reason": "Reviewer whole-payload equality assertion detected earlier display projection sector metadata mismatch; assertion narrowed transparently, product unchanged"
+    },
+    {
+      "log": "/private/tmp/apex-v2-ui-review.uRcNnd/independent_display_attempt1.log",
+      "exit": 127,
+      "reason": "node absent on PATH; same script then passed via discovered bundled Node executable"
+    }
+  ],
+  "no_counts_combined": true,
+  "scientific_runs": 0,
+  "controller_or_plant_imports_in_reviewer_checks": [],
+  "policy_mutations": 0,
+  "historical_evidence_mutations": 0,
+  "implementation_mutations": 0,
+  "resource_guard": {
+    "no_MEASURED_ACTIVE_or_D3_ACTIVE_files": true,
+    "ps_in_reviewer_sandbox": "denied operation not permitted",
+    "primary_read_only_process_confirmation": "Only lap.launch PID 78857 and Streamlit PID 78862; no active scientific/timing worker before bounded tests"
+  },
+  "limits": [
+    "No genuine full lap or V2 treatment pair",
+    "Complete-lap/sector assertions are display-only fixtures",
+    "Manual native-window playback stops at selected boundary",
+    "V2 source policy intentionally stale and execution disabled",
+    "Full-lap projected CPU 551.42816 s exceeds unchanged 480 s cap",
+    "No formal Verification or Primary acceptance",
+    "Temporary review logs and primary screenshots are local evidence, not off-host backups"
+  ],
+  "next_required_action": "Presentation-only missing-gap correction, traceable fresh projection, then exact-commit focused independent re-review; no automatic experiment or policy reseal",
+  "temporary_artifacts": {
+    "/private/tmp/apex-v2-ui-review.uRcNnd/independent_checks.json": {
+      "sha256": "5ffafcdac9467be5f844e8f815dccb76fdbcd75b6d801d96aaa1f4790645cffd",
+      "bytes": 875
+    },
+    "/private/tmp/apex-v2-ui-review.uRcNnd/independent_checks.log": {
+      "sha256": "eda83228bd2764fd05f129cd41082b43bb6dd847c911e51fc4873657d7bb3f89",
+      "bytes": 1066
+    },
+    "/private/tmp/apex-v2-ui-review.uRcNnd/independent_checks.py": {
+      "sha256": "de70ba0e3b4dcfb40e0c9c0a8675154874c33376f828d116b8da08428a5b023e",
+      "bytes": 4329
+    },
+    "/private/tmp/apex-v2-ui-review.uRcNnd/independent_checks_attempt1.log": {
+      "sha256": "619f9b68b9e6a4e58080e30e14a7b7fdabf7ec544d5e004e670c7f4f67e67a60",
+      "bytes": 678
+    },
+    "/private/tmp/apex-v2-ui-review.uRcNnd/independent_checks_attempt1.py": {
+      "sha256": "09bc75f4c3384d505e3e2f67537ddf78a92a0c4ac53f4b2a5747c0767dae8995",
+      "bytes": 3882
+    },
+    "/private/tmp/apex-v2-ui-review.uRcNnd/independent_display.json": {
+      "sha256": "fcca3a65c50077182fde22a36444e58a7d2767615c0e2f725a21e505da2842fc",
+      "bytes": 226
+    },
+    "/private/tmp/apex-v2-ui-review.uRcNnd/independent_display.log": {
+      "sha256": "fcca3a65c50077182fde22a36444e58a7d2767615c0e2f725a21e505da2842fc",
+      "bytes": 226
+    },
+    "/private/tmp/apex-v2-ui-review.uRcNnd/independent_display.mjs": {
+      "sha256": "1df2740e56567ecc671b8769d0e07a8381c6c283872edfd24a108c47113d934d",
+      "bytes": 3360
+    },
+    "/private/tmp/apex-v2-ui-review.uRcNnd/independent_display_attempt1.log": {
+      "sha256": "142cc2c563a8f4a20c2aafd5e7aa85a63b29427da3b21e1ba02474a9c9a91f82",
+      "bytes": 32
+    },
+    "/private/tmp/apex-v2-ui-review.uRcNnd/independent_pilot_payload.json": {
+      "sha256": "928def66422d70292c740a51105d232efd00576a3fa291585fe264d349a6ce91",
+      "bytes": 1875652
+    },
+    "/private/tmp/apex-v2-ui-review.uRcNnd/preservation_review.json": {
+      "sha256": "062ed3113a268a687a37b989df3a06819e03c0669e4aabac31470c74967e11bc",
+      "bytes": 451
+    },
+    "/private/tmp/apex-v2-ui-review.uRcNnd/preservation_review.log": {
+      "sha256": "062ed3113a268a687a37b989df3a06819e03c0669e4aabac31470c74967e11bc",
+      "bytes": 451
+    },
+    "/private/tmp/apex-v2-ui-review.uRcNnd/preservation_review.py": {
+      "sha256": "1d1583b3381552a3c9d327bed0d9dc64850aceb6bf0c94265ba10691f6feda49",
+      "bytes": 2603
+    },
+    "/private/tmp/apex-v2-ui-review.uRcNnd/pytest.log": {
+      "sha256": "765f86333f06e98ffeb1920400d50aafbf79670b84e2942bc64fe3bbc067e66b",
+      "bytes": 193
+    },
+    "/private/tmp/apex-v2-ui-review.uRcNnd/pytest.xml": {
+      "sha256": "859e68e0ec8690536d24de2084c68faf5cb860540124fd6c3c4b82317f4cd5a2",
+      "bytes": 12506
+    }
+  },
+  "supplied_projection": {
+    "sha256": "55491133b658448eb16e839f216aa692390c05542939f05871812675159d9401",
+    "bytes": 1875258
+  },
+  "supplied_screenshots": {
+    "results/apex_workbench_v2_ui/screenshots/after/01-replay-desktop.jpg": {
+      "sha256": "9d196b23f9784e12bdb0effedbdd2b098df64f5a979199f9d3cb091e78eff372",
+      "bytes": 102096
+    },
+    "results/apex_workbench_v2_ui/screenshots/after/02-replay-mobile.jpg": {
+      "sha256": "c914490cdf07def8f67a4538404037c9563f17f519fbd5815052c3c704c02aa3",
+      "bytes": 38559
+    },
+    "results/apex_workbench_v2_ui/screenshots/after/03-instruments-mobile.jpg": {
+      "sha256": "250104fe1d1183aadfd686b658d43573980786db1893cd5e9018bfaf6c7508c1",
+      "bytes": 39188
+    },
+    "results/apex_workbench_v2_ui/screenshots/after/04-configure-desktop.jpg": {
+      "sha256": "2b774d37e7685bd3e698e4d6f4e7c571a7322a2c96954004732245997683635a",
+      "bytes": 65752
+    },
+    "results/apex_workbench_v2_ui/screenshots/after/05-run-gate.jpg": {
+      "sha256": "3c26189ebdc50fc670b27f1f22117a838b94f84de4d385d2f4cb779ded36d24d",
+      "bytes": 61498
+    },
+    "results/apex_workbench_v2_ui/screenshots/after/06-analyze-desktop.jpg": {
+      "sha256": "e5f2cc036524e45a1dfed96a603308f2952ed66f4f2d7dfbc94ed158ae81c114",
+      "bytes": 80325
+    },
+    "results/apex_workbench_v2_ui/screenshots/after/07-compare-desktop.jpg": {
+      "sha256": "4ee063692fa6f91cf4081a4b837059484a285d7d5336676e471e94ce5e389d50",
+      "bytes": 89862
+    },
+    "results/apex_workbench_v2_ui/screenshots/after/08-long-transport-fixture.jpg": {
+      "sha256": "031a1df09b71d537661bf5edfdd54d2160273339a0893d3edf097ae796e2557a",
+      "bytes": 103879
+    },
+    "results/apex_workbench_v2_ui/screenshots/after/09-heartbeat-quarantine.jpg": {
+      "sha256": "590da537fe254222b65a45fe3a4cee4db0c989fe738ee893fa8a0f0d3b42a9da",
+      "bytes": 38568
+    }
+  },
+  "report": {
+    "sha256": "73597591afe35a0607f9511cdc56f4be20e7c9d6461bd31c96c8fff9650c85f2",
+    "bytes": 8752
+  }
+}

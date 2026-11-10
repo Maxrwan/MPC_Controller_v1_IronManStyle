@@ -342,17 +342,12 @@ def plot(rows, fields, ylabel, *, x="time"):
     palette = theme.palette()
     colors = [palette["copper"], palette["mint"], palette["lime"], palette["muted"]]
     for i, (field, label) in enumerate(fields):
-        points = panels.reduced(
-            [
-                r
-                for r in rows
-                if short_analysis.numeric(r.get(x)) and short_analysis.numeric(r.get(field))
-            ]
-        )
+        xs, ys = ui_data.trace(rows, x, field)
         fig.add_trace(
             go.Scatter(
-                x=[r[x] for r in points],
-                y=[r[field] for r in points],
+                x=xs,
+                y=ys,
+                connectgaps=False,
                 name=label,
                 mode="lines",
                 line={"color": colors[i % len(colors)], "width": 1.8},

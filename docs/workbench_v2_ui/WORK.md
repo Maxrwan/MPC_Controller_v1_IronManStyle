@@ -57,7 +57,7 @@ no new dependency or general theme/configuration framework was added.
 ## Focused evidence
 
 Local raw evidence: `results/apex_workbench_v2_ui/`. No full scientific suite or campaign ran.
-Final candidate focused invocation: **83 passed, 1 deliberately deselected**, 8.73 s, no failures
+Initial candidate focused invocation: **83 passed, 1 deliberately deselected**, 8.73 s, no failures
 or skips. Selection: new UI tests, V2 protocol/lifecycle/analysis tests and original replay tests;
 excluded only the unchanged native-dataclass composition subprocess, which is inherited rather
 than newly counted. Exact command/log/JUnit and negative attempts are indexed in `work_record.json`.
@@ -87,6 +87,21 @@ source/config/dependency files match their pinned origins. V1 producers and V2 e
 profile, analysis, readers, original renderer and launcher are unchanged. No source policy,
 claim, qualification or historical run was edited.
 
+## Focused review correction
+
+Exact initial candidate `cfe1b44081be4acb5ba606063819a7c138dfdd75` received
+[PASS WITH CONDITIONS](../reviews/workbench_v2_ui/iteration_1/REVIEW.md).
+The reviewer independently passed 83 focused tests, 11 additional no-execution checks and
+56,027 display assertions. Preserve that review unchanged. Its P2 missingness finding is corrected
+by retaining explicit None gaps through line reduction, with `connectgaps=False`; no source value
+or scientific metric changes. Four added regression cases cover null/nonfinite optional values,
+the actual Plotly trace and missing rows skipped by reduction. Corrected focused invocation:
+**87 passed, 1 deliberate deselection, 0 failures/skips, 10.58 s**; counts are not combined.
+A fresh read-only pilot display projection now contains four incomplete sector metadata rows.
+Old and fresh hashes are retained in `display_projection_reconciliation.json`; all states,
+controls, packets, reference, geometry and coverage are identical. Neither is a scientific run.
+The corrected exact commit requires focused independent re-review before UI acceptance.
+
 ## Limits and next decision
 
 Only one genuine 10 s V2 pilot exists. No genuine full lap or V2 treatment pair was created;
@@ -95,7 +110,8 @@ The retained full-lap CPU projection is 551.42816 s against the unchanged 480 s 
 gate remains blocked, pilot consumed, full-lap slot unused. The new V2 UI additionally requires
 source-bound authorization after review/Primary acceptance; this task does not establish it.
 The original V1 execution path is preserved; no additional execution smoke was authorized here.
-Native-window trajectory history is scoped to the selected window. Very sparse gaps, unsupported
+Native-window trajectory history is scoped to the selected window; playback stops at its boundary
+and the engineer explicitly selects the next window. Very sparse gaps, unsupported
 payload size and incomplete/missing/corrupt evidence reject explicitly. One dark theme only.
 Local screenshots/logs are retained evidence, not an off-host backup or formal Verification.
 

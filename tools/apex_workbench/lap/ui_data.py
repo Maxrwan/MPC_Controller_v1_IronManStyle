@@ -209,3 +209,38 @@ def full_lap_gate():
         transient.frozen.git("show", BASE_DELIVERY + ":docs/workbench_v2_lap/work_record.json")
     )
     return record["full_lap_resource_preflight"]
+
+
+def trace(rows, x, field, maximum=2000):
+    """Bound genuine display points while retaining gaps skipped by reduction.
+
+    A None is a plot break, never a fabricated observation. Its clock, when available,
+    belongs to an original missing row. Metrics continue to use the full source rows.
+    """
+    if type(maximum) is not int or maximum < 2:
+        raise ValueError("Trace display bound must be an integer of at least two")
+    if not rows:
+        return [], []
+    step = max(1, math.ceil((len(rows) - 1) / (maximum - 1)))
+    indices = list(range(0, len(rows), step))
+    if indices[-1] != len(rows) - 1:
+        indices.append(len(rows) - 1)
+    missing = [
+        i
+        for i, r in enumerate(rows)
+        if not scratch_replay.finite(r.get(x)) or not scratch_replay.finite(r.get(field))
+    ]
+    xs, ys, previous = [], [], -1
+    for index in indices:
+        gap = bisect.bisect_right(missing, previous)
+        if gap < len(missing) and missing[gap] < index:
+            clock = rows[missing[gap]].get(x)
+            xs.append(clock if scratch_replay.finite(clock) else None)
+            ys.append(None)
+        row = rows[index]
+        clock, value = row.get(x), row.get(field)
+        available = scratch_replay.finite(clock) and scratch_replay.finite(value)
+        xs.append(clock if scratch_replay.finite(clock) else None)
+        ys.append(value if available else None)
+        previous = index
+    return xs, ys

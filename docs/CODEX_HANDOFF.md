@@ -1,17 +1,19 @@
-# Current handoff — V2 engineering UI pending independent review
+# Current handoff — V2 engineering UI pending corrected exact-revision review
 
 Branch `codex/workbench-v2-ui`, starting delivery `afa85389ccdb532816702f0ab5d3a4a49e54918f`.
 Presentation-only Configure → Run → Replay → Analyze → Compare; shared graphite/lime tokens,
 large native Canvas replay, synchronized actual-applied front-steering instrument, compact
 telemetry, explicit historical horizon labels and secondary diagnostics/provenance.
 [WORK](workbench_v2_ui/WORK.md) and [machine evidence](workbench_v2_ui/work_record.json).
-83 focused tests passed / 1 deliberate deselection; 2,010 JS display assertions. Actual desktop
+87 corrected focused tests passed / 1 deliberate deselection; 2,010 root JS display assertions.
+Initial cfe1b44 independent PASS WITH CONDITIONS is preserved. Optional diagnostic plot gaps
+now remain explicit through reduction; old/fresh display projection hashes are reconciled. Actual desktop
 and mobile browser checks use retained data plus a clearly labelled disposable transport fixture.
 No scientific execution. Frozen333 files, canonical334 files and retained13,279 files/573 links
 unchanged. V1 producers/launcher/policy and V2 execution/analysis/readers/profile unchanged.
 V2 source inventory now includes new UI assets: historical policy stays untouched and fail-closed.
 Full-lap preflight remains blocked (551.42816 projected CPU > 480 s); no new claim or retry.
-Next: focused independent Engineering Review of the exact committed candidate, then Primary UI
+Next: focused independent re-review of the exact corrected commit, then Primary UI
 acceptance only. No formal Verification, source-policy reseal or further experiments authorized.
 Launch UI: `./Launch_APEX_Workbench_V2.command` (8503); original V1 launcher remains8501.
 
