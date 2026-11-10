@@ -1,21 +1,32 @@
-# Current handoff — V2 engineering UI pending corrected exact-revision review
+# Current handoff — V2 engineering UI ready for Primary acceptance
 
-Branch `codex/workbench-v2-ui`, starting delivery `afa85389ccdb532816702f0ab5d3a4a49e54918f`.
-Presentation-only Configure → Run → Replay → Analyze → Compare; shared graphite/lime tokens,
-large native Canvas replay, synchronized actual-applied front-steering instrument, compact
-telemetry, explicit historical horizon labels and secondary diagnostics/provenance.
-[WORK](workbench_v2_ui/WORK.md) and [machine evidence](workbench_v2_ui/work_record.json).
-87 corrected focused tests passed / 1 deliberate deselection; 2,010 root JS display assertions.
-Initial cfe1b44 independent PASS WITH CONDITIONS is preserved. Optional diagnostic plot gaps
-now remain explicit through reduction; old/fresh display projection hashes are reconciled. Actual desktop
-and mobile browser checks use retained data plus a clearly labelled disposable transport fixture.
-No scientific execution. Frozen333 files, canonical334 files and retained13,279 files/573 links
-unchanged. V1 producers/launcher/policy and V2 execution/analysis/readers/profile unchanged.
-V2 source inventory now includes new UI assets: historical policy stays untouched and fail-closed.
-Full-lap preflight remains blocked (551.42816 projected CPU > 480 s); no new claim or retry.
-Next: focused independent re-review of the exact corrected commit, then Primary UI
-acceptance only. No formal Verification, source-policy reseal or further experiments authorized.
-Launch UI: `./Launch_APEX_Workbench_V2.command` (8503); original V1 launcher remains8501.
+**WORKBENCH_V2_UI_READY_PENDING_PRIMARY_USER_ACCEPTANCE.** Branch `codex/workbench-v2-ui`.
+Exact reviewed UI source `b1cc8b3d7b306a56adf99a63d8dc689c13856114`, starting delivery
+`afa85389ccdb532816702f0ab5d3a4a49e54918f`. [WORK](workbench_v2_ui/WORK.md),
+[machine record](workbench_v2_ui/work_record.json), [independent PASS](reviews/workbench_v2_ui/iteration_2/REVIEW.md).
+
+Configure → Run → Replay → Analyze → Compare; shared graphite/lime tokens, large browser-timed
+Canvas, synchronized actual-applied front steering, compact telemetry, explicit historical horizon
+labels and secondary diagnostics/provenance. Actual1440×1100 and390×844 browser checks; retained
+pilot playback and a clearly labelled80s/16,000-row transport fixture, no scientific execution.
+87 corrected focused tests passed /1 deliberate deselection. Independent re-review:4 tests pass /
+17 deselected,27,309 additional assertions; no counts combined. Initial cfe1b44 conditional review
+is retained; optional missing-value plot gaps and export applicability conditions are closed.
+Frozen333 scientific files, canonical334 files and retained13,279 files/573 links unchanged.
+V1 producers/launcher/access and V2 execution/analysis/readers/profile remain unchanged.
+
+V2 historical source policy is intentionally untouched/stale; UI acceptance does not reseal it.
+Full lap remains blocked:551.42816 projected CPU >480s cap. Pilot consumed, full slot unused;
+no genuine full lap or V2 treatment pair, no resource amendment or new campaign. Replay stops at
+selected native-window boundaries; full data stays separate from bounded display payloads.
+Original accepted V1 two-second path retains its existing guards. No new execution smoke ran.
+
+Both owned UI servers stopped;8503closed, known PIDs absent; temporary browser tabs closed and
+viewport reset. Source/tests/launcher remain the exact reviewed implementation in this docs-only
+delivery. Launch: `./Launch_APEX_Workbench_V2.command` (8503); original V1 launcher remains8501.
+Recommend Primary acceptance of UI only. No automatic formal Verification, source-policy reseal,
+pilot/full lap, ROS/exporter, Docker, hardware or later stage. Local logs/screenshots are retained
+and hashed; they are not off-host backup or physical/scientific qualification.
 
 ---
 

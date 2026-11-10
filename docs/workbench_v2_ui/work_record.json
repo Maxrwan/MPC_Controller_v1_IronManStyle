@@ -1,6 +1,6 @@
 {
   "schema": "apex-workbench-v2-ui-work/1",
-  "stage": "CORRECTED_WORK_COMPLETE_PENDING_EXACT_REVISION_REVIEW",
+  "stage": "WORKBENCH_V2_UI_READY_PENDING_PRIMARY_USER_ACCEPTANCE",
   "branch": "codex/workbench-v2-ui",
   "base_delivery": "afa85389ccdb532816702f0ab5d3a4a49e54918f",
   "reviewed_long_run_source": "fdd494eb7ddf9b456b88cba243fbc704a4fd83c0",
@@ -172,7 +172,17 @@
     "startup_from": "/private/tmp",
     "port": 8503,
     "reuse_exit": 0,
-    "owned_cleanup": "pending final teardown"
+    "owned_cleanup": {
+      "owned_launcher_pid": 78857,
+      "owned_server_pid": 78862,
+      "launcher_exit_code": 0,
+      "server_pid_exists": false,
+      "launcher_pid_exists": false,
+      "historical_policy_untouched": true,
+      "observation": "One Streamlit session-state/default warning was logged during navigation; no application exception, no scientific execution. Initial sandboxed bind attempt reported occupied; permitted loopback startup and reuse succeeded.",
+      "port8503": "ConnectionRefusedError: [Errno 61] Connection refused",
+      "exact_reviewed_producers_unchanged": true
+    }
   },
   "independent_review": {
     "iteration_1": {
@@ -180,7 +190,21 @@
       "outcome": "PASS WITH CONDITIONS",
       "record": "docs/reviews/workbench_v2_ui/iteration_1/review_record.json"
     },
-    "iteration_2": "pending exact corrected commit"
+    "iteration_2": {
+      "candidate": "b1cc8b3d7b306a56adf99a63d8dc689c13856114",
+      "outcome": "PASS",
+      "record": "docs/reviews/workbench_v2_ui/iteration_2/review_record.json",
+      "sha256": "837df49ac177aa444cf620b58be6e2354bf8515b86e34887aa3fb450a93fac32",
+      "independent_tests": {
+        "passed": 4,
+        "deselected": 17,
+        "failures": 0,
+        "skips": 0,
+        "seconds": 2.0
+      },
+      "additional_assertions": 27309,
+      "counts_not_combined": true
+    }
   },
   "artifacts": {
     "results/apex_workbench_v2_ui/AUDIT.md": {
@@ -198,6 +222,10 @@
     "results/apex_workbench_v2_ui/candidate.xml": {
       "sha256": "5e0f1e804017236906e7c7c08a4836982fce2fbfd1f452ba0aba2b318470430c",
       "bytes": 12506
+    },
+    "results/apex_workbench_v2_ui/cleanup.json": {
+      "sha256": "6f5e13d97369774ad9fbb2b94a74680889da8a8cad5b3bad853c85d4a305f11d",
+      "bytes": 551
     },
     "results/apex_workbench_v2_ui/corrected.log": {
       "sha256": "37e00f96357de0f52958d95e69b4e5be2a5076dd0f405fea2efd7daa358f37c6",
@@ -302,6 +330,30 @@
     "results/apex_workbench_v2_ui/independent_review_1/pytest.xml": {
       "sha256": "859e68e0ec8690536d24de2084c68faf5cb860540124fd6c3c4b82317f4cd5a2",
       "bytes": 12506
+    },
+    "results/apex_workbench_v2_ui/independent_review_2/applicability.json": {
+      "sha256": "04f82d25f8524810c1f2ca1cb9efa0e2029fc174fb2920e52cf48b4eaf307416",
+      "bytes": 521
+    },
+    "results/apex_workbench_v2_ui/independent_review_2/correction_checks.json": {
+      "sha256": "8a3a54d184c9eff0bc40ff1928fa1c09274ccea8c44428282d36d03eb98f7149",
+      "bytes": 523
+    },
+    "results/apex_workbench_v2_ui/independent_review_2/correction_checks.log": {
+      "sha256": "8a3a54d184c9eff0bc40ff1928fa1c09274ccea8c44428282d36d03eb98f7149",
+      "bytes": 523
+    },
+    "results/apex_workbench_v2_ui/independent_review_2/correction_checks.py": {
+      "sha256": "a34d5baef84358f34bcd03667813d4e0f10dd11a96ea0b6f549d3c97f7d5958c",
+      "bytes": 4802
+    },
+    "results/apex_workbench_v2_ui/independent_review_2/pytest.log": {
+      "sha256": "ed927227a074d770ad05e8612810aa8c40c9001bd5e0e8a9c32dfdf74c0f35b9",
+      "bytes": 113
+    },
+    "results/apex_workbench_v2_ui/independent_review_2/pytest.xml": {
+      "sha256": "06375becaf6ceed5fdb8588c80376a0fb58d50954f12ef741fcd2e2a5ba5afdb",
+      "bytes": 860
     },
     "results/apex_workbench_v2_ui/js_checks.json": {
       "sha256": "2c0bfab1f16e1ea5f6924c8c21c73e09d4bcf5af305225372c02d5b0eb3908d3",
@@ -481,5 +533,8 @@
       "scientific_executions": 0
     },
     "no_scientific_execution": true
-  }
+  },
+  "implementation_revision": "b1cc8b3d7b306a56adf99a63d8dc689c13856114",
+  "next_decision": "Primary UI acceptance only; no execution-policy reseal, resource amendment, new simulation or next stage",
+  "behavioral_source_changes_after_review": []
 }

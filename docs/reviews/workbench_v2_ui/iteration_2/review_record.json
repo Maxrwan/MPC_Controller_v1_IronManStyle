@@ -1,0 +1,155 @@
+{
+  "schema": "apex-workbench-v2-ui-engineering-review/1",
+  "stage": "ENGINEERING_REVIEW_PASS_PENDING_PRIMARY_UI_ACCEPTANCE",
+  "outcome": "PASS",
+  "candidate": "b1cc8b3d7b306a56adf99a63d8dc689c13856114",
+  "branch": "codex/workbench-v2-ui",
+  "previous_candidate": "cfe1b44081be4acb5ba606063819a7c138dfdd75",
+  "base_delivery": "afa85389ccdb532816702f0ab5d3a4a49e54918f",
+  "preceding_reviewed_implementation": "fdd494eb7ddf9b456b88cba243fbc704a4fd83c0",
+  "scientific_source": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+  "date": "2026-11-10",
+  "reviewer": "same independent reviewer, bounded correction re-review",
+  "scope": "Exact correction delta, prior finding closure, projection reconciliation and unchanged evidence applicability",
+  "conditions": [
+    {
+      "id": "V2UI-ER1-01",
+      "status": "CLOSED",
+      "basis": "Explicit None gaps survive genuine-point reduction; connectgaps=False; focused Plotly cases and independent source-gap properties pass"
+    },
+    {
+      "id": "V2UI-ER1-02",
+      "status": "CLOSED",
+      "basis": "Old/new projection hashes retained and verified; all channels and other metadata identical; refreshed projection equals exact candidate payload; four incomplete sector records only"
+    }
+  ],
+  "findings": [],
+  "focused_tests": {
+    "command": "PYTHONDONTWRITEBYTECODE=1 tools/apex_workbench/.venv/bin/python3.12 -B -m pytest -q tools/apex_workbench/tests/test_lap_ui.py -k 'optional_plot_missing_values or reduction_preserves_unsampled_missingness' --basetemp=/private/tmp/apex-v2-ui-rereview.QEFC0J/pytest --junitxml=/private/tmp/apex-v2-ui-rereview.QEFC0J/pytest.xml",
+    "passed": 4,
+    "deselected": 17,
+    "failures": 0,
+    "skips": 0,
+    "seconds": 2.0,
+    "log": "/private/tmp/apex-v2-ui-rereview.QEFC0J/pytest.log",
+    "junit": "/private/tmp/apex-v2-ui-rereview.QEFC0J/pytest.xml",
+    "selection_reason": "Only correction regression cases; unchanged broader checks not repeated"
+  },
+  "independent_checks": {
+    "outcome": "PASS",
+    "assertions": 27309,
+    "trace_fixture_cases": 144,
+    "scientific_runs": 0,
+    "controller_or_plant_imports": [],
+    "source_mutations": 0,
+    "projection_matches_current_payload": true,
+    "old_projection_sha256": "55491133b658448eb16e839f216aa692390c05542939f05871812675159d9401",
+    "new_projection_sha256": "928def66422d70292c740a51105d232efd00576a3fa291585fe264d349a6ce91",
+    "copied_iteration1_artifacts_verified": 15,
+    "producer_count": 43,
+    "head": "b1cc8b3d7b306a56adf99a63d8dc689c13856114"
+  },
+  "applicability": {
+    "v2_admission": "fails closed: V2 independent review/source identity absent or stale",
+    "docs/reviews/workbench_v2_ui/iteration_1/REVIEW.md": "73597591afe35a0607f9511cdc56f4be20e7c9d6461bd31c96c8fff9650c85f2",
+    "docs/reviews/workbench_v2_ui/iteration_1/review_record.json": "f747a7e7cb5dcef28c11e77fd8c19822984df2edf0861b948d29f3062a60e2a5",
+    "behavioral_changed_files": [
+      "tools/apex_workbench/lap/ui_data.py",
+      "tools/apex_workbench/lap/ui_views.py",
+      "tools/apex_workbench/tests/test_lap_ui.py"
+    ]
+  },
+  "inherited_review": {
+    "candidate": "cfe1b44081be4acb5ba606063819a7c138dfdd75",
+    "record": "docs/reviews/workbench_v2_ui/iteration_1/review_record.json",
+    "record_hash": {
+      "sha256": "f747a7e7cb5dcef28c11e77fd8c19822984df2edf0861b948d29f3062a60e2a5",
+      "bytes": 13568
+    },
+    "report_hash": {
+      "sha256": "73597591afe35a0607f9511cdc56f4be20e7c9d6461bd31c96c8fff9650c85f2",
+      "bytes": 8752
+    },
+    "basis": "Exact diff changes only trace helper, its Plotly caller and four added regressions; native JS, evidence readers, payload function, admission, configuration, Transient/V1 guards, comparison, execution and scientific files unchanged",
+    "freshly_repeated": false,
+    "counts_not_combined": true,
+    "scientific_or_numerical_acceptance_claim": false
+  },
+  "primary_corrected_invocation": {
+    "passed": 87,
+    "deselected": 1,
+    "seconds": 10.58,
+    "independent_execution": false,
+    "counts_not_combined": true
+  },
+  "projection_reconciliation": {
+    "file": "results/apex_workbench_v2_ui/display_projection_reconciliation.json",
+    "file_hash": {
+      "sha256": "a8df227fb20f68bd18498142e148c581f580f3ca35696cabc23c047b844e96ab",
+      "bytes": 1018
+    },
+    "old_projection": {
+      "file": "results/apex_workbench_v2_ui/pilot_display.json",
+      "sha256": "55491133b658448eb16e839f216aa692390c05542939f05871812675159d9401",
+      "bytes": 1875258
+    },
+    "new_projection": {
+      "file": "results/apex_workbench_v2_ui/pilot_display_cfe1b44.json",
+      "sha256": "928def66422d70292c740a51105d232efd00576a3fa291585fe264d349a6ce91",
+      "bytes": 1875652
+    },
+    "current_candidate_payload_equal": true,
+    "only_difference": "Four incomplete sector metadata rows replace []",
+    "scientific_channels_changed": false
+  },
+  "visual_check": "No new browser check; unavailable reviewer IAB is a platform limit; supplied primary captures remain inherited visual evidence",
+  "negative_attempts": [],
+  "scientific_runs": 0,
+  "controller_or_plant_imports": [],
+  "policy_mutations": 0,
+  "implementation_mutations": 0,
+  "historical_evidence_mutations": 0,
+  "changed_by_reviewer": [
+    "docs/reviews/workbench_v2_ui/iteration_2/REVIEW.md",
+    "docs/reviews/workbench_v2_ui/iteration_2/review_record.json"
+  ],
+  "limits": [
+    "Focused Engineering Review only",
+    "No broad unchanged suite repeated",
+    "No genuine full lap or V2 treatment pair",
+    "V2 source admission remains stale/disabled",
+    "Full-lap resource gate remains blocked",
+    "No Primary acceptance, scientific qualification, policy reseal or subsequent execution authorization"
+  ],
+  "next_required_decision": "Primary user acceptance of exact reviewed UI; final documentation/owned cleanup may follow without altering behavioral source",
+  "temporary_artifacts": {
+    "/private/tmp/apex-v2-ui-rereview.QEFC0J/applicability.json": {
+      "sha256": "04f82d25f8524810c1f2ca1cb9efa0e2029fc174fb2920e52cf48b4eaf307416",
+      "bytes": 521
+    },
+    "/private/tmp/apex-v2-ui-rereview.QEFC0J/correction_checks.json": {
+      "sha256": "8a3a54d184c9eff0bc40ff1928fa1c09274ccea8c44428282d36d03eb98f7149",
+      "bytes": 523
+    },
+    "/private/tmp/apex-v2-ui-rereview.QEFC0J/correction_checks.log": {
+      "sha256": "8a3a54d184c9eff0bc40ff1928fa1c09274ccea8c44428282d36d03eb98f7149",
+      "bytes": 523
+    },
+    "/private/tmp/apex-v2-ui-rereview.QEFC0J/correction_checks.py": {
+      "sha256": "a34d5baef84358f34bcd03667813d4e0f10dd11a96ea0b6f549d3c97f7d5958c",
+      "bytes": 4802
+    },
+    "/private/tmp/apex-v2-ui-rereview.QEFC0J/pytest.log": {
+      "sha256": "ed927227a074d770ad05e8612810aa8c40c9001bd5e0e8a9c32dfdf74c0f35b9",
+      "bytes": 113
+    },
+    "/private/tmp/apex-v2-ui-rereview.QEFC0J/pytest.xml": {
+      "sha256": "06375becaf6ceed5fdb8588c80376a0fb58d50954f12ef741fcd2e2a5ba5afdb",
+      "bytes": 860
+    }
+  },
+  "report_hash": {
+    "sha256": "c429f1fd8e2d0c4843ec1940978e821838010a2058baeaa43b86cd987305e958",
+    "bytes": 4785
+  }
+}

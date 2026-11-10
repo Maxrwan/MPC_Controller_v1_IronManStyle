@@ -1,12 +1,18 @@
 # Workbench V2 engineering UI — bounded WORK
 
+**WORKBENCH_V2_UI_READY_PENDING_PRIMARY_USER_ACCEPTANCE.**
+Exact reviewed UI source: `b1cc8b3d7b306a56adf99a63d8dc689c13856114`;
+[focused independent re-review: PASS](../reviews/workbench_v2_ui/iteration_2/REVIEW.md).
+Recommend accepting the presentation layer only. Final delivery adds documentation without
+changing any reviewed behavioral source, test, launcher or producer identity.
+
 Starting delivery: `afa85389ccdb532816702f0ab5d3a4a49e54918f`.
 Reviewed long-run source: `fdd494eb7ddf9b456b88cba243fbc704a4fd83c0`.
 Branch: `codex/workbench-v2-ui`. Scientific source: `48adbdf64d492592d15e23c917aca71fa58aa8a5`.
 
 Primary authorized presentation/UX development, actual desktop/mobile browser checks and focused
 independent Engineering Review. No new scientific execution, resource amendment or acceptance
-of the preceding full-lap WORK is implied. Status before independent review: WORK_COMPLETE_PENDING_REVIEW.
+of the preceding full-lap WORK is implied. WORK and independent Engineering Review are complete; formal Verification was not authorized.
 
 ## Delivered presentation
 
@@ -100,7 +106,9 @@ the actual Plotly trace and missing rows skipped by reduction. Corrected focused
 A fresh read-only pilot display projection now contains four incomplete sector metadata rows.
 Old and fresh hashes are retained in `display_projection_reconciliation.json`; all states,
 controls, packets, reference, geometry and coverage are identical. Neither is a scientific run.
-The corrected exact commit requires focused independent re-review before UI acceptance.
+The corrected exact commit received independent PASS: 4 focused correction tests (17 deliberately
+deselected) and 27,309 additional assertions. Both conditions are closed; no new actionable finding.
+Unchanged iteration-1 checks are inherited after exact source diff, not newly counted.
 
 ## Limits and next decision
 
@@ -115,5 +123,11 @@ and the engineer explicitly selects the next window. Very sparse gaps, unsupport
 payload size and incomplete/missing/corrupt evidence reject explicitly. One dark theme only.
 Local screenshots/logs are retained evidence, not an off-host backup or formal Verification.
 
-After independent PASS, request Primary user acceptance of the UI only. No automatic new stage,
+Independent PASS is recorded. Request Primary user acceptance of the UI only. No automatic new stage,
 resource increase, scientific experiment, ROS/exporter, deployment or Docker work follows.
+
+Owned launcher/server shutdown completed with exit 0; both known PIDs were absent and8503
+refused connections. The transport fixture server and all agent browser tabs were closed; viewport
+override reset. A nonblocking Streamlit session-state/default warning was logged during navigation;
+no application exception was observed. The initial restricted-sandbox bind attempt reported an occupied
+port; permitted loopback startup/reuse succeeded. No unrelated-port-conflict test is newly claimed.
