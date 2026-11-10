@@ -1,0 +1,81 @@
+{
+  "schema": "apex-lap-engineering-review/1",
+  "candidate": "19aff134a797da755c1ee985e892f2b6bcc5b80c",
+  "branch": "codex/workbench-v2-lap",
+  "accepted_v1_base": "511b0a884e0f8474760817620fcdef46e7860142",
+  "frozen_science": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+  "outcome": "BLOCKED",
+  "independent_reviewer": "/root/workbench_v2_lap_independent_review",
+  "report": "results/apex_workbench_v2_lap/review/iteration_1/REVIEW.md",
+  "blocking_findings": [
+    {
+      "id": "R1",
+      "priority": 1,
+      "file": "tools/apex_workbench/lap/analysis.py",
+      "line": 212,
+      "title": "Unsuccessful pilot accepted for full-lap budget"
+    },
+    {
+      "id": "R2",
+      "priority": 2,
+      "file": "tools/apex_workbench/lap/panels.py",
+      "line": 109,
+      "title": "Replay-window changes reuse acknowledged component identity"
+    },
+    {
+      "id": "R3",
+      "priority": 2,
+      "file": "tools/apex_workbench/lap/analysis.py",
+      "line": 96,
+      "title": "Native missing slack crashes sector analysis"
+    }
+  ],
+  "focused_tests": {
+    "passed": 40,
+    "failures": 0,
+    "errors": 0,
+    "skips": 0,
+    "duration_s": 33.29,
+    "log": "focused.log",
+    "junit": "focused.xml"
+  },
+  "independent_metadata_reproductions": {
+    "count": 3,
+    "script": "reproduce_findings.py",
+    "log": "reproduce_findings.log"
+  },
+  "preservation": {
+    "historical_files": 12546,
+    "historical_links": 508,
+    "changed_files": 0,
+    "changed_links": 0,
+    "accepted_v1_protected_entries": 17,
+    "frozen_runtime_files": 333,
+    "audit": "static_audit.json"
+  },
+  "process_inventory": "NOT_OBSERVED_SANDBOX_DENIAL",
+  "genuine_scientific_execution": {
+    "optimizer_solves": 0,
+    "controller_runs": 0,
+    "plant_steps": 0,
+    "extended_attempts": 0,
+    "full_lap_attempts": 0
+  },
+  "all_reviewer_tests_and_audits_terminated_before_parent_pilot": true,
+  "next_gate": "Minimal correction and independent review of a new exact revision; no pilot on this candidate",
+  "evidence_sha256": {
+    "REVIEW.md": "7637d8b7591486f9b2a264af89d46c32d9b51c787ba6d02cca9534277cb3f0c4",
+    "focused.log": "3399cfa53c2d86b322779eb9a992dc478dc30ada6eb04632487c2702c444cb0b",
+    "focused.xml": "b9361b908b8718db6a63ae8f3e6b7ae218921fb39bbc7bef98afb47b323a59e4",
+    "reproduce_findings.py": "50c84fc6f41c7f8ee6650fb178da384a1b108242e0ae5e4b8d9b31d2a028c59d",
+    "reproduce_findings.log": "2bd8761fa080d277dc5fb0cedd9cc77aa726ae294eb94667fd202028f7ef3ec7",
+    "cancelled_pilot_fixture.json": "78a997d4c4e78f720664c7da128853d9804b5c2aceb917406421f31529220c06",
+    "replay_window_fixture.json": "7444dc19a695efe4e3b7f217e0d1a61a027d75219e03fc1a6d23fff425459d55",
+    "failed_plan_sector_fixture.json": "c7c4205c439f41cc2cd404081132b0ddfb203b2948655145c36bcec671883928",
+    "static_audit.json": "80fbf33487f8b2f5c9451147d89e5575a3b81aebf7e2f46f45e06c592e6a61fa",
+    "work_record_audit.json": "45ff0bf4f5153d06b92c267f78be0ef5590e8e5896fcdcd553cca130f9a511fd",
+    "reproduced/cancelled_pilot.json": "6d950842c3bd703b3b376b864f8477e6c304922c9e011581c1d7ee0914106304",
+    "reproduced/failed_plan_sector.json": "2f1a2960e6dea531db2e40a3430e9587cb67f899c454bab2c463f75b900f55f3",
+    "reproduced/replay_window.json": "bb3c1c16f297183f18247e69b5ece5628f9c4f30d9682498865a0fda53038100"
+  }
+}

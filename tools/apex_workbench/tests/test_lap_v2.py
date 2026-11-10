@@ -201,12 +201,20 @@ def test_prediction_association_uses_target_clock_not_nearest_unrelated_sample()
     assert nodes[2]["actual_native_time_s"] == 0.005
 
 
-def test_pilot_budget_is_finite_and_rejects_unjustified_ceiling():
-    pilot = {
+@pytest.fixture
+def valid_pilot():
+    return {
         "directory": Path("pilot"),
         "request": {"effective": config.defaults()},
         "raw": {"failure": None},
-        "status": {"wall_runtime_s": 20, "sampled_peak_worker_rss_bytes": 200_000_000},
+        "status": {
+            "state": "completed",
+            "scientific_outcome": "completed",
+            "evidence_state": "valid",
+            "returncode": 0,
+            "wall_runtime_s": 20,
+            "sampled_peak_worker_rss_bytes": 200_000_000,
+        },
         "summary": {
             "coverage_completed": True,
             "worker_cpu_s": 10,
@@ -214,6 +222,10 @@ def test_pilot_budget_is_finite_and_rejects_unjustified_ceiling():
             "total_recorded_bytes": 6_000_000,
         },
     }
+
+
+def test_pilot_budget_is_finite_and_rejects_unjustified_ceiling(valid_pilot):
+    pilot = valid_pilot
     budget = analysis.resource_budget(pilot)
     assert budget["conservative_extrapolation"]["wall_s"] == 320
     pilot["status"]["wall_runtime_s"] = 100
@@ -514,3 +526,168 @@ monitor(d,storage.read_json(d/'supervisor.json'),limits,threading.Event(),time.m
             if process and process.poll() is None:
                 process.kill()
                 process.wait(timeout=3)
+
+
+@pytest.mark.parametrize(
+    "state",
+    ["cancelled", "failed", "timed_out", "interrupted", "finalizing", "evidence_failed", None],
+)
+def test_r1_complete_native_window_is_not_successful_terminal_pilot(valid_pilot, state):
+    valid_pilot["status"]["state"] = state
+    valid_pilot["status"]["scientific_outcome"] = state
+    with pytest.raises(ValueError):
+        analysis.resource_budget(valid_pilot)
+
+
+@pytest.mark.parametrize(
+    "key,value",
+    [
+        ("scientific_outcome", None),
+        ("evidence_state", "incomplete"),
+        ("returncode", None),
+        ("returncode", 2),
+    ],
+)
+def test_r1_requires_successful_outcome_evidence_and_worker_exit(valid_pilot, key, value):
+    valid_pilot["status"][key] = value
+    with pytest.raises(ValueError):
+        analysis.resource_budget(valid_pilot)
+
+
+def replay_fixture():
+    native = [{"time": t} for t in [0.0, 1.0, 10.0, 11.0]]
+    return {
+        "directory": Path("window-fixture"),
+        "anchor": {},
+        "prediction_xy": [],
+        "raw": {
+            "states": native,
+            "packets": [],
+            "plans": [],
+            "controls": [],
+            "handoffs": [],
+            "failure": None,
+        },
+        "presentation": {
+            "states": [
+                {"time": s["time"], "x": s["time"], "y": 0, "racing_error_y_m": 0} for s in native
+            ],
+            "geometry": [
+                {"x": 0, "y": 0, "left_x": 0, "left_y": 1, "right_x": 0, "right_y": -1},
+                {"x": 1, "y": 0, "left_x": 1, "left_y": 1, "right_x": 1, "right_y": -1},
+            ],
+        },
+    }
+
+
+def test_r2_real_payload_bridge_changes_windows_after_ack_and_when_switching_back(monkeypatch):
+    from tools.apex_workbench import scratch_replay
+    from tools.apex_workbench.lap import replay
+
+    frames, fragments = [], []
+
+    def transport(**values):
+        frames.append(values)
+        return {"epoch": values["epoch"], "loaded": True}
+
+    def fragment(**_):
+        def decorate(function):
+            fragments.append(function)
+            return function
+
+        return decorate
+
+    monkeypatch.setattr(replay.st, "session_state", {})
+    monkeypatch.setattr(replay.st, "fragment", fragment)
+    monkeypatch.setattr(scratch_replay, "component", lambda: transport)
+    view = replay_fixture()
+    replay.replay(panels.replay_window(view, 0))
+    fragments[-1]()
+    replay.replay(panels.replay_window(view, 10))
+    replay.replay(panels.replay_window(view, 0))
+    assert frames[1]["payload"] is None
+    assert frames[0]["key"] != frames[2]["key"]
+    assert frames[0]["epoch"] != frames[2]["epoch"]
+    assert [s["time"] for s in frames[2]["payload"]["states"]] == [10.0, 11.0]
+    assert frames[3]["payload"] is not None and frames[3]["key"] == frames[0]["key"]
+    assert all(
+        frame["payload"]["run_id"] == "window-fixture"
+        for frame in [frames[0], frames[2], frames[3]]
+    )
+
+
+def test_r2_evidence_quarantine_is_shared_across_window_keys(monkeypatch):
+    from tools.apex_workbench.lap import replay
+
+    class Rerun(BaseException):
+        pass
+
+    state = {}
+    monkeypatch.setattr(replay.st, "session_state", state)
+    monkeypatch.setattr(replay.st, "fragment", lambda **_: lambda function: function)
+    monkeypatch.setattr(
+        replay.evidence, "current", lambda _: (_ for _ in ()).throw(ValueError("changed evidence"))
+    )
+    monkeypatch.setattr(replay.st, "rerun", lambda: (_ for _ in ()).throw(Rerun()))
+    with pytest.raises(Rerun):
+        replay.replay(panels.replay_window(replay_fixture(), 0))
+    assert state["lap_replay_window-fixture_quarantine"]
+    monkeypatch.setattr(replay.st, "button", lambda *_, **__: False)
+    monkeypatch.setattr(replay.st, "error", lambda *_: None)
+    monkeypatch.setattr(replay.evidence, "current", lambda _: None)
+    replay.replay(panels.replay_window(replay_fixture(), 10))
+    assert state["lap_replay_window-fixture_quarantine"]
+
+
+@pytest.mark.parametrize(
+    "slack,maximum,missing", [([0.01, None], 0.01, 1), ([None, None], None, 2)]
+)
+def test_r3_failed_preparation_slack_preserves_missingness(slack, maximum, missing):
+    view = {
+        "request": {
+            "capture": {"resolved": {"track_length_m": 100, "initial_state": [1, 0, 0, 0, 1, 0]}}
+        },
+        "raw": {
+            "states": [
+                {"time": 1, "s_abs": 100, "vx": 1, "front_utilization": 0, "rear_utilization": 0}
+            ],
+            "controls": [],
+            "plans": [
+                {"release_time": 1.1 + i * 0.1, "success": value is not None, "max_slack": value}
+                for i, value in enumerate(slack)
+            ],
+        },
+        "presentation": {"states": [{"time": 1, "racing_error_y_m": 0}]},
+    }
+    segments = [
+        {
+            "start": 1,
+            "end": 2,
+            "state_before": [1, 0, 0, 0, 100, 0],
+            "state_after": [1, 0, 0, 0, 125, 0],
+        }
+    ]
+    row = analysis.sectors(view, segments)["rows"][0]
+    assert row["maximum_slack_m"] == maximum
+    assert row["slack_observations_missing"] == missing
+    assert row["solver_failures"] == missing
+
+
+def test_invalid_and_duplicate_draft_are_contained_without_overwrite(tmp_path, monkeypatch):
+    monkeypatch.setattr(config, "OUTPUT", tmp_path)
+    monkeypatch.setattr(config, "RUNS", tmp_path / "runs")
+    app = AppTest.from_file(str(config.HERE / "app.py")).run(timeout=30)
+    app.button[0].click().run(timeout=30)
+    next(s for s in app.selectbox if s.label == "Experiment mode").select("Extended").run(
+        timeout=30
+    )
+    def save():
+        return next(b for b in app.button if b.label == "Save V2 experimental configuration")
+    save().click().run(timeout=30)
+    path = tmp_path / "configurations/baseline_extended_10s_v1.json"
+    original = path.read_bytes()
+    save().click().run(timeout=30)
+    assert not app.exception and app.error
+    next(n for n in app.number_input if n.label == "lateral").set_value(0).run(timeout=30)
+    save().click().run(timeout=30)
+    assert not app.exception and app.error and path.read_bytes() == original

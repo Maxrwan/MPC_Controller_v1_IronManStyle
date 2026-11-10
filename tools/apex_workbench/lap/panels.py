@@ -6,9 +6,9 @@ import plotly.graph_objects as go
 import streamlit as st
 
 from tools.apex_workbench import nmpc_scratch_panels as short
-from tools.apex_workbench import scratch_replay, storage
+from tools.apex_workbench import storage
 
-from . import analysis, config, evidence, execution
+from . import analysis, config, evidence, execution, replay
 
 
 def records():
@@ -53,15 +53,18 @@ def run_panel(mode):
         st.json(value, expanded=False)
         st.json(config.PROFILE, expanded=False)
         if st.button("Save V2 experimental configuration"):
-            checked = config.validate(value)
-            folder = config.safe(config.OUTPUT / "configurations")
-            folder.mkdir(parents=True, exist_ok=True)
-            name = (
-                f"{checked['scratch']['configuration_id']}_{checked['mode']}_"
-                f"{checked['maximum_simulation_s']}s_v{checked['scratch']['version']}.json"
-            )
-            storage.write_json(folder / name, checked, exclusive=True)
-            st.success("Saved unreviewed versioned draft: " + name)
+            try:
+                checked = config.validate(value)
+                folder = config.safe(config.OUTPUT / "configurations")
+                folder.mkdir(parents=True, exist_ok=True)
+                name = (
+                    f"{checked['scratch']['configuration_id']}_{checked['mode']}_"
+                    f"{checked['maximum_simulation_s']}s_v{checked['scratch']['version']}.json"
+                )
+                storage.write_json(folder / name, checked, exclusive=True)
+                st.success("Saved unreviewed versioned draft: " + name)
+            except (OSError, ValueError, KeyError, TypeError) as error:
+                st.error("Configuration draft was not saved: " + str(error))
     ready = False
     try:
         config.access(value)
@@ -212,7 +215,7 @@ def presentation(view):
                 set([0.0] + [float(t) for t in range(10, math.floor(native[-1]["time"]) + 1, 10)])
             ),
         )
-        scratch_replay.replay(replay_window(view, start))
+        replay.replay(replay_window(view, start))
 
 
 def inspect(directory):
@@ -259,7 +262,15 @@ def inspect(directory):
                 st.rerun()
 
         verify_epoch()
-    except (OSError, ValueError, RuntimeError, KeyError) as error:
+    except (
+        OSError,
+        ValueError,
+        RuntimeError,
+        KeyError,
+        TypeError,
+        IndexError,
+        AttributeError,
+    ) as error:
         scope.empty()
         st.error("V2 evidence quarantined: " + str(error))
 
@@ -310,6 +321,14 @@ def compare():
                     st.rerun()
 
         verify_epoch()
-    except (OSError, ValueError, KeyError, RuntimeError) as error:
+    except (
+        OSError,
+        ValueError,
+        KeyError,
+        RuntimeError,
+        TypeError,
+        IndexError,
+        AttributeError,
+    ) as error:
         scope.empty()
         st.error("V2 comparison quarantined: " + str(error))

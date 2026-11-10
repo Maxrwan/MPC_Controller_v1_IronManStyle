@@ -1531,3 +1531,9 @@ native-clock prediction association, explicit missingness and controlled-coverag
 no scientific acceptance criteria and introduce no racing score. Independent review precedes one
 baseline10s pilot and one pilot/host-budget-gated full lap, without retries. Final Primary acceptance
 is required before ordinary repeatable V2 experiments. V1 remains accepted and operational.
+
+V2 corrective addendum: a window-aware transport bridge binds each native replay window to its
+own component key/epoch and full evidence anchor, with one payload per presentation operation and
+warm validation heartbeats. Run identity and the accepted V1 component/source remain unchanged;
+quarantine is shared across a run's windows. Terminal completed/valid pilot evidence with exit0
+is required independently of raw coverage; unavailable sector slack remains missing.

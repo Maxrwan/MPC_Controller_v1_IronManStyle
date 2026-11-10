@@ -1,6 +1,6 @@
 # Current handoff — V2 lap WORK candidate awaiting independent review
 
-**WORK_READY_PENDING_INDEPENDENT_REVIEW.** Branch `codex/workbench-v2-lap`, accepted V1 base
+**CORRECTIVE_WORK_READY_PENDING_INDEPENDENT_REVIEW.** Branch `codex/workbench-v2-lap`, accepted V1 base
 511b0a884e0f8474760817620fcdef46e7860142. [WORK](workbench_v2_lap/WORK.md),
 [record](workbench_v2_lap/work_record.json), [authority](workbench_v2_lap/PRIMARY_WORK.md).
 Separate source-isolated extended5/10/20s and finite80s full-lap composition reuses frozen48adbdf
@@ -9,6 +9,10 @@ partial launch from1m. Compact native chunks, explicit scientific/missingness/co
 spatial metrics and accepted replay component; no scientific equations/thresholds changed.
 V1 producers/profile/policy/launcher and previous evidence unchanged; same shared lease, separate
 V2 finite limits. V2 launcher: ./Launch_APEX_Workbench_V2.command (loopback8503); V1 remains8501.
+
+Independent iteration1 BLOCKED exact19aff13: terminal-pilot gating, replay-window identity,
+missing-slack sector crash. Failed review preserved. Minimal V2-only correction:17affected checks
+passed/39deselected0.92s. Corrected exact-source independent re-review pending; no genuine attempts.
 
 Focused40passed31.86s,0failures/errors/skips; separate intermediate37-pass result retained, not added.
 Real metadata-only guard/lease checks and no-solve native configuration compositions; zero genuine

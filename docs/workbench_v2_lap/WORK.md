@@ -1,6 +1,6 @@
 # Workbench V2 — extended and full-lap WORK
 
-**WORK_READY_PENDING_INDEPENDENT_REVIEW.** Base `511b0a884e0f8474760817620fcdef46e7860142`,
+**CORRECTIVE_WORK_READY_PENDING_INDEPENDENT_REVIEW.** Base `511b0a884e0f8474760817620fcdef46e7860142`,
 branch `codex/workbench-v2-lap`. [Primary authority](PRIMARY_WORK.md).
 No genuine extended/full-lap execution has occurred at this candidate stage.
 
@@ -109,3 +109,35 @@ runtime and V1 policy. Before genuine execution: independent exact-candidate Eng
 Then at most one10s pilot; only a successful, valid, resource-supporting pilot permits one full lap.
 No retry, new scenario, frozen research, controller architecture change, exporter or hardware work.
 Final stop: `WORKBENCH_V2_LAP_WORK_COMPLETE_PENDING_PRIMARY_ACCEPTANCE`.
+
+
+## Independent iteration1 and bounded correction
+
+Exact19aff134a797da755c1ee985e892f2b6bcc5b80c received independent **BLOCKED**. The reviewer
+ran40checks (separate33.29s invocation), verified preservation and independently reproduced:
+R1 unsuccessful terminal pilot admitted by resource budget; R2 acknowledged old replay window
+retained after selection change; R3 missing native slack caused sector TypeError. The complete
+[failed review](../reviews/workbench_v2_lap/iteration_1/REVIEW.md) and source remain preserved.
+No genuine pilot/full-lap attempt or access-policy preparation occurred.
+
+The corrective candidate requires terminal completed/valid/exit0 pilot evidence; complete raw
+coverage alone is insufficient. A V2-only bridge reuses the unchanged V1 payload/browser component
+but binds component key/epoch to the native window. Each full presentation operation sends one
+verified payload (including switching back/navigation), then only warm fragment heartbeats. Run
+identity/full evidence anchor remain original, with a run-wide quarantine across windows. Sector
+slack uses finite numeric observations only, retaining missing/failure counts and None when all
+unavailable. Invalid/duplicate draft writes now produce a contained error without overwriting bytes.
+No frozen source, V1 file, profile/limits, lap rule, scientific tolerance or scheduling changes.
+
+Affected correction invocation:17passed/39deselected/0failures/errors/skips in0.92s; full logs/JUnit
+retained separately. Original40-pass results are historical, not added to this count. Regressions
+exercise unsuccessful/missing terminal outcomes, actual bridge payload acknowledgement/warm
+heartbeat/new-window/switch-back, run-wide evidence quarantine, mixed/all-missing slack and draft
+errors. The remaining unchanged configuration/lifecycle/serialization checks are available to the
+independent reviewer; no scientific rerun or broad campaign was performed. Corrected exact-source
+independent re-review must PASS before either of the still-unused genuine attempts.
+
+Software-only actual launch from/private/tmp opened the V2 home and unchanged V1 transient editor,
+then Extended10s/eight costs with V2 Run disabled. Owned reuse exited0, and Control-C stopped the
+software-check server (exit0). No Run/probe was clicked. Browser checks will resume on retained
+new genuine data only if the corrected review and numerical prerequisite gates permit it.

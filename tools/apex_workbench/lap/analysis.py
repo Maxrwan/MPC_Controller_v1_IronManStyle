@@ -93,7 +93,16 @@ def sectors(view, segments):
                 "preparation_host_s": short.summary([r.get("planner_total_time") for r in plans]),
                 "iterations": short.summary([r.get("iterations") for r in plans]),
                 "solver_failures": sum(p.get("success") is False for p in plans),
-                "maximum_slack_m": max((p.get("max_slack", 0) for p in plans), default=None),
+                "maximum_slack_m": max(
+                    (p["max_slack"] for p in plans if short.numeric(p.get("max_slack"))),
+                    default=None,
+                ),
+                "slack_observations_available": sum(
+                    short.numeric(p.get("max_slack")) for p in plans
+                ),
+                "slack_observations_missing": sum(
+                    not short.numeric(p.get("max_slack")) for p in plans
+                ),
                 "front_utilization": short.summary([r["front_utilization"] for r in states]),
                 "rear_utilization": short.summary([r["rear_utilization"] for r in states]),
             }
@@ -210,10 +219,15 @@ def comparison(a, b):
 
 
 def resource_budget(pilot):
+    status = pilot["status"]
     if (
         pilot["request"]["effective"] != config.defaults()
         or not pilot["summary"]["coverage_completed"]
         or pilot["raw"].get("failure")
+        or status.get("state") != "completed"
+        or status.get("scientific_outcome") != "completed"
+        or status.get("evidence_state") != "valid"
+        or status.get("returncode") != 0
     ):
         raise ValueError("Full-lap preflight requires the successful exact baseline10s pilot")
     limits = config.limits(config.defaults("full_lap"))
