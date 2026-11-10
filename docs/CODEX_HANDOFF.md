@@ -1,25 +1,34 @@
-# Current handoff — V2 lap WORK candidate awaiting independent review
+# Current handoff — V2 reviewed WORK; full lap blocked by resource preflight
 
-**CORRECTIVE_WORK_READY_PENDING_INDEPENDENT_REVIEW.** Branch `codex/workbench-v2-lap`, accepted V1 base
-511b0a884e0f8474760817620fcdef46e7860142. [WORK](workbench_v2_lap/WORK.md),
-[record](workbench_v2_lap/work_record.json), [authority](workbench_v2_lap/PRIMARY_WORK.md).
-Separate source-isolated extended5/10/20s and finite80s full-lap composition reuses frozen48adbdf
-AsyncRunner/N8/TVLQR/GP gamma2 and controlled availability. Two native finish crossings exclude the
-partial launch from1m. Compact native chunks, explicit scientific/missingness/coverage labels,
-spatial metrics and accepted replay component; no scientific equations/thresholds changed.
-V1 producers/profile/policy/launcher and previous evidence unchanged; same shared lease, separate
-V2 finite limits. V2 launcher: ./Launch_APEX_Workbench_V2.command (loopback8503); V1 remains8501.
+**WORKBENCH_V2_LAP_WORK_COMPLETE_PENDING_PRIMARY_ACCEPTANCE.** Branch `codex/workbench-v2-lap`.
+Exact software sourcefdd494eb7ddf9b456b88cba243fbc704a4fd83c0 received independent **PASS**;
+56focused tests/34.41s,0failures/errors/skips. [WORK](workbench_v2_lap/WORK.md),
+[record](workbench_v2_lap/work_record.json), [PASS](reviews/workbench_v2_lap/iteration_2/REVIEW.md).
+Original19aff13 BLOCKED review and R1-R3 reproductions preserved. Corrected terminal-pilot admission,
+window-aware V2-only replay and missing-slack handling; all V1/scientific files remain unchanged.
 
-Independent iteration1 BLOCKED exact19aff13: terminal-pilot gating, replay-window identity,
-missing-slack sector crash. Failed review preserved. Minimal V2-only correction:17affected checks
-passed/39deselected0.92s. Corrected exact-source independent re-review pending; no genuine attempts.
+One genuine10s baseline pilot2026-11-10T145233.755880_0000_f46cc76634dd4322b1720f37eb96442b
+completed/valid/exit0:2000states,1000controls,100plans/packets,99handoffs,0failures/misses/fallbacks.
+Wall36.805571s,pre-finalization CPU34.46426s,peak sampled RSS216,514,560bytes. Original source/
+environment/integrity and native SINGLE control pass. No full lap completed; lap time unavailable.
+Two metadata-only host preflights failed before claims; independently reviewed pilot-only headroom
+correction preserved all source caps/full-lap gates. No scientific retry or claim reset.
 
-Focused40passed31.86s,0failures/errors/skips; separate intermediate37-pass result retained, not added.
-Real metadata-only guard/lease checks and no-solve native configuration compositions; zero genuine
-extended/full-lap runs. Historical anchor12,546files/508links. Independent exact-candidate PASS must
-precede one baseline10s pilot. Only a successful valid pilot and finite pilot/host-supported budget
-may precede one baseline full lap. No retries or campaign. Final acceptance/repeatable V2 remains
-pending Primary. Stop after authorized WORK at WORKBENCH_V2_LAP_WORK_COMPLETE_PENDING_PRIMARY_ACCEPTANCE.
+**FULL_LAP_PREFLIGHT_BLOCKED_PENDING_PRIMARY_RESOURCE_DECISION:** unchanged reviewed projection
+CPU551.42816s exceeds declared480s. No full-lap claim/worker/run; full slot unused. No higher cap,
+new formula, second pilot or campaign. Primary must decide a reviewed resource plan before any
+full-lap execution; unconditional full-lap acceptance is not recommended from this evidence.
+
+Actual V2 launch/reuse/owned shutdown and genuine pilot metrics/replay checked. Full-lap Run button
+disabled by gate. One1x replay9.995native/10.0071wall seconds; display observation only. Historical
+12,546files/508links and333runtime files unchanged;32V2 producers match exact reviewed Git.
+V1 policy/attempts/profile/launcher/renderers unchanged and accepted-interactive. Owned processes
+stopped,8503closed,common lease free. Raw artifacts remain local/ignored; hashes are not off-host backup.
+
+Launch V2 from configured checkout: ./Launch_APEX_Workbench_V2.command (8503); accepted V1
+remains ./Launch_APEX_Workbench.command (8501). V2 reviewed-WORK remains gated: pilot consumed,
+Full Lap blocked, repeatable V2 pending explicit Primary acceptance. Final delivery docs only;
+no broad Verification, new physics/controller/scenario, sweeps, ROS2/exporter/hardware or next stage.
 
 ---
 

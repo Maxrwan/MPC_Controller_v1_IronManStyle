@@ -1,0 +1,63 @@
+{
+  "schema": "apex-lap-host-preflight-review/1",
+  "candidate": "fdd494eb7ddf9b456b88cba243fbc704a4fd83c0",
+  "outcome": "DEFENSIBLE_FOR_SINGLE_PILOT_ONLY",
+  "scope": "Proposed ignored task-harness admission correction; no live admission or genuine execution",
+  "proposal": {
+    "pilot_maximum_simulation_s": 10,
+    "available_ram_operator": ">=",
+    "worker_allowance_bytes": 805306368,
+    "host_reserve_bytes": 536870912,
+    "required_available_ram_bytes": 1342177280,
+    "all_reviewed_worker_caps_unchanged": true,
+    "full_lap_gate_unchanged": true
+  },
+  "retained_snapshot": {
+    "utc": "2026-11-10T14:46:40.020192+00:00",
+    "available_ram_bytes": 1596145664,
+    "margin_over_proposed_floor_bytes": 253968384,
+    "live_capacity_claim": false
+  },
+  "accepted_v1_reference": {
+    "sampled_peak_worker_rss_bytes": 209862656,
+    "status_hash_matches_smoke_audit": true,
+    "proves_10s_peak_or_memory_guarantee": false
+  },
+  "negative_evidence": {
+    "first_preflight": "FAILED_METADATA_ONLY_ORIGINAL_INPUTS_NOT_RETAINED",
+    "later_observation_not_original_inputs": true,
+    "second_preflight": "FAILED_METADATA_ONLY_ACTUAL_SNAPSHOT_AND_TRACEBACK_RETAINED",
+    "pilot_claim_exists": false,
+    "v2_run_root_exists": false,
+    "policy_used": {}
+  },
+  "authority_interpretation": "Numerical no-retry rule has not been consumed by pre-claim metadata checks; no automatic favorable-sample polling or genuine retry authorized",
+  "genuine_pilot_can_be_considered_under_original_authority": true,
+  "remaining_before_pilot": [
+    "Implement only pilot-scoped formula without changing accepted source/profile/caps",
+    "Fresh retained successful host/source/review/Primary/lease/guard preflight after reviewer terminates",
+    "Record corrected harness identity, this memo digest, rule and capacity before exclusive claim"
+  ],
+  "full_lap": "Still conditional on successful valid pilot, unchanged production finite resource_budget and separate current-host capacity preflight",
+  "reviewer_execution": {
+    "tests": 0,
+    "source_imports": 0,
+    "native_probes": 0,
+    "solver_calls": 0,
+    "controller_runs": 0,
+    "plant_steps": 0,
+    "stress_checks": 0
+  },
+  "source_policy_or_harness_mutations_by_reviewer": false,
+  "all_reviewer_activity_terminated_before_parent_numerical_attempt": true,
+  "memo_sha256": "43fec1fdc64c9504a0b322e844fafecf8c452231958637652f108263b99ad3ae",
+  "evidence_sha256": {
+    "authorized_work.py": "324dce157175f8294f6c2b44e5094cbbce364ae450037cafb360d731e3e94859",
+    "authorized_work_before_capacity_logging.py": "e616f47ff99f6fb3374cd28abc8ede0005df27bfb5e309f4a6237c1a051e7ce4",
+    "blocked_preflight_observation.json": "b8b20a352e22a057eae712cde447c555328702a3463e033c040606c4b08cde61",
+    "host_preflight_1794322000530562000.json": "0b6ac8d20e796f3d12b699aa37226030e2d5211b49b7fd1351428334440043e1",
+    "pilot_after_owned_cleanup.log": "1ca6ee0e4a8e12e654c6f65c20e7b46f98caab6dad8a23bbbc82303e60e4a2bc",
+    "access.json": "149efe6703ebf3d4b9139cb9bcd578f1763098596b58a8b5781fe6e405e63fa3",
+    "review/iteration_2/review_record.json": "9ed0de16c1d1d13fec06a84a934fc81a0fd9a2d58d117f5eea6cc000a249e79c"
+  }
+}

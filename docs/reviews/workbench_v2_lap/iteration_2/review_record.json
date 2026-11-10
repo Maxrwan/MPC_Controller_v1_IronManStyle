@@ -1,0 +1,108 @@
+{
+  "schema": "apex-lap-engineering-review/1",
+  "candidate": "fdd494eb7ddf9b456b88cba243fbc704a4fd83c0",
+  "branch": "codex/workbench-v2-lap",
+  "accepted_v1_base": "511b0a884e0f8474760817620fcdef46e7860142",
+  "frozen_science": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+  "outcome": "PASS",
+  "independent_reviewer": "/root/workbench_v2_lap_independent_review",
+  "report": "results/apex_workbench_v2_lap/review/iteration_2/REVIEW.md",
+  "blocking_findings": [],
+  "resolved_findings": [
+    {
+      "id": "R1",
+      "disposition": "RESOLVED",
+      "basis": "Successful terminal outcome, valid evidence and exit0 required before pilot budget acceptance"
+    },
+    {
+      "id": "R2",
+      "disposition": "RESOLVED",
+      "basis": "V2-only window-bound component identity and run-wide quarantine; V1 unchanged"
+    },
+    {
+      "id": "R3",
+      "disposition": "RESOLVED",
+      "basis": "Finite slack observations summarized with explicit missing/failure counts"
+    }
+  ],
+  "focused_tests": {
+    "passed": 56,
+    "failures": 0,
+    "errors": 0,
+    "skips": 0,
+    "duration_s": 34.41,
+    "log": "focused.log",
+    "junit": "focused.xml"
+  },
+  "additional_independent_checks": {
+    "script": "independent_checks.py",
+    "log": "independent_checks.log",
+    "record": "independent_checks.json",
+    "classification": "Metadata-only software transport/admission/missingness checks"
+  },
+  "preservation": {
+    "historical_files": 12546,
+    "historical_links": 508,
+    "changed_files": 0,
+    "changed_links": 0,
+    "accepted_v1_protected_entries": 17,
+    "frozen_runtime_files": 333,
+    "prior_failed_review_tracked_byte_exact": true,
+    "audit": "static_audit.json"
+  },
+  "v2_access_policy_created": false,
+  "genuine_attempts_before_review": 0,
+  "genuine_scientific_execution": {
+    "optimizer_solves": 0,
+    "controller_runs": 0,
+    "plant_steps": 0,
+    "extended_attempts": 0,
+    "full_lap_attempts": 0
+  },
+  "all_reviewer_tests_and_audits_terminated_before_parent_pilot": true,
+  "review_scope": "Independent bounded Engineering Review; not formal Verification or final Primary acceptance",
+  "next_gate": "Original Primary-authorized once-only baseline10s pilot only after exact source/policy/live preflight; one full lap remains conditional on successful valid pilot and finite pilot/host-supported preflight",
+  "producer_sha256": {
+    "Launch_APEX_Workbench_V2.command": "64ab4063b0c9ae9daf75de4ee767215e25c095e2d417de1e8020b1d6471434c8",
+    "tools/apex_workbench/configuration.py": "596846e8dab789c619e00a26679288d73bfac495fc468c7b065e15d6795a33a1",
+    "tools/apex_workbench/jobs.py": "31c82030e644418cb6e3ec88b905d37388291fc00172c45c34e34a5de5684ed4",
+    "tools/apex_workbench/lap/__init__.py": "35b55be42eafe56b0521ad9ae3875ba947ae67c6f3e9e2a3c87d287cbd3fca55",
+    "tools/apex_workbench/lap/analysis.py": "f7317a8d4a23d980b014b151f82bba32eb79c9bc8349c7d8f67f9aa11d5eebd3",
+    "tools/apex_workbench/lap/app.py": "146ab724100abed1bbd09a0e42c2f7c4ab720120916c8ef4fdc761850d537985",
+    "tools/apex_workbench/lap/config.py": "a40f4f73636012533a274aae028f318e1be7a46f77b947530d06eb574a8529d7",
+    "tools/apex_workbench/lap/evidence.py": "88e719a0fb37061ecacf2f6ce61ab9bcd452e2ca46a8dce28e881c19c56f1ce7",
+    "tools/apex_workbench/lap/execution.py": "bddb3b040738cf7f3c15fbfefafad838af8cf613cdbff7e00f62414dcd00fcf2",
+    "tools/apex_workbench/lap/launch.py": "aced85a5262feb76b6357c99cfc6427cd5ce14b2f2e629d896db496a29e7f72f",
+    "tools/apex_workbench/lap/panels.py": "72760b1f0eda491f79627b770d75a086b95e861ee46368e50a31cb46c79affb9",
+    "tools/apex_workbench/lap/profile.json": "a271bc46655b50d3c1bc921e20a0b951c7004d28110ea7ad111c44c02e731610",
+    "tools/apex_workbench/lap/replay.py": "31225fe1f05a5f70af2111162eddc2e30beba0cf55ebaa3a77bcfc29a1c05c61",
+    "tools/apex_workbench/lap/worker.py": "b3a3b0eaa17c24233a62e32be6b8cd357cd0b11c7b62b744391a24712f0909f8",
+    "tools/apex_workbench/lifecycle.py": "794bd5ada88048a402a2d0946942ec9962e52b0caf2e72d7a8a3a0279f51f05a",
+    "tools/apex_workbench/nmpc_analysis.py": "9bf1a7efe44ee4bb9f1199356f58a3f0caa31d7783543e03f26ca6abebc01beb",
+    "tools/apex_workbench/nmpc_scratch.py": "50bd86590980f2abb98f6e7e6a01e169a9e72584fe009b53faabcc357cf72d78",
+    "tools/apex_workbench/nmpc_scratch_panels.py": "ea08206b4f765c99d7dc7ae48c447d5fcb9a7029a2178e9be9b43d8e031a58e8",
+    "tools/apex_workbench/nmpc_scratch_profile.json": "52ffa7cbb4308bb8814b7512fbb61d685e27fbe9af83b1acec926217b8f42fab",
+    "tools/apex_workbench/nmpc_scratch_worker.py": "d6ee20dcd56f9f2123aed9afa3796bf0bce9f63da21583982470f9a2645737e3",
+    "tools/apex_workbench/nmpc_weight_lab.py": "8751fdfea3c1071fed61dc463d0827894b876295c1a5810647320964c6be1700",
+    "tools/apex_workbench/nmpc_weight_panels.py": "8b0e1723cbe1d8428c223e2b4c2fa998823096e68998fe5a592c2b2c85581b0a",
+    "tools/apex_workbench/nmpc_weight_worker.py": "d1051d60263936f173e4b691f1407a2b8fbb801f4825ff926e75112eda18ef01",
+    "tools/apex_workbench/run_catalog.py": "f48089c848a9cc2e78102dad23fcbc15be360a9931b4f55d698c0948a1a0908c",
+    "tools/apex_workbench/scratch_replay.py": "519317232826bdf132048172f2df1ed65d8924f0b4f5c2d1c05ef6880f3cce1e",
+    "tools/apex_workbench/scratch_replay_web/clock.mjs": "ff9ba7d4834acc5b5a4ef43eb06fbc6af4dbe13a0c5852cff767391d3084e97a",
+    "tools/apex_workbench/scratch_replay_web/index.html": "7d9ecedef30c7ab088a8a3b38228901f18bc741b88f4b440e92a5d70080657bb",
+    "tools/apex_workbench/scratch_replay_web/style.css": "20bca79c8f522995b7e64cca7f9a8131a5b7b005b39c89fe93e23f318746f964",
+    "tools/apex_workbench/scratch_replay_web/viewer.mjs": "5d4a5aabe4eddd4a21f09e37b8da249b0e27582b25395e781589b394b84a4c3d",
+    "tools/apex_workbench/storage.py": "962ff863823f8fa22edf46530730db3a042328fb940bc51036ba18aa2e221c96",
+    "tools/apex_workbench/worker.py": "17293f2fc7775a1601de3f6c95bd28bcafc0766188efca588f8d7894ee8ff91c",
+    "tools/apex_workbench/workspace.py": "85722940dcbc464c4b5f05547278d33e1e3f8c40439dcb4d75c8388e026df2ae"
+  },
+  "evidence_sha256": {
+    "REVIEW.md": "7f8795ce13fe2ef8c626103ff7bedd64e59485cbd95affb0e85b07dea37d588c",
+    "focused.log": "f7cde493b0148e812e036c67fe6e6c9cd71a0667b17e2e2a5fa1c28bc9b40b87",
+    "focused.xml": "65dfa0057418a966ca78a6604302c9ba001e7a4ecd2c9fe23837c756107cbacb",
+    "independent_checks.py": "e3b6b9c77d04827bdeb89a9d73b8ceea8f7656937b269bea795d6d1de4ea7303",
+    "independent_checks.log": "7b00aa1ed9a62362b0ea33f74c4c06a37ec70f85f71ffec211a3d361d45f7fbb",
+    "independent_checks.json": "2ba69903408804fd49ef58f03dffd9ebab0e7a555683b125f25b544e06e5728a",
+    "static_audit.json": "c08b27e9de098b1cb0674eb375686d92cb76571d9eaa5b34e8e7f610962a1f15"
+  }
+}

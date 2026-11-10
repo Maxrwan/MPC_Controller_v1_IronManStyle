@@ -1,6 +1,6 @@
 {
   "schema": "apex-workbench-v2-lap-work/1",
-  "status": "CORRECTIVE_WORK_READY_PENDING_INDEPENDENT_REVIEW",
+  "status": "WORKBENCH_V2_LAP_WORK_COMPLETE_PENDING_PRIMARY_ACCEPTANCE",
   "base": "511b0a884e0f8474760817620fcdef46e7860142",
   "branch": "codex/workbench-v2-lap",
   "frozen_science": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
@@ -21,7 +21,7 @@
     }
   },
   "genuine_attempts": {
-    "pilot": 0,
+    "pilot": 1,
     "full_lap": 0,
     "automatic_retry": false
   },
@@ -39,14 +39,34 @@
         "R3 missing slack sector TypeError"
       ]
     },
-    "corrective_review": "PENDING"
+    "corrective_review": {
+      "outcome": "PASS",
+      "candidate": "fdd494eb7ddf9b456b88cba243fbc704a4fd83c0",
+      "record": "docs/reviews/workbench_v2_lap/iteration_2/review_record.json",
+      "sha256": "9ed0de16c1d1d13fec06a84a934fc81a0fd9a2d58d117f5eea6cc000a249e79c",
+      "independent_tests": {
+        "passed": 56,
+        "failures": 0,
+        "errors": 0,
+        "skips": 0,
+        "duration_s": 34.41,
+        "log": "focused.log",
+        "junit": "focused.xml"
+      },
+      "all_activity_stopped_before_pilot": true
+    }
   },
   "preservation": {
     "files": 12546,
     "links": 508,
     "anchor": "results/apex_workbench_v2_lap/preservation_before.json",
     "v1_producers_launcher_profile_policy": "UNCHANGED",
-    "scientific_sources_configurations_dependencies": "UNCHANGED"
+    "scientific_sources_configurations_dependencies": "UNCHANGED",
+    "post_pilot_all_original_bytes_verified": true,
+    "historical_files": 12546,
+    "historical_links": 508,
+    "frozen_runtime_files": 333,
+    "v2_producers_bound_to_exact_reviewed_git": 32
   },
   "source": {
     "tools/apex_workbench/lap/worker.py": "b3a3b0eaa17c24233a62e32be6b8cd357cd0b11c7b62b744391a24712f0909f8",
@@ -72,13 +92,43 @@
     "results/apex_workbench_v2_lap/review/iteration_1/review_record.json": "d56892108e770052d96680b8c86c078ac3fd1de34f1c395d45e7a8c1c0a24ad7",
     "results/apex_workbench_v2_lap/review/iteration_1/REVIEW.md": "7637d8b7591486f9b2a264af89d46c32d9b51c787ba6d02cca9534277cb3f0c4",
     "results/apex_workbench_v2_lap/review/iteration_1/reproduce_findings.py": "50c84fc6f41c7f8ee6650fb178da384a1b108242e0ae5e4b8d9b31d2a028c59d",
-    "results/apex_workbench_v2_lap/software/launcher_reuse_1.log": "61a2b7f05bd2fd235c343fa887a8277b60fdab38eb40fc9fcc15bd52076f4fe7"
+    "results/apex_workbench_v2_lap/software/launcher_reuse_1.log": "61a2b7f05bd2fd235c343fa887a8277b60fdab38eb40fc9fcc15bd52076f4fe7",
+    "results/apex_workbench_v2_lap/pilot_browser.txt": "9b9c095eea6ffca765ece6679d6179345cc35928394e8eee0cd17ef383e47b7c",
+    "results/apex_workbench_v2_lap/authorized_work_before_pilot_margin_review.py": "324dce157175f8294f6c2b44e5094cbbce364ae450037cafb360d731e3e94859",
+    "results/apex_workbench_v2_lap/pilot_claim.json": "a7470ebf3be8027b69db1c9e15173d0ec63b21d6c68a9549046e130b1c7355c5",
+    "results/apex_workbench_v2_lap/pilot_reviewed_preflight.log": "30f999deb5b0b093e6c5a1ed466da83a3cd95ce81abfa2fde1c886e32c8916ff",
+    "results/apex_workbench_v2_lap/pilot_driver.log": "9f56b5e5ae9aee56ed9baae2203c41dc5605b9254d6955fc54ff2c217ae6eaa4",
+    "results/apex_workbench_v2_lap/final_preservation.json": "94b4bea2c9fc578e5a7ca0f0a01d63e90963a48ed8ce8816c1bd24fad96ac1e0",
+    "results/apex_workbench_v2_lap/authorized_work.py": "d24ea6c2af3c2ca426fca705316d92d7d69417161a2683113b2cd66af9d06ba9",
+    "results/apex_workbench_v2_lap/pilot_browser.jpg": "e584dd51e071b13e2466e21aa75aef4b517f980ddc2cde0b6cd21ee7401cf1b2",
+    "results/apex_workbench_v2_lap/pilot_launch.json": "ce6950d7ad7b7c0af0f08f2e6b13013de7731913bd94f49eb8ce62f30f2a5f2b",
+    "results/apex_workbench_v2_lap/blocked_preflight_observation.json": "b8b20a352e22a057eae712cde447c555328702a3463e033c040606c4b08cde61",
+    "results/apex_workbench_v2_lap/FULL_LAP_PREFLIGHT_BLOCKED.json": "2934c6e25780547a552bfb07f19959c77f9b09e2c8aeec0c2faab99b6f1d69fa",
+    "results/apex_workbench_v2_lap/full_lap_browser_gate.txt": "2b347b03da88826a62eb5e09077085e96096afc1e0eb58636b8d6c3eb3e7db4b",
+    "results/apex_workbench_v2_lap/authorized_work_before_capacity_logging.py": "e616f47ff99f6fb3374cd28abc8ede0005df27bfb5e309f4a6237c1a051e7ce4",
+    "results/apex_workbench_v2_lap/access.json": "03b6fbabdfd6bf5416087c78338a9ef335a4f8205724a1214f5f0a1d39ff3574",
+    "results/apex_workbench_v2_lap/full_lap_preflight.log": "00b90dd908be8b083936fb40631bf2796af77c41ae17b9cfcdad6bf5f548e67d",
+    "results/apex_workbench_v2_lap/full_lap_browser_gate.jpg": "8dc61425ad27ddbb334c7b4aacd7a15afb5475d8e380090005abb1a8f1fe70ee",
+    "results/apex_workbench_v2_lap/host_preflight_1794322352942393000.json": "a441ec3a46b5dea2de534a7a0b538439015baa66d732002bfac34eb938eb8e1d",
+    "results/apex_workbench_v2_lap/pilot_evidence_audit.json": "25277b9a0af8b1855189acc43d47d0abe67fc97b31d9c6bf894247d98d4d2c15",
+    "results/apex_workbench_v2_lap/host_preflight_1794322000530562000.json": "0b6ac8d20e796f3d12b699aa37226030e2d5211b49b7fd1351428334440043e1",
+    "results/apex_workbench_v2_lap/pilot_after_owned_cleanup.log": "1ca6ee0e4a8e12e654c6f65c20e7b46f98caab6dad8a23bbbc82303e60e4a2bc",
+    "results/apex_workbench_v2_lap/review/iteration_2/focused.xml": "65dfa0057418a966ca78a6604302c9ba001e7a4ecd2c9fe23837c756107cbacb",
+    "results/apex_workbench_v2_lap/review/iteration_2/independent_checks.py": "e3b6b9c77d04827bdeb89a9d73b8ceea8f7656937b269bea795d6d1de4ea7303",
+    "results/apex_workbench_v2_lap/review/iteration_2/independent_checks.log": "7b00aa1ed9a62362b0ea33f74c4c06a37ec70f85f71ffec211a3d361d45f7fbb",
+    "results/apex_workbench_v2_lap/review/iteration_2/independent_checks.json": "2ba69903408804fd49ef58f03dffd9ebab0e7a555683b125f25b544e06e5728a",
+    "results/apex_workbench_v2_lap/review/iteration_2/static_audit.json": "c08b27e9de098b1cb0674eb375686d92cb76571d9eaa5b34e8e7f610962a1f15",
+    "results/apex_workbench_v2_lap/review/iteration_2/review_record.json": "9ed0de16c1d1d13fec06a84a934fc81a0fd9a2d58d117f5eea6cc000a249e79c",
+    "results/apex_workbench_v2_lap/review/iteration_2/REVIEW.md": "7f8795ce13fe2ef8c626103ff7bedd64e59485cbd95affb0e85b07dea37d588c",
+    "results/apex_workbench_v2_lap/review/iteration_2/focused.log": "f7cde493b0148e812e036c67fe6e6c9cd71a0667b17e2e2a5fa1c28bc9b40b87",
+    "results/apex_workbench_v2_lap/review/host_preflight/review_record.json": "b4d552e24b2cc581fb3b8288b0ca5d6577e0bb79be46067932e48205584c90f7",
+    "results/apex_workbench_v2_lap/review/host_preflight/MEMO.md": "43fec1fdc64c9504a0b322e844fafecf8c452231958637652f108263b99ad3ae"
   },
   "deferred": [
-    "Independent exact-candidate review",
-    "One10s baseline pilot only after review PASS",
-    "One full-lap baseline only if valid pilot and declared resource/host preflight pass",
-    "No full regression/formal Verification or new campaign"
+    "Full-lap scientific execution: resource preflight rejected CPU projection551.42816s >480s",
+    "Primary resource-plan correction decision and exact review before any full-lap attempt",
+    "Primary final acceptance before ordinary repeatable V2 operation",
+    "No new scientific campaign, broad regression, formal Verification, hardware or next-stage implementation"
   ],
   "corrective_checks": {
     "passed": 17,
@@ -90,5 +140,589 @@
     "selection": "-k r1_ or r2_ or r3_ or invalid_and_duplicate or pilot_budget",
     "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=.:src:scripts VECLIB_MAXIMUM_THREADS=1 <approved-python> -B -m pytest -q -p no:cacheprovider tools/apex_workbench/tests/test_lap_v2.py -k \"r1_ or r2_ or r3_ or invalid_and_duplicate or pilot_budget\" --basetemp=results/apex_workbench_v2_lap/software/corrective_fixtures_1 --junitxml=results/apex_workbench_v2_lap/software/corrective_1.xml",
     "genuine_runs": 0
-  }
+  },
+  "reviewed_implementation": "fdd494eb7ddf9b456b88cba243fbc704a4fd83c0",
+  "final_delivery_scope": "Documentation-only descendant; reviewed implementation, tests, profile and limits unchanged",
+  "numerical_status": "FULL_LAP_PREFLIGHT_BLOCKED_PENDING_PRIMARY_RESOURCE_DECISION",
+  "pilot": {
+    "schema": "apex-lap-pilot-evidence-audit/1",
+    "candidate": "fdd494eb7ddf9b456b88cba243fbc704a4fd83c0",
+    "status": {
+      "record_version": 2,
+      "state": "completed",
+      "scientific_outcome": "completed",
+      "evidence_state": "valid",
+      "error": null,
+      "returncode": 0,
+      "wall_runtime_s": 36.80557108297944,
+      "sampled_peak_worker_rss_bytes": 216514560,
+      "manifest_sha256": "f18a0639f5f4c6786fb0cfc53fd52a09d3656f0eef24c569a14d7960cbfec911"
+    },
+    "summary": {
+      "coverage_completed": true,
+      "lap": {
+        "track_length_m": 154.76345492731022,
+        "initial_s_abs_m": 1.0,
+        "native_crossings": [],
+        "completed_laps": 0,
+        "lap_time_s": null,
+        "first_crossing_is_partial": false,
+        "status": "incomplete",
+        "stop_reason": "duration",
+        "failure": null,
+        "rule": "Native boundary-to-same-boundary interval; partial launch crossing excluded"
+      },
+      "failure": null,
+      "stop_reason": "duration",
+      "native_end_time_s": 10.0,
+      "worker_wall_s": 34.25296700000763,
+      "worker_cpu_s": 34.46426,
+      "retained_native_bytes": 3381393,
+      "total_recorded_bytes": 7035557,
+      "classification": "SYNTHETIC / EXPERIMENTAL / UNQUALIFIED"
+    },
+    "counts": {
+      "states": 2000,
+      "controls": 1000,
+      "plans": 100,
+      "packets": 100,
+      "triggers": 0,
+      "fallbacks": 0,
+      "handoffs": 99,
+      "releases": 99,
+      "misses": 0,
+      "reserves": 2000,
+      "lap_times": 0,
+      "codriver_misses": 0
+    },
+    "metrics": {
+      "definition": "Equal-weight RMS over actual recorded samples in the displayed native window; no resampling",
+      "observation_window_s": [
+        0.0,
+        9.995000000000001
+      ],
+      "requested_duration_s": 10,
+      "native_end_time_s": 10.0,
+      "stop_reason": "duration",
+      "failure": null,
+      "racing_lateral_error_m": {
+        "samples": 2000,
+        "peak_abs": 0.10197316722623925,
+        "rms": 0.031947610371909005,
+        "mean": 0.00459633437126519
+      },
+      "racing_heading_error_rad": {
+        "samples": 2000,
+        "peak_abs": 0.23456049167402337,
+        "rms": 0.06453921962069092,
+        "mean": -0.005432787564560368
+      },
+      "centerline_e_y_m": {
+        "samples": 2000,
+        "peak_abs": 0.22120449535615933,
+        "rms": 0.07559069090273628,
+        "mean": 0.015353822260424456
+      },
+      "active_packet_lateral_error_m": {
+        "samples": 1000,
+        "peak_abs": 0.008391480675336752,
+        "rms": 0.001568683988634441,
+        "mean": 0.00013719288690437225
+      },
+      "observed_lateral_zero_crossings": 10,
+      "steering_rad": {
+        "samples": 1000,
+        "peak_abs": 0.4,
+        "rms": 0.09930912353053511,
+        "mean": -0.027451757566904576,
+        "total_variation": 3.607198952234633,
+        "maximum_observed_increment_rate": 1.0,
+        "application_window_s": [
+          0.005,
+          9.995000000000001
+        ],
+        "rows_without_applied_measurement": 0
+      },
+      "longitudinal_a_cmd_mps2": {
+        "samples": 1000,
+        "peak_abs": 2.200510419711482,
+        "rms": 1.0533225141876714,
+        "mean": 0.17870622002574532,
+        "total_variation": 20.79384366954976,
+        "maximum_observed_increment_rate": 93.43451517201012,
+        "application_window_s": [
+          0.005,
+          9.995000000000001
+        ],
+        "rows_without_applied_measurement": 0
+      },
+      "solver_host_seconds": {
+        "samples": 100,
+        "peak_abs": 0.04691204207483679,
+        "rms": 0.03264310301591306,
+        "mean": 0.03200004874379374
+      },
+      "preparation_host_seconds": {
+        "samples": 100,
+        "peak_abs": 0.06823012500535697,
+        "rms": 0.05343805044618944,
+        "mean": 0.05302707838709466
+      },
+      "iterations": {
+        "samples": 100,
+        "peak_abs": 18,
+        "rms": 12.582130185306461,
+        "mean": 12.31
+      },
+      "successful_native_preparations": 100,
+      "preparation_count": 100,
+      "max_native_slack": 9.091836835408585e-11,
+      "max_primal_infeasibility": 6.062540958140517e-08,
+      "grip_utilization": {
+        "front": {
+          "samples": 2000,
+          "peak_abs": 0.8501177235290096,
+          "rms": 0.35207379910289477,
+          "mean": 0.2940553198243882
+        },
+        "rear": {
+          "samples": 2000,
+          "peak_abs": 0.8714556120435621,
+          "rms": 0.35645583248847296,
+          "mean": 0.29591012979880704
+        }
+      },
+      "minimum_combined_utilization_margin": {
+        "front": 0.1498822764709904,
+        "rear": 0.12854438795643786
+      },
+      "recorded_boundary_violation_rows": 0,
+      "requested_applied_steering_differences": 252,
+      "settling": {
+        "band_m": 0.01,
+        "minimum_observed_tail_s": 0.25,
+        "target_error_m": 0.0,
+        "settling_time_s": null,
+        "definition": "Observed within-window settling of racing-reference lateral error; not future stability",
+        "status": "settling not established in this window"
+      },
+      "disturbance_recovery": {
+        "status": "No single recorded disturbance application"
+      },
+      "disturbance_response": null,
+      "overshoot": {
+        "value": null,
+        "reason": "No steady reference-step experiment; do not assign step overshoot to a state perturbation"
+      },
+      "lap": {
+        "track_length_m": 154.76345492731022,
+        "initial_s_abs_m": 1.0,
+        "native_crossings": [],
+        "completed_laps": 0,
+        "lap_time_s": null,
+        "first_crossing_is_partial": false,
+        "status": "incomplete",
+        "stop_reason": "duration",
+        "failure": null,
+        "rule": "Native boundary-to-same-boundary interval; partial launch crossing excluded"
+      },
+      "yaw_rate_radps": {
+        "samples": 2000,
+        "peak_abs": 3.232425190659282,
+        "rms": 1.008449398915804,
+        "mean": -0.243931319437108
+      },
+      "body_acceleration_mps2": {
+        "body_ax_mps2": {
+          "samples": 2000,
+          "peak_abs": 2.200510419711482,
+          "rms": 1.0534361517416002,
+          "mean": 0.17889854810246436
+        },
+        "body_ay_mps2": {
+          "samples": 2000,
+          "peak_abs": 8.19001025026838,
+          "rms": 3.29446211001112,
+          "mean": -0.63678710401144
+        }
+      },
+      "chronology_counts": {
+        "handoffs": 99,
+        "misses": 0,
+        "fallbacks": 0,
+        "releases": 99,
+        "codriver_misses": 0
+      },
+      "failed_preparations": 0
+    },
+    "sectors": {
+      "rows": [
+        {
+          "sector": 1,
+          "phase_start_m": 0.0,
+          "phase_end_m": 38.690863731827555,
+          "start_time_s": null,
+          "end_time_s": null,
+          "time_s": null,
+          "coverage": "incomplete",
+          "speed_mps": {
+            "samples": 0,
+            "peak_abs": null,
+            "rms": null,
+            "mean": null
+          },
+          "racing_error_m": {
+            "samples": 0,
+            "peak_abs": null,
+            "rms": null,
+            "mean": null
+          },
+          "steering_rad": {
+            "samples": 0,
+            "peak_abs": null,
+            "rms": null,
+            "mean": null,
+            "total_variation": 0,
+            "maximum_observed_increment_rate": null,
+            "application_window_s": null,
+            "rows_without_applied_measurement": 0
+          },
+          "preparation_host_s": {
+            "samples": 0,
+            "peak_abs": null,
+            "rms": null,
+            "mean": null
+          },
+          "iterations": {
+            "samples": 0,
+            "peak_abs": null,
+            "rms": null,
+            "mean": null
+          },
+          "solver_failures": 0,
+          "maximum_slack_m": null,
+          "slack_observations_available": 0,
+          "slack_observations_missing": 0,
+          "front_utilization": {
+            "samples": 0,
+            "peak_abs": null,
+            "rms": null,
+            "mean": null
+          },
+          "rear_utilization": {
+            "samples": 0,
+            "peak_abs": null,
+            "rms": null,
+            "mean": null
+          }
+        },
+        {
+          "sector": 2,
+          "phase_start_m": 38.690863731827555,
+          "phase_end_m": 77.38172746365511,
+          "start_time_s": null,
+          "end_time_s": null,
+          "time_s": null,
+          "coverage": "incomplete",
+          "speed_mps": {
+            "samples": 0,
+            "peak_abs": null,
+            "rms": null,
+            "mean": null
+          },
+          "racing_error_m": {
+            "samples": 0,
+            "peak_abs": null,
+            "rms": null,
+            "mean": null
+          },
+          "steering_rad": {
+            "samples": 0,
+            "peak_abs": null,
+            "rms": null,
+            "mean": null,
+            "total_variation": 0,
+            "maximum_observed_increment_rate": null,
+            "application_window_s": null,
+            "rows_without_applied_measurement": 0
+          },
+          "preparation_host_s": {
+            "samples": 0,
+            "peak_abs": null,
+            "rms": null,
+            "mean": null
+          },
+          "iterations": {
+            "samples": 0,
+            "peak_abs": null,
+            "rms": null,
+            "mean": null
+          },
+          "solver_failures": 0,
+          "maximum_slack_m": null,
+          "slack_observations_available": 0,
+          "slack_observations_missing": 0,
+          "front_utilization": {
+            "samples": 0,
+            "peak_abs": null,
+            "rms": null,
+            "mean": null
+          },
+          "rear_utilization": {
+            "samples": 0,
+            "peak_abs": null,
+            "rms": null,
+            "mean": null
+          }
+        },
+        {
+          "sector": 3,
+          "phase_start_m": 77.38172746365511,
+          "phase_end_m": 116.07259119548266,
+          "start_time_s": null,
+          "end_time_s": null,
+          "time_s": null,
+          "coverage": "incomplete",
+          "speed_mps": {
+            "samples": 0,
+            "peak_abs": null,
+            "rms": null,
+            "mean": null
+          },
+          "racing_error_m": {
+            "samples": 0,
+            "peak_abs": null,
+            "rms": null,
+            "mean": null
+          },
+          "steering_rad": {
+            "samples": 0,
+            "peak_abs": null,
+            "rms": null,
+            "mean": null,
+            "total_variation": 0,
+            "maximum_observed_increment_rate": null,
+            "application_window_s": null,
+            "rows_without_applied_measurement": 0
+          },
+          "preparation_host_s": {
+            "samples": 0,
+            "peak_abs": null,
+            "rms": null,
+            "mean": null
+          },
+          "iterations": {
+            "samples": 0,
+            "peak_abs": null,
+            "rms": null,
+            "mean": null
+          },
+          "solver_failures": 0,
+          "maximum_slack_m": null,
+          "slack_observations_available": 0,
+          "slack_observations_missing": 0,
+          "front_utilization": {
+            "samples": 0,
+            "peak_abs": null,
+            "rms": null,
+            "mean": null
+          },
+          "rear_utilization": {
+            "samples": 0,
+            "peak_abs": null,
+            "rms": null,
+            "mean": null
+          }
+        },
+        {
+          "sector": 4,
+          "phase_start_m": 116.07259119548266,
+          "phase_end_m": 154.76345492731022,
+          "start_time_s": null,
+          "end_time_s": null,
+          "time_s": null,
+          "coverage": "incomplete",
+          "speed_mps": {
+            "samples": 0,
+            "peak_abs": null,
+            "rms": null,
+            "mean": null
+          },
+          "racing_error_m": {
+            "samples": 0,
+            "peak_abs": null,
+            "rms": null,
+            "mean": null
+          },
+          "steering_rad": {
+            "samples": 0,
+            "peak_abs": null,
+            "rms": null,
+            "mean": null,
+            "total_variation": 0,
+            "maximum_observed_increment_rate": null,
+            "application_window_s": null,
+            "rows_without_applied_measurement": 0
+          },
+          "preparation_host_s": {
+            "samples": 0,
+            "peak_abs": null,
+            "rms": null,
+            "mean": null
+          },
+          "iterations": {
+            "samples": 0,
+            "peak_abs": null,
+            "rms": null,
+            "mean": null
+          },
+          "solver_failures": 0,
+          "maximum_slack_m": null,
+          "slack_observations_available": 0,
+          "slack_observations_missing": 0,
+          "front_utilization": {
+            "samples": 0,
+            "peak_abs": null,
+            "rms": null,
+            "mean": null
+          },
+          "rear_utilization": {
+            "samples": 0,
+            "peak_abs": null,
+            "rms": null,
+            "mean": null
+          }
+        }
+      ],
+      "clock": "Linear progress-crossing time within genuine native integration segments, same convention as AsyncRunner lap crossings; no interpolated telemetry",
+      "measurement": "First complete finish-line circuit after partial launch crossing"
+    },
+    "request_sha256": "b41dc3940e997b27973aa8c93ca92eb5ee7d748aa1f36efd5e503eb99f206a3a",
+    "pre_identity_sha256": "8e24d3a09db4eaf328e1d58f4828146c2cf5887f85e350913f679988b781eb03",
+    "post_identity_sha256": "5dd44517403cc9231e10837c769091d3e967c306253a2c389c81510c3cb513f7",
+    "all_anchor_sha256": {
+      "status.json": "b8a1a6d20478f1241a90a77d60f06f0a316e7436709fa966ccdf6f3e5d4abcdb",
+      "artifacts.json": "f18a0639f5f4c6786fb0cfc53fd52a09d3656f0eef24c569a14d7960cbfec911",
+      "request.json": "b41dc3940e997b27973aa8c93ca92eb5ee7d748aa1f36efd5e503eb99f206a3a",
+      "summary.json": "4cf4cb6ec12750280c6c9fbbe4a935a31edc58fd9b255acb1f03c74f2d3b83ec",
+      "stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "supervisor.json": "f19f6e07af857336c062cdff00272511edd0ad6fbcf7f6dccdc2e69261979339",
+      "worker.json": "7988b08947319a59a3dabb6f454c87a78ddc2ee451b2a2894c44cc229acb76a1",
+      "native.json": "54beccde3e49433924198707cc2f0421db554fa23084d2f4fc096235038798d7",
+      "stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "pre_identity.json": "8e24d3a09db4eaf328e1d58f4828146c2cf5887f85e350913f679988b781eb03",
+      "presentation.json": "d2b67ddc4ba0e3523ae95418c3abd41460aef7ac262dfba11506c6b302427444",
+      "worker_result.json": "4cf4cb6ec12750280c6c9fbbe4a935a31edc58fd9b255acb1f03c74f2d3b83ec",
+      "post_identity.json": "5dd44517403cc9231e10837c769091d3e967c306253a2c389c81510c3cb513f7",
+      "launcher.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "execution.json": "f0170eda347bf3839237944011bc1da79e6922feae068a306d1bf684fea4650a",
+      "journal/requests-00000.jsonl": "768914190f1f6d5e77bc7308e70a17ebac5c1ea473da93a19a3b1937753aa840",
+      "journal/segments-00000.jsonl": "5d25c763682908e19e66f7d143d958832b8ee77a99971ebee62623b4bd03620d",
+      "journal/preparations-00000.jsonl": "97027e1dcc42692734c59f45944fe25752143cb20069c4cd26decb8aff5de2f6",
+      "derived/states-00000.jsonl": "ac867dcb7ac5febfc8ba6ff5b45ae9e898289c4cde5210cb75a937c2e1e6e330",
+      "derived/prediction_xy-00000.jsonl": "d1495133c9bc8ff893cd0d66d25247d6084e7c173b3c4fa790a19339ec67d83e",
+      "native/states-00000.jsonl": "a329a2c3e9bdf6609b976d1d2d99ceb8b79f72710e16fc9a6bc6f32f9eb28349",
+      "native/controls-00000.jsonl": "f2a9e15666d71b99a8c06c6db69e0b0e01171377cd025b1383414eda2ea3fd07",
+      "native/handoffs-00000.jsonl": "9fbb723d178a21080dc6ab31d291e151b379ab399681c0d8e0fc87b12036d777",
+      "native/releases-00000.jsonl": "de0fe4f8da2b020c1ba2e32784780980b591cd596e05d42437d5e259abcc8538",
+      "native/reserves-00000.jsonl": "dbc4262c4ab4d67644398298ccb565454f8a80391a6fce05e53b66ddf4395bd8",
+      "native/plans-00000.jsonl": "a627dd7311619daede4d91fc6f2cd461c193306b8d1732ebeb3a2eeae7dfc887",
+      "native/packets-00000.jsonl": "6454d02336bf0624fca704138da1801fe998c670262bdf9654ebf3c23f372bcf"
+    },
+    "genuine_attempts": 1,
+    "automatic_retry": false
+  },
+  "full_lap_resource_preflight": {
+    "schema": "apex-lap-full-preflight-blocked/1",
+    "utc": "2026-11-10T14:55:43.526183+00:00",
+    "candidate": "fdd494eb7ddf9b456b88cba243fbc704a4fd83c0",
+    "pilot_run_id": "2026-11-10T145233.755880_0000_f46cc76634dd4322b1720f37eb96442b",
+    "pilot_manifest_sha256": "f18a0639f5f4c6786fb0cfc53fd52a09d3656f0eef24c569a14d7960cbfec911",
+    "pilot_completed_valid_exit0": true,
+    "rule": "Unchanged reviewed production resource_budget;2x80/10 scaling",
+    "projection": {
+      "wall_s": 588.889137327671,
+      "cpu_s": 551.42816,
+      "sampled_rss_bytes": 270616848,
+      "sampled_output_bytes": 112568912
+    },
+    "limits": {
+      "wall_s": 600,
+      "cpu_s": 480,
+      "sampled_rss_bytes": 805306368,
+      "sampled_output_bytes": 268435456,
+      "single_file_bytes": 4194304
+    },
+    "exceeded": {
+      "cpu_s": {
+        "projection": 551.42816,
+        "ceiling": 480
+      }
+    },
+    "full_lap_authorized_to_start": false,
+    "full_lap_attempts": 0,
+    "full_lap_claim_created": false,
+    "policy_used": {
+      "pilot": "2026-11-10T145233.755880_0000_f46cc76634dd4322b1720f37eb96442b"
+    },
+    "disposition": "STOP: preserve evidence; no cap/formula/source change or scientific retry. Primary reviewed resource-plan decision required."
+  },
+  "final_preservation": {
+    "schema": "apex-lap-final-preservation/1",
+    "implementation": "fdd494eb7ddf9b456b88cba243fbc704a4fd83c0",
+    "historical_files_checked": 12546,
+    "historical_links_checked": 508,
+    "changed_files": [],
+    "changed_links": [],
+    "frozen_runtime_files_checked": 333,
+    "v2_producers_exact_reviewed_git": 32,
+    "v1_policy_still_accepted_interactive": true,
+    "v1_files_policy_attempts_unchanged": true,
+    "v2_policy_used": {
+      "pilot": "2026-11-10T145233.755880_0000_f46cc76634dd4322b1720f37eb96442b"
+    },
+    "genuine_extended_attempts": 1,
+    "genuine_full_lap_attempts": 0,
+    "full_lap_claim_exists": false,
+    "owned_processes_active": {
+      "worker": false,
+      "supervisor": false
+    },
+    "common_lease_free": true,
+    "loopback8503_closed": true,
+    "v2_launcher_control_c_exit_status": 0,
+    "source_or_limits_modified_after_review": false
+  },
+  "formal_verification": "NOT_AUTHORIZED_NOT_RUN",
+  "qualification": "SYNTHETIC_EXPERIMENTAL_UNQUALIFIED",
+  "acceptance_recommendation": "Do not grant unconditional full-lap acceptance. Primary reviewed resource-plan decision required before any full-lap attempt or repeatable V2 enabling.",
+  "host_preflight_review": {
+    "record": "docs/reviews/workbench_v2_lap/host_preflight/review_record.json",
+    "record_sha256": "b4d552e24b2cc581fb3b8288b0ca5d6577e0bb79be46067932e48205584c90f7",
+    "memo_sha256": "43fec1fdc64c9504a0b322e844fafecf8c452231958637652f108263b99ad3ae",
+    "scope": "Pilot-only task-harness available-memory margin; reviewed caps/full-lap gates unchanged",
+    "negative_checks": 2,
+    "negative_checks_created_claim_or_worker": false,
+    "scientific_retries": 0
+  },
+  "browser": {
+    "launch_from_unrelated_cwd": "/private/tmp",
+    "normal_launcher": "Launch_APEX_Workbench_V2.command",
+    "port": 8503,
+    "owned_reuse_exit0": true,
+    "owned_control_c_exit0": true,
+    "retained_genuine_pilot_inspect_and_metrics": true,
+    "full_lap_run_disabled_by_actual_budget_gate": true,
+    "native_playback_observation": {
+      "native_window_s": 9.995,
+      "wall_s": 10.0071,
+      "speed": 1,
+      "rendered_frames": 223,
+      "maximum_painted_frame_gap_ms": 50.4,
+      "classification": "One display observation; no real-time guarantee"
+    },
+    "genuine_multi_window_over10s": "NOT_EXECUTED_FULL_LAP_BLOCKED",
+    "new_modified_weights_comparison": "SOFTWARE_FIXTURES_ONLY_NO_AUTHORIZED_GENUINE_TREATMENT"
+  },
+  "runtime_command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=. /Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/tools/apex_workbench/.venv/bin/python -B results/apex_workbench_v2_lap/authorized_work.py pilot"
 }
