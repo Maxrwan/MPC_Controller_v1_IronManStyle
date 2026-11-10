@@ -1,0 +1,61 @@
+{
+  "schema": "apex-workbench-v2-lap-work/1",
+  "status": "WORK_READY_PENDING_INDEPENDENT_REVIEW",
+  "base": "511b0a884e0f8474760817620fcdef46e7860142",
+  "branch": "codex/workbench-v2-lap",
+  "frozen_science": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+  "authority_record": "docs/workbench_v2_lap/PRIMARY_WORK.md",
+  "authority_sha256": "cd751467ee130b007faa8f24fba725bf59cee7c0aa3a86ae1345cbfb4a139fd6",
+  "tests": {
+    "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=.:src:scripts VECLIB_MAXIMUM_THREADS=1 /Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/tools/apex_workbench/.venv/bin/python -B -m pytest -q -p no:cacheprovider tools/apex_workbench/tests/test_lap_v2.py --basetemp=results/apex_workbench_v2_lap/software/fixtures_2 --junitxml=results/apex_workbench_v2_lap/software/focused_2.xml",
+    "passed": 40,
+    "failures": 0,
+    "errors": 0,
+    "skips": 0,
+    "duration_s": 31.86,
+    "genuine_controller_or_plant_runs": 0,
+    "intermediate_run": {
+      "passed": 37,
+      "duration_s": 31.95,
+      "added_to_final_count": false
+    }
+  },
+  "genuine_attempts": {
+    "pilot": 0,
+    "full_lap": 0,
+    "automatic_retry": false
+  },
+  "review": "PENDING",
+  "preservation": {
+    "files": 12546,
+    "links": 508,
+    "anchor": "results/apex_workbench_v2_lap/preservation_before.json",
+    "v1_producers_launcher_profile_policy": "UNCHANGED",
+    "scientific_sources_configurations_dependencies": "UNCHANGED"
+  },
+  "source": {
+    "tools/apex_workbench/lap/worker.py": "b3a3b0eaa17c24233a62e32be6b8cd357cd0b11c7b62b744391a24712f0909f8",
+    "tools/apex_workbench/lap/execution.py": "bddb3b040738cf7f3c15fbfefafad838af8cf613cdbff7e00f62414dcd00fcf2",
+    "tools/apex_workbench/lap/config.py": "a40f4f73636012533a274aae028f318e1be7a46f77b947530d06eb574a8529d7",
+    "tools/apex_workbench/lap/analysis.py": "a3a8b850271d2a107ed384c139f51dc59f99bb08734c8dfa39b9c776c1734a78",
+    "tools/apex_workbench/lap/__init__.py": "35b55be42eafe56b0521ad9ae3875ba947ae67c6f3e9e2a3c87d287cbd3fca55",
+    "tools/apex_workbench/lap/launch.py": "aced85a5262feb76b6357c99cfc6427cd5ce14b2f2e629d896db496a29e7f72f",
+    "tools/apex_workbench/lap/app.py": "146ab724100abed1bbd09a0e42c2f7c4ab720120916c8ef4fdc761850d537985",
+    "tools/apex_workbench/lap/evidence.py": "88e719a0fb37061ecacf2f6ce61ab9bcd452e2ca46a8dce28e881c19c56f1ce7",
+    "tools/apex_workbench/lap/profile.json": "a271bc46655b50d3c1bc921e20a0b951c7004d28110ea7ad111c44c02e731610",
+    "tools/apex_workbench/lap/panels.py": "67fea2899a7832d35b2457a52e6f3c35e66b62913cefe1b8d8cc6ec850e7041d"
+  },
+  "evidence_sha256": {
+    "results/apex_workbench_v2_lap/preservation_before.json": "bca658ac50c8a5bc57434e09bc554b5f14cba10ab8ecd07f7f6a5806a705dca2",
+    "results/apex_workbench_v2_lap/software/focused_1.log": "dfd181eb715fba3c1f8e6e9547ba065cff3ba636f33fa86ef3b4601f8b4ea175",
+    "results/apex_workbench_v2_lap/software/focused_1.xml": "4d35b93839ce5cf7a6a946a03cc5242187f43b361c9f8f85c8b1e02cb725ea0d",
+    "results/apex_workbench_v2_lap/software/focused_2.log": "7299b971ff24a1df06d5405c044726f74b0c2c2e4f1f6419d3fd2450c1f979d7",
+    "results/apex_workbench_v2_lap/software/focused_2.xml": "330053427dd852bdcfc27a6a44fb3c295a7bab5d85041998e3c9842e32825374"
+  },
+  "deferred": [
+    "Independent exact-candidate review",
+    "One10s baseline pilot only after review PASS",
+    "One full-lap baseline only if valid pilot and declared resource/host preflight pass",
+    "No full regression/formal Verification or new campaign"
+  ]
+}

@@ -1,4 +1,25 @@
-# Current handoff — Primary acceptance and operational finalization
+# Current handoff — V2 lap WORK candidate awaiting independent review
+
+**WORK_READY_PENDING_INDEPENDENT_REVIEW.** Branch `codex/workbench-v2-lap`, accepted V1 base
+511b0a884e0f8474760817620fcdef46e7860142. [WORK](workbench_v2_lap/WORK.md),
+[record](workbench_v2_lap/work_record.json), [authority](workbench_v2_lap/PRIMARY_WORK.md).
+Separate source-isolated extended5/10/20s and finite80s full-lap composition reuses frozen48adbdf
+AsyncRunner/N8/TVLQR/GP gamma2 and controlled availability. Two native finish crossings exclude the
+partial launch from1m. Compact native chunks, explicit scientific/missingness/coverage labels,
+spatial metrics and accepted replay component; no scientific equations/thresholds changed.
+V1 producers/profile/policy/launcher and previous evidence unchanged; same shared lease, separate
+V2 finite limits. V2 launcher: ./Launch_APEX_Workbench_V2.command (loopback8503); V1 remains8501.
+
+Focused40passed31.86s,0failures/errors/skips; separate intermediate37-pass result retained, not added.
+Real metadata-only guard/lease checks and no-solve native configuration compositions; zero genuine
+extended/full-lap runs. Historical anchor12,546files/508links. Independent exact-candidate PASS must
+precede one baseline10s pilot. Only a successful valid pilot and finite pilot/host-supported budget
+may precede one baseline full lap. No retries or campaign. Final acceptance/repeatable V2 remains
+pending Primary. Stop after authorized WORK at WORKBENCH_V2_LAP_WORK_COMPLETE_PENDING_PRIMARY_ACCEPTANCE.
+
+---
+
+# Historical handoff — Primary acceptance and operational finalization
 
 **NMPC_LAB_V1_ACCEPTED_FOR_SYNTHETIC_EXPERIMENTATION.** 10 November2026. Branch
 `codex/nmpc-lab-v1`, base6e2d3b7009b637a8f67ec49b326a29c32bff2aa0. Primary explicitly accepted

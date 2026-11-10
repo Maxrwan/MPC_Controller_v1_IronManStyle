@@ -1513,3 +1513,21 @@ discrete state/command/packet channels remain separate from labelled visual XY i
 known kicks stay discontinuous. No scientific equations, scheduling, optimizer execution, source
 cache, accepted configuration or scientific metrics change. Details render on demand, and ordinary
 research classification uses a restrained caption. Expanded execution and exporter work stay gated.
+
+## ADR-184 — Separate bounded V2 lap composition, preserving accepted V1 identities
+
+10 November2026. Primary authorizes extended5/10/20s and finite full-lap Workbench development
+from accepted511b0a8. Keep all V1 source-hashed producers/launcher/profile/access bytes unchanged.
+Use a separate small Streamlit entrypoint and independent finite limits with the existing shared
+execution lease and frozen48adbdf source/import guard. Reuse original AsyncRunner, dataclasses,
+Planning GP gamma2, N8 NMPC, TVLQR and controlled availability; change only selected duration.
+Native two-crossing termination excludes the partial first crossing from s_abs1m and measures one
+complete boundary-to-same-boundary lap. No scientific equations or initial-state reconstruction.
+
+Chunk native/derived histories, stream partial plant/preparation/request observations, omit repeated
+full Jacobian dumps and reuse the accepted10s-window browser replay. Retained scientific samples
+remain complete; display-only reduction does not enter metrics. Four equal-arc spatial sectors,
+native-clock prediction association, explicit missingness and controlled-coverage labels replace
+no scientific acceptance criteria and introduce no racing score. Independent review precedes one
+baseline10s pilot and one pilot/host-budget-gated full lap, without retries. Final Primary acceptance
+is required before ordinary repeatable V2 experiments. V1 remains accepted and operational.

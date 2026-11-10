@@ -1,0 +1,19 @@
+{
+  "schema": "apex-lap-profile/1",
+  "id": "synthetic-gp-gamma2-A-N8-lap-v2",
+  "scientific_source": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+  "v1_baseline": "511b0a884e0f8474760817620fcdef46e7860142",
+  "extended_seconds": [5, 10, 20],
+  "full_lap_max_simulation_s": 80,
+  "native_lap_crossings": 2,
+  "lap_rule": "Native s_abs multiples of L. First crossing from s_abs=1m is partial; only the interval between the first and second crossing is a complete lap.",
+  "sectors_fraction": [0, 0.25, 0.5, 0.75, 1],
+  "scenario": "Existing synthetic Grand Prix / Planning gamma2 / Architecture A / N8 / TVLQR / original s_abs=1m initial reference state",
+  "scheduling": "Original controlled availability replay: planner pattern [0.035,0.055,0.045,0.025]s, codriver delay0.005s, startup prelaunch. Host solve time is not simulated availability.",
+  "recording": {"chunk_bytes": 2097152, "jacobian_logging": "omitted; accepted V1 local-linear inspection remains available", "replay_window_s": 10},
+  "limits": {
+    "extended": {"wall_s": 180, "cpu_s": 120, "sampled_rss_bytes": 805306368, "sampled_output_bytes": 134217728, "single_file_bytes": 4194304},
+    "full_lap": {"wall_s": 600, "cpu_s": 480, "sampled_rss_bytes": 805306368, "sampled_output_bytes": 268435456, "single_file_bytes": 4194304}
+  },
+  "classification": "SYNTHETIC / EXPERIMENTAL / UNQUALIFIED"
+}
