@@ -401,3 +401,16 @@ New racing execution, RBT implementation/qualification and full formal Verificat
   useful presentation exports, under the accepted roadmap and separate stage authorization.
 - Review/Verification of later implementation revisions. VIS package ingestion, VIS-2 unseen tracks,
   frozen Performance changes, Efficiency execution and physical vehicle identification remain separate.
+
+## V2 engineering workspace
+
+Use `./Launch_APEX_Workbench_V2.command` (or double-click its Finder icon) in the intended
+checkout with the existing Workbench environment. Loopback: `http://127.0.0.1:8503`.
+Configure → Run → Replay → Analyze → Compare exposes the existing eight cost multipliers,
+finite recording modes, retained native Canvas playback, applied-front-steering instrument,
+Control Analysis and same-family comparison. Stop the owned server with Control-C in its Terminal.
+
+UI acceptance does not unlock V2 execution: source/review/Primary bindings and the full-lap
+resource preflight still apply. The accepted V1 launcher and its execution policy remain unchanged.
+See [UI scope and evidence](../../docs/workbench_v2_ui/WORK.md) for display clocks, units, native
+window limits, missingness and current resource limitations. No new installation dependency.

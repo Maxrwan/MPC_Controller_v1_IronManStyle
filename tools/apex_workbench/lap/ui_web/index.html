@@ -1,0 +1,24 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="tokens.css"><link rel="stylesheet" href="style.css"><title>APEX engineering replay</title>
+<body><p id="notice" role="status">Loading verified recording…</p><main hidden>
+<div class="replay-grid"><section class="track-panel" aria-label="Recorded track replay">
+<div class="panel-header"><span>TRACK VIEW <b>GLOBAL XY · m</b></span><label class="view-label">View <select id="view"><option value="track">Whole circuit</option><option value="window">Recording window</option></select></label></div>
+<canvas id="track" role="img" aria-label="Recorded vehicle position, canonical track and selected prediction"></canvas>
+<div class="legend"><span class="actual">Actual history</span><span class="prediction">NMPC prediction</span><span class="reference">Planning reference</span></div>
+<p id="horizon-status" class="horizon-status"></p><div class="transport"><button id="play" class="primary">Play</button><button id="restart">Restart</button><button id="back" aria-label="Previous sample">←</button><button id="next" aria-label="Next sample">→</button><label>Rate <select id="speed"><option value="0.25">0.25×</option><option value="0.5">0.5×</option><option value="1" selected>1×</option><option value="2">2×</option></select></label><output id="time" aria-live="off"></output></div>
+<label class="timeline-label">Native sample timeline<input id="timeline" type="range" min="0" step="1" value="0"></label>
+</section><aside class="instrument-panel" aria-label="Synchronized vehicle instruments">
+<div class="panel-header">LIVE FROM RECORDING<span class="dot"></span></div>
+<div class="speed"><span>LONGITUDINAL SPEED</span><strong id="speed-value">—</strong><small>m/s</small></div>
+<div class="small-grid"><div><span>Racing error</span><strong id="error-value">—</strong><small>m</small></div><div><span>Applied Fx/m</span><strong id="accel-value">—</strong><small>m/s²</small></div></div>
+<div class="steering"><div class="section-label">APPLIED FRONT STEERING <strong id="steering-value">—</strong></div>
+<canvas id="steering" role="img" aria-label="Schematic front tire angle from actual recorded applied steering"></canvas>
+<label class="check"><input id="nominal" type="checkbox">Overlay tracker nominal</label><p>Schematic tire angle · 1:1 radians<br>Nominal from the applied request<br>No steering-wheel ratio or hardware measurement</p></div>
+<div class="grip"><div class="section-label">COMBINED GRIP UTILIZATION</div><div><span>Front</span><meter id="front-meter" min="0" max="1" value="0"></meter><output id="front-value">—</output></div><div><span>Rear</span><meter id="rear-meter" min="0" max="1" value="0"></meter><output id="rear-value">—</output></div></div>
+<div class="authority-box"><span>RECORDED AUTHORITY</span><strong id="packet-value">—</strong><p id="authority"></p></div>
+</aside></div>
+<div class="progress-panel"><div><span>TRACK PHASE</span><strong id="progress-value">—</strong><small>Not lap completion</small></div><progress id="progress" max="1" value="0"></progress><div><span>COMPLETED LAPS</span><strong id="lap-value">0</strong><small id="lap-time">Partial launch crossing excluded</small></div><div><span>COMPLETED SECTORS</span><strong id="sector-value">—</strong><small>First complete circuit · native crossing clock</small></div></div>
+<p class="semantic-note">XY marker interpolates for display only and holds across recorded state kicks. Instruments use native states and actual command-application events. The vehicle marker has no physical dimensions.</p>
+<details id="prediction-details"><summary>Prediction explorer &amp; controller chronology</summary><div class="detail-controls"><label>Prediction <select id="packet"><option value="active">Follow active packet</option></select></label><label>Prediction node <input id="node" type="range" min="0" step="1" value="0"></label><label>Seek native progress [unwrapped m]<input id="progress-seek" type="number" step="0.1"><button id="seek-progress">Seek</button></label></div><p id="inspection-note"></p><div id="readout" class="readout"></div><details id="details"><summary>Raw selected-node diagnostics &amp; recorded clocks</summary><pre id="diagnostics"></pre></details></details>
+<details id="traces"><summary>Synchronized tracking &amp; command traces</summary><canvas id="error" role="img" aria-label="Native racing-reference lateral error"></canvas><canvas id="command" role="img" aria-label="Recorded requested and applied steering"></canvas></details>
+<p id="coverage" class="semantic-note"></p></main><script type="module" src="viewer.mjs"></script></body></html>

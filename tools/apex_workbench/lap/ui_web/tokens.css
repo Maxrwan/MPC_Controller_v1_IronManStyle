@@ -1,0 +1,17 @@
+:root {
+  --apex-bg: #0d1210;
+  --apex-surface: #151d19;
+  --apex-raised: #1d2822;
+  --apex-line: #2e3c33;
+  --apex-text: #edf2e9;
+  --apex-muted: #a0b0a4;
+  --apex-dim: #7e9284;
+  --apex-lime: #c5f477;
+  --apex-mint: #78dcca;
+  --apex-copper: #e8a275;
+  --apex-red: #f19488;
+  --apex-gold: #e2c879;
+  --apex-font: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --apex-mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  color-scheme: dark;
+}

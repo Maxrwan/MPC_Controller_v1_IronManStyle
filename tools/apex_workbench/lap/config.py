@@ -60,6 +60,7 @@ def producers():
         for p in (HERE.parent / "scratch_replay_web").rglob("*")
         if p.is_file()
     ]
+    paths += [str(p.relative_to(ROOT)) for p in (HERE / "ui_web").rglob("*") if p.is_file()]
     return {name: storage.sha256(ROOT / name) for name in sorted(set(paths))}
 
 

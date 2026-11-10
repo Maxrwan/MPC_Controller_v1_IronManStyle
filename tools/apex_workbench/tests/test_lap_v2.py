@@ -287,16 +287,15 @@ def test_standard_ui_keeps_v1_and_bounds_v2_without_execution(monkeypatch):
     monkeypatch.setattr(config.v1, "probe", forbidden)
     app = AppTest.from_file(str(config.HERE / "app.py")).run(timeout=30)
     assert not app.exception
-    app.button[0].click().run(timeout=30)
-    assert not app.exception
-    mode = next(s for s in app.selectbox if s.label == "Experiment mode")
-    assert mode.options == ["Transient (accepted V1)", "Extended", "Full Lap"]
-    mode.select("Extended").run(timeout=30)
-    assert not app.exception
+    app.radio[0].set_value("Configure").run(timeout=30)
+    mode = next(s for s in app.selectbox if s.label == "Experiment type")
+    assert mode.options == ["Extended", "Transient · 2 s", "Full lap"]
     assert next(
-        s for s in app.selectbox if s.label == "Maximum simulated duration [s]"
+        s for s in app.selectbox if s.label == "Recording duration [simulated s]"
     ).options == ["5", "10", "20"]
-    assert next(b for b in app.button if b.label == "Run V2 experiment").disabled
+    app.radio[0].set_value("Run").run(timeout=30)
+    assert not app.exception
+    assert next(b for b in app.button if b.label == "Run experiment").disabled
 
 
 def archive_fixture(tmp_path, monkeypatch):
@@ -677,17 +676,19 @@ def test_invalid_and_duplicate_draft_are_contained_without_overwrite(tmp_path, m
     monkeypatch.setattr(config, "OUTPUT", tmp_path)
     monkeypatch.setattr(config, "RUNS", tmp_path / "runs")
     app = AppTest.from_file(str(config.HERE / "app.py")).run(timeout=30)
-    app.button[0].click().run(timeout=30)
-    next(s for s in app.selectbox if s.label == "Experiment mode").select("Extended").run(
+    app.radio[0].set_value("Configure").run(timeout=30)
+    next(s for s in app.selectbox if s.label == "Experiment type").select("Extended").run(
         timeout=30
     )
+
     def save():
-        return next(b for b in app.button if b.label == "Save V2 experimental configuration")
+        return next(b for b in app.button if b.label == "Save configuration draft")
+
     save().click().run(timeout=30)
     path = tmp_path / "configurations/baseline_extended_10s_v1.json"
     original = path.read_bytes()
     save().click().run(timeout=30)
     assert not app.exception and app.error
-    next(n for n in app.number_input if n.label == "lateral").set_value(0).run(timeout=30)
+    next(n for n in app.number_input if n.label == "Lateral").set_value(0).run(timeout=30)
     save().click().run(timeout=30)
     assert not app.exception and app.error and path.read_bytes() == original

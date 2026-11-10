@@ -1,0 +1,322 @@
+{
+  "schema": "apex-workbench-v2-ui-work/1",
+  "stage": "WORK_COMPLETE_PENDING_REVIEW",
+  "branch": "codex/workbench-v2-ui",
+  "base_delivery": "afa85389ccdb532816702f0ab5d3a4a49e54918f",
+  "reviewed_long_run_source": "fdd494eb7ddf9b456b88cba243fbc704a4fd83c0",
+  "scientific_source": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+  "design_reference": {
+    "repository": "Maxrwan/apex-development-bench",
+    "revision": "35f6fa579adc574d73ea834786e53667eddcb585",
+    "read_only": true
+  },
+  "environment": {
+    "python": "3.12.14 (main, Sep  1 2026, 14:09:38) [Clang 22.1.3 ]",
+    "platform": "macOS-26.5.1-arm64-arm-64bit",
+    "executable": "/Users/marwansaber/.codex/worktrees/nmpc-weight-m0/MPC_Controller_v1_IronManStyle/tools/apex_workbench/.venv/bin/python"
+  },
+  "producer_sha256": {
+    "Launch_APEX_Workbench_V2.command": "64ab4063b0c9ae9daf75de4ee767215e25c095e2d417de1e8020b1d6471434c8",
+    "tools/apex_workbench/configuration.py": "596846e8dab789c619e00a26679288d73bfac495fc468c7b065e15d6795a33a1",
+    "tools/apex_workbench/jobs.py": "31c82030e644418cb6e3ec88b905d37388291fc00172c45c34e34a5de5684ed4",
+    "tools/apex_workbench/lap/__init__.py": "35b55be42eafe56b0521ad9ae3875ba947ae67c6f3e9e2a3c87d287cbd3fca55",
+    "tools/apex_workbench/lap/analysis.py": "f7317a8d4a23d980b014b151f82bba32eb79c9bc8349c7d8f67f9aa11d5eebd3",
+    "tools/apex_workbench/lap/app.py": "e89aab8852a43d28cb7ebe4813fc8bd3b33b664b32d1a33b25d4db1592ae5f3f",
+    "tools/apex_workbench/lap/config.py": "77c08ac9cb28c22d941127178509bd18c96882f01043ac0511d85c38278f5362",
+    "tools/apex_workbench/lap/evidence.py": "88e719a0fb37061ecacf2f6ce61ab9bcd452e2ca46a8dce28e881c19c56f1ce7",
+    "tools/apex_workbench/lap/execution.py": "bddb3b040738cf7f3c15fbfefafad838af8cf613cdbff7e00f62414dcd00fcf2",
+    "tools/apex_workbench/lap/launch.py": "aced85a5262feb76b6357c99cfc6427cd5ce14b2f2e629d896db496a29e7f72f",
+    "tools/apex_workbench/lap/panels.py": "72760b1f0eda491f79627b770d75a086b95e861ee46368e50a31cb46c79affb9",
+    "tools/apex_workbench/lap/profile.json": "a271bc46655b50d3c1bc921e20a0b951c7004d28110ea7ad111c44c02e731610",
+    "tools/apex_workbench/lap/replay.py": "31225fe1f05a5f70af2111162eddc2e30beba0cf55ebaa3a77bcfc29a1c05c61",
+    "tools/apex_workbench/lap/ui_data.py": "b0e1fc2086054b30ce7284895a95880699bde618323cecdf96a1f37591b4de2c",
+    "tools/apex_workbench/lap/ui_replay.py": "ef8d8e7e1104bd3e9f9b6a9e2fc020e42bee5d9c2d912e08e05226cf74cb41f3",
+    "tools/apex_workbench/lap/ui_theme.py": "36c9e6755fc510f82c56e8880c3dde910b5e3a9f45981aee09e02bb477d60b05",
+    "tools/apex_workbench/lap/ui_views.py": "68362f4c43775c8a83dc432291252ae377cd9aa413ab28eaf7d40eb2642cfd8c",
+    "tools/apex_workbench/lap/ui_web/clock.mjs": "ff9ba7d4834acc5b5a4ef43eb06fbc6af4dbe13a0c5852cff767391d3084e97a",
+    "tools/apex_workbench/lap/ui_web/host.css": "438265d626c1d0dac6382e8210e4b7f6ed72b11685fd0169df79441e6c1500cf",
+    "tools/apex_workbench/lap/ui_web/index.html": "73d6cb2493de29c6d43a156c9fb000f4dacaedb4b80fd910ff6043cfd59d3099",
+    "tools/apex_workbench/lap/ui_web/instruments.mjs": "ffaad2ffb99cb8d49471a9a56d80c84f6c1d7c6d223394ae26cb4006916c8b4c",
+    "tools/apex_workbench/lap/ui_web/style.css": "b9db1d8595c8010ce7a8b83992a4f41a6bcf7a952996995c3c9f2a0558e92386",
+    "tools/apex_workbench/lap/ui_web/tokens.css": "f8b52acde65ed542c28fc38593d2d71d7994a2c001c6f163c9da7c340fc3ef0c",
+    "tools/apex_workbench/lap/ui_web/viewer.mjs": "90b1a2d57a980b860a0c63f00a25d5319dc65e4ead568d0280bf6de22818c46d",
+    "tools/apex_workbench/lap/worker.py": "b3a3b0eaa17c24233a62e32be6b8cd357cd0b11c7b62b744391a24712f0909f8",
+    "tools/apex_workbench/lifecycle.py": "794bd5ada88048a402a2d0946942ec9962e52b0caf2e72d7a8a3a0279f51f05a",
+    "tools/apex_workbench/nmpc_analysis.py": "9bf1a7efe44ee4bb9f1199356f58a3f0caa31d7783543e03f26ca6abebc01beb",
+    "tools/apex_workbench/nmpc_scratch.py": "50bd86590980f2abb98f6e7e6a01e169a9e72584fe009b53faabcc357cf72d78",
+    "tools/apex_workbench/nmpc_scratch_panels.py": "ea08206b4f765c99d7dc7ae48c447d5fcb9a7029a2178e9be9b43d8e031a58e8",
+    "tools/apex_workbench/nmpc_scratch_profile.json": "52ffa7cbb4308bb8814b7512fbb61d685e27fbe9af83b1acec926217b8f42fab",
+    "tools/apex_workbench/nmpc_scratch_worker.py": "d6ee20dcd56f9f2123aed9afa3796bf0bce9f63da21583982470f9a2645737e3",
+    "tools/apex_workbench/nmpc_weight_lab.py": "8751fdfea3c1071fed61dc463d0827894b876295c1a5810647320964c6be1700",
+    "tools/apex_workbench/nmpc_weight_panels.py": "8b0e1723cbe1d8428c223e2b4c2fa998823096e68998fe5a592c2b2c85581b0a",
+    "tools/apex_workbench/nmpc_weight_worker.py": "d1051d60263936f173e4b691f1407a2b8fbb801f4825ff926e75112eda18ef01",
+    "tools/apex_workbench/run_catalog.py": "f48089c848a9cc2e78102dad23fcbc15be360a9931b4f55d698c0948a1a0908c",
+    "tools/apex_workbench/scratch_replay.py": "519317232826bdf132048172f2df1ed65d8924f0b4f5c2d1c05ef6880f3cce1e",
+    "tools/apex_workbench/scratch_replay_web/clock.mjs": "ff9ba7d4834acc5b5a4ef43eb06fbc6af4dbe13a0c5852cff767391d3084e97a",
+    "tools/apex_workbench/scratch_replay_web/index.html": "7d9ecedef30c7ab088a8a3b38228901f18bc741b88f4b440e92a5d70080657bb",
+    "tools/apex_workbench/scratch_replay_web/style.css": "20bca79c8f522995b7e64cca7f9a8131a5b7b005b39c89fe93e23f318746f964",
+    "tools/apex_workbench/scratch_replay_web/viewer.mjs": "5d4a5aabe4eddd4a21f09e37b8da249b0e27582b25395e781589b394b84a4c3d",
+    "tools/apex_workbench/storage.py": "962ff863823f8fa22edf46530730db3a042328fb940bc51036ba18aa2e221c96",
+    "tools/apex_workbench/worker.py": "17293f2fc7775a1601de3f6c95bd28bcafc0766188efca588f8d7894ee8ff91c",
+    "tools/apex_workbench/workspace.py": "85722940dcbc464c4b5f05547278d33e1e3f8c40439dcb4d75c8388e026df2ae"
+  },
+  "tests": {
+    "command": "tools/apex_workbench/.venv/bin/python -B -m pytest -q tools/apex_workbench/tests/test_lap_ui.py tools/apex_workbench/tests/test_lap_v2.py tools/apex_workbench/tests/test_scratch_replay.py -k \"not source_isolated_configuration\" --basetemp=/private/tmp/apex-ui-test-candidate --junitxml=results/apex_workbench_v2_ui/candidate.xml > results/apex_workbench_v2_ui/candidate.log 2>&1",
+    "passed": 83,
+    "deselected": 1,
+    "failures": 0,
+    "skips": 0,
+    "seconds": 8.73,
+    "deselection": "Unchanged native-dataclass composition subprocess; not newly counted.",
+    "negative_attempts": [
+      {
+        "log": "focused_1.log",
+        "passed": 13,
+        "failed": 1,
+        "reason": "Test message assertion expected positive instead of native positivity wording."
+      },
+      {
+        "log": "focused_2.log",
+        "passed": 79,
+        "failed": 1,
+        "reason": "Original draft UI harness still used old Home/navigation/button labels."
+      }
+    ],
+    "intermediate_passes": [
+      {
+        "log": "focused_3.log",
+        "passed": 80
+      },
+      {
+        "log": "focused_final.log",
+        "passed": 82
+      }
+    ],
+    "counts_not_combined": true
+  },
+  "js": {
+    "outcome": "PASS",
+    "checks": 2010,
+    "scope": "Pure display plus genuine retained pilot application-edge assertions",
+    "scientific_runs": 0
+  },
+  "browser": {
+    "steering125": {
+      "applicationTime": "0.125",
+      "appliedRad": "0.020027495934949978",
+      "nativeTime": "0.125",
+      "nominalRad": "-0.003984999314297534",
+      "requestTime": "0.12"
+    },
+    "pilotPlayback": {
+      "segment": "{\"simulated_s\":9.995000000000001,\"wall_s\":10.008200000047683,\"speed\":1,\"frames\":230,\"max_gap_ms\":51}",
+      "text": "2000 native samples; duration. Last playback segment: 9.9950 simulated s / 10.0082 wall s at 1\u00d7; pacing difference -0.0132 s; 230 rendered frames; maximum painted-frame gap 51.0 ms. Display timing only."
+    },
+    "payloadLoads": "1",
+    "runButtonDisabled": true,
+    "longFixture": {
+      "segment": "{\"simulated_s\":9.995000000000005,\"wall_s\":10.006399999952315,\"speed\":1,\"frames\":223,\"max_gap_ms\":50.100000000000364}",
+      "text": "2000 native samples; transport_fixture. Last playback segment: 9.9950 simulated s / 10.0064 wall s at 1\u00d7; pacing difference -0.0114 s; 223 rendered frames; maximum painted-frame gap 50.1 ms. Display timing only."
+    },
+    "longPayloadLoads": "1",
+    "heartbeatLoss": "Evidence recheck unavailable \u2014 replay cleared. Reopen the recording.",
+    "heartbeatCleared": "",
+    "mobileLayout": {
+      "headerHeight": 32,
+      "nav": {
+        "bottom": 162.1953125,
+        "height": 50,
+        "left": 16,
+        "right": 374,
+        "top": 112.1953125,
+        "width": 358,
+        "x": 16,
+        "y": 112.1953125
+      },
+      "scrollWidth": 390,
+      "width": 390
+    },
+    "manualFuture": {
+      "label": "Historical inspection \u00b7 packet 99 \u00b7 not available at this replay time \u00b7 selection does not confer authority",
+      "instrument": {
+        "applicationTime": "0.125",
+        "appliedRad": "0.020027495934949978",
+        "nativeTime": "0.125",
+        "nominalRad": "-0.003984999314297534",
+        "requestTime": "0.12"
+      }
+    }
+  },
+  "preservation": {
+    "outcome": "PASS",
+    "historical_files": 13279,
+    "historical_links": 573,
+    "changed_files": [],
+    "changed_links": [],
+    "added": [],
+    "missing": [],
+    "frozen_scientific_dependencies": 333,
+    "scientific_cache_changes": [],
+    "canonical_tree_files": 334,
+    "canonical_changes": [],
+    "v1_producer_changes": [],
+    "v2_execution_core_changes": [],
+    "python": "3.12.14 (main, Sep  1 2026, 14:09:38) [Clang 22.1.3 ]",
+    "platform": "macOS-26.5.1-arm64-arm-64bit",
+    "source": "48adbdf64d492592d15e23c917aca71fa58aa8a5"
+  },
+  "scientific_runs": 0,
+  "policy_mutations": 0,
+  "full_lap_status": "BLOCKED_PENDING_PRIMARY_RESOURCE_DECISION; source-bound authorization also required",
+  "launcher": {
+    "startup_from": "/private/tmp",
+    "port": 8503,
+    "reuse_exit": 0,
+    "owned_cleanup": "pending final teardown"
+  },
+  "independent_review": "pending exact committed candidate",
+  "artifacts": {
+    "results/apex_workbench_v2_ui/AUDIT.md": {
+      "sha256": "b3435a6a5d7b2846c1edd1f0369e86afee08af723c7b72b9ef5ce71a81b06c7b",
+      "bytes": 1337
+    },
+    "results/apex_workbench_v2_ui/browser_checks.json": {
+      "sha256": "927ffc5467306d890051847ac9dce7eab455187a89cc00feca6e08b1e2b145eb",
+      "bytes": 1802
+    },
+    "results/apex_workbench_v2_ui/candidate.log": {
+      "sha256": "337ef28e8841c824d8afb4ea453f69586a61fa587d14bd69f4c03f8b6cee4c42",
+      "bytes": 193
+    },
+    "results/apex_workbench_v2_ui/candidate.xml": {
+      "sha256": "5e0f1e804017236906e7c7c08a4836982fce2fbfd1f452ba0aba2b318470430c",
+      "bytes": 12506
+    },
+    "results/apex_workbench_v2_ui/focused_1.log": {
+      "sha256": "e6b9b791f885ed04d984412b5da943c2a2ce2bf6e5931e286525c7b064519724",
+      "bytes": 2278
+    },
+    "results/apex_workbench_v2_ui/focused_1.xml": {
+      "sha256": "1ce463ec274d00dc654c8439759408f3ac0adb56308c18e180c5e2db99577d1a",
+      "bytes": 3866
+    },
+    "results/apex_workbench_v2_ui/focused_2.log": {
+      "sha256": "56ac13125727c22c15fc256864ea9ca2b73d0899a817339d9143ae4c95735ecc",
+      "bytes": 2094
+    },
+    "results/apex_workbench_v2_ui/focused_2.xml": {
+      "sha256": "6c311d9be1c177f0e4594212ebd8f7ac7f4f1252ba00cced949ec1dcce1507f3",
+      "bytes": 13253
+    },
+    "results/apex_workbench_v2_ui/focused_3.log": {
+      "sha256": "8d3315b03221ad1f2750fd6b74fea0942a191a359a25348a82504b30e0052be2",
+      "bytes": 193
+    },
+    "results/apex_workbench_v2_ui/focused_3.xml": {
+      "sha256": "39d0a7a8d0feb7d2abccc0cc3dfeae56fd344adbc8dc79972e0061bda1f51bd2",
+      "bytes": 12114
+    },
+    "results/apex_workbench_v2_ui/focused_final.log": {
+      "sha256": "daf0560ca92d8c45c14c084dfead2a8228df3850a422a2aa87ed884d0c78baf1",
+      "bytes": 193
+    },
+    "results/apex_workbench_v2_ui/focused_final.xml": {
+      "sha256": "725e510b829a75f9f67f52dab9da25571a6281171b482b02e6527e92208eb02a",
+      "bytes": 12356
+    },
+    "results/apex_workbench_v2_ui/js_checks.json": {
+      "sha256": "2c0bfab1f16e1ea5f6924c8c21c73e09d4bcf5af305225372c02d5b0eb3908d3",
+      "bytes": 148
+    },
+    "results/apex_workbench_v2_ui/lint_final.log": {
+      "sha256": "b2a588b384f6be753eae1fb893b49b0d33c4931e8a39c6576453bcf908d6e1ed",
+      "bytes": 45
+    },
+    "results/apex_workbench_v2_ui/lint_initial.log": {
+      "sha256": "cf55a2533a85a0bc2d8a03dc3a90cc3088b8c3961676dcee8b5af50bef6fb759",
+      "bytes": 2112
+    },
+    "results/apex_workbench_v2_ui/make_transport_fixture.py": {
+      "sha256": "95c9a9af764842e10986de728e9b762bf25a26d8b80a42f59222961726af268f",
+      "bytes": 1695
+    },
+    "results/apex_workbench_v2_ui/pilot_display.json": {
+      "sha256": "55491133b658448eb16e839f216aa692390c05542939f05871812675159d9401",
+      "bytes": 1875258
+    },
+    "results/apex_workbench_v2_ui/preservation_after.json": {
+      "sha256": "ce3ee3beba1ddf1165e5814b58a9f3c0419998178fdb608e468a14f907b8658a",
+      "bytes": 526
+    },
+    "results/apex_workbench_v2_ui/preservation_before.json": {
+      "sha256": "10a54cf2ed008d039b8253eded215bf7dd25781de5a70f2d43e5fbcb7dcc4735",
+      "bytes": 2946618
+    },
+    "results/apex_workbench_v2_ui/preservation_check.py": {
+      "sha256": "ad1e3d0c1f4c16dc75c4832cbe16563a41f7443b72c3e2c83aa76750c1bd732a",
+      "bytes": 2549
+    },
+    "results/apex_workbench_v2_ui/screenshots/after/01-replay-desktop.jpg": {
+      "sha256": "9d196b23f9784e12bdb0effedbdd2b098df64f5a979199f9d3cb091e78eff372",
+      "bytes": 102096
+    },
+    "results/apex_workbench_v2_ui/screenshots/after/02-replay-mobile.jpg": {
+      "sha256": "c914490cdf07def8f67a4538404037c9563f17f519fbd5815052c3c704c02aa3",
+      "bytes": 38559
+    },
+    "results/apex_workbench_v2_ui/screenshots/after/03-instruments-mobile.jpg": {
+      "sha256": "250104fe1d1183aadfd686b658d43573980786db1893cd5e9018bfaf6c7508c1",
+      "bytes": 39188
+    },
+    "results/apex_workbench_v2_ui/screenshots/after/04-configure-desktop.jpg": {
+      "sha256": "2b774d37e7685bd3e698e4d6f4e7c571a7322a2c96954004732245997683635a",
+      "bytes": 65752
+    },
+    "results/apex_workbench_v2_ui/screenshots/after/05-run-gate.jpg": {
+      "sha256": "3c26189ebdc50fc670b27f1f22117a838b94f84de4d385d2f4cb779ded36d24d",
+      "bytes": 61498
+    },
+    "results/apex_workbench_v2_ui/screenshots/after/06-analyze-desktop.jpg": {
+      "sha256": "e5f2cc036524e45a1dfed96a603308f2952ed66f4f2d7dfbc94ed158ae81c114",
+      "bytes": 80325
+    },
+    "results/apex_workbench_v2_ui/screenshots/after/07-compare-desktop.jpg": {
+      "sha256": "4ee063692fa6f91cf4081a4b837059484a285d7d5336676e471e94ce5e389d50",
+      "bytes": 89862
+    },
+    "results/apex_workbench_v2_ui/screenshots/after/08-long-transport-fixture.jpg": {
+      "sha256": "031a1df09b71d537661bf5edfdd54d2160273339a0893d3edf097ae796e2557a",
+      "bytes": 103879
+    },
+    "results/apex_workbench_v2_ui/screenshots/after/09-heartbeat-quarantine.jpg": {
+      "sha256": "590da537fe254222b65a45fe3a4cee4db0c989fe738ee893fa8a0f0d3b42a9da",
+      "bytes": 38568
+    },
+    "results/apex_workbench_v2_ui/screenshots/before/01-development-bench.jpg": {
+      "sha256": "f31a41f16a504a3e28bedb44095c7e229be5cb67fd2338201702e1874f0ca710",
+      "bytes": 114212
+    },
+    "results/apex_workbench_v2_ui/screenshots/before/02-workbench-inspect.jpg": {
+      "sha256": "68397bf9ebd04f9154af3a7c97d2f83c970efa4f59bf817be98ce25d42e1fa74",
+      "bytes": 37385
+    },
+    "results/apex_workbench_v2_ui/transport_app.py": {
+      "sha256": "6db8d469bcb522f36bdf3db253fbc44a3ebbb0f7a0c07082efe9c02bde861315",
+      "bytes": 1135
+    },
+    "results/apex_workbench_v2_ui/transport_build.json": {
+      "sha256": "7ae7efd66cd69e829ff729c763bcf9fe98fcc4b3af2909e85ea0a75303e761e9",
+      "bytes": 117
+    },
+    "results/apex_workbench_v2_ui/transport_windows.json": {
+      "sha256": "b6e01d1147ae40614ef6f111fb9adde56f24771566b8a680aee02c3a13d3619b",
+      "bytes": 15240215
+    }
+  },
+  "limits": [
+    "No genuine full lap or V2 treatment comparison exists",
+    "80-second transport fixture is not scientific evidence and never admitted into RUNS",
+    "No broad formal Verification or new scientific qualification",
+    "Logs/screenshots local and ignored; hashes do not establish off-host backup"
+  ]
+}

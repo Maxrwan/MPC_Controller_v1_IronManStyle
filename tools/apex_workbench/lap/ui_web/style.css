@@ -1,0 +1,488 @@
+* {
+  box-sizing:border-box
+}
+body {
+  margin:0;
+  color:var(--apex-text);
+  background:var(--apex-bg);
+  font:13px var(--apex-font)
+}
+button,input,select {
+  font:inherit;
+  color:inherit
+}
+button,select,input[type=number] {
+  background:var(--apex-raised);
+  border:1px solid var(--apex-line);
+  border-radius:6px;
+  padding:9px 11px;
+  min-height:40px
+}
+button {
+  cursor:pointer
+}
+button:hover,select:hover {
+  border-color:var(--apex-lime)
+}
+button:disabled {
+  opacity:.4;
+  cursor:default
+}
+button.primary {
+  color:#172012;
+  background:var(--apex-lime);
+  border-color:var(--apex-lime);
+  font-weight:650;
+  min-width:74px
+}
+button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible {
+  outline:2px solid var(--apex-lime);
+  outline-offset:3px
+}
+input {
+  accent-color:var(--apex-lime)
+}
+[hidden] {
+  display:none!important
+}
+#notice {
+  font-size:11px;
+  color:var(--apex-dim);
+  margin:0 0 12px;
+  overflow-wrap:anywhere
+}
+.invalid {
+  color:var(--apex-red)!important;
+  font-size:14px!important;
+  padding:20px;
+  border:1px solid var(--apex-red);
+  border-radius:8px
+}
+.replay-grid {
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 265px;
+  gap:14px
+}
+.track-panel,.instrument-panel,.progress-panel,details {
+  background:var(--apex-surface);
+  border:1px solid var(--apex-line);
+  border-radius:10px;
+  overflow:hidden
+}
+.panel-header {
+  height:52px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 18px;
+  border-bottom:1px solid var(--apex-line);
+  font-size:10px;
+  letter-spacing:1.3px;
+  color:var(--apex-muted);
+  gap:8px
+}
+.panel-header b {
+  font-weight:400;
+  letter-spacing:.2px;
+  color:var(--apex-dim);
+  margin-left:12px;
+  font-size:10px
+}
+.view-label {
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-size:11px;
+  letter-spacing:0
+}
+.view-label select {
+  min-height:32px;
+  font-size:11px;
+  padding:5px 7px
+}
+#track {
+  width:100%;
+  height:400px;
+  display:block
+}
+.legend {
+  display:flex;
+  gap:20px;
+  padding:0 18px 15px;
+  color:var(--apex-muted);
+  font-size:11px;
+  flex-wrap:wrap
+}
+.legend span:before {
+  content:'';
+  display:inline-block;
+  width:16px;
+  height:2px;
+  vertical-align:middle;
+  margin-right:7px;
+  background:var(--apex-dim)
+}
+.legend .actual:before {
+  background:var(--apex-copper)
+}
+.legend .prediction:before {
+  background:var(--apex-mint)
+}
+.legend .reference:before {
+  background:var(--apex-lime)
+}
+.transport {
+  display:flex;
+  align-items:center;
+  gap:7px;
+  padding:13px 16px 5px;
+  border-top:1px solid var(--apex-line);
+  flex-wrap:wrap
+}
+.transport label {
+  display:flex;
+  align-items:center;
+  gap:7px;
+  color:var(--apex-muted);
+  font-size:11px
+}
+.transport output {
+  margin-left:auto;
+  font:12px var(--apex-mono);
+  color:var(--apex-muted)
+}
+.timeline-label {
+  display:block;
+  font-size:10px;
+  color:var(--apex-dim);
+  padding:6px 18px 15px
+}
+.timeline-label input {
+  display:block;
+  width:100%;
+  height:24px;
+  margin:4px 0 0
+}
+.dot {
+  width:6px;
+  height:6px;
+  background:var(--apex-copper);
+  border-radius:50%
+}
+.speed {
+  padding:17px 18px 15px
+}
+.speed>span,.small-grid span,.section-label,.authority-box>span,.progress-panel span {
+  font-size:10px;
+  color:var(--apex-muted);
+  letter-spacing:.7px;
+  display:block
+}
+.speed strong {
+  font:400 43px var(--apex-mono);
+  display:inline-block;
+  margin-top:6px;
+  letter-spacing:-2px
+}
+.speed small {
+  color:var(--apex-dim);
+  margin-left:9px
+}
+.small-grid {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  padding:0 18px 15px;
+  border-bottom:1px solid var(--apex-line)
+}
+.small-grid strong {
+  font:20px var(--apex-mono);
+  display:block;
+  margin:7px 0 3px
+}
+.small-grid small {
+  color:var(--apex-dim);
+  font-size:10px
+}
+.steering {
+  padding:15px 18px 12px;
+  border-bottom:1px solid var(--apex-line)
+}
+.section-label strong {
+  display:block;
+  color:var(--apex-copper);
+  font:17px var(--apex-mono);
+  margin-top:7px
+}
+#steering {
+  width:100%;
+  height:86px;
+  display:block
+}
+.check {
+  font-size:11px;
+  color:var(--apex-muted);
+  display:flex;
+  align-items:center;
+  gap:5px;
+  min-height:28px
+}
+.steering p {
+  font-size:9px;
+  color:var(--apex-dim);
+  line-height:1.6;
+  margin:4px 0 0
+}
+.grip {
+  padding:13px 18px;
+  border-bottom:1px solid var(--apex-line)
+}
+.grip>div:not(.section-label) {
+  display:flex;
+  align-items:center;
+  gap:8px;
+  margin-top:10px;
+  font-size:10px
+}
+.grip span {
+  color:var(--apex-dim);
+  width:27px
+}
+.grip meter {
+  width:100%;
+  height:7px;
+  accent-color:var(--apex-mint)
+}
+.grip output {
+  font-family:var(--apex-mono);
+  min-width:40px;
+  text-align:right
+}
+.authority-box {
+  padding:13px 18px
+}
+.authority-box strong {
+  font:13px var(--apex-mono);
+  color:var(--apex-mint);
+  display:block;
+  margin-top:8px
+}
+.authority-box p {
+  font-size:10px;
+  color:var(--apex-dim);
+  line-height:1.5;
+  margin:5px 0 0
+}
+.progress-panel {
+  display:flex;
+  align-items:center;
+  gap:22px;
+  margin-top:14px;
+  padding:17px 20px
+}
+.progress-panel strong {
+  font:18px var(--apex-mono);
+  display:block;
+  margin:6px 0
+}
+.progress-panel small {
+  font-size:10px;
+  color:var(--apex-dim);
+  display:block
+}
+.progress-panel progress {
+  flex:1;
+  min-width:30px;
+  max-width:250px;
+  height:6px;
+  accent-color:var(--apex-lime)
+}
+.semantic-note {
+  font-size:10px;
+  color:var(--apex-dim);
+  line-height:1.7;
+  margin:12px 0
+}
+details {
+  margin-top:10px
+}
+summary {
+  padding:15px 18px;
+  cursor:pointer;
+  color:var(--apex-muted);
+  font-size:12px;
+  min-height:44px
+}
+details[open]>summary {
+  border-bottom:1px solid var(--apex-line)
+}
+.detail-controls {
+  display:flex;
+  align-items:center;
+  gap:22px;
+  padding:15px 18px;
+  flex-wrap:wrap
+}
+.detail-controls label {
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-size:11px;
+  color:var(--apex-muted)
+}
+.detail-controls input[type=number] {
+  width:95px
+}
+#inspection-note {
+  color:var(--apex-gold);
+  font-size:11px;
+  padding:0 18px
+}
+.readout {
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  padding:8px 18px;
+  font:11px var(--apex-mono);
+  color:var(--apex-muted)
+}
+pre {
+  font:11px/1.6 var(--apex-mono);
+  white-space:pre-wrap;
+  overflow-wrap:anywhere;
+  padding:14px 18px;
+  color:var(--apex-muted);
+  max-height:400px;
+  overflow:auto
+}
+#error,#command {
+  width:100%;
+  height:190px;
+  display:block
+}
+#details {
+  border:0;
+  border-radius:0
+}
+#details summary {
+  font-size:11px
+}
+#coverage {
+  margin-bottom:2px
+}
+@media(max-width:850px) {
+  .replay-grid {
+    grid-template-columns:minmax(0,1fr) 235px
+  }
+  .progress-panel {
+    gap:15px
+  }
+  #track {
+    height:370px
+  }
+  .panel-header b {
+    display:none
+  }
+}
+@media(max-width:620px) {
+  .replay-grid {
+    grid-template-columns:1fr
+  }
+  .instrument-panel {
+    display:grid;
+    grid-template-columns:1fr 1fr
+  }
+  .instrument-panel>.panel-header {
+    grid-column:1/-1;
+    height:42px
+  }
+  .speed {
+    padding:14px
+  }
+  .speed strong {
+    font-size:34px
+  }
+  .small-grid {
+    padding:14px;
+    border:0
+  }
+  .steering {
+    padding:14px;
+    border-bottom:0;
+    grid-row:3/5
+  }
+  .grip {
+    padding:14px;
+    border:0
+  }
+  .authority-box {
+    padding:12px 14px
+  }
+  .steering p {
+    font-size:9px
+  }
+  .panel-header {
+    padding:0 14px
+  }
+  #track {
+    height:310px
+  }
+  .legend {
+    gap:12px;
+    font-size:10px;
+    padding:0 14px 14px
+  }
+  .transport {
+    padding:12px 12px 5px;
+    gap:5px
+  }
+  .transport button,.transport select {
+    min-height:44px;
+    padding:8px 10px
+  }
+  .transport output {
+    width:100%;
+    margin:8px 0 0;
+    text-align:right
+  }
+  .progress-panel {
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    padding:14px;
+    gap:14px
+  }
+  .progress-panel progress {
+    grid-column:2;
+    grid-row:1;
+    width:100%
+  }
+  .progress-panel strong {
+    font-size:17px
+  }
+  .semantic-note {
+    font-size:10px
+  }
+  .detail-controls {
+    padding:14px;
+    gap:12px
+  }
+  .detail-controls label {
+    flex-wrap:wrap
+  }
+  .detail-controls select {
+    max-width:240px
+  }
+  #notice {
+    font-size:10px
+  }
+  .timeline-label {
+    padding:6px 14px 12px
+  }
+}
+.horizon-status {
+  padding:0 18px 12px;
+  margin:0;
+  font:10px var(--apex-mono);
+  color:var(--apex-muted);
+  line-height:1.6;
+}

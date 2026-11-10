@@ -1537,3 +1537,17 @@ own component key/epoch and full evidence anchor, with one payload per presentat
 warm validation heartbeats. Run identity and the accepted V1 component/source remain unchanged;
 quarantine is shared across a run's windows. Terminal completed/valid pilot evidence with exit0
 is required independently of raw coverage; unavailable sector slack remains missing.
+
+## Workbench V2 presentation isolation (2026-11-10)
+
+Keep the reviewed long-run producer/execution/analysis and accepted V1 UI byte-identical. Add a
+V2-only engineering presentation layer with a single CSS token source shared by host, Canvas and
+Plotly. Copy the accepted native replay clock exactly, retaining browser pacing, native authority,
+application clocks, disturbance holds, full artifact checks and run-wide quarantine. Bind bounded
+native windows and renderer assets into display epochs; do not cache mutable artifact checks.
+Applied front steering is recorded application delta, with an optional separately labelled native
+tracker nominal from that request; no hardware ratio is inferred. Offline Planning XY comes only
+from the captured immutable source/hash. Full scientific records remain separate from bounded
+display payloads. Existing production validators and versioned draft mechanisms remain the only
+configuration framework. Include UI assets in the V2 producer inventory without resealing the old
+policy or altering its consumed claims/resource gates. See [UI WORK](workbench_v2_ui/WORK.md).
