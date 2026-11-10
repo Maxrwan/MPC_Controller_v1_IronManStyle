@@ -1,6 +1,6 @@
 # Current handoff — Primary acceptance and operational finalization
 
-**PRIMARY_ACCEPTED_FINALIZATION_PENDING_FOCUSED_REVIEW.** 10 November2026. Branch
+**NMPC_LAB_V1_ACCEPTED_FOR_SYNTHETIC_EXPERIMENTATION.** 10 November2026. Branch
 `codex/nmpc-lab-v1`, base6e2d3b7009b637a8f67ec49b326a29c32bff2aa0. Primary explicitly accepted
 447cc1e UX/laboratory for bounded synthetic experimentation. [Decision](nmpc_lab_v1/PRIMARY_ACCEPTANCE.md),
 [acceptance record](nmpc_lab_v1/acceptance_record.json), [Operations](nmpc_lab_v1/OPERATIONS.md).
@@ -17,10 +17,24 @@ Focused42passes/9.71s,0failures/errors/skips; zero scientific imports/probes/wor
 Actual normal launch from/private/tmp and owned reuse pass; approved10dependency RECORD trees verified.
 Known test-only isolation delta/preparation negative retained; scientific/source equivalence unchanged.
 
-Next: focused independent exact-candidate operational review. Only after PASS, at most one genuine
-baseline2s interactive smoke, no automatic retry. Preserve its outcome and all previous evidence.
-No broad Verification, scenarios, sweeps, exporter, ROS2, Docker, hardware or unrelated work.
-Final stop: `NMPC_LAB_V1_ACCEPTED_FOR_SYNTHETIC_EXPERIMENTATION`.
+Exact operational candidate480933c655991917f69dafaa40fb58419758a8c9 received independent PASS;
+separate15guarded checks passed in8.74s. [Review](reviews/nmpc_lab_v1/operational/REVIEW.md),
+[record](reviews/nmpc_lab_v1/operational/review_record.json). Review completed before the exclusive
+single baseline smoke claim. One actual browser attempt20261110T113507881268Z_abbb79f98d324399a2070740ba4b95d3
+completed/valid:2s,400native states/200controls,18.7401s supervisor runtime; no retry. Same333runtime
+files/source/environment/limits; all11,135historical files/500links rechecked, only authorized policy
+transition differs. Original3consumed cases/grant and old negative evidence unchanged.
+
+Browser confirmed editor/draft save, genuine admission, Inspect playback, Control Analysis and
+controlled unqualified comparison. One1× playback1.995simulated/2.0113wall seconds; display timing
+only. Normal launcher startup/reuse/owned shutdown pass;8501closed and execution lease free.
+Tool-PTY Control-C exit1 with verified cleanup is a route observation only. Retained setup/browser/
+preflight negatives caused no extra scientific execution. Details and local evidence hashes in Operations.
+
+This final delivery is documentation only; runtime/tests/launcher remain exact480933c.
+Launch from this configured accepted branch checkout: ./Launch_APEX_Workbench.command, or double-click.
+No broad formal Verification, scenarios, sweeps, exporter, ROS2, Docker, hardware or unrelated work.
+Stop at `NMPC_LAB_V1_ACCEPTED_FOR_SYNTHETIC_EXPERIMENTATION`.
 
 ---
 

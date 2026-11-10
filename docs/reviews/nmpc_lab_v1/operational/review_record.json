@@ -1,0 +1,88 @@
+{
+  "schema": "apex-nmpc-lab-v1-operational-engineering-review/1",
+  "candidate": "480933c655991917f69dafaa40fb58419758a8c9",
+  "branch": "codex/nmpc-lab-v1",
+  "outcome": "PASS",
+  "blocking_findings": [],
+  "completed_utc": "2026-11-09T23:25:25.665917+00:00",
+  "scope": "Focused independent operational Engineering Review; policy/source/history/launcher and deterministic fixtures only",
+  "primary_authority": "docs/nmpc_lab_v1/PRIMARY_ACCEPTANCE.md",
+  "accepted_implementation": "447cc1e60c064062c75f879c3c67e611a84cff31",
+  "accepted_delivery": "6e2d3b7009b637a8f67ec49b326a29c32bff2aa0",
+  "scientific_execution": "af3956fc2dc8c1a88051e87e2eae66010490a2fb",
+  "frozen_science": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+  "acceptance_sha256": "c829ed9ae0fe5971ba56af632aec8df52a3bf2de7173b9181bb065f2545fd3d2",
+  "policy_sha256": "9b225470c1ca0dc8436cdd8d87df08ea3666545449f5b3ea73d47b4457627e89",
+  "independent_tests": {
+    "passed": 15,
+    "failures": 0,
+    "errors": 0,
+    "skips": 0,
+    "duration_s": 8.74,
+    "selection": [
+      "tools/apex_workbench/tests/test_nmpc_scratch_acceptance.py",
+      "tools/apex_workbench/tests/test_scratch_replay.py::test_small_editor_analysis_and_gate_are_preserved"
+    ],
+    "scientific_imports": 0
+  },
+  "inherited_parent_tests": {
+    "passed": 42,
+    "duration_s": 9.71,
+    "new_independent_execution": false
+  },
+  "preservation": {
+    "historical_files_checked": 11135,
+    "historical_links_checked": 500,
+    "only_changed_historical_file": "results/apex_workbench_nmpc_lab_v1/access.json",
+    "frozen_runtime_files_checked": 333
+  },
+  "launcher": {
+    "shell_syntax": "PASS",
+    "shared_environment_directory": "PASS",
+    "venv_interpreter_retained": true,
+    "dependency_record_hashes_checked": 10,
+    "parent_normal_launch_evidence": "HASH_VERIFIED",
+    "owned_listener_metadata": "PASS",
+    "pid": 61980,
+    "reviewer_launched_server": false,
+    "reviewer_browser_control": false
+  },
+  "scientific_actions": {
+    "imports": 0,
+    "probes": 0,
+    "workers": 0,
+    "optimizer_solves": 0,
+    "plant_steps": 0,
+    "genuine_runs": 0,
+    "hardware": 0
+  },
+  "parent_one_smoke": {
+    "prerequisite_satisfied": true,
+    "maximum_attempts": 1,
+    "executor": "parent agent only",
+    "configuration": "Accepted baseline defaults; fixed GP gamma2 profile; duration2s; no disturbance",
+    "through": "existing accepted-interactive admission",
+    "automatic_retry": false,
+    "preserve_outcome": true,
+    "existing_worker_resource_limits_unchanged": true,
+    "pin_this_record_sha256_before_attempt": true
+  },
+  "formal_verification": "NOT_AUTHORIZED_NOT_RUN",
+  "review_activity": "ALL_TESTS_AND_AUDITS_TERMINATED_BEFORE_HANDOFF",
+  "remaining_parent_work": [
+    "One permitted baseline smoke attempt without retry",
+    "Actual final UI inspection",
+    "Documentation-only final record and delivery"
+  ],
+  "evidence_sha256": {
+    "results/apex_workbench_nmpc_lab_v1/operational_20261110/review/REVIEW.md": "41b7edc57b0447ebacee774cffda5d1603be4ddd163a40d8a2e57ed6081f18a2",
+    "results/apex_workbench_nmpc_lab_v1/operational_20261110/review/software.log": "6ac5971c068e80f2583d7b50b33e2ba7e81eab9c2e29b91859ee799b034ca850",
+    "results/apex_workbench_nmpc_lab_v1/operational_20261110/review/software.xml": "a21e70beedc1a6008c0bc39d872e0fa2f5e580852a15339bb2d6d00e48273512",
+    "results/apex_workbench_nmpc_lab_v1/operational_20261110/review/software_command.json": "65f27771c3df84f6be8fa25823757fb97c96727e40118b9228c9618715921c16",
+    "results/apex_workbench_nmpc_lab_v1/operational_20261110/review/software_result.json": "c57820779608ffc558772027376aed2c01361ac302922c8c84f34b37c596563f",
+    "results/apex_workbench_nmpc_lab_v1/operational_20261110/review/software_runner.py": "dd2d41bf0a0679c6745ec35645d68687503ce0835de378c49e84eca6bca8ea29",
+    "results/apex_workbench_nmpc_lab_v1/operational_20261110/review/static.log": "0f509894c473017e67bbe32d34f78502a2c0e7ddf99a9eb9163fe81ca58c871a",
+    "results/apex_workbench_nmpc_lab_v1/operational_20261110/review/static_audit.py": "1c845e465bdb81044c6b55790a44025997cfef5f724e90e26ad00bfd91ca0d63",
+    "results/apex_workbench_nmpc_lab_v1/operational_20261110/review/static_result.json": "0f509894c473017e67bbe32d34f78502a2c0e7ddf99a9eb9163fe81ca58c871a"
+  }
+}

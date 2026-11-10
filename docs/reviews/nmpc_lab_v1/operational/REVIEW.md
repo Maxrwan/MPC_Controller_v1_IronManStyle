@@ -1,0 +1,15 @@
+# Independent operational Engineering Review
+
+**PASS — no blocking findings.** Exact candidate `480933c655991917f69dafaa40fb58419758a8c9`, branch `codex/nmpc-lab-v1`.
+
+Primary explicitly accepts reviewed implementation447cc1e and delivery6e2d3b7 and permits the existing accepted-interactive transition. The unchanged parser still binds current producer bytes to the policy and reviewed Git source, a final independent PASS record, and the explicit Primary acceptance hash. The new policy preserves the original grant, three case identities, and three consumed run IDs. Its predecessor628a6199 remains byte-exact. Both original independent review JSON copies match their original Git-delivery bytes. The sole producer delta is the previously reviewed Scratch panel; all15 current producers match exact447cc1e. Original UX source hashes and the separately declared test-only gate-isolation change agree.
+
+The launcher change canonicalizes the shared environment directory while retaining its venv/bin/python interpreter. Shell syntax, approved environment path,10 installed dependency RECORD hashes, unchanged launcher body, parent normal-launch/reuse evidence and live owned listener61980 metadata agree. No packages were installed or launcher/server/browser actions performed by this review. The parent retains server ownership.
+
+Independent guarded tests: **15 passed**,0failures/errors/skips,8.74s. Selection: all test_nmpc_scratch_acceptance.py tests plus test_scratch_replay.py::test_small_editor_analysis_and_gate_are_preserved. Scientific imports, probes, worker starts and non-fixture subprocesses were prohibited. This checks fail-closed acceptance/review/source/Git bindings, retained consumption, bounded configuration, standard navigation/comparison, exclusive versioned drafts and the unaccepted fixture. Parent42-pass evidence remains separate and was hash-checked, not counted as a fresh independent run.
+
+Read-only preservation checked11135 historical files and500 links. Only the authorized access.json changed; all previous runs, old WORK/UX reviews, negative evidence and scientific artifacts remain intact.333 frozen runtime files match Git48adbdf. No active local measurement guard, additional run, or tracked working-tree change was observed.
+
+Under Primary's existing instruction, this PASS satisfies only the prerequisite for the **parent** to perform **at most one** genuine baseline Scratch attempt through accepted-interactive admission: accepted defaults, fixed GP gamma2 profile,2s,no disturbance,unchanged resource/ownership limits. No retry; preserve failure/partial/blocked evidence. This reviewer performed zero genuine runs and does not authorize broader Verification, new development, scenarios, sweeps, hardware, physical-safety or real-time claims.
+
+All review tests and audits have terminated. The parent must pin the SHA256 of review_record.json before its smoke and ensure no concurrent audit/test workload during that attempt. Final UI inspection and documentation remain the parent's work. No implementation files or tracked handoff were edited by this independent reviewer.

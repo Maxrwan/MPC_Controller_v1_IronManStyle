@@ -1,6 +1,6 @@
 {
   "schema": "apex-nmpc-lab-v1-operational/1",
-  "status": "PRIMARY_ACCEPTED_FINALIZATION_PENDING_FOCUSED_REVIEW",
+  "status": "NMPC_LAB_V1_ACCEPTED_FOR_SYNTHETIC_EXPERIMENTATION",
   "base": "6e2d3b7009b637a8f67ec49b326a29c32bff2aa0",
   "accepted_lab_source": "447cc1e60c064062c75f879c3c67e611a84cff31",
   "accepted_scientific_execution": "af3956fc2dc8c1a88051e87e2eae66010490a2fb",
@@ -8,7 +8,7 @@
   "acceptance_record": "docs/nmpc_lab_v1/acceptance_record.json",
   "acceptance_sha256": "c829ed9ae0fe5971ba56af632aec8df52a3bf2de7173b9181bb065f2545fd3d2",
   "policy_transition": {
-    "outcome": "PREPARED_PENDING_FOCUSED_REVIEW",
+    "outcome": "ACCEPTED_INTERACTIVE_OPERATIONAL",
     "old_policy_sha256": "628a61998231be7d45be3591236d6debbe8e67ca6d083a86ae874f2786c58f8e",
     "new_policy_sha256": "9b225470c1ca0dc8436cdd8d87df08ea3666545449f5b3ea73d47b4457627e89",
     "acceptance_sha256": "c829ed9ae0fe5971ba56af632aec8df52a3bf2de7173b9181bb065f2545fd3d2",
@@ -28,7 +28,7 @@
       "single_file_bytes": 16777216
     },
     "reviewed_source": "447cc1e60c064062c75f879c3c67e611a84cff31",
-    "genuine_attempts": 0,
+    "genuine_attempts": 1,
     "pre_review_note": "Recorded test-fixture formatting updated before focused review; prepared predecessor bytes retained"
   },
   "tests": {
@@ -45,7 +45,11 @@
     "files": 11135,
     "links": 500,
     "authorized_changed_file": "results/apex_workbench_nmpc_lab_v1/access.json",
-    "other_changed_files": []
+    "other_changed_files": [],
+    "post_attempt_verified": true,
+    "frozen_runtime_files": 333,
+    "historical_consumption_and_grant_unchanged": true,
+    "interactive_attempt_mutated_policy": false
   },
   "launcher": {
     "cwd_invoked": "/private/tmp",
@@ -73,16 +77,188 @@
     "health_status": 200,
     "health_body": "ok",
     "environment_directory_resolved": true,
-    "genuine_runs": 0
+    "genuine_runs": 1,
+    "final_normal_start_from_unrelated_cwd": true,
+    "final_owned_listener": {
+      "pid": 69455,
+      "created": 1794309982.728601,
+      "cmdline": [
+        "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/tools/apex_workbench/.venv/bin/python",
+        "-m",
+        "streamlit",
+        "run",
+        "/Users/marwansaber/.codex/worktrees/nmpc-weight-m0/MPC_Controller_v1_IronManStyle/tools/apex_workbench/workspace.py",
+        "--server.address",
+        "127.0.0.1",
+        "--server.port",
+        "8501",
+        "--server.headless",
+        "true",
+        "--browser.gatherUsageStats",
+        "false"
+      ],
+      "cwd": "/Users/marwansaber/.codex/worktrees/nmpc-weight-m0/MPC_Controller_v1_IronManStyle"
+    },
+    "reuse_final_exit_status": 0,
+    "owned_cleanup": {
+      "owned_processes": [
+        {
+          "pid": 69455,
+          "same_owned_identity_running": false
+        },
+        {
+          "record": "results/apex_workbench_nmpc_lab_v1/runs/20261110T113507881268Z_abbb79f98d324399a2070740ba4b95d3/worker.json",
+          "owned_process_terminated": true
+        },
+        {
+          "record": "results/apex_workbench_nmpc_lab_v1/runs/20261110T113507881268Z_abbb79f98d324399a2070740ba4b95d3/supervisor.json",
+          "owned_process_terminated": true
+        }
+      ],
+      "loopback_8501_refused": true,
+      "execution_lease_free": true,
+      "normal_launcher_reuse_final": "PASS (exit0)",
+      "shutdown": "Control-C via tool PTY; owned server/worker/supervisor terminated",
+      "terminal_route_exit_status": 1,
+      "exit_status_scope": "Observed tool-PTY route only; no expanded platform claim",
+      "additional_experiments": 0
+    }
   },
   "smoke": {
-    "maximum": 1,
-    "attempts": 0,
-    "condition": "Focused independent exact-candidate operational PASS",
-    "configuration": "Accepted baseline defaults;2s;no disturbance",
-    "automatic_retry": false
+    "schema": "apex-nmpc-lab-v1-operational-smoke-audit/1",
+    "candidate": "480933c655991917f69dafaa40fb58419758a8c9",
+    "independent_review_sha256": "f7fa51d586dd4013471abc37303813f42970f61e69f49ad8d68a3630718fd3af",
+    "claim_sha256": "b33f14740015576d2804b3225275d15bb8c82a184f7a1a2a8d8af71d0ed67a53",
+    "attempts": 1,
+    "automatic_retry": false,
+    "run_id": "20261110T113507881268Z_abbb79f98d324399a2070740ba4b95d3",
+    "run_directory": "results/apex_workbench_nmpc_lab_v1/runs/20261110T113507881268Z_abbb79f98d324399a2070740ba4b95d3",
+    "outcome": {
+      "record_version": 2,
+      "state": "completed",
+      "scientific_outcome": "completed",
+      "evidence_state": "valid",
+      "updated_utc": "2026-11-10T11:35:39.828365+00:00",
+      "error": null,
+      "returncode": 0,
+      "wall_runtime_s": 18.740099958959036,
+      "sampled_peak_worker_rss_bytes": 209862656,
+      "sampled_peak_worker_threads": 4,
+      "sampling_note": "100 ms supervisor samples; worker guard polls at 50 ms; soft bounds",
+      "manifest_sha256": "8d499aba0d4952548d0953248d44d06046af58834d53eec497a67e619676a80d"
+    },
+    "native_states": 400,
+    "native_controls": 200,
+    "recording_summary": {
+      "failure": null,
+      "stop_reason": "duration",
+      "coverage": {
+        "requested_duration_s": 2.0,
+        "native_end_time_s": 1.9999999999999787,
+        "native_stop_reason": "duration",
+        "requested_duration_completed": true,
+        "rule": "Native duration termination without a failure; no inferred endpoint state"
+      },
+      "host_wall_s": 4.2238803340587765,
+      "host_cpu_s": 4.420793,
+      "sampled_thread_counts": [
+        3
+      ],
+      "observer_host_seconds": 0.39655187574680895,
+      "clock_note": "Native simulated availability is controlled; host observer overhead is separate from native recorded preparation duration",
+      "classification": "SYNTHETIC / EXPERIMENTAL / UNQUALIFIED \u00b7 NMPC Scratch"
+    },
+    "frozen_scientific_source": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+    "native_control": {
+      "requested_ceiling": 1,
+      "set_status": 0,
+      "blas_threading_mode": 1,
+      "mode_name": "single",
+      "exact_active_thread_count_available": false
+    },
+    "environment_unchanged": true,
+    "adapter_unchanged": true,
+    "policy_unchanged_by_interactive_run": true,
+    "original_three_consumed_attempts_unchanged": true,
+    "comparisons": {
+      "new_baseline_vs_original_baseline": {
+        "classification": "Controlled cost-configuration comparison / experimental, unqualified",
+        "configuration_differences": [],
+        "recovery_metrics_comparable": true,
+        "objective_note": "Raw totals from different cost weights are not performance rankings",
+        "timing_note": "Simulated application clocks and host solver durations remain separate"
+      },
+      "new_baseline_vs_original_lateral_1": {
+        "classification": "Controlled cost-configuration comparison / experimental, unqualified",
+        "configuration_differences": [
+          {
+            "field": "/configuration_id",
+            "left": "baseline",
+            "right": "lateral_1"
+          },
+          {
+            "field": "/costs/lateral",
+            "left": 2.0,
+            "right": 1.0
+          }
+        ],
+        "recovery_metrics_comparable": true,
+        "objective_note": "Raw totals from different cost weights are not performance rankings",
+        "timing_note": "Simulated application clocks and host solver durations remain separate"
+      }
+    },
+    "historical_files_checked": 11135,
+    "historical_links_checked": 500,
+    "authorized_historical_change": [
+      "results/apex_workbench_nmpc_lab_v1/access.json"
+    ],
+    "frozen_runtime_files_checked": 333,
+    "saved_draft": "results/apex_workbench_nmpc_lab_v1/configurations/operational_baseline_20261110_v1.json",
+    "saved_draft_sha256": "67ac5f0130355be7f5d291aed84f6dc5238a692a184b14c3c6044e140ec4ba18",
+    "run_file_sha256": {
+      "request.json": "2bf5ba8b073d941650a3e7c1df88ff8d87185ca4a39f1ec5bf3d9cbc279b1093",
+      "stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "supervisor.json": "c3e03a3d0398677249c74db7de05303051f5e2af208be23c467de1c986230d65",
+      "worker.json": "2cf83f6e205467be2f3cdf2d1dcca8fe6020e30abbde65b60afef33cff4a734b",
+      "stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "worker_result.json": "e430d31788addb0d82066d402d536e3cf662c4073d1ba6fc7fb11f49eb806c09",
+      "supervisor.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "status.json": "cb435ecb5b0944846f10b408acb4bae204beffdc68f1fb55a3bded82edcbc4ec",
+      "execution.json": "c25f6772ab8de526d09765adea84d8e4a496c49fa3fb1244c8537bc31bbecbea",
+      "artifacts.json": "8d499aba0d4952548d0953248d44d06046af58834d53eec497a67e619676a80d",
+      "experiment/summary.json": "e430d31788addb0d82066d402d536e3cf662c4073d1ba6fc7fb11f49eb806c09",
+      "experiment/packets.jsonl": "d729faab9b58b945659b015107ec7bc7e506b0faf73acd06f874e6c3d22f96df",
+      "experiment/command_requests.jsonl": "0e4d7375bd6519abb897936d8087070b9c17c815f21b631e76b0d7d5f8884403",
+      "experiment/raw.json": "8656b0d4706ccf245c243f482c9aea6cf46e4f9125c45290110ce64309457f2a",
+      "experiment/plant_segments.jsonl": "be2943ef76d77af97c51e8eb123432669b3b5adf1a58f910cad1ebf41ad02554",
+      "experiment/optimizations.jsonl": "e3d05e39aaf98bf0b16210642e33b2456537ceb3d17d4c0997a63c9d145c6a33",
+      "experiment/presentation.json": "540a4867474cfa34f3637cb37eda43c0cfaa47185f94b21dcdd473ecda730a80",
+      "experiment/preparations.jsonl": "7912450633865e45cfd807b51a6b90c8281fffae2c829b93ead2070b6a38480e",
+      "experiment/post_execution_identity.json": "440152a9c88cf5292b67ac0dfa6d4eac876c63ea7334b5223bf0e2c12f6ab7c0",
+      "experiment/pre_execution_identity.json": "a7966f0ae3d540b9f09bd5b60bd4a74a743d15c82f61852973415fb0cfe5ce32"
+    },
+    "scientific_qualification": "UNQUALIFIED_SYNTHETIC_EXPERIMENT",
+    "extra_runs": 0
   },
-  "review": "PENDING",
+  "review": {
+    "outcome": "PASS",
+    "record": "docs/reviews/nmpc_lab_v1/operational/review_record.json",
+    "sha256": "f7fa51d586dd4013471abc37303813f42970f61e69f49ad8d68a3630718fd3af",
+    "candidate": "480933c655991917f69dafaa40fb58419758a8c9",
+    "tests": {
+      "passed": 15,
+      "failures": 0,
+      "errors": 0,
+      "skips": 0,
+      "duration_s": 8.74,
+      "selection": [
+        "tools/apex_workbench/tests/test_nmpc_scratch_acceptance.py",
+        "tools/apex_workbench/tests/test_scratch_replay.py::test_small_editor_analysis_and_gate_are_preserved"
+      ],
+      "scientific_imports": 0
+    },
+    "all_review_activity_terminated_before_smoke": true
+  },
   "formal_verification": "NOT_AUTHORIZED_NOT_RUN",
   "evidence_sha256": {
     "results/apex_workbench_nmpc_lab_v1/operational_20261110/focused_1_command.json": "ad34e1c0ebf4fc4fa93357a13827ec0ea1ef651aa812f2d093acf7801076575c",
@@ -100,6 +276,85 @@
     "results/apex_workbench_nmpc_lab_v1/operational_20261110/preparation_attempt_1.json": "9a4ecf490ee3d11baea7412f308b3c6b521127021f9c1f3eb17157bb156473a6",
     "results/apex_workbench_nmpc_lab_v1/operational_20261110/previous_access.json": "628a61998231be7d45be3591236d6debbe8e67ca6d083a86ae874f2786c58f8e",
     "results/apex_workbench_nmpc_lab_v1/operational_20261110/transition.json": "3a79e45c16ac90dac29091dda56fdf14b52984cc3b04da7f29256da73aa72bb9",
-    "results/apex_workbench_nmpc_lab_v1/operational_20261110/preservation_before.json": "6df3149708b5ffa9500afa49289da495e5cb5202f49e8ed988570f575c310513"
-  }
+    "results/apex_workbench_nmpc_lab_v1/operational_20261110/preservation_before.json": "6df3149708b5ffa9500afa49289da495e5cb5202f49e8ed988570f575c310513",
+    "results/apex_workbench_nmpc_lab_v1/operational_20261110/smoke_playback.jpg": "0b092505c24ca1f7edfbae077286af2eb28fd5c7017ade0645a776e70ef4140c",
+    "results/apex_workbench_nmpc_lab_v1/operational_20261110/draft_saved.jpg": "8de502d46d7584c315f2707dce4ddd610588d76fc8b4687552d99a8db927fbf8",
+    "results/apex_workbench_nmpc_lab_v1/operational_20261110/attempt_notes.json": "914f97aafea034e5aee87813d04e323186cd0293fc20bd121fd3cd5348d314d8",
+    "results/apex_workbench_nmpc_lab_v1/operational_20261110/smoke_playback.txt": "9f507e5e8df64dcaad26e741bda7419dc6116ac4c301160c9ee16b34594490a9",
+    "results/apex_workbench_nmpc_lab_v1/operational_20261110/smoke_claim.py": "c9d92268469d6e85d2506d8175dede131cc42e4ce455956b1d381f529f687d67",
+    "results/apex_workbench_nmpc_lab_v1/operational_20261110/smoke_result.json": "4cee89961522675aef2a0f40995e15a63cc7d710d3b79f2c2e2f13ef3c95dcb4",
+    "results/apex_workbench_nmpc_lab_v1/operational_20261110/SMOKE_CLAIM.json": "b33f14740015576d2804b3225275d15bb8c82a184f7a1a2a8d8af71d0ed67a53",
+    "results/apex_workbench_nmpc_lab_v1/operational_20261110/smoke_audit.log": "3e6c14312b8f3bdc7adc3448d0a285bb53b762d84418121f97d6ab827367595c",
+    "results/apex_workbench_nmpc_lab_v1/operational_20261110/cleanup_audit_executed.py": "b9d4e54d0c8ed504a47569c84444655d2b0faea5471f7b4cc483508cddf539cb",
+    "results/apex_workbench_nmpc_lab_v1/operational_20261110/cleanup.json": "3b175b0265deeffd724ca681a270c3287ca3122863176d046389909eed0aee0e",
+    "results/apex_workbench_nmpc_lab_v1/operational_20261110/cleanup_harness_note.json": "79b16002d00f9f92fc4115bac55884f5076a587883ffafbe0137bb315ff2faaa",
+    "results/apex_workbench_nmpc_lab_v1/operational_20261110/baseline_editor.txt": "9f76849b8c2f6d78c1ef7e078e4c67cded687fb7f0fb9c3b67e6b8ee938e2bbb",
+    "results/apex_workbench_nmpc_lab_v1/operational_20261110/control_analysis.txt": "a40274c5ddad72ce73db0911d892ff78f99a419b6520feebc9f2c484e4e11e80",
+    "results/apex_workbench_nmpc_lab_v1/operational_20261110/launcher_reuse_final.log": "4b4b88102ced713168c7de0be8070a4e8626922df381beb8a9d0b1d4be426240",
+    "results/apex_workbench_nmpc_lab_v1/operational_20261110/cleanup_audit.py": "f1af5139e182d6f535c86dd2b547fc3770ea8e7d7df56dff570feab26bcb1cd5",
+    "results/apex_workbench_nmpc_lab_v1/operational_20261110/control_analysis.jpg": "b14166f4259031e136d1015a10452ad705837e4c994c796a0fd821b40075a25a",
+    "results/apex_workbench_nmpc_lab_v1/operational_20261110/smoke_audit.py": "99fe0a9b6c5eef76de7b042a139cbc70dede03456b45e284dd2176cb5efa72fb",
+    "results/apex_workbench_nmpc_lab_v1/operational_20261110/review/software.log": "6ac5971c068e80f2583d7b50b33e2ba7e81eab9c2e29b91859ee799b034ca850",
+    "results/apex_workbench_nmpc_lab_v1/operational_20261110/review/static_audit.py": "1c845e465bdb81044c6b55790a44025997cfef5f724e90e26ad00bfd91ca0d63",
+    "results/apex_workbench_nmpc_lab_v1/operational_20261110/review/software_command.json": "65f27771c3df84f6be8fa25823757fb97c96727e40118b9228c9618715921c16",
+    "results/apex_workbench_nmpc_lab_v1/operational_20261110/review/software_runner.py": "dd2d41bf0a0679c6745ec35645d68687503ce0835de378c49e84eca6bca8ea29",
+    "results/apex_workbench_nmpc_lab_v1/operational_20261110/review/review_record.json": "f7fa51d586dd4013471abc37303813f42970f61e69f49ad8d68a3630718fd3af",
+    "results/apex_workbench_nmpc_lab_v1/operational_20261110/review/static.log": "0f509894c473017e67bbe32d34f78502a2c0e7ddf99a9eb9163fe81ca58c871a",
+    "results/apex_workbench_nmpc_lab_v1/operational_20261110/review/software_result.json": "c57820779608ffc558772027376aed2c01361ac302922c8c84f34b37c596563f",
+    "results/apex_workbench_nmpc_lab_v1/operational_20261110/review/REVIEW.md": "41b7edc57b0447ebacee774cffda5d1603be4ddd163a40d8a2e57ed6081f18a2",
+    "results/apex_workbench_nmpc_lab_v1/operational_20261110/review/static_result.json": "0f509894c473017e67bbe32d34f78502a2c0e7ddf99a9eb9163fe81ca58c871a",
+    "results/apex_workbench_nmpc_lab_v1/operational_20261110/review/software.xml": "a21e70beedc1a6008c0bc39d872e0fa2f5e580852a15339bb2d6d00e48273512"
+  },
+  "reviewed_operational_candidate": "480933c655991917f69dafaa40fb58419758a8c9",
+  "final_delivery_scope": "Documentation only; runtime, tests and launcher unchanged from exact reviewed operational candidate",
+  "cleanup": {
+    "owned_processes": [
+      {
+        "pid": 69455,
+        "same_owned_identity_running": false
+      },
+      {
+        "record": "results/apex_workbench_nmpc_lab_v1/runs/20261110T113507881268Z_abbb79f98d324399a2070740ba4b95d3/worker.json",
+        "owned_process_terminated": true
+      },
+      {
+        "record": "results/apex_workbench_nmpc_lab_v1/runs/20261110T113507881268Z_abbb79f98d324399a2070740ba4b95d3/supervisor.json",
+        "owned_process_terminated": true
+      }
+    ],
+    "loopback_8501_refused": true,
+    "execution_lease_free": true,
+    "normal_launcher_reuse_final": "PASS (exit0)",
+    "shutdown": "Control-C via tool PTY; owned server/worker/supervisor terminated",
+    "terminal_route_exit_status": 1,
+    "exit_status_scope": "Observed tool-PTY route only; no expanded platform claim",
+    "additional_experiments": 0
+  },
+  "remaining_blocking_findings": [],
+  "acceptance_recommendation": "Operational bounded synthetic experimentation; unqualified results; no next-stage implementation or scientific campaign",
+  "browser": {
+    "actual_baseline_editor": true,
+    "versioned_baseline_draft_saved": true,
+    "single_run_button_attempt": true,
+    "new_run_inspect_completed_valid": true,
+    "control_analysis_native_data_and_SI_units": true,
+    "new_baseline_vs_retained_lateral_1": "Controlled cost-configuration comparison / experimental, unqualified",
+    "playback_observation": {
+      "speed": 1,
+      "native_window_s": 1.995,
+      "wall_s": 2.0113,
+      "painted_frames": 46,
+      "maximum_painted_frame_gap_ms": 50.1,
+      "classification": "One display observation; not real-time qualification"
+    }
+  },
+  "limits_unchanged": true,
+  "limitations": [
+    "Synthetic experimental unqualified scope only",
+    "Supported macOS approved numerical environment; independent checkout requires explicit runtime/acceptance provisioning",
+    "Historical and new raw evidence remains local/ignored; documentation hashes are not an off-host archive",
+    "Tool-PTY Control-C returned1 with verified owned cleanup; route observation only",
+    "Discovery labels may remain queued until catalog refresh while verified details show completed/valid",
+    "No broad formal Verification or scientific qualification campaign"
+  ]
 }

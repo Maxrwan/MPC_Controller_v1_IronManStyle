@@ -1,9 +1,13 @@
 # NMPC Lab V1 — acceptance and operational finalization
 
-**PRIMARY_ACCEPTED_FINALIZATION_PENDING_FOCUSED_REVIEW.** 10 November 2026. Branch
+**NMPC_LAB_V1_ACCEPTED_FOR_SYNTHETIC_EXPERIMENTATION.** 10 November 2026. Branch
 `codex/nmpc-lab-v1`, starting delivery `6e2d3b7009b637a8f67ec49b326a29c32bff2aa0`.
 [Primary decision](PRIMARY_ACCEPTANCE.md), [acceptance record](acceptance_record.json).
-The laboratory/UX source remains accepted447cc1e; only checkout-environment resolution in the
+Operational candidate `480933c655991917f69dafaa40fb58419758a8c9` received focused independent
+**PASS**, with no blocking findings. [Review](../reviews/nmpc_lab_v1/operational/REVIEW.md),
+[review record](../reviews/nmpc_lab_v1/operational/review_record.json),
+[final evidence record](operations_record.json). The laboratory/UX source remains accepted447cc1e;
+only checkout-environment resolution in the
 launcher, an ignore rule and deterministic test fixtures change. No scientific implementation changes.
 
 The old WORK policy correctly rejected current source: its panel hash was25f8b7…, while accepted
@@ -50,9 +54,61 @@ The actual normal launcher started from `/private/tmp`, served loopback8501 from
 using the canonical approved venv, and a second invocation reused its owned listener. Interpreter
 and10 installed dependency RECORD trees match the frozen approved numerical environment.
 
-Next: focused independent exact-candidate operational review. Only following PASS may the agent
-make the single authorized baseline2s smoke attempt, through interactive admission, with no retry.
-No broad Verification campaign is authorized. Logs, policy transition/provenance and preservation
-anchors are under `results/apex_workbench_nmpc_lab_v1/operational_20261110/`.
+The independent reviewer separately ran15guarded checks:15passed,0failures/errors/skips,8.74s.
+These are separate from the parent42-pass invocation. Review confirmed both original review copies,
+all15producers against447cc1e, policy/Git fail-closed behavior,333frozen runtime files and the retained
+history. All review work terminated before the smoke. The immutable pre-attempt claim pins the
+exact480933c candidate and independent review digest
+`f7fa51d586dd4013471abc37303813f42970f61e69f49ad8d68a3630718fd3af`.
 
-On completion stop at `NMPC_LAB_V1_ACCEPTED_FOR_SYNTHETIC_EXPERIMENTATION`.
+**One genuine attempt, no retry:** the actual browser's Run Scratch experiment button admitted
+`20261110T113507881268Z_abbb79f98d324399a2070740ba4b95d3`, with accepted baseline costs, no
+disturbance and fixed2s GP gamma2 profile. It completed with valid evidence and returncode0:
+400native state samples,200controls, duration termination and no recorded failure. Supervisor
+runtime18.7401s, sampled peak RSS209,862,656bytes, sampled peak worker threads4. Accelerate's actual
+native control reports SINGLE/status0; sampled process threads are a different population.
+Existing60s wall/30s CPU/512MiB sampled RSS/64MiB sampled output/16MiB file limits remain unchanged.
+The source/environment identity and every committed artifact were checked by the production reader.
+No second scientific attempt, parameter sweep or broad formal Verification was performed.
+
+Actual browser acceptance: eight-field editor and baseline reset; enabled interactive admission;
+saved `operational_baseline_20261110_v1.json`; new completed/valid run reopened in Inspect; native
+playback; Control Analysis with genuine tracking/command/solver/grip diagnostics; and new baseline
+versus retained lateral1 comparison labelled **controlled / experimental, unqualified**. Production
+comparison also admitted the new/original baseline pair with no configuration differences.
+One1× playback observation:1.995retained simulated seconds in2.0113wall seconds,46painted frames,
+maximum painted-frame gap50.1ms. This is display timing, not a real-time or general latency guarantee.
+The400sample window ends at1.995s; no2s endpoint state is invented.
+
+The post-attempt audit rechecked11,135historical files/500links: only the authorized access.json
+transition differs. All3old attempts/case/grant identities, original reviews, negative evidence,
+333frozen runtime files and source/profile/dependencies remain preserved. The interactive attempt
+did not change access.json or consume/reset historical WORK entries. Its genuine raw evidence and
+hash manifest remain local under the original run directory; Git documentation is not an off-host
+evidence backup.
+
+The normal launcher was started again from `/private/tmp`, reused its owned server on a second
+invocation (exit0), and stopped with Control-C. The server, worker and supervisor terminated,
+loopback8501 refused connection, and the execution lease was free. This tool-PTY shutdown route
+returned exit1 despite verified owned cleanup; this observation has no broader platform implication.
+The discovery selector may retain its pre-refresh queued metadata while verified run details show
+completed/valid; Refresh catalog refreshes discovery. Playback/navigation behavior remains the
+accepted UX behavior.
+
+Preparation negatives are retained: the planned test-only source delta was caught before transition;
+an initial browser connection found the previous tool server closed, followed by a normal relaunch;
+one metadata-only preflight approval review timed out before execution and its permitted retry
+succeeded. A frame-locator Play click failed without action; the native accessibility click worked.
+None caused an extra scientific attempt or an integrity bypass.
+
+Logs, JUnit, exact commands, policy transition, exclusive claim, raw run audit and cleanup records
+are under `results/apex_workbench_nmpc_lab_v1/operational_20261110/`. A fresh independent checkout
+needs the supported environment, exact frozen runtime and explicitly provisioned source/review/
+Primary-bound access records; arbitrary approval-file copying is not an installation procedure.
+On this configured accepted checkout, use the normal command above or double-click the launcher.
+The primary checkout's unrelated active branch was left untouched.
+
+Final recommendation: use V1 for explicitly triggered, bounded synthetic experimentation within
+the accepted profile. Results remain unqualified; physical, real-time, deployment and broader
+scientific claims remain unsupported. ROS2, exporter, Docker, new scenarios and campaigns remain
+outside scope. No remaining blocking operational finding.
