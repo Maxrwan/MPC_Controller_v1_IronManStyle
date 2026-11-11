@@ -1,0 +1,414 @@
+{
+  "schema": "apex-v2-full-lap-resume-report/1",
+  "stage": "V2_FULL_LAP_FAILED_PENDING_PRIMARY_DECISION",
+  "recorded_utc": "2026-11-11T10:06:52.380759+00:00",
+  "authority": "Primary APEX current user assignment: RESUME UNUSED V2 FULL-LAP ATTEMPT. Final UI accepted; one conditional unused attempt; no source changes, retries or new slot.",
+  "branch": "codex/workbench-v2-ui",
+  "reviewed_implementation": "740a268a2d2c6b92a67a45456292a3b2cafb2479",
+  "execution_delivery": "f85ac524e3bca686b4971c005fda11d1bae84d5c",
+  "frozen_scientific_source": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+  "driver": {
+    "authorization": "PRIMARY APEX \u2014 RESUME UNUSED V2 FULL-LAP ATTEMPT; current user instruction",
+    "reviewed_revision": "740a268a2d2c6b92a67a45456292a3b2cafb2479",
+    "delivery": "f85ac524e3bca686b4971c005fda11d1bae84d5c",
+    "producer_count": 47,
+    "current_and_git_reviewed_source_equal": true,
+    "policy_sha256_before": "f45f769caeac48c73955c4eacbe28d1f0c76c1dccf353dc9d34f1cdd22fad98f",
+    "used_before": {
+      "pilot": "2026-11-10T145233.755880_0000_f46cc76634dd4322b1720f37eb96442b"
+    },
+    "command": [
+      "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/tools/apex_workbench/.venv/bin/python",
+      "-B",
+      "-m",
+      "tools.apex_workbench.lap.final_attempt",
+      "--execute"
+    ],
+    "cwd": "/Users/marwansaber/.codex/worktrees/nmpc-weight-m0/MPC_Controller_v1_IronManStyle",
+    "automatic_retry": false,
+    "new_authorization_slots": false,
+    "started_utc": "2026-11-11T09:57:39.888341+00:00",
+    "driver_exit_code": 0,
+    "ended_utc": "2026-11-11T09:58:01.181866+00:00"
+  },
+  "host": {
+    "utc": "2026-11-11T09:57:42.925490+00:00",
+    "memory_available_bytes": 1788477440,
+    "required_available_ram_bytes": 1610612736,
+    "disk_free_bytes": 21112688640,
+    "required_disk_bytes": 1610612736,
+    "cpu_count": 8,
+    "cpu_percent_half_second": 8.7,
+    "status": "PASS"
+  },
+  "host_conflicting_process_count": 0,
+  "host_active_guard_count": 0,
+  "pre_execution_source_environment_gate": "PASS",
+  "limits": {
+    "wall_s": 900,
+    "cpu_s": 720,
+    "sampled_rss_bytes": 805306368,
+    "sampled_output_bytes": 268435456,
+    "single_file_bytes": 4194304
+  },
+  "scenario": {
+    "schema": "apex-lap-configuration/1",
+    "profile": "synthetic-gp-gamma2-A-N8-lap-v2",
+    "profile_sha256": "849cac0a38188c11e42e5a903ac8d45bae64681cf5c39e847fb6195879393096",
+    "scientific_source": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+    "mode": "full_lap",
+    "maximum_simulation_s": 80,
+    "scratch": {
+      "schema": "apex-nmpc-scratch-config/1",
+      "configuration_id": "baseline",
+      "version": 1,
+      "profile": "synthetic-gp-gamma2-A-v1",
+      "scientific_source": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+      "profile_sha256": "52ffa7cbb4308bb8814b7512fbb61d685e27fbe9af83b1acec926217b8f42fab",
+      "costs": {
+        "lateral": 2.0,
+        "dynamic": 1.0,
+        "speed": 1.0,
+        "control": 1.0,
+        "rate": 1.0,
+        "terminal": 1.0,
+        "alpha_vy": 1.0,
+        "alpha_r": 1.0
+      },
+      "disturbance": "none"
+    }
+  },
+  "run_id": "2026-11-11T095747.505385_0000_6a18eaab96bd4949835d7c481116806e",
+  "run_directory": "/Users/marwansaber/.codex/worktrees/nmpc-weight-m0/MPC_Controller_v1_IronManStyle/results/apex_workbench_v2_lap/runs/2026-11-11T095747.505385_0000_6a18eaab96bd4949835d7c481116806e",
+  "status": {
+    "record_version": 2,
+    "state": "failed",
+    "scientific_outcome": "failed",
+    "evidence_state": "valid",
+    "error": "Worker exited2",
+    "returncode": 2,
+    "wall_runtime_s": 160.7565652920166,
+    "sampled_peak_worker_rss_bytes": 236503040,
+    "manifest_sha256": "b6b8b56c9d70906860f471203f1cdef947b8fd2d573b9f05b66ad3e0278c8ba5"
+  },
+  "native_outcome": {
+    "stop_reason": "target_laps",
+    "failure": null,
+    "native_end_time_s": 62.23500000000001,
+    "pending_at_end": true,
+    "lap": {
+      "track_length_m": 154.76345492731022,
+      "initial_s_abs_m": 1.0,
+      "native_crossings": [
+        {
+          "s_abs_m": 154.76345492731022,
+          "time_s": 31.061572635639408,
+          "complete_circuit": false,
+          "interval_s": 31.061572635639408
+        },
+        {
+          "s_abs_m": 309.52690985462044,
+          "time_s": 62.23347303324871,
+          "complete_circuit": true,
+          "interval_s": 31.1719003976093
+        }
+      ],
+      "completed_laps": 1,
+      "lap_time_s": 31.1719003976093,
+      "first_crossing_is_partial": true,
+      "status": "complete",
+      "stop_reason": "target_laps",
+      "failure": null,
+      "rule": "Native boundary-to-same-boundary interval; partial launch crossing excluded"
+    },
+    "row_counts": {
+      "states": 12447,
+      "controls": 6223,
+      "plans": 623,
+      "packets": 623,
+      "triggers": 0,
+      "fallbacks": 0,
+      "handoffs": 621,
+      "releases": 622,
+      "misses": 0,
+      "reserves": 12447,
+      "lap_times": 2,
+      "codriver_misses": 0
+    }
+  },
+  "postprocessing_failure": {
+    "file": "tools/apex_workbench/lap/analysis.py",
+    "line": 17,
+    "caller": "tools/apex_workbench/lap/worker.py:180",
+    "message": "Invalid native lap-crossing interval",
+    "cause": "Native crossing durations are positive finite numpy.float64 values; nmpc_analysis.numeric accepts only exact built-in int/float types. The original runner crossing expression derives NumPy scalars. JSON serialization retained their positive values as ordinary numeric tokens.",
+    "read_only_scalar_reproduction": {
+      "outcome": "REPRODUCED",
+      "message": "Invalid native lap-crossing interval",
+      "type": "<class 'numpy.float64'>",
+      "positive_finite": true,
+      "builtin_numeric_accepts_numpy": false,
+      "builtin_numeric_accepts_deserialized_float": true,
+      "deserialized_lap_metrics": {
+        "track_length_m": 154.76345492731022,
+        "initial_s_abs_m": 1.0,
+        "native_crossings": [
+          {
+            "s_abs_m": 154.76345492731022,
+            "time_s": 31.061572635639408,
+            "complete_circuit": false,
+            "interval_s": 31.061572635639408
+          },
+          {
+            "s_abs_m": 309.52690985462044,
+            "time_s": 62.23347303324871,
+            "complete_circuit": true,
+            "interval_s": 31.1719003976093
+          }
+        ],
+        "completed_laps": 1,
+        "lap_time_s": 31.1719003976093,
+        "first_crossing_is_partial": true,
+        "status": "complete",
+        "stop_reason": "target_laps",
+        "failure": null,
+        "rule": "Native boundary-to-same-boundary interval; partial launch crossing excluded"
+      },
+      "method": "No simulation or solve: wrap the exact retained positive lap values as NumPy scalar types produced by the original crossing expression; compare with JSON-deserialized built-in floats."
+    }
+  },
+  "production_reader_failure": {
+    "outcome": "REJECTED",
+    "exception_type": "IntegrityError",
+    "message": "Unverified artifact summary.json: 'summary.json'",
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/marwansaber/.codex/worktrees/nmpc-weight-m0/MPC_Controller_v1_IronManStyle/tools/apex_workbench/storage.py\", line 220, in artifact_bytes\n    entry = manifest[relative]\n            ~~~~~~~~^^^^^^^^^^\nKeyError: 'summary.json'\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"<stdin>\", line 12, in <module>\n  File \"/Users/marwansaber/.codex/worktrees/nmpc-weight-m0/MPC_Controller_v1_IronManStyle/tools/apex_workbench/lap/evidence.py\", line 171, in read_run\n    view[\"summary\"] = storage.artifact_json(directory, \"summary.json\")\n                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/marwansaber/.codex/worktrees/nmpc-weight-m0/MPC_Controller_v1_IronManStyle/tools/apex_workbench/storage.py\", line 238, in artifact_json\n    data = artifact_bytes(directory, relative, optional=optional)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/marwansaber/.codex/worktrees/nmpc-weight-m0/MPC_Controller_v1_IronManStyle/tools/apex_workbench/storage.py\", line 233, in artifact_bytes\n    raise IntegrityError(f\"Unverified artifact {relative}: {error}\") from error\ntools.apex_workbench.storage.IntegrityError: Unverified artifact summary.json: 'summary.json'\n"
+  },
+  "full_lap_native_sample_statistics": {
+    "definition": "Equal-weight native samples between the genuine first and second finish-line crossings; no interpolated telemetry",
+    "crossing_window_s": [
+      31.061572635639408,
+      62.23347303324871
+    ],
+    "native_observation_window_s": [
+      31.064999999997003,
+      62.230000000000004
+    ],
+    "samples": 6234,
+    "racing_lateral_error_m": {
+      "samples": 6234,
+      "peak_abs": 0.09905057325957668,
+      "rms": 0.02095028863796588,
+      "mean": 0.0015536726297891445
+    },
+    "racing_heading_error_rad": {
+      "samples": 6234,
+      "peak_abs": 0.20550183972434422,
+      "rms": 0.063978705467237,
+      "mean": -0.015269472311231212
+    },
+    "speed_mps": {
+      "samples": 6234,
+      "peak_abs": 5.966550232827406,
+      "rms": 5.00912122270886,
+      "mean": 4.9303862319574545
+    },
+    "boundary_violation_rows": 0,
+    "front_utilization": {
+      "samples": 6234,
+      "peak_abs": 0.8555306593923928,
+      "rms": 0.38338810475498253,
+      "mean": 0.3435948866535214
+    },
+    "rear_utilization": {
+      "samples": 6234,
+      "peak_abs": 0.8691556901451953,
+      "rms": 0.38355339923299453,
+      "mean": 0.3426714108870318
+    }
+  },
+  "sector_times_s": [
+    8.625144717830757,
+    7.023554059383791,
+    7.981099618438272,
+    7.542102001956479
+  ],
+  "sector_clock": "Linear progress-crossing time within genuine native integration segments, same convention as AsyncRunner lap crossings; no interpolated telemetry",
+  "whole_recording_solver": {
+    "solver_host_seconds": {
+      "samples": 623,
+      "peak_abs": 0.1737794999498874,
+      "rms": 0.0335028053507032,
+      "mean": 0.03249935662193765
+    },
+    "preparation_host_seconds": {
+      "samples": 623,
+      "peak_abs": 0.2212137080496177,
+      "rms": 0.05550532524137999,
+      "mean": 0.054703720938526455
+    },
+    "iterations": {
+      "samples": 623,
+      "peak_abs": 18,
+      "rms": 12.420792384831763,
+      "mean": 12.18940609951846
+    },
+    "successful_native_preparations": 623,
+    "preparation_count": 623,
+    "max_native_slack": 9.091836835408585e-11,
+    "max_primal_infeasibility": 8.184113686748873e-08,
+    "chronology_counts": {
+      "handoffs": 621,
+      "misses": 0,
+      "fallbacks": 0,
+      "releases": 622,
+      "codriver_misses": 0
+    },
+    "failed_preparations": 0
+  },
+  "solver_status_counts": {
+    "Solve_Succeeded": 623
+  },
+  "resources": {
+    "supervisor_wall_runtime_s": 160.7565652920166,
+    "sampled_peak_worker_rss_bytes": 236503040,
+    "total_retained_bytes": 39627994,
+    "largest_retained_file_bytes": 2097097,
+    "worker_total_cpu_s": null,
+    "worker_total_cpu_missing_reason": "summary.json was never emitted because lap postprocessing raised before summary construction",
+    "limits": {
+      "wall_s": 900,
+      "cpu_s": 720,
+      "sampled_rss_bytes": 805306368,
+      "sampled_output_bytes": 268435456,
+      "single_file_bytes": 4194304
+    }
+  },
+  "preservation": {
+    "outcome": "PASS",
+    "historical_files_checked": 13280,
+    "historical_links_checked": 573,
+    "changed_historical_files": [
+      "results/apex_workbench_v2_lap/access.json"
+    ],
+    "changed_links": [],
+    "reviewed_producers_equal": 47,
+    "frozen_runtime_files_equal": 333,
+    "canonical_files_equal": 335,
+    "working_tree_clean_before_documentation": true,
+    "policy_stage": "reviewed-work",
+    "policy_sha256_after": "f9a0304ff136a1d7fe0b56ef0f3a2efff2f7fe37d74acbba1c369c5fa2772346",
+    "policy_sha256_before": "f45f769caeac48c73955c4eacbe28d1f0c76c1dccf353dc9d34f1cdd22fad98f",
+    "prior_policy_copy_method": "Exact-byte reconstruction of unchanged policy fields and prior used map, accepted only after equality with pre-invocation SHA",
+    "used": {
+      "pilot": "2026-11-10T145233.755880_0000_f46cc76634dd4322b1720f37eb96442b",
+      "full_lap": "2026-11-11T095747.505385_0000_6a18eaab96bd4949835d7c481116806e"
+    },
+    "maximum_genuine_attempts": {
+      "pilot": 1,
+      "full_lap": 1
+    },
+    "automatic_retry": false,
+    "new_authorization_slots": false,
+    "new_genuine_runs": 1,
+    "genuine_retry": false,
+    "raw_artifacts_modified_during_inspection": false,
+    "manifest_sha256": "b6b8b56c9d70906860f471203f1cdef947b8fd2d573b9f05b66ad3e0278c8ba5"
+  },
+  "post_execution_identity": {
+    "raw_available": true,
+    "source_unchanged": true,
+    "environment_unchanged": true
+  },
+  "integrity": {
+    "manifest_sha256": "b6b8b56c9d70906860f471203f1cdef947b8fd2d573b9f05b66ad3e0278c8ba5",
+    "manifest_members": 39,
+    "every_manifest_member_validated": true,
+    "production_readable": false,
+    "reason": "summary.json absent after postprocessing exception; fail-closed reader rejection preserved"
+  },
+  "checks_executed": "Production driver admission; production manifest/artifact verification; production reader inspection; existing read-only descriptive metrics/sector functions; scalar-only NumPy type reproduction; source/history preservation. No simulation rerun, review, pytest or broad Verification.",
+  "interpretation": "One genuine run reached two native crossings (first partial launch crossing excluded), but the Workbench scientific_outcome remains failed. Reported metrics are forensic reads of hash-verified retained records, not an official completed summary or scientific/physical qualification. Host solve durations are not the approved simulated packet-availability clocks.",
+  "execution_policy": {
+    "stage": "reviewed-work",
+    "used": {
+      "pilot": "2026-11-10T145233.755880_0000_f46cc76634dd4322b1720f37eb96442b",
+      "full_lap": "2026-11-11T095747.505385_0000_6a18eaab96bd4949835d7c481116806e"
+    },
+    "full_lap_slot_consumed": true,
+    "retry_performed": false,
+    "new_authorization_slot": false,
+    "acceptance_proposal_created": false,
+    "accepted_interactive_installed": false
+  },
+  "next_gate": "Primary bounded corrective WORK decision for NumPy scalar validation and failed-native reader containment. Preserve this failed run and consumed slot; no policy reset, acceptance installation or new numerical execution is authorized by this report.",
+  "evidence_files": {
+    "results/apex_workbench_v2_resume_20261111T095739Z/driver_record.json": {
+      "sha256": "598e76eaed362e4efcca0add0ddd7838286ad6b4dc7601e212b59c2e2ef492f0",
+      "bytes": 1010
+    },
+    "results/apex_workbench_v2_resume_20261111T095739Z/production_reader_error.txt": {
+      "sha256": "4de464133d23b3b0702dd162562116dbd73bea7d2dfd4fbb5102cc961f701845",
+      "bytes": 1321
+    },
+    "results/apex_workbench_v2_resume_20261111T095739Z/resume_authorization.json": {
+      "sha256": "008b7d45f5694d60f5bd004ea6a0c11ddba1b81bd4c18bd2224ecb0e67c6f984",
+      "bytes": 934
+    },
+    "results/apex_workbench_v2_resume_20261111T095739Z/preservation_after.json": {
+      "sha256": "ba30261a16f5b19a1c4027f5039abf0c0cc276bb5abac3f2760f32e0d7a9c4ad",
+      "bytes": 1244
+    },
+    "results/apex_workbench_v2_resume_20261111T095739Z/policy_before_exact_bytes.json": {
+      "sha256": "f45f769caeac48c73955c4eacbe28d1f0c76c1dccf353dc9d34f1cdd22fad98f",
+      "bytes": 6287
+    },
+    "results/apex_workbench_v2_resume_20261111T095739Z/driver.log": {
+      "sha256": "83b976fb2961c523150d03c34bd944a12c76993a7d3538120905cda7b1e7ea1a",
+      "bytes": 180
+    },
+    "results/apex_workbench_v2_resume_20261111T095739Z/full_lap_sample_statistics.json": {
+      "sha256": "0b051a3b8f25e68102676479b5173ed85c4652612380e206d5bf8db3ab4df839",
+      "bytes": 1105
+    },
+    "results/apex_workbench_v2_resume_20261111T095739Z/evidence_audit.json": {
+      "sha256": "d1e7aaad3537505293dcf5c2cda97f54998955e49886787eb4a01837e3a6c4f5",
+      "bytes": 19126
+    },
+    "results/apex_workbench_v2_lap/full_lap_preflight.json": {
+      "sha256": "705205e13bdb16ac1efd46fc59d20736732f1025b35ff223e6fae4f4587176fb",
+      "bytes": 19537
+    },
+    "results/apex_workbench_v2_lap/final_host_preflight_1794391063430985000.json": {
+      "sha256": "902b2bc60e2742e7dc603dda8a2db2429909063a86ecf99224c486eef2303ad6",
+      "bytes": 17658
+    },
+    "results/apex_workbench_v2_lap/final_source_preflight_1794391063436033000.json": {
+      "sha256": "e03a4ebdae2e2f86c3a1667874fd8b809321be4ea33cebc39103b0fddeb86999",
+      "bytes": 48754
+    },
+    "results/apex_workbench_v2_lap/full_lap_final_claim.json": {
+      "sha256": "b781e3b814977f1c29a3ac96f84eb6a61390244dc04db45a9e4d61f5ff81c500",
+      "bytes": 1478
+    },
+    "results/apex_workbench_v2_lap/full_lap_final_launch.json": {
+      "sha256": "c6bdf02e077cb5922113d7872dc5728f2c24d9340b902674a8e5d85a474e612a",
+      "bytes": 279
+    },
+    "results/apex_workbench_v2_lap/access.json": {
+      "sha256": "f9a0304ff136a1d7fe0b56ef0f3a2efff2f7fe37d74acbba1c369c5fa2772346",
+      "bytes": 6369
+    },
+    "results/apex_workbench_v2_lap/runs/2026-11-11T095747.505385_0000_6a18eaab96bd4949835d7c481116806e/status.json": {
+      "sha256": "dee9fa25607186027f726e7df76e0827d43b6bbc8cca36f1e2ba713b6f600a2e",
+      "bytes": 332
+    },
+    "results/apex_workbench_v2_lap/runs/2026-11-11T095747.505385_0000_6a18eaab96bd4949835d7c481116806e/artifacts.json": {
+      "sha256": "b6b8b56c9d70906860f471203f1cdef947b8fd2d573b9f05b66ad3e0278c8ba5",
+      "bytes": 5386
+    },
+    "results/apex_workbench_v2_lap/runs/2026-11-11T095747.505385_0000_6a18eaab96bd4949835d7c481116806e/stderr.log": {
+      "sha256": "2308ad97bef3925f8ed3e57628235209ceb590974d9aacfaa7f266082a465544",
+      "bytes": 758
+    }
+  }
+}

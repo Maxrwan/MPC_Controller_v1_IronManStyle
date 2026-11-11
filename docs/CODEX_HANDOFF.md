@@ -1,4 +1,32 @@
-# Current handoff — final V2 PASS, host RAM blocks Full Lap
+# Current handoff — resumed V2 lap recorded, postprocessing failed
+
+**V2_FULL_LAP_FAILED_PENDING_PRIMARY_DECISION.** Primary accepted the final UI and authorized one
+resumed unused Full Lap attempt. Exact implementation `740a268a2d2c6b92a67a45456292a3b2cafb2479`,
+execution delivery `f85ac524e3bca686b4971c005fda11d1bae84d5c`, branch `codex/workbench-v2-ui`.
+[Report](workbench_v2_final/FULL_LAP_RESUME.md), [machine evidence](workbench_v2_final/full_lap_resume_record.json).
+
+Fresh host/source/environment/ownership gates passed: RAM 1,788,477,440 bytes > unchanged
+1,610,612,736-byte threshold; no competing process/active guard. The sole genuine run is
+`2026-11-11T095747.505385_0000_6a18eaab96bd4949835d7c481116806e`; Full Lap slot consumed, no retry.
+Native target_laps reached at 62.235s; complete-circuit interval 31.1719003976093s after the partial
+launch crossing. Native full-lap lateral error RMS/peak 0.02095029m /0.09905057m; sectors and genuine
+solver/resource measurements are retained in the report. Synthetic/unqualified, no physical claims.
+
+Worker postprocessing rejected positive finite numpy.float64 crossing durations because the existing
+numeric guard accepts only built-in int/float. Exact scalar-only reproduction retained; no rerun.
+Workbench remains failed/evidence valid/exit2; production read_run also rejects absent summary.json.
+All 39 manifest members validate. No fabricated summary, repaired status, proposal or interactive
+acceptance installation. Ordinary V2 execution remains unavailable under the spent reviewed-WORK policy.
+
+47 producers, 333 frozen runtime files, 335 canonical files and historical 13,280 files /573 links checked;
+only authorized access-policy consumption changes old bytes. Source/environment and pilot unchanged.
+No source/test modification, new review, pytest or broad Verification. Workers ended before inspection.
+Delivery documentation only. Next: separate bounded Primary corrective WORK decision; retain failed
+run and spent slot. No additional numerical execution, reset or new slot authorized by this handoff.
+
+---
+
+# Historical handoff — final V2 PASS, host RAM blocked Full Lap
 
 **WORKBENCH_V2_FINAL_READY_FOR_PRIMARY_ACCEPTANCE.** Exact reviewed source
 `740a268a2d2c6b92a67a45456292a3b2cafb2479`. `codex/workbench-v2-ui`, starting deliverye45059c.
