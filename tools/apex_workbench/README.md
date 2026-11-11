@@ -414,3 +414,20 @@ UI acceptance does not unlock V2 execution: source/review/Primary bindings and t
 resource preflight still apply. The accepted V1 launcher and its execution policy remain unchanged.
 See [UI scope and evidence](../../docs/workbench_v2_ui/WORK.md) for display clocks, units, native
 window limits, missingness and current resource limitations. No new installation dependency.
+
+### Final V2 replay controls and one-shot full lap
+
+The V2 launcher remains `./Launch_APEX_Workbench_V2.command` on loopback8503. Restart the owned
+launcher after updating a checkout. View selects Whole circuit, Recording window, Follow Vehicle or
+Follow Prediction. The wheel shows actual front steering in radians/degrees; its configurable12:1
+visual mapping is illustrative, not steering calibration. Prediction Microscope follows available
+active packets with nine state nodes, eight nominal intervals and explicitly derived pinned Planning
+reference tracking errors. Historical selection does not confer authority. The ratio never changes a run.
+
+Automatic continuation prefetches one bounded native window and pauses at its boundary until evidence
+is reverified. No time is extrapolated during that wait. Initial source-verified reference construction
+can take about13s; subsequent geometry is reused. Raw provenance/diagnostics remain secondary panels.
+Full Lap now has900s wall/720s CPU ceilings; all other approved limits/rules stay fixed. Source/review/
+Primary and host preflight gates still apply. A single baseline full-lap attempt is authorized only after
+focused independent PASS; ordinary repeatable V2 execution awaits the resulting Primary decision.
+See [final scope and evidence](../../docs/workbench_v2_final/WORK.md).

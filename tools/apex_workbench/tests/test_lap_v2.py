@@ -103,12 +103,32 @@ def policy(tmp_path, monkeypatch):
     storage.write_json(
         tmp_path / "review.json", {"outcome": "PASS", "candidate": "fixture-revision"}
     )
-    storage.write_json(tmp_path / "authority.json", {"decision": "Bounded WORK fixture"})
+    storage.write_json(
+        tmp_path / "prior.json",
+        {"used": {}, "maximum_genuine_attempts": {"pilot": 1, "full_lap": 1}},
+    )
+    storage.write_json(
+        tmp_path / "authority.json",
+        {
+            "schema": "apex-lap-final-work-authorization/1",
+            "reviewed_revision": "fixture-revision",
+            "profile_sha256": config.defaults()["profile_sha256"],
+            "scientific_source": config.v1.frozen.SOURCE,
+            "primary_brief_sha256": digest,
+            "prior_policy": {
+                "path": str(tmp_path / "prior.json"),
+                "sha256": storage.sha256(tmp_path / "prior.json"),
+            },
+            "allowed_new_slots": ["pilot", "full_lap"],
+        },
+    )
     value = {
         "schema": "apex-lap-access/1",
         "stage": "reviewed-work",
         "reviewed_revision": "fixture-revision",
         "used": {},
+        "maximum_genuine_attempts": {"pilot": 1, "full_lap": 1},
+        "automatic_retry": False,
         "review_record": str(tmp_path / "review.json"),
         "review_sha256": storage.sha256(tmp_path / "review.json"),
         "producer_sha256": {"fixture.py": digest},
@@ -153,7 +173,11 @@ def test_explicit_later_acceptance_does_not_consume_more_work_slots(tmp_path, mo
     value = policy(tmp_path, monkeypatch)
     storage.write_json(
         tmp_path / "authority.json",
-        {"schema": "apex-lap-primary-acceptance/1", "accepted_revision": "fixture-revision"},
+        {
+            "schema": "apex-lap-primary-acceptance/1",
+            "accepted_revision": "fixture-revision",
+            "decision": "ACCEPTED",
+        },
     )
     value.update(
         stage="accepted-interactive",

@@ -1,0 +1,357 @@
+{
+  "schema": "apex-workbench-v2-final-work/1",
+  "stage": "WORK_COMPLETE_PENDING_REVIEW",
+  "branch": "codex/workbench-v2-ui",
+  "base_delivery": "e45059cb0fff41a8610761e83bdd69c4a2dff1e2",
+  "accepted_presentation": "b1cc8b3d7b306a56adf99a63d8dc689c13856114",
+  "scientific_source": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+  "primary_brief_sha256": "52114eba8c67422e3c8e4e02f37b9da21153dbea9c6f41a06ac93f9f04efe785",
+  "producer_sha256": {
+    "Launch_APEX_Workbench_V2.command": "64ab4063b0c9ae9daf75de4ee767215e25c095e2d417de1e8020b1d6471434c8",
+    "tools/apex_workbench/configuration.py": "596846e8dab789c619e00a26679288d73bfac495fc468c7b065e15d6795a33a1",
+    "tools/apex_workbench/jobs.py": "31c82030e644418cb6e3ec88b905d37388291fc00172c45c34e34a5de5684ed4",
+    "tools/apex_workbench/lap/__init__.py": "35b55be42eafe56b0521ad9ae3875ba947ae67c6f3e9e2a3c87d287cbd3fca55",
+    "tools/apex_workbench/lap/admission.py": "68929330d3cf172d931e03d02219b09d52911f992ec7f71b7c2486767648c1d2",
+    "tools/apex_workbench/lap/analysis.py": "ef971f089b544a9d578be9bbc06cf43b47382c932766d68162cf5e3650012970",
+    "tools/apex_workbench/lap/app.py": "e89aab8852a43d28cb7ebe4813fc8bd3b33b664b32d1a33b25d4db1592ae5f3f",
+    "tools/apex_workbench/lap/config.py": "c2d69531a5c82f4d787e08f60e67f3ebf08df8afc556e0e3e2e7b5c341dd1777",
+    "tools/apex_workbench/lap/evidence.py": "496cc320f44c9019b88960999de5682a952fdca6eef2f499dc57d2c2df5c5a59",
+    "tools/apex_workbench/lap/execution.py": "bddb3b040738cf7f3c15fbfefafad838af8cf613cdbff7e00f62414dcd00fcf2",
+    "tools/apex_workbench/lap/final_attempt.py": "590d4933b3beb88549604967a5adbbaf2c7e25af762fb86e8fe5e81ec9201285",
+    "tools/apex_workbench/lap/launch.py": "aced85a5262feb76b6357c99cfc6427cd5ce14b2f2e629d896db496a29e7f72f",
+    "tools/apex_workbench/lap/panels.py": "72760b1f0eda491f79627b770d75a086b95e861ee46368e50a31cb46c79affb9",
+    "tools/apex_workbench/lap/profile.json": "849cac0a38188c11e42e5a903ac8d45bae64681cf5c39e847fb6195879393096",
+    "tools/apex_workbench/lap/reference_view.py": "134ef150d91b2c743d1a0daff9bd9e2c3422ece0ccb48d76bd773928cb331cde",
+    "tools/apex_workbench/lap/replay.py": "31225fe1f05a5f70af2111162eddc2e30beba0cf55ebaa3a77bcfc29a1c05c61",
+    "tools/apex_workbench/lap/ui_data.py": "fc3986c4d49d264c08c49e4320af7373b1b34803124d57eb4fcc6d65d8804f00",
+    "tools/apex_workbench/lap/ui_replay.py": "e54152874840df7bd97454a96982628fa0657ac7d26370bd587d440c96148ac7",
+    "tools/apex_workbench/lap/ui_theme.py": "36c9e6755fc510f82c56e8880c3dde910b5e3a9f45981aee09e02bb477d60b05",
+    "tools/apex_workbench/lap/ui_views.py": "8e5df937ba49e5b0b29a537c509c300574c6c81f2ed01af2ff8f64a8401f57fb",
+    "tools/apex_workbench/lap/ui_web/camera.mjs": "18ef4d031dc709793f41405a291745c3cd59edb43d2299023403826984bab532",
+    "tools/apex_workbench/lap/ui_web/clock.mjs": "ff9ba7d4834acc5b5a4ef43eb06fbc6af4dbe13a0c5852cff767391d3084e97a",
+    "tools/apex_workbench/lap/ui_web/host.css": "438265d626c1d0dac6382e8210e4b7f6ed72b11685fd0169df79441e6c1500cf",
+    "tools/apex_workbench/lap/ui_web/index.html": "f7ce8ee8fd50fd164084d0e1ebe35ea5708974f26089c302d39d1c580cec3629",
+    "tools/apex_workbench/lap/ui_web/instruments.mjs": "ffaad2ffb99cb8d49471a9a56d80c84f6c1d7c6d223394ae26cb4006916c8b4c",
+    "tools/apex_workbench/lap/ui_web/style.css": "2d94c58f0e7010bac838474afe89146d169d05eae911fb646b7d1dc7c0d548b1",
+    "tools/apex_workbench/lap/ui_web/tokens.css": "f8b52acde65ed542c28fc38593d2d71d7994a2c001c6f163c9da7c340fc3ef0c",
+    "tools/apex_workbench/lap/ui_web/viewer.mjs": "c445a0ebcf3f1dda0cb214c2c64421af7457e1a9f6d881e26c08f815ea25554d",
+    "tools/apex_workbench/lap/worker.py": "b3a3b0eaa17c24233a62e32be6b8cd357cd0b11c7b62b744391a24712f0909f8",
+    "tools/apex_workbench/lifecycle.py": "794bd5ada88048a402a2d0946942ec9962e52b0caf2e72d7a8a3a0279f51f05a",
+    "tools/apex_workbench/nmpc_analysis.py": "9bf1a7efe44ee4bb9f1199356f58a3f0caa31d7783543e03f26ca6abebc01beb",
+    "tools/apex_workbench/nmpc_scratch.py": "50bd86590980f2abb98f6e7e6a01e169a9e72584fe009b53faabcc357cf72d78",
+    "tools/apex_workbench/nmpc_scratch_panels.py": "ea08206b4f765c99d7dc7ae48c447d5fcb9a7029a2178e9be9b43d8e031a58e8",
+    "tools/apex_workbench/nmpc_scratch_profile.json": "52ffa7cbb4308bb8814b7512fbb61d685e27fbe9af83b1acec926217b8f42fab",
+    "tools/apex_workbench/nmpc_scratch_worker.py": "d6ee20dcd56f9f2123aed9afa3796bf0bce9f63da21583982470f9a2645737e3",
+    "tools/apex_workbench/nmpc_weight_lab.py": "8751fdfea3c1071fed61dc463d0827894b876295c1a5810647320964c6be1700",
+    "tools/apex_workbench/nmpc_weight_panels.py": "8b0e1723cbe1d8428c223e2b4c2fa998823096e68998fe5a592c2b2c85581b0a",
+    "tools/apex_workbench/nmpc_weight_worker.py": "d1051d60263936f173e4b691f1407a2b8fbb801f4825ff926e75112eda18ef01",
+    "tools/apex_workbench/run_catalog.py": "f48089c848a9cc2e78102dad23fcbc15be360a9931b4f55d698c0948a1a0908c",
+    "tools/apex_workbench/scratch_replay.py": "519317232826bdf132048172f2df1ed65d8924f0b4f5c2d1c05ef6880f3cce1e",
+    "tools/apex_workbench/scratch_replay_web/clock.mjs": "ff9ba7d4834acc5b5a4ef43eb06fbc6af4dbe13a0c5852cff767391d3084e97a",
+    "tools/apex_workbench/scratch_replay_web/index.html": "7d9ecedef30c7ab088a8a3b38228901f18bc741b88f4b440e92a5d70080657bb",
+    "tools/apex_workbench/scratch_replay_web/style.css": "20bca79c8f522995b7e64cca7f9a8131a5b7b005b39c89fe93e23f318746f964",
+    "tools/apex_workbench/scratch_replay_web/viewer.mjs": "5d4a5aabe4eddd4a21f09e37b8da249b0e27582b25395e781589b394b84a4c3d",
+    "tools/apex_workbench/storage.py": "962ff863823f8fa22edf46530730db3a042328fb940bc51036ba18aa2e221c96",
+    "tools/apex_workbench/worker.py": "17293f2fc7775a1601de3f6c95bd28bcafc0766188efca588f8d7894ee8ff91c",
+    "tools/apex_workbench/workspace.py": "85722940dcbc464c4b5f05547278d33e1e3f8c40439dcb4d75c8388e026df2ae"
+  },
+  "test_environment": {
+    "python": "3.12.14 (main, Sep  1 2026, 14:09:38) [Clang 22.1.3 ]",
+    "executable": "/Users/marwansaber/.codex/worktrees/nmpc-weight-m0/MPC_Controller_v1_IronManStyle/tools/apex_workbench/.venv/bin/python",
+    "platform": "macOS-26.5.1-arm64-arm-64bit"
+  },
+  "focused_tests": {
+    "command": "tools/apex_workbench/.venv/bin/python -B -m pytest -q tools/apex_workbench/tests/test_lap_final.py tools/apex_workbench/tests/test_lap_ui.py tools/apex_workbench/tests/test_lap_v2.py tools/apex_workbench/tests/test_scratch_replay.py -k 'not source_isolated_configuration' --basetemp=/private/tmp/apex-v2-final-final --junitxml=results/apex_workbench_v2_final/focused_final.xml > results/apex_workbench_v2_final/focused_final.log 2>&1",
+    "passed": 105,
+    "deselected": 1,
+    "failures": 0,
+    "skips": 0,
+    "seconds": 29.09,
+    "deselection": "Unchanged native-dataclass composition subprocess; no new visual-test optimizer/plant execution."
+  },
+  "test_history": [
+    {
+      "log": "focused_1.log",
+      "passed": 99,
+      "errors": 4,
+      "reason": "Imported pytest fixture removed by initial lint autofix; fixture registration corrected."
+    },
+    {
+      "log": "focused_2.log",
+      "passed": 103
+    },
+    {
+      "log": "focused_candidate.log",
+      "passed": 104
+    }
+  ],
+  "counts_not_combined": true,
+  "js": {
+    "outcome": "PASS",
+    "checks": 2847,
+    "scientific_runs": 0
+  },
+  "browser": {
+    "at125": {
+      "applicationTime": "0.125",
+      "appliedDeg": "1.1474909912880464",
+      "appliedRad": "0.020027495934949978",
+      "nativeTime": "0.125",
+      "nominalRad": "-0.003984999314297534",
+      "requestTime": "0.12",
+      "visualAngleRad": "0.24032995121939973",
+      "visualRatio": "12"
+    },
+    "initialNodes": 9,
+    "playback": {
+      "segment": "{\"simulated_s\":9.870000000000001,\"wall_s\":9.886299999974668,\"speed\":1,\"frames\":219,\"max_gap_ms\":233.29999999701977}",
+      "text": "2000 native samples; duration. Last playback segment: 9.8700 simulated s / 9.8863 wall s at 1\u00d7; 219 rendered frames; maximum painted-frame gap 233.3 ms. Display timing only."
+    },
+    "camera": {
+      "camera": "{\"x\":9.917488093470816,\"y\":-16.507372758011268,\"scale\":98.76908390215354}",
+      "position": "[11.662639256460809,-15.651280056668533]"
+    },
+    "livePacket": "Following available active packet 99",
+    "terminal": {
+      "control": "Terminal predicted state \u00b7 no terminal control interval.",
+      "heading": "-0.51\u00b0 / -0.00893 rad",
+      "rows": 9
+    },
+    "followVehicle": {
+      "frame": "{\"x\":6.009975614096293,\"y\":-4.367335472720033,\"scale\":50.47704160995435}",
+      "position": "[4.646963603705146,-0.23720583678264356]"
+    },
+    "ratio6": {
+      "applicationTime": "0.125",
+      "appliedDeg": "1.1474909912880464",
+      "appliedRad": "0.020027495934949978",
+      "nativeTime": "0.125",
+      "nominalRad": "-0.003984999314297534",
+      "requestTime": "0.12",
+      "visualAngleRad": "0.12016497560969987",
+      "visualRatio": "6"
+    },
+    "historical": {
+      "label": "Historical inspection \u00b7 packet 99 \u00b7 not available at this replay time \u00b7 selection does not confer authority",
+      "authority": "TVLQR \u00b7 packet 0",
+      "steering": "0.020027495934949978"
+    },
+    "liveNodeChange": {
+      "playing": "true",
+      "node": "Node 8 / 8 \u00b7 native target 1.340 s",
+      "authority": "TVLQR \u00b7 packet 5"
+    },
+    "transitionStart": {
+      "epoch": "50ddbd7f1fd0d454c181e60844dec61fa56401df0d3aaf258c691c84228c4555",
+      "time": "9.900 / 10.000 s \u00b7 Paused"
+    },
+    "continuation": {
+      "epoch": "c4efb1a383efebe39fbe0a728a0cb1f67aa8adc1929ae46c4431552cb4de5758",
+      "loads": "2",
+      "time": "19.995 / 19.995 s \u00b7 Paused",
+      "transition": "Continued after source verification; no simulated time added during the boundary pause.",
+      "coverage": {
+        "segment": "{\"simulated_s\":9.995000000000001,\"wall_s\":5.003300000095361,\"speed\":2,\"frames\":113,\"max_gap_ms\":50.10000000000582}",
+        "text": "2000 native samples; duration. Last playback segment: 9.9950 simulated s / 5.0033 wall s at 2\u00d7; 113 rendered frames; maximum painted-frame gap 50.1 ms. Display timing only."
+      }
+    },
+    "quarantine": {
+      "visibleError": [
+        "DISPOSABLE COPY / SOFTWARE INTEGRITY FIXTURE \u00b7 Original retained evidence is untouched. This copy is not a new scientific execution.",
+        "Evidence quarantined: Unverified artifact derived/states-00000.jsonl: [Errno 2] No such file or directory: '/Users/marwansaber/.codex/worktrees/nmpc-weight-m0/MPC_Controller_v1_IronManStyle/results/apex_workbench_v2_final/quarantine_fixture/runs/2026-11-10T145233.755880_0000_f46cc76634dd4322b1720f37eb96442b/derived/states-00000.jsonl'"
+      ],
+      "iframes": 0
+    },
+    "mobile": {
+      "viewport": {
+        "scrollWidth": 390,
+        "width": 390
+      },
+      "component": {
+        "scrollWidth": 358,
+        "width": 358
+      }
+    }
+  },
+  "preservation": {
+    "historical_files": 13280,
+    "historical_links": 573,
+    "changed_historical_files": [],
+    "changed_links": [],
+    "frozen_scientific_files": 333,
+    "changed_scientific_files": [],
+    "canonical_files": 335,
+    "changed_canonical_files": [],
+    "changed_v1_producers_or_launcher": [],
+    "changed_execution_or_clock_or_launcher": [],
+    "allowed_policy_transition_only": false,
+    "current_policy_sha256": "03b6fbabdfd6bf5416087c78338a9ef335a4f8205724a1214f5f0a1d39ff3574"
+  },
+  "resource_change": {
+    "full_lap_only": {
+      "wall_s": [
+        600,
+        900
+      ],
+      "cpu_s": [
+        480,
+        720
+      ]
+    },
+    "other_profile_fields_unchanged": true,
+    "original_projection_cpu_s": 551.42816
+  },
+  "execution": {
+    "new_scientific_attempts": 0,
+    "policy_installation": "not yet performed",
+    "independent_review": "pending exact committed source",
+    "conditional_full_lap": "one baseline attempt only, after PASS and fresh host/source gates",
+    "automatic_retry": false
+  },
+  "negative_readonly_projection_attempt": {
+    "reason": "Symlink-spelled executable differed from retained environment; existing venv directory resolved before isolated launch. Complete environment checks preserved.",
+    "scientific_execution_started": false
+  },
+  "reference_initialization_observation": {
+    "cold_wall_s": 12.944942416041158,
+    "bootstrap_s": 2.756534666987136,
+    "geometry_s": 8.012387000024319,
+    "projection_s": 1.7314887499669567,
+    "meaning": "Initial read-only projection before geometry-session reuse; not a scientific run or performance guarantee"
+  },
+  "artifacts": {
+    "results/apex_workbench_v2_final/lint_initial.log": {
+      "sha256": "f8f162134a6158aa37019136465eef36a1c5940def748a23dc95dbaa262d4d55",
+      "bytes": 5077
+    },
+    "results/apex_workbench_v2_final/preservation_current.json": {
+      "sha256": "fad2f007c9ef5eb947d9fe56e065b55fc0044e86f414e1505d33b529b73d1a5c",
+      "bytes": 471
+    },
+    "results/apex_workbench_v2_final/lint_remaining.log": {
+      "sha256": "817baf64f52fbc1c7ecb6c9b08fc07e68185ee838cccaf69e68d72b7e753ed36",
+      "bytes": 522
+    },
+    "results/apex_workbench_v2_final/lint_final_cases.log": {
+      "sha256": "ac359cb742d7cb1b33747098f3dbdfb55a8387ba6835fae77c4949818c32d00c",
+      "bytes": 141
+    },
+    "results/apex_workbench_v2_final/quarantine_negative.json": {
+      "sha256": "8918dcbe36f0d342df8ce2895c918c1932df0187c46d5fac22535235a36c274d",
+      "bytes": 554
+    },
+    "results/apex_workbench_v2_final/reference_projection.json": {
+      "sha256": "9276713154f58872e351fa5274e3c69f0698430424488c3fc9dbb28db28eaaed",
+      "bytes": 613267
+    },
+    "results/apex_workbench_v2_final/focused_candidate.log": {
+      "sha256": "7adf5717e1587b21ec262d0259d56fff70e3255ce36c9c957e7f7f63f15f759b",
+      "bytes": 195
+    },
+    "results/apex_workbench_v2_final/transport_app.py": {
+      "sha256": "508f0d11b79ca2733d236058b98538e722021c860e88709870824ea7c53ef68d",
+      "bytes": 1594
+    },
+    "results/apex_workbench_v2_final/pilot_display.json": {
+      "sha256": "f05b1d5842b48e4678f3f505200c25b6a697de5b0f785b09ba59e351bbea8e5a",
+      "bytes": 2248072
+    },
+    "results/apex_workbench_v2_final/js_candidate.json": {
+      "sha256": "88fded13a49df713b9e83ce57792b8eb51874ccf81dacf4bf6ba15c7e6393251",
+      "bytes": 65
+    },
+    "results/apex_workbench_v2_final/focused_1.xml": {
+      "sha256": "21146d5c1f09d70828e57c939ce687b0217d9541c03d7a862da0e09fe47e6427",
+      "bytes": 23131
+    },
+    "results/apex_workbench_v2_final/access_before.json": {
+      "sha256": "03b6fbabdfd6bf5416087c78338a9ef335a4f8205724a1214f5f0a1d39ff3574",
+      "bytes": 4492
+    },
+    "results/apex_workbench_v2_final/focused_final.log": {
+      "sha256": "7cdfb6ecc02efc9814baf423d6069e9e93484e98f38692f52129ff656c30c8c4",
+      "bytes": 195
+    },
+    "results/apex_workbench_v2_final/focused_2.xml": {
+      "sha256": "86f337185efc8f89fce1222fbde0afb1907047d1ad17c02a2d30029d7bfd413a",
+      "bytes": 15523
+    },
+    "results/apex_workbench_v2_final/lint_final.log": {
+      "sha256": "e77b22b1fb9c744840c64a3eac6edcda5f58db7607e19812227e9ef387f8ca5f",
+      "bytes": 46
+    },
+    "results/apex_workbench_v2_final/quarantine_app.py": {
+      "sha256": "fb1e77bcbc14ae980771b47d4dbe60fa1e11e7eddcc6b5aaa59c838fce2a03a3",
+      "bytes": 820
+    },
+    "results/apex_workbench_v2_final/lint_check.log": {
+      "sha256": "da871ea2ccdcd7a4bd12668b9669ed4f3c4adc923f6624621de5e40f40f87837",
+      "bytes": 155
+    },
+    "results/apex_workbench_v2_final/pilot_display_candidate.json": {
+      "sha256": "b5f0f057e94911400e2e4169c9bed5a9d6f944f19298b5ae4529c148dd745092",
+      "bytes": 2248121
+    },
+    "results/apex_workbench_v2_final/focused_1.log": {
+      "sha256": "d120b2abe6597371f9d6fe9a28612a9218f96f41f98364b68021e077af5f71ba",
+      "bytes": 4744
+    },
+    "results/apex_workbench_v2_final/focused_final.xml": {
+      "sha256": "3fe797718525918399348177e3f9835a3e384b02632b9958a5d4fca7667965fa",
+      "bytes": 15829
+    },
+    "results/apex_workbench_v2_final/focused_2.log": {
+      "sha256": "f82a51f489c99f857135618a7ca57082667488b4cc95492593a0f81964ef3017",
+      "bytes": 195
+    },
+    "results/apex_workbench_v2_final/prior_preservation_inventory.json": {
+      "sha256": "10a54cf2ed008d039b8253eded215bf7dd25781de5a70f2d43e5fbcb7dcc4735",
+      "bytes": 2946618
+    },
+    "results/apex_workbench_v2_final/js_checks.json": {
+      "sha256": "88fded13a49df713b9e83ce57792b8eb51874ccf81dacf4bf6ba15c7e6393251",
+      "bytes": 65
+    },
+    "results/apex_workbench_v2_final/audit_preservation.py": {
+      "sha256": "864cf7131d6da1086a6f90b024d92799aab7df93a220ae9c21806af55980a407",
+      "bytes": 1992
+    },
+    "results/apex_workbench_v2_final/preservation_before.json": {
+      "sha256": "bf5e900ff1092446b72200d65fe6960ff78576ea782b741714ff83206ecdc2f9",
+      "bytes": 2946650
+    },
+    "results/apex_workbench_v2_final/focused_candidate.xml": {
+      "sha256": "13f840d985beace2b72a7b1ce3e12fa5fa9671a4813191b255d4276a48c8bf6d",
+      "bytes": 15684
+    },
+    "results/apex_workbench_v2_final/browser_checks.json": {
+      "sha256": "9268b3837330e860a813a99ecb0eeab7997275f26c2460bb4a1d8b96fbd4f89e",
+      "bytes": 3402
+    },
+    "results/apex_workbench_v2_final/screenshots/02-microscope.jpg": {
+      "sha256": "077b91d8d753e58ce59081b4e00aaee33a2b7a4ac93e0faa6896233c0c6acc07",
+      "bytes": 102178
+    },
+    "results/apex_workbench_v2_final/screenshots/05-mobile-replay.jpg": {
+      "sha256": "110e3d7934c2c309441ac41aef3eef8d98632586341a230f02b05321550cfa7b",
+      "bytes": 37415
+    },
+    "results/apex_workbench_v2_final/screenshots/06-mobile-microscope.jpg": {
+      "sha256": "2442d4667bbaa5d6329bfa0b4fe26becba66bd53db77f7ed2639553077febc0c",
+      "bytes": 35165
+    },
+    "results/apex_workbench_v2_final/screenshots/03-verified-window-continuation-fixture.jpg": {
+      "sha256": "84724b5a1ad263c7e3962fd2b671610d15da4f77d7127e3670324806b55bf65b",
+      "bytes": 116032
+    },
+    "results/apex_workbench_v2_final/screenshots/04-evidence-quarantine.jpg": {
+      "sha256": "d02bc6c0923a8223aeaefd55b93f7d6a72ce4333a44e4fb2ff62cd3992c6e257",
+      "bytes": 44659
+    },
+    "results/apex_workbench_v2_final/screenshots/01-follow-prediction.jpg": {
+      "sha256": "8203f96da5992abc3d2f2f1a893bc7682ef040f287e5c27d6bbb5650fbd76ee7",
+      "bytes": 102246
+    }
+  },
+  "next_gate": "Independent Engineering Review of exact candidate, then terminate review/UI/tests/helpers and conditionally take one full-lap attempt."
+}

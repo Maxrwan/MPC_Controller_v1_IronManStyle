@@ -121,7 +121,7 @@ def read_run(directory):
             raise ValueError("Malformed V2 artifact member")
         storage.artifact_bytes(directory, name)
     request = storage.artifact_json(directory, "request.json")
-    config.validate(request["effective"])
+    config.validate_retained(request["effective"])
     if request["run_id"] != directory.name or request.get("adapter") != "nmpc_lap_v2":
         raise ValueError("V2 run identity differs")
     view = {"directory": directory, "status": status, "request": request, "anchor": anchor}

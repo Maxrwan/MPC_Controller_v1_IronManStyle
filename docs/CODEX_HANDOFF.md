@@ -1,4 +1,27 @@
-# Current handoff — V2 engineering UI ready for Primary acceptance
+# Current handoff — final V2 corrections pending exact independent review
+
+**WORK_COMPLETE_PENDING_REVIEW.** `codex/workbench-v2-ui`, starting deliverye45059c.
+[Primary authorization](workbench_v2_final/PRIMARY_WORK.md), [WORK](workbench_v2_final/WORK.md),
+[machine evidence](workbench_v2_final/work_record.json). Primary accepts reviewedb1cc8b3 presentation
+as the foundation and authorizes four cameras, illustrative12:1 wheel, nine-node derived-reference
+microscope, bounded verified continuation, Full Lap900s/720s caps and one conditional baseline attempt.
+No frozen scientific math, V1/Extended limit or original evidence changed. Historical pilot profile
+remains readable under its exact old hash; current execution stays strict. New source-bound policy
+transition and once-only driver are implemented, but the production policy is still untouched/stale.
+105focused tests pass /1 deliberate deselection;2,847 JS assertions. Actual desktop/mobile, live
+packet/node display, ratio distinction, historical isolation, verified two-window fixture continuation
+and disposable-evidence quarantine checked. Cold reference construction remains about13s; boundary
+pauses possible. No numerical attempt, claim, repeated pilot or acceptance transition has run.
+
+Next: exact independent Engineering Review, then (only on PASS) terminate all review/tests/UI/helpers,
+install explicit source-bound WORK policy, take fresh unchanged host/source preflight and attempt
+baseline Full Lap once. Retain outcome, no retry. If successful, prepare but do not install pending
+interactive acceptance. Final stop: WORKBENCH_V2_FINAL_READY_FOR_PRIMARY_ACCEPTANCE.
+No broad scientific Verification, qualification campaign, ROS/exporter, Docker or later stage.
+
+---
+
+# Historical handoff — V2 engineering UI ready for Primary acceptance
 
 **WORKBENCH_V2_UI_READY_PENDING_PRIMARY_USER_ACCEPTANCE.** Branch `codex/workbench-v2-ui`.
 Exact reviewed UI source `b1cc8b3d7b306a56adf99a63d8dc689c13856114`, starting delivery

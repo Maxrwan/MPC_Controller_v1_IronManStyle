@@ -1,7 +1,9 @@
 """Versioned selection and source-bound admission; no numerical imports."""
 
+import copy
 import hashlib
 import json
+from functools import lru_cache
 from pathlib import Path
 
 from tools.apex_workbench import nmpc_scratch as v1
@@ -12,6 +14,31 @@ HERE = Path(__file__).parent
 PROFILE = storage.read_json(HERE / "profile.json")
 OUTPUT = ROOT / "results/apex_workbench_v2_lap"
 RUNS = OUTPUT / "runs"
+LEGACY_REVISION = "fdd494eb7ddf9b456b88cba243fbc704a4fd83c0"
+
+
+@lru_cache(maxsize=1)
+def legacy_profile():
+    raw = v1.frozen.git("show", LEGACY_REVISION + ":tools/apex_workbench/lap/profile.json")
+    return hashlib.sha256(raw).hexdigest(), json.loads(raw)
+
+
+def validate_retained(value):
+    """Read the exact historical profile; never authorize a new execution with its digest."""
+    if value.get("profile_sha256") == storage.sha256(HERE / "profile.json"):
+        return validate(value)
+    digest, old = legacy_profile()
+    allowed = copy.deepcopy(old)
+    allowed["limits"]["full_lap"].update(wall_s=900, cpu_s=720)
+    if value.get("profile_sha256") != digest or PROFILE != allowed:
+        raise ValueError("Unsupported retained V2 profile identity or profile transition")
+    result = validate({**value, "profile_sha256": storage.sha256(HERE / "profile.json")})
+    return {**result, "profile_sha256": digest}
+
+
+def baseline_pilot(value):
+    checked = validate_retained(value)
+    return {**checked, "profile_sha256": defaults()["profile_sha256"]} == defaults()
 
 
 def safe(path):
@@ -64,6 +91,14 @@ def producers():
     return {name: storage.sha256(ROOT / name) for name in sorted(set(paths))}
 
 
+def policy_identity(policy):
+    """Bind every policy field except the once-only mutable full-lap run ID."""
+    value = {**policy, "used": {k: v for k, v in policy["used"].items() if k != "full_lap"}}
+    return hashlib.sha256(
+        json.dumps(value, sort_keys=True, separators=(",", ":")).encode()
+    ).hexdigest()
+
+
 def access(value, *, consume=None, run_id=None):
     value = validate(value)
     policy = storage.read_json(safe(OUTPUT / "access.json"))
@@ -93,6 +128,7 @@ def access(value, *, consume=None, run_id=None):
         if (
             accepted.get("schema") != "apex-lap-primary-acceptance/1"
             or accepted.get("accepted_revision") != policy["reviewed_revision"]
+            or accepted.get("decision") != "ACCEPTED"
         ):
             raise ValueError(
                 "Repeatable V2 needs explicit final Primary acceptance of this revision"
@@ -100,6 +136,30 @@ def access(value, *, consume=None, run_id=None):
         return policy
     if policy.get("stage") != "reviewed-work":
         raise ValueError("V2 execution awaits review/acceptance")
+    authorization = storage.read_json(authority)
+    if (
+        authorization.get("schema") != "apex-lap-final-work-authorization/1"
+        or authorization.get("reviewed_revision") != policy["reviewed_revision"]
+        or authorization.get("profile_sha256") != value["profile_sha256"]
+        or authorization.get("scientific_source") != v1.frozen.SOURCE
+        or policy.get("automatic_retry") is not False
+        or authorization.get("primary_brief_sha256")
+        != hashlib.sha256(
+            v1.frozen.git(
+                "show", policy["reviewed_revision"] + ":docs/workbench_v2_final/PRIMARY_WORK.md"
+            )
+        ).hexdigest()
+    ):
+        raise ValueError("Source-bound Primary WORK authorization differs")
+    prior = authorization["prior_policy"]
+    prior_path = safe(Path(prior["path"]))
+    if storage.sha256(prior_path) != prior["sha256"]:
+        raise ValueError("Historical execution policy changed")
+    historical = storage.read_json(prior_path)
+    if any(policy.get("used", {}).get(k) != v for k, v in historical["used"].items()) or policy.get(
+        "maximum_genuine_attempts"
+    ) != historical.get("maximum_genuine_attempts"):
+        raise ValueError("Historical consumed attempts must remain intact")
     slot = "pilot" if value == defaults() else "full_lap" if value == defaults("full_lap") else None
     if (
         slot is None
@@ -109,6 +169,8 @@ def access(value, *, consume=None, run_id=None):
         raise ValueError(
             "Only the once-only baseline10s pilot and conditional full lap are authorized"
         )
+    if slot not in authorization.get("allowed_new_slots", []):
+        raise ValueError("This slot is not authorized by the current Primary assignment")
     if slot in policy["used"] and policy["used"][slot] != run_id:
         raise ValueError("This V2 WORK attempt is already consumed; no automatic retry")
     if run_id is not None and policy["used"].get(slot) != run_id:
@@ -123,6 +185,9 @@ def access(value, *, consume=None, run_id=None):
         if (
             declared["pilot_manifest_sha256"] != pilot["status"]["manifest_sha256"]
             or declared["budget"] != budget
+            or declared.get("reviewed_revision") != policy["reviewed_revision"]
+            or declared.get("policy_identity") != policy_identity(policy)
+            or declared.get("host", {}).get("status") != "PASS"
         ):
             raise ValueError("Full-lap finite pilot-supported preflight differs")
     if consume is not None:

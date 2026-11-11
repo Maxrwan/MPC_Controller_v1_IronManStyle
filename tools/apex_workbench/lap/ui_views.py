@@ -70,8 +70,7 @@ def configure():
         st.info(
             (
                 "One complete finish-line circuit after the partial launch "
-                "crossing; 80 s ceiling. Execution remains blocked by the retained"
-                " resource preflight."
+                "crossing; 80 s ceiling. Current resource and source admission is shown on Run."
             )
         )
     if st.button("Reset cost multipliers"):
@@ -189,12 +188,18 @@ def run():
         with st.expander("Execution gate details"):
             st.code(str(error), language=None)
     if v2:
-        budget = ui_data.full_lap_gate()
-        st.caption(
-            f"Retained full-lap gate: {budget['projection']['cpu_s']:.2f} s projected CPU "
-            f"exceeds the unchanged {budget['limits']['cpu_s']} s ceiling. "
-            "This UI delivery does not authorize another pilot or full lap."
-        )
+        try:
+            budget = ui_data.full_lap_gate()
+            estimate, ceilings = budget["conservative_extrapolation"], budget["limits"]
+            st.caption(
+                f"Current Full Lap projection: {estimate['cpu_s']:.2f} / "
+                f"{ceilings['cpu_s']} CPU s; "
+                f"{estimate['wall_s']:.2f} / {ceilings['wall_s']} wall s. "
+                "Resource projection fits; the selected experiment's "
+                "source-bound gate remains separate."
+            )
+        except ERRORS as error:
+            st.warning("Full-lap resource projection unavailable: " + str(error))
     if st.button("Run experiment", type="primary", disabled=not ready):
         try:
             directory = execution.start(value) if v2 else jobs.start_run(transient.ADAPTER, value)
@@ -304,7 +309,7 @@ def replay():
         selected = windows[0]
         if len(windows) > 1:
             selected = st.selectbox(
-                "Native recording window",
+                "Start replay at native window",
                 windows,
                 format_func=lambda w: (
                     f"{view['raw']['states'][w[0]]['time']:.3f}–"
@@ -312,7 +317,7 @@ def replay():
                     f"{w[1] - w[0]} native states"
                 ),
             )
-        ui_replay.replay(ui_data.window(view, selected))
+        ui_replay.replay(view, selected)
         with st.expander("Recording outcome, provenance & scientific boundaries"):
             st.write(
                 "Execution: "

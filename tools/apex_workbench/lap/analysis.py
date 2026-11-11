@@ -221,7 +221,7 @@ def comparison(a, b):
 def resource_budget(pilot):
     status = pilot["status"]
     if (
-        pilot["request"]["effective"] != config.defaults()
+        not config.baseline_pilot(pilot["request"]["effective"])
         or not pilot["summary"]["coverage_completed"]
         or pilot["raw"].get("failure")
         or status.get("state") != "completed"

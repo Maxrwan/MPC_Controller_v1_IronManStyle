@@ -1551,3 +1551,19 @@ from the captured immutable source/hash. Full scientific records remain separate
 display payloads. Existing production validators and versioned draft mechanisms remain the only
 configuration framework. Include UI assets in the V2 producer inventory without resealing the old
 policy or altering its consumed claims/resource gates. See [UI WORK](workbench_v2_ui/WORK.md).
+
+## Final V2 display and resource admission (2026-11-11)
+
+Use the unchanged native replay clock with display-only smooth camera translation/zoom. A client-only
+12:1 illustrative wheel ratio maps actual applied delta; it never enters configuration or commands.
+Derive horizon reference/error geometry with the original frozen PlanningReference/coordinate/angle
+APIs in a bounded read-only process; retain complete source/dependency checks and explicit derived
+classification. Cache only immutable captured inputs/results, never mutable evidence checks. Prefetch
+one next window and recheck the full anchor at publication; pause at boundaries until verified rather
+than inventing elapsed scientific time. Retain nine states/eight intervals and terminal command absence.
+
+Authorize only the Full Lap900s wall/720s CPU profile delta. Preserve the original pilot's profile hash
+through a narrowly checked read-only legacy path; new runs require current identity. Explicitly bind
+new WORK authority/review/source/profile to exact prior-policy bytes and consumed history. Source and
+approved environment preflight precede the one claim. A pending acceptance decision must fail closed;
+ordinary repeatable V2 execution remains a separate Primary acceptance transition.

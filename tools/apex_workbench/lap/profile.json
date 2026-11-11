@@ -13,7 +13,7 @@
   "recording": {"chunk_bytes": 2097152, "jacobian_logging": "omitted; accepted V1 local-linear inspection remains available", "replay_window_s": 10},
   "limits": {
     "extended": {"wall_s": 180, "cpu_s": 120, "sampled_rss_bytes": 805306368, "sampled_output_bytes": 134217728, "single_file_bytes": 4194304},
-    "full_lap": {"wall_s": 600, "cpu_s": 480, "sampled_rss_bytes": 805306368, "sampled_output_bytes": 268435456, "single_file_bytes": 4194304}
+    "full_lap": {"wall_s": 900, "cpu_s": 720, "sampled_rss_bytes": 805306368, "sampled_output_bytes": 268435456, "single_file_bytes": 4194304}
   },
   "classification": "SYNTHETIC / EXPERIMENTAL / UNQUALIFIED"
 }

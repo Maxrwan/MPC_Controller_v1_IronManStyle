@@ -12,7 +12,7 @@ from tools.apex_workbench import nmpc_scratch as transient
 from tools.apex_workbench import nmpc_scratch_panels as short
 from tools.apex_workbench import scratch_replay, storage
 
-from . import analysis, evidence, panels
+from . import analysis, config, evidence, panels, reference_view
 
 BASE_DELIVERY = "afa85389ccdb532816702f0ab5d3a4a49e54918f"
 REFERENCE = "configs/planning/task007b/gamma_2p000/planning_reference.csv"
@@ -174,7 +174,22 @@ def payload(view):
     base["planning_reference"] = (
         reference(view["request"]["effective"]["scientific_source"], ref_hash) if ref_hash else []
     )
+    if ref_hash and base["packets"]:
+        projected = reference_view.project(recorded, base["packets"])
+        lookup = {packet["id"]: packet["nodes"] for packet in projected["packets"]}
+        for packet in base["packets"]:
+            packet["microscope"] = lookup[packet["id"]]
+            if [n["predicted_xy"] for n in packet["microscope"]] != packet["xy"]:
+                raise ValueError("Pinned and retained prediction geometry differ")
+        microscope_status = projected["classification"]
+    else:
+        for packet in base["packets"]:
+            packet["microscope"] = None
+        microscope_status = "Unavailable: captured Planning reference or native packets missing"
     base["meta"] = {
+        "software_fixture": view.get("ui_software_fixture", False),
+        "next_window": False,
+        "microscope_status": microscope_status,
         "track_length_m": length,
         "initial_s_abs_m": initial,
         "horizon": recorded["resolved"]["configuration"]["horizon"],
@@ -204,11 +219,10 @@ def payload(view):
 
 
 def full_lap_gate():
-    """Retained budget decision, explicitly historical; never an execution override."""
-    record = json.loads(
-        transient.frozen.git("show", BASE_DELIVERY + ":docs/workbench_v2_lap/work_record.json")
-    )
-    return record["full_lap_resource_preflight"]
+    """Current resource projection; execution admission is independently source/policy gated."""
+    policy = storage.read_json(config.safe(config.OUTPUT / "access.json"))
+    pilot = evidence.read_run(config.RUNS / policy["used"]["pilot"])
+    return analysis.resource_budget(pilot)
 
 
 def trace(rows, x, field, maximum=2000):
