@@ -50,8 +50,11 @@ def test_unsupported_values_never_reach_execution(fault):
 def prepared(tmp_path, monkeypatch):
     """Real installers and byte checks, isolated writes; Git candidate is a software-test double."""
     before = (ORIGINAL_OUTPUT / "access.json").read_bytes()
-    assert hashlib.sha256(before).hexdigest() == operational.HISTORY_SHA
-    (tmp_path / "access.json").write_bytes(before)
+    historical = (
+        config.ROOT / "results/apex_workbench_v2_operational/access_before.json"
+    ).read_bytes()
+    assert hashlib.sha256(historical).hexdigest() == operational.HISTORY_SHA
+    (tmp_path / "access.json").write_bytes(historical)
     for run_id in operational.HISTORY.values():
         shutil.copytree(ORIGINAL_RUNS / run_id, tmp_path / "runs" / run_id)
     old_git = config.v1.frozen.git
@@ -146,7 +149,7 @@ def metadata_smoke(policy, *, run_id="metadata_smoke_NOT_SCIENTIFIC_EXECUTION", 
             "packets": [],
             "lap_times": [],
             "failure": None,
-            "end_time": 5,
+            "end_time": 4.999999999999915,
             "stop_reason": "duration",
         },
     )
@@ -164,7 +167,7 @@ def metadata_smoke(policy, *, run_id="metadata_smoke_NOT_SCIENTIFIC_EXECUTION", 
             "coverage_completed": True,
             "failure": None,
             "stop_reason": "duration",
-            "native_end_time_s": 5,
+            "native_end_time_s": 4.999999999999915,
         }
         for name in ("summary.json", "worker_result.json"):
             storage.write_json(directory / name, summary)
@@ -209,6 +212,51 @@ def test_interactive_all_modes_and_costs_do_not_mutate_slots(accepted):
         assert config.access(value, consume="metadata-only-user-id")["used"] == operational.HISTORY
     assert (config.OUTPUT / "access.json").read_bytes() == before
     assert accepted["stage"] == "accepted-interactive"
+
+
+@pytest.mark.parametrize(
+    "fault", [None, "no_review_permission", "execution_change", "membership", "review_bytes"]
+)
+def test_post_smoke_compatibility_is_explicit_and_acceptance_only(tmp_path, monkeypatch, fault):
+    # Use the actual retained smoke identity, but write only a software-test review in tmp.
+    actual_policy = storage.read_json(
+        ORIGINAL_OUTPUT / "operational_3ccf294_20261111/policy_smoke.json"
+    )
+    accepted = {
+        **actual_policy,
+        "reviewed_revision": "b" * 40,
+        "producer_sha256": config.producers(),
+        "review_record": str(tmp_path / "review.json"),
+    }
+    review = {
+        "outcome": "PASS",
+        "candidate": accepted["reviewed_revision"],
+        "smoke_compatibility": {
+            "execution_revision": actual_policy["reviewed_revision"],
+            "accepted_revision": accepted["reviewed_revision"],
+            "changed_producers": ["tools/apex_workbench/lap/operational.py"],
+            "classification": "acceptance-metadata-only",
+            "scientific_execution_unchanged": True,
+        },
+    }
+    if fault == "no_review_permission":
+        review.pop("smoke_compatibility")
+    elif fault == "execution_change":
+        accepted["producer_sha256"]["tools/apex_workbench/lap/worker.py"] = "0" * 64
+    elif fault == "membership":
+        accepted["producer_sha256"].pop("tools/apex_workbench/lap/worker.py")
+    storage.write_json(tmp_path / "review.json", review)
+    accepted["review_sha256"] = storage.sha256(tmp_path / "review.json")
+    if fault == "review_bytes":
+        (tmp_path / "review.json").write_text("{}")
+    monkeypatch.setattr(config, "OUTPUT", tmp_path)
+    if fault is None:
+        proof = operational.smoke_source_compatibility(accepted, actual_policy)
+        assert list(proof["changed_producers"]) == ["tools/apex_workbench/lap/operational.py"]
+        assert proof["execution_revision"] == "3ccf294e28e2f213ef9d269333d2700f2ee37522"
+    else:
+        with pytest.raises(ValueError):
+            operational.smoke_source_compatibility(accepted, actual_policy)
 
 
 @pytest.mark.parametrize("fault", ["source", "primary", "history", "review", "smoke", "slots"])

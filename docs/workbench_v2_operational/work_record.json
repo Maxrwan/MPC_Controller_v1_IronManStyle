@@ -1,6 +1,6 @@
 {
   "schema": "apex-v2-operational-work/1",
-  "stage": "WORK_COMPLETE_PENDING_NARROW_INDEPENDENT_REVIEW",
+  "stage": "ACCEPTANCE_METADATA_CORRECTION_PENDING_REVIEW",
   "branch": "codex/workbench-v2-ui",
   "base": "9ef4bf9265892eff6fc4bee6e91a7494cbf86e48",
   "frozen_scientific_source": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
@@ -19,7 +19,7 @@
     "tools/apex_workbench/lap/execution.py": "64eed13fffcbd004018af5c24a9c15c8fa9c1311d2dd3acb490a97b46174630c",
     "tools/apex_workbench/lap/final_attempt.py": "590d4933b3beb88549604967a5adbbaf2c7e25af762fb86e8fe5e81ec9201285",
     "tools/apex_workbench/lap/launch.py": "aced85a5262feb76b6357c99cfc6427cd5ce14b2f2e629d896db496a29e7f72f",
-    "tools/apex_workbench/lap/operational.py": "ff55a2f2cef0dd6bfe9248ea014c129375f11d338929a514166021001dc6ecb9",
+    "tools/apex_workbench/lap/operational.py": "7a4090b558615e7ee419d0d2df93fc83943158c816d1b273ffa4cccdd25765db",
     "tools/apex_workbench/lap/panels.py": "5a9470b67c936bfae2126e7731f5363040742f7ab8a78b012d0bcf05fbbad474",
     "tools/apex_workbench/lap/profile.json": "849cac0a38188c11e42e5a903ac8d45bae64681cf5c39e847fb6195879393096",
     "tools/apex_workbench/lap/reference_view.py": "134ef150d91b2c743d1a0daff9bd9e2c3422ece0ccb48d76bd773928cb331cde",
@@ -117,71 +117,429 @@
     "live_policy_sha256": "f9a0304ff136a1d7fe0b56ef0f3a2efff2f7fe37d74acbba1c369c5fa2772346"
   },
   "genuine_execution": {
-    "new_runs": 0,
-    "policy_prepared": false,
-    "smoke_started": false,
+    "new_runs": 1,
+    "policy_prepared": true,
+    "smoke_started": true,
     "maximum_authorized_smokes": 1,
     "automatic_retry": false,
-    "accepted_interactive_activated": false
+    "accepted_interactive_activated": false,
+    "smoke_completed": true,
+    "smoke_source": "3ccf294e28e2f213ef9d269333d2700f2ee37522",
+    "smoke_run": "2026-11-11T160708.594424_0000_fe073e9a35714216accf3f91cc7cadae"
   },
   "independent_review": "pending exact committed candidate; narrowly policy transition/source preservation only",
-  "next_gate": "independent PASS then conditional smoke installation; one genuine5s baseline; only successful smoke permits final accepted-interactive installation",
+  "next_gate": "Same narrow review correction iteration; explicit old-smoke/final acceptance-only source binding; then activate without any new numerical execution.",
   "artifacts": {
     "results/apex_workbench_v2_operational/access_before.json": {
-      "bytes": 6369,
-      "sha256": "f9a0304ff136a1d7fe0b56ef0f3a2efff2f7fe37d74acbba1c369c5fa2772346"
+      "sha256": "f9a0304ff136a1d7fe0b56ef0f3a2efff2f7fe37d74acbba1c369c5fa2772346",
+      "bytes": 6369
     },
     "results/apex_workbench_v2_operational/capture.log": {
-      "bytes": 98,
-      "sha256": "3c3525ee7824cc138fcf96c89360be04df0f0e3d593f185799386d4898900faa"
+      "sha256": "3c3525ee7824cc138fcf96c89360be04df0f0e3d593f185799386d4898900faa",
+      "bytes": 98
     },
     "results/apex_workbench_v2_operational/capture.xml": {
-      "bytes": 419,
-      "sha256": "6f0417c3396d83f97f6ddd857258e837a6150b96bc02c51c2b6e59d96f069080"
+      "sha256": "6f0417c3396d83f97f6ddd857258e837a6150b96bc02c51c2b6e59d96f069080",
+      "bytes": 419
     },
     "results/apex_workbench_v2_operational/configuration_composition.log": {
-      "bytes": 84,
-      "sha256": "9bb5cd683bd56874099462d1d4d307a61659b60f97ab14677107f51534570538"
+      "sha256": "9bb5cd683bd56874099462d1d4d307a61659b60f97ab14677107f51534570538",
+      "bytes": 84
     },
     "results/apex_workbench_v2_operational/focused_1.log": {
-      "bytes": 61008,
-      "sha256": "94ba499a6641cd97edb0e9504947ec13934353235a3c8a0da60bf8c3ed02edaa"
+      "sha256": "94ba499a6641cd97edb0e9504947ec13934353235a3c8a0da60bf8c3ed02edaa",
+      "bytes": 61008
     },
     "results/apex_workbench_v2_operational/focused_1.xml": {
-      "bytes": 63754,
-      "sha256": "2e53bc33aad8f63ea11364b30d27937840b3f3f917d62147ef108f795baa779a"
+      "sha256": "2e53bc33aad8f63ea11364b30d27937840b3f3f917d62147ef108f795baa779a",
+      "bytes": 63754
     },
     "results/apex_workbench_v2_operational/focused_2.log": {
-      "bytes": 6613,
-      "sha256": "e52b50e4862d79e82dd5742c3b72961b2a9082465bd78c78454cc1375a24cda7"
+      "sha256": "e52b50e4862d79e82dd5742c3b72961b2a9082465bd78c78454cc1375a24cda7",
+      "bytes": 6613
     },
     "results/apex_workbench_v2_operational/focused_2.xml": {
-      "bytes": 10669,
-      "sha256": "ef214e90957aa5795d2f9d580b9d581553147df56dec80d6a789319d7d1da2dd"
+      "sha256": "ef214e90957aa5795d2f9d580b9d581553147df56dec80d6a789319d7d1da2dd",
+      "bytes": 10669
     },
     "results/apex_workbench_v2_operational/focused_candidate.log": {
-      "bytes": 5438,
-      "sha256": "5590a09555dd8e5f2c8fe084d05a2a44eac300a72c9b765bca6aaecd3ee2220c"
+      "sha256": "5590a09555dd8e5f2c8fe084d05a2a44eac300a72c9b765bca6aaecd3ee2220c",
+      "bytes": 5438
     },
     "results/apex_workbench_v2_operational/focused_candidate.xml": {
-      "bytes": 31530,
-      "sha256": "c4b70999b1c64fbd81eb78beaf2fdbf6304366123b88747d03958789821031b5"
+      "sha256": "c4b70999b1c64fbd81eb78beaf2fdbf6304366123b88747d03958789821031b5",
+      "bytes": 31530
     },
     "results/apex_workbench_v2_operational/lint.log": {
-      "bytes": 45,
-      "sha256": "29f20c3ee57f1f120dc768e38618eb81e56e89f005f4c1237d5b8be6d18d302b"
+      "sha256": "29f20c3ee57f1f120dc768e38618eb81e56e89f005f4c1237d5b8be6d18d302b",
+      "bytes": 45
     },
     "results/apex_workbench_v2_operational/preservation_before.json": {
-      "bytes": 165625,
-      "sha256": "ecf415335b171a320e9a998f6754fc26bdc92fcedbbc20611b78a8651d7b4d78"
+      "sha256": "ecf415335b171a320e9a998f6754fc26bdc92fcedbbc20611b78a8651d7b4d78",
+      "bytes": 165625
     },
     "results/apex_workbench_v2_operational/recheck.log": {
-      "bytes": 99,
-      "sha256": "0c88306b95da87baa110c9cfc3db0bcfb329fad4902adc109d7e693cec3e5b73"
+      "sha256": "0c88306b95da87baa110c9cfc3db0bcfb329fad4902adc109d7e693cec3e5b73",
+      "bytes": 99
     },
     "results/apex_workbench_v2_operational/recheck.xml": {
-      "bytes": 571,
-      "sha256": "30f889e205f39d6c09f8730c5ac0b4e3f55206539b3e2145a7b50a710ecdcdb5"
+      "sha256": "30f889e205f39d6c09f8730c5ac0b4e3f55206539b3e2145a7b50a710ecdcdb5",
+      "bytes": 571
+    },
+    "results/apex_workbench_v2_operational/metadata_correction_scope.json": {
+      "sha256": "131e132c82931696227e94cbb27a1fc2db9f13bd60c140181c4cc602481d321f",
+      "bytes": 345
+    },
+    "results/apex_workbench_v2_operational/roundoff.log": {
+      "sha256": "5df94e379eec1375f9fc9038737ac1071c128372c81e418bc5b74f057ff13f41",
+      "bytes": 100
+    },
+    "results/apex_workbench_v2_operational/smoke_intent.json": {
+      "sha256": "c053ae2104eef342586d315d0d21f223b09150636fd3756734776de8891c8adb",
+      "bytes": 1259
+    },
+    "results/apex_workbench_v2_operational/roundoff.xml": {
+      "sha256": "28404905ffbac047492e458dc086939a65e28486c2e03e5e55353d0fa6451493",
+      "bytes": 6300
+    },
+    "results/apex_workbench_v2_operational/conditional_install.json": {
+      "sha256": "ed59ea16cecf6bfd8d797bcdcfdb9a36e385578fd60721452bf824ca31b26351",
+      "bytes": 576
+    },
+    "results/apex_workbench_v2_operational/smoke-browser.json": {
+      "sha256": "394490fbb74c3e5d9ebb3d46f5a23cee3a8558bac108072d5c7166f499e7fba0",
+      "bytes": 3165
+    },
+    "results/apex_workbench_v2_operational/launcher_reuse.log": {
+      "sha256": "61a2b7f05bd2fd235c343fa887a8277b60fdab38eb40fc9fcc15bd52076f4fe7",
+      "bytes": 44
+    },
+    "results/apex_workbench_v2_operational/smoke-analyze.jpg": {
+      "sha256": "ddb595d8565ceccb870ce76883c99f794935b3eb44f8cba45a5e2a10ffe7a28a",
+      "bytes": 53006
+    },
+    "results/apex_workbench_v2_operational/launcher.log": {
+      "sha256": "21f7e97b46985711c49a38462e9647dae083c23cb5785771e674e3d09b707b76",
+      "bytes": 3446
+    },
+    "results/apex_workbench_v2_operational/smoke_audit.json": {
+      "sha256": "f48836b06c527ab270e2b6d7eb452ce9c7851c29f46eb791fde2802c050af17c",
+      "bytes": 7163
+    },
+    "docs/reviews/workbench_v2_operational/INTEGRITY_REVIEW.md": {
+      "sha256": "3071030b93e6699df68813de33ba3f437c2843fd90446cf107b9bc6530536a2b",
+      "bytes": 4760
+    },
+    "docs/reviews/workbench_v2_operational/review_record.json": {
+      "sha256": "f35b16b2fb0aa801c2d5936bd9d30b7b78f347f4d49a5120dfb99c71ade3e105",
+      "bytes": 2834
     }
+  },
+  "initial_independent_review": {
+    "candidate": "3ccf294e28e2f213ef9d269333d2700f2ee37522",
+    "outcome": "PASS",
+    "record": "docs/reviews/workbench_v2_operational/review_record.json",
+    "sha256": "f35b16b2fb0aa801c2d5936bd9d30b7b78f347f4d49a5120dfb99c71ade3e105",
+    "tests_passed": 15,
+    "seconds": 10.58
+  },
+  "post_smoke_metadata_correction": {
+    "cause": "Strict end_time==5 metadata predicate, despite genuine canonical duration end4.999999999999915",
+    "scientific_or_clock_tolerance_change": false,
+    "source_scope": {
+      "changed_existing_functions": [
+        "authority",
+        "activate"
+      ],
+      "added_functions": [
+        "smoke_source_compatibility"
+      ],
+      "conditional_worker_validation_functions_and_authority_prefix_AST_unchanged": true,
+      "scope": "accepted authority/final installation metadata only; no scientific or conditional-smoke execution code change"
+    },
+    "tests_passed": 38,
+    "seconds": 30.57,
+    "test_command": "PYTHONDONTWRITEBYTECODE=1 tools/apex_workbench/.venv/bin/python -B -m pytest -q -p no:cacheprovider tools/apex_workbench/tests/test_lap_operational.py --basetemp=/private/tmp/apex-v2-operational-roundoff --junitxml=results/apex_workbench_v2_operational/roundoff.xml",
+    "review": "pending exact correction source and explicit smoke compatibility declaration",
+    "retry": false
+  },
+  "smoke_observation": {
+    "run_id": "2026-11-11T160708.594424_0000_fe073e9a35714216accf3f91cc7cadae",
+    "directory": "/Users/marwansaber/.codex/worktrees/nmpc-weight-m0/MPC_Controller_v1_IronManStyle/results/apex_workbench_v2_lap/runs/2026-11-11T160708.594424_0000_fe073e9a35714216accf3f91cc7cadae",
+    "executed_revision": "3ccf294e28e2f213ef9d269333d2700f2ee37522",
+    "status": {
+      "record_version": 2,
+      "state": "completed",
+      "scientific_outcome": "completed",
+      "evidence_state": "valid",
+      "error": null,
+      "returncode": 0,
+      "wall_runtime_s": 27.188125416985713,
+      "sampled_peak_worker_rss_bytes": 208699392,
+      "manifest_sha256": "f06539ea720ba0d25a49abffd7d07632e30558e7c3edc0f2a06fa65c648d5202"
+    },
+    "summary": {
+      "coverage_completed": true,
+      "lap": {
+        "track_length_m": 154.76345492731022,
+        "initial_s_abs_m": 1.0,
+        "native_crossings": [],
+        "completed_laps": 0,
+        "lap_time_s": null,
+        "first_crossing_is_partial": false,
+        "status": "incomplete",
+        "stop_reason": "duration",
+        "failure": null,
+        "rule": "Native boundary-to-same-boundary interval; partial launch crossing excluded"
+      },
+      "failure": null,
+      "stop_reason": "duration",
+      "native_end_time_s": 4.999999999999915,
+      "worker_wall_s": 23.15237862500362,
+      "worker_cpu_s": 23.010227,
+      "retained_native_bytes": 1691095,
+      "total_recorded_bytes": 3945507,
+      "classification": "SYNTHETIC / EXPERIMENTAL / UNQUALIFIED"
+    },
+    "counts": {
+      "states": 1000,
+      "controls": 500,
+      "plans": 50,
+      "packets": 50,
+      "handoffs": 49,
+      "releases": 49,
+      "misses": 0,
+      "fallbacks": 0,
+      "codriver_misses": 0
+    },
+    "metrics": {
+      "definition": "Equal-weight RMS over actual recorded samples in the displayed native window; no resampling",
+      "observation_window_s": [
+        0.0,
+        4.994999999999915
+      ],
+      "requested_duration_s": 5,
+      "native_end_time_s": 4.999999999999915,
+      "stop_reason": "duration",
+      "failure": null,
+      "racing_lateral_error_m": {
+        "samples": 1000,
+        "peak_abs": 0.09886964293770216,
+        "rms": 0.036355790685879935,
+        "mean": 0.01542761856752275
+      },
+      "racing_heading_error_rad": {
+        "samples": 1000,
+        "peak_abs": 0.2100740834995185,
+        "rms": 0.05060555943348566,
+        "mean": -0.010841959636692046
+      },
+      "centerline_e_y_m": {
+        "samples": 1000,
+        "peak_abs": 0.15830907467976432,
+        "rms": 0.057904602440664865,
+        "mean": -0.008657127509067443
+      },
+      "active_packet_lateral_error_m": {
+        "samples": 500,
+        "peak_abs": 0.008391480675336752,
+        "rms": 0.001549070259313531,
+        "mean": 0.0002899511468456539
+      },
+      "observed_lateral_zero_crossings": 3,
+      "steering_rad": {
+        "samples": 500,
+        "peak_abs": 0.4,
+        "rms": 0.12636108607688334,
+        "mean": -0.06448698193669498,
+        "total_variation": 1.7444039514239318,
+        "maximum_observed_increment_rate": 1.0,
+        "application_window_s": [
+          0.005,
+          4.994999999999915
+        ],
+        "rows_without_applied_measurement": 0
+      },
+      "longitudinal_a_cmd_mps2": {
+        "samples": 500,
+        "peak_abs": 2.200510419711482,
+        "rms": 1.0943988120254244,
+        "mean": -0.4278846715653794,
+        "total_variation": 13.025830474402715,
+        "maximum_observed_increment_rate": 93.43451517201012,
+        "application_window_s": [
+          0.005,
+          4.994999999999915
+        ],
+        "rows_without_applied_measurement": 0
+      },
+      "solver_host_seconds": {
+        "samples": 50,
+        "peak_abs": 0.0497506249230355,
+        "rms": 0.03707187599605338,
+        "mean": 0.036572414140682664
+      },
+      "preparation_host_seconds": {
+        "samples": 50,
+        "peak_abs": 0.0709819580661133,
+        "rms": 0.057903684058022445,
+        "mean": 0.057596407560631634
+      },
+      "iterations": {
+        "samples": 50,
+        "peak_abs": 18,
+        "rms": 13.98570698963767,
+        "mean": 13.76
+      },
+      "successful_native_preparations": 50,
+      "preparation_count": 50,
+      "max_native_slack": 9.091775293397328e-11,
+      "max_primal_infeasibility": 6.062540958140517e-08,
+      "grip_utilization": {
+        "front": {
+          "samples": 1000,
+          "peak_abs": 0.8501177235290096,
+          "rms": 0.34756677036002775,
+          "mean": 0.2526345332348772
+        },
+        "rear": {
+          "samples": 1000,
+          "peak_abs": 0.8714556120435621,
+          "rms": 0.36130648298740886,
+          "mean": 0.26187908715532376
+        }
+      },
+      "minimum_combined_utilization_margin": {
+        "front": 0.1498822764709904,
+        "rear": 0.12854438795643786
+      },
+      "recorded_boundary_violation_rows": 0,
+      "requested_applied_steering_differences": 131,
+      "settling": {
+        "band_m": 0.01,
+        "minimum_observed_tail_s": 0.25,
+        "target_error_m": 0.0,
+        "settling_time_s": null,
+        "definition": "Observed within-window settling of racing-reference lateral error; not future stability",
+        "status": "settling not established in this window"
+      },
+      "disturbance_recovery": {
+        "status": "No single recorded disturbance application"
+      },
+      "disturbance_response": null,
+      "overshoot": {
+        "value": null,
+        "reason": "No steady reference-step experiment; do not assign step overshoot to a state perturbation"
+      },
+      "lap": {
+        "track_length_m": 154.76345492731022,
+        "initial_s_abs_m": 1.0,
+        "native_crossings": [],
+        "completed_laps": 0,
+        "lap_time_s": null,
+        "first_crossing_is_partial": false,
+        "status": "incomplete",
+        "stop_reason": "duration",
+        "failure": null,
+        "rule": "Native boundary-to-same-boundary interval; partial launch crossing excluded"
+      },
+      "yaw_rate_radps": {
+        "samples": 1000,
+        "peak_abs": 3.232425190659282,
+        "rms": 1.1821426743690628,
+        "mean": -0.5946894244104519
+      },
+      "body_acceleration_mps2": {
+        "body_ax_mps2": {
+          "samples": 1000,
+          "peak_abs": 2.200510419711482,
+          "rms": 1.0935613958798618,
+          "mean": -0.4286498255506225
+        },
+        "body_ay_mps2": {
+          "samples": 1000,
+          "peak_abs": 8.19001025026838,
+          "rms": 3.285446380261073,
+          "mean": -1.6282773010229654
+        }
+      },
+      "chronology_counts": {
+        "handoffs": 49,
+        "misses": 0,
+        "fallbacks": 0,
+        "releases": 49,
+        "codriver_misses": 0
+      },
+      "failed_preparations": 0
+    },
+    "manifest_members": 26,
+    "source_and_environment_unchanged_during_execution": true,
+    "normal_summary_and_worker_result_match": true,
+    "owned_worker_and_supervisor_ended": true,
+    "scientific_executions_this_assignment": 1,
+    "automatic_retry": false,
+    "new_historical_slots": false,
+    "finalization_guard_negative": {
+      "initial_assertion": "raw.end_time == 5",
+      "observed_end_time": 4.999999999999915,
+      "worker_outcome": "completed/valid/exit0",
+      "disposition": "Metadata-only correction/re-review pending; no scientific tolerance or archive change; no repeated smoke"
+    },
+    "changed_producers_since_execution": [
+      "tools/apex_workbench/lap/operational.py"
+    ],
+    "captured_request_sha256": "7d7b5f0460c5f8f666eed41be84dee656a287d76bb1ae27591fddbfa88c11c86"
+  },
+  "browser_smoke": {
+    "baselineConfiguration": [
+      {
+        "label": "Lateral",
+        "value": "2.0000"
+      },
+      {
+        "label": "Speed",
+        "value": "1.0000"
+      },
+      {
+        "label": "Rate",
+        "value": "1.0000"
+      },
+      {
+        "label": "Alpha Vy",
+        "value": "1.0000"
+      },
+      {
+        "label": "Dynamic",
+        "value": "1.0000"
+      },
+      {
+        "label": "Control",
+        "value": "1.0000"
+      },
+      {
+        "label": "Terminal",
+        "value": "1.0000"
+      },
+      {
+        "label": "Alpha R",
+        "value": "1.0000"
+      },
+      {
+        "label": "Configuration version",
+        "value": "1"
+      }
+    ],
+    "smokeReady": true,
+    "smokeReplayStart": {
+      "notice": "VERIFIED RECORDING \u00b7 2026-11-11T160708.594424_0000_fe073e9a35714216accf3f91cc7cadae \u00b7 1,000 / 1,000 native samples in this window",
+      "time": "0.000 / 4.995 s \u00b7 Paused"
+    },
+    "smokeReplayEnd": {
+      "time": "4.995 / 4.995 s \u00b7 Paused",
+      "authority": "Following available active packet 49",
+      "coverage": "1000 native samples; duration. Last playback segment: 4.9950 simulated s / 2.5000 wall s at 2\u00d7; 56 rendered frames; maximum painted-frame gap 50.9 ms. Display timing only.",
+      "nodes": 9
+    },
+    "smokeAnalyze": "- log\n- log\n- link \"Skip to main content\":\n  - /url: \"#stMain\"\n- banner:\n  - button \"Main menu\":\n- main:\n  - text: APEX\n  - generic: ENGINEERING WORKBENCH V2\n  - generic: NMPC + TVLQR\n  - generic: SYNTHETIC \u00b7 UNQUALIFIED\n  - radiogroup \"Engineering workflow\":\n    - radio \"Configure\"\n    - paragraph: Configure\n    - radio \"Run\"\n    - paragraph: Run\n    - radio \"Replay\"\n    - paragraph: Replay\n    - radio \"Analyze\" [checked] [active]\n    - paragraph: Analyze\n    - radio \"Compare\"\n    - paragraph: Compare\n  - generic: 04 / ANALYZE\n  - heading \"Turn observations into insight\" [level=1]:\n    - text: Turn observations into insight\n    - link \"Link to heading\":\n      - /url: \"#turn-observations-into-insight\"\n  - paragraph: Sample-based measurements from the full retained recording. Display traces use at most 2,000 genuine points; metrics use every native sample.\n  - paragraph: Retained recording\n  - combobox \"Retained recording\": Baseline \u00b7 5 s \u00b7 V2 \u00b7 2026-11-11T160708.5\n  - button \"Open\":\n  - generic: Racing error \u00b7 RMS\n  - strong: \"0.036\"\n  - text: m \u00b7 retained native samples\n  - generic: Peak racing error\n  - strong: \"0.099\"\n  - text: m \u00b7 absolute\n  - generic: Solver duration \u00b7 mean\n  - strong: \"0.037\"\n  - text: Host seconds \u00b7 not simulated time\n  - generic: Boundary observations\n  - strong: \"0\"\n  - text: Recorded violation rows \u00b7 not safety proof\n  - paragraph: Analysis view\n  - combobox \"Analysis view\": Tracking\n  - button \"Open\":\n  - paragraph: \"Native circuit observations: 0 complete laps \u00b7 lap time Unavailable s. Initial partial crossing excluded.\"\n  - generic \"Lap & sector measurements\":\n    - generic: keyboard_arrow_right\n    - paragraph: Lap & sector measurements\n  - generic \"Metric definitions & full measurement record\":\n    - generic: keyboard_arrow_right\n    - paragraph: Metric definitions & full measurement record"
   }
 }

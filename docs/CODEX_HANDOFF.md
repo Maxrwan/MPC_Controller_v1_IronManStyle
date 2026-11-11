@@ -1,6 +1,6 @@
-# Current handoff — V2 operational candidate awaiting narrow review
+# Current handoff — V2 successful smoke, acceptance-metadata correction pending review
 
-**WORK_COMPLETE_PENDING_NARROW_INDEPENDENT_REVIEW.** Branch `codex/workbench-v2-ui`, base9ef4bf9.
+**ACCEPTANCE_METADATA_CORRECTION_PENDING_REVIEW.** Branch `codex/workbench-v2-ui`, base9ef4bf9.
 [Primary](workbench_v2_operational/PRIMARY_WORK.md), [WORK](workbench_v2_operational/WORK.md),
 [record](workbench_v2_operational/work_record.json), [user guide](workbench_v2_operational/USER_GUIDE.md).
 Separate immutable spent research policy from source-bound manual lab admission; a reviewed-only
@@ -18,6 +18,16 @@ Next: exact candidate narrow independent policy/source review; only after PASS p
 smoke policy and trigger baseline5s once through normal execution. No automatic retry. If successful,
 activate accepted-interactive and validate all four V2 admissions without another numerical run.
 Final target WORKBENCH_V2_ACCEPTED_INTERACTIVE_OPERATIONAL; report blockers explicitly if unmet.
+
+Initial3ccf294 review PASS cleared the sole genuine baseline5s run
+2026-11-11T160708.594424_0000_fe073e9a35714216accf3f91cc7cadae: completed/valid/exit0,
+1,000states/500controls/50packets. Canonical native end4.999999999999915 exposed an over-strict
+acceptance-only literal5 check. [Bounded correction](workbench_v2_operational/FINALIZATION_CORRECTION.md)
+now uses canonical duration outcome/raw-summary agreement with no new scientific tolerance.
+38 metadata tests passed. Only operational.py acceptance/finalization changes among49 producers;
+48 other producers and the conditional worker-validation path are unchanged. Preserve original smoke
+source3ccf294 and all evidence. Same reviewer must explicitly approve final source compatibility;
+no further numerical execution. Live policy remains reviewed-smoke with spent claim; not activated.
 
 ---
 

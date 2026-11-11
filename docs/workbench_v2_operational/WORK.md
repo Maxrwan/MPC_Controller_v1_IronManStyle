@@ -5,8 +5,10 @@ Starting delivery `9ef4bf9265892eff6fc4bee6e91a7494cbf86e48`, branch `codex/work
 smoke after focused review, followed by source-bound accepted-interactive installation on success.
 Frozen science remains `48adbdf64d492592d15e23c917aca71fa58aa8a5`.
 
-**WORK complete pending narrow independent execution-policy/source-preservation review.** No
-production policy has yet changed; no numerical execution has occurred in this assignment.
+**Initial narrow review PASS at3ccf294; the sole genuine5s smoke completed/valid/exit0.**
+A finalization-metadata correction is pending re-review within the same bounded review.
+[Correction/evidence](FINALIZATION_CORRECTION.md). No second smoke or full-lap execution occurred;
+accepted-interactive is not yet installed.
 
 ## Implementation
 

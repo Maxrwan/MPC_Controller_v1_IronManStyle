@@ -52,6 +52,47 @@ def _verify_reference(ref):
     return storage.read_status(directory)
 
 
+def smoke_source_compatibility(accepted, executed):
+    """A reviewed acceptance-only correction never relabels the retained worker's source."""
+    old, new = executed["producer_sha256"], accepted["producer_sha256"]
+    if set(old) != set(new):
+        raise ValueError("Smoke/final producer membership differs")
+    changed = sorted(name for name in old if old[name] != new[name])
+    review_path = config.safe(Path(accepted["review_record"]))
+    review = storage.read_json(review_path)
+    if (
+        storage.sha256(review_path) != accepted["review_sha256"]
+        or review.get("outcome") != "PASS"
+        or review.get("candidate") != accepted["reviewed_revision"]
+    ):
+        raise ValueError("Final smoke compatibility needs exact independent review")
+    if accepted["reviewed_revision"] != executed["reviewed_revision"]:
+        expected = {
+            "execution_revision": executed["reviewed_revision"],
+            "accepted_revision": accepted["reviewed_revision"],
+            "changed_producers": ["tools/apex_workbench/lap/operational.py"],
+            "classification": "acceptance-metadata-only",
+            "scientific_execution_unchanged": True,
+        }
+        if (
+            changed != expected["changed_producers"]
+            or review.get("smoke_compatibility") != expected
+        ):
+            raise ValueError(
+                "Only explicitly re-reviewed acceptance metadata may differ from smoke"
+            )
+    elif changed:
+        raise ValueError("Same-source smoke producer identity differs")
+    return {
+        "execution_revision": executed["reviewed_revision"],
+        "accepted_revision": accepted["reviewed_revision"],
+        "review_sha256": accepted["review_sha256"],
+        "changed_producers": {
+            name: {"execution": old[name], "accepted": new[name]} for name in changed
+        },
+    }
+
+
 def authority(policy):
     """Validate immutable acceptance, evidence and Git bindings; also usable for retained reads."""
     path = config.safe(Path(policy["authority_record"]))
@@ -98,6 +139,18 @@ def authority(policy):
     for ref in value["historical_evidence"].values():
         _verify_reference(ref)
     if stage == "accepted-interactive":
+        executed_ref = value["smoke_execution_policy"]
+        executed_path = config.safe(Path(executed_ref["path"]))
+        if storage.sha256(executed_path) != executed_ref["sha256"]:
+            raise ValueError("Original smoke execution policy changed")
+        executed = storage.read_json(executed_path)
+        if (
+            executed["stage"] != "reviewed-smoke"
+            or executed["smoke_claim"] != policy["smoke_claim"]
+        ):
+            raise ValueError("Original once-only smoke authority differs")
+        if smoke_source_compatibility(policy, executed) != value["smoke_source_compatibility"]:
+            raise ValueError("Reviewed smoke/final source compatibility changed")
         smoke_status = _verify_reference(value["smoke"])
         if not all(
             smoke_status.get(k) == v
@@ -117,10 +170,10 @@ def authority(policy):
             != {
                 "run_id": smoke_directory.name,
                 "effective": config.defaults("extended", 5),
-                "reviewed_revision": policy["reviewed_revision"],
+                "reviewed_revision": executed["reviewed_revision"],
             }
             or request["provenance"].get("access_stage") != "reviewed-smoke"
-            or request["capture"]["producer_sha256"] != policy["producer_sha256"]
+            or request["capture"]["producer_sha256"] != executed["producer_sha256"]
             or request["effective"] != config.defaults("extended", 5)
         ):
             raise ValueError("Acceptance smoke must be the exact unique reviewed baseline5s run")
@@ -131,7 +184,8 @@ def authority(policy):
             smoke["raw"].get("failure")
             or smoke["raw"].get("stop_reason") != "duration"
             or smoke["summary"].get("coverage_completed") is not True
-            or smoke["summary"].get("native_end_time_s") != 5
+            or smoke["summary"].get("native_end_time_s") != smoke["raw"].get("end_time")
+            or storage.artifact_json(smoke_directory, "admission.json")["policy"] != executed
             or storage.artifact_json(smoke_directory, "worker_result.json") != smoke["summary"]
         ):
             raise ValueError("Successful smoke summary/worker result or native coverage differs")
@@ -268,7 +322,7 @@ def prepare(review_path, folder):
         lease.close()
 
 
-def activate():
+def activate(review_path=None):
     """Primary's conditional acceptance becomes effective only after the sole smoke succeeds."""
     lease = jobs.execution_lock()
     try:
@@ -277,7 +331,8 @@ def activate():
         policy = json.loads(before)
         if policy["stage"] != "reviewed-smoke":
             raise ValueError("Operational activation is not a reset or repeatable installer")
-        source = admission.reviewed_source(storage.read_json(Path(policy["review_record"])))
+        review_bytes = Path(review_path or policy["review_record"]).read_bytes()
+        source = admission.reviewed_source(json.loads(review_bytes))
         auth = authority(policy)
         claim = storage.read_json(config.safe(Path(policy["smoke_claim"])))
         validate(policy, config.defaults("extended", 5), run_id=claim["run_id"])
@@ -288,7 +343,7 @@ def activate():
             or view["status"].get("returncode") != 0
             or view["status"].get("evidence_state") != "valid"
             or view["request"]["effective"] != config.defaults("extended", 5)
-            or view["request"]["capture"]["producer_sha256"] != config.producers()
+            or view["request"]["capture"]["producer_sha256"] != policy["producer_sha256"]
             or not view["summary"]["coverage_completed"]
             or view["raw"].get("failure")
             or view["raw"].get("stop_reason") != "duration"
@@ -297,12 +352,42 @@ def activate():
                 "The single genuine5s smoke did not complete; preserve outcome and stop"
             )
         folder = Path(policy["authority_record"]).parent
-        acceptance = {**auth, "decision": "ACCEPTED", "smoke": _reference(view["directory"])}
-        storage.write_json(folder / "accepted_authority.json", acceptance, exclusive=True)
+        if source != policy["reviewed_revision"]:
+            with (folder / "final_review_record.json").open("xb") as f:
+                f.write(review_bytes)
+            review_record = str(folder / "final_review_record.json")
+        else:
+            review_record = policy["review_record"]
         accepted = {
             **policy,
             "stage": "accepted-interactive",
             "reviewed_revision": source,
+            "producer_sha256": config.producers(),
+            "review_record": review_record,
+            "review_sha256": hashlib.sha256(review_bytes).hexdigest(),
+        }
+        executed_path = folder / "policy_smoke.json"
+        if storage.read_json(executed_path) != policy:
+            raise ValueError("Retained original conditional policy differs")
+        acceptance = {
+            **auth,
+            "decision": "ACCEPTED",
+            "smoke": _reference(view["directory"]),
+            "accepted_revision": source,
+            "producer_sha256": accepted["producer_sha256"],
+            "review_sha256": accepted["review_sha256"],
+            "primary_brief_sha256": hashlib.sha256(
+                config.v1.frozen.git("show", source + ":" + BRIEF)
+            ).hexdigest(),
+            "smoke_execution_policy": {
+                "path": str(executed_path),
+                "sha256": storage.sha256(executed_path),
+            },
+            "smoke_source_compatibility": smoke_source_compatibility(accepted, policy),
+        }
+        storage.write_json(folder / "accepted_authority.json", acceptance, exclusive=True)
+        accepted = {
+            **accepted,
             "authority_record": str(folder / "accepted_authority.json"),
             "authority_sha256": storage.sha256(folder / "accepted_authority.json"),
         }

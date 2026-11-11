@@ -1,0 +1,59 @@
+{
+  "schema": "apex-v2-operational-independent-review/1",
+  "outcome": "PASS",
+  "candidate": "3ccf294e28e2f213ef9d269333d2700f2ee37522",
+  "base": "9ef4bf9265892eff6fc4bee6e91a7494cbf86e48",
+  "branch": "codex/workbench-v2-ui",
+  "scope": "Execution-policy transition and source preservation only",
+  "blocking_findings": [],
+  "primary_brief_sha256": "2341ea9feeb603827ecb40dab4fdd69678225ac9b6c2fd7290c574060c069c74",
+  "preservation": {
+    "current_git_work_record_producers_matched": 49,
+    "canonical_files_equal_base": 335,
+    "frozen_runtime_files_equal_frozen_git": 333,
+    "historical_files_unchanged": 811,
+    "historical_links_unchanged": 65,
+    "protected_v1_producers_and_launcher_matched": 16,
+    "work_artifacts_matched": 14,
+    "original_full_lap_manifest_members_verified": 39,
+    "original_full_lap_outcome": "failed / valid evidence / exit 2; no summary or worker result",
+    "original_full_lap_status_sha256": "dee9fa25607186027f726e7df76e0827d43b6bbc8cca36f1e2ba713b6f600a2e",
+    "original_full_lap_manifest_sha256": "b6b8b56c9d70906860f471203f1cdef947b8fd2d573b9f05b66ad3e0278c8ba5",
+    "live_policy_sha256": "f9a0304ff136a1d7fe0b56ef0f3a2efff2f7fe37d74acbba1c369c5fa2772346",
+    "live_policy_stage": "reviewed-work",
+    "historical_slots_unchanged": true
+  },
+  "reviewer_tests": {
+    "file": "tools/apex_workbench/tests/test_lap_operational.py",
+    "nodes": [
+      "test_conditional_smoke_is_once_only_and_does_not_reopen_research",
+      "test_interactive_all_modes_and_costs_do_not_mutate_slots",
+      "test_failed_smoke_cannot_activate",
+      "test_scientific_compute_is_distinct_from_presentation",
+      "test_one_fresh_capacity_observation_keeps_exact_full_lap_floors",
+      "test_blocked_preflight_creates_no_run_or_claim",
+      "test_shared_lease_blocks_even_an_interactively_authorized_run",
+      "test_new_failed_native_run_is_read_only_without_poisoning_acceptance"
+    ],
+    "passed": 15,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "seconds": 10.58,
+    "classification": "isolated metadata/serialization only; real Git closure checked separately",
+    "forbidden_scientific_imports": [],
+    "helpers_started": 0,
+    "process_exited": true
+  },
+  "root_evidence_inspected_not_executed_by_reviewer": {
+    "combined": "169 passed / 2 harness failures, 75.15s",
+    "affected_recheck": "2 passed, 38.02s",
+    "counts_combined": false,
+    "native_configuration_test_rerun_by_reviewer": false
+  },
+  "conditional_next_gate": "Only the sole baseline5s genuine smoke after this PASS; activation only after same-source successful completed/valid/exit0 smoke and final checks; no full-lap success prerequisite",
+  "genuine_execution_performed": false,
+  "production_policy_modified": false,
+  "implementation_modified": false,
+  "commit_or_push_performed": false
+}
