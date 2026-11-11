@@ -1,0 +1,77 @@
+{
+  "schema": "apex-v2-operational-independent-review/1",
+  "outcome": "PASS",
+  "candidate": "5d88a5478109d5ce93207170ceec60938a87e793",
+  "base": "3ccf294e28e2f213ef9d269333d2700f2ee37522",
+  "branch": "codex/workbench-v2-ui",
+  "scope": "Correction 1 within the same narrow execution-policy transition/source-preservation review; acceptance metadata only",
+  "blocking_findings": [],
+  "smoke_compatibility": {
+    "execution_revision": "3ccf294e28e2f213ef9d269333d2700f2ee37522",
+    "accepted_revision": "5d88a5478109d5ce93207170ceec60938a87e793",
+    "changed_producers": ["tools/apex_workbench/lap/operational.py"],
+    "classification": "acceptance-metadata-only",
+    "scientific_execution_unchanged": true
+  },
+  "independent_source_checks": {
+    "current_git_producers_matched": 49,
+    "other_producers_unchanged_from_execution": 48,
+    "changed_existing_functions": ["authority", "activate"],
+    "added_function": "smoke_source_compatibility",
+    "conditional_authority_prefix_and_other_functions_AST_unchanged": true,
+    "canonical_files_unchanged": 335,
+    "frozen_runtime_files_exact": 333,
+    "initial_review_files_unchanged": true,
+    "historical_files_unchanged": 810,
+    "original_inventory_difference": "Previously authorized live access.json transition only; original exact bytes retained",
+    "historical_links_unchanged": 65,
+    "original_failed_full_lap_unchanged": true,
+    "work_artifacts_matched": 26
+  },
+  "retained_smoke": {
+    "run_id": "2026-11-11T160708.594424_0000_fe073e9a35714216accf3f91cc7cadae",
+    "execution_revision": "3ccf294e28e2f213ef9d269333d2700f2ee37522",
+    "manifest_sha256": "f06539ea720ba0d25a49abffd7d07632e30558e7c3edc0f2a06fa65c648d5202",
+    "status_sha256": "5206edbec0442dfc93e7c927682dbc1b59b0a799a6b670964d3fee9e40a486b5",
+    "manifest_artifacts_verified": 26,
+    "outcome": "completed / valid evidence / exit 0",
+    "states": 1000,
+    "controls": 500,
+    "packets": 50,
+    "stop_reason": "duration",
+    "coverage_completed": true,
+    "raw_and_summary_exact_endpoint_s": 4.999999999999915,
+    "normal_summary_matches_worker_result": true,
+    "original_execution_policy_claim_source_and_review_preserved": true,
+    "no_evidence_rewrite": true
+  },
+  "live_policy_before_activation": {
+    "stage": "reviewed-smoke",
+    "sha256": "e8b98bc788c660c8c42d9d8337b205fea64f67eddd7a3d48cadfc002576002f8",
+    "matches_retained_conditional_policy": true,
+    "smoke_claim_consumed": true,
+    "original_historical_policy_retained_sha256": "f9a0304ff136a1d7fe0b56ef0f3a2efff2f7fe37d74acbba1c369c5fa2772346"
+  },
+  "reviewer_tests": {
+    "node": "tools/apex_workbench/tests/test_lap_operational.py::test_post_smoke_compatibility_is_explicit_and_acceptance_only",
+    "passed": 5,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "seconds": 0.34,
+    "classification": "metadata helper tests only; no installer or genuine execution",
+    "forbidden_scientific_imports": [],
+    "helpers_started": 0,
+    "process_exited": true
+  },
+  "root_correction_evidence_inspected_not_executed_by_reviewer": {
+    "passed": 38,
+    "seconds": 30.57,
+    "counts_combined": false
+  },
+  "next_gate": "Final source/evidence checks then conditional activation using the existing successful smoke; no second genuine numerical attempt",
+  "production_policy_modified_by_reviewer": false,
+  "genuine_execution_performed_by_reviewer": false,
+  "source_modified_by_reviewer": false,
+  "commit_or_push_performed": false
+}

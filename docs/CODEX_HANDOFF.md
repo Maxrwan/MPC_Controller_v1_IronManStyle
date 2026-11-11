@@ -1,33 +1,36 @@
-# Current handoff — V2 successful smoke, acceptance-metadata correction pending review
+# Current handoff — V2 accepted-interactive operational
 
-**ACCEPTANCE_METADATA_CORRECTION_PENDING_REVIEW.** Branch `codex/workbench-v2-ui`, base9ef4bf9.
-[Primary](workbench_v2_operational/PRIMARY_WORK.md), [WORK](workbench_v2_operational/WORK.md),
-[record](workbench_v2_operational/work_record.json), [user guide](workbench_v2_operational/USER_GUIDE.md).
-Separate immutable spent research policy from source-bound manual lab admission; a reviewed-only
-single5s baseline smoke precedes explicit conditional Primary accepted-interactive activation.
-Per-run source/host/policy capture, owned lease/resource guards, finite5/10/20/full profiles, benign
-UI/reference processes permitted, and descriptive failed-run inspection. No frozen science/V1 changes.
+**WORKBENCH_V2_ACCEPTED_INTERACTIVE_OPERATIONAL.** Branch `codex/workbench-v2-ui`.
+Accepted implementation `5d88a5478109d5ce93207170ceec60938a87e793`, frozen science
+`48adbdf64d492592d15e23c917aca71fa58aa8a5`. [Primary](workbench_v2_operational/PRIMARY_WORK.md),
+[delivery report](workbench_v2_operational/WORK.md), [machine evidence](workbench_v2_operational/work_record.json),
+[user guide](workbench_v2_operational/USER_GUIDE.md).
 
-Main focused169 passes/2 harness failures; both affected checks passed separately (2/38.02s), no
-production changes for their corrections and no combined clean-count claim. Native configurations
-including edited costs composed with solver creation/runner/plant steps forbidden; actual SINGLE mode.
-Historical811 files/65 links,333 frozen/335 canonical files and renderer/profile/launcher preserved.
-Live old policy remains f9a0304f; both historical slots remain consumed. No genuine execution yet.
+The accepted-interactive policy is installed (SHA 4738fe6d…), with final exact independent PASS
+9499e5b5… and explicit Primary acceptance e276d41f…. Manual 5/10/20 s Extended and Full Lap are
+admitted for baseline/edited eight costs/fixed disturbance; V1 Transient stays unchanged. Fresh Full
+Lap memory/disk checks occur once per explicit launch (>1,610,612,736 bytes each), under shared lease;
+UI/reference helpers permitted. Source/environment/ownership/caps/cancel/evidence checks remain.
+Historical used IDs/counters unchanged; ordinary runs do not consume them or need new research approval.
 
-Next: exact candidate narrow independent policy/source review; only after PASS prepare conditional
-smoke policy and trigger baseline5s once through normal execution. No automatic retry. If successful,
-activate accepted-interactive and validate all four V2 admissions without another numerical run.
-Final target WORKBENCH_V2_ACCEPTED_INTERACTIVE_OPERATIONAL; report blockers explicitly if unmet.
+Sole normal-UI genuine baseline 5 s smoke 2026-11-11T160708.594424_0000_fe073e9a35714216accf3f91cc7cadae
+at 3ccf294 completed / valid evidence / exit 0; 1,000 states/500 controls/50 packets, 26 verified artifacts. Worker CPU
+23.010227 s, supervisor wall 27.1881254 s, peak RSS 208,699,392 bytes. Native duration end `4.999999999999915`
+exposed an acceptance-only literal 5 guard; corrected with no clock/tolerance/data change. Final 5d88a54
+compatibility re-review binds immutable original smoke source 3ccf294/policy/review/claim separately;
+48 other producers and conditional execution code unchanged. No repeated smoke or Full Lap.
 
-Initial3ccf294 review PASS cleared the sole genuine baseline5s run
-2026-11-11T160708.594424_0000_fe073e9a35714216accf3f91cc7cadae: completed/valid/exit0,
-1,000states/500controls/50packets. Canonical native end4.999999999999915 exposed an over-strict
-acceptance-only literal5 check. [Bounded correction](workbench_v2_operational/FINALIZATION_CORRECTION.md)
-now uses canonical duration outcome/raw-summary agreement with no new scientific tolerance.
-38 metadata tests passed. Only operational.py acceptance/finalization changes among49 producers;
-48 other producers and the conditional worker-validation path are unchanged. Preserve original smoke
-source3ccf294 and all evidence. Same reviewer must explicitly approve final source compatibility;
-no further numerical execution. Live policy remains reviewed-smoke with spent claim; not activated.
+Focused main run: 169 passes/2 harness failures; both affected tests passed separately. Final correction: 38 metadata
+passes; independent initial 15 and correction 5 passes, all counts separate. No broad Verification.
+Actual launch/reuse/shutdown, Replay/Analyze, four enabled V2 selectors, unchanged Transient, saved
+lateral 3.0 versioned draft and genuine 5 s/10 s noncontrolled Compare passed. No later Run click.
+811 old files / 65 links rechecked; only the authorized live policy differs. 333 frozen/335 canonical files,
+V1, renderer/clock/native worker/profile/launchers preserved. Original full-lap 39-member failed / valid evidence /
+exit 2 and absent summary/result remain unchanged/replayable. All owned activity stopped; port 8503 is closed.
+
+Double-click `Launch_APEX_Workbench_V2.command` in this configured checkout, or run the same file;
+no manual policy installer or per-experiment Codex authorization needed. Synthetic/unqualified;
+no guaranteed host capacity, physical validation or real-time claim. No automatic later stage.
 
 ---
 

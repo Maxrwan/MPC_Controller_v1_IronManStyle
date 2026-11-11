@@ -5,12 +5,12 @@ Double-click `Launch_APEX_Workbench_V2.command` in this configured checkout, or 
 open; Control-C stops only its owned server. The launcher resolves its own checkout and existing
 Workbench environment; it installs no software or authorization files.
 
-1. **Configure:** choose Transient (existing V1,2s), Extended (5/10/20s), or Full Lap (two native
-   crossings,80s maximum). Edit the eight cost multipliers and optional fixed disturbance. Save
+1. **Configure:** choose Transient (existing V1, 2 s), Extended (5/10/20 s), or Full Lap (two native
+   crossings, 80 s maximum). Edit the eight cost multipliers and optional fixed disturbance. Save
    a versioned draft with a distinct configuration ID/version; frozen Performance is never overwritten.
 2. **Run:** review the selected weights, duration and resource limits. Run starts only on your click.
    Source/authorization mismatch or another worker blocks execution. Full Lap checks available
-   RAM and disk once for that launch: each must exceed1,610,612,736bytes. The UI and read-only
+   RAM and disk once for that launch: each must exceed 1,610,612,736 bytes. The UI and read-only
    reference viewer may remain open. Free resources and click again yourself if a preflight fails;
    there is no automatic retry or queue. Available host memory is not guaranteed.
 3. **Replay:** select a retained recording or the newly started run. Refresh active status as needed;

@@ -410,12 +410,14 @@ Configure → Run → Replay → Analyze → Compare exposes the existing eight 
 finite recording modes, retained native Canvas playback, applied-front-steering instrument,
 Control Analysis and same-family comparison. Stop the owned server with Control-C in its Terminal.
 
-UI acceptance does not unlock V2 execution: source/review/Primary bindings and the full-lap
-resource preflight still apply. The accepted V1 launcher and its execution policy remain unchanged.
+The configured V2 checkout is accepted-interactive: manual Extended 5/10/20 s and Full Lap experiments
+are enabled under source/review/Primary bindings and fresh launch gates. No separate Codex approval
+is needed per experiment. The accepted V1 launcher/profile/policy remain unchanged. See the concise
+[operational user guide](../../docs/workbench_v2_operational/USER_GUIDE.md).
 See [UI scope and evidence](../../docs/workbench_v2_ui/WORK.md) for display clocks, units, native
 window limits, missingness and current resource limitations. No new installation dependency.
 
-### Final V2 replay controls and one-shot full lap
+### V2 replay controls and bounded experiments
 
 The V2 launcher remains `./Launch_APEX_Workbench_V2.command` on loopback 8503. Restart the owned
 launcher after updating a checkout. View selects Whole circuit, Recording window, Follow Vehicle or
@@ -427,14 +429,15 @@ reference tracking errors. Historical selection does not confer authority. The r
 Automatic continuation prefetches one bounded native window and pauses at its boundary until evidence
 is reverified. No time is extrapolated during that wait. Initial source-verified reference construction
 can take about 13s; subsequent geometry is reused. Raw provenance/diagnostics remain secondary panels.
-Full Lap now has900s wall/720s CPU ceilings; all other approved limits/rules stay fixed. Source/review/
-Primary and host preflight gates still apply. Exact source 740a268 received independent PASS and its
-WORK policy is installed. The final host preflight blocked before execution: available RAM
-1,380,417,536 bytes was below the unchanged 1,610,612,736-byte reserve. The Full Lap slot remains unused;
-no automatic retry or repeatable V2 admission is enabled. Primary's next decision is pending.
-See [final scope and evidence](../../docs/workbench_v2_final/WORK.md).
+Full Lap retains 900 s wall/720 s CPU ceilings, 768 MiB RSS, 256 MiB output, 4 MiB files and the 80 s
+simulation ceiling. Each explicit Full Lap launch requires >1,610,612,736 bytes available RAM and
+free disk; the UI/read-only viewer may remain open. Capacity is checked once per request, without
+automatic retries. Historical consumed research slots remain immutable and do not limit accepted
+manual experiments. Every experiment has its own captured configuration/source/resource/outcome.
+See [operational acceptance and evidence](../../docs/workbench_v2_operational/WORK.md).
 
 The original 2026-11-11 Full Lap recording now opens in Replay and Analyze through an explicit,
 SHA-bound read-only recovery path. Its lifecycle remains failed / valid evidence / exit2, with no
 replacement summary. Measurements are labelled descriptive observations; the recording cannot qualify
-as a completed controlled experiment or authorize execution. See [recovery scope](../../docs/workbench_v2_recovery/WORK.md).
+as a completed controlled experiment. Application execution is separately accepted on explicit Primary
+authority, successful pilot/smoke and reviewed software, without relabeling that failed run. See [recovery scope](../../docs/workbench_v2_recovery/WORK.md).

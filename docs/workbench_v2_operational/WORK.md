@@ -1,84 +1,102 @@
-# V2 final operationalization
+# V2 accepted-interactive operational delivery
 
-Starting delivery `9ef4bf9265892eff6fc4bee6e91a7494cbf86e48`, branch `codex/workbench-v2-ui`.
-[Primary](PRIMARY_WORK.md) accepts presentation/recovery and conditionally authorizes one5s baseline
-smoke after focused review, followed by source-bound accepted-interactive installation on success.
-Frozen science remains `48adbdf64d492592d15e23c917aca71fa58aa8a5`.
+**WORKBENCH_V2_ACCEPTED_INTERACTIVE_OPERATIONAL**
 
-**Initial narrow review PASS at3ccf294; the sole genuine5s smoke completed/valid/exit0.**
-A finalization-metadata correction is pending re-review within the same bounded review.
-[Correction/evidence](FINALIZATION_CORRECTION.md). No second smoke or full-lap execution occurred;
-accepted-interactive is not yet installed.
+Branch `codex/workbench-v2-ui`. Accepted implementation:
+`5d88a5478109d5ce93207170ceec60938a87e793`. Final documentation-only delivery SHA is supplied
+in the Git handoff. [Primary authorization](PRIMARY_WORK.md), [user guide](USER_GUIDE.md),
+[machine evidence](work_record.json). Frozen science remains
+`48adbdf64d492592d15e23c917aca71fa58aa8a5`.
 
-## Implementation
+The source-bound **accepted-interactive policy is installed and operational**. Ordinary explicit
+user clicks may run existing finite profiles and edit the approved eight CostScales/fixed disturbance
+without another research authorization. Historical one-shot counters are retained, not reused.
 
-Plain operational acceptance functions reuse existing profile validators, Git producer hashes,
-artifact storage, owned workers and the shared execution lease. The exact original spent policy
-SHA `f9a0304ff136a1d7fe0b56ef0f3a2efff2f7fe37d74acbba1c369c5fa2772346` is copied immutably;
-both historical used IDs/counters remain unchanged. Original review/Primary files and complete
-pilot/full-lap evidence are checked. The original failed full-lap status/manifest stays pinned.
+## Enabled scope and launch
 
-After independent PASS, `prepare` may install only a reviewed-smoke policy for the exact baseline5s
-configuration. One exclusive claim, separate from historical research slots, is made after launch
-preflight and before probe/launch. Failure is retained and cannot be automatically retried. After
-successful completed/valid/exit0 smoke with matching current source/configuration and normal summary/
-worker-result/coverage, `activate` writes the new explicit ACCEPTED authority and accepted-interactive
-policy. Primary's exact conditional brief and independent review are bound to the reviewed Git source.
-No second full-lap success is required or invented.
+| Selection | Simulated recording | Existing limits |
+|---|---|---|
+| Transient | V1 2 s, unchanged | Original V1 profile/policy |
+| Extended | 5 / 10 / 20 s | wall 180 s, CPU 120 s, RSS 768 MiB, output 128 MiB, file 4 MiB |
+| Full Lap | Two native crossings; 80 s ceiling | wall 900 s, CPU 720 s, RSS 768 MiB, output 256 MiB, file 4 MiB |
 
-Accepted-interactive validates every finite profile and the eight existing CostScales/disturbance
-selection, without changing research `used` or counters. Each request retains a unique run identity,
-captured operational policy/host observation, source/environment, limits and outcome. Source changes
-invalidate admission. Workers recheck captured admission and use the unchanged canonical runner,
-NMPC/TVLQR, resource monitors, cancellation and atomic manifest/status publication.
+Double-click `Launch_APEX_Workbench_V2.command` in this configured checkout or run
+`./Launch_APEX_Workbench_V2.command`; loopback `http://127.0.0.1:8503`. No manual acceptance JSON,
+internal policy script or dependency installation is needed. The launcher resolves its own checkout.
+Configure → Run → Replay → Analyze → Compare; save a versioned experimental draft as needed.
+Source/review/Primary, shared lease, environment isolation, finite resources, cancellation and atomic
+publication remain enforced for every experiment. No automatic retries or background sweeps.
 
-Fresh host checks occur once per explicit launch under the scientific lease, before creating a run.
-Full Lap retains >2×768MiB available RAM and >1GiB+2×256MiB disk floors. Extended retains the existing
-1GiB disk floor and worker caps. Active scientific/test/benchmark workers and active/unverified
-measurement guards block. The user's Streamlit UI and read-only reference helper do not. No capacity
-polling for a favorable sample is introduced. Run shows actual policy/ownership readiness, selected
-limits and actionable launch blockers.
+Full Lap checks host capacity once per explicit launch under the lease: available RAM and free disk
+must each exceed 1,610,612,736 bytes, preserving the historical conservative reserves. Extended retains
+its 1 GiB disk floor and fixed runtime caps. UI/reference viewers are harmless; scientific/test/benchmark
+workers or active/unverified measurement guards block. A failed preflight creates no run or historical
+claim. UI reports source/ownership readiness and actionable launch failures. Host memory sufficiency
+is not guaranteed; free capacity and trigger a new launch yourself if needed.
 
-For newly produced operational failures with complete-enough verified native/presentation/provenance,
-explicit read-only recovery validates the captured operational authority, original Git producers,
-native/derived coverage and evidence epoch. It supplies no summary and changes no outcome. Other
-partial failures expose their reason and retain journals. Failed ordinary runs do not consume a
-research slot or poison later manual admission. The historical failed archive keeps its exact prior
-run/status/manifest recovery pin. Controlled comparisons still require completed/valid/exit0,
-matching conditions/coverage and no recovered view. V1 profile/source/policy remain unchanged.
+## Sole genuine smoke and reviewed correction
 
-## Focused evidence before numerical gate
+One baseline Extended 5 s run was triggered through the normal UI after initial independent PASS at
+`3ccf294e28e2f213ef9d269333d2700f2ee37522`:
+`2026-11-11T160708.594424_0000_fe073e9a35714216accf3f91cc7cadae`.
 
-Main combined invocation: **169 passed /2 failed,75.15s**. Failures were harness-only: the previously
-separately gated source-composition subprocess lacked its required fresh-parent VECLIB ceiling, and
-an old rejection-message assertion expected the former acceptance text. Both affected checks then
-passed separately in38.02s. Production logic did not change for these harness corrections. Do not
-describe these invocations as a single clean171-pass run. All required focused failures are closed.
+- **Completed / valid evidence / exit 0**, normal matching summary and worker result; all 26 members valid.
+- 1,000 native states, 500 controls, 50 packets/preparations, 49 handoffs/releases; no planner/codriver
+  misses or fallbacks. Native stop `duration`; no model/control failure.
+- Actual retained end `4.999999999999915`, last native sample 4.995 s; canonical duration semantics preserved.
+- Supervisor wall 27.1881254 s; worker CPU 23.010227 s; sampled peak RSS 208,699,392 bytes.
 
-The source-isolated check composes four approved cases including edited lateral cost3.0, with
-CasADi solver creation, AsyncRunner.run and DynamicBicycle.step explicitly forbidden. Actual returned
-Accelerate mode is SINGLE; mathematical source is unchanged. Root test process imported no controller,
-plant, simulation or CasADi modules; read-only geometry helper closed.
+A metadata-only finalization guard incorrectly expected literal 5.0. It was corrected to accept the
+canonical successful duration outcome and exact raw/summary endpoint agreement. No scientific
+threshold, timestamp or archive byte was changed. [Correction](FINALIZATION_CORRECTION.md).
+Only `operational.py` differs among 49 producers; 48 other producers and conditional worker validation
+are unchanged. The [same review's correction iteration](../reviews/workbench_v2_operational/correction_1/INTEGRITY_REVIEW.md)
+passed at final 5d88a54 and explicitly approved that compatibility. The accepted record separately
+binds the final source/review and immutable original smoke source/policy/review/claim. It does not
+relabel the smoke as execution of the later metadata revision. **No second smoke or Full Lap ran.**
 
-New policy checks use isolated metadata/serialization fixtures, not claimed scientific executions.
-They exercise real prepare/activate/validation and immutable history/evidence checks, with a controlled
-Git candidate test double. Final real Git closure and genuine smoke remain separate required gates.
-Earlier fixture-path setup errors and a global Popen test-double mistake are retained in logs; neither
-changed production policy or caused numerical execution. One corrected capture check passed separately.
-Tests include all four finite modes, edited costs, malformed inputs, source/review/Primary/history/
-smoke mutation, once-only conditional smoke, subsequent manual admission, no-capacity run creation,
-shared-lease contention, failed-probe retry by a new explicit request, failed-native inspection and UI.
+## Focused checks and actual UI
 
-Raw logs/JUnit and preservation inventory are under `results/apex_workbench_v2_operational/` and
-hash-referenced in `work_record.json`. No broad formal Verification or new scientific campaign.
+Root combined focused run: 169 passed / 2 harness failures, 75.15 s. Both affected checks re-passed
+separately: 2 passed in 38.02 s after supplying the required parent VECLIB ceiling and updating rejection
+wording; production logic did not change for those harness fixes. This is not one clean 171-pass invocation.
+Final correction policy module: 38 passed in 30.57 s. Initial independent selection: 15 passed in 10.58 s;
+correction selection: 5 passed in 0.34 s. Counts remain separate; negatives/logs/JUnit are retained.
 
-## Remaining conditional steps
+Four canonical configuration compositions, including edited lateral cost 3.0, were checked with
+solver creation, AsyncRunner.run and plant steps forbidden; actual Accelerate SINGLE confirmed.
+Other software checks covered all finite modes, invalid inputs, source/review/authority/history/
+smoke mutation, capacity floors and single observation, no-run preflight failure, shared-lease
+contention, cancellation/resource guards, later manual admission after failure and failed-native reads.
+No broad formal Verification or scientific campaign occurred.
 
-Narrow independent review of the exact committed candidate; install its conditional smoke record;
-launch normal Workbench; trigger the baseline5s once; retain outcome and inspect Replay/Analyze.
-Only on success, verify exact source and install accepted-interactive. Demonstrate all four V2 mode
-admissions with metadata/validation/UI checks only; do not execute another experiment. Publish final
-preservation, evidence, launcher and comparison observations. See [user guide](USER_GUIDE.md).
+Actual normal launcher startup from `/private/tmp`, owned reuse and clean shutdown passed. Browser
+confirmed enabled Run for 5/10/20 s and Full Lap, unchanged Transient, edited-weight admission, and
+saved `interactive_v2_demo_20261111_extended_5s_v1.json` with lateral 3.0. No Run was clicked after
+smoke. Its normal Replay played through active packet 49/nine nodes; Analyze opened genuine metrics.
+Playback advanced 4.995 simulated seconds in 2.500 display-wall seconds at 2×; display timing only.
+Compare opened genuine 5 s/10 s recordings and correctly classified differing coverage/conditions as
+noncontrolled. Matched-condition weight eligibility is software-tested; no treatment run was added.
 
-Final success stop: `WORKBENCH_V2_ACCEPTED_INTERACTIVE_OPERATIONAL`. A failed/unresolved smoke or
-review/source/resource blocker must be retained and explicitly reported instead of claiming activation.
+## Acceptance, preservation and limits
+
+Live policy SHA `4738fe6d5d19eeddf432e4a6c5513510be5ce93994464280fb6ddca1a8fa6d39`;
+Primary accepted-authority SHA `e276d41f81c4f9859d7339800c1cc9f0ecbe8f1cdd4367225284a54a76266430`;
+final review SHA `9499e5b5b150f12b59dacdba212db841a59444df233466e371bd76a8d326fd47`.
+The original policy `f9a0304f…` is retained exactly as immutable `access_historical.json`. Both historical
+used IDs and one-attempt counters remain unchanged; ordinary runs never write them. Every new run
+captures its own unique ID/configuration/producer/host/limits/outcome/evidence.
+
+All 811 historical file hashes/65 links rechecked: sole old-file change is the authorized live policy.
+All 333 frozen runtime and 335 canonical/dependency files unchanged; V1 source/profile/policy,
+renderers/clock, native scientific worker/profile and launchers preserved. Original full-lap 39-member
+archive remains failed / valid evidence / exit 2 with absent summary/result and valid read-only recovery. Nothing
+was repaired into success. New failed operational evidence stays descriptive; valid complete-enough
+observations remain inspectable without poisoning later explicit admission. Controlled comparisons
+still require completed / valid evidence / exit 0, matching conditions/coverage and no recovery.
+
+All owned server/helper/worker activity ended; port 8503 is closed. The policy persists for the next normal
+launch. Experiments remain synthetic, experimental and unqualified; no physical, hard real-time or
+numerical qualification claim. Cold reference initialization/verified-window pauses remain possible.
+Local retained artifacts are not off-host backup. No ROS/exporter, Docker, new scenario, tuning sweep
+or later research stage was implemented. No operational blocker remains in the approved scope.

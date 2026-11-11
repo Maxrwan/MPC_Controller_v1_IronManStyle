@@ -1,6 +1,6 @@
 {
   "schema": "apex-v2-operational-work/1",
-  "stage": "ACCEPTANCE_METADATA_CORRECTION_PENDING_REVIEW",
+  "stage": "WORKBENCH_V2_ACCEPTED_INTERACTIVE_OPERATIONAL",
   "branch": "codex/workbench-v2-ui",
   "base": "9ef4bf9265892eff6fc4bee6e91a7494cbf86e48",
   "frozen_scientific_source": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
@@ -106,15 +106,78 @@
     }
   ],
   "preservation": {
+    "outcome": "PASS",
+    "accepted_revision": "5d88a5478109d5ce93207170ceec60938a87e793",
+    "accepted_stage": "accepted-interactive",
+    "review_sha256": "9499e5b5b150f12b59dacdba212db841a59444df233466e371bd76a8d326fd47",
+    "authority_sha256": "e276d41f81c4f9859d7339800c1cc9f0ecbe8f1cdd4367225284a54a76266430",
+    "policy_sha256": "4738fe6d5d19eeddf432e4a6c5513510be5ce93994464280fb6ddca1a8fa6d39",
     "historical_files": 811,
     "historical_links": 65,
-    "changed_files": [],
+    "changed_historical_files": [
+      "results/apex_workbench_v2_lap/access.json"
+    ],
     "changed_links": [],
-    "canonical_files": 335,
-    "frozen_runtime_files": 333,
+    "old_policy_exact_snapshot_retained": true,
+    "historical_used": {
+      "pilot": "2026-11-10T145233.755880_0000_f46cc76634dd4322b1720f37eb96442b",
+      "full_lap": "2026-11-11T095747.505385_0000_6a18eaab96bd4949835d7c481116806e"
+    },
+    "historical_limits": {
+      "pilot": 1,
+      "full_lap": 1
+    },
+    "canonical_files_unchanged": 335,
+    "frozen_runtime_files_unchanged": 333,
     "V1_source_profile_policy_unchanged": true,
-    "renderer_clock_launcher_profile_and_native_worker_unchanged": true,
-    "live_policy_sha256": "f9a0304ff136a1d7fe0b56ef0f3a2efff2f7fe37d74acbba1c369c5fa2772346"
+    "native_worker_profile_renderer_clock_launchers_unchanged": true,
+    "current_reviewed_producers": 49,
+    "original_failed_full_status": {
+      "record_version": 2,
+      "state": "failed",
+      "scientific_outcome": "failed",
+      "evidence_state": "valid",
+      "error": "Worker exited2",
+      "returncode": 2,
+      "wall_runtime_s": 160.7565652920166,
+      "sampled_peak_worker_rss_bytes": 236503040,
+      "manifest_sha256": "b6b8b56c9d70906860f471203f1cdef947b8fd2d573b9f05b66ad3e0278c8ba5"
+    },
+    "original_failed_manifest_members": 39,
+    "original_failed_summary_and_worker_result_absent": true,
+    "smoke_status": {
+      "record_version": 2,
+      "state": "completed",
+      "scientific_outcome": "completed",
+      "evidence_state": "valid",
+      "error": null,
+      "returncode": 0,
+      "wall_runtime_s": 27.188125416985713,
+      "sampled_peak_worker_rss_bytes": 208699392,
+      "manifest_sha256": "f06539ea720ba0d25a49abffd7d07632e30558e7c3edc0f2a06fa65c648d5202"
+    },
+    "smoke_manifest_members": 26,
+    "smoke_executed_revision": "3ccf294e28e2f213ef9d269333d2700f2ee37522",
+    "current_source_compatibility": {
+      "execution_revision": "3ccf294e28e2f213ef9d269333d2700f2ee37522",
+      "accepted_revision": "5d88a5478109d5ce93207170ceec60938a87e793",
+      "review_sha256": "9499e5b5b150f12b59dacdba212db841a59444df233466e371bd76a8d326fd47",
+      "changed_producers": {
+        "tools/apex_workbench/lap/operational.py": {
+          "execution": "ff55a2f2cef0dd6bfe9248ea014c129375f11d338929a514166021001dc6ecb9",
+          "accepted": "7a4090b558615e7ee419d0d2df93fc83943158c816d1b273ffa4cccdd25765db"
+        }
+      }
+    },
+    "run_directory_count": 3,
+    "new_genuine_runs": 1,
+    "additional_numerical_runs_after_smoke": 0,
+    "draft": {
+      "path": "/Users/marwansaber/.codex/worktrees/nmpc-weight-m0/MPC_Controller_v1_IronManStyle/results/apex_workbench_v2_lap/configurations/interactive_v2_demo_20261111_extended_5s_v1.json",
+      "sha256": "b0822f00087d465d158843278ca3ced15528957dc935bfbe755f85764a815deb",
+      "lateral": 3
+    },
+    "owned_worker_supervisor_ended": true
   },
   "genuine_execution": {
     "new_runs": 1,
@@ -122,13 +185,22 @@
     "smoke_started": true,
     "maximum_authorized_smokes": 1,
     "automatic_retry": false,
-    "accepted_interactive_activated": false,
+    "accepted_interactive_activated": true,
     "smoke_completed": true,
     "smoke_source": "3ccf294e28e2f213ef9d269333d2700f2ee37522",
-    "smoke_run": "2026-11-11T160708.594424_0000_fe073e9a35714216accf3f91cc7cadae"
+    "smoke_run": "2026-11-11T160708.594424_0000_fe073e9a35714216accf3f91cc7cadae",
+    "final_execution_count": 1,
+    "second_smoke_or_full_lap": false
   },
-  "independent_review": "pending exact committed candidate; narrowly policy transition/source preservation only",
-  "next_gate": "Same narrow review correction iteration; explicit old-smoke/final acceptance-only source binding; then activate without any new numerical execution.",
+  "independent_review": {
+    "outcome": "PASS",
+    "scope": "execution-policy transition and source preservation only",
+    "accepted_revision": "5d88a5478109d5ce93207170ceec60938a87e793",
+    "initial_record": "docs/reviews/workbench_v2_operational/review_record.json",
+    "final_record": "docs/reviews/workbench_v2_operational/correction_1/review_record.json",
+    "final_sha256": "9499e5b5b150f12b59dacdba212db841a59444df233466e371bd76a8d326fd47"
+  },
+  "next_gate": "No additional gate for ordinary manual experiments within accepted finite profiles; each launch retains source/ownership/capacity/resource checks. Broader science/configuration/domain changes remain separately reviewed.",
   "artifacts": {
     "results/apex_workbench_v2_operational/access_before.json": {
       "sha256": "f9a0304ff136a1d7fe0b56ef0f3a2efff2f7fe37d74acbba1c369c5fa2772346",
@@ -233,6 +305,90 @@
     "docs/reviews/workbench_v2_operational/review_record.json": {
       "sha256": "f35b16b2fb0aa801c2d5936bd9d30b7b78f347f4d49a5120dfb99c71ade3e105",
       "bytes": 2834
+    },
+    "results/apex_workbench_v2_operational/activation.json": {
+      "sha256": "859c9ed04b26a5c8dfb6b42b694af85e8ddc11a0aba3220f14e5096a94bde79d",
+      "bytes": 2529
+    },
+    "results/apex_workbench_v2_operational/accepted_admission_checks.json": {
+      "sha256": "e5c9faa4b55e3cc6ccb94860668da8c9925c818de0e2f8bf5293434904c84477",
+      "bytes": 2289
+    },
+    "results/apex_workbench_v2_operational/accepted-full-lap-ready.jpg": {
+      "sha256": "831d7065fde5324340c7e809eb3b8b2b8e2f2515bac7a236c4874957099baa2a",
+      "bytes": 55235
+    },
+    "results/apex_workbench_v2_operational/accepted-comparison.jpg": {
+      "sha256": "73d25a7b8719da5b8f4d05d733154a0a76707c83f3ff1f4d35f09fb5ab495fb5",
+      "bytes": 65539
+    },
+    "results/apex_workbench_v2_operational/accepted_launcher.log": {
+      "sha256": "38e741396359bdf67f378f55a35a3d26b3317a2bf953c7c73648b00133d474c7",
+      "bytes": 370
+    },
+    "results/apex_workbench_v2_operational/final-browser.json": {
+      "sha256": "a74e2cbf9407072ca212228d39e87474fa58a912fadc7d2d0c291dd57ff88ccb",
+      "bytes": 3948
+    },
+    "results/apex_workbench_v2_operational/pre_activation_preservation.json": {
+      "sha256": "06ba2fe5ecd3b28392c931fd6f6574d2ee07b3813db2c2e0d35396867bdebb96",
+      "bytes": 547
+    },
+    "results/apex_workbench_v2_operational/cleanup_final.json": {
+      "sha256": "e2a867af6e8d8f10b0d6ba9f29d8b28a812b2351f366d0f0bccf380aa638b90b",
+      "bytes": 439
+    },
+    "results/apex_workbench_v2_operational/preservation_final.json": {
+      "sha256": "f3301683ebcad87bb1ae4e58ac1567645960450c7ce2cd8fb1a8ceaaf3eec3ac",
+      "bytes": 3029
+    },
+    "docs/reviews/workbench_v2_operational/correction_1/INTEGRITY_REVIEW.md": {
+      "sha256": "22469de0fb931075f5524e56e3a338fed9d1c2fcbea40bd8dc8efe3a33a4eb6f",
+      "bytes": 4455
+    },
+    "docs/reviews/workbench_v2_operational/correction_1/review_record.json": {
+      "sha256": "9499e5b5b150f12b59dacdba212db841a59444df233466e371bd76a8d326fd47",
+      "bytes": 3484
+    },
+    "results/apex_workbench_v2_lap/operational_3ccf294_20261111/accepted_authority.json": {
+      "sha256": "e276d41f81c4f9859d7339800c1cc9f0ecbe8f1cdd4367225284a54a76266430",
+      "bytes": 8251
+    },
+    "results/apex_workbench_v2_lap/operational_3ccf294_20261111/final_review_record.json": {
+      "sha256": "9499e5b5b150f12b59dacdba212db841a59444df233466e371bd76a8d326fd47",
+      "bytes": 3484
+    },
+    "results/apex_workbench_v2_lap/operational_3ccf294_20261111/policy_accepted.json": {
+      "sha256": "4738fe6d5d19eeddf432e4a6c5513510be5ce93994464280fb6ddca1a8fa6d39",
+      "bytes": 6780
+    },
+    "results/apex_workbench_v2_lap/operational_3ccf294_20261111/PRIMARY_WORK.md": {
+      "sha256": "2341ea9feeb603827ecb40dab4fdd69678225ac9b6c2fd7290c574060c069c74",
+      "bytes": 13772
+    },
+    "results/apex_workbench_v2_lap/operational_3ccf294_20261111/access_historical.json": {
+      "sha256": "f9a0304ff136a1d7fe0b56ef0f3a2efff2f7fe37d74acbba1c369c5fa2772346",
+      "bytes": 6369
+    },
+    "results/apex_workbench_v2_lap/operational_3ccf294_20261111/smoke_claim.json": {
+      "sha256": "39ee6ae57f935d8cf60524276b5c890eaf4c4449bf3f90cf90b5f6351877f81d",
+      "bytes": 1053
+    },
+    "results/apex_workbench_v2_lap/operational_3ccf294_20261111/policy_smoke.json": {
+      "sha256": "e8b98bc788c660c8c42d9d8337b205fea64f67eddd7a3d48cadfc002576002f8",
+      "bytes": 6771
+    },
+    "results/apex_workbench_v2_lap/operational_3ccf294_20261111/review_record.json": {
+      "sha256": "f35b16b2fb0aa801c2d5936bd9d30b7b78f347f4d49a5120dfb99c71ade3e105",
+      "bytes": 2834
+    },
+    "results/apex_workbench_v2_lap/operational_3ccf294_20261111/conditional_authority.json": {
+      "sha256": "8a78241e7740808801fd992deb45bc02ef002ae514dde656f3f761f95031b111",
+      "bytes": 7158
+    },
+    "results/apex_workbench_v2_operational/documentation_final.json": {
+      "sha256": "8472b24419c7090c309d0ac967b65f53892b898ebefc07a0a345b3c341f57fb3",
+      "bytes": 1234
     }
   },
   "initial_independent_review": {
@@ -260,7 +416,7 @@
     "tests_passed": 38,
     "seconds": 30.57,
     "test_command": "PYTHONDONTWRITEBYTECODE=1 tools/apex_workbench/.venv/bin/python -B -m pytest -q -p no:cacheprovider tools/apex_workbench/tests/test_lap_operational.py --basetemp=/private/tmp/apex-v2-operational-roundoff --junitxml=results/apex_workbench_v2_operational/roundoff.xml",
-    "review": "pending exact correction source and explicit smoke compatibility declaration",
+    "review": "PASS exact5d88a54, explicit acceptance-metadata-only compatibility; activated without rerun",
     "retry": false
   },
   "smoke_observation": {
@@ -483,7 +639,8 @@
       "initial_assertion": "raw.end_time == 5",
       "observed_end_time": 4.999999999999915,
       "worker_outcome": "completed/valid/exit0",
-      "disposition": "Metadata-only correction/re-review pending; no scientific tolerance or archive change; no repeated smoke"
+      "disposition": "Metadata-only correction/re-review pending; no scientific tolerance or archive change; no repeated smoke",
+      "final_disposition": "Original pending disposition above is retained from smoke_audit.json at capture. Acceptance-metadata correction received exact independent PASS at 5d88a5478109d5ce93207170ceec60938a87e793; accepted-interactive activated without another numerical execution."
     },
     "changed_producers_since_execution": [
       "tools/apex_workbench/lap/operational.py"
@@ -541,5 +698,283 @@
       "nodes": 9
     },
     "smokeAnalyze": "- log\n- log\n- link \"Skip to main content\":\n  - /url: \"#stMain\"\n- banner:\n  - button \"Main menu\":\n- main:\n  - text: APEX\n  - generic: ENGINEERING WORKBENCH V2\n  - generic: NMPC + TVLQR\n  - generic: SYNTHETIC \u00b7 UNQUALIFIED\n  - radiogroup \"Engineering workflow\":\n    - radio \"Configure\"\n    - paragraph: Configure\n    - radio \"Run\"\n    - paragraph: Run\n    - radio \"Replay\"\n    - paragraph: Replay\n    - radio \"Analyze\" [checked] [active]\n    - paragraph: Analyze\n    - radio \"Compare\"\n    - paragraph: Compare\n  - generic: 04 / ANALYZE\n  - heading \"Turn observations into insight\" [level=1]:\n    - text: Turn observations into insight\n    - link \"Link to heading\":\n      - /url: \"#turn-observations-into-insight\"\n  - paragraph: Sample-based measurements from the full retained recording. Display traces use at most 2,000 genuine points; metrics use every native sample.\n  - paragraph: Retained recording\n  - combobox \"Retained recording\": Baseline \u00b7 5 s \u00b7 V2 \u00b7 2026-11-11T160708.5\n  - button \"Open\":\n  - generic: Racing error \u00b7 RMS\n  - strong: \"0.036\"\n  - text: m \u00b7 retained native samples\n  - generic: Peak racing error\n  - strong: \"0.099\"\n  - text: m \u00b7 absolute\n  - generic: Solver duration \u00b7 mean\n  - strong: \"0.037\"\n  - text: Host seconds \u00b7 not simulated time\n  - generic: Boundary observations\n  - strong: \"0\"\n  - text: Recorded violation rows \u00b7 not safety proof\n  - paragraph: Analysis view\n  - combobox \"Analysis view\": Tracking\n  - button \"Open\":\n  - paragraph: \"Native circuit observations: 0 complete laps \u00b7 lap time Unavailable s. Initial partial crossing excluded.\"\n  - generic \"Lap & sector measurements\":\n    - generic: keyboard_arrow_right\n    - paragraph: Lap & sector measurements\n  - generic \"Metric definitions & full measurement record\":\n    - generic: keyboard_arrow_right\n    - paragraph: Metric definitions & full measurement record"
+  },
+  "accepted_implementation": "5d88a5478109d5ce93207170ceec60938a87e793",
+  "initial_preservation_before_transition": {
+    "historical_files": 811,
+    "historical_links": 65,
+    "changed_files": [],
+    "changed_links": [],
+    "canonical_files": 335,
+    "frozen_runtime_files": 333,
+    "V1_source_profile_policy_unchanged": true,
+    "renderer_clock_launcher_profile_and_native_worker_unchanged": true,
+    "live_policy_sha256": "f9a0304ff136a1d7fe0b56ef0f3a2efff2f7fe37d74acbba1c369c5fa2772346"
+  },
+  "activation": {
+    "stage": "accepted-interactive",
+    "accepted_revision": "5d88a5478109d5ce93207170ceec60938a87e793",
+    "producer_count": 49,
+    "review_sha256": "9499e5b5b150f12b59dacdba212db841a59444df233466e371bd76a8d326fd47",
+    "authority_record": "/Users/marwansaber/.codex/worktrees/nmpc-weight-m0/MPC_Controller_v1_IronManStyle/results/apex_workbench_v2_lap/operational_3ccf294_20261111/accepted_authority.json",
+    "authority_sha256": "e276d41f81c4f9859d7339800c1cc9f0ecbe8f1cdd4367225284a54a76266430",
+    "policy_sha256": "4738fe6d5d19eeddf432e4a6c5513510be5ce93994464280fb6ddca1a8fa6d39",
+    "historical_used": {
+      "pilot": "2026-11-10T145233.755880_0000_f46cc76634dd4322b1720f37eb96442b",
+      "full_lap": "2026-11-11T095747.505385_0000_6a18eaab96bd4949835d7c481116806e"
+    },
+    "historical_limits": {
+      "pilot": 1,
+      "full_lap": 1
+    },
+    "automatic_retry": false,
+    "smoke_claim": {
+      "run_id": "2026-11-11T160708.594424_0000_fe073e9a35714216accf3f91cc7cadae",
+      "effective": {
+        "schema": "apex-lap-configuration/1",
+        "profile": "synthetic-gp-gamma2-A-N8-lap-v2",
+        "profile_sha256": "849cac0a38188c11e42e5a903ac8d45bae64681cf5c39e847fb6195879393096",
+        "scientific_source": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+        "mode": "extended",
+        "maximum_simulation_s": 5,
+        "scratch": {
+          "schema": "apex-nmpc-scratch-config/1",
+          "configuration_id": "baseline",
+          "version": 1,
+          "profile": "synthetic-gp-gamma2-A-v1",
+          "scientific_source": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+          "profile_sha256": "52ffa7cbb4308bb8814b7512fbb61d685e27fbe9af83b1acec926217b8f42fab",
+          "costs": {
+            "lateral": 2.0,
+            "dynamic": 1.0,
+            "speed": 1.0,
+            "control": 1.0,
+            "rate": 1.0,
+            "terminal": 1.0,
+            "alpha_vy": 1.0,
+            "alpha_r": 1.0
+          },
+          "disturbance": "none"
+        }
+      },
+      "reviewed_revision": "3ccf294e28e2f213ef9d269333d2700f2ee37522"
+    },
+    "smoke_source_compatibility": {
+      "execution_revision": "3ccf294e28e2f213ef9d269333d2700f2ee37522",
+      "accepted_revision": "5d88a5478109d5ce93207170ceec60938a87e793",
+      "review_sha256": "9499e5b5b150f12b59dacdba212db841a59444df233466e371bd76a8d326fd47",
+      "changed_producers": {
+        "tools/apex_workbench/lap/operational.py": {
+          "execution": "ff55a2f2cef0dd6bfe9248ea014c129375f11d338929a514166021001dc6ecb9",
+          "accepted": "7a4090b558615e7ee419d0d2df93fc83943158c816d1b273ffa4cccdd25765db"
+        }
+      }
+    }
+  },
+  "accepted_admission_checks": {
+    "results": [
+      {
+        "mode": "extended",
+        "duration_s": 5,
+        "baseline_admitted": true,
+        "edited_cost_admitted": true,
+        "limits": {
+          "wall_s": 180,
+          "cpu_s": 120,
+          "sampled_rss_bytes": 805306368,
+          "sampled_output_bytes": 134217728,
+          "single_file_bytes": 4194304
+        },
+        "host_capacity": "Fresh once at actual launch; not polled in this admission-only check"
+      },
+      {
+        "mode": "extended",
+        "duration_s": 10,
+        "baseline_admitted": true,
+        "edited_cost_admitted": true,
+        "limits": {
+          "wall_s": 180,
+          "cpu_s": 120,
+          "sampled_rss_bytes": 805306368,
+          "sampled_output_bytes": 134217728,
+          "single_file_bytes": 4194304
+        },
+        "host_capacity": "Fresh once at actual launch; not polled in this admission-only check"
+      },
+      {
+        "mode": "extended",
+        "duration_s": 20,
+        "baseline_admitted": true,
+        "edited_cost_admitted": true,
+        "limits": {
+          "wall_s": 180,
+          "cpu_s": 120,
+          "sampled_rss_bytes": 805306368,
+          "sampled_output_bytes": 134217728,
+          "single_file_bytes": 4194304
+        },
+        "host_capacity": "Fresh once at actual launch; not polled in this admission-only check"
+      },
+      {
+        "mode": "full_lap",
+        "duration_s": 80,
+        "baseline_admitted": true,
+        "edited_cost_admitted": true,
+        "limits": {
+          "wall_s": 900,
+          "cpu_s": 720,
+          "sampled_rss_bytes": 805306368,
+          "sampled_output_bytes": 268435456,
+          "single_file_bytes": 4194304
+        },
+        "host_capacity": "Fresh once at actual launch; not polled in this admission-only check"
+      }
+    ],
+    "policy_sha256_unchanged": "4738fe6d5d19eeddf432e4a6c5513510be5ce93994464280fb6ddca1a8fa6d39",
+    "used": {
+      "pilot": "2026-11-10T145233.755880_0000_f46cc76634dd4322b1720f37eb96442b",
+      "full_lap": "2026-11-11T095747.505385_0000_6a18eaab96bd4949835d7c481116806e"
+    },
+    "run_directories": [
+      "2026-11-10T145233.755880_0000_f46cc76634dd4322b1720f37eb96442b",
+      "2026-11-11T095747.505385_0000_6a18eaab96bd4949835d7c481116806e",
+      "2026-11-11T160708.594424_0000_fe073e9a35714216accf3f91cc7cadae"
+    ],
+    "new_scientific_executions_in_validation": 0,
+    "historical_slots_mutated": false
+  },
+  "final_browser": {
+    "baselineConfiguration": [
+      {
+        "label": "Lateral",
+        "value": "2.0000"
+      },
+      {
+        "label": "Speed",
+        "value": "1.0000"
+      },
+      {
+        "label": "Rate",
+        "value": "1.0000"
+      },
+      {
+        "label": "Alpha Vy",
+        "value": "1.0000"
+      },
+      {
+        "label": "Dynamic",
+        "value": "1.0000"
+      },
+      {
+        "label": "Control",
+        "value": "1.0000"
+      },
+      {
+        "label": "Terminal",
+        "value": "1.0000"
+      },
+      {
+        "label": "Alpha R",
+        "value": "1.0000"
+      },
+      {
+        "label": "Configuration version",
+        "value": "1"
+      }
+    ],
+    "smokeReady": true,
+    "smokeReplayStart": {
+      "notice": "VERIFIED RECORDING \u00b7 2026-11-11T160708.594424_0000_fe073e9a35714216accf3f91cc7cadae \u00b7 1,000 / 1,000 native samples in this window",
+      "time": "0.000 / 4.995 s \u00b7 Paused"
+    },
+    "smokeReplayEnd": {
+      "time": "4.995 / 4.995 s \u00b7 Paused",
+      "authority": "Following available active packet 49",
+      "coverage": "1000 native samples; duration. Last playback segment: 4.9950 simulated s / 2.5000 wall s at 2\u00d7; 56 rendered frames; maximum painted-frame gap 50.9 ms. Display timing only.",
+      "nodes": 9
+    },
+    "smokeAnalyze": "- log\n- log\n- link \"Skip to main content\":\n  - /url: \"#stMain\"\n- banner:\n  - button \"Main menu\":\n- main:\n  - text: APEX\n  - generic: ENGINEERING WORKBENCH V2\n  - generic: NMPC + TVLQR\n  - generic: SYNTHETIC \u00b7 UNQUALIFIED\n  - radiogroup \"Engineering workflow\":\n    - radio \"Configure\"\n    - paragraph: Configure\n    - radio \"Run\"\n    - paragraph: Run\n    - radio \"Replay\"\n    - paragraph: Replay\n    - radio \"Analyze\" [checked] [active]\n    - paragraph: Analyze\n    - radio \"Compare\"\n    - paragraph: Compare\n  - generic: 04 / ANALYZE\n  - heading \"Turn observations into insight\" [level=1]:\n    - text: Turn observations into insight\n    - link \"Link to heading\":\n      - /url: \"#turn-observations-into-insight\"\n  - paragraph: Sample-based measurements from the full retained recording. Display traces use at most 2,000 genuine points; metrics use every native sample.\n  - paragraph: Retained recording\n  - combobox \"Retained recording\": Baseline \u00b7 5 s \u00b7 V2 \u00b7 2026-11-11T160708.5\n  - button \"Open\":\n  - generic: Racing error \u00b7 RMS\n  - strong: \"0.036\"\n  - text: m \u00b7 retained native samples\n  - generic: Peak racing error\n  - strong: \"0.099\"\n  - text: m \u00b7 absolute\n  - generic: Solver duration \u00b7 mean\n  - strong: \"0.037\"\n  - text: Host seconds \u00b7 not simulated time\n  - generic: Boundary observations\n  - strong: \"0\"\n  - text: Recorded violation rows \u00b7 not safety proof\n  - paragraph: Analysis view\n  - combobox \"Analysis view\": Tracking\n  - button \"Open\":\n  - paragraph: \"Native circuit observations: 0 complete laps \u00b7 lap time Unavailable s. Initial partial crossing excluded.\"\n  - generic \"Lap & sector measurements\":\n    - generic: keyboard_arrow_right\n    - paragraph: Lap & sector measurements\n  - generic \"Metric definitions & full measurement record\":\n    - generic: keyboard_arrow_right\n    - paragraph: Metric definitions & full measurement record",
+    "acceptedAdmissions": [
+      {
+        "duration": 5,
+        "enabled": true
+      },
+      {
+        "duration": 10,
+        "enabled": true,
+        "ceilingShown": true
+      },
+      {
+        "duration": 20,
+        "enabled": true,
+        "ceilingShown": true
+      },
+      {
+        "mode": "Full lap",
+        "duration": 80,
+        "enabled": true,
+        "ceilingShown": true
+      }
+    ],
+    "transientReady": true,
+    "draftSaved": "Saved unreviewed draft: /Users/marwansaber/.codex/worktrees/nmpc-weight-m0/MPC_Controller_v1_IronManStyle/results/apex_workbench_v2_lap/configurations/interactive_v2_demo_20261111_extended_5s_v1.json",
+    "editedDraftReady": true,
+    "comparison": "Noncontrolled comparison: conditions, coverage, source or scheduling differ",
+    "no_additional_Run_clicks_after_smoke": true
+  },
+  "cleanup": {
+    "normal_launcher_start_from_unrelated_cwd": true,
+    "owned_reuse_exit": 0,
+    "initial_owned_shutdown_exit": 0,
+    "accepted_owned_shutdown_exit": 0,
+    "loopback8503_listener_after_shutdown": false,
+    "owned_UI_reference_pytest_scientific_processes_remaining": false,
+    "observation": "Authorized ps check matched only its inspection shell/rg; lsof returned1 with no listener",
+    "additional_scientific_executions_after_sole_smoke": 0
+  },
+  "correction_review": {
+    "candidate": "5d88a5478109d5ce93207170ceec60938a87e793",
+    "outcome": "PASS",
+    "record": "docs/reviews/workbench_v2_operational/correction_1/review_record.json",
+    "sha256": "9499e5b5b150f12b59dacdba212db841a59444df233466e371bd76a8d326fd47",
+    "independent_tests_passed": 5,
+    "seconds": 0.34,
+    "explicit_smoke_compatibility": true,
+    "review_iteration": "correction within same narrowly scoped policy/source review"
+  },
+  "remaining_limits": [
+    "Synthetic/experimental/unqualified; no physical or hard real-time claim",
+    "Full Lap available RAM and disk must exceed 1,610,612,736 bytes at explicit launch; sufficiency not guaranteed",
+    "Original failed full lap stays failed and descriptive",
+    "Cold reference construction/verified boundary pauses remain; no new replay performance campaign",
+    "Normal UI uses its existing supported local environment; raw artifacts retained locally, not off-host backup"
+  ],
+  "documentation_checks": {
+    "outcome": "PASS",
+    "accepted_source": "5d88a5478109d5ce93207170ceec60938a87e793",
+    "producers_rechecked": 49,
+    "artifact_hashes_and_sizes_rechecked": 46,
+    "local_documentation_links_checked": 39,
+    "primary_brief_exact": true,
+    "live_policy_unchanged": "4738fe6d5d19eeddf432e4a6c5513510be5ce93994464280fb6ddca1a8fa6d39",
+    "documentation_only_final_diff": [
+      "docs/CODEX_HANDOFF.md",
+      "docs/workbench_v2_operational/FINALIZATION_CORRECTION.md",
+      "docs/workbench_v2_operational/USER_GUIDE.md",
+      "docs/workbench_v2_operational/WORK.md",
+      "docs/workbench_v2_operational/work_record.json",
+      "tools/apex_workbench/README.md"
+    ],
+    "new_review_documents": [
+      "docs/reviews/workbench_v2_operational/correction_1/INTEGRITY_REVIEW.md",
+      "docs/reviews/workbench_v2_operational/correction_1/review_record.json"
+    ],
+    "production_run_directories": 3,
+    "new_numerical_executions": 0,
+    "earlier_documentation_harness_error": {
+      "outcome": "KeyError: accepted_revision",
+      "cause": "Audit expected an activation-summary key on live policy; actual policy schema uses reviewed_revision",
+      "disposition": "Audit corrected after read-only schema inspection; no implementation/policy/evidence changes"
+    }
   }
 }
