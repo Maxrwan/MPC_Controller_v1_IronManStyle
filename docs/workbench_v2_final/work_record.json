@@ -1,6 +1,6 @@
 {
   "schema": "apex-workbench-v2-final-work/1",
-  "stage": "WORK_COMPLETE_PENDING_REVIEW",
+  "stage": "ENGINEERING_REVIEW_PASS_PENDING_CONDITIONAL_FULL_LAP",
   "branch": "codex/workbench-v2-ui",
   "base_delivery": "e45059cb0fff41a8610761e83bdd69c4a2dff1e2",
   "accepted_presentation": "b1cc8b3d7b306a56adf99a63d8dc689c13856114",
@@ -204,7 +204,7 @@
   "execution": {
     "new_scientific_attempts": 0,
     "policy_installation": "not yet performed",
-    "independent_review": "pending exact committed source",
+    "independent_review": "PASS exact740a268",
     "conditional_full_lap": "one baseline attempt only, after PASS and fresh host/source gates",
     "automatic_retry": false
   },
@@ -353,5 +353,21 @@
       "bytes": 102246
     }
   },
-  "next_gate": "Independent Engineering Review of exact candidate, then terminate review/UI/tests/helpers and conditionally take one full-lap attempt."
+  "next_gate": "Independent Engineering Review of exact candidate, then terminate review/UI/tests/helpers and conditionally take one full-lap attempt.",
+  "implementation_revision": "740a268a2d2c6b92a67a45456292a3b2cafb2479",
+  "independent_review": {
+    "candidate": "740a268a2d2c6b92a67a45456292a3b2cafb2479",
+    "outcome": "PASS",
+    "record": "docs/reviews/workbench_v2_final/iteration_1/review_record.json",
+    "sha256": "dcd1fdf90c2135c1b804152c5bbb7015ec7604bb9da4d86d527bb5f8b06ec07f",
+    "all_review_activity_ended": true
+  },
+  "pre_numerical_cleanup": {
+    "root_ui_launcher_exit": 0,
+    "root_ui_servers_stopped": true,
+    "root_reference_helper_stopped": true,
+    "read_only_process_check": "No lap, reference, pytest or Pi benchmark process apart from inspection shell",
+    "browser_tabs_closed": true,
+    "viewport_reset": true
+  }
 }

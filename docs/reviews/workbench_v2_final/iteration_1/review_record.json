@@ -1,0 +1,224 @@
+{
+  "schema": "apex-workbench-v2-final-engineering-review/1",
+  "stage": "ENGINEERING_REVIEW_PASS_CONDITIONAL_EXECUTION_PRECHECKS_REMAIN",
+  "outcome": "PASS",
+  "candidate": "740a268a2d2c6b92a67a45456292a3b2cafb2479",
+  "branch": "codex/workbench-v2-ui",
+  "base_delivery": "e45059cb0fff41a8610761e83bdd69c4a2dff1e2",
+  "accepted_presentation_revision": "b1cc8b3d7b306a56adf99a63d8dc689c13856114",
+  "scientific_source": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+  "reviewer": "fresh independent subagent; no implementation role",
+  "recorded_utc": "2026-11-11T08:30:01.300595+00:00",
+  "scope": "One focused independent Engineering Review of final display semantics, read-only canonical reference derivation, retained-profile compatibility, and once-only full-lap admission. No formal scientific Verification.",
+  "findings": [],
+  "producer_count": 47,
+  "producer_sha256": {
+    "Launch_APEX_Workbench_V2.command": "64ab4063b0c9ae9daf75de4ee767215e25c095e2d417de1e8020b1d6471434c8",
+    "tools/apex_workbench/configuration.py": "596846e8dab789c619e00a26679288d73bfac495fc468c7b065e15d6795a33a1",
+    "tools/apex_workbench/jobs.py": "31c82030e644418cb6e3ec88b905d37388291fc00172c45c34e34a5de5684ed4",
+    "tools/apex_workbench/lap/__init__.py": "35b55be42eafe56b0521ad9ae3875ba947ae67c6f3e9e2a3c87d287cbd3fca55",
+    "tools/apex_workbench/lap/admission.py": "68929330d3cf172d931e03d02219b09d52911f992ec7f71b7c2486767648c1d2",
+    "tools/apex_workbench/lap/analysis.py": "ef971f089b544a9d578be9bbc06cf43b47382c932766d68162cf5e3650012970",
+    "tools/apex_workbench/lap/app.py": "e89aab8852a43d28cb7ebe4813fc8bd3b33b664b32d1a33b25d4db1592ae5f3f",
+    "tools/apex_workbench/lap/config.py": "c2d69531a5c82f4d787e08f60e67f3ebf08df8afc556e0e3e2e7b5c341dd1777",
+    "tools/apex_workbench/lap/evidence.py": "496cc320f44c9019b88960999de5682a952fdca6eef2f499dc57d2c2df5c5a59",
+    "tools/apex_workbench/lap/execution.py": "bddb3b040738cf7f3c15fbfefafad838af8cf613cdbff7e00f62414dcd00fcf2",
+    "tools/apex_workbench/lap/final_attempt.py": "590d4933b3beb88549604967a5adbbaf2c7e25af762fb86e8fe5e81ec9201285",
+    "tools/apex_workbench/lap/launch.py": "aced85a5262feb76b6357c99cfc6427cd5ce14b2f2e629d896db496a29e7f72f",
+    "tools/apex_workbench/lap/panels.py": "72760b1f0eda491f79627b770d75a086b95e861ee46368e50a31cb46c79affb9",
+    "tools/apex_workbench/lap/profile.json": "849cac0a38188c11e42e5a903ac8d45bae64681cf5c39e847fb6195879393096",
+    "tools/apex_workbench/lap/reference_view.py": "134ef150d91b2c743d1a0daff9bd9e2c3422ece0ccb48d76bd773928cb331cde",
+    "tools/apex_workbench/lap/replay.py": "31225fe1f05a5f70af2111162eddc2e30beba0cf55ebaa3a77bcfc29a1c05c61",
+    "tools/apex_workbench/lap/ui_data.py": "fc3986c4d49d264c08c49e4320af7373b1b34803124d57eb4fcc6d65d8804f00",
+    "tools/apex_workbench/lap/ui_replay.py": "e54152874840df7bd97454a96982628fa0657ac7d26370bd587d440c96148ac7",
+    "tools/apex_workbench/lap/ui_theme.py": "36c9e6755fc510f82c56e8880c3dde910b5e3a9f45981aee09e02bb477d60b05",
+    "tools/apex_workbench/lap/ui_views.py": "8e5df937ba49e5b0b29a537c509c300574c6c81f2ed01af2ff8f64a8401f57fb",
+    "tools/apex_workbench/lap/ui_web/camera.mjs": "18ef4d031dc709793f41405a291745c3cd59edb43d2299023403826984bab532",
+    "tools/apex_workbench/lap/ui_web/clock.mjs": "ff9ba7d4834acc5b5a4ef43eb06fbc6af4dbe13a0c5852cff767391d3084e97a",
+    "tools/apex_workbench/lap/ui_web/host.css": "438265d626c1d0dac6382e8210e4b7f6ed72b11685fd0169df79441e6c1500cf",
+    "tools/apex_workbench/lap/ui_web/index.html": "f7ce8ee8fd50fd164084d0e1ebe35ea5708974f26089c302d39d1c580cec3629",
+    "tools/apex_workbench/lap/ui_web/instruments.mjs": "ffaad2ffb99cb8d49471a9a56d80c84f6c1d7c6d223394ae26cb4006916c8b4c",
+    "tools/apex_workbench/lap/ui_web/style.css": "2d94c58f0e7010bac838474afe89146d169d05eae911fb646b7d1dc7c0d548b1",
+    "tools/apex_workbench/lap/ui_web/tokens.css": "f8b52acde65ed542c28fc38593d2d71d7994a2c001c6f163c9da7c340fc3ef0c",
+    "tools/apex_workbench/lap/ui_web/viewer.mjs": "c445a0ebcf3f1dda0cb214c2c64421af7457e1a9f6d881e26c08f815ea25554d",
+    "tools/apex_workbench/lap/worker.py": "b3a3b0eaa17c24233a62e32be6b8cd357cd0b11c7b62b744391a24712f0909f8",
+    "tools/apex_workbench/lifecycle.py": "794bd5ada88048a402a2d0946942ec9962e52b0caf2e72d7a8a3a0279f51f05a",
+    "tools/apex_workbench/nmpc_analysis.py": "9bf1a7efe44ee4bb9f1199356f58a3f0caa31d7783543e03f26ca6abebc01beb",
+    "tools/apex_workbench/nmpc_scratch.py": "50bd86590980f2abb98f6e7e6a01e169a9e72584fe009b53faabcc357cf72d78",
+    "tools/apex_workbench/nmpc_scratch_panels.py": "ea08206b4f765c99d7dc7ae48c447d5fcb9a7029a2178e9be9b43d8e031a58e8",
+    "tools/apex_workbench/nmpc_scratch_profile.json": "52ffa7cbb4308bb8814b7512fbb61d685e27fbe9af83b1acec926217b8f42fab",
+    "tools/apex_workbench/nmpc_scratch_worker.py": "d6ee20dcd56f9f2123aed9afa3796bf0bce9f63da21583982470f9a2645737e3",
+    "tools/apex_workbench/nmpc_weight_lab.py": "8751fdfea3c1071fed61dc463d0827894b876295c1a5810647320964c6be1700",
+    "tools/apex_workbench/nmpc_weight_panels.py": "8b0e1723cbe1d8428c223e2b4c2fa998823096e68998fe5a592c2b2c85581b0a",
+    "tools/apex_workbench/nmpc_weight_worker.py": "d1051d60263936f173e4b691f1407a2b8fbb801f4825ff926e75112eda18ef01",
+    "tools/apex_workbench/run_catalog.py": "f48089c848a9cc2e78102dad23fcbc15be360a9931b4f55d698c0948a1a0908c",
+    "tools/apex_workbench/scratch_replay.py": "519317232826bdf132048172f2df1ed65d8924f0b4f5c2d1c05ef6880f3cce1e",
+    "tools/apex_workbench/scratch_replay_web/clock.mjs": "ff9ba7d4834acc5b5a4ef43eb06fbc6af4dbe13a0c5852cff767391d3084e97a",
+    "tools/apex_workbench/scratch_replay_web/index.html": "7d9ecedef30c7ab088a8a3b38228901f18bc741b88f4b440e92a5d70080657bb",
+    "tools/apex_workbench/scratch_replay_web/style.css": "20bca79c8f522995b7e64cca7f9a8131a5b7b005b39c89fe93e23f318746f964",
+    "tools/apex_workbench/scratch_replay_web/viewer.mjs": "5d4a5aabe4eddd4a21f09e37b8da249b0e27582b25395e781589b394b84a4c3d",
+    "tools/apex_workbench/storage.py": "962ff863823f8fa22edf46530730db3a042328fb940bc51036ba18aa2e221c96",
+    "tools/apex_workbench/worker.py": "17293f2fc7775a1601de3f6c95bd28bcafc0766188efca588f8d7894ee8ff91c",
+    "tools/apex_workbench/workspace.py": "85722940dcbc464c4b5f05547278d33e1e3f8c40439dcb4d75c8388e026df2ae"
+  },
+  "current_and_candidate_git_producers_equal": true,
+  "work_record_producers_equal": true,
+  "profile_sha256": "849cac0a38188c11e42e5a903ac8d45bae64681cf5c39e847fb6195879393096",
+  "primary_brief_sha256": "52114eba8c67422e3c8e4e02f37b9da21153dbea9c6f41a06ac93f9f04efe785",
+  "focused_tests": {
+    "command": "PYTHONDONTWRITEBYTECODE=1 tools/apex_workbench/.venv/bin/python -B - <<'PY'\nimport sys, pytest\nresult = pytest.main(['-q','-p','no:cacheprovider','tools/apex_workbench/tests/test_lap_final.py','tools/apex_workbench/tests/test_lap_ui.py','tools/apex_workbench/tests/test_lap_v2.py','tools/apex_workbench/tests/test_scratch_replay.py','-k','not source_isolated_configuration','--basetemp=/private/tmp/apex-v2-final-independent-review-740a268'])\nblocked = [n for n in sys.modules if n.startswith(('apex.control','apex.models','apex.simulation','casadi'))]\nprint('REVIEW_FORBIDDEN_IMPORTS', blocked)\nfrom tools.apex_workbench.lap import reference_view\nif reference_view.session.cache_info().currsize:\n    reference_view.session().close()\nprint('REVIEW_GEOMETRY_HELPER_CLOSED')\nraise SystemExit(result or bool(blocked))\nPY",
+    "passed": 105,
+    "deselected": 1,
+    "failures": 0,
+    "skips": 0,
+    "seconds": 29.11,
+    "exit_code": 0,
+    "excluded": "Unchanged source_isolated_configuration native-dataclass composition subprocess imports scientific execution modules; excluded from visual-review authority.",
+    "stdout": "105 passed, 1 deselected in 29.11s\nREVIEW_FORBIDDEN_IMPORTS []\nREVIEW_GEOMETRY_HELPER_CLOSED",
+    "forbidden_imports": [],
+    "geometry_helper_closed": true,
+    "metadata_only_lease_cancellation_resource_helpers": true,
+    "python": "3.12.14 (main, Sep  1 2026, 14:09:38) [Clang 22.1.3 ]",
+    "executable": "/Users/marwansaber/.codex/worktrees/nmpc-weight-m0/MPC_Controller_v1_IronManStyle/tools/apex_workbench/.venv/bin/python",
+    "raw_output_location": "Review tool transcript; successful summary retained here. Temporary fixtures only under /private/tmp/apex-v2-final-independent-review-740a268."
+  },
+  "independent_js": {
+    "executable": "/Applications/ChatGPT.app/Contents/Resources/cua_node/bin/node",
+    "committed_display_checks": {
+      "outcome": "PASS",
+      "checks": 2847,
+      "fixture": "results/apex_workbench_v2_final/pilot_display_candidate.json",
+      "scientific_runs": 0
+    },
+    "reviewer_linear_search_oracle": {
+      "outcome": "PASS",
+      "assertions": 8005,
+      "native_states": 2000,
+      "checks": "latest actual application and its nominal at every native time; default12 visual angle; native mode/plan plus validity/completion/timestamp active availability; exact 0.125s state; no input mutation",
+      "actual_at_0p125_rad": 0.020027495934949978,
+      "nominal_at_0p125_rad": -0.003984999314297534,
+      "active_at_0p125": 0,
+      "scientific_runs": 0
+    },
+    "counts_separate": true,
+    "retained_harness_negatives": [
+      "Initial shell node invocation returned127 because node was not on PATH; existing bundled Node24.22.1 used without installation.",
+      "First reviewer-oracle draft used || null and therefore treated packet ID0 as absent; explicit null handling corrected the reviewer oracle. No candidate edit."
+    ]
+  },
+  "preservation": {
+    "outcome": "PASS",
+    "independently_rehashed_historical_files": 13280,
+    "independently_checked_links": 573,
+    "changed_historical_files": [],
+    "changed_links": [],
+    "canonical_file_count": 335,
+    "canonical_against": "e45059cb0fff41a8610761e83bdd69c4a2dff1e2",
+    "canonical_changes": [],
+    "frozen_runtime_files": 333,
+    "frozen_runtime_exact": true,
+    "v1_producer_and_launcher_changes": [],
+    "v2_execution_worker_clock_launcher_changes": [],
+    "historical_review_and_primary_hashes_valid": true,
+    "historical_git_producer_mismatches": [],
+    "policy_sha256": "03b6fbabdfd6bf5416087c78338a9ef335a4f8205724a1214f5f0a1d39ff3574",
+    "policy_stage": "reviewed-work",
+    "policy_reviewed_revision": "fdd494eb7ddf9b456b88cba243fbc704a4fd83c0",
+    "used": {
+      "pilot": "2026-11-10T145233.755880_0000_f46cc76634dd4322b1720f37eb96442b"
+    },
+    "maximum_genuine_attempts": {
+      "pilot": 1,
+      "full_lap": 1
+    },
+    "automatic_retry": false,
+    "final_claim_exists": false,
+    "final_launch_exists": false,
+    "production_policy_installed_by_reviewer": false,
+    "original_evidence_modified": false
+  },
+  "admission_review": {
+    "exact_independent_pass_and_current_git_source_required": true,
+    "exact_prior_policy_bytes_preserved": true,
+    "historical_review_primary_pilot_bindings_required": true,
+    "allowed_new_slots": [
+      "full_lap"
+    ],
+    "pilot_consumption_preserved": true,
+    "unused_full_slot_preserved": true,
+    "legacy_profile_read_only": true,
+    "old_profile_rejected_for_new_execution": true,
+    "only_resource_deltas": {
+      "full_lap.wall_s": [
+        600,
+        900
+      ],
+      "full_lap.cpu_s": [
+        480,
+        720
+      ]
+    },
+    "projection": {
+      "wall_s": 588.889137327671,
+      "cpu_s": 551.42816,
+      "sampled_rss_bytes": 270616848.0,
+      "sampled_output_bytes": 112568912.0
+    },
+    "projection_method_unchanged": true,
+    "pending_acceptance_rejected": true,
+    "source_and_complete_environment_check_before_claim": true,
+    "host_capacity_pass_for_numerical_attempt_claimed": false
+  },
+  "visual_evidence": {
+    "provenance": "Retained root browser observations and screenshots inspected; no independent browser recapture.",
+    "opened_screenshots": [
+      "01-follow-prediction.jpg",
+      "02-microscope.jpg"
+    ],
+    "root_browser_observations_read": true,
+    "two_window_fixture_source_read": true,
+    "genuine_pilot_max_painted_frame_gap_ms": 233.3,
+    "continuation_transport_fixture_max_gap_ms": 50.1,
+    "cold_reference_seconds_approx": 13,
+    "limits": [
+      "Tool-driven frame-gap observation is not a guaranteed frame rate.",
+      "Two-window repeated/shifted transport fixture is not a genuine long trajectory or full-lap archive.",
+      "Cold initialization and verified boundary pauses remain.",
+      "Physical mobile behavior and realtime/WCET remain unqualified."
+    ]
+  },
+  "resource_observation": {
+    "ps_sandbox_initially_denied": true,
+    "read_only_escalated_process_inspection_succeeded": true,
+    "remaining_root_ui_server_pid": 83743,
+    "remaining_root_reference_helper_pid": 83756,
+    "remaining_root_launcher_pid": 83738,
+    "identified_numerical_workers": [],
+    "review_owned_test_and_geometry_helper_activity_ended": true,
+    "required_before_numerical_attempt": "Orchestrator terminate root UI/launcher/reference helper and all review activity, then take fresh source-bound host/source preflight."
+  },
+  "not_performed": [
+    "production policy installation",
+    "genuine numerical execution or optimizer/plant/controller probe",
+    "new pilot",
+    "full-lap claim",
+    "full-lap attempt",
+    "formal historical scientific regression/Verification",
+    "Primary acceptance",
+    "commit or push"
+  ],
+  "artifact_sha256": {
+    "docs/workbench_v2_final/PRIMARY_WORK.md": "52114eba8c67422e3c8e4e02f37b9da21153dbea9c6f41a06ac93f9f04efe785",
+    "docs/workbench_v2_final/WORK.md": "a34a7e3328194bf7b612016638aa359c4fd62568c20d892a754183e4e81ec267",
+    "docs/workbench_v2_final/work_record.json": "f9df75d41f5100c7009bc4dacef4d512bb40757b79f6f531412fb350962afeb9",
+    "results/apex_workbench_v2_final/pilot_display_candidate.json": "b5f0f057e94911400e2e4169c9bed5a9d6f944f19298b5ae4529c148dd745092",
+    "results/apex_workbench_v2_final/browser_checks.json": "9268b3837330e860a813a99ecb0eeab7997275f26c2460bb4a1d8b96fbd4f89e",
+    "results/apex_workbench_v2_final/preservation_before.json": "bf5e900ff1092446b72200d65fe6960ff78576ea782b741714ff83206ecdc2f9",
+    "results/apex_workbench_v2_final/preservation_current.json": "fad2f007c9ef5eb947d9fe56e065b55fc0044e86f414e1505d33b529b73d1a5c",
+    "results/apex_workbench_v2_final/screenshots/01-follow-prediction.jpg": "8203f96da5992abc3d2f2f1a893bc7682ef040f287e5c27d6bbb5650fbd76ee7",
+    "results/apex_workbench_v2_final/screenshots/02-microscope.jpg": "077b91d8d753e58ce59081b4e00aaee33a2b7a4ac93e0faa6896233c0c6acc07",
+    "results/apex_workbench_v2_final/transport_app.py": "508f0d11b79ca2733d236058b98538e722021c860e88709870824ea7c53ef68d"
+  },
+  "review_report_sha256": "a31162886ab195a0ac330c657fbe66f67029907f9c8b7565025395662650ad0d",
+  "next_gate": "PASS satisfies focused independent review only. Keep reviewed producers fixed; terminate review/UI/helpers; explicitly install source-bound WORK transition; fresh host and source/environment gates; at most one already conditionally authorized baseline Full Lap attempt. Preserve every outcome and no automatic retry. Successful result may yield only a pending Primary acceptance proposal."
+}

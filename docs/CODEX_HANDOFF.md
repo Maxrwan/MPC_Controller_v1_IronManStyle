@@ -1,6 +1,6 @@
-# Current handoff — final V2 corrections pending exact independent review
+# Current handoff — final V2 PASS, conditional full-lap gate next
 
-**WORK_COMPLETE_PENDING_REVIEW.** `codex/workbench-v2-ui`, starting deliverye45059c.
+**ENGINEERING_REVIEW_PASS_PENDING_CONDITIONAL_FULL_LAP.** Exact source740a268a2d2c6b92a67a45456292a3b2cafb2479. `codex/workbench-v2-ui`, starting deliverye45059c.
 [Primary authorization](workbench_v2_final/PRIMARY_WORK.md), [WORK](workbench_v2_final/WORK.md),
 [machine evidence](workbench_v2_final/work_record.json). Primary accepts reviewedb1cc8b3 presentation
 as the foundation and authorizes four cameras, illustrative12:1 wheel, nine-node derived-reference
@@ -13,7 +13,7 @@ packet/node display, ratio distinction, historical isolation, verified two-windo
 and disposable-evidence quarantine checked. Cold reference construction remains about13s; boundary
 pauses possible. No numerical attempt, claim, repeated pilot or acceptance transition has run.
 
-Next: exact independent Engineering Review, then (only on PASS) terminate all review/tests/UI/helpers,
+Independent PASS is recorded; all review/tests/UI/helpers are terminated. Next:
 install explicit source-bound WORK policy, take fresh unchanged host/source preflight and attempt
 baseline Full Lap once. Retain outcome, no retry. If successful, prepare but do not install pending
 interactive acceptance. Final stop: WORKBENCH_V2_FINAL_READY_FOR_PRIMARY_ACCEPTANCE.
