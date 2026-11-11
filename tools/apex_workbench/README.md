@@ -433,3 +433,8 @@ WORK policy is installed. The final host preflight blocked before execution: ava
 1,380,417,536 bytes was below the unchanged 1,610,612,736-byte reserve. The Full Lap slot remains unused;
 no automatic retry or repeatable V2 admission is enabled. Primary's next decision is pending.
 See [final scope and evidence](../../docs/workbench_v2_final/WORK.md).
+
+The original 2026-11-11 Full Lap recording now opens in Replay and Analyze through an explicit,
+SHA-bound read-only recovery path. Its lifecycle remains failed / valid evidence / exit2, with no
+replacement summary. Measurements are labelled descriptive observations; the recording cannot qualify
+as a completed controlled experiment or authorize execution. See [recovery scope](../../docs/workbench_v2_recovery/WORK.md).

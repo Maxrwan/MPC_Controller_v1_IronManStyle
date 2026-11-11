@@ -406,7 +406,7 @@ def archive_fixture(tmp_path, monkeypatch):
         storage.write_json(directory / name, {"fixture": True})
     for name in ["stdout.log", "stderr.log"]:
         (directory / name).write_text("")
-    execution.finalize(directory, "completed")
+    execution.finalize(directory, "completed", returncode=0)
     return directory
 
 

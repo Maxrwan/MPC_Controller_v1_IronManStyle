@@ -1,0 +1,785 @@
+{
+  "schema": "apex-v2-full-lap-recovery/1",
+  "stage": "WORK_COMPLETE_PENDING_SHORT_INDEPENDENT_INTEGRITY_CHECK",
+  "branch": "codex/workbench-v2-ui",
+  "base_delivery": "3b2bdb0dd9c1f1b633216c3d0862e5de200e0906",
+  "numerical_source": "740a268a2d2c6b92a67a45456292a3b2cafb2479",
+  "scientific_source": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+  "recorded_utc": "2026-11-11T10:33:56.499774+00:00",
+  "producer_sha256": {
+    "Launch_APEX_Workbench_V2.command": "64ab4063b0c9ae9daf75de4ee767215e25c095e2d417de1e8020b1d6471434c8",
+    "tools/apex_workbench/configuration.py": "596846e8dab789c619e00a26679288d73bfac495fc468c7b065e15d6795a33a1",
+    "tools/apex_workbench/jobs.py": "31c82030e644418cb6e3ec88b905d37388291fc00172c45c34e34a5de5684ed4",
+    "tools/apex_workbench/lap/__init__.py": "35b55be42eafe56b0521ad9ae3875ba947ae67c6f3e9e2a3c87d287cbd3fca55",
+    "tools/apex_workbench/lap/admission.py": "68929330d3cf172d931e03d02219b09d52911f992ec7f71b7c2486767648c1d2",
+    "tools/apex_workbench/lap/analysis.py": "6f1298ee617e4e827059ade867f994b0b262c8062c565170e8314d60cc817074",
+    "tools/apex_workbench/lap/app.py": "e89aab8852a43d28cb7ebe4813fc8bd3b33b664b32d1a33b25d4db1592ae5f3f",
+    "tools/apex_workbench/lap/config.py": "c2d69531a5c82f4d787e08f60e67f3ebf08df8afc556e0e3e2e7b5c341dd1777",
+    "tools/apex_workbench/lap/evidence.py": "395bcf909f85b20524bc5dadba5021a1e9cd8699ec418414836b80f664c12b9c",
+    "tools/apex_workbench/lap/execution.py": "bddb3b040738cf7f3c15fbfefafad838af8cf613cdbff7e00f62414dcd00fcf2",
+    "tools/apex_workbench/lap/final_attempt.py": "590d4933b3beb88549604967a5adbbaf2c7e25af762fb86e8fe5e81ec9201285",
+    "tools/apex_workbench/lap/launch.py": "aced85a5262feb76b6357c99cfc6427cd5ce14b2f2e629d896db496a29e7f72f",
+    "tools/apex_workbench/lap/panels.py": "5a9470b67c936bfae2126e7731f5363040742f7ab8a78b012d0bcf05fbbad474",
+    "tools/apex_workbench/lap/profile.json": "849cac0a38188c11e42e5a903ac8d45bae64681cf5c39e847fb6195879393096",
+    "tools/apex_workbench/lap/reference_view.py": "134ef150d91b2c743d1a0daff9bd9e2c3422ece0ccb48d76bd773928cb331cde",
+    "tools/apex_workbench/lap/replay.py": "31225fe1f05a5f70af2111162eddc2e30beba0cf55ebaa3a77bcfc29a1c05c61",
+    "tools/apex_workbench/lap/ui_data.py": "645c4d7fa82b2a43fac421069ef5645cb15b022e480a6ff4abcda6fd488e2385",
+    "tools/apex_workbench/lap/ui_replay.py": "e54152874840df7bd97454a96982628fa0657ac7d26370bd587d440c96148ac7",
+    "tools/apex_workbench/lap/ui_theme.py": "36c9e6755fc510f82c56e8880c3dde910b5e3a9f45981aee09e02bb477d60b05",
+    "tools/apex_workbench/lap/ui_views.py": "327314c20f0011d2a75406c21102324b7c3cf08760c2f11aef49d2c67893cdeb",
+    "tools/apex_workbench/lap/ui_web/camera.mjs": "18ef4d031dc709793f41405a291745c3cd59edb43d2299023403826984bab532",
+    "tools/apex_workbench/lap/ui_web/clock.mjs": "ff9ba7d4834acc5b5a4ef43eb06fbc6af4dbe13a0c5852cff767391d3084e97a",
+    "tools/apex_workbench/lap/ui_web/host.css": "438265d626c1d0dac6382e8210e4b7f6ed72b11685fd0169df79441e6c1500cf",
+    "tools/apex_workbench/lap/ui_web/index.html": "f7ce8ee8fd50fd164084d0e1ebe35ea5708974f26089c302d39d1c580cec3629",
+    "tools/apex_workbench/lap/ui_web/instruments.mjs": "ffaad2ffb99cb8d49471a9a56d80c84f6c1d7c6d223394ae26cb4006916c8b4c",
+    "tools/apex_workbench/lap/ui_web/style.css": "2d94c58f0e7010bac838474afe89146d169d05eae911fb646b7d1dc7c0d548b1",
+    "tools/apex_workbench/lap/ui_web/tokens.css": "f8b52acde65ed542c28fc38593d2d71d7994a2c001c6f163c9da7c340fc3ef0c",
+    "tools/apex_workbench/lap/ui_web/viewer.mjs": "c445a0ebcf3f1dda0cb214c2c64421af7457e1a9f6d881e26c08f815ea25554d",
+    "tools/apex_workbench/lap/worker.py": "b3a3b0eaa17c24233a62e32be6b8cd357cd0b11c7b62b744391a24712f0909f8",
+    "tools/apex_workbench/lifecycle.py": "794bd5ada88048a402a2d0946942ec9962e52b0caf2e72d7a8a3a0279f51f05a",
+    "tools/apex_workbench/nmpc_analysis.py": "9bf1a7efe44ee4bb9f1199356f58a3f0caa31d7783543e03f26ca6abebc01beb",
+    "tools/apex_workbench/nmpc_scratch.py": "50bd86590980f2abb98f6e7e6a01e169a9e72584fe009b53faabcc357cf72d78",
+    "tools/apex_workbench/nmpc_scratch_panels.py": "ea08206b4f765c99d7dc7ae48c447d5fcb9a7029a2178e9be9b43d8e031a58e8",
+    "tools/apex_workbench/nmpc_scratch_profile.json": "52ffa7cbb4308bb8814b7512fbb61d685e27fbe9af83b1acec926217b8f42fab",
+    "tools/apex_workbench/nmpc_scratch_worker.py": "d6ee20dcd56f9f2123aed9afa3796bf0bce9f63da21583982470f9a2645737e3",
+    "tools/apex_workbench/nmpc_weight_lab.py": "8751fdfea3c1071fed61dc463d0827894b876295c1a5810647320964c6be1700",
+    "tools/apex_workbench/nmpc_weight_panels.py": "8b0e1723cbe1d8428c223e2b4c2fa998823096e68998fe5a592c2b2c85581b0a",
+    "tools/apex_workbench/nmpc_weight_worker.py": "d1051d60263936f173e4b691f1407a2b8fbb801f4825ff926e75112eda18ef01",
+    "tools/apex_workbench/run_catalog.py": "f48089c848a9cc2e78102dad23fcbc15be360a9931b4f55d698c0948a1a0908c",
+    "tools/apex_workbench/scratch_replay.py": "519317232826bdf132048172f2df1ed65d8924f0b4f5c2d1c05ef6880f3cce1e",
+    "tools/apex_workbench/scratch_replay_web/clock.mjs": "ff9ba7d4834acc5b5a4ef43eb06fbc6af4dbe13a0c5852cff767391d3084e97a",
+    "tools/apex_workbench/scratch_replay_web/index.html": "7d9ecedef30c7ab088a8a3b38228901f18bc741b88f4b440e92a5d70080657bb",
+    "tools/apex_workbench/scratch_replay_web/style.css": "20bca79c8f522995b7e64cca7f9a8131a5b7b005b39c89fe93e23f318746f964",
+    "tools/apex_workbench/scratch_replay_web/viewer.mjs": "5d4a5aabe4eddd4a21f09e37b8da249b0e27582b25395e781589b394b84a4c3d",
+    "tools/apex_workbench/storage.py": "962ff863823f8fa22edf46530730db3a042328fb940bc51036ba18aa2e221c96",
+    "tools/apex_workbench/worker.py": "17293f2fc7775a1601de3f6c95bd28bcafc0766188efca588f8d7894ee8ff91c",
+    "tools/apex_workbench/workspace.py": "85722940dcbc464c4b5f05547278d33e1e3f8c40439dcb4d75c8388e026df2ae"
+  },
+  "environment": {
+    "python": "3.12.14 (main, Sep  1 2026, 14:09:38) [Clang 22.1.3 ]",
+    "executable": "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/tools/apex_workbench/.venv/bin/python",
+    "platform": "macOS-26.5.1-arm64-arm-64bit"
+  },
+  "focused_tests": {
+    "command": "PYTHONDONTWRITEBYTECODE=1 tools/apex_workbench/.venv/bin/python -B - <<'PY' > results/apex_workbench_v2_recovery/focused_final.log 2>&1\nimport sys,pytest\nresult=pytest.main(['-q','-p','no:cacheprovider','tools/apex_workbench/tests/test_lap_recovery.py','tools/apex_workbench/tests/test_lap_v2.py','tools/apex_workbench/tests/test_lap_ui.py','tools/apex_workbench/tests/test_lap_final.py','-k','not source_isolated_configuration','--basetemp=/private/tmp/apex-v2-recovery-final','--junitxml=results/apex_workbench_v2_recovery/focused_final.xml'])\nblocked=[n for n in sys.modules if n.startswith(('apex.control','apex.models','apex.simulation','casadi'))]\nprint('FORBIDDEN_SCIENTIFIC_IMPORTS',blocked)\nfrom tools.apex_workbench.lap import reference_view\nif reference_view.session.cache_info().currsize:reference_view.session().close()\nprint('READ_ONLY_HELPER_CLOSED')\nraise SystemExit(result or bool(blocked))\nPY",
+    "passed": 137,
+    "deselected": 1,
+    "failures": 0,
+    "skips": 0,
+    "seconds": 47.12,
+    "forbidden_scientific_imports": [],
+    "geometry_helper_closed": true,
+    "excluded": "Unchanged native configuration-composition subprocess imports scientific execution modules; no scientific execution authorized here.",
+    "prior_separate_invocation": {
+      "passed": 137,
+      "seconds": 45.24,
+      "log": "focused_1.log",
+      "before": "Complete-circuit RMS observation display addition"
+    },
+    "counts_not_combined": true
+  },
+  "additional_lifecycle_guard_check": {
+    "command": "PYTHONDONTWRITEBYTECODE=1 tools/apex_workbench/.venv/bin/python -B -m pytest -q -p no:cacheprovider tools/apex_workbench/tests/test_lap_recovery.py::test_failed_native_circuit_cannot_be_controlled_or_accepted --basetemp=/private/tmp/apex-v2-recovery-admission --junitxml=results/apex_workbench_v2_recovery/admission_guard.xml",
+    "reason": "Strengthen test isolation after full focused pass: pass actual failed view beyond mocked source/reader gates and require the lifecycle-specific rejection. No production source change.",
+    "result_log": "results/apex_workbench_v2_recovery/admission_guard.log",
+    "passed": 1,
+    "failures": 0,
+    "seconds": 2.59
+  },
+  "recovery_contract": {
+    "explicit_opt_in": true,
+    "approved_original_run": "2026-11-11T095747.505385_0000_6a18eaab96bd4949835d7c481116806e",
+    "status_sha256": "dee9fa25607186027f726e7df76e0827d43b6bbc8cca36f1e2ba713b6f600a2e",
+    "manifest_sha256": "b6b8b56c9d70906860f471203f1cdef947b8fd2d573b9f05b66ad3e0278c8ba5",
+    "manifest_members": 39,
+    "summary_present": false,
+    "worker_result_present": false,
+    "annotation": "descriptive observations from a failed Workbench run",
+    "status_remains": {
+      "record_version": 2,
+      "state": "failed",
+      "scientific_outcome": "failed",
+      "evidence_state": "valid",
+      "error": "Worker exited2",
+      "returncode": 2,
+      "wall_runtime_s": 160.7565652920166,
+      "sampled_peak_worker_rss_bytes": 236503040,
+      "manifest_sha256": "b6b8b56c9d70906860f471203f1cdef947b8fd2d573b9f05b66ad3e0278c8ba5"
+    },
+    "unsupported_or_resealed_archives_rejected": true,
+    "normal_successful_reader_unchanged": true
+  },
+  "browser": {
+    "beforeBoundary": {
+      "epoch": "20b4c195a537d20dd1c56346560a8ada125242f81c7e266caa7df5ad3e008844",
+      "payloadLoads": "1",
+      "text": "VERIFIED RECORDING \u00b7 2026-11-11T095747.505385_0000_6a18eaab96bd4949835d7c481116806e \u00b7 2,001 / 12,447 native samples in this window"
+    },
+    "nodes": 9,
+    "afterBoundary": {
+      "epoch": "fa2ea852e6964b441d7462618f04d1c1e02c046fb9c85642578c6ad52350e805",
+      "payloadLoads": "2",
+      "text": "VERIFIED RECORDING \u00b7 2026-11-11T095747.505385_0000_6a18eaab96bd4949835d7c481116806e \u00b7 2,001 / 12,447 native samples in this window"
+    },
+    "paused": "37.589 / 39.995 s \u00b7 Paused",
+    "telemetry": {
+      "authority": "Native mode: trajectory \u00b7 t 37.585 s",
+      "classification": "DERIVED / pinned PlanningReference.sample at predicted progress; not retained NMPC preview or actual-future residual \u00b7 Racing-reference tracking errors, not actual-future prediction residuals. Native NMPC preview is not reconstructed. Heading glyphs are schematic.",
+      "horizon": "Following available active packet 375",
+      "nodeRows": 9,
+      "steering": [
+        {
+          "data": {},
+          "id": "steering-value",
+          "text": "0.0414 rad"
+        },
+        {
+          "data": {},
+          "id": "steering-degrees",
+          "text": "2.37\u00b0 front steering"
+        },
+        {
+          "data": {
+            "applicationTime": "37.58499999999838",
+            "appliedDeg": "2.3727235126522417",
+            "appliedRad": "0.04141183753526695",
+            "nativeTime": "37.58499999999838",
+            "nominalRad": "0.039445714792952634",
+            "requestTime": "37.57999999999838",
+            "visualAngleRad": "0.4969420504232034",
+            "visualRatio": "12"
+          },
+          "id": "steering",
+          "text": ""
+        }
+      ]
+    },
+    "analyzeText": "- link \"Skip to main content\":\n  - /url: \"#stMain\"\n- banner:\n  - button \"Main menu\":\n- main:\n  - text: APEX\n  - generic: ENGINEERING WORKBENCH V2\n  - generic: NMPC + TVLQR\n  - generic: SYNTHETIC \u00b7 UNQUALIFIED\n  - radiogroup \"Engineering workflow\":\n    - radio \"Configure\"\n    - paragraph: Configure\n    - radio \"Run\"\n    - paragraph: Run\n    - radio \"Replay\"\n    - paragraph: Replay\n    - radio \"Analyze\" [checked] [active]\n    - paragraph: Analyze\n    - radio \"Compare\"\n    - paragraph: Compare\n  - generic: 04 / ANALYZE\n  - heading \"Turn observations into insight\" [level=1]:\n    - text: Turn observations into insight\n    - link \"Link to heading\":\n      - /url: \"#turn-observations-into-insight\"\n  - paragraph: Sample-based measurements from the full retained recording. Display traces use at most 2,000 genuine points; metrics use every native sample.\n  - paragraph: Retained recording\n  - combobox \"Retained recording\": Baseline \u00b7 80 s \u00b7 V2 \u00b7 2026-11-11T095747.5\n  - button \"Open\":\n  - alert:\n    - paragraph: Read-only recovery \u00b7 descriptive observations from a failed Workbench run. Execution remains failed / valid evidence / exit 2; no completed or qualified experiment.\n  - generic: Racing error \u00b7 RMS\n  - strong: \"0.028\"\n  - text: m \u00b7 retained native samples\n  - generic: Peak racing error\n  - strong: \"0.191\"\n  - text: m \u00b7 absolute\n  - generic: Solver duration \u00b7 mean\n  - strong: \"0.032\"\n  - text: Host seconds \u00b7 not simulated time\n  - generic: Boundary observations\n  - strong: \"0\"\n  - text: Recorded violation rows \u00b7 not safety proof\n  - paragraph: Analysis view\n  - combobox \"Analysis view\": Tracking\n  - button \"Open\":\n  - paragraph: \"Native circuit observations: 1 complete laps \u00b7 lap time 31.172 s. Initial partial crossing excluded.\"\n  - paragraph: \"Descriptive complete-circuit lateral RMS: 0.020950 m. Overview cards cover the entire retained recording.\"\n  - generic \"Lap & sector measurements\":\n    - generic: keyboard_arrow_right\n    - paragraph: Lap & sector measurements\n  - generic \"Metric definitions & full measurement record\":\n    - generic: keyboard_arrow_right\n    - paragraph: Metric definitions & full measurement record",
+    "actuation": {
+      "alerts": [
+        "Read-only recovery \u00b7 descriptive observations from a failed Workbench run. Execution remains failed / valid evidence / exit 2; no completed or qualified experiment."
+      ],
+      "labels": [
+        "Simulated time [s]",
+        "Steering [rad]",
+        "Simulated time [s]",
+        "Acceleration [m/s\u00b2]",
+        "Simulated time [s]",
+        "Combined-grip utilization [1]"
+      ],
+      "plots": 3
+    },
+    "solver": {
+      "json": [
+        "{...}",
+        "{...}"
+      ],
+      "labels": [
+        "Native release time [simulated s]",
+        "Host duration [s]",
+        "Native release time [simulated s]",
+        "Iterations [1]"
+      ],
+      "plots": 2
+    },
+    "finalWindow": {
+      "notice": "VERIFIED RECORDING \u00b7 2026-11-11T095747.505385_0000_6a18eaab96bd4949835d7c481116806e \u00b7 449 / 12,447 native samples in this window",
+      "time": "62.230 / 62.230 s \u00b7 Paused",
+      "horizon": "Following available active packet 621",
+      "steering": {
+        "applicationTime": "62.225",
+        "appliedDeg": "3.192057465923274",
+        "appliedRad": "0.055711912693227825",
+        "nativeTime": "62.230000000000004",
+        "nominalRad": "0.06865780504615276",
+        "requestTime": "62.22",
+        "visualAngleRad": "0.6685429523187338",
+        "visualRatio": "12"
+      },
+      "terminal": "Terminal predicted state \u00b7 no terminal control interval.",
+      "nodes": 9
+    },
+    "executionRemainsGated": true,
+    "notes": [
+      "Original retained archive; no scientific execution",
+      "IAB iframe click/check bridge failed twice; keyboard navigation succeeded",
+      "Overview RMS includes entire recording; complete-circuit RMS separately labelled",
+      "Final native sample62.230s precedes native stop62.235s; no endpoint extrapolation"
+    ]
+  },
+  "observations": {
+    "classification": {
+      "mode": "failed-native-read-only",
+      "classification": "Read-only recovery \u00b7 descriptive observations from a failed Workbench run. Execution remains failed / valid evidence / exit 2; no completed or qualified experiment.",
+      "missing_artifacts": [
+        "summary.json",
+        "worker_result.json"
+      ]
+    },
+    "authoritative_status": {
+      "record_version": 2,
+      "state": "failed",
+      "scientific_outcome": "failed",
+      "evidence_state": "valid",
+      "error": "Worker exited2",
+      "returncode": 2,
+      "wall_runtime_s": 160.7565652920166,
+      "sampled_peak_worker_rss_bytes": 236503040,
+      "manifest_sha256": "b6b8b56c9d70906860f471203f1cdef947b8fd2d573b9f05b66ad3e0278c8ba5"
+    },
+    "metrics": {
+      "definition": "Equal-weight RMS over actual recorded samples in the displayed native window; no resampling",
+      "observation_window_s": [
+        0.0,
+        62.230000000000004
+      ],
+      "requested_duration_s": 80,
+      "native_end_time_s": 62.23500000000001,
+      "stop_reason": "target_laps",
+      "failure": null,
+      "racing_lateral_error_m": {
+        "samples": 12447,
+        "peak_abs": 0.1914662611091276,
+        "rms": 0.027961889818366885,
+        "mean": 0.0037516065150349515
+      },
+      "racing_heading_error_rad": {
+        "samples": 12447,
+        "peak_abs": 0.27016309057795196,
+        "rms": 0.069771820155925,
+        "mean": -0.015303062941248328
+      },
+      "centerline_e_y_m": {
+        "samples": 12447,
+        "peak_abs": 0.22120449535615933,
+        "rms": 0.08050407645506044,
+        "mean": 0.005625698974588496
+      },
+      "active_packet_lateral_error_m": {
+        "samples": 6223,
+        "peak_abs": 0.010193247416628942,
+        "rms": 0.0014011756405516455,
+        "mean": 2.0650954512663175e-05
+      },
+      "observed_lateral_zero_crossings": 59,
+      "steering_rad": {
+        "samples": 6223,
+        "peak_abs": 0.4,
+        "rms": 0.07534628452082702,
+        "mean": -0.01552652128310932,
+        "total_variation": 17.424009302652056,
+        "maximum_observed_increment_rate": 1.0000000000000029,
+        "application_window_s": [
+          0.005,
+          62.225
+        ],
+        "rows_without_applied_measurement": 0
+      },
+      "longitudinal_a_cmd_mps2": {
+        "samples": 6223,
+        "peak_abs": 2.201938303301426,
+        "rms": 0.8432753248841179,
+        "mean": 0.21352330482420195,
+        "total_variation": 111.84915052335894,
+        "maximum_observed_increment_rate": 187.3693441800693,
+        "application_window_s": [
+          0.005,
+          62.225
+        ],
+        "rows_without_applied_measurement": 0
+      },
+      "solver_host_seconds": {
+        "samples": 623,
+        "peak_abs": 0.1737794999498874,
+        "rms": 0.0335028053507032,
+        "mean": 0.03249935662193765
+      },
+      "preparation_host_seconds": {
+        "samples": 623,
+        "peak_abs": 0.2212137080496177,
+        "rms": 0.05550532524137999,
+        "mean": 0.054703720938526455
+      },
+      "iterations": {
+        "samples": 623,
+        "peak_abs": 18,
+        "rms": 12.420792384831763,
+        "mean": 12.18940609951846
+      },
+      "successful_native_preparations": 623,
+      "preparation_count": 623,
+      "max_native_slack": 9.091836835408585e-11,
+      "max_primal_infeasibility": 8.184113686748873e-08,
+      "grip_utilization": {
+        "front": {
+          "samples": 12447,
+          "peak_abs": 0.8555306593923928,
+          "rms": 0.3859907516396655,
+          "mean": 0.3452062381441242
+        },
+        "rear": {
+          "samples": 12447,
+          "peak_abs": 0.8714556120435621,
+          "rms": 0.38647029270029876,
+          "mean": 0.34476754697484147
+        }
+      },
+      "minimum_combined_utilization_margin": {
+        "front": 0.1444693406076072,
+        "rear": 0.12854438795643786
+      },
+      "recorded_boundary_violation_rows": 0,
+      "requested_applied_steering_differences": 763,
+      "settling": {
+        "band_m": 0.01,
+        "minimum_observed_tail_s": 0.25,
+        "target_error_m": 0.0,
+        "settling_time_s": null,
+        "definition": "Observed within-window settling of racing-reference lateral error; not future stability",
+        "status": "settling not established in this window"
+      },
+      "disturbance_recovery": {
+        "status": "No single recorded disturbance application"
+      },
+      "disturbance_response": null,
+      "overshoot": {
+        "value": null,
+        "reason": "No steady reference-step experiment; do not assign step overshoot to a state perturbation"
+      },
+      "lap": {
+        "track_length_m": 154.76345492731022,
+        "initial_s_abs_m": 1.0,
+        "native_crossings": [
+          {
+            "s_abs_m": 154.76345492731022,
+            "time_s": 31.061572635639408,
+            "complete_circuit": false,
+            "interval_s": 31.061572635639408
+          },
+          {
+            "s_abs_m": 309.52690985462044,
+            "time_s": 62.23347303324871,
+            "complete_circuit": true,
+            "interval_s": 31.1719003976093
+          }
+        ],
+        "completed_laps": 1,
+        "lap_time_s": 31.1719003976093,
+        "first_crossing_is_partial": true,
+        "status": "complete",
+        "stop_reason": "target_laps",
+        "failure": null,
+        "rule": "Native boundary-to-same-boundary interval; partial launch crossing excluded"
+      },
+      "yaw_rate_radps": {
+        "samples": 12447,
+        "peak_abs": 3.232425190659282,
+        "rms": 0.9073645973262457,
+        "mean": -0.20400499003310152
+      },
+      "body_acceleration_mps2": {
+        "body_ax_mps2": {
+          "samples": 12447,
+          "peak_abs": 2.201938303301426,
+          "rms": 0.8432730695743742,
+          "mean": 0.21357160535790037
+        },
+        "body_ay_mps2": {
+          "samples": 12447,
+          "peak_abs": 8.19001025026838,
+          "rms": 3.68426942488468,
+          "mean": -0.9316310484778524
+        }
+      },
+      "chronology_counts": {
+        "handoffs": 621,
+        "misses": 0,
+        "fallbacks": 0,
+        "releases": 622,
+        "codriver_misses": 0
+      },
+      "failed_preparations": 0,
+      "recovery": {
+        "mode": "failed-native-read-only",
+        "classification": "Read-only recovery \u00b7 descriptive observations from a failed Workbench run. Execution remains failed / valid evidence / exit 2; no completed or qualified experiment.",
+        "missing_artifacts": [
+          "summary.json",
+          "worker_result.json"
+        ]
+      },
+      "complete_circuit_lateral_error_m": {
+        "samples": 6234,
+        "peak_abs": 0.09905057325957668,
+        "rms": 0.02095028863796588,
+        "mean": 0.0015536726297891445
+      }
+    },
+    "sectors": {
+      "rows": [
+        {
+          "sector": 1,
+          "phase_start_m": 0.0,
+          "phase_end_m": 38.690863731827555,
+          "start_time_s": 31.061572635639408,
+          "end_time_s": 39.686717353470165,
+          "time_s": 8.625144717830757,
+          "coverage": "complete",
+          "speed_mps": {
+            "samples": 1725,
+            "peak_abs": 5.95972136963663,
+            "rms": 4.589151004813616,
+            "mean": 4.450908972674898
+          },
+          "racing_error_m": {
+            "samples": 1725,
+            "peak_abs": 0.09905057325957668,
+            "rms": 0.030093447604599786,
+            "mean": 0.007601280219178889
+          },
+          "steering_rad": {
+            "samples": 863,
+            "peak_abs": 0.3764618133765369,
+            "rms": 0.1004289706567529,
+            "mean": -0.02278221012396453,
+            "total_variation": 2.7893696039505484,
+            "maximum_observed_increment_rate": 1.0,
+            "application_window_s": [
+              31.064999999997003,
+              39.68499999999897
+            ],
+            "rows_without_applied_measurement": 0
+          },
+          "preparation_host_s": {
+            "samples": 86,
+            "peak_abs": 0.06853762501850724,
+            "rms": 0.05368578803798035,
+            "mean": 0.05329909978764738
+          },
+          "iterations": {
+            "samples": 86,
+            "peak_abs": 18,
+            "rms": 12.218457254269811,
+            "mean": 11.895348837209303
+          },
+          "solver_failures": 0,
+          "maximum_slack_m": 9.091775966840468e-11,
+          "slack_observations_available": 86,
+          "slack_observations_missing": 0,
+          "front_utilization": {
+            "samples": 1725,
+            "peak_abs": 0.8555306593923928,
+            "rms": 0.3441261058505192,
+            "mean": 0.2805263362910464
+          },
+          "rear_utilization": {
+            "samples": 1725,
+            "peak_abs": 0.8691556901451953,
+            "rms": 0.35055593429387377,
+            "mean": 0.28322694095821066
+          }
+        },
+        {
+          "sector": 2,
+          "phase_start_m": 38.690863731827555,
+          "phase_end_m": 77.38172746365511,
+          "start_time_s": 39.686717353470165,
+          "end_time_s": 46.710271412853956,
+          "time_s": 7.023554059383791,
+          "coverage": "complete",
+          "speed_mps": {
+            "samples": 1405,
+            "peak_abs": 5.716853986611142,
+            "rms": 5.486456890139297,
+            "mean": 5.480406181205805
+          },
+          "racing_error_m": {
+            "samples": 1405,
+            "peak_abs": 0.027061373870678834,
+            "rms": 0.013167696933184248,
+            "mean": -0.006827468600468015
+          },
+          "steering_rad": {
+            "samples": 702,
+            "peak_abs": 0.10895619185233361,
+            "rms": 0.04265205893972935,
+            "mean": -0.028251217090306834,
+            "total_variation": 0.9971456744846262,
+            "maximum_observed_increment_rate": 1.0,
+            "application_window_s": [
+              39.69499999999898,
+              46.705000000000005
+            ],
+            "rows_without_applied_measurement": 0
+          },
+          "preparation_host_s": {
+            "samples": 71,
+            "peak_abs": 0.05882570904213935,
+            "rms": 0.05440663975264782,
+            "mean": 0.05435839264069907
+          },
+          "iterations": {
+            "samples": 71,
+            "peak_abs": 15,
+            "rms": 12.80129834964484,
+            "mean": 12.746478873239436
+          },
+          "solver_failures": 0,
+          "maximum_slack_m": 9.091747797509771e-11,
+          "slack_observations_available": 71,
+          "slack_observations_missing": 0,
+          "front_utilization": {
+            "samples": 1405,
+            "peak_abs": 0.6484590842616493,
+            "rms": 0.3971233644659738,
+            "mean": 0.3839182137648707
+          },
+          "rear_utilization": {
+            "samples": 1405,
+            "peak_abs": 0.6379993611208574,
+            "rms": 0.3928435497922076,
+            "mean": 0.37933994330413473
+          }
+        },
+        {
+          "sector": 3,
+          "phase_start_m": 77.38172746365511,
+          "phase_end_m": 116.07259119548266,
+          "start_time_s": 46.710271412853956,
+          "end_time_s": 54.69137103129223,
+          "time_s": 7.981099618438272,
+          "coverage": "complete",
+          "speed_mps": {
+            "samples": 1596,
+            "peak_abs": 5.966550232827406,
+            "rms": 4.903750942942024,
+            "mean": 4.805189107313803
+          },
+          "racing_error_m": {
+            "samples": 1596,
+            "peak_abs": 0.06603209399232729,
+            "rms": 0.01875849241844711,
+            "mean": 0.0022723776075384574
+          },
+          "steering_rad": {
+            "samples": 798,
+            "peak_abs": 0.3154670850195822,
+            "rms": 0.0712784772553384,
+            "mean": -0.00994822181326703,
+            "total_variation": 2.4407235817208313,
+            "maximum_observed_increment_rate": 1.0000000000000004,
+            "application_window_s": [
+              46.715,
+              54.685
+            ],
+            "rows_without_applied_measurement": 0
+          },
+          "preparation_host_s": {
+            "samples": 79,
+            "peak_abs": 0.08164062502328306,
+            "rms": 0.05721419920693267,
+            "mean": 0.05666425484497854
+          },
+          "iterations": {
+            "samples": 79,
+            "peak_abs": 18,
+            "rms": 12.886063514952594,
+            "mean": 12.481012658227849
+          },
+          "solver_failures": 0,
+          "maximum_slack_m": 9.091573077952812e-11,
+          "slack_observations_available": 79,
+          "slack_observations_missing": 0,
+          "front_utilization": {
+            "samples": 1596,
+            "peak_abs": 0.8063884750685427,
+            "rms": 0.35762514765384723,
+            "mean": 0.3087069229962426
+          },
+          "rear_utilization": {
+            "samples": 1596,
+            "peak_abs": 0.8027879932005457,
+            "rms": 0.36310003507690486,
+            "mean": 0.31302792379217875
+          }
+        },
+        {
+          "sector": 4,
+          "phase_start_m": 116.07259119548266,
+          "phase_end_m": 154.76345492731022,
+          "start_time_s": 54.69137103129223,
+          "end_time_s": 62.23347303324871,
+          "time_s": 7.542102001956479,
+          "coverage": "complete",
+          "speed_mps": {
+            "samples": 1508,
+            "peak_abs": 5.775083960092987,
+            "rms": 5.112738100406226,
+            "mean": 5.098910671280894
+          },
+          "racing_error_m": {
+            "samples": 1508,
+            "peak_abs": 0.041914149195068355,
+            "rms": 0.01563836317532008,
+            "mean": 0.0016838630756287312
+          },
+          "steering_rad": {
+            "samples": 754,
+            "peak_abs": 0.14153082592913596,
+            "rms": 0.05508077489810152,
+            "mean": 0.0003724631940829068,
+            "total_variation": 1.7509511348984546,
+            "maximum_observed_increment_rate": 1.0000000000000013,
+            "application_window_s": [
+              54.695,
+              62.225
+            ],
+            "rows_without_applied_measurement": 0
+          },
+          "preparation_host_s": {
+            "samples": 76,
+            "peak_abs": 0.07327858405187726,
+            "rms": 0.05270544565920177,
+            "mean": 0.052506881056806856
+          },
+          "iterations": {
+            "samples": 76,
+            "peak_abs": 15,
+            "rms": 11.354340695592104,
+            "mean": 11.263157894736842
+          },
+          "solver_failures": 0,
+          "maximum_slack_m": 9.091804254394795e-11,
+          "slack_observations_available": 76,
+          "slack_observations_missing": 0,
+          "front_utilization": {
+            "samples": 1508,
+            "peak_abs": 0.7167558369309204,
+            "rms": 0.435748594394517,
+            "mean": 0.41509366966468886
+          },
+          "rear_utilization": {
+            "samples": 1508,
+            "peak_abs": 0.6795492196957581,
+            "rms": 0.4292613410674803,
+            "mean": 0.4078792543781275
+          }
+        }
+      ],
+      "clock": "Linear progress-crossing time within genuine native integration segments, same convention as AsyncRunner lap crossings; no interpolated telemetry",
+      "measurement": "First complete finish-line circuit after partial launch crossing"
+    }
+  },
+  "preservation": {
+    "outcome": "PASS",
+    "historical_files": 794,
+    "historical_links": 65,
+    "changed_historical_files": [],
+    "changed_links": [],
+    "frozen_runtime_files": 333,
+    "canonical_files": 335,
+    "protected_files": 31,
+    "protected_files_changed": [],
+    "original_status": {
+      "record_version": 2,
+      "state": "failed",
+      "scientific_outcome": "failed",
+      "evidence_state": "valid",
+      "error": "Worker exited2",
+      "returncode": 2,
+      "wall_runtime_s": 160.7565652920166,
+      "sampled_peak_worker_rss_bytes": 236503040,
+      "manifest_sha256": "b6b8b56c9d70906860f471203f1cdef947b8fd2d573b9f05b66ad3e0278c8ba5"
+    },
+    "original_manifest_members": 39,
+    "missing_summary_still_absent": true,
+    "missing_worker_result_still_absent": true,
+    "access_policy_sha256": "f9a0304ff136a1d7fe0b56ef0f3a2efff2f7fe37d74acbba1c369c5fa2772346",
+    "used": {
+      "pilot": "2026-11-10T145233.755880_0000_f46cc76634dd4322b1720f37eb96442b",
+      "full_lap": "2026-11-11T095747.505385_0000_6a18eaab96bd4949835d7c481116806e"
+    },
+    "run_directories": [
+      "2026-11-10T145233.755880_0000_f46cc76634dd4322b1720f37eb96442b",
+      "2026-11-11T095747.505385_0000_6a18eaab96bd4949835d7c481116806e"
+    ],
+    "new_scientific_executions": 0,
+    "evidence_current": true
+  },
+  "execution": {
+    "new_numerical_runs": 0,
+    "optimizer_solves": 0,
+    "plant_steps": 0,
+    "pilot_or_retry": false,
+    "policy_changed": false,
+    "slots_reset_or_added": false,
+    "accepted_interactive_installed": false
+  },
+  "independent_integrity_check": "pending exact committed correction; no broad review or Verification",
+  "next_gate": "Short independent integrity check, then Primary acceptance only; execution-policy transition remains separately gated.",
+  "artifacts": {
+    "results/apex_workbench_v2_recovery/admission_guard.log": {
+      "sha256": "f0f6b60bd0564c33d85f0a4824a8470857ccf43076cfc041966e4d7460786c00",
+      "bytes": 98
+    },
+    "results/apex_workbench_v2_recovery/admission_guard.xml": {
+      "sha256": "c7ab8bcb35c24d3ddd47dd4fb7b7fb63eecf908c11a1197ed759bc7e68ff2b2e",
+      "bytes": 410
+    },
+    "results/apex_workbench_v2_recovery/analyze.jpg": {
+      "sha256": "788c3b5447ef74970a0c2b80a99dcc56f5c2fe1084230096ca50d9840216f465",
+      "bytes": 46127
+    },
+    "results/apex_workbench_v2_recovery/browser_checks.json": {
+      "sha256": "e6364939b902f3dbc2506283c499dd7a006b0b3ef398239525929528d5ba740e",
+      "bytes": 5774
+    },
+    "results/apex_workbench_v2_recovery/browser_server.log": {
+      "sha256": "b31d6969442367dd5f7c0c076ad0136c044df4229d4c2f403bc88c7329b7f123",
+      "bytes": 370
+    },
+    "results/apex_workbench_v2_recovery/focused_1.log": {
+      "sha256": "eaecd171aa04f14cda805fbfcf979b37ba7b84283272105cc09508f23100a93f",
+      "bytes": 251
+    },
+    "results/apex_workbench_v2_recovery/focused_1.xml": {
+      "sha256": "57ff17721066f9d9754bde1d976257b7e9cfbe45b833adb21ab437dfe1b4f2b2",
+      "bytes": 20313
+    },
+    "results/apex_workbench_v2_recovery/focused_final.log": {
+      "sha256": "005093424a7dcabcef9c2e2b40827e4473f6714faad900789ded3e0b8c1f92c4",
+      "bytes": 251
+    },
+    "results/apex_workbench_v2_recovery/focused_final.xml": {
+      "sha256": "4847da14c132b1233ded05c44d1b2ae00384401bb407f5a7b04f6c0a52edd146",
+      "bytes": 20313
+    },
+    "results/apex_workbench_v2_recovery/lint.log": {
+      "sha256": "c2c4e469b33459cde137ad99f71130c780db9226acc7777f7e58ca1e2b048c11",
+      "bytes": 646
+    },
+    "results/apex_workbench_v2_recovery/lint_final.log": {
+      "sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+      "bytes": 19
+    },
+    "results/apex_workbench_v2_recovery/preservation_after.json": {
+      "sha256": "969c600587cf574dfcc98b8e5067ea2a5eecc063792fab6f34961c416119e4f5",
+      "bytes": 1244
+    },
+    "results/apex_workbench_v2_recovery/preservation_before.json": {
+      "sha256": "2a2e2f6e38a9c391bb187aadbdf92ea7f23527c3cc269156e307a20732dde89a",
+      "bytes": 163445
+    },
+    "results/apex_workbench_v2_recovery/recovered_observations.json": {
+      "sha256": "15ebf66a88e25263e1d8407d32198c79cf24ba5e6c7d69d98c6401aca350634f",
+      "bytes": 14501
+    },
+    "results/apex_workbench_v2_recovery/replay-final-window.jpg": {
+      "sha256": "0fc03a799b61a53a1050a92db34a0a02d5c269e06af0a3df00018080e637a7d3",
+      "bytes": 34397
+    },
+    "results/apex_workbench_v2_recovery/replay.jpg": {
+      "sha256": "8aadcb0dae21d213bab80c3a61fee747106e4827e76491bb16adad57d8df4aa6",
+      "bytes": 33427
+    }
+  }
+}

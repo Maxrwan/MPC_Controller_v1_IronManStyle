@@ -1567,3 +1567,12 @@ through a narrowly checked read-only legacy path; new runs require current ident
 new WORK authority/review/source/profile to exact prior-policy bytes and consumed history. Source and
 approved environment preflight precede the one claim. A pending acceptance decision must fail closed;
 ordinary repeatable V2 execution remains a separate Primary acceptance transition.
+
+## V2 failed-native read-only recovery (2026-11-11)
+
+Keep normal ingestion strict. Explicit recovery admits only Primary's original run/status/manifest
+hash tuple, verifies every member and provenance, retains failed lifecycle and leaves summary absent.
+Use an annotated in-memory observation view through the existing renderer/metrics. Fail closed on
+epoch or file-membership changes; exclude recovery from controlled comparisons and all execution/
+acceptance admission. Convert native NumPy binary floating scalars locally for lap durations; retain
+global JSON validation and frozen science. See [recovery WORK](workbench_v2_recovery/WORK.md).

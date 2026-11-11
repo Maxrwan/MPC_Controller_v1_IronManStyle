@@ -13,12 +13,20 @@ from tools.apex_workbench.lap import config, execution, ui_data, ui_replay, ui_v
 
 @pytest.fixture
 def pilot():
-    return ui_data.read(ui_data.recordings("V2")[0])
+    return ui_data.read(
+        next(r for r in ui_data.recordings("V2") if r["directory"].name.startswith("2026-11-10"))
+    )
 
 
 @pytest.mark.parametrize("family", ["V2", "Transient"])
 def test_genuine_payload_preserves_state_applied_nominal_packet_and_reference(family):
     view = ui_data.read(ui_data.recordings(family)[0])
+    if family == "V2":
+        view = ui_data.read(
+            next(
+                r for r in ui_data.recordings("V2") if r["directory"].name.startswith("2026-11-10")
+            )
+        )
     original = copy.deepcopy(view)
     data = ui_data.payload(ui_data.window(view, ui_data.windows(view)[0]))
     for a, b in zip(data["states"], view["raw"]["states"], strict=True):
@@ -151,7 +159,8 @@ def test_full_navigation_validation_drafts_analysis_and_comparison_without_execu
         next(s for s in app.selectbox if s.label == "Analysis view").select(group).run(timeout=20)
         assert not app.exception and not app.error
     app.radio[0].set_value("Compare").run()
-    assert any("Only one V2" in e.value for e in app.info)
+    assert not app.exception and not app.error
+    assert app.multiselect[0].value == []
     app.selectbox[0].select("Transient").run()
     app.multiselect[0].set_value(ui_data.recordings("Transient")[:2]).run(timeout=20)
     assert not app.exception and not app.error

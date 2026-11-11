@@ -1,4 +1,29 @@
-# Current handoff — resumed V2 lap recorded, postprocessing failed
+# Current handoff — V2 read-only lap recovery, integrity check pending
+
+**WORK_COMPLETE_PENDING_SHORT_INDEPENDENT_INTEGRITY_CHECK.** Branch `codex/workbench-v2-ui`;
+base `3b2bdb0dd9c1f1b633216c3d0862e5de200e0906`. [Primary](workbench_v2_recovery/PRIMARY_WORK.md),
+[WORK](workbench_v2_recovery/WORK.md), [machine record](workbench_v2_recovery/work_record.json).
+Local lap-only NumPy scalar conversion preserves global numeric guards; explicit SHA-bound failed
+archive recovery leaves summary absent and authoritative failed/valid/exit2 unchanged. Existing
+Replay/Analyze opt in, with persistent descriptive recovery warning. Controlled comparison requires
+completed/valid/exit0 and no recovery; acceptance/execution admission remain untouched.
+
+137 focused tests pass /1 deliberate deselection,47.12s; no scientific execution imports. Browser
+opened genuine seven-window recording, automatically continued verified windows, inspected active
+packet621/nine nodes/terminal absence and applied steering through final native62.230s. Analyze shows
+31.1719003976093s circuit, sectors and separately labelled0.02095028863796588m circuit RMS. Failed
+lifecycle remains visible; Run disabled. No new simulation, solve, plant step, pilot or retry.
+
+794 historical files/65 links and333 frozen/335 canonical files unchanged; all39 manifest members
+valid. Policy/consumed slots unchanged; no summary, worker result or acceptance proposal written.
+UI/helper processes stopped. Short independent integrity check of exact candidate is next, not broad
+Engineering Review or Verification. Then stop at
+WORKBENCH_V2_FULL_LAP_RECOVERY_READY_FOR_PRIMARY_ACCEPTANCE. Repeatable V2 admission remains a
+separate source-bound Primary policy decision; this failed run cannot satisfy successful-run admission.
+
+---
+
+# Historical handoff — resumed V2 lap recorded, postprocessing failed
 
 **V2_FULL_LAP_FAILED_PENDING_PRIMARY_DECISION.** Primary accepted the final UI and authorized one
 resumed unused Full Lap attempt. Exact implementation `740a268a2d2c6b92a67a45456292a3b2cafb2479`,

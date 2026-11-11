@@ -48,7 +48,7 @@ def label(record):
 
 def read(record):
     if record["family"] == "V2":
-        view = evidence.read_run(record["directory"])
+        view = evidence.read_run(record["directory"], recover_failed=True)
         if "raw" in view:
             view["packets"] = [
                 {"plan_id": packet["plan_id"], "packet": packet, "prediction_xy": xy}
@@ -197,7 +197,9 @@ def payload(view):
         "reference_label": "Retained offline Planning nodes; not new optimizer samples",
         "lap_crossings": laps["native_crossings"],
         "native_samples_total": view.get("ui_full_count", len(base["states"])),
-        "classification": "Synthetic / experimental / unqualified",
+        "classification": view.get("recovery", {}).get(
+            "classification", "Synthetic / experimental / unqualified"
+        ),
         "front_angle_source": (
             "Latest actual application event; initial held native angle before first application"
         ),

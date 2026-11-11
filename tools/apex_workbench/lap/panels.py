@@ -240,7 +240,7 @@ def inspect(directory):
         return
     scope = st.empty()
     try:
-        view = evidence.read_run(directory)
+        view = evidence.read_run(directory, recover_failed=True)
         if "raw" not in view:
             st.warning(
                 "Incomplete execution; partial native journals retained. " + str(state.get("error"))
@@ -249,6 +249,8 @@ def inspect(directory):
         # Positions of genuine packet nodes were recorded through the canonical converter.
         view["prediction_xy"] = evidence.rows(view, "prediction_xy", "derived")
         with scope.container():
+            if view.get("recovery"):
+                st.warning(view["recovery"]["classification"])
             presentation(view)
             with st.expander("Source and effective configuration"):
                 st.json(view["request"], expanded=False)

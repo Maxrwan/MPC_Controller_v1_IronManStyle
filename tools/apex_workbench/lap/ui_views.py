@@ -272,6 +272,9 @@ def guarded(records, render):
             )
             return
         with scope.container():
+            for view in views:
+                if view.get("recovery"):
+                    st.warning(view["recovery"]["classification"])
             render(views)
         for view in views:
             ui_data.current(view)
@@ -422,9 +425,15 @@ def analyze():
             if view["ui_family"] == "V2":
                 lap = m["lap"]
                 st.caption(
-                    f"Recording outcome: {lap['completed_laps']} complete laps · "
+                    f"Native circuit observations: {lap['completed_laps']} complete laps · "
                     f"lap time {number(lap['lap_time_s'])} s. Initial partial crossing excluded."
                 )
+                if view.get("recovery"):
+                    st.caption(
+                        "Descriptive complete-circuit lateral RMS: "
+                        + number(m["complete_circuit_lateral_error_m"]["rms"], 6)
+                        + " m. Overview cards cover the entire retained recording."
+                    )
                 with st.expander("Lap & sector measurements"):
                     st.json(
                         analysis.sectors(view, evidence.rows(view, "segments", "journal")),

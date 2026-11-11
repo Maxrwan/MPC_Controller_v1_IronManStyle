@@ -8,6 +8,19 @@ from tools.apex_workbench import storage
 
 from . import config
 
+# Primary's bounded recovery admits only this original failed capture, never a resealed copy.
+FAILED_NATIVE_RECOVERY = (
+    "2026-11-11T095747.505385_0000_6a18eaab96bd4949835d7c481116806e",
+    "dee9fa25607186027f726e7df76e0827d43b6bbc8cca36f1e2ba713b6f600a2e",
+    "b6b8b56c9d70906860f471203f1cdef947b8fd2d573b9f05b66ad3e0278c8ba5",
+)
+
+
+def _recovery_members(directory, manifest):
+    members = {str(p.relative_to(directory)) for p in directory.rglob("*") if p.is_file()}
+    if members != set(manifest) | {"status.json", "artifacts.json"}:
+        raise ValueError("Failed-native recovery has unverified or missing files")
+
 
 class Chunks:
     """One open file per stream, compact JSON, finite chunks; flush each retained observation."""
@@ -78,9 +91,14 @@ def current(view):
     for name, digest in view["anchor"].items():
         if storage.sha256(config.safe(view["directory"] / name)) != digest:
             raise ValueError("V2 evidence changed during presentation")
+    if view.get("recovery"):
+        _recovery_members(
+            view["directory"], set(view["anchor"]) - {"status.json", "artifacts.json"}
+        )
 
 
-def read_run(directory):
+def read_run(directory, *, recover_failed=False):
+    """Strict normal ingestion; explicit recovery never supplies a replacement summary."""
     directory = config.safe(directory)
     if directory.parent != config.RUNS.absolute():
         raise ValueError("Read only original V2 run directories")
@@ -102,6 +120,27 @@ def read_run(directory):
     if anchor["artifacts.json"] != status.get("manifest_sha256"):
         raise ValueError("V2 manifest/status epoch differs")
     required = {"request.json", "execution.json", "stdout.log", "stderr.log"}
+    recovering = recover_failed and "native.json" in manifest and "summary.json" not in manifest
+    if recovering:
+        if (
+            (directory.name, anchor["status.json"], anchor["artifacts.json"])
+            != FAILED_NATIVE_RECOVERY
+            or status.get("state") != "failed"
+            or status.get("scientific_outcome") != "failed"
+            or status.get("evidence_state") != "valid"
+            or status.get("returncode") != 2
+            or "worker_result.json" in manifest
+        ):
+            raise ValueError("No approved failed-native recovery identity")
+        _recovery_members(directory, manifest)
+        required |= {
+            "native.json",
+            "presentation.json",
+            "pre_identity.json",
+            "post_identity.json",
+            "worker.json",
+            "supervisor.json",
+        }
     if status["scientific_outcome"] == "completed":
         required |= {
             "native.json",
@@ -168,6 +207,19 @@ def read_run(directory):
             or request["capture"]["source_sha256"] != config.v1.frozen.source_hashes()
         ):
             raise ValueError("V2 parameter/scientific source provenance differs")
-        view["summary"] = storage.artifact_json(directory, "summary.json")
+        if recovering:
+            if post.get("raw_available") is not True:
+                raise ValueError("Failed-native recovery has no complete native snapshot")
+            view["recovery"] = {
+                "mode": "failed-native-read-only",
+                "classification": (
+                    "Read-only recovery · descriptive observations from a failed Workbench run. "
+                    "Execution remains failed / valid evidence / exit 2; "
+                    "no completed or qualified experiment."
+                ),
+                "missing_artifacts": ["summary.json", "worker_result.json"],
+            }
+        else:
+            view["summary"] = storage.artifact_json(directory, "summary.json")
     current(view)
     return view

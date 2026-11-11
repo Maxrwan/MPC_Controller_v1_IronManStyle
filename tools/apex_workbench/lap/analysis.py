@@ -9,12 +9,22 @@ from tools.apex_workbench import nmpc_analysis as short
 from . import config
 
 
+def _lap_duration(value):
+    """Accept native binary floating scalars without widening global JSON validation."""
+    import numpy as np
+
+    if type(value) in (np.float16, np.float32, np.float64):
+        value = float(value)  # Exact for these binary formats; JSON receives a built-in scalar.
+    if not short.numeric(value) or value <= 0:
+        raise ValueError("Invalid native lap-crossing interval")
+    return value
+
+
 def laps(raw, length, initial_s=1.0):
     times, crossings, total = raw.get("lap_times", []), [], 0.0
     first = (int(initial_s / length) + 1) * length
     for index, duration in enumerate(times):
-        if not short.numeric(duration) or duration <= 0:
-            raise ValueError("Invalid native lap-crossing interval")
+        duration = _lap_duration(duration)
         total += duration
         crossings.append(
             {
@@ -29,7 +39,7 @@ def laps(raw, length, initial_s=1.0):
         "initial_s_abs_m": initial_s,
         "native_crossings": crossings,
         "completed_laps": max(0, len(times) - 1),
-        "lap_time_s": times[1] if len(times) > 1 else None,
+        "lap_time_s": crossings[1]["interval_s"] if len(times) > 1 else None,
         "first_crossing_is_partial": bool(times),
         "status": "complete" if len(times) > 1 else "incomplete",
         "stop_reason": raw.get("stop_reason"),
@@ -133,6 +143,17 @@ def metrics(view):
         for k in ("handoffs", "misses", "fallbacks", "releases", "codriver_misses")
     }
     base["failed_preparations"] = sum(p.get("success") is False for p in raw["plans"])
+    if view.get("recovery"):
+        base["recovery"] = dict(view["recovery"])
+        crossings = base["lap"]["native_crossings"]
+        base["complete_circuit_lateral_error_m"] = short.summary(
+            [
+                r["racing_error_y_m"]
+                for r in display["states"]
+                if len(crossings) >= 2
+                and crossings[0]["time_s"] <= r["time"] < crossings[1]["time_s"]
+            ]
+        )
     return base
 
 
@@ -202,6 +223,14 @@ def comparison(a, b):
         and coverage
         and not a["raw"].get("failure")
         and not b["raw"].get("failure")
+        and all(
+            v["status"].get("state") == "completed"
+            and v["status"].get("scientific_outcome") == "completed"
+            and v["status"].get("evidence_state") == "valid"
+            and v["status"].get("returncode") == 0
+            and not v.get("recovery")
+            for v in (a, b)
+        )
     )
     return {
         "classification": "Controlled weight comparison / experimental, unqualified"
