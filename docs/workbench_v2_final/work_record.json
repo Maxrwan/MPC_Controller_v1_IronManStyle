@@ -1,6 +1,6 @@
 {
   "schema": "apex-workbench-v2-final-work/1",
-  "stage": "ENGINEERING_REVIEW_PASS_PENDING_CONDITIONAL_FULL_LAP",
+  "stage": "WORKBENCH_V2_FINAL_READY_FOR_PRIMARY_ACCEPTANCE",
   "branch": "codex/workbench-v2-ui",
   "base_delivery": "e45059cb0fff41a8610761e83bdd69c4a2dff1e2",
   "accepted_presentation": "b1cc8b3d7b306a56adf99a63d8dc689c13856114",
@@ -176,7 +176,9 @@
   "preservation": {
     "historical_files": 13280,
     "historical_links": 573,
-    "changed_historical_files": [],
+    "changed_historical_files": [
+      "results/apex_workbench_v2_lap/access.json"
+    ],
     "changed_links": [],
     "frozen_scientific_files": 333,
     "changed_scientific_files": [],
@@ -184,8 +186,8 @@
     "changed_canonical_files": [],
     "changed_v1_producers_or_launcher": [],
     "changed_execution_or_clock_or_launcher": [],
-    "allowed_policy_transition_only": false,
-    "current_policy_sha256": "03b6fbabdfd6bf5416087c78338a9ef335a4f8205724a1214f5f0a1d39ff3574"
+    "allowed_policy_transition_only": true,
+    "current_policy_sha256": "f45f769caeac48c73955c4eacbe28d1f0c76c1dccf353dc9d34f1cdd22fad98f"
   },
   "resource_change": {
     "full_lap_only": {
@@ -203,10 +205,126 @@
   },
   "execution": {
     "new_scientific_attempts": 0,
-    "policy_installation": "not yet performed",
+    "driver_invocations": 1,
+    "driver_record": {
+      "command": [
+        "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/tools/apex_workbench/.venv/bin/python",
+        "-B",
+        "-m",
+        "tools.apex_workbench.lap.final_attempt",
+        "--execute"
+      ],
+      "cwd": "/Users/marwansaber/.codex/worktrees/nmpc-weight-m0/MPC_Controller_v1_IronManStyle",
+      "started_utc": "2026-11-11T08:36:52.757518+00:00",
+      "ended_utc": "2026-11-11T08:36:56.252720+00:00",
+      "driver_exit_code": 1,
+      "automatic_retry": false
+    },
+    "policy_installation": {
+      "status": "INSTALLED_REVIEWED_WORK",
+      "folder": "results/apex_workbench_v2_lap/final_authorization_740a268_20261111",
+      "reviewed_revision": "740a268a2d2c6b92a67a45456292a3b2cafb2479",
+      "policy_sha256": "f45f769caeac48c73955c4eacbe28d1f0c76c1dccf353dc9d34f1cdd22fad98f",
+      "authority_sha256": "2d7e05cbdfbd72660a816a2dd14baacf5c8acc7cd71fe1d92ee0cca6dc995ce9",
+      "review_sha256": "dcd1fdf90c2135c1b804152c5bbb7015ec7604bb9da4d86d527bb5f8b06ec07f",
+      "transition": {
+        "prior_sha256": "03b6fbabdfd6bf5416087c78338a9ef335a4f8205724a1214f5f0a1d39ff3574",
+        "current_sha256": "f45f769caeac48c73955c4eacbe28d1f0c76c1dccf353dc9d34f1cdd22fad98f",
+        "reviewed_revision": "740a268a2d2c6b92a67a45456292a3b2cafb2479",
+        "used_before": {
+          "pilot": "2026-11-10T145233.755880_0000_f46cc76634dd4322b1720f37eb96442b"
+        },
+        "used_after": {
+          "pilot": "2026-11-10T145233.755880_0000_f46cc76634dd4322b1720f37eb96442b"
+        },
+        "budget": {
+          "limits": {
+            "wall_s": 900,
+            "cpu_s": 720,
+            "sampled_rss_bytes": 805306368,
+            "sampled_output_bytes": 268435456,
+            "single_file_bytes": 4194304
+          },
+          "conservative_extrapolation": {
+            "wall_s": 588.889137327671,
+            "cpu_s": 551.42816,
+            "sampled_rss_bytes": 270616848.0,
+            "sampled_output_bytes": 112568912.0
+          },
+          "basis": "2x pilot80/10 duration scaling (including fixed startup); RSS adds2x scaled retained native bytes to observed peak. Investigation bound, not a guarantee.",
+          "simulation_ceiling_s": 80,
+          "pilot_run": "2026-11-10T145233.755880_0000_f46cc76634dd4322b1720f37eb96442b"
+        },
+        "new_execution_started": false
+      },
+      "used": {
+        "pilot": "2026-11-10T145233.755880_0000_f46cc76634dd4322b1720f37eb96442b"
+      },
+      "maximum_genuine_attempts": {
+        "pilot": 1,
+        "full_lap": 1
+      },
+      "automatic_retry": false
+    },
+    "host_preflight": {
+      "utc": "2026-11-11T08:36:55.708615+00:00",
+      "memory_available_bytes": 1380417536,
+      "required_available_ram_bytes": 1610612736,
+      "disk_free_bytes": 17695334400,
+      "required_disk_bytes": 1610612736,
+      "cpu_count": 8,
+      "cpu_percent_half_second": 2.7,
+      "status": "BLOCKED",
+      "record": "results/apex_workbench_v2_lap/final_host_preflight_1794386216214143000.json",
+      "conflicting_process_count": 0,
+      "guard_count": 66,
+      "active_guard_count": 0,
+      "blocking_reason": "Available RAM below unchanged 2x768MiB reserve",
+      "ram_shortfall_bytes": 230195200
+    },
+    "driver_source_environment_gate_reached": false,
+    "post_block_readonly_identity_audit": {
+      "recorded_utc": "2026-11-11T08:38:27.023652+00:00",
+      "outcome": "PASS",
+      "reviewed_revision": "740a268a2d2c6b92a67a45456292a3b2cafb2479",
+      "head": "83527a70d964abb0732941b0103120f41ef43705",
+      "current_git_reviewed_producers_equal": true,
+      "producer_count": 47,
+      "review_sha256": "dcd1fdf90c2135c1b804152c5bbb7015ec7604bb9da4d86d527bb5f8b06ec07f",
+      "authority_sha256": "2d7e05cbdfbd72660a816a2dd14baacf5c8acc7cd71fe1d92ee0cca6dc995ce9",
+      "policy_sha256": "f45f769caeac48c73955c4eacbe28d1f0c76c1dccf353dc9d34f1cdd22fad98f",
+      "policy_stage": "reviewed-work",
+      "used": {
+        "pilot": "2026-11-10T145233.755880_0000_f46cc76634dd4322b1720f37eb96442b"
+      },
+      "maximum_genuine_attempts": {
+        "pilot": 1,
+        "full_lap": 1
+      },
+      "automatic_retry": false,
+      "original_pilot_manifest_sha256": "f18a0639f5f4c6786fb0cfc53fd52a09d3656f0eef24c569a14d7960cbfec911",
+      "original_pilot_evidence_valid": true,
+      "frozen_runtime_files": 333,
+      "runtime_and_original_pilot_environment_equal": true,
+      "numerical_run_directories": [
+        "2026-11-10T145233.755880_0000_f46cc76634dd4322b1720f37eb96442b"
+      ],
+      "new_numerical_executions": 0,
+      "full_lap_claim_exists": false,
+      "full_lap_launch_exists": false,
+      "source_audit_timing": "Read-only final audit after host BLOCKED; execution driver did not reach source/environment gate",
+      "preservation_note": "Existing audit helper initially wrote its stable current filename; saved final output separately and restored the earlier snapshot to its exact previously recorded SHA."
+    },
+    "full_lap_claim_exists": false,
+    "full_lap_launch_exists": false,
+    "full_lap_slot_consumed": false,
+    "retry_performed": false,
+    "acceptance_proposal_created": false,
+    "accepted_interactive_installed": false,
+    "conditional_full_lap": "BLOCKED before numerical claim/execution; unused slot preserved; no capacity polling or retry",
     "independent_review": "PASS exact740a268",
-    "conditional_full_lap": "one baseline attempt only, after PASS and fresh host/source gates",
-    "automatic_retry": false
+    "automatic_retry": false,
+    "lap_sector_or_new_control_metrics": "Unavailable: no new scientific execution"
   },
   "negative_readonly_projection_attempt": {
     "reason": "Symlink-spelled executable differed from retained environment; existing venv directory resolved before isolated launch. Complete environment checks preserved.",
@@ -351,9 +469,53 @@
     "results/apex_workbench_v2_final/screenshots/01-follow-prediction.jpg": {
       "sha256": "8203f96da5992abc3d2f2f1a893bc7682ef040f287e5c27d6bbb5650fbd76ee7",
       "bytes": 102246
+    },
+    "results/apex_workbench_v2_final/full_lap_driver.log": {
+      "sha256": "a90ecaca8dc51b53db4af5a294f7f1ceedb1030d81ea5745eafda7a90aff8b92",
+      "bytes": 730
+    },
+    "results/apex_workbench_v2_final/full_lap_driver_record.json": {
+      "sha256": "79a4c1985faced0280ead0053c3c8f3bd2a598295aa040e314a648f260ea6e12",
+      "bytes": 477
+    },
+    "results/apex_workbench_v2_final/preservation_final.json": {
+      "sha256": "e5ebe55b6acac08187f2e556667a2f5580325515fccf674b93d8f9efeb0ca1d7",
+      "bytes": 521
+    },
+    "results/apex_workbench_v2_final/final_identity_audit.json": {
+      "sha256": "fbfc6d365ed9bbd438c8451fdf7288288b105b29ee32ee19753e3eefb5ec736d",
+      "bytes": 1525
+    },
+    "results/apex_workbench_v2_lap/final_host_preflight_1794386216214143000.json": {
+      "sha256": "cd443ed95f47871aced405cc9db4c4a9dcba387092bffd606cee74b86fcb9cc8",
+      "bytes": 17661
+    },
+    "results/apex_workbench_v2_lap/access.json": {
+      "sha256": "f45f769caeac48c73955c4eacbe28d1f0c76c1dccf353dc9d34f1cdd22fad98f",
+      "bytes": 6287
+    },
+    "results/apex_workbench_v2_lap/final_authorization_740a268_20261111/PRIMARY_WORK.md": {
+      "sha256": "52114eba8c67422e3c8e4e02f37b9da21153dbea9c6f41a06ac93f9f04efe785",
+      "bytes": 7960
+    },
+    "results/apex_workbench_v2_lap/final_authorization_740a268_20261111/authority.json": {
+      "sha256": "2d7e05cbdfbd72660a816a2dd14baacf5c8acc7cd71fe1d92ee0cca6dc995ce9",
+      "bytes": 1006
+    },
+    "results/apex_workbench_v2_lap/final_authorization_740a268_20261111/access_before.json": {
+      "sha256": "03b6fbabdfd6bf5416087c78338a9ef335a4f8205724a1214f5f0a1d39ff3574",
+      "bytes": 4492
+    },
+    "results/apex_workbench_v2_lap/final_authorization_740a268_20261111/review_record.json": {
+      "sha256": "dcd1fdf90c2135c1b804152c5bbb7015ec7604bb9da4d86d527bb5f8b06ec07f",
+      "bytes": 15128
+    },
+    "results/apex_workbench_v2_lap/final_authorization_740a268_20261111/transition.json": {
+      "sha256": "0fdcf70ca49729715524b9cc49e3937ab5de2df4be420cf8a11c202b5936dcab",
+      "bytes": 1147
     }
   },
-  "next_gate": "Independent Engineering Review of exact candidate, then terminate review/UI/tests/helpers and conditionally take one full-lap attempt.",
+  "next_gate": "Primary acceptance of reviewed correction and decision on host-capacity blocker. A later bounded instruction may resume the unused Full Lap slot only with adequate capacity and fresh unchanged gates. No automatic retry or repeatable V2 admission.",
   "implementation_revision": "740a268a2d2c6b92a67a45456292a3b2cafb2479",
   "independent_review": {
     "candidate": "740a268a2d2c6b92a67a45456292a3b2cafb2479",
@@ -369,5 +531,21 @@
     "read_only_process_check": "No lap, reference, pytest or Pi benchmark process apart from inspection shell",
     "browser_tabs_closed": true,
     "viewport_reset": true
-  }
+  },
+  "recorded_utc": "2026-11-11T08:39:59.952016+00:00",
+  "preservation_before_transition": {
+    "historical_files": 13280,
+    "historical_links": 573,
+    "changed_historical_files": [],
+    "changed_links": [],
+    "frozen_scientific_files": 333,
+    "changed_scientific_files": [],
+    "canonical_files": 335,
+    "changed_canonical_files": [],
+    "changed_v1_producers_or_launcher": [],
+    "changed_execution_or_clock_or_launcher": [],
+    "allowed_policy_transition_only": false,
+    "current_policy_sha256": "03b6fbabdfd6bf5416087c78338a9ef335a4f8205724a1214f5f0a1d39ff3574"
+  },
+  "focused_results_applicability": "Existing exact740a268 implementation/tests remain unchanged; documentation-only delivery. No new test invocation or combined pass count."
 }

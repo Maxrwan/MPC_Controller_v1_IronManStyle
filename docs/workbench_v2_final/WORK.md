@@ -8,7 +8,9 @@ Frozen scientific source remains `48adbdf64d492592d15e23c917aca71fa58aa8a5`.
 **Independent Engineering Review PASS** for `740a268a2d2c6b92a67a45456292a3b2cafb2479`;
 [report](../reviews/workbench_v2_final/iteration_1/REVIEW.md). Independent105pass/1deselected,
 2,847 JS checks and8,005 additional assertions; counts remain separate. No correction requested.
-All review/test/UI/helper activity has ended. No new scientific execution has started.
+All review/test/UI/helper activity ended before the final preflight. The source-bound WORK policy
+was installed, but the host RAM gate blocked the driver before any numerical claim or execution.
+**`WORKBENCH_V2_FINAL_READY_FOR_PRIMARY_ACCEPTANCE`**, with Full Lap still unexecuted.
 
 ## Implemented scope
 
@@ -93,17 +95,59 @@ at2×,113frames/max50.1ms gap. Both payload loads and the epoch change were obse
 time accrued in the verified boundary pause. A removed required file in a **disposable copy** withdrew
 the iframe and displayed quarantine while the original archive hash remained unchanged.
 
-## Remaining gate and limitations
+## Final admission and full-lap outcome
 
-Independent review of the exact committed source passed before live admission and the single
-baseline Full Lap attempt. During this WORK phase the historical production access policy remains
-unchanged/stale. No claim is reset, no pilot repeated, no full lap yet claimed, and no repeatable
-V2 policy installed. Cold reference initialization can take about13s; boundary pauses are possible.
+After independent PASS, the explicit WORK transition bound all 47 current producer hashes to
+`740a268a2d2c6b92a67a45456292a3b2cafb2479`, its independent review and the exact Primary brief.
+Previous policy bytes, authority/review bindings and the consumed original pilot were retained in
+`results/apex_workbench_v2_lap/final_authorization_740a268_20261111/`.
+The new policy remains `reviewed-work`, with one consumed pilot, one unused Full Lap slot and no
+automatic retry. This is not accepted-interactive admission.
+
+One explicit driver invocation on 2026-11-11 at 08:36:52 UTC exited1 after the host gate:
+
+| Host observation | Actual | Required | Outcome |
+|---|---:|---:|---|
+| Available RAM | 1,380,417,536 bytes | greater than 1,610,612,736 bytes | BLOCKED |
+| Free disk | 17,695,334,400 bytes | greater than 1,610,612,736 bytes | PASS |
+| Conflicting processes / active guards | 0 /0 | 0 /0 | PASS |
+
+The RAM reserve was short by 230,195,200 bytes. The unchanged resource projection itself fits the
+authorized Full Lap ceilings; current host capacity does not. No capacity polling, second driver
+invocation, numerical probe, controller/plant run, full-lap claim or slot consumption occurred.
+The driver never reached its fresh source/environment gate. A subsequent read-only audit separately
+confirmed current/reviewed producer equality,333 frozen runtime hashes and the original pilot's
+complete environment identity. This audit does not convert the blocked preflight into a pass.
+
+Raw negative evidence is retained in `results/apex_workbench_v2_final/full_lap_driver.log`,
+`full_lap_driver_record.json`, and
+`results/apex_workbench_v2_lap/final_host_preflight_1794386216214143000.json`.
+Exact hashes are in `work_record.json`. There is no genuine full-lap outcome, new lap/sector timing
+or control metric to report, and no successful-run acceptance proposal was generated or installed.
+
+Final preservation rechecked 13,280 historical regular files and 573 links: the sole old-file change
+is the explicitly authorized access-policy transition. Original pilot bytes and manifest remain
+valid; all 335 canonical files,333 frozen runtime files, V1 producers/launcher and V2 worker,
+execution path, browser clock and launcher remain unchanged. Final source/tests match the reviewed
+implementation; this delivery only updates documentation. Earlier focused results remain applicable
+and were not rerun or combined into a new test count.
+
+## Launch, remaining limitations and next decision
+
+From this configured `codex/workbench-v2-ui` checkout, double-click
+`Launch_APEX_Workbench_V2.command` or run `./Launch_APEX_Workbench_V2.command`.
+The launcher resolves its own checkout and existing environment, opens loopback 8503 and stops with
+Control-C in its Terminal. Installation requirements remain in the Workbench README; no new package
+is required. Original V1 uses `Launch_APEX_Workbench.command` on 8501.
+
+Cold reference initialization can take about 13s; boundary pauses are possible.
 The camera is a display aid; heading-glyph lengths and wheel ratio are illustrative. Planning reference
 reconstruction does not fabricate native optimizer preview. Browser viewport emulation is not a
 physical-mobile or accessibility certification. Local logs/screenshots are not off-host archival backup.
 
-After PASS: terminate review/tests/UI/helpers; install the explicitly bound WORK policy; take one
-host/source preflight and attempt the baseline full lap once. Preserve the genuine outcome. Only if
-completed/valid/exit0 with one full native circuit, prepare a pending source-bound acceptance proposal;
-do not install it. Final stop: `WORKBENCH_V2_FINAL_READY_FOR_PRIMARY_ACCEPTANCE`.
+Recommend Primary acceptance of the reviewed replay/admission correction with the host-capacity
+blocker recorded. Full-lap execution and repeatable V2 admission remain unproven. A later bounded
+Primary instruction should decide whether to resume the still-unused Full Lap slot after adequate
+host capacity is available, using fresh unchanged host/source gates; do not retry automatically.
+No broad formal Verification or new scientific campaign ran.
+Final stop: `WORKBENCH_V2_FINAL_READY_FOR_PRIMARY_ACCEPTANCE`.

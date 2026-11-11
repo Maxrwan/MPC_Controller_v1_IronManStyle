@@ -417,7 +417,7 @@ window limits, missingness and current resource limitations. No new installation
 
 ### Final V2 replay controls and one-shot full lap
 
-The V2 launcher remains `./Launch_APEX_Workbench_V2.command` on loopback8503. Restart the owned
+The V2 launcher remains `./Launch_APEX_Workbench_V2.command` on loopback 8503. Restart the owned
 launcher after updating a checkout. View selects Whole circuit, Recording window, Follow Vehicle or
 Follow Prediction. The wheel shows actual front steering in radians/degrees; its configurable12:1
 visual mapping is illustrative, not steering calibration. Prediction Microscope follows available
@@ -426,8 +426,10 @@ reference tracking errors. Historical selection does not confer authority. The r
 
 Automatic continuation prefetches one bounded native window and pauses at its boundary until evidence
 is reverified. No time is extrapolated during that wait. Initial source-verified reference construction
-can take about13s; subsequent geometry is reused. Raw provenance/diagnostics remain secondary panels.
+can take about 13s; subsequent geometry is reused. Raw provenance/diagnostics remain secondary panels.
 Full Lap now has900s wall/720s CPU ceilings; all other approved limits/rules stay fixed. Source/review/
-Primary and host preflight gates still apply. A single baseline full-lap attempt is authorized only after
-focused independent PASS; ordinary repeatable V2 execution awaits the resulting Primary decision.
+Primary and host preflight gates still apply. Exact source 740a268 received independent PASS and its
+WORK policy is installed. The final host preflight blocked before execution: available RAM
+1,380,417,536 bytes was below the unchanged 1,610,612,736-byte reserve. The Full Lap slot remains unused;
+no automatic retry or repeatable V2 admission is enabled. Primary's next decision is pending.
 See [final scope and evidence](../../docs/workbench_v2_final/WORK.md).

@@ -1,22 +1,34 @@
-# Current handoff — final V2 PASS, conditional full-lap gate next
+# Current handoff — final V2 PASS, host RAM blocks Full Lap
 
-**ENGINEERING_REVIEW_PASS_PENDING_CONDITIONAL_FULL_LAP.** Exact source740a268a2d2c6b92a67a45456292a3b2cafb2479. `codex/workbench-v2-ui`, starting deliverye45059c.
+**WORKBENCH_V2_FINAL_READY_FOR_PRIMARY_ACCEPTANCE.** Exact reviewed source
+`740a268a2d2c6b92a67a45456292a3b2cafb2479`. `codex/workbench-v2-ui`, starting deliverye45059c.
 [Primary authorization](workbench_v2_final/PRIMARY_WORK.md), [WORK](workbench_v2_final/WORK.md),
 [machine evidence](workbench_v2_final/work_record.json). Primary accepts reviewedb1cc8b3 presentation
 as the foundation and authorizes four cameras, illustrative12:1 wheel, nine-node derived-reference
 microscope, bounded verified continuation, Full Lap900s/720s caps and one conditional baseline attempt.
 No frozen scientific math, V1/Extended limit or original evidence changed. Historical pilot profile
-remains readable under its exact old hash; current execution stays strict. New source-bound policy
-transition and once-only driver are implemented, but the production policy is still untouched/stale.
+remains readable under its exact old hash; current execution stays strict. The explicit source-bound
+WORK policy transition is installed, preserving the consumed historical pilot and unused Full Lap slot.
 105focused tests pass /1 deliberate deselection;2,847 JS assertions. Actual desktop/mobile, live
 packet/node display, ratio distinction, historical isolation, verified two-window fixture continuation
-and disposable-evidence quarantine checked. Cold reference construction remains about13s; boundary
-pauses possible. No numerical attempt, claim, repeated pilot or acceptance transition has run.
+and disposable-evidence quarantine checked. Cold reference construction remains about 13s; boundary
+pauses possible. Independent review separately passed105 tests /1deselected plus its display oracles;
+counts are not combined. All review/tests/UI/helpers ended before the once-only driver invocation.
 
-Independent PASS is recorded; all review/tests/UI/helpers are terminated. Next:
-install explicit source-bound WORK policy, take fresh unchanged host/source preflight and attempt
-baseline Full Lap once. Retain outcome, no retry. If successful, prepare but do not install pending
-interactive acceptance. Final stop: WORKBENCH_V2_FINAL_READY_FOR_PRIMARY_ACCEPTANCE.
+The 2026-11-11 08:36:55 UTC host observation was BLOCKED: available RAM 1,380,417,536 bytes versus
+unchanged required 1,610,612,736 bytes. Disk 17,695,334,400 bytes passed; no conflicting process or active
+guard. Driver exit 1; no numerical execution/probe, Full Lap claim, slot consumption or retry.
+Fresh source/environment execution gate was not reached; separate final read-only audit passed
+all 47 reviewed producers,333 frozen runtime hashes and original pilot environment/evidence identity.
+All 13,280 old files/573 links rechecked; only authorized access.json differs.335 canonical files and
+V1/worker/clock/launcher identities preserved. Exact logs/hashes and limitations are in the WORK record.
+
+Launch this configured checkout with `./Launch_APEX_Workbench_V2.command` or double-click its icon
+(loopback 8503); original V1 launcher remains 8501. Delivery changes documentation only after review.
+Recommend Primary accept the correction with the host blocker recorded, then separately decide
+whether to resume the unused Full Lap slot after adequate capacity and fresh unchanged gates.
+No successful full-lap acceptance proposal or repeatable V2 admission is installed.
+Final stop: WORKBENCH_V2_FINAL_READY_FOR_PRIMARY_ACCEPTANCE.
 No broad scientific Verification, qualification campaign, ROS/exporter, Docker or later stage.
 
 ---
