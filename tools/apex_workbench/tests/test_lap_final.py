@@ -120,7 +120,7 @@ def test_pending_acceptance_draft_cannot_enable_interactive_execution(tmp_path, 
         stage="accepted-interactive", authority_sha256=storage.sha256(tmp_path / "authority.json")
     )
     storage.write_json(tmp_path / "access.json", value)
-    with pytest.raises(ValueError, match="Repeatable"):
+    with pytest.raises(ValueError, match="Operational acceptance"):
         config.access(config.defaults("extended", 20))
 
 

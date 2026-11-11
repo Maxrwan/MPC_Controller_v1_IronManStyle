@@ -3,6 +3,7 @@
 import copy
 import hashlib
 import json
+import os
 import subprocess
 import sys
 from pathlib import Path
@@ -169,7 +170,7 @@ def test_admission_fails_closed(tmp_path, monkeypatch, fault):
         config.access(config.defaults())
 
 
-def test_explicit_later_acceptance_does_not_consume_more_work_slots(tmp_path, monkeypatch):
+def test_old_uninstalled_acceptance_draft_cannot_bypass_operational_contract(tmp_path, monkeypatch):
     value = policy(tmp_path, monkeypatch)
     storage.write_json(
         tmp_path / "authority.json",
@@ -186,7 +187,8 @@ def test_explicit_later_acceptance_does_not_consume_more_work_slots(tmp_path, mo
     )
     storage.write_json(tmp_path / "access.json", value)
     before = (tmp_path / "access.json").read_bytes()
-    config.access(config.defaults("extended", 20), consume="user-triggered")
+    with pytest.raises(ValueError, match="Operational acceptance"):
+        config.access(config.defaults("extended", 20), consume="user-triggered")
     assert (tmp_path / "access.json").read_bytes() == before
 
 
@@ -279,9 +281,15 @@ AsyncRunner.run = forbidden
 DynamicBicycle.step = forbidden
 from dataclasses import asdict
 original = worker.short.resolve(config.v1.defaults())
-for value in [config.defaults(), config.defaults("extended", 20), config.defaults("full_lap")]:
+edited = config.defaults("extended", 5)
+edited["scratch"]["costs"]["lateral"] = 3.0
+values = [config.defaults(), edited, config.defaults("extended", 20), config.defaults("full_lap")]
+for value in values:
     parts = worker.resolve(value)
-    assert asdict(parts[3]) == asdict(original[3])
+    expected = asdict(original[3])
+    expected["costs"] = value["scratch"]["costs"]
+    assert asdict(parts[3]) == expected
+    assert parts[-1]["configuration"]["costs"] == value["scratch"]["costs"]
     assert parts[6] == original[6]
     assert parts[4].duration == value["maximum_simulation_s"]
     assert parts[4].laps == 2
@@ -290,7 +298,7 @@ for value in [config.defaults(), config.defaults("extended", 20), config.default
     assert a == b
     assert parts[-1]["track_length_m"] == parts[0].length
 assert control["mode_name"] == "single"
-print("3 native configuration compositions, zero solves/plant steps")
+print("4 native configuration compositions including edited costs, zero solves/plant steps")
 """
     process = subprocess.run(
         [sys.executable, "-B", "-c", source],
@@ -298,6 +306,7 @@ print("3 native configuration compositions, zero solves/plant steps")
         text=True,
         cwd=config.ROOT,
         timeout=60,
+        env={**os.environ, "VECLIB_MAXIMUM_THREADS": "1", "PYTHONDONTWRITEBYTECODE": "1"},
     )
     (tmp_path / "configuration.log").write_text(process.stdout + process.stderr)
     assert process.returncode == 0, process.stderr

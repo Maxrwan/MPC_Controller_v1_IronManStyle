@@ -1576,3 +1576,14 @@ Use an annotated in-memory observation view through the existing renderer/metric
 epoch or file-membership changes; exclude recovery from controlled comparisons and all execution/
 acceptance admission. Convert native NumPy binary floating scalars locally for lap durations; retain
 global JSON validation and frozen science. See [recovery WORK](workbench_v2_recovery/WORK.md).
+
+## V2 source-bound manual laboratory admission (2026-11-11)
+
+Retain spent research budgets immutably and separate them from accepted manual experimentation.
+Bind conditional one5s smoke and subsequent explicit Primary acceptance to exact reviewed Git
+producers, profile, historical policy/evidence and successful smoke. Keep every new experiment's
+own immutable admission/configuration/source/host/outcome records; never increment/reset historical
+slots for ordinary user clicks. Check full-lap capacity once at explicit launch, under the shared
+scientific lease, excluding harmless UI/reference processes. Preserve runtime caps and source guards.
+Allow verified complete-enough failed operational evidence to be inspected descriptively without
+inventing summary or success. See [operational WORK](workbench_v2_operational/WORK.md).

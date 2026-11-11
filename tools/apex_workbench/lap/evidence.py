@@ -121,14 +121,18 @@ def read_run(directory, *, recover_failed=False):
         raise ValueError("V2 manifest/status epoch differs")
     required = {"request.json", "execution.json", "stdout.log", "stderr.log"}
     recovering = recover_failed and "native.json" in manifest and "summary.json" not in manifest
+    original_recovery = (
+        directory.name,
+        anchor["status.json"],
+        anchor["artifacts.json"],
+    ) == FAILED_NATIVE_RECOVERY
     if recovering:
         if (
-            (directory.name, anchor["status.json"], anchor["artifacts.json"])
-            != FAILED_NATIVE_RECOVERY
-            or status.get("state") != "failed"
-            or status.get("scientific_outcome") != "failed"
+            (not original_recovery and "admission.json" not in manifest)
+            or status.get("state") not in {"failed", "cancelled", "timed_out", "interrupted"}
+            or status.get("scientific_outcome") != status.get("state")
             or status.get("evidence_state") != "valid"
-            or status.get("returncode") != 2
+            or status.get("returncode") == 0
             or "worker_result.json" in manifest
         ):
             raise ValueError("No approved failed-native recovery identity")
@@ -163,6 +167,23 @@ def read_run(directory, *, recover_failed=False):
     config.validate_retained(request["effective"])
     if request["run_id"] != directory.name or request.get("adapter") != "nmpc_lap_v2":
         raise ValueError("V2 run identity differs")
+    operational_capture = request.get("provenance", {}).get("access_stage") in {
+        "reviewed-smoke",
+        "accepted-interactive",
+    }
+    if operational_capture:
+        from . import operational
+
+        captured_admission = storage.artifact_json(directory, "admission.json")
+        if (
+            anchor["admission.json"] != request["provenance"]["admission_sha256"]
+            or captured_admission["policy"]["stage"] != request["provenance"]["access_stage"]
+            or captured_admission["host"]["status"] != "PASS"
+        ):
+            raise ValueError("Retained per-run operational admission differs")
+        operational.retained(captured_admission["policy"], request)
+    if recovering and not original_recovery and not operational_capture:
+        raise ValueError("No approved failed-native operational provenance")
     view = {"directory": directory, "status": status, "request": request, "anchor": anchor}
     if "native.json" in manifest:
         scalar = storage.artifact_json(directory, "native.json")
@@ -214,7 +235,8 @@ def read_run(directory, *, recover_failed=False):
                 "mode": "failed-native-read-only",
                 "classification": (
                     "Read-only recovery · descriptive observations from a failed Workbench run. "
-                    "Execution remains failed / valid evidence / exit 2; "
+                    f"Execution remains {status['scientific_outcome']} / valid evidence / "
+                    f"exit {status.get('returncode')}; "
                     "no completed or qualified experiment."
                 ),
                 "missing_artifacts": ["summary.json", "worker_result.json"],

@@ -1,0 +1,187 @@
+{
+  "schema": "apex-v2-operational-work/1",
+  "stage": "WORK_COMPLETE_PENDING_NARROW_INDEPENDENT_REVIEW",
+  "branch": "codex/workbench-v2-ui",
+  "base": "9ef4bf9265892eff6fc4bee6e91a7494cbf86e48",
+  "frozen_scientific_source": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+  "primary_brief_sha256": "2341ea9feeb603827ecb40dab4fdd69678225ac9b6c2fd7290c574060c069c74",
+  "producer_sha256": {
+    "Launch_APEX_Workbench_V2.command": "64ab4063b0c9ae9daf75de4ee767215e25c095e2d417de1e8020b1d6471434c8",
+    "tools/apex_workbench/configuration.py": "596846e8dab789c619e00a26679288d73bfac495fc468c7b065e15d6795a33a1",
+    "tools/apex_workbench/jobs.py": "31c82030e644418cb6e3ec88b905d37388291fc00172c45c34e34a5de5684ed4",
+    "tools/apex_workbench/lap/__init__.py": "35b55be42eafe56b0521ad9ae3875ba947ae67c6f3e9e2a3c87d287cbd3fca55",
+    "tools/apex_workbench/lap/admission.py": "68929330d3cf172d931e03d02219b09d52911f992ec7f71b7c2486767648c1d2",
+    "tools/apex_workbench/lap/analysis.py": "6f1298ee617e4e827059ade867f994b0b262c8062c565170e8314d60cc817074",
+    "tools/apex_workbench/lap/app.py": "e89aab8852a43d28cb7ebe4813fc8bd3b33b664b32d1a33b25d4db1592ae5f3f",
+    "tools/apex_workbench/lap/capacity.py": "da2bbb9189744eac283632f2d1fc2b1ee6f4bcf0cc0a0de00b2eb1c5a557fcd2",
+    "tools/apex_workbench/lap/config.py": "63fbadc91f4112abd165f7897eb75f4d08cc08a19bdbf0789dbd51529dcb6103",
+    "tools/apex_workbench/lap/evidence.py": "4cb4a445e23bc41da0a8be6e0d00f88f8301e0d2f4ba34b8804157b695a04a39",
+    "tools/apex_workbench/lap/execution.py": "64eed13fffcbd004018af5c24a9c15c8fa9c1311d2dd3acb490a97b46174630c",
+    "tools/apex_workbench/lap/final_attempt.py": "590d4933b3beb88549604967a5adbbaf2c7e25af762fb86e8fe5e81ec9201285",
+    "tools/apex_workbench/lap/launch.py": "aced85a5262feb76b6357c99cfc6427cd5ce14b2f2e629d896db496a29e7f72f",
+    "tools/apex_workbench/lap/operational.py": "ff55a2f2cef0dd6bfe9248ea014c129375f11d338929a514166021001dc6ecb9",
+    "tools/apex_workbench/lap/panels.py": "5a9470b67c936bfae2126e7731f5363040742f7ab8a78b012d0bcf05fbbad474",
+    "tools/apex_workbench/lap/profile.json": "849cac0a38188c11e42e5a903ac8d45bae64681cf5c39e847fb6195879393096",
+    "tools/apex_workbench/lap/reference_view.py": "134ef150d91b2c743d1a0daff9bd9e2c3422ece0ccb48d76bd773928cb331cde",
+    "tools/apex_workbench/lap/replay.py": "31225fe1f05a5f70af2111162eddc2e30beba0cf55ebaa3a77bcfc29a1c05c61",
+    "tools/apex_workbench/lap/ui_data.py": "645c4d7fa82b2a43fac421069ef5645cb15b022e480a6ff4abcda6fd488e2385",
+    "tools/apex_workbench/lap/ui_replay.py": "e54152874840df7bd97454a96982628fa0657ac7d26370bd587d440c96148ac7",
+    "tools/apex_workbench/lap/ui_theme.py": "36c9e6755fc510f82c56e8880c3dde910b5e3a9f45981aee09e02bb477d60b05",
+    "tools/apex_workbench/lap/ui_views.py": "6c7940992b25ac0c184c53bd940895dc724d597677e72bbd4a132c3777f6b937",
+    "tools/apex_workbench/lap/ui_web/camera.mjs": "18ef4d031dc709793f41405a291745c3cd59edb43d2299023403826984bab532",
+    "tools/apex_workbench/lap/ui_web/clock.mjs": "ff9ba7d4834acc5b5a4ef43eb06fbc6af4dbe13a0c5852cff767391d3084e97a",
+    "tools/apex_workbench/lap/ui_web/host.css": "438265d626c1d0dac6382e8210e4b7f6ed72b11685fd0169df79441e6c1500cf",
+    "tools/apex_workbench/lap/ui_web/index.html": "f7ce8ee8fd50fd164084d0e1ebe35ea5708974f26089c302d39d1c580cec3629",
+    "tools/apex_workbench/lap/ui_web/instruments.mjs": "ffaad2ffb99cb8d49471a9a56d80c84f6c1d7c6d223394ae26cb4006916c8b4c",
+    "tools/apex_workbench/lap/ui_web/style.css": "2d94c58f0e7010bac838474afe89146d169d05eae911fb646b7d1dc7c0d548b1",
+    "tools/apex_workbench/lap/ui_web/tokens.css": "f8b52acde65ed542c28fc38593d2d71d7994a2c001c6f163c9da7c340fc3ef0c",
+    "tools/apex_workbench/lap/ui_web/viewer.mjs": "c445a0ebcf3f1dda0cb214c2c64421af7457e1a9f6d881e26c08f815ea25554d",
+    "tools/apex_workbench/lap/worker.py": "b3a3b0eaa17c24233a62e32be6b8cd357cd0b11c7b62b744391a24712f0909f8",
+    "tools/apex_workbench/lifecycle.py": "794bd5ada88048a402a2d0946942ec9962e52b0caf2e72d7a8a3a0279f51f05a",
+    "tools/apex_workbench/nmpc_analysis.py": "9bf1a7efe44ee4bb9f1199356f58a3f0caa31d7783543e03f26ca6abebc01beb",
+    "tools/apex_workbench/nmpc_scratch.py": "50bd86590980f2abb98f6e7e6a01e169a9e72584fe009b53faabcc357cf72d78",
+    "tools/apex_workbench/nmpc_scratch_panels.py": "ea08206b4f765c99d7dc7ae48c447d5fcb9a7029a2178e9be9b43d8e031a58e8",
+    "tools/apex_workbench/nmpc_scratch_profile.json": "52ffa7cbb4308bb8814b7512fbb61d685e27fbe9af83b1acec926217b8f42fab",
+    "tools/apex_workbench/nmpc_scratch_worker.py": "d6ee20dcd56f9f2123aed9afa3796bf0bce9f63da21583982470f9a2645737e3",
+    "tools/apex_workbench/nmpc_weight_lab.py": "8751fdfea3c1071fed61dc463d0827894b876295c1a5810647320964c6be1700",
+    "tools/apex_workbench/nmpc_weight_panels.py": "8b0e1723cbe1d8428c223e2b4c2fa998823096e68998fe5a592c2b2c85581b0a",
+    "tools/apex_workbench/nmpc_weight_worker.py": "d1051d60263936f173e4b691f1407a2b8fbb801f4825ff926e75112eda18ef01",
+    "tools/apex_workbench/run_catalog.py": "f48089c848a9cc2e78102dad23fcbc15be360a9931b4f55d698c0948a1a0908c",
+    "tools/apex_workbench/scratch_replay.py": "519317232826bdf132048172f2df1ed65d8924f0b4f5c2d1c05ef6880f3cce1e",
+    "tools/apex_workbench/scratch_replay_web/clock.mjs": "ff9ba7d4834acc5b5a4ef43eb06fbc6af4dbe13a0c5852cff767391d3084e97a",
+    "tools/apex_workbench/scratch_replay_web/index.html": "7d9ecedef30c7ab088a8a3b38228901f18bc741b88f4b440e92a5d70080657bb",
+    "tools/apex_workbench/scratch_replay_web/style.css": "20bca79c8f522995b7e64cca7f9a8131a5b7b005b39c89fe93e23f318746f964",
+    "tools/apex_workbench/scratch_replay_web/viewer.mjs": "5d4a5aabe4eddd4a21f09e37b8da249b0e27582b25395e781589b394b84a4c3d",
+    "tools/apex_workbench/storage.py": "962ff863823f8fa22edf46530730db3a042328fb940bc51036ba18aa2e221c96",
+    "tools/apex_workbench/worker.py": "17293f2fc7775a1601de3f6c95bd28bcafc0766188efca588f8d7894ee8ff91c",
+    "tools/apex_workbench/workspace.py": "85722940dcbc464c4b5f05547278d33e1e3f8c40439dcb4d75c8388e026df2ae"
+  },
+  "environment": {
+    "python": "3.12.14 (main, Sep  1 2026, 14:09:38) [Clang 22.1.3 ]",
+    "executable": "/Users/marwansaber/Grad_proj/The_Project_PREP/MPC_Controller_v1_IronManStyle/tools/apex_workbench/.venv/bin/python",
+    "platform": "macOS-26.5.1-arm64-arm-64bit"
+  },
+  "focused_combined": {
+    "command": "PYTHONDONTWRITEBYTECODE=1 tools/apex_workbench/.venv/bin/python -B - <<'PY' > results/apex_workbench_v2_operational/focused_candidate.log 2>&1\nimport sys,pytest\nresult=pytest.main(['-q','-p','no:cacheprovider','tools/apex_workbench/tests/test_lap_operational.py','tools/apex_workbench/tests/test_lap_recovery.py','tools/apex_workbench/tests/test_lap_v2.py','tools/apex_workbench/tests/test_lap_ui.py','tools/apex_workbench/tests/test_lap_final.py','--basetemp=/private/tmp/apex-v2-operational-candidate','--junitxml=results/apex_workbench_v2_operational/focused_candidate.xml'])\nblocked=[n for n in sys.modules if n.startswith(('apex.control','apex.models','apex.simulation','casadi'))]\nprint('ROOT_FORBIDDEN_SCIENTIFIC_IMPORTS',blocked)\nfrom tools.apex_workbench.lap import reference_view\nif reference_view.session.cache_info().currsize:reference_view.session().close()\nprint('READONLY_GEOMETRY_HELPER_CLOSED')\nraise SystemExit(result or bool(blocked))\nPY",
+    "passed": 169,
+    "failed": 2,
+    "seconds": 75.15,
+    "failures": [
+      "source-isolated fresh child lacked VECLIB_MAXIMUM_THREADS=1 in parent environment",
+      "old pending-acceptance rejection assertion expected previous message"
+    ],
+    "root_forbidden_scientific_imports": [],
+    "helper_closed": true
+  },
+  "affected_recheck": {
+    "command": "PYTHONDONTWRITEBYTECODE=1 tools/apex_workbench/.venv/bin/python -B -m pytest -q -p no:cacheprovider tools/apex_workbench/tests/test_lap_v2.py::test_source_isolated_configuration_uses_native_dataclasses_without_solve tools/apex_workbench/tests/test_lap_final.py::test_pending_acceptance_draft_cannot_enable_interactive_execution --basetemp=/private/tmp/apex-v2-operational-recheck --junitxml=results/apex_workbench_v2_operational/recheck.xml",
+    "passed": 2,
+    "failed": 0,
+    "seconds": 38.02,
+    "production_logic_changed": false,
+    "all_required_focused_failures_closed": true,
+    "counts_not_combined": true,
+    "actual_native_compositions": 4,
+    "controller_solves_or_plant_steps": 0,
+    "actual_Accelerate_mode": "single"
+  },
+  "earlier_attempts": [
+    {
+      "log": "focused_1.log",
+      "passed": 9,
+      "setup_errors": 17,
+      "cause": "test fixture safe() closure used mutated OUTPUT for old immutable authority references"
+    },
+    {
+      "log": "focused_2.log",
+      "passed": 25,
+      "failed": 1,
+      "cause": "global Popen test double also intercepted ordinary Git reads"
+    },
+    {
+      "log": "capture.log",
+      "passed": 1,
+      "seconds": 3.01,
+      "cause": "corrected child-launch interception; no scientific supervisor launched"
+    }
+  ],
+  "preservation": {
+    "historical_files": 811,
+    "historical_links": 65,
+    "changed_files": [],
+    "changed_links": [],
+    "canonical_files": 335,
+    "frozen_runtime_files": 333,
+    "V1_source_profile_policy_unchanged": true,
+    "renderer_clock_launcher_profile_and_native_worker_unchanged": true,
+    "live_policy_sha256": "f9a0304ff136a1d7fe0b56ef0f3a2efff2f7fe37d74acbba1c369c5fa2772346"
+  },
+  "genuine_execution": {
+    "new_runs": 0,
+    "policy_prepared": false,
+    "smoke_started": false,
+    "maximum_authorized_smokes": 1,
+    "automatic_retry": false,
+    "accepted_interactive_activated": false
+  },
+  "independent_review": "pending exact committed candidate; narrowly policy transition/source preservation only",
+  "next_gate": "independent PASS then conditional smoke installation; one genuine5s baseline; only successful smoke permits final accepted-interactive installation",
+  "artifacts": {
+    "results/apex_workbench_v2_operational/access_before.json": {
+      "bytes": 6369,
+      "sha256": "f9a0304ff136a1d7fe0b56ef0f3a2efff2f7fe37d74acbba1c369c5fa2772346"
+    },
+    "results/apex_workbench_v2_operational/capture.log": {
+      "bytes": 98,
+      "sha256": "3c3525ee7824cc138fcf96c89360be04df0f0e3d593f185799386d4898900faa"
+    },
+    "results/apex_workbench_v2_operational/capture.xml": {
+      "bytes": 419,
+      "sha256": "6f0417c3396d83f97f6ddd857258e837a6150b96bc02c51c2b6e59d96f069080"
+    },
+    "results/apex_workbench_v2_operational/configuration_composition.log": {
+      "bytes": 84,
+      "sha256": "9bb5cd683bd56874099462d1d4d307a61659b60f97ab14677107f51534570538"
+    },
+    "results/apex_workbench_v2_operational/focused_1.log": {
+      "bytes": 61008,
+      "sha256": "94ba499a6641cd97edb0e9504947ec13934353235a3c8a0da60bf8c3ed02edaa"
+    },
+    "results/apex_workbench_v2_operational/focused_1.xml": {
+      "bytes": 63754,
+      "sha256": "2e53bc33aad8f63ea11364b30d27937840b3f3f917d62147ef108f795baa779a"
+    },
+    "results/apex_workbench_v2_operational/focused_2.log": {
+      "bytes": 6613,
+      "sha256": "e52b50e4862d79e82dd5742c3b72961b2a9082465bd78c78454cc1375a24cda7"
+    },
+    "results/apex_workbench_v2_operational/focused_2.xml": {
+      "bytes": 10669,
+      "sha256": "ef214e90957aa5795d2f9d580b9d581553147df56dec80d6a789319d7d1da2dd"
+    },
+    "results/apex_workbench_v2_operational/focused_candidate.log": {
+      "bytes": 5438,
+      "sha256": "5590a09555dd8e5f2c8fe084d05a2a44eac300a72c9b765bca6aaecd3ee2220c"
+    },
+    "results/apex_workbench_v2_operational/focused_candidate.xml": {
+      "bytes": 31530,
+      "sha256": "c4b70999b1c64fbd81eb78beaf2fdbf6304366123b88747d03958789821031b5"
+    },
+    "results/apex_workbench_v2_operational/lint.log": {
+      "bytes": 45,
+      "sha256": "29f20c3ee57f1f120dc768e38618eb81e56e89f005f4c1237d5b8be6d18d302b"
+    },
+    "results/apex_workbench_v2_operational/preservation_before.json": {
+      "bytes": 165625,
+      "sha256": "ecf415335b171a320e9a998f6754fc26bdc92fcedbbc20611b78a8651d7b4d78"
+    },
+    "results/apex_workbench_v2_operational/recheck.log": {
+      "bytes": 99,
+      "sha256": "0c88306b95da87baa110c9cfc3db0bcfb329fad4902adc109d7e693cec3e5b73"
+    },
+    "results/apex_workbench_v2_operational/recheck.xml": {
+      "bytes": 571,
+      "sha256": "30f889e205f39d6c09f8730c5ac0b4e3f55206539b3e2145a7b50a710ecdcdb5"
+    }
+  }
+}

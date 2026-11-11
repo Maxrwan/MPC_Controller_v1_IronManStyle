@@ -173,21 +173,24 @@ def run():
     )
     with st.expander("Selected cost multipliers & execution profile"):
         st.json(value, expanded=False)
+        st.json(config.limits(value) if v2 else transient.PROFILE["limits"], expanded=False)
     ready = False
     try:
         (config.access if v2 else transient.access)(value)
+        lease = jobs.execution_lock()
+        lease.close()
         ready = True
         st.success("Source-bound execution policy available.")
     except ERRORS as error:
-        st.warning(
-            (
-                "Execution unavailable for this selection. The execution policy "
-                "must match its reviewed source and authorization."
-            )
-        )
+        st.warning("Execution unavailable: " + str(error))
         with st.expander("Execution gate details"):
             st.code(str(error), language=None)
     if v2:
+        st.caption(
+            "A fresh host/ownership check is made once when you press Run. "
+            "Full Lap needs >1,610,612,736 bytes available RAM and >1,610,612,736 bytes disk; "
+            "the Workbench and read-only viewer may stay open. No automatic retry."
+        )
         try:
             budget = ui_data.full_lap_gate()
             estimate, ceilings = budget["conservative_extrapolation"], budget["limits"]
@@ -269,12 +272,21 @@ def guarded(records, render):
                     "Incomplete execution. Partial evidence remains retained; replay "
                     "and complete-run metrics are unavailable."
                 )
+                + " ".join(str(v.get("status", {}).get("error", "")) for v in views)
             )
             return
         with scope.container():
             for view in views:
                 if view.get("recovery"):
                     st.warning(view["recovery"]["classification"])
+                elif view["status"].get("scientific_outcome") != "completed":
+                    st.warning(
+                        "Execution "
+                        + str(view["status"].get("scientific_outcome"))
+                        + ": "
+                        + str(view.get("raw", {}).get("failure") or view["status"].get("error"))
+                        + ". Retained observations are descriptive, not a completed experiment."
+                    )
             render(views)
         for view in views:
             ui_data.current(view)

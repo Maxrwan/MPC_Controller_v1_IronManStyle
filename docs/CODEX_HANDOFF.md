@@ -1,4 +1,27 @@
-# Current handoff — V2 read-only lap recovery ready for Primary acceptance
+# Current handoff — V2 operational candidate awaiting narrow review
+
+**WORK_COMPLETE_PENDING_NARROW_INDEPENDENT_REVIEW.** Branch `codex/workbench-v2-ui`, base9ef4bf9.
+[Primary](workbench_v2_operational/PRIMARY_WORK.md), [WORK](workbench_v2_operational/WORK.md),
+[record](workbench_v2_operational/work_record.json), [user guide](workbench_v2_operational/USER_GUIDE.md).
+Separate immutable spent research policy from source-bound manual lab admission; a reviewed-only
+single5s baseline smoke precedes explicit conditional Primary accepted-interactive activation.
+Per-run source/host/policy capture, owned lease/resource guards, finite5/10/20/full profiles, benign
+UI/reference processes permitted, and descriptive failed-run inspection. No frozen science/V1 changes.
+
+Main focused169 passes/2 harness failures; both affected checks passed separately (2/38.02s), no
+production changes for their corrections and no combined clean-count claim. Native configurations
+including edited costs composed with solver creation/runner/plant steps forbidden; actual SINGLE mode.
+Historical811 files/65 links,333 frozen/335 canonical files and renderer/profile/launcher preserved.
+Live old policy remains f9a0304f; both historical slots remain consumed. No genuine execution yet.
+
+Next: exact candidate narrow independent policy/source review; only after PASS prepare conditional
+smoke policy and trigger baseline5s once through normal execution. No automatic retry. If successful,
+activate accepted-interactive and validate all four V2 admissions without another numerical run.
+Final target WORKBENCH_V2_ACCEPTED_INTERACTIVE_OPERATIONAL; report blockers explicitly if unmet.
+
+---
+
+# Historical handoff — V2 read-only lap recovery ready for Primary acceptance
 
 **WORKBENCH_V2_FULL_LAP_RECOVERY_READY_FOR_PRIMARY_ACCEPTANCE.** Branch `codex/workbench-v2-ui`;
 corrected source `f7c4e188c296f77dfbc7aa56e830d0315bf346a0`, base `3b2bdb0`. [Primary](workbench_v2_recovery/PRIMARY_WORK.md),

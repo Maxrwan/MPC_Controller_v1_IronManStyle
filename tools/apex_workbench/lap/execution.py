@@ -17,7 +17,7 @@ import psutil
 from tools.apex_workbench import jobs, lifecycle, storage
 from tools.apex_workbench.configuration import ROOT
 
-from . import config
+from . import capacity, config
 
 MODULE = "tools.apex_workbench.lap.execution"
 ACTIVE = {"queued", "running", "finalizing"}
@@ -148,11 +148,17 @@ def start(value):
     try:
         reconcile()
         config.access(value)
+        host = capacity.require(
+            value
+        )  # Once per explicit launch, under the exclusive scientific lease.
         run_id = jobs.timestamp().replace(":", "").replace("+", "_") + "_" + uuid.uuid4().hex
         directory = config.safe(config.RUNS / run_id)
         directory.mkdir(exist_ok=False)
         # Once-only admission is consumed before probing/launch. Any failure remains an attempt.
         policy = config.access(value, consume=run_id)
+        storage.write_json(
+            directory / "admission.json", {"policy": policy, "host": host}, exclusive=True
+        )
         storage.write_json(
             directory / "status.json",
             {
@@ -184,6 +190,8 @@ def start(value):
                 "git_revision": policy["reviewed_revision"],
                 "review_sha256": policy["review_sha256"],
                 "authority_sha256": policy["authority_sha256"],
+                "access_stage": policy["stage"],
+                "admission_sha256": storage.sha256(directory / "admission.json"),
             },
         }
         storage.write_json(directory / "request.json", request, exclusive=True)
@@ -215,7 +223,7 @@ def start(value):
                     exclusive=True,
                 )
             finalize(
-                directory, "failed", error="Admission/probe failed; once-only attempt retained"
+                directory, "failed", error="Admission/probe failed; genuine failed record retained"
             )
         raise
     finally:
@@ -329,6 +337,15 @@ def worker_main(directory, lock_fd):
 
     try:
         config.access(request["effective"], run_id=directory.name)
+        if request["provenance"].get("access_stage") in {"reviewed-smoke", "accepted-interactive"}:
+            from . import operational
+
+            if (
+                storage.sha256(directory / "admission.json")
+                != request["provenance"]["admission_sha256"]
+            ):
+                raise ValueError("Captured operational admission changed")
+            operational.retained(storage.read_json(directory / "admission.json")["policy"], request)
         summary = run(directory, request)
         storage.write_json(directory / "worker_result.json", summary, exclusive=True)
         return 2 if summary["failure"] else 0

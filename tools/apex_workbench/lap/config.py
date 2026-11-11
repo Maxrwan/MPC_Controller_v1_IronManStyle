@@ -123,17 +123,10 @@ def access(value, *, consume=None, run_id=None):
     authority = safe(Path(policy["authority_record"]))
     if storage.sha256(authority) != policy.get("authority_sha256"):
         raise ValueError("Explicit Primary authority changed")
-    if policy.get("stage") == "accepted-interactive":
-        accepted = storage.read_json(authority)
-        if (
-            accepted.get("schema") != "apex-lap-primary-acceptance/1"
-            or accepted.get("accepted_revision") != policy["reviewed_revision"]
-            or accepted.get("decision") != "ACCEPTED"
-        ):
-            raise ValueError(
-                "Repeatable V2 needs explicit final Primary acceptance of this revision"
-            )
-        return policy
+    if policy.get("stage") in {"reviewed-smoke", "accepted-interactive"}:
+        from . import operational
+
+        return operational.validate(policy, value, consume=consume, run_id=run_id)
     if policy.get("stage") != "reviewed-work":
         raise ValueError("V2 execution awaits review/acceptance")
     authorization = storage.read_json(authority)
