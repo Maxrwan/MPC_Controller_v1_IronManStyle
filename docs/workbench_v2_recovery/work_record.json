@@ -1,6 +1,6 @@
 {
   "schema": "apex-v2-full-lap-recovery/1",
-  "stage": "WORK_COMPLETE_PENDING_SHORT_INDEPENDENT_INTEGRITY_CHECK",
+  "stage": "WORKBENCH_V2_FULL_LAP_RECOVERY_READY_FOR_PRIMARY_ACCEPTANCE",
   "branch": "codex/workbench-v2-ui",
   "base_delivery": "3b2bdb0dd9c1f1b633216c3d0862e5de200e0906",
   "numerical_source": "740a268a2d2c6b92a67a45456292a3b2cafb2479",
@@ -714,8 +714,20 @@
     "slots_reset_or_added": false,
     "accepted_interactive_installed": false
   },
-  "independent_integrity_check": "pending exact committed correction; no broad review or Verification",
-  "next_gate": "Short independent integrity check, then Primary acceptance only; execution-policy transition remains separately gated.",
+  "independent_integrity_check": {
+    "outcome": "PASS",
+    "candidate": "f7c4e188c296f77dfbc7aa56e830d0315bf346a0",
+    "record": "docs/reviews/workbench_v2_recovery/integrity_f7c4e188.json",
+    "record_sha256": "4589126756e486e428a5dc372e3b28bf494dd9f7f2901ea785e95458e2785b7b",
+    "selected_read_only_tests_passed": 7,
+    "seconds": 4.62,
+    "direct_scalar_cases": 30,
+    "blockers": [],
+    "test_wrapper_exit": 1,
+    "wrapper_exit_reason": "Post-test psutil children enumeration denied by sandbox sysctl process-table permission, after 7 passes and preservation/import assertions; no test rerun.",
+    "broad_review_or_verification": false
+  },
+  "next_gate": "Primary acceptance of bounded read-only recovery. Any source-bound accepted-interactive execution contract remains separately authorized; no archive repair, slot reset, new slot or rerun.",
   "artifacts": {
     "results/apex_workbench_v2_recovery/admission_guard.log": {
       "sha256": "f0f6b60bd0564c33d85f0a4824a8470857ccf43076cfc041966e4d7460786c00",
@@ -780,6 +792,32 @@
     "results/apex_workbench_v2_recovery/replay.jpg": {
       "sha256": "8aadcb0dae21d213bab80c3a61fee747106e4827e76491bb16adad57d8df4aa6",
       "bytes": 33427
+    },
+    "results/apex_workbench_v2_recovery/final_cleanup.json": {
+      "sha256": "3658fba15df73d0afa0ef85329cc0913c072c31f8c34ca7c1c353d7bb572d7d7",
+      "bytes": 582
+    },
+    "docs/reviews/workbench_v2_recovery/INTEGRITY_f7c4e188.md": {
+      "sha256": "195914330e52f01804ad4182b930dc07a85548854b3b103c4d7dae58261527c8",
+      "bytes": 3376
+    },
+    "docs/reviews/workbench_v2_recovery/integrity_f7c4e188.json": {
+      "sha256": "4589126756e486e428a5dc372e3b28bf494dd9f7f2901ea785e95458e2785b7b",
+      "bytes": 3739
     }
+  },
+  "implementation_revision": "f7c4e188c296f77dfbc7aa56e830d0315bf346a0",
+  "final_cleanup": {
+    "outcome": "PASS",
+    "root_read_only_check_after_independent_completion": true,
+    "commands": [
+      "ps -axo pid,ppid,command | rg 'tools.apex_workbench.lap|reference_view.py|pytest'",
+      "/usr/sbin/lsof -nP -iTCP@127.0.0.1:8503 -sTCP:LISTEN"
+    ],
+    "observation": "Only the inspection shell and rg matched; no owned UI, geometry helper, pytest or lap execution process. lsof returned1 with no listener.",
+    "independent_sandbox_process_enumeration_limitation_resolved_by_root": true,
+    "tests_rerun": false,
+    "ui_launcher_exit_code": 0,
+    "new_scientific_execution": false
   }
 }

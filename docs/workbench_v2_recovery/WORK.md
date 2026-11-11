@@ -5,8 +5,10 @@ Starting delivery `3b2bdb0dd9c1f1b633216c3d0862e5de200e0906`, branch `codex/work
 The recorded numerical source remains `740a268a2d2c6b92a67a45456292a3b2cafb2479`; frozen science
 remains `48adbdf64d492592d15e23c917aca71fa58aa8a5`. No simulator, optimizer or plant execution occurred.
 
-**WORK complete; short independent integrity check pending.** Exact source and machine evidence are
-recorded in `work_record.json`; delivery SHA is supplied after committing.
+**WORKBENCH_V2_FULL_LAP_RECOVERY_READY_FOR_PRIMARY_ACCEPTANCE.** Corrected source
+`f7c4e188c296f77dfbc7aa56e830d0315bf346a0` received a short independent integrity **PASS**;
+[check](../reviews/workbench_v2_recovery/INTEGRITY_f7c4e188.md). Machine evidence is recorded in
+`work_record.json`; the containing documentation-only delivery SHA is supplied after committing.
 
 ## Correction and admission
 
@@ -49,7 +51,7 @@ looked for Ruff in the Workbench venv, then used the existing main-checkout tool
 Actual IAB browser on the normal V2 launcher, started from `/private/tmp`, reopened the genuine
 archive. All seven native windows are selectable. Playback automatically continued across verified
 10s boundaries, with changed payload epochs and no scientific time accrued during verification.
-Observed live packet375 at native37.585s and packet621 at the final native62.230s; all nine nodes,
+Observed live packet375 at native37.585s and packet 621 at the final native 62.230s; all nine nodes,
 eight intervals and terminal command absence remain. Final applied steering was the original
 0.055711912693227825rad, applied62.225s from request62.22s, with its distinct nominal overlay value.
 
@@ -59,6 +61,12 @@ The failed-run warning remains visible. Run stays disabled; no execution control
 IAB iframe pointer operations failed twice, while keyboard actions completed the same replay checks;
 these harness observations are retained, not application failures. Screenshots and DOM observations
 are local under `results/apex_workbench_v2_recovery/`, hash-referenced in the machine record.
+
+The independent context separately verified all 39 original members, source/environment bindings,
+794 files/65 links and 30 scalar cases;7 selected tests passed in 4.62s. Its wrapper exited 1 only
+because post-test process enumeration was sandbox-denied; this negative is retained. No tests were
+rerun. Root subsequently confirmed no remaining UI/helper/test processes or port 8503 listener with an
+authorized read-only process check. Independent counts are separate; no broad review/Verification.
 
 ## Recovered descriptive observations
 
@@ -95,4 +103,5 @@ failed run cannot meet the current successful-run acceptance-proposal contract. 
 re-sealed, no slot reset or added, and no repeatable execution was activated. Primary must separately
 decide the source-bound interactive admission contract; recovered observations do not silently grant it.
 
-Stop at `WORKBENCH_V2_FULL_LAP_RECOVERY_READY_FOR_PRIMARY_ACCEPTANCE` after the short integrity check.
+The short integrity check is complete with no blocker. Stop at
+`WORKBENCH_V2_FULL_LAP_RECOVERY_READY_FOR_PRIMARY_ACCEPTANCE`.

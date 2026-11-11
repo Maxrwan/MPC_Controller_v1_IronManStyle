@@ -1,0 +1,75 @@
+{
+  "outcome": "PASS",
+  "scope": "Short independent integrity check, not broad Engineering Review or Verification",
+  "candidate": "f7c4e188c296f77dfbc7aa56e830d0315bf346a0",
+  "base": "3b2bdb0dd9c1f1b633216c3d0862e5de200e0906",
+  "branch": "codex/workbench-v2-ui",
+  "checked_utc": "2026-11-11T10:39:45.193491+00:00",
+  "original_run": "2026-11-11T095747.505385_0000_6a18eaab96bd4949835d7c481116806e",
+  "status_sha256": "dee9fa25607186027f726e7df76e0827d43b6bbc8cca36f1e2ba713b6f600a2e",
+  "manifest_sha256": "b6b8b56c9d70906860f471203f1cdef947b8fd2d573b9f05b66ad3e0278c8ba5",
+  "original_manifest_members": 39,
+  "authoritative_status": {
+    "record_version": 2,
+    "state": "failed",
+    "scientific_outcome": "failed",
+    "evidence_state": "valid",
+    "error": "Worker exited2",
+    "returncode": 2,
+    "wall_runtime_s": 160.7565652920166,
+    "sampled_peak_worker_rss_bytes": 236503040,
+    "manifest_sha256": "b6b8b56c9d70906860f471203f1cdef947b8fd2d573b9f05b66ad3e0278c8ba5"
+  },
+  "missing_artifacts_still_absent": [
+    "summary.json",
+    "worker_result.json"
+  ],
+  "source_identity": {
+    "numerical_source": "740a268a2d2c6b92a67a45456292a3b2cafb2479",
+    "frozen_science": "48adbdf64d492592d15e23c917aca71fa58aa8a5",
+    "frozen_runtime_members_checked": 333,
+    "original_producers_bound_to_git": 47,
+    "candidate_producers_bound_to_git": 47,
+    "captured_environment_matches_pre_identity_and_verified_installed_identity": true
+  },
+  "preservation": {
+    "historical_files": 794,
+    "historical_links": 65,
+    "all_unchanged": true,
+    "policy_sha256": "f9a0304ff136a1d7fe0b56ef0f3a2efff2f7fe37d74acbba1c369c5fa2772346",
+    "policy_stage": "reviewed-work",
+    "consumed_slots": {
+      "pilot": "2026-11-10T145233.755880_0000_f46cc76634dd4322b1720f37eb96442b",
+      "full_lap": "2026-11-11T095747.505385_0000_6a18eaab96bd4949835d7c481116806e"
+    },
+    "no_new_run_directory": true
+  },
+  "own_checks": {
+    "direct_scalar_cases": 30,
+    "pytest_file": "tools/apex_workbench/tests/test_lap_recovery.py",
+    "selected_tests": [
+      "test_original_recovery_exact_observations_and_absent_summary",
+      "test_recovery_rejects_changed_incomplete_and_resealed_evidence[missing]",
+      "test_recovery_rejects_changed_incomplete_and_resealed_evidence[extra]",
+      "test_recovery_rejects_changed_incomplete_and_resealed_evidence[reseal]",
+      "test_recovery_epoch_rejects_replacement_after_read[artifact]",
+      "test_recovery_epoch_rejects_replacement_after_read[new_summary]",
+      "test_failed_native_circuit_cannot_be_controlled_or_accepted"
+    ],
+    "pytest_result": "7 passed in 4.62s",
+    "forbidden_scientific_imports": [],
+    "original_and_policy_unchanged_after_tests": true,
+    "execution_admission_rejection": "V2 independent review/source identity absent or stale",
+    "test_invocation_exit": 1,
+    "test_invocation_exit_reason": "Post-test psutil children enumeration denied by sandbox sysctl process-table permission, after 7 passes and preservation/import assertions; no test rerun."
+  },
+  "helpers": "No background helper/server/browser started; Git calls were synchronous, reference-view cache was closed if populated, Python test invocation exited. Global process enumeration unavailable in sandbox.",
+  "browser": "Root IAB evidence inspected as WORK evidence only; not independently repeated or counted. Final sample62.230s precedes crossing62.233473s/native stop62.235s; no extrapolation.",
+  "blockers": [],
+  "conditions": [
+    "Primary acceptance remains separate",
+    "Accepted-interactive execution remains separately gated; no policy reseal/reset, new slot, retry, or run authorized"
+  ],
+  "implementation_edits": false,
+  "commit_or_push_performed": false
+}

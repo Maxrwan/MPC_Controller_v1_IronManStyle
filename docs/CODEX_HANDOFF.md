@@ -1,23 +1,26 @@
-# Current handoff — V2 read-only lap recovery, integrity check pending
+# Current handoff — V2 read-only lap recovery ready for Primary acceptance
 
-**WORK_COMPLETE_PENDING_SHORT_INDEPENDENT_INTEGRITY_CHECK.** Branch `codex/workbench-v2-ui`;
-base `3b2bdb0dd9c1f1b633216c3d0862e5de200e0906`. [Primary](workbench_v2_recovery/PRIMARY_WORK.md),
+**WORKBENCH_V2_FULL_LAP_RECOVERY_READY_FOR_PRIMARY_ACCEPTANCE.** Branch `codex/workbench-v2-ui`;
+corrected source `f7c4e188c296f77dfbc7aa56e830d0315bf346a0`, base `3b2bdb0`. [Primary](workbench_v2_recovery/PRIMARY_WORK.md),
 [WORK](workbench_v2_recovery/WORK.md), [machine record](workbench_v2_recovery/work_record.json).
 Local lap-only NumPy scalar conversion preserves global numeric guards; explicit SHA-bound failed
-archive recovery leaves summary absent and authoritative failed/valid/exit2 unchanged. Existing
+archive recovery leaves summary absent and authoritative failed/valid/exit 2 unchanged. Existing
 Replay/Analyze opt in, with persistent descriptive recovery warning. Controlled comparison requires
 completed/valid/exit0 and no recovery; acceptance/execution admission remain untouched.
 
-137 focused tests pass /1 deliberate deselection,47.12s; no scientific execution imports. Browser
+137 focused tests pass /1 deliberate deselection, 47.12s; no scientific execution imports. Browser
 opened genuine seven-window recording, automatically continued verified windows, inspected active
-packet621/nine nodes/terminal absence and applied steering through final native62.230s. Analyze shows
-31.1719003976093s circuit, sectors and separately labelled0.02095028863796588m circuit RMS. Failed
+packet 621/nine nodes/terminal absence and applied steering through final native 62.230s. Analyze shows
+31.1719003976093s circuit, sectors and separately labelled 0.02095028863796588m circuit RMS. Failed
 lifecycle remains visible; Run disabled. No new simulation, solve, plant step, pilot or retry.
 
-794 historical files/65 links and333 frozen/335 canonical files unchanged; all39 manifest members
+794 historical files/65 links and 333 frozen/335 canonical files unchanged; all 39 manifest members
 valid. Policy/consumed slots unchanged; no summary, worker result or acceptance proposal written.
-UI/helper processes stopped. Short independent integrity check of exact candidate is next, not broad
-Engineering Review or Verification. Then stop at
+UI/helper processes stopped. [Independent integrity PASS](reviews/workbench_v2_recovery/INTEGRITY_f7c4e188.md):
+7 selected tests/30 scalar cases, original archive/source/environment/history/policy independently
+checked. Its post-test sandbox process-inventory failure is retained; root confirmed cleanup without
+rerunning tests. No broad review or Verification. This final delivery changes documentation only.
+Primary acceptance is next. Stop at
 WORKBENCH_V2_FULL_LAP_RECOVERY_READY_FOR_PRIMARY_ACCEPTANCE. Repeatable V2 admission remains a
 separate source-bound Primary policy decision; this failed run cannot satisfy successful-run admission.
 
